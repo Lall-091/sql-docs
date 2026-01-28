@@ -36,26 +36,29 @@ You can make simple edits to SQL Server content in your browser and then submit 
 
 The following steps summarize the process:
 
-1. On the page you have feedback about, select the **Pencil** icon at the top right.
-1. On the next page, select the **Pencil** icon at the top right. If this icon doesn't appear, you might need to sign in to your GitHub account first.
-1. On the next page, in the **Edit file** text window, make your edits directly to the text you want to change.
+1. On the page you want to suggest a change for, select the **Kebab (three vertical dots)** near **In this article**. 
+1. Select **Edit**. The browser takes you to the GitHub repository for that article source file.
+1. In the source file, select the **Pencil** icon at the top right. If this icon doesn't appear, you might need to sign in to your GitHub account first. GitHub returns the editing page.
+1. Edit the text to propose changes.
    If you need help with formatting the new or changed text, see the [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
-1. After you make your edits, under **Commit changes**:
-   1. In the first text box, enter a brief description of the change you make.
+1. After you make your edits, scroll back to the top of the page and select **Commit changes**. 
+   1. In the **Commit message** dialog box, provide a name for your pull request, such as *Fixing typo*.
    1. In the **Add an optional extended description** box, provide a brief explanation of your change.
-1. Select **Propose file change**.
-1. On the **Comparing changes** page, select **Create pull request**.
-1. On the **Open a pull request** page, select **Create pull request**.
+   1. Select **Propose changes**  to go to the **Comparing changes** page. 
+1. On the **Comparing changes** page, select **Create pull request** to go to the **Open a pull request** page.
+1. On the **Open a pull request page**, select **Create pull request** to submit your pull request to the content team. 
 
 The following GIF demonstrates the end-to-end process for submitting changes in your browser:
 
 :::image type="content" source="media/sql-server-docs-navigation-guide/edit-sql-docs.gif" alt-text="Screenshot of Edit SQL Docs." lightbox="media/sql-server-docs-navigation-guide/edit-sql-docs.gif":::
 
+After you create your pull request, the content team reviews your proposed changes. If they accept your changes, they merge them into the documentation and publish them. You receive email notifications about the status of your pull request, depending on your Github notification settings.
+
 <a id="tools"></a>
 
-## Edit locally with tools
+## Edit locally by using tools
 
-Another editing option is to fork the `sql-docs` or `azure-docs` repositories and clone them locally to your machine. You can then use a Markdown editor and a git client to submit the changes. This workflow is good for edits that are more complex or involve multiple files. It's also good for frequent contributors to Microsoft technical documentation.
+Another option is to fork the `sql-docs` or `azure-docs` repositories and clone them locally to your machine. You can then use a Markdown editor and a git client to submit the changes. This workflow is good for edits that are more complex or involve multiple files. It's also good for frequent contributors to Microsoft technical documentation.
 
 To contribute with this method, see the following articles:
 
@@ -64,17 +67,7 @@ To contribute with this method, see the following articles:
 - [Set up a Git repository locally](/contribute/get-started-setup-local)
 - [Use tools to contribute](/contribute/how-to-write-workflows-major)
 
-If you submit a pull request with significant changes to documentation, you get a comment in GitHub asking you to submit an online **Contribution License Agreement (CLA)**. You must complete the online form before your pull request can be accepted.
-
-## Recognition
-
-If your changes are accepted, you're recognized as a contributor at the top of the article.
-
-:::image type="content" source="media/sql-server-docs-contribute/contribution-recognition-step-1.png" alt-text="Screenshot of Content contribution recognition under article heading." lightbox="media/sql-server-docs-contribute/contribution-recognition-step-1.png":::
-
-Select the contributors link, and you can see the list of contributors in more detail.
-
-:::image type="content" source="media/sql-server-docs-contribute/contribution-recognition-step-2.png" alt-text="Screenshot of Content contribution recognition dialog.":::
+If you submit a pull request with significant changes to documentation, you receive a comment in GitHub that asks you to submit an online **Contribution License Agreement (CLA)**. You must complete the online form before your pull request can be accepted.
 
 ## Overview: sql-docs repository
 
@@ -89,29 +82,8 @@ The [sql-docs](https://github.com/MicrosoftDocs/sql-docs) repository uses severa
 | --- | --- |
 | [docs](https://github.com/MicrosoftDocs/sql-docs/tree/live/docs) | Contains all published SQL Server content. Subfolders logically organize different areas of the content. |
 | [docs/includes](https://github.com/MicrosoftDocs/sql-docs/tree/live/docs/includes) | Contains include files. These files are blocks of content that can be included in one or more other articles. |
-| `./media` | Each folder can have one `media` subfolder for article images. The `media` folder in turn has subfolders with the same name as the articles that the image appears in. Images should be `.png` files with all lower case letters and no spaces. |
+| `./media` | Each folder can have one `media` subfolder for article images. The `media` folder in turn has subfolders with the same name as the articles that the image appears in. Images should be `.png` files with all lowercase letters and no spaces. |
 | `TOC.yml` | A table-of-contents file. Each subfolder has the option of using one `TOC.yml` file. |
-
-#### Applies-to includes
-
-Each SQL Server article contains an `applies-to` include file after the title. This indicates what areas or versions of SQL Server the article applies to.
-
-Consider the following Markdown example that pulls in the `applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md` include file.
-
-```md
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics Analytics Platform System (PDW) SQL database in Microsoft Fabric](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
-```
-
-This adds the following text to the top of the article:
-
-:::image type="content" source="media/sql-server-docs-contribute/applies-to.png" alt-text="Screenshot of Applies to text." lightbox="media/sql-server-docs-contribute/applies-to.png":::
-
-To find the correct applies-to include file for your article, use the following tips:
-
-- For a list of commonly used includes, see [SQL Server include files for versioning and applies-to](applies-to-includes.md).
-- Look at other articles that cover the same feature or a related task. If you edit that article, you can copy the Markdown for the applies-to include link (you can cancel the edit without submitting it).
-- Search the [docs/includes](https://github.com/MicrosoftDocs/sql-docs/tree/live/docs/includes) directory for files containing the text `applies-to`. You can use the **Find** button in GitHub to quickly filter. Select the file to see how it renders.
-- Some includes specify a version number, such as `sql-asdbmi-asa-pdw.md`. Only use this kind of include file when you know the feature was introduced with a specific version of SQL Server.
 
 ## Contributor resources
 
@@ -120,7 +92,7 @@ To find the correct applies-to include file for your article, use the following 
 - [Markdown basics](https://docs.github.com/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github)
 
 > [!TIP]  
-> If you have product feedback rather than documentation feedback, [provide feedback](https://feedback.azure.com/forums/908035-sql-server).
+> If you have product feedback instead of documentation feedback, [provide feedback](https://feedback.azure.com/forums/908035-sql-server).
 
 ## Next step
 
