@@ -3,7 +3,7 @@ title: "What's New for SQL Server 2022 on Linux"
 description: In this article, learn about the major features and services available for SQL Server 2022 running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/06/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: whats-new
@@ -20,6 +20,12 @@ ms.custom:
 This article describes the major features and services available for [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] running on Linux.
 
 In addition to these capabilities in this article, cumulative updates (CUs) are released at regular intervals. These cumulative updates provide many improvements and fixes. For detailed information about the latest CU release, see [SQL Server 2022 build versions](/troubleshoot/sql/releases/sqlserver-2022/build-versions). For package downloads and known issues, see the [Release notes](sql-server-linux-release-notes-2022.md).
+
+## Custom password policy support
+
+[!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Cumulative Update (CU) 23 provides support for configuring a custom password policy. This feature was backported from [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
+
+For more information, see [Set custom password policy for SQL logins in SQL Server on Linux](sql-server-linux-custom-password-policy.md).
 
 ## Red Hat Enterprise Linux 9 support
 
@@ -39,7 +45,7 @@ The following updates are available in [!INCLUDE [sssql22-md](../includes/sssql2
 
 | New feature or update | Details |
 | --- | --- |
-| Microsoft Entra Managed Identity | The Microsoft Entra managed identity for SQL Server on Azure VM isn't supported on Linux. For more information, see [Improvement: Microsoft Entra managed identity support for backup and restore database operations and for EKM with AKV in SQL Server on Azure VMs](/troubleshoot/sql/releases/sqlserver-2022/microsoft-entra-managed-identity-support-for-backup-restore-database-ekm-akv). |
+| Microsoft Entra Managed Identity | The Microsoft Entra managed identity for SQL Server on Azure Virtual Machines isn't supported on Linux. For more information, see [Improvement: Microsoft Entra managed identity support for backup and restore database operations and for EKM with AKV in SQL Server on Azure VMs](/troubleshoot/sql/releases/sqlserver-2022/microsoft-entra-managed-identity-support-for-backup-restore-database-ekm-akv). |
 
 ## Related content
 
