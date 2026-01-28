@@ -3,47 +3,53 @@ title: "Format Nested JSON Output with PATH Mode"
 description: "To maintain full control over the output of the FOR JSON clause, specify the PATH option."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: jovanpop, umajay
-ms.date: 07/23/2025
+ms.reviewer: jovanpop, umajay, randolphwest
+ms.date: 01/28/2026
 ms.service: sql
 ms.topic: how-to
 ms.custom:
   - ignite-2025
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
-# Format Nested JSON Output with PATH Mode
+# Format nested JSON output with PATH mode
 
 [!INCLUDE [sqlserver2016-asdb-asdbmi-asa-serverless-pool-only-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-svrless-only-fabricse-fabricdw-fabricsqldb.md)]
 
 To maintain full control over the output of the `FOR JSON` clause, specify the `PATH` option.
 
-`PATH` mode lets you create wrapper objects and nest complex properties. The results are formatted as an array of JSON objects.  
+`PATH` mode lets you create wrapper objects and nest complex properties. The results are formatted as an array of JSON objects.
 
 The alternative is to use the `AUTO` option to format the output automatically based on the structure of the `SELECT` statement.
- -   For more info about the `AUTO` option, see [Format JSON Output Automatically with AUTO Mode](format-json-output-automatically-with-auto-mode-sql-server.md) .
- -   For an overview of both options, see [Format query results as JSON with FOR JSON](format-query-results-as-json-with-for-json-sql-server.md).
 
-Here are some examples of the `FOR JSON` clause with the `PATH` option. Format nested results by using dot-separated column names or by using nested queries, as shown in the following examples. By default, null values are not included in `FOR JSON` output. [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) and the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) can auto-format the JSON results (as seen in this article) instead of displaying an unformatted string.
+- For more info about the `AUTO` option, see [Format JSON output automatically with AUTO mode](format-json-output-automatically-with-auto-mode-sql-server.md).
+- For an overview of both options, see [Format query results as JSON with FOR JSON](format-query-results-as-json-with-for-json-sql-server.md).
 
-## Example - Dot-separated column names
+The following examples show how to use the `FOR JSON` clause with the `PATH` option. Format nested results by using dot-separated column names or by using nested queries, as shown in the examples. By default, null values aren't included in `FOR JSON` output.
 
-The following query formats the first five rows from the AdventureWorks `Person` table as JSON.  
+> [!NOTE]  
+> The [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) can auto-format the JSON results (as seen in this article) instead of displaying an unformatted string.
 
-The `FOR JSON PATH` clause uses the column alias or column name to determine the key name in the JSON output. If an alias contains dots, the `PATH` option creates nested objects.  
+## Examples
 
- **Query**  
+[!INCLUDE [article-uses-adventureworks](../../includes/article-uses-adventureworks.md)]
+
+### A. Dot-separated column names
+
+The following query formats the first five rows from the AdventureWorks `Person` table as JSON.
+
+The `FOR JSON PATH` clause uses the column alias or column name to determine the key name in the JSON output. If an alias contains dots, the `PATH` option creates nested objects.
 
 ```sql
-SELECT TOP 5   
-       BusinessEntityID As Id,  
-       FirstName, LastName,  
-       Title As 'Info.Title',  
-       MiddleName As 'Info.MiddleName'  
-   FROM Person.Person  
-   FOR JSON PATH   
-```  
+SELECT TOP 5 BusinessEntityID AS Id,
+             FirstName,
+             LastName,
+             Title AS 'Info.Title',
+             MiddleName AS 'Info.MiddleName'
+FROM Person.Person
+FOR JSON PATH;
+```
 
- **Result**  
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
 
 ```json
 [{
@@ -77,26 +83,24 @@ SELECT TOP 5
         "MiddleName": "A"
     }
 }]
-```  
+```
 
-## Example - Multiple tables
+### B. Multiple tables
 
-If you reference more than one table in a query, `FOR JSON PATH` nests each column using its alias. The following query creates one JSON object per (`OrderHeader, OrderDetails`) pair joined in the query. 
-
- **Query**  
+If you reference more than one table in a query, `FOR JSON PATH` nests each column using its alias. The following query creates one JSON object for each `(OrderHeader, OrderDetails)` pair that the query joins.
 
 ```sql
-SELECT TOP 2 H.SalesOrderNumber AS 'Order.Number',  
-        H.OrderDate AS 'Order.Date',  
-        D.UnitPrice AS 'Product.Price',  
-        D.OrderQty AS 'Product.Quantity'  
-FROM Sales.SalesOrderHeader H  
-   INNER JOIN Sales.SalesOrderDetail D  
-     ON H.SalesOrderID = D.SalesOrderID  
-FOR JSON PATH   
-```  
+SELECT TOP 2 H.SalesOrderNumber AS 'Order.Number',
+             H.OrderDate AS 'Order.Date',
+             D.UnitPrice AS 'Product.Price',
+             D.OrderQty AS 'Product.Quantity'
+FROM Sales.SalesOrderHeader AS H
+     INNER JOIN Sales.SalesOrderDetail AS D
+         ON H.SalesOrderID = D.SalesOrderID
+FOR JSON PATH;
+```
 
- **Result**  
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
 
 ```json
 [{
@@ -116,13 +120,11 @@ FOR JSON PATH
         "Price": 2024.9940
     }
 }]
-```  
+```
 
 ## Learn more about JSON in the SQL Database Engine
 
-For a visual introduction to the built-in JSON support, see the following videos:
-
-- [JSON as a bridge between NoSQL and relational worlds](/events/datadriven-sqlserver2016/json-as-bridge-betwen-nosql-relational-worlds)
+For a visual introduction to the built-in JSON support, see [JSON as a bridge between NoSQL and relational worlds](/events/datadriven-sqlserver2016/json-as-bridge-betwen-nosql-relational-worlds).
 
 ## Related content
 

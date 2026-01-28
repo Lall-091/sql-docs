@@ -3,7 +3,7 @@ title: "Variables (Transact-SQL)"
 description: A Transact-SQL local variable is an object that can hold a single data value of a specific type.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/08/2024
+ms.date: 01/28/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,15 +17,17 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-A Transact-SQL local variable is an object that can hold a single data value of a specific type. Variables in batches and scripts are typically used:
+A Transact-SQL local variable is an object that can hold a single data value of a specific type. You typically use variables in batches and scripts for the following purposes:
 
-- As a counter either to count the number of times a loop is performed, or to control how many times the loop is performed.
-- To hold a data value to be tested by a control-of-flow statement.
-- To save a data value to be returned by a stored procedure return code or function return value.
+- Use a variable as a counter to count the number of times a loop is performed, or to control how many times the loop is performed.
+- Hold a data value to test by a control-of-flow statement.
+- Save a data value to return by a stored procedure return code or function return value.
+
+[!INCLUDE [article-uses-adventureworks](../../includes/article-uses-adventureworks.md)]
 
 ## Remarks
 
-The names of some Transact-SQL system functions begin with two *at* signs (`@@`). Although in earlier versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], the `@@` functions are referred to as global variables, `@@` functions aren't variables, and they don't have the same behaviors as variables. The `@@` functions are system functions, and their syntax usage follows the rules for functions.
+The names of some Transact-SQL system functions begin with two *at* signs (`@@`). Although earlier versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] refer to the `@@` functions as global variables, `@@` functions aren't variables, and they don't have the same behaviors as variables. The `@@` functions are system functions, and their syntax usage follows the rules for functions.
 
 You can't use variables in a view.
 
@@ -33,32 +35,34 @@ Changes to variables aren't affected by the rollback of a transaction.
 
 ## Declare a Transact-SQL variable
 
-The `DECLARE` statement initializes a Transact-SQL variable by:
+Use the `DECLARE` statement to initialize a Transact-SQL variable by:
 
-- Assigning a name. The name must have a single `@` as the first character.
+- Assigning a name. The name must start with a single `@` character.
 
-- Assigning a system-supplied or user-defined data type and a length. For numeric variables, a precision and scale are also assigned. For variables of type XML, an optional schema collection might be assigned.
+- Assigning a system-supplied or user-defined data type and a length. For numeric variables, you can assign a precision and optional scale. For variables of type XML, you can optionally assign a schema collection.
 
 - Setting the value to `NULL`.
 
 For example, the following `DECLARE` statement creates a local variable named `@mycounter` with an **int** data type. By default, the value for this variable is `NULL`.
 
 ```sql
-DECLARE @MyCounter INT;
+DECLARE @MyCounter AS INT;
 ```
 
-To declare more than one local variable, use a comma after the first local variable defined, and then specify the next local variable name and data type.
+To declare more than one local variable, use a comma after the first local variable definition, and then specify the next local variable name and data type.
 
-For example, the following `DECLARE` statement creates three local variables named `@LastName`, `@FirstName` and `@StateProvince`, and initializes each to `NULL`:
+For example, the following `DECLARE` statement creates three local variables named `@LastName`, `@FirstName`, and `@StateProvince`, and initializes each to `NULL`:
 
 ```sql
-DECLARE @LastName NVARCHAR(30), @FirstName NVARCHAR(20), @StateProvince NCHAR(2);
+DECLARE @LastName AS NVARCHAR (30),
+        @FirstName AS NVARCHAR (20),
+        @StateProvince AS NCHAR (2);
 ```
 
 In another example, the following `DECLARE` statement creates a Boolean variable called `@IsActive`, which is declared as **bit** with a value of `0` (`false`):
 
 ```sql
-DECLARE @IsActive BIT = 0;
+DECLARE @IsActive AS BIT = 0;
 ```
 
 ## Variable scope
@@ -66,42 +70,48 @@ DECLARE @IsActive BIT = 0;
 The scope of a variable is the range of Transact-SQL statements that can reference the variable. The scope of a variable lasts from the point it's declared until the end of the batch or stored procedure in which it's declared. For example, the following script generates a syntax error because the variable is declared in one batch (separated by the `GO` keyword) and referenced in another:
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
-DECLARE @MyVariable INT;
-
+DECLARE @MyVariable AS INT;
 SET @MyVariable = 1;
-GO
 
 SELECT BusinessEntityID,
-    NationalIDNumber,
-    JobTitle
+       NationalIDNumber,
+       JobTitle
 FROM HumanResources.Employee
 WHERE BusinessEntityID = @MyVariable;
 ```
 
-Variables have local scope and are only visible within the batch or procedure where they're defined. In the following example, the nested scope created for execution of `sp_executesql` doesn't have access to the variable declared in the higher scope and returns and error.
+Variables have local scope and are only visible within the batch or procedure where you define them. In the following example, the nested scope created for execution of `sp_executesql` doesn't have access to the variable declared in the higher scope and returns an error.
 
 ```sql
-DECLARE @MyVariable INT;
+DECLARE @MyVariable AS INT;
 SET @MyVariable = 1;
-EXECUTE sp_executesql N'SELECT @MyVariable'; -- this produces an error
+
+EXECUTE sp_executesql N'SELECT @MyVariable';
+```
+
+This query produces the following error:
+
+```output
+Msg 137, Level 15, State 2, Line 1
+Must declare the scalar variable "@MyVariable".
 ```
 
 ## Set a value in a Transact-SQL variable
 
-When a variable is first declared, its value is set to `NULL`. To assign a value to a variable, use the `SET` statement. This is the preferred method of assigning a value to a variable. A variable can also have a value assigned by being referenced in the select list of a `SELECT` statement.
+When you first declare a variable, its value is `NULL`. To assign a value to a variable, use the `SET` statement. This method is the preferred way to assign a value to a variable. You can also assign a value to a variable by referencing it in the select list of a `SELECT` statement.
 
-To assign a variable a value by using the SET statement, include the variable name and the value to assign to the variable. This is the preferred method of assigning a value to a variable. The following batch, for example, declares two variables, assigns values to them, and then uses them in the `WHERE` clause of a `SELECT` statement:
+To assign a variable a value by using the `SET` statement, include the variable name and the value to assign to the variable. This method is the preferred way to assign a value to a variable. The following batch, for example, declares two variables, assigns values to them, and then uses them in the `WHERE` clause of a `SELECT` statement:
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 -- Declare two variables.
-DECLARE @FirstNameVariable NVARCHAR(50),
-    @PostalCodeVariable NVARCHAR(15);
+DECLARE @FirstNameVariable AS NVARCHAR (50),
+        @PostalCodeVariable AS NVARCHAR (15);
 
 -- Set their values.
 SET @FirstNameVariable = N'Amy';
@@ -109,45 +119,45 @@ SET @PostalCodeVariable = N'BA5 3HX';
 
 -- Use them in the WHERE clause of a SELECT statement.
 SELECT LastName,
-    FirstName,
-    JobTitle,
-    City,
-    StateProvinceName,
-    CountryRegionName
+       FirstName,
+       JobTitle,
+       City,
+       PostalCode,
+       StateProvinceName,
+       CountryRegionName
 FROM HumanResources.vEmployee
 WHERE FirstName = @FirstNameVariable
-    OR PostalCode = @PostalCodeVariable;
-GO
+      OR PostalCode = @PostalCodeVariable;
 ```
 
-A variable can also have a value assigned by being referenced in a select list. If a variable is referenced in a select list, it should be assigned a scalar value or the `SELECT` statement should only return one row. For example:
+You can also assign a value to a variable by referencing it in a select list. If you reference a variable in a select list, assign it a scalar value or ensure the `SELECT` statement returns only one row. For example:
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
-DECLARE @EmpIDVariable INT;
 
-SELECT @EmpIDVariable = MAX(EmployeeID)
+DECLARE @EmpIDVariable AS INT;
+
+SELECT @EmpIDVariable = MAX(BusinessEntityID)
 FROM HumanResources.Employee;
-GO
 ```
 
 > [!WARNING]  
-> If there are multiple assignment clauses in a single `SELECT` statement, [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] doesn't guarantee the order of evaluation of the expressions. Effects are only visible if there are references among the assignments.
+> If there are multiple assignment clauses in a single `SELECT` statement, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] doesn't guarantee the order of evaluation of the expressions. Effects are only visible if there are references among the assignments.
 
 If a `SELECT` statement returns more than one row and the variable references a nonscalar expression, the variable is set to the value returned for the expression in the last row of the result set. For example, in the following batch `@EmpIDVariable` is set to the `BusinessEntityID` value of the last row returned, which is `1`:
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
-DECLARE @EmpIDVariable INT;
+
+DECLARE @EmpIDVariable AS INT;
 
 SELECT @EmpIDVariable = BusinessEntityID
 FROM HumanResources.Employee
 ORDER BY BusinessEntityID DESC;
 
 SELECT @EmpIDVariable;
-GO
 ```
 
 ## Examples
@@ -156,54 +166,50 @@ The following script creates a small test table and populates it with 26 rows. T
 
 - Control how many rows are inserted by controlling how many times the loop is executed.
 - Supply the value inserted into the integer column.
-- Function as part of the expression that generates letters to be inserted into the character column.
+- Function as part of the expression that generates letters to insert into the character column.
 
 ```sql
 -- Create the table.
-CREATE TABLE TestTable (cola INT, colb CHAR(3));
-GO
+CREATE TABLE TestTable
+(
+    cola INT,
+    colb CHAR (3)
+);
 
 SET NOCOUNT ON;
-GO
 
 -- Declare the variable to be used.
-DECLARE @MyCounter INT;
+DECLARE @MyCounter AS INT;
 
 -- Initialize the variable.
 SET @MyCounter = 0;
 
 -- Test the variable to see if the loop is finished.
 WHILE (@MyCounter < 26)
-BEGIN;
     -- Insert a row into the table.
-    INSERT INTO TestTable
-    VALUES
+    BEGIN
+        INSERT INTO TestTable
         -- Use the variable to provide the integer value
         -- for cola. Also use it to generate a unique letter
         -- for each row. Use the ASCII function to get the
         -- integer value of 'a'. Add @MyCounter. Use CHAR to
         -- convert the sum back to the character @MyCounter
         -- characters after 'a'.
-        (
-        @MyCounter,
-        CHAR((@MyCounter + ASCII('a')))
+        VALUES (
+            @MyCounter,
+            CHAR((@MyCounter + ASCII('a')))
         );
-
-    -- Increment the variable to count this iteration
-    -- of the loop.
-    SET @MyCounter = @MyCounter + 1;
-END;
-GO
-
+        -- Increment the variable to count this iteration
+        -- of the loop.
+        SET @MyCounter = @MyCounter + 1;
+    END
 SET NOCOUNT OFF;
-GO
 
 -- View the data.
-SELECT cola, colb FROM TestTable;
-GO
-
+SELECT cola,
+       colb
+FROM TestTable;
 DROP TABLE TestTable;
-GO
 ```
 
 ## Related content

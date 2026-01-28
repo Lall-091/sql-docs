@@ -3,7 +3,7 @@ title: "SQLExecDirect Function"
 description: "SQLExecDirect Function"
 author: David-Engel
 ms.author: davidengel
-ms.date: "01/19/2017"
+ms.date: "01/27/2026"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: reference
@@ -108,26 +108,28 @@ SQLRETURN SQLExecDirect(
 |IM018|**SQLCompleteAsync** has not been called to complete the previous asynchronous operation on this handle.|If the previous function call on the handle returns SQL_STILL_EXECUTING and if notification mode is enabled, **SQLCompleteAsync** must be called on the handle to do post-processing and complete the operation.|  
   
 ## Comments  
- The application calls **SQLExecDirect** to send a SQL statement to the data source. For more information about direct execution, see [Direct Execution](../../../odbc/reference/develop-app/direct-execution-odbc.md). The driver modifies the statement to use the form of SQL used by the data source and then submits it to the data source. In particular, the driver modifies the escape sequences used to define certain features in SQL. For the syntax of escape sequences, see [Escape Sequences in ODBC](../../../odbc/reference/develop-app/escape-sequences-in-odbc.md).  
+ You call **SQLExecDirect** to send a SQL statement to the data source. For more information about direct execution, see [Direct Execution](../../../odbc/reference/develop-app/direct-execution-odbc.md). The driver modifies the statement to use the form of SQL that the data source uses and then submits it to the data source. In particular, the driver modifies the escape sequences used to define certain features in SQL. For the syntax of escape sequences, see [Escape Sequences in ODBC](../../../odbc/reference/develop-app/escape-sequences-in-odbc.md).  
   
- The application can include one or more parameter markers in the SQL statement. To include a parameter marker, the application embeds a question mark (?) into the SQL statement at the appropriate position. For information about parameters, see [Statement Parameters](../../../odbc/reference/develop-app/statement-parameters.md).  
+ You can include one or more parameter markers in the SQL statement. To include a parameter marker, embed a question mark (?) into the SQL statement at the appropriate position. For information about parameters, see [Statement Parameters](../../../odbc/reference/develop-app/statement-parameters.md).  
   
- If the SQL statement is a **SELECT** statement and if the application called **SQLSetCursorName** to associate a cursor with a statement, then the driver uses the specified cursor. Otherwise, the driver generates a cursor name.  
+ After a successful call to **SQLExecDirect** that returns a result set (such as from a **SELECT** statement), the statement handle is positioned before the first row of the result set. You can then call **SQLFetch** or **SQLFetchScroll** to retrieve rows, or call **SQLRowCount** to determine the number of affected rows for **INSERT**, **UPDATE**, or **DELETE** statements.  
   
- If the data source is in manual-commit mode (requiring explicit transaction initiation) and a transaction has not already been initiated, the driver initiates a transaction before it sends the SQL statement. For more information, see [Manual-Commit Mode](../../../odbc/reference/develop-app/manual-commit-mode.md).  
+ If the SQL statement is a **SELECT** statement and you called **SQLSetCursorName** to associate a cursor with a statement, the driver uses the specified cursor. Otherwise, the driver generates a cursor name.  
   
- If an application uses **SQLExecDirect** to submit a **COMMIT** or **ROLLBACK** statement, it will not be interoperable between DBMS products. To commit or roll back a transaction, an application calls **SQLEndTran**.  
+ If the data source is in manual-commit mode (requiring explicit transaction initiation) and a transaction hasn't already been initiated, the driver initiates a transaction before it sends the SQL statement. For more information, see [Manual-Commit Mode](../../../odbc/reference/develop-app/manual-commit-mode.md).  
   
- If **SQLExecDirect** encounters a data-at-execution parameter, it returns SQL_NEED_DATA. The application sends the data using **SQLParamData** and **SQLPutData**. See [SQLBindParameter](../../../odbc/reference/syntax/sqlbindparameter-function.md), [SQLParamData](../../../odbc/reference/syntax/sqlparamdata-function.md), [SQLPutData](../../../odbc/reference/syntax/sqlputdata-function.md), and [Sending Long Data](../../../odbc/reference/develop-app/sending-long-data.md).  
+ If you use **SQLExecDirect** to submit a **COMMIT** or **ROLLBACK** statement, it won't be interoperable between DBMS products. To commit or roll back a transaction, call **SQLEndTran**.  
   
- If **SQLExecDirect** executes a searched update, insert, or delete statement that does not affect any rows at the data source, the call to **SQLExecDirect** returns SQL_NO_DATA.  
+ If **SQLExecDirect** encounters a data-at-execution parameter, it returns SQL_NEED_DATA. Send the data using **SQLParamData** and **SQLPutData**. See [SQLBindParameter](../../../odbc/reference/syntax/sqlbindparameter-function.md), [SQLParamData](../../../odbc/reference/syntax/sqlparamdata-function.md), [SQLPutData](../../../odbc/reference/syntax/sqlputdata-function.md), and [Sending Long Data](../../../odbc/reference/develop-app/sending-long-data.md).  
   
- If the value of the SQL_ATTR_PARAMSET_SIZE statement attribute is greater than 1 and the SQL statement contains at least one parameter marker, **SQLExecDirect** will execute the SQL statement once for each set of parameter values from the arrays pointed to by the *ParameterValuePointer* argument in the call to **SQLBindParameter**. For more information, see [Arrays of Parameter Values](../../../odbc/reference/develop-app/arrays-of-parameter-values.md).  
+ If **SQLExecDirect** executes a searched update, insert, or delete statement that doesn't affect any rows at the data source, the call to **SQLExecDirect** returns SQL_NO_DATA.  
   
- If bookmarks are turned on and a query is executed that cannot support bookmarks, the driver should attempt to coerce the environment to one that supports bookmarks by changing an attribute value and returning SQLSTATE 01S02 (Option value changed). If the attribute cannot be changed, the driver should return SQLSTATE HY024 (Invalid attribute value).  
+ If the value of the SQL_ATTR_PARAMSET_SIZE statement attribute is greater than 1 and the SQL statement contains at least one parameter marker, **SQLExecDirect** executes the SQL statement once for each set of parameter values from the arrays pointed to by the *ParameterValuePointer* argument in the call to **SQLBindParameter**. For more information, see [Arrays of Parameter Values](../../../odbc/reference/develop-app/arrays-of-parameter-values.md).  
+  
+ If bookmarks are turned on and a query is executed that can't support bookmarks, the driver should attempt to coerce the environment to one that supports bookmarks by changing an attribute value and returning SQLSTATE 01S02 (Option value changed). If the attribute can't be changed, the driver should return SQLSTATE HY024 (Invalid attribute value).  
   
 > [!NOTE]  
->  When using connection pooling, an application must not execute SQL statements that change the database or the context of the database, such as the **USE** _database_ statement in SQL Server, which changes the catalog used by a data source.  
+>  When using connection pooling, don't execute SQL statements that change the database or the context of the database, such as the **USE** _database_ statement in SQL Server, which changes the catalog used by a data source.  
   
 ## Code Example  
  See [SQLBindCol](../../../odbc/reference/syntax/sqlbindcol-function.md), [SQLGetData](../../../odbc/reference/syntax/sqlgetdata-function.md), and [Sample ODBC Program](../../../odbc/reference/sample-odbc-program.md).  
@@ -150,6 +152,6 @@ SQLRETURN SQLExecDirect(
 |Setting a cursor name|[SQLSetCursorName Function](../../../odbc/reference/syntax/sqlsetcursorname-function.md)|  
 |Setting a statement attribute|[SQLSetStmtAttr Function](../../../odbc/reference/syntax/sqlsetstmtattr-function.md)|  
   
-## See Also  
+## Related content  
  [ODBC API Reference](../../../odbc/reference/syntax/odbc-api-reference.md)   
  [ODBC Header Files](../../../odbc/reference/install/odbc-header-files.md)
