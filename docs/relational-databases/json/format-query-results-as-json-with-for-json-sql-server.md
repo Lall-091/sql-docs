@@ -4,7 +4,7 @@ description: Format query results as JSON, or export data from SQL Server as JSO
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, umajay, randolphwest
-ms.date: 07/23/2025
+ms.date: 01/28/2026
 ms.service: sql
 ms.topic: how-to
 ms.custom:
@@ -22,9 +22,9 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 Format query results as JSON, or export data from SQL Server as JSON, by adding the `FOR JSON` clause to a `SELECT` statement. Use the `FOR JSON` clause to simplify client applications by delegating the formatting of JSON output from the app to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
 > [!NOTE]  
-> [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) and the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) can auto-format the JSON results (as seen in this article) instead of displaying an unformatted string.
+> The [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) can auto-format the JSON results (as seen in this article) instead of displaying an unformatted string.
 
-In Fabric Data Warehouse, `FOR JSON` must be the last operator in the query, and so is not allowed inside subqueries.
+In Fabric Data Warehouse, `FOR JSON` must be the last operator in the query, and so you can't use it inside subqueries.
 
 ## Format query results
 
@@ -42,7 +42,7 @@ Here's an example of a `SELECT` statement with the `FOR JSON` clause and its out
 
 ### Control output with FOR JSON PATH
 
-In `PATH` mode, you can use the dot syntax - for example, `Item.Price` - to format nested output.
+In `PATH` mode, use the dot syntax (for example, `Item.Price`) to format nested output.
 
 Here's a sample query that uses `PATH` mode with the `FOR JSON` clause. The following example also uses the `ROOT` option to specify a named root element.
 
@@ -50,9 +50,9 @@ Here's a sample query that uses `PATH` mode with the `FOR JSON` clause. The foll
 
 ### More info about FOR JSON PATH
 
-For more detailed info and examples, see [Format Nested JSON Output with PATH Mode](format-nested-json-output-with-path-mode-sql-server.md).
+For more detailed info and examples, see [Format nested JSON output with PATH mode](format-nested-json-output-with-path-mode-sql-server.md).
 
-For syntax and usage, see [SELECT - FOR Clause (Transact-SQL)](../../t-sql/queries/select-for-clause-transact-sql.md).
+For syntax and usage, see [SELECT - FOR Clause](../../t-sql/queries/select-for-clause-transact-sql.md).
 
 ## [FOR JSON AUTO](#tab/json-auto)
 
@@ -60,19 +60,20 @@ For syntax and usage, see [SELECT - FOR Clause (Transact-SQL)](../../t-sql/queri
 
 In `AUTO` mode, the structure of the `SELECT` statement determines the format of the JSON output.
 
-By default, `NULL` values aren't included in the output. You can use `INCLUDE_NULL_VALUES` to change this behavior.
+By default, the output doesn't include `NULL` values. Use `INCLUDE_NULL_VALUES` to change this behavior.
 
 Here's a sample query that uses `AUTO` mode with the `FOR JSON` clause.
 
 ```sql
-SELECT name, surname
+SELECT name,
+       surname
 FROM emp
 FOR JSON AUTO;
 ```
 
 And here's the returned JSON.
 
-```csharp
+```json
 [{
     "name": "John"
 }, {
@@ -83,9 +84,9 @@ And here's the returned JSON.
 
 ### Example with JOIN and `NULL`
 
-The following example of `SELECT...FOR JSON AUTO` includes a display of what the JSON results look like when there's a *1:many* relationship between data from joined tables.
+The following example of `SELECT...FOR JSON AUTO` shows what the JSON results look like when there's a *1:many* relationship between data from joined tables.
 
-The absence of the null value from the returned JSON is also illustrated. However, you can override this default behavior by use of the `INCLUDE_NULL_VALUES` keyword on the `FOR` clause.
+This example also shows that the null value doesn't appear in the returned JSON. However, you can override this default behavior by using the `INCLUDE_NULL_VALUES` keyword in the `FOR` clause.
 
 ```sql
 DROP TABLE IF EXISTS #tabStudent;
@@ -136,9 +137,9 @@ DROP TABLE IF EXISTS #tabClass;
 GO
 ```
 
-And next is the JSON that is output by the preceding SELECT.
+Next is the JSON that the preceding `SELECT` outputs.
 
-```csharp
+```json
 JSON_F52E2B61-18A1-11d1-B105-00805F49916B
 
 [
@@ -151,27 +152,27 @@ JSON_F52E2B61-18A1-11d1-B105-00805F49916B
 
 ### More info about FOR JSON AUTO
 
-For more detailed info and examples, see [Format JSON Output Automatically with AUTO Mode](format-json-output-automatically-with-auto-mode-sql-server.md).
+For more detailed info and examples, see [Format JSON output automatically with AUTO mode](format-json-output-automatically-with-auto-mode-sql-server.md).
 
-For syntax and usage, see [SELECT - FOR Clause (Transact-SQL)](../../t-sql/queries/select-for-clause-transact-sql.md).
+For syntax and usage, see [SELECT - FOR Clause](../../t-sql/queries/select-for-clause-transact-sql.md).
 
 ---
 
 ## Control other JSON output options
 
-Control the output of the `FOR JSON` clause, using the following extra options.
+Control the output of the `FOR JSON` clause using the following extra options.
 
 - `ROOT`
 
-   To add a single, top-level element to the JSON output, specify the `ROOT` option. If you don't specify this option, the JSON output doesn't have a root element. For more info, see [Add a Root Node to JSON Output with the ROOT Option](add-a-root-node-to-json-output-with-the-root-option-sql-server.md).
+  To add a single, top-level element to the JSON output, specify the `ROOT` option. If you don't specify this option, the JSON output doesn't have a root element. For more info, see [Add a Root Node to JSON Output with the ROOT Option](add-a-root-node-to-json-output-with-the-root-option-sql-server.md).
 
 - `INCLUDE_NULL_VALUES`
 
-   To include null values in the JSON output, specify the `INCLUDE_NULL_VALUES` option. If you don't specify this option, the output doesn't include JSON properties for `NULL` values in the query results. For more info, see [Include Null Values in JSON - INCLUDE_NULL_VALUES Option](include-null-values-in-json-include-null-values-option.md).
+  To include null values in the JSON output, specify the `INCLUDE_NULL_VALUES` option. If you don't specify this option, the output doesn't include JSON properties for `NULL` values in the query results. For more info, see [Include Null Values in JSON - INCLUDE_NULL_VALUES Option](include-null-values-in-json-include-null-values-option.md).
 
 - `WITHOUT_ARRAY_WRAPPER`
 
-   To remove the square brackets that surround the JSON output of the `FOR JSON` clause by default, specify the `WITHOUT_ARRAY_WRAPPER` option. Use this option to generate a single JSON object as output from a single-row result. If you don't specify this option, the JSON output is formatted as an array - that is, the output is enclosed within square brackets. For more info, see [Remove Square Brackets from JSON - WITHOUT_ARRAY_WRAPPER Option](remove-square-brackets-from-json-without-array-wrapper-option.md).
+  To remove the square brackets that surround the JSON output of the `FOR JSON` clause by default, specify the `WITHOUT_ARRAY_WRAPPER` option. Use this option to generate a single JSON object as output from a single-row result. If you don't specify this option, the JSON output is formatted as an array - that is, the output is enclosed within square brackets. For more info, see [Remove Square Brackets from JSON - WITHOUT_ARRAY_WRAPPER Option](remove-square-brackets-from-json-without-array-wrapper-option.md).
 
 ## Output of the FOR JSON clause
 
@@ -181,13 +182,13 @@ The output of the `FOR JSON` clause has the following characteristics:
    - A small result set can contain a single row.
    - A large result set splits the long JSON string across multiple rows.
      - By default, SQL Server Management Studio (SSMS) concatenates the results into a single row when the output setting is **Results to Grid**. The SSMS status bar displays the actual row count.
-     - Other client applications might require code to recombine lengthy results into a single, valid JSON string by concatenating the contents of multiple rows. For an example of this code in a C# application, see [Use FOR JSON output in a C# client app](../../relational-databases/json/use-for-json-output-in-sql-server-and-in-client-apps-sql-server.md#use-for-json-output-in-a-c-client-app).
+     - Other client applications might require code to recombine lengthy results into a single, valid JSON string by concatenating the contents of multiple rows. For an example of this code in a C# application, see [Use FOR JSON output in a C# client app](use-for-json-output-in-sql-server-and-in-client-apps-sql-server.md#use-for-json-output-in-a-c-client-app).
 
        :::image type="content" source="media/format-query-results-as-json-with-for-json-sql-server/for-json-output.png" alt-text="Screenshot of FOR JSON output in SQL Server Management Studio.":::
 
 1. The results are formatted as an array of JSON objects.
 
-   - The number of elements in the JSON array is equal to the number of rows in the results of the SELECT statement (before the FOR JSON clause is applied).
+   - The number of elements in the JSON array matches the number of rows in the results of the SELECT statement (before the FOR JSON clause is applied).
 
    - Each row in the results of the SELECT statement (before the FOR JSON clause is applied) becomes a separate JSON object in the array.
 
