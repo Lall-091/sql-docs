@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Create and define SQL Server unit tests

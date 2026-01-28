@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 helpviewer_keywords:
   - "validating installations [SQL Server]"
 monikerRange: ">=sql-server-2016"

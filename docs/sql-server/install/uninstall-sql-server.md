@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/20/2022
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ---
 # Uninstall SQL Server
 

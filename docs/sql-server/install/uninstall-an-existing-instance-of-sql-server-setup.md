@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 02/28/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "removing instances of SQL Server"
   - "uninstalling instances of SQL Server"

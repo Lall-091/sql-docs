@@ -7,7 +7,7 @@ ms.reviewer: mikeray, randolphwest
 ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: release-notes
 ms.custom:
   - UpdateFrequency5
   - sfi-ropc-nochange

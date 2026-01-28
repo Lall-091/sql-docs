@@ -8,7 +8,7 @@ ms.reviewer: randolphwest, maghan
 ms.date: 11/26/2025
 ms.service: sql
 ms.subservice: migration-guide
-ms.topic: article
+ms.topic: product-comparison
 helpviewer_keywords:
   - "migration, on-premises SQL Server"
 ---

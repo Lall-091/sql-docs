@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: ui-reference
 ---
 
 # Keyboard shortcuts for SQL Server Unit Test Designer

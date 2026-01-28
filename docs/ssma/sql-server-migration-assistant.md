@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/31/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: article
+ms.topic: overview
 ms.collection:
   - sql-migration-content
 ---

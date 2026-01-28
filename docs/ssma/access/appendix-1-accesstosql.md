@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: article
+ms.topic: reference
 ai-usage: ai-assisted
 ---
 # Appendix - 1 (AccessToSQL)

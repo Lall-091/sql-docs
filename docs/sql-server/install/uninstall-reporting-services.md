@@ -5,7 +5,7 @@ author: kfollis
 ms.author: kfollis
 ms.date: "03/01/2017"
 ms.service: reporting-services
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Uninstall Reporting Services
 [!INCLUDE [SQL Server -Windows Only](../../includes/applies-to-version/sql-windows-only.md)]

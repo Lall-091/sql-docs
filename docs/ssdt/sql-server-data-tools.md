@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/03/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: article
+ms.topic: overview
 f1_keywords:
   - "sql.data.tools.errortask.generichelp"
   - "sql.data.tools.sqlserverobjectexplorer"

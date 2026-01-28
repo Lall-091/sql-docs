@@ -7,7 +7,7 @@ ms.date: 07/23/2025
 ms.service: sql
 ms.subservice: install
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "removing CU from SQL Server"
   - "uninstalling CU from SQL Server"
