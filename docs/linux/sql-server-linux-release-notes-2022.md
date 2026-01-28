@@ -50,8 +50,6 @@ This section lists the latest versions of each package per distribution, for [!I
 | --- | --- | --- | --- | --- |
 | [!INCLUDE [ssSQL22](../includes/sssql22-md.md)] | CU 22 GDR | 2026-01-13 | 16.0.4230.2 | [KB 5072936](https://support.microsoft.com/help/5072936) |
 
-[!INCLUDE [sql-server-2022-cu-23-removed](includes/sql-server-2022-cu-23-removed.md)]
-
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
 | **Red Hat Enterprise Linux** | | | |

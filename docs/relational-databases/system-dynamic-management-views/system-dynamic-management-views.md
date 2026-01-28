@@ -3,7 +3,7 @@ title: "System Dynamic Management Views (Transact-SQL)"
 description: "Dynamic management views and functions return server state information that can be used to monitor the health of a server instance, diagnose problems, and tune performance."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/13/2026
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -38,8 +38,6 @@ There are two types of dynamic management views and functions:
 - Server-scoped dynamic management views and functions. These require VIEW SERVER STATE permission on the server. For SQL Server 2022 and later, VIEW SERVER PERFORMANCE STATE is required, or VIEW SERVER SECURITY STATE is required for a few DMVs that are security related.
 
 - Database-scoped dynamic management views and functions. These require VIEW DATABASE STATE permission on the database. For SQL Server 2022 and later, VIEW DATABASE PERFORMANCE STATE is required, or VIEW DATABASE SECURITY STATE is required for a few DMVs that are security related.
-
-[!INCLUDE [sql-server-2025-cu-1-removed](../../linux/includes/sql-server-2025-cu-1-removed.md)]
 
 ## Query dynamic management views
 

@@ -3,7 +3,7 @@ title: "Ubuntu: Install SQL Server on Linux"
 description: This quickstart shows how to install SQL Server 2017 and later versions on Ubuntu and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/15/2026
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -47,9 +47,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Ubuntu 22.04. Then you can connect with **sqlcmd** to create your first database and run queries.
 
 > [!NOTE]  
-> Ubuntu 24.04 is supported in preview for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]. Currently, only the 180-day Enterprise Evaluation edition is available.
-
-[!INCLUDE [sql-server-2025-cu-1-removed](includes/sql-server-2025-cu-1-removed.md)]
+> Starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1, Ubuntu 24.04 is supported.
 
 For more information on supported platforms, see [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md).
 
@@ -349,7 +347,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
 
 At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is running on your Ubuntu machine and is ready to use.
 
-### [Ubuntu 24.04 (in preview)](#tab/2505ubuntu2404)
+### [Ubuntu 24.04](#tab/2505ubuntu2404)
 
 1. Download the public key, convert from ASCII to GPG format, and write it to the required location:
 
@@ -360,7 +358,7 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is run
 1. Manually download and register the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Ubuntu repository:
 
    ```bash
-   curl -fsSL https://packages.microsoft.com/config/ubuntu/24.04/mssql-server-preview.list | sudo tee /etc/apt/sources.list.d/mssql-server-preview.list
+   curl -fsSL https://packages.microsoft.com/config/ubuntu/24.04/mssql-server-2025.list | sudo tee /etc/apt/sources.list.d/mssql-server-2025.list
    ```
 
    > [!TIP]  

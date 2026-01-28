@@ -4,7 +4,7 @@ description: Learn how to deploy a SQL Server on Linux container to Azure Kubern
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh
-ms.date: 07/11/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -94,8 +94,6 @@ Deploy SQL Server using the following command. The deployment name is customizab
 ```cmd
 helm install mssql-latest-deploy . --set ACCEPT_EULA.value=Y --set MSSQL_PID.value=Developer
 ```
-
-[!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
 
 In the previous example, the chart and its files are in the current directory, represented by the period (`.`). You can specify the path of the chart if you prefer.
 

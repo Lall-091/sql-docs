@@ -3,7 +3,7 @@ title: Configure Environment Variables for SQL Server on Linux
 description: This article describes how to use environment variables to configure specific SQL Server settings on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -80,8 +80,6 @@ This example `docker` command uses the following environment variables to create
 
 - `MSSQL_PID` specifies the freely licensed Developer Edition of SQL Server for non-production use.
 
-   [!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
-
 - `MSSQL_SA_PASSWORD` sets a strong password. [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
 - `MSSQL_TCP_PORT` sets the TCP port that SQL Server listens on to 1234. This means that instead of mapping port 1433 (default) to a host port, the custom TCP port must be mapped with the `-p 1234:1234` command in this example.
@@ -155,8 +153,6 @@ docker run -e ACCEPT_EULA=Y -e MSSQL_PID="Developer" -e MSSQL_SA_PASSWORD="<pass
 ```
 
 ::: moniker-end
-
-[!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
 
 > [!CAUTION]  
 > [!INCLUDE [password-complexity](includes/password-complexity.md)]

@@ -4,7 +4,7 @@ description: An overview of the contained availability group feature of Always O
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 01/14/2026
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: high-availability
 ms.topic: overview
@@ -150,8 +150,6 @@ If you use a network resource for the backup location, all servers that host rep
 ### Enable database creation or restoration in contained availability group sessions
 
 **Applies to**: [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] CU 1 and later versions.
-
-[!INCLUDE [sql-server-2025-cu-1-removed](../../../linux/includes/sql-server-2025-cu-1-removed.md)]
 
 In [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] Cumulative Update (CU) 1, you can enable database creation and restoration directly within a contained availability group session, through the contained AG listener. This enhancement streamlines workflows for users assigned the appropriate roles, allowing seamless operations within contained AG environments.
 

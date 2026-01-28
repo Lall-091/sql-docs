@@ -4,7 +4,7 @@ description: This article provides performance best practices and guidelines for
 author: tejasaks
 ms.author: tejasaks
 ms.reviewer: randolphwest
-ms.date: 01/02/2026
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: best-practice
@@ -509,5 +509,6 @@ When setting memory limits for [!INCLUDE [ssnoversion-md](../includes/ssnoversio
 
 ## Related content
 
+- [Linux related dynamic management views and functions (Transact-SQL)](../relational-databases/system-dynamic-management-views/linux-related-dynamic-management-views-and-functions-transact-sql.md)
 - [Walkthrough for the performance features of SQL Server on Linux](sql-server-linux-performance-get-started.md)
 - [What is SQL Server on Linux?](sql-server-linux-overview.md)
