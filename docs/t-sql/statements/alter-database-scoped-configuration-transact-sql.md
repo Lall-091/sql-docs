@@ -5,7 +5,7 @@ description: Enable several database configuration settings at the individual da
 author: markingmyname
 ms.author: maghan
 ms.reviewer: derekw, bobward, jovanpop, wiassaf, mariyaali, randolphwest
-ms.date: 12/17/2025
+ms.date: 01/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -112,6 +112,8 @@ ALTER DATABASE SCOPED CONFIGURATION
     | PAUSED_RESUMABLE_INDEX_ABORT_DURATION_MINUTES = <time>
     | PREVIEW_FEATURES = { ON | OFF }
     | QUERY_OPTIMIZER_HOTFIXES = { ON | OFF | PRIMARY }
+    | READABLE_SECONDARY_TEMPORARY_STATS_AUTO_CREATE = { ON | OFF | PRIMARY }
+    | READABLE_SECONDARY_TEMPORARY_STATS_AUTO_UPDATE = { ON | OFF | PRIMARY }
     | ROW_MODE_MEMORY_GRANT_FEEDBACK = { ON | OFF }
     | TSQL_SCALAR_UDF_INLINING = { ON | OFF }
     | VERBOSE_TRUNCATION_WARNINGS = { ON | OFF }
@@ -512,6 +514,22 @@ PRIMARY
 This value is valid only on secondaries while the database is on the primary. It specifies that the value for this setting on all secondaries is the value set for the primary. If the configuration for the primary changes, the value on the secondaries changes accordingly without the need to set the secondaries value explicitly. PRIMARY is the default setting for the secondaries.
 
 For more information on `QUERY_OPTIMIZER_HOTFIXES`, see [SQL Server query optimizer hotfix trace flag 4199 servicing model](https://support.microsoft.com/help/974006).
+
+#### READABLE_SECONDARY_TEMPORARY_STATS_AUTO_CREATE = { ON | OFF | PRIMARY }
+
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazure-sqlmi-autd](../../includes/applies-to-version/ssazure-sqlmi-autd.md)], and [!INCLUDE [ssazure-sqlmi-2025](../../includes/applies-to-version/ssazure-sqlmi-2025.md)]
+
+Enables or disables the automatic creation of [temporary statistics](../../relational-databases/statistics/statistics.md#temporary-statistics) for readable secondary replicas of a database and for database snapshots.
+
+The default is `ON`.
+
+#### READABLE_SECONDARY_TEMPORARY_STATS_AUTO_UPDATE = { ON | OFF | PRIMARY }
+
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazure-sqlmi-autd](../../includes/applies-to-version/ssazure-sqlmi-autd.md)], and [!INCLUDE [ssazure-sqlmi-2025](../../includes/applies-to-version/ssazure-sqlmi-2025.md)]
+
+Enables or disables the automatic update of [temporary statistics](../../relational-databases/statistics/statistics.md#temporary-statistics) for readable secondary replicas of a database and for database snapshots.
+
+The default is `ON`.
 
 #### ROW_MODE_MEMORY_GRANT_FEEDBACK = { ON | OFF }
 

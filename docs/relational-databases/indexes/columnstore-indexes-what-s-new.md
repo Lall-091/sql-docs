@@ -26,7 +26,7 @@ This table summarizes key features for columnstore indexes and the products in w
 
 For feature availability in Azure SQL Managed Instance with a SQL Server [update policy](/azure/azure-sql/managed-instance/update-policy), refer to the column for the corresponding version of SQL Server.
 
-| Columnstore Index Feature | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]<sup>1</sup> | [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] | [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] | [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)] | [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] | [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]<sup>2</sup> and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)] | [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [Warehouse](../../includes/fabric-dw.md)] |
+| Columnstore Index Feature | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]<sup>1</sup> | [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] | [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] | [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)] | [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] | [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]<sup>2</sup> and [!INCLUDE [ssazure-sqlmi-autd](../../includes/applies-to-version/ssazure-sqlmi-autd.md)] | [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [Warehouse](../../includes/fabric-dw.md)] |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Batch mode execution for multi-threaded queries<sup>3</sup> | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | Batch mode execution for single-threaded queries | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
