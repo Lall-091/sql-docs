@@ -24,11 +24,11 @@ helpviewer_keywords:
   - "inserting data"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric || = fabric-sqldb"
 ---
 # MERGE (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database Azure Synapse FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-dedicated-poolonly-fabricsqldb-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-dedicated-poolonly-fabricsqldb-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-dedicated-poolonly-fabricsqldb-fabricdw.md)]
 
 The `MERGE` statement runs insert, update, or delete operations on a target table from the results of a join with a source table. For example, synchronize two tables by inserting, updating, or deleting rows in one table based on differences found in the other table.
 
@@ -45,9 +45,9 @@ This article provides different syntax, arguments, remarks, permissions, and exa
 
 ## Syntax
 
-::: moniker range="= azuresqldb-current || = azuresqldb-mi-current || >= sql-server-2016 || >= sql-server-linux-2017"
+::: moniker range="= azuresqldb-current || = azuresqldb-mi-current || >= sql-server-2016 || >= sql-server-linux-2017 || = fabric-sqldb"
 
-Syntax for SQL Server and Azure SQL Database:
+Syntax for SQL Server, Azure SQL Database, and SQL database in Fabric:
 
 ```syntaxsql
 [ WITH <common_table_expression> [,...n] ]
