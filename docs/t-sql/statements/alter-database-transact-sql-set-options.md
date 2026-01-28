@@ -4102,6 +4102,8 @@ To check the current status of Delta Lake Log publishing on all warehouses, of y
 SELECT [name], [DATA_LAKE_LOG_PUBLISHING_DESC] FROM sys.databases;
 ```
 
+<a id="set-and-check-result-set-caching-preview"></a>
+
 ### B. Set and check result set caching
 
 The following T-SQL command will enable the item `MyDataWarehouse` to begin creating and applying result set cache to applicable `SELECT` queries. For more information, see [Result set caching](/fabric/data-warehouse/result-set-caching).
