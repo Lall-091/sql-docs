@@ -100,12 +100,6 @@ Use [adutil](sql-server-linux-ad-auth-adutil-introduction.md) to fetch the passw
    sudo systemctl restart mssql-server
    ```
 
-In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Cumulative Update (CU) 1 and later versions, you can apply password policy changes to SQL Server without restarting the service. Connect to the SQL Server instance and run the `sp_reload_mssqlconf` stored procedure to apply the changes:
-
-```sql
-EXECUTE sp_reload_mssqlconf;
-```
-
 <a id="manual"></a>
 
 ## Manually set a custom password policy using mssql-conf
@@ -145,12 +139,6 @@ Run the following **mssql-conf** commands to set each policy configuration prope
    ```bash
    sudo systemctl restart mssql-server
    ```
-
-In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1, run the following stored procedure instead:
-
-  ```sql
-  EXECUTE sp_reload_mssqlconf;
-  ```
 
 ## Limitations
 
