@@ -524,8 +524,10 @@ When using failover groups, consider the following limitations:
     - after failover, and can delay or prevent a subsequent failover.
 - Database rename isn't supported for databases in failover group. You'll need to temporarily delete the failover group to be able to rename a database.
 - System databases aren't replicated to the secondary instance in a failover group. Therefore, scenarios that depend on objects from the system databases such as Server Logins and Agent jobs, require objects to be manually created on the secondary instances and also manually kept in sync after any changes made on primary instance. The only exception is Service master Key (SMK) for SQL Managed Instance that is replicated automatically to secondary instance during creation of failover group. Any subsequent changes of SMK on the primary instance however won't be replicated to secondary instance. To learn more, see how to [Enable scenarios dependent on objects from the system databases](#enable-scenarios-dependent-on-objects-from-the-system-databases).
+- When new databases are added to a failover group, planned failover is unavailable until the new database has been seeded to the secondary replica and is synchronized. Forced failover is still available during this process.
 - For instances inside of a failover group, changing the service tier to, or from, the Next-gen General Purpose tier isn't supported. You must first delete the failover group before modifying either replica, and then re-create the failover group after the change takes effect.
 - SQL managed instances in a failover group must have the same [update policy](update-policy.md), though it's possible to [change the update policy](#change-update-policy) for instances within a failover group.
+
 
 
 ## <a id="programmatically-managing-failover-groups"></a> Programmatically manage failover groups

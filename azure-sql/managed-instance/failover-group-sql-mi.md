@@ -74,10 +74,7 @@ There's some overlap of content in the following articles, be sure to make chang
 
 - **Failover group read-only listener**
 
-  A DNS CNAME record that points to the current secondary. It's created automatically when the failover group is created and allows the read-only SQL workload to transparently connect to the secondary when the secondary changes after failover. When the failover group is created on a SQL managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.secondary.<zone_id>.database.windows.net`. By default, failover of the read-only listener is disabled as it ensures the performance of the primary isn't affected when the secondary is offline. However, it also means the read-only sessions won't be able to connect until the secondary is recovered. If you can't tolerate downtime for the read-only sessions and can use the primary for both read-only and read-write traffic at the expense of the potential performance degradation of the primary, you can enable failover for the read-only listener by configuring the `AllowReadOnlyFailoverToPrimary` property. In that case, the read-only traffic is automatically redirected to the primary if the secondary isn't available.
-
-  > [!NOTE]  
-  > The `AllowReadOnlyFailoverToPrimary` property only has effect if Microsoft managed failover policy is enabled and a forced failover has been triggered. In that case, if the property is set to True, the new primary serves both read-write and read-only sessions.
+  A DNS CNAME record that points to the current secondary. It's created automatically when the failover group is created and allows the read-only SQL workload to transparently connect to the secondary when the secondary changes after failover. When the failover group is created on a SQL managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.secondary.<zone_id>.database.windows.net`. By default, failover of the read-only listener is disabled as it ensures the performance of the primary isn't affected when the secondary is offline. However, it also means the read-only sessions won't be able to connect until the secondary is recovered. 
 
 ## Failover group architecture
 
@@ -267,13 +264,16 @@ Performing a drill using forced failover is **not recommended**, as this operati
 - The workload is stopped on the primary SQL managed instance.
 - All long running transactions have completed.
 - All client connections to the primary SQL managed instance have been disconnected.
-- [Failover group status](failover-group-sql-mi.md#failover-group-status) is 'Synchronizing'.
+- [Failover group status](failover-group-sql-mi.md#failover-group-status) is `Synchronizing` on **both** the primary and secondary instances.
 
 Please ensure the two SQL managed instances have switched roles. Also that the failover group status has switched from *'Failover in progress'* to *'Synchronizing'* before optionally establishing connections to the new primary SQL managed instance and starting read-write workload.
 
-To perform a data lossless failback to the original SQL managed instance roles, using manual planned failover instead of forced failover is **strongly recommended**. If forced failback is used:
+To perform a data lossless failback to the original SQL managed instance roles, using manual planned failover instead of forced failover is **strongly recommended**. 
+
+If forced failback is used:
 
 - Follow the same steps as for the data lossless failover.
+- Forced failback is expected to fail if a previous forced failover did not succeed on both SQL managed instances. Ensure failover group status is `Synchronizing` on **both** instances before executing the forced failback.
 - Longer failback execution time is expected if the forced failback is executed **shortly after** the initial forced failover is completed, as it has to wait for completion of outstanding automatic backup operations on the former primary SQL managed instance.
 - Any outstanding automatic backup operations on an instance transitioning from the primary to the secondary role can impact database availability on this instance.
 - Please use the failover group status to determine whether both instances have successfully changed their roles and are ready to accept client connections.
