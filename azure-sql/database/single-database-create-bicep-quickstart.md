@@ -4,7 +4,7 @@ description: Create a single database in Azure SQL Database using Bicep.
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 09/17/2024
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -35,6 +35,8 @@ If you don't have an Azure subscription, [create a free account](https://azure.m
 ## Review the Bicep file
 
 A single database has a defined set of compute, memory, IO, and storage resources using one of two [purchasing models](purchasing-models.md). When you create a single database, you also define a [server](logical-servers.md) to manage it and place it within [Azure resource group](/azure/active-directory-b2c/overview) in a specified region.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 The Bicep file used in this quickstart is from [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/sql-database/).
 
@@ -68,6 +70,7 @@ The following resources are defined in the Bicep file:
 
 > [!NOTE]
 > Replace **\<admin-login\>** with the administrator username of the SQL logical server. You'll be prompted to enter **administratorLoginPassword**.
+
 
   When the deployment finishes, you should see a message indicating the deployment succeeded.
 

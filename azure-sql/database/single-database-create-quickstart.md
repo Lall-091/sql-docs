@@ -4,7 +4,7 @@ description: Create a single database in Azure SQL Database using the Azure port
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 08/25/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -58,6 +58,8 @@ To create a single database in the Azure portal:
     - **Authentication method**: Select **Use SQL authentication**.
     - **Server admin login**: Enter *azureuser*.
     - **Password**: Enter a password that meets requirements, and enter it again in the **Confirm password** field.
+
+   [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
    Select **OK**.
 
@@ -119,6 +121,8 @@ Change the location as appropriate for your environment. Replace `0.0.0.0` with 
 
 :::code language="azurecli" source="~/../azure_cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh" id="SetParameterValues":::
 
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
+
 ### Create a resource group
 
 Create a resource group with the [az group create](/cli/azure/group) command. An Azure resource group is a logical container into which Azure resources are deployed and managed. The following example creates a resource group named *myResourceGroup* in the *eastus* Azure region:
@@ -171,6 +175,8 @@ When Cloud Shell opens, verify that **PowerShell** is selected for your environm
 ### Set parameter values
 
 The following values are used in subsequent commands to create the database and required resources. Server names need to be globally unique across all of Azure so the [Get-Random](/powershell/module/microsoft.powershell.utility/get-random) cmdlet is used to create the server name.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 In the following code snippet:
 

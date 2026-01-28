@@ -4,7 +4,7 @@ description: Use this Azure CLI example script to copy a database in Azure SQL D
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 06/10/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: data-movement
 ms.topic: sample
@@ -28,6 +28,8 @@ This Azure CLI script example creates a copy of an existing database in a new Az
 [!INCLUDE [cli-launch-cloud-shell-sign-in.md](../../includes/cli-launch-cloud-shell-sign-in.md)]
 
 ### Run the script
+
+[!INCLUDE [server-admin-login-security-note](../../includes/server-admin-login-security-note.md)]
 
 :::code language="azurecli" source="~/../azure_cli_scripts/sql-database/copy-database-to-new-server/copy-database-to-new-server.sh" id="FullScript":::
 

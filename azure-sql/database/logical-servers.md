@@ -4,7 +4,7 @@ description: Learn about logical servers used by Azure SQL Database and Azure Sy
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 03/25/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -58,6 +58,8 @@ You can create the resource group for a logical server ahead of time or while cr
 
 To create a blank logical server (without a database, elastic pool, or dedicated SQL pool) using the [Azure portal](https://portal.azure.com), navigate to a blank SQL server (**logical SQL server**) form.
 
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
+
 ### Create a blank or sample database in Azure SQL Database
 
 To create a database in SQL Database using the [Azure portal](https://portal.azure.com), navigate to create a new **SQL Database** and provide the requested information. You can create the resource group and server ahead of time or while creating the database itself. You can create a blank database or create a sample database based on `AdventureWorksLT`.
@@ -95,12 +97,9 @@ For example, to configure a firewall rule, follow these steps:
 
 You can configure your database using Azure PowerShell. 
 
-[!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
-
-> [!IMPORTANT]
-> The PowerShell Azure Resource Manager (AzureRM) module was deprecated on February 29, 2024. All future development should use the Az.Sql module. Users are advised to migrate from AzureRM to the Az PowerShell module to ensure continued support and updates. The AzureRM module is no longer maintained or supported. The arguments for the commands in the Az PowerShell module and in the AzureRM modules are substantially identical. For more about their compatibility, see [Introducing the new Az PowerShell module](/powershell/azure/new-azureps-module-az).
-
 To create and manage servers, databases, and firewalls with Azure PowerShell, use the following PowerShell cmdlets. If you need to install or upgrade PowerShell, see [Install Azure PowerShell module](/powershell/azure/install-az-ps). For creating and managing elastic pools, see [Elastic pools](elastic-pool-overview.md).
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 | Cmdlet | Description |
 | --- | --- |
@@ -126,6 +125,8 @@ To create and manage servers, databases, and firewalls with Azure PowerShell, us
 ### [Azure CLI](#tab/azure-cli)
 
 To create and manage servers, databases, and firewalls with the [Azure CLI](/cli/azure), use the following [Azure CLI SQL Database](/cli/azure/sql/db) commands. Use the [Cloud Shell](/azure/cloud-shell/overview) to run the CLI in your browser, or [install](/cli/azure/install-azure-cli) it on macOS, Linux, or Windows. For creating and managing elastic pools, see [Elastic pools](elastic-pool-overview.md).
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 | Cmdlet | Description |
 | --- | --- |

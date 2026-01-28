@@ -5,7 +5,7 @@ description: A glossary of terms for working with Azure SQL Database, Azure SQL 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 11/18/2025
+ms.date: 01/23/2026
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: reference
@@ -27,6 +27,7 @@ ms.custom:
 | Azure service | Azure SQL Database | [Azure SQL Database](database/sql-database-paas-overview.md) is a fully managed platform as a service (PaaS) database that handles most database management functions such as upgrading, patching, backups, and monitoring without user involvement. |
 | Database engine | | The database engine used in Azure SQL Database is the most recent stable version of the same database engine shipped as the Microsoft SQL Server product. Some database engine features are exclusive to Azure SQL Database or are available before they are shipped with SQL Server. The database engine is configured and optimized for use in the cloud. In addition to core database functionality, Azure SQL Database provides cloud-native capabilities such as Hyperscale and serverless compute. |
 | Server entity | Logical server | A [logical server](database/logical-servers.md) is a construct that acts as a central administrative point for a collection of databases in Azure SQL Database and Azure Synapse Analytics. All databases managed by a server are created in the same region as the server. A server is a purely logical concept: a logical server is *not* a machine running an instance of the database engine. There's no instance-level access or instance features for a server. |
+| | Server admin login | When you create a logical server, you provide a server admin login account and password that has administrative rights to all databases on that server. Don't include any personal, sensitive, or confidential information in the server admin login name field. Data entered in this field is not considered *customer data*. For more information, see [Managing Databases and Logins in Azure SQL Database](database/logins-create-manage.md). |
 | Deployment option | | Databases can be deployed individually or as part of an elastic pool. You can move existing databases in and out of elastic pools. |
 | | Elastic pool | [Elastic pools](database/elastic-pool-overview.md) are a simple, cost-effective solution for managing and scaling multiple databases that have varying and unpredictable usage demands. The databases in an elastic pool are on a single logical server. The databases share a set allocation of resources at a set price. |
 | | Single database | If you deploy [single databases](database/single-database-overview.md), each database is isolated, using a dedicated database engine. Each has its own service tier within your selected purchasing model and a compute size defining the resources allocated to the database engine. |

@@ -4,7 +4,7 @@ description: Create a Hyperscale database in Azure SQL Database using the Azure 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 08/25/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -53,6 +53,8 @@ To create a single database in the Azure portal:
    - **Server admin login**: Enter *azureuser*.
    - **Password**: Enter a password that meets requirements, and enter it again in the **Confirm password** field.
    - **Location**: Select a location from the dropdown list.
+
+   [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
    Select **OK**.
 
@@ -120,6 +122,8 @@ endIp=0.0.0.0
 
 echo "Using resource group $resourceGroupName with login: $login, password: $password..."
 ```
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ### Create a resource group
 
@@ -206,6 +210,8 @@ Before running the sample code, change the `location` as appropriate for your en
    Write-host "Server name is" $serverName
    Write-host "Password is" $password
 ```
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ### Create resource group
 

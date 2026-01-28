@@ -4,7 +4,7 @@ description: Learn how to configure user-assigned managed identity and transpare
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 09/18/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -101,6 +101,8 @@ This guide will walk you through the process of creating a logical server and da
    - **Password**: Enter a password that meets the password requirements, and enter it again in the **Confirm password** field.
    - **Location**: Select a location from the dropdown list
 
+   [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
+
 1. Select **Next: Networking** to move to the next step.
 
 1. On the **Networking** tab, for **Connectivity method**, select **Public endpoint**.
@@ -148,6 +150,8 @@ This guide will walk you through the process of creating a logical server and da
 For information on installing the current release of Azure CLI, see [Install the Azure CLI](/cli/azure/install-azure-cli) article.
 
 Create a server configured with user-assigned managed identity and cross-tenant customer-managed TDE using the [az sql server create](/cli/azure/sql/server) command. The **Key Identifier** from the second tenant can be used in the `key-id` field. The **Application ID** of the multitenant application can be used in the `federated-client-id` field.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ```azurecli
 az sql server create \
@@ -199,6 +203,8 @@ Replace the following values in the example:
 - `<CustomerManagedKeyId>`: The **Key Identifier** from the second tenant Azure Key Vault
 - `<FederatedClientId>`: The **Application ID** of the multitenant application
 
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
+
 To get your user-assigned managed identity **Resource ID**, search for **Managed Identities** in the [Azure portal](https://portal.azure.com). Find your managed identity, and go to **Properties**. An example of your UMI **Resource ID** looks like `/subscriptions/<subscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managedIdentity>`
 
 ```powershell
@@ -233,6 +239,8 @@ For more information and ARM templates, see [Azure Resource Manager templates fo
 Use a [Custom deployment in the Azure portal](https://portal.azure.com/#create/Microsoft.Template), and **Build your own template in the editor**. Next, **Save** the configuration once you pasted in the example.
 
 To get your user-assigned managed identity **Resource ID**, search for **Managed Identities** in the [Azure portal](https://portal.azure.com). Find your managed identity, and go to **Properties**. An example of your UMI **Resource ID** looks like `/subscriptions/<subscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managedIdentity>`.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ```json
 {

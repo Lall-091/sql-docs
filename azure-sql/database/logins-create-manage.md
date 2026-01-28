@@ -5,7 +5,7 @@ description: Learn about how Azure SQL Database, SQL Managed Instance, and Azure
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma
-ms.date: 06/30/2025
+ms.date: 01/23/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: concept-article
@@ -62,11 +62,13 @@ When a user attempts to connect to a database, they provide a user account and a
 
 ## Existing logins and user accounts after creating a new database
 
-When you first deploy Azure SQL, you can specify a login name and a password for a special type of administrative login, the **Server admin**. The following configuration of logins and users in the `master` and user databases occurs during deployment:
+When you first deploy an Azure SQL resource, you can specify a login name and a password for a special type of administrative login, the **Server admin**. The following configuration of logins and users in the `master` and user databases occurs during deployment:
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 - A SQL login with administrative privileges is created using the login name you specified. A [login](/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) is an individual account for logging in to SQL Database, SQL Managed Instance, and Azure Synapse.
 - This login is granted full administrative permissions on all databases as a [server-level principal](/sql/relational-databases/security/authentication-access/principals-database-engine). The login has all available permissions and can't be limited. In a SQL Managed Instance, this login is added to the [sysadmin fixed server role](/sql/relational-databases/security/authentication-access/server-level-roles) (this role doesn't exist in Azure SQL Database).
-- When this account signs into a database, they're matched to the special user account `dbo` ([user account](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users), which exists in each user database. The [dbo](/sql/relational-databases/security/authentication-access/principals-database-engine) user has all database permissions in the database and is member of the `db_owner` fixed database role. Additional fixed database roles are discussed later in this article.
+- When this account signs into a database, they're matched to the special user account `dbo` ([user account](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users)), which exists in each user database. The [dbo](/sql/relational-databases/security/authentication-access/principals-database-engine) user has all database permissions in the database and is member of the `db_owner` fixed database role. Additional fixed database roles are discussed later in this article.
 
 To identify the **Server admin** account, open the Azure portal, and navigate to the **Properties** tab of your logical server or managed instance:
 
