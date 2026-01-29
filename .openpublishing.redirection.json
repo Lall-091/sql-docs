@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path": "docs/sql-server/applies-to-includes.md",
+      "redirect_url": "/sql/sql-server/sql-server-docs-contribute",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/dma/dma-assess-sql-data-estate-to-sqldb-commandline.md",
       "redirect_url": "/previous-versions/sql/dma/dma-assess-sql-data-estate-to-sqldb-commandline",
       "redirect_document_id": false,
