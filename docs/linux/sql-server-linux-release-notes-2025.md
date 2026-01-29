@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 01/21/2026
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -36,8 +36,6 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Release and container tag guidance
 
-- **Red Hat 10** and **Ubuntu 24.04** are supported (in preview) on [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] GA.
-
 - Starting with [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], **SUSE Linux Enterprise Server** (SLES) isn't supported.
 
   Customers using earlier versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on SLES aren't affected, and there are no changes to your support for existing deployments. For more information about version lifecycle policies, see [SQL Server 2022](/lifecycle/products/sql-server-2022), [SQL Server 2019](/lifecycle/products/sql-server-2019), and [SQL Server 2017](/lifecycle/products/sql-server-2017). To upgrade to [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], [back up your databases and restore them](sql-server-linux-backup-and-restore-database.md) to a [supported distribution](#supported-platforms).
@@ -48,26 +46,29 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Latest versions for all packages
 
-This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)]. The following table shows the most recent release, which is **GA**. For full release history, see [Release history for SQL Server 2025 on Linux](/troubleshoot/sql/releases/linux/release-history-2025).
+This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)]. The following table shows the most recent release, which is **CU 1**. For full release history, see [Release history for SQL Server 2025 on Linux](/troubleshoot/sql/releases/linux/release-history-2025).
 
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
-| [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | GA | 2025-11-18 | 17.0.1000.7 | |
+| [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | CU 1 | 2026-01-29 | 17.0.4006.2 | [Support article](/troubleshoot/sql/releases/sqlserver-2025/cumulativeupdate1) |
+
+> [!NOTE]  
+> **Red Hat 10** and **Ubuntu 24.04** are fully supported on [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], starting with CU 1.
 
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
 | **Red Hat Enterprise Linux** | | | |
-| RHEL 9 | Database Engine | 17.0.1000.7-7 | [Database Engine RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2025/Packages/m/mssql-server-17.0.1000.7-7.x86_64.rpm) |
-| RHEL 9 | Extensibility | 17.0.1000.7-7 | [Extensibility RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2025/Packages/m/mssql-server-extensibility-17.0.1000.7-7.x86_64.rpm) |
-| RHEL 9 | Full-Text Search | 17.0.1000.7-7 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2025/Packages/m/mssql-server-fts-17.0.1000.7-7.x86_64.rpm) |
-| RHEL 9 | High Availability | 17.0.1000.7-7 | [High Availability RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2025/Packages/m/mssql-server-ha-17.0.1000.7-7.x86_64.rpm) |
-| RHEL 9 | PolyBase | 17.0.1000.7-7 | [PolyBase RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2025/Packages/m/mssql-server-polybase-17.0.1000.7-7.x86_64.rpm) |
+| RHEL 10 | Database Engine | 17.0.4006.2-1 | [Database Engine RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/29/5f5c/mssql-server-17.0.4006.2-1.x86_64.rpm) |
+| RHEL 10 | Extensibility | 17.0.4006.2-1 | [Extensibility RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/da/2fb6/mssql-server-extensibility-17.0.4006.2-1.x86_64.rpm) |
+| RHEL 10 | Full-Text Search | 17.0.4006.2-1 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/3c/d5c5/mssql-server-fts-17.0.4006.2-1.x86_64.rpm) |
+| RHEL 10 | High Availability | 17.0.4006.2-1 | [High Availability RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/99/d17d/mssql-server-ha-17.0.4006.2-1.x86_64.rpm) |
+| RHEL 10 | PolyBase | 17.0.4006.2-1 | [PolyBase RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/5c/afba/mssql-server-polybase-17.0.4006.2-1.x86_64.rpm) |
 | **Ubuntu** | | | |
-| Ubuntu 22.04 | Database Engine | 17.0.1000.7-7 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2025/pool/main/m/mssql-server/mssql-server_17.0.1000.7-7_amd64.deb) |
-| Ubuntu 22.04 | Extensibility | 17.0.1000.7-7 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2025/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_17.0.1000.7-7_amd64.deb) |
-| Ubuntu 22.04 | Full-Text Search | 17.0.1000.7-7 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2025/pool/main/m/mssql-server-fts/mssql-server-fts_17.0.1000.7-7_amd64.deb) |
-| Ubuntu 22.04 | High Availability | 17.0.1000.7-7 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2025/pool/main/m/mssql-server-ha/mssql-server-ha_17.0.1000.7-7_amd64.deb) |
-| Ubuntu 22.04 | PolyBase | 17.0.1000.7-7 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2025/pool/main/m/mssql-server-polybase/mssql-server-polybase_17.0.1000.7-7_amd64.deb) |
+| Ubuntu 24.04 | Database Engine | 17.0.4006.2-1 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/04/fe0b/mssql-server_17.0.4006.2-1_amd64.deb) |
+| Ubuntu 24.04 | Extensibility | 17.0.4006.2-1 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/72/2407/mssql-server-extensibility_17.0.4006.2-1_amd64.deb) |
+| Ubuntu 24.04 | Full-Text Search | 17.0.4006.2-1 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/6e/0549/mssql-server-fts_17.0.4006.2-1_amd64.deb) |
+| Ubuntu 24.04 | High Availability | 17.0.4006.2-1 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/17/c130/mssql-server-ha_17.0.4006.2-1_amd64.deb) |
+| Ubuntu 24.04 | PolyBase | 17.0.4006.2-1 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/0f/ca21/mssql-server-polybase_17.0.4006.2-1_amd64.deb) |
 
 <a id="cuinstall"></a>
 
@@ -90,6 +91,7 @@ The following table lists the release history for [!INCLUDE [ssSQL25](../include
 
 | Release | Version | Release date |
 | --- | --- | --- |
+| [CU 1](/troubleshoot/sql/releases/linux/release-history-2025#17-0-4006) | 17.0.4006.2 | 2026-01-29 |
 | [GA](/troubleshoot/sql/releases/linux/release-history-2025#17-0-1000) | 17.0.1000.7 | 2025-11-18 |
 
 ## Known issues

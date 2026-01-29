@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 01/16/2026
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -36,6 +36,8 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Release and container tag guidance
 
+- As of [!INCLUDE [ssSQL17](../includes/sssql17-md.md)] CU 4, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Agent is no longer installed as a separate package. It's installed with the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] package and must be enabled for use.
+
 - The **mssql-server-is** package isn't supported on SUSE Linux Enterprise Server (SLES). For more information, see [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md#sql-server-integration-services-ssis).
 
 - Some GDR releases apply only to Windows. These Windows-only GDRs aren't published for Linux, and don't appear in this article.
@@ -54,8 +56,6 @@ The latest GDR release includes the Azure Connect Pack for [!INCLUDE [ssSQL17](.
 
 > [!IMPORTANT]  
 > This is the final cumulative update for [!INCLUDE [ssSQL17](../includes/sssql17-md.md)].
-
-- As of CU 4, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Agent is no longer installed as a separate package. It's installed with the Database Engine package and must be enabled to use.
 
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
