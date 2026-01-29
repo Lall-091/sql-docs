@@ -2,14 +2,14 @@
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/16/2025
+ms.date: 01/23/2026
 ms.service: virtual-machines
 ms.topic: include
 ms.custom:
   - ignite-2024
 ---
 - Identify workload performance characteristics to determine the appropriate VM size for your business.
-- If you're migrating to Azure, use the [Azure SQL migration extension for Azure Data Studio](/azure/dms/migration-using-azure-data-studio) to find the right VM size for your existing SQL Server workload, and then migrate with [Azure Data Studio](/azure/dms/tutorial-sql-server-to-virtual-machine-online-ads). 
+- If you're migrating to Azure, [assess migration readiness](/sql/sql-server/azure-arc/migration-assessment) to find the right VM size for your existing SQL Server workload, and then migrate with [Azure Database Migration Service](/azure/dms/dms-overview). 
 - Use Azure Marketplace images to deploy your SQL Server VMs as the SQL Server settings and storage options are configured for optimal performance.
 - Use VM sizes with 4 or more vCPUs.
 - Use memory optimized virtual machine sizes for the best performance of SQL Server workloads. 
