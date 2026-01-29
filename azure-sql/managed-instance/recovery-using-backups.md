@@ -163,7 +163,7 @@ If you need to restore an unintentionally deleted SQL managed instance, contact 
 ## Geo-restore
 
 > [!IMPORTANT]
-> - Geo-restore is available only for managed instances configured with geo-redundant or geo-zone redundant (GZRS) [backup storage](automated-backups-overview.md#backup-storage-redundancy). If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
+> - Geo-restore is available only for SQL managed instances configured with geo-redundant or geo-zone redundant (GZRS) [backup storage](automated-backups-overview.md#backup-storage-redundancy). If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
 > - You can perform geo-restore on managed instances that reside in the same subscription only.
 
 Geo-restore is the default recovery option when your database is unavailable because of an incident in the hosting region. You can restore the database to an instance in any other region. You can restore a database on any managed instance in any Azure region from the most recent geo-replicated backups. Geo-restore uses a geo-replicated backup as its source. You can request a geo-restore even if an outage has made the database or datacenter inaccessible.
