@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 11/03/2025
+ms.date: 01/29/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -27,7 +27,7 @@ This article summarizes the documentation changes associated with new features a
 > [!TIP]
 > [Deploy Azure SQL Database for free](free-offer.md), for the life of your Azure subscription. This free offer provides up to ten free General Purpose databases, each with 100,000 vCore seconds of compute, every month.
 
-For more announcements, discussion, and community content, see the [Azure SQL Database blog](https://techcommunity.microsoft.com/t5/azure-sql-blog/bg-p/AzureSQLBlog).
+For more announcements, discussion, and community content, see the [Azure SQL Database blog](https://techcommunity.microsoft.com/category/azuredatabases/blog/azuresqlblog).
 
 ## Preview
 
@@ -54,6 +54,7 @@ The following table lists the features of Azure SQL Database that are currently 
 | **Network Security Perimeter** | [Azure Network Security Perimeter](network-security-perimeter.md) allows organizations to define a logical network isolation boundary for PaaS resources (for example, Azure Storage and SQL Database) that are deployed outside your organization's virtual networks. It restricts public network access to PaaS resources outside of the perimeter, and access can be exempted by using explicit access rules for public inbound and outbound. |
 | **Query editor in the Azure portal** | The [query editor in the Azure portal](query-editor.md) allows you to run queries against your Azure SQL Database directly from a web browser. |
 | **Restart database in the Azure portal** | You can [restart your SQL database or elastic pool](restart-database.md) from the Azure portal. |
+| **Multiple secondaries for failover groups** | You can [configure multiple secondary servers for failover groups](failover-group-sql-db.md#multiple-secondaries) in Azure SQL Database. |
 
 ## General availability (GA)
 
@@ -94,6 +95,12 @@ The following table lists features of Azure SQL Database that have been made gen
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Database documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### January 2026
+
+| Changes | Details |
+| --- | --- |
+| **Multiple secondaries for failover groups** | You can [configure multiple secondary servers for failover groups](failover-group-sql-db.md#multiple-secondaries) in Azure SQL Database. |
 
 ### November 2025
 

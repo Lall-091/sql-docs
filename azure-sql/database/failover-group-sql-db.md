@@ -1,10 +1,10 @@
 ---
-title: Failover groups overview & best practices
+title: Failover Groups Overview & Best Practices
 description: Failover groups let you manage geo-replication and automatic / coordinated failover of a group of databases on a server for both single and pooled database in Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: rsetlem, mathoma
-ms.date: 01/24/2025
+ms.reviewer: rsetlem, mathoma, mahyon, randolphwest
+ms.date: 01/29/2026
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: best-practice
@@ -168,6 +168,20 @@ If an outage occurs in the primary region, recent transactions might not have be
 ## Failback
 
 When failover groups are configured with a Microsoft-managed failover policy, then forced failover to the geo-secondary server is initiated during a disaster scenario as per the defined grace period. Failback to the old primary must be initiated manually. 
+
+## Multiple secondaries
+
+> [!IMPORTANT]  
+> Multiple secondaries for failover groups is a preview feature that is not recommended for production workloads.
+
+Each failover group can support multiple secondary servers in the same or different regions. This configuration provides additional options for disaster recovery and enables read-only workloads to be distributed across multiple regions. When configuring multiple secondaries, consider the following:
+
+- Up to four secondary servers can be specified for each failover group.
+- Each secondary server can be in the same or a different region from the primary server and from each other.
+- Each secondary server maintains its own geo-replication link with the primary server.
+- Failover can be initiated to any of the secondary servers.
+- The read-only listener can be configured to only one of the secondary servers and must be to a secondary in a different region in order to properly serve read-only workloads.
+- Chaining (creating a geo-replica of a geo-replica) is not supported with this configuration.
 
 ## Permissions and limitations
 

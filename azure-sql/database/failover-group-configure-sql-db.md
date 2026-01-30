@@ -1,11 +1,11 @@
 ---
-title: Configure a failover group
+title: Configure a Failover Group
 titleSuffix: Azure SQL Database
 description: Learn how to configure a failover group for a single or pooled database in Azure SQL Database by using the Azure portal, PowerShell, and the Azure CLI.
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma, randolphwest, mahyon
-ms.date: 08/05/2025
+ms.date: 01/29/2026
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: how-to
@@ -483,6 +483,11 @@ For more information on how to configure outbound access and what IP to use in t
 
 > [!IMPORTANT]  
 > To guarantee business continuity during regional outages you must ensure geographic redundancy for both frontend components and databases.
+
+## Multiple secondaries
+
+> [!IMPORTANT]  
+> Multiple secondaries for failover groups is a preview feature that is not recommended for production workloads. For more information, see [Multiple secondaries for failover groups](failover-group-sql-db.md#multiple-secondaries).
 
 ## Permissions
 
