@@ -32,7 +32,7 @@ Beginning with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], [!INCLUDE 
 ## Get started
 
 > [!IMPORTANT]  
-> Beginning with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], Data Quality Services (DQS), Master Data Services (MDS), Azure Synapse Link, and Reporting Services are removed, and are deprecated on previous versions.
+> Beginning with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], Data Quality Services (DQS), Master Data Services (MDS), Azure Synapse Link, and Reporting Services are removed. Azure Synapse Link and Reporting Services were deprecated in previous versions.
 
 - **Editions and features**: Review the supported features for the different editions and versions of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] to determine which best suits your business needs.
 
