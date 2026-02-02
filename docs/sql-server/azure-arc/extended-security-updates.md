@@ -334,3 +334,4 @@ ESU subscriptions are pinned to a specific Azure location. If the Arc enabled ma
 - [Extended Security Updates: Frequently asked questions](../end-of-support/extended-security-updates-frequently-asked-questions.md)
 - [Prerequisites - SQL Server enabled by Azure Arc](prerequisites.md)
 - [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license)
+- [Microsoft.AzureArcData tag support](/azure/azure-resource-manager/management/tag-support#microsoftazurearcdata)

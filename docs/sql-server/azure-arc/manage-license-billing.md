@@ -92,7 +92,7 @@ The following license types are supported when you're licensing v-cores:
 #### Important considerations
 
 - The pay-as-you-go subscription requires the hosting machine to maintain connectivity with Azure. Hourly charges apply only when SQL Server is running on the machine during any part of an hour and the machine is online.
-   
+
    Built-in resilience tolerates intermittent connectivity disruptions for up to 30 consecutive days without affecting billing accuracy. This means that as long as connectivity is not interrupted for more than 30 days, your billing remains correct—even if there are short, intermittent disconnections. If the machine stays disconnected for more than 30 days, the pay-as-you-go subscription expires, and you're no longer authorized to use the software.
 
 - If you're using an Azure subscription managed by a Cloud Service Provider (CSP), enabling pay-as-you-go requires that you or the CSP consents to recurrent billing. For details, review [Manage recurrent billing for SQL Server enabled by Azure Arc with pay-as-you-go license](manage-pay-as-you-go-transition.md).
@@ -100,6 +100,8 @@ The following license types are supported when you're licensing v-cores:
 - By selecting a license with Software Assurance, you attest that you have Enterprise or Standard licenses with active Software Assurance or an active SQL Server subscription license, and that the device is in compliance with the [Product Terms outsourcing restrictions](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/allprograms#:~:text=When%20using%20SQL%20Server%20enabled%20by%20Azure%20Arc%20with%20a,%2C%20regardless%20of%20whether%20those%20Servers%20are%20dedicated%20to%20Customer).
 
 - For SQL Server Enterprise, Standard, or Web edition instances of SQL Server licensed from cloud service providers or hosting service providers using the Service Provider Licensing Agreement (SPLA), use `license only` for the license type. Web edition isn't available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
+
+- [Microsoft.AzureArcData tag support](/azure/azure-resource-manager/management/tag-support#microsoftazurearcdata) explains what types of tags are currently supported for Arc data resources.
 
 #### Available benefits
 
@@ -352,3 +354,4 @@ The following table shows the meter SKUs that are used for metering and billing 
 - [SQL Server 2022 pricing and licensing](https://www.microsoft.com/sql-server/sql-server-2022-pricing)
 - [Configure SQL Server enabled by Azure Arc](manage-configuration.md)
 - [Frequently asked questions](faq.yml#recurring-pay-as-you-go-billing)
+- [Microsoft.AzureArcData tag support](/azure/azure-resource-manager/management/tag-support#microsoftazurearcdata)

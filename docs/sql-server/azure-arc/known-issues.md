@@ -28,7 +28,12 @@ If a database isn't online and updatable, required permissions aren't assigned t
 
   To resolve, follow the steps at [MSSQLSERVER_945](../../relational-databases/errors-events/mssqlserver-945-database-engine-error.md).
 
+## Cost report tags
+
+Currently `Microsoft.AzureArcData` tags are not included in cost reports. For updates, review [Microsoft.AzureArcData tag support](/azure/azure-resource-manager/management/tag-support#microsoftazurearcdata)
+
 ## Related content
 
 - [Troubleshoot Azure extension for SQL Server deployment](troubleshoot-deployment.md)
 - [Troubleshoot Azure extension for SQL Server](troubleshoot-extension.md)
+- [Microsoft.AzureArcData tag support](/azure/azure-resource-manager/management/tag-support#microsoftazurearcdata)
