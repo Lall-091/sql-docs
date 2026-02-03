@@ -48,10 +48,13 @@ Create a user in Azure SQL Database. The user should correspond to the Azure acc
 Migrating to passwordless connections with [mssql-python](/sql/connect/python/mssql-python/python-sql-driver-mssql-python) requires only a connection string change. The driver has built-in support for Microsoft Entra authentication modes, eliminating the need for manual token handling.
 
 ```python
-import os
+from os import getenv
+from dotenv import load_dotenv
 from mssql_python import connect
 
-connection_string = os.environ["AZURE_SQL_CONNECTIONSTRING"]
+load_dotenv()
+
+connection_string = getenv("AZURE_SQL_CONNECTIONSTRING")
 
 def get_all():
     with connect(connection_string) as conn:
@@ -61,10 +64,10 @@ def get_all():
     return
 ```
 
-To update the referenced connection string (`AZURE_SQL_CONNECTIONSTRING`) for local development, use the passwordless connection string format with `ActiveDirectoryDefault` authentication:
+To update the referenced connection string (`AZURE_SQL_CONNECTIONSTRING`) for local development, create a `.env` file in your project folder with the passwordless connection string format using `ActiveDirectoryDefault` authentication:
 
 ```text
-Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;Authentication=ActiveDirectoryDefault
+AZURE_SQL_CONNECTIONSTRING=Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;Authentication=ActiveDirectoryDefault
 ```
 
 `ActiveDirectoryDefault` automatically discovers credentials from multiple sources (Azure CLI, environment variables, Visual Studio, etc.) without requiring interactive login. This is convenient for development but adds latency as it tries each credential source in sequence.

@@ -78,6 +78,7 @@ For details and specific instructions for installing the `mssql-python` driver, 
     fastapi
     uvicorn[standard]
     pydantic
+    python-dotenv
     ```
 
 1. Install the requirements.
@@ -88,7 +89,11 @@ For details and specific instructions for installing the `mssql-python` driver, 
 
 ## Configure the local connection string
 
-For local development and connecting to Azure SQL Database, add the following `AZURE_SQL_CONNECTIONSTRING` environment variable. Replace the `<database-server-name>` and `<database-name>` placeholders with your own values. Example environment variables are shown for the Bash shell.
+For local development, create a `.env` file in your project folder to store your connection string. This keeps credentials out of your code and source control.
+
+1. In the project folder, create a new file named `.env`.
+
+1. Add the `AZURE_SQL_CONNECTIONSTRING` variable with your connection string. Replace the `<database-server-name>` and `<database-name>` placeholders with your own values.
 
 The mssql-python driver has built-in support for Microsoft Entra authentication. Use the `Authentication` parameter to specify the authentication method.
 
@@ -96,8 +101,8 @@ The mssql-python driver has built-in support for Microsoft Entra authentication.
 
 `ActiveDirectoryDefault` automatically discovers credentials from multiple sources (Azure CLI, environment variables, Visual Studio, etc.) without requiring interactive login. This is convenient for local development but is slower due to credential discovery.
 
-```Bash
-export AZURE_SQL_CONNECTIONSTRING='Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryDefault;Encrypt=yes;TrustServerCertificate=no;'
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryDefault;Encrypt=yes;TrustServerCertificate=no;
 ```
 
 > [!IMPORTANT]
@@ -110,20 +115,20 @@ export AZURE_SQL_CONNECTIONSTRING='Server=<database-server-name>.database.window
 
 In Windows, Microsoft Entra Interactive Authentication can use Microsoft Entra multifactor authentication technology to set up connection. In this mode, an Azure Authentication dialog is triggered and allows the user to input credentials to complete the connection.
 
-```Bash
-export AZURE_SQL_CONNECTIONSTRING='Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryInteractive;Encrypt=yes;TrustServerCertificate=no;'
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryInteractive;Encrypt=yes;TrustServerCertificate=no;
 ```
 
 ## [SQL Authentication](#tab/sql-auth)
 
 You can directly authenticate to a SQL Server instance using a username and password.
 
-```Bash
-export AZURE_SQL_CONNECTIONSTRING='Server=<database-server-name>.database.windows.net;Database=<database-name>;UID=<user-name>;PWD=<user-password>;Encrypt=yes;TrustServerCertificate=no;'
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Database=<database-name>;UID=<user-name>;PWD=<user-password>;Encrypt=yes;TrustServerCertificate=no;
 ```
 
 > [!WARNING]
-> Use caution when managing connection strings that contain secrets such as usernames, passwords, or access keys. These secrets shouldn't be committed to source control or placed in unsecure locations where they might be accessed by unintended users.
+> Use caution when managing connection strings that contain secrets such as usernames, passwords, or access keys. These secrets shouldn't be committed to source control or placed in unsecure locations where they might be accessed by unintended users. Add `.env` to your `.gitignore` file to prevent accidentally committing secrets.
 
 ---
 
@@ -137,6 +142,7 @@ You can get the details to create your connection string from the Azure portal:
 
 In the project folder, create an *app.py* file and add the sample code. This code creates an API that:
 
+- Loads configuration from a `.env` file using `python-dotenv`.
 - Retrieves an Azure SQL Database connection string from an environment variable.
 - Creates a `Persons` table in the database during startup (for testing scenarios only).
 - Defines a function to retrieve all `Person` records from the database.
@@ -144,17 +150,20 @@ In the project folder, create an *app.py* file and add the sample code. This cod
 - Defines a function to add new `Person` records to the database.
 
 ```python
-import os
+from os import getenv
 from typing import Union
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
 from mssql_python import connect
+
+load_dotenv()
 
 class Person(BaseModel):
     first_name: str
     last_name: Union[str, None] = None
 
-connection_string = os.environ["AZURE_SQL_CONNECTIONSTRING"]
+connection_string = getenv("AZURE_SQL_CONNECTIONSTRING")
 
 app = FastAPI()
 
