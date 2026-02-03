@@ -4,7 +4,7 @@ description: "Manually starts persistent version store (PVS) cleanup process, a 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 10/19/2025
+ms.date: 02/02/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -23,7 +23,7 @@ monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-
 
 [!INCLUDE [SQL Server 2019, ASDB, ASDBMI-fabricsqldb](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricsqldb.md)]
 
-Manually starts persistent version store (PVS) cleanup process, a key element of accelerated database recovery (ADR). This cleaner also removes uncommitted data in PVS from aborted transactions.
+Manually starts persistent version store (PVS) cleanup process, a key element of accelerated database recovery (ADR). This cleaner also removes uncommitted changes in PVS from aborted transactions, known as the asynchronous logical revert.
 
 It isn't typically necessary to start the PVS cleanup process manually using `sys.sp_persistent_version_cleanup`. However in some scenarios, you might want to initiate the PVS cleanup process manually during a known period of rest/recovery after busy OLTP activity.
 
@@ -53,15 +53,15 @@ Optional. *@scanallpages* is **bit**, with a default of `0`. When set to `1`, th
 
 #### [ @clean_option = ] *clean_option*
 
-Optional. Possible options determine whether or not to reclaim off-row PVS page. *@clean_option* is **int**, with a default of `0`. This reference isn't commonly needed and the default value `0` is recommended.
+Optional. The option to determine the type of cleanup to perform. *@clean_option* is **int**, with a default of `0`. This parameter isn't commonly needed and the default value `0` is recommended.
 
 | Value | Description |
-| :--- | :--- |
-| `0` | Default, no option specified |
-| `1` | off-row version store without checking individual PVS page contents |
-| `2` | off-row version store with each PVS page visited |
-| `3` | in-row version store only |
-| `4` | internal use only |
+| --- | --- |
+| `0` | Default, perform all cleanup. |
+| `1` | Clean up the off-row [version storage](../sql-server-transaction-locking-and-row-versioning-guide.md#space-used-by-the-persistent-version-store-pvs) without examining PVS page contents. Faster, but might skip deallocation of unused pages in PVS. |
+| `2` | Clean up the off-row [version storage](../sql-server-transaction-locking-and-row-versioning-guide.md#space-used-by-the-persistent-version-store-pvs) by checking each PVS page contents. Slower, but deallocates all unused pages. |
+| `3` | Perform the in-row [version storage](../sql-server-transaction-locking-and-row-versioning-guide.md#space-used-by-the-persistent-version-store-pvs) cleanup only. |
+| `4` | Perform the aborted transaction cleanup (logical revert) only. |
 
 ## Return code values
 
