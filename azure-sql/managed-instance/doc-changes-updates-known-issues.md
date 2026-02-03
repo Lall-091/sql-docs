@@ -22,6 +22,7 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 
 | Issue | Date discovered | Status | Date resolved |
 | --- | --- | --- | --- |
+| [Misleading error message when connecting to a read replica using invalid credentials](#misleading-error-message-when-connecting-to-a-read-replica-using-invalid-credentials) | February 2026 | 
 | [Modifying backup retention period for the free offer](#modifying-backup-retention-period-for-the-free-offer) | June 2025 | Has workaround | |
 | [Login to read-secondary failed due to long wait on "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING"](#login-to-read-secondary-failed-due-to-long-wait-on-hadr_database_wait_for_transition_to_versioning) | April 2025 | Has workaround | |
 | [Interim guidance on 2024 time zone updates for Paraguay](#interim-guidance-on-2024-time-zone-updates-for-paraguay) | March 2025 | Has workaround | |
@@ -224,6 +225,10 @@ WHERE database_id > 4;
 CLR modules in SQL Managed Instance and linked servers or distributed queries that reference a current instance sometimes can't resolve the IP of a local instance. This error is a transient issue.
 
 ## No resolution
+
+### Misleading error message when connecting to a read replica using invalid credentials
+
+When attempting to connect to a Business Critical tier instance's read-secondary replica via ApplicationIntent=ReadOnly using invalid credentials, the instance may report an error indicating that the master database is read-only instead of correctly reporting that the credentials are invalid.
 
 ### Differential backups aren't taken when an instance is linked to SQL Server
 
