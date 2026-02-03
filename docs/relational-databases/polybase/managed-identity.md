@@ -4,7 +4,7 @@ description: Learn to configure PolyBase to query Azure resources by using manag
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 02/03/2026
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
@@ -23,9 +23,28 @@ Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], you can use
 ## Prerequisites
 
 - [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]
-- [SQL Server enabled by Azure Arc](../../sql-server/azure-arc/managed-identity.md)
-- Enable the `allow server scoped db credentials` server configuration option
+
+- [SQL Server enabled by Azure Arc](../../sql-server/azure-arc/managed-identity.md) **or** [Enable Microsoft Entra authentication for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm)
+
+- Enable the `allow server scoped db credentials` server configuration option.
+
 - Give the managed identity access to the Azure Blob Storage resource.
+
+## For SQL Server on Azure VMs
+
+After you complete the [required steps](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm), add two new registry entries. You need these registry entries only for SQL Server on Azure Virtual Machines. For SQL Server instances enabled by Azure Arc, these entries are created automatically.
+
+In the registry, update the `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQLServer\FederatedAuthentication` subkey.
+
+> [!CAUTION]  
+> [!INCLUDE [ssnoteregistry-md](../../includes/ssnoteregistry-md.md)]
+
+Create the following entries:
+
+| Entry | Value |
+| --- | --- |
+| `AADAzureStorageEndPoint` | `storage.azure.com` |
+| `AADDataLakeEndPoint` | `datalake.azure.net` |
 
 ## Create database scoped credentials
 
@@ -59,7 +78,7 @@ Create the external data source with the following settings.
   - `abs://<container_name>@<storage_account_name>.blob.core.windows.net/`, or
   - `abs://<storage_account_name>.blob.core.windows.net/<container_name>`
 
-- **Supported locations by product / service**
+- **Supported locations by product or service**
   - [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] enabled by Azure Arc
   - [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]: Hierarchical namespace supported
 
@@ -76,8 +95,10 @@ Create the external data source with the following settings.
   - `adls://<container_name>@<storage_account_name>.dfs.core.windows.net/`, or
   - `adls://<storage_account_name>.dfs.core.windows.net/<container_name>`
 
-- **Supported locations by product / service**
+- **Supported locations by product or service**
+
   - [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] enabled by Azure Arc
+  - [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Azure VMs
   - [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]
 
 - **Authentication**
@@ -88,7 +109,7 @@ Create the external data source with the following settings.
 
 ## Query a Parquet file in Azure Blob Storage
 
-[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] supports for managed identity through Azure Arc. For instructions, see [Managed identity for SQL Server enabled by Azure Arc](../../sql-server/azure-arc/managed-identity.md).
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] supports managed identity through Azure Arc. For instructions, see [Managed identity for SQL Server enabled by Azure Arc](../../sql-server/azure-arc/managed-identity.md).
 
 The following example queries a Parquet file in Azure Blob Storage:
 
@@ -124,11 +145,11 @@ Check the following items:
 
 - The required registry entries exist.
 
-- Verify that the `allow server scoped db credentials` server configuration option is enabled.
+- The `allow server scoped db credentials` server configuration option is enabled.
 
 ### File can't be opened (Error 13822)
 
-You might encounter error 13822 when you access Azure Blob Storage or Azure Data Lake if the managed identity lacks permissions on the storage account, or network access to storage is blocked.
+You might encounter error 13822 when you access Azure Blob Storage or Azure Data Lake, if the managed identity lacks permissions on the storage account, or network access to storage is blocked:
 
 ```output
 Msg 13822, Level 16, State 1, Line 9
@@ -144,3 +165,5 @@ Check the following items:
 ## Related content
 
 - [Managed identity for SQL Server enabled by Azure Arc](../../sql-server/azure-arc/managed-identity.md)
+- [Enable Microsoft Entra authentication for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm)
+- [Configure managed identities on Azure virtual machines (VMs)](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities)
