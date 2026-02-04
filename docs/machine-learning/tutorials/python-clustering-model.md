@@ -5,7 +5,7 @@ description: In this four-part tutorial series, the goal is to cluster customers
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: monamaki, randolphwest, anmunde
-ms.date: 05/29/2024
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: tutorial
@@ -69,7 +69,7 @@ In [part four](python-clustering-model-deploy.md), learn how to create a stored 
   ```console
   pip install matplotlib
   pip install pandas
-  pip install pyodbc
+  pip install mssql-python
   pip install scipy
   pip install scikit-learn
   ```

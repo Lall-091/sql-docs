@@ -1,21 +1,20 @@
 ---
 title: "include file"
 description: "include file"
-services: storage
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: rotabor, alexwolf
-ms.service: storage
+ms.reviewer: rotabor, alexwolf, dlevy
+ms.service: azure-sql-database
 ms.topic: include
-ms.date: 09/09/2022
+ms.date: 02/03/2026
 ms.custom: include file
 ---
 
-For local development, make sure you're signed-in with the same Azure AD account you want to use to access Azure SQL Database. You can authenticate via popular development tools, such as the Azure CLI or Azure PowerShell. The development tools with which you can authenticate vary across languages.
+For local development, make sure you're signed in with the same Microsoft Entra account you want to use to access Azure SQL Database. You can authenticate via popular development tools, such as the Azure CLI or Azure PowerShell. The development tools with which you can authenticate vary across languages.
 
 ### [Azure CLI](#tab/sign-in-azure-cli)
 
-Sign-in to Azure through the Azure CLI using the following command:
+Sign in to Azure through the Azure CLI using the following command. This works on Windows, macOS, and Linux.
 
 ```azurecli
 az login
@@ -27,28 +26,29 @@ Select the **Sign in** button in the top right of Visual Studio.
 
 :::image type="content" source="../../database/media/passwordless-connections/sign-in-visual-studio-small.png" alt-text="Screenshot showing the button to sign in to Azure using Visual Studio.":::
 
-Sign-in using the Azure AD account you assigned a role to previously.
+Sign in using the Microsoft Entra account you assigned a role to previously.
 
 :::image type="content" source="../../database/media/passwordless-connections/sign-in-visual-studio-account-small.png" alt-text="Screenshot showing the account selection.":::
 
 ### [Visual Studio Code](#tab/sign-in-visual-studio-code)
 
-You will need to [install the Azure CLI](/cli/azure/install-azure-cli) to work with `DefaultAzureCredential` through Visual Studio Code.
+For Visual Studio Code, sign in using the Azure CLI in the integrated terminal:
 
-On the main menu of Visual Studio Code, navigate to **Terminal > New Terminal**.
+1. Open the terminal in VS Code (**Terminal > New Terminal**).
+1. Sign in to Azure with the following command:
 
-Sign-in to Azure through the Azure CLI using the following command:
+    ```azurecli
+    az login
+    ```
 
-```azurecli
-az login
-```
+This method works reliably across Windows, macOS, and Linux.
 
 ### [PowerShell](#tab/sign-in-powershell)
 
-Sign-in to Azure using PowerShell via the following command:
+Sign in to Azure using PowerShell via the following command:
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
---- 
+---

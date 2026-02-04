@@ -5,7 +5,7 @@ description: In this four-part tutorial series, you build a linear regression mo
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: monamaki
-ms.date: 05/31/2024
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: tutorial
@@ -60,7 +60,7 @@ In [part four](python-ski-rental-linear-regression-deploy-model.md), you'll lear
 - Additional Python packages - The examples in this tutorial series use the following Python packages that might not be installed by default:
 
   * pandas
-  * pyodbc
+  * mssql-python
   * scikit-learn
 
   To install these packages:

@@ -4,7 +4,7 @@ titleSuffix: SQL machine learning
 description: In part two of this four-part tutorial series, you'll prepare SQL data to perform clustering in Python with SQL machine learning.
 author: VanMSFT
 ms.author: vanto
-ms.date: 04/17/2023
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: tutorial
@@ -56,12 +56,12 @@ In the connection string, replace connection details as needed.
 
 ```python
 # Load packages.
-import pyodbc
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy.spatial import distance as sci_distance
 from sklearn import cluster as sk_cluster
+from mssql_python import connect
 
 ################################################################################################
 
@@ -70,7 +70,7 @@ from sklearn import cluster as sk_cluster
 ################################################################################################
 
 # Connection string to connect to SQL Server named instance.
-conn_str = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER=<server>; DATABASE=tpcxbb_1gb; UID=<username>; PWD=<password>')
+conn = connect('Server=<server>;Database=tpcxbb_1gb;UID=<username>;PWD=<password>')
 
 input_query = '''SELECT
 ss_customer_sk AS customer,
@@ -119,7 +119,7 @@ column_info = {
 Results from the query are returned to Python using the Pandas **read_sql** function. As part of the process, you'll use the column information you defined in the previous script.
 
 ```python
-customer_data = pd.read_sql(input_query, conn_str)
+customer_data = pd.read_sql(input_query, conn)
 ```
 
 Now display the beginning of the data frame to verify it looks correct.

@@ -3,7 +3,7 @@ title: Connect to the SQL Server Database Engine
 description: Learn how to connect to the Database Engine used by SQL Server and Azure SQL services
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/11/2025
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: how-to
@@ -80,7 +80,7 @@ Examples for application connections are available:
 
 - [Use .NET and the Microsoft.Data.SqlClient library](/azure/azure-sql/database/azure-sql-dotnet-quickstart?view=azuresql-db&preserve-view=true)
 - [Use .NET and EF Core](/azure/azure-sql/database/azure-sql-dotnet-entity-framework-core-quickstart?view=azuresql-db&preserve-view=true)
-- [Use Python with pyodbc](/azure/azure-sql/database/azure-sql-python-quickstart?view=azuresql-db&preserve-view=true)
+- [Use Python with mssql-python](/azure/azure-sql/database/azure-sql-python-quickstart?view=azuresql-db&preserve-view=true)
 - [Use Node.js with mssql](/azure/azure-sql/database/azure-sql-javascript-mssql-quickstart?view=azuresql-db&preserve-view=true)
 
 ### [Azure SQL Managed Instance](#tab/sqlmi)

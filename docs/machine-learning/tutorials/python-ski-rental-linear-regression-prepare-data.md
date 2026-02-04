@@ -4,7 +4,7 @@ titleSuffix: SQL machine learning
 description: In part two of this four-part tutorial series, you'll use Python to prepare data to predict ski rentals with SQL machine learning.
 author: VanMSFT
 ms.author: vanto
-ms.date: 06/02/2024
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: tutorial
@@ -38,7 +38,7 @@ In [part four](python-ski-rental-linear-regression-deploy-model.md), you'll lear
 
 ## Prerequisites
 
-* Part two of this tutorial assumes you have completed [part one](python-ski-rental-linear-regression.md) and its prerequisites, including [installing the necessary Python packages](python-ski-rental-linear-regression.md#prerequisites), `pandas` and `pyodbc`.
+* Part two of this tutorial assumes you completed [part one](python-ski-rental-linear-regression.md) and its prerequisites, including [installing the necessary Python packages](python-ski-rental-linear-regression.md#prerequisites), `pandas` and `mssql-python`.
 
 ## Explore and prepare the data
 
@@ -48,19 +48,18 @@ Create a new Python notebook in Azure Data Studio and run the script below.
 
 The Python script below imports the dataset from the `dbo.rental_data` table in your database to a pandas data frame **df**.
 
-In the connection string, replace connection details as needed. To use Windows authentication with an ODBC connection string, specify `Trusted_Connection=Yes;` instead of the `UID` and `PWD` parameters.
+In the connection string, replace connection details as needed. To use Windows authentication, specify `Trusted_Connection=Yes;` instead of the `UID` and `PWD` parameters.
 
 ```python
-import pyodbc
 import pandas
-
+from mssql_python import connect
 
 # Connection string to your SQL Server instance
-conn_str = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER=<server>; DATABASE=TutorialDB;UID=<username>;PWD=<password>')
+conn = connect('Server=<server>;Database=TutorialDB;UID=<username>;PWD=<password>')
 
 query_str = 'SELECT Year, Month, Day, Rentalcount, Weekday, Holiday, Snow FROM dbo.rental_data'
 
-df = pandas.read_sql(sql=query_str, con=conn_str)
+df = pandas.read_sql(sql=query_str, con=conn)
 print("Data frame:", df)
 ```
 

@@ -4,7 +4,7 @@ description: Set up a Python local environment (Jupyter Notebook or PyCharm) for
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: monamaki
-ms.date: 05/29/2024
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
@@ -155,16 +155,17 @@ If you have permissions to create a database on the remote server, you can run t
 ### 5-1 - Create the irissql database remotely
 
 ```python
-import pyodbc
+from mssql_python import connect
 
 # creating a new db to load Iris sample in
 new_db_name = "irissql"
-connection_string = "Driver=SQL Server;Server=localhost;Database={0};Trusted_Connection=Yes;" 
+connection_string = "Server=localhost;Database={0};Trusted_Connection=Yes;" 
                         # you can also swap Trusted_Connection for UID={your username};PWD={your password}
-cnxn = pyodbc.connect(connection_string.format("master"), autocommit=True)
-cnxn.cursor().execute("IF EXISTS(SELECT * FROM sys.databases WHERE [name] = '{0}') DROP DATABASE {0}".format(new_db_name))
-cnxn.cursor().execute("CREATE DATABASE " + new_db_name)
-cnxn.close()
+conn = connect(connection_string.format("master"))
+conn.setautocommit(True)
+conn.cursor().execute("IF EXISTS(SELECT * FROM sys.databases WHERE [name] = '{0}') DROP DATABASE {0}".format(new_db_name))
+conn.cursor().execute("CREATE DATABASE " + new_db_name)
+conn.close()
 
 print("Database created")
 ```
@@ -185,7 +186,7 @@ df = pd.DataFrame(iris.data, columns=iris.feature_names)
 ```python
 from revoscalepy import RxSqlServerData, rx_data_step
 
-# Example of using RX APIs to load data into SQL table. You can also do this with pyodbc
+# Example of using RX APIs to load data into SQL table. You can also do this with mssql-python
 table_ref = RxSqlServerData(connection_string=connection_string.format(new_db_name), table="iris_data")
 rx_data_step(input_data = df, output_file = table_ref, overwrite = True)
 
@@ -197,7 +198,7 @@ print("Sklearn Iris sample loaded into Iris table")
 
 Before trying this next step, make sure you have permissions on the SQL Server instance and a connection string to the [Iris sample database](../tutorials/demo-data-iris-in-sql.md). If the database doesn't exist and you have sufficient permissions, you can [create a database using these inline instructions](#create-iris-remotely).
 
-Replace the connection string with valid values. The sample code uses `"Driver=SQL Server;Server=localhost;Database=irissql;Trusted_Connection=Yes;"` but your code should specify a remote server, possibly with an instance name, and a credential option that maps to a database login.
+Replace the connection string with valid values. The sample code uses `"Server=localhost;Database=irissql;Trusted_Connection=Yes;"` but your code should specify a remote server, possibly with an instance name, and a credential option that maps to a database login.
 
 ### 6-1 Define a function
 
