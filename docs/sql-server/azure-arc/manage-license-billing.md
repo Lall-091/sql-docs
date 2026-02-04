@@ -4,7 +4,8 @@ description: This article explains how to manage SQL Server licensing options. I
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, maghan, mathoma
-ms.date: 11/18/2025
+ms.date: 02/02/2026
+ai-usage: ai-assisted
 ms.topic: how-to
 ms.custom:
   - ignite-2025
@@ -239,6 +240,43 @@ If there are multiple SQL Server instances on the OSE, all instances and replica
 
 > [!NOTE]  
 > You can query DMVs or issue `DATABASE BACKUP` commands as long as your connections are limited to `master`, `msdb`, `tempdb`, or `model` databases. These operations will not disqualify your passive instances.
+
+#### Detailed passive replica eligibility criteria for disaster recovery
+
+A SQL Server instance is eligible for disaster recovery licensing if it satisfies the following availability group and connection requirements.
+
+**Always On role eligibility**
+
+The following table shows which Always On roles can qualify for passive disaster recovery licensing:
+
+| Always On role | Description | Passive DR license eligible? |
+|---------------|-------------|------------------------|
+| AvailabilityGroupReplica | Instance is part of an availability group | Depends on replica role and connections |
+| FailoverClusterInstance | Active FCI instance | No |
+| FailoverClusterNode | Passive FCI node | Yes (if service isn't running) |
+| None | Standalone instance | No |
+
+**Replica role requirements**
+
+For an availability group replica to qualify for passive disaster recovery licensing, it must meet the requirements shown in the following table:
+
+| Role | Readable secondary? | Active user connections? | Passive DR eligible? |
+|------|---------------------|--------------------------|----------------|
+| Secondary | No (non-readable) | N/A | Yes |
+| Secondary | Yes (readable) | No connections | Yes |
+| Secondary | Yes (readable) | Has connections | No |
+| Primary (standalone AG) | N/A | N/A | No |
+| Primary (in DAG, primary AG) | N/A | N/A | No |
+| Forwarder (primary in secondary AG of DAG) | No (not in use) | N/A | Yes |
+| Forwarder | Yes (readable) | Has connections | No |
+
+**Summary of passive disaster recovery licensing criteria for availability group replicas**
+
+- Non-readable secondary replicas always qualify for passive disaster recovery licensing.
+- Readable secondary replicas qualify only when they have no active user connections.
+- Forwarders in distributed availability groups qualify when they aren't readable or aren't in use.
+- Primary replicas never qualify for passive disaster recovery licensing because they actively serve the workload.
+- No active or sleeping user sessions connected to user databases (`sys.dm_exec_sessions WHERE is_user_process = 1`).
 
 ### Qualify as passive node of failover clustered instance (FCI)
 
