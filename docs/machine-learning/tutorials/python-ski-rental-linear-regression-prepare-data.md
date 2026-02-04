@@ -38,7 +38,7 @@ In [part four](python-ski-rental-linear-regression-deploy-model.md), you'll lear
 
 ## Prerequisites
 
-* Part two of this tutorial assumes you have completed [part one](python-ski-rental-linear-regression.md) and its prerequisites, including [installing the necessary Python packages](python-ski-rental-linear-regression.md#prerequisites), `pandas` and `mssql-python`.
+* Part two of this tutorial assumes you completed [part one](python-ski-rental-linear-regression.md) and its prerequisites, including [installing the necessary Python packages](python-ski-rental-linear-regression.md#prerequisites), `pandas` and `mssql-python`.
 
 ## Explore and prepare the data
 
