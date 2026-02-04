@@ -4,7 +4,7 @@ description: "Transact-SQL reference for the OVER clause, which defines a user-s
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 11/21/2024
+ms.date: 02/02/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -92,7 +92,7 @@ ORDER BY order_by_expression
 {  <unsigned integer literal> }
 ```
 
-Syntax for Parallel Data Warehouse.
+Syntax for Analytics Platform System (PDW):
 
 ```syntaxsql
 OVER ( [ PARTITION BY value_expression ] [ order_by_clause ] )
@@ -133,9 +133,9 @@ Divides the query result set into partitions. The window function is applied to 
 PARTITION BY <value_expression>
 ```
 
-If `PARTITION BY` isn't specified, the function treats all rows of the query result set as a single partition.
+If you don't specify `PARTITION BY`, the function treats all rows of the query result set as a single partition.
 
-The function is applied on all rows in the partition if you don't specify `ORDER BY` clause.
+If you don't specify an `ORDER BY` clause, the function is applied on all rows in the partition.
 
 #### PARTITION BY *value_expression*
 
@@ -169,9 +169,9 @@ ORDER BY <order_by_expression> [ COLLATE <collation_name> ] [ ASC | DESC ]
 
 Defines the logical order of the rows within each partition of the result set. That is, it specifies the logical order in which the window function calculation is performed.
 
-- If not specified, the default order is `ASC` and the window function uses all rows in the partition.
+- If you don't specify an order, the default order is `ASC` and the window function uses all rows in the partition.
 
-- If specified, and a `ROWS` or `RANGE` isn't specified, then default `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` is used as the default for the window frame, by the functions that can accept an optional `ROWS` or `RANGE` specification (for example, `min` or `max`).
+- If you specify an order but don't specify `ROWS` or `RANGE`, the functions that can accept an optional `ROWS` or `RANGE` specification (for example, `MIN` or `MAX`) use `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` as the default window frame.
 
 ```sql
 SELECT object_id,
@@ -197,23 +197,23 @@ FROM sys.objects;
 
 #### *order_by_expression*
 
-Specifies a column or expression on which to sort. *order_by_expression* can only refer to columns made available by the `FROM` clause. An integer can't be specified to represent a column name or alias.
+Specifies a column or expression on which to sort. *order_by_expression* can only refer to columns made available by the `FROM` clause. You can't specify an integer to represent a column name or alias.
 
 #### COLLATE *collation_name*
 
 Specifies that the `ORDER BY` operation should be performed according to the collation specified in *collation_name*. *collation_name* can be either a Windows collation name or a SQL collation name. For more information, see [Collation and Unicode support](../../relational-databases/collations/collation-and-unicode-support.md). `COLLATE` is applicable only for columns of type **char**, **varchar**, **nchar**, and **nvarchar**.
 
-#### ASC | DESC
+#### { ASC | DESC }
 
-Specifies that the values in the specified column should be sorted in ascending or descending order. `ASC` is the default sort order. Null values are treated as the lowest possible values.
+Specifies that the values in the specified column should be sorted in ascending or descending order. `ASC` is the default sort order. `NULL` values are the lowest possible values.
 
 ### ROWS or RANGE
 
 **Applies to**: [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and later versions.
 
-Further limits the rows within the partition by specifying start and end points within the partition. It specifies a range of rows with respect to the current row either by logical association or physical association. Physical association is achieved by using the `ROWS` clause.
+These options further limit the rows within the partition by specifying start and end points within the partition. You specify a range of rows with respect to the current row either by logical association or physical association. You achieve physical association by using the `ROWS` clause.
 
-The `ROWS` clause limits the rows within a partition by specifying a fixed number of rows preceding or following the current row. Alternatively, the `RANGE` clause logically limits the rows within a partition by specifying a range of values with respect to the value in the current row. Preceding and following rows are defined based on the ordering in the `ORDER BY` clause. The window frame `RANGE ... CURRENT ROW ...` includes all rows that have the same values in the `ORDER BY` expression as the current row. For example, `ROWS BETWEEN 2 PRECEDING AND CURRENT ROW` means that the window of rows that the function operates on is three rows in size, starting with 2 rows preceding until and including the current row.
+The `ROWS` clause limits the rows within a partition by specifying a fixed number of rows preceding or following the current row. Alternatively, the `RANGE` clause logically limits the rows within a partition by specifying a range of values with respect to the value in the current row. Preceding and following rows are defined based on the ordering in the `ORDER BY` clause. The window frame `RANGE ... CURRENT ROW ...` includes all rows that have the same values in the `ORDER BY` expression as the current row. For example, `ROWS BETWEEN 2 PRECEDING AND CURRENT ROW` means that the window of rows that the function operates on is three rows in size, starting with two rows preceding until and including the current row.
 
 ```sql
 SELECT object_id,
@@ -243,17 +243,17 @@ ORDER BY object_id ASC;
 
 **Applies to**: [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and later versions.
 
-Specifies that the window starts at the first row of the partition. `UNBOUNDED PRECEDING` can only be specified as window starting point.
+Specifies that the window starts at the first row of the partition. You can only specify `UNBOUNDED PRECEDING` as the window starting point.
 
 #### \<unsigned value specification> PRECEDING
 
-Specified with `<unsigned value specification>` to indicate the number of rows or values to precede the current row. This specification isn't allowed for `RANGE`.
+Specify with `<unsigned value specification>` to indicate the number of rows or values to precede the current row. This specification isn't allowed for `RANGE`.
 
 #### CURRENT ROW
 
 **Applies to**: [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and later versions.
 
-Specifies that the window starts or ends at the current row when used with `ROWS` or the current value when used with `RANGE`. `CURRENT ROW` can be specified as both a starting and ending point.
+Specifies that the window starts or ends at the current row when used with `ROWS` or the current value when used with `RANGE`. You can specify `CURRENT ROW` as both a starting and ending point.
 
 #### BETWEEN AND
 
@@ -269,11 +269,11 @@ Used with either `ROWS` or `RANGE` to specify the lower (starting) and upper (en
 
 **Applies to**: [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and later versions.
 
-Specifies that the window ends at the last row of the partition. `UNBOUNDED FOLLOWING` can only be specified as a window endpoint. For example, `RANGE BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING` defines a window that starts with the current row and ends with the last row of the partition.
+Specifies that the window ends at the last row of the partition. You can only specify `UNBOUNDED FOLLOWING` as a window endpoint. For example, `RANGE BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING` defines a window that starts with the current row and ends with the last row of the partition.
 
 #### \<unsigned value specification> FOLLOWING
 
-Specified with `<unsigned value specification>` to indicate the number of rows or values to follow the current row. When `<unsigned value specification> FOLLOWING` is specified as the window starting point, the ending point must be `<unsigned value specification> FOLLOWING`. For example, `ROWS BETWEEN 2 FOLLOWING AND 10 FOLLOWING` defines a window that starts with the second row that follows the current row and ends with the tenth row that follows the current row. This specification isn't allowed for `RANGE`.
+Specify with `<unsigned value specification>` to indicate the number of rows or values to follow the current row. When you specify `<unsigned value specification> FOLLOWING` as the window starting point, the ending point must be `<unsigned value specification> FOLLOWING`. For example, `ROWS BETWEEN 2 FOLLOWING AND 10 FOLLOWING` defines a window that starts with the second row that follows the current row and ends with the tenth row that follows the current row. This specification isn't allowed for `RANGE`.
 
 #### \<unsigned integer literal>
 
@@ -283,22 +283,22 @@ A positive integer literal (including `0`) that specifies the number of rows or 
 
 ## Remarks
 
-More than one window function can be used in a single query with a single `FROM` clause. The `OVER` clause for each function can differ in partitioning and ordering.
+You can use more than one window function in a single query with a single `FROM` clause. The `OVER` clause for each function can differ in partitioning and ordering.
 
-If `PARTITION BY` isn't specified, the function treats all rows of the query result set as a single group.
+If you don't specify `PARTITION BY`, the function treats all rows of the query result set as a single group.
 
 > [!IMPORTANT]  
-> If `ROWS` or `RANGE` is specified and `<window frame preceding>` is used for `<window frame extent>` (short syntax) then this specification is used for the window frame boundary starting point and `CURRENT ROW` is used for the boundary ending point. For example, `ROWS 5 PRECEDING` is equal to `ROWS BETWEEN 5 PRECEDING AND CURRENT ROW`.
+> If you specify `ROWS` or `RANGE` and use `<window frame preceding>` for `<window frame extent>` (short syntax), the query uses this specification for the window frame boundary starting point and `CURRENT ROW` for the boundary ending point. For example, `ROWS 5 PRECEDING` is equal to `ROWS BETWEEN 5 PRECEDING AND CURRENT ROW`.
 
-If `ORDER BY` isn't specified, the entire partition is used for a window frame. This applies only to functions that don't require `ORDER BY` clause. If `ROWS` or `RANGE` isn't specified but `ORDER BY` is specified, `RANGE UNBOUNDED PRECEDING AND CURRENT ROW` is used as default for window frame. This applies only to functions that have can accept optional `ROWS` or `RANGE` specification. For example, ranking functions can't accept `ROWS` or `RANGE`, therefore this window frame isn't applied even though `ORDER BY` is present and `ROWS` or `RANGE` is not.
+If you don't specify `ORDER BY`, the entire partition is used for a window frame. This rule applies only to functions that don't require an `ORDER BY` clause. If you don't specify `ROWS` or `RANGE` but you specify `ORDER BY`, `RANGE UNBOUNDED PRECEDING AND CURRENT ROW` is used as the default for the window frame. This rule applies only to functions that can accept an optional `ROWS` or `RANGE` specification. For example, ranking functions can't accept `ROWS` or `RANGE`, so this window frame isn't applied even though `ORDER BY` is present and `ROWS` or `RANGE` isn't.
 
 ## Limitations
 
-The `OVER` clause can't be used with the `DISTINCT` aggregations.
+You can't use the `OVER` clause with the `DISTINCT` aggregations.
 
-`RANGE` can't be used with `<unsigned value specification> PRECEDING` or `<unsigned value specification> FOLLOWING`.
+You can't use `RANGE` with `<unsigned value specification> PRECEDING` or `<unsigned value specification> FOLLOWING`.
 
-Depending on the ranking, aggregate, or analytic function used with the `OVER` clause, `<ORDER BY clause>` and/or the `<ROWS and RANGE clause>` might not be supported.
+Support for `ORDER BY` clause, and the `ROWS` and `RANGE` clauses, depends on the ranking, aggregate, or analytic function that you use with the `OVER` clause.
 
 ## Examples
 
@@ -306,10 +306,10 @@ Depending on the ranking, aggregate, or analytic function used with the `OVER` c
 
 ### A. Use the OVER clause with the ROW_NUMBER function
 
-The following example shows using the `OVER` clause with `ROW_NUMBER` function to display a row number for each row within a partition. The `ORDER BY` clause specified in the `OVER` clause orders the rows in each partition by the column `SalesYTD`. The `ORDER BY` clause in the `SELECT` statement determines the order in which the entire query result set is returned.
+The following example shows how to use the `OVER` clause with the `ROW_NUMBER` function to display a row number for each row within a partition. The `ORDER BY` clause specified in the `OVER` clause orders the rows in each partition by the column `SalesYTD`. The `ORDER BY` clause in the `SELECT` statement determines the order in which the entire query result set is returned.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT ROW_NUMBER() OVER (PARTITION BY PostalCode ORDER BY SalesYTD DESC) AS "Row Number",
@@ -353,7 +353,7 @@ Row Number      LastName                SalesYTD              PostalCode
 The following example uses the `OVER` clause with aggregate functions over all rows returned by the query. In this example, using the `OVER` clause is more efficient than using subqueries to derive the aggregate values.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT SalesOrderID,
@@ -396,10 +396,10 @@ SalesOrderID ProductID   OrderQty Total       Avg         Count       Min    Max
 43664        778         1        14          1           8           1      4
 ```
 
-The following example shows using the `OVER` clause with an aggregate function in a calculated value.
+The following example shows how to use the `OVER` clause with an aggregate function in a calculated value.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT SalesOrderID,
@@ -441,10 +441,10 @@ SalesOrderID ProductID   OrderQty Total       Percent by ProductID
 
 ### C. Produce a moving average and cumulative total
 
-The following example uses the `AVG` and `SUM` functions with the `OVER` clause to provide a moving average and cumulative total of yearly sales for each territory in the `Sales.SalesPerson` table. The data is partitioned by `TerritoryID` and logically ordered by `SalesYTD`. This means that the `AVG` function is computed for each territory based on the sales year. For `TerritoryID` of 1, there are two rows for sales year `2005` representing the two sales people with sales that year. The average sales for these two rows are computed, and then the third row representing sales for the year `2006` is included in the computation.
+The following example uses the `AVG` and `SUM` functions with the `OVER` clause to provide a moving average and cumulative total of yearly sales for each territory in the `Sales.SalesPerson` table. The query partitions the data by `TerritoryID` and logically orders it by `SalesYTD`. This means that the `AVG` function is computed for each territory based on the sales year. For `TerritoryID` of `1`, two rows exist for sales year `2022`, representing the two sales people with sales that year. The average sales for these two rows are computed, and then the third row representing sales for the year `2023` is included in the computation.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT BusinessEntityID,
@@ -464,16 +464,16 @@ ORDER BY TerritoryID, SalesYear;
 ```output
 BusinessEntityID TerritoryID SalesYear   SalesYTD             MovingAvg            CumulativeTotal
 ---------------- ----------- ----------- -------------------- -------------------- --------------------
-274              NULL        2005        559,697.56           559,697.56           559,697.56
-287              NULL        2006        519,905.93           539,801.75           1,079,603.50
-285              NULL        2007        172,524.45           417,375.98           1,252,127.95
-283              1           2005        1,573,012.94         1,462,795.04         2,925,590.07
-280              1           2005        1,352,577.13         1,462,795.04         2,925,590.07
-284              1           2006        1,576,562.20         1,500,717.42         4,502,152.27
-275              2           2005        3,763,178.18         3,763,178.18         3,763,178.18
-277              3           2005        3,189,418.37         3,189,418.37         3,189,418.37
-276              4           2005        4,251,368.55         3,354,952.08         6,709,904.17
-281              4           2005        2,458,535.62         3,354,952.08         6,709,904.17
+274              NULL        2021        559,697.56           559,697.56           559,697.56
+287              NULL        2023        519,905.93           539,801.75           1,079,603.50
+285              NULL        2024        172,524.45           417,375.98           1,252,127.95
+283              1           2022        1,573,012.94         1,462,795.04         2,925,590.07
+280              1           2022        1,352,577.13         1,462,795.04         2,925,590.07
+284              1           2023        1,576,562.20         1,500,717.42         4,502,152.27
+275              2           2022        3,763,178.18         3,763,178.18         3,763,178.18
+277              3           2022        3,189,418.37         3,189,418.37         3,189,418.37
+276              4           2022        4,251,368.55         3,354,952.08         6,709,904.17
+281              4           2022        2,458,535.62         3,354,952.08         6,709,904.17
 ```
 
 In this example, the `OVER` clause doesn't include `PARTITION BY`. This means that the function is applied to all rows returned by the query. The `ORDER BY` clause specified in the `OVER` clause determines the logical order to which the `AVG` function is applied. The query returns a moving average of sales by year for all sales territories specified in the `WHERE` clause. The `ORDER BY` clause specified in the `SELECT` statement determines the order in which the rows of the query are displayed.
@@ -496,16 +496,16 @@ ORDER BY SalesYear;
 ```output
 BusinessEntityID TerritoryID SalesYear   SalesYTD             MovingAvg            CumulativeTotal
 ---------------- ----------- ----------- -------------------- -------------------- --------------------
-274              NULL        2005        559,697.56           2,449,684.05         17,147,788.35
-275              2           2005        3,763,178.18         2,449,684.05         17,147,788.35
-276              4           2005        4,251,368.55         2,449,684.05         17,147,788.35
-277              3           2005        3,189,418.37         2,449,684.05         17,147,788.35
-280              1           2005        1,352,577.13         2,449,684.05         17,147,788.35
-281              4           2005        2,458,535.62         2,449,684.05         17,147,788.35
-283              1           2005        1,573,012.94         2,449,684.05         17,147,788.35
-284              1           2006        1,576,562.20         2,138,250.72         19,244,256.47
-287              NULL        2006        519,905.93           2,138,250.72         19,244,256.47
-285              NULL        2007        172,524.45           1,941,678.09         19,416,780.93
+274              NULL        2021        559,697.56           559,697.56           559,697.56
+275              2           2022        3,763,178.18         2,449,684.05         17,147,788.35
+276              4           2022        4,251,368.55         2,449,684.05         17,147,788.35
+277              3           2022        3,189,418.37         2,449,684.05         17,147,788.35
+280              1           2022        1,352,577.13         2,449,684.05         17,147,788.35
+281              4           2022        2,458,535.62         2,449,684.05         17,147,788.35
+283              1           2022        1,573,012.94         2,449,684.05         17,147,788.35
+284              1           2023        1,576,562.20         2,138,250.72         19,244,256.47
+287              NULL        2023        519,905.93           2,138,250.72         19,244,256.47
+285              NULL        2024        172,524.45           1,941,678.09         19,416,780.93
 ```
 
 ### D. Specify the ROWS clause
@@ -530,16 +530,16 @@ WHERE TerritoryID IS NULL
 ```output
 BusinessEntityID TerritoryID SalesYTD             SalesYear   CumulativeTotal
 ---------------- ----------- -------------------- ----------- --------------------
-274              NULL        559,697.56           2005        1,079,603.50
-287              NULL        519,905.93           2006        692,430.38
-285              NULL        172,524.45           2007        172,524.45
-283              1           1,573,012.94         2005        2,925,590.07
-280              1           1,352,577.13         2005        2,929,139.33
-284              1           1,576,562.20         2006        1,576,562.20
-275              2           3,763,178.18         2005        3,763,178.18
-277              3           3,189,418.37         2005        3,189,418.37
-276              4           4,251,368.55         2005        6,709,904.17
-281              4           2,458,535.62         2005        2,458,535.62
+274              NULL        559,697.56           2021        1,079,603.50
+287              NULL        519,905.93           2023        692,430.38
+285              NULL        172,524.45           2024        172,524.45
+283              1           1,573,012.94         2022        2,925,590.07
+280              1           1,352,577.13         2022        2,929,139.33
+284              1           1,576,562.20         2023        1,576,562.20
+275              2           3,763,178.18         2022        3,763,178.18
+277              3           3,189,418.37         2022        3,189,418.37
+276              4           4,251,368.55         2022        6,709,904.17
+281              4           2,458,535.62         2022        2,458,535.62
 ```
 
 In the following example, the `ROWS` clause is specified with `UNBOUNDED PRECEDING`. The result is that the window starts at the first row of the partition.
@@ -560,19 +560,19 @@ WHERE TerritoryID IS NULL
 ```output
 BusinessEntityID TerritoryID SalesYTD             SalesYear   CumulativeTotal
 ---------------- ----------- -------------------- ----------- --------------------
-274              NULL        559,697.56           2005        559,697.56
-287              NULL        519,905.93           2006        1,079,603.50
-285              NULL        172,524.45           2007        1,252,127.95
-283              1           1,573,012.94         2005        1,573,012.94
-280              1           1,352,577.13         2005        2,925,590.07
-284              1           1,576,562.20         2006        4,502,152.27
-275              2           3,763,178.18         2005        3,763,178.18
-277              3           3,189,418.37         2005        3,189,418.37
-276              4           4,251,368.55         2005        4,251,368.55
-281              4           2,458,535.62         2005        6,709,904.17
+274              NULL        559,697.56           2021        559,697.56
+287              NULL        519,905.93           2023        1,079,603.50
+285              NULL        172,524.45           2024        1,252,127.95
+283              1           1,573,012.94         2022        1,573,012.94
+280              1           1,352,577.13         2022        2,925,590.07
+284              1           1,576,562.20         2023        4,502,152.27
+275              2           3,763,178.18         2022        3,763,178.18
+277              3           3,189,418.37         2022        3,189,418.37
+276              4           4,251,368.55         2022        4,251,368.55
+281              4           2,458,535.62         2022        6,709,904.17
 ```
 
-## Examples: [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Analytics Platform System (PDW)
 
 ### E. Use the OVER clause with the ROW_NUMBER function
 

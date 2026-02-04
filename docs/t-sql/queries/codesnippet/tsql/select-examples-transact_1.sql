@@ -1,4 +1,4 @@
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT *
@@ -6,7 +6,7 @@ FROM Production.Product
 ORDER BY Name ASC;
 
 -- Alternate way.
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT p.*

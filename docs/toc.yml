@@ -16718,25 +16718,26 @@ items:
         - name: WRITETEXT
           href: t-sql/queries/writetext-transact-sql.md
       - name: SELECT
-        href: t-sql/queries/select-transact-sql.md
         items:
-        - name: SELECT Clause
+        - name: Overview
+          href: t-sql/queries/select-transact-sql.md
+        - name: SELECT clause
           href: t-sql/queries/select-clause-transact-sql.md
-        - name: SELECT Examples
+        - name: SELECT examples
           href: t-sql/queries/select-examples-transact-sql.md
-        - name: SELECT - FOR Clause
+        - name: SELECT - FOR clause
           href: t-sql/queries/select-for-clause-transact-sql.md
         - name: SELECT - GROUP BY
           href: t-sql/queries/select-group-by-transact-sql.md
-        - name: SELECT - WINDOW Clause
+        - name: SELECT - WINDOW clause
           href: t-sql/queries/select-window-transact-sql.md
         - name: SELECT - HAVING
           href: t-sql/queries/select-having-transact-sql.md
-        - name: SELECT - INTO Clause
+        - name: SELECT - INTO clause
           href: t-sql/queries/select-into-clause-transact-sql.md
-        - name: SELECT - ORDER BY Clause
+        - name: SELECT - ORDER BY clause
           href: t-sql/queries/select-order-by-clause-transact-sql.md
-        - name: SELECT - OVER Clause
+        - name: SELECT - OVER clause
           href: t-sql/queries/select-over-clause-transact-sql.md
       - name: FROM plus JOIN, APPLY, PIVOT
         href: t-sql/queries/from-transact-sql.md

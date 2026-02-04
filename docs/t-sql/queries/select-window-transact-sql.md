@@ -4,7 +4,7 @@ description: The WINDOW clause determines the partitioning and ordering of a row
 author: thesqlsith
 ms.author: derekw
 ms.reviewer: mikeray, randolphwest
-ms.date: 07/26/2024
+ms.date: 02/02/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -83,7 +83,7 @@ The other arguments are:
 
 - [ROWS/RANGE](select-over-clause-transact-sql.md#rows-or-range) that limits the rows within the partition by specifying start and end points within the partition.
 
-For more specific details about the arguments, see the [OVER clause](select-over-clause-transact-sql.md)
+For more specific details about the arguments, see [SELECT - OVER clause](select-over-clause-transact-sql.md).
 
 ## Remarks
 
@@ -108,53 +108,50 @@ The restrictions for usage of window specifications in the `OVER` clause with th
 The following example query shows uses a named window in the `OVER` clause.
 
 ```sql
-ALTER DATABASE AdventureWorks2022
+ALTER DATABASE AdventureWorks2025
 SET COMPATIBILITY_LEVEL = 160;
 GO
 
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT ROW_NUMBER() OVER win AS [Row Number],
-    p.LastName,
-    s.SalesYTD,
-    a.PostalCode
+       p.LastName,
+       s.SalesYTD,
+       a.PostalCode
 FROM Sales.SalesPerson AS s
-INNER JOIN Person.Person AS p
-    ON s.BusinessEntityID = p.BusinessEntityID
-INNER JOIN Person.Address AS a
-    ON a.AddressID = p.BusinessEntityID
+     INNER JOIN Person.Person AS p
+         ON s.BusinessEntityID = p.BusinessEntityID
+     INNER JOIN Person.Address AS a
+         ON a.AddressID = p.BusinessEntityID
 WHERE TerritoryID IS NOT NULL
-    AND SalesYTD <> 0
-WINDOW win AS
-    (
-        PARTITION BY PostalCode ORDER BY SalesYTD DESC
-    )
+      AND SalesYTD <> 0
+WINDOW win AS (
+    PARTITION BY PostalCode ORDER BY SalesYTD DESC
+)
 ORDER BY PostalCode;
-GO
 ```
 
 The following query is the equivalent of the previous query without using the `WINDOW` clause.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT ROW_NUMBER() OVER (
-        PARTITION BY PostalCode ORDER BY SalesYTD DESC
-        ) AS [Row Number],
-    p.LastName,
-    s.SalesYTD,
-    a.PostalCode
+           PARTITION BY PostalCode ORDER BY SalesYTD DESC
+       ) AS [Row Number],
+       p.LastName,
+       s.SalesYTD,
+       a.PostalCode
 FROM Sales.SalesPerson AS s
-INNER JOIN Person.Person AS p
-    ON s.BusinessEntityID = p.BusinessEntityID
-INNER JOIN Person.Address AS a
-    ON a.AddressID = p.BusinessEntityID
+     INNER JOIN Person.Person AS p
+         ON s.BusinessEntityID = p.BusinessEntityID
+     INNER JOIN Person.Address AS a
+         ON a.AddressID = p.BusinessEntityID
 WHERE TerritoryID IS NOT NULL
-    AND SalesYTD <> 0
+      AND SalesYTD <> 0
 ORDER BY PostalCode;
-GO
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -181,44 +178,42 @@ GO
 The following example shows defining a window specification and using it multiple times in an `OVER` clause.
 
 ```sql
-ALTER DATABASE AdventureWorks2022
+ALTER DATABASE AdventureWorks2025
 SET COMPATIBILITY_LEVEL = 160;
 GO
 
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT SalesOrderID,
-    ProductID,
-    OrderQty,
-    SUM(OrderQty) OVER win AS [Total],
-    AVG(OrderQty) OVER win AS [Avg],
-    COUNT(OrderQty) OVER win AS [Count],
-    MIN(OrderQty) OVER win AS [Min],
-    MAX(OrderQty) OVER win AS [Max]
+       ProductID,
+       OrderQty,
+       SUM(OrderQty) OVER win AS [Total],
+       AVG(OrderQty) OVER win AS [Avg],
+       COUNT(OrderQty) OVER win AS [Count],
+       MIN(OrderQty) OVER win AS [Min],
+       MAX(OrderQty) OVER win AS [Max]
 FROM Sales.SalesOrderDetail
 WHERE SalesOrderID IN (43659, 43664)
 WINDOW win AS (PARTITION BY SalesOrderID);
-GO
 ```
 
 The following query is the equivalent of the previous query without using the `WINDOW` clause.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT SalesOrderID,
-    ProductID,
-    OrderQty,
-    SUM(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Total],
-    AVG(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Avg],
-    COUNT(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Count],
-    MIN(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Min],
-    MAX(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Max]
+       ProductID,
+       OrderQty,
+       SUM(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Total],
+       AVG(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Avg],
+       COUNT(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Count],
+       MIN(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Min],
+       MAX(OrderQty) OVER (PARTITION BY SalesOrderID) AS [Max]
 FROM Sales.SalesOrderDetail
 WHERE SalesOrderID IN (43659, 43664);
-GO
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -251,53 +246,52 @@ GO
 This example shows defining a common specification in a window and using it to define additional specifications in the `OVER` clause.
 
 ```sql
-ALTER DATABASE AdventureWorks2022
+ALTER DATABASE AdventureWorks2025
 SET COMPATIBILITY_LEVEL = 160;
 GO
 
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT SalesOrderID AS OrderNumber,
-    ProductID,
-    OrderQty AS Qty,
-    SUM(OrderQty) OVER win AS Total,
-    AVG(OrderQty) OVER (win PARTITION BY SalesOrderID) AS Avg,
-    COUNT(OrderQty) OVER (
-        win ROWS BETWEEN UNBOUNDED PRECEDING
-            AND 1 FOLLOWING
-        ) AS Count
+       ProductID,
+       OrderQty AS Qty,
+       SUM(OrderQty) OVER win AS Total,
+       AVG(OrderQty) OVER (
+           win PARTITION BY SalesOrderID
+       ) AS Avg,
+       COUNT(OrderQty) OVER (
+           win ROWS BETWEEN UNBOUNDED PRECEDING AND 1 FOLLOWING
+       ) AS Count
 FROM Sales.SalesOrderDetail
 WHERE SalesOrderID IN (43659, 43664)
-    AND ProductID LIKE '71%'
-WINDOW win AS
-    (
-        ORDER BY SalesOrderID, ProductID
-    );
-GO
+      AND ProductID LIKE '71%'
+WINDOW win AS (
+    ORDER BY SalesOrderID, ProductID
+);
 ```
 
 The following query is the equivalent of the previous query without using the `WINDOW` clause.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT SalesOrderID AS OrderNumber,
-    ProductID,
-    OrderQty AS Qty,
-    SUM(OrderQty) OVER (ORDER BY SalesOrderID, ProductID) AS Total,
-    AVG(OrderQty) OVER (
-        PARTITION BY SalesOrderID ORDER BY SalesOrderID, ProductID
-        ) AS Avg,
-    COUNT(OrderQty) OVER (
-        ORDER BY SalesOrderID,
-            ProductID ROWS BETWEEN UNBOUNDED PRECEDING AND 1 FOLLOWING
-        ) AS Count
+       ProductID,
+       OrderQty AS Qty,
+       SUM(OrderQty) OVER (
+           ORDER BY SalesOrderID, ProductID
+       ) AS Total,
+       AVG(OrderQty) OVER (
+           PARTITION BY SalesOrderID ORDER BY SalesOrderID, ProductID
+       ) AS Avg,
+       COUNT(OrderQty) OVER (
+           ORDER BY SalesOrderID, ProductID ROWS BETWEEN UNBOUNDED PRECEDING AND 1 FOLLOWING
+       ) AS Count
 FROM Sales.SalesOrderDetail
 WHERE SalesOrderID IN (43659, 43664)
-    AND ProductID LIKE '71%';
-GO
+      AND ProductID LIKE '71%';
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -316,40 +310,44 @@ GO
 This example shows using named windows as forward and backward references when defining a new window in the `WINDOW` clause.
 
 ```sql
-ALTER DATABASE AdventureWorks2022
+ALTER DATABASE AdventureWorks2025
 SET COMPATIBILITY_LEVEL = 160;
 GO
 
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
-SELECT SalesOrderID AS OrderNumber, ProductID,
-    OrderQty AS Qty,
-    SUM(OrderQty) OVER win2 AS Total,
-    AVG(OrderQty) OVER win1 AS Avg
+SELECT SalesOrderID AS OrderNumber,
+       ProductID,
+       OrderQty AS Qty,
+       SUM(OrderQty) OVER win2 AS Total,
+       AVG(OrderQty) OVER win1 AS Avg
 FROM Sales.SalesOrderDetail
-WHERE SalesOrderID IN(43659,43664) AND
-    ProductID LIKE '71%'
+WHERE SalesOrderID IN (43659, 43664)
+      AND ProductID LIKE '71%'
 WINDOW win1 AS (win3),
-    win2 AS (ORDER BY SalesOrderID, ProductID),
-    win3 AS (win2 PARTITION BY SalesOrderID);
-GO
+       win2 AS (ORDER BY SalesOrderID, ProductID),
+       win3 AS (win2PARTITION BY SalesOrderID);
 ```
 
 The following query is the equivalent of the previous query without using the `WINDOW` clause.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
-SELECT SalesOrderID AS OrderNumber, ProductID,
-    OrderQty AS Qty,
-    SUM(OrderQty) OVER (ORDER BY SalesOrderID, ProductID) AS Total,
-    AVG(OrderQty) OVER (PARTITION BY SalesOrderID ORDER BY SalesOrderID, ProductID) AS Avg
+SELECT SalesOrderID AS OrderNumber,
+       ProductID,
+       OrderQty AS Qty,
+       SUM(OrderQty) OVER (
+           ORDER BY SalesOrderID, ProductID
+       ) AS Total,
+       AVG(OrderQty) OVER (
+           PARTITION BY SalesOrderID ORDER BY SalesOrderID, ProductID
+       ) AS Avg
 FROM Sales.SalesOrderDetail
-WHERE SalesOrderID IN(43659,43664) AND
-    ProductID LIKE '71%';
-GO
+WHERE SalesOrderID IN (43659, 43664)
+      AND ProductID LIKE '71%';
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -365,7 +363,7 @@ GO
 
 ## Related content
 
-- [Aggregate functions (Transact-SQL)](../functions/aggregate-functions-transact-sql.md)
+- [Aggregate Functions (Transact-SQL)](../functions/aggregate-functions-transact-sql.md)
 - [Analytic functions (Transact-SQL)](../functions/analytic-functions-transact-sql.md)
 - [SELECT - OVER clause (Transact-SQL)](select-over-clause-transact-sql.md)
 - [SELECT (Transact-SQL)](select-transact-sql.md)

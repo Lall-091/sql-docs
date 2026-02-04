@@ -7,6 +7,6 @@ GO
 
 SELECT *
 INTO #Bicycles
-FROM AdventureWorks2022.Production.Product
+FROM AdventureWorks2025.Production.Product
 WHERE ProductNumber LIKE 'BK%';
 GO
