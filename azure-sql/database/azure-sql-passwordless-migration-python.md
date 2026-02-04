@@ -105,7 +105,8 @@ Complete the following steps in the Azure portal to associate the user-assigned 
 - Azure Container Apps
 - Azure virtual machines
 - Azure Kubernetes Service
-- Navigate to the overview page of your web app.
+
+1. Navigate to the overview page of your web app.
 
 1. Select **Identity** from the left navigation.
 
