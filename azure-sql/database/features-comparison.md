@@ -2,10 +2,10 @@
 title: Compare SQL Database Engine Features
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: This article compares the database engine features of Azure SQL Database and Azure SQL Managed Instance
-author: danimir
-ms.author: danil
-ms.reviewer: wiassaf, bonova, mathoma, danil, randolphwest
-ms.date: 06/16/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: danil, bonova, mathoma, danil, randolphwest
+ms.date: 01/27/2026
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: product-comparison
@@ -97,7 +97,7 @@ The following table lists the major features of SQL Server and provides informat
 | [Operators](/sql/t-sql/language-elements/operators-transact-sql) | Most, see individual operators |Yes, see [T-SQL differences](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Query Notifications](/sql/relational-databases/native-client/features/working-with-query-notifications) | No | Yes |
 | [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) | Yes | Yes | 
-| [Query Store for secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas) | No, the Query Store for secondary replicas feature isn't available for Azure SQL Database. Currently, the Query Store on the secondary replica contains information about workloads from the primary replica. | No, the Query Store for secondary replicas feature isn't available for Azure SQL Managed Instance. Currently, the Query Store on the secondary replica contains information about workloads from the primary replica.| 
+| [Query Store for secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas) | [Yes](/sql/relational-databases/performance/query-store-for-secondary-replicas) | [Yes](/sql/relational-databases/performance/query-store-for-secondary-replicas) | 
 | [Machine Learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_Formerly R Services_)| No | Yes, see [Machine Learning Services in Azure SQL Managed Instance](../managed-instance/machine-learning-services-overview.md) |
 | [Recovery models](/sql/relational-databases/backup-restore/recovery-models-sql-server) | Only Full Recovery that guarantees high availability is supported. Simple and Bulk Logged recovery models aren't available. | Only Full Recovery that guarantees high availability is supported. Simple and Bulk Logged recovery models aren't available. |
 | [Resource governor](/sql/relational-databases/resource-governor/resource-governor) | No | Yes |
