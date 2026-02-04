@@ -242,8 +242,8 @@ The [intelligent query processing (IQP)](../relational-databases/performance/int
 ## Linux
 
 - [Support for TLS 1.3](../linux/sql-server-linux-encrypted-connections.md)
-- [Support for Red Hat 10 in preview](../linux/quickstart-install-connect-red-hat.md)
-- [Support for Ubuntu 24.04 in preview](../linux/quickstart-install-connect-ubuntu.md)
+- [Support for Red Hat 10](../linux/quickstart-install-connect-red-hat.md)
+- [Support for Ubuntu 24.04](../linux/quickstart-install-connect-ubuntu.md)
 
 ## Tools
 
