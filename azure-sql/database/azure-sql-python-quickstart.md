@@ -113,7 +113,7 @@ AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Da
 
 ## [Interactive Authentication](#tab/sql-inter)
 
-In Windows, Microsoft Entra Interactive Authentication can use Microsoft Entra multifactor authentication technology to set up connection. In this mode, an Azure Authentication dialog is triggered and allows the user to input credentials to complete the connection.
+In Windows, Microsoft Entra Interactive Authentication can use Microsoft Entra multifactor authentication technology to set up a connection. In this mode, an Azure Authentication dialog appears and lets you enter your credentials to complete the connection.
 
 ```text
 AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryInteractive;Encrypt=yes;TrustServerCertificate=no;
