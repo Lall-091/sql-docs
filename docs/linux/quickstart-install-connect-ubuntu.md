@@ -3,7 +3,7 @@ title: "Ubuntu: Install SQL Server on Linux"
 description: This quickstart shows how to install SQL Server 2017 and later versions on Ubuntu and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/27/2026
+ms.date: 02/04/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -47,7 +47,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Ubuntu 22.04. Then you can connect with **sqlcmd** to create your first database and run queries.
 
 > [!NOTE]  
-> Starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1, Ubuntu 24.04 is supported.
+> Starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Cumulative Update (CU) 1, Ubuntu 24.04 is supported.
 
 For more information on supported platforms, see [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md).
 
@@ -64,9 +64,9 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
 
-You must have an Ubuntu 18.04 machine with **at least 2 GB** of memory.
+You need an Ubuntu 18.04 machine with **at least 2 GB** of memory.
 
-To install Ubuntu 18.04 on your own machine, go to <https://releases.ubuntu.com/18.04/>. You can also create Ubuntu virtual machines in Azure. See [Tutorial: Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm).
+To install Ubuntu 18.04 on your own machine, go to <https://releases.ubuntu.com/18.04/>. You can also create Ubuntu or Ubuntu Pro virtual machines in Azure. See [Tutorial: Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm).
 
 If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must first remove the old repository before following these steps. For more information, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
 
@@ -74,9 +74,9 @@ If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../i
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
-You must have an Ubuntu 20.04 machine with **at least 2 GB** of memory.
+You need an Ubuntu 20.04 machine with **at least 2 GB** of memory.
 
-To install Ubuntu 20.04 on your own machine, go to <https://releases.ubuntu.com/20.04/>. You can also create Ubuntu virtual machines in Azure. See [Tutorial: Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm).
+To install Ubuntu 20.04 on your own machine, go to <https://releases.ubuntu.com/20.04/>. You can also create Ubuntu or Ubuntu Pro virtual machines in Azure. See [Tutorial: Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm).
 
 If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must first remove the old repository before following these steps. For more information, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
 
@@ -84,9 +84,9 @@ If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../i
 <!--SQL Server 2022 on Linux-->
 ::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
-You must have an Ubuntu 20.04 machine with **at least 2 GB** of memory.
+You need an Ubuntu 20.04 or Ubuntu 22.04 machine with **at least 2 GB** of memory.
 
-To install Ubuntu 20.04 on your own machine, go to <https://releases.ubuntu.com/20.04/>. You can also create Ubuntu virtual machines in Azure. See [Tutorial: Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm).
+To install Ubuntu 20.04 on your own machine, go to <https://releases.ubuntu.com/20.04/>. You can also create Ubuntu or Ubuntu Pro virtual machines in Azure. See [Tutorial: Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm).
 
 If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must first remove the old repository before following these steps. For more information, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
 
@@ -94,18 +94,21 @@ If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../i
 <!--SQL Server 2025 on Linux-->
 ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
-You must have an Ubuntu 22.04 machine with **at least 2 GB** of memory.
+You need an Ubuntu 22.04 or 24.04 machine with **at least 2 GB** of memory.
 
-To install Ubuntu 22.04 on your own machine, go to <https://releases.ubuntu.com/22.04/>. You can also create Ubuntu virtual machines in Azure. See [Tutorial: Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm).
+To install Ubuntu 22.04 on your own machine, go to <https://releases.ubuntu.com/22.04/>. You can also create Ubuntu or Ubuntu Pro virtual machines in Azure. See [Tutorial: Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm).
 
 If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must first remove the old repository before following these steps. For more information, see [Configure repositories for installing and upgrading SQL Server 2025 on Linux](sql-server-linux-change-repo-2025.md).
 
 ::: moniker-end
 
-> [!NOTE]
+> [!NOTE]  
 > [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows Subsystem for Linux (WSL) is supported for development purposes only. For instructions on installing SQL Server on WSL, see [Quickstart: Install SQL Server and create a database on Windows Subsystem for Linux (WSL 2)](quickstart-install-connect-wsl-2.md).
 
 For other system requirements, see [System requirements for SQL Server on Linux](sql-server-linux-setup.md#system).
+
+> [!TIP]  
+> For production environments that require FIPS compliance or Expanded Security Maintenance (ESM) coverage for Ubuntu Universe packages, use **Ubuntu Pro**. You can enable Ubuntu Pro on your existing instance, or select a preconfigured Ubuntu Pro image when you provision your virtual machine in Azure.
 
 <a id="install"></a>
 
@@ -131,14 +134,14 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    > [!TIP]  
    > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true#install), [SQL Server 2022](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true#install), or [SQL Server 2025](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver17&preserve-view=true#install) versions of this article.
 
-1. Run the following commands to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
+1. Install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
    ```bash
    sudo apt-get update
    sudo apt-get install -y mssql-server
    ```
 
-1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. As a reminder, the following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
+1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. The following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf setup
@@ -147,7 +150,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-1. Once the configuration is done, verify that the service is running:
+1. When the configuration is done, verify that the service is running:
 
    ```bash
    systemctl status mssql-server --no-pager
@@ -174,14 +177,14 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    > [!TIP]  
    > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-ubuntu.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2022](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true#install), or [SQL Server 2025](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver17&preserve-view=true#install) versions of this article.
 
-1. Run the following commands to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
+1. Install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
    ```bash
    sudo apt-get update
    sudo apt-get install -y mssql-server
    ```
 
-1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. As a reminder, the following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
+1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. The following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf setup
@@ -190,7 +193,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-1. Once the configuration is done, verify that the service is running:
+1. When the configuration is done, verify that the service is running:
 
    ```bash
    systemctl status mssql-server --no-pager
@@ -220,14 +223,14 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    > [!TIP]  
    > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-ubuntu.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true#install), or [SQL Server 2025](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver17&preserve-view=true#install) versions of this article.
 
-1. Run the following commands to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
+1. Install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
    ```bash
    sudo apt-get update
    sudo apt-get install -y mssql-server
    ```
 
-1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. As a reminder, the following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
+1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. The following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf setup
@@ -236,7 +239,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-1. Once the configuration is done, verify that the service is running:
+1. When the configuration is done, verify that the service is running:
 
    ```bash
    systemctl status mssql-server --no-pager
@@ -246,13 +249,13 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
 
 ### [Ubuntu 22.04](#tab/ubuntu2204)
 
-1. Download the public key, convert from ASCII to GPG format, and write it to the required location:
+1. Download the public key, convert it from ASCII to GPG format, and write it to the required location:
 
    ```bash
    curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
    ```
 
-   If you receive a warning about the public key not being available, you can use the following command instead:
+   If you receive a warning about the public key not being available, use the following command instead:
 
    ```bash
    curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
@@ -267,14 +270,14 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    > [!TIP]  
    > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-ubuntu.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true#install), or [SQL Server 2025](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver17&preserve-view=true#install) versions of this article.
 
-1. Run the following commands to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
+1. Install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
    ```bash
    sudo apt-get update
    sudo apt-get install -y mssql-server
    ```
 
-1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. As a reminder, the following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
+1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. The following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf setup
@@ -283,7 +286,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-1. Once the configuration is done, verify that the service is running:
+1. When the configuration is done, verify that the service is running:
 
    ```bash
    systemctl status mssql-server --no-pager
@@ -300,13 +303,13 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
 
 ### [Ubuntu 22.04](#tab/2025ubuntu2204)
 
-1. Download the public key, convert from ASCII to GPG format, and write it to the required location:
+1. Download the public key, convert it from ASCII to GPG format, and write it to the required location:
 
    ```bash
    curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
    ```
 
-   If you receive a warning about the public key not being available, you can use the following command instead:
+   If you receive a warning about the public key not being available, use the following command instead:
 
    ```bash
    curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
@@ -319,16 +322,16 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-ubuntu.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true#install), or [SQL Server 2022](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true#install) versions of this article.
+   > To install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-ubuntu.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true#install), or [SQL Server 2022](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true#install) versions of this article.
 
-1. Run the following commands to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
+1. Install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
    ```bash
    sudo apt-get update
    sudo apt-get install -y mssql-server
    ```
 
-1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. As a reminder, the following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
+1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. The following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf setup
@@ -337,7 +340,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Ubunt
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-1. Once the configuration is done, verify that the service is running:
+1. When the configuration is done, verify that the service is running:
 
    ```bash
    systemctl status mssql-server --no-pager
@@ -349,7 +352,9 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is run
 
 ### [Ubuntu 24.04](#tab/2505ubuntu2404)
 
-1. Download the public key, convert from ASCII to GPG format, and write it to the required location:
+**Applies to**: [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1 and later versions.
+
+1. Download the public key, convert it from ASCII to GPG format, and write it to the required location:
 
    ```bash
    curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
@@ -362,16 +367,16 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is run
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-ubuntu.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true#install), or [SQL Server 2022](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true#install) versions of this article.
+   > To install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-ubuntu.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true#install), or [SQL Server 2022](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true#install) versions of this article.
 
-1. Run the following commands to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
+1. Install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
    ```bash
    sudo apt-get update
    sudo apt-get install -y mssql-server
    ```
 
-1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. As a reminder, the following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
+1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. The following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf setup
@@ -380,7 +385,7 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is run
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-1. Once the configuration is done, verify that the service is running:
+1. When the configuration is done, verify that the service is running:
 
    ```bash
    systemctl status mssql-server --no-pager

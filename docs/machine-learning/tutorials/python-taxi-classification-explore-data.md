@@ -4,7 +4,7 @@ titleSuffix: SQL machine learning
 description: Explore sample data and generate some plots in preparation for using binary classification in Python with SQL machine learning.
 author: VanMSFT
 ms.author: vanto
-ms.date: 09/17/2021
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: tutorial
@@ -161,15 +161,16 @@ The stored procedure returns a serialized Python `figure` object as a stream of 
 
 4. From a [Python client](../python/setup-python-client-tools-sql.md), you can now connect to the SQL Server instance that generated the binary plot objects, and view the plots. 
 
-    To do this, run the following Python code, replacing the server name, database name, and credentials as appropriate (for Windows authentication, replace the `UID` and `PWD` parameters with `Trusted_Connection=True`). Make sure the Python version is the same on the client and the server. Also make sure that the Python libraries on your client (such as matplotlib) are the same or higher version relative to the libraries installed on the server. To view a list of installed packages and their versions, see [Get Python package information](../package-management/python-package-information.md#list-all-installed-python-packages).
+    To do this, run the following Python code, replacing the server name, database name, and credentials as appropriate (for Windows authentication, use `Trusted_Connection=Yes` instead of `UID` and `PWD`). Make sure the Python version is the same on the client and the server. Also make sure that the Python libraries on your client (such as matplotlib) are the same or higher version relative to the libraries installed on the server. To view a list of installed packages and their versions, see [Get Python package information](../package-management/python-package-information.md#list-all-installed-python-packages).
   
     ```python
     %matplotlib notebook
-    import pyodbc
     import pickle
     import os
-    cnxn = pyodbc.connect('DRIVER=SQL Server;SERVER={SERVER_NAME};DATABASE={DB_NAME};UID={USER_NAME};PWD={PASSWORD}')
-    cursor = cnxn.cursor()
+    from mssql_python import connect
+    
+    conn = connect('Server={SERVER_NAME};Database={DB_NAME};UID={USER_NAME};PWD={PASSWORD}')
+    cursor = conn.cursor()
     cursor.execute("EXECUTE [dbo].[PyPlotMatplotlib]")
     tables = cursor.fetchall()
     for i in range(0, len(tables)):
