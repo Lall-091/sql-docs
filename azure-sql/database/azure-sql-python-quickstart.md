@@ -38,7 +38,7 @@ This quickstart describes how to connect an application to a database in Azure S
 
 Create a new Python project using Visual Studio Code.
 
-1. Open Visual Studio Code and create a new folder for your project and change directory into it.
+1. Open Visual Studio Code, create a new folder for your project, and change to that directory.
 
     ```Cmd
     mkdir python-sql-azure
