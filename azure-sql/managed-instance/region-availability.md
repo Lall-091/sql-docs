@@ -148,6 +148,7 @@ Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Ins
 - Korea Central
 - Japan East
 - Japan West
+- New Zealand North
 
 #### [Europe, the Middle East, and Africa](#tab/emea)
 
@@ -157,7 +158,6 @@ Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Ins
 - Germany West Central
 - Italy North
 - Israel Central
-- New Zealand North
 - Norway East
 - Poland Central
 - Qatar Central
