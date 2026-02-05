@@ -3,7 +3,8 @@ title: "Create a push subscription"
 description: Learn how to create a push subscription in SQL Server by using SQL Server Management Studio, Transact-SQL, or Replication Management Objects.
 author: "MashaMSFT"
 ms.author: "mathoma"
-ms.date: 09/25/2024
+ms.date: 02/03/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: replication
 ms.topic: how-to
@@ -15,10 +16,10 @@ helpviewer_keywords:
   - "subscriptions [SQL Server replication], push"
   - "snapshot replication [SQL Server], subscribing"
   - "transactional replication, subscribing"
-monikerRange: "=azuresqldb-current||>=sql-server-2016"
+monikerRange: "=azuresqldb-mi-current||=azuresqldb-current||>=sql-server-2016"
 ---
 # Create a push subscription
-[!INCLUDE[sql-asdb](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE[sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
   This topic describes how to create a push subscription in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], [!INCLUDE[tsql](../../includes/tsql-md.md)], or Replication Management Objects (RMO). For information about creating a push subscription for a non- [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Subscriber, see [Create a subscription for a non-SQL Server Subscriber](../../relational-databases/replication/create-a-subscription-for-a-non-sql-server-subscriber.md).  
 
 [!INCLUDE[azure-sql-db-replication-supportability-note](../../includes/azure-sql-db-replication-supportability-note.md)]
@@ -241,19 +242,18 @@ You can create push subscriptions programmatically by using replication stored p
 ###  <a name="PShellExample"></a> Examples (RMO)  
  This example creates a new push subscription to a transactional publication. The Windows account credentials that you use to run the Distribution Agent job are passed at runtime.  
   
- [!code-cs[HowTo#rmo_CreateTranPushSub](../../relational-databases/replication/codesnippet/csharp/rmohowto/rmotestevelope.cs#rmo_createtranpushsub)]  
+ :::code language="csharp" source="../../relational-databases/replication/codesnippet/csharp/rmohowto/rmotestevelope.cs" range="rmo_createtranpushsub":::
+
+ :::code language="vb" source="../../relational-databases/replication/codesnippet/visualbasic/rmohowtovb/rmotestenv.vb" range="rmo_vb_createtranpushsub":::
   
- [!code-vb[HowTo#rmo_vb_CreateTranPushSub](../../relational-databases/replication/codesnippet/visualbasic/rmohowtovb/rmotestenv.vb#rmo_vb_createtranpushsub)]  
-  
- This example creates a new push subscription to a merge publication. The Windows account credentials that you use to run the Merge Agent job are passed at runtime.  
-  
- [!code-cs[HowTo#rmo_CreateMergePushSub](../../relational-databases/replication/codesnippet/csharp/rmohowto/rmotestevelope.cs#rmo_createmergepushsub)]  
-  
- [!code-vb[HowTo#rmo_vb_CreateMergePushSub](../../relational-databases/replication/codesnippet/visualbasic/rmohowtovb/rmotestenv.vb#rmo_vb_createmergepushsub)]  
-  
+ :::code language="csharp" source="../../relational-databases/replication/codesnippet/csharp/rmohowto/rmotestevelope.cs" range="rmo_createmergepushsub":::
+
+ :::code language="vb" source="../../relational-databases/replication/codesnippet/visualbasic/rmohowtovb/rmotestenv.vb" range="rmo_vb_createmergepushsub":::
+
 ## Related content
 
 - [View and modify push subscription properties](../../relational-databases/replication/view-and-modify-push-subscription-properties.md)
+- [Delete a push subscription](../../relational-databases/replication/delete-a-push-subscription.md)
 - [Replication security best practices](../../relational-databases/replication/security/replication-security-best-practices.md)
 - [Create a publication](../../relational-databases/replication/publish/create-a-publication.md)
 - [Replication management objects concepts](../../relational-databases/replication/concepts/replication-management-objects-concepts.md)
