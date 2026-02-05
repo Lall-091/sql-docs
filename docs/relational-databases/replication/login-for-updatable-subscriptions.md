@@ -3,7 +3,8 @@ title: "Login for Updatable Subscriptions"
 description: "Login for Updatable Subscriptions"
 author: "MashaMSFT"
 ms.author: "mathoma"
-ms.date: 09/25/2024
+ms.date: 02/03/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: replication
 ms.topic: ui-reference
@@ -11,9 +12,10 @@ ms.custom:
   - updatefrequency5
 f1_keywords:
   - "sql13.rep.newsubwizard.updatablesubscriptionslogin.f1"
+monikerRange: "=azuresqldb-mi-current||=azuresqldb-current||>=sql-server-2016"
 ---
 # Login for Updatable Subscriptions
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+ [!INCLUDE[sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
   For immediate update, if you selected **Replicate** on the **Updatable Subscriptions** page of this wizard, you must specify an account with the Subscriber under which connections to the Publisher are made. 
   
  Connections are used by the triggers that fire at the Subscriber, and propagate changes to the Publisher. This account is required even if you selected **Queue changes and commit when possible** on the **Updatable Subscriptions** page. The New Subscription Wizard by default configures queued updating with the ability to switch to immediate updating if required.  
@@ -43,6 +45,9 @@ f1_keywords:
     
  **Use a linked server or remote server that you have already defined.**  
  This option requires a linked server or remote server that you have already defined. For more information, see [Linked Servers &#40;Database Engine&#41;](../../relational-databases/linked-servers/linked-servers-database-engine.md) and [Remote Servers](../../database-engine/configure-windows/remote-servers.md). Ensure that the login used for the linked server or remote server has a strong password and has only the permissions described in this topic.  
+
+> [!NOTE]
+> If you're using non-default ports for your Subscriber and need to recreate a subscription, manually delete the linked server after deleting the subscription. For more information about this known issue, see [Delete a push subscription](../../relational-databases/replication/delete-a-push-subscription.md#known-issue-port).
   
 ## Related content
 

@@ -3,7 +3,8 @@ title: "Delete a Pull Subscription"
 description: "Delete a Pull Subscription"
 author: "MashaMSFT"
 ms.author: "mathoma"
-ms.date: 09/25/2024
+ms.date: 02/03/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: replication
 ms.topic: how-to
@@ -14,10 +15,10 @@ helpviewer_keywords:
   - "deleting subscriptions"
   - "pull subscriptions [SQL Server replication], deleting"
   - "subscriptions [SQL Server replication], pull"
-monikerRange: "=azuresqldb-mi-current||>=sql-server-2016"
+monikerRange: "=azuresqldb-mi-current||=azuresqldb-current||>=sql-server-2016"
 ---
 # Delete a Pull Subscription
-[!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
+[!INCLUDE[sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
   This topic describes how to delete a pull subscription in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], [!INCLUDE[tsql](../../includes/tsql-md.md)], or Replication Management Objects (RMO).  
   
  **In This Topic**  
@@ -31,7 +32,10 @@ monikerRange: "=azuresqldb-mi-current||>=sql-server-2016"
      [Replication Management Objects (RMO)](#RMOProcedure)  
   
 ##  <a name="SSMSProcedure"></a> Using SQL Server Management Studio  
- Delete a pull subscription at the Publisher (from the **Local Publications** folder in [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]) or the Subscriber (from the **Local Subscriptions** folder). Deleting a subscription does not remove objects or data from the subscription; they must be removed manually.  
+ Delete a pull subscription at the Publisher (from the **Local Publications** folder in [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]) or the Subscriber (from the **Local Subscriptions** folder). Deleting a subscription does not remove objects or data from the subscription; they must be removed manually.
+
+> [!NOTE]
+> For information about a known issue that affects push subscriptions when using non-default ports, see [Delete a push subscription](../../relational-databases/replication/delete-a-push-subscription.md#known-issue-port).  
   
 #### To delete a pull subscription at the Publisher  
   
@@ -121,16 +125,14 @@ monikerRange: "=azuresqldb-mi-current||>=sql-server-2016"
 ###  <a name="PShellExample"></a> Examples (RMO)  
  This example deletes a pull subscription to a transactional publication and removes the subscription registration at the Publisher.  
   
- [!code-cs[HowTo#rmo_DropTranPullSub](../../relational-databases/replication/codesnippet/csharp/rmohowto/rmotestevelope.cs#rmo_droptranpullsub)]  
+ :::code language="csharp" source="../../relational-databases/replication/codesnippet/csharp/rmohowto/rmotestevelope.cs" range="rmo_droptranpullsub":::
+
+ :::code language="vb" source="../../relational-databases/replication/codesnippet/visualbasic/rmohowtovb/rmotestenv.vb" range="rmo_vb_droptranpullsub":::
   
- [!code-vb[HowTo#rmo_vb_DropTranPullSub](../../relational-databases/replication/codesnippet/visualbasic/rmohowtovb/rmotestenv.vb#rmo_vb_droptranpullsub)]  
-  
- This example deletes a pull subscription to a merge publication and removes the subscription registration at the Publisher.  
-  
- [!code-cs[HowTo#rmo_DropMergePullSub](../../relational-databases/replication/codesnippet/csharp/rmohowto/rmotestevelope.cs#rmo_dropmergepullsub)]  
-  
- [!code-vb[HowTo#rmo_vb_DropMergePullSub](../../relational-databases/replication/codesnippet/visualbasic/rmohowtovb/rmotestenv.vb#rmo_vb_dropmergepullsub)]  
-  
+ :::code language="csharp" source="../../relational-databases/replication/codesnippet/csharp/rmohowto/rmotestevelope.cs" range="rmo_dropmergepullsub":::
+
+ :::code language="vb" source="../../relational-databases/replication/codesnippet/visualbasic/rmohowtovb/rmotestenv.vb" range="rmo_vb_dropmergepullsub":::
+
 ## Related content
 
 - [Subscribe to Publications](../../relational-databases/replication/subscribe-to-publications.md)

@@ -4,7 +4,7 @@ description: How to configure a SQL Server Always On availability group using cu
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: atsingh, amitkh-msft
-ms.date: 01/13/2026
+ms.date: 02/04/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: design-pattern
@@ -47,7 +47,7 @@ This article explains how to configure a SQL Server Always On availability group
 
 Create the AG. Set `CLUSTER_TYPE = EXTERNAL`. In addition, set each replica with `FAILOVER_MODE = EXTERNAL`. Depending on the environment's requirements, set `AVAILABILITY_MODE` to either `SYNCHRONOUS_COMMIT` or `ASYNCHRONOUS_COMMIT.`
 
-**Paxos protocol** plays a critical role in the internal communication and configuration consistency of AlwaysOn availability groups (AGs) in SQL Server, particularly in cluster-agnostic or external cluster configurations. Paxos maintains consistency of the AG configuration across replicas, prevent split-brain scenarios, and ensures only primary is responsible for configuration updates.
+**Paxos protocol** plays a critical role in the internal communication and configuration consistency of Always On availability groups (AGs) in SQL Server, particularly in cluster-agnostic or external cluster configurations. Paxos maintains consistency of the AG configuration across replicas, prevent split-brain scenarios, and ensures only primary is responsible for configuration updates.
 
 The following Transact-SQL script creates an AG named `ag1`. The script configures the AG replicas with `SEEDING_MODE = MANUAL`. This setting requires you to manually initialize secondary replicas with a copy of the database before adding them to the AG. Update the following script for your environment. Replace the `<node1>`, `<node2>`, and `<node3>` values with the names of the SQL Server instances that host the replicas. This AG also configures the configuration only replica `<node3>`. The configuration only replica maintains configuration information about the availability group in the `master` database but doesn't contain the user databases in the availability group. Replace the `<5022>` value with the port you set for the endpoint. Run the following Transact-SQL script on the primary SQL Server replica:
 

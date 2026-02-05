@@ -4,7 +4,7 @@ description: Modifies an existing table or view index (rowstore, columnstore, or
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf, randolphwest, dfurman
-ms.date: 01/06/2026
+ms.date: 02/05/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -764,9 +764,9 @@ Resumable index rebuild operations have the following limitations:
 
 - The `SORT_IN_TEMPDB = ON` option isn't supported for resumable index operations.
 - The DDL command with `RESUMABLE = ON` can't be executed inside an explicit transaction.
-- You cannot create a resumable index that contains:
-  - Computed or **timestamp**/**rowversion** columns as key columns.
-  - LOB column as an included column.
+- You cannot rebuild an index using a resumable index operation if the index contains:
+  - A computed or `timestamp` (`rowversion`) column as a key column.
+  - A computed or LOB column as an included column.
 - Resumable index operations aren't supported for:
   - The `ALTER INDEX REBUILD ALL` command
   - The `ALTER TABLE REBUILD` command

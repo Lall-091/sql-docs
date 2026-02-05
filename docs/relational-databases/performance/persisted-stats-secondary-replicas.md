@@ -4,7 +4,7 @@ description: Describes functions of auto created statistics on readable secondar
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, wiassaf
-ms.date: 01/26/2026
+ms.date: 02/04/2026
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
@@ -73,9 +73,10 @@ The following query can provide some visibility into the statistics on a table, 
 SELECT sch.[name] AS SchemaName,
        obj.[name] AS TableName,
        s.[name] AS StatsName,
-       CASE WHEN s.stats_id >= 2 AND s.auto_created = 1 THEN 'AUTO_STATS'
-            WHEN s.stats_id >= 2 AND s.auto_created = 0 THEN 'USER_CREATED_STATS'
-            ELSE 'INDEX_STATS'
+       CASE
+           WHEN s.stats_id >= 2 AND s.auto_created = 1 THEN 'AUTO_STATS'
+           WHEN s.stats_id >= 2 AND s.auto_created = 0 THEN 'USER_CREATED_STATS'
+           ELSE 'INDEX_STATS'
        END AS type,
        s.is_temporary,
        CASE WHEN s.replica_name IS NULL
@@ -103,5 +104,5 @@ The persisted statistics for readable secondary replicas feature is enabled by d
 ## Related content
 
 - [Query Store for readable secondary replicas](query-store-for-secondary-replicas.md)
-- [AlwaysOn: Making latest statistics available on Readable Secondary, Read-Only database and Database Snapshot](/archive/blogs/sqlserverstorageengine/alwayson-making-latest-statistics-available-on-readable-secondary-read-only-database-and-database-snapshot)
+- [Always On: Making latest statistics available on Readable Secondary, Read-Only database and Database Snapshot](/archive/blogs/sqlserverstorageengine/alwayson-making-latest-statistics-available-on-readable-secondary-read-only-database-and-database-snapshot)
 - [Statistics for Read-Only Access Databases](../../database-engine/availability-groups/windows/active-secondaries-readable-secondary-replicas-always-on-availability-groups.md#Read-OnlyStats)

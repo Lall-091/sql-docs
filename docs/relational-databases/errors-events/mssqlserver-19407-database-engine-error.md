@@ -4,7 +4,7 @@ description: "MSSQLSERVER_19407"
 author: pijocoder
 ms.author: jopilov
 ms.reviewer: randolphwest
-ms.date: 04/03/2024
+ms.date: 02/04/2026
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 ## Details
 
 | Attribute | Value |
-| :--- | :--- |
+| --- | --- |
 | Product Name | SQL Server |
 | Event ID | 19407 |
 | Event Source | MSSQLSERVER |
@@ -30,7 +30,7 @@ helpviewer_keywords:
 
 Error 19407 is raised in the SQL Server error log when the communication between SQL Server and the Windows Server Failover cluster is lost. Typically a corrective action occurs - a failover to another Always On node.
 
-A lease is a time-based communication mechanism that takes place between the SQL Server and the Windows Server Failover Cluster (WSFC) process, specifically the RHS.EXE process. The two processes communicate with each other periodically to ensure the other process is running and responding. This communication takes place using Windows [Event objects](/windows/win32/sync/event-objects) and ensures that a failover of the AG resource doesn't occur without the knowledge of the WSFC. If one of the processes doesn't respond to the lease communication based on a predefined lease period, a lease timeout occurs. For detailed information, see [Mechanics and guidelines of lease, cluster, and health check timeouts for Always On availability groups](../../database-engine/availability-groups/windows/availability-group-lease-healthcheck-timeout.md). Also see [How It Works: SQL Server AlwaysOn Lease Timeout](https://techcommunity.microsoft.com/t5/sql-server-support-blog/how-it-works-sql-server-alwayson-lease-timeout/ba-p/317268)
+A lease is a time-based communication mechanism that takes place between the SQL Server and the Windows Server Failover Cluster (WSFC) process, specifically the RHS.EXE process. The two processes communicate with each other periodically to ensure the other process is running and responding. This communication takes place using Windows [Event objects](/windows/win32/sync/event-objects) and ensures that a failover of the AG resource doesn't occur without the knowledge of the WSFC. If one of the processes doesn't respond to the lease communication based on a predefined lease period, a lease timeout occurs. For detailed information, see [Mechanics and guidelines of lease, cluster, and health check timeouts for Always On availability groups](../../database-engine/availability-groups/windows/availability-group-lease-healthcheck-timeout.md). Also see [How It Works: SQL Server Always On Lease Timeout](https://techcommunity.microsoft.com/blog/sqlserversupport/how-it-works-sql-server-alwayson-lease-timeout/317268).
 
 ### Causes
 
@@ -59,7 +59,7 @@ Since Windows Events are light-weight synchronization objects, there's relativel
 
 1. Go to the **Performance** tab and see if CPUs are close to or at 100% utilization.
 
-1. Go to the **Processes** tab and sort processes by the CPU column in descending order, by selecting on the **CPU** column.
+1. Go to the **Processes** tab and sort processes by the CPU column in descending order, by selecting the **CPU** column.
 
 1. Identify the process that uses most CPU, and work on understanding and resolving the reason for it causing the high CPU.
 
@@ -211,7 +211,7 @@ For more information, see [Use the Sqldumper.exe tool to generate a dump file in
 
 ### Check virtual machine (VM) configuration for overprovisioning
 
-If you're using a virtual machine, ensure that you aren't overprovisioning or overcommitting CPUs and memory resources. Overprovisioning CPUs or memory might cause the guest OS to run out of resources and show the same problems described earlier - high CPU and low memory. Frequently if you're viewing things inside the guest OS, explaining why you're running out of computing resources is difficult, because things are happening outside of the virtual machine itself. Overcommitting resources can cause temporary halts of processing, which are likely to cause lease timeouts. For more information on how to address overcommitting, see [Troubleshooting ESX/ESXi virtual machine performance issues (2001003)](https://kb.vmware.com/s/article/2001003) and [Virtualization – Overcommitting memory and how to detect it within the VM](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/virtualization-8211-overcommitting-memory-and-how-to-detect-it/ba-p/367623).
+If you're using a virtual machine, ensure that you aren't overprovisioning or overcommitting CPUs and memory resources. Overprovisioning CPUs or memory might cause the guest OS to run out of resources and show the same problems described earlier - high CPU and low memory. Frequently if you're viewing things inside the guest OS, explaining why you're running out of computing resources is difficult, because things are happening outside of the virtual machine itself. Overcommitting resources can cause temporary halts of processing, which are likely to cause lease timeouts. For more information on how to address overcommitting, see [Troubleshooting ESX/ESXi virtual machine performance issues (2001003)](https://kb.vmware.com/s/article/2001003) and [Virtualization - Overcommitting memory and how to detect it within the VM](https://techcommunity.microsoft.com/blog/sapapplications/virtualization-8211-overcommitting-memory-and-how-to-detect-it-within-the-vm/367623).
 
 ### Check for virtual machine (VM) migration or backup
 
