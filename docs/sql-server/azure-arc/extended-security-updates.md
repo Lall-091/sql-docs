@@ -240,11 +240,15 @@ To properly manage this transition, use the following sequence of best practices
 
 <a id="vl-sku-transition"></a>
 
-## Manage the transition from an ESU license purchased through Volume Licensing to an ESU subscription
+## Transition from a Volume Licensing ESU license to an ESU subscription
 
-When you enable an ESU subscription, bill-back charges start from the beginning of the current ESU year. You must have purchased the previous years to proceed. In that scenario, the transition happens automatically.
+When you enable an ESU subscription, Azure billing begins at the start of the current ESU year. To transition without additional action, you must already have ESU coverage for all prior ESU years through Volume Licensing. When this condition is met, the transition occurs automatically.
 
-If you want to enable an ESU subscription during an ESU year for which you have already purchased an ESU license through Volume Licensing, you must take additional steps to ensure that the bill-back is adjusted accordingly. Before activating the ESU subscription in this case, open a support ticket using the subcategory `Issues with SQL Server Extended Security Updates`.
+If you do not have ESU coverage for previous years through Volume Licensing, you must obtain it to remain compliant. If instead you want to pay for prior ESU years through Azure billing, additional configuration is required.
+
+For guidance on enabling Azure-based billing for prior ESU years, contact your Microsoft account team or open a support request using the following path:
+
+**Azure → SQL Server enabled by Azure Arc → Licensing, Billing, or Disconnected Registration Issues → SQL Server (ESU versions only)**
 
 <a id="esu-usage-metering"></a>
 
