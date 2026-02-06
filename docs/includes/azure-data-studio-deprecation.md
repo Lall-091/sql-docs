@@ -1,12 +1,12 @@
 ---
 title: Deprecate Azure Data Studio
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: randolphwest, maghan
-ms.date: 10/10/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: tsiddique, roblescarlos
+ms.date: 02/06/2026
 ms.service: azure-data-studio
 ms.topic: include
 ---
 
 > [!IMPORTANT]  
-> Azure Data Studio is [retiring on February 28, 2026](/lifecycle/definitions#retirement). We recommend that you use [Visual Studio Code](https://code.visualstudio.com/). For more information about migrating to Visual Studio Code, visit [What's happening to Azure Data Studio?](/azure-data-studio/whats-happening-azure-data-studio)
+> Azure Data Studio [is retired](/lifecycle/definitions#retirement) as of **February 28, 2026**. Migrate to [Visual Studio Code](https://code.visualstudio.com/). For more information, see [What's happening with Azure Data Studio](../tools/whats-happening-azure-data-studio.md).

@@ -8167,8 +8167,8 @@ items:
   items:
   - name: Overview
     href: tools/overview-sql-tools.md
-  - name: SSMS >
-    href: /ssms/ssms-21/release-notes-21
+  - name: What's happening with Azure Data Studio
+    href: tools/whats-happening-azure-data-studio.md
   - name: Command prompt utilities
     href: tools/command-prompt-utility-reference-database-engine.md
     items:
