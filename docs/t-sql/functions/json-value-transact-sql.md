@@ -4,7 +4,7 @@ description: JSON_VALUE extracts a scalar value from a JSON string.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, umajay, randolphwest
-ms.date: 10/27/2025
+ms.date: 02/05/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -25,7 +25,7 @@ monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 |
 
 [!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
-The `JSON_VALUE` syntax extracts a scalar value from a JSON string.
+Use the `JSON_VALUE` syntax to extract a scalar value from a JSON string.
 
 To extract an object or an array from a JSON string instead of a scalar value, see [JSON_QUERY](json-query-transact-sql.md). For info about the differences between `JSON_VALUE` and `JSON_QUERY`, see [Compare JSON_VALUE and JSON_QUERY](../../relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server.md#JSONCompare).
 
@@ -33,21 +33,40 @@ To extract an object or an array from a JSON string instead of a scalar value, s
 
 ## Syntax
 
+::: moniker range="<=sql-server-linux-ver16 || <=sql-server-ver16"
+
+Syntax for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions.
+
+```syntaxsql
+JSON_VALUE ( expression , path )
+```
+
+::: moniker-end
+
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+Syntax for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
+
 ```syntaxsql
 JSON_VALUE ( expression , path [ RETURNING data_type ] )
 ```
+
+> [!NOTE]  
+> In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, [RETURNING isn't included](?view=sql-server-ver16&preserve-view=true#syntax).
+
+::: moniker-end
 
 ## Arguments
 
 #### *expression*
 
-An expression. Typically the name of a variable or a column that contains JSON text.
+An expression that's typically the name of a variable or a column containing JSON text.
 
 If `JSON_VALUE` finds JSON that isn't valid in *expression* before it finds the value identified by *path*, the function returns an error. If `JSON_VALUE` doesn't find the value identified by *path*, it scans the entire text and returns an error if it finds JSON that isn't valid anywhere in *expression*.
 
 #### *path*
 
-A JSON path that specifies the property to extract. For more info, see [JSON Path Expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md).
+`A JSON` path that specifies the property to extract. For more info, see [JSON path expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md).
 
 In [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], you can provide a variable as the value of *path*.
 
@@ -55,26 +74,28 @@ If the format of *path* isn't valid, `JSON_VALUE` returns an error.
 
 #### *data_type*
 
-Return the value specified in the SQL type. Only supported if the input is a JSON type. The supported SQL types are: **tinyint**, **smallint**, **int**, **bigint**, **decimal**, **numeric**, **float**, **real**, **char**, **varchar**, **varchar(max)**, **nchar**, **nvarchar**, **nvarchar(max)**, **date**, **time**, **datetime2**, and **datetimeoffset**.
+The data type that you want to use for the return value. This type is only supported if the input is a JSON type. The supported data types are: **tinyint**, **smallint**, **int**, **bigint**, **decimal**, **numeric**, **float**, **real**, **char**, **varchar**, **varchar(max)**, **nchar**, **nvarchar**, **nvarchar(max)**, **date**, **time**, **datetime2**, and **datetimeoffset**.
 
 ## Return value
 
-If `RETURNING` isn't included:
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
 
-- Returns a single text value of type nvarchar(4000). The collation of the returned value is the same as the collation of the input expression.
+If you don't include `RETURNING`:
 
-- If the value is greater than 4000 characters:
+- Returns a single text value of type **nvarchar(4000)**. The collation of the returned value matches the collation of the input expression.
+
+- If the value is greater than 4,000 characters:
 
   - In lax mode, `JSON_VALUE` returns `NULL`.
   - In strict mode, `JSON_VALUE` returns an error.
 
-  If you have to return scalar values greater than 4000 characters, use `OPENJSON` instead of `JSON_VALUE`. For more info, see [OPENJSON](openjson-transact-sql.md).
+  If you need to return scalar values greater than 4,000 characters, use `OPENJSON` instead of `JSON_VALUE`. For more information, see [OPENJSON](openjson-transact-sql.md).
 
-If `RETURNING` is included:
+If you include `RETURNING`:
 
-Returns the value specified in the SQL type. The supported SQL types are: **tinyint**, **smallint**, **int**, **bigint**, **decimal**, **numeric**, **float**, **real**, **char**, **varchar**, **varchar(max)**, **nchar**, **nvarchar**, **nvarchar(max)**, **date**, **time**, **datetime2**, and **datetimeoffset**.
+Returns the value specified in *data_type*. The supported data types are: **tinyint**, **smallint**, **int**, **bigint**, **decimal**, **numeric**, **float**, **real**, **char**, **varchar**, **varchar(max)**, **nchar**, **nvarchar**, **nvarchar(max)**, **date**, **time**, **datetime2**, and **datetimeoffset**.
 
-JSON functions work the same whether the JSON document is stored in **varchar**, **nvarchar**, or the native **json** data type.
+JSON functions work the same way whether the JSON document is stored in **varchar**, **nvarchar**, or the native **json** data type.
 
 ## Remarks
 
@@ -99,7 +120,7 @@ SET @jsonInfo = N'{
  }';
 ```
 
-The following table compares the behavior of `JSON_VALUE` in lax mode and in strict mode. For more info about the optional path mode specification (lax or strict), see [JSON Path Expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md).
+The following table compares the behavior of `JSON_VALUE` in lax mode and in strict mode. For more info about the optional path mode specification (lax or strict), see [JSON path expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md).
 
 | Path | Return value in lax mode | Return value in strict mode | More info |
 | --- | --- | --- | --- |
@@ -118,7 +139,7 @@ The following table compares the behavior of `JSON_VALUE` in lax mode and in str
 The following example uses the values of the JSON properties `town` and `state` in query results. Since `JSON_VALUE` preserves the collation of the source, the sort order of the results depends on the collation of the `jsonInfo` column.
 
 > [!NOTE]  
-> (This example assumes that a table named `Person.Person` contains a `jsonInfo` column of JSON text, and that this column has the structure shown previously in the discussion of lax mode and strict mode. In the `AdventureWorks` sample database, the `Person` table doesn't in fact contain a `jsonInfo` column.)
+> This example assumes that a table named `Person.Person` contains a `jsonInfo` column of JSON text, and that this column has the structure shown previously in the discussion of lax mode and strict mode. In the `AdventureWorks` sample database, the `Person` table doesn't contain a `jsonInfo` column.
 
 ```sql
 SELECT FirstName,
@@ -175,5 +196,5 @@ date_value
 
 ## Related content
 
-- [JSON Path Expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md)
+- [JSON path expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md)
 - [JSON data in SQL Server](../../relational-databases/json/json-data-sql-server.md)
