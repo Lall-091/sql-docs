@@ -24,7 +24,7 @@ helpviewer_keywords:
 | Event Source | MSSQLSERVER |
 | Component | SQLEngine |
 | Symbolic Name | HADR_PRIMARYNOTACTIVE |
-| Message Text | The connection to the primary replica isn't active. The command can't be processed. |
+| Message Text | The connection to the primary replica is not active. The command cannot be processed. |
 
 ## Explanation
 
