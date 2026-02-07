@@ -4,7 +4,7 @@ description: "Learn about SQL Server Data Tools (SSDT). See how to install this 
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: randolphwest
-ms.date: 12/03/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: install-set-up-deploy
@@ -149,7 +149,7 @@ To download and install SSDT for Visual Studio 2017, or an older version of SSDT
 
 - [SSDT Team Blog](/archive/blogs/ssdt/)
 - [DACFx API Reference](/dotnet/api/microsoft.sqlserver.dac)
-- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension)
+- [SQL Database Projects extension](../tools/visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
 - [What are SQL database projects?](../tools/sql-database-projects/sql-database-projects.md)
 - [SSIS How to Create an ETL Package](../integration-services/ssis-how-to-create-an-etl-package.md)
 - [Analysis Services tutorials](/analysis-services/analysis-services-tutorials-ssas)

@@ -4,7 +4,7 @@ description: Create database syntax for SQL Server and all SQL Database Engine p
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, dnethi, randolphwest
-ms.date: 10/01/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -1479,7 +1479,7 @@ CREATE DATABASE MyLedgerDB
 In Azure Synapse, this statement can be used with an Azure SQL Database server to create a dedicated SQL pool. With this statement, you specify the database name, collation, maximum size, edition, and service objective.
 
 - `CREATE DATABASE` is supported for standalone dedicated SQL pools (formerly SQL DW) using Gen2 service levels.
-- `CREATE DATABASE` isn't supported for dedicated SQL pools in an Azure Synapse Analytics workspace. Instead, [use the Azure portal](/azure-data-studio/quickstart-sql-dw).
+- `CREATE DATABASE` isn't supported for dedicated SQL pools in an Azure Synapse Analytics workspace. Instead, use the Azure portal.
 - `CREATE DATABASE` is supported for serverless SQL pools in Azure Synapse Analytics.
 
 ## Syntax
