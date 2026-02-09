@@ -220,8 +220,8 @@ If you installed SqlPackage with a .zip or other archive, then delete the files.
 
 Installing the dotnet tool version of SqlPackage is recommended for automated environments, such as CI/CD pipelines, due to its ease of installation and update. However, the file download option can be used in automated environments as well.
 
-    ```bash
-       dotnet tool install -g microsoft.sqlpackage
+   ```bash
+   dotnet tool install -g microsoft.sqlpackage
    ```
 
 
