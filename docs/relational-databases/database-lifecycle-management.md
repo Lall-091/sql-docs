@@ -4,7 +4,7 @@ description: Learn how to use database lifecycle management in SQL Server to man
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 03/11/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: supportability
 ms.topic: concept-article
@@ -31,7 +31,7 @@ helpviewer_keywords:
   - "Database connectivity"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# Database Lifecycle Management
+# Database lifecycle management
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -45,8 +45,8 @@ For tools, tutorials, and more information, see the following articles:
 
 - [SQL database projects](../tools/sql-database-projects/sql-database-projects.md)
 - [Install SQL Server Data Tools (SSDT) for Visual Studio](../ssdt/download-sql-server-data-tools-ssdt.md)
-- [Azure SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension)
-- [Getting started with the SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension-getting-started)
+- [SQL Database Projects extension](../tools/visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
+- [Get started with the SQL Database Projects extension](../tools/visual-studio-code-extensions/sql-database-projects/getting-started-sql-database-projects-extension.md)
 
 **SqlPackage**
 
@@ -70,4 +70,3 @@ For tools, tutorials, and more information, see the following articles:
 ## Related content
 
 - [Microsoft Modern Lifecycle Policy](/lifecycle/policies/modern)
-

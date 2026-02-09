@@ -4,7 +4,7 @@ description: SQL query and management tools for SQL Server, Azure SQL (Azure SQL
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: erinstellato, iqrashaikh, mbarickman, drskwier, roblescarlos
-ms.date: 10/28/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: overview
