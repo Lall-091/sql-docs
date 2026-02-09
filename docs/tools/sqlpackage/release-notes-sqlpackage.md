@@ -4,7 +4,7 @@ description: Release notes for Microsoft SqlPackage.
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: llali, randolphwest
-ms.date: 10/14/2025
+ms.date: 2/10/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: release-notes
@@ -18,6 +18,46 @@ ms.custom:
 **[Download the latest version](sqlpackage-download.md)**
 
 This article lists the features and fixes delivered by the released versions of SqlPackage.
+
+## 170.3.xx SqlPackage
+
+**Release date:** February 10, 2026
+
+```bash
+dotnet tool install -g microsoft.sqlpackage --version 170.3.xx
+```
+
+| Platform | Download |
+| --- | --- |
+| Windows .NET 10 | [.zip file](https://go.microsoft.com/fwlink/?linkid=) |
+| Windows | [.msi file](https://go.microsoft.com/fwlink/?linkid=) |
+| macOS .NET 10 | [.zip file](https://go.microsoft.com/fwlink/?linkid=) |
+| Linux .NET 10 | [.zip file](https://go.microsoft.com/fwlink/?linkid=) |
+
+### Features
+
+| Feature | Details |
+| --- | --- |
+| Deployment | Adds support for database options `ACCELERATED_DATABASE_RECOVERY` and `OPTIMIZED_LOCKING`. |
+| Permissions | Enhances permission publishing to include `EXECUTE ON EXTERNAL MODEL` permissions. |
+| Platform | Adds .NET 10 support to the DacFx library and the SqlPackage CLI. The SqlPackage `dotnet tool` is available for both .NET 8 and .NET 10. |
+| Platform | Adds .NET Standard 2.0 support to the DacFx library. |
+| Platform | References [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.1.3) v6.1.3. |
+| ScriptDom | Updated ScriptDom to version 170.157.0. |
+| Vector | Extends vector column support to allow changing the base type. |
+
+### Fixes
+
+| Feature | Details |
+| --- | --- |
+| SQL projects | Fixed an issue where building a SQL project with an inline clustered columnstore index definition on a table would fail with a syntax error. [GitHub issue](https://github.com/microsoft/DacFx/issues/719) |
+| SQL projects | Fixed an issue where a clustered columnstore index on a table with `NVARCHAR(MAX)` or other LOB-type columns would incorrectly report an error that columnstore indexes aren't supported with vector columns. [GitHub issue](https://github.com/microsoft/DacFx/issues/713) |
+| Deployment | Fixed a bug with deploying to SQL database in Microsoft Fabric when the target database includes a security policy. |
+| Export | Fixed an issue where exported `.dacpac` files would fail XSD schema validation due to boolean attribute values using `True`/`False` instead of lowercase `true`/`false`. [GitHub issue](https://github.com/microsoft/DacFx/issues/604) |
+| Import | Fixed an issue where importing a table with special characters in the name (such as `/`, `"`, or `$`) would silently fail to import data without warning the user. [GitHub issue](https://github.com/microsoft/DacFx/issues/637) |
+| Ledger | Fixed an issue where a ledger table with a computed column would cause a `NullReferenceException` during model validation and build. [GitHub issue](https://github.com/microsoft/DacFx/issues/735) |
+| Vector | Fixed an issue where procedures using `VECTOR_SEARCH` would report a validation warning that the column reference could not be resolved. [GitHub issue](https://github.com/microsoft/DacFx/issues/706) |
+
 
 ## 170.2.70 SqlPackage
 
