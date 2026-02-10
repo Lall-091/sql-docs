@@ -4,7 +4,7 @@ description: The bulk copy program (bcp) utility bulk copies data between an ins
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: davidengel, markingmyname
-ms.date: 12/16/2025
+ms.date: 02/10/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: how-to
@@ -138,6 +138,7 @@ bcp [database_name.] schema.{table_name | view_name | "query"}
     [-w]
     [-x]
     [-Y[s|m|o]]
+    [-z]
 ```
 
 ## Considerations and limitations
@@ -201,8 +202,10 @@ The following table lists the command-line options available in **bcp**, and whi
 | [**-w**](#-w) | Yes | Yes |
 | [**-x**](#-x) | Yes | No |
 | [**-Y\[s\|m\|o\]**](#-ysmo) | Yes <sup>1</sup> | Yes |
+| [**-z**](#-z) | No | Yes <sup>2</sup> |
 
-Yes<sup>1</sup> [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions.
+<sup>1</sup> [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions.  
+<sup>2</sup> ODBC 18.6.1.1 and later versions.
 
 #### *database_name*
 
@@ -721,6 +724,12 @@ This option is used with the `format` and `-f` *format_file* options, and genera
 
 Specifies whether connections use TLS encryption over the network. `-Y` can be `o` (for `optional`), `m` (for `mandatory`, the default), or `s` (for `strict`). If you don't include `-Y`, `-Ym` (for `mandatory`) is the default.
 
+#### -z
+
+**Applies to**: **bcp** (ODBC), Linux and macOS only. Windows isn't supported.
+
+Enables **vector** data type support in the **bcp** utility. This is currently disabled by default. When disabled, vector data is imported/exported as JSON float array strings. When enabled, and when connecting to [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions, vector data is imported/exported in native **vector** binary.
+
 ## Remarks
 
 - The **bcp** 13.0 client is installed when you install [!INCLUDE [sssql19-md.md](../includes/sssql19-md.md)] tools. If tools are installed for multiple versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)], depending on the order of values of the `PATH` environment variable, you might be using the earlier **bcp** client instead of the **bcp** 13.0 client. This environment variable defines the set of directories used by Windows to search for executable files. To discover which version you're using, run the `bcp -v` command at the Windows Command Prompt. For information about how to set the command path in the `PATH` environment variable, see [Environment Variables](/windows/win32/shell/user-environment-variables) or search for Environment Variables in Windows Help.
@@ -889,11 +898,11 @@ The following examples illustrate the `out` option on the `WideWorldImporters.Wa
 
   This example creates a data file named `StockItemTransactions_native.bcp` and copies the table data into it using the *native* format. The example also: specifies the maximum number of syntax errors, an error file, and an output file.
 
-    At a command prompt, enter the following command:
+  At a command prompt, enter the following command:
 
-    ```cmd
-    bcp WideWorldImporters.Warehouse.StockItemTransactions OUT D:\bcp\StockItemTransactions_native.bcp -m 1 -n -e D:\bcp\Error_out.log -o D:\bcp\Output_out.log -S -T
-    ```
+  ```cmd
+  bcp WideWorldImporters.Warehouse.StockItemTransactions OUT D:\bcp\StockItemTransactions_native.bcp -m 1 -n -e D:\bcp\Error_out.log -o D:\bcp\Output_out.log -S -T
+  ```
 
 Review `Error_out.log` and `Output_out.log`. `Error_out.log` should be blank. Compare the file sizes between `StockItemTransactions_character.bcp` and `StockItemTransactions_native.bcp`.
 

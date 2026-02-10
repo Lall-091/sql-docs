@@ -3038,6 +3038,8 @@
       href: ../connect/odbc/using-transparent-network-ip-resolution.md
     - name: Data Classification
       href: ../connect/odbc/data-classification.md
+    - name: Vector data type
+      href: ../connect/odbc/vector-data-type.md
     - name: Using XA Transactions
       href: ../connect/odbc/use-xa-with-dtc.md
     - name: Bug Fixes

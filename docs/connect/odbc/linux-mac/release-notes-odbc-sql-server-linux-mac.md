@@ -3,11 +3,13 @@ title: Release Notes ODBC Driver for SQL Server on Linux and macOS
 description: "Learn what's new and changed in released versions of the Microsoft ODBC Driver for SQL Server."
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/17/2025
+ms.reviewer: randolphwest
+ms.date: 02/10/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.custom: linux-related-content
 ms.topic: release-notes
+ms.custom:
+  - linux-related-content
 ---
 # Release Notes for the Microsoft ODBC Driver for SQL Server on Linux and macOS
 
@@ -32,7 +34,7 @@ GeneMi.  2019/04/03.
 
 | New item | Details |
 | :------- | :------ |
-| New data type | Added support for new Vector data type (float32). |
+| New data type | Added support for new Vector data type (float32). See [Vector data type (ODBC)](../vector-data-type.md) for usage and examples. |
 | ConcatNullYieldsNull property | Added support for ConcatNullYieldsNull as a connection string property. |
 | New distributions supported. | Azure Linux 3.0 ARM, Debian Linux 13, RedHat Linux 10, Ubuntu Linux 25.10 |
 | Azure Linux License | Changed License Acceptance Process for Azure Linux. |
