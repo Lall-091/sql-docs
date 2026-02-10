@@ -4,7 +4,7 @@ description: Release notes for Microsoft SqlPackage.
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: llali, randolphwest
-ms.date: 10/14/2025
+ms.date: 2/10/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: release-notes
@@ -18,6 +18,46 @@ ms.custom:
 **[Download the latest version](sqlpackage-download.md)**
 
 This article lists the features and fixes delivered by the released versions of SqlPackage.
+
+## 170.3.93 SqlPackage
+
+**Release date:** February 10, 2026
+
+```bash
+dotnet tool install -g microsoft.sqlpackage --version 170.3.93
+```
+
+| Platform | Download |
+| --- | --- |
+| Windows .NET 10 | [.zip file](https://go.microsoft.com/fwlink/?linkid=2350827) |
+| Windows | [.msi file](https://go.microsoft.com/fwlink/?linkid=2350826) |
+| macOS .NET 10 | [.zip file](https://go.microsoft.com/fwlink/?linkid=2350828) |
+| Linux .NET 10 | [.zip file](https://go.microsoft.com/fwlink/?linkid=2350619) |
+
+### Features
+
+| Feature | Details |
+| --- | --- |
+| Deployment | Adds support for database options `ACCELERATED_DATABASE_RECOVERY` and `OPTIMIZED_LOCKING`. |
+| Permissions | Enhances permission publishing to include `EXECUTE ON EXTERNAL MODEL` permissions. |
+| Platform | Adds .NET 10 support to the DacFx library and the SqlPackage CLI. The SqlPackage `dotnet tool` is available for both .NET 8 and .NET 10. |
+| Platform | Adds .NET Standard 2.0 support to the DacFx library. |
+| Platform | References [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.1.3) v6.1.3. |
+| ScriptDom | Updated ScriptDom to version 170.157.0. |
+| Vector | Extends vector column support to allow changing the base type. |
+
+### Fixes
+
+| Feature | Details |
+| --- | --- |
+| Deployment | Fixed a bug with deploying to SQL database in Microsoft Fabric when the target database includes a security policy. |
+| Export | Fixed an issue where exported `.dacpac` files would fail XSD schema validation due to boolean attribute values using `True`/`False` instead of lowercase `true`/`false`. [GitHub issue](https://github.com/microsoft/DacFx/issues/604) |
+| Import | Fixed an issue where importing a table with special characters in the name (such as `/`, `"`, or `$`) would silently fail to import data without warning the user. [GitHub issue](https://github.com/microsoft/DacFx/issues/637) |
+| Ledger | Fixed an issue where a ledger table with a computed column would cause a `NullReferenceException` during model validation and build. [GitHub issue](https://github.com/microsoft/DacFx/issues/735) |
+| SQL projects | Fixed an issue where building a SQL project with an inline clustered columnstore index definition on a table would fail with a syntax error. [GitHub issue](https://github.com/microsoft/DacFx/issues/719) |
+| SQL projects | Fixed an issue where a clustered columnstore index on a table with `NVARCHAR(MAX)` or other LOB-type columns would incorrectly report an error that columnstore indexes aren't supported with vector columns. [GitHub issue](https://github.com/microsoft/DacFx/issues/713) |
+| Vector | Fixed an issue where procedures using `VECTOR_SEARCH` would report a validation warning that the column reference couldn't be resolved. [GitHub issue](https://github.com/microsoft/DacFx/issues/706) |
+
 
 ## 170.2.70 SqlPackage
 
@@ -57,7 +97,7 @@ dotnet tool install -g microsoft.sqlpackage --version 170.2.70
 | External models | Fixed an issue where external model dependencies on a database-scoped credential would cause project build to fail. |
 | JSON | Fixed a bug when comparing JSON indexes with the default JSON path. |
 | Platform | References [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.1.7) v5.1.7. |
-| XML | Fixed an issue where the XML query path ([xQuery](../../xquery/xquery-language-reference-sql-server.md)) was not treated as case-sensitive during model comparison. Even on case-insensitive databases, the xQuery path is case-sensitive. [GitHub issue](https://github.com/microsoft/DacFx/issues/231) |
+| XML | Fixed an issue where the XML query path ([xQuery](../../xquery/xquery-language-reference-sql-server.md)) wasn't treated as case-sensitive during model comparison. Even on case-insensitive databases, the xQuery path is case-sensitive. [GitHub issue](https://github.com/microsoft/DacFx/issues/231) |
 
 ## 170.1.61 SqlPackage
 
@@ -92,10 +132,10 @@ dotnet tool install -g microsoft.sqlpackage --version 170.1.61
 
 |Feature|Details|
 |:---|:---|
-| Always Encrypted | Fixed an issue where the `Interactive` option for the `/AzureKeyVaultAuthMethod` publish parameter was not working correctly. |
-| Deployment | Fixed an issue where the `DbScopedConfigMaxDOPSecondary` [property](../sql-database-projects/concepts/project-properties.md) was not being set correctly in the deployment. [GitHub issue](https://github.com/microsoft/DacFx/issues/597) |
+| Always Encrypted | Fixed an issue where the `Interactive` option for the `/AzureKeyVaultAuthMethod` publish parameter wasn't working correctly. |
+| Deployment | Fixed an issue where the `DbScopedConfigMaxDOPSecondary` [property](../sql-database-projects/concepts/project-properties.md) wasn't being set correctly in the deployment. [GitHub issue](https://github.com/microsoft/DacFx/issues/597) |
 | Deployment | Fixed an issue where publishing tables containing foreign key constraints would fail with syntax not supported in Data warehouse in Microsoft Fabric. |
-| Deployment | Fixed an issue where server objects were included when deploying to SQL database in Fabric. Server objects are not supported in SQL database in Fabric. [GitHub issue](https://github.com/microsoft/DacFx/issues/646) |
+| Deployment | Fixed an issue where server objects were included when deploying to SQL database in Fabric. Server objects aren't supported in SQL database in Fabric. [GitHub issue](https://github.com/microsoft/DacFx/issues/646) |
 | Deployment | Fixed an issue where clustered columnstore indexes were being created by first creating a clustered index, causing the deployment to incur additional overhead and time. [GitHub issue](https://github.com/microsoft/DacFx/issues/264) |
 | Extract | Fixed an issue where extracting a database from SQL database in Fabric would result in unusable user definition scripts. [GitHub issue](https://github.com/microsoft/DacFx/issues/631) |
 
@@ -174,7 +214,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.5.57
 |:---|:---|
 | Deployment | Fixes an issue where a deployment will fail if there's a stored procedure or function referencing memory-optimized system-versioned table and the a database is missing a memory-optimized system-versioned table due to being created by DBCC CLONEDATABASE. [GitHub](https://github.com/microsoft/DacFx/issues/417) |
 | Deployment | Fixes an issue where deployments to Synapse Serverless with role membership changes would fail. |
-| Deployment | Fixes an issue where deployments with a master key would fail if the password on the master key was not set. [DevCom](https://developercommunity.visualstudio.com/t/Error-when-publishing-SQL-DB-locally:-T/10732457) |
+| Deployment | Fixes an issue where deployments with a master key would fail if the password on the master key wasn't set. [DevCom](https://developercommunity.visualstudio.com/t/Error-when-publishing-SQL-DB-locally:-T/10732457) |
 | Import | Fixes an issue with clustered columnstore indexes with nvarchar(max), varchar(max), and varbinary(max) types fail to import. [GitHub](https://github.com/microsoft/DacFx/issues/475) |
 | Import | Fixes an issue where importing a database with DDL triggers fails because the triggers are enabled before the data import is completed. |
 
@@ -211,7 +251,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.4.92
 | Deployment | Fixes an issue where the deployment script generated for Azure SQL Database would include an ignored statement to turn off Query Store regardless of SQL project settings. |
 | Export | Fixes an issue where a bacpac export would fail during serialization but the trace log would not contain the failure message. [GitHub issue](https://github.com/microsoft/DacFx/issues/310) |
 | Extract | Fixes an issue where the extract operation would reorder the indexes on a table when writing the table definition out to `.sql` files. |
-| JSON | Fixes an issue where the [isjson](../../t-sql/functions/isjson-transact-sql.md) function's `json_type_constraint` parameter was not recognized as a second parameter. [GitHub issue](https://github.com/microsoft/DacFx/issues/375) |
+| JSON | Fixes an issue where the [isjson](../../t-sql/functions/isjson-transact-sql.md) function's `json_type_constraint` parameter wasn't recognized as a second parameter. [GitHub issue](https://github.com/microsoft/DacFx/issues/375) |
 | Platform | References [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.1.6) v5.1.6. |
 | Schema compare | Fixes an issue where schema compare expects all statements to be in the same batch, resulting in duplicate statements. [GitHub issue](https://github.com/microsoft/DacFx/issues/474) |
 | ScriptDOM | References [ScriptDOM 16.1.9142](https://github.com/microsoft/SqlScriptDOM/blob/main/release-notes/161.91/161.9142.1.md) |
@@ -270,7 +310,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.3.563
 ### Fixes
 |Feature|Details|
 |:---|:---|
-|Code analysis|Fixes an issue where the build output from code analysis rules was not formed consistent with MSBuild diagnostic format guidelines. [GitHub issue](https://github.com/microsoft/DacFx/issues/415)|
+|Code analysis|Fixes an issue where the build output from code analysis rules wasn't formed consistent with MSBuild diagnostic format guidelines. [GitHub issue](https://github.com/microsoft/DacFx/issues/415)|
 |Deployment|Fixes an issue where the deployment of an index with the ONLINE property set and a [large object type](../../t-sql/data-types/data-types-transact-sql.md#data-type-categories) (LOB) would fail.|
 |Deployment|Fixes an issue where the deployment of column encryption fails on a temporal table. [GitHub issue](https://github.com/microsoft/DacFx/issues/440)|
 |Deployment|Reverts the changes made to avoid storing absolute paths of referenced dacpacs after project build due to issues with backwards compatibility in new behavior. [GitHub issue](https://github.com/microsoft/DacFx/issues/329)|
@@ -315,18 +355,18 @@ dotnet tool install -g microsoft.sqlpackage --version 162.2.111
 ### Fixes
 | Feature | Details |
 | :------ | :------ |
-|Deployment|Fixed an issue where packages with functions used in the apply clause of a view would fail to deploy. The previous error message was that the function was not found because the view was incorrectly deployed before the function. [GitHub issue](https://github.com/microsoft/DacFx/issues/106)|
-|Deployment|Fixed an issue where function keywords such as `NATIVE_COMPILATION` and `SCHEMABINDING` were not correctly recognized and included in the deployment script. [GitHub issue](https://github.com/microsoft/DacFx/issues/308), [Developer Community](https://developercommunity.visualstudio.com/t/Database-project-schema-compare-generate/10224098)|
+|Deployment|Fixed an issue where packages with functions used in the apply clause of a view would fail to deploy. The previous error message was that the function wasn't found because the view was incorrectly deployed before the function. [GitHub issue](https://github.com/microsoft/DacFx/issues/106)|
+|Deployment|Fixed an issue where function keywords such as `NATIVE_COMPILATION` and `SCHEMABINDING` weren't correctly recognized and included in the deployment script. [GitHub issue](https://github.com/microsoft/DacFx/issues/308), [Developer Community](https://developercommunity.visualstudio.com/t/Database-project-schema-compare-generate/10224098)|
 |Deployment|Fixed an issue where references to system tables in a values clause would fail to build with an error message that the Value cannot be null. [Developer Community](https://developercommunity.visualstudio.com/t/The-SqlBuildTask-task-failed-unexpecte/10525319)|
 |Deployment|Fixed an issue where the absolute paths of referenced dacpacs were stored in the dacpac after project build instead of the relative paths. [GitHub issue](https://github.com/microsoft/DacFx/issues/329)|
 |Deployment|Fixed an issue where the creation of a disabled clustered index would cause the deployment to fail if another disabled index was to be created. [GitHub issue](https://github.com/microsoft/DacFx/issues/386)|
 |Deployment|Fixed an issue where a synonym to user-defined data types resulted in an unresolved reference. [GitHub issue](https://github.com/microsoft/DacFx/issues/327)|
-|Extract|Fixed an issue where the DacVersion property was not being set if a version was specified for the package that did not follow `major.minor.build` format. [GitHub issue](https://github.com/microsoft/DacFx/issues/110)|
-|Import|Fixed an issue where certain collations, including `Chinese_PRC_CI_AS`, would fail to import with an error message that the collation was not supported. [GitHub issue](https://github.com/microsoft/DacFx/issues/292)|
+|Extract|Fixed an issue where the DacVersion property wasn't being set if a version was specified for the package that did not follow `major.minor.build` format. [GitHub issue](https://github.com/microsoft/DacFx/issues/110)|
+|Import|Fixed an issue where certain collations, including `Chinese_PRC_CI_AS`, would fail to import with an error message that the collation wasn't supported. [GitHub issue](https://github.com/microsoft/DacFx/issues/292)|
 |Schema compare|Fixed an issue where databases with `UTF8` collation would not give the correct result.|
 |Schema compare|Fixed an issue where schema compare would not include external data source, external file format, and external table objects when evaluating Synapse serverless SQL pools.|
-|Security|Fixed SqlPackage on .NET support for universal authentication (`/ua`), which supports Microsoft Entra ID authentication with multi-factor authentication (MFA).|
-|System dacpacs|Fixed an issue where the pdw* views were not included in the [Synapse Data Warehouse](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.Synapse.Master) master.dacpac. [GitHub issue](https://github.com/microsoft/DacFx/issues/268), [Developer Community](https://developercommunity.visualstudio.com/t/masterdacpac-for-Azure-SQL-DW-Synapse-/10459631)|
+|Security|Fixed SqlPackage on .NET support for universal authentication (`/ua`), which supports Microsoft Entra ID authentication with multifactor authentication. (MFA).|
+|System dacpacs|Fixed an issue where the pdw* views weren't included in the [Synapse Data Warehouse](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.Synapse.Master) master.dacpac. [GitHub issue](https://github.com/microsoft/DacFx/issues/268), [Developer Community](https://developercommunity.visualstudio.com/t/masterdacpac-for-Azure-SQL-DW-Synapse-/10459631)|
 
 ### Known Issues
 | Feature | Details | Workaround |
@@ -383,7 +423,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 | Azure Synapse Analytics | Adds support for multi-column distribution (MCD) in `CREATE VIEW` for Azure Synapse Analytics dedicated SQL pools. [GitHub issue](https://github.com/microsoft/DacFx/issues/224) |
 | Azure Synapse Analytics | Adds support for /p:TableData property on extract operations to Parquet files, enabling the ability to specify which tables to export data for. [GitHub issue](https://github.com/microsoft/DacFx/issues/16) |
 | Fabric Data Warehouse | Adds support for extract and publish for Fabric Data Warehouse databases. Publish capabilities don't support changes that require existing tables to be altered. The target platform enum value is `SqlDwUnifiedDatabaseSchemaProvider` in SQL database projects. |
-| Parquet | Adds preview support for extract and publish with data stored in Parquet files in Azure Blob Storage with Azure SQL Managed Instance and SQL Server 2022. Azure SQL Database and SQL Server 2019 and earlier are not supported. Data must be in supported data types for [CETAS](/azure/synapse-analytics/sql/develop-tables-cetas#supported-data-types). Extract and publish with Parquet files offers performance improvements over import/export to bacpac files in many scenarios.|
+| Parquet | Adds preview support for extract and publish with data stored in Parquet files in Azure Blob Storage with Azure SQL Managed Instance and SQL Server 2022. Azure SQL Database and SQL Server 2019 and earlier aren't supported. Data must be in supported data types for [CETAS](/azure/synapse-analytics/sql/develop-tables-cetas#supported-data-types). Extract and publish with Parquet files offers performance improvements over import/export to bacpac files in many scenarios.|
 | Publish | Adds `/p:AllowTableRecreation` property to publish operation. The default (true) is consistent with previous behavior, where a table change may require that a table is recreated while the table data is preserved however the deployment may take a significant amount of time or change tracking data could be lost. Setting the property `/p:AllowTableRecreation` to false results in the deployment not starting if recreation is needed for any table. [GitHub issue](https://github.com/microsoft/DacFx/issues/28) |
 
 ### Fixes
@@ -398,7 +438,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 | Extract | Fixes an issue where /p:ExtractTarget options for non-dacpac options still required the target file to have a .dacpac extension. [GitHub issue](https://github.com/microsoft/DacFx/issues/128) |
 | Ledger | Fixes an issue where import or publish of a database containing a dropped ledger table fails due to attempting to create permissions for the dropped table. |
 | Ledger | Fixes an issue where import of a database containing a dropped ledger table fails due to attempting to import data to the dropped table. |
-| Polybase | Fixes an issue where Azure SQL Managed Instance databases with RDBMS external tables could not be exported or extracted. [GitHub issue](https://github.com/microsoft/DacFx/issues/199) |
+| Polybase | Fixes an issue where Azure SQL Managed Instance databases with RDBMS external tables couldn't be exported or extracted. [GitHub issue](https://github.com/microsoft/DacFx/issues/199) |
 | Publish | DropObjectsNotInSource doesn't drop objects that are permissions or role memberships. Use DropPermissionsNotInSource or DropRoleMembersNotInSource to enable dropping permissions or role memberships. [GitHub issue](https://github.com/microsoft/DacFx/issues/339) |
 | Publish | Fixes an issue where the publish operation fails when the user connecting doesn't have access to `master` in Azure SQL Database. |
 | Publish | Fixes an issue where deployments that include interactions with column encryption would experience intermittent execution timeout errors. |
@@ -452,7 +492,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 |Export|Fixes an issue where the diagnostic information provided during an export operation incorrectly reports the size of a table in KB instead of Bytes. [GitHub issue](https://github.com/microsoft/DacFx/issues/209)|
 |Import|Fixes an issue where an Azure Active Directory user can't be created during import to Azure SQL Database, causing the import to fail. [GitHub issue](https://github.com/microsoft/DacFx/issues/260)|
 |Ledger|Fixes an issue where SqlPackage wasn't correctly identifying the error when the Ledger history table or view have an invalid two-part name.|
-|Permissions|Fixes an issue where permissions assigned to a user in the database model are not recognized, causing the project build or SqlPackage operation to fail.|
+|Permissions|Fixes an issue where permissions assigned to a user in the database model aren't recognized, causing the project build or SqlPackage operation to fail.|
 |Query Store|Fixes an issue where the `flush_interval_seconds` [Query Store option](../../relational-databases/system-catalog-views/sys-database-query-store-options-transact-sql.md) wasn't correctly validated with a minimum value of 60 seconds.|
 |SQL Server 2022|Fixes an issue where the function `DATETRUNC` wasn't recognized as a built-in function. [Developer Community report](https://developercommunity.visualstudio.com/t/Visual-Studio-build-solution-not-recogni/10333180)|
 |SQL Server 2022|Fixes an issue where the function `DATE_BUCKET` wasn't recognized as a built-in function.|
@@ -498,7 +538,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 |Platform|Fixes an issue where SqlPackage operations would fail on RHEL 9 due to an encryption error. Moves to use the 6.0.10 version of the .NET 6 runtime. [GitHub issue](https://github.com/microsoft/DacFx/issues/168)|
 |Schema compare|Fixes an issue where the `DoNotEvaluateSqlCmdVariables` property for *Publish* and *Script* would result in the SqlCmd variables also not being evaluated on both the source and target instead of only the source.|
 |ScriptDOM|Fixes external table support for `REJECT_SAMPLE_VALUE`.|
-|ScriptDOM|Fixes an issue where compression options could not be applied to a table with a clustered index.|
+|ScriptDOM|Fixes an issue where compression options couldn't be applied to a table with a clustered index.|
 |SQL projects|Fixes an issue where valid options for the `QueryStoreFlushInterval` are incorrectly reported as invalid. [Developer Community report](https://developercommunity.visualstudio.com/t/SQL72003:-The-value-300-for-property-Que/10210937)|
 
 ### Known Issues
@@ -662,7 +702,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 | Deployment |Fixes for Deploying a dacpac with temporal table having sensitivity classification. |
 | Deployment |Fixes a bug when variables are verified even when DoNotEvaluateSqlCmdVariables is set to true|
 | Extract |Fix for Refactor log of referenced dacpac according to includeCompositeObjects selection. |
-| Import |Fixes issue with importing database scope configurations that are not supported in target server|
+| Import |Fixes issue with importing database scope configurations that aren't supported in target server|
 | SQL Project |Fixes issue where incremental statistics caused an issue with the project build when applied to a primary key. |
 | SQL Project |Fixes building a project with file tables. |
 
@@ -863,7 +903,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 | Deployment | Fix generating GRANT statements for AlterAnyDatabaseScopedConfiguration and AlterAnySensitivityClassification permissions |
 | Deployment | Fix External Script permission not being recognized |
 | Deployment | Fix for inline property - the implicit addition of the property should not show in difference but explicit mention should show through script |
-| Deployment | Resolved an issue where changing a Table referenced by a Materialized View (MV) causes Alter View statements to be generated. Alter View statements are not supported for MVs for Azure Synapse Analytics. |
+| Deployment | Resolved an issue where changing a Table referenced by a Materialized View (MV) causes Alter View statements to be generated. Alter View statements aren't supported for MVs for Azure Synapse Analytics. |
 | Deployment | Fix publish failing when adding column to a table with data for Azure Synapse Analytics |
 | Deployment | Fix update script should move data to a new table when changing the distribution column type (data loss scenario) for Azure Synapse Analytics |
 | ScriptDom | Fix ScriptDom bug where it couldn't recognize inline constraints defined after an inline index |
@@ -922,10 +962,10 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 
 | Feature | Details |
 | :------ | :------ |
-| Import |  For .bacpac files with compressed files over 4 GB in size, you might need to use the .NET Core version of SqlPackage to perform the import. This behavior is due to how .NET Core generates zip headers, which although valid, are not readable by the .NET Full Framework version of SqlPackage. | 
+| Import |  For .bacpac files with compressed files over 4 GB in size, you might need to use the .NET Core version of SqlPackage to perform the import. This behavior is due to how .NET Core generates zip headers, which although valid, aren't readable by the .NET Full Framework version of SqlPackage. | 
 | Deployment | The parameter /p:Storage=File isn't supported. Only Memory is supported on .NET Core. | 
 | Always Encrypted | SqlPackage .NET Core doesn't support Always Encrypted columns. | 
-| Security | SqlPackage .NET Core doesn't support the /ua parameter for multi-factor authentication. | 
+| Security | SqlPackage .NET Core doesn't support the /ua parameter for multifactor authentication.. | 
 | Deployment | Older V2 dacpac and bacpac files that use json data serialization aren't supported. |
 
 ## 18.3.1 SqlPackage
@@ -950,7 +990,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 
 | Fix | Details |
 | :-- | :------ |
-| Deployment | Fix to ignore automatic indexes so that they are not dropped on deployment. | 
+| Deployment | Fix to ignore automatic indexes so that they aren't dropped on deployment. | 
 | Always Encrypted | Fix for handling Always Encrypted varchar columns. | 
 | Build/Deployment | Fix to resolve the nodes() method for xml column sets.| 
 | ScriptDom | Fix additional cases where the 'URL' string was interpreted as a top level token. | 
@@ -1084,7 +1124,7 @@ This release includes cross-platform preview builds of SqlPackage that target .N
 
 | Fix | Details |
 | :-- | :------ |
-| Import | When importing an Azure SQL Database bacpac to an on-premises instance, fixed errors due to _Database master keys without password are not supported in this version of SQL Server_. |
+| Import | When importing an Azure SQL Database bacpac to an on-premises instance, fixed errors due to _Database master keys without password aren't supported in this version of SQL Server_. |
 | Graph | Fixed an unresolved pseudo column error for graph tables. |
 | Schema Compare | Fixed SQL authentication to compare schemas. | 
 
