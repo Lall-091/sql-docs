@@ -19,12 +19,12 @@ ms.custom:
 
 This article lists the features and fixes delivered by the released versions of SqlPackage.
 
-## 170.3.xx SqlPackage
+## 170.3.93 SqlPackage
 
 **Release date:** February 10, 2026
 
 ```bash
-dotnet tool install -g microsoft.sqlpackage --version 170.3.xx
+dotnet tool install -g microsoft.sqlpackage --version 170.3.93
 ```
 
 | Platform | Download |
