@@ -1,10 +1,10 @@
 ---
 title: SQL Server Backup to URL for Azure Blob Storage
 description: Learn about the concepts, requirements, and components necessary for SQL Server to use the Azure Blob Storage as a backup destination.
-author: dplessMSFT
-ms.author: dpless
-ms.reviewer: mathoma, wiassaf, hudequei, randolphwest
-ms.date: 11/18/2025
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: wiassaf, hudequei, randolphwest, dpless, dinethi
+ms.date: 02/09/2026
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: concept-article
@@ -113,6 +113,8 @@ For information on other examples where credentials are used, see [Create a SQL 
 
 Typically, SQL Server backups are created in two steps. Initially, the `.bak` backup file is created with zeroes, and then the file is updated with data. Since file modification on immutable storage isn't allowed once the file is written and committed, the backup process now skips the initial step to create the backup file with zeroes. Instead, the entire backup is created in one step when written to block blobs.
 
+Azure storage provides two types of immutability, container level and version level. Currently, only container level immutable storage is supported.
+
 To use immutable storage with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] backup to URL, follow these steps:
 
 1. Configure [immutability for your Azure storage container](/azure/storage/blobs/immutable-policy-configure-container-scope).
@@ -167,8 +169,9 @@ The following are security considerations and requirements when backing up to or
   - The [proxycfg.exe](/windows/win32/winhttp/proxycfg-exe--a-proxy-configuration-tool) utility on Windows XP or Windows Server 2003 and earlier.
   - The [netsh.exe](/windows/win32/winsock/netsh-exe) utility on Windows Vista and Windows Server 2008 or later.
 
-- [Immutable storage for Azure Blob Storage](/azure/storage/blobs/storage-blob-immutable-storage) isn't supported. Set the **Immutable Storage** policy to false.
-
+- [Immutable storage for Azure Blob Storage](/azure/storage/blobs/storage-blob-immutable-storage) isn't supported prior to SQL Server 2025. Set the **Immutable Storage** policy to false.
+- For support in SQL Server 2025 and later versions, see [Azure immutable storage support](#azure-immutable-storage-support).
+   - Azure storage provides two types of immutability, container level and version level. Currently, only container level immutable storage is supported.
 - Backup to URL isn't supported to [premium storage](/azure/storage/blobs/storage-blob-block-blob-premium).
 
 ## Supported arguments and statements in Azure Blob Storage
