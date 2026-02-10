@@ -57,18 +57,17 @@ In [part four](python-ski-rental-linear-regression-deploy-model.md), you'll lear
 
 - **SQL query tool** - This tutorial assumes you're using [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio).
 
-- Additional Python packages - The examples in this tutorial series use the following Python packages that might not be installed by default:
+- **mssql-python driver** - Install the mssql-python driver:
 
-  * pandas
-  * mssql-python
-  * scikit-learn
+  [!INCLUDE [mssql-python-linux-macos-prereqs](../../includes/mssql-python-linux-macos-prereqs.md)]
 
-  To install these packages:
+- **Additional Python packages** - The examples in this tutorial series also use `pandas` and `scikit-learn`. To install these packages:
+
   1. In your Azure Data Studio notebook, select **Manage Packages**.
   1. In the **Manage Packages** pane, select the **Add new** tab.
   1. For each of the following packages, enter the package name, select **Search**, then select **Install**.
-
-  As an alternative, you can open a **Command Prompt**, change to the installation path for the version of Python you use in Azure Data Studio (for example, `cd %LocalAppData%\Programs\Python\Python37-32`), then run `pip install` for each package.
+     - `pandas`
+     - `scikit-learn`
 
 ## Restore the sample database
 

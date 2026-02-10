@@ -4,7 +4,8 @@ titleSuffix: SQL machine learning
 description: How to insert data from a dataframe into SQL table.
 author: VanMSFT
 ms.author: vanto
-ms.date: 09/17/2025
+ms.reviewer: dlevy
+ms.date: 02/03/2026
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: how-to
@@ -17,7 +18,7 @@ monikerRange: ">=sql-server-2017 || >=sql-server-linux-ver15 || =azuresqldb-mi-c
 
 [!INCLUDE [SQL Server SQL DB SQL MI FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-This article describes how to insert a [pandas](https://pandas.pydata.org/) dataframe into a SQL database using the [Pyodbc](../../connect/python/pyodbc/python-sql-driver-pyodbc.md) package in Python.
+This article describes how to insert a [pandas](https://pandas.pydata.org/) dataframe into a SQL database using the [mssql-python](/sql/connect/python/mssql-python/python-sql-driver-mssql-python) driver in Python.
 
 ## Prerequisites
 
@@ -52,6 +53,12 @@ This article describes how to insert a [pandas](https://pandas.pydata.org/) data
 
 ## Install Python packages
 
+### Install mssql-python
+
+[!INCLUDE [mssql-python-linux-macos-prereqs](../../includes/mssql-python-linux-macos-prereqs.md)]
+
+### Install other packages
+
 1. In Azure Data Studio, open a new notebook and connect to the Python 3 kernel.
 
 1. Select **Manage Packages**.
@@ -60,9 +67,7 @@ This article describes how to insert a [pandas](https://pandas.pydata.org/) data
 
 1. In the **Manage Packages** pane, select the **Add new** tab.
 
-1. For each of the following packages, enter the package name, select **Search**, then select **Install**.
-   - pyodbc
-   - pandas
+1. Enter `pandas`, select **Search**, then select **Install**.
 
 ## Create a sample CSV file
 
@@ -92,7 +97,7 @@ DepartmentID,Name,GroupName,
 
 1. Follow the steps in [Connect to a SQL Server](../../azure-data-studio/quickstart-sql-server.md?view=sql-server-ver15&preserve-view=true#connect-to-a-sql-server) to connect to the AdventureWorks database.
 
-1. Create a table named **HumanResources.DepartmentTest**. The SQL table will be used for the dataframe insertion.
+1. Create a table named **HumanResources.DepartmentTest**. You use the SQL table for the dataframe insertion.
 
    ```sql
    CREATE TABLE [HumanResources].[DepartmentTest](
@@ -112,7 +117,7 @@ Use the Python `pandas` package to create a dataframe, load the CSV file, and th
 1. Paste the following code into a code cell, updating the code with the correct values for `server`, `database`, `username`, `password`, and the location of the CSV file.
 
    ```Python
-   import pyodbc
+   from mssql_python import connect
    import pandas as pd
    # insert data from csv file into dataframe.
    # working directory for csv file: type "pwd" in Azure Data Studio or Linux
@@ -125,13 +130,15 @@ Use the Python `pandas` package to create a dataframe, load the CSV file, and th
    database = 'AdventureWorks'
    username = 'username'
    password = 'yourpassword'
-   cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
-   cursor = cnxn.cursor()
+   connection_string = f'Server={server};Database={database};UID={username};PWD={password};TrustServerCertificate=yes;'
+   conn = connect(connection_string)
+   cursor = conn.cursor()
    # Insert Dataframe into SQL Server:
    for index, row in df.iterrows():
-        cursor.execute("INSERT INTO HumanResources.DepartmentTest (DepartmentID,Name,GroupName) values(?,?,?)", row.DepartmentID, row.Name, row.GroupName)
-   cnxn.commit()
+        cursor.execute("INSERT INTO HumanResources.DepartmentTest (DepartmentID,Name,GroupName) values(?,?,?)", (row.DepartmentID, row.Name, row.GroupName))
+   conn.commit()
    cursor.close()
+   conn.close()
    ```
 
 1. Run the cell.

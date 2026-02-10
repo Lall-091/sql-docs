@@ -4,8 +4,8 @@ titleSuffix: SQL machine learning
 description: Learn how to create a histogram to visualize data using Python.
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: randolphwest
-ms.date: 07/29/2025
+ms.reviewer: randolphwest, dlevy
+ms.date: 02/03/2026
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: how-to
@@ -56,17 +56,19 @@ SELECT * FROM Person.CountryRegion;
 
 [Download and Install Azure Data Studio](/azure-data-studio/download-azure-data-studio).
 
-Install the following Python packages:
-- `pyodbc`
-- `pandas`
-- `sqlalchemy`
-- `matplotlib`
+### Install mssql-python
 
-To install these packages:
+[!INCLUDE [mssql-python-linux-macos-prereqs](../../includes/mssql-python-linux-macos-prereqs.md)]
+
+### Install other packages
+
+Install the following Python packages using Azure Data Studio:
 
 1. In your Azure Data Studio notebook, select **Manage Packages**.
 1. In the **Manage Packages** pane, select the **Add new** tab.
 1. For each of the following packages, enter the package name, select **Search**, then select **Install**.
+   - `pandas`
+   - `matplotlib`
 
 ## Plot histogram
 
@@ -81,12 +83,9 @@ To create a new notebook:
 1. Paste code in notebook. Select **Run All**.
 
     ```python
-    import pyodbc 
+    from mssql_python import connect
     import pandas as pd
     import matplotlib
-    import sqlalchemy
-    
-    from sqlalchemy import create_engine
     
     matplotlib.use('TkAgg', force=True)
     from matplotlib import pyplot as plt
@@ -97,17 +96,18 @@ To create a new notebook:
     server = 'servername'
     database = 'AdventureWorksDW2022'
     username = 'yourusername'
-    password = 'databasename'
+    password = 'yourpassword'
     
-    url = 'mssql+pyodbc://{user}:{passwd}@{host}:{port}/{db}?driver=SQL+Server'.format(user=username, passwd=password, host=server, port=port, db=database)
-    engine = create_engine(url)
+    connection_string = f'Server={server};Database={database};UID={username};PWD={password};TrustServerCertificate=yes;'
+    conn = connect(connection_string)
     
     sql = "SELECT DATEDIFF(year, c.BirthDate, GETDATE()) AS Age FROM [dbo].[FactInternetSales] s INNER JOIN dbo.DimCustomer c ON s.CustomerKey = c.CustomerKey"
     
-    df = pd.read_sql(sql, engine)
+    df = pd.read_sql(sql, conn)
     df.hist(bins=50)
     
     plt.show()
+    conn.close()
     ```
 
 The display shows the age distribution of customers in the `FactInternetSales` table.

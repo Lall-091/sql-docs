@@ -25,10 +25,10 @@ This quickstart describes how to connect an application to a database in Azure S
 ## Prerequisites
 
 - An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccountpython/).
-- An Azure SQL database configured with Microsoft Entra authentication. You can create one using the [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md).
+- An Azure SQL database configured with Microsoft Entra authentication. You can create one using the [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md). Alternatively, you can use a [SQL database in Microsoft Fabric](/fabric/database/sql/create).
 - Visual Studio Code with the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 - Python 3.10 or later.
-- The [Azure CLI](/cli/azure/install-azure-cli) (required for `ActiveDirectoryDefault` authentication).
+- The [Azure CLI](/cli/azure/install-azure-cli) for passwordless authentication (works on Windows, macOS, and Linux).
 
 ## Configure the database
 
@@ -69,7 +69,8 @@ Create a new Python project using Visual Studio Code.
 
 To connect to Azure SQL Database using Python, install the `mssql-python` driver. This driver has built-in support for Microsoft Entra authentication, eliminating the need for manual token handling. In this quickstart, you also install `fastapi`, `uvicorn`, and `pydantic` packages to create and run an API.
 
-For details and specific instructions for installing the `mssql-python` driver, see [mssql-python installation guide](https://github.com/microsoft/mssql-python/wiki/Installation).
+> [!NOTE]
+> On macOS and Linux, system dependencies are required before installing `mssql-python`. See [Install the mssql-python package](/sql/connect/python/mssql-python/python-sql-driver-mssql-python-quickstart#install-the-mssql-python-package) for platform-specific instructions.
 
 1. Create a *requirements.txt* file with the following lines:
 
@@ -97,16 +98,31 @@ For local development, create a `.env` file in your project folder to store your
 
 The mssql-python driver has built-in support for Microsoft Entra authentication. Use the `Authentication` parameter to specify the authentication method.
 
-## [ActiveDirectoryDefault](#tab/sql-default)
+## [ActiveDirectoryDefault (Recommended)](#tab/sql-default)
 
-`ActiveDirectoryDefault` automatically discovers credentials from multiple sources (Visual Studio Code, Azure CLI, environment variables, etc.) without requiring interactive login. This method is convenient for local development but slower due to credential discovery.
+`ActiveDirectoryDefault` automatically discovers credentials from multiple sources without requiring interactive login. This is the **recommended option for local development**.
+
+For the most reliable local development experience, sign in with Azure CLI first:
+
+```bash
+az login
+```
+
+Then use this connection string format in your `.env` file:
 
 ```text
 AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryDefault;Encrypt=yes;TrustServerCertificate=no;
 ```
 
-> [!IMPORTANT]
-> `ActiveDirectoryDefault` is intended for local development only. It tries multiple authentication methods in sequence (environment variables, managed identity, Azure CLI, Visual Studio, etc.), which adds latency. For production applications, use the specific authentication method for your scenario:
+`ActiveDirectoryDefault` evaluates credentials in the following order:
+1. **Environment variables** (for service principal credentials)
+1. **Managed identity** (when running on Azure)
+1. **Azure CLI** (from `az login`)
+1. **Visual Studio** (Windows only)
+1. **Azure PowerShell** (from `Connect-AzAccount`)
+
+> [!TIP]
+> For production applications, use the specific authentication method for your scenario to avoid credential discovery latency:
 > - **Azure App Service/Functions**: Use `ActiveDirectoryMSI` (managed identity)
 > - **Interactive user login**: Use `ActiveDirectoryInteractive`
 > - **Service principal**: Use `ActiveDirectoryServicePrincipal`
@@ -129,6 +145,24 @@ AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Da
 
 > [!WARNING]
 > Use caution when managing connection strings that contain secrets such as usernames, passwords, or access keys. These secrets shouldn't be committed to source control or placed in unsecure locations where they might be accessed by unintended users. Add `.env` to your `.gitignore` file to prevent accidentally committing secrets.
+
+## [Fabric SQL Database](#tab/sql-fabric)
+
+To connect to a [SQL database in Microsoft Fabric](/fabric/database/sql/overview), use the same authentication methods. The server name follows the Fabric format.
+
+On **Windows domain-joined machines**, use `ActiveDirectoryIntegrated` for seamless authentication with no extra steps:
+
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<workspace-guid>.database.fabric.microsoft.com,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryIntegrated;
+```
+
+On **macOS, Linux, or non-domain Windows**, use `ActiveDirectoryDefault` after signing in with Azure CLI (`az login`):
+
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<workspace-guid>.database.fabric.microsoft.com,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryDefault;
+```
+
+You can find your Fabric SQL database connection string in the Fabric portal under your database's settings.
 
 ---
 
@@ -187,7 +221,7 @@ def root():
         conn.commit()
         conn.close()
     except Exception as e:
-        # Table may already exist
+        # Table might already exist
         print(e)
     return "Person API"
 

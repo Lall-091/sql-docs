@@ -4,8 +4,8 @@ titleSuffix: Azure SQL Database
 description: Learn how to develop a modern application using Python, Docker Containers, Kubernetes, and Azure SQL Database.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: wiassaf, damauri, mathoma
-ms.date: 06/13/2025
+ms.reviewer: wiassaf, damauri, mathoma, dlevy
+ms.date: 02/03/2026
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: tutorial
@@ -65,15 +65,14 @@ Throughout this article, there are several values you should replace. Ensure tha
 - `ReplaceWith_AzureContainerRegistryName`: Replace this value with the name of the Azure Container Registry you would like to create.
 - `ReplaceWith_AzureKubernetesServiceName`: Replace this value with the name of the Azure Kubernetes Service you would like to create.
 
-The developers at AdventureWorks use a mix of Windows, Linux, and Apple systems for development, so they are using [Visual Studio Code](https://code.visualstudio.com/Download) as their environment and git for the source control, both of which run cross-platform.
+The developers at AdventureWorks use a mix of Windows, Linux, and Apple systems for development, so they're using [Visual Studio Code](https://code.visualstudio.com/Download) as their environment and git for the source control, both of which run cross-platform.
 
 For the PoC, the team requires the following prerequisites:
 
-1. **Python, pip, and packages** - The development team chooses the [Python programming language](/training/paths/beginner-python/) as the standard for this web-based application. Currently they are using version 3.9, but any version supporting the PoC required packages is acceptable. 
-    - You can [download Python version 3.9](https://www.python.org/downloads/release/python-390/) from python.org.
-1. The team is using the `pyodbc` package for database access. 
-    - You can [install the pyodbc package with *pip* commands](https://pypi.org/project/pyodbc/). 
-    - You might also need the [Microsoft ODBC Driver software](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=azuresqldb-current&preserve-view=true) if you do not have it installed already.
+1. **Python, pip, and packages** - The development team chooses the [Python programming language](/training/paths/beginner-python/) as the standard for this web-based application. Currently they're using version 3.10, but any version supporting the PoC required packages is acceptable. 
+    - You can [download Python version 3.10](https://www.python.org/downloads/) from python.org.
+1. The team is using the `mssql-python` driver for database access. 
+    - You can [install the mssql-python driver with *pip* commands](https://pypi.org/project/mssql-python/). 
 1. The team is using the `ConfigParser` package for controlling and setting configuration variables. 
     - You can [install the configparser package with *pip* commands](https://pypi.org/project/configparser/).
 1. The team is using the *Flask package* for a web interface for the application. 
@@ -151,9 +150,8 @@ Next, the Development team created a simple Python application that opens a conn
    1. Set up the libraries for the configuration and base web interfaces.
    1. Load the variables from the `.env` file.
    1. Create the Flask-RESTful Application.
-   1. Get to Azure SQL Database connection information using the `config.ini` file values.
-   1. Create connection to Azure SQL Database using the `config.ini` file values.
-   1. Connect to Azure SQL Database using the `pyodbc` package.
+   1. Get to Azure SQL Database connection information using the `.env` file values.
+   1. Connect to Azure SQL Database using the `mssql-python` driver.
    1. Create the SQL query to run against the database.
    1. Create the class used to return the data from the API.
    1. Set the API endpoint to the `Products` class.
@@ -161,10 +159,12 @@ Next, the Development team created a simple Python application that opens a conn
 
    ```python
    # Set up the libraries for the configuration and base web interfaces
+   import os
+   import json
    from dotenv import load_dotenv
    from flask import Flask
    from flask_restful import Resource, Api
-   import pyodbc
+   from mssql_python import connect
 
    # Load the variables from the .env file
    load_dotenv()
@@ -173,22 +173,17 @@ Next, the Development team created a simple Python application that opens a conn
    app = Flask(__name__)
    api = Api(app)
 
-   # Get to Azure SQL Database connection information using the config.ini file values
+   # Get to Azure SQL Database connection information using the .env file values
    server_name = os.getenv('SQL_SERVER_ENDPOINT')
    database_name = os.getenv('SQL_SERVER_DATABASE')
    user_name = os.getenv('SQL_SERVER_USERNAME')
    password = os.getenv('SQL_SERVER_PASSWORD')
 
-   # Create connection to Azure SQL Database using the config.ini file values
-   ServerName = config.get('Connection', 'SQL_SERVER_ENDPOINT')
-   DatabaseName = config.get('Connection', 'SQL_SERVER_DATABASE')
-   UserName = config.get('Connection', 'SQL_SERVER_USERNAME')
-   PasswordValue = config.get('Connection', 'SQL_SERVER_PASSWORD')
+   # Create connection string for mssql-python
+   connection_string = f'Server={server_name};Database={database_name};UID={user_name};PWD={password};Encrypt=yes;TrustServerCertificate=no;'
 
-   # Connect to Azure SQL Database using the pyodbc package
-   # Note: You may need to install the ODBC driver if it is not already there. You can find that at:
-   # https://learn.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server
-   connection = pyodbc.connect(f'Driver=ODBC Driver 17 for SQL Server;Server={ServerName};Database={DatabaseName};uid={UserName};pwd={PasswordValue}')
+   # Connect to Azure SQL Database using the mssql-python driver
+   connection = connect(connection_string)
 
    # Create the SQL query to run against the database
    def query_db():
@@ -218,7 +213,7 @@ Next, the Development team created a simple Python application that opens a conn
    :::image type="content" source="media/develop-kubernetes-application/api-return-page-localhost-products.png" alt-text="Screenshot from a web browser of the Flask return page." lightbox="media/develop-kubernetes-application/api-return-page-localhost-products.png":::
 
    > [!IMPORTANT]
-   > When building production applications, do not use the administrator account to access the database. For more information, read more about [how to set up an account for your application](https://devblogs.microsoft.com/azure-sql/create-and-connect-to-an-azure-sql-db/). The code in this article is simplified so that you can quickly get started with applications using Python and Kubernetes in Azure.
+   > When building production applications, don't use the administrator account to access the database. For more information, read more about [how to set up an account for your application](https://devblogs.microsoft.com/azure-sql/create-and-connect-to-an-azure-sql-db/). The code in this article is simplified so that you can quickly get started with applications using Python and Kubernetes in Azure.
    >
    > More realistically, you could use a [contained database user](/sql/relational-databases/security/contained-database-users-making-your-database-portable?view=azuresqldb-current&preserve-view=true) with read-only permissions, or a login or contained database user connected to [a user-assigned managed identity](authentication-azure-ad-user-assigned-managed-identity.md) with read-only permissions.
    >
@@ -228,12 +223,11 @@ Next, the Development team created a simple Python application that opens a conn
 
 A Container is a reserved, protected space in a computing system that provides isolation and encapsulation. To create a container, use a Manifest file, which is simply a text file describing the binaries and code you wish to contain. Using a Container Runtime (such as Docker), you can then create a binary image that has all of the files you want to run and reference. From there, you can "run" the binary image, the Container, which you can reference as if it were a full computing system. It's a smaller, simpler way to abstract your application runtimes and environment than using a full virtual machine. For more information, see [Containers and Docker](/dotnet/architecture/microservices/container-docker-introduction/docker-defined).
 
-The team started with a DockerFile (the Manifest) that layers the elements of what the team wants to use. They start with a base Python image that already has the `pyodbc`
-libraries installed, and then they run all commands necessary to contain the program and config file in the previous step.
+The team started with a DockerFile (the Manifest) that layers the elements of what the team wants to use. They start with a base Python image, and then they run all commands necessary to contain the program and config file in the previous step.
 
 The following Dockerfile has the following steps:
 
-   1. Start with a Container binary that already has Python and `pyodbc` installed.
+   1. Start with a Container binary that has Python installed.
    1. Create a Working directory for the application.
    1. Copy all of the code from the current directory into the `WORKDIR`.
    1. Install the libraries that are required.
@@ -242,8 +236,17 @@ The following Dockerfile has the following steps:
    ```dockerfile
    # syntax=docker/dockerfile:1
 
-   # Start with a Container binary that already has Python and pyodbc installed
-   FROM laudio/pyodbc
+   # Start with a Container binary that has Python installed
+   FROM python:3.10-slim
+
+   # Install ODBC driver (required by mssql-python)
+   RUN apt-get update && apt-get install -y \
+       curl gnupg2 apt-transport-https \
+       && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+       && curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+       && apt-get update \
+       && ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev \
+       && rm -rf /var/lib/apt/lists/*
 
    # Create a Working directory for the application
    WORKDIR /flask2sql
@@ -439,6 +442,6 @@ del c:\users\ReplaceWith_YourUserName\.kube\config
 ## Related content
 
 - [Application development overview - SQL Database & SQL Managed Instance](develop-overview.md?view=azuresqldb-current&preserve-view=true)
-- [Connect to and query Azure SQL Database using Python and the pyodbc driver](azure-sql-python-quickstart.md?view=azuresqldb-current&preserve-view=true&tabs=windows%2Csql-inter)
+- [Connect to and query Azure SQL Database using Python and the mssql-python driver](azure-sql-python-quickstart.md?view=azuresqldb-current&preserve-view=true)
 - [What are Dev Container Templates for Azure SQL Database?](local-dev-experience-dev-containers.md)
 - [Browse code samples for Azure SQL Database](/samples/browse/?products=azure-sql-database%2Cazure-sql-managed-instance%2Cazure-sqlserver-vm&expanded=azure)

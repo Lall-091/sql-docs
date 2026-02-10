@@ -62,14 +62,15 @@ In [part four](python-clustering-model-deploy.md), learn how to create a stored 
 
 - [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio). Use a notebook in Azure Data Studio for both Python and SQL. For more information about notebooks, see [How to use notebooks in Azure Data Studio](/azure-data-studio/notebooks/notebooks-guidance).
 
-- Additional Python packages - The examples in this tutorial series use Python packages that you might or might not have installed.
+- **mssql-python driver** - Install the mssql-python driver:
 
-  Open an **Administrative Command Prompt** and change to the installation path for the version of Python you use in Azure Data Studio. For example, `cd %LocalAppData%\Programs\Python\Python37-32`. Then run the following commands to install any of these packages that aren't already installed. Ensure these packages are installed in the correct Python installation location. You can use the option `-t` to specify the destination directory.
+  [!INCLUDE [mssql-python-linux-macos-prereqs](../../includes/mssql-python-linux-macos-prereqs.md)]
+
+- **Additional Python packages** - The examples in this tutorial series also use the following packages. Open an **Administrative Command Prompt** and change to the installation path for the version of Python you use in Azure Data Studio. For example, `cd %LocalAppData%\Programs\Python\Python37-32`. Then run the following commands to install any of these packages that aren't already installed:
 
   ```console
   pip install matplotlib
   pip install pandas
-  pip install mssql-python
   pip install scipy
   pip install scikit-learn
   ```

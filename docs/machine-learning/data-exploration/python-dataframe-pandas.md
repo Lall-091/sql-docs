@@ -4,7 +4,8 @@ titleSuffix: SQL machine learning
 description: Learn how to read data from a SQL table and insert into a pandas dataframe using Python.
 author: VanMSFT
 ms.author: vanto
-ms.date: 07/23/2020
+ms.reviewer: dlevy
+ms.date: 02/03/2026
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: how-to
@@ -16,7 +17,7 @@ monikerRange: ">=sql-server-2017 || >=sql-server-linux-ver15 || =azuresqldb-mi-c
 # Insert data from a SQL table into a Python pandas dataframe
 [!INCLUDE[SQL Server SQL DB SQL MI FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-This article describes how to insert SQL data into a [pandas](https://pandas.pydata.org/) dataframe using the [pyodbc](../../connect/python/pyodbc/python-sql-driver-pyodbc.md) package in Python. The rows and columns of data contained within the dataframe can be used for further data exploration.
+This article describes how to insert SQL data into a [pandas](https://pandas.pydata.org/) dataframe using the [mssql-python](/sql/connect/python/mssql-python/python-sql-driver-mssql-python) driver in Python. The rows and columns of data contained within the dataframe can be used for further data exploration.
 
 ## Prerequisites
 
@@ -55,15 +56,17 @@ SELECT * FROM Person.CountryRegion;
 
 [Download and Install Azure Data Studio](/azure-data-studio/download-azure-data-studio).
 
-Install the following Python packages:
-  * pyodbc
-  * pandas
+### Install mssql-python
 
-  To install these packages:
+[!INCLUDE [mssql-python-linux-macos-prereqs](../../includes/mssql-python-linux-macos-prereqs.md)]
 
-  1. In your Azure Data Studio notebook, select **Manage Packages**.
-  2. In the **Manage Packages** pane, select the **Add new** tab.
-  3. For each of the following packages, enter the package name, click **Search**, then click **Install**.
+### Install other packages
+
+Install the `pandas` package using Azure Data Studio:
+
+1. In your Azure Data Studio notebook, select **Manage Packages**.
+1. In the **Manage Packages** pane, select the **Add new** tab.
+1. Enter `pandas`, select **Search**, then select **Install**.
 
 ## Insert data
 
@@ -76,7 +79,7 @@ To create a new notebook:
 3. Paste code in notebook, select **Run All**.
 
 ```python
-import pyodbc
+from mssql_python import connect
 import pandas as pd
 # Some other example server values are
 # server = 'localhost\sqlexpress' # for a named instance
@@ -84,13 +87,14 @@ import pandas as pd
 server = 'servername' 
 database = 'AdventureWorks' 
 username = 'yourusername' 
-password = 'databasename'  
-cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
-cursor = cnxn.cursor()
+password = 'yourpassword'
+connection_string = f'Server={server};Database={database};UID={username};PWD={password};TrustServerCertificate=yes;'
+conn = connect(connection_string)
 # select 26 rows from SQL table to insert in dataframe.
 query = "SELECT [CountryRegionCode], [Name] FROM Person.CountryRegion;"
-df = pd.read_sql(query, cnxn)
+df = pd.read_sql(query, conn)
 print(df.head(26))
+conn.close()
 ```
 
 **Output**
