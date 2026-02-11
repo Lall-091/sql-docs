@@ -3,7 +3,8 @@ title: Release Notes for ODBC Driver for SQL Server on Windows
 description: This release notes article describes the changes in each release of the Microsoft ODBC driver for SQL Server on Windows.
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/17/2025
+ms.reviewer: randolphwest
+ms.date: 02/10/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
@@ -28,7 +29,7 @@ For the ARM64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?li
 
 | Feature added | Details |
 | :------- | :------ |
-| New data type | Added support for new Vector data type (float32). |
+| New data type | Added support for new Vector data type (float32). See [Vector data type (ODBC)](../vector-data-type.md) for usage and examples. |
 | ConcatNullYieldsNull property | Added support for ConcatNullYieldsNull property as both a connection string property and a registry key option. |
 | New distribution supported | Added x86 support on Windows ARM64. |
 

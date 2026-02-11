@@ -1,10 +1,10 @@
 ---
 title: "What's New in SSMA for Oracle (OracleToSQL)"
 description: Find out about changes to SQL Server Migration Assistant (SSMA) for Oracle (OracleToSQL) for each release.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 11/12/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball, subasak
+ms.date: 02/04/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -18,6 +18,16 @@ ms.custom:
 This article lists SQL Server Migration Assistant (SSMA) for Oracle changes in each release.
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
+
+## SSMA v10.5
+
+The v10.5 release of SSMA for Oracle contains the following changes:
+
+- Improved the quality of the Code conversion Copilot output.
+
+- Important security, compliance, UX, and accessibility fixes.
+
+- Improved reliability of Oracle PL-SQL to T-SQL converted procedures on Azure SQL MI by addressing encryption‑related connection issues in SSMA for Oracle.
 
 ## SSMA v10.4
 

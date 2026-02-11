@@ -4,7 +4,7 @@ description: Learn how to set database options such as Automatic tuning, encrypt
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, wiassaf
-ms.date: 12/10/2025
+ms.date: 02/09/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -83,6 +83,8 @@ SET
 {
     <option_spec> [ ,...n ] [ WITH <termination> ]
 }
+
+{ [ FOR SECONDARY ] SET <set_options> }
 
 <option_spec> ::=
 {
@@ -341,6 +343,16 @@ The name of the database to be modified.
 **Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)])
 
 Runs the action in the current database. `CURRENT` isn't supported for all options in all contexts. If `CURRENT` fails, provide the database name.
+
+#### FOR SECONDARY
+
+**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions
+
+Specifies the settings for secondary replicas. All secondary replicas must have the identical values. Similar to `FOR SECONDARY` for [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](alter-database-scoped-configuration-transact-sql.md).
+
+For use with the Query Store (`QUERY_STORE`) and Automatic Tuning (`AUTOMATIC_TUNING`) only.
+
+Before SQL Server Management Studio (SSMS) version 21, the `FOR SECONDARY` syntax is valid but not recognized by IntelliSense. For SQL Server 2022, SSMS IntelliSense does not recognize the `FOR SECONDARY` syntax as valid, but it is valid.
 
 #### \<accelerated_database_recovery> ::=
 
@@ -1809,6 +1821,8 @@ SET
 }
 ;
 
+{ [ FOR SECONDARY ] SET <set_options> }
+
 <option_spec> ::=
 {
     <auto_option>
@@ -1956,6 +1970,14 @@ The name of the database to be modified.
 #### \<auto_option> ::=
 
 Controls automatic options.
+
+#### FOR SECONDARY
+
+Specifies the settings for secondary replicas. All secondary replicas must have the identical values. Similar to `FOR SECONDARY` for [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](alter-database-scoped-configuration-transact-sql.md).
+
+For use with the Query Store (`QUERY_STORE`) and Automatic Tuning (`AUTOMATIC_TUNING`) only.
+
+Before SQL Server Management Studio (SSMS) version 21, the `FOR SECONDARY` syntax is valid but not recognized by IntelliSense.
 
 #### <a id="auto_create_statistics"></a> AUTO_CREATE_STATISTICS { ON | OFF }
 
@@ -2885,6 +2907,8 @@ SET
 }
 ;
 
+{ [ FOR SECONDARY ] SET <set_options> }
+
 <optionspec> ::=
 {
     <auto_option>
@@ -3008,6 +3032,14 @@ The name of the database to be modified.
 #### CURRENT
 
 `CURRENT` runs the action in the current database. `CURRENT` isn't supported for all options in all contexts. If `CURRENT` fails, provide the database name.
+
+#### FOR SECONDARY
+
+Specifies the settings for secondary replicas. All secondary replicas must have the identical values. Similar to `FOR SECONDARY` for [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](alter-database-scoped-configuration-transact-sql.md).
+
+For use with the Query Store (`QUERY_STORE`) and Automatic Tuning (`AUTOMATIC_TUNING`) only.
+
+Before SQL Server Management Studio (SSMS) version 21, the `FOR SECONDARY` syntax is valid but not recognized by IntelliSense.
 
 #### \<auto_option> ::=
 

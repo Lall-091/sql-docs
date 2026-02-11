@@ -1,6 +1,6 @@
 ---
-title: What Is Microsoft Copilot in SSMA for Oracle?
-description: Learn how Copilot in SQL Server Migration Assistant (SSMA) for Oracle provides intelligent, AI-powered assistance to convert complex or unsupported objects.
+title: What Is Microsoft Copilot in SSMA for SAP ASE?
+description: Learn how Copilot in SQL Server Migration Assistant (SSMA) for SAP ASE provides intelligent, AI-powered assistance to convert complex or unsupported objects.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: niball, subasak
@@ -12,17 +12,17 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ---
-# What is Microsoft Copilot in SSMA for Oracle (OracleToSQL)?
+# What is Microsoft Copilot in SSMA for SAP ASE (SybaseToSQL)?
 
-Copilot in SQL Server Migration Assistant (SSMA) enhances the code conversion process from Oracle to Transact-SQL by providing intelligent, AI-powered assistance for complex or unsupported objects. When the SSMA rule engine encounters conversion challenges, such as syntax differences, proprietary Oracle features, or unsupported data types, Copilot steps in to analyze the issue, explain the root cause, and generate alternative SQL-compatible code.
+Copilot in SQL Server Migration Assistant (SSMA) enhances the code conversion process from SAP ASE to Transact-SQL by providing intelligent, AI-powered assistance for complex or unsupported objects. When the SSMA rule engine encounters conversion challenges, such as syntax differences, proprietary SAP ASE features, or unsupported data types, Copilot steps in to analyze the issue, explain the root cause, and generate alternative SQL-compatible code.
 
 Copilot in SQL Server Migration Assistant (SSMA) is generally available from SSMA version 10.4.
 
-By integrating with Azure OpenAI, Copilot in SSMA for Oracle allows you to review, refine, and validate the suggested code directly within the SSMA interface, streamlining the migration process and reducing manual effort.
+By integrating with Azure OpenAI, Copilot in SSMA for SAP ASE allows you to review, refine, and validate the suggested code directly within the SSMA interface, streamlining the migration process and reducing manual effort.
 
 ## Prerequisites
 
-To use Copilot in SSMA for Oracle for code conversion, you can use one of the following methods:
+To use Copilot in SSMA for SAP ASE for code conversion, you can use one of the following methods:
 
 ### Option 1: Azure OpenAI resource (Bring your own key)
 
@@ -35,13 +35,13 @@ If you don't have these details, see the [Modify Azure OpenAI settings](#modify-
 
 ### Option 2: Microsoft-managed endpoint with Microsoft Entra ID authentication (Preview)
 
-SSMA for Oracle 10.4 introduces this authentication type for Copilot in SSMA.
+SSMA for SAP ASE 10.5 introduces this authentication type for Copilot in SSMA.
 
 - No manual key entry required.
 - Sign in using your Microsoft Entra ID credentials.
 - Authentication is handled through a browser-based authentication flow.
 
-## Steps to run Copilot in SSMA for Oracle
+## Steps to run Copilot in SSMA for SAP ASE
 
 After code conversion, the tool displays warnings or errors for target objects that the SSMA rule engine can't convert. For those objects, you can select **Fix with Copilot**.
 
@@ -83,7 +83,7 @@ The Code Conversion window has three sections:
 
 | Section | Description |
 | --- | --- |
-| **Errors to fix** | Shows the possible errors that the SSMA rule engine couldn't convert or failed to parse in the PL/SQL statement. |
+| **Errors to fix** | Shows the possible errors that the SSMA rule engine couldn't convert or failed to parse in the SQL statement. |
 | **Explanation** | Provides the root cause of conversion issues, describes the logic behind the suggestions, and offers clear, contextual insights to help you understand and validate the generated Transact-SQL code. |
 | **Code review window** | Allows you to view side-by-side differences between SSMA-generated and Copilot-converted code. It highlights changes so that you can evaluate improvements, understand modifications, and make informed decisions before accepting suggestions. |
 
@@ -113,5 +113,5 @@ You can't save Copilot-generated code for tables and user-defined data types dir
 
 ## Related content
 
-- [What's new in SSMA for Oracle](what-s-new-in-ssma-for-oracle-oracletosql.md)
+- [What's new in SSMA for SAP ASE](what-s-new-in-ssma-for-sybase-sybasetosql.md)
 - [Microsoft Copilot in Azure with Azure SQL Database](/azure/azure-sql/copilot/copilot-azure-sql-overview)

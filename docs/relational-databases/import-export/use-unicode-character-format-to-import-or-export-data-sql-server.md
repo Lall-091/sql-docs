@@ -3,7 +3,7 @@ title: "Use Unicode Character Format to Import & Export Data"
 description: The Unicode character data format allows data to be exported from a SQL Server instance by using a code page that differs from the code page used by the client.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/27/2025
+ms.date: 02/10/2026
 ms.service: sql
 ms.subservice: data-movement
 ms.topic: concept-article
@@ -29,6 +29,8 @@ When using Unicode character format, consider:
 - By default, the [bcp utility](../../tools/bcp-utility.md) separates the character-data fields with the tab character and terminates the records with the newline character. For information about how to specify alternative terminators, see [Specify field and row terminators (SQL Server)](specify-field-and-row-terminators-sql-server.md).
 
 - The [sql_variant](../../t-sql/data-types/sql-variant-transact-sql.md) data that is stored in a Unicode character-format data file operates in the same way it operates in a character-format data file, except that the data is stored as [nchar](../../t-sql/data-types/nchar-and-nvarchar-transact-sql.md) instead of [char](../../t-sql/data-types/char-and-varchar-transact-sql.md) data. For more information about character format, see [Collation and Unicode support](../collations/collation-and-unicode-support.md).
+
+- Vector type columns don't support conversion to or from character format. Hence bulk import or export of **vector** columns in character format isn't supported.
 
 ## Special considerations for Using Unicode character format, bcp, and a format file
 
@@ -241,7 +243,7 @@ To use data formats for bulk import or bulk export
 
 ## Related content
 
-- [bcp Utility](../../tools/bcp-utility.md)
+- [bcp utility](../../tools/bcp-utility.md)
 - [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md)
 - [OPENROWSET (Transact-SQL)](../../t-sql/functions/openrowset-transact-sql.md)
 - [Data types (Transact-SQL)](../../t-sql/data-types/data-types-transact-sql.md)
