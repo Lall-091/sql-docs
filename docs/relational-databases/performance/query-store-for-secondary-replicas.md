@@ -73,6 +73,9 @@ ALTER DATABASE [Database_Name]
     (OPERATION_MODE = READ_WRITE);
 ```
 
+> [!NOTE]
+> Before SQL Server Management Studio (SSMS) version 21, the `FOR SECONDARY` syntax is valid but not recognized by IntelliSense. For SQL Server 2022, SSMS IntelliSense does not recognize the `FOR SECONDARY` syntax as valid, but it is valid.
+
 ### Enable automatic plan correction for secondary replicas
 
 **Applies to**: [!INCLUDE [ssSQL22](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
