@@ -390,7 +390,7 @@ Example of selecting **vector** data from a table:
 
 ### [Python](#tab/python)
 
-This sample is using Python with the [mssql-python driver](/sql/connect/python/mssql-python/python-sql-driver-mssql-python). Applications can write and read vector data using `json.loads` and `json.dumps`:
+This sample is using Python with the [mssql-python driver](../../connect/python/mssql-python/python-sql-driver-mssql-python.md). Applications can write and read vector data using `json.loads` and `json.dumps`:
 
 ```python
 import json

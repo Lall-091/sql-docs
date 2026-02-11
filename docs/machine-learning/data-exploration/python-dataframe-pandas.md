@@ -17,7 +17,7 @@ monikerRange: ">=sql-server-2017 || >=sql-server-linux-ver15 || =azuresqldb-mi-c
 # Insert data from a SQL table into a Python pandas dataframe
 [!INCLUDE[SQL Server SQL DB SQL MI FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-This article describes how to insert SQL data into a [pandas](https://pandas.pydata.org/) dataframe using the [mssql-python](/sql/connect/python/mssql-python/python-sql-driver-mssql-python) driver in Python. The rows and columns of data contained within the dataframe can be used for further data exploration.
+This article describes how to insert SQL data into a [pandas](https://pandas.pydata.org/) dataframe using the [mssql-python](../../connect/python/mssql-python/python-sql-driver-mssql-python.md) driver in Python. The rows and columns of data contained within the dataframe can be used for further data exploration.
 
 ## Prerequisites
 

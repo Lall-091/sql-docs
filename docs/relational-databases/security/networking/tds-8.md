@@ -102,7 +102,7 @@ To use TDS 8.0, [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] added `
 - [Microsoft OLE DB Driver for SQL Server](../../../connect/oledb/download-oledb-driver-for-sql-server.md) version 19.2.0 or higher
 - [Microsoft JDBC Driver for SQL Server](../../../connect/jdbc/microsoft-jdbc-driver-for-sql-server.md) version 11.2.0 or higher
 - [Microsoft Drivers for PHP for SQL Server](../../../connect/php/microsoft-php-driver-for-sql-server.md) version 5.10 or higher
-- [Python SQL Driver - mssql-python](/sql/connect/python/mssql-python/python-sql-driver-mssql-python)
+- [Python SQL Driver - mssql-python](../../../connect/python/mssql-python/python-sql-driver-mssql-python.md)
 
 In order to prevent a man-in-the-middle attack with `strict` connection encryption, users can't set the `TrustServerCertificate` option to `true` and allow any certificate the server provided. Instead, users would use the `HostNameInCertificate` option to specify the certificate `ServerName` that should be trusted. The certificate supplied by the server would need to pass the certificate validation. For more information on certificate validation, see [Certificate requirements for SQL Server](../../../database-engine/configure-windows/certificate-requirements.md)
 
@@ -119,4 +119,3 @@ The following options are added to connection strings to encrypt communication:
 ## Related content
 
 - [Connect to SQL Server with strict encryption](connect-with-strict-encryption.md)
-

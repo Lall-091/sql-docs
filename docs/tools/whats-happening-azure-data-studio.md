@@ -40,10 +40,6 @@ For import, export, and assessment work:
 - Use [SqlPackage](sqlpackage/sqlpackage.md) and the [Data-tier Application (Preview)](visual-studio-code-extensions/mssql/mssql-data-tier-application.md) for DACPAC tasks, or use bulk insert and PowerShell for flat-file import.
 - Run the [migration assessment](../sql-server/azure-arc/migration-assessment.md) for SQL Server enabled by Azure Arc.
 
-### [Data analyst](#tab/analyst)
-
-Install the [Polyglot Notebooks extension in Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-interactive-vscode) to continue working with interactive Transact-SQL + Markdown notebooks.
-
 ### [Cross-database developer](#tab/xplat)
 
 Replace Azure Data Studio extensions with their Visual Studio Code equivalents:
@@ -125,10 +121,9 @@ Azure Data Studio users have diverse needs, from connecting to Azure SQL databas
 | Database administration | Tools for managing databases on Windows. | [SQL Server Management Studio (SSMS)](/sql/ssms/) |
 | Schema | Compare and synchronize database schemas. | SQL Server Data Tools (SSDT). In development for MSSQL extension for Visual Studio Code. |
 | Flat-file import | Import `.txt` and `.csv` files into databases. | Bulk insert / PowerShell. In development for MSSQL extension for Visual Studio Code. |
-| DACPAC import/export | Deploy and extract DACPAC files. | SqlPackage CLI |
-| SQL Server assessment | Assess an existing SQL Server data estate to prepare for migration. | [Assess migration readiness with SQL Server enabled by Azure Arc](/sql/sql-server/azure-arc/migration-assessment). |
+| DACPAC import/export | Deploy and extract DACPAC files. | [Data-tier Application (Preview)](visual-studio-code-extensions/mssql/mssql-data-tier-application.md) and SqlPackage CLI |
+| SQL Server assessment | Assess an existing SQL Server data estate to prepare for migration. | [Assess migration readiness with SQL Server enabled by Azure Arc](../sql-server/azure-arc/migration-assessment.md). |
 | Azure SQL migration | Migrate SQL Server to Azure SQL. | Alternative migration tools for [Azure SQL Managed Instance](/data-migration/sql-server/managed-instance/overview#migration-tools), [SQL Server on Azure VMs](/data-migration/sql-server/virtual-machines/overview#migrate), and [Azure SQL Database](/data-migration/sql-server/database/overview#migration-tools). |
-| Notebooks | SQL + Markdown interactive documents. | Polyglot Notebooks in Visual Studio Code. |
 | SQL Database Projects | Create, manage, and deploy SQL database projects. | Fully supported in the MSSQL extension for Visual Studio Code and Visual Studio. |
 
 ### Alternative Azure Data Studio capabilities
@@ -143,7 +138,7 @@ For users who relied on Azure Data Studio for non-SQL Server-related tasks (for 
 
    | Azure Data Studio extension | Description | Replacement |
    | --- | --- | --- |
-   | **PostgreSQL** | Manage PostgreSQL databases. | [PostgreSQL extension for Visual Studio Code preview](/azure/postgresql/extensions/vs-code-extension/overview) |
+   | **PostgreSQL** | Manage PostgreSQL databases. | [PostgreSQL extension for Visual Studio Code](/azure/postgresql/extensions/vs-code-extension/overview) |
    | **MySQL** | Manage MySQL databases. | Pending announcement |
    | **Azure Cosmos DB** | Manage Azure Cosmos DB API for MongoDB. | [Azure Databases for Visual Studio Code](/azure/cosmos-db/visual-studio-code-extension) |
    | **Azure Cosmos DB Migration for MongoDB** | Migrate MongoDB to Azure Cosmos DB. | Pending announcement |

@@ -18,7 +18,7 @@ monikerRange: ">=sql-server-2017 || >=sql-server-linux-ver15 || =azuresqldb-mi-c
 
 [!INCLUDE [SQL Server SQL DB SQL MI FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-This article describes how to insert a [pandas](https://pandas.pydata.org/) dataframe into a SQL database using the [mssql-python](/sql/connect/python/mssql-python/python-sql-driver-mssql-python) driver in Python.
+This article describes how to insert a [pandas](https://pandas.pydata.org/) dataframe into a SQL database using the [mssql-python](../../connect/python/mssql-python/python-sql-driver-mssql-python.md) driver in Python.
 
 ## Prerequisites
 
