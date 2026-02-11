@@ -20,9 +20,9 @@ monikerRange: "=azuresql || =azuresql-db"
 This article provides steps to restart an Azure SQL Database or elastic pool from the Azure portal.
 
 > [!IMPORTANT]  
-> The restart feature in the Azure portal is in preview and not recommended for production use. Hyperscale databases and Hyperscale elastic pools aren't supported in this preview.
+> The restart feature in the Azure portal is in preview and not recommended for production use.
 
-The restart operation is designed to resolve transient issues that might affect database connectivity or performance. Restarting a database or elastic pool temporarily takes it offline, causing a brief interruption in service. However, it doesn't affect the data stored within the database. The restart operation utilizes the same APIs that can be used to [test your application fault resiliency](high-availability-sla-local-zone-redundancy.md#test-application-fault-resiliency).
+The restart operation is designed to resolve transient issues that might affect database connectivity or performance. Restarting a database or elastic pool temporarily takes it offline, causing a brief interruption in service. However, it doesn't affect the data stored within the database. The restart operation utilizes the same APIs that can be used to [test your application fault resiliency](high-availability-sla-local-zone-redundancy.md#test-application-fault-resiliency).  Because the restart operation is intrusive and a large number of them could stress the platform, only one failover call is allowed every 15 minutes for each database or elastic pool.  The restart operation is not recommended for use when there are wide-spread service issues.  Check [Azure Service Health](https://learn.microsoft.com/en-us/azure/service-health/overview) for any ongoing issues before using the restart operation.
 
 ## Restart a database
 
