@@ -166,7 +166,9 @@ In the following steps, configure the **ad-remote-dc** machine as a domain contr
 
 #### Set preferred DNS server address
 
-The preferred DNS server address [shouldn't be updated](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#specify-dns-servers) directly within a VM, it should be edited from the [Azure portal, or PowerShell, or Azure CLI](/azure/virtual-network/virtual-network-network-interface?tabs=network-interface-portal#change-dns-servers). The following steps make this change inside of the Azure portal:
+When you update the preferred DNS server, use the Azure portal, PowerShell, or the Azure CLI. Don't update the DNS server [directly within the VM](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#specify-dns-servers).
+
+To set the preferred DNS server address by using the Azure portal, follow these steps:
 
 1. Sign-in to the [Azure portal](https://portal.azure.com).
 
@@ -211,7 +213,7 @@ Once your server is joined to the domain, you can configure it as the second dom
 1. In the **Action** column of the **All Server Task Details** dialog, select **Promote this server to a domain controller**.
 1. Under **Deployment Configuration**, select **Add a domain controller to an existing domain**.
 1. Select **Select**.
-1. Connect by using the administrator account (**CORP\domainadmin**).
+1. Connect by using the administrator account (**CORP\DomainAdmin**).
 1. In **Select a domain from the forest**, choose your domain and then select **OK**.
 1. In **Domain Controller Options**, use the default values and set a DSRM password.
 

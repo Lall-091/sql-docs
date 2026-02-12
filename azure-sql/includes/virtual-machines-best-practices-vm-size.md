@@ -6,18 +6,17 @@ ms.date: 01/23/2026
 ms.service: virtual-machines
 ms.topic: include
 ms.custom:
-  - ignite-2024
 ---
-- Identify workload performance characteristics to determine the appropriate VM size for your business.
+- Before choosing a VM size, configure your [storage](../virtual-machines/windows/performance-guidelines-best-practices-storage.md). Collect a [baseline](../virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md) from your source environment under the highest stress conditions and then configure your storage based on the IOPS and throughput needs of your workload with a 20% buffer for future growth. 
+- Identify workload performance characteristics ([OLTP](/azure/architecture/data-guide/relational-data/online-transaction-processing) vs [OLAP](/azure/architecture/data-guide/relational-data/online-analytical-processing), workload size) to determine the appropriate VM size for your business.
 - If you're migrating to Azure, [assess migration readiness](/sql/sql-server/azure-arc/migration-assessment) to find the right VM size for your existing SQL Server workload, and then migrate with [Azure Database Migration Service](/azure/dms/dms-overview). 
 - Use Azure Marketplace images to deploy your SQL Server VMs as the SQL Server settings and storage options are configured for optimal performance.
-- Use VM sizes with 4 or more vCPUs.
+- Use VM sizes with 4 or more vCores.
 - Use memory optimized virtual machine sizes for the best performance of SQL Server workloads. 
-   - The [Edsv5-series](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#edsv5-series), and the [Msv3 and Mdsv3-series](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#msv3-and-mdsv3-series) offer an optimal memory-to-vCore ratio recommended for OLTP workloads.
-   - The [Mbdsv3-series VMs](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#mbsv3-and-mbdsv3-series) offer the best performance for SQL Server workloads on Azure VMs. Consider this series first for mission critical OLTP and data warehouse SQL Server workloads.
-   - The [Ebdsv5-series](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#ebdsv5-series) provides a high I/O throughput-to-vCore ratio, along with a memory-to-vCore ratio of 8:1. This series offers the best price-performance for SQL Server workloads on Azure VMs. Consider these VMs first for most SQL Server workloads.  
-   - The [M-series family](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#memory-optimized-m-series-vms) offers VMs with the highest memory allocation in Azure. 
-   - The [Mbsv3 and Mbdsv3 series](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#mbsv3-and-mbdsv3-series) VMs provide a high memory allocation and the highest I/O throughput-to-vCore ratio amongst the M-series family, along with a consistent memory-to-vCore ratio of at least 8:1. 
-- Start development environments with the lower-tier D-Series, B-Series, or Av2-series and grow your environment over time.
+   - The [Mbdsv3-series](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#mbdsv3-series) offers the best overall performance for mission critical OLTP and data warehouse workloads.
+   - The [Ebdsv5-series](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#ebdsv5-series) provides the best price-performance for most production SQL Server workloads.  
+   - The [Easv7-series](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#easv7-series) and [Msv3/Mdsv3-series](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#msv3-and-mdsv3-medium-memory-series) are optimized for memory-intensive workloads.
+   - The [M-series family](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#memory-optimized-m-series-vms) offers the highest memory configurations in Azure for the largest workloads. 
+- Start development environments with the lower-tier D-Series, or B-Series, and grow your environment over time.
 - Check [VM supportability](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#supportability) to avoid unsupported configurations.
-- Use [VM vCore customization](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#vm-vcore-customization) to appropriately allocate vCPUs for your workload and VM and reduce SQL Server licensing costs.
+- Use [VM vCore customization](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#vm-vcore-customization) to appropriately allocate vCPUs for your workload and VM and reduce SQL Server licensing costs, as well as disable SMT/hyperthreading settings for optimal SQL Server performance.

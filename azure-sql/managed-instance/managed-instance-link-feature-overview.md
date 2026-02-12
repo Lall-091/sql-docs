@@ -201,6 +201,10 @@ Configuration limitations include:
 
   - If there are multiple SQL Server instances on a server, you can configure a link for each instance, but you must configure each instance to use a separate database mirroring endpoint, with a dedicated port per instance. Only the default instance should use port 5022 for the database mirroring endpoint. 
   - You can place only one database into a single availability group for one Managed Instance link. However, you can replicate multiple databases in a single SQL Server instance by establishing multiple links. 
+  
+   > [!NOTE]
+   > If you're interested in participating in a limited preview of a change to this behavior, please fill out the following [form](https://aka.ms/milink-multidb-prpr).
+
   - You can create a link with an existing availability group with a single database. If your existing availability group has multiple databases, you can create a link with the availability group only if you remove all databases except one from the availability group.
   - A single General Purpose or Business Critical SQL Managed Instance supports up to 100 links, and a single Next-gen General Purpose SQL Managed Instance supports up to 500 links, from the same, or from multiple SQL Server sources.
   - A Managed Instance link can replicate a database of any size if it fits into the chosen storage size of the target SQL Managed Instance deployment.

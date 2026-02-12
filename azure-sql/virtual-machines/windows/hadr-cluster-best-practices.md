@@ -61,7 +61,7 @@ To get started, see [Configure cluster quorum](hadr-cluster-quorum-configure-how
 
 ## Quorum Voting
 
-It's possible to change the quorum vote of a node participating in a Windows Server Failover Cluster (cluster administrator required, optional for advanced configurations).
+It's possible to change the quorum vote of a node participating in a Windows Server Failover Cluster (cluster administrator required, optional for advanced configurations). 
 
 When modifying the node vote settings, follow these guidelines:
 
@@ -74,6 +74,26 @@ When modifying the node vote settings, follow these guidelines:
 | Disable votes for nodes that are in secondary disaster recovery sites. Nodes in secondary sites shouldn't contribute to the decision of taking a cluster offline if there's nothing wrong with the primary site. |
 | Have an odd number of votes, with three quorum votes minimum. Add a [quorum witness](hadr-cluster-quorum-configure-how-to.md) for an additional vote if necessary in a two-node cluster. |
 | Reassess vote assignments post-failover. You don't want to fail over into a cluster configuration that doesn't support a healthy quorum. |
+
+You can adjust quorum voting using Failover Cluster Manager or PowerShell: 
+
+```powershell
+Import-Module FailoverClusters  
+  
+$node = "AlwaysOnSrv1"  
+(Get-ClusterNode $node).NodeWeight = 0  
+  
+$cluster = (Get-ClusterNode $node).Cluster  
+$nodes = Get-ClusterNode -Cluster $cluster  
+  
+$nodes | Format-Table -property NodeName, State, NodeWeight  
+```
+
+You can also use cluster.exe in an elevated command prompt:
+
+```
+cluster.exe Cluster001 node AlwaysOnSrv1 /prop NodeWeight=0  
+```
 
 ## Connectivity
 
@@ -416,7 +436,7 @@ For more information, review [Troubleshooting cluster issue with Event ID 1135](
 
 ### Lease expiration errors
 
-If [monitoring](#relaxed-monitoring) is too aggressive for your environment, you might see frequent availability group or FCI restarts, failures, or failovers.
+If monitoring is too aggressive for your environment, you might see frequent availability group or FCI restarts, failures, or failovers.
 
 #### Symptoms
 
@@ -433,6 +453,10 @@ resource in the Windows Server Failover Cluster
 Error 19419: The renewal of the lease between availability group '%.*ls' and the Windows Server Failover Cluster
 failed because the existing lease is no longer valid.
 ```
+
+### Resolution
+
+Adjust your monitoring settings as described in the [Relaxed monitoring](#relaxed-monitoring) section.
 
 ### Connection timeout errors
 
@@ -455,6 +479,10 @@ replica 'replicaname' with ID [availability_group_id]. Either a networking or a 
 exists, or the availability replica has transitioned to the resolving role.
 ```
 
+#### Resolution
+
+Adjust your session timeout as described in the [Relaxed monitoring](#relaxed-monitoring) section.
+
 ### Group not failing over
 
 If the **Maximum Failures in the Specified Period** value is too low and you're experiencing intermittent failures due to transient issues, your availability group could end in a failed state.
@@ -467,7 +495,7 @@ Not failing over group <Resource name>, failoverCount 3, failoverThresholdSettin
 
 #### Resolution
 
-Increase the **Maximum Failures in the Specified Period** value to tolerate more transient failures.
+Adjust your monitoring, session timeout, and increase the **Maximum Failures in the Specified Period** value to tolerate more transient failures.
 
 ### Event 1196 - Network name resource failed DNS registration
 
