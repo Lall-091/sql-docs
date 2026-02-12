@@ -4,7 +4,7 @@ description: This article describes the new serverless compute tier and compares
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: moslake, mathoma, dfurman
-ms.date: 12/16/2025
+ms.date: 2/12/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -209,7 +209,7 @@ Monitoring, management, or other solutions performing any of these operations tr
 
 #### Auto-resume trigger identification
 
-Auto-resume triggers are exposed in the [Azure Monitor activity log](/azure/azure-monitor/platform/activity-log?tabs=log-analytics) for **Resume Databases** operations under the `Caller` property in the JSON of the **Succeeded** event.
+Auto-resume triggers are exposed in the [Azure Monitor activity log](/azure/azure-monitor/platform/activity-log?tabs=log-analytics) for **Resume Databases** operations under the `Caller` property in the JSON of the **Started** and **Succeeded** events.
 
 ### Connectivity
 

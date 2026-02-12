@@ -8999,6 +8999,8 @@ items:
         href: tools/visual-studio-code-extensions/sql-database-projects/getting-started-sql-database-projects-extension.md
       - name: Build from the Command Line
         href: tools/visual-studio-code-extensions/sql-database-projects/build-database-project-from-command-line.md
+      - name: Add database objects using item templates
+        href: tools/visual-studio-code-extensions/sql-database-projects/add-item-templates.md
       - name: Publish database project
         href: tools/visual-studio-code-extensions/sql-database-projects/publish-database-project.md
 - name: Tutorials
