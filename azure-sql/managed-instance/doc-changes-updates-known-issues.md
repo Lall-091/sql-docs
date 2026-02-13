@@ -5,7 +5,7 @@ description: Learn about the currently known issues with Azure SQL Managed Insta
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 02/03/2026
+ms.date: 02/13/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: troubleshooting-known-issue
@@ -25,7 +25,7 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | [Misleading error message when connecting to a read replica using invalid credentials](#misleading-error-message-when-connecting-to-a-read-replica-using-invalid-credentials) | February 2026 |
 | [Modifying backup retention period for the free offer](#modifying-backup-retention-period-for-the-free-offer) | June 2025 | Has workaround | |
 | [Login to read-secondary failed due to long wait on "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING"](#login-to-read-secondary-failed-due-to-long-wait-on-hadr_database_wait_for_transition_to_versioning) | April 2025 | Has workaround | |
-| [Interim guidance on 2024 time zone updates for Paraguay](#interim-guidance-on-2024-time-zone-updates-for-paraguay) | March 2025 | Has workaround | |
+| [Interim guidance on 2024 time zone updates for Paraguay](#interim-guidance-on-2024-time-zone-updates-for-paraguay) | March 2025 |  | February 2026 |
 | [Error 8992 when running DBCC CHECKDB on a SQL Server database that originated from SQL Managed Instance](#error-8992-when-running-dbcc-checkdb-on-a-sql-server-database-that-originated-from-sql-managed-instance) | March 2025 | Has workaround | |
 | [Differential backups aren't taken when an instance is linked to SQL Server](#differential-backups-arent-taken-when-an-instance-is-linked-to-sql-server) | Sept 2024 | By design | |
 | [List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name](#list-of-long-term-backups-in-azure-portal-shows-backup-files-for-active-and-deleted-databases-with-the-same-name) | Mar 2024 | Has workaround | |
@@ -72,11 +72,6 @@ This error occurs when the secondary replica isn't available for logins because 
 
 To resolve this issue, roll back or commit active transactions on the primary replica. To avoid this error, minimize long-running write transactions on the primary replica.
 
-### Interim guidance on 2024 time zone updates for Paraguay
-
-On October 14, 2024, the Paraguayan government announced a permanent change to their time zone policy. Paraguay remains on Daylight Saving Time (DST) year-round, effectively adopting UTC-3 as its standard time. As a result, clocks don't advance by 60 minutes at 12:00 a.m. on March 23, 2025, as previously scheduled. This change affects the Paraguay Standard Time time-zone. Microsoft released related [Windows updates in February and March 2025](https://techcommunity.microsoft.com/blog/dstblog/paraguay-2025-time-zone-update-now-available/4386720). Azure SQL Managed Instance currently doesn't reflect this update. Instances using affected time zone don't reflect the changes until Azure SQL Managed Instance service absorbs the update on the OS level.
-
-**Workaround**: If you need to alter affected time zones for your managed instances, be aware of the [limitations](timezones-overview.md#limitations) and follow the guidance from the documentation.
 
 ### Error 8992 when running DBCC CHECKDB on a SQL Server database that originated from SQL Managed Instance
 
@@ -271,6 +266,12 @@ If you enable transactional replication on a database in a failover group, the S
 Error logs that are available in SQL Managed Instance aren't persisted, and their size isn't included in the maximum storage limit. Error logs might be automatically erased if failover occurs. Gaps might exist in the error log history because SQL Managed Instance was moved several times on several virtual machines.
 
 ## Resolved
+
+### Interim guidance on 2024 time zone updates for Paraguay
+
+**(Resolved in February 2026)**
+
+On October 14, 2024, the Paraguayan government announced a permanent change to the time zone policy. Paraguay now remains on Daylight Saving Time (DST) year-round, effectively adopting UTC-3 as its standard time. As a result, clocks did not advance by 60 minutes at 12:00 a.m. on March 23, 2025, as previously scheduled. This change affects the Paraguay Standard time zone. Microsoft has released related [Windows updates in February and March 2025](https://techcommunity.microsoft.com/blog/dstblog/paraguay-2025-time-zone-update-now-available/4386720). SQL managed instances using the affected time zone reflect this change, and align to to the new UTC-3 offset.
 
 ### Changing the connection type doesn't affect connections through the failover group endpoint
 
