@@ -1,7 +1,7 @@
 ---
 title: Monitoring data reference for Azure SQL Managed Instance
 description: This article contains important reference material you need when you monitor Azure SQL Managed Instance.
-ms.date: 12/20/2024
+ms.date: 02/12/2026
 ms.custom: horz-monitor
 ms.topic: reference
 author: MashaMSFT
@@ -25,7 +25,7 @@ The following table lists the metrics available for the Microsoft.Sql/managedIns
 [!INCLUDE [horz-monitor-ref-metrics-tableheader](~/../azure-sql/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-tableheader.md)]
 [!INCLUDE [microsoft-sql-managedinstances-metrics-include](~/../azure-sql/reusable-content/ce-skilling/azure/includes/azure-monitor/reference/metrics/microsoft-sql-managedinstances-metrics-include.md)]
 
-The `io_bytes_read`, `io_bytes_written`, and `io_requests` metrics are averages aggregated over a 15-second interval, and further aggregated using the time granularity interval and aggregation selected in the Azure Monitor metrics explorer.
+The `io_bytes_read`, `io_bytes_written`, and `io_requests` metrics are averages aggregated over a 1-minute interval, and further aggregated using the time granularity interval and aggregation selected in the Azure Monitor metrics explorer.
 
 [!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/../azure-sql/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
 [!INCLUDE [horz-monitor-ref-no-metrics-dimensions](~/../azure-sql/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-no-metrics-dimensions.md)]
