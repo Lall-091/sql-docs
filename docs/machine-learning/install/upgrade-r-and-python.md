@@ -232,7 +232,7 @@ You have two options for rolling back the binding: re-rerun setup or use SqlBind
 
 ###  Step 2: Repair the SQL Server instance
 
-Run SQL Server Setup to repair the database engine instance having the Python and R features. Pre-existing updates are preserved. The next step applies if an update was missed for the servicing updates to Python and R packages.
+Run SQL Server Setup to repair the database engine instance having the Python and R features. Existing updates are preserved. The next step applies if an update was missed for the servicing updates to Python and R packages.
 
 Alternate solution: Fully uninstall and reinstall the database engine instance, and then apply all service updates.
 
@@ -240,7 +240,7 @@ Alternate solution: Fully uninstall and reinstall the database engine instance, 
 
 ### Step 3: Add any third-party packages
 
-You might have added other open-source or third-party packages to your package library. Since reversing the binding switches the location of the default package library, you must reinstall the packages to the library that Python and R are now using. For more information, see [R package information](../package-management/r-package-information.md) and [installation](../package-management/install-additional-r-packages-on-sql-server.md), and [Python package information](../package-management/python-package-information.md) and [installation](../package-management/install-additional-python-packages-on-sql-server.md).
+You might have added other open-source or third-party packages to your package library. Since reversing the binding switches the location of the default package library, you must reinstall the packages to the library that Python and R are now using. For more information, see [R package information](../package-management/r-package-information.md) and [installation](../package-management/install-additional-r-packages-on-sql-server.md), and [Python package information](../package-management/python-package-information.md).
 
 ## SqlBindR.exe command syntax
 

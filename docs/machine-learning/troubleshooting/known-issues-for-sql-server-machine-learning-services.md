@@ -314,7 +314,7 @@ This section contains known issues that are specific to running R on SQL Server,
 
 For additional known issues that might affect R solutions, see the [Machine Learning Server](/machine-learning-server/resources-known-issues) site.
 
-### Access denied warning when executing R scripts on SQL Server in a non default location
+### Access denied warning when executing R scripts on SQL Server in a nondefault location
 
 If the instance of SQL Server has been installed to a non-default location, such as outside the `Program Files` folder, the warning ACCESS_DENIED is raised when you try to run scripts that install a package. For example:
 
@@ -688,10 +688,6 @@ wget 'https://bootstrap.pypa.io/get-pip.py'
 /opt/mssql/mlservices/bin/python/python ./get-pip.py
 ```
 
-#### Recommendation
-
-See [Install Python packages with sqlmlutils](../package-management/install-additional-python-packages-on-sql-server.md).
-
 **Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] on Linux
 
 ### <a id="python-pip"></a> Unable to install Python packages using `pip` after installing SQL Server 2019 on Windows
@@ -828,11 +824,11 @@ sudo systemctl restart mssql-launchpadd
 
 ### <a id="tensorflow"></a> Can't install `tensorflow` package using `sqlmlutils`
 
-The [sqlmlutils package](../package-management/install-additional-python-packages-on-sql-server.md) is used to install Python packages in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. You need to download, install, and update the [Microsoft Visual C++ 2015-2019 Redistributable (x64)](https://visualstudio.microsoft.com/downloads/). However, the `tensorflow` package can't be installed using sqlmlutils. The `tensorflow` package depends on a newer version of `numpy` than the version installed in SQL Server. However, `numpy` is a preinstalled system package that `sqlmlutils` can't update when trying to install `tensorflow`.
+The `sqlmlutils` package is used to install Python packages in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. You need to download, install, and update the [Microsoft Visual C++ 2015-2019 Redistributable (x64)](https://visualstudio.microsoft.com/downloads/). However, the `tensorflow` package can't be installed using `sqlmlutils`. The `tensorflow` package depends on a newer version of `numpy` than the version installed in SQL Server. However, `numpy` is a preinstalled system package that `sqlmlutils` can't update when trying to install `tensorflow`.
 
 #### Workaround
 
-Using a command prompt in administrator mode, run the following command, replacing "MSSQLSERVER" with the name of your SQL instance:
+Using a command prompt in administrator mode, run the following command, replacing "MSSQLSERVER" with the name of your SQL Server instance:
 
 ```cmd
 "C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\PYTHON_SERVICES\python.exe" -m pip install --upgrade tensorflow

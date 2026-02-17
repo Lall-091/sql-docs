@@ -30,7 +30,7 @@ In this five-part tutorial series for SQL programmers, you'll learn about R inte
 In this five-part tutorial series for SQL programmers, you'll learn about R integration in [Machine Learning Services in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/machine-learning-services-overview).
 ::: moniker-end
 
-You'll build and deploy an R-based machine learning solution using a sample database on SQL Server. You'll use T-SQL, Azure Data Studio or SQL Server Management Studio, and a database engine instance with SQL machine learning and R language support
+You'll build and deploy an R-based machine learning solution using a sample database on SQL Server. You'll use T-SQL, Visual Studio Code, or SQL Server Management Studio, and a database engine instance with SQL machine learning and R language support
 
 This tutorial series introduces you to R functions used in a data modeling workflow. Parts include data exploration, building and training a binary classification model, and model deployment. You'll use sample data from the New York City Taxi and Limousine Commission. The model you'll build predicts whether a trip is likely to result in a tip based on the time of day, distance traveled, and pick-up location.
 
@@ -73,7 +73,7 @@ In [part five](r-taxi-classification-deploy-model.md), you'll learn how to opera
 
 + Restore the [NYC Taxi demo database](demo-data-nyctaxi-in-sql.md)
 
-All tasks can be done using [!INCLUDE[tsql](../../includes/tsql-md.md)] stored procedures in Azure Data Studio or [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)].
+All tasks can be done using [!INCLUDE[tsql](../../includes/tsql-md.md)] stored procedures in Visual Studio Code or [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)].
 
 This tutorial assumes familiarity with basic database operations such as creating databases and tables, importing data, and writing SQL queries. It does not assume you know R and all R code is provided.
 
@@ -86,7 +86,7 @@ The process of building a machine learning solution is a complex one that can in
 + training and tuning the model
 + deployment to production
 
-Development and testing of the actual code is best performed using a dedicated R development environment. However, after the script is fully tested, you can easily deploy it to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] using [!INCLUDE[tsql](../../includes/tsql-md.md)] stored procedures in the familiar environment of Azure Data Studio or [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)]. Wrapping external code in stored procedures is the primary mechanism for operationalizing code in SQL Server.
+Development and testing of the actual code is best performed using a dedicated R development environment. However, after the script is fully tested, you can easily deploy it to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] using [!INCLUDE[tsql](../../includes/tsql-md.md)] stored procedures in the familiar environment of Visual Studio Code or [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)]. Wrapping external code in stored procedures is the primary mechanism for operationalizing code in SQL Server.
 
 After the model has been saved to the database, you can call the model for predictions from [!INCLUDE[tsql](../../includes/tsql-md.md)] by using stored procedures.
 

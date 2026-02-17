@@ -46,7 +46,7 @@ This article describes how to use functions in the [**sqlmlutils**](https://gith
    , @script = N'print(R.version)'
   ```
 
-- Install [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio) on the client computer you use to connect to SQL Server. You can use other database management or query tools, but this article assumes Azure Data Studio.
+- Use the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) on the client computer you use to connect to SQL Server. You can use other database management or query tools.
 
 ### Other considerations
 
@@ -248,7 +248,7 @@ On the client computer:
 
 Once the **glue** package is installed, you can use it in an R script in SQL Server with the T-SQL **sp_execute_external_script** command.
 
-1. Open Azure Data Studio and connect to your SQL Server database.
+1. Open Visual Studio Code and connect to your SQL Server database.
 
 1. Run the following command:
 
@@ -295,5 +295,4 @@ help("sql_install.packages")
 
 - For information about installed R packages, see [Get R package information](r-package-information.md)
 - For help in working with R packages, see [Tips for using R packages](tips-for-using-r-packages.md)
-- For information about installing Python packages, see [Install Python packages with pip](install-additional-python-packages-on-sql-server.md)
 - For more information about SQL Server Machine Learning Services, see [What is SQL Server Machine Learning Services (Python and R)?](../sql-server-machine-learning-services.md)

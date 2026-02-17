@@ -35,7 +35,7 @@ You need the following prerequisites to run this quickstart.
   - SQL Server Big Data Clusters. See how to [enable Machine Learning Services on SQL Server Big Data Clusters](../../big-data-cluster/machine-learning-services.md).
   - Azure SQL Managed Instance Machine Learning Services. For information, see the [Azure SQL Managed Instance Machine Learning Services overview](/azure/azure-sql/managed-instance/machine-learning-services-overview).
 
-- A tool for running SQL queries that contain Python scripts. This quickstart uses [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio).
+- A tool for running SQL queries that contain Python scripts. This quickstart uses the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md).
 
 - The sample data used in this exercise is the Iris sample data. Follow the instructions in [Iris demo data](demo-data-iris-in-sql.md) to create the sample database **irissql**.
 
@@ -43,7 +43,7 @@ You need the following prerequisites to run this quickstart.
 
 In this step, you'll create a stored procedure that generates a model for predicting outcomes.
 
-1. Open Azure Data Studio, connect to your SQL instance, and open a new query window.
+1. Connect to your SQL instance with the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md), and open a new query window.
 
 1. Connect to the irissql database.
 
@@ -83,7 +83,7 @@ In this step, you'll create a stored procedure that generates a model for predic
 
 1. Verify the stored procedure exists. 
 
-   If the T-SQL script from the previous step ran without error, a new stored procedure called **generate_iris_model** is created and added to the **irissql** database. You can find stored procedures in the Azure Data Studio **Object Explorer**, under **Programmability**.
+   If the T-SQL script from the previous step ran without error, a new stored procedure called **generate_iris_model** is created and added to the **irissql** database. You can find stored procedures in the Visual Studio Code **Object Explorer**, under **Programmability**.
 
 ## Execute the procedure to create and train models
 
@@ -174,7 +174,7 @@ Now that you have created, trained, and saved a model, move on to the next step:
 
 In this exercise, you learned how to create stored procedures dedicated to different tasks, where each stored procedure used the system stored procedure `sp_execute_external_script` to start a Python process. Inputs to the Python process are passed to `sp_execute_external` as parameters. Both the Python script itself and data variables in a database are passed as inputs.
 
-Generally, you should only plan on using Azure Data Studio with polished Python code, or simple Python code that returns row-based output. As a tool, Azure Data Studio supports query languages like T-SQL and returns flattened rowsets. If your code generates visual output like a scatterplot or histogram, you need a separate tool or end-user application that can render the image outside of the stored procedure.
+Generally, you should only plan on using Visual Studio Code with polished Python code, or simple Python code that returns row-based output. As a tool, Visual Studio Code supports query languages like T-SQL and returns flattened rowsets. If your code generates visual output like a scatterplot or histogram, you need a separate tool or end-user application that can render the image outside of the stored procedure.
 
 For some Python developers who are used to writing all-inclusive script handling a range of operations, organizing tasks into separate procedures might seem unnecessary. But training and scoring have different use cases. By separating them, you can put each task on a different schedule and scope permissions to each operation.
 

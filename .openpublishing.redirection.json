@@ -50816,6 +50816,71 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "docs/machine-learning/tutorials/python-clustering-model-build.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-clustering-model-deploy.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-ski-rental-linear-regression-train-model.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-clustering-model-build.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-clustering-model-deploy.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-clustering-model-introduction.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-clustering-model-prepare-data.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-predictive-model-deploy.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-predictive-model-introduction.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-predictive-model-prepare-data.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-predictive-model-train.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/package-management/install-additional-python-packages-on-sql-server.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/advanced-analytics/connect/loopback-connection.md",
       "redirect_url": "/sql/machine-learning/connect/loopback-connection",
       "redirect_document_id": true
@@ -67769,6 +67834,5 @@
       "redirect_url": "/sql/connect/jdbc/connecting-to-sql-server-with-the-jdbc-driver",
       "redirect_document_id": false
     }
-    
   ]
 }
