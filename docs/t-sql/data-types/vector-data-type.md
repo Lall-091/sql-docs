@@ -4,7 +4,7 @@ description: The vector data type stores vector data optimized for machine learn
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam, randolphwest
-ms.date: 11/18/2025
+ms.date: 02/18/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: quickstart
@@ -88,7 +88,7 @@ CREATE TABLE dbo.vectors
     v VECTOR(3) NOT NULL -- Uses default base type (`float32`)
 );
 
-CREATE TABLE dbo.vectors
+CREATE TABLE dbo.vectors_fp16
 (
     id INT PRIMARY KEY,
     v VECTOR(3, float16) -- Uses float16 for reduced storage and precision
@@ -112,6 +112,7 @@ The **vector** type can be used with variables:
 ```sql
 DECLARE @v AS VECTOR(3) = '[0.1, 2, 30]';
 SELECT @v;
+GO
 DECLARE @v AS VECTOR(3, float16) = '[0.1, 2, 30]';
 SELECT @v;
 ```

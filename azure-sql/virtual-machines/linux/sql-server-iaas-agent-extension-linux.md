@@ -92,14 +92,6 @@ $sqlext.AutoBackupSettings
 
 The Linux SQL IaaS Agent extension has the following limitations:
 
-- Only SQL Server VMs running on the Ubuntu Linux operating system are supported. Other Linux distributions aren't currently supported.
-
-- SQL Server VMs running Ubuntu Pro aren't supported.
-
-- SQL Server VMs running on generalized images aren't supported.
-
-- Only SQL Server VMs deployed through the Azure Resource Manager are supported. SQL Server VMs deployed through the classic model aren't supported.
-
 - SQL Server with only a single instance. Multiple instances aren't supported.
 
 <a id="in-region-data-residency"></a>

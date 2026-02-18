@@ -4,7 +4,7 @@ description: GET_FILESTREAM_TRANSACTION_CONTEXT returns a token that represents 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 09/26/2025
+ms.date: 02/09/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -48,11 +48,14 @@ When you call `GET_FILESTREAM_TRANSACTION_CONTEXT`, the caller is granted file s
 
 The following example uses `GET_FILESTREAM_TRANSACTION_CONTEXT` in a [!INCLUDE [tsql](../../includes/tsql-md.md)] transaction to obtain the transaction context.
 
+> [!NOTE]
+> The C# and Visual Basic examples require the **Microsoft.Data.SqlClient** NuGet package. In Visual Studio, right-click your project in **Solution Explorer**, select **Manage NuGet Packages**, and search for `Microsoft.Data.SqlClient`.
+
 ### [C#](#tab/csharp)
 
 ```csharp
 using System;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data;
 
 namespace ConsoleApplication
