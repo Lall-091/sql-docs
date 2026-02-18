@@ -99,4 +99,3 @@ The following diagram summarizes the overall workflow when scripts are sent from
 + [Extensibility framework in SQL Server](extensibility-framework.md)
 + [R and machine learning extensions in SQL Server](extension-r.md)
 + [Get Python package information](../package-management/python-package-information.md)
-+ [Install Python packages with sqlmlutils](../package-management/install-additional-python-packages-on-sql-server.md)

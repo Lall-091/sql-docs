@@ -57,7 +57,7 @@ You need the following prerequisites to run this quickstart.
 - Azure SQL Managed Instance Machine Learning Services. For information, see the [Azure SQL Managed Instance Machine Learning Services overview](/azure/azure-sql/managed-instance/machine-learning-services-overview).
 ::: moniker-end
 
-- A tool for running SQL queries that contain R scripts. This quickstart uses [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio).
+- A tool for running SQL queries that contain R scripts. This quickstart uses the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md).
 
 ## Create the model
 
@@ -65,7 +65,7 @@ To create the model, you'll create source data for training, create the model an
 
 ### Create the source data
 
-1. Open Azure Data Studio, connect to your instance, and open a new query window.
+1. Open Visual Studio Code, connect to your instance, and open a new query window.
 
 1. Create a table to save the training data.
 

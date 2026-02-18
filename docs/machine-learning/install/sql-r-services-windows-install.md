@@ -191,7 +191,7 @@ On disconnected servers, extra steps are required. For more information, see [In
 
 ## Additional configuration
 
-If the external script verification step was successful, you can run R commands from SQL Server Management Studio, Azure Data Studio, or any other client that can send T-SQL statements to the server.
+If the external script verification step was successful, you can run R commands from SQL Server Management Studio or any other client that can send T-SQL statements to the server.
 
 If you got an error when running the command, review the additional configuration steps in this section. You might need to make additional appropriate configurations to the service or database.
 

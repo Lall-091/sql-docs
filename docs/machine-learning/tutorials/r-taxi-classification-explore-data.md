@@ -79,7 +79,7 @@ In the original public dataset, the taxi identifiers and trip records were provi
 
 To create the plot, use the R function `barplot`. This step plots a histogram based on data from a [!INCLUDE[tsql](../../includes/tsql-md.md)] query. You can wrap this function in a stored procedure, **RPlotHistogram**.
 
-1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], in Object Explorer, right-click the **NYCTaxi_Sample** database and select **New Query**. Or, in Azure Data Studio, select **New Notebook** from the **File** menu and connect to the database.
+1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], in Object Explorer, right-click the **NYCTaxi_Sample** database and select **New Query**.
 
 2. Paste in the following script to create a stored procedure that plots the histogram. This example is named **RPlotHistogram**.
 

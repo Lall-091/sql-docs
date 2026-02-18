@@ -1305,16 +1305,6 @@
               href: /sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
       - name: How to
         items:
-        - name: Data exploration and modeling
-          items:
-          - name: Python
-            items:
-            - name: Plot Histogram in Python
-              href: /sql/machine-learning/data-exploration/python-plot-histogram?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
-            - name: Import data into pandas dataframe
-              href: /sql/machine-learning/data-exploration/python-dataframe-pandas?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
-            - name: Insert dataframe into SQL
-              href: /sql/machine-learning/data-exploration/python-dataframe-sql-server?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
         - name: Data type conversions
           items:
           - name: Python to SQL
@@ -1339,8 +1329,6 @@
             items:
             - name: Get Python package information
               href: /sql/machine-learning/package-management/python-package-information?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
-            - name: Install with sqlmlutils
-              href: /sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
           - name: Install new R packages
             items:
             - name: Get R package information

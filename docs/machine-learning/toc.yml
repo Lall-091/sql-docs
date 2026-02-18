@@ -96,26 +96,6 @@ items:
     items:
     - name: Python tutorials
       href: ../machine-learning/tutorials/python-tutorials.md
-    - name: Ski rental (linear regression)
-      items:
-      - name: 1 - Introduction
-        href: ../machine-learning/tutorials/python-ski-rental-linear-regression.md
-      - name: 2 - Prepare data
-        href: ../machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data.md
-      - name: 3 - Train model
-        href: ../machine-learning/tutorials/python-ski-rental-linear-regression-train-model.md
-      - name: 4 - Deploy model
-        href: ../machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model.md
-    - name: Categorize customers (k-means clustering)
-      items:
-      - name: 1 - Introduction
-        href: ../machine-learning/tutorials/python-clustering-model.md
-      - name: 2 - Prepare the data
-        href: ../machine-learning/tutorials/python-clustering-model-prepare-data.md
-      - name: 3 - Create the model
-        href: ../machine-learning/tutorials/python-clustering-model-build.md
-      - name: 4 - Deploy the model
-        href: ../machine-learning/tutorials/python-clustering-model-deploy.md
     - name: NYC taxi tips (classification)
       items:
       - name: 1 - Introduction
@@ -134,26 +114,6 @@ items:
     items:
     - name: R tutorials
       href: ../machine-learning/tutorials/r-tutorials.md
-    - name: Ski rental (decision tree)
-      items:
-      - name: 1 - Introduction
-        href: ../machine-learning/tutorials/r-predictive-model-introduction.md
-      - name: 2 - Prepare data
-        href: ../machine-learning/tutorials/r-predictive-model-prepare-data.md
-      - name: 3 - Train model
-        href: ../machine-learning/tutorials/r-predictive-model-train.md
-      - name: 4 - Deploy model
-        href: ../machine-learning/tutorials/r-predictive-model-deploy.md
-    - name: Categorize customers (k-means clustering)
-      items:
-      - name: 1 - Introduction
-        href: ../machine-learning/tutorials/r-clustering-model-introduction.md
-      - name: 2 - Prepare the data
-        href: ../machine-learning/tutorials/r-clustering-model-prepare-data.md
-      - name: 3 - Create the model
-        href: ../machine-learning/tutorials/r-clustering-model-build.md
-      - name: 4 - Deploy the model
-        href: ../machine-learning/tutorials/r-clustering-model-deploy.md
     - name: NYC taxi tips (classification)
       items:
       - name: 1. Introduction
@@ -246,14 +206,6 @@ items:
         href: ../machine-learning/r/how-to-create-mdx-queries-using-olapr.md
   - name: Data exploration and modeling
     items:
-    - name: Python
-      items:
-      - name: Plot Histogram in Python
-        href: ../machine-learning/data-exploration/python-plot-histogram.md 
-      - name: Import data into pandas dataframe
-        href: ../machine-learning/data-exploration/python-dataframe-pandas.md 
-      - name: Insert dataframe into SQL
-        href: ../machine-learning/data-exploration/python-dataframe-sql-server.md
     - name: R
       items:
       - name: Load R objects using ODBC
@@ -282,8 +234,6 @@ items:
       items:
       - name: Get Python package information
         href: ../machine-learning/package-management/python-package-information.md
-      - name: Install with sqlmlutils
-        href: ../machine-learning/package-management/install-additional-python-packages-on-sql-server.md
       - name: Install with Python tools
         href: ../machine-learning/package-management/install-python-packages-standard-tools.md
     - name: Install new R packages
