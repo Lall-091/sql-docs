@@ -128,6 +128,20 @@ OPENROWSET( BULK 'data_file_path',
 
 ::: moniker-end
 
+Some `OPENROWSET` options are format‑specific, while others are universal. For example, row and field delimiters are meaningful only for delimited text (CSV/TSV), whereas options like DATA_SOURCE and MAXERRORS apply to all formats. The table below summarizes which options are supported for the most common formats.
+
+| Options | CSV(1.0) | CSV(2.0) | PARQUET | JSONL |
+|---|---|---|---|---|
+| DATA_SOURCE, ROWS_PER_BATCH, MAXERRORS | Supported | Supported | Supported | Supported |
+| ERRORFILE, ERRORFILE_DATA_SOURCE, FORMATFILE, FORMATFILE_DATA_SOURCE | Supported | Supported | Not supported | Supported |
+| CODEPAGE, DATAFILETYPE  | Supported | Supported | Not supported | Supported | 
+| FIRSTROW  | Supported | Supported | Not supported | Supported |
+| ROWTERMINATOR, FIELDTERMINATOR, FIELDQUOTE, ESCAPECHAR  | Supported | Supported | Not supported | Not supported | 
+| PARSER_VERSION | Supported | Supported | Not supported | Not supported |
+| LASTROW  | Supported | Not supported | Not supported | Not supported |
+| HEADER_ROW | Not supported | Supported | Not supported | Not supported |     
+| SINGLE_BLOB, SINGLE_CLOB, SINGLE_NCLOB | Not supported | Not supported | Not supported | Not supported |
+
 ## Arguments
 
 The arguments of the `BULK` option allow for significant control over where to start and end reading data, how to deal with errors, and how data is interpreted. For example, you can specify that the data file is read as a single-row, single-column rowset of type **varbinary**, **varchar**, or **nvarchar**. The default behavior is described in the argument descriptions that follow.
