@@ -44,7 +44,7 @@ If you can't see it, the extension didn't install properly. Try the following st
 
 1. Check event logs to see if anything preventing installation. Try installing SqlServerExtension.msi from the following folder `C:\Packages\Plugins\Microsoft.AzureData.WindowsAgent.SqlServer{version}`. The installation UI may provide the error details.
 
-2. Close services app, server manager and retry one of the [connection methods](./connect.md) to install the extension, and see if that helps.
+2. Close services app, server manager and retry using [connection method](./connect-already-enabled.md) to install the extension, and see if that helps.
 
 ## Extension installed but didn't start
 

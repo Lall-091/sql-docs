@@ -1081,7 +1081,7 @@ By default, the metadata catalog for system object names is collated to `SQL_Lat
 
 Specifies how the point-in-time restore and long-term retention backups for a database are replicated. Geo restore or ability to recover from regional outage is only available when database is created with `GEO` backup storage redundancy. Unless explicitly specified, databases created with T-SQL use geo-redundant backup storage.
 
-Use `GEOZONE` for geo-zone redundant storage. Geo-zone redundant storage (GZRS) offers the highest level of protection against zonal outages as well as regional outages for any workload.
+Use `GEOZONE` for geo-zone redundant storage. Geo-zone redundant storage (GZRS) offers the highest level of protection against zone outages as well as regional outages for any workload.
 
 To enforce data residency when you're creating a database by using T-SQL, use `LOCAL` or `ZONE` as input to the `BACKUP_STORAGE_REDUNDANCY` parameter.
 
