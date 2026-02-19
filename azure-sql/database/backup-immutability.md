@@ -5,7 +5,7 @@ description: Learn how Azure SQL Database immutability works for long-term reten
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dinethi
-ms.date: 11/29/2025
+ms.date: 02/19/2026
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: concept-article
@@ -53,6 +53,14 @@ Possible actions across time based and legal hold immutability:
 - As long as at least one of either time-based or legal hold immutability is in effect, the backup is held available and immutable.
 - Time-based immutability is in effect until the retention of the backup expires.
 - Legal hold can be applied on any backup even if already has a time-based immutability. When legal hold is applied, backups continue to be available and immutable even when the retention expires until the legal hold is removed.
+
+## Immutable long-term backups and deleting logical servers
+
+Starting on 17 February 2026, when you configure immutability for an Azure SQL Database with a Long Term Retention (LTR) policy, the associated logical server will be blocked from deletion.
+
+The logical server can be deleted only after all immutable backups are removed, including both time based immutable backups and backups under legal hold. 
+
+To delete long-term backups, see [Delete long-term backups](long-term-backup-retention-configure.md#delete-ltr-backups).
 
 ## Pricing
 
