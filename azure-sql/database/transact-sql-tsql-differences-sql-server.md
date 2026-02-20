@@ -4,7 +4,7 @@ description: This article discusses the Transact-SQL (T-SQL) differences between
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 06/16/2025
+ms.date: 02/19/2026
 ms.service: azure-sql-database
 ms.subservice: migration
 ms.topic: reference
@@ -16,7 +16,7 @@ ms.custom:
 
 # T-SQL differences between SQL Server and Azure SQL Database
 
-When [migrating your database](migrate-to-database-from-sql-server.md) from SQL Server to Azure SQL Database, you might discover that your SQL Server databases require some re-engineering before they can be migrated. This article provides guidance to assist you in both performing this re-engineering and understanding the underlying reasons why the re-engineering is necessary. To detect incompatibilities and migrate databases to Azure SQL Database, use [Azure Data Migration Service](/azure/dms).
+When [migrating your database](migrate-to-database-from-sql-server.md) from SQL Server to Azure SQL Database, you might discover that your SQL Server databases require some re-engineering before they can be migrated. This article provides guidance to assist you in both performing this re-engineering and understanding the underlying reasons why the re-engineering is necessary. To detect incompatibilities and migrate databases to Azure SQL Database, use [Azure Database Migration Service](/azure/dms).
 
 [!INCLUDE [entra-id](../includes/entra-id.md)]
 

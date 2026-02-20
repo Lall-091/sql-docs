@@ -5,7 +5,7 @@ description: Learn how to use the Managed Instance link to migrate your SQL Serv
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, randolphwest
-ms.date: 01/26/2026
+ms.date: 02/19/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.topic: how-to
@@ -61,7 +61,7 @@ You can use the following tools to discover SQL sources in your environment:
 
 After data sources have been discovered, assess any on-premises SQL Server instances that can be migrated to Azure SQL Managed Instance to identify migration blockers or compatibility issues.
 
-You can use [Azure right-sized recommendations](/azure/dms/ads-sku-recommend) to assess your source SQL Server instance.
+You can use the [migration readiness assessment](/sql/sql-server/azure-arc/migration-assessment) to assess your source SQL Server instance.
 
 For detailed guidance, review [pre-migration](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
 

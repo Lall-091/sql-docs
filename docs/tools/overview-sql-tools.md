@@ -4,7 +4,7 @@ description: SQL query and management tools for SQL Server, Azure SQL (Azure SQL
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: erinstellato, iqrashaikh, mbarickman, drskwier, roblescarlos
-ms.date: 02/06/2026
+ms.date: 02/19/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: overview
@@ -107,7 +107,7 @@ These tools are available for Windows only.
 - [Feedback: sql-action GitHub action](https://github.com/azure/sql-action)
 - [Roadmap: MSSQL extension in Visual Studio Code](https://github.com/microsoft/vscode-mssql/wiki/roadmap)
 - [Roadmap: SQL Server Management Studio](/ssms/roadmap)
-- [What's happening to Azure Data Studio?](/azure-data-studio/whats-happening-azure-data-studio)
+- [What's happening with Azure Data Studio](whats-happening-azure-data-studio.md)
 
 ## Additional tools
 

@@ -4,8 +4,9 @@ description: Learn about the Azure Data Studio retirement, and the recommended r
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: tsiddique, roblescarlos
-ms.date: 02/06/2026
-ms.service: azure-data-studio
+ms.date: 02/19/2026
+ms.service: sql
+ms.subservice: tools-other
 ms.topic: concept-article
 ms.collection:
   - data-tools

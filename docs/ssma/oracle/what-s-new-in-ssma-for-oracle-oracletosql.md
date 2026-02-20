@@ -4,7 +4,7 @@ description: Find out about changes to SQL Server Migration Assistant (SSMA) for
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: niball, subasak
-ms.date: 02/04/2026
+ms.date: 02/19/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -58,13 +58,13 @@ The v10.2 release of SSMA for Oracle contains the following changes:
 The v10.1 release of SSMA for Oracle contains the following changes:
 
 - Detection of CHAR length in Oracle VARCHAR2 data type
-- Enhanced monitoring experience for migrations using Azure Data Migration Service (DMS)
+- Enhanced monitoring experience for migrations using Azure Database Migration Service (DMS)
 
 ## SSMA v10.0
 
 The v10.0 release of SSMA for Oracle contains the following changes:
 
-- Oracle data movement using Azure Data Migration service
+- Oracle data movement using Azure Database Migration Service
 - SKU recommendation and Workload assessment for Oracle workload
 - Support for global Microsoft Entra ID authentication
 

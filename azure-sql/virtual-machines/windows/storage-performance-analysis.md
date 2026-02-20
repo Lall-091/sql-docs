@@ -4,7 +4,7 @@ description: "Identify I/O performance issues associated with VM and data disk t
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma, randolphwest
-ms.date: 06/16/2025
+ms.date: 02/19/2026
 ms.service: azure-vm-sql-server
 ms.topic: how-to
 ---
@@ -65,7 +65,7 @@ Azure Virtual Machines are cloud-based computing resources that come in differen
 
 The size of the VM determines the number of vCPUs, memory, and storage available for the SQL Server instance. Compared to storage, it's relatively easy for customers to resize their virtual machines and scale their VM up and down based on application resource needs. Since it's possible for IOPS and throughput to be throttled at the VM level, choose an appropriate VM size based on performance needs and cost of the workload. 
 
-If you're migrating to Azure, you can use the [SKU recommendations](/azure/dms/ads-sku-recommend) tool, to analyze your current SQL Server configuration and usage and suggest the best VM size for your workload in Azure.
+If you're migrating to Azure, you can use the [migration readiness assessment](/sql/sql-server/azure-arc/migration-assessment), to analyze your current SQL Server configuration and usage and suggest the best VM size for your workload in Azure.
 
 The following Azure metrics are used to determine the workload is throttled from exceeding limits imposed by the VM:   
 - VM Cached IOPS Consumed Percentage 
@@ -209,4 +209,4 @@ You can also use the [I/O Analysis](https://github.com/microsoft/sql-server-samp
 
 ## Next steps
 
-- [Run a SQL best practices assessment](sql-assessment-for-sql-vm.md) to identify potential misconfigurations that could lead to performance issues. 
+- [Run a SQL best practices assessment](sql-assessment-for-sql-vm.md) to identify potential misconfigurations that could lead to performance issues.
