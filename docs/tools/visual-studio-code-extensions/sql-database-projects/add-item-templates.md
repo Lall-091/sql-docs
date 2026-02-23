@@ -8,6 +8,8 @@ ms.date: 02/10/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
+ms.collection:
+  - data-tools
 ---
 
 # Add database objects using item templates
