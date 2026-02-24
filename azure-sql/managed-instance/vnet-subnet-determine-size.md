@@ -50,7 +50,7 @@ Use the following parameters to help form a calculation:
 - Azure uses five IP addresses in the subnet for its own needs.
 - Each [VM group](virtual-cluster-architecture.md#number-of-vm-groups) allocates eight more addresses.
 - The number of addresses that each SQL managed instance uses, depends on the service tier.
-  - General Purpose SQL managed instance uses three addresses
+  - General Purpose SQL managed instance uses two addresses
   - Business Critical SQL managed instance uses five addresses
 - Each scaling request temporarily doubles the number of addresses allocated for the instance being scaled.
 
