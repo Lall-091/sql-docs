@@ -153,6 +153,8 @@ To view forecasted pay-as-you-go charges:
    - Shaded extensions represent forecasted costs based on historical usage trends
 1. Set the date range to the current month to see projected month-end costs.
 
+:::image type="content" source="media/manage-pay-as-you-go-transition/cost-analysis-forecasted-charges.png" alt-text="Screenshot of Azure Cost Management showing actual and forecasted charges." lightbox="media/manage-pay-as-you-go-transition/cost-analysis-forecasted-charges.png":::
+
 ### Filter for Arc SQL pay-as-you-go costs
 
 To isolate Azure Arc-enabled SQL Server pay-as-you-go charges, apply these filters:
