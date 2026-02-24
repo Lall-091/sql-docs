@@ -42,8 +42,6 @@ When you use a terminator as the separator in `bcp_bind` for strings, two consec
 - Before the 18.6.1.1 release, the ODBC driver interpreted consecutive terminators (zero-length data) as empty strings.
 - In the 18.6.1.1 release, the ODBC driver interprets zero-length data as a NULL value instead of an empty string.
 
-This change will be reverted to pre-18.6.1.1 behavior in a future release.
-
 ## Previous Releases
 
 ## 18.5.2
