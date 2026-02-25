@@ -8962,25 +8962,21 @@ items:
             - name: Use smart query builder
               href: tools/visual-studio-code-extensions/github-copilot/smart-query-builder.md
         - name: Fabric integration
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-fabric-integration.md
+          href: tools/visual-studio-code-extensions/mssql/mssql-fabric-integration.md
         - name: Local SQL Server container
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-local-container.md
+          href: tools/visual-studio-code-extensions/mssql/mssql-local-container.md
+        - name: Transition from Azure Data Studio
+          href: tools/visual-studio-code-extensions/mssql/mssql-azure-data-studio-transition.md
+        - name: Database operations
+          href: tools/visual-studio-code-extensions/mssql/mssql-database-operations.md
+        - name: Query profiler
+          href: tools/visual-studio-code-extensions/mssql/mssql-query-profiler.md
         - name: Schema compare
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-schema-compare.md
+          href: tools/visual-studio-code-extensions/mssql/mssql-schema-compare.md
         - name: Schema designer
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-schema-designer.md
-        - name: Data-tier Application
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-data-tier-application.md
+          href: tools/visual-studio-code-extensions/mssql/mssql-schema-designer.md
+        - name: Data-tier application
+          href: tools/visual-studio-code-extensions/mssql/mssql-data-tier-application.md
     - name: SQL bindings for Azure Functions
       items:
       - name: Overview
