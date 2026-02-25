@@ -47781,6 +47781,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/tools/mssql-cli.md",
+      "redirect_url": "/sql/tools/sqlcmd/sqlcmd-utility",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/2014/tools/profiler-utility.md",
       "redirect_url": "/previous-versions/sql/2014/tools/profiler-utility",
       "redirect_document_id": false
