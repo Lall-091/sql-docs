@@ -67873,6 +67873,91 @@
       "source_path": "docs/connect/jdbc/programming-guide-for-jdbc-sql-driver.md",
       "redirect_url": "/sql/connect/jdbc/connecting-to-sql-server-with-the-jdbc-driver",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/report-server-in-management-studio-f1-help.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/cancel-report-server-jobs-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#cancel-report-server-jobs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/delete-catalog-items-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#delete-catalog-items",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/job-properties-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#job-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/new-shared-schedule-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#new-shared-schedule",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/new-system-role-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#new-system-role",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/new-user-role-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#new-user-role",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/schedule-properties-general-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#schedule-properties-general-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/schedule-properties-reports-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#schedule-properties-reports-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/report-server-properties-general-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-general-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-execution-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-execution-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-history-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-history-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-logging-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-logging-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-security-page-reporting-services.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-security-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-advanced-page-reporting-services.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-advanced-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/system-role-properties-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#system-role-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/user-role-properties-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#user-role-properties",
+      "redirect_document_id": false
     }
   ]
 }
