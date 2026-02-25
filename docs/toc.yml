@@ -8172,8 +8172,6 @@ items:
   - name: Command prompt utilities
     href: tools/command-prompt-utility-reference-database-engine.md
     items:
-    - name: mssql-cli
-      href: tools/mssql-cli.md
     - name: osql
       href: tools/osql-utility.md
     - name: Profiler utility
