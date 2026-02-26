@@ -33,7 +33,8 @@ Preparing the SQL Server for Oracle CDC is done by the Oracle CDC Service Admini
 
    To Prepare the SQL Server instance for Oracle CDC, the login must have write permission to the MSXDBCDC database. Enter the credentials for a login that has write permission to the MSXDBCDC database, such as a member of the `sysasmin` role.
 
-**Note**: You can select **View Script** to view a read-only version of the setup script. A [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] system administrator can copy this script into the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Management Console to edit and execute it, if necessary.
+> [!NOTE]
+> You can select **View Script** to view a read-only version of the setup script. A [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] system administrator can copy this script into the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Management Console to edit and execute it, if necessary.
 
 ## Related content
 

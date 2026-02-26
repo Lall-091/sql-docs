@@ -33,7 +33,7 @@ EXECUTE [MSXDBCDC].[dbo].[xdbcdc_update_config_version] @dbname
 GO
 ```
 
-The Oracle CDC Instance process updates its status in the system table **cdc.xdbcdc_state** and writes error information to the **cdc.xdbcdc_trace** table. The **xdbcdc_state** table is useful for monitoring the state of the Oracle CDC Instance. It provides up-to-date status, various counters (such as number of changes read from Oracle, number of changes written to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], number of committed transaction written and the current number of in-flight transactions) and latency indication.
+The Oracle CDC Instance process updates its status in the system table **cdc.xdbcdc_state** and writes error information to the **cdc.xdbcdc_trace** table. The **xdbcdc_state** table is useful for monitoring the state of the Oracle CDC Instance. It provides up-to-date status, various counters (such as number of changes read from Oracle, number of changes written to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], number of committed transactions written and the current number of in-flight transactions) and latency indication.
 
 The Oracle CDC Instance configuration is saved in the **cdc.xdbcdc_config** table, which is the table that the Oracle CDC Designer console works with. Because the entire configuration of an Oracle CDC Instance is found in the target [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance and CDC databases, it's possible to create [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] deployment scripts for an Oracle CDC Instance. This is done using the Oracle CDC Service Configuration and Oracle CDC Designer consoles.
 
@@ -248,7 +248,8 @@ From the **Actions** pane on the right side of the CDC Service Configuration Con
 
 You can also right-click the CDC service you want to delete and select **Delete**.
 
-**Note**: If the service is running when deleting the service, the service is stopped before being deleted.
+> [!NOTE]
+> If the service is running when deleting the service, the service is stopped before being deleted.
 
 To delete the Oracle CDC Windows Service definition, the program needs update access to the MSXDBCDC database in the associated [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance. When you select OK to delete the service, the program attempts to delete the Oracle CDC Service registration in the MSXDBCDC database. If the program can't delete the Oracle CDC Service registration because it doesn't have the proper permissions, it prompts you to enter a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login with update permissions to the MSXDBCDC database.
 

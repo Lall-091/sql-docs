@@ -41,7 +41,8 @@ This procedure describes how to use the CDC Service Configuration Console to man
 
      You can also right-click the CDC service you want to delete and select **Delete**.
 
-     **Note**: If the service is running when deleting the service, the service is stopped before being deleted.
+     > [!NOTE]
+     > If the service is running when deleting the service, the service is stopped before being deleted.
 
      To delete an Oracle CDC Windows Service definition, the program needs update access to the MSXDBCDC database in the associated [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance. When you select **OK** to delete the service, the program attempts to delete the Oracle CDC Service registration in the MSXDBCDC database. If it fails due to lack of permissions, a dialog box is displayed to prompt the user to enter a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login with an update access to the MSXDBCDC database.
 
