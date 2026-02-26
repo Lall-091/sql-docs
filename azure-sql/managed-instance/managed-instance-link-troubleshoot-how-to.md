@@ -232,6 +232,12 @@ GO
 
 It's possible for the certificate used for the link to expire. If the certificate expires, the link fails. To resolve this issue, [rotate the certificate](managed-instance-link-best-practices.md#rotate-certificate). 
 
+## Known issues after migrating to SQL Managed Instance
+
+Consider the following known issues after migrating to Azure SQL Managed Instance:
+
+[!INCLUDE [known-issues-after-migration](../includes/sql-managed-instance/known-issues-after-migration.md)]
+
 ## Test network connectivity
 
 [!INCLUDE [azure-sql-managed-instance-link-check-network](../includes/sql-managed-instance/azure-sql-managed-instance-link-check-network.md)]

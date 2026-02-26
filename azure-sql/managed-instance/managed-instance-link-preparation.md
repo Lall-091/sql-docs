@@ -5,7 +5,7 @@ description: Learn how to prepare your environment to create a link between SQL 
 author: djordje-jeremic
 ms.author: djjeremi
 ms.reviewer: mathoma, danil, randolphwest
-ms.date: 11/18/2025
+ms.date: 03/06/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.topic: how-to
@@ -62,6 +62,8 @@ To prepare your SQL Server instance, you need to validate that:
 - You've [created a database master key](#create-a-database-master-key-in-the-master-database) in the `master` database.
 - You've [enabled the availability groups feature](#enable-availability-groups).
 - You've [added the proper trace flags](#enable-startup-trace-flags) at startup.
+- You've enabled [accelerated database recovery](#enable-accelerated-database-recovery) if you're on SQL Server 2019 or later, and plan to use it on the target SQL managed instance.
+- You've enabled [Service Broker](#enable-service-broker) if you plan to use it on the target SQL managed instance.
 
 You need to restart SQL Server for these changes to take effect.
 
@@ -202,6 +204,9 @@ Your SQL Server version should be one of the supported versions applied with the
 
 :::image type="content" source="media/managed-instance-link-preparation/ssms-results-expected-outcome.png" alt-text="Screenshot that shows the expected outcome in SSMS.":::
 
+
+[!INCLUDE [prepare-database-for-migration](../includes/sql-managed-instance/prepare-database-for-migration.md)]
+ 
 ## Configure network connectivity
 
 For the link to work, you must have network connectivity between SQL Server and SQL Managed Instance. The network option that you choose depends on whether or not your SQL Server instance is on an Azure network.
@@ -269,11 +274,11 @@ The following diagram shows an example of an on-premises network environment, in
 > - While you can choose to customize the endpoint on the SQL Server side, port numbers for SQL Managed Instance can't be changed or customized.
 > - IP address ranges of subnets hosting managed instances, and SQL Server must not overlap.
 
-### Add URLs to allowlist
+### Add URLs to allow list
 
-Depending on your network security settings, it might be necessary to add URLs to your allowlist for the SQL Managed Instance FQDN and some of the Resource Management endpoints used by Azure.
+Depending on your network security settings, it might be necessary to add URLs to your allow list for the SQL Managed Instance FQDN and some of the Resource Management endpoints used by Azure.
 
-The following lists the resources that should be added to your allowlist:
+The following lists the resources that should be added to your allow list:
 
 - The fully qualified domain name (FQDN) of your SQL Managed Instance. For example: `managedinstance.a1b2c3d4e5f6.database.windows.net`.
 - Microsoft Entra Authority
@@ -281,7 +286,7 @@ The following lists the resources that should be added to your allowlist:
 - Resource Manager Endpoint
 - Service Endpoint
 
-Follow the steps in the [Configure SSMS for government clouds](#configure-ssms-for-government-clouds) section to access the **Tools** interface in SQL Server Management Studio (SSMS) and identify the specific URLs for the resources within your cloud you need to add to your allowlist.
+Follow the steps in the [Configure SSMS for government clouds](#configure-ssms-for-government-clouds) section to access the **Tools** interface in SQL Server Management Studio (SSMS) and identify the specific URLs for the resources within your cloud you need to add to your allow list.
 
 ## Test network connectivity
 

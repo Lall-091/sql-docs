@@ -22,7 +22,10 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 
 | Issue | Date discovered | Status | Date resolved |
 | --- | --- | --- | --- |
-| [Misleading error message when connecting to a read replica using invalid credentials](#misleading-error-message-when-connecting-to-a-read-replica-using-invalid-credentials) | February 2026 |
+| [Restore operation failures after migrating to SQL Managed Instance](#restore-operation-failures-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
+| [Unable to use Service Broker after migrating to SQL Managed Instance](#unable-to-use-service-broker-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
+| [Unable to use accelerated database recovery after migrating to SQL Managed Instance](#unable-to-use-accelerated-database-recovery-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
+| [Misleading error message when connecting to a read replica using invalid credentials](#misleading-error-message-when-connecting-to-a-read-replica-using-invalid-credentials) | February 2026 |No resolution| |
 | [Modifying backup retention period for the free offer](#modifying-backup-retention-period-for-the-free-offer) | June 2025 | Has workaround | |
 | [Login to read-secondary failed due to long wait on "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING"](#login-to-read-secondary-failed-due-to-long-wait-on-hadr_database_wait_for_transition_to_versioning) | April 2025 | Has workaround | |
 | [Interim guidance on 2024 time zone updates for Paraguay](#interim-guidance-on-2024-time-zone-updates-for-paraguay) | March 2025 | Resolved | February 2026 |
@@ -59,6 +62,9 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | Contained databases not supported in SQL Managed Instance | | Resolved | Aug 2019 |
 
 ## Has workaround
+
+[!INCLUDE [known-issues-after-migration](../includes/sql-managed-instance/known-issues-after-migration.md)]
+
 
 ### Modifying backup retention period for the free offer
 

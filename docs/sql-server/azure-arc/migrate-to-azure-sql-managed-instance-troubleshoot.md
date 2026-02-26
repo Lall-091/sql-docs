@@ -121,7 +121,7 @@ Investigate other warnings. Some warnings might require resolution on your part 
 
 Configuring a link through the Azure portal for migration isn't compatible with existing links that you create manually, either through SQL Server Management Studio (SSMS) or Transact-SQL (T-SQL). If a link already exists, you can't create a new link through the Azure portal.
 
-If a link already exists on your either the SQL Server source or Azure SQL Managed Instance target, you need to perform the following steps before creating a new link between that source and target through the Azure portal:
+If a link already exists on either the SQL Server source or Azure SQL Managed Instance target, you need to perform the following steps before creating a new link between that source and target through the Azure portal:
 1. Drop the link manually from SQL Managed Instance by using [Remove-AzSqlInstanceLink](/powershell/module/az.sql/remove-azsqlinstancelink) or [az sql mi link delete](/cli/azure/sql/mi/link#az-sql-mi-link-delete) from Azure Cloud Shell or a machine signed in with an Azure Context.
 1. Drop the link manually from SQL Server by using [DROP AVAILABILITY GROUP](../../t-sql/statements/drop-availability-group-transact-sql.md) with the name of the distributed availability group associated with the link.
 1. Drop all link-related certificates from the SQL Server instance by using [DROP CERTIFICATE](../../t-sql/statements/drop-certificate-transact-sql.md). The certificates that you need to drop typically contain the following values: `DigiKey PKI`, `Microsoft PKI`, `endpoint`, and `database.windows.net`. You can use `SELECT * FROM sys.certificates` to list all certificates on SQL Server.
@@ -179,6 +179,12 @@ LRS migration jobs stay on the **Monitor and cutover** page for 28 days after th
 
 To manually delete the jobs, go to the [DMS migration job associated with your LRS migration](#troubleshoot-migration-with-dms) as described in the previous section. Select the migration job you want to delete, then use the **Delete** trash can button to delete the job. Confirm by selecting "Check this box to confirm deleting". This action clears the jobs from the **Monitor and cutover** page in Azure Arc.
 
+## Known issues after migrating to SQL Managed Instance
+
+Consider the following known issues after migrating to Azure SQL Managed Instance:
+
+[!INCLUDE [known-issues-after-migration](../../../azure-sql/includes/sql-managed-instance/known-issues-after-migration.md)]
+
 ## Contact Microsoft
 
 You can contact Microsoft to open a support ticket with an issue you're having or to provide feedback directly to the product group.
@@ -194,7 +200,7 @@ Use <https://aka.ms/azure-support> to go to the **Help + support** page in the A
 1. Select your **SQL Server instance enabled by Azure Arc** resource from the **Resource** dropdown list and then select **Next**.
 1. Select **Migration Issues** in the **Are you having one of the following issues?** tile and then select **Next**.
 1. Select **Create a support request** from the top navigation bar within the **Support + troubleshooting** pane to open the support ticket form.
-1. Use the following **Problem subtype** values to route your issue to the the appropriate support queue:
+1. Use the following **Problem subtype** values to route your issue to the appropriate support queue:
    - **Assess**: If you're having issues with the [migration readiness assessment](migration-assessment.md). 
    - **LRS Data Migration**: If you're having issues with a [Log Replay Service (LRS) migration](migration-sql-mi-prepare-log-replay-service.md).
    - **MI Link Data Migration**: If you're having issues with a [Managed Instance link migration](migration-sql-mi-prepare-link.md).

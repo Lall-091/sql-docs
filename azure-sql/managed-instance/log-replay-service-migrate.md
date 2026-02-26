@@ -58,6 +58,8 @@ Make sure that you meet the following requirements for SQL Server:
 - For SQL Server 2016 and later, you can [take your backup directly](#take-backups-directly-to-your-blob-storage-account) to your Azure Blob Storage account.
 - Although having `CHECKSUM` enabled for backups isn't required, it's highly recommended to prevent unintentionally migrating a corrupt database, and for faster restore operations.
 - Any version of Windows Server is supported based on the SQL Server version supportability.
+- For SQL Server 2019 and later, accelerated database recovery should be enabled, with the persistent version store set to `PRIMARY`. For more information, see [Known issues after migrating to SQL Managed Instance](#known-issues-after-migrating-to-sql-managed-instance) in this article.
+- To use Service Broker on a database migrated to Azure SQL Managed Instance, Service Broker must be enabled on the source database before migration. For more information, see [Known issues after migrating to SQL Managed Instance](#known-issues-after-migrating-to-sql-managed-instance) in this article.
 
 ### Azure
 
@@ -630,6 +632,9 @@ Consider the following limitations when migrating with LRS:
 - There are two scenarios, at the beginning and end of the migration process, where a migration is aborted if a failover occurs, and the migration job must be manually restarted from the beginning as the database is dropped from SQL Managed Instance:
   - If a failover occurs when the first full database backup is in the process of being restored to SQL Managed Instance when the migration job is first started, then the migration job must be manually restarted from the beginning.
   - If a failover occurs after migration cutover is initiated, the migration job must be manually restarted from the beginning. Ensure the last backup file is as small as possible to minimize cutover time and reduce the risk of a failover during the cutover process.
+- If [accelerated database recovery](/sql/relational-databases/accelerated-database-recovery-concepts) is disabled on your source SQL Server 2019 and later instances, you can no longer enable it after migrating to Azure SQL Managed Instance. Additionally, if the persistent version store (PVS) isn't set to `PRIMARY`, you can experience issues with restore operations on the target SQL managed instance.
+- If [Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) is disabled on the source SQL Server instance, you can't use Service Broker on the target SQL managed instance after migration.
+
 
 > [!NOTE]  
 > If you require a database to be read-only accessible during the migration, with a much longer time frame for performing the migration and with minimal downtime, consider using the [Overview of the Managed Instance link](managed-instance-link-feature-overview.md) feature as a recommended migration solution.
@@ -654,6 +659,12 @@ If it's important that databases are available as soon as cutover completes, the
 
 - Migrate to the General Purpose service tier first, and then upgrade to the **Business Critical** service tier. Upgrading your service tier is an online operation that keeps your databases online until a short failover as the final step of the upgrade operation.
 - Use the [Managed Instance link](managed-instance-link-migrate.md) for an online migration to a **Business Critical** instance without having to wait for databases to be available after the cutover.
+
+## Known issues after migrating to SQL Managed Instance
+
+Consider the following known issues after migrating to Azure SQL Managed Instance:
+
+[!INCLUDE [known-issues-after-migration](../includes/sql-managed-instance/known-issues-after-migration.md)]
 
 ## Troubleshoot LRS issues
 

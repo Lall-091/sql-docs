@@ -157,6 +157,12 @@ RESTORE HEADERONLY
     FROM URL = 'https://<mystorageaccountname>.blob.core.windows.net/<containername>/full_0_0.bak';
 ```
 
+## Configure source SQL Server database
+
+Enable accelerated database recovery and Service Broker on your source SQL Server instance if you plan to use these features on the target SQL Managed Instance after migration, as these features can't be enabled after migration if they aren't already enabled on the source SQL Server instance. 
+
+[!INCLUDE [prepare-database-for-migration](../../../azure-sql/includes/sql-managed-instance/prepare-database-for-migration.md)]
+
 ## Upload backups to your Blob Storage account
 
 When your blob container is ready and you've confirmed that your SQL managed instance can access the container, you can begin uploading your backups to your Azure Blob Storage account. When all of your backups are uploaded to your storage account, you're ready to proceed with the migration.
