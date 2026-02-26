@@ -155,7 +155,7 @@ To view forecasted pay-as-you-go charges:
 
 :::image type="content" source="media/manage-pay-as-you-go-transition/cost-analysis-forecasted-charges.png" alt-text="Screenshot of Azure Cost Management showing actual and forecasted charges." lightbox="media/manage-pay-as-you-go-transition/cost-analysis-forecasted-charges.png":::
 
-### Filter for Arc SQL pay-as-you-go costs
+### Filter for Arc SQL Server usage
 
 To isolate Azure Arc-enabled SQL Server pay-as-you-go charges, apply these filters:
 
