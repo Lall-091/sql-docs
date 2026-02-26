@@ -67880,6 +67880,46 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/integration-services/change-data-capture/change-data-capture-service-for-oracle-by-attunity-f1-help.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/connection-to-sql-server.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#connection-to-sql-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/connection-to-sql-server-for-delete.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#connection-to-sql-server-for-delete",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/create-and-edit-an-oracle-cdc-service.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#create-and-edit-an-oracle-cdc-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/manage-an-oracle-cdc-service.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#manage-an-oracle-cdc-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/prepare-sql-server-for-cdc.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#prepare-sql-server-for-cdc",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/prepare-sql-server-for-oracle-cdc-view-script.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#prepare-sql-server-for-oracle-cdc-view-script",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/work-with-cdc-services.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#work-with-cdc-services",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/reporting-services/tools/report-server-in-management-studio-f1-help.md",
       "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs",
       "redirect_document_id": false
