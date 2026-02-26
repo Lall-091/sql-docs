@@ -181,6 +181,14 @@ This breakdown helps you identify:
 - Edition differences (Standard vs Enterprise)
 - Instances that were unintentionally left running
 
+### Identify charge categories
+
+To see which SQL Server related charge categories are driving costs, in **Cost analysis**, select **Group by** > **Meter**. This breakdown helps you identify:
+
+- Usage category breakdown (for example, ESU costs, PAYG costs)
+- Edition differences (meter names indicate the editions)
+- Unexpected charges
+
 ### Set up budget alerts
 
 To proactively manage costs:
