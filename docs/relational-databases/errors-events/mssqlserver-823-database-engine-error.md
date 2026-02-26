@@ -41,7 +41,7 @@ The 823 error message contains the following information:
 
 ```output
 Error: 823, Severity: 24, State: 2.
-2010-03-06 22:41:19.55 spid58 The operating system returned error 1117 (The request could not be performed because of an I/O device error.) to SQL Server during a read at offset 0x0000002d460000 in file 'e:\program files\Microsoft SQL Server\mssql\data\mydb.MDF'. Additional messages in the SQL Server error log and system event log may provide more detail. This is a severe, system-level error condition that threatens database integrity and must be corrected immediately. It is recommended to complete a full database consistency check (DBCC CHECKDB). This error can be caused by many factors; for more information, see SQL Server Books Online.
+The operating system returned error 1117 (The request could not be performed because of an I/O device error.) to SQL Server during a read at offset 0x0000002d460000 in file 'E:\Program Files\Microsoft SQL Server\Mssql\Data\mydb.MDF'. Additional messages in the SQL Server error log and system event log may provide more detail. This is a severe, system-level error condition that threatens database integrity and must be corrected immediately. It is recommended to complete a full database consistency check (DBCC CHECKDB). This error can be caused by many factors; for more information, see SQL Server Books Online.
 ```
 
 You might see errors from the DBCC CHECKDB statement on the database that is associated with the file in the error message. You can run the DBCC CHECKDB statement when you see an 823 error. If the DBCC CHECKDB statement doesn't report any errors, you probably have an intermittent system problem or a disk problem.
@@ -72,3 +72,18 @@ The 823 error message usually indicates that there's a problem with underlying s
 - Evaluate if there are [filter drivers](/troubleshoot/sql/database-engine/performance/performance-consistency-issues-filter-drivers-modules) that exist in the path of these I/O requests that encounter problems.
   - Check if there are any updates to these filter drivers
   - Can these filter drivers be removed or disabled to observe if the problem that results in the 823 error goes away?
+
+### Example with OS error 21
+
+In this case, the underlying OS error 21 indicates that the disk device is offline and not available for the OS and SQL Server to use.
+
+```output
+Error: 823, Severity: 24, State: 2.
+The operating system returned error 21 (The device is not ready.) to SQL Server during a read at offset 0x0000002d460000 in file 'E:\Program Files\Microsoft SQL Server\Mssql\Data\mydb.MDF'. Additional messages in the SQL Server error log and system event log may provide more detail. This is a severe, system-level error condition that threatens database integrity and must be corrected immediately. It is recommended to complete a full database consistency check (DBCC CHECKDB). This error can be caused by many factors; for more information, see SQL Server Books Online.
+```
+
+#### Resolution
+
+If you encounter a similar scenario, address the underlying OS error. In this case, work with your system administrator and hardware vendor to ensure that the disk device is online, functioning properly and there are no errors and damage reported.
+
+An unstable network connection can also cause this error, for example when database files are stored on a network-attached storage (NAS) or SAN device accessed over the network. In cases like this one, you might have to check the physical integrity of the databases once the disk device is restored by running [DBCC CHECKDB](../../t-sql/database-console-commands/dbcc-checkdb-transact-sql.md). If database damage is reported, restore a last known good database backup.
