@@ -67865,6 +67865,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/analytics-platform-system/appliance-management-tasks.md",
+      "redirect_url": "/sql/analytics-platform-system/parallel-data-warehouse-overview?view=aps-pdw-2016-au7&preserve-view=true#management-tasks",
+      "redirect_document_id": false
+    },    
+    {
       "source_path": "docs/t-sql/functions/string-functions-transact-sql.md",
       "redirect_url": "/sql/t-sql/functions/functions#string-functions",
       "redirect_document_id": false
@@ -67877,6 +67882,46 @@
     {
       "source_path": "docs/connect/jdbc/programming-guide-for-jdbc-sql-driver.md",
       "redirect_url": "/sql/connect/jdbc/connecting-to-sql-server-with-the-jdbc-driver",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/change-data-capture-service-for-oracle-by-attunity-f1-help.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/connection-to-sql-server.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#connection-to-sql-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/connection-to-sql-server-for-delete.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#connection-to-sql-server-for-delete",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/create-and-edit-an-oracle-cdc-service.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#create-and-edit-an-oracle-cdc-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/manage-an-oracle-cdc-service.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#manage-an-oracle-cdc-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/prepare-sql-server-for-cdc.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#prepare-sql-server-for-cdc",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/prepare-sql-server-for-oracle-cdc-view-script.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#prepare-sql-server-for-oracle-cdc-view-script",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/work-with-cdc-services.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#work-with-cdc-services",
       "redirect_document_id": false
     },
     {
