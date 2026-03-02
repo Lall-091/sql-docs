@@ -353,6 +353,8 @@
       items:
       - name: Migrate using DMS
         href: /azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/azure-sql/toc.json
+      - name: Import or export database with managed identity authentication
+        href: database/database-import-export-managed-identity.md
     - name: Scale out
       items:
       - name: Configure Hyperscale named replicas
