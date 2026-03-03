@@ -2036,7 +2036,9 @@
       href: database/troubleshoot-common-connectivity-issues.md
     - name: Troubleshoot out of memory errors
       href: database/troubleshoot-memory-errors-issues.md
-    - name: Import/Export service hangs
+    - name: Troubleshoot geo-replication lag
+      href: database/troubleshoot-geo-replication-redo.md
+    - name: Troubleshoot Import/Export service
       href: database/database-import-export-hang.md
     - name: Transaction log errors in Azure SQL Database
       href: database/troubleshoot-transaction-log-errors-issues.md
