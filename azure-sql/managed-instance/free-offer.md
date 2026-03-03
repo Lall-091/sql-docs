@@ -27,7 +27,7 @@ To get started, select the **Try for free** link on the [Azure SQL hub at aka.ms
 
 ## Prerequisites
 
-To create a free Azure SQL Database, you need:
+To create a free Azure SQL Managed Instance, you need:
 
 - An Azure account.
 - A [supported Azure subscription](#supported-subscription-types). There's a limit of 1 free offer SQL managed instance per subscription.
