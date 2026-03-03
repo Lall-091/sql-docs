@@ -4,7 +4,7 @@ description: Learn about the features and documentation improvements for SQL Ser
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, randolphwest
-ms.date: 02/19/2026
+ms.date: 03/02/2026
 ms.service: azure-vm-sql-server
 ms.subservice: service-overview
 ms.topic: whats-new
