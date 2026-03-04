@@ -8723,6 +8723,8 @@ items:
         href: tools/sql-database-projects/concepts/system-objects.md
       - name: Target platform
         href: tools/sql-database-projects/concepts/target-platform.md
+      - name: XML schema collections
+        href: tools/sql-database-projects/concepts/xml-schema-collection.md
       - name: Data tier applications
         href: tools/sql-database-projects/concepts/data-tier-applications/overview.md
         items:
