@@ -235,9 +235,8 @@ SQL Server enabled by Azure Arc stores the certificate for Microsoft Entra ID in
 
 * [Rotate certificates](rotate-certificates.md)
 * [Microsoft Entra authentication for SQL Server](../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md).
-* [Tutorial: Set up Microsoft Entra authentication for SQL Server](entra-authentication-setup-tutorial.md)
 
-To set up Microsoft Entra ID, follow the instructions at [Tutorial: Set up Microsoft Entra authentication for SQL Server](entra-authentication-setup-tutorial.md).
+To set up Microsoft Entra ID, follow the instructions at [Tutorial: Set up Microsoft Entra authentication for SQL Server](https://learn.microsoft.com/en-us/sql/sql-server/azure-arc/microsoft-entra-authentication-with-managed-identity).
 
 ### Microsoft Purview
 
@@ -249,6 +248,11 @@ Key requirements to use [Purview](/purview/register-scan-azure-arc-enabled-sql-s
 * The latest [self-hosted integration runtime](https://go.microsoft.com/fwlink/?linkid=2246619). For more information, see [Create and manage a self-hosted integration runtime](/purview/manage-integration-runtimes).
 * For Azure RBAC, you need to have both Microsoft Entra ID and Azure Key Vault enabled.
 
+### Remote management and Script execution
+
+Azure Arc supports remote management scenarios that include script execution on Arc-enabled servers via [Run Command](https://learn.microsoft.com/en-us/azure/azure-arc/servers/run-command?tabs=azure-powershell), which lets you securely execute scripts/commands on connected machines without needing direct RDP/SSH access, using the Connected Machine agent as the control-plane pathway. Because scripts executed through Run command run in a highly privileged context, **Local System** on Windows or **root** on Linux; this capability should be treated as “remote admin,” and access should be tightly governed to avoid unintended elevation-of-privilege.
+
+
 ## Best practices
 
 Implement the following configurations to comply with current best practices to secure instances of SQL Server enabled by Azure Arc:
@@ -258,6 +262,7 @@ Implement the following configurations to comply with current best practices to 
 * Enable [Microsoft Entra authentication](../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md).
 * Enable [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-sql-usage) and resolve the issues pointed out by Defender for SQL.
 * Don't enable SQL authentication. It's disabled by default. Review [SQL Server security best practices](../../relational-databases/security/sql-server-security-best-practices.md).
+* Restrict remote script execution using [Azure Run command with least-privileged Azure RBAC](https://learn.microsoft.com/en-us/azure/azure-arc/servers/run-command?tabs=azure-powershell#limit-access-to-run-command-preview). Additionally, [block the Run command](https://learn.microsoft.com/en-us/azure/azure-arc/servers/run-command?tabs=azure-powershell#block-run-commands-locally) in your Arc enabled server, if you don’t need it.
 
 ## Related content
 
