@@ -2036,7 +2036,7 @@
       href: database/troubleshoot-common-connectivity-issues.md
     - name: Troubleshoot out of memory errors
       href: database/troubleshoot-memory-errors-issues.md
-    - name: Troubleshoot geo-replication lag
+    - name: Troubleshoot geo-replication redo lag
       href: database/troubleshoot-geo-replication-redo.md
     - name: Troubleshoot Import/Export service
       href: database/database-import-export-hang.md
