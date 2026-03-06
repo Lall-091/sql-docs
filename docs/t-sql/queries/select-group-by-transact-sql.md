@@ -90,7 +90,7 @@ GROUP BY {
 } [ , ...n ]
 ```
 
-Syntax for Analytics Platform System (PDW):
+Syntax for Analytics Platform System/Paralel Data Warehouse (APS/PDW):
 
 ```syntaxsql
 GROUP BY {
@@ -103,55 +103,32 @@ GROUP BY {
 
 ### *column-expression*
 
-Specifies a column or a non-aggregate calculation on a column. This column can belong to a table, derived table, or view. The column must appear in the `FROM` clause of the `SELECT` statement, but doesn't need to appear in the `SELECT` list.
+Specifies a column or a nonaggregate calculation on a column. This column can belong to a table, derived table, or view. The column must appear in the `FROM` clause of the `SELECT` statement, but doesn't need to appear in the `SELECT` list.
 
 For valid expressions, see [expression](../language-elements/expressions-transact-sql.md).
 
 The column must appear in the `FROM` clause of the `SELECT` statement, but isn't required to appear in the `SELECT` list. However, each table or view column in any nonaggregate expression in the `<select>` list must be included in the `GROUP BY` list.
 
-The following statements are allowed:
+### GROUP BY options
 
-```sql
-SELECT ColumnA,
-       ColumnB
-FROM T
-GROUP BY ColumnA, ColumnB;
+The following options extend the basic `GROUP BY` clause to support hierarchical aggregation, multidimensional summarization, custom grouping combinations, and platform‑specific execution behaviors. These options allow queries to produce subtotals and grand totals in a single logical operation.
 
-SELECT ColumnA + ColumnB
-FROM T
-GROUP BY ColumnA, ColumnB;
+- **ROLLUP ( <group_by_expression> [ , ...n ] )**  
+  Generates hierarchical subtotals for the listed columns and a final grand total (for example, `(a,b,c)`, `(a,b)`, `(a)`, `()`). Use for drill‑up reports like **year** > **quarter** > **month**.
+- **CUBE ( <group_by_expression> [ , ...n ] )**  
+  Produces all combinations of the specified columns (the full 2^n lattice) plus the grand total. Best suited for multi‑dimensional analysis across every slice.
+- **GROUPING SETS ( <grouping_set> [ , ...n ] )**  
+  Defines the exact groupings to compute (including `()` for grand total) in one pass; functionally similar to a `UNION ALL` of multiple `GROUP BY` queries but optimized together. 
+- **`()` (empty grouping set)**  
+  Shorthand for computing only the **grand total** across all rows—used alone as `GROUP BY ()` or inside `GROUPING SETS`. 
+- **ALL column-expression [ , ...n ]** *(non‑ISO; backward compatibility)*  
+  Shorthand to group by all nonaggregated select items. Retained for compatibility; availability and semantics vary.
+- **column-expression [ , ...n ] WITH { CUBE | ROLLUP }** *(legacy form)*  
+  Older, non‑ISO syntax equivalent to `GROUP BY CUBE(...)` or `GROUP BY ROLLUP(...)`. Supported for backward compatibility; use the ISO subclauses when possible.
+- **WITH (DISTRIBUTED_AGG)**
+  Hints distributed execution for aggregations when grouping by a single column. It's supported only in Azure Synapse Analytics dedicated SQL pools and Analytics Platform System/Parallel Data Warehouse (APS/PDW).
 
-SELECT ColumnA + ColumnB
-FROM T
-GROUP BY ColumnA + ColumnB;
-
-SELECT ColumnA + ColumnB + constant
-FROM T
-GROUP BY ColumnA, ColumnB;
-```
-
-The following statements aren't allowed:
-
-```sql
-SELECT ColumnA,
-       ColumnB
-FROM T
-GROUP BY ColumnA + ColumnB;
-
-SELECT ColumnA + constant + ColumnB
-FROM T
-GROUP BY ColumnA + ColumnB;
-```
-
-The column expression can't contain:
-
-- A column alias that you define in the `SELECT` list. It can use a column alias for a derived table that is defined in the `FROM` clause.
-- A column of type **text**, **ntext**, or **image**. However, you can use a column of text, ntext, or image as an argument to a function that returns a value of a valid data type. For example, the expression can use `SUBSTRING()` and `CAST()`. This rule also applies to expressions in the `HAVING` clause.
-- xml data type methods. It can include a user-defined function that uses xml data type methods. It can include a computed column that uses xml data type methods.
-- A subquery. Error 144 is returned.
-- A column from an indexed view.
-
-### GROUP BY *column-expression* [ ,...n ]
+## GROUP BY *column-expression* [ ,...n ]
 
 Groups the `SELECT` statement results according to the values in a list of one or more column expressions.
 
@@ -199,9 +176,51 @@ The query result has three rows since there are three combinations of values for
 | Canada | British Columbia | 500 |
 | United States | Montana | 100 |
 
-### GROUP BY ROLLUP
+The column expression in `GROUP BY` can't contain:
 
-Creates a group for each combination of column expressions. In addition, it "rolls up" the results into subtotals and grand totals. To do this, it moves from right to left, decreasing the number of column expressions over which it creates groups and the aggregations.
+- A column alias that you define in the `SELECT` list. It can use a column alias for a derived table that's defined in the `FROM` clause.
+- A column of type **text**, **ntext**, or **image**. However, you can use a column of **text**, **ntext**, or **image** as an argument to a function that returns a value of a valid data type. For example, the expression can use `SUBSTRING()` and `CAST()`. This rule also applies to expressions in the `HAVING` clause.
+- **xml** data type methods. It can include a user-defined function that uses **xml** data type methods. It can include a computed column that uses **xml** data type methods.
+- A subquery. The query returns error 144.
+- A column from an indexed view.
+
+The following statements are allowed:
+
+```sql
+SELECT ColumnA,
+       ColumnB
+FROM T
+GROUP BY ColumnA, ColumnB;
+
+SELECT ColumnA + ColumnB
+FROM T
+GROUP BY ColumnA, ColumnB;
+
+SELECT ColumnA + ColumnB
+FROM T
+GROUP BY ColumnA + ColumnB;
+
+SELECT ColumnA + ColumnB + constant
+FROM T
+GROUP BY ColumnA, ColumnB;
+```
+
+The following statements aren't allowed:
+
+```sql
+SELECT ColumnA,
+       ColumnB
+FROM T
+GROUP BY ColumnA + ColumnB;
+
+SELECT ColumnA + constant + ColumnB
+FROM T
+GROUP BY ColumnA + ColumnB;
+```
+
+## GROUP BY ROLLUP ()
+
+Creates a group for each combination of column expressions. In addition, it *rolls up* the results into subtotals and grand totals. While creating the groups, it moves from right to left, decreasing the number of column expressions over which it creates groups and the aggregations.
 
 The column order affects the `ROLLUP` output and can affect the number of rows in the result set.
 
@@ -211,7 +230,7 @@ For example, `GROUP BY ROLLUP (col1, col2, col3, col4)` creates groups for each 
 - col1, col2, col3, NULL
 - col1, col2, NULL, NULL
 - col1, NULL, NULL, NULL
-- NULL, NULL, NULL, NULL (This is the grand total)
+- NULL, NULL, NULL, NULL (The group with the NULL values is the grand total)
 
 Using the table from the previous example, this code runs a `GROUP BY ROLLUP` operation instead of a simple `GROUP BY`.
 
@@ -234,7 +253,7 @@ The query result has the same aggregations as the simple `GROUP BY` without the 
 | United States | NULL | 100 |
 | NULL | NULL | 700 |
 
-### GROUP BY CUBE ()
+## GROUP BY CUBE ()
 
 `GROUP BY CUBE` creates groups for all possible combinations of columns. For `GROUP BY CUBE (a, b)`, the results have groups for unique values of `(a, b)`, `(NULL, b)`, `(a, NULL)`, and `(NULL, NULL)`.
 
@@ -262,7 +281,7 @@ The query result has groups for unique values of `(Region, Territory)`, `(NULL, 
 | Canada | NULL | 600 |
 | United States | NULL | 100 |
 
-### GROUP BY GROUPING SETS ()
+## GROUP BY GROUPING SETS ()
 
 The `GROUPING SETS` option combines multiple `GROUP BY` clauses into one `GROUP BY` clause. The results are the same as using `UNION ALL` on the specified groups.
 
@@ -296,6 +315,14 @@ GROUP BY CUBE(Region, Territory);
 
 SQL doesn't consolidate duplicate groups generated for a `GROUPING SETS` list. For example, in `GROUP BY ((), CUBE (Region, Territory))`, both elements return a row for the grand total, and both rows appear in the results.
 
+### Support for ISO and ANSI SQL-2006 GROUP BY features
+
+The `GROUP BY` clause supports all `GROUP BY` features that are included in the SQL-2006 standard with the following syntax exceptions:
+
+- Grouping sets aren't allowed in the `GROUP BY` clause unless they're part of an explicit `GROUPING SETS` list. For example, `GROUP BY Column1, (Column2, ...ColumnN)` is allowed in the standard but not in Transact-SQL. Transact-SQL supports `GROUP BY C1, GROUPING SETS ((Column2, ...ColumnN))` and `GROUP BY Column1, Column2, ... ColumnN`, which are semantically equivalent. These clauses are semantically equivalent to the previous `GROUP BY` example. This restriction avoids the possibility that `GROUP BY Column1, (Column2, ...ColumnN)` could be misinterpreted as `GROUP BY C1, GROUPING SETS ((Column2, ...ColumnN))`, which aren't semantically equivalent.
+
+- Grouping sets aren't allowed inside grouping sets. For example, `GROUP BY GROUPING SETS (A1, A2,...An, GROUPING SETS (C1, C2, ...Cn))` is allowed in the SQL-2006 standard but not in Transact-SQL. Transact-SQL allows `GROUP BY GROUPING SETS( A1, A2,...An, C1, C2, ...Cn)` or `GROUP BY GROUPING SETS( (A1), (A2), ... (An), (C1), (C2), ... (Cn))`, which are semantically equivalent to the first `GROUP BY` example and have clearer syntax.
+
 ### GROUP BY ()
 
 Specifies the empty group, which generates the grand total. This group is useful as one of the elements of a `GROUPING SET`. For example, this statement gives the total sales for each region and then gives the grand total for all regions.
@@ -307,7 +334,7 @@ FROM Sales
 GROUP BY GROUPING SETS(Region, ());
 ```
 
-### GROUP BY ALL column-expression [ ,...n ]
+## GROUP BY ALL column-expression [ ,...n ]
 
 **Applies to**: SQL Server and Azure SQL Database
 
@@ -321,21 +348,26 @@ Specifies whether to include all groups in the results, regardless of whether th
 - Isn't supported in queries that access remote tables if there's also a `WHERE` clause in the query.
 - Fails on columns that have the FILESTREAM attribute.
 
-### GROUP BY column-expression [ ,...n ] WITH { CUBE | ROLLUP }
+### Support for ISO and ANSI SQL-2006 GROUP BY Features
+
+The `GROUP BY` clause supports all `GROUP BY` features that are included in the SQL-2006 standard with the following syntax exceptions:
+- `GROUP BY ALL` and `GROUP BY DISTINCT` are only allowed in a simple `GROUP BY` clause that contains column expressions. You can't use them with the `GROUPING SETS`, `ROLLUP`, `CUBE`, `WITH CUBE`, or `WITH ROLLUP` constructs. `ALL` is the default and is implicit. It's also only allowed in the backward compatible syntax.
+
+## GROUP BY column-expression [ ,...n ] WITH { CUBE | ROLLUP }
 
 **Applies to**: SQL Server and Azure SQL Database
 
 > [!NOTE]  
 > Use this syntax only for backward compatibility. Avoid using this syntax in new development work, and plan to modify applications that currently use this syntax.
 
-### WITH (DISTRIBUTED_AGG)
+## WITH (DISTRIBUTED_AGG)
 
 **Applies to**: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
 
 The `DISTRIBUTED_AGG` query hint forces the massively parallel processing (MPP) system to redistribute a table on a specific column before performing an aggregation. Only one column in the `GROUP BY` clause can have a `DISTRIBUTED_AGG` query hint. After the query finishes, the redistributed table is dropped. The original table isn't changed.
 
 > [!NOTE]  
-> The `DISTRIBUTED_AGG` query hint is provided for backward compatibility with earlier [!INCLUDE [ssPDW](../../includes/sspdw-md.md)] versions and doesn't improve performance for most queries. By default, MPP already redistributes data as necessary to improve performance for aggregations.
+> The `DISTRIBUTED_AGG` query hint provides backward compatibility with earlier [!INCLUDE [ssPDW](../../includes/sspdw-md.md)] versions and doesn't improve performance for most queries. By default, MPP already redistributes data as necessary to improve performance for aggregations.
 
 ## Remarks
 
@@ -362,11 +394,9 @@ The `DISTRIBUTED_AGG` query hint forces the massively parallel processing (MPP) 
 
 - If a grouping column contains `NULL` values, all `NULL` values are considered equal, and they're collected into a single group.
 
-## Limitations
+### Limitations
 
 **Applies to**: SQL Server and [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]
-
-### Maximum capacity
 
 For a `GROUP BY` clause that uses `ROLLUP`, `CUBE`, or `GROUPING SETS`, the maximum number of expressions is 32. The maximum number of groups is 4,096 (2<sup>12</sup>). The following examples fail because the `GROUP BY` clause has more than 4,096 groups.
 
@@ -389,17 +419,7 @@ For a `GROUP BY` clause that uses `ROLLUP`, `CUBE`, or `GROUPING SETS`, the maxi
   GROUP BY a1, ..., a13 WITH CUBE
   ```
 
-  For backward compatible `GROUP BY` clauses that don't contain `CUBE` or `ROLLUP`, the number of `GROUP BY` items is limited by the `GROUP BY` column sizes, the aggregated columns, and the aggregate values involved in the query. This limit originates from the limit of 8,060 bytes on the intermediate worktable that holds intermediate query results. A maximum of 12 grouping expressions is permitted when `CUBE` or `ROLLUP` is specified.
-
-### Support for ISO and ANSI SQL-2006 GROUP BY Features
-
-The `GROUP BY` clause supports all `GROUP BY` features that are included in the SQL-2006 standard with the following syntax exceptions:
-
-- Grouping sets aren't allowed in the `GROUP BY` clause unless they're part of an explicit `GROUPING SETS` list. For example, `GROUP BY Column1, (Column2, ...ColumnN)` is allowed in the standard but not in Transact-SQL. Transact-SQL supports `GROUP BY C1, GROUPING SETS ((Column2, ...ColumnN))` and `GROUP BY Column1, Column2, ... ColumnN`, which are semantically equivalent. These clauses are semantically equivalent to the previous `GROUP BY` example. This restriction avoids the possibility that `GROUP BY Column1, (Column2, ...ColumnN)` might be misinterpreted as `GROUP BY C1, GROUPING SETS ((Column2, ...ColumnN))`, which aren't semantically equivalent.
-
-- Grouping sets aren't allowed inside grouping sets. For example, `GROUP BY GROUPING SETS (A1, A2,...An, GROUPING SETS (C1, C2, ...Cn))` is allowed in the SQL-2006 standard but not in Transact-SQL. Transact-SQL allows `GROUP BY GROUPING SETS( A1, A2,...An, C1, C2, ...Cn)` or `GROUP BY GROUPING SETS( (A1), (A2), ... (An), (C1), (C2), ... (Cn))`, which are semantically equivalent to the first `GROUP BY` example and have clearer syntax.
-
-- `GROUP BY ALL` and `GROUP BY DISTINCT` are only allowed in a simple `GROUP BY` clause that contains column expressions. You can't use them with the `GROUPING SETS`, `ROLLUP`, `CUBE`, `WITH CUBE`, or `WITH ROLLUP` constructs. `ALL` is the default and is implicit. It's also only allowed in the backward compatible syntax.
+  For backward compatible `GROUP BY` clauses that don't contain `CUBE` or `ROLLUP`, the `GROUP BY` column sizes, the aggregated columns, and the aggregate values involved in the query limit the number of `GROUP BY` items. This limit originates from the limit of 8,060 bytes on the intermediate worktable that holds intermediate query results. You can use a maximum of 12 grouping expressions when you specify `CUBE` or `ROLLUP`.
 
 ### Comparison of supported `GROUP BY` features
 
@@ -408,7 +428,7 @@ The following table describes the `GROUP BY` features that different SQL Server 
 | Feature | SQL Server Integration Services | SQL Server compatibility level 100 or higher |
 | --- | --- | --- |
 | `DISTINCT` aggregates | Not supported for `WITH CUBE` or `WITH ROLLUP`. | Supported for `WITH CUBE`, `WITH ROLLUP`, `GROUPING SETS`, `CUBE`, or `ROLLUP`. |
-| User-defined function with `CUBE` or `ROLLUP` name in the `GROUP BY` clause | User-defined function `dbo.cube(<arg1>, ...<argN>)` or `dbo.rollup(<arg1>, ...<argN>)` in the `GROUP BY` clause is allowed.<br /><br />For example: `SELECT SUM (x) FROM T GROUP BY dbo.cube(y);` | User-defined function `dbo.cube (<arg1>, ...<argN>)` or `dbo.rollup(arg1>, ...<argN>)` in the `GROUP BY` clause isn't allowed.<br /><br />For example: `SELECT SUM (x) FROM T GROUP BY dbo.cube(y);`<br /><br />The following error message is returned: "Incorrect syntax near the keyword 'cube'&#124;'rollup'."<br /><br />To avoid this problem, replace `dbo.cube` with `[dbo].[cube]` or `dbo.rollup` with `[dbo].[rollup]`.<br /><br />The following example is allowed: `SELECT SUM (x) FROM T GROUP BY [dbo].[cube](y);` |
+| User-defined function with `CUBE` or `ROLLUP` name in the `GROUP BY` clause | User-defined function `dbo.cube(<arg1>, ...<argN>)` or `dbo.rollup(<arg1>, ...<argN>)` in the `GROUP BY` clause is allowed.<br /><br />For example: `SELECT SUM (x) FROM T GROUP BY dbo.cube(y);` | User-defined function `dbo.cube (<arg1>, ...<argN>)` or `dbo.rollup(arg1>, ...<argN>)` in the `GROUP BY` clause isn't allowed.<br /><br />For example: `SELECT SUM (x) FROM T GROUP BY dbo.cube(y);`<br /><br />SQL Server returns the following error message: "Incorrect syntax near the keyword 'cube'&#124;'rollup'."<br /><br />To avoid this problem, replace `dbo.cube` with `[dbo].[cube]` or `dbo.rollup` with `[dbo].[rollup]`.<br /><br />The following example is allowed: `SELECT SUM (x) FROM T GROUP BY [dbo].[cube](y);` |
 | `GROUPING SETS` | Not supported | Supported |
 | `CUBE` | Not supported | Supported |
 | `ROLLUP` | Not supported | Supported |
@@ -472,11 +492,11 @@ HAVING DATEPART(yyyy, OrderDate) >= N'2003'
 ORDER BY DATEPART(yyyy, OrderDate);
 ```
 
-## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
+## Examples: Azure Synapse Analytics and Analytics Platform System / Parallel Data Warehouse (PDW)
 
 ### E. Basic use of the GROUP BY clause
 
-The following example finds the total amount for all sales on each day. One row containing the sum of all sales is returned for each day.
+The following example finds the total amount for all sales on each day. The query returns one row containing the sum of all sales for each day.
 
 ```sql
 -- Uses AdventureWorksDW
