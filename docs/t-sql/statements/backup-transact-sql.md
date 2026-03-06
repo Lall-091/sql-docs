@@ -376,7 +376,7 @@ Specifies options to be used with a backup operation.
 
 **Applies to:** [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].
 
-Used only when creating a backup to Azure Blob Storage.
+Used only when creating a backup to Azure Blob Storage or S3-compatible object storage.
 
 #### FILE_SNAPSHOT
 
