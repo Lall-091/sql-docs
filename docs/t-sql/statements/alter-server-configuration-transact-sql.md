@@ -3,7 +3,7 @@ title: "ALTER SERVER CONFIGURATION (Transact-SQL)"
 description: ALTER SERVER CONFIGURATION (Transact-SQL)
 author: markingmyname
 ms.author: maghan
-ms.date: 08/15/2025
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -206,13 +206,13 @@ The time-out value for how long the SQL Server Database Engine resource DLL shou
 
 **Applies to:** [!INCLUDE[sssql25-md](../../includes/sssql25-md.md)] and later versions
 
-Use the `CLUSTER_CONNECTION_OPTIONS` clause to enforce [TLS 1.3](../../relational-databases/security/networking/tls-1-3.md) encryption for communication between the Windows Server Failover Cluster and your failover cluster instance. The options are specified as a list of key-value pairs, separated by semicolons. The key-value pairs are used to configure connection string encryption for the failover cluster instance.
+Use the `ClusterConnectionOptions` clause to enforce [TLS 1.3](../../relational-databases/security/networking/tls-1-3.md) encryption for communication between the Windows Server Failover Cluster and your failover cluster instance. The options are specified as a list of key-value pairs, separated by semicolons. The key-value pairs are used to configure connection string encryption for the failover cluster instance.
 
-To revert back to default encryption, set the `CLUSTER_CONNECTION_OPTIONS` clause to an empty string. [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] defaults to `Encrypt=Mandatory`, and `TrustServerCertificate=Yes` for connections to the failover cluster instance. 
+To revert back to default encryption, set the `ClusterConnectionOptions` clause to an empty string. [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] defaults to `Encrypt=Mandatory`, and `TrustServerCertificate=Yes` for connections to the failover cluster instance. 
 
 For more information, review [connect to a failover cluster instance with strict encryption](../../relational-databases/security/networking/connect-with-strict-encryption.md#connect-to-a-failover-cluster-instance) and [TDS 8.0](../../relational-databases/security/networking/tds-8.md).
 
-The following table describes the key-value pairs that you can use in the `CLUSTER_CONNECTION_OPTIONS` clause:
+The following table describes the key-value pairs that you can use in the `ClusterConnectionOptions` clause:
 
 | Key | Supported values | Description |
 |---|---|---|
@@ -220,9 +220,9 @@ The following table describes the key-value pairs that you can use in the `CLUST
 | `HostNameInCertificate` | Virtual server name | Specifies virtual server name in the certificate that is used for encryption. This value must match the value in the **Subject Alternative Name** of the certificate. If the server name is listed in the certificate, then you can omit the `HostNameInCertificate` key-value pair. If the server name is not listed in the certificate, then you must specify the `HostNameInCertificate` key-value pair with the virtual server name. <br /><br />  **This key value pair is optional.***|
 | `TrustServerCertificate` | `Yes`, `No` | Set to `yes` to specify that the driver doesn't validate the server TLS/SSL certificate. If `no`, the driver validates the certificate. For more information, review [TDS 8.0](../../relational-databases/security/networking/tds-8.md#additional-changes-to-connection-string-encryption-properties). <br /><br />  **This key value pair is optional.***  |    
 |`ServerCertificate` | Path to your certificate | If do not want to use `HostNameInCertificate`, you can pass the path to your certificate. The cluster service account must have permission to read the certificate from the given location. <br /><br />  **This key value pair is optional.** | 
-| `CLUSTER_CONNECTION_OPTIONS` | Empty string (`''`) | Clears the existing configuration and reverts to default encryption settings of `Encrypt=Mandatory` and `TrustServerCertificate=Yes`. | 
+| `ClusterConnectionOptions` | Empty string (`''`) | Clears the existing configuration and reverts to the default encryption settings of `Encrypt=Mandatory` and `TrustServerCertificate=Yes`. | 
 
-Check the [examples](#e-enforce-strict-encryption-to-your-failover-cluster-instance) to learn how to use the `CLUSTER_CONNECTION_OPTIONS` clause.
+Check the [examples](#e-enforce-strict-encryption-to-your-failover-cluster-instance) to learn how to use the `ClusterConnectionOptions` clause.
 
 **\<hadr_cluster_context> ::=**  
   
@@ -540,8 +540,8 @@ If the server name is listed in the certificate, you can omit the `HostNameInCer
 
 ```sql
 ALTER SERVER CONFIGURATION  
-   SET FAILOVER CLUSTER PROPERTY (
-   CLUSTER_CONNECTION_OPTIONS = 'Encrypt=Strict')
+   SET FAILOVER CLUSTER PROPERTY 
+   ClusterConnectionOptions = 'Encrypt=Strict'
 ```
 
 
@@ -549,23 +549,31 @@ If your server name is not listed as a **Subject Alternative Name** in the certi
 
 ```sql
 ALTER SERVER CONFIGURATION  
-   SET FAILOVER CLUSTER PROPERTY (
-   CLUSTER_CONNECTION_OPTIONS = 'Encrypt=Strict;HostNameInCertificate=<Subject Alternative Name>')
+   SET FAILOVER CLUSTER PROPERTY 
+   ClusterConnectionOptions = 'Encrypt=Strict;HostNameInCertificate=<Subject Alternative Name>'
 ```
 
 If you want to utilize the `ServerCertificate` property instead of providing a value for `HostNameInCertificate`: 
 
 ```sql
 ALTER SERVER CONFIGURATION  
-   SET FAILOVER CLUSTER PROPERTY (
-   CLUSTER_CONNECTION_OPTIONS = 'Encrypt=Strict;ServerCertificate=C:\Users\admin\SqlAGCertificate.cer')
+   SET FAILOVER CLUSTER PROPERTY 
+   ClusterConnectionOptions = 'Encrypt=Strict;ServerCertificate=C:\Users\admin\SqlAGCertificate.cer'
 ```
 
+If you want to clear the existing configuration, and revert to the default encryption settings of `Encrypt=Mandatory` and `TrustServerCertificate=Yes`, set the `ClusterConnectionOptions` clause to an empty string. 
 
-## See Also  
-[Soft-NUMA &#40;SQL Server&#41;](../../database-engine/configure-windows/soft-numa-sql-server.md)   
-[Change the HADR Cluster Context of Server Instance &#40;SQL Server&#41;](../../database-engine/availability-groups/windows/change-the-hadr-cluster-context-of-server-instance-sql-server.md)   
-[sys.dm_os_schedulers &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-os-schedulers-transact-sql.md)   
-[sys.dm_os_memory_nodes &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-os-memory-nodes-transact-sql.md)   
-[sys.dm_os_buffer_pool_extension_configuration &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-pool-extension-configuration-transact-sql.md)   
-[Buffer Pool Extension](../../database-engine/configure-windows/buffer-pool-extension.md)  
+```sql
+ALTER SERVER CONFIGURATION  
+   SET FAILOVER CLUSTER PROPERTY 
+   ClusterConnectionOptions = ''
+```
+
+## Related content
+
+- [Soft-NUMA (SQL Server)](../../database-engine/configure-windows/soft-numa-sql-server.md)
+- [Change which cluster manages the metadata for replicas in an Always On availability group](../../database-engine/availability-groups/windows/change-the-hadr-cluster-context-of-server-instance-sql-server.md)
+- [sys.dm_os_schedulers (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-schedulers-transact-sql.md)
+- [sys.dm_os_memory_nodes (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-memory-nodes-transact-sql.md)
+- [sys.dm_os_buffer_pool_extension_configuration (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-pool-extension-configuration-transact-sql.md)
+- [Buffer pool extension](../../database-engine/configure-windows/buffer-pool-extension.md)
