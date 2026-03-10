@@ -76,6 +76,8 @@ To prepare your SQL Server instance, complete the following steps:
 - [Restart SQL Server and validate the configuration](#restart-sql-server-and-validate-the-configuration).
 - [Set database to full recovery model](#set-database-to-full-recovery-model).
 - [Import Azure-trusted root certificate authority keys to SQL Server](#import-azure-trusted-root-certificate-authority-keys-to-sql-server).
+- [Enable accelerated database recovery](#enable-accelerated-database-recovery) if you're on SQL Server 2019 or later, and plan to use it on the target SQL managed instance.
+- [Enable Service Broker](#enable-service-broker) if you plan to use it on the target SQL managed instance.
 
 You need to [restart SQL Server](#restart-sql-server-and-validate-the-configuration) for these changes to take effect.
 
@@ -267,6 +269,8 @@ USE master
 SELECT * FROM sys.certificates
 ```
 
+[!INCLUDE [prepare-database-for-migration](../../../azure-sql/includes/sql-managed-instance/prepare-database-for-migration.md)]
+
 ## Configure network connectivity
 
 For the link to work, you must have network connectivity between SQL Server and SQL Managed Instance. The network option that you choose depends on whether or not your SQL Server instance is on an Azure network.
@@ -318,8 +322,8 @@ The following table describes port actions for each environment:
 
 | Environment | What to do |
 | --- | --- |
-| SQL Server (outside Azure) | Open both inbound and outbound traffic on port 5022 for the network firewall to the entire subnet IP range of SQL Managed Instance. If necessary, do the same on the SQL Server host OS Windows firewall. |
-| SQL Server (in Azure) | Open both inbound and outbound traffic on port 5022 for the network firewall to the entire subnet IP range of SQL Managed Instance. If necessary, do the same on the SQL Server host OS Windows firewall. To allow communication on port 5022, create a network security group (NSG) rule in the virtual network that hosts the virtual machine (VM). |
+| SQL Server (outside Azure) | Open both inbound and outbound traffic on port 5022 for the network firewall to the entire subnet IP range of SQL Managed Instance. If necessary, do the same on the SQL Server host OS Windows Firewall. |
+| SQL Server (in Azure) | Open both inbound and outbound traffic on port 5022 for the network firewall to the entire subnet IP range of SQL Managed Instance. If necessary, do the same on the SQL Server host OS Windows Firewall. To allow communication on port 5022, create a network security group (NSG) rule in the virtual network that hosts the virtual machine (VM). |
 | SQL Managed Instance | [Create an NSG rule](/azure/virtual-network/manage-network-security-group#create-a-security-rule) in the Azure portal to allow inbound and outbound traffic from the IP address and the networking that hosts SQL Server on port 5022 and port range 11000-11999. |
 
 To open ports in Windows Firewall, use the following PowerShell script on the Windows host OS of the SQL Server instance:
@@ -338,11 +342,11 @@ The following diagram shows an example of an on-premises network environment, in
 > - While you can choose to customize the endpoint on the SQL Server side, you can't change or customize port numbers for SQL Managed Instance.
 > - IP address ranges of subnets hosting managed instances, and SQL Server must not overlap.
 
-### Add URLs to allowlist
+### Add URLs to allow list
 
-Depending on your network security settings, you might need to add URLs to your allowlist for the SQL Managed Instance FQDN and some of the Resource Management endpoints used by Azure.
+Depending on your network security settings, you might need to add URLs to your allow list for the SQL Managed Instance FQDN and some of the Resource Management endpoints used by Azure.
 
-Add the following resources to your allowlist:
+Add the following resources to your allow list:
 
 - The fully qualified domain name (FQDN) of your SQL Managed Instance. For example: `managedinstance.a1b2c3d4e5f6.database.windows.net`.
 - Microsoft Entra Authority
@@ -350,7 +354,7 @@ Add the following resources to your allowlist:
 - Resource Manager Endpoint
 - Service Endpoint
 
-Follow the steps in the [Configure SSMS for government clouds](/azure/azure-sql/managed-instance/managed-instance-link-preparation#configure-ssms-for-government-clouds) section to access the **Tools** interface in SQL Server Management Studio (SSMS) and identify specific URLs for the resources within your cloud you need to add to your allowlist.
+Follow the steps in the [Configure SSMS for government clouds](/azure/azure-sql/managed-instance/managed-instance-link-preparation#configure-ssms-for-government-clouds) section to access the **Tools** interface in SQL Server Management Studio (SSMS) and identify specific URLs for the resources within your cloud you need to add to your allow list.
 
 ## Migrate a certificate of a TDE-protected database (optional)
 
