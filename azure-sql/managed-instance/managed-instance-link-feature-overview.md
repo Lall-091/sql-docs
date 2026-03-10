@@ -5,7 +5,7 @@ description: This article describes the Managed Instance link, which you can use
 author: djordje-jeremic
 ms.author: djjeremi
 ms.reviewer: mathoma, randolphwest
-ms.date: 01/28/2026
+ms.date: 03/06/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.topic: concept-article
@@ -125,8 +125,6 @@ When failing back to SQL Server, you can choose to fail back:
 
 :::image type="content" source="media/managed-instance-link-feature-overview/disaster-recovery-scenario.png" alt-text="Diagram showing the disaster recovery scenario.":::
 
-
-
 ## Use Azure services
 
 Use the link feature to take advantage of Azure services by using SQL Server data without migrating it to the cloud. Examples include reporting, analytics, backups, machine learning, and other jobs that send data to Azure. 
@@ -199,20 +197,19 @@ Data replication limitations include:
 
 Configuration limitations include: 
 
-  - If there are multiple SQL Server instances on a server, you can configure a link for each instance, but you must configure each instance to use a separate database mirroring endpoint, with a dedicated port per instance. Only the default instance should use port 5022 for the database mirroring endpoint. 
-  - You can place only one database into a single availability group for one Managed Instance link. However, you can replicate multiple databases in a single SQL Server instance by establishing multiple links. 
+- If there are multiple SQL Server instances on a server, you can configure a link for each instance, but you must configure each instance to use a separate database mirroring endpoint, with a dedicated port per instance. Only the default instance should use port 5022 for the database mirroring endpoint. 
+- You can place only one database into a single availability group for one Managed Instance link. However, you can replicate multiple databases in a single SQL Server instance by establishing multiple links. 
   
    > [!NOTE]
    > If you're interested in participating in a limited preview of a change to this behavior, please fill out the following [form](https://aka.ms/milink-multidb-prpr).
 
-  - You can create a link with an existing availability group with a single database. If your existing availability group has multiple databases, you can create a link with the availability group only if you remove all databases except one from the availability group.
-  - A single General Purpose or Business Critical SQL Managed Instance supports up to 100 links, and a single Next-gen General Purpose SQL Managed Instance supports up to 500 links, from the same, or from multiple SQL Server sources.
-  - A Managed Instance link can replicate a database of any size if it fits into the chosen storage size of the target SQL Managed Instance deployment.
-  - Managed Instance link authentication between SQL Server and SQL Managed Instance is certificate-based and available only through an exchange of certificates. You can't use Windows authentication to establish the link between the SQL Server instance and the SQL managed instance.
-  - You can establish a link with only s [VNet-local endpoint](connectivity-architecture-overview.md#vnet-local-endpoint) to SQL Managed Instance. 
-  - You can't use public endpoint or private endpoints to establish the link with the managed instance.
-  - You can't replicate databases with multiple log files, because SQL Managed Instance doesn't support multiple log files.
-
+- You can create a link with an existing availability group with a single database. If your existing availability group has multiple databases, you can create a link with the availability group only if you remove all databases except one from the availability group.
+- A single General Purpose or Business Critical SQL Managed Instance supports up to 100 links, and a single Next-gen General Purpose SQL Managed Instance supports up to 500 links, from the same, or from multiple SQL Server sources.
+- A Managed Instance link can replicate a database of any size if it fits into the chosen storage size of the target SQL Managed Instance deployment.
+- Managed Instance link authentication between SQL Server and SQL Managed Instance is certificate-based and available only through an exchange of certificates. You can't use Windows authentication to establish the link between the SQL Server instance and the SQL managed instance.
+- You can establish a link with only a [VNet-local endpoint](connectivity-architecture-overview.md#vnet-local-endpoint) to SQL Managed Instance. 
+- You can't use public endpoint or private endpoints to establish the link with the managed instance.
+- You can't replicate databases with multiple log files, because SQL Managed Instance doesn't support multiple log files.
 
 Feature limitations include:
 
@@ -223,6 +220,8 @@ Feature limitations include:
    - If you're migrating a database that is configured as a Publisher in a transactional replication topology by using the link, you must reconfigure the database as a Publisher on the target instance after the migration is complete.
 - If you're using distributed transactions with a database that's replicated from the SQL Server instance and, in a migration scenario, on the cutover to the cloud, Distributed Transaction Coordinator capabilities won't be transferred. It's not possible for the migrated database to get involved in distributed transactions with the SQL Server instance, because the SQL Managed Instance deployment doesn't support distributed transactions with SQL Server at this time. For reference, SQL Managed Instance today supports distributed transactions only between other managed instances. For more information, see [Distributed transactions across cloud databases](../database/elastic-transactions-overview.md#transactions-for-sql-managed-instance).
 - If you're using Transparent Data Encryption (TDE) to encrypt SQL Server databases, you need to export the database encryption key from SQL Server and upload it to Azure Key Vault, and you need to also configure the BYOK TDE option on SQL Managed Instance before creating the link.
+- If [accelerated database recovery](/sql/relational-databases/accelerated-database-recovery-concepts) is disabled on your source SQL Server 2019 and later instances, you can no longer enable it after migrating to Azure SQL Managed Instance. Additionally, if the persistent version store (PVS) isn't set to `PRIMARY`, you can experience issues with restore operations on the target SQL managed instance.
+- If [Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) is disabled on the source SQL Server instance, you can't use Service Broker on the target SQL managed instance after migration.
 - You can't link SQL Managed Instance databases that are encrypted with service-managed TDE keys to SQL Server. You can link an encrypted database to SQL Server only if you encrypted it with a customer-managed key and the destination server has access to the same key that's used to encrypt the database. For more information, see [Set up SQL Server TDE with Azure Key Vault](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault). 
 - You can't establish a link between SQL Server and SQL Managed Instance if the functionality that you use on the SQL Server instance isn't supported on the SQL managed instance. For example: 
     - You can't replicate databases with file tables and file streams, because SQL Managed Instance doesn't support file tables or file streams.

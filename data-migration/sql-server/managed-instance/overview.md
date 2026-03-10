@@ -202,6 +202,8 @@ If you have memory-optimized tables or memory-optimized table types in your on-p
 
 To learn more about in-memory technologies, see [Optimize performance by using in-memory technologies in Azure SQL Database and Azure SQL Managed Instance](/azure/azure-sql/in-memory-oltp-overview).
 
+[!INCLUDE [known-issues-after-migration](../../../azure-sql/includes/sql-managed-instance/known-issues-after-migration.md)]
+
 ## Advanced features
 
 Be sure to take advantage of the advanced cloud-based features in SQL Managed Instance. For example, you don't need to worry about managing backups because the service does it for you. You can restore to any [point in time within the retention period](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore). Additionally, you don't need to worry about setting up high availability, because [high availability is built in](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy).
