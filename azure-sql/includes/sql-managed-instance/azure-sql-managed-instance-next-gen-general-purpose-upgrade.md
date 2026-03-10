@@ -2,7 +2,7 @@
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 03/10/2026
 ms.service: azure-sql-managed-instance
 ms.topic: include
 ms.custom:
@@ -32,7 +32,7 @@ The Next-gen General Purpose service tier helps reduce cost by offering free IOP
 
 For example: 
 - If 1 GB of storage costs 0.115, then 1 IOPS = 0.115/3 = 0.038 per IOPS. 
-- A 1,024-GB instance receives 3,072 IOPS for free. You can choose to increase your IOPS up to the [VM limit](../../managed-instance/resource-limits.md#iops) for an additional cost. 
+- A 1,024-GB instance receives 3,072 IOPS for free. You can choose to increase your IOPS up to the [VM limit](../../managed-instance/resource-limits.md#iops-and-throughput) for an additional cost. 
 
 #### When to choose this service tier
 

@@ -5,7 +5,7 @@ description: This article provides an overview of the resource limits for Azure 
 author: vladai78
 ms.author: vladiv
 ms.reviewer: mathoma, vladiv, sachinp, wiassaf, randolphwest
-ms.date: 11/18/2025
+ms.date: 03/10/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: reference
@@ -91,10 +91,9 @@ In this section:
 
 - [Number of vCores](#number-of-vcores)
 - [Max memory](#max-memory)
-- [IOPS](#iops)
 - [Maximum instance storage size](#maximum-instance-storage-size-reserved)
 - [Service tier characteristics comparison](#service-tier-characteristics-comparison)
-- [File IO characteristics in General Purpose tier](#file-io-characteristics-in-general-purpose-tier)
+- [IOPS and throughput](#iops-and-throughput)
 - [Data and log storage](#data-and-log-storage)
 - [Backups and storage](#backups-and-storage)
 - [Additional characteristics considerations](#additional-characteristics-considerations)
@@ -104,8 +103,8 @@ In this section:
 
 | Hardware generation | General Purpose | Next-gen General Purpose | Business Critical |
 | --- | --- | --- | --- |
-| **Standard-series (Gen5)** | 2<sup>1</sup> , 4, 8, 16, 24, 32, 40, 64, 80 | 4, 8, 16, 24, 32, 40, 64, 80 | 4, 8, 16, 24, 32, 40, 64, 80 |
-| **Premium-series** | 2<sup>1</sup> , 4, 8, 16, 24, 32, 40, 64, 80 | 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128 | 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128 |
+| **Standard-series (Gen5)** | 2<sup>1</sup>, 4, 8, 16, 24, 32, 40, 64, 80 | 4, 8, 16, 24, 32, 40, 64, 80 | 4, 8, 16, 24, 32, 40, 64, 80 |
+| **Premium-series** | 2<sup>1</sup>, 4, 8, 16, 24, 32, 40, 64, 80 | 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128 | 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128 |
 | **Memory optimized premium-series** | 4, 8, 16, 24, 32, 40, 64, 80 | 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128 | 4, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128 |
 
 <sup>1</sup> Deploying a 2-vCore instance is only possible inside an [instance pool](instance-pools-overview.md).
@@ -149,9 +148,9 @@ The following table lists the maximum storage size based on the number of vCores
 | Max number of database files | 280 per instance, unless the instance storage size or [Azure Premium Disk storage allocation space](doc-changes-updates-known-issues.md#exceeding-storage-space-with-small-database-files) limit has been reached. | 4,096 files per database | 32,767 files per database, unless the instance storage size limit has been reached. |
 | Max data file size | Maximum size of each data file is 8 TB. Use at least two data files for databases larger than 8 TB. | Up to currently available instance size (depending on the number of vCores). | Up to currently available instance size (depending on the number of vCores). |
 | Max log file size | Limited to 2 TB and currently available instance storage size. | Limited to 2 TB and currently available instance storage size. | Limited to 2 TB and currently available instance storage size. |
-| Data/Log IOPS (approximate) | 500 - 7500 per file<br />\*[Increase file size to get more IOPS](#file-io-characteristics-in-general-purpose-tier) | Reserved storage * 3 - up to the VM limit. 300 in case of 32 GB, 64 GB, and 96 GB of reserved storage.<br />VM limit depends on the number of vCores<br />6400 IOPS for a VM with 4 vCores - 80 K IOPS for a VM with 128 vCores | 16 K - 320 K (4000 IOPS/vCore)<br />Add more vCores to get better IO performance. |
-| Data throughput (approximate) | 100 - 250 MiB/s per file<br />\*[Increase the file size to get better IO performance](#file-io-characteristics-in-general-purpose-tier) | IOPS / 30 MBps - up to the VM limit. 75 MBps in case of 32 GB, 64 GB, and 96 GB of reserved storage. | Not limited. |
-| Log write throughput limit (per instance) | 4.5 MiB/s per vCore<br />Max 120 MiB/s per instance<br />22 - 65 MiB/s per DB (depending on log file size)<br />\*[Increase the file size to get better IO performance](#file-io-characteristics-in-general-purpose-tier) | 4.5 MiB/s per vCore<br />Max 192 MiB/s | Standard-series:<br />4.5 MiB/s per vCore<br />Max 96 MiB/s<br /><br />Premium-series and Memory optimized premium-series:<br />12 MiB/s per vCore<br />Max 192 MiB/s |
+| Data/Log IOPS (approximate) | 500 - 7500 per file<br />\*[Increase file size to get more IOPS](#iops-and-throughput) | Reserved storage * 3 - up to the VM limit. 300 in case of 32 GB, 64 GB, and 96 GB of reserved storage.<br />VM limit depends on the number of vCores<br />6400 IOPS for a VM with 4 vCores - 80 K IOPS for a VM with 128 vCores | 16 K - 320 K (4000 IOPS/vCore)<br />Add more vCores to get better IO performance. |
+| Data throughput (approximate) | 100 - 250 MiB/s per file<br />\*[Increase the file size to get better IO performance](#iops-and-throughput) | IOPS / 30 MBps - up to the VM limit. 75 MBps in case of 32 GB, 64 GB, and 96 GB of reserved storage. | Not limited. |
+| Log write throughput limit (per instance) | 4.5 MiB/s per vCore<br />Max 120 MiB/s per instance<br />22 - 65 MiB/s per DB (depending on log file size)<br />\*[Increase the file size to get better IO performance](#iops-and-throughput) | 4.5 MiB/s per vCore<br />Max 192 MiB/s | Standard-series:<br />4.5 MiB/s per vCore<br />Max 96 MiB/s<br /><br />Premium-series and Memory optimized premium-series:<br />12 MiB/s per vCore<br />Max 192 MiB/s |
 | Storage IO latency (approximate<sup>1</sup>) | 5-10 ms | 3-5 ms | 1-2 ms |
 | In-memory OLTP | Not supported | Not supported | Available, [size depends on number of vCore](#in-memory-oltp-available-space) |
 | Max sessions | 30000 | 30000 | 30000 |
@@ -165,37 +164,23 @@ The following table lists the maximum storage size based on the number of vCores
 
 <sup>1</sup> This is an average range. Although the vast majority of IO request durations will fall under the top of the range, outliers which exceed the range are possible.
 
-### IOPS
+### IOPS and throughput
 
-For the Next-gen General Purpose and Business Critical service tiers, available IOPS are dictated by the number of vCores:
+IOPS and throughput are characteristics of the IO file system. 
 
-- **Next-gen General Purpose service tier**: fixed value of IOPS based on the number of vCores. The price of the storage includes the minimum IOPS. If you go above the minimum, you're charged as follows: 1 IOPS = storage price (by region) divided by three. For example, if 1 GB of storage costs 0.115, then 1 IOPS = 0.115/3 = 0.038 per IOPS.
-- **Business Critical service tier**: uses a formula (4000 IOPS/vCore) to determine IOPS limits.
+IOPS and throughput differ by service tier in the following ways: 
 
-The following table lists the max IOPS available to each service tier based on the number of vCores:
+- In the **Business Critical** service tier, throughput is unlimited.
+- In the **General Purpose** service tier, throughput depends on the file size.
+- In the **Next-gen General Purpose** service tier, throughput scales proportionally with the number of IOPS allocated to the instance.
 
-| Number of vCores | Next-gen General Purpose | Business Critical |
-| --- | --- | --- |
-| 4 | 6,400 | 16,000 |
-| 6 | 9,600 | 24,000 |
-| 8 | 12,800 | 32,000 |
-| 10 | 16,000 | 40,000 |
-| 12 | 19,200 | 48,000 |
-| 16 | 25,600 | 64,000 |
-| 20 | 32,000 | 80,000 |
-| 24 | 38,400 | 96,000 |
-| 32 | 51,200 | 128,000 |
-| 40 | 64,000 | 160,000 |
-| 48 | 76,800 | 192,000 |
-| 56 | 80,000 | 224,000 |
-| 64 | 80,000 | 256,000 |
-| 80 | 80,000 | 320,000 |
-| 96 | 80,000 | 320,000 |
-| 128 | 80,000 | 320,000 |
+The following sections describe IO characteristics by service tier in more detail. 
 
-### File IO characteristics in General Purpose tier
+#### IOPS and throughput in the General Purpose service tier
 
-In the General Purpose service tier, every database file gets dedicated IOPS and throughput that depend on the file size. Larger files get more IOPS and throughput. IO characteristics of database files are shown in the following table:
+In the General Purpose service tier, every database file gets dedicated IOPS and throughput that depend on the file size. Larger files get more IOPS and throughput. 
+
+The following table shows IO characteristics of database files in the **General Purpose** service tier:
 
 | File size | >=0 and <=129 GiB | >129 and <=513 GiB | >513 and <=1025 GiB | >1025 and <=2049 GiB | >2049 and <=4097 GiB | >4097 GiB and <=8 TiB |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -205,6 +190,75 @@ In the General Purpose service tier, every database file gets dedicated IOPS and
 If you notice high IO latency on some database file or you see that IOPS/throughput is reaching the limit, you might improve performance by [increasing the file size](https://techcommunity.microsoft.com/blog/azuresqlblog/increase-data-file-size-to-improve-hammerdb-workload-performance-on-general-purp/823337).
 
 There's also an instance-level limit on the max log write throughput (see the previous table for values, for example 22 MiB/s), so you might not be able to reach the max file throughout on the log file because you're hitting the instance throughput limit.
+
+#### IOPS and throughput in the Next-gen General Purpose service tier
+
+The **Next-gen General Purpose** service tier has the following IOPS characteristics: 
+- **Minimum guaranteed IOPS**: Every instance is guaranteed a minimum of 300 IOPS, regardless of the reserved storage.
+- **IOPS scales with reserved storage**: For every 1GB of reserved storage, you get 3 built-in IOPS. For example, if you have 1024 GB of reserved storage, you get 3072 IOPS assigned.
+- **Extra IOPS**: You can increase the amount of IOPS above the built-in value up to the cap.
+- **Maximum IOPS cap per vCore count**: Each vCore configuration has a maximum IOPS limit, as the max IOPS per vCore table shows.
+
+The **Next-gen General Purpose** service tier has the following throughput characteristics: 
+
+- **Minimum guaranteed throughput**: Every instance is guaranteed a minimum of 75 MB/s of throughput, regardless of the number of vCores.
+- **Throughput scales with IOPS**: Throughput scales proportionally with the number of IOPS allocated to the instance, using the formula `throughput (MB/s) = IOPS / 30`. For example, an instance allocated with 3,000 IOPS receives 100 MB/s of throughput.
+- **Maximum throughput cap per vCore count**: Each vCore configuration has a maximum throughput limit, as the max throughput per vCore table shows. Once the required IOPS are provisioned to reach this cap, allocating additional IOPS increases IOPS capacity but doesn't increase throughput further. For example, a 4 vCore instance (max 6,400 IOPS) reaches its throughput cap of 145 MB/s at 4,350 IOPS. Scaling IOPS from 4,350 to 6,400 provides more IOPS to the instance, but throughput remains capped at 145 MB/s. To increase the maximum throughput, add more vCores.
+
+The following table shows the max IOPS and throughput per number of vCores allocated to an instance in the Next-gen General Purpose service tier: 
+
+| **Number of vCores** | **Max IOPS** | **Max throughput (MB/s)** |
+|:--|:--|:--|
+| 4 | 6,400 | 145 |
+| 6 | 9,600 | 217 |
+| 8 | 12,800 | 290 |
+| 10 | 16,000 | 367 |
+| 12 | 19,200 | 445 |
+| 16 | 25,600 | 600 |
+| 20 | 32,000 | 665 |
+| 24 | 38,400 | 730 |
+| 32 | 51,200 | 865 |
+| 40 | 64,000 | 1,152 |
+| 48 | 76,800 | 1,152 |
+| 56 - 128 | 80,000 | 1,200 |
+
+#### IOPS pricing in Next-gen General Purpose
+
+When using the additional IOPS, consider the following:
+- Additional IOPS is charged per IOPS/month
+- Billable IOPS is calculated by the following formula: `Billable IOPS = Total IOPS - default IOPS`.
+
+For example, if you have a pay-as-you-go 4 vCore instance with 6400 IOPS, you are charged for: 
+  - 4 vCores
+  - SQL license for 4 vCores
+  - 1024 GB of reserved storage
+  - 3328 of billable IOPS `(6400 - (1024*3) = 3328 IOPS)`.
+
+#### IOPS and throughput in the Business Critical service tier
+
+In the Business Critical service tier, available IOPS are dictated by the number of vCores using the formula `4000 IOPS/vCore`. Since the Business Critical service tier uses local storage for data and log files, the throughput is unlimited.
+
+The following table lists the max IOPS available in the Business Critical service tier based on the number of vCores:
+
+| Number of vCores | Business Critical |
+| --- | --- |
+| 4 | 16,000 |
+| 6 | 24,000 |
+| 8 | 32,000 |
+| 10 | 40,000 |
+| 12 | 48,000 |
+| 16 | 64,000 |
+| 20 | 80,000 |
+| 24 | 96,000 |
+| 32 | 128,000 |
+| 40 | 160,000 |
+| 48 | 192,000 |
+| 56 | 224,000 |
+| 64 | 256,000 |
+| 80 | 320,000 |
+| 96 | 320,000 |
+| 128 | 320,000 |
+
 
 ### Data and log storage
 
@@ -236,7 +290,7 @@ Storage for database backups is allocated to support the [point-in-time restore 
 
 - Both data and log file size in the user and system databases are included in the instance storage size that is compared with the max storage size limit. Use the [sys.master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) system view to determine the total used space by databases. Error logs aren't persisted and not included in the size. Backups aren't included in storage size.
 
-- Throughput and IOPS in the General Purpose tier also depends on the [file size](#file-io-characteristics-in-general-purpose-tier), and isn't explicitly limited by the SQL Managed Instance.
+- Throughput and IOPS in the General Purpose tier also depends on the [file size](#iops-and-throughput), and isn't explicitly limited by the SQL Managed Instance.
 
 - Max instance IOPS depend on the file layout and distribution of workload. As an example, if you create 7 x 1-TB files with max 5 K IOPS each and seven small files (smaller than 128 GB) with 500 IOPS each, you can get 38500 IOPS per instance (7x5000+7x500) if your workload can use all files. Some IOPS are also used for autobackups.
 
@@ -261,7 +315,7 @@ When allocating memory, you can choose between a minimum and maximum value, and 
 The following table shows the minimum and maximum memory values for the flexible memory feature:
 
 | vCores | Min RAM (GB) | Max RAM (GB) | Supported API RAM values | Min ratio | Max ratio | Supported ratios |
-|--|--|--|--|--|--|
+|--|--|--|--|--|--|--|
 | 4 | 28 | 48 | 28, 32, 40, 48 | 7 | 12 | 7, 8, 10, 12 |
 | 6 | 42 | 72 | 42, 48, 60, 72 | 7 | 12 | 7, 8, 10, 12 |
 | 8 | 56 | 96 | 56, 64, 80, 96 | 7 | 12 | 7, 8, 10, 12 |
@@ -289,7 +343,6 @@ For example, if you have a pay-as-you-go 4 vCore instance with 40 GB of memory, 
   - 4 vCores
   - SQL license for 4 vCores 
   - 12 GB of billable memory (40 GB - (4*7) = 12 GB).
-
 
 ## Supported regions
 
