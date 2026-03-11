@@ -65,6 +65,8 @@ The **Report Server Installation Options** page has only one option for SharePoi
 
 - Azure SQL Managed Instance
 
+- SQL Server 2025
+
 - SQL Server 2022
 
 - SQL Server 2019
