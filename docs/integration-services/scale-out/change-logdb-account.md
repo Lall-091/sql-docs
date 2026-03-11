@@ -1,8 +1,8 @@
 ---
 title: "Change the account for SSIS Scale Out logging"
 description: "Learn how to change the account you use for SQL Server Integration Services (SSIS) Scale Out logging."
-author: "haoqian"
-ms.author: "haoqian"
+author: chugugrace
+ms.author: chugu
 ms.reviewer: 
 ms.date: 06/29/2020
 ms.service: sql
