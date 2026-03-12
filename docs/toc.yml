@@ -9252,6 +9252,8 @@ items:
         href: linux/sql-server-linux-custom-password-policy.md
       - name: Enable Microsoft Entra manually for containers
         href: linux/authentication/container-kubernetes-microsoft-entra-deployment.md
+    - name: Configure bulk import operations
+      href: linux/sql-server-linux-bulk-operations.md
   - name: High availability and disaster recovery
     items:
     - name: Overview

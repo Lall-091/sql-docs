@@ -3,7 +3,7 @@ title: "What's New for SQL Server 2025 on Linux"
 description: In this article, learn about the major features and services available for SQL Server 2025 running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/27/2026
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: whats-new
@@ -23,8 +23,17 @@ This article describes the major features and services available for [!INCLUDE [
 
 This section describes updates for each release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
+- [Cumulative Update 3](#cumulative-update-3)
 - [Cumulative Update 1](#cumulative-update-1)
 - [GA release](#general-availability)
+
+### Cumulative Update 3
+
+The following updates apply to [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Cumulative Update (CU) 3.
+
+- **Bulk import operations without sysadmin**. You can use the **bulkadmin** server role or the `ADMINISTER BULK OPERATIONS` permission to perform `BULK INSERT` and `OPENROWSET(BULK...)` operations on [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, without requiring **sysadmin** permissions. An administrator must configure Linux file system permissions and approve directory paths using `mssql-conf`.
+
+  For more information, see [Configure bulk import operations for SQL Server on Linux (preview)](sql-server-linux-bulk-operations.md).
 
 ### Cumulative Update 1
 
