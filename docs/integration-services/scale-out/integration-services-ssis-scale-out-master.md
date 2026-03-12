@@ -1,8 +1,8 @@
 ---
 title: "Scale Out Master"
 description: "Learn about the Scale Out Master component of SQL Server Integration Services (SSIS) Scale Out Master Service."
-author: "haoqian"
-ms.author: "haoqian"
+author: chugugrace
+ms.author: chugu
 ms.date: 01/19/2019
 ms.service: sql
 ms.subservice: integration-services

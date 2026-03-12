@@ -84,6 +84,40 @@ To use `ALTER FULLTEXT CATALOG`, you need one of the following permissions:
 
 To use `ALTER FULLTEXT CATALOG ... AS DEFAULT`, you need `ALTER` permission on the full-text catalog, and `CREATE FULLTEXT CATALOG` permission on the database.
 
+## Remarks
+
+When you run a `REBUILD` operation on a full-text catalog, the rebuild operation pauses if another session has an open transaction that's running `INSERT`, `UPDATE`, or `DELETE` operations on tables that belong to that catalog. The rebuild operation resumes only after that other transaction commits or rolls back. You can monitor this situation by using the [sys.dm_exec_requests](../../relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql.md) and [sys.dm_exec_sessions](../../relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql.md) dynamic management views (DMVs). You might see locks between the user session and the background rebuild sessions, with a wait type of `LCK_M_IS`.
+
+Similarly, during a `REORGANIZE` operation, you might see the `FT_MASTER_MERGE` wait type in the session where the command is running. This wait type can occur when other sessions have long-running transactions that are doing `INSERT`, `UPDATE`, or `DELETE` operations on tables in the same full-text catalog. In the `sys.dm_exec_requests` and `sys.dm_exec_sessions` DMVs, you might see one or more background sessions with a `LCK_M_IX` wait type and the `FT_MASTER_MERGE` command. The `REORGANIZE` operation doesn't complete until those locks are released.
+
+The following query returns blocked background sessions.
+
+```sql
+SELECT r1.session_id,
+       r1.blocking_session_id,
+       r1.wait_type,
+       r1.wait_resource,
+       r1.last_wait_type,
+       r1.command AS BlockedSessionCommand,
+       r2.command AS BlockingSessionCommand,
+       s1.login_name AS BlockedSessionLogin,
+       s2.login_name AS BlockingSessionLogin,
+       s1.host_name AS BlockedSessionHost,
+       s2.host_name AS BlockingSessionHost,
+       r1.status AS BlockedSessionStatus,
+       r2.status AS BlockingSessionStatus
+FROM sys.dm_exec_requests AS r1
+     INNER JOIN sys.dm_exec_sessions AS s1
+         ON r1.session_id = s1.session_id
+     INNER JOIN sys.dm_exec_sessions AS s2
+         ON r1.blocking_session_id = s2.session_id
+     LEFT OUTER JOIN sys.dm_exec_requests AS r2
+         ON s2.session_id = r2.session_id
+WHERE r1.blocking_session_id <> 0
+      AND r1.status = 'background'
+ORDER BY r1.wait_time DESC;
+```
+
 ## Examples
 
 The following example changes the `AccentSensitivity` property of the default full-text catalog `ftCatalog`, which is accent sensitive.
