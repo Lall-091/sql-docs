@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 05/30/2025
+ms.date: 03/12/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -362,7 +362,7 @@ ms.topic: include
 | 17836 | 20 | Yes | Length specified in network packet payload did not match number of bytes read; the connection has been closed. Please contact the vendor of the client library.%.\*ls |
 | 17881 | 16 | Yes | '%ls' is an unsupported Open Data Services API. |
 | [17883](../mssqlserver-17883-database-engine-error.md) | 10 | Yes | Process %ld:%ld:%ld (0x%lx) Worker 0x%p appears to be non-yielding on Scheduler %ld. Thread creation time: %I64d. Approx Thread CPU Used: kernel %I64d ms, user %I64d ms. Process Utilization %d%%. System Idle %d%%. Interval: %I64d ms. |
-| [17884](../mssqlserver-17884-database-engine-error.md) | 10 | Yes | New queries assigned to process on Node %d have not been picked |
+| [17884](../mssqlserver-17884-database-engine-error.md) | 10 | Yes | New queries assigned to process on Node %d have not been picked up by a worker thread in the last %d seconds. Blocking or long-running queries can contribute to this condition, and may degrade client response time. Use the "max worker threads" configuration option to increase number of allowable threads, or optimize current running queries. SQL Process Utilization: %d%%. System Idle: %d%%. |
 | 17885 | 16 | No | An unexpected query string was passed to a Web Service Description Language (WSDL) generation procedure. |
 | 17886 | 20 | Yes | The server will drop the connection, because the client driver has sent multiple requests while the session is in single-user mode. This error occurs when a client sends a request to reset the connection while there are batches still running in the session, or when the client sends a request while the session is resetting a connection. Please contact the client driver vendor. |
 | [17887](../mssqlserver-17887-database-engine-error.md) | 10 | Yes | IO Completion Listener (0x%lx) Worker 0x%p appears to be non-yielding on Node %ld. Approx CPU Used: kernel %I64d ms, user %I64d ms, Interval: %I64d. |
