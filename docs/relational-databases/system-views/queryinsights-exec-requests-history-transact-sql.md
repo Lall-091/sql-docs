@@ -4,7 +4,7 @@ description: "The queryinsights.exec_requests_history in Microsoft Fabric provid
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mariyaali, randolphwest, emtehran
-ms.date: 11/12/2025
+ms.date: 3/12/2026
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -51,7 +51,7 @@ The `queryinsights.exec_requests_history` in [!INCLUDE [fabric](../../includes/f
 | `data_scanned_remote_storage_mb` | **decimal(18,3)** | Shows how much data was scanned/read from remote storage (One Lake). |
 | `data_scanned_memory_mb` | **decimal(18,3)** | Shows how much data was scanned from local memory. Data scanned from disk and memory together indicates how much data was read from cache. |
 | `data_scanned_disk_mb` | **decimal(18,3)** | Shows how much data was scanned/read from local disk. Data scanned from disk and memory together indicates how much data was read from cache. |
-| `command` | **varchar(8000)** | Complete text of the executed query. |
+| `command` | **varchar(max)** | Complete text of the executed query. |
 
 ## Permissions
 
