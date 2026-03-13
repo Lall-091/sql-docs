@@ -4831,7 +4831,7 @@ items:
   - name: Migration documentation
     href: sql-server/migrate/index.yml
   - name: Compare migration tools
-    href: sql-server/migrate/dma-azure-migrate-compare-migration-tools.md
+    href: sql-server/migrate/compare-sql-migration-tools.md
   - name: SQL Server Integration Services (SSIS) >
     href: ./integration-services/sql-server-integration-services.md
   - name: Bulk Copy Utility (bcp)
