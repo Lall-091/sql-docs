@@ -50052,7 +50052,7 @@
     },
     {
       "source_path": "docs/azdata/install/deploy-install-azdata-pip.md",
-      "redirect_url": "/sql/azdata/install/deploy-install-azdata-installer",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-installer",
       "redirect_document_id": false
     },
     {
@@ -67873,7 +67873,7 @@
       "source_path": "docs/analytics-platform-system/appliance-management-tasks.md",
       "redirect_url": "/sql/analytics-platform-system/parallel-data-warehouse-overview?view=aps-pdw-2016-au7&preserve-view=true#management-tasks",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "docs/t-sql/functions/string-functions-transact-sql.md",
       "redirect_url": "/sql/t-sql/functions/functions#string-functions",
@@ -68012,6 +68012,221 @@
     {
       "source_path": "docs/reporting-services/tools/user-role-properties-management-studio.md",
       "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#user-role-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-installer.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-installer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-linux-package.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-linux-package",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-macos.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-macos",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-yum.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-yum",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-zypper.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-zypper",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-app-template.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-app-template",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-app.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-app",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-app-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-app-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-app.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-app",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-config.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-config",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-control-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-control-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-control.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-debug.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-debug",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-endpoint.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-endpoint",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-gateway-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-gateway-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-gateway-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-gateway-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-gateway.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-gateway",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-encryption-zone.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-encryption-zone",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-key.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-key",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-mount.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-mount",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-rotate.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-rotate",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-batch.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-batch",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-session.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-session",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-statement.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-statement",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-sql-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-sql-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-sql-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-sql-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-sql.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-context.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-context",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-extension.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-extension",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-notebook.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-notebook",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-postgres.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-postgres",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-sql.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata",
       "redirect_document_id": false
     }
   ]
