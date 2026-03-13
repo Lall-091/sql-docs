@@ -4,7 +4,7 @@ description: Learn about best practices for configuring and running Azure SQL Da
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, hudequei
-ms.date: 09/23/2024
+ms.date: 03/12/2026
 ms.service: azure-sql-database
 ms.subservice: sql-data-sync
 ms.topic: best-practice
@@ -57,6 +57,14 @@ Azure SQL Database supports only a single set of credentials. To accomplish thes
 
 -   Change the credentials for different phases (for example, *credentials1* for setup and *credentials2* for ongoing).  
 -   Change the permission of the credentials (that is, change the permission after sync is set up).
+
+### Minimize credential exposure
+
+-   **Use a dedicated database user with minimal permissions.** When configuring SQL Data Sync, create a dedicated SQL user whose access is restricted to only the tables and operations required for synchronization. Avoid using a broadly privileged account. For the specific permissions needed during each phase, see [Database accounts with least required privileges](#database-accounts-with-least-required-privileges).
+
+-   **Create a separate SQL user for each database in the sync group.** For every database that participates in synchronization (hub and members), create and use a distinct SQL user account with permissions scoped to that database. If one set of credentials is compromised, exposure is limited to the data in that single database rather than the entire sync topology.
+
+-   **Delete sync groups that are no longer in use.** SQL Data Sync stores the SQL authentication credentials you provide for the lifetime of the sync group. Once synchronization is no longer needed [delete the sync group](sql-data-sync-sql-server-configure.md) to remove stored credentials, including any sync groups created for one-time data moves.
 
 ### Auditing
 
