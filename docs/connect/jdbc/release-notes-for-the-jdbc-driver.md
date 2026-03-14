@@ -4,20 +4,99 @@ description: This article lists the releases of the Microsoft JDBC Driver for SQ
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 01/02/2026
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
 ms.custom:
   - sfi-ropc-nochange
+  - references_regions
 ---
 # Release notes for the Microsoft JDBC Driver for SQL Server
 
 This article lists the releases of the *Microsoft JDBC Driver for SQL Server*. For each release version, the changes are named and described.
 
+<a id="134"></a>
+
+## 13.4
+
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 13.4.0 for SQL Server (zip)](https://go.microsoft.com/fwlink/?linkid=2356503)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 13.4.0 for SQL Server (tar.gz)](https://go.microsoft.com/fwlink/?linkid=2356504)**
+
+Release number: 13.4.0  
+Released: March 13, 2026
+
+If you need to download the driver in a language other than the one detected for you, you can use these direct links.  
+For the driver in a zip file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x40a)  
+For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x40a)
+
+### 13.4 Compliance
+
+| Compliance change | Details |
+| --- | --- |
+| Download the latest updates for JDBC Driver 13.4. | &bull; &nbsp; [GitHub, 13.4.0](https://github.com/Microsoft/mssql-jdbc/releases/tag/v13.4.0)&bull; &nbsp; [Maven Central](https://search.maven.org/search?q=g:com.microsoft.sqlserver) |
+| Fully compliant with JDBC API Specification 4.2. | The jars in the 13.4 package are named according to Java version compatibility.<br /><br />For example, the mssql-jdbc-13.4.0.jre11.jar file from the 13.4 package should be used with Java 11 (or higher). |
+| Compatible with Java Development Kit (JDK) version 25.0, 21.0, 17.0, 11.0, and 1.8. | Microsoft JDBC Driver 13.4 for SQL Server is now compatible with Java Development Kit (JDK) version 25.0 in addition to JDK 21.0, 17.0, 11.0 and 1.8. |
+
+### 13.4 Releases
+
+Release number: 13.4.0  
+Released: March 13, 2026
+
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 13.4.0 for SQL Server (zip)](https://go.microsoft.com/fwlink/?linkid=2356503)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 13.4.0 for SQL Server (tar.gz)](https://go.microsoft.com/fwlink/?linkid=2356504)**
+
+If you need to download the driver in a language other than the one detected for you, you can use these direct links.  
+For the driver in a zip file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2356503&clcid=0x40a)  
+For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2356504&clcid=0x40a)
+
+### New features in 13.4
+
+| Feature | Details |
+| --- | --- |
+| VECTOR(FLOAT16) Subtype Support | Introduced support for the VECTOR(FLOAT16) subtype, including feature negotiation and IEEE-754 compliant serialization/deserialization between Java Float[] and half-precision wire format. For more information, see [Use vector FLOAT16 data type with the JDBC driver](use-vector-data-type.md#use-vector-float16-data-type). |
+| Introduce `prepareMethod`=`scopeTempTablesToConnection` for PreparedStatements with temp tables | New prepareMethod option that scopes temporary tables created in prepared statements to the connection by using literal parameter substitution instead of server-side prepared handles. |
+| Add `prepareMethod`=none Execution Path | New `prepareMethod`=none option that forces literal parameter substitution with SQL batch execution, bypassing server-side prepared statement handles (sp_prepexec / sp_prepare). |
+| Performance logger and callback | Introduced performance logging framework to track critical driver operations such as connection time, prelogin, login, and token acquisition. |
+| Statement-Level Performance Logger Metrics | Extended Performance Logger to capture detailed execution metrics for `Statement` and `PreparedStatement` (REQUEST_BUILD, FIRST_SERVER_RESPONSE, PREPARE, PREPEXEC, EXECUTE). |
+| Remove ADAL Dependency – Migrate Entra ID (Active Directory) Integrated authentication to `mssql-auth.dll` APIs | Replaced deprecated `adal.dll` flow with `mssql-auth.dll`. |
+| Send User Agent Information via TDS Feature Extension | User agent information is sent to the server using a new LOGIN7 TDS Feature Extension (USERAGENT). |
+| Java 25 support | The driver officially supports Java Development Kit (JDK) version 25.0. |
+
+### Changes in 13.4
+
+| Change | Details |
+| --- | --- |
+| Refactor `DatabaseMetaData.getColumns()` to use `sp_columns_170` with fallback | getColumns() now prefers sp_columns_170 (SQL Server 2025) for accurate metadata on newer types such as VECTOR and enhanced JSON, with automatic fallback to sp_columns_100. |
+| Version Bumps to Address CVEs in Transitive Dependencies | Upgraded `azure-identity` to 1.18.2 and `msal4j` to 1.23.1, which in turn update transitive dependencies including Netty (`4.1.130.Final`), Reactor Netty (1.2.13), and Nimbus JOSE JWT (10.0.1). |
+| Update bundle-version in Manifest to Include JRE Suffix | Bundle-Version in the manifest now includes the jre8 / jre11 suffix to match the JAR file name. |
+
+### Fixes in 13.4
+
+| Fix | Details |
+| --- | --- |
+| Fix Cross-Database Stored Procedure Execution with Named Parameters | Ensured sp_sproc_columns is fully qualified with database.sys to avoid context errors. [GitHub Issue #2895](https://github.com/microsoft/mssql-jdbc/issues/2895). |
+| Exception Chaining for Nested Stored Procedure Errors | Multiple nested RAISERROR calls now surface correctly via SQLException.getNextException. [GitHub Issue #2886](https://github.com/microsoft/mssql-jdbc/issues/2886). |
+| Remove Outdated Regex Delimiter Comment (Bulk CSV) | Updated API documentation comment to clarify that delimiters are treated as literal text in SQLServerBulkCSVFileRecord. [GitHub Issue #2880](https://github.com/microsoft/mssql-jdbc/issues/2880). |
+| SQL Server Integrity Enhancement Support in supportsIntegrityEnhancementFacility | Corrected metadata to reflect SQL Server’s support for integrity constraints. [GitHub Issue #2745](https://github.com/microsoft/mssql-jdbc/issues/2745). |
+| Fix Geography Coordinate Parsing with Scientific Notation | Prevented NumberFormatException when parsing Geography coordinates expressed in scientific notation. [GitHub Issue #2837](https://github.com/microsoft/mssql-jdbc/issues/2837). |
+| Bulk Copy Batch Insert: Proper Fallback for SQL Functions | Automatic fallback to standard batch execution when SQL functions are used in bulk copy batch inserts. [GitHub Issue #2845](https://github.com/microsoft/mssql-jdbc/issues/2845). |
+| Fix Bulk Copy Batch Insert with Persisted Computed Columns | Corrected destination column validation logic to ignore computed persisted columns in bulk copy batch insert. [GitHub Issue #2855](https://github.com/microsoft/mssql-jdbc/issues/2855). |
+| Fix DatabaseMetaData.getIndexInfo() Collation Conflict in UNION ALL | Resolved collation conflicts when server and database collations differ in the query executed by getIndexInfo call. [GitHub Issue #2867](https://github.com/microsoft/mssql-jdbc/issues/2867). |
+| Fix getSchemas() Returning NULL TABLE_CATALOG for Built-in Schemas | Corrected catalog resolution logic for built-in schemas like `dbo`, `sys`, etc. [GitHub Issue #2872](https://github.com/microsoft/mssql-jdbc/issues/2872). |
+| Fix Statement.execute() Skipping Update Count After Batch Error | Prevented loss of valid update counts following an error in mixed batch execution. [GitHub Issue #2866](https://github.com/microsoft/mssql-jdbc/issues/2866). |
+| Support IP Address Validation in Certificate SAN | Added RFC 5280–compliant IP address validation in TLS/SSL certificate SAN checks. [GitHub Issue #2873](https://github.com/microsoft/mssql-jdbc/issues/2873). |
+| Bulk insert parsing of isolated quotes in tab-delimited data | Resolved IndexOutOfBoundsException caused by incorrect quote state handling during tab-delimited bulk copy operations. [GitHub Issue #2795](https://github.com/microsoft/mssql-jdbc/issues/2795). |
+| PreparedStatement INSERT update Count with triggers and multi-Value inserts | Corrected inaccurate update counts returned by PreparedStatement for multi-value INSERT statements with triggers. [GitHub Issue #2817](https://github.com/microsoft/mssql-jdbc/issues/2817). |
+| Fix for fatal error handling in DONE tokens | Corrected TDS message handling to properly detect and propagate fatal severity (25+) errors. [GitHub Issue #2741](https://github.com/microsoft/mssql-jdbc/issues/2741). |
+| Fix for getParameterMetaData() crash with table-valued parameters | Prevented SQLServerException when calling getParameterMetaData() on statements using Table-Valued Parameters (TVPs). [GitHub Issue #2746](https://github.com/microsoft/mssql-jdbc/issues/2746). |
+| supportsIntegrityEnhancementFacility() returns accurate value | Corrected DatabaseMetaData.supportsIntegrityEnhancementFacility() to return true for SQL Server. [GitHub Issue #2828](https://github.com/microsoft/mssql-jdbc/issues/2828). |
+| Fix bulk copy for batch insert to support InputStream data | Enabled setBinaryStream() to work correctly with Bulk Copy for Batch Insert into VARBINARY(MAX) columns. [GitHub Issue #2826](https://github.com/microsoft/mssql-jdbc/issues/2826). |
+| Addressed failure on Azure Synapse serverless SQL pool caused by the unsupported sp_statistics procedure | Added a try–catch fallback in getIndexInfoAzureDW() to query sys.indexes, sys.index_columns, sys.columns, and sys.tables when sp_statistics is unavailable. [GitHub Issue #2839](https://github.com/microsoft/mssql-jdbc/issues/2839). |
+
+## Previous releases
+
 <a id="132"></a>
-<a id="131"></a>
-<a id="130"></a>
 
 ## 13.2
 
@@ -25,7 +104,7 @@ This article lists the releases of the *Microsoft JDBC Driver for SQL Server*. F
 :::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 13.2.1 for SQL Server (tar.gz)](https://go.microsoft.com/fwlink/?linkid=2338543)**
 
 Release number: 13.2.1  
-Released: Oct 13, 2025
+Released: October 13, 2025
 
 If you need to download the driver in a language other than the one detected for you, you can use these direct links.  
 For the driver in a zip file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2338346&clcid=0x40a)  
@@ -61,13 +140,10 @@ For the driver in a zip file: [Chinese (Simplified)](https://go.microsoft.com/fw
 For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2338543&clcid=0x40a)
 
 Release number: 13.2.0  
-Released: Aug 15, 2025
+Released: August 15, 2025
 
 :::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 13.2.0 for SQL Server (zip)](https://go.microsoft.com/fwlink/?linkid=2330663)**  
 :::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 13.2.0 for SQL Server (tar.gz)](https://go.microsoft.com/fwlink/?linkid=2330477)**
-
-Release number: 13.2.0  
-Released: Aug 15, 2025
 
 If you need to download the driver in a language other than the one detected for you, you can use these direct links.  
 For the driver in a zip file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x40a)  
@@ -110,11 +186,9 @@ For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com
 | Include Columnstore indexes in `getIndexInfo()` | Replaced `sp_statistics` with a custom query to support all index types. [GitHub Issue #2598](https://github.com/microsoft/mssql-jdbc/issues/2598). |
 | Corrected schema filtering in `getSchemas()` | What changed: Ensured schemas are properly filtered when a catalog name is provided. [GitHub Issue #2643](https://github.com/microsoft/mssql-jdbc/issues/2643). |
 | Increased redirection limit | Raised maximum redirection hops from 1 to 10. [GitHub Issue #2659](https://github.com/microsoft/mssql-jdbc/issues/2659). |
-| Fix `trustStoreType` JVM property consultation in SSL connections. | Added comprehensive JVM system property consultation logic that follows the standard Java property resolution hierarchy. [GitHub Issue #2724](https://github.com/microsoft/mssql-jdbc/issues/2724). |
+| Fix `trustStoreType` JVM property consultation in TLS/SSL connections. | Added comprehensive JVM system property consultation logic that follows the standard Java property resolution hierarchy. [GitHub Issue #2724](https://github.com/microsoft/mssql-jdbc/issues/2724). |
 | Properly Insert Accented Characters When Using Bulk Copy and Non-Unicode Strings | Updated `executeBatch()` to pass the correct `databaseCollation` down to the conversion logic. Ensured that byte arrays are converted back to strings using the actual database collation, preventing encoding mismatches. [GitHub Issue #2727](https://github.com/microsoft/mssql-jdbc/issues/2727). |
 | Handle SQL Comments at Start of Query in `getGenerateKeys()` Method | Replaced the naive INSERT check with the `isInsert` function to ensure generated keys are fetched even when queries start with comments. [GitHub Issue #2731](https://github.com/microsoft/mssql-jdbc/issues/2731). |
-
-## Previous releases
 
 <a id="1210"></a>
 

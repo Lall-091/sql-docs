@@ -155,6 +155,21 @@ com.microsoft.sqlserver.jdbc.level=FINEST
 > [!NOTE]
 > You can set the properties in the `logging.properties` file by using the LogManager object that is part of java.util.logging.
 
+## Performance metrics logging
+
+Starting with version 13.4.0, the driver provides dedicated performance metrics loggers that track the timing of connection and statement operations. Unlike the diagnostic tracing categories described earlier, these loggers are designed specifically for measuring execution latency rather than debugging protocol-level behavior.
+
+Two performance loggers are available:
+
+| Logger name | Description |
+| --- | --- |
+| `com.microsoft.sqlserver.jdbc.PerformanceMetrics.Connection` | Tracks connection, prelogin, login, and token acquisition timing. |
+| `com.microsoft.sqlserver.jdbc.PerformanceMetrics.Statement` | Tracks statement request build, first server response, prepare, prepexec, and execute timing. |
+
+Set these loggers to `FINE` level to enable metric output. You can also register a programmatic callback for in-process metric collection instead of (or in addition to) log output.
+
+For configuration details, tracked activities, and code examples, see [Performance Logger and callback](performance-logger-callback.md).
+
 ## See also
 
 [Diagnosing problems with the JDBC driver](../../connect/jdbc/diagnosing-problems-with-the-jdbc-driver.md)

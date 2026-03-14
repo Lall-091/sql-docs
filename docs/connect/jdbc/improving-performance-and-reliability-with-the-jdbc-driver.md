@@ -3,7 +3,7 @@ title: Improving performance and reliability
 description: Learn about various techniques for improving application performance and reliability when using the Microsoft JDBC driver for SQL Server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/18/2025
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -31,6 +31,7 @@ The articles in this section describe various techniques for improving applicati
 |[Prepared statement parameter performance](prepared-statement-parameter-performance.md)|Discusses practices and settings to consider when using prepared statements.|
 |[Using bulk copy API for batch insert operation](use-bulk-copy-api-batch-insert-operation.md)|Describes how to enable Bulk Copy API for batch insert operations and its benefits.|
 |[Not sending String parameters as Unicode](setting-the-connection-properties.md)|When you're working with **CHAR**, **VARCHAR**, and **LONGVARCHAR** data, set the connection property **sendStringParametersAsUnicode** to `false` for optimal performance gain.|
+|[Performance Logger and callback](performance-logger-callback.md)|Describes how to use the performance logging framework and callback infrastructure to track execution timing for critical driver operations such as connections, prelogin, login, and token acquisition.|
 
 ## See also
 
