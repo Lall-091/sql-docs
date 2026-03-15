@@ -9,6 +9,8 @@ items:
   items:
   - name: What is SQL Server?
     href: sql-server/what-is-sql-server.md
+  - name: The Microsoft SQL Database Engine
+    href: database-engine/sql-database-engine.md
   - name: Connect to the Database Engine
     href: sql-server/connect-to-database-engine.md
   - name: What's new?
