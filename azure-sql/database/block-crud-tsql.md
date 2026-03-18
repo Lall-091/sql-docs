@@ -1,11 +1,11 @@
 ---
-title: Block T-SQL Commands to Create or Modify Azure SQL Resources
-description: This article details a feature allowing Azure administrators to block T-SQL commands to create or modify Azure SQL resources
+title: Block T-SQL Commands To Create Or Modify Azure SQL Resources
+description: This article details features allowing Azure administrators to block T-SQL commands to create or modify Azure SQL Database and Azure SQL Managed Instance resources.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: wiassaf, mathoma
-ms.date: 06/13/2025
-ms.service: azure-sql-database
+ms.date: 03/10/2026
+ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
 ROBOTS: NOINDEX
@@ -13,63 +13,91 @@ monikerRange: "=azuresql || =azuresql-db "
 ms.custom: sfi-image-nochange
 ---
 
-# What is Block T-SQL CRUD feature?
+# What is Block T-SQL CRUD?
 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-This feature allows Azure administrators to block the creation or modification of Azure SQL Database resources through T-SQL. This is enforced at the subscription level to block T-SQL commands from affecting Azure SQL Database resources.
+The Block T-SQL CRUD features allow Azure administrators to block the creation or modification of Azure SQL resources through T-SQL. Two separate subscription-level preview feature flags are available:
+
+| Preview feature flag | Scope |
+| --- | --- |
+| **Block T-SQL CRUD for logical servers** (`block-tsql-crud`) | Azure SQL Database (logical server) |
+| **Block T-SQL CRUD for managed instances** (`block-tsql-mi-crud`) | Azure SQL Managed Instance |
+
+Each flag is registered independently per subscription. You can enable one or both depending on which Azure SQL services you need to govern.
 
 ## Overview
 
-To block creation or modification of resources through T-SQL and enforce resource management through an Azure Resource Manager template (ARM template) for a given subscription, the subscription level preview features in Azure portal can be used. This is particularly useful when you are using [Azure Policies](/azure/governance/policy/overview) to enforce organizational standards through ARM templates. Since T-SQL does not adhere to Azure Policies, a block on T-SQL create or modify operations can be applied. The syntax blocked includes CRUD (create, update, delete) operations for databases in Azure SQL Database.
+To block creation or modification of resources through T-SQL and enforce resource management through an Azure Resource Manager template (ARM template) for a given subscription, the subscription-level preview features in the Azure portal can be used. This is particularly useful when you are using [Azure Policies](/azure/governance/policy/overview) to enforce organizational standards through ARM templates. Since T-SQL does not adhere to Azure Policies, a block on T-SQL create or modify operations can be applied.
 
-T-SQL CRUD operations can be blocked via Azure portal, [PowerShell](/powershell/module/az.resources/register-azproviderfeature), or [Azure CLI](/cli/azure/feature#az-feature-register).
+T-SQL CRUD operations can be blocked via the Azure portal, [PowerShell](/powershell/module/az.resources/register-azproviderfeature), or [Azure CLI](/cli/azure/feature#az-feature-register).
 
-## Blocked statements
+## Blocked statements for Azure SQL Database
 
-The following T-SQL statements are blocked when this feature is enabled:
+When the **Block T-SQL CRUD for logical servers** (`block-tsql-crud`) preview feature is registered, the following T-SQL statements are blocked for Azure SQL Database resources:
 
-1. `CREATE DATABASE` statements
-1. `DROP DATABASE` statements
-1. A subset of `ALTER DATABASE` statements, as follows:
-    - `ALTER DATABASE ... ADD SECONDARY ON SERVER`
-    - `ALTER DATABASE ... REMOVE SECONDARY ON SERVER`
-    - `ALTER DATABASE ... FAILOVER`
-    - `ALTER DATABASE ... MODIFY NAME ...`
-    - `ALTER DATABASE ... MODIFY (MAXSIZE | EDITION | SERVICE_OBJECTIVE ...)`
-    - `ALTER DATABASE ... MODIFY BACKUP_STORAGE_REDUNDANCY ...`
-    - `ALTER DATABASE ... SET ENCRYPTION ...`
+1. `CREATE DATABASE`
+1. `DROP DATABASE`
+1. `CREATE DATABASE ... AS COPY OF`
+1. `ALTER DATABASE` (edition, service objective, max size, etc.)
+1. `ALTER DATABASE ... ADD SECONDARY ON SERVER`
+1. `ALTER DATABASE ... REMOVE SECONDARY ON SERVER`
+1. `ALTER DATABASE ... FAILOVER`
+
+## Blocked statements for Azure SQL Managed Instance
+
+When the **Block T-SQL CRUD for managed instances** (`block-tsql-mi-crud`) preview feature is registered, the following T-SQL statements are blocked for Azure SQL Managed Instance resources:
+
+1. `CREATE DATABASE`
+1. `DROP DATABASE`
+1. Cancel in-progress `CREATE DATABASE`
+1. `RESTORE DATABASE ... FROM URL`
+1. `ALTER DATABASE ... ADD FILE`
+1. `ALTER DATABASE ... MODIFY FILE`
+1. `ALTER DATABASE ... REMOVE FILE` (on geo-replicated file)
+1. `ALTER DATABASE tempdb ADD FILE`
+1. `ALTER DATABASE tempdb MODIFY FILE`
+1. `ALTER DATABASE tempdb REMOVE FILE`
+1. `ALTER DATABASE ... SET` (compatibility level, collation, etc.)
+1. `ALTER DATABASE ... SET ENCRYPTION ON/OFF`
+1. `ALTER AVAILABILITY GROUP ... FAILOVER` (MI Link / Failover Group)
+1. Failover stored procedure configuration
+1. `DBCC TRACEON` / `DBCC TRACEOFF` (global trace flags)
+1. `sp_configure` (SQL Agent enable/disable)
+1. `sp_configure` / MSDTC transition to primary
+1. MSDTC network settings (XA, LU, inbound/outbound)
+1. Vulnerability Assessment scan trigger via T-SQL
 
 ## Permissions
 
-In order to register or remove this feature, the Azure user must be a member of the Owner or Contributor role of the subscription.
+In order to register or remove either feature, the Azure user must be a member of the Owner or Contributor role of the subscription.
 
 ## Examples
 
-The following section describes how you can register or unregister a preview feature with Microsoft.Sql resource provider in Azure portal: 
+The following section describes how you can register or unregister a preview feature with the Microsoft.Sql resource provider in the Azure portal.
 
-### Register Block T-SQL CRUD
+### Register a Block T-SQL CRUD feature
 
-1. Go to your subscription on Azure portal.
-1. Select the **Preview Features** tab. 
-1. Select **Block T-SQL CRUD**.
-1. After you select **Block T-SQL CRUD**, a new window will open, select **Register**, to register this block with Microsoft.Sql resource provider.
-
-:::image type="content" source="media/block-crud-tsql/block-tsql-crud.png" alt-text="Screenshot of the Azure portal showing how to select 'Block T-SQL CRUD' in the list of Preview Features." lightbox="media/block-crud-tsql/block-tsql-crud.png":::
+1. Go to your subscription in the Azure portal.
+1. Select the **Preview Features** tab.
+1. Select the feature flag you want to enable:
+   - **Block T-SQL CRUD for logical servers** — for Azure SQL Database
+   - **Block T-SQL CRUD for managed instances** — for Azure SQL Managed Instance
+1. In the window that opens, select **Register** to register this block with the Microsoft.Sql resource provider.
 
 :::image type="content" source="media/block-crud-tsql/block-tsql-crud-register.png" alt-text="With 'Block T-SQL CRUD' checked, select Register." lightbox="media/block-crud-tsql/block-tsql-crud-register.png":::
 
 ### Re-register Microsoft.Sql resource provider
 
-After you register the block of T-SQL CRUD with Microsoft.Sql resource provider, you must re-register the Microsoft.Sql resource provider for the changes to take effect. To re-register the Microsoft.Sql resource provider:
+After you register either block feature with the Microsoft.Sql resource provider, you must re-register the Microsoft.Sql resource provider for the changes to take effect. To re-register the Microsoft.Sql resource provider:
 
-1. Go to your subscription on Azure portal.
+1. Go to your subscription in the Azure portal.
 1. Select the **Resource Providers** tab.
 1. Search and select **Microsoft.Sql** resource provider.
-1. Select **Re-register**. 
+1. Select **Re-register**.
 
 > [!NOTE]
-> The re-registration step is mandatory for the T-SQL block to be applied to your subscription. 
+> The re-registration step is mandatory for the T-SQL block to be applied to your subscription.
 
 :::image type="content" source="media/block-crud-tsql/block-tsql-crud-re-register.png" alt-text="Screenshot of the Azure portal showing how to re-register the Microsoft.Sql resource provider." lightbox="media/block-crud-tsql/block-tsql-crud-re-register.png":::
 

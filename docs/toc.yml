@@ -8769,6 +8769,8 @@ items:
       href: tools/sqlpackage/sqlpackage-download.md
     - name: Release notes
       href: tools/sqlpackage/release-notes-sqlpackage.md
+    - name: Release notes (archive)
+      href: tools/sqlpackage/release-notes-sqlpackage-archive.md
     - name: CLI reference
       href: tools/sqlpackage/cli-reference.md
     - name: SqlPackage in development pipelines
@@ -9059,7 +9061,7 @@ items:
       - name: SQL Server 2019
         href: linux/sql-server-linux-whats-new-2019.md
       - name: SQL Server 2017
-        href: linux/sql-server-linux-whats-new.md
+        href: linux/sql-server-linux-whats-new-2017.md
     - name: Editions and features
       items:
       - name: SQL Server 2025

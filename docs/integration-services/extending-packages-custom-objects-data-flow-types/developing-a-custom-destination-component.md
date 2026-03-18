@@ -3,7 +3,7 @@ title: "Developing a Custom Destination Component"
 description: "Developing a Custom Destination Component"
 author: chugugrace
 ms.author: chugu
-ms.date: "03/16/2017"
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: "reference"
@@ -29,10 +29,10 @@ dev_langs:
   
  This section discusses the details of how to develop destination components, and provides code examples to clarify important concepts. For a general overview of data flow component development, see [Developing a Custom Data Flow Component](../../integration-services/extending-packages-custom-objects/data-flow/developing-a-custom-data-flow-component.md).  
   
-## Design Time  
+## Design time  
  Implementing the design-time functionality of a destination component involves specifying a connection to an external data source and validating that the component has been correctly configured. By definition, a destination component has one input and possibly one error output.  
   
-### Creating the Component  
+### Creating the component  
  Destination components connect to external data sources by using <xref:Microsoft.SqlServer.Dts.Runtime.ConnectionManager> objects defined in a package. The destination component indicates its requirement for a connection manager to the [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer, and to users of the component, by adding an element to the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.RuntimeConnectionCollection%2A> collection of the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ComponentMetaData%2A>. This collection serves two purposes: first, it advertises the need for a connection manager to [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer; then, after the user has selected or created a connection manager, it holds a reference to the connection manager in the package that is being used by the component. When an <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSRuntimeConnection100> is added to the collection, the **Advanced Editor** displays the **Connection Properties** tab, to prompt the user to select or create a connection in the package for use by the component.  
   
  The following code sample shows an implementation of <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ProvideComponentProperties%2A> that adds an input, and then adds a <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSRuntimeConnection100> object to the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.RuntimeConnectionCollection%2A>.  
@@ -66,9 +66,9 @@ namespace Microsoft.Samples.SqlServer.Dts
   
 ```vb  
 Imports System  
-Imports System.Data  
-Imports System.Data.SqlClient  
-Imports Microsoft.SqlServer.Dts.Pipeline  
+Imports System.Data
+Imports Microsoft.Data.SqlClient
+Imports Microsoft.SqlServer.Dts.Pipeline
 Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper  
 Imports Microsoft.SqlServer.Dts.Runtime  
   
@@ -95,7 +95,7 @@ Namespace Microsoft.Samples.SqlServer.Dts
 End Namespace  
 ```  
   
-### Connecting to an External Data Source  
+### Connecting to an external data source  
  After a connection is added to the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.RuntimeConnectionCollection%2A>, you override the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.AcquireConnections%2A> method to establish a connection to the external data source. This method is called at design time and at run time. The component must establish a connection to the connection manager specified by the run-time connection, and subsequently, to the external data source. Once established, the component should cache the connection internally and release it when <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ReleaseConnections%2A> is called. Developers override this method, and release the connection established by the component during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.AcquireConnections%2A>. Both of these methods, <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ReleaseConnections%2A> and <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.AcquireConnections%2A>, are called at design time and at run time.  
   
  The following code example shows a component that connects to an ADO.NET connection in the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.AcquireConnections%2A> method, and then closes the connection in <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ReleaseConnections%2A>.  
@@ -158,7 +158,7 @@ Public Overrides Sub ReleaseConnections()
 End Sub  
 ```  
   
-### Validating the Component  
+### Validating the component  
  Destination component developers should perform validation as described in [Component Validation](../../integration-services/extending-packages-custom-objects/data-flow/validating-a-data-flow-component.md). In addition, they should verify that the data type properties of the columns defined in the component's input column collection match the columns at the external data source. At times, verifying the input columns against the external data source can be impossible or undesirable, such as when the component or the [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer is in a disconnected state, or when round trips to the server are not acceptable. In these situations, the columns in the input column collection can still be validated by using the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSInput100.ExternalMetadataColumnCollection%2A> of the input object.  
   
  This collection exists on both input and output objects and must be populated by the component developer from the columns at the external data source. This collection can be used to validate the input columns when the [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer is offline, when the component is disconnected, or when the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.ValidateExternalMetadata%2A> property is **false**.  
@@ -198,13 +198,13 @@ Private Sub AddExternalMetaDataColumn(ByVal input As IDTSInput100, ByVal inputCo
 End Sub  
 ```  
   
-## Run Time  
+## Run time  
  During execution, the destination component receives a call to the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ProcessInput%2A> method each time a full <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineBuffer> is available from the upstream component. This method is called repeatedly until there are no more buffers available and the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineBuffer.EndOfRowset%2A> property is **true**. During this method, destination components read columns and rows in the buffer, and add them to the external data source.  
   
-### Locating Columns in the Buffer  
- The input buffer for a component contains all the columns defined in the output column collections of the components upstream from the component in the data flow. For example, if a source component provides three columns in its output, and the next component adds an additional output column, the buffer provided to the destination component contains four columns, even if the destination component will write only two columns.  
+### Locating columns in the buffer  
+ The input buffer for a component contains all the columns defined in the output column collections of the components upstream from the component in the data flow. For example, if a source component provides three columns in its output, and the next component adds an additional output column, the buffer provided to the destination component contains four columns, even if the destination component writes only two columns.  
   
- The order of the columns in the input buffer is not defined by the index of the column in the input column collection of the destination component. Columns can be reliably located in a buffer row only by using the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSBufferManager100.FindColumnByLineageID%2A> method of the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.BufferManager%2A>. This method locates the column that has the specified lineage ID in the specified buffer, and returns its location in the row. The indexes of the input columns are typically located during the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PreExecute%2A> method, and cached by the developer for use later during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ProcessInput%2A>.  
+ The order of the columns in the input buffer isn't defined by the index of the column in the input column collection of the destination component. Columns can be reliably located in a buffer row only by using the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSBufferManager100.FindColumnByLineageID%2A> method of the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.BufferManager%2A>. This method locates the column that has the specified lineage ID in the specified buffer, and returns its location in the row. The indexes of the input columns are typically located during the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PreExecute%2A> method, and cached by the developer for use later during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ProcessInput%2A>.  
   
  The following code example finds the location of the input columns in the buffer during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PreExecute%2A> and stores them in an array. The array is subsequently used during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ProcessInput%2A> to read the values of the columns in the buffer.  
   
@@ -241,10 +241,10 @@ Public Overrides Sub PreExecute()
 End Sub  
 ```  
   
-### Processing Rows  
+### Processing rows  
  Once the input columns have been located in the buffer, they can be read and written to the external data source.  
   
- While the destination component writes rows to the external data source, you may want to update the "Rows read" or "BLOB bytes read" performance counters by calling the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.IncrementPipelinePerfCounter%2A> method. For more information, see [Performance Counters](../../integration-services/performance/performance-counters.md).  
+ While the destination component writes rows to the external data source, you might want to update the "Rows read" or "BLOB bytes read" performance counters by calling the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.IncrementPipelinePerfCounter%2A> method. For more information, see [Performance Counters](../../integration-services/performance/performance-counters.md).  
   
  The following example shows a component that reads rows from the buffer provided in <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ProcessInput%2A>. The indexes of the columns in the buffer were located during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PreExecute%2A> in the preceding code example.  
   
@@ -282,7 +282,7 @@ End Sub
 ```  
   
 ## Sample  
- The following sample shows a simple destination component that uses a File connection manager to save binary data from the data flow into files. This sample does not demonstrate all the methods and functionality discussed in this topic. It demonstrates the important methods that every custom destination component must override, but does not contain code for design-time validation.  
+ The following sample shows a simple destination component that uses a File connection manager to save binary data from the data flow into files. This sample doesn't demonstrate all the methods and functionality discussed in this topic. It demonstrates the important methods that every custom destination component must override, but doesn't contain code for design-time validation.  
   
 ```csharp  
 using System;  
@@ -476,7 +476,7 @@ Namespace BlobDst
 End Namespace  
 ```  
   
-## See Also  
+## Related content  
  [Developing a Custom Source Component](../../integration-services/extending-packages-custom-objects-data-flow-types/developing-a-custom-source-component.md)   
  [Creating a Destination with the Script Component](../../integration-services/extending-packages-scripting-data-flow-script-component-types/creating-a-destination-with-the-script-component.md)  
   

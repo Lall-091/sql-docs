@@ -67441,6 +67441,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/linux/sql-server-linux-whats-new.md",
+      "redirect_url": "/sql/linux/sql-server-linux-whats-new-2017",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/relational-databases/system-tables/msrepl-agent-jobs.md",
       "redirect_url": "/sql/relational-databases/system-tables/msrepl-agent-jobs-transact-sql",
       "redirect_document_id": false

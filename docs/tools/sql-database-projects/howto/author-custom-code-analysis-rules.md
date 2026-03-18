@@ -1,10 +1,10 @@
 ---
 title: Author Custom Code Analysis Rules
-description: "How to create custom code analysis rules with DacFx and ScriptDOM."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+description: How to create custom code analysis rules with DacFx and ScriptDOM.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -52,7 +52,7 @@ This walkthrough is intended for users who are already familiar with the SQL Ser
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools, SDK-style (preview) installed in Visual Studio 2022](../../../ssdt/sql-server-data-tools-sdk-style.md)
+- [SQL Server Data Tools, SDK-style (preview)](../../../ssdt/sql-server-data-tools-sdk-style.md)
 - A version of Visual Studio installed, which supports [!INCLUDE [c-sharp-md](../../../includes/c-sharp-md.md)] .NET development.
 - A SQL Server project that contains SQL Server objects.
 
@@ -70,6 +70,12 @@ This walkthrough is intended for users who are already familiar with the SQL Ser
 This walkthrough is intended for users who are already familiar with the SQL Database Projects extension in Visual Studio Code. You should be familiar with development concepts, such as how to create a class library, add packages, and how to use the code editor to edit code.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+This walkthrough requires an application code editor, such as Visual Studio Code or Visual Studio. Switch to a different pivot for instructions on how to create the class library project and the custom rule classes using an application code editor.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 
@@ -147,6 +153,12 @@ Next, add supporting classes that will be used by the rule.
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+This walkthrough requires an application code editor, such as Visual Studio Code or Visual Studio. Switch to a different pivot for instructions on how to create the class library project and the custom rule classes using an application code editor.
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
 1. Open a command prompt or terminal window and navigate to the folder where you want to create the project.
@@ -203,6 +215,12 @@ The first class that you must define is the `WaitForDelayVisitor` class, derived
 1. Create a new file named `WaitForDelayVisitor.cs` in the `SampleRules` folder.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+This walkthrough requires an application code editor, such as Visual Studio Code or Visual Studio. Switch to a different pivot for instructions on how to create the class library project and the custom rule classes using an application code editor.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 
@@ -406,6 +424,12 @@ Next, add a resource file that defines the rule name, rule description, and the 
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+This walkthrough requires an application code editor, such as Visual Studio Code or Visual Studio. Switch to a different pivot for instructions on how to create the class library project and the custom rule classes using an application code editor.
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
 1. In the `SampleRules` directory, create a new file named `RuleResources.resx`.
@@ -537,6 +561,12 @@ The second class is `LocalizedExportCodeAnalysisRuleAttribute.cs`. This is an ex
 1. Create a new file named `LocalizedExportCodeAnalysisRuleAttribute.cs`.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+This walkthrough requires an application code editor, such as Visual Studio Code or Visual Studio. Switch to a different pivot for instructions on how to create the class library project and the custom rule classes using an application code editor.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 
@@ -674,6 +704,12 @@ Next, define a class that references the resources in the resource file that are
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+This walkthrough requires an application code editor, such as Visual Studio Code or Visual Studio. Switch to a different pivot for instructions on how to create the class library project and the custom rule classes using an application code editor.
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
 1. Navigate to the `SampleRules` directory.
@@ -745,6 +781,12 @@ After you add the helper classes that the custom code analysis rule will use, cr
 1. Create a new file named `AvoidWaitForDelayRule.cs`.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+This walkthrough requires an application code editor, such as Visual Studio Code or Visual Studio. Switch to a different pivot for instructions on how to create the class library project and the custom rule classes using an application code editor.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 
@@ -965,6 +1007,12 @@ After you add the helper classes that the custom code analysis rule will use, cr
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+This walkthrough requires an application code editor, such as Visual Studio Code or Visual Studio. Switch to a different pivot for instructions on how to create the class library project and the custom rule classes using an application code editor.
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
 1. Navigate to the `SampleRules` directory.
@@ -1077,6 +1125,12 @@ dotnet nuget add source <local folder path>
 1. When the project **build** action is used, the rule will be executed and any `WAITFOR DELAY` statements found will be reported as warnings.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+This walkthrough requires an application code editor, such as Visual Studio Code or Visual Studio. Switch to a different pivot for instructions on how to create the class library project and the custom rule classes using an application code editor.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 

@@ -3,7 +3,7 @@ title: "Creating a Destination with the Script Component"
 description: "Creating a Destination with the Script Component"
 author: chugugrace
 ms.author: chugu
-ms.date: "03/17/2017"
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: "reference"
@@ -23,44 +23,44 @@ dev_langs:
   
  For an overview of the Script component, see [Extending the Data Flow with the Script Component](../../integration-services/extending-packages-scripting/data-flow-script-component/extending-the-data-flow-with-the-script-component.md).  
   
- The Script component and the infrastructure code that it generates for you simplify significantly the process of developing a custom data flow component. However, to understand how the Script component works, you may find it useful to read through the steps for developing a custom data flow components in the [Developing a Custom Data Flow Component](../../integration-services/extending-packages-custom-objects/data-flow/developing-a-custom-data-flow-component.md) section, and especially [Developing a Custom Destination Component](../../integration-services/extending-packages-custom-objects-data-flow-types/developing-a-custom-destination-component.md).  
+ The Script component and the infrastructure code that it generates for you simplify significantly the process of developing a custom data flow component. However, to understand how the Script component works, you might find it useful to read through the steps for developing a custom data flow components in the [Developing a Custom Data Flow Component](../../integration-services/extending-packages-custom-objects/data-flow/developing-a-custom-data-flow-component.md) section, and especially [Developing a Custom Destination Component](../../integration-services/extending-packages-custom-objects-data-flow-types/developing-a-custom-destination-component.md).  
   
-## Getting Started with a Destination Component  
+## Getting started with a destination component  
  When you add a Script component to the Data Flow tab of [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer, the **Select Script Component Type** dialog box opens and prompts you to select a **Source**, **Destination**, or **Transformation** script. In this dialog box, select **Destination**.  
   
  Next, connect the output of a transformation to the destination component in [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer. For testing, you can connect a source directly to a destination without any transformations.  
   
-## Configuring a Destination Component in Metadata-Design Mode  
+## Configuring a destination component in metadata-design mode  
  After you select the option to create a destination component, you configure the component by using the **Script Transformation Editor**. For more information, see [Configuring the Script Component in the Script Component Editor](../../integration-services/extending-packages-scripting/data-flow-script-component/configuring-the-script-component-in-the-script-component-editor.md).  
   
- To select the script language that the Script destination will use, you set the **ScriptLanguage** property on the **Script** page of the **Script Transformation Editor** dialog box.  
+ To select the script language that the Script destination uses, set the **ScriptLanguage** property on the **Script** page of the **Script Transformation Editor** dialog box.  
   
 > [!NOTE]  
 >  To set the default scripting language for the Script component, use the **Scripting language** option on the **General** page of the **Options** dialog box. For more information, see [General Page](../general-page-of-integration-services-designers-options.md).  
   
  A data flow destination component has one input and no outputs. Configuring the input for the component is one of the steps that you must complete in metadata design mode, by using the **Script Transformation Editor**, before you write your custom script.  
   
-### Adding Connection Managers  
+### Adding connection managers  
  Ordinarily a destination component uses an existing connection manager to connect to the data source to which it saves data from the data flow. On the **Connection Managers** page of the **Script Transformation Editor**, click **Add** to add the appropriate connection manager.  
   
- However, a connection manager is just a convenient unit that encapsulates and stores the information that is required to connect to a data source of a particular type. You must write your own custom code to load or save your data, and possibly to open and close the connection to the data source.  
+ However, a connection manager is just a convenient unit that encapsulates and stores the information required to connect to a data source of a particular type. You must write your own custom code to load or save your data, and possibly to open and close the connection to the data source.  
   
  For general information about how to use connection managers with the Script component, see [Connecting to Data Sources in the Script Component](../../integration-services/extending-packages-scripting/data-flow-script-component/connecting-to-data-sources-in-the-script-component.md).  
   
  For more information about the **Connection Managers** page of the **Script Transformation Editor**, see [Script Transformation Editor &#40;Connection Managers Page&#41;](../data-flow/transformations/script-component.md).  
   
-### Configuring Inputs and Input Columns  
+### Configuring inputs and input columns  
  A destination component has one input and no outputs.  
   
  On the **Input Columns** page of the **Script Transformation Editor**, the column list shows the available columns from the output of the upstream component in the data flow. Select the columns that you want to save.  
   
  For more information about the **Input Columns** page of the **Script Transformation Editor**, see [Script Transformation Editor &#40;Input Columns Page&#41;](../data-flow/transformations/script-component.md).  
   
- The **Inputs and Outputs** page of the **Script Transformation Editor** shows a single input, which you can rename. You will refer to the input by its name in your script by using the accessor property created in the auto-generated code.  
+ The **Inputs and Outputs** page of the **Script Transformation Editor** shows a single input, which you can rename. Refer to the input by its name in your script by using the accessor property created in the auto-generated code.  
   
  For more information about the **Inputs and Outputs** page of the **Script Transformation Editor**, see [Script Transformation Editor &#40;Inputs and Outputs Page&#41;](../data-flow/transformations/script-component.md).  
   
-### Adding Variables  
+### Adding variables  
  If you want to use existing variables in your script, you can add them in the **ReadOnlyVariables** and **ReadWriteVariables** property fields on the **Script** page of the **Script Transformation Editor**.  
   
  When you add multiple variables in the property fields, separate the variable names by commas. You can also select multiple variables by clicking the ellipsis (**...**) button next to the **ReadOnlyVariables** and **ReadWriteVariables** property fields, and then selecting the variables in the **Select variables** dialog box.  
@@ -69,36 +69,36 @@ dev_langs:
   
  For more information about the **Script** page of the **Script Transformation Editor**, see [Script Transformation Editor &#40;Script Page&#41;](../data-flow/transformations/script-component.md).  
   
-## Scripting a Destination Component in Code-Design Mode  
+## Scripting a destination component in code-design mode  
  After you have configured the metadata for your component, you can write your custom script. In the **Script Transformation Editor**, on the **Script** page, click **Edit Script** to open the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[vsprvs](../../includes/vsprvs-md.md)] Tools for Applications (VSTA) IDE where you can add your custom script. The scripting language that you use depends on whether you selected [!INCLUDE[msCoName](../../includes/msconame-md.md)] Visual Basic or [!INCLUDE[msCoName](../../includes/msconame-md.md)] Visual C# as the script language for the **ScriptLanguage** property on the **Script** page.  
   
  For important information that applies to all kinds of components created by using the Script component, see [Coding and Debugging the Script Component](../../integration-services/extending-packages-scripting/data-flow-script-component/coding-and-debugging-the-script-component.md).  
   
-### Understanding the Auto-generated Code  
- When you open the VSTA IDE after you create and configuring a destination component, the editable **ScriptMain** class appears in the code editor with a stub for the **ProcessInputRow** method. The **ScriptMain** class is where you will write your custom code, and **ProcessInputRow** is the most important method in a destination component.  
+### Understanding the auto-generated code  
+ When you open the VSTA IDE after you create and configure a destination component, the editable **ScriptMain** class appears in the code editor with a stub for the **ProcessInputRow** method. The **ScriptMain** class is where you write your custom code, and **ProcessInputRow** is the most important method in a destination component.  
   
  If you open the **Project Explorer** window in VSTA, you can see that the Script component has also generated read-only **BufferWrapper** and **ComponentWrapper** project items. The **ScriptMain** class inherits from **UserComponent** class in the **ComponentWrapper** project item.  
   
  At run time, the data flow engine invokes the **ProcessInput** method in the **UserComponent** class, which overrides the <xref:Microsoft.SqlServer.Dts.Pipeline.ScriptComponent.ProcessInput%2A> method of the <xref:Microsoft.SqlServer.Dts.Pipeline.ScriptComponent> parent class. The **ProcessInput** method in turn loops through the rows in the input buffer and calls the **ProcessInputRow** method one time for each row.  
   
-### Writing Your Custom Code  
- To finish creating a custom destination component, you may want to write script in the following methods available in the **ScriptMain** class.  
+### Writing your custom code  
+ To finish creating a custom destination component, you might want to write script in the following methods available in the **ScriptMain** class.  
   
 1.  Override the **AcquireConnections** method to connect to the external data source. Extract the connection object, or the required connection information, from the connection manager.  
   
-2.  Override the **PreExecute** method to prepare to save the data. For example, you may want to create and configure a **SqlCommand** and its parameters in this method.  
+2.  Override the **PreExecute** method to prepare to save the data. For example, you might want to create and configure a **SqlCommand** and its parameters in this method.  
   
 3.  Use the overridden **ProcessInputRow** method to copy each input row to the external data source. For example, for a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] destination, you can copy the column values into the parameters of a **SqlCommand** and execute the command one time for each row. For a flat file destination, you can write the values for each column to a **StreamWriter**, separating the values by the column delimiter.  
   
 4.  Override the **PostExecute** method to disconnect from the external data source, if required, and to perform any other required cleanup.  
   
 ## Examples  
- The examples that follow demonstrate code that is required in the **ScriptMain** class to create a destination component.  
+ The following examples demonstrate the required code in the **ScriptMain** class to create a destination component.  
   
 > [!NOTE]
 >  These examples use the **Person.Address** table in the **AdventureWorks** sample database and pass its first and fourth columns, the **int*AddressID*** and **nvarchar(30)City** columns, through the data flow. The same data is used in the source, transformation, and destination samples in this section. Additional prerequisites and assumptions are documented for each example.  
   
-### ADO.NET Destination Example  
+### ADO.NET destination example  
  This example demonstrates a destination component that uses an existing [!INCLUDE[vstecado](../../includes/vstecado-md.md)] connection manager to save data from the data flow into a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] table.  
   
  If you want to run this sample code, you must configure the package and the component as follows:  
@@ -127,7 +127,7 @@ dev_langs:
 9. Close the **Script Transformation Editor** and run the sample.  
   
 ```vb  
-Imports System.Data.SqlClient  
+Imports Microsoft.Data.SqlClient  
 ...  
 Public Class ScriptMain  
     Inherits UserComponent  
@@ -173,7 +173,7 @@ End Class
 ```  
   
 ```csharp  
-using System.Data.SqlClient;  
+using Microsoft.Data.SqlClient;  
 public class ScriptMain:  
     UserComponent  
   
@@ -222,12 +222,12 @@ public class ScriptMain:
 }  
 ```  
   
-### Flat File Destination Example  
+### Flat file destination example  
  This example demonstrates a destination component that uses an existing Flat File connection manager to save data from the data flow to a flat file.  
   
  If you want to run this sample code, you must configure the package and the component as follows:  
   
-1.  Create a Flat File connection manager that connects to a destination file. The file does not have to exist; the destination component will create it. Configure the destination file as a comma-delimited file that contains the **AddressID** and **City** columns.  
+1.  Create a Flat File connection manager that connects to a destination file. The file doesn't have to exist; the destination component creates it. Configure the destination file as a comma-delimited file that contains the **AddressID** and **City** columns.  
   
 2.  Add a new Script component to the Data Flow designer surface and configure it as a destination.  
   
@@ -344,7 +344,7 @@ public class ScriptMain:
 }  
 ```  
   
-## See Also  
+## Related content  
  [Creating a Source with the Script Component](../../integration-services/extending-packages-scripting-data-flow-script-component-types/creating-a-source-with-the-script-component.md)   
  [Developing a Custom Destination Component](../../integration-services/extending-packages-custom-objects-data-flow-types/developing-a-custom-destination-component.md)  
   

@@ -34,7 +34,7 @@ In the preceding diagram, `mssql-server` is a SQL Server instance (container) in
 
 Kubernetes orchestrates the resources in the cluster. When a node hosting a SQL Server instance container fails, it bootstraps a new container with a SQL Server instance and attaches it to the same persistent storage.
 
-SQL Server on Linux supports containers on Kubernetes, OpenShift, and D2Hi.
+SQL Server on Linux supports containers on Kubernetes, OpenShift, and DH2i.
 
 ## Related content
 
