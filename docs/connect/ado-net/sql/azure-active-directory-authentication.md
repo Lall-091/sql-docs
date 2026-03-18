@@ -56,7 +56,7 @@ When the application is connecting to Azure SQL data sources by using Microsoft 
 | Active Directory Managed Identity, <br>Active Directory MSI | Authenticate using a Microsoft Entra system-assigned or user-assigned managed identity | 2.1.0+ |
 | Active Directory Default | Authenticate with a Microsoft Entra identity by using password-less and non-interactive mechanisms including managed identities, Visual Studio Code, Visual Studio, Azure CLI, etc. | 3.0.0+ |
 | Active Directory Workload Identity | Authenticate with a Microsoft Entra identity by using a federated User Assigned Managed Identity to connect to SQL Database from Azure client environments that are enabled for Workload Identity. | 5.2.0+ |
-| Active Directory Password [DEPRECATED] | Authenticate with a Microsoft Entra identity's username and password.<br/><br/>Active Directory Password is deprecated. For more information, see [Using password authentication](#using-password-authentication). | 1.0+ |
+| Active Directory Password [DEPRECATED] | Authenticate with a Microsoft Entra identity's username and password.<br/><br/>Active Directory Password is deprecated. For more information, see [Using password authentication](#using-password-authentication-deprecated). | 1.0+ |
 
 <sup>1</sup> Before **Microsoft.Data.SqlClient** 2.0.0, `Active Directory Integrated`, and `Active Directory Interactive` authentication modes are supported only on .NET Framework.
 

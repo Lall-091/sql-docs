@@ -29,10 +29,11 @@ The Microsoft.Data.SqlClient API details can be found in the [.NET API Browser](
 This is the general availability release of **Microsoft.Data.SqlClient 7.0**, a major milestone for the .NET data provider for SQL Server. This release addresses the most upvoted issue in the repository's history — extracting Azure dependencies from the core package — introduces pluggable SSPI authentication, adds enhanced routing for Azure SQL Hyperscale, and delivers async read performance improvements.
 
 Also released as part of this milestone:
-- Released Microsoft.Data.SqlClient.Extensions.Abstractions 1.0.0. See [release notes](../Extensions/Abstractions/1.0/1.0.0.md).
-- Released Microsoft.Data.SqlClient.Extensions.Azure 1.0.0. See [release notes](../Extensions/Azure/1.0/1.0.0.md).
-- Released Microsoft.Data.SqlClient.Internal.Logging 1.0.0. See [release notes](../Internal/Logging/1.0/1.0.0.md).
-- Released Microsoft.Data.SqlClient.AlwaysEncrypted.AzureKeyVaultProvider 7.0.0. See [release notes](../add-ons/AzureKeyVaultProvider/7.0/7.0.0.md).
+
+- Released Microsoft.Data.SqlClient.Extensions.Abstractions 1.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/Extensions/Abstractions/1.0/1.0.0.md).
+- Released Microsoft.Data.SqlClient.Extensions.Azure 1.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/Extensions/Azure/1.0/1.0.0.md).
+- Released Microsoft.Data.SqlClient.Internal.Logging 1.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/Internal/Logging/1.0/1.0.0.md).
+- Released Microsoft.Data.SqlClient.AlwaysEncrypted.AzureKeyVaultProvider 7.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/add-ons/AzureKeyVaultProvider/7.0/7.0.0.md).
 
 ### Breaking Changes
 
@@ -104,7 +105,7 @@ connection.SspiContextProvider = new MyKerberosProvider();
 connection.Open();
 ```
 
-- The provider handles the authentication token exchange during integrated authentication. Existing authentication behavior is unchanged when no custom provider is set. See [SspiContextProvider_CustomProvider.cs](../../doc/samples/SspiContextProvider_CustomProvider.cs) for a sample implementation.
+- The provider handles the authentication token exchange during integrated authentication. Existing authentication behavior is unchanged when no custom provider is set. See [SspiContextProvider_CustomProvider.cs](ttps://github.com/dotnet/SqlClient/tree/main/doc/samples/SspiContextProvider_CustomProvider.cs) for a sample implementation.
 - **Note:** The `SspiContextProvider` is part of the connection pool key. Care should be taken when using this property to ensure the implementation returns a stable identity per resource.
 
 #### Async Read Performance: Packet Multiplexing (Preview)
@@ -220,7 +221,7 @@ listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
 
 *What Changed:*
 
-- `SqlAuthenticationMethod.ActiveDirectoryPassword` (the ROPC flow) is now marked `[Obsolete]` and will generate compiler warnings. This aligns with Microsoft's move toward [mandatory multifactor authentication](https://learn.microsoft.com/entra/identity/authentication/concept-mandatory-multifactor-authentication).
+- `SqlAuthenticationMethod.ActiveDirectoryPassword` (the ROPC flow) is now marked `[Obsolete]` and will generate compiler warnings. This aligns with Microsoft's move toward [mandatory multifactor authentication](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
   ([#3671](https://github.com/dotnet/SqlClient/pull/3671))
 
 *Who Benefits:*
@@ -238,7 +239,7 @@ listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
 | Azure-hosted workloads | `Active Directory Managed Identity` |
 | Developer / CI environments | `Active Directory Default` |
 
-- See [Connect to Azure SQL with Microsoft Entra authentication](https://learn.microsoft.com/sql/connect/ado-net/sql/azure-active-directory-authentication) for more information.
+- See [Connect to Azure SQL with Microsoft Entra authentication](sql/azure-active-directory-authentication) for more information.
 
 ## Target Platform Support
 
