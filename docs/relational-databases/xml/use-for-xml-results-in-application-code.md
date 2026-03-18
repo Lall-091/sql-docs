@@ -4,7 +4,8 @@ description: Learn how to use the results of a SQL query with FOR XML clauses in
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 05/05/2022
+ms.date: 03/17/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
@@ -24,7 +25,7 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-By using FOR XML clauses with SQL queries, you can retrieve and even cast query results as XML data. This functionality allows you to do the following when FOR XML query results can be used in XML application code:
+By using FOR XML clauses with SQL queries, you can retrieve and cast query results as XML data. When you use FOR XML query results in XML application code, you can:
 
 - Query SQL tables for instances of [XML Data &#40;SQL Server&#41;](../../relational-databases/xml/xml-data-sql-server.md) values
 
@@ -34,7 +35,7 @@ This article provides examples that demonstrate these approaches.
 
 ## Retrieve FOR XML data with ADO and XML data islands
 
-The ADO **Stream** object or other objects that support the COM **IStream** interface, such as the Active Server Pages (ASP) **Request** and **Response** objects, can be used to contain the results when you're working with FOR XML queries.
+The ADO **Stream** object or other objects that support the COM **IStream** interface, such as the Active Server Pages (ASP) **Request** and **Response** objects, can contain the results when you're working with FOR XML queries.
 
 For example, the following ASP code shows the results of querying an **xml** data type column, Demographics, in the `Sales.Store` table of the AdventureWorks sample database. Specifically, the query looks for the instance value of this column for the row where the CustomerID is equal to 3.
 
@@ -119,17 +120,17 @@ For example, the following ASP code shows the results of querying an **xml** dat
 <!-- EndRecordAndStreamVBS -->
 ```
 
-This example ASP page contains server-side VBScript that uses ADO to execute the FOR XML query and return the XML results in an XML data island, MyDataIsle. This XML data island is then returned in the browser for additional client-side processing. Additional client-side VBScript code is then used to process the contents of the XML data island. This process is performed before displaying the contents as part of the resultant DHTML and opening a message box to show the preprocessed contents of the XML data island.
+This example ASP page contains server-side VBScript that uses ADO to execute the FOR XML query and return the XML results in an XML data island, MyDataIsle. The browser then receives this XML data island for additional client-side processing. Additional client-side VBScript code then processes the contents of the XML data island, displaying the contents as part of the resultant DHTML and opening a message box to show the preprocessed contents of the XML data island.
 
 ### Test this example
 
-1. Verify that IIS is installed and that the AdventureWorks sample database for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] has been installed.
+1. Verify that IIS and the AdventureWorks sample database for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] are installed.
 
-   This example requires that Internet Information Services (IIS) version 5.0, or later versions, are installed with ASP support enabled. Also, the AdventureWorks sample database has to be installed.
+   This example requires Internet Information Services (IIS) version 5.0 or later with ASP support enabled. The AdventureWorks sample database must also be installed.
 
-2. Copy the code example that was previously provided and paste it into the XML or text editor that you use. Save the file as RetrieveResults.asp in the root directory that is used for IIS. Typically, this is C:Inetpub\wwwroot.
+1. Copy the preceding code example and paste it into the XML or text editor that you use. Save the file as RetrieveResults.asp in the root directory that IIS uses. Typically, this directory is C:Inetpub\wwwroot.
 
-3. Open the ASP page in a browser window by using the following URL. First, replace 'MyServer' with either "localhost" or the actual name of the server where [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and IIS are installed.
+1. Open the ASP page in a browser window by using the following URL. First, replace 'MyServer' with either "localhost" or the actual name of the server where [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and IIS are installed.
 
     ```text
     https://MyServer/RetrieveResults.asp
@@ -200,17 +201,17 @@ The VBScript message box will then show the following original, unfiltered XML d
 
 ## Retrieve FOR XML data with ASP.NET and the .NET Framework
 
-As in the previous example, the following ASP.NET code shows the results of querying an **xml** data type column, Demographics, in the Sales.Store table of the AdventureWorks sample database. As in the previous example, the query looks for the instance value of this column for the row where the CustomerID is equal to 3.
+As in the previous example, the following ASP.NET code shows the results of querying an **xml** data type column, Demographics, in the `Sales.Store` table of the AdventureWorks sample database. As in the previous example, the query looks for the instance value of this column for the row where the CustomerID is equal to 3.
 
-In this example, the following Microsoft .NET Framework managed APIs are used to accomplish the return and rendering of the FOR XML query results:
+In this example, the following Microsoft .NET Framework managed APIs return and render the FOR XML query results:
 
-1. **SqlConnection** is used to open a connection to SQL Server, based on the contents of a specified connection string variable, strConn.
+1. **SqlConnection** opens a connection to SQL Server, based on the contents of a specified connection string variable, `strConn`.
 
-2. **SqlDataAdapter** is then used as the data adapter and it uses the SQL connection and a specified SQL query string to execute the FOR XML query.
+1. **SqlDataAdapter** serves as the data adapter and uses the SQL connection and a specified SQL query string to execute the FOR XML query.
 
-3. After the query has executed, the **SqlDataAdapter.Fill** method is then called and passed an instance of a **DataSet,** MyDataSet, in order to fill the data set with the output of the FOR XML query.
+1. After the query executes, the **SqlDataAdapter.Fill** method fills a **DataSet** instance, `MyDataSet`, with the output of the FOR XML query.
 
-4. The **DataSet.GetXml** method is then called to return the query results as a string that can be displayed in the server-generated HTML page.
+1. The **DataSet.GetXml** method returns the query results as a string that the server-generated HTML page displays.
 
     ```vb
     <%@ Page Language="VB" %>
@@ -244,8 +245,8 @@ In this example, the following Microsoft .NET Framework managed APIs are used to
     Dim strConn As String
     strConn = "Server=(local);Database=AdventureWorks;Integrated Security=SSPI;"
 
-    Dim MySqlConn As New System.Data.SqlClient.SqlConnection(strConn)
-    Dim MySqlAdapter As New System.Data.SqlClient.SqlDataAdapter(SQL,MySqlConn)
+    Dim MySqlConn As New Microsoft.Data.SqlClient.SqlConnection(strConn)
+    Dim MySqlAdapter As New Microsoft.Data.SqlClient.SqlDataAdapter(SQL,MySqlConn)
     Dim MyDataSet As New System.Data.DataSet
 
     MySqlConn.Open()
@@ -266,13 +267,13 @@ In this example, the following Microsoft .NET Framework managed APIs are used to
 
 ### Test this example
 
-1. Verify that IIS is installed and that the AdventureWorks sample database for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] has been installed.
+1. Verify that IIS and the AdventureWorks sample database for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] are installed.
 
-   This example requires that Internet Information Services (IIS) version 5.0, or later versions, are installed with ASP.NET support enabled. Also, the AdventureWorks sample database has to be installed.
+   This example requires Internet Information Services (IIS) version 5.0 or later with ASP.NET support enabled. The AdventureWorks sample database must also be installed.
 
-2. Copy the code that was previously provided and paste it into the XML or text editor that you use. Save the file as RetrieveResults.aspx in the root directory used for IIS. Typically, this is C:Inetpub\wwwroot.
+1. Copy the preceding code and paste it into the XML or text editor that you use. Save the file as RetrieveResults.aspx in the root directory that IIS uses. Typically, this directory is C:Inetpub\wwwroot.
 
-3. Open the ASP.NET page in a browser window using the following URL. First, replace 'MyServer' with either "localhost" or the actual name of the server where [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and IIS are installed.
+1. Open the ASP.NET page in a browser window by using the following URL. First, replace 'MyServer' with either "localhost" or the actual name of the server where [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and IIS are installed.
 
     ```text
     https://MyServer/RetrieveResults.aspx
@@ -293,9 +294,9 @@ SqlConnection closed.
 ```
 
 > [!NOTE]
-> The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] **xml** data type support lets you request that the result of a FOR XML query be returned as **xml** data type, instead of as string or image typed data, by specifying the [TYPE directive](../../relational-databases/xml/type-directive-in-for-xml-queries.md). When the TYPE directive is used in FOR XML queries, it provides programmatic access to the FOR XML results similar to that shown in [Use XML Data in Applications](../../relational-databases/xml/use-xml-data-in-applications.md).
+> The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] **xml** data type support lets you request that a FOR XML query returns results as **xml** data type, instead of as string or image typed data, by specifying the [TYPE directive](../../relational-databases/xml/type-directive-in-for-xml-queries.md). When you use the TYPE directive in FOR XML queries, it provides programmatic access to the FOR XML results similar to the approach shown in [Use XML Data in Applications](../../relational-databases/xml/use-xml-data-in-applications.md).
 
-## See also
+## Related content
 
 - [FOR XML &#40;SQL Server&#41;](../../relational-databases/xml/for-xml-sql-server.md)
 

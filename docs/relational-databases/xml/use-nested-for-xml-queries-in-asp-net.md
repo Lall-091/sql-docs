@@ -4,7 +4,8 @@ description: Learn how to use nested FOR XML queries in an ASP.NET application t
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 05/05/2022
+ms.date: 03/17/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
@@ -20,7 +21,7 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-In this example, an ASP.NET application returns XML to a browser by executing a stored procedure in SQL Server. The stored procedure generates XML using nested queries. A similar SELECT statement is shown in the article [Generating Siblings by Using a Nested AUTO Mode Query](../../relational-databases/xml/generate-siblings-with-a-nested-auto-mode-query.md). This example demonstrates one way to use nested FOR XML queries to generate element-centric XML in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+In this example, an ASP.NET application returns XML to a browser by executing a stored procedure in SQL Server. The stored procedure generates XML by using nested queries. A similar SELECT statement is shown in the article [Generating Siblings by Using a Nested AUTO Mode Query](../../relational-databases/xml/generate-siblings-with-a-nested-auto-mode-query.md). This example demonstrates one way to use nested FOR XML queries to generate element-centric XML in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 
 ## Example
 
@@ -55,14 +56,14 @@ This is the .aspx application. It executes the stored procedure and returns XML 
 ```csharp
 <%@LANGUAGE=C# Debug=true %>
 <%@import Namespace="System.Xml"%>
-<%@import namespace="System.Data.SqlClient" %><%
+<%@import namespace="Microsoft.Data.SqlClient" %><%
 Response.Expires = -1;
 Response.ContentType = "text/xml";
 %>
 
 <%
-using(System.Data.SqlClient.SqlConnection c = new System.Data.SqlClient.SqlConnection("Data Source=server;Database=AdventureWorks;Integrated Security=SSPI;"))
-using(System.Data.SqlClient.SqlCommand cmd = c.CreateCommand())
+using(Microsoft.Data.SqlClient.SqlConnection c = new Microsoft.Data.SqlClient.SqlConnection("Data Source=server;Database=AdventureWorks;Integrated Security=SSPI;"))
+using(Microsoft.Data.SqlClient.SqlCommand cmd = c.CreateCommand())
 {
    cmd.CommandText = "GetSalesOrderInfo";
    cmd.CommandType = CommandType.StoredProcedure;
@@ -89,7 +90,7 @@ using(System.Data.SqlClient.SqlCommand cmd = c.CreateCommand())
 
 3. Execute the application (`https://server/GetSalesOrderInfo.aspx`).
 
-## See also
+## Related content
 
 - [Use Nested FOR XML Queries](../../relational-databases/xml/use-nested-for-xml-queries.md)
 
