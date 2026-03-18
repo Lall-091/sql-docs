@@ -17,6 +17,8 @@ monikerRange: "=azuresql || =azuresql-db "
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 Performance counters are used to track the performance of [data dependent routing](elastic-scale-data-dependent-routing.md) operations. These counters are accessible in the **Performance Monitor**, in the "Elastic Database: Shard Management" category.
 
 You can capture the performance of a [shard map manager](elastic-scale-shard-map-management.md), especially when using [data dependent routing](elastic-scale-data-dependent-routing.md). Counters are created with methods of the `Microsoft.Azure.SqlDatabase.ElasticScale.Client` class.  

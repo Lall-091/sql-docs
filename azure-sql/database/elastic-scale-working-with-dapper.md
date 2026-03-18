@@ -37,6 +37,8 @@ To get the Dapper assemblies, see [Dapper dot net](https://www.nuget.org/package
 
 ## A quick look at the elastic database client library
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 With the elastic database client library, you define partitions of your application data called *shardlets*, map them to databases, and identify them by *sharding keys*. You can have as many databases as you need and distribute your shardlets across these databases. The mapping of sharding key values to the databases is stored by a shard map provided by the library's APIs. This capability is called **shard map management**. The shard map also serves as the broker of database connections for requests that carry a sharding key. This capability is referred to as **data-dependent routing**.
 
 :::image type="content" source="media/elastic-scale-working-with-dapper/dapper-example.png" alt-text="Shard maps and data-dependent routing." lightbox="media/elastic-scale-working-with-dapper/dapper-example.png":::
