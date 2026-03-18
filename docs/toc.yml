@@ -8769,6 +8769,8 @@ items:
       href: tools/sqlpackage/sqlpackage-download.md
     - name: Release notes
       href: tools/sqlpackage/release-notes-sqlpackage.md
+    - name: Release notes (archive)
+      href: tools/sqlpackage/release-notes-sqlpackage-archive.md
     - name: CLI reference
       href: tools/sqlpackage/cli-reference.md
     - name: SqlPackage in development pipelines
