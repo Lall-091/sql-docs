@@ -13,6 +13,7 @@ helpviewer_keywords:
   - "moving indexes"
   - "indexes [SQL Server], moving"
   - "filegroups [SQL Server], switching"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current"
 ---
 # Move an existing index to a different filegroup
 
