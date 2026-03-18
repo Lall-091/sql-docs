@@ -105,16 +105,6 @@ Older products:
 
 <sup>1</sup> Platform-as-a-service (PaaS)
 
-## Submit docs feedback
-
-If you find something wrong within an article, you can submit feedback to the Data Docs content team for that article by scrolling down to the bottom of the page and selecting **Yes** or **No** in the **Feedback** section.
-
-:::image type="content" source="media/sql-server-get-help/feedback.png" alt-text="Screenshot of article feedback.":::
-
-[!INCLUDE [contribute-to-content](../includes/paragraph-content/contribute-to-content.md)]
-
-:::image type="content" source="media/sql-server-docs-navigation-guide/edit-sql-docs.gif" alt-text="Screenshot showing the option to edit Data Docs.":::
-
 ## Related content
 
 - [SQL Server technical documentation](index.yml)
