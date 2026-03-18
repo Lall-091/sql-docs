@@ -1,10 +1,10 @@
 ---
 title: Pre-Deployment and Post-Deployment Scripts
-description: "Add custom scripts for pre/post-deployment execution."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 01/29/2026
+description: Add custom scripts for pre-deployment and post-deployment execution.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -105,6 +105,14 @@ In the **Database Projects** view of Visual Studio Code, right-click the project
 The script file is added to the project and opened in the query editor, where you can complete the script. This script will be executed before or after the deployment plan is executed, every time the project is deployed.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+In **Solution Explorer**, right-click the project node and select **Add** > **New Item**. The **Add New Item** dialog appears, select **Show All Templates** > **Table**, then select **Pre-Deployment Script** or **Post-Deployment Script**.
+
+The script file is added to the project and opened in the query editor, where you can complete the script. This script will be executed before or after the deployment plan is executed, every time the project is deployed.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 

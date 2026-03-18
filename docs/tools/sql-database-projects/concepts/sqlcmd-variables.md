@@ -1,19 +1,19 @@
 ---
 title: SQLCMD Variables in SQL Projects
-description: "Dynamically set values in a SQL project at deployment."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+description: Dynamically set values in a SQL project at deployment.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
 ms.collection:
   - data-tools
-zone_pivot_groups: sq1-sql-projects-tools
 ms.custom:
   - ignite-2024
   - sfi-ropc-nochange
+zone_pivot_groups: sq1-sql-projects-tools
 ---
 
 # SQLCMD variables overview
@@ -91,6 +91,16 @@ Once the variable is defined, it can be used in SQL scripts by wrapping the vari
 When you publish the project from the SQL Database Projects extension, SQLCMD variables values are automatically loaded from the default values. You're able to provide alternative values when prompted to modify the values during the publish process.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+To add a SQLCMD variable to a SQL project in SQL Server Management Studio (SSMS), right-click the project in **Solution Explorer** and select **Properties**. In the **SQLCMD Variables** section of the properties window, specify the variable name and optionally a default value.
+
+Once the variable is defined, it can be used in SQL scripts by wrapping the variable name in `$(variableName)` syntax.
+
+When you publish the project from SSMS, SQLCMD variables are set in the publish dialog.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 

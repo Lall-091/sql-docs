@@ -1,10 +1,10 @@
 ---
 title: Start from an Existing Database
-description: "Create a SQL project with objects from an existing database."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 02/06/2026
+description: Create a SQL project with objects from an existing database.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: tutorial
@@ -22,7 +22,7 @@ zone_pivot_groups: sq1-sql-projects-tools
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-SQL projects contain declarative (CREATE statement) files for all the objects in a database, such as tables, views, and stored procedures. These files can be used to create new databases, update existing databases, or even just to track the database in source control. Often we are starting with a SQL project when we have an existing database and want to create objects in the SQL project that match the database with minimal effort.
+SQL projects contain declarative (`CREATE` statement) files for all the objects in a database, such as tables, views, and stored procedures. These files can be used to create new databases, update existing databases, or even just to track the database in source control. Often we are starting with a SQL project when we have an existing database and want to create objects in the SQL project that match the database with minimal effort.
 
 Some SQL projects tools include a single step for creating a new SQL project from an existing database. Other tools require a few steps to create a new SQL project and then import objects from an existing database. Except for the Visual Studio (SQL Server Data Tools) instructions, the guide focuses on SDK-style SQL projects.
 
@@ -51,7 +51,7 @@ With [option 2](#option-2-create-a-new-empty-sql-project-and-import-objects-from
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools, SDK-style (preview) installed in Visual Studio 2022](../../../ssdt/sql-server-data-tools-sdk-style.md)
+- [SQL Server Data Tools, SDK-style (preview)](../../../ssdt/sql-server-data-tools-sdk-style.md)
 - [SqlPackage CLI](../../sqlpackage/sqlpackage-download.md)
 
 ```bash
@@ -68,6 +68,14 @@ dotnet tool install -g Microsoft.SqlPackage
 - [SQL Database Projects extension](../../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- [SQL Server Management Studio (SSMS)](/ssms/install/install)
+- [Database DevOps workload installed in SSMS](/ssms/install/modify)
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 
@@ -106,7 +114,7 @@ While the import proceeds, progress is displayed as messages in the **Import Dat
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-Option 1 isn't available for the command line. Use [option 2](#option-2-create-a-new-empty-sql-project-and-import-objects-from-an-existing-database) instead.
+Option 1 isn't available for SDK-style SQL projects in Visual Studio. Use [option 2](#option-2-create-a-new-empty-sql-project-and-import-objects-from-an-existing-database) instead.
 
 ::: zone-end
 
@@ -121,6 +129,12 @@ In Visual Studio Code, the **Create project from database** dialog requires the 
 In VS Code, the command prompts ask for a project name and location. The default import settings import the objects into folders by schema, then object type. You can select a different folder structure or to include permissions in the objects being imported before the import begins.
 
 Open the **Database Projects** view to see the new project and imported object definitions.
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+Option 1 isn't available for SQL Server Management Studio. Use [option 2](#option-2-create-a-new-empty-sql-project-and-import-objects-from-an-existing-database) instead.
 
 ::: zone-end
 
@@ -144,7 +158,7 @@ The output window automatically opens to display the build process. If there are
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-Option 1 isn't available for the command line. Use [option 2](#option-2-create-a-new-empty-sql-project-and-import-objects-from-an-existing-database) instead.
+Option 1 isn't available for SDK-style SQL projects in Visual Studio. Use [option 2](#option-2-create-a-new-empty-sql-project-and-import-objects-from-an-existing-database) instead.
 
 ::: zone-end
 
@@ -153,6 +167,12 @@ Option 1 isn't available for the command line. Use [option 2](#option-2-create-a
 In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Build**.
 
 The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin/Debug/projectname.dacpac`).
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+Option 1 isn't available for SQL Server Management Studio. Use [option 2](#option-2-create-a-new-empty-sql-project-and-import-objects-from-an-existing-database) instead.
 
 ::: zone-end
 
@@ -216,6 +236,20 @@ Once completed, the empty project is opened and visible in the **Database Projec
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+Select **File**, **New**, then **Project**.
+
+In the **New Project** dialog box, select **SQL Database Project**.
+
+:::image type="content" source="media/create-deploy-sql-project/new-project-dialog-ssms.png" alt-text="Screenshot of New project dialog." lightbox="media/create-deploy-sql-project/new-project-dialog-ssms.png":::
+
+Select **Next** to proceed to the next step. Provide a project name, which doesn't need to match a database name. Verify and modify the project location as needed.
+
+Select **Create** to create the project. The empty project is opened and visible in the **Solution Explorer** for editing.
+
+::: zone-end
+
 ::: zone pivot="sq1-command-line"
 
 With the .NET templates for Microsoft.Build.Sql projects installed, you can create a new SQL database project from the command line. The `-n` option specifies the name of the project, and the `-tp` option specifies the project target platform.
@@ -272,6 +306,18 @@ Select either **View changes in schema compare** to review and choose a subset o
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+We will use the SqlPackage CLI to import objects from an existing database to the new SQL database project we created in SQL Server Management Studio in step 1. The following SqlPackage command imports the schema of a database to a folder `MyDatabaseProject` organized by nested schema and object type folders.
+
+```bash
+sqlpackage /a:Extract /ssn:localhost /sdn:MyDatabase /tf:MyDatabaseProject /p:ExtractTarget=SchemaObjectType
+```
+
+When these folders are placed in an SDK-style SQL database project folder, they're automatically included in the project without the need to import them or modify the SQL project file.
+
+::: zone-end
+
 ::: zone pivot="sq1-command-line"
 
 The SqlPackage CLI can be used to extract the schema of an existing database to a `.dacpac` file or individual `.sql` files. The following SqlPackage command extracts the schema of a database to a `.sql` files organized by nested schema and object type folders.
@@ -309,6 +355,16 @@ The output window automatically opens to display the build process. If there are
 In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Build**.
 
 The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin/Debug/projectname.dacpac`).
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+In **Solution Explorer**, right-click the project node and select **Build**.
+
+:::image type="content" source="media/create-deploy-sql-project/ssms-solution-explorer.png" alt-text="Screenshot of Solution Explorer in SQL Server Management Studio with the Build option available.":::
+
+The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin\Debug\projectname.dacpac`).
 
 ::: zone-end
 
