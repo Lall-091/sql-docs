@@ -239,7 +239,7 @@ listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
 | Azure-hosted workloads | `Active Directory Managed Identity` |
 | Developer / CI environments | `Active Directory Default` |
 
-- See [Connect to Azure SQL with Microsoft Entra authentication](/connect/ado.net/sql/azure-active-directory-authentication) for more information.
+- See [Connect to Azure SQL with Microsoft Entra authentication](/connect/ado-net/sql/azure-active-directory-authentication) for more information.
 
 ## Target Platform Support
 
