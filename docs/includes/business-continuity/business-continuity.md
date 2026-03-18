@@ -19,7 +19,7 @@ Everyone who deploys [!INCLUDE [ssnoversion-md](../ssnoversion-md.md)] needs to 
 | What's new in [!INCLUDE [sssql25-md](../sssql25-md.md)] | [Windows](../../sql-server/what-s-new-in-sql-server-2025.md) &#124; [Linux](../../linux/sql-server-linux-whats-new-2025.md) |
 | What's new in [!INCLUDE [sssql22-md](../sssql22-md.md)] | [Windows](../../sql-server/what-s-new-in-sql-server-2022.md) &#124; [Linux](../../linux/sql-server-linux-whats-new-2022.md) |
 | What's new in [!INCLUDE [sssql19-md](../sssql19-md.md)] | [Windows](../../sql-server/what-s-new-in-sql-server-2019.md) &#124; [Linux](../../linux/sql-server-linux-whats-new-2019.md) |
-| What's new in [!INCLUDE [sssql17-md](../sssql17-md.md)] | [Windows](../../sql-server/what-s-new-in-sql-server-2017.md) &#124; [Linux](../../linux/sql-server-linux-whats-new.md) |
+| What's new in [!INCLUDE [sssql17-md](../sssql17-md.md)] | [Windows](../../sql-server/what-s-new-in-sql-server-2017.md) &#124; [Linux](../../linux/sql-server-linux-whats-new-2017.md) |
 
 This article focuses on the availability scenarios in [!INCLUDE [sssql17-md](../sssql17-md.md)] and later versions, as well as the new and enhanced availability features. The scenarios include hybrid ones that can span [!INCLUDE [ssnoversion-md](../ssnoversion-md.md)] deployments on both Windows Server and Linux, and ones that can increase the number of readable copies of a database.
 

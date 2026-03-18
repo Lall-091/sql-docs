@@ -122,7 +122,7 @@ For more information, see [What's new in SQL Server Machine Learning Services?](
 ## Related content
 
 - [SQL Server 2017 release notes](sql-server-2017-release-notes.md)
-- [What's new for SQL Server 2017 on Linux](../linux/sql-server-linux-whats-new.md)
+- [What's new for SQL Server 2017 on Linux](../linux/sql-server-linux-whats-new-2017.md)
 - [What's new in SQL Server 2016](what-s-new-in-sql-server-2016.md)
 
 [!INCLUDE [get-help-options](../includes/paragraph-content/get-help-options.md)]
