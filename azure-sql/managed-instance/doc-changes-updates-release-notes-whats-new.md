@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, randolphwest
-ms.date: 03/02/2026
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -34,6 +34,7 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 | Feature | Details |
 | ---| --- |
 |[Approximate or fuzzy string matching](/sql/relational-databases/fuzzy-string-match/overview)| Check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that might be different because of character corruption.|
+| [Change event streaming](/sql/relational-databases/track-changes/change-event-streaming/overview) | Capture and publish incremental DML changes of data (such as updates, inserts, and deletes) in near real-time. Change event streaming sends details of data changes such as the schema, previous values, and new values to Azure Event Hubs in a simple CloudEvent, serialized as either native JSON or Avro Binary. |
 |[Database watcher for Azure SQL](../database-watcher-overview.md) | Database watcher is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement).|
 |[DATEADD number allows bigint](/sql/t-sql/functions/dateadd-transact-sql) | For `DATEADD (datepart, number, date)`, number can be expressed as a **bigint**.|
 |[Endpoint policies](./service-endpoint-policies-configure.md) | Configure which Azure Storage accounts can be accessed from a SQL Managed Instance subnet. Grants an extra layer of protection against inadvertent or malicious data exfiltration.|
@@ -76,7 +77,11 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 
 | Changes | Details |
 | --- | --- |
-| **SQL Server 2025 update policy GA** | Align your SQL managed instance database format with the SQL Server 2025 database engine. This update policy is now generally available. For more information, review [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy). |
+| **Change event streaming preview** | Capture and publish incremental DML changes of data (such as updates, inserts, and deletes) in near real-time. Change event streaming sends details of data changes such as the schema, previous values, and new values to Azure Event Hubs in a simple CloudEvent, serialized as either native JSON or Avro Binary. This feature is now in preview for Azure SQL Managed Instance configured with the SQL Server 2025 and Always-up-to-date update policy. To learn more, review [Change event streaming](/sql/relational-databases/track-changes/change-event-streaming/overview).
+| **Deploy free instance with command line tools** | You can now create your free SQL managed instance by using [Azure PowerShell](free-offer.md?tabs=powershell#create-a-free-sql-managed-instance), the [Azure CLI](free-offer.md?tabs=azure-cli#create-a-free-sql-managed-instance), and the [REST API](free-offer.md?tabs=rest-api#create-a-free-sql-managed-instance). |
+| **Easily upgrade your free instance** | You can now easily upgrade your free SQL managed instance to a paid offer in the Azure portal. To upgrade, navigate to the **Overview** page for your instance and select **Upgrade** from the navigation bar to open the **Compute + storage** page, where you can choose the paid offer under **Offer type**. For more information, see [Free SQL Managed Instance](free-offer.md#upgrade-to-paid-instance). |
+|**Migrate multiple DBs through Azure Arc** | You can now migrate multiple databases simultaneously from a SQL Server instance enabled with Azure Arc to Azure SQL Managed Instance by using the Managed Instance link. For more information, see [Migrate SQL Server database to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migration-sql-mi-prepare-link). |
+| **SQL Server 2025 update policy GA** | Align your SQL managed instance database format with the SQL Server 2025 Database Engine. This update policy is now generally available. For more information, review [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy). |
 
 ### December 2025
 

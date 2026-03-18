@@ -1,10 +1,10 @@
 ---
 title: Schema Designer in Visual Studio Code with MSSQL
-description: Learn how to use the schema designer in Visual Studio Code with MSSQL to visualize existing schemas, and design and manage databases directly, without needing to write Transact-SQL statements.
+description: Learn how to use the Schema Designer in the MSSQL extension for Visual Studio Code to visualize, design, and manage database schemas.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: yoleichen, roblescarlos
-ms.date: 02/21/2026
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -15,7 +15,7 @@ ai-usage: ai-assisted
 
 # Schema Designer
 
-The schema designer in the MSSQL extension for Visual Studio Code simplifies complex schema designs, providing a more intuitive understanding of your database structures. It integrates database diagram functionality to visualize existing schemas. You can design and manage databases directly in a graphical environment without needing to write Transact-SQL (T-SQL) statements.
+The Schema Designer in the MSSQL extension for Visual Studio Code provides a graphical environment for visualizing, designing, and managing database schemas without writing Transact-SQL (T-SQL) statements.
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-overview.png" alt-text="Screenshot of the schema designer overview showing a database schema diagram." lightbox="media/mssql-schema-designer/schema-designer-overview.png":::
 
@@ -26,7 +26,7 @@ Schema designer offers these features:
 - Visualize database structure with interactive diagrams.
 - Create or edit tables, foreign keys, primary keys, and constraints.
 - Search, drag and drop, filter, zoom, use a mini-map, and autoarrange diagrams for efficient navigation and customization.
-- Export your schema diagrams to share with your team or include in documentation.
+- Export schema diagrams for documentation or sharing.
 - Automatically generate and view read-only T-SQL scripts representing your schema changes.
 - Review and apply changes to the database with the Publish Changes feature.
 
@@ -48,7 +48,7 @@ Once inside the schema designer, you find a canvas with various navigation capab
 
 - **Search and filter**: Use the search box (**Ctrl**+**F** or **Cmd**+**F**) to locate specific tables or columns. Apply filters to focus on certain parts of the schema or hide irrelevant elements.
 
-- **Auto-arrange**: The diagram is automatically arranged in a clear and readable layout by default. If you manually reposition tables and want to reset the view, select the **Autoarrange** button to reorganize the tables into the default optimized layout.
+- **Auto-arrange**: The diagram is automatically arranged in a readable layout by default. If you manually reposition tables and want to reset the view, select the **Autoarrange** button to reorganize the tables.
 
 ## Understand table structure and relationships
 
@@ -106,7 +106,13 @@ When you finish editing tables or relationships, select **Publish Changes** in t
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-publish.png" alt-text="Screenshot of the publish changes feature in the schema designer summarizing schema modifications." lightbox="media/mssql-schema-designer/schema-designer-publish.png":::
 
-Review the report carefully. Check the confirmation box to acknowledge and accept any potential risks associated with applying the changes. This process is managed by DacFX (Data-tier Application Framework), which ensures your schema updates are deployed smoothly, reliably, and with minimal disruption to your database.
+Review the report carefully. Check the confirmation box to acknowledge and accept any potential risks associated with applying the changes. This process uses DacFX (Data-tier Application Framework) to deploy your schema updates.
+
+## GitHub Copilot integration
+
+The Schema Designer supports GitHub Copilot for AI-assisted schema design. You can use natural language to create schemas, modify existing schemas, review changes through a diff view, and import external artifacts. Changes are reflected in the visual diagram and T-SQL script.
+
+For detailed instructions on using GitHub Copilot within the Schema Designer, see [GitHub Copilot integration in Schema Designer (preview)](mssql-schema-designer-copilot.md).
 
 ## Feedback and support
 
@@ -115,8 +121,9 @@ Review the report carefully. Check the confirmation box to acknowledge and accep
 ## Related content
 
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [GitHub Copilot integration in Schema Designer (preview)](mssql-schema-designer-copilot.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Schema Compare](mssql-schema-compare.md)
-- [Data-tier Application (Preview)](mssql-data-tier-application.md)
+- [Data-tier Application (DACPAC and BACPAC) import and export](mssql-data-tier-application.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
 - [MSSQL extension for Visual Studio Code repository on GitHub](https://github.com/Microsoft/vscode-mssql)

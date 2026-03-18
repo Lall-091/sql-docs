@@ -4,7 +4,7 @@ description: Use the split-merge too to move data between sharded databases.
 author: bgavrilovicMS
 ms.author: bgavrilovic
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 08/13/2024
+ms.date: 03/10/2026
 ms.service: azure-sql-database
 ms.subservice: scale-out
 ms.topic: how-to
@@ -23,9 +23,15 @@ The split-merge tool lets you move data between sharded databases. See [Moving d
 
 ## Prerequisites
 
-1. Create a SQL database to be used as the split-merge status database. Go to the [Azure portal](https://portal.azure.com). Create a new **SQL database**. Name the database and create a new administrator and password. Be sure to record the name and password for later use.
-
-1. Ensure that your [logical server in Azure](logical-servers.md) allows Azure Services to connect to it. In the Azure portal, in the **Firewall Settings** for your logical server, ensure the **Allow access to Azure Services** setting is set to **On**. Select the **Save** icon.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
+1. Name the database and create a new administrator and password. Be sure to record the name and password for later use.
+1. Complete the **Create SQL database** options and create the database with the desired configurations.
+1. Ensure that your [Azure SQL logical server](logical-servers.md) allows Azure Services to connect to it. Navigate to your new Azure SQL logical server. 
+1. In the resource menu, under **Security**, select **Networking**. (If you do not see this option, make sure you are looking at the "SQL Server" object, not the "SQL database".)
+1. Under **Firewall rules** and **Exceptions**, ensure the **Allow access to Azure Services** setting is selected.
+1. Select **Save**.
 
 1. Create an Azure Storage account for diagnostics output.
 

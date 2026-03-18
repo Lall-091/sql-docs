@@ -1,10 +1,10 @@
 ---
 title: Overview of the MSSQL Extension for Visual Studio Code
-description: Enhancing your developer experience with the MSSQL extension for Visual Studio Code
+description: Learn about the MSSQL extension for Visual Studio Code, which provides tools for connecting to databases, managing schemas, and executing queries.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: roblescarlos
-ms.date: 02/21/2026
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -18,9 +18,9 @@ ai-usage: ai-assisted
 
 # What is the MSSQL extension for Visual Studio Code?
 
-The [MSSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) supports developers building applications that use Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure Virtual Machines), SQL database in Fabric, and SQL Server. It provides tools for connecting to databases, managing and designing schemas, exploring database objects, executing Transact-SQL queries, and viewing query execution plans within Visual Studio Code.
+The [MSSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) supports developers building applications that use Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure Virtual Machines), SQL database in Fabric, and SQL Server. It provides tools for connecting to databases, managing and designing schemas, exploring database objects, executing Transact-SQL (T-SQL) queries, and viewing query execution plans within Visual Studio Code.
 
-The extension includes advanced IntelliSense, Transact-SQL script execution, and customizable options to support SQL development for local and cloud-based databases.
+The extension includes IntelliSense, T-SQL script execution, and customizable options for local and cloud-based databases.
 
 ## Install the MSSQL Extension in Visual Studio Code
 
@@ -37,17 +37,34 @@ To get started with SQL development in Visual Studio Code, install the **MSSQL e
 > [!TIP]  
 > You know the extension is installed correctly when the **MSSQL** icon appears in the Activity Bar and the **Connections** view becomes available.
 
-## Modern UI
+## Features
 
-The MSSQL extension for Visual Studio Code elevates the SQL development experience across SQL Server, Azure SQL, and SQL database on Fabric.
+The MSSQL extension for Visual Studio Code supports SQL Server, Azure SQL, and SQL database in Fabric.
 
-This experience delivers the following integrated features, which are enabled by default:
+The following table provides an overview of the features available in the MSSQL extension, their release status, and links to detailed documentation.
 
-- **Connection Dialog**
-- **Object Explorer (filtering)**
-- **Table Designer**
-- **Query Results Pane**
-- **Query Plan Visualizer**
+| Feature | Status | Description |
+| --- | --- | --- |
+| [Connection Dialog](#connection-dialog) | GA | Connect using parameters, connection strings, or Azure browse |
+| [Object Explorer](#object-explorer-filtering) | GA | Browse and filter database objects with type-aware search |
+| [Query Results pane](#query-results-pane) | GA | View, sort, copy, and export query results |
+| [Query Plan Visualizer](#query-plan-visualizer) | GA | Analyze execution plans with interactive node navigation |
+| [Table Designer](#table-designer) | GA | Create and manage tables with a visual interface |
+| [Schema Designer](mssql-schema-designer.md) | GA | Visual schema modeling with drag-and-drop and auto-layout |
+| [Schema Compare](mssql-schema-compare.md) | GA | Compare and synchronize schemas between databases or DACPACs |
+| [GitHub Copilot integration](../github-copilot/overview.md) | GA | AI-assisted SQL development with natural language chat and agent mode |
+| [Local SQL Server containers](mssql-local-container.md) | GA | Create and manage SQL Server containers locally |
+| [View & Edit Data](#view--edit-data) | GA | Browse and modify table data inline without writing DML |
+| [Data-tier Application (DACPAC and BACPAC)](mssql-data-tier-application.md) | GA | Deploy, extract, import, and export DACPAC and BACPAC files |
+| [Fabric integration](mssql-fabric-integration.md) | GA | Browse Fabric workspaces and provision SQL databases |
+| [Database management](mssql-database-operations.md) | Preview | Create, rename, and drop databases from Object Explorer |
+| [Backup and restore](mssql-database-operations.md#backup-database) | Preview | Back up databases to disk or URL and restore from backups |
+| [Database object search](mssql-database-operations.md#database-object-search) | Preview | Find tables, views, functions, and stored procedures with type-aware search |
+| [Import flat file](mssql-database-operations.md#import-flat-file) | Preview | Import `.csv` and `.txt` files into new SQL Server tables |
+| [Query Profiler](mssql-query-profiler.md) | Preview | Real-time database activity monitoring with Extended Events |
+| [Schema Designer with GitHub Copilot](mssql-schema-designer-copilot.md) | Preview | Natural language schema design within the visual Schema Designer |
+| [Data API builder](mssql-data-api-builder.md) | Preview | Create REST, GraphQL, and MCP endpoints for SQL databases |
+| [SQL notebooks](mssql-sql-notebooks.md) | Preview | Jupyter-based SQL notebooks with rich results and multi-kernel support |
 
 ### Connection dialog
 
@@ -76,7 +93,7 @@ The MSSQL extension provides built-in tools for common [database operations](mss
 
 ### Object Explorer (filtering)
 
-The Object Explorer lets you explore your database objects, such as databases, tables, views, and programmability items. The enhanced filtering functionality makes it easier to find specific objects within large and complex database hierarchies:
+The Object Explorer lets you explore your database objects, such as databases, tables, views, and programmability items. Filtering helps you find specific objects within large database hierarchies:
 
 - **Apply Filters**: Filter database objects by properties like name, owner, or creation date. You can apply filters at multiple levels, including databases, tables, views, and programmability.
 
@@ -84,13 +101,11 @@ The Object Explorer lets you explore your database objects, such as databases, t
 
 - **Clear Filters**: Remove applied filters to view all objects within the hierarchy.
 
-These filters give you flexibility and control, making it easier to manage large databases and find relevant objects.
-
 :::image type="content" source="media/mssql-extension-visual-studio-code/object-explorer-filtering.png" alt-text="Screenshot of the object explorer filter feature." lightbox="media/mssql-extension-visual-studio-code/object-explorer-filtering.png":::
 
 ### Table Designer
 
-The Table Designer provides a UI for creating and managing tables for your databases. It offers advanced capabilities to customize every aspect of the table's structure:
+The Table Designer provides a visual interface for creating and managing tables:
 
 - **Columns**: Add new columns, set data types, define nullability, and specify default values. You can also designate a column as a primary key or identity column directly within the interface.
 
@@ -102,31 +117,31 @@ The Table Designer provides a UI for creating and managing tables for your datab
 
 - **Check Constraints**: Set up rules to enforce specific conditions on the data being entered, such as value ranges or patterns.
 
-- **Advanced Options**: Configure more sophisticated properties and behaviors, such as system versioning and memory optimized tables.
+- **Advanced Options**: Configure more sophisticated properties and behaviors, such as system versioning and memory-optimized tables.
 
 Within the designer, the **Script As Create** panel provides an automatically generated T-SQL script that reflects your table design. You have the following options:
 
-- **Publish**: Apply your changes directly to the database by selecting **Publish**. This action is powered by DacFX (Data-tier Application Framework), which ensures the smooth and reliable deployment of your schema updates.
+- **Publish**: Apply your changes directly to the database by selecting **Publish**. This action uses DacFX (Data-tier Application Framework) to deploy your schema updates.
 
 - **Copy script**: Copy the generated T-SQL script from the preview panel for manual execution or open it directly in the editor for further adjustments and modifications as needed.
 
 :::image type="content" source="media/mssql-extension-visual-studio-code/table-designer.png" alt-text="Screenshot of the table designer feature." lightbox="media/mssql-extension-visual-studio-code/table-designer.png":::
 
-### View & Edit Data (Preview)
+### View & Edit Data
 
-View & Edit Data (Preview) provides an intuitive, interactive way to browse and modify table data directly within the editor without writing Transact-SQL data manipulation language (DML) statements. Developers can interact with their data in an intuitive interface, simplifying everything from quick edits to in-depth validation.
+Use **View & Edit Data** to browse and modify table data directly within the editor, without writing T-SQL data manipulation language (DML) statements.
 
-To use this feature, right-click a table in Object Explorer and select **View & Edit Data (Preview)**. The table data opens in a data grid within a new editor tab, displaying the contents in a familiar, spreadsheet-like layout with paging controls based on the configured rows per page.
+To use this feature, right-click a table in Object Explorer and select **View & Edit Data**. The table data opens in a data grid within a new editor tab, displaying the contents in a familiar, spreadsheet-like layout with paging controls based on the configured rows per page.
 
 Key capabilities include:
 
-- **Inline editing**: Update cell values directly within the grid. Edits are validated in real time and return an error message for incorrect inputs, such as invalid data types or violations of a constraint. The grid highlights the cell with the incorrect input in red.
+- **Inline editing**: Update cell values directly within the grid. Your edits are validated in real time and return an error message for incorrect inputs, such as invalid data types or violations of a constraint. The grid highlights the cell with the incorrect input in red.
 
 - **Add and delete rows**: Insert new rows or delete existing ones, so you can quickly adjust data during development and testing.
 
-- **Pagination**: Efficiently load and navigate large datasets using built-in paging controls for smooth scrolling and performance.
+- **Pagination**: Navigate large datasets using built-in paging controls.
 
-- **Save Changes**: All edits remain in a pending state until you select **Save Changes**, giving you complete control over when updates are committed to the database.
+- **Save Changes**: All edits remain in a pending state until you select **Save Changes**, so you have complete control over when updates are committed to the database.
 
 - **Show Script**: This pane displays a read-only DML script that reflects all actions performed in the data grid in real time. This allows you to review the underlying DML operations before saving changes
 
@@ -134,7 +149,7 @@ Key capabilities include:
 
 ### Query Results pane
 
-The MSSQL extension for Visual Studio Code provides an enhanced query results experience, helping you efficiently visualize and understand your data output. The query results display within the bottom panel of Visual Studio Code, which also hosts the integrated terminal, output, debug console, and other tools, creating a unified interface for easy access.
+Query results display within the bottom panel of Visual Studio Code, alongside the integrated terminal, output, debug console, and other tools.
 
 > [!TIP]  
 > You can open query results in a new tab for an expanded view, similar to the previous experience.
@@ -149,11 +164,9 @@ Key features of the Query Results pane include:
 
 - **Inline Sorting**: You can sort the data by selecting the column headers directly in the query results view. Sorting can be done in ascending or descending order to make it easier to analyze specific subsets of the data.
 
-- **Estimated Plan**: The Estimated Plan button is located in the query toolbar, next to the Run Query button. It appears as a flowchart icon and allows you to generate an estimated execution plan without executing the query itself. This feature provides valuable insight into query performance, helping identify potential bottlenecks and inefficiencies before running the actual query.
+- **Estimated Plan**: The **Estimated Plan** button appears as a flowchart icon, located in the query toolbar next to the **Run Query** button. It generates an estimated execution plan without executing the query, so you can review how the query optimizer processes the query.
 
-- **Enable Actual Plan**: A button labeled **Enable Actual Plan**, located right after **Estimated Plan** button in the upper right corner of the results pane, lets you view the actual query plan for executed queries. This addition provides deeper insight into query performance and helps identify bottlenecks and inefficiencies.
-
-This query results experience supports common workflows for viewing and working with result sets.
+- **Enable Actual Plan**: The **Enable Actual Plan** button, located after the **Estimated Plan** button, shows the actual query plan for executed queries. Use this option to identify bottlenecks and inefficiencies.
 
 :::image type="content" source="media/mssql-extension-visual-studio-code/query-results-vscode.png" alt-text="Screenshot of the query results feature." lightbox="media/mssql-extension-visual-studio-code/query-results-vscode.png":::
 
@@ -162,12 +175,12 @@ This query results experience supports common workflows for viewing and working 
 
 ### Query Plan Visualizer
 
-Use the Query Plan Visualizer in the MSSQL extension for Visual Studio Code to analyze SQL query performance by viewing detailed execution plans. This tool provides insights into how SQL queries run, so you can identify bottlenecks and optimize your queries.
+The Query Plan Visualizer displays execution plans for SQL queries. It shows how the query optimizer processes each operation, so you can identify bottlenecks and optimize your queries.
 
 Key features and capabilities include:
 
 - **Node Navigation**: Each step in the execution plan appears as a node. You can interact with the plan in different ways. Select nodes to view tooltips or detailed information about specific operations. Collapse or expand node trees to simplify the view and focus on key areas of the query plan.
-- **Zoom Controls**: The visualizer offers flexible zoom options to help you analyze the plan in detail. You can zoom in or out to adjust the level of detail. Use the "zoom to fit" feature to resize the view and fit the entire plan on your screen. Set custom zoom levels to examine specific elements precisely.
+- **Zoom Controls**: The visualizer offers flexible zoom options to help you analyze the plan in detail. You can zoom in or out to adjust the level of detail. Use the *zoom to fit* feature to resize the view and fit the entire plan on your screen. Set custom zoom levels to examine specific elements precisely.
 - **Metrics and Highlighting**: The metrics toolbar helps you analyze key performance indicators and highlight expensive operations. Select metrics such as **Actual Elapsed Time**, **Cost**, **Subtree Cost**, or **Number of Rows Read** from the dropdown list to identify bottlenecks. Use these metrics to search for specific nodes within the query plan for deeper analysis.
 
 The right-hand sidebar provides quick access to more actions:
@@ -184,19 +197,13 @@ The right-hand sidebar provides quick access to more actions:
 
 Currently, this extension supports the following operating systems:
 
-- Windows (x64, x86, Arm64)
-- macOS (x64, Arm64)
-- Linux Arm64
-- Ubuntu 18.04, 20.04, 22.04
-- Debian 10, 11, 12
-- CentOS 7, 8 / Oracle Linux 7, 8
-- Red Hat Enterprise Linux (RHEL) 8, 9
-- Fedora 35, 36
-- OpenSUSE Leap 15
+- Windows 10 and 11 (x64, Arm64)
+- macOS (Intel and Apple Silicon)
+- Linux (x64, Arm64) - including Ubuntu, Debian, RHEL, Fedora, and other major distributions
 
 ## Offline installation
 
-The extension can download and install a required `SqlToolsService` package during activation. You can still use the extension for machines with no Internet access by choosing the **Install from VSIX...** option in the Extension view and installing a bundled release from the [Releases page](https://github.com/microsoft/vscode-mssql/releases). Each operating system has a `.vsix` file with the required service included. Pick the file for your OS, download, and install it to get started. Choose a full release and ignore any alpha or beta releases, as these are daily builds used in testing.
+The extension can download and install a required `SqlToolsService` package during activation. You can still use the extension on machines with no Internet access by choosing the **Install from VSIX...** option in the Extension view and installing a bundled release from the [Releases page](https://github.com/microsoft/vscode-mssql/releases). Each operating system has a `.vsix` file with the required service included. Pick the file for your OS, download, and install it to get started. Choose a full release and ignore any alpha or beta releases, as these versions are daily builds used in testing.
 
 ## Feedback and support
 
@@ -206,8 +213,11 @@ The extension can download and install a required `SqlToolsService` package duri
 
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
-- [Database operations (Preview)](mssql-database-operations.md)
+- [Database operations (preview)](mssql-database-operations.md)
 - [Schema Designer](mssql-schema-designer.md)
+- [GitHub Copilot integration in Schema Designer (preview)](mssql-schema-designer-copilot.md)
+- [Data API builder (preview)](mssql-data-api-builder.md)
+- [SQL Notebooks (preview)](mssql-sql-notebooks.md)
 - [Schema Compare](mssql-schema-compare.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
 - [MSSQL extension for Visual Studio Code repository on GitHub](https://github.com/Microsoft/vscode-mssql)

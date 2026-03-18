@@ -1,11 +1,11 @@
 ---
-title: Remove TDE protector (PowerShell & the Azure CLI)
+title: Remove TDE protector (PowerShell & Azure CLI)
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: Learn how to respond to a potentially compromised TDE protector for Azure SQL Database or Azure Synapse Analytics using TDE with Bring Your Own Key (BYOK) support.
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 06/25/2025
+ms.date: 03/05/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -43,9 +43,9 @@ This how-to guide goes over the approach to render databases **inaccessible** af
 
  For Az module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). Use [the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
 
-# [The Azure CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
-For installation, see [Install the Azure CLI](/cli/azure/install-azure-cli).
+For installation, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
 * * *
 
@@ -68,13 +68,13 @@ The following query returns the VLFs and the TDE Protector respective thumbprint
 SELECT * FROM sys.dm_db_log_info (database_id)
 ```
 
-Alternatively, you can use PowerShell or the Azure CLI:
+Alternatively, you can use PowerShell or Azure CLI:
 
 # [PowerShell](#tab/azure-powershell)
 
 The PowerShell command `Get-AzSqlServerKeyVaultKey` provides the thumbprint of the TDE Protector used in the query, so you can see which keys to keep and which keys to delete in Azure Key Vault. Only keys no longer used by the database can be safely deleted from Azure Key Vault.
 
-# [The Azure CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
 The PowerShell command `az sql server key show` provides the thumbprint of the TDE Protector used in the query, so you can see which keys to keep and which keys to delete in Azure Key Vault. Only keys no longer used by the database can be safely deleted from Azure Key Vault.
 
@@ -125,9 +125,9 @@ The PowerShell command `az sql server key show` provides the thumbprint of the
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
    ```
 
-# [The Azure CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
-For command reference, see the [Azure CLI keyvault](/cli/azure/keyvault/key).
+For command reference, see [Azure CLI keyvault](/cli/azure/keyvault/key).
 
 1. Create a [new key in Azure Key Vault](/cli/azure/keyvault/key#az-keyvault-key-create). Make sure this new key is created in a separate key vault from the potentially compromised TDE protector, since access control is provisioned on a vault level.
 

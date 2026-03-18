@@ -16,7 +16,7 @@ ms.custom:
 
 # SQL Database Projects extension
 
-The SQL Database Projects extension is a Visual Studio Code extension for developing SQL databases in a project-based development environment. Compatible databases include SQL Server, Azure SQL Database, Azure SQL Managed Instance, Warehouse in Fabric, and SQL database in Fabric. A SQL project is a local representation of SQL objects that comprise the schema for a single database, such as tables, stored procedures, or functions. When you build a SQL Database project, you create a `.dacpac` file. You can update new and existing databases to match the contents of the `.dacpac` by publishing the SQL Database project with the SQL Database Projects extension or by publishing the `.dacpac` with the [SqlPackage](../../sqlpackage/sqlpackage-publish.md) command line interface.
+The SQL Database Projects extension is a Visual Studio Code extension for developing SQL databases in a project-based development environment. Compatible databases that use the [Microsoft SQL Database Engine](../../../database-engine/sql-database-engine.md) include SQL Server, Azure SQL Database, Azure SQL Managed Instance, Fabric Data Warehouse, and SQL database in Fabric. A SQL project is a local representation of SQL objects that comprise the schema for a single database, such as tables, stored procedures, or functions. When you build a SQL Database project, you create a `.dacpac` file. You can update new and existing databases to match the contents of the `.dacpac` by publishing the SQL Database project with the SQL Database Projects extension or by publishing the `.dacpac` with the [SqlPackage](../../sqlpackage/sqlpackage-publish.md) command line interface.
 
 :::image type="content" source="media/sql-database-projects-extension/sql-project-summary.png" border="true" alt-text="Screenshot of Summary of SQL Database Projects containing predeployment and post-deployment scripts as well as database objects." lightbox="media/sql-database-projects-extension/sql-project-summary.png":::
 
@@ -114,4 +114,3 @@ In the following example `.code-workspace` file, the `folders` array lists all f
 - [What are SQL database projects?](../../sql-database-projects/sql-database-projects.md)
 - [Get started with the SQL Database Projects extension](getting-started-sql-database-projects-extension.md)
 - [Publish SQL database projects from Visual Studio Code](publish-database-project.md)
-- [Get help with the SQL Database Projects extension](https://github.com/microsoft/azuredatastudio/issues)

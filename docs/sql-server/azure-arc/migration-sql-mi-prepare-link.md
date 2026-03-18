@@ -5,7 +5,7 @@ description: Prepare your SQL Server instance enabled by Azure Arc for migration
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 12/12/2025
+ms.date: 03/18/2026
 ms.topic: how-to
 ---
 
@@ -20,14 +20,15 @@ With the link, you can migrate your SQL Server databases to Azure SQL Managed In
 :::image type="content" source="media/migrate-to-azure-sql-managed-instance/mi-link-migration-method.png" alt-text="Diagram showing Managed Instance link migration.":::
 
 > [!NOTE]  
-> You can provide feedback about your migration experience [directly to the product group](https://aka.ms/arc-migrations-feedback).
+> - You can provide feedback about your migration experience [directly to the product group](https://aka.ms/arc-migrations-feedback).
+> - Migrate up to 10 databases at a time starting with Azure Extension for SQL Server version `1.1.3348.364`.
 
 ## Prerequisites
 
 To migrate your SQL Server databases to Azure SQL Managed Instance through the Azure portal, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
+- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349`, which supports migrating one database at a time. Azure Extension for SQL Server version `1.1.3348.364` or later is required to migrate up to 10 databases at the same time. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
 
 ## Supported SQL Server versions
 
@@ -386,6 +387,7 @@ Consider the following points:
 
 Consider the following limitations: 
 - The limitations of the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview#limitations) apply to migrations through the Azure portal.
+- Azure Extension for SQL Server version `1.1.3238.349` and earlier only supports migrating one database at a time through the link. To migrate multiple databases at the same time, upgrade to Azure Extension for SQL Server version `1.1.3348.364` or later. 
 - Cancelling a migration requires **sysadmin** permissions on the source SQL Server instance. If your SQL Server instance isn't using least privilege, manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account. 
 - Configuring a link through the Azure portal for the purpose of migration isn't compatible with links created manually, either through SQL Server Management Studio (SSMS), or Transact-SQL (T-SQL). Review the [known issue](migrate-to-azure-sql-managed-instance-troubleshoot.md#known-interoperability-issue-with-existing-links) to learn more. 
 - Monitoring the migration through the Azure portal is available only to SQL Server instances that meet monitoring [licensing requirements](sql-monitoring.md#prerequisites).

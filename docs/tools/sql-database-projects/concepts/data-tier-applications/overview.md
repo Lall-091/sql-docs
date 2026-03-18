@@ -1,10 +1,10 @@
 ---
-title: "Data-Tier Applications (DAC) Overview"
-description: "Data-tier applications, or dacpacs, represent a database model."
+title: Data-Tier Applications (DAC) Overview
+description: Data-tier applications, or dacpacs, represent a database model.
 author: dzsquared
 ms.author: drskwier
-ms.reviewer: wiassaf, randolphwest, maghan
-ms.date: 01/29/2026
+ms.reviewer: wiassaf, randolphwest, maghan, tsiddique
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -63,13 +63,14 @@ Tooling support for data-tier applications enables developers and database admin
 
 ### DACPAC and BACPAC packages
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Protect your `.bacpac` and `.dacpac` files by securing them appropriately. The data contained in these files is compressed but not encrypted. `.bacpac` files contain the data from a database by default, and a `.dacpac` can contain data when the option is specified during extract.
 
 The following tools support the `.dacpac` and `.bacpac` formats:
 
 - [SqlPackage CLI](../../../sqlpackage/sqlpackage.md)
 - [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms)
+- [Data-tier Application (DACPAC and BACPAC) import and export](../../../visual-studio-code-extensions/mssql/mssql-data-tier-application.md)
 
 In these tools, you can extract a database to a `.dacpac` or export it to a `.bacpac`. Conversely, you can import a `.bacpac` into a new database, or publish a `.dacpac` to a new or existing database.
 
@@ -79,6 +80,7 @@ The following tools support the `.dacpac` file format and provide editing capabi
 
 - [SQL Server Data Tools](../../../../ssdt/sql-server-data-tools.md)
 - [SQL Database Projects extension](../../../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
+- [Data-tier Application (DACPAC and BACPAC) import and export](../../../visual-studio-code-extensions/mssql/mssql-data-tier-application.md)
 
 Developers can use these tools to design a database in an unconnected, client-side development environment. For more information, see the [SQL projects tools](../../sql-projects-tools.md) article.
 

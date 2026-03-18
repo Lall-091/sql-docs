@@ -5,7 +5,7 @@ description: This article guides you through creating an Azure SQL Managed Insta
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: vanto, mathoma
-ms.date: 08/25/2025
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: how-to
@@ -32,14 +32,17 @@ This how-to guide outlines the steps to create an [Azure SQL Managed Instance](s
 - [The Azure CLI 2.26.0](/cli/azure/install-azure-cli) or higher is required to use the Azure CLI with user-assigned managed identities.
 - For a list of limitations and known issues with using user-assigned managed identity, see [User-assigned managed identity in Microsoft Entra for Azure SQL](../database/authentication-azure-ad-user-assigned-managed-identity.md#limitations-and-known-issues)
 
+## Create SQL Managed Instance with a user-assigned managed identity
+
+You can create your instance by using the Azure portal, Azure CLI, Azure PowerShell, REST API, or an ARM template. 
+
 # [Portal](#tab/azure-portal)
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Managed Instance**, select **Show options**.
-1. In the **Azure SQL Managed Instance options** window, select **Create SQL Managed Instance**.
+To create your SQL managed instance with a user-assigned managed identity in the Azure portal, follow these steps:
 
-   :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance/show-options-create-sql-managed-instance.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="media/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance/show-options-create-sql-managed-instance.png":::
+[!INCLUDE [create-sql-managed-instance](../includes/sql-managed-instance/create-sql-managed-instance.md)]
 
+On the **Create Azure SQL Managed Instance** page, follow these steps: 
 1. Fill out the mandatory information required on the **Basics** tab for **Project details** and **Managed Instance details**. This is a minimum set of information required to provision a SQL Managed Instance.
 
    :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance/managed-instance-create-basic.png" alt-text="Azure portal screenshot of creating the SQL Managed Instance basic tab":::
@@ -180,7 +183,7 @@ For more information, see [New-AzSqlInstance](/powershell/module/az.sql/new-azsq
 
 # [REST API](#tab/rest-api)
 
-The [SQL Managed Instances - Create Or Update](/rest/api/sql/managed-instances/create-or-update) REST API can be used to create a managed instance with a user-assigned managed identity.
+The [Managed Instances - Create Or Update](/rest/api/sql/managed-instances/create-or-update) REST API can be used to create a managed instance with a user-assigned managed identity.
 
 > [!NOTE]
 > The script requires a virtual network and subnet be created as a prerequisite.

@@ -83,6 +83,6 @@ To compare schemas, open the Schema Compare dialog box. Follow these steps:
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Schema Designer](mssql-schema-designer.md)
-- [Data-tier Application (Preview)](mssql-data-tier-application.md)
+- [Data-tier Application (preview)](mssql-data-tier-application.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
 - [MSSQL extension for Visual Studio Code repository on GitHub](https://github.com/Microsoft/vscode-mssql)

@@ -17,7 +17,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
-The following guides are available. They discuss general concepts and apply to all versions of SQL Server, unless stated otherwise in the respective guide.
+The following guides are available. They discuss general concepts and apply to all platforms that use the SQL Database Engine, unless stated otherwise in the respective guide.
 
 - [Concurrency, locking, and contention](#concurrency-locking-and-contention)
 - [Storage engine architecture and I/O](#storage-engine-architecture-and-io)

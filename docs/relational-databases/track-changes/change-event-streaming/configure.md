@@ -4,7 +4,7 @@ description: Describes how to configure change event streaming.
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray, randolphwest
-ms.date: 01/07/2026
+ms.date: 03/18/2026
 ms.service: sql
 ms.topic: how-to
 ms.custom:
@@ -16,7 +16,7 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 
 [!INCLUDE [sqlserver2025](../../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
-This article describes how to configure the [change event streaming (CES)](overview.md) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] and Azure SQL Database.
+This article describes how to configure the [change event streaming (CES)](overview.md) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], Azure SQL Database, and Azure SQL Managed Instance.
 
 [!INCLUDE [change-event-streaming-preview](../../../includes/change-event-streaming-preview.md)]
 
@@ -40,9 +40,12 @@ To configure change event streaming, you need the following resources, permissio
 - Azure Event Hubs host name
 - A login in the [db_owner](../../security/authentication-access/database-level-roles.md#fixed-database-roles) role or that has [CONTROL DATABASE](../../security/permissions-database-engine.md#permissions-database-engine) permission for the database where you intend to enable CES.
 - For [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], enable the [preview feature database scoped configuration](../../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features). Azure SQL Database doesn't require this configuration.
-- For Azure SQL Database configured to use [outbound firewall rules](/azure/azure-sql/database/outbound-firewall-rule-overview) or a [Network Security Perimeter](/azure/azure-sql/database/network-security-perimeter), allow access to the destination Azure Event Hubs:
+- For Azure SQL Database configured to use [outbound firewall rules](/azure/azure-sql/database/outbound-firewall-rule-overview), and for Azure SQL Managed Instance [virtual network configuration](/azure/azure-sql/managed-instance/vnet-existing-add-subnet): [Firewall ports to open](/azure/event-hubs/event-hubs-faq#what-ports-do-i-need-to-open-on-the-firewall)
+- For Azure SQL Database configured to use a [Network Security Perimeter](/azure/azure-sql/database/network-security-perimeter), allow access to the destination Azure Event Hubs:
   - [Firewall ports to open](/azure/event-hubs/event-hubs-faq#what-ports-do-i-need-to-open-on-the-firewall)
   - [Network Security Perimeter for Azure Event Hubs](/azure/event-hubs/network-security-perimeter).
+
+When using change event streaming with Azure SQL Managed Instance, the instance must be configured with the SQL Server 2025 or Always-up-to-date [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 ## Configure Azure Event Hubs
 
@@ -538,6 +541,7 @@ The following limitations apply when using CES with Azure SQL Database:
 - If a message exceeds the Azure Event Hubs message size limit, the failure is currently only observable through Extended Events. CES xEvents are currently only available in SQL Server 2025, and not Azure SQL Database.
 - Renaming tables and columns configured for CES isn't supported. Renaming a table or column fails. Database renames **are allowed**.
 - Microsoft Entra authentication for CES isn't currently available in SQL Server 2025.
+- CES isn't available to Azure SQL Managed Instance configured with the SQL Server 2022 [update policy](/azure/azure-sql/managed-instance/update-policy). It's only available to instances configured with the SQL Server 2025 or Always-up-to-date update policy.
 
 ### Database-level limitations
 

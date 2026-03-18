@@ -40,10 +40,9 @@ This quickstart creates a single database in the [Hyperscale service tier](servi
 
 To create a single database in the Azure portal:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **Azure SQL Database Hyperscale**, select **Show options**.
-1. In the **Azure SQL Database Hyperscale options** window, select **Create SQL Database Hyperscale**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **Azure SQL Database Hyperscale**, select **Create**.
 
-   :::image type="content" source="media/hyperscale-database-create-quickstart/show-options-create-sql-database-hyperscale.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database Hyperscale button." lightbox="media/hyperscale-database-create-quickstart/show-options-create-sql-database-hyperscale.png":::
+   :::image type="content" source="media/hyperscale-database-create-quickstart/show-options-create-sql-database-hyperscale.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub and under Create a database, the Create button to create a new Hyperscale database." lightbox="media/hyperscale-database-create-quickstart/show-options-create-sql-database-hyperscale.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 1. For **Resource group**, select **Create new**, enter *myResourceGroup*, and select **OK**.

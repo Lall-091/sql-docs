@@ -82,6 +82,9 @@ conceptualContent:
         - text: Write Transact-SQL
           url: t-sql/tutorial-writing-transact-sql-statements.md
           itemType: quickstart
+        - text: The Microsoft SQL Database Engine
+          url: database-engine/sql-database-engine.md
+          itemType: overview
         - text: SQL Docs navigation tips
           url: sql-server/sql-docs-navigation-guide.md
           itemType: get-started

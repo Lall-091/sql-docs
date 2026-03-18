@@ -5,7 +5,7 @@ description: Learn about Azure SQL Managed Instance communication and connectivi
 author: zoran-rilak-msft
 ms.author: zoranrilak
 ms.reviewer: mathoma, bonova
-ms.date: 10/22/2025
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -65,7 +65,7 @@ The VNet-local endpoint supports [Proxy and redirect connection types](connectio
 When connecting to the VNet-local endpoint, always use its domain name and allow inbound traffic on the required ports across the entire subnet range, as the underlying IP address can occasionally change.
 
 To find the *VNet-local endpoint domain name* for an instance: 
-* [Azure portal](https://portal.azure.com/#view/HubsExtension/ServiceMenuBlade/~/SingleInstance/extension/SqlAzureExtension/menuId/AzureSqlHub/itemId/SingleInstance): On the **Overview** pane, in the **Essentials** section, the **Host** value shows the *VNet-local endpoint domain name*. 
+* [Azure portal](https://portal.azure.com/#view/HubsExtension/ServiceMenuBlade/~/SingleInstance/extension/SqlAzureExtension/menuId/AzureSqlHub/itemId/SingleInstance): On the **Overview** pane after you select your SQL managed instance, in the **Essentials** section, the **Host** value shows the *VNet-local endpoint domain name*. 
 * [PowerShell](/powershell/module/az.sql/get-azsqlinstance): `Get-AzSqlInstance -ResourceGroupName <resource-group> -Name <mi-name>` shows the *VNet-local endpoint domain name* as the `fullyQualifiedDomainName` property.
 * [Azure CLI](/cli/azure/sql/mi#az-sql-mi-show): `az sql mi show -g <resource-group> -n <mi-name>` shows the *VNet-local endpoint domain name* as the `fullyQualifiedDomainName` property.
 

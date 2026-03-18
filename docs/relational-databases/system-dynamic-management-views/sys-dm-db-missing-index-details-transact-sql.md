@@ -27,7 +27,6 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
   Returns detailed information about missing indexes. 
   
  In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], dynamic management views cannot expose information that would impact database containment or expose information about other databases the user has access to. To avoid exposing this information, every row that contains data that doesn't belong to the connected tenant is filtered out.  
-
   
 |Column name|Data type|Description|  
 |-----------------|---------------|-----------------|  
