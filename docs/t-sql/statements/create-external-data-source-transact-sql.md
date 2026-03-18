@@ -700,7 +700,7 @@ The `key_value_pair` is the keyword and the value for a specific connection opti
 
 Possible key value pairs are specific to the provider for the external data source vendor. For more information for each provider, see [CREATE EXTERNAL DATA SOURCE (Transact-SQL) CONNECTION_OPTIONS](create-external-data-source-connection-options.md).
 
-[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Cumulative Update 19 and later versions introduces additional keywords to support Oracle TNS files:
+[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Cumulative Update 19 and later versions introduce additional keywords to support Oracle TNS files:
 
 - The keyword `TNSNamesFile` specifies the filepath to the `tnsnames.ora` file located on the Oracle server.
 - The keyword `ServerName` specifies the alias used inside the `tnsnames.ora` that will be used to replace the host name and the port.
@@ -2278,7 +2278,7 @@ WITH IDENTITY = '<username>',
      SECRET = '<password>';
 ```
 
-The target server name is `WINSQL2022`, port `58137`, and it's a default instance. By specifying `Encrypt=Strict`, the connection uses TDS 8.0, and the server certificate is always verified. in this example, the `HostnameinCertificate` used is `WINSQL2022`:
+The target server name is `WINSQL2022`, port `58137`, and it's a default instance. By specifying `Encrypt=Strict`, the connection uses TDS 8.0, and the server certificate is always verified. In this example, the `HostnameinCertificate` used is `WINSQL2022`:
 
 ```sql
 CREATE EXTERNAL DATA SOURCE SQLServerInstance2
@@ -3578,7 +3578,7 @@ This example involves connecting an external data source named `MyLakeHouse` to 
 
 To create a Fabric Lakehouse data source, you need to provide workspace ID, tenant, and lakehouse ID. To find the ABFSS file location of a lakehouse, go to the Fabric portal. Navigate to your Lakehouse, navigate to the desired folder location, select `...`, **Properties**. Copy the **ABFS path**, which looks something like this: `abfss://<WorkSpaceID>@<Tenant>.dfs.fabric.microsoft.com/<LakehouseID>/Files/Contoso`.
 
-Because Fabric SQL database only supports Entra ID Passthrough authentication, no database scoped credential needs to be provided, the connection will always use the user's login credentials to access the location.  
+Because Fabric SQL database only supports Microsoft Entra ID Passthrough authentication, no database scoped credential needs to be provided, the connection will always use the user's login credentials to access the location.  
 
 ```sql
 CREATE EXTERNAL DATA SOURCE MyLakeHouse 

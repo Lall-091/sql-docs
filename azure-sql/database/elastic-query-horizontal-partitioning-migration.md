@@ -4,19 +4,21 @@ description: Learn about migration options for elastic query with EXTERNAL DATA 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: bgavrilovic
-ms.date: 03/17/2026
+ms.date: 03/18/2026
 ms.service: azure-sql-database
 ms.subservice: scale-out
 ms.topic: conceptual
 ---
 
-# Migration guide from elastic query shard map manager mode
+# Migration from elastic query shard map manager mode
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Elastic query in shard map manager mode (horizontal partitioning), using `EXTERNAL DATA SOURCE` type `SHARD_MAP_MANAGER`, is reaching end of support on March 31, 2027. After this date, existing workloads will continue to function but will no longer receive support, and creation of new external data sources of type `SHARD_MAP_MANAGER` will no longer be possible. This article contains options to migration from elastic query shared map manager mode.
 
-For customers using elastic query with `EXTERNAL DATA SOURCE` type `SHARD_MAP_MANAGER`, the best alternative depends on the use case for using elastic query and on the overall scenario and architecture. This article describes possible alternatives and key considerations for each.
+For customers using elastic query with `EXTERNAL DATA SOURCE` type `SHARD_MAP_MANAGER`, the best alternative depends on the use case for using elastic query and on the overall scenario and architecture. 
+
+This article describes possible alternatives to elastic query shard map manager mode, and key considerations for each.
 
 ## Microsoft Fabric
 

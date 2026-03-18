@@ -36,13 +36,13 @@ These terms are used in [Adding a shard using Elastic Database tools](elastic-sc
 
 **Multi-shard query**: The ability to issue a query against multiple shards; results sets are returned using `UNION ALL` semantics (also known as "fan-out query"). Compare to **data dependent routing**.
 
-**Multi-tenant** and **Single-tenant**: This shows a single-tenant database and a multi-tenant database:
+**multitenant** and **Single-tenant**: This shows a single-tenant database and a multitenant database:
 
-:::image type="content" source="media/elastic-scale-glossary/multi-single-simple.png" alt-text="Diagram that shows a single-tenant database and a multi-tenant database.":::
+:::image type="content" source="media/elastic-scale-glossary/multi-single-simple.png" alt-text="Diagram that shows a single-tenant database and a multitenant database.":::
 
-Here is a representation of **sharded** single and multi-tenant databases. 
+Here is a representation of **sharded** single and multitenant databases. 
 
-:::image type="content" source="media/elastic-scale-glossary/shards-single-multi.png" alt-text="Diagram of Single and multi-tenant databases.":::
+:::image type="content" source="media/elastic-scale-glossary/shards-single-multi.png" alt-text="Diagram of Single and multitenant databases.":::
 
 **Range shard map**: A shard map in which the shard distribution strategy is based on multiple ranges of contiguous values. 
 
