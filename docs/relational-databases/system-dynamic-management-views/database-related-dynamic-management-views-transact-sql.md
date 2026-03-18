@@ -43,6 +43,8 @@ This section describes the following dynamic management objects in [!INCLUDE [ss
         [sys.dm_db_persisted_sku_features](sys-dm-db-persisted-sku-features-transact-sql.md)
 
         [sys.dm_db_task_space_usage](sys-dm-db-task-space-usage-transact-sql.md)
+
+        [sys.dm_db_vector_indexes](sys-dm-db-vector-indexes-transact-sql.md)
     :::column-end:::
 :::row-end:::
 

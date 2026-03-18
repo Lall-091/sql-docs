@@ -5,7 +5,7 @@ description: Learn about how Azure SQL Database, SQL Managed Instance, and Azure
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma
-ms.date: 01/23/2026
+ms.date: 03/10/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: concept-article
@@ -70,11 +70,12 @@ When you first deploy an Azure SQL resource, you can specify a login name and a 
 - This login is granted full administrative permissions on all databases as a [server-level principal](/sql/relational-databases/security/authentication-access/principals-database-engine). The login has all available permissions and can't be limited. In a SQL Managed Instance, this login is added to the [sysadmin fixed server role](/sql/relational-databases/security/authentication-access/server-level-roles) (this role doesn't exist in Azure SQL Database).
 - When this account signs into a database, they're matched to the special user account `dbo` ([user account](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users)), which exists in each user database. The [dbo](/sql/relational-databases/security/authentication-access/principals-database-engine) user has all database permissions in the database and is member of the `db_owner` fixed database role. Additional fixed database roles are discussed later in this article.
 
-To identify the **Server admin** account, open the Azure portal, and navigate to the **Properties** tab of your logical server or managed instance:
+To identify the **Server admin** account:
 
-:::image type="content" source="media/logins-create-manage/sql-admins.png" alt-text="Screenshot shows the SQL Server Properties page where you can obtain the Server admin login and Microsoft Entra admin values." lightbox="media/logins-create-manage/sql-admins.png":::
-
-:::image type="content" source="media/logins-create-manage/sql-admins-2.png" alt-text="Screenshot shows the SQL managed instance Properties page where you can obtain the login and Microsoft Entra admin values." lightbox="media/logins-create-manage/sql-admins-2.png":::
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
+1. In the resource menu, navigate to your Azure SQL Database logical server or Azure SQL Managed Instance.
+1. Under **Settings**, select the **Properties** page.
+1. View the values for **Server admin login** or **Microsoft Entra admin**.
 
 > [!IMPORTANT]  
 > The name of the **Server admin** account can't be changed after it has been created. To reset the password for the server admin, go to the [Azure portal](https://portal.azure.com), select **SQL Servers**, select the server from the list, and then select **Reset Password**. To reset the password for the SQL Managed Instance, go to the Azure portal, select the instance, and select **Reset password**. You can also use PowerShell or the Azure CLI.

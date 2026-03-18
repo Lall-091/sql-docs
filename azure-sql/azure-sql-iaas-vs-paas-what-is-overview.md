@@ -4,7 +4,7 @@ description: "Learn about the different options within the Azure SQL family of s
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 12/18/2025
+ms.date: 03/11/2026
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: overview
@@ -24,6 +24,20 @@ keywords:
 
 Azure SQL is a family of managed, secure, and intelligent products that use the SQL Server database engine in the Azure cloud. Azure SQL is built upon the familiar SQL Server engine, so you can migrate applications with ease and continue to use the tools, languages, and resources you're familiar with. Your skills and experience transfer to the cloud, so you can do even more with what you already have.
 
+If you're new to Azure SQL, check out the *What is Azure SQL* video from our in-depth [Azure SQL video series](/shows/Azure-SQL-for-Beginners/?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+
+<br />
+
+> [!VIDEO https://learn.microsoft.com/shows/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
+> [!TIP]
+> The [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub) can help you find **Which database is best for you?** 
+> - Use the **Compare databases side by side** screen to compare the different options in Azure SQL.
+> - For an explanation of the **Get recommendation** decision tree and its choices, see [Azure SQL decision tree](azure-sql-decision-tree.md).
+>
+> :::image type="content" source="media/azure-sql-iaas-vs-paas-what-is-overview/azure-sql-hub.png" alt-text="Screenshot from the Azure portal of the Azure S Q L portal hub." lightbox="media/azure-sql-iaas-vs-paas-what-is-overview/azure-sql-hub.png":::
+
+
 The three products in the Azure SQL family are:
 
 - **[Azure SQL Database](database/sql-database-paas-overview.md)**: Support modern cloud applications on an intelligent, managed database service that includes serverless compute, elastic pools, and elastic job automation.
@@ -33,21 +47,13 @@ The three products in the Azure SQL family are:
 
 Learn how each product fits into Microsoft's Azure SQL data platform to match the right option for your business requirements. Whether you prioritize cost savings or minimal administration, this article can help you decide which approach delivers against the business requirements you care about most.
 
-If you're new to Azure SQL, check out the *What is Azure SQL* video from our in-depth [Azure SQL video series](/shows/Azure-SQL-for-Beginners/?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
+<a id="overview"></a>
 
-<br />
+## Azure SQL
 
-> [!VIDEO https://learn.microsoft.com/shows/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+Today's data estates are increasingly complex, with data hosted on-premises, in the cloud, or at the edge of the network. Developers who are building intelligent and immersive applications can find themselves constrained. Limitations arising from incompatible platforms, inadequate data security, insufficient resources, and price-performance barriers create complexity that can inhibit app modernization and development.
 
-> [!TIP]
-> The Azure portal includes a decision tree in the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub) to help you **Find the right option** for your application architecture in Azure SQL. For an explanation of the decision tree and its choices, see [Azure SQL decision tree](azure-sql-decision-tree.md).
-
-
-## Overview
-
-In today's data-driven world, driving digital transformation increasingly depends on our ability to manage massive amounts of data and harness its potential. But today's data estates are increasingly complex, with data hosted on-premises, in the cloud, or at the edge of the network. Developers who are building intelligent and immersive applications can find themselves constrained by limitations that can ultimately impact their experience. Limitations arising from incompatible platforms, inadequate data security, insufficient resources, and price-performance barriers create complexity that can inhibit app modernization and development.
-
-One of the first things to understand in any discussion of Azure versus on-premises SQL Server databases is that you can use it all. Microsoft's data platform uses SQL Server technology and makes it available across physical on-premises machines, private cloud environments, third-party hosted private cloud environments, and the public cloud.
+Microsoft's data platform uses SQL Server technology and makes it available across physical on-premises machines, private cloud environments, third-party hosted private cloud environments, and the public cloud.
 
 ### Fully managed and always up to date
 
@@ -113,14 +119,18 @@ Azure SQL Database offers the following deployment options:
 
 Differences between Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VMs are listed in the following table, but *both SQL Database and SQL Managed Instance are optimized to reduce overall management costs to a minimum for provisioning and managing many databases.* Ongoing administration costs are reduced since you don't have to manage any virtual machines, operating system, or database software. You don't have to manage upgrades, high availability, or [backups](database/automated-backups-overview.md).
 
-The Azure portal includes a decision tree in the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub) to help you **Find the right option** for your application architecture in Azure SQL. For an explanation of the decision tree and its choices, see [Azure SQL decision tree](azure-sql-decision-tree.md).
+The Azure portal includes a decision tree in the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub) to help you find **Which database is best for you?** in Azure SQL. For an explanation of the decision tree and its choices, see [Azure SQL decision tree](azure-sql-decision-tree.md).
 
-In general, SQL Database and SQL Managed Instance can dramatically increase the number of databases managed by a single IT or development resource. [Elastic pools for SQL Database](database/elastic-pool-overview.md) also support SaaS multitenant application architectures with features including tenant isolation and the ability to scale to reduce costs by sharing resources across databases. [SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md) provides support for instance-scoped features enabling easy migration of existing applications, as well as sharing resources among databases. Whereas [SQL Server on Azure VMs](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) provide DBAs with an experience most similar to the on-premises environment they're familiar with.
+In general, SQL Database and SQL Managed Instance can dramatically increase the number of databases efficiently managed by a single IT or development resource. 
+
+- [Elastic pools for SQL Database](database/elastic-pool-overview.md) also support SaaS multitenant application architectures with features including tenant isolation and the ability to scale to reduce costs by sharing resources across databases. 
+- [SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md) provides support for instance-scoped features enabling easy migration of existing applications, as well as sharing resources among databases. [SQL Managed Instance pools](managed-instance/instance-pools-overview.md) can bring substantial cost saving benefits to customers, similar to elastic pools for SQL Database.
+- [SQL Server on Azure VMs](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) provide DBAs with an experience most similar to the on-premises environment they're familiar with.
 
 | Azure SQL Database | Azure SQL Managed Instance | SQL Server on Azure VMs |
 | :--- | :--- | :--- |
 | Supports most on-premises database-level capabilities. The most commonly used SQL Server features are available.<br />99.995% availability guaranteed.<br />Built-in backups, patching, recovery.<br />Latest stable Database Engine version.<br />Ability to assign necessary resources (CPU/storage) to individual databases.<br />Built-in advanced intelligence and security.<br />Online change of resources (CPU/storage). | Supports almost all on-premises instance-level and database-level capabilities. High compatibility with SQL Server.<br />99.99% availability guaranteed.<br />Built-in backups, patching, recovery.<br />Latest stable Database Engine version.<br />Easy migration from SQL Server.<br />Private IP address within Azure Virtual Network.<br />Built-in advanced intelligence and security.<br />Online change of resources (CPU/storage). | You have full control over the SQL Server engine. Supports all on-premises capabilities.<br />Up to 99.99% availability.<br />Full parity with the matching version of on-premises SQL Server.<br />Easy migration from SQL Server.<br />Private IP address within Azure Virtual Network.<br />You have the ability to deploy application or services on the host where SQL Server is placed.<br />Manage your SQL Server VM from the Azure portal and unlock a number of additional benefits when you register with the [Windows SQL Server IaaS Agent extension](virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md). |
-| Migration from SQL Server might be challenging.<br />Some SQL Server features aren't available.<br />Configurable [maintenance windows](database/maintenance-window.md).<br />Compatibility with the SQL Server version can be achieved only using database compatibility levels.<br />Private IP address support with [Azure Private Link](database/private-endpoint-overview.md). | There's still some minimal number of SQL Server features that aren't available.<br />Configurable [maintenance windows](database/maintenance-window.md).<br />Compatibility with the SQL Server version can be achieved only using database compatibility levels. | You might use [manual or automated backups](virtual-machines/windows/backup-restore.md).<br />You need to implement your own High-Availability solution.<br />There's a downtime while changing the resources(CPU/storage) |
+| Some SQL Server features aren't available. Migration from SQL Server might be challenging for existing applications with operating system or SQL Agent dependencies. <br />Configurable [maintenance windows](database/maintenance-window.md).<br />Compatibility with the SQL Server version can be achieved only using database compatibility levels.<br />Private IP address support with [Azure Private Link](database/private-endpoint-overview.md). | Very few SQL Server features aren't available in Azure SQL Managed Instance.<br />Configurable [maintenance windows](database/maintenance-window.md).<br />Compatibility with the SQL Server version can be achieved only using database compatibility levels. | You might use [manual or automated backups](virtual-machines/windows/backup-restore.md).<br />You need to implement your own High-Availability solution.<br />There's a downtime while changing the resources(CPU/storage) |
 | Databases of up to 128 TB. | Up to 16 TB. | SQL Server instances with up to 256 TB of storage. The instance can support as many databases as needed. |
 | On-premises application can access data in Azure SQL Database. | [Configure an existing virtual network for Azure SQL Managed Instance](managed-instance/vnet-existing-add-subnet.md) and connectivity to your on-premises environment using Azure Express Route or VPN Gateway. | With SQL virtual machines, you can have applications that run partly in the cloud and partly on-premises. For example, you can extend your on-premises network and Active Directory Domain to the cloud via [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). For more information on hybrid cloud solutions, see [Extending on-premises data solutions to the cloud](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
 

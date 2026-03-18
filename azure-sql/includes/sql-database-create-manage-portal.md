@@ -2,7 +2,7 @@
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 08/25/2025
+ms.date: 03/11/2026
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: include
@@ -16,10 +16,8 @@ The Azure portal provides a single page to create Azure SQL resources. Get start
 
 - The Azure SQL hub is the launching point for **Azure SQL Database**, **Azure SQL Database Hyperscale**, **Azure SQL Managed Instance**, and **SQL Server on Azure Virtual Machines**.
 
-   :::image type="content" source="media/sql-database-create-manage-portal/single-sql-database-deployment-options.png" alt-text="Screenshot of database tile details in the Azure portal." lightbox="media/sql-database-create-manage-portal/single-sql-database-deployment-options.png":::
-
-- The Azure SQL hub includes **Find the right option** and **Compare options** informative helpers.
-    - The **Find the right option** wizard asks you some questions about key decision points and helps you identify the best new resource to create.
+- The Azure SQL hub includes **Which database is best for you?** and **Compare databases side by side** informative helpers.
+    - The **Get recommendation** wizard asks you some questions about key decision points and helps you identify the best new resource to create.
 
       :::image type="content" source="media/sql-database-create-manage-portal/find-the-right-option.png" alt-text="Screenshot from the Azure portal of the Find the right option wizard." lightbox="media/sql-database-create-manage-portal/find-the-right-option.png":::
 
@@ -34,4 +32,4 @@ To access the **Azure SQL** page, from the Azure portal menu, select **Azure SQL
 The Azure portal provides a single page where you can manage [all of your Azure SQL resources](https://aka.ms/azuresqlhub) including your SQL Server on Azure virtual machines (VMs). To manage existing resources, select the desired item in the list. 
 
 > [!NOTE]
-> **Azure SQL** provides a quick and easy way to access all of your SQL resources in the Azure portal, including single and pooled databases in Azure SQL Database as well as the logical server hosting them, Azure SQL Managed Instances, and SQL Server on Azure VMs. [What is Azure SQL?](../azure-sql-iaas-vs-paas-what-is-overview.md) isn't a service or resource, but rather a family of SQL-related services.
+> **Azure SQL** provides a quick and easy way to access all of your SQL resources in the Azure portal, including single and pooled databases in Azure SQL Database as well as the logical server hosting them, Azure SQL Managed Instances, and SQL Server on Azure VMs. Azure SQL isn't a service or resource, but rather a family of SQL-related services.

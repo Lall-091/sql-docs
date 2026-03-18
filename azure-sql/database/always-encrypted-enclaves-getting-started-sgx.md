@@ -49,10 +49,10 @@ In this step, you'll create a new Azure SQL Database logical server and a new da
 # [Portal](#tab/azure-portal)
 
 1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/always-encrypted-enclaves-getting-started-sgx/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/always-encrypted-enclaves-getting-started-sgx/show-options-create-sql-database.png":::
+   :::image type="content" source="media/always-encrypted-enclaves-getting-started-sgx/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/always-encrypted-enclaves-getting-started-sgx/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 1. For **Resource group**, select **Create new**, enter a name for your resource group, and select **OK**.

@@ -5,7 +5,7 @@ description: This article guides you through creating an Azure SQL logical serve
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 08/25/2025
+ms.date: 03/18/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -53,11 +53,11 @@ In our examples, we're enabling Microsoft Entra-only authentication during serve
 
 # [Portal](#tab/azure-portal)
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/authentication-azure-ad-only-authentication-create-server/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/authentication-azure-ad-only-authentication-create-server/show-options-create-sql-database.png":::
+   :::image type="content" source="media/authentication-azure-ad-only-authentication-create-server/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/authentication-azure-ad-only-authentication-create-server/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 
@@ -322,11 +322,12 @@ You can also use the following template. Use a [Custom deployment in the Azure p
 
 # [Portal](#tab/azure-portal)
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Managed Instance**, select **Show options**.
-1. In the **Azure SQL Managed Instance options** window, select **Create SQL Managed Instance**.
+To create your instance, follow these steps: 
 
-   :::image type="content" source="media/authentication-azure-ad-only-authentication-create-server/show-options-create-sql-managed-instance.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="media/authentication-azure-ad-only-authentication-create-server/show-options-create-sql-managed-instance.png":::
+[!INCLUDE [create-sql-managed-instance](../includes/sql-managed-instance/create-sql-managed-instance.md)]
+
+
+On the **Create SQL Managed Instance** page, follow these steps:
 
 1. Fill out the mandatory information required on the **Basics** tab for **Project details** and **Managed Instance details**. This is a minimum set of information required to provision a SQL Managed Instance.
 
@@ -417,7 +418,7 @@ For more information, see [New-AzSqlInstance](/powershell/module/az.sql/new-azsq
 
 # [REST API](#tab/rest-api)
 
-The [SQL Managed Instances - Create Or Update](/rest/api/sql/managed-instances/create-or-update) REST API can be used to create a managed instance with Microsoft Entra-only authentication enabled during provisioning.
+The [Managed Instances - Create Or Update](/rest/api/sql/managed-instances/create-or-update) REST API can be used to create a managed instance with Microsoft Entra-only authentication enabled during provisioning.
 
 > [!NOTE]
 > The script requires a virtual network and subnet be created as a prerequisite.

@@ -23,12 +23,12 @@ helpviewer_keywords:
   - "db compat level"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # ALTER DATABASE (Transact-SQL) compatibility level
 
-[!INCLUDE [sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Sets [!INCLUDE [tsql](../../includes/tsql-md.md)] and query processing behaviors to be compatible with the specified version of the SQL engine. For other `ALTER DATABASE` options, see [ALTER DATABASE](alter-database-transact-sql.md).
 
@@ -70,7 +70,7 @@ The following behaviors are expected for [!INCLUDE [ssSQL17](../../includes/sssq
 - The compatibility levels of the `tempdb`, `model`, `msdb`, and Resource databases are set to the default compatibility level for a given [!INCLUDE [ssDE](../../includes/ssde-md.md)] version.
 - The `master` system database retains the compatibility level it had before upgrade. This won't affect user database behavior.
 
-For pre-existing databases running at lower compatibility levels, as long as the application doesn't need to use enhancements that are only available in a higher database compatibility level, it's a valid approach to maintain the previous database compatibility level. For new development work, or when an existing application requires use of new features such as [Intelligent query processing in SQL databases](../../relational-databases/performance/intelligent-query-processing.md) and some new [!INCLUDE [tsql](../../includes/tsql-md.md)], plan to upgrade the database compatibility level to the latest available. For more information, see [Compatibility levels and Database Engine upgrades](../../database-engine/install-windows/compatibility-certification.md#compatibility-levels-and-database-engine-upgrades).
+For preexisting databases running at lower compatibility levels, as long as the application doesn't need to use enhancements that are only available in a higher database compatibility level, it's a valid approach to maintain the previous database compatibility level. For new development work, or when an existing application requires use of new features such as [Intelligent query processing in SQL databases](../../relational-databases/performance/intelligent-query-processing.md) and some new [!INCLUDE [tsql](../../includes/tsql-md.md)], plan to upgrade the database compatibility level to the latest available. For more information, see [Compatibility levels and Database Engine upgrades](../../database-engine/install-windows/compatibility-certification.md#compatibility-levels-and-database-engine-upgrades).
 
 > [!NOTE]  
 > If there are no user objects and dependencies, it's generally safe to upgrade to the default compatibility level. For more information, see [Recommendations - master database](../../relational-databases/databases/master-database.md#recommendations).
@@ -81,7 +81,7 @@ To view the current compatibility level of a database, query the `compatibility_
 
 A [distribution database](../../relational-databases/replication/distribution-database.md) that was created in an earlier version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and is upgraded to [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] RTM or Service Pack 1 has a compatibility level of 90, which isn't supported for other databases. This doesn't have an effect on the functionality of replication. Upgrading to later service packs and versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] will result in the compatibility level of the distribution database to be increased to match that of the `master` database.
 
-To use database compatibility level 120 or higher for a database overall, but opt-in to the [cardinality estimation](../../relational-databases/performance/cardinality-estimation-sql-server.md) model of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)], which maps to database compatibility level 110, see [ALTER DATABASE SCOPED CONFIGURATION](alter-database-scoped-configuration-transact-sql.md), and in particular its keyword `LEGACY_CARDINALITY_ESTIMATION = ON`.
+To use database compatibility level 120 or higher for a database overall, but opt in to the [cardinality estimation](../../relational-databases/performance/cardinality-estimation-sql-server.md) model of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)], which maps to database compatibility level 110, see [ALTER DATABASE SCOPED CONFIGURATION](alter-database-scoped-configuration-transact-sql.md), and in particular its keyword `LEGACY_CARDINALITY_ESTIMATION = ON`.
 
 ### Remarks for Azure SQL
 

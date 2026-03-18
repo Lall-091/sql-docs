@@ -5,7 +5,7 @@ description: Learn how to calculate the size of the subnet where you intend to d
 author: zoran-rilak-msft
 ms.author: zoranrilak
 ms.reviewer: mathoma, bonova, srbozovi, wiassaf
-ms.date: 09/11/2025
+ms.date: 09/19/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: how-to

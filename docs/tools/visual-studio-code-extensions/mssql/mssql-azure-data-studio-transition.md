@@ -13,7 +13,7 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# Transition from Azure Data Studio (Preview)
+# Transition from Azure Data Studio (preview)
 
 The Azure Data Studio Migration feature in the MSSQL extension for Visual Studio Code helps you transition from Azure Data Studio to the MSSQL extension by importing existing connections, connection groups, and settings. This feature ensures a familiar and productive experience when you move to Visual Studio Code.
 
@@ -77,7 +77,7 @@ The extension provides the following key bindings:
 ## Related content
 
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
-- [Database operations (Preview)](mssql-database-operations.md)
+- [Database operations (preview)](mssql-database-operations.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
 - [MSSQL extension for Visual Studio Code repository on GitHub](https://github.com/Microsoft/vscode-mssql)

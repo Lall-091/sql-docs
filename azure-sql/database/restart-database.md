@@ -5,7 +5,7 @@ description: Learn about restarting a database or elastic pool in Azure SQL Data
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mahyon, randolphwest
-ms.date: 02/25/2026
+ms.date: 03/10/2026
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: how-to
@@ -30,7 +30,9 @@ The restart operation is not recommended for use when there are wide-spread serv
 
 ## Restart a database
 
-1. Go to the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). Navigate to your database.
+1. Go to the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
+
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**. Navigate to your database.
 
 1. Under the **Settings** section, select **Maintenance**.
 
@@ -40,7 +42,9 @@ The restart operation is not recommended for use when there are wide-spread serv
 
 ## Restart an elastic pool
 
-1. Go to the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). Navigate to your elastic pool.
+1. Go to the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
+ 
+1. In the resource menu, expand **Azure SQL Database** and select **Elastic pools**. Navigate to your elastic pool.
 
 1. Under the **Settings** section, select **Maintenance**.
 

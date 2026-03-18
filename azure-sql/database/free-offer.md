@@ -4,7 +4,7 @@ description: Guidance on how to deploy the Azure SQL Database offer for up to 10
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ivujic, reneamoso, amapatil, mathoma
-ms.date: 01/02/2026
+ms.date: 03/10/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: how-to
@@ -18,27 +18,27 @@ monikerRange: "=azuresql || =azuresql-db"
 
 Try Azure SQL Database at no cost with our free tier offer. For each database, you get 100,000 vCore seconds, 32 GB of data, and 32 GB of backup storage free per month for the lifetime of your subscription. Each Azure subscription allows you to create up to 10 General Purpose databases. 
 
-To get started and quickly create a new free Azure SQL Database, select the **Try for free** link on the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-
-   :::image type="content" source="media/free-offer/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub and the Try for free link in the Azure SQL Database pane." lightbox="media/free-offer/show-options-create-sql-database.png":::
+> [!TIP]
+> To get started and quickly create a new free Azure SQL Database, visit the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the **Create a database** pane, select the **Start free** link.
 
 ## Prerequisites
 
 To create a free Azure SQL Database, you need:
 
-- An Azure account.
+- An Azure account and subscription.
   - If you're evaluating Azure, consider the [Azure free account, with many services available free for 12 months](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
   - While the [previous offer](free-sql-db-free-account-how-to-deploy.md) required an Azure Free subscription, this new offer is available regardless of your Azure subscription type.
-- An Azure subscription. There's a limit of 10 free offer databases per subscription.
 
 ## Create a database
 
 Use the Azure portal to create the new free Azure SQL Database. To create a free offer database, follow these steps:
 
-1. Select the **Try for free** link on the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-   - You can also find the **Apply offer** banner on the [provisioning page for Azure SQL Database](https://portal.azure.com/#create/Microsoft.SQLDatabase), and proceed with the steps to [Create a single database in the serverless compute tier](single-database-create-quickstart.md?view=azuresql-db&preserve-view=true&tabs=azure-portal#create-a-single-database).
-    
-1. On the Create SQL Database page, you should see the Free offer banner.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the pane **Create a database**, select **Start free**.
+
+   :::image type="content" source="media/free-offer/create-sql-database.png" alt-text="Screenshot from the Azure portal showing Azure SQL hub, and the Start free button." lightbox="media/free-offer/create-sql-database.png":::
+
+1. On the **Create SQL Database** page, you should see the "Free offer applied!" banner.
 
    :::image type="content" source="media/free-offer/create-sql-database-free-offer-advanced-configuration.png" alt-text="Screenshot from the Azure portal of the Free offer applied banner.":::
 

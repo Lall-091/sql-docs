@@ -4,7 +4,7 @@ description: "Describes the message format for change event streaming"
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray
-ms.date: 11/18/2025
+ms.date: 03/18/2026
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -15,7 +15,7 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 # JSON message format - change event streaming
 [!INCLUDE [sqlserver2025](../../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
-This article describes the JSON format of a CloudEvents message that is streamed from SQL Server to Azure Event Hubs when using the [change event streaming (CES)](overview.md) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] and Azure SQL Database.
+This article describes the JSON format of a CloudEvents message that is streamed from SQL Server to Azure Event Hubs when using the [change event streaming (CES)](overview.md) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], Azure SQL Database, and Azure SQL Managed Instance
 
 [!INCLUDE [change-event-streaming-preview](../../../includes/change-event-streaming-preview.md)]
 

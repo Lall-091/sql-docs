@@ -4,7 +4,7 @@ description: Learn how you can use the Azure portal to deploy your SQL Server on
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma
-ms.date: 08/25/2025
+ms.date: 03/18/2026
 ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: how-to
@@ -85,11 +85,11 @@ If you're migrating to SQL Server on Azure VMs, consider size elements beyond ju
 
 Use Premium SSD v2 when you deploy your SQL Server on Azure VM to an [Ebdsv5 or Ebsv5](/azure/virtual-machines/ebdsv5-ebsv5-series) virtual machine in the Azure portal. To do so, follow these steps: 
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **SQL Server on Azure Virtual Machines**, select **Show options**.
-1. In the **SQL Server on Azure Virtual Machines options** window, in the **Select an image offer** box, choose a SQL Server image (such as **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025**). 
-1. Select **Create virtual machine**.
+To create your SQL Server on Azure VM, follow these steps:
 
-   :::image type="content" source="media/storage-configuration-premium-ssd-v2/show-options-create-virtual-machine.png" alt-text="Screenshot from the Azure portal of the Azure hub, showing the Show options button under SQL Server on Azure Virtual Machines, and the Create virtual machine button." lightbox="media/storage-configuration-premium-ssd-v2/show-options-create-virtual-machine.png":::
+[!INCLUDE [create-sql-virtual-machine](../../includes/sql-virtual-machines/create-sql-virtual-machine.md)]
+
+On the **Create a virtual machine** page, fill out the required fields on the **Basics** tab: 
 
 1. On the **Basics** tab, provide values for the **Project** and **Instance** details. For **Availability options**, choose **Availability zones**, as they're a prerequisite for using Premium SSD v2. 
 1. Under **Size**, select **See all sizes** to open the **Select a VM size** page. Type `bds_v5` or `bs_v5` to filter the _Ebdsv5_ or _Ebsv5_ series virtual machines that currently support Premium SSD v2 with SQL Server on Azure VMs in the Azure portal. Choose the VM size that suits your needs and then use **Select** to navigate back to the **Create a virtual machine** page.  
@@ -102,11 +102,11 @@ Use Premium SSD v2 when you deploy your SQL Server on Azure VM to an [Ebdsv5 or 
 
    :::image type="content" source="media/storage-configuration-premium-ssd-v2/configure-nvme.png" alt-text="Screenshot of enabling NVMe when you create your SQL VM in the Azure portal.":::
 
-1. On the **SQL Server settings** tab, under **Storage configuration**, check the box next to **Use Premium SSD v2** and then select **Change configuration** to open the **Configure storage (preview)** window. If the checkbox isn't available, then the chosen VM size doesn't support Premium SSD v2 with your SQL Server VM, or availability zones haven't been enabled. Go back to the **Basics** tab, select **See all sizes** and choose a supported VM size on the **Select a VM size** page, or make sure you've enabled availability zones. If you want to use Ultra Disk, or Premium SSDs, don't check the box. 
+1. On the **SQL Server settings** tab, under **Storage configuration**, check the box next to **Use Premium SSD v2** and then select **Change configuration** to open the **Configure storage** pane. If the checkbox isn't available, then the chosen VM size doesn't support Premium SSD v2 with your SQL Server VM, or availability zones haven't been enabled. Go back to the **Basics** tab, select **See all sizes** and choose a supported VM size on the **Select a VM size** page, or make sure you've enabled availability zones. If you want to use Ultra Disk, or Premium SSDs, don't check the box. 
 
    :::image type="content" source="media/storage-configuration-premium-ssd-v2/storage-configuration-portal.png" alt-text="Screenshot of the storage configuration section of the Create VM page in the Azure portal.":::
 
-1. On the **Configure storage (preview)** window, expand the sections for your data, log, and `tempdb` storage, and then use the sliders or enter values in the text boxes to customize your disk size, IOPS, and throughput. If you enabled NVMe previously, the VM size name has a (NVMe) suffix. 
+1. On the **Configure storage** window, expand the sections for your data, log, and `tempdb` storage, and then use the sliders or enter values in the text boxes to customize your disk size, IOPS, and throughput. If you enabled NVMe previously, the VM size name has a (NVMe) suffix. 
 
    Disk size can't be modified without taking the disk offline. You should add an extra 25% to your current storage utilization to allow for future capacity.
 

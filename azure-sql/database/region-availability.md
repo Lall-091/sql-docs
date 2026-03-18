@@ -4,7 +4,7 @@ description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: rsetlem, peskount, rokhot, shrtiwar
-ms.date: 02/20/2026
+ms.date: 03/13/2026
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
@@ -96,6 +96,28 @@ Standard-series (Gen5) hardware is available in [all public regions worldwide wh
 | Sweden Central | [!INCLUDE [yes](../includes/yes.md)]  |  | [!INCLUDE [yes](../includes/yes.md)]  |
 | Switzerland North | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | |
 | UK South | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+
+---
+
+160 vCore and 192 vCore hardware for **Hyperscale premium-series** for single databases and elastic pools are a preview feature in the following regions:
+
+#### [Americas](#tab/americas)
+
+- Australia East
+- Canada Central
+- East US 2
+- South Central US
+- West US 2
+
+#### [Asia Pacific](#tab/asia)
+
+- Southeast Asia
+
+#### [Europe, the Middle East, and Africa](#tab/emea)
+
+- North Europe
+- UK South
+- West Europe
 
 ---
 
@@ -349,6 +371,14 @@ Currently, all regions with serverless support 40 vCores and provide [availabili
 | UK West | [!INCLUDE [yes](../includes/yes.md)]  |  |
 
 ---
+
+## Vector search
+
+[Vector search](/sql/t-sql/functions/vector-search-transact-sql?view=azuresqldb-current&preserve-view=true) enables approximate nearest neighbor search using DiskANN vector indexes in Azure SQL Database and SQL database in Microsoft Fabric.
+
+[!INCLUDE [vector-search](../includes/regional-support/vector-search.md)]
+
+- For regional availability in SQL database in Fabric, see [Fabric region availability](/fabric/admin/region-availability).
 
 ## Database watcher availability
 

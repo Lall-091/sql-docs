@@ -43,11 +43,11 @@ The following steps outline the process of creating a new Azure SQL Database log
 
 # [Portal](#tab/azure-portal)
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-server/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/authentication-azure-ad-user-assigned-managed-identity-create-server/show-options-create-sql-database.png":::
+   :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-server/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/authentication-azure-ad-user-assigned-managed-identity-create-server/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 

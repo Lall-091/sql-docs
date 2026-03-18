@@ -1,11 +1,11 @@
 ---
-title: Overview of the Data-Tier Application Experience (Preview)
+title: Overview of the Data-Tier Application Experience
 titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how to use the Data-tier Application experience in the MSSQL extension for Visual Studio Code to work with DACPAC and BACPAC files.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: tsiddique, roblescarlos
-ms.date: 02/21/2026
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -14,12 +14,9 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# Data-tier Application (Preview)
+# Data-tier Application (DACPAC and BACPAC) import and export
 
 The Data-tier Application experience provides an easy-to-use experience to deploy and extract `.dacpac` files and import and export `.bacpac` files.
-
-> [!NOTE]  
-> Fabric targets aren't currently supported in this preview.
 
 This experience makes it easier to manage `.dacpac` and `.bacpac` files. It simplifies the development and deployment of data-tier elements that support your application. For more information, see [Data-tier applications (DAC) overview](../../sql-database-projects/concepts/data-tier-applications/overview.md).
 
@@ -60,7 +57,7 @@ To launch the experience in the MSSQL extension for Visual Studio Code, right-cl
 - [Data-tier applications (DAC) overview](../../sql-database-projects/concepts/data-tier-applications/overview.md)
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
-- [Database operations (Preview)](mssql-database-operations.md)
+- [Database operations (preview)](mssql-database-operations.md)
 - [Schema Compare](mssql-schema-compare.md)
 - [Schema Designer](mssql-schema-designer.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)

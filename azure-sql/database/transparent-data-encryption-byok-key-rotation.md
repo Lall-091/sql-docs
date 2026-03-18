@@ -5,7 +5,7 @@ description: Learn how to rotate the Transparent data encryption (TDE) protector
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 06/25/2025
+ms.date: 03/05/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -52,7 +52,7 @@ Go to the [Azure portal](https://portal.azure.com)
 
 For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). Use [the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
 
-# [The Azure CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
 For installation, see [Install the Azure CLI](/cli/azure/install-azure-cli).
 
@@ -104,7 +104,7 @@ Set-AzSqlInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <
     -AutoRotationEnabled <boolean>
 ```
 
-# [The Azure CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
 For information on installing the current release of Azure CLI, see [Install the Azure CLI](/cli/azure/install-azure-cli) article.
 
@@ -152,7 +152,7 @@ To enable automatic rotation for the TDE protector at the database level using P
 Set-AzSqlDatabase -ResourceGroupName <resource_group_name> -ServerName <server_name> -DatabaseName <database_name> -EncryptionProtectorAutoRotation:$true
 ```
 
-# [The Azure CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
 To enable automatic rotation for the TDE protector at the database level using the Azure CLI, see the following command. Use the `--encryption-protector-auto-rotation` parameter and set to `True` to enable automatic key rotation or `False` to disable automatic key rotation.
 
@@ -234,7 +234,7 @@ The `<keyVaultKeyId>` can be [retrieved from Azure Key Vault](/azure/key-vault/k
 
 ### <a id="using-different-keys-for-each-server"></a> Use different keys for each server
 
-It's possible to configure the primary and secondary servers with a different key vault key when configuring TDE with CMK in the Azure portal. It's not evident in the Azure portal that the key used to protect the primary server is also the same key that protects the primary database that has been replicated to the secondary server. However, you can use PowerShell, the Azure CLI, or REST APIs to obtain details about keys that are used on the server. This shows that auto rotated keys are transferred from the primary server to the secondary server.
+It's possible to configure the primary and secondary servers with a different key vault key when configuring TDE with CMK in the Azure portal. It's not evident in the Azure portal that the key used to protect the primary server is also the same key that protects the primary database that has been replicated to the secondary server. However, you can use PowerShell, Azure CLI, or REST APIs to obtain details about keys that are used on the server. This shows that auto rotated keys are transferred from the primary server to the secondary server.
 
 Here's an example of using PowerShell commands to check for keys that are transferred from the primary server to the secondary server after key rotation.
 
@@ -325,7 +325,7 @@ Set-AzSqlInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <
    -InstanceName <ManagedInstanceName> -ResourceGroup <ManagedInstanceResourceGroupName>
 ```
 
-# [The Azure CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
 Use the [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) command to add a new key to the key vault.
 
@@ -407,7 +407,7 @@ Using the Azure portal to switch the TDE protector from Microsoft-managed to BYO
        -InstanceName <ManagedInstanceName> -ResourceGroup <ManagedInstanceResourceGroupName>e>
    ```
 
-# [The Azure CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
 **Azure SQL Database**
 

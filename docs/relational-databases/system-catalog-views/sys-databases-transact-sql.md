@@ -4,10 +4,10 @@ description: The sys.databases system catalog view contains one row per database
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf
-ms.date: 01/27/2026
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "reference"
+ms.topic: reference
 ms.custom:
   - ignite-2025
 f1_keywords:
@@ -18,7 +18,7 @@ f1_keywords:
 helpviewer_keywords:
   - "sys.databases catalog view"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.databases (Transact-SQL)
@@ -104,7 +104,7 @@ If a database isn't `ONLINE`, or `AUTO_CLOSE` is set to `ON` and the database is
 | `target_recovery_time_in_seconds` | **int** | The estimated time to recover the database, in seconds. Nullable.<br /><br />**Applies to**: [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
 | `delayed_durability` | **int** | The delayed durability setting:<br />`0` = `DISABLED`<br />`1` = ALLOWED<br />`2` = `FORCED`<br />For more information, see [Control Transaction Durability](../logs/control-transaction-durability.md).<br /><br />**Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. |
 | `delayed_durability_desc` | **nvarchar(60)** | The delayed durability setting:<br />`DISABLED`<br />`ALLOWED`<br />`FORCED`<br /><br />**Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. |
-| `is_memory_optimized_elevate_to_snapshot_on` | **bit** | Memory-optimized tables are accessed using `SNAPSHOT` isolation when the session setting `TRANSACTION ISOLATION LEVEL` is set to a lower isolation level, `READ COMMITTED` or `READ UNCOMMITTED`.<br />`1` = Minimum isolation level is SNAPSHOT.<br />`0` = Isolation level isn't elevated. |
+| `is_memory_optimized_elevate_to_snapshot_on` | **bit** | Memory-optimized tables are accessed using `SNAPSHOT` isolation when the session setting `TRANSACTION ISOLATION LEVEL` is set to a lower isolation level, `READ COMMITTED` or `READ UNCOMMITTED`.<br />`1` = Minimum isolation level is `SNAPSHOT`.<br />`0` = Isolation level isn't elevated. |
 | `is_federation_member` | **bit** | Indicates if the database is a member of a federation.<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
 | `is_remote_data_archive_enabled` | **bit** | Indicates whether the database is stretched.<br />`0` = The database isn't Stretch-enabled.<br />`1` = The database is Stretch-enabled.<br /><br />**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions<br />For more information, see [Stretch Database](/previous-versions/sql/sql-server/stretch-database/stretch-database). |
 | `is_mixed_page_allocation_on` | **bit** | Indicates whether tables and indexes in the database can allocate initial pages from mixed extents.<br />`0` = Tables and indexes in the database always allocate initial pages from uniform extents.<br />`1` = Tables and indexes in the database can allocate initial pages from mixed extents.<br />For more information, see the `SET MIXED_PAGE_ALLOCATION` option of [ALTER DATABASE SET options](../../t-sql/statements/alter-database-transact-sql-set-options.md).<br /><br />**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions |
@@ -122,9 +122,10 @@ If a database isn't `ONLINE`, or `AUTO_CLOSE` is set to `ON` and the database is
 | `is_change_feed_enabled` | **bit** | Indicates whether the current database is enabled for [Azure Synapse Link for SQL](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview), change event streaming, or [Fabric Mirroring](/fabric/database/mirrored-database/overview).<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. |
 | `is_data_lake_replication_enabled` | **bit** | Indicates whether the current database is enabled for [Fabric Mirroring](/fabric/database/mirrored-database/overview).<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. |
 | `is_event_stream_enabled` | **bit** | Indicates whether the current database has [Change event streaming (preview)](../track-changes/change-event-streaming/overview.md) enabled.<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions. |
-| `is_vorder_enabled` | **bit** | Indicates whether [V-Order](/fabric/data-warehouse/v-order) is enabled for each [!INCLUDE [fabric-dw-short](../../includes/fabric-dw-short.md)].<br /><br />**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] only.|
+| `is_vorder_enabled` | **bit** | Indicates whether [V-Order](/fabric/data-warehouse/v-order) is enabled for each [!INCLUDE [fabric-dw-short](../../includes/fabric-dw-short.md)].<br /><br />**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] only. |
 | `is_optimized_locking_on` | **bit** | Indicates whether optimized locking is enabled.<br />`1` = Optimized locking is enabled<br />`0` = Optimized locking is disabled<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. |
 | `is_proactive_statistics_refresh_on` | **bit** | Indicates whether [proactive statistics refresh](/fabric/data-warehouse/statistics) is enabled.<br /><br />**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].|
+| `is_automatic_index_compaction_on` | **bit** | Indicates whether automatic index compaction is enabled.<br />`1` = Automatic index compaction is enabled<br />`0` = Automatic index compaction is disabled<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[AUTD](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)</sup>, and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]. |
 
 <sup>1</sup> For a full list of compatibility levels, see [ALTER DATABASE compatibility level](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md)
 
@@ -133,7 +134,7 @@ If a database isn't `ONLINE`, or `AUTO_CLOSE` is set to `ON` and the database is
 If the caller of `sys.databases` isn't the owner of the database and the database isn't `master` or `tempdb`, the minimum permissions required to see the corresponding row are `ALTER ANY DATABASE` or the `VIEW ANY DATABASE` server-level permission, or `CREATE DATABASE` permission in the `master` database. The database to which the caller is connected can always be viewed in `sys.databases`.
 
 > [!IMPORTANT]  
-> By default, the public role has the `VIEW ANY DATABASE` permission, allowing all logins to see database information.
+> By default, the **public** fixed role has the `VIEW ANY DATABASE` permission, allowing all logins to see database information.
 >
 > To block a login from the ability to detect a database, `REVOKE` the `VIEW ANY DATABASE` permission from `public`, or `DENY` the `VIEW ANY DATABASE` permission for individual logins.
 

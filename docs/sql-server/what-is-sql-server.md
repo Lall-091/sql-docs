@@ -3,7 +3,7 @@ title: What Is SQL Server?
 description: An overview of the relational database engine and components of SQL Server
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/28/2026
+ms.date: 03/09/2026
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: overview
@@ -17,6 +17,8 @@ ms.custom:
 
 [!INCLUDE [msconame-md](../includes/msconame-md.md)] [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is a relational database management system (RDBMS). Applications and tools connect to a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] *instance* or *database*, and communicate using [Transact-SQL](../t-sql/language-reference.md) (T-SQL).
 
+[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is one of many products and platforms that runs the [Microsoft SQL Database Engine](../database-engine/sql-database-engine.md).
+
 ## Deployment options
 
 You can install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows or [Linux](../linux/sql-server-linux-overview.md), deploy it in [a Linux container](../linux/sql-server-linux-overview.md#container-images), or deploy it on [Azure Virtual Machines](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview) or other virtual machine platform. You previously might have referred to this as the *boxed product*.
@@ -26,7 +28,12 @@ Supported versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]
 The underlying [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)] is also used by the following products and services:
 
 - [[!INCLUDE [ssazure-sqldb](../includes/ssazure-sqldb.md)]](/azure/azure-sql/database/sql-database-paas-overview)
+- [[!INCLUDE [fabric-sqldb](../includes/fabric-sqldb.md)]](/fabric/database/sql/overview)
 - [[!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)]](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview)
+- [[!INCLUDE [fabric-dw-full](../includes/fabric-dw-full.md)]](/fabric/data-warehouse/data-warehousing) and the [!INCLUDE [fabric-se](../includes/fabric-se.md)]
+
+Older products:
+
 - [Microsoft Analytics Platform System](../analytics-platform-system/home-analytics-platform-system-aps-pdw.md) (PDW)
 - [[!INCLUDE [ssazuresynapse-md](../includes/ssazuresynapse-md.md)]](/azure/synapse-analytics/overview-what-is)
 - [[!INCLUDE [ssazurede-md](../includes/ssazurede-md.md)]](/azure/azure-sql-edge/overview)

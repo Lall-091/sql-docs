@@ -1953,6 +1953,10 @@
       href: /sql/tools/sqlcmd-utility
     - name: SqlPackage
       href: /sql/tools/sqlpackage/
+    - name: Query editor (Classic)
+      href: database/query-editor-classic.md
+    - name: Connect to the Query editor (Classic)
+      href: database/connect-query-portal-classic.md
 
   - name: Languages & code
     items: 
