@@ -13,7 +13,7 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# Database operations (Preview)
+# Database operations (preview)
 
 The MSSQL extension for Visual Studio Code provides built-in tools for common database operations. You can create and manage databases, search for objects, back up and restore databases, and import data from flat files, all without leaving the editor.
 

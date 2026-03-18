@@ -4,7 +4,7 @@ description: The vCore purchasing model lets you independently scale compute and
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake, mathoma, dfurman, srinia
-ms.date: 12/12/2025
+ms.date: 03/09/2026
 ms.service: azure-sql-database
 ms.subservice: performance
 ms.topic: concept-article
@@ -44,7 +44,9 @@ For help with choosing between the vCore and DTU purchasing models, see the [dif
 
 ## Compute
 
-The vCore-based purchasing model has a provisioned compute tier and a [serverless](serverless-tier-overview.md) compute tier. In the provisioned compute tier, the compute cost reflects the total compute capacity continuously provisioned for the application independent of workload activity. Choose the resource allocation that best suits your business needs based on vCore and memory requirements, then scale resources up and down as needed by your workload. In the serverless compute tier for Azure SQL Database, compute resources are autoscaled based on workload capacity and billed for the amount of compute used, per second.
+The vCore-based purchasing model has a provisioned compute tier and a [serverless](serverless-tier-overview.md) compute tier. In the provisioned compute tier, the compute cost reflects the total compute capacity continuously provisioned for the application independent of workload activity. Choose the resource allocation that best suits your business needs based on vCore and memory requirements, then scale resources up and down as needed by your workload. In the serverless compute tier for Azure SQL Database, compute resources are autoscaled based on workload capacity and billed for the amount of compute used, per second. 
+
+Serverless is only supported on Standard-series (Gen5) hardware.
 
 To summarize:
 
@@ -103,8 +105,8 @@ Service tier options in the vCore purchasing model include General Purpose, Busi
 
 |**Use case**|**General Purpose**|**Business Critical**|**Hyperscale**|
 |---|---|---|---|
-|**Best for**|Most business workloads. Offers budget-oriented, balanced, and scalable compute and storage options. |Offers business applications the highest resilience to failures by using several high availability secondary replicas, and provides the highest I/O performance. | The widest variety of workloads, including those workloads with highly scalable storage and read-scale requirements.  Offers higher resilience to failures by allowing configuration of more than one high availability secondary replica. |
-| **Compute size** | 2 to 128 vCores | 2 to 128 vCores  |2 to 128 vCores  |
+|**Best for**|Most business workloads. Offers budget-oriented, balanced, and scalable compute and storage options. |Offers business applications the highest resilience to failures by using several high availability secondary replicas, and provides the highest I/O performance. | The widest variety of workloads, including those workloads with highly scalable storage and read-scale requirements. Offers higher resilience to failures by allowing configuration of more than one high availability secondary replica. |
+| **Compute size** | 2 to 128 vCores | 2 to 128 vCores  |2 to 192 vCores  |
 | **Storage type** | Premium remote storage (per instance) |Super-fast local SSD storage (per instance)  | Decoupled storage with local SSD cache (per compute replica) |
 | **Storage size**| 1 GB – 4 TB | 1 GB – 4 TB  | 10 GB – 128 TB |
 | **Max IOPS** | 320 IOPS per vCore with 16,000 maximum IOPS | 4,000 IOPS per vCore with 327,680 maximum IOPS | 5,500 IOPS per vCore with 544,000 maximum local SSD IOPS.<br />Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPS depend on the workload. |
@@ -211,21 +213,23 @@ Regardless of CPU type used, resource limits for a database or elastic pool (suc
 
 ### Compute resources (CPU and memory)
 
-The following table compares compute resources in different hardware configurations and compute tiers:
+The following table compares compute resources in different hardware configurations and compute tiers for Azure SQL Database. For Hyperscale, see [Hyperscale service tier](service-tier-hyperscale.md#compute-resources). 
 
 |Hardware configuration  |CPU  |Memory  |
 |:---------|:---------|:---------|
-|Standard-series (Gen5) |**Provisioned compute**<br>- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)\*, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz\*, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC 7763v (Milan) processors<br>- Provision up to 128 vCores (hyper-threaded)<br><br>**Serverless compute**<br>- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)\*, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz\*, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC 7763v (Milan) processors<br>- Autoscale up to 80 vCores (hyper-threaded)<br>- The memory-to-vCore ratio dynamically adapts to memory and CPU usage based on workload demand and can be as high as 24 GB per vCore.  For example, at a given point in time a workload might use and be billed for 240-GB memory and only 10 vCores.|**Provisioned compute**<br>- 5.1 GB per vCore<br>- Provision up to 625 GB<br><br>**Serverless compute**<br>- Autoscale up to 24 GB per vCore<br>- Autoscale up to 240 GB max|
-|Fsv2-series\*\*     |- Intel&reg; 8168 (Skylake) processors<br>- Featuring a sustained all core turbo clock speed of 3.4 GHz and a maximum single core turbo clock speed of 3.7 GHz.<br>- Provision up to 72 vCores (hyper-threaded)|- 1.9 GB per vCore<br>- Provision up to 136 GB|
+|Standard-series (Gen5) |**Provisioned compute**<br>- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)\*, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz\*, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC&trade; 7763v (Milan)\*, AMD EPYC 9004 (Genoa)\*, Intel&reg; Xeon&reg; Platinum 8573C (Emerald Rapids)\* processors<br>- Provision up to 128 vCores (hyper-threaded)<br><br>**Serverless compute**<br>- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)\*, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz\*, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC&trade; 7763v (Milan)\*, AMD EPYC 9004 (Genoa)\*, Intel&reg; Xeon&reg; Platinum 8573C (Emerald Rapids)\* processors<br>- Autoscale up to 80 vCores (hyper-threaded)<br>- The memory-to-vCore ratio dynamically adapts to memory and CPU usage based on workload demand and can be as high as 24 GB per vCore.  For example, at a given point in time a workload might use and be billed for 240-GB memory and only 10 vCores.|**Provisioned compute**<br>- 5.1 GB per vCore<br>- Provision up to 625 GB<br><br>**Serverless compute**<br>- Autoscale up to 24 GB per vCore<br>- Autoscale up to 240 GB max|
 |DC-series     | - Intel&reg; Xeon&reg; E-2288G processors<br>- Featuring Intel Software Guard Extension (Intel SGX)<br>- Provision up to 8 vCores (physical) | 4.5 GB per vCore |
+|Fsv2-series\*\*     |- Intel&reg; 8168 (Skylake) processors<br>- Featuring a sustained all core turbo clock speed of 3.4 GHz and a maximum single core turbo clock speed of 3.7 GHz.<br>- Provision up to 72 vCores (hyper-threaded)|- 1.9 GB per vCore<br>- Provision up to 136 GB|
 
-\* In the [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamic management view, hardware generation for databases using Intel&reg; SP-8160 (Skylake) processors appears as Gen6, hardware generation for databases using Intel&reg; 8272CL (Cascade Lake) appears as Gen7, and hardware generation for databases using Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake) or AMD&reg; EPYC&reg; 7763v (Milan) appear as Gen8. For a given compute size and hardware configuration, resource limits are the same regardless of CPU type (Intel Broadwell, Skylake, Ice Lake, Cascade Lake, or AMD Milan).
+\* For a given compute size and hardware configuration, resource limits are the same regardless of CPU type (Intel&reg; Broadwell, Skylake, Ice Lake, Cascade Lake, Emerald Rapid or AMD Milan, Genoa). In the [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamic management view, hardware generation for databases using:
+  - Intel&reg; SP-8160 (Skylake) processors appears as Gen6
+  - Intel&reg; 8272CL (Cascade Lake) appears as Gen7
+  - Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake) or AMD EPYC&trade; 7763v (Milan) appear as Gen8
+  - AMD EPYC&trade; 9004 (Genoa) appear as Gen9 or Intel&reg; Xeon&reg; Platinum 8573C (Emerald Rapids) appear as Gen10
 
 \*\* Fsv2-series hardware will be retired October 1, 2026.
 
 For more information, see resource limits for [single databases](resource-limits-vcore-single-databases.md) and [elastic pools](resource-limits-vcore-elastic-pools.md).
-
-For Hyperscale database compute resources and specification, see [Hyperscale compute resources](service-tier-hyperscale.md#compute-resources).
 
 ### Standard-series (Gen5)
 

@@ -1,0 +1,169 @@
+---
+title: "Quickstart: Azure portal query editor (Classic experience)"
+titleSuffix: Azure SQL Database
+description: Learn how to connect to the Classic experience of the Azure portal query editor for Azure SQL Database.
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ivujic
+ms.date: 03/11/2026
+ms.update-cycle: 365-days
+ms.service: azure-sql-database
+ms.subservice: development
+ms.topic: quickstart
+monikerRange: "=azuresql || =azuresql-db"
+ROBOTS: NOINDEX
+---
+# Quickstart: Use the Azure portal query editor (Classic experience)
+
+[!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+In this quickstart, connect to an Azure SQL database in the Azure portal and use the query editor (Classic experience) to run Transact-SQL (T-SQL) queries.
+
+> [!IMPORTANT]
+> For the new Azure portal SQL query editor experience, see [Quickstart: Use the Azure portal query editor to query Azure SQL Database](connect-query-portal.md).
+
+- If you don't already have an Azure SQL Database created, see [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md). Look for the option to use your offer to [Deploy Azure SQL Database for free](free-offer.md).
+
+## Prerequisites
+
+### Authentication
+
+You need an account with permissions to connect to the database and query editor. You can use SQL authentication or Microsoft Entra authentication (recommended). For more information on creating and managing logins in Azure SQL database, see [Authorize database access](logins-create-manage.md?view=azuresql-db&preserve-view=true).
+
+### Firewall rule
+
+If you receive this error: *Cannot open server 'server-name' requested by the login. Client with IP address 'xx.xx.xx.xx' is not allowed to access the server. To enable access, use the Azure Management Portal or run `sp_set_firewall_rule` on the `master` database to create a firewall rule for this IP address or address range. It might take up to five minutes for this change to take effect.*
+
+Follow these quick steps: 
+
+1. Return to the **Overview** page of your SQL database.
+1. Select the link for the Azure SQL logical server next to **Server name**.
+1. In the Resource menu, under **Security**, select **Networking**.
+1. Ensure that under **Public network access**, the **Selected networks** option is selected.
+    - If this is a test or temporary environment, set the option to **Selected networks**.
+    - If not, access must be granted through other means than covered in this quickstart, likely via [private endpoints](private-endpoint-overview.md) (by using Azure Private Link) as outlined in the [network access overview](network-access-controls-overview.md).
+1. Under **Firewall rules**, select **Add your client IPv4 address**.
+    - If necessary, identify your IPv4 address and provide it in the **Start** and **End** fields.
+1. Select **Save**.
+
+For more detail, see [add your outbound IP address to the server's allowed firewall rules](firewall-create-server-level-portal-quickstart.md?view=azuresql-db&preserve-view=true).
+For troubleshooting, see [Connection error troubleshooting](query-editor-classic.md#connection-considerations).
+For more information about public network access, TLS version settings, and connection policy, see [Azure SQL connectivity settings](connectivity-settings.md?view=azuresql-db&preserve-view=true).
+
+## Connect to the query editor
+
+Connect to your database within the query editor.
+
+1. Navigate to your SQL database in the Azure portal. For example, visit [your Azure SQL hub page](https://aka.ms/azuresqlhub), select **Azure SQL Database**, then **SQL databases**. Select your Azure SQL Database.
+
+1. On your SQL database **Overview** page, select **Query editor (preview)** from the resource menu.
+
+1. On the sign-in screen, provide credentials to connect to the database.
+
+   - You can connect using SQL or Microsoft Entra authentication.
+
+      - To connect with SQL authentication, under **SQL server authentication**, enter a **Login** and **Password** for a user that has access to the database, and then select **OK**. You can always use the login and password for the server admin.
+
+      - To connect using Microsoft Entra ID, if you're the Microsoft Entra server admin, select **Continue as \<user@domain>**. If sign-in is unsuccessful, try refreshing the page.
+
+### Connection with other tools
+
+You can also connect to your Azure SQL database using other tools, including:
+
+- [Quickstart: Use SSMS to connect to and query Azure SQL Database or Azure SQL Managed Instance](connect-query-ssms.md?view=azuresql-db&preserve-view=true)
+- [Quickstart: Use Visual Studio Code to connect and query](connect-query-vscode.md?view=azuresql-db&preserve-view=true)
+
+## Query the database
+
+On any database, execute the following query in the Query editor to return the time in UTC, the database name, and your authenticated login name.
+
+```sql
+SELECT SYSDATETIMEOFFSET(), DB_NAME(), ORIGINAL_LOGIN();
+```
+
+### Query the AdventureWorksLT sample database
+
+This portion of quickstart uses the `AdventureWorksLT` sample database in an Azure SQL database. If you don't have one already, you can [create a database using sample data in Azure SQL Database](single-database-create-quickstart.md). Look for the option to use your offer to [Deploy Azure SQL Database for free](free-offer.md).
+
+On the **Query editor (preview)** page, run the following example queries against your `AdventureWorksLT` sample database.
+
+> [!TIP]
+> New to Azure SQL Database? Get up to speed with in-depth free training content: [Azure SQL Fundamentals](/training/paths/azure-sql-fundamentals/) or review the [Azure SQL glossary of terms](../glossary-terms.md).
+
+For more information about T-SQL in Azure SQL Database, visit [T-SQL differences between SQL Server and Azure SQL Database](transact-sql-tsql-differences-sql-server.md).
+
+#### Run a SELECT query
+
+1. To query for the top 20 products in the database, paste the following [SELECT](/sql/t-sql/queries/select-transact-sql) query into the query editor:
+
+   ```sql
+    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
+    FROM SalesLT.ProductCategory pc
+    JOIN SalesLT.Product p
+    ON pc.productcategoryid = p.productcategoryid;
+   ```
+
+1. Select **Run**, and then review the output in the **Results** pane.
+
+1. Optionally, you can select **Save query** to save the query as an *.sql* file, or select **Export data as** to export the results as a *.json*, *.csv*, or *.xml* file.
+
+#### Run an INSERT query
+
+To add a new product to the `SalesLT.Product` table, run the following [INSERT](/sql/t-sql/statements/insert-transact-sql/) T-SQL statement.
+
+1. In the query editor, replace the previous query with the following query:
+
+    ```sql
+    INSERT INTO [SalesLT].[Product]
+           ( [Name]
+           , [ProductNumber]
+           , [Color]
+           , [ProductCategoryID]
+           , [StandardCost]
+           , [ListPrice]
+           , [SellStartDate]
+           )
+    VALUES
+           ('myNewProduct'
+           ,123456789
+           ,'NewColor'
+           ,1
+           ,100
+           ,100
+           ,GETDATE() );
+   ```
+
+1. Select **Run** to add the new product. After the query runs, the **Messages** pane displays **Query succeeded: Affected rows: 1**.
+
+#### Run an UPDATE query
+
+Run the following [UPDATE](/sql/t-sql/queries/update-transact-sql/) T-SQL statement to update the price of your new product.
+
+1. In the query editor, replace the previous query with the following query:
+
+   ```sql
+   UPDATE [SalesLT].[Product]
+   SET [ListPrice] = 125
+   WHERE Name = 'myNewProduct';
+   ```
+
+1. Select **Run** to update the specified row in the `Product` table. The **Messages** pane displays **Query succeeded: Affected rows: 1**.
+
+#### Run a DELETE query
+
+Run the following [DELETE](/sql/t-sql/statements/delete-transact-sql/) T-SQL statement to remove your new product.
+
+1. In the query editor, replace the previous query with the following query:
+
+   ```sql
+   DELETE FROM [SalesLT].[Product]
+   WHERE Name = 'myNewProduct';
+   ```
+
+1. Select **Run** to delete the specified row in the `Product` table. The **Messages** pane displays **Query succeeded: Affected rows: 1**.
+
+## Related content
+
+- [Azure portal query editor (Classic experience)](query-editor-classic.md)
+- [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md)
+- [Connectivity settings](connectivity-settings.md)

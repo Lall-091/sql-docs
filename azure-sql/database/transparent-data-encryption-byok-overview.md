@@ -5,7 +5,7 @@ description: Bring Your Own Key (BYOK) support for transparent data encryption (
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: wiassaf, vanto, mathoma, randolphwest
-ms.date: 09/16/2025
+ms.date: 03/05/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: concept-article
@@ -218,6 +218,24 @@ Auditors can use Azure Monitor to review managed HSM AuditEvent logs, if logging
 - Keep all previously used keys in Azure Key Vault or Azure Managed HSM even after switching to service-managed keys. It ensures database backups can be restored with the TDE protectors stored in Azure Key Vault or Azure Managed HSM. TDE protectors created with Azure Key Vault or Azure Managed HSM have to be maintained until all remaining stored backups have been created with service-managed keys. Make recoverable backup copies of these keys using [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/backup-azkeyvaultkey).
 
 - To remove a potentially compromised key during a security incident without the risk of data loss, follow the steps in the article [Remove a Transparent Data Encryption (TDE) protector using PowerShell](transparent-data-encryption-byok-remove-tde-protector.md).
+
+> [!TIP]
+> **Using versioned and versionless Azure Key Vault keys for TDE**
+>
+> When you set the TDE protector, you can reference an Azure Key Vault key using either a specific key version or a versionless key identifier.
+>
+> In both cases, Azure SQL Database always resolves and uses the latest enabled version of the key in Azure Key Vault or Azure Key Vault Managed HSM. Use versionless key identifiers to avoid embedding a specific key version in the TDE protector configuration.
+>
+> Versionless key identifiers are currently supported only for Azure SQL Database.
+>
+> Examples:
+> - Key identifier that includes a specific version
+> 
+>     `https://<key-vault-name>.vault.azure.net/keys/<key-name>/<key-version>`
+> 
+> - Versionless key identifier
+>
+>     `https://<key-vault-name>.vault.azure.net/keys/<key-name>`
 
 ## Rotation of TDE protector
 

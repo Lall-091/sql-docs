@@ -4,7 +4,7 @@ description: "Explore a decision tree of different options within the Azure SQL 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ivujic
-ms.date: 12/18/2025
+ms.date: 03/12/2026
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: article
@@ -39,17 +39,23 @@ The following explanation covers each high-level decision point. Your applicatio
 
 #### Are you migrating an existing database?
 
-   - **No:** Consider Azure SQL Database and Azure SQL Database Hyperscale.
+   - **No:** Consider your migration and application goals.
+
+      - **If you want to manage your existing SQL Server instance from Azure without migrating it**, use SQL Server enabled by Azure Arc. Connect your on-premises or multicloud SQL Server instances to Azure for centralized management, migration assessments, and security insights.
 
       - **If you're building a new SaaS (Software-as-a-Service) solution for hundreds of customers or more**, consider Azure SQL Database, using elastic pools to provide cost-effective and predictable resource costs to many distinct customer databases.
 
       - **If you're building other types of applications,** consider Azure SQL Database Hyperscale. You could also consider Azure SQL Database Hyperscale elastic pools to provide cost-effective and predictable resource costs to many databases.
 
-   - **Yes:** Consider what system requirements you have from the existing database platform. Keep reading.
+   - **Yes:** Consider your existing infrastructure and desired requirements. 
+
+      - **If you want to connect your SQL Server to Azure for guided migration recommendations**, use SQL Server enabled by Azure Arc. Connect your on-premises or multicloud SQL Server instances to Azure for centralized management, migration assessments, and security insights.
+   
+      - Otherwise, keep reading.
 
 #### Do you need operating system-level control, file system access, or a specific SQL Server version?
 
-   - **Yes:** The best solution for on-premises migrations that require operating system-level and file system access, perhaps for integration with other applications that must be installed locally to the SQL Server instance, is SQL Server on Azure Virtual Machines. 
+   - **Yes:** SQL Server on Azure Virtual Machines is the best solution for on-premises migrations that require operating system-level and file system access, perhaps for integration with other applications that must be installed locally to the SQL Server instance. You can migrate or extend an on-premises SQL Server workload to the cloud while keeping full control over the environment and configuration.
    
       If you must run a specific version of SQL Server that isn't the latest version and won't be automatically kept up to date, use SQL Server on Azure Virtual Machines.
 

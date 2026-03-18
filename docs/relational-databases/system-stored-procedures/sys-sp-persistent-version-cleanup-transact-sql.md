@@ -1,13 +1,13 @@
 ---
 title: "sys.sp_persistent_version_cleanup (Transact-SQL)"
-description: "Manually starts persistent version store (PVS) cleanup process, a key element of accelerated database recovery (ADR)."
+description: sys.sp_persistent_version_cleanup manually starts the persistent version store (PVS) cleanup process, a key element of accelerated database recovery (ADR).
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 02/02/2026
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "reference"
+ms.topic: reference
 ms.custom:
   - ignite-2025
 f1_keywords:
@@ -16,7 +16,7 @@ f1_keywords:
   - "sys.sp_persistent_version_cleanup_TSQL"
   - "sp_persistent_version_cleanup_TSQL"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric-sqldb"
 ---
 # sys.sp_persistent_version_cleanup (Transact-SQL)
@@ -93,6 +93,8 @@ WHERE command LIKE '%PERSISTED_VERSION_CLEANER%';
 
 An active transaction might prevent the PVS cleanup process from starting. If this occurs, the session running the `sys.sp_persistent_version_cleanup` stored procedure waits with the [PVS_CLEANUP_LOCK](../system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql.md#pvs_cleanup_lock) wait type. You can wait for the transaction to complete, or you can consider killing the blocker session with an active transaction, if possible.
 
+PVS cleanup initiated using `sys.sp_persistent_version_cleanup` might take longer when [automatic index compaction](../indexes/automatic-index-compaction.md) is enabled. If you need to speed up PVS cleanup initiated by this stored procedure, consider temporarily [disabling](../indexes/automatic-index-compaction.md#enable-and-disable) automatic index compaction.
+
 If ADR is disabled, run `sys.sp_persistent_version_cleanup` to clean up previous versions still in the PVS.
 
 ## Examples
@@ -123,4 +125,3 @@ EXECUTE sys.sp_persistent_version_cleanup;
 - [Accelerated database recovery](../accelerated-database-recovery-concepts.md)
 - [Monitor and troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md)
 - [Manage accelerated database recovery](../accelerated-database-recovery-management.md)
-

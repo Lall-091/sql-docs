@@ -4,7 +4,7 @@ description: Learn to design your first relational database in Azure SQL Databas
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: wiassaf, mathoma, v-masebo, randolphwest
-ms.date: 02/17/2026
+ms.date: 03/10/2026
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: tutorial
@@ -44,8 +44,8 @@ Azure SQL Database creates an IP firewall at the server-level. This firewall pre
 > [!IMPORTANT]  
 > Azure SQL Database communicates over port 1433. If you're trying to connect to this service from within a corporate network, outbound traffic over port 1433 might not be allowed by your network's firewall. If so, you can't connect to your database unless your administrator opens port 1433.
 
-1. After the deployment completes, select **SQL databases** from the Azure portal menu or search for and select *SQL databases* from any page.
-
+1. After the deployment completes, go to your new resource, or visit the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
 1. Select *yourDatabase* on the **SQL databases** page. The overview page for your database opens, showing you the fully qualified **Server name** (such as `contosodatabaseserver01.database.windows.net`) and provides options for further configuration.
 
    :::image type="content" source="media/design-first-database-tutorial/server-name.png" alt-text="Screenshot of the Azure portal, database overview page with the server name highlighted." lightbox="media/design-first-database-tutorial/server-name.png":::
@@ -105,8 +105,8 @@ Use [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) 
 
 Use the [Azure portal query editor for Azure SQL Database](query-editor.md) to connect to your Azure SQL database.
 
-1. Navigate to your SQL database in the Azure portal. For example, visit [your Azure SQL hub page](https://aka.ms/azuresqlhub), and select your Azure SQL Database.
-
+1. Navigate to your SQL database in the Azure portal. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
 1. On your SQL database **Overview** page in the [Azure portal](https://portal.azure.com), select **Query editor (preview)** from the resource menu.
 
    :::image type="content" source="media/design-first-database-tutorial/find-query-editor.png" alt-text="Screenshot that shows selecting query editor.":::

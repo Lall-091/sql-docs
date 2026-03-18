@@ -4,7 +4,7 @@ description: Create Azure SQL Managed Instance by using the Azure portal, PowerS
 author: vladai78
 ms.author: vladiv
 ms.reviewer: mathoma, randolphwest
-ms.date: 02/19/2026
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -53,16 +53,11 @@ To create your instance in the Azure portal, you'll first need to sign into the 
 
 To create your instance, follow these steps: 
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Managed Instance**, select **Show options**.
-1. In the **Azure SQL Managed Instance options** window, select **Create SQL Managed Instance**.
-
-   :::image type="content" source="media/instance-create-quickstart/show-options-create-sql-managed-instance.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="media/instance-create-quickstart/show-options-create-sql-managed-instance.png":::
+[!INCLUDE [create-sql-managed-instance](../includes/sql-managed-instance/create-sql-managed-instance.md)]
 
 ### Basics tab
 
-Fill out mandatory information required on the **Basics** tab, which is the minimum requirement to provision a SQL Managed Instance. 
+Fill out mandatory information required on the **Basics** tab, which is the minimum requirement to provision a SQL managed instance. 
 
 The following table provides details for the required information on the **Basics** tab: 
 
@@ -149,9 +144,7 @@ On the **Review + create** tab, review your choices, and then select **Create** 
 
 1. Select **Deployment in progress** in the notification to open the SQL Managed Instance window and further monitor the deployment progress. 
 
-Once deployment completes, navigate to your resource group to view your SQL managed instance: 
-
-   :::image type="content" source="./media/instance-create-quickstart/azure-sql-managed-instance-resources.png" alt-text="Screenshot of the SQL Managed Instance resources in the Azure portal.":::
+Once deployment completes, navigate to your [resource group](https://portal.azure.com/#servicemenu/Microsoft_Azure_Resources/ResourceManager/resourcegroups) to view your SQL managed instance. 
 
 > [!TIP]
 > If you closed your web browser or moved away from the deployment progress screen, you can [monitor the provisioning operation](management-operations-monitor.md#monitor-operations) via the **Overview** page for your SQL managed instance in the Azure portal, PowerShell, or the Azure CLI. 

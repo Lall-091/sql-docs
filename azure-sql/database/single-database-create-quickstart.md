@@ -43,10 +43,11 @@ This quickstart creates a single database in the [serverless compute tier](serve
 
 To create a single database in the Azure portal:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/single-database-create-quickstart/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/single-database-create-quickstart/show-options-create-sql-database.png":::
+   :::image type="content" source="media/single-database-create-quickstart/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/single-database-create-quickstart/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 1. For **Resource group**, select **Create new**, enter *myResourceGroup*, and select **OK**.
@@ -261,8 +262,9 @@ Create a single database with the [New-AzSqlDatabase](/powershell/module/az.sql/
 
 Once your database is created, you can use the **Query editor (preview)** in the Azure portal to connect to the database and query data. For more information, see [Azure portal query editor for Azure SQL Database](query-editor.md).
 
-1. In the portal, search for and select **SQL databases**, and then select your database from the list.
-1. On the page for your database, select **Query editor (preview)** in the left menu.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**. Select your database from the list.
+1. In the resource menu, select **Query editor (preview)**.
 1. Enter your **SQL authentication** server admin login information or use **Microsoft Entra authentication**.
 
     [!INCLUDE [entra-id](../includes/entra-id.md)]

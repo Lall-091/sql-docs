@@ -1,10 +1,10 @@
 ---
-title: "Query Profiler in MSSQL Extension for Visual Studio Code (Preview)"
-description: Learn how to use Query Profiler in the MSSQL extension for Visual Studio Code to capture and monitor real-time database activity using Extended Events, directly inside your editor.
+title: Query Profiler in MSSQL Extension for Visual Studio Code (Preview)
+description: Learn how to use Query Profiler in the MSSQL extension for Visual Studio Code to capture and monitor database activity using Extended Events.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: roblescarlos
-ms.date: 02/21/2026
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -13,16 +13,16 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# Query Profiler (Preview)
+# Query Profiler (preview)
 
-The Query Profiler in the MSSQL extension for Visual Studio Code lets you capture and monitor database activity in real time, directly inside your editor. Powered by Extended Events, Query Profiler delivers low-overhead performance monitoring that helps you quickly observe live T-SQL activity, identify slow operations, and spot performance bottlenecks while you build.
+The Query Profiler in the MSSQL extension for Visual Studio Code captures and monitors database activity in real time using [Extended Events](../../../relational-databases/extended-events/extended-events.md). You can observe live T-SQL activity, identify slow operations, and find performance bottlenecks during development.
 
-Query Profiler supports SQL Server (on-premises or in private and public cloud environments) and Azure SQL Database. You can monitor active sessions, review execution details, and understand how your application interacts with your database during development and testing, without switching between monitoring tools and your editor.
+Query Profiler supports SQL Server (on-premises or in cloud environments), Azure SQL Database, and SQL database in Fabric endpoints. You can monitor active sessions, review execution details, and understand how your application interacts with your database during development and testing.
 
 :::image type="content" source="media/mssql-query-profiler/query-profiler-grid.png" alt-text="Screenshot of the Query Profiler live events grid showing captured database activity in the MSSQL extension for Visual Studio Code." lightbox="media/mssql-query-profiler/query-profiler-grid.png":::
 
 > [!TIP]  
-> Query Profiler is currently in preview and might change based on feedback. Join our community at [GitHub Discussions](https://aka.ms/vscode-mssql-discussions) to share ideas or report issues.
+> Query Profiler is currently in preview and might change based on feedback. Join the community at [GitHub Discussions](https://aka.ms/vscode-mssql-discussions) to share ideas or report issues.
 
 ## Features
 
@@ -73,18 +73,28 @@ When the Query Profiler panel opens with no active session, it shows the **New S
 
 1. Verify or change the **Connection** for the profiling session.
 
-1. Select a **Template** from the dropdown list. Available templates depend on your connection target:
+1. Select a **Template** from the dropdown list. Available templates depend on your connection target.
 
-   - **Standard_OnPrem**: Standard profiling template for on-premises SQL Server.
-   - **TSQL_OnPrem**: T-SQL profiling template for on-premises SQL Server.
-   - **TSQL_Locks**: T-SQL profiling template with lock events for on-premises SQL Server.
-   - **TSQL_Duration**: T-SQL profiling template filtering by duration for on-premises SQL Server.
-   - **Standard_Azure**: Standard profiling template for Azure SQL Database.
+   **SQL Server (on-premises) templates**:
 
-   :::image type="content" source="media/mssql-query-profiler/query-profiler-templates.png" alt-text="Screenshot of the template selection dropdown showing available profiler templates." lightbox="media/mssql-query-profiler/query-profiler-templates.png":::
+   | Template | Events captured | Description |
+   | --- | --- | --- |
+   | **Standard_OnPrem** | `sql_batch_completed`, `sql_batch_starting`, `rpc_starting`, `rpc_completed`, `sp_statement_starting`, `sp_statement_completed`, `attention`, `existing_connection`, `login`, `logout` | Comprehensive profiling template that captures SQL batch and RPC activity, stored procedure statement-level events, and connection events. Provides the most detailed view of server activity. |
+   | **TSQL_OnPrem** | `sql_batch_completed`, `sql_batch_starting`, `existing_connection`, `login`, `logout` | Lightweight template focused on T-SQL batch execution. Captures batch start and completion events without stored procedure or RPC detail, reducing overhead for scenarios where only top-level query activity is needed. |
+   | **TSQL_Locks** | `sql_batch_completed`, `sql_batch_starting`, `lock_acquired`, `lock_released`, `existing_connection`, `login`, `logout` | Captures T-SQL batch events along with lock acquisition and release events. Useful for diagnosing blocking, deadlocks, and lock contention issues. |
+   | **TSQL_Duration** | `sql_batch_completed` (filtered: duration >= 1000 microseconds), `sql_batch_starting`, `existing_connection`, `login`, `logout` | Captures T-SQL batch events but filters `sql_batch_completed` to only include batches that take 1 millisecond or longer. Useful for identifying slow queries while reducing noise from fast-executing statements. |
+
+   **Azure SQL Database and SQL database in Fabric templates**:
+
+   | Template | Events captured | Description |
+   | --- | --- | --- |
+   | **Standard_Azure** | `sql_batch_completed`, `sql_batch_starting`, `rpc_starting`, `rpc_completed`, `attention`, `existing_connection`, `login`, `logout` | Standard profiling template for Azure SQL Database. Captures SQL batch and RPC activity with connection events. Similar to Standard_OnPrem but without stored procedure statement-level events. |
+   | **TSQL_Azure** | `sql_batch_completed`, `sql_batch_starting`, `existing_connection`, `login`, `logout` | Lightweight T-SQL profiling template for Azure SQL Database. Captures batch execution events without RPC or stored procedure detail. |
 
    > [!NOTE]  
-   > When you select Azure SQL Database as the target, the extension automatically selects the `Standard_Azure` template. If only one valid template is available, the extension selects it automatically, or shows it as read-only text.
+   > Azure SQL Database and SQL database in Fabric templates create sessions scoped to the database (`ON DATABASE`) rather than the server. Lock and duration-filtered templates aren't available for these connections.
+
+   :::image type="content" source="media/mssql-query-profiler/query-profiler-templates.png" alt-text="Screenshot of the template selection dropdown showing available profiler templates." lightbox="media/mssql-query-profiler/query-profiler-templates.png":::
 
 1. Enter a **Session name**. Press **Enter** to confirm or **Escape** to cancel.
 
@@ -211,7 +221,7 @@ Query Profiler works with the following SQL Server and Azure SQL targets:
 - No saving or loading of filter presets.
 - No replay of traces or script generation from captured events.
 - No offline analysis without an existing `.xel` file or a live connection.
-- Azure SQL Managed Instance and SQL database in Fabric endpoints aren't guaranteed to be supported in this preview.
+- Azure SQL Managed Instance endpoints aren't guaranteed to be supported in this preview.
 
 ## Feedback and support
 

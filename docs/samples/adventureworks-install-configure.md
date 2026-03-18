@@ -135,12 +135,12 @@ When you create a new database in SQL Database, you can create a blank database,
 Follow these steps to deploy a new sample `AdventureWorksLT` database in Azure SQL Database:
 
 1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/adventureworks-install-configure/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/adventureworks-install-configure/show-options-create-sql-database.png":::
+   :::image type="content" source="media/adventureworks-install-configure/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/adventureworks-install-configure/create-sql-database.png":::
 
-1. Fill in the requested information to create your database.
+1. In the **Create SQL Database** page, fill in the necessary information to create your database.
 1. On the **Additional settings** tab, choose **Sample** as the existing data under **Data source**:
 
    :::image type="content" source="media/adventureworks-install-configure/deploy-sample-to-azure.png" alt-text="Screenshot that shows the Sample option under Use existing data." lightbox="media/adventureworks-install-configure/deploy-sample-to-azure.png":::

@@ -1,10 +1,10 @@
 ---
-title: "Maintaining Indexes Optimally to Improve Performance and Reduce Resource Utilization"
+title: Maintain Indexes Optimally to Improve Performance and Reduce Resource Utilization
 description: This article describes index maintenance concepts, and a recommended strategy to maintain indexes.
-author: dimitri-furman
-ms.author: dfurman
-ms.reviewer: mikeray, randolphwest
-ms.date: 01/05/2026
+author: MikeRayMSFT
+ms.author: mikeray
+ms.reviewer: dfurman, randolphwest
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
@@ -108,6 +108,9 @@ You can reduce index fragmentation and increase page density by using one of the
 
 - Reorganize an index
 - Rebuild an index
+
+> [!TIP]  
+> For a low overhead alternative to index reorganize and rebuild, see [Automatic index compaction (preview)](automatic-index-compaction.md).
 
 For [partitioned](../partitions/partitioned-tables-and-indexes.md) indexes, you can use either of the following methods on all partitions or a single partition of an index.
 
@@ -215,7 +218,7 @@ Rebuilding a partition after loading or modifying data ensures all data is store
 When reorganizing a columnstore index, the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] compresses each closed row group in delta store into columnstore as a compressed row group. Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the `REORGANIZE` command performs the following additional defragmentation optimizations online:
 
 - Physically removes rows from a row group when 10% or more of the rows are logically deleted. For example, if a compressed row group of 1 million rows has 100,000 rows deleted, the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] removes the deleted rows and recompress the row group with 900,000 rows, reducing storage footprint.
-- Combines one or more compressed row groups to increase rows per rowgroup, up to the maximum of 1,048,576 rows. For example, if you bulk insert five batches of 102,400 rows each, you get five compressed row groups. If you run REORGANIZE, these row groups are merged into one compressed rowgroup with 512,000 rows. This assumes there were no dictionary size or memory limitations.
+- Combines one or more compressed row groups to increase rows per rowgroup, up to the maximum of 1,048,576 rows. For example, if you bulk insert five batches of 102,400 rows each, you get five compressed row groups. If you run `REORGANIZE`, these row groups are merged into one compressed rowgroup with 512,000 rows. This assumes there were no dictionary size or memory limitations.
 - The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] attempts to combine row groups in which 10% or more of the rows are marked as deleted with other row groups. For example, row group 1 is compressed and has 500,000 rows, while rowgroup 21 is compressed and has 1,048,576 rows. Rowgroup 21 has 60% of its rows marked as deleted, which leaves 409,830 rows. The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] favors combining these two row groups to compress a new row group that has 909,830 rows.
 
 After performing data loads, you can have multiple small row groups in the delta store. You can use `ALTER INDEX REORGANIZE` to force these row groups into columnstore, and then combine smaller compressed row groups into larger compressed row groups. The reorganize operation also removes rows that are marked as deleted in the columnstore.
@@ -294,7 +297,7 @@ Rowstore indexes with more than 128 extents are rebuilt in two separate phases: 
 
 The `ALTER INDEX REORGANIZE` statement requires the data file containing the index to have space available, because the operation can only allocate temporary work pages in the same file, not in another file within the same filegroup. Even though the filegroup has free space available, the user can still encounter error 1105: `Could not allocate space for object '###' in database '###' because the '###' filegroup is full. Create disk space by deleting unneeded files, dropping objects in the filegroup, adding additional files to the filegroup, or setting autogrowth on for existing files in the filegroup` during the reorganize operation if a data file is out of space.
 
-An index can't be reorganized when `ALLOW_PAGE_LOCKS` is set to OFF.
+An index can't be reorganized when `ALLOW_PAGE_LOCKS` is set to `OFF`.
 
 Up to [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)], rebuilding a clustered columnstore index is an offline operation. The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] has to acquire an exclusive lock on the table or partition while the rebuild occurs. The data is offline and unavailable during the rebuild even when using `NOLOCK`, read-committed snapshot isolation (RCSI), or snapshot isolation. Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], a clustered columnstore index can be rebuilt using the `ONLINE = ON` option.
 
@@ -331,7 +334,7 @@ ORDER BY page_count DESC;
 
 The previous statement returns a result set similar to the following:
 
-```
+```output
 schema_name  object_name           index_name                               index_type    avg_fragmentation_in_percent avg_page_space_used_in_percent page_count  alloc_unit_type_desc
 ------------ --------------------- ---------------------------------------- ------------- ---------------------------- ------------------------------ ----------- --------------------
 dbo          FactProductInventory  PK_FactProductInventory                  CLUSTERED     0.390015600624025            99.7244625648629               3846        IN_ROW_DATA
@@ -358,8 +361,8 @@ AS (SELECT object_id,
     FROM sys.dm_db_column_store_row_group_physical_stats
     WHERE state_desc = 'COMPRESSED'
     GROUP BY object_id, index_id, partition_number),
-/* For nonclustered columnstore, include rows in the delete buffer */
-columnstore_internal_partition
+             /* For nonclustered columnstore, include rows in the delete buffer */
+             columnstore_internal_partition
 AS (SELECT object_id,
            index_id,
            partition_number,

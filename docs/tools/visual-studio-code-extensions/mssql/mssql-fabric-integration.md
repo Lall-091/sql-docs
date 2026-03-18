@@ -1,10 +1,10 @@
 ---
 title: Fabric Integration in Visual Studio Code with MSSQL
-description: Learn how to use the MSSQL extension for Visual Studio Code to connect to Fabric workspaces and provision SQL databases directly from your editor, with no connection strings or portal switching required.
+description: Learn how to use the MSSQL extension for Visual Studio Code to connect to Fabric workspaces and provision SQL databases.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: roblescarlos, tsiddique
-ms.date: 02/21/2026
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -13,30 +13,27 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# Fabric integration (Preview)
+# Fabric integration
 
-The MSSQL extension for Visual Studio Code supports connecting to SQL database in Microsoft Fabric. The Connection dialog includes a Fabric connectivity option that lets you sign in with Microsoft Entra ID. You can browse Fabric workspaces in a tree view, search across workspaces, and connect to SQL databases or endpoints without manually configuring connection strings. The extension supports persistent sign-in, tenant switching, and a seamless **Open in MSSQL** flow from the Fabric extension.
+The MSSQL extension for Visual Studio Code supports connecting to SQL database in Microsoft Fabric. The Connection dialog includes a Fabric connectivity option that you use to sign in using Microsoft Entra ID. You can browse Fabric workspaces in a tree view, search across workspaces, and connect to SQL databases or endpoints without manually configuring connection strings. The extension supports persistent sign-in, tenant switching, and a seamless **Open in MSSQL** flow from the Fabric extension.
 
-You can create new SQL databases in Fabric directly from Visual Studio Code. Authenticate, select or create a workspace, specify a database name, and connect after provisioning completes. The provisioning process displays a progress indicator, confirms successful creation before establishing the connection.
+You can create new SQL databases in Fabric directly from Visual Studio Code. Authenticate, select or create a workspace, specify a database name, and connect after provisioning completes. An indicator keeps you up to date on the progress.
 
-> [!TIP]  
-> Fabric integration features are currently in preview and might change based on feedback. Join our community at [GitHub Discussions](https://aka.ms/vscode-mssql-discussions) to share ideas or report issues.
+## Fabric connectivity (Browse)
 
-## Fabric Connectivity (Browse)
-
-The Fabric browse experience in the MSSQL extension allows developers to connect seamlessly to their SQL databases in Fabric or SQL analytics endpoints without manually copying connection strings from the Fabric portal. With a single Microsoft Entra ID authentication, you can browse available workspaces in a tree view and connect directly from within Visual Studio Code.
+Use the Fabric browse experience in the MSSQL extension to connect to your SQL database in Fabric or SQL analytics endpoints without manually copying connection strings from the Fabric portal.
 
 ### Capabilities
 
-- **Dedicated Fabric experience**: Provides an option within the Connection dialog tailored specifically for Fabric users, simplifying the connection process by focusing on Fabric databases.
+- **Dedicated Fabric experience**: A Fabric-specific option within the Connection dialog for connecting to Fabric databases.
 
-- **Seamless authentication**: Utilizes your Microsoft account for secure and persistent sign-in, so users only need to authenticate once to access all their Fabric workspaces and databases.
+- **Seamless authentication**: Uses your Microsoft account for sign-in. You authenticate once to access all your Fabric workspaces and databases.
 
-- **Workspace browsing**: Displays all Fabric workspaces in a hierarchical tree view with resources loaded on demand, making it easy to explore and manage your Fabric environment.
+- **Workspace browsing**: Displays all Fabric workspaces in a hierarchical tree view with resources loaded on demand.
 
-- **Search and discovery**: Offers real-time search functionality to quickly locate the appropriate workspace or database without scrolling through long lists.
+- **Search and discovery**: Real-time search to locate workspaces or databases without scrolling through long lists.
 
-- **Cross-extension support**: Allows opening Fabric databases directly in MSSQL from the Fabric extension or portal, providing a consistent and integrated experience across tools.
+- **Cross-extension support**: Open Fabric databases in the MSSQL extension from the Fabric extension or portal.
 
 ### Prerequisites
 
@@ -100,27 +97,27 @@ If something goes wrong, the UI shows a clear message and recommended actions:
 | **Network restrictions** | `Connection blocked by network policy.` | Verify corporate, VPN, or firewall settings. |
 
 > [!IMPORTANT]  
-> During **Preview**, browsing large tenants might load children **on demand** to keep the tree responsive. You might notice brief loading indicators when expanding nodes with many items.
+> To keep the tree responsive, browsing large tenants might load children **on demand**. You might notice brief loading indicators when expanding nodes with many items.
 
-### Known limitations (Preview)
+### Known limitations
 
-- Only **SQL databases and SQL analytics endpoints** are supported. Opening other Fabric item types from MSSQL isn't available.
-- Cross-tenant browsing is supported by switching tenants, but each database connection must be created separately. There's no unified cross-tenant or multi-database connection.
+- Only **SQL databases and SQL analytics endpoints** are supported. You can't open other Fabric item types from the MSSQL extension.
+- You can browse across tenants by switching tenants, but you must create each database connection separately. There's no unified cross-tenant or multi-database connection.
 - Offline sign-in and device-code authentication flows aren't supported.
 
 ## SQL database in Fabric provisioning
 
-The SQL database provisioning experience is integrated into the Deployments page of the MSSQL extension. You can create and connect to new Fabric SQL databases without leaving Visual Studio Code. This streamlined workflow reduces the need to switch between portals and simplifies database creation and connection.
+The SQL database provisioning experience is integrated into the Deployments page of the MSSQL extension. You can create and connect to new Fabric SQL databases without leaving Visual Studio Code.
 
 ### Capabilities
 
-- **Simple workflow**: Guides you through authentication, workspace selection or creation, database naming, and provisioning all within the **Deployments** page, making database setup straightforward and efficient.
+- **Guided workflow**: Walks you through authentication, workspace selection or creation, database naming, and provisioning from the **Deployments** page.
 
-- **Immediate connection**: Automatically adds the newly provisioned database to your connections list, so you can start querying and developing without extra configuration steps.
+- **Immediate connection**: Automatically adds the newly provisioned database to your connections list.
 
-- **Consistent experience**: Aligns the provisioning flow with other supported backends, such as local SQL Server containers, ensuring a familiar and unified user experience across different environments.
+- **Consistent experience**: Follows the same provisioning flow as other supported backends, such as local SQL Server containers.
 
-- **Capacity awareness**: Clearly indicates when workspaces are disabled due to capacity constraints, providing guidance to help you understand and resolve provisioning limitations.
+- **Capacity awareness**: Indicates when capacity constraints disable workspaces, with tooltips explaining the reason.
 
 ### Prerequisites
 
@@ -138,7 +135,7 @@ The SQL database provisioning experience is integrated into the Deployments page
 1. When provisioning finishes, the database is **auto-connected** and appears under **Connections**, with a success confirmation.
 
 > [!TIP]  
-> The end-to-end flow typically finishes in less than a minute. This database provisioning experience lets you prototype quickly without switching to the Fabric portal.
+> The end-to-end flow typically finishes in less than a minute.
 
 The following animation shows the SQL database in Fabric provisioning workflow in action:
 
@@ -154,7 +151,7 @@ The following animation shows the SQL database in Fabric provisioning workflow i
 ### Post-provisioning behavior
 
 - The new connection adopts the **Connection Group** you selected (optional) for quick visual identification.
-- You can pair this experience with the **Fabric browse** feature in another Visual Studio Code environment, so you can discover and connect to the newly created database without manual setup.
+- You can pair this experience with the **Fabric browse** feature to discover and connect to the newly created database from another Visual Studio Code environment.
 
 ### Troubleshooting
 
@@ -163,11 +160,11 @@ The following animation shows the SQL database in Fabric provisioning workflow i
 - **Network or tenant errors**: Reauthenticate or switch the signed-in account from the account menu.
 - **Provisioning timeout or failure**: If the wizard doesn't complete, retry the operation or check Fabric service health.
 
-### Known limitations (Preview)
+### Known limitations
 
-- Provisioning is limited to **SQL databases** in Fabric. Other Fabric item types are out of scope.
-- Cross-tenant provisioning is supported when you explicitly select a different tenant during authentication. However, scenarios involving multiple simultaneous tenants or automated cross-tenant workflows aren't yet supported.
-- Provisioning can't be queued when capacity is fully consumed.
+- You can only provision **SQL databases** in Fabric. Other Fabric item types aren't supported.
+- You can provision across tenants when you explicitly select a different tenant during authentication. However, Visual Studio Code doesn't yet support scenarios involving multiple simultaneous tenants or automated cross-tenant workflows.
+- You can't queue provisioning when capacity is fully consumed.
 
 ## Feedback and support
 
