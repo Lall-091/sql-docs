@@ -3,7 +3,7 @@ title: "Developing a Custom Source Component"
 description: "Developing a Custom Source Component"
 author: chugugrace
 ms.author: chugu
-ms.date: "03/17/2017"
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: "reference"
@@ -30,10 +30,10 @@ dev_langs:
   
  For a general overview of data flow component development, see [Developing a Custom Data Flow Component](../../integration-services/extending-packages-custom-objects/data-flow/developing-a-custom-data-flow-component.md).  
   
-## Design Time  
+## Design time  
  Implementing the design-time functionality of a source component involves specifying a connection to an external data source, adding and configuring output columns that reflect the data source, and validating that the component is ready to execute. By definition, a source component has zero inputs and one or more asynchronous outputs.  
   
-### Creating the Component  
+### Creating the component  
  Source components connect to external data sources by using <xref:Microsoft.SqlServer.Dts.Runtime.ConnectionManager> objects defined in a package. They indicate their requirement for a connection manager by adding an element to the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.RuntimeConnectionCollection%2A> collection of the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ComponentMetaData%2A> property. This collection serves two purposes-to hold references to connection managers in the package used by the component, and to advertise the need for a connection manager to the designer. When an <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSRuntimeConnection100> has been added to the collection, the **Advanced Editor** displays the **Connection Properties** tab, which lets users select or create a connection in the package.  
   
  The following code example shows an implementation of <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ProvideComponentProperties%2A> that adds an output, and adds a <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSRuntimeConnection100> object to the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.RuntimeConnectionCollection%2A>.  
@@ -41,9 +41,9 @@ dev_langs:
 ```csharp  
 using System;  
 using System.Collections;  
-using System.Data;  
-using System.Data.SqlClient;  
-using System.Data.OleDb;  
+using System.Data;
+using Microsoft.Data.SqlClient;
+using System.Data.OleDb;
 using Microsoft.SqlServer.Dts.Runtime;  
 using Microsoft.SqlServer.Dts.Runtime.Wrapper;  
 using Microsoft.SqlServer.Dts.Pipeline;  
@@ -69,9 +69,9 @@ namespace Microsoft.Samples.SqlServer.Dts
 ```  
   
 ```vb  
-Imports System.Data  
-Imports System.Data.SqlClient  
-Imports Microsoft.SqlServer.Dts.Runtime  
+Imports System.Data
+Imports Microsoft.Data.SqlClient
+Imports Microsoft.SqlServer.Dts.Runtime
 Imports Microsoft.SqlServer.Dts.Runtime.Wrapper  
 Imports Microsoft.SqlServer.Dts.Pipeline  
 Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper  
@@ -96,7 +96,7 @@ Public Class MySourceComponent
 End Class  
 ```  
   
-### Connecting to an External Data Source  
+### Connecting to an external data source  
  After a connection has been added to the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.RuntimeConnectionCollection%2A>, you override the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.AcquireConnections%2A> method to establish a connection to the external data source. This method is called during both design and execution time. The component should establish a connection to the connection manager specified by the run-time connection, and subsequently, to the external data source.  
   
  After the connection is established, it should be cached internally by the component and released when the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ReleaseConnections%2A> method is called. The <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.ReleaseConnections%2A> method is called at design and execution time, like the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.AcquireConnections%2A> method. Developers override this method, and release the connection established by the component during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.AcquireConnections%2A>.  
@@ -157,8 +157,8 @@ Public Overrides Sub ReleaseConnections()
 End Sub  
 ```  
   
-### Creating and Configuring Output Columns  
- The output columns of a source component reflect the columns from the external data source that the component adds to the data flow during execution. At design time, you add output columns after the component has been configured to connect to an external data source. The design-time method that a component uses to add the columns to its output collection can vary based on the needs of the component, although they should not be added during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.Validate%2A> or <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.AcquireConnections%2A>. For example, a component that contains a SQL statement in a custom property that controls the data set for the component may add its output columns during the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.SetComponentProperty%2A> method. The component checks to see whether it has a cached connection, and, if it does, connects to the data source and generates its output columns.  
+### Creating and configuring output columns  
+ The output columns of a source component reflect the columns from the external data source that the component adds to the data flow during execution. At design time, you add output columns after the component has been configured to connect to an external data source. The design-time method that a component uses to add the columns to its output collection can vary based on the needs of the component, although they shouldn't be added during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.Validate%2A> or <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.AcquireConnections%2A>. For example, a component that contains a SQL statement in a custom property that controls the data set for the component might add its output columns during the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.SetComponentProperty%2A> method. The component checks to see whether it has a cached connection, and, if it does, connects to the data source and generates its output columns.  
   
  After an output column has been created, set its data type properties by calling the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSOutputColumn100.SetDataTypeProperties%2A> method. This method is necessary because the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSOutputColumn100.DataType%2A>, <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSOutputColumn100.Length%2A>, <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSOutputColumn100.Precision%2A>, and <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSOutputColumn100.CodePage%2A> properties are read-only and each property is dependent on the settings of the other. This method enforces the need for these values to be set consistently, and the data flow task validates that they are set correctly.  
   
@@ -353,8 +353,8 @@ Private Sub CreateColumnsFromDataTable()
 End Sub  
 ```  
   
-### Validating the Component  
- You should validate a source component and verify that the columns defined in its output column collections match the columns at the external data source. Sometimes, verifying the output columns against the external data source can be impossible, such as in a disconnected state, or when it is preferable to avoid lengthy round trips to the server. In these situations, the columns in the output can still be validated by using the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSOutput100.ExternalMetadataColumnCollection%2A> of the output object. For more information, see [Validating a Data Flow Component](../../integration-services/extending-packages-custom-objects/data-flow/validating-a-data-flow-component.md).  
+### Validating the component  
+ You should validate a source component and verify that the columns defined in its output column collections match the columns at the external data source. Sometimes, verifying the output columns against the external data source can be impossible, such as in a disconnected state, or when it's preferable to avoid lengthy round trips to the server. In these situations, the columns in the output can still be validated by using the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSOutput100.ExternalMetadataColumnCollection%2A> of the output object. For more information, see [Validating a Data Flow Component](../../integration-services/extending-packages-custom-objects/data-flow/validating-a-data-flow-component.md).  
   
  This collection exists on both input and output objects and you can populate it with the columns from the external data source. You can use this collection to validate the output columns when [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer is offline, when the component is disconnected, or when the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.ValidateExternalMetadata%2A> property is **false**. The collection should be first populated at the same time that the output columns are created. Adding external metadata columns to the collection is relatively easy because the external metadata column should initially match the output column. The data type properties of the column should have already been set correctly, and the properties can be copied directly to the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSExternalMetadataColumn100> object.  
   
@@ -395,13 +395,13 @@ Private Sub CreateExternalMetaDataColumn(ByVal output As IDTSOutput100, ByVal ou
     End Sub  
 ```  
   
-## Run Time  
+## Run time  
  During execution, components add rows to output buffers that are created by the data flow task and provided to the component in <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PrimeOutput%2A>. Called once for source components, the method receives an output buffer for each <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSOutput100> of the component that is connected to a downstream component.  
   
-### Locating Columns in the Buffer  
+### Locating columns in the buffer  
  The output buffer for a component contains the columns defined by the component and any columns added to the output of a downstream component. For example, if a source component provides three columns in its output, and the next component adds a fourth output column, the output buffer provided for use by the source component contains these four columns.  
   
- The order of the columns in a buffer row is not defined by the index of the output column in the output column collection. An output column can only be accurately located in a buffer row by using the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.DTSBufferManagerClass.FindColumnByLineageID%2A> method of the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.BufferManager%2A>. This method locates the column with the specified lineage ID in the specified buffer, and returns its location in the row. The indexes of the output columns are typically located in the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PreExecute%2A> method, and stored for use during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PrimeOutput%2A>.  
+ The order of the columns in a buffer row isn't defined by the index of the output column in the output column collection. An output column can only be accurately located in a buffer row by using the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.DTSBufferManagerClass.FindColumnByLineageID%2A> method of the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.BufferManager%2A>. This method locates the column with the specified lineage ID in the specified buffer, and returns its location in the row. The indexes of the output columns are typically located in the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PreExecute%2A> method, and stored for use during <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PrimeOutput%2A>.  
   
  The following code example finds the location of the output columns in the output buffer during a call to <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PreExecute%2A>, and stores them in an internal structure. The name of the column is also stored in the structure and is used in the code example for the  <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PrimeOutput%2A> method in the next section of this topic.  
   
@@ -445,10 +445,10 @@ Public Overrides Sub PreExecute()
 End Sub  
 ```  
   
-### Processing Rows  
+### Processing rows  
  Rows are added to the output buffer by calling the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineBuffer.AddRow%2A> method, which creates a new buffer row with empty values in its columns. The component then assigns values to the individual columns. The output buffers provided to a component are created and monitored by the data flow task. As they become full, the rows in the buffer are moved to the next component. There is no way to determine when a batch of rows has been sent to the next component because the movement of rows by the data flow task is transparent to the component developer, and the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineBuffer.RowCount%2A> property is always zero on output buffers. When a source component is finished adding rows to its output buffer, it notifies the data flow task by calling the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineBuffer.SetEndOfRowset%2A> method of the <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineBuffer>, and the remaining rows in the buffer are passed to the next component.  
   
- While the source component reads rows from the external data source, you may want to update the "Rows read" or "BLOB bytes read" performance counters by calling the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.IncrementPipelinePerfCounter%2A> method. For more information, see [Performance Counters](../../integration-services/performance/performance-counters.md).  
+ While the source component reads rows from the external data source, you might want to update the "Rows read" or "BLOB bytes read" performance counters by calling the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData100.IncrementPipelinePerfCounter%2A> method. For more information, see [Performance Counters](../../integration-services/performance/performance-counters.md).  
   
  The following code example shows a component that adds rows to an output buffer in <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PrimeOutput%2A>. The indexes of the output columns in the buffer were located using <xref:Microsoft.SqlServer.Dts.Pipeline.PipelineComponent.PreExecute%2A> in the previous code example.  
   
@@ -520,7 +520,7 @@ End Sub
 ```  
   
 ## Sample  
- The following sample shows a simple source component that uses a File connection manager to load the binary contents of files into the data flow. This sample does not demonstrate all the methods and functionality discussed in this topic. It demonstrates the important methods that every custom source component must override, but does not contain code for design-time validation.  
+ The following sample shows a simple source component that uses a File connection manager to load the binary contents of files into the data flow. This sample doesn't demonstrate all the methods and functionality discussed in this topic. It demonstrates the important methods that every custom source component must override, but doesn't contain code for design-time validation.  
   
 ```csharp  
 using System;  
@@ -661,7 +661,7 @@ Namespace BlobSrc
 End Namespace  
 ```  
   
-## See Also  
+## Related content  
  [Developing a Custom Destination Component](../../integration-services/extending-packages-custom-objects-data-flow-types/developing-a-custom-destination-component.md)   
  [Creating a Source with the Script Component](../../integration-services/extending-packages-scripting-data-flow-script-component-types/creating-a-source-with-the-script-component.md)  
   
