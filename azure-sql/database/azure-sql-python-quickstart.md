@@ -100,7 +100,7 @@ The mssql-python driver has built-in support for Microsoft Entra authentication.
 
 ## [ActiveDirectoryDefault (Recommended)](#tab/sql-default)
 
-`ActiveDirectoryDefault` automatically discovers credentials from multiple sources without requiring interactive login. This is the **recommended option for local development**.
+`ActiveDirectoryDefault` automatically discovers credentials from multiple sources without requiring interactive sign-in. This is the **recommended option for local development**.
 
 For the most reliable local development experience, sign in with Azure CLI first:
 
@@ -129,11 +129,14 @@ AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Da
 
 ## [Interactive Authentication](#tab/sql-inter)
 
-In Windows, Microsoft Entra Interactive Authentication can use Microsoft Entra multifactor authentication technology to set up a connection. In this mode, an Azure Authentication dialog appears and lets you enter your credentials to complete the connection.
+Microsoft Entra Interactive Authentication uses multifactor authentication technology to set up a connection. In this mode, an Azure Authentication dialog appears and lets you enter your credentials to complete the connection.
 
 ```text
 AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryInteractive;Encrypt=yes;TrustServerCertificate=no;
 ```
+
+> [!NOTE]
+> On macOS, both `ActiveDirectoryInteractive` and `ActiveDirectoryDefault` work for Microsoft Entra authentication. `ActiveDirectoryInteractive` prompts you to sign in every time you run the script. To avoid repeated sign-in prompts, sign in once via the [Azure CLI](/cli/azure/install-azure-cli) by running `az login`, then use `ActiveDirectoryDefault`, which reuses the cached credential.
 
 ## [SQL Authentication](#tab/sql-auth)
 
