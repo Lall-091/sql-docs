@@ -1,7 +1,7 @@
 ---
 title: "Use WinForms ReportViewer Control"
 description: To view reports deployed to a report server or on a local file system, you can use the WinForms ReportViewer control to render them in a Windows application.
-ms.date: 09/25/2024
+ms.date: 03/18/2026
 ms.service: reporting-services
 ms.subservice: application-integration
 ms.topic: reference
@@ -11,11 +11,12 @@ helpviewer_keywords:
   - "ReportViewer controls"
 ---
 # Use the WinForms ReportViewer control
-  To view reports that are deployed to a report server or reports that exist on the local file system, use the WinForms ReportViewer control to render them in a Windows application.  
+
+The WinForms ReportViewer control renders reports deployed to a report server or stored on the local file system in a Windows application.
   
 ## Add the ReportViewer control to a Windows application  
   
-1.  Create a new Windows application using either [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[c-sharp](../../includes/c-sharp-md.md)] or [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[visual-basic](../../includes/visual-basic-md.md)].  
+1.  Create a new Windows application by using either [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[c-sharp](../../includes/c-sharp-md.md)] or [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[visual-basic](../../includes/visual-basic-md.md)].  
   
      \- Or -  
   
@@ -27,20 +28,20 @@ helpviewer_keywords:
   
 3.  Drag the ReportViewer control onto the design surface of the Windows Form.  
   
-     A ReportViewer control named reportViewer1 is added to the form.  
+A ReportViewer control named `reportViewer1` appears on the form.
   
- After the control is added to the form, the **ReportViewer Tasks** smart tag appears and prompts you to select a report.  
+ After you add the control to the form, the **ReportViewer Tasks** smart tag appears and prompts you to select a report.
   
- If the report you wish to view is deployed to a report server, select the **\<Server Report>** option from the **Choose Report** drop-down list. After the **\<Server Report>** option is selected, two more properties appear: **Report Server Url** and **Report Path**. The **Report Server Url** is the address to the report server and the **Report Path** is the full path to the report to render.  
+ If the report you want to view is deployed to a report server, select the **\<Server Report>** option from the **Choose Report** drop-down list. After you select the **\<Server Report>** option, two more properties appear: **Report Server Url** and **Report Path**. The **Report Server Url** is the address to the report server and the **Report Path** is the full path to the report to render.  
   
  :::image type="content" source="media/windows-app-server-report-settings.png" alt-text="Screenshot of the ReportViewer Tasks smart tag, highlighting the server report.":::  
   
- If the report you wish to view a report in local mode, select either the **Design a new report** option to launch the report designer or select a report that is already part of the existing project.  
+ If you want to view a report in local mode, select either the **Design a new report** option to launch the report designer or select a report that's already part of the existing project.  
   
  :::image type="content" source="media/windows-app-local-report-settings.png" alt-text="Screenshot of the ReportViewer Tasks smart tag, highlighting the local report.":::  
   
-## Viewing reports in remote processing mode  
- The following example demonstrates how to render a report that is deployed to a report server using the WinForms ReportViewer control. This example uses the Sales Order Detail report that is included with the [!INCLUDE[ssSampleDBobject](../../includes/sssampledbobject-md.md)] sample reports project.  
+## View reports in remote processing mode
+ The following example demonstrates how to render a report deployed to a report server by using the WinForms ReportViewer control. This example uses the Sales Order Detail report included with the [!INCLUDE[ssSampleDBobject](../../includes/sssampledbobject-md.md)] sample reports project.
  
 **C#**
 ```csharp  
@@ -134,21 +135,21 @@ End Class
 ```  
   
 ## View reports in local processing mode  
- The following example demonstrates how to render a report that is part of the Windows application and isn't deployed to a report server.  
+ The following example demonstrates how to render a report that's part of the Windows application and isn't deployed to a report server.  
   
 ### To add the Sales Order Detail report to a Windows application  
   
-1.  Open the Windows project to which the report will be added.  
+1.  Open the Windows project where you want to add the report.  
   
 2.  From the **Project** menu, select **Add Existing Item**.  
   
 3.  Browse to the location where you installed the [!INCLUDE[ssSampleDBobject](../../includes/sssampledbobject-md.md)] Report Samples project.  
   
-     The download the report samples, go to [AdventureWorks Report Samples](https://go.microsoft.com/fwlink/?LinkId=404153)  
+     To download the report samples, go to [AdventureWorks Report Samples](https://go.microsoft.com/fwlink/?LinkId=404153)  
   
 4.  Select the Sales Order Detail.rdl file and select the **Add** button.  
   
-     The Sales Order Detail.rdl file should now be part of the project.  
+     The Sales Order Detail.rdl file is now part of the project.  
   
      :::image type="content" source="media/windows-app-sales-order-detail-report.png" alt-text="Screenshot of the Solution Explorer, highlighting the Sales Order Detail Report.":::  
   
@@ -157,9 +158,9 @@ End Class
      If Solution Explorer isn't visible, you can open it from the **View** menu by selecting **Solution Explorer**.  
   
     > [!NOTE]  
-    >  Renaming the file extension from rdl to rdlc will allow you to edit the report using report designer for [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[vsprvs2005](../../includes/vsprvs2005-md.md)].  
+    >  Renaming the file extension from rdl to rdlc allows you to edit the report by using the report designer for [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[vsprvs2005](../../includes/vsprvs2005-md.md)].  
   
-6.  After the report is renamed, select the file and locate the Properties window. Change the **Copy to Output Directory** property to **Copy if Newer**.  
+6.  After you rename the report, select the file and locate the Properties window. Change the **Copy to Output Directory** property to **Copy if Newer**.  
   
      :::image type="content" source="media/windows-app-copy-to-output-setting.png" alt-text="Screenshot of the Properties window, highlighting the Copy To Output setting.":::  
   
@@ -327,7 +328,7 @@ public partial class Form1 : Form
 ```  
 **VB.NET**
 ```vb  
-Imports System.Data.SqlClient  
+Imports Microsoft.Data.SqlClient  
 Imports Microsoft.Reporting.WinForms  
   
 Public Class Form1  
