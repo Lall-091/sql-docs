@@ -4,7 +4,7 @@ description: Learn about the Microsoft.Data.SqlClient namespace and how it's the
 author: cheenamalhotra
 ms.author: cmalhotra
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 03/17/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: whats-new
@@ -23,6 +23,229 @@ There are a few differences in less-used APIs compared to System.Data.SqlClient 
 ## API reference
 
 The Microsoft.Data.SqlClient API details can be found in the [.NET API Browser](/dotnet/api/microsoft.data.sqlclient).
+
+## Stable Release 7.0.0 - 2026-03-17
+
+This is the general availability release of **Microsoft.Data.SqlClient 7.0**, a major milestone for the .NET data provider for SQL Server. This release addresses the most upvoted issue in the repository's history — extracting Azure dependencies from the core package — introduces pluggable SSPI authentication, adds enhanced routing for Azure SQL Hyperscale, and delivers async read performance improvements.
+
+Also released as part of this milestone:
+- Released Microsoft.Data.SqlClient.Extensions.Abstractions 1.0.0. See [release notes](../Extensions/Abstractions/1.0/1.0.0.md).
+- Released Microsoft.Data.SqlClient.Extensions.Azure 1.0.0. See [release notes](../Extensions/Azure/1.0/1.0.0.md).
+- Released Microsoft.Data.SqlClient.Internal.Logging 1.0.0. See [release notes](../Internal/Logging/1.0/1.0.0.md).
+- Released Microsoft.Data.SqlClient.AlwaysEncrypted.AzureKeyVaultProvider 7.0.0. See [release notes](../add-ons/AzureKeyVaultProvider/7.0/7.0.0.md).
+
+### Breaking Changes
+
+#### Azure Dependencies Removed from Core Package
+
+*What Changed:*
+
+- The core `Microsoft.Data.SqlClient` package no longer depends on `Azure.Core`, `Azure.Identity`, or their transitive dependencies (e.g., `Microsoft.Identity.Client`, `Microsoft.Web.WebView2`). Azure Active Directory / Entra ID authentication functionality (`ActiveDirectoryAuthenticationProvider` and related types) has been extracted into a new `Microsoft.Data.SqlClient.Extensions.Azure` package.
+  ([#1108](https://github.com/dotnet/SqlClient/issues/1108),
+   [#3680](https://github.com/dotnet/SqlClient/pull/3680),
+   [#3902](https://github.com/dotnet/SqlClient/pull/3902),
+   [#3904](https://github.com/dotnet/SqlClient/pull/3904),
+   [#3908](https://github.com/dotnet/SqlClient/pull/3908),
+   [#3917](https://github.com/dotnet/SqlClient/pull/3917),
+   [#3982](https://github.com/dotnet/SqlClient/pull/3982),
+   [#3978](https://github.com/dotnet/SqlClient/pull/3978),
+   [#3986](https://github.com/dotnet/SqlClient/pull/3986))
+- Two additional packages were introduced to support this separation: `Microsoft.Data.SqlClient.Extensions.Abstractions` (shared types between the core driver and extensions) and `Microsoft.Data.SqlClient.Internal.Logging` (shared ETW tracing infrastructure).
+  ([#3626](https://github.com/dotnet/SqlClient/pull/3626),
+   [#3628](https://github.com/dotnet/SqlClient/pull/3628),
+   [#3967](https://github.com/dotnet/SqlClient/pull/3967),
+   [#4038](https://github.com/dotnet/SqlClient/pull/4038))
+
+*Who Benefits:*
+
+- All users benefit from a significantly lighter core package. Previously, the Azure dependency chain pulled in numerous assemblies even for applications that only needed basic SQL Server connectivity. This was the [most upvoted open issue](https://github.com/dotnet/SqlClient/issues/1108) in the repository.
+- Users who do not use Entra ID authentication no longer carry Azure-related assemblies in their build output.
+- Users who do use Entra ID authentication can now manage Azure dependency versions independently from the core driver.
+
+*Impact:*
+
+- Applications using Entra ID authentication (e.g., `ActiveDirectoryInteractive`, `ActiveDirectoryDefault`, `ActiveDirectoryManagedIdentity`, etc.) must now install the `Microsoft.Data.SqlClient.Extensions.Azure` NuGet package separately:
+
+```console
+dotnet add package Microsoft.Data.SqlClient.Extensions.Azure
+```
+
+- No code changes are required beyond adding the package reference.
+- If an Entra ID authentication method is used without the Azure package installed, the driver now provides an actionable error message guiding users to install the correct package.
+
+#### Other breaking changes
+
+- Reverted public visibility of internal interop enums (`IoControlCodeAccess` and `IoControlTransferType`) that were accidentally made public during the project merge.
+  ([#3900](https://github.com/dotnet/SqlClient/pull/3900))
+
+### Added
+
+#### Pluggable Authentication with SspiContextProvider
+
+*What Changed:*
+
+- Added a public `SspiContextProvider` property on `SqlConnection`, completing the SSPI extensibility work begun in 6.1.0. Applications can now supply a custom SSPI context provider for integrated authentication, enabling custom Kerberos ticket negotiation and NTLM username/password authentication scenarios.
+  ([#2253](https://github.com/dotnet/SqlClient/issues/2253),
+   [#2494](https://github.com/dotnet/SqlClient/pull/2494))
+
+*Who Benefits:*
+
+- Users authenticating across untrusted domains, non-domain-joined machines, or cross-platform environments where configuring integrated authentication is difficult.
+- Users running in containers who need manual Kerberos negotiation without deploying sidecars or external ticket-refresh mechanisms.
+- Users who need NTLM username/password authentication to SQL Server, which the driver does not provide natively.
+
+*Impact:*
+
+- Applications can set a custom `SspiContextProvider` on `SqlConnection` before opening the connection:
+
+```c#
+var connection = new SqlConnection(connectionString);
+connection.SspiContextProvider = new MyKerberosProvider();
+connection.Open();
+```
+
+- The provider handles the authentication token exchange during integrated authentication. Existing authentication behavior is unchanged when no custom provider is set. See [SspiContextProvider_CustomProvider.cs](../../doc/samples/SspiContextProvider_CustomProvider.cs) for a sample implementation.
+- **Note:** The `SspiContextProvider` is part of the connection pool key. Care should be taken when using this property to ensure the implementation returns a stable identity per resource.
+
+#### Async Read Performance: Packet Multiplexing (Preview)
+
+*What Changed:*
+
+- Continued refinement of packet multiplexing with bug fixes and stability improvements since 6.1.0, plus new app context switches for opt-in control.
+  ([#3534](https://github.com/dotnet/SqlClient/pull/3534),
+   [#3537](https://github.com/dotnet/SqlClient/pull/3537),
+   [#3605](https://github.com/dotnet/SqlClient/pull/3605))
+
+*Who Benefits:*
+
+- Applications performing large async reads (`ExecuteReaderAsync` with big result sets, streaming scenarios, or bulk data retrieval).
+
+*Impact:*
+
+- Packet multiplexing ships behind two opt-in feature switches:
+
+```c#
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseCompatibilityAsyncBehaviour", false);
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseCompatibilityProcessSni", false);
+```
+
+- Setting both switches to `false` enables the new async processing path. By default, the driver uses the existing (compatible) behavior.
+
+#### Enhanced Routing Support
+
+*What Changed:*
+
+- Added support for enhanced routing, a TDS feature that allows the server to redirect connections to a specific server *and* database during login.
+  ([#3641](https://github.com/dotnet/SqlClient/issues/3641),
+   [#3969](https://github.com/dotnet/SqlClient/pull/3969),
+   [#3970](https://github.com/dotnet/SqlClient/pull/3970),
+   [#3973](https://github.com/dotnet/SqlClient/pull/3973))
+
+*Who Benefits:*
+
+- Users connecting to Azure SQL Hyperscale environments that use named read replicas and gateway-based load balancing.
+
+*Impact:*
+
+- Enhanced routing is negotiated automatically during login when the server supports it. No application code changes are required.
+
+#### Support for .NET 10
+
+*What Changed:*
+
+- Updated pipelines and test suites to compile the driver using the .NET 10 SDK.
+  ([#3686](https://github.com/dotnet/SqlClient/pull/3686))
+
+*Who Benefits:*
+
+- Developers targeting .NET 10 on day one.
+
+*Impact:*
+
+- SqlClient 7.0 compiles and tests against .NET 10, ensuring compatibility.
+
+#### Strongly-Typed Diagnostic Events on .NET Framework
+
+*What Changed:*
+
+- Enabled `SqlClientDiagnosticListener` for `SqlCommand` on .NET Framework, closing a long-standing observability gap where diagnostic events were previously only emitted on .NET Core.
+  ([#3658](https://github.com/dotnet/SqlClient/pull/3658))
+
+- Brought the 15 strongly-typed diagnostic event classes in the `Microsoft.Data.SqlClient.Diagnostics` namespace — originally introduced for .NET Core in 6.0 — to .NET Framework as part of the codebase merge. Both platforms now use the same strongly-typed event model. The types cover command, connection, and transaction lifecycle events:
+  - `SqlClientCommandBefore`, `SqlClientCommandAfter`, `SqlClientCommandError`
+  - `SqlClientConnectionOpenBefore`, `SqlClientConnectionOpenAfter`, `SqlClientConnectionOpenError`
+  - `SqlClientConnectionCloseBefore`, `SqlClientConnectionCloseAfter`, `SqlClientConnectionCloseError`
+  - `SqlClientTransactionCommitBefore`, `SqlClientTransactionCommitAfter`, `SqlClientTransactionCommitError`
+  - `SqlClientTransactionRollbackBefore`, `SqlClientTransactionRollbackAfter`, `SqlClientTransactionRollbackError`
+
+  ([#3493](https://github.com/dotnet/SqlClient/pull/3493))
+
+*Who Benefits:*
+
+- .NET Framework users subscribing to `SqlClientDiagnosticListener` events for observability, distributed tracing, or custom telemetry. These users now have parity with .NET Core, gaining IntelliSense, compile-time safety, and eliminating the need to access diagnostic payloads via reflection or dictionary lookups.
+
+*Impact:*
+
+- On .NET Framework, `SqlCommand` now emits the same diagnostic events that were previously only available on .NET Core. Subscribers to `DiagnosticListener` events (e.g., `Microsoft.Data.SqlClient.WriteCommandBefore`) receive the strongly-typed objects:
+
+```c#
+listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
+{
+    if (kvp.Value is SqlClientCommandBefore before)
+    {
+        Console.WriteLine($"Executing: {before.Command.CommandText}");
+    }
+}));
+```
+
+- The types implement `IReadOnlyList<KeyValuePair<string, object>>` for backward compatibility with code that iterates properties generically.
+
+#### Other Additions
+
+- Added `SqlConfigurableRetryFactory.BaselineTransientErrors` static property exposing the default transient error codes list as a `ReadOnlyCollection<int>`, making it easier to extend the default list with application-specific error codes.
+  ([#3903](https://github.com/dotnet/SqlClient/pull/3903))
+
+- Added app context switch `Switch.Microsoft.Data.SqlClient.EnableMultiSubnetFailoverByDefault` to set `MultiSubnetFailover=true` globally without modifying connection strings.
+  ([#3841](https://github.com/dotnet/SqlClient/pull/3841))
+
+- Added app context switch `Switch.Microsoft.Data.SqlClient.IgnoreServerProvidedFailoverPartner` to let the client ignore server-provided failover partner info in Basic Availability Groups.
+  ([#3625](https://github.com/dotnet/SqlClient/pull/3625))
+
+- Enabled User Agent Feature Extension (opt-in via `Switch.Microsoft.Data.SqlClient.EnableUserAgent`).
+  ([#3606](https://github.com/dotnet/SqlClient/pull/3606))
+
+### Changed
+
+#### Deprecation of `SqlAuthenticationMethod.ActiveDirectoryPassword`
+
+*What Changed:*
+
+- `SqlAuthenticationMethod.ActiveDirectoryPassword` (the ROPC flow) is now marked `[Obsolete]` and will generate compiler warnings. This aligns with Microsoft's move toward [mandatory multifactor authentication](https://learn.microsoft.com/entra/identity/authentication/concept-mandatory-multifactor-authentication).
+  ([#3671](https://github.com/dotnet/SqlClient/pull/3671))
+
+*Who Benefits:*
+
+- Teams moving toward stronger, passwordless or MFA-compliant authentication.
+
+*Impact:*
+
+- If you use `Authentication=Active Directory Password`, migrate to a supported alternative:
+
+| Scenario | Recommended Authentication |
+|----------|---------------------------|
+| Interactive / desktop apps | `Active Directory Interactive` |
+| Service-to-service | `Active Directory Service Principal` |
+| Azure-hosted workloads | `Active Directory Managed Identity` |
+| Developer / CI environments | `Active Directory Default` |
+
+- See [Connect to Azure SQL with Microsoft Entra authentication](https://learn.microsoft.com/sql/connect/ado-net/sql/azure-active-directory-authentication) for more information.
+
+## Target Platform Support
+
+- .NET Framework 4.6.2+ (Windows x86, Windows x64, Windows ARM64)
+- .NET 8.0+ (Windows x86, Windows x64, Windows ARM, Windows ARM64, Linux, macOS)
+
+Full release notes, including dependencies, are available in the GitHub Repository: [7.0 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/7.0).
 
 ## Release notes for Microsoft.Data.SqlClient 6.1
 
