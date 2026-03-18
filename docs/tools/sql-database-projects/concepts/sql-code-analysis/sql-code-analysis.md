@@ -1,10 +1,10 @@
 ---
-title: "SQL Code Analysis"
-description: "Analyzing Database Code to Improve Code Quality"
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+title: SQL Code Analysis
+description: Analyze database code to improve code quality.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -82,7 +82,7 @@ A file `StaticCodeAnalysis.SuppressMessages.xml` can be added to the project to 
 
 ## Provided rules
 
-### T-SQL Design Issues
+### T-SQL design issues
 
 When you analyze the T-SQL code in your database project, one or more warnings might be categorized as design issues. You should address design issues to avoid the following situations:
 
@@ -118,7 +118,7 @@ The provided rules identify the following design issues:
 - [SR0012: Avoid using reserved words for type names](./t-sql-naming-issues.md#sr0012-avoid-using-reserved-words-for-type-names)
 - [SR0016: Avoid using sp_ as a prefix for stored procedures](./t-sql-naming-issues.md#sr0016-avoid-using-sp_-as-a-prefix-for-stored-procedures)
 
-### T-SQL Performance Issues
+### T-SQL performance issues
 
 When you analyze the T-SQL code in your database project, one or more warnings might be categorized as performance issues. You should address a performance issue to avoid the following situation:
 
@@ -159,6 +159,14 @@ To enable or disable SQL code analysis in the SQL Database Projects extension, e
 From the text editor, add an element `<RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>` to the first `<PropertyGroup>` block to enable code analysis. To disable code analysis change the value of the `RunSqlCodeAnalysis` element to `True` or `False` or remove the element entirely.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+To enable or disable SQL code analysis in SQL Server Management Studio (SSMS), right-click the project in **Solution Explorer** and select **Properties**. In the **Code Analysis** tab of the properties window, select the desired code analysis settings.
+
+To disable a specific rule or to change the severity of a rule, select the corresponding option from the dropdown list for that rule from the rule list.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 

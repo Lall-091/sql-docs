@@ -1,10 +1,10 @@
 ---
 title: Compare a Database and a Project
-description: "Compare a project and a database and with different approaches."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 02/06/2026
+description: Compare a project and a database and with different approaches.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -36,13 +36,13 @@ This article reviews methods for comparing a database and a SQL project using di
 ::: zone pivot="sq1-visual-studio"
 
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools (SSDT) installed in Visual Studio 2022](../../../ssdt/download-sql-server-data-tools-ssdt.md)
+- [SQL Server Data Tools (SSDT) installed in Visual Studio](../../../ssdt/download-sql-server-data-tools-ssdt.md)
 
 ::: zone-end
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-Graphical schema comparison isn't yet available in the SDK-style SQL projects preview in Visual Studio.  Use Visual Studio Code or Visual Studio to compare schemas.
+Graphical schema comparison isn't yet available in the SDK-style SQL projects preview in Visual Studio. Use Visual Studio Code or Visual Studio to compare schemas.
 
 ::: zone-end
 
@@ -53,9 +53,15 @@ Graphical schema comparison isn't yet available in the SDK-style SQL projects pr
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+[!INCLUDE [schema-compare-where-found](../includes/schema-compare-where-found.md)]
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
-[!INCLUDE [schema-compare-command-line](../includes/schema-compare-command-line.md)]
+[!INCLUDE [schema-compare-where-found](../includes/schema-compare-where-found.md)]
 
 ::: zone-end
 

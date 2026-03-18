@@ -1,10 +1,10 @@
 ---
 title: Schema Comparison Overview
 description: Visualize the difference in database models with schema compare.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest, tsiddique
-ms.date: 02/06/2026
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, tsiddique
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: overview
@@ -201,9 +201,15 @@ To update the schema of the target, you have two options. You can update the tar
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+[!INCLUDE [schema-compare-where-found](../includes/schema-compare-where-found.md)]
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
-[!INCLUDE [schema-compare-command-line](../includes/schema-compare-command-line.md)]
+[!INCLUDE [schema-compare-where-found](../includes/schema-compare-where-found.md)]
 
 ::: zone-end
 

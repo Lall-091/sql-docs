@@ -1,10 +1,10 @@
 ---
 title: SQL Projects Target Platform
-description: "Specify SQL version compatibility for SQL database projects."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+description: Specify SQL version compatibility for SQL database projects.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -72,6 +72,12 @@ To change the target platform of a SQL project in the SQL Database Projects exte
 Alternatively, you can edit the `.sqlproj` file directly to change the target platform. Open the `.sqlproj` file from the **Explorer** view or by right-clicking on the project in the **Database Projects** view and selecting **Edit .sqlproj File**. From the text editor, change the value in the DSP tag to the desired target platform.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+To change the target platform of a SQL project in SQL Server Management Studio (SSMS), right-click the project in **Solution Explorer** and select **Properties**. In the **Project Settings** tab of the properties window, select the desired target platform from the **Target platform** dropdown list.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 

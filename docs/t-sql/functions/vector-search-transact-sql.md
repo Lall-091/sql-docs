@@ -4,7 +4,7 @@ description: VECTOR_SEARCH search for vectors similar to a given query vectors u
 author: mikerayMSFT
 ms.author: mikeray
 ms.reviewer: pookam, damauri, randolphwest, wiassaf
-ms.date: 03/07/2026
+ms.date: 03/18/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -270,24 +270,19 @@ CREATE TABLE dbo.Articles
 GO
 
 -- Step 2: Insert sample data (100 rows required for latest version indexes)
-DECLARE @i INT = 1;
-WHILE @i <= 100
-BEGIN
-    INSERT INTO Articles (id, title, content, embedding)
-    VALUES (
-        @i, 
-        'Article ' + CAST(@i AS NVARCHAR(10)), 
-        'Content for article ' + CAST(@i AS NVARCHAR(10)),
-        JSON_ARRAY(
-            CAST(@i * 0.01 AS FLOAT),
-            CAST(@i * 0.02 AS FLOAT),
-            CAST(@i * 0.03 AS FLOAT),
-            CAST(@i * 0.04 AS FLOAT),
-            CAST(@i * 0.05 AS FLOAT)
-        )
-    );
-    SET @i = @i + 1;
-END
+INSERT INTO Articles (id, title, content, embedding)
+SELECT
+    value AS id,
+    'Article ' || [value],
+    'Content for article ' || [value],
+    CAST(JSON_ARRAY(
+        CAST(value * 0.01 AS FLOAT),
+        CAST(value * 0.02 AS FLOAT),
+        CAST(value * 0.03 AS FLOAT),
+        CAST(value * 0.04 AS FLOAT),
+        CAST(value * 0.05 AS FLOAT)
+    ) AS VECTOR(5))
+FROM GENERATE_SERIES(1, 100);
 GO
 
 -- Step 3: Create a vector index on the embedding column

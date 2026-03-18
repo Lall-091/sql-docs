@@ -4,7 +4,7 @@ description: CREATE VECTOR INDEX creates an index on vector data to allow approx
 author: mikerayMSFT
 ms.author: mikeray
 ms.reviewer: pookam, damauri, randolphwest, wiassaf
-ms.date: 03/07/2026
+ms.date: 03/18/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -258,6 +258,10 @@ The current preview has the following limitations:
 
 - Tables with vector indexes can't be truncated using `TRUNCATE TABLE`. To remove all data, drop the vector index first, truncate the table, repopulate with at least 100 rows, then recreate the index. For more information, see [TRUNCATE TABLE restrictions](../functions/vector-search-transact-sql.md#truncate-table-restrictions).
 
+- Vector indexes can't be deployed with DacPac or BACPAC. Vector indexes require at least 100 rows with non-NULL vectors at creation time. When you import a database using DacPac, BACPAC, or the Import/Export service, the import process creates schema objects (including vector indexes) before loading data, which causes the import to fail.
+
+  **Workaround**: Drop vector indexes before exporting the database, and recreate the indexes after import.
+
 ### Minimum data requirements
 
 Vector indexes require a minimum number of rows with non-NULL vector values before the index can be created.
@@ -444,8 +448,8 @@ GO
 INSERT INTO Articles (id, title, content, embedding)
 SELECT
     value AS id,
-    'Article ' + CAST(value AS NVARCHAR(10)),
-    'Content for article ' + CAST(value AS NVARCHAR(10)),
+    'Article ' || [value],
+    'Content for article ' || [value],
     CAST(JSON_ARRAY(
         CAST(value * 0.01 AS FLOAT),
         CAST(value * 0.02 AS FLOAT),
