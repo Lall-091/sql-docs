@@ -105,7 +105,7 @@ connection.SspiContextProvider = new MyKerberosProvider();
 connection.Open();
 ```
 
-- The provider handles the authentication token exchange during integrated authentication. Existing authentication behavior is unchanged when no custom provider is set. See [SspiContextProvider_CustomProvider.cs](ttps://github.com/dotnet/SqlClient/tree/main/doc/samples/SspiContextProvider_CustomProvider.cs) for a sample implementation.
+- The provider handles the authentication token exchange during integrated authentication. Existing authentication behavior is unchanged when no custom provider is set. See [SspiContextProvider_CustomProvider.cs](https://github.com/dotnet/SqlClient/tree/main/doc/samples/SspiContextProvider_CustomProvider.cs) for a sample implementation.
 - **Note:** The `SspiContextProvider` is part of the connection pool key. Care should be taken when using this property to ensure the implementation returns a stable identity per resource.
 
 #### Async Read Performance: Packet Multiplexing (Preview)
@@ -239,7 +239,7 @@ listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
 | Azure-hosted workloads | `Active Directory Managed Identity` |
 | Developer / CI environments | `Active Directory Default` |
 
-- See [Connect to Azure SQL with Microsoft Entra authentication](sql/azure-active-directory-authentication) for more information.
+- See [Connect to Azure SQL with Microsoft Entra authentication](/connect/ado.net/sql/azure-active-directory-authentication) for more information.
 
 ## Target Platform Support
 
