@@ -4,7 +4,7 @@ description: Follow these instructions to download and install AdventureWorks sa
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 01/28/2026
+ms.date: 03/16/2026
 ms.service: sql
 ms.subservice: samples
 ms.topic: concept-article
@@ -95,6 +95,7 @@ To restore [!INCLUDE [sssampledbobject-md](../includes/sssampledbobject-md.md)] 
 ```sql
 USE [master];
 GO
+
 RESTORE DATABASE [AdventureWorks2025]
 FROM DISK = N'C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\Backup\AdventureWorks2025.bak'
 WITH
@@ -109,6 +110,7 @@ To restore [!INCLUDE [sssampledbobject-md](../includes/sssampledbobject-md.md)] 
 ```sql
 USE [master];
 GO
+
 RESTORE DATABASE [AdventureWorks2025]
 FROM DISK = '/var/opt/mssql/backup/AdventureWorks2025.bak'
 WITH
@@ -153,13 +155,13 @@ Follow these steps to deploy a new sample `AdventureWorksLT` database in Azure S
 
 ### Deploy a database from SQL Server
 
-SSMS allows you to deploy a database directly to SQL Database. This method doesn't currently provide data validation, so it's intended for development and testing and shouldn't be used for production.
+SSMS allows you to deploy a database directly to Azure SQL Database. This method is intended for development and testing, so it doesn't currently provide data validation. Don't use this deployment method for production.
 
 To deploy a sample database from [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to SQL Database, follow these steps:
 
 1. Connect to your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in SSMS.
-1. If you haven't already done so, [restore the sample database to SQL Server](#restore-to-sql-server).
-1. Right-click your restored database in **Object Explorer** and then select **Tasks** > **Deploy Database to Microsoft Azure SQL Database**.
+1. If you didn't already, [restore the sample database to SQL Server](#restore-to-sql-server).
+1. Right-click your restored database in **Object Explorer**, and then select **Tasks** > **Deploy Database to Microsoft Azure SQL Database**.
 
    :::image type="content" source="media/adventureworks-install-configure/deploy-db-to-azure.png" alt-text="Screenshot that shows the menu steps for deploying a database to SQL Database.":::
 
