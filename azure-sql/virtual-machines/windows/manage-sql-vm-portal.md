@@ -16,11 +16,13 @@ tags: azure-resource-manager
 
 [!INCLUDE [appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In the [Azure portal](https://portal.azure.com), the [**SQL virtual machines**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) resource is an independent management service to manage SQL Server on Azure Virtual Machines (VMs) that have been registered with the [SQL Server IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md). You can use the resource to view all of your SQL Server VMs simultaneously and modify settings dedicated to SQL Server:
+In the [Azure portal](https://portal.azure.com), the [**SQL virtual machines**](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/SqlVirtualMachine) resource is an independent management service to manage SQL Server on Azure Virtual Machines (VMs) that have been registered with the [SQL Server IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md). You can use the resource to view all of your SQL Server VMs simultaneously and modify settings dedicated to SQL Server:
 
 :::image type="content" source="./media/manage-sql-vm-portal/sql-vm-manage.png" alt-text="Screenshot of accessing the SQL virtual machines resource in the Azure portal.":::
 
 The **SQL virtual machines** resource management point is different to the **Virtual machine** resource used to manage the underlying VM such as to start it, stop it, or restart it.
+
+[!INCLUDE [unified-inventory](../../includes/sql-virtual-machines/unified-inventory.md)]
 
 ## Prerequisites
 
