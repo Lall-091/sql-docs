@@ -66,14 +66,14 @@ sudo systemctl restart mssql-server
 
 ## Create the availability group endpoints and certificates
 
-An availability group uses TCP endpoints for communication. Under Linux, endpoints for an AG are only supported if certificates are used for authentication. You must restore the certificate from one instance on all other instances that participate as replicas in the same AG. The certificate process is required even for a configuration-only replica.
+An availability group uses TCP endpoints for communication. Under Linux, SQL Server supports endpoints for an AG only if you use certificates for authentication. You must restore the certificate from one instance on all other instances that participate as replicas in the same AG. You need the certificate process even for a configuration-only replica.
 
 You can only create endpoints and restore certificates using Transact-SQL. You can also use non-[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]-generated certificates. You also need a process to manage and replace any certificates that expire.
 
 > [!IMPORTANT]  
 > If you plan to use the [!INCLUDE [ssmanstudiofull-md](../includes/ssmanstudiofull-md.md)] wizard to create the AG, you still need to create and restore the certificates by using Transact-SQL on Linux.
 
-For full syntax on the options available for the various commands (including security), consult:
+For full syntax on the options available for the various commands (including security), see:
 
 - [BACKUP CERTIFICATE](../t-sql/statements/backup-certificate-transact-sql.md)
 - [CREATE CERTIFICATE](../t-sql/statements/create-certificate-transact-sql.md)
@@ -171,7 +171,7 @@ This example creates certificates for a three-node configuration. The instance n
    GO
    ```
 
-1. Using `scp` or another utility, copy the backups of the certificate to each node that will be part of the AG.
+1. Using `scp` or another utility, copy the backups of the certificate to each node that you want to be part of the AG.
 
    For this example:
 
@@ -319,11 +319,11 @@ This section shows how to create an AG with a cluster type of External using SSM
 
 1. On the Introduction dialog, select **Next**.
 
-1. In the **Specify Availability Group Options** dialog, enter a name for the AG, and select a cluster type of `EXTERNAL` or `NONE` in the dropdown list. Use `EXTERNAL` when you deploy Pacemaker. Use `NONE` for specialized scenarios, such as read scale-out. Selecting the option for database level health detection is optional. For more information on this option, see [Availability group database level health detection failover option](../database-engine/availability-groups/windows/sql-server-always-on-database-health-detection-failover-option.md). Select **Next**.
+1. In the **Specify Availability Group Options** dialog, enter a name for the AG, and select a cluster type of `EXTERNAL` or `NONE` in the dropdown list. Use `EXTERNAL` when you deploy Pacemaker. Use `NONE` for specialized scenarios, such as read scale-out. Selecting the option for database level health detection is optional. For more information about this option, see [Availability group database level health detection failover option](../database-engine/availability-groups/windows/sql-server-always-on-database-health-detection-failover-option.md). Select **Next**.
 
    :::image type="content" source="media/sql-server-linux-create-availability-group/image3.png" alt-text="Screenshot of Create Availability Group showing cluster type." lightbox="media/sql-server-linux-create-availability-group/image3.png":::
 
-1. In the Select Databases dialog, select the databases that will participate in the AG. Each database must have a full backup before you can add it to an AG. Select **Next**.
+1. In the Select Databases dialog, select the databases that you want to participate in the AG. Each database must have a full backup before you can add it to an AG. Select **Next**.
 
 1. In the Specify Replicas dialog, select **Add Replica**.
 
@@ -331,7 +331,7 @@ This section shows how to create an AG with a cluster type of External using SSM
 
 1. Repeat the previous two steps for the instance that will contain a configuration-only replica or another secondary replica.
 
-1. All three instances appear on the Specify Replicas dialog. If you use a cluster type of External, for the secondary replica that will be a true secondary, make sure the Availability Mode matches that of the primary replica and failover mode is set to External. For the configuration-only replica, select an availability mode of Configuration only.
+1. All three instances appear on the Specify Replicas dialog. If you use a cluster type of External, for the secondary replica that is a true secondary, make sure the Availability Mode matches that of the primary replica and failover mode is set to External. For the configuration-only replica, select an availability mode of Configuration only.
 
    The following example shows an AG with two replicas, a cluster type of External, and a configuration-only replica.
 
@@ -341,7 +341,7 @@ This section shows how to create an AG with a cluster type of External using SSM
 
    :::image type="content" source="media/sql-server-linux-create-availability-group/image5.png" alt-text="Screenshot of Create Availability Group showing the Replicas page." lightbox="media/sql-server-linux-create-availability-group/image5.png":::
 
-1. If you want to alter the backup preferences, select the Backup Preferences tab. For more information on backup preferences with AGs, see [Configure backups on secondary replicas of an Always On availability group](../database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server.md).
+1. If you want to change the backup preferences, select the Backup Preferences tab. For more information about backup preferences with AGs, see [Configure backups on secondary replicas of an Always On availability group](../database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server.md).
 
 1. If you use readable secondaries or create an AG with a cluster type of None for read-scale, you can create a listener by selecting the **Listener** tab. You can also add a listener later. To create a listener, choose the **Create an availability group listener** option and enter a name, a TCP/IP port, and whether to use a static or automatically assigned DHCP IP address. For an AG with a cluster type of None, the IP should be static and set to the primary's IP address.
 
@@ -353,13 +353,13 @@ This section shows how to create an AG with a cluster type of External using SSM
 
    1. Enter the URLs for the read-only replicas. These URLs are similar to the endpoints, except they use the port of the instance, not the endpoint.
 
-   1. Select each URL and from the bottom, select the readable replicas. To multi-select, hold down SHIFT or select-drag.
+      1. Select each URL and from the bottom, select the readable replicas. To select multiple, hold down **Shift** or select-drag.
 
 1. Select **Next**.
 
-1. Choose how the secondary replicas are initialized. The default is to use [automatic seeding](../database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group.md), which requires the same path on all servers participating in the AG. You can also have the wizard do a backup, copy, and restore (the second option); have it join if you have manually backed up, copied, and restored the database on the replicas (third option); or add the database later (last option). As with certificates, if you're manually making backups and copying them, set permissions on the backup files on the other replicas. Select **Next**.
+1. Choose how to initialize the secondary replicas. The default is to use [automatic seeding](../database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group.md), which requires the same path on all servers participating in the AG. You can also have the wizard do a backup, copy, and restore (the second option); have it join if you manually backed up, copied, and restored the database on the replicas (third option); or add the database later (last option). As with certificates, if you're manually making backups and copying them, set permissions on the backup files on the other replicas. Select **Next**.
 
-1. On the Validation dialog, if everything doesn't come back as Success, investigate. Some warnings are acceptable and not fatal, such as if you don't create a listener. Select **Next**.
+1. On the Validation dialog, if the wizard doesn't return **Success** for all checks, investigate further. Some warnings are acceptable and not fatal, such as if you don't create a listener. Select **Next**.
 
 1. On the Summary dialog, select **Finish**. The process to create the AG now begins.
 
@@ -378,7 +378,7 @@ This section shows examples of creating an AG using Transact-SQL. You can config
 
 This example shows how to create a two-replica AG that uses a configuration-only replica.
 
-1. Execute the following statement on the node that will act as the primary replica, and contains the fully read/write copy of the databases. This example uses automatic seeding.
+1. Execute the following statement on the node that acts as the primary replica, and contains the fully read/write copy of the databases. This example uses automatic seeding.
 
    ```sql
    CREATE AVAILABILITY GROUP [<AGName>]
@@ -427,7 +427,7 @@ This example shows how to create a two-replica AG that uses a configuration-only
 
 This example shows three full replicas and how you can configure read-only routing as part of the initial AG creation.
 
-1. Execute the following statement on the node that will act as the primary replica, and contains the fully read/write copy of the databases. This example uses automatic seeding.
+1. Execute the following statement on the node that acts as the primary replica, and contains the fully read/write copy of the databases. This example uses automatic seeding.
 
    ```sql
    CREATE AVAILABILITY GROUP [<AGName>] WITH (CLUSTER_TYPE = EXTERNAL)
@@ -500,9 +500,9 @@ This example shows three full replicas and how you can configure read-only routi
 
 #### Example C: Two replicas with read-only routing (None cluster type)
 
-This example shows the creation of a two-replica configuration using a cluster type of None. Use this configuration for the read scale scenario where no failover is expected. This step creates the listener that is actually the primary replica, and the read-only routing, using the round robin functionality.
+This example shows the creation of a two-replica configuration using a cluster type of None. Use this configuration for the read-scale scenario where no failover is expected. This step creates the listener that is actually the primary replica, and the read-only routing, using the round robin functionality.
 
-1. Execute the following statement on the node that will act as the primary replica, and contains the fully read/write copy of the databases. This example uses automatic seeding.
+1. Execute the following statement on the node that acts as the primary replica, and contains the fully read/write copy of the databases. This example uses automatic seeding.
 
    ```sql
    CREATE AVAILABILITY GROUP [<AGName>]
@@ -564,7 +564,7 @@ This example shows the creation of a two-replica configuration using a cluster t
 
 ## Create the SQL Server login and permissions for Pacemaker
 
-A Pacemaker high availability cluster that uses [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux needs access to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance, and permissions on the AG itself. These steps create the login and the associated permissions, along with a file that tells Pacemaker how to log into [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+A Pacemaker high availability cluster that uses [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux needs access to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance, and permissions on the AG itself. These steps create the login and the associated permissions, along with a file that tells Pacemaker how to authenticate to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
 1. In a query window connected to the first replica, execute the following script:
 
@@ -611,7 +611,7 @@ A Pacemaker high availability cluster that uses [!INCLUDE [ssnoversion-md](../in
 
 ## Create the availability group resources in the Pacemaker cluster (External only)
 
-After you create an AG in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must create the corresponding resources in Pacemaker when you specify a cluster type of External. Two resources are associated with an AG: the availability group resource, and an IP address resource. Configuring the IP address resource is optional if you aren't using a listener. However, it's recommended when listener functionality is required.
+After you create an AG in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must create the corresponding resources in Pacemaker when you specify a cluster type of External. An AG needs two resources: the availability group resource, and an IP address resource. Configuring the IP address resource is optional if you aren't using a listener. However, it's recommended when you need listener features.
 
 The AG resource you create is a type of resource called a *clone*. The AG resource has copies on each node, and one controlling resource called the *master*. The *master* is associated with the server hosting the primary replica. The other resources host secondary replicas (regular or configuration-only) and can be promoted to *master* in a failover.
 
@@ -621,8 +621,10 @@ In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] with Cumulative Update (CU
 
 Pacemaker HA agent v2 introduces reliability and performance improvements over the previous agent, including:
 
-- Significantly improved failover performance to reduce both planned and unplanned failover times.
-- Support for flexible automatic failover policies, including configuration of health-check timeout and failure-condition level.
+- Improved failover performance to reduce both planned and unplanned failover times.
+
+- Support for flexible automatic failover policies, including configuration of [health-check timeout](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#HCtimeout) and [failure-condition level](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#failure-condition-level).
+
 - Support for TLS 1.3 for communication between the Pacemaker cluster and SQL Server.
 
 Pacemaker HA agent v2 is currently in preview. The existing Pacemaker HA agent (v1) remains fully supported for production deployments.
@@ -645,7 +647,7 @@ Pacemaker HA agent v2 is currently in preview. The existing Pacemaker HA agent (
 
    New deployments on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] can evaluate Pacemaker HA agent v2. Existing production deployments should upgrade when appropriate.
 
-   When upgrading to or deploying pacemaker HA agent v2, create the new AG resource using the `agv2` agent instead of the previous ag agent. If an existing AG resource is already configured, remove it and create a new resource using `agv2`:
+         When upgrading to or deploying Pacemaker HA agent v2, create the new AG resource using the `agv2` agent instead of the previous `ag` agent. If you already configured an existing AG resource, remove it and create a new resource using `agv2`:
 
    ```bash
    sudo pcs resource delete <NameForAGResource>
