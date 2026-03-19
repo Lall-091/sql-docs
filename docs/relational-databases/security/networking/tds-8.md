@@ -82,7 +82,7 @@ For more information on how clients use different TDS versions, see the keywords
 - [SQL VSS Writer](../../../database-engine/configure-windows/sql-writer-service.md)
 - [SQL CEIP service](../../../sql-server/usage-and-diagnostic-data-configuration-for-sql-server.md)
 - [Database Mail](../../database-mail/database-mail.md)
-- [Polybase](../../polybase/polybase-guide.md#sql-server-2025-polybase-enhancements)
+- [Polybase](../../polybase/overview.md#sql-server-2025-polybase-enhancements)
 - [Always On availability groups](connect-with-strict-encryption.md#connect-to-an-always-on-availability-group)
 - [Always On failover cluster instance (FCI)](connect-with-strict-encryption.md#connect-to-a-failover-cluster-instance)
 - [Linked servers](../../linked-servers/linked-servers-database-engine.md#sql-server-2025-and-msoledbsql-version-19)<sup>1</sup>

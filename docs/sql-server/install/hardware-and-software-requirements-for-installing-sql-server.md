@@ -110,7 +110,7 @@ The following requirements apply to all installations:
 - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup support files
 
 > [!IMPORTANT]  
-> The PolyBase feature has additional hardware and software requirements. For more information, see [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md).
+> The PolyBase feature has additional hardware and software requirements. For more information, see [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/overview.md).
 
 ### .NET Framework installation
 

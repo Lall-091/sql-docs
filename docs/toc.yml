@@ -7061,7 +7061,9 @@ items:
   - name: Data virtualization (PolyBase)
     items:
     - name: What is PolyBase?
-      href: relational-databases/polybase/polybase-guide.md
+      href: relational-databases/polybase/overview.md
+    - name: Data virtualization guide
+      href: relational-databases/polybase/data-virtualization-guide.md
     - name: Get started with PolyBase
       href: relational-databases/polybase/polybase-get-started.md?view=sql-server-ver16&preserve-view=true
     - name: Concepts

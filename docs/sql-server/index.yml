@@ -125,7 +125,7 @@ landingContent:
           - text: Azure Data Factory
             url: /azure/data-factory/
           - text: Data virtualization with PolyBase
-            url: ../relational-databases/polybase/polybase-guide.md
+            url: ../relational-databases/polybase/overview.md
 
   - title: Database design
     linkLists:
@@ -153,7 +153,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: Data virtualization and PolyBase
-            url: ../relational-databases/polybase/polybase-guide.md
+            url: ../relational-databases/polybase/overview.md
           - text: Joins
             url: ../relational-databases/performance/joins.md
           - text: Full-text search

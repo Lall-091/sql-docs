@@ -119,7 +119,7 @@ Here are some applications of database scoped credentials:
 
 - [BULK INSERT](bulk-insert-transact-sql.md) and [OPENROWSET](../functions/openrowset-transact-sql.md) use database scoped credentials to access data from Azure Blob Storage. For more information, see [Examples of bulk access to data in Azure Blob Storage](../../relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage.md).
 
-- Use database scoped credentials with [PolyBase](../../relational-databases/polybase/polybase-guide.md) and [Azure SQL Managed Instance data virtualization](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresqlmi-current&preserve-view=true) features.
+- Use database scoped credentials with [PolyBase](../../relational-databases/polybase/overview.md) and [Azure SQL Managed Instance data virtualization](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresqlmi-current&preserve-view=true) features.
 
 - For `BACKUP TO URL` and `RESTORE FROM URL`, use a server-level credential via [CREATE CREDENTIAL](create-credential-transact-sql.md) instead.
 

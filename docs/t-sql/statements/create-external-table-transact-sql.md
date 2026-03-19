@@ -68,7 +68,7 @@ This command creates an external table for PolyBase to access data stored in a H
 
 Use an external table with an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using SQL Server or SQL Database using `BULK INSERT` or `OPENROWSET`
 
 An external table is based on an [external data source](create-external-data-source-transact-sql.md).

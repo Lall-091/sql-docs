@@ -1,6 +1,6 @@
 ---
-title: Introducing Data Virtualization with PolyBase
-description: PolyBase enables your SQL Server instance to process Transact-SQL queries that read data from external data sources, such as Azure Blob Storage.
+title: PolyBase overview for SQL Server
+description: Overview of PolyBase in SQL Server - supported connectors, version enhancements, installation steps, and upgrade guidance for data virtualization.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: hudequei, randolphwest
@@ -24,11 +24,13 @@ helpviewer_keywords:
 monikerRange: ">=sql-server-2016 || >=sql-server-linux-ver15 || >=aps-pdw-2016 || =azure-sqldw-latest"
 ---
 
-# Data virtualization with PolyBase in SQL Server
+# PolyBase overview
 
 [!INCLUDE [sql-asa-pdw](../../includes/applies-to-version/sql-asa-pdw.md)]
 
 PolyBase enables data virtualization for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+
+For a detailed guide to choosing the right PolyBase approach, comparing features across SQL platforms, and building T-SQL queries with external data, see [Data virtualization with PolyBase](data-virtualization-guide.md).
 
 ## What is PolyBase?
 

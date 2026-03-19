@@ -78,4 +78,4 @@ PolyBase has the following limitations:
 
 ## Related content
 
-- [Introducing data virtualization with PolyBase](polybase-guide.md)
+- [Introducing data virtualization with PolyBase](overview.md)

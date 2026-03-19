@@ -78,7 +78,7 @@ This article provides the syntax, arguments, remarks, permissions, and examples 
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 > [!NOTE]  
@@ -302,7 +302,7 @@ WITH (
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 ::: moniker-end
@@ -603,7 +603,7 @@ To see this example in use, see [BULK INSERT](bulk-insert-transact-sql.md#f-impo
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 ::: moniker-end
@@ -1153,7 +1153,7 @@ WITH (
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 > [!NOTE]  
@@ -1725,7 +1725,7 @@ WITH (
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 Supports Managed Identity connections for instances enabled by Azure Arc. For details, review [Connect to Azure Storage with managed identity from PolyBase](../../relational-databases/polybase/managed-identity.md).
@@ -2927,7 +2927,7 @@ WITH (
 
 **Applies to**: [!INCLUDE [ssazurepdw_md](../../includes/ssazurepdw_md.md)]
 
-Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support the following use case: Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md).
+Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support the following use case: Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 

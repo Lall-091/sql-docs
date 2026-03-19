@@ -37,7 +37,7 @@ Creates a server-level credential. A credential is a record that contains the au
 >
 > - Create a database scoped credential with `CREATE DATABASE SCOPED CREDENTIAL` to make the database more portable. When a database is moved to a new server, the database scoped credential will move with it.
 > - Use database scoped credentials on [!INCLUDE[ssSDS](../../includes/sssds-md.md)].
-> - Use database scoped credentials with [PolyBase](../../relational-databases/polybase/polybase-guide.md) and [Azure SQL Managed Instance data virtualization](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresqlmi-current&preserve-view=true) features.
+> - Use database scoped credentials with [PolyBase](../../relational-databases/polybase/overview.md) and [Azure SQL Managed Instance data virtualization](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresqlmi-current&preserve-view=true) features.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 

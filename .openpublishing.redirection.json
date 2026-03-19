@@ -50337,7 +50337,7 @@
     },
     {
       "source_path": "docs/relational-databases/polybase/get-started-with-polybase.md",
-      "redirect_url": "/sql/relational-databases/polybase/polybase-guide",
+      "redirect_url": "/sql/relational-databases/polybase/overview",
       "redirect_document_id": false
     },
     {
@@ -66372,7 +66372,7 @@
     },
     {
       "source_path": "docs/relational-databases/polybase/index.md",
-      "redirect_url": "/sql/relational-databases/polybase/polybase-guide",
+      "redirect_url": "/sql/relational-databases/polybase/overview",
       "redirect_document_id": false
     },
     {
@@ -68232,6 +68232,16 @@
     {
       "source_path": "docs/azdata/reference/reference-azdata.md",
       "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/polybase/polybase-guide.md",
+      "redirect_url": "/sql/relational-databases/polybase/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/polybase/data-virtualization-comprehensive-guide.md",
+      "redirect_url": "/sql/relational-databases/polybase/data-virtualization-guide",
       "redirect_document_id": false
     }
   ]
