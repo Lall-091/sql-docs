@@ -3,7 +3,7 @@ title: "Retrieving UDT Data"
 description: This article describes how to access UDTs in a SQL Server database.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 03/19/2026
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -25,20 +25,26 @@ ms.custom: sfi-ropc-nochange
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-In order to create a user-defined type (UDT) on the client, the assembly that was registered as a UDT in a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] database must be available to the client application. The UDT assembly can be placed in the same directory with the application, or in the Global Assembly Cache (GAC). You can also set a reference to the assembly in your project.
+To create a user-defined type (UDT) on the client, the assembly registered as a UDT in a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] database must be available to the client application. The UDT assembly can be placed in the same directory with the application, or in the Global Assembly Cache (GAC). You can also set a reference to the assembly in your project.
 
 ## Requirements for using UDTs in ADO.NET
 
-The assembly loaded in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and the assembly on the client must be compatible in order for the UDT to be created on the client. For UDTs defined with the `Native` serialization format, the assemblies must be structurally compatible. For assemblies defined with the `UserDefined` format, the assembly must be available on the client.
+The assembly loaded in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and the assembly on the client must be compatible for the UDT to be created on the client. For UDTs defined with the `Native` serialization format, the assemblies must be structurally compatible. For assemblies defined with the `UserDefined` format, the assembly must be available on the client.
 
-You don't need a copy of the UDT assembly on the client in order to retrieve the raw data from a UDT column in a table.
+You don't need a copy of the UDT assembly on the client to retrieve the raw data from a UDT column in a table.
 
 > [!NOTE]  
-> `SqlClient` might fail to load a UDT in the event of mismatched UDT versions or other problems. In this case, use regular troubleshooting mechanisms to determine why the assembly containing the UDT can't be found by the calling application. For more information, see [Diagnose Errors with Managed Debugging Assistants](/dotnet/framework/debug-trace-profile/diagnosing-errors-with-managed-debugging-assistants).
+> `SqlClient` might fail to load a UDT if UDT versions are mismatched or other problems occur. In this case, use regular troubleshooting mechanisms to determine why the assembly containing the UDT can't be found by the calling application. For more information, see [Diagnose Errors with Managed Debugging Assistants](/dotnet/framework/debug-trace-profile/diagnosing-errors-with-managed-debugging-assistants).
+
+The code examples in this article use `Microsoft.Data.SqlClient`, which is available as a NuGet package. To add this dependency to your project, run the following command:
+
+```dotnetcli
+dotnet add package Microsoft.Data.SqlClient
+```
 
 ## Access UDTs with a SqlDataReader
 
-A `System.Data.SqlClient.SqlDataReader` can be used from client code to retrieve a result set that contains a UDT column, which is exposed as an instance of the object.
+Use a `Microsoft.Data.SqlClient.SqlDataReader` from client code to retrieve a result set that contains a UDT column, which is exposed as an instance of the object.
 
 ### Example
 
@@ -50,11 +56,11 @@ This example shows how to use the `Main` method to create a new `SqlDataReader` 
 
 1. The UDT defines a `Distance` method and a `GetDistanceFromXY` method.
 
-1. The sample code retrieves the values of the primary key and UDT columns in order to demonstrate the capabilities of the UDT.
+1. The sample code retrieves the values of the primary key and UDT columns to demonstrate the capabilities of the UDT.
 
 1. The sample code calls the `Point.Distance` and `Point.GetDistanceFromXY` methods.
 
-1. The results are displayed in the console window.
+1. The results display in the console window.
 
 > [!NOTE]  
 > The application must already have a reference to the UDT assembly.
@@ -63,8 +69,7 @@ This example shows how to use the `Main` method to create a new `SqlDataReader` 
 
 ```csharp
 using System;
-using System.Data.Sql;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace Microsoft.Samples.SqlServer
 {
@@ -118,8 +123,7 @@ Option Explicit On
 Option Strict On
 
 Imports System
-Imports System.Data.Sql
-Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 
 Module ReadPoints
     Sub Main()
@@ -164,18 +168,17 @@ End Module
 
 ## Bind UDTs as bytes
 
-In some situations, you might want to retrieve the raw data from the UDT column. Perhaps the type isn't available locally, or you don't wish to instantiate an instance of the UDT. You can read the raw bytes into a byte array using the `GetBytes` method of a `SqlDataReader`. This method reads a stream of bytes from the specified column offset into the buffer of an array starting at a specified buffer offset. Another option is to use one of the `GetSqlBytes` or `GetSqlBinary` methods and read all of the contents in a single operation. In either case, the UDT object is never instantiated, so you don't need to set a reference to the UDT in the client assembly.
+In some situations, you might want to retrieve the raw data from the UDT column. Perhaps the type isn't available locally, or you don't want to instantiate an instance of the UDT. You can read the raw bytes into a byte array by using the `GetBytes` method of a `SqlDataReader`. This method reads a stream of bytes from the specified column offset into the buffer of an array starting at a specified buffer offset. Another option is to use one of the `GetSqlBytes` or `GetSqlBinary` methods and read all of the contents in a single operation. In either case, the UDT object is never instantiated, so you don't need to set a reference to the UDT in the client assembly.
 
 ### Example
 
-This example shows how to retrieve the `Point` data as raw bytes into a byte array using a `SqlDataReader`. The code uses a `System.Text.StringBuilder` to convert the raw bytes to a string representation to be displayed in the console window.
+This example shows how to retrieve the `Point` data as raw bytes into a byte array by using a `SqlDataReader`. The code uses a `System.Text.StringBuilder` to convert the raw bytes to a string representation to be displayed in the console window.
 
 ### [C#](#tab/csharp)
 
 ```csharp
 using System;
-using System.Data.Sql;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Text;
 
@@ -228,8 +231,7 @@ Option Explicit On
 Option Strict On
 
 Imports System
-Imports System.Data.Sql
-Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 Imports System.Data.SqlTypes
 Imports System.Text
 
@@ -281,14 +283,13 @@ End Module
 
 ### Example using GetSqlBytes
 
-This example shows how to retrieve the `Point` data as raw bytes in a single operation using the `GetSqlBytes` method. The code uses a `StringBuilder` to convert the raw bytes to a string representation to be displayed in the console window.
+This example shows how to retrieve the `Point` data as raw bytes in a single operation by using the `GetSqlBytes` method. The code uses a `StringBuilder` to convert the raw bytes to a string representation to be displayed in the console window.
 
 ### [C#](#tab/csharp)
 
 ```csharp
 using System;
-using System.Data.Sql;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Text;
 
@@ -342,8 +343,7 @@ Option Explicit On
 Option Strict On
 
 Imports System
-Imports System.Data.Sql
-Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 Imports System.Data.SqlTypes
 Imports System.Text
 
@@ -393,11 +393,11 @@ End Module
 
 ## Work with UDT parameters
 
-UDTs can be used as both input and output parameters in your ADO.NET code.
+You can use UDTs as both input and output parameters in your ADO.NET code.
 
 ## Use UDTs in query parameters
 
-UDTs can be used as parameter values when setting up a `SqlParameter` for a `System.Data.SqlClient.SqlCommand` object. The `SqlDbType.Udt` enumeration of a `SqlParameter` object is used to indicate that the parameter is a UDT when calling the `Add` method to the `Parameters` collection. The `UdtTypeName` property of a `SqlCommand` object is used to specify the fully qualified name of the UDT in the database using the `<database>.<schema_name>.<object_name>` syntax. You should use the fully qualified name to avoid ambiguity in your code.
+You can use UDTs as parameter values when you set up a `SqlParameter` for a `Microsoft.Data.SqlClient.SqlCommand` object. The `SqlDbType.Udt` enumeration of a `SqlParameter` object indicates that the parameter is a UDT when calling the `Add` method to the `Parameters` collection. The `UdtTypeName` property of a `SqlCommand` object specifies the fully qualified name of the UDT in the database by using the `<database>.<schema_name>.<object_name>` syntax. Use the fully qualified name to avoid ambiguity in your code.
 
 A local copy of the UDT assembly must be available to the client project.
 
@@ -410,8 +410,7 @@ The code in this example creates `SqlCommand` and `SqlParameter` objects to inse
 ```csharp
 using System;
 using System.Data;
-using System.Data.Sql;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 class Class1
 {
@@ -449,9 +448,8 @@ Option Explicit On
 Option Strict On
 
 Imports System
-Imports system.Data
-Imports System.Data.Sql
-Imports System.Data.SqlClient
+Imports System.Data
+Imports Microsoft.Data.SqlClient
 
 Module Module1
 

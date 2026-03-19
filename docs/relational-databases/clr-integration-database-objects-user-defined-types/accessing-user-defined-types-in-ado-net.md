@@ -3,7 +3,7 @@ title: "Accessing User-Defined Types in ADO.NET"
 description: UDTs, written in .NET Framework CLR languages, allow a SQL Server database to store objects and custom data structures. In ADO.NET, a provider exposes UDTs.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 03/19/2026
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -20,11 +20,11 @@ User-defined types (UDTs) are written using any of the languages supported by th
 
 The data is exposed as public members of a .NET Framework class or structure, and behaviors are defined by methods of the class or structure. A UDT can be used as the column definition of a table, as a variable in a [!INCLUDE [tsql](../../includes/tsql-md.md)] batch, or as an argument of a [!INCLUDE [tsql](../../includes/tsql-md.md)] function or stored procedure.
 
-In ADO.NET, the `System.Data.SqlClient` provider exposes UDTs in the following ways:
+In ADO.NET, the `Microsoft.Data.SqlClient` provider exposes UDTs in the following ways:
 
-- Through the `System.Data.SqlClient.SqlDataReader` as an object.
+- Through the `Microsoft.Data.SqlClient.SqlDataReader` as an object.
 - Through the `SqlDataReader` as raw bytes.
-- As a parameter of a `System.Data.SqlClient.SqlParameter` object.
+- As a parameter of a `Microsoft.Data.SqlClient.SqlParameter` object.
 
 ## In this section
 
