@@ -278,9 +278,7 @@ When creating external table statistics, [!INCLUDE [ssNoVersion](../../includes/
 
 When the external table is using `DELIMITEDTEXT`, `CSV`, `PARQUET`, or `DELTA` as data types, external tables only support statistics for one column per `CREATE STATISTICS` command.
 
-When the external table uses an ODBC-based external data source, `CREATE STATISTICS` does not support the `SAMPLE … PERCENT` option.  
-In this case, only default sampling (no `SAMPLE` clause) or `FULLSCAN` is supported.
-
+When the external table uses an ODBC-based external data source, `CREATE STATISTICS` doesn't support the `SAMPLE ... PERCENT` option. Only default sampling (without the `SAMPLE` clause) or `FULLSCAN` is supported.
 
 ### Statistics with a filtered condition
 
