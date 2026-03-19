@@ -1320,6 +1320,8 @@ items:
           href: relational-databases/indexes/index-disk-space-example.md
       - name: Reorganize & rebuild
         href: relational-databases/indexes/reorganize-and-rebuild-indexes.md
+      - name: Automatic index compaction (preview)
+        href: relational-databases/indexes/automatic-index-compaction.md
       - name: Specify fill factor
         href: relational-databases/indexes/specify-fill-factor-for-an-index.md
     - name: Perform online operations

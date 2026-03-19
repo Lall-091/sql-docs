@@ -24,7 +24,9 @@ The checklists in this article provide a brief overview of the more comprehensiv
 - [HADR configuration](hadr-cluster-best-practices.md)
 - [Collect baseline](performance-guidelines-best-practices-collect-baseline.md).
 
-Enable [SQL Assessment for SQL Server on Azure VMs](sql-assessment-for-sql-vm.md) and your SQL Server will be evaluated against known best practices with results  on the [SQL VM management page](manage-sql-vm-portal.md) of the Azure portal.
+[!INCLUDE [unified-inventory](../../includes/sql-virtual-machines/unified-inventory.md)]
+
+Enable [SQL Assessment for SQL Server on Azure VMs](sql-assessment-for-sql-vm.md) and your SQL Server will be evaluated against known best practices with results on the [SQL VM management page](manage-sql-vm-portal.md) of the Azure portal.
 
 For videos about the latest features to optimize SQL Server VM performance and automate management, review the following Data Exposed videos:
 
