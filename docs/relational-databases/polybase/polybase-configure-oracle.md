@@ -96,4 +96,4 @@ For more tutorials on creating external data sources and external tables to a va
 For more information and examples, see the following articles:
 
 - [CREATE EXTERNAL TABLE](../../t-sql/statements/create-external-table-transact-sql.md).
-- [Overview of SQL Server PolyBase](polybase-guide.md).
+- [Overview of SQL Server PolyBase](overview.md).

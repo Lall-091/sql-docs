@@ -19,7 +19,7 @@ monikerRange: ">=sql-server-linux-ver15 || >=sql-server-2016"
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
-This article reviews options for using [PolyBase](polybase-guide.md) to query external data in-place, referred to as data virtualization, for a variety of external data sources. 
+This article reviews options for using [PolyBase](overview.md) to query external data in-place, referred to as data virtualization, for a variety of external data sources. 
 
 ## T-SQL syntax used in PolyBase
 
@@ -165,6 +165,6 @@ ORDER BY
 
 ## Related content
 
-- [Data virtualization with PolyBase in SQL Server](polybase-guide.md)
+- [Data virtualization with PolyBase in SQL Server](overview.md)
 - [Get started with PolyBase in SQL Server 2022](polybase-get-started.md)
 - [Performance considerations in PolyBase for SQL Server](polybase-performance.md)

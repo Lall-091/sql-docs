@@ -21,7 +21,7 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 
 In the following example, the delta table folder is stored on Azure Blob Storage and accessed via OPENROWSET or an external table.
 
-For more information on data virtualization, [Introducing data virtualization with PolyBase](polybase-guide.md).
+For more information on data virtualization, [Introducing data virtualization with PolyBase](overview.md).
 
 ## Preconfiguration
 

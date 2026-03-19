@@ -79,7 +79,7 @@ Requires `ALTER ANY EXTERNAL DATA SOURCE` permission.
 
 ## Remarks
 
-The SQL Server instance must have the [PolyBase](../polybase/polybase-guide.md) feature installed.
+The SQL Server instance must have the [PolyBase](../polybase/overview.md) feature installed.
 
 This stored procedure supports connectors for:
 
@@ -114,7 +114,7 @@ EXECUTE sp_data_source_table_columns
 
 ## Related content
 
-- [Data virtualization with PolyBase in SQL Server](../polybase/polybase-guide.md)
+- [Data virtualization with PolyBase in SQL Server](../polybase/overview.md)
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
 - [CREATE EXTERNAL TABLE AS SELECT (CETAS) (Transact-SQL)](../../t-sql/statements/create-external-table-as-select-transact-sql.md)
 - [CREATE EXTERNAL TABLE (Transact-SQL)](../../t-sql/statements/create-external-table-transact-sql.md)

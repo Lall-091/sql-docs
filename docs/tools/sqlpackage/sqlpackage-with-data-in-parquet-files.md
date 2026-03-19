@@ -77,7 +77,7 @@ See [SqlPackage publish](sqlpackage-publish.md#examples) for more examples of au
 
 ### PolyBase
 
-For SQL Server and Azure SQL Managed Instance, [PolyBase](../../relational-databases/polybase/polybase-guide.md) is required for SqlPackage operations with Parquet files. The following query can be used to check if PolyBase is enabled:
+For SQL Server and Azure SQL Managed Instance, [PolyBase](../../relational-databases/polybase/overview.md) is required for SqlPackage operations with Parquet files. The following query can be used to check if PolyBase is enabled:
 
 ```sql
 // configuration_id = 16397 is 'allow polybase export'

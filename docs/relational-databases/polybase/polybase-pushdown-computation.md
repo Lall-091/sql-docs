@@ -365,7 +365,7 @@ OPTION (DISABLE EXTERNALPUSHDOWN);
 
 ## Related content
 
-- [Data virtualization with PolyBase in SQL Server](polybase-guide.md)
+- [Data virtualization with PolyBase in SQL Server](overview.md)
 - [How to tell if external pushdown occurred](polybase-how-to-tell-pushdown-computation.md)
 - [Configure PolyBase to access external data in S3-compatible object storage](polybase-configure-s3-compatible.md)
 - [Virtualize parquet file in a S3-compatible object storage with PolyBase](polybase-virtualize-parquet-file.md)

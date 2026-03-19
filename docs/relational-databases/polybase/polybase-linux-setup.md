@@ -18,7 +18,7 @@ monikerRange: ">=sql-server-linux-ver15 || >=sql-server-ver15"
 
 [!INCLUDE [sqlserver2019-linux](../../includes/applies-to-version/sqlserver2019-linux.md)]
 
-The following steps install [PolyBase](polybase-guide.md) (`mssql-server-polybase` and `mssql-server-polybase-hadoop`) on Linux. With PolyBase, you can run external queries against remote data sources.
+The following steps install [PolyBase](overview.md) (`mssql-server-polybase` and `mssql-server-polybase-hadoop`) on Linux. With PolyBase, you can run external queries against remote data sources.
 
 ## Prerequisites
 

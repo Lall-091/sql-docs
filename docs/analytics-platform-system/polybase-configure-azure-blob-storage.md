@@ -173,4 +173,4 @@ In SQL Server Data Tools (SSDT), external tables are displayed in a separate fol
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Introducing data virtualization with PolyBase](../relational-databases/polybase/polybase-guide.md)
+> [Introducing data virtualization with PolyBase](../relational-databases/polybase/overview.md)

@@ -169,4 +169,4 @@ To connect to a Kerberos-secured Hadoop cluster using MIT KDC:
 For more information, see the following articles:
 
 - [Configure PolyBase to access external data in Hadoop](polybase-configure-hadoop.md)
-- [PolyBase overview](../../relational-databases/polybase/polybase-guide.md)
+- [PolyBase overview](../../relational-databases/polybase/overview.md)
