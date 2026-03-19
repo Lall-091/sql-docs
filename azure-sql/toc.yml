@@ -845,6 +845,8 @@
         href: database/change-data-capture-overview.md
     - name: Database sharding
       items:
+      - name: Elastic Query alternatives
+        href: database/elastic-query-horizontal-partitioning-migration.md
       - name: Upgrade client library
         href: database/elastic-scale-upgrade-client-library.md
       - name: Create sharded app

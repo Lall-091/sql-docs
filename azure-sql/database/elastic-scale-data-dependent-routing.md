@@ -21,6 +21,8 @@ ms.custom:
 
 The application does not need to track various connection strings or DB locations associated with different slices of data in the sharded environment. Instead, the [Scale out databases with the shard map manager](elastic-scale-shard-map-management.md) opens connections to the correct databases when needed, based on the data in the shard map and the value of the sharding key that is the target of the application's request. The key is typically the *customer_id*, *tenant_id*, *date_key*, or some other specific identifier that is a fundamental parameter of the database request.
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 For more information, see [Scaling Out SQL Server with Data-Dependent Routing](/previous-versions/sql/sql-server-2005/administrator/cc966448(v=technet.10)).
 
 ## Download the client library

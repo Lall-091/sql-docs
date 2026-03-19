@@ -16,6 +16,8 @@ monikerRange: "=azuresql || =azuresql-db "
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 The following terms are defined for the [Scale out with Azure SQL Database](elastic-scale-introduction.md). The tools are used to manage [shard maps](elastic-scale-shard-map-management.md), and include the [client library](elastic-database-client-library.md), the [split-merge tool](elastic-scale-overview-split-and-merge.md), [elastic pools](elastic-pool-overview.md), and [queries](elastic-query-overview.md). 
 
 These terms are used in [Adding a shard using Elastic Database tools](elastic-scale-add-a-shard.md) and [Using the RecoveryManager class to fix shard map problems](elastic-database-recovery-manager.md).
@@ -34,13 +36,13 @@ These terms are used in [Adding a shard using Elastic Database tools](elastic-sc
 
 **Multi-shard query**: The ability to issue a query against multiple shards; results sets are returned using `UNION ALL` semantics (also known as "fan-out query"). Compare to **data dependent routing**.
 
-**Multi-tenant** and **Single-tenant**: This shows a single-tenant database and a multi-tenant database:
+**multitenant** and **Single-tenant**: This shows a single-tenant database and a multitenant database:
 
-:::image type="content" source="media/elastic-scale-glossary/multi-single-simple.png" alt-text="Diagram that shows a single-tenant database and a multi-tenant database.":::
+:::image type="content" source="media/elastic-scale-glossary/multi-single-simple.png" alt-text="Diagram that shows a single-tenant database and a multitenant database.":::
 
-Here is a representation of **sharded** single and multi-tenant databases. 
+Here is a representation of **sharded** single and multitenant databases. 
 
-:::image type="content" source="media/elastic-scale-glossary/shards-single-multi.png" alt-text="Diagram of Single and multi-tenant databases.":::
+:::image type="content" source="media/elastic-scale-glossary/shards-single-multi.png" alt-text="Diagram of Single and multitenant databases.":::
 
 **Range shard map**: A shard map in which the shard distribution strategy is based on multiple ranges of contiguous values. 
 

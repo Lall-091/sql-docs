@@ -16,6 +16,8 @@ monikerRange: "=azuresql || =azuresql-db "
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 Easily manage your existing scaled-out sharded databases using tools (such as the [Building scalable cloud databases](elastic-database-client-library.md)). First convert an existing set of databases to use the [shard map manager](elastic-scale-shard-map-management.md).
 
 ## Overview

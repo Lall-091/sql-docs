@@ -37,6 +37,8 @@ To get the Dapper assemblies, see [Dapper dot net](https://www.nuget.org/package
 
 ## A quick look at the elastic database client library
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 With the elastic database client library, you define partitions of your application data called *shardlets*, map them to databases, and identify them by *sharding keys*. You can have as many databases as you need and distribute your shardlets across these databases. The mapping of sharding key values to the databases is stored by a shard map provided by the library's APIs. This capability is called **shard map management**. The shard map also serves as the broker of database connections for requests that carry a sharding key. This capability is referred to as **data-dependent routing**.
 
 :::image type="content" source="media/elastic-scale-working-with-dapper/dapper-example.png" alt-text="Shard maps and data-dependent routing." lightbox="media/elastic-scale-working-with-dapper/dapper-example.png":::
@@ -59,7 +61,7 @@ The following section provides guidance for these requirements for applications 
 
 ### Data-dependent routing with Dapper
 
-With Dapper, the application is typically responsible for creating and opening the connections to the underlying database. Given a type `T` by the application, Dapper returns query results as .NET collections of type `T`. Dapper performs the mapping from the T-SQL result rows to the objects of type `T`. Similarly, Dapper maps .NET objects into SQL values or parameters for data manipulation language (DML) statements. Dapper offers this functionality via extension methods on the regular [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) object from the ADO .NET SQL Client libraries. The SQL connection returned by the Elastic Scale APIs for DDR are also regular [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) objects. This allows us to directly use Dapper extensions over the type returned by the client library's DDR API, as it is also a simple SQL Client connection.
+With Dapper, the application is typically responsible for creating and opening the connections to the underlying database. Given a type `T` by the application, Dapper returns query results as .NET collections of type `T`. Dapper performs the mapping from the T-SQL result rows to the objects of type `T`. Similarly, Dapper maps .NET objects into SQL values or parameters for data manipulation language (DML) statements. Dapper offers this functionality via extension methods on the regular [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) object from the ADO .NET SQL Client libraries. The SQL connections returned by the Elastic Scale APIs for DDR are also regular [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) objects. This allows us to directly use Dapper extensions over the type returned by the client library's DDR API, as it is also a simple SQL Client connection.
 
 These observations make it straightforward to use connections brokered by the elastic database client library for Dapper.
 

@@ -24,6 +24,8 @@ To easily scale out databases on Azure SQL Database, use a shard map manager. Th
 
 Understanding how these maps are constructed is essential to shard map management. This is done using the ShardMapManager class ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)), found in the [Building scalable cloud databases](elastic-database-client-library.md) to manage shard maps.  
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 ## Shard maps and shard mappings
 
 For each shard, you must select the type of shard map to create. The choice depends on the database architecture:
