@@ -14,7 +14,7 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 
 # Configure change event streaming (preview)
 
-[!INCLUDE [sqlserver2025](../../../includes/applies-to-version/sqlserver2025-asdb.md)]
+[!INCLUDE [sqlserver2025](../../../includes/applies-to-version/sqlserver2025-asdb-asmi.md)]
 
 This article describes how to configure the [change event streaming (CES)](overview.md) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], Azure SQL Database, and Azure SQL Managed Instance.
 
@@ -515,6 +515,29 @@ The following table lists the stored procedures, system functions, and DMVs that
 | [sys.sp_help_change_feed_table_groups](../../system-stored-procedures/sp-help-change-feed-table-groups.md) | Returns metadata that is used to configure change event streaming groups. |
 | [sys.sp_help_change_feed_table](../../system-stored-procedures/sp-help-change-feed-table.md) | Provides the status and information of the streaming group and table metadata for change event streaming. |
 
+## Transaction log growth
+
+Because message delivery is guaranteed, the transaction log for a database that has CES enabled can continue to grow. Log truncation is prevented as long as there are CES changes to stream from the log. Once the transaction log size reaches the max defined limit, writes to the database fail. 
+
+To prevent this in Azure SQL Database and Azure SQL Managed Instance, when the transaction log size approaches the max defined limit, Microsoft might disable CES or kill long running transactions. For unmanaged SQL Server instances such as on-premises or on SQL Server on Azure VMs, you're responsible for monitoring the transaction log size and ensuring it doesn't reach the max defined limit, and manually disabling CES or killing long running transactions if needed.
+
+Once CES is disabled, or a long running transaction is killed, the transaction log is truncated to free up space. You must manually enable CES again after it has been disabled, or retry any long running transactions that were killed. Data changes made while CES was disabled aren't captured. Only changes made after CES is restarted are streamed.
+
+The following is a list of typical scenarios that can lead to transaction log growth with CES enabled:
+
+- Persistent errors. CES retries to send a message that is rejected repeatedly and CES can't continue. Reasons for persistent errors that can lead to rejected messages include:
+   - Network issues or misconfiguration.
+   - Credential misconfiguration.
+   - Misconfigured max message size that the destination rejects.
+- The destination throttles the incoming events. For example, Azure Event Hubs rate limits based on its SKU.
+- Long running transactions that generate a lot of log records and prevent log truncation.
+
+To ensure smooth operations, monitor the size of the transaction log and [CES delivery errors](../../system-dynamic-management-views/sys-dm-change-feed-errors.md) regularly.
+
+## Performance
+
+On SQL Server, Azure SQL Managed Instance and Azure SQL Database elastic pools, you can enable CES on multiple databases. Each CES-enabled database consumes server resources and competes with other server workload. Make sure that your server is adequately resourced for the expected workload and monitor the performance of your server and databases regularly.
+
 ## Limitations
 
 Change event streaming (CES) has the following limitations:
@@ -524,7 +547,8 @@ Change event streaming (CES) has the following limitations:
 - [Database-level limitations](#database-level-limitations)
 - [Table-level limitations](#table-level-limitations)
 - [Column-level limitations](#column-level-limitations)
-- [Permissions in the source database](#permissions-in-the-source-database)
+- [Permissions in the source database](#permissions-in-the-source-database-and-data-residency)
+- [Networking and connectivity](#networking-and-connectivity)
 
 ### Azure SQL Database
 
@@ -548,7 +572,7 @@ The following limitations apply when using CES with Azure SQL Database:
 - CES only supports databases configured with the full recovery model.
 - CES doesn't support databases configured with [Fabric Mirrored Databases for SQL Server](/fabric/database/mirrored-database/sql-server), [transactional replication](../../replication/transactional/transactional-replication.md), [change data capture](../about-change-data-capture-sql-server.md), or [Azure Synapse Link](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview). [Change tracking](../about-change-tracking-sql-server.md) is supported on databases configured with CES.
 - CES can only stream from writable primary databases. Secondary databases that are part of Always On availability groups or that use the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview) can't be configured as streaming sources.
-- You can't enable CES on views or materialized views.
+- You can't enable CES on views or indexed views.
 
 ### Table-level limitations
 
@@ -584,11 +608,16 @@ The following limitations apply when using CES with Azure SQL Database:
   - **xml**
   - User-defined types (UDT)
 
-### Permissions in the source database
+### Permissions in the source database and data residency
 
 - For row-level security, CES emits changes from all rows, regardless of user permissions.
 - Dynamic data masking doesn't apply to data sent through CES. Data is streamed unmasked, even if masking is configured.
 - CES doesn't emit events related to object-level permission changes (for example, granting permissions to specific columns).
+- CES streams data to the configured destination if the network configuration allows it. If the destination is in a different region, CES streams the data across regions. Ensure this complies with your data residency and compliance requirements.
+
+### Networking and connectivity
+
+- Currently, CES can only stream to Azure Event Hubs public endpoints. Service endpoints and private endpoints aren't currently supported.
 
 ## Related content
 
