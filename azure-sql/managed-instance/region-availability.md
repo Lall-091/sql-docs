@@ -4,7 +4,7 @@ description: Learn about feature availability by region for Azure SQL Managed In
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: 
-ms.date: 05/05/2025
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.topic: concept-article
 ms.custom:
@@ -84,31 +84,6 @@ Supports for the memory-optimized premium-series hardware and the premium-series
 
 ---
 
-## Free offer
-
-The [free offer](free-offer.md) is available in the following regions:
-
-#### [Americas](#tab/americas)
-
-- East US
-- East US 2
-- South Central US
-- West US 2
-- West US 3
-
-#### [Asia Pacific](#tab/asia)
-
-- Southeast Asia
-- Australia East
-
-#### [Europe, the Middle East, and Africa](#tab/emea)
-
-- North Europe
-- West Europe
-- Sweden Central
-- UK South
-
----
 
 ## Service endpoint policy
 

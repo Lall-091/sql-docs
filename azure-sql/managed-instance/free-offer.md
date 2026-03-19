@@ -26,7 +26,7 @@ This article describes the free offer of [Azure SQL Managed Instance](sql-manage
 To create a free SQL managed instance, you need:
 
 - An Azure account.
-- A [supported Azure subscription](#supported-subscription-types). You can have only one free offer SQL managed instance per subscription.
+- A [supported Azure subscription](#supportability). You can have only one free offer SQL managed instance per subscription.
 
 <a id="create-a-free-instance"></a>
 
@@ -303,7 +303,7 @@ Additionally, the following limitations apply:
 - After 12 months, the free SQL managed instance stops. If you don't upgrade the instance to a paid version within 30 days, the instance and all databases are deleted and no longer recoverable.
 - The following capabilities aren't supported: [Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability), [Failover groups](failover-group-sql-mi.md), [Long-term backup retention](../database/long-term-retention-overview.md), modifying the backup storage redundancy.
 - You can only scale up and down within the free offer limits.
-- The free offer is currently available in the [following regions](region-availability.md#free-offer).
+- The free offer is available in all [regions that support Azure SQL Managed Instance](region-availability.md).
 - If you delete a free SQL managed instance, you delete all its databases and can't restore them.
 
 ### Monthly vCore limits
@@ -324,27 +324,9 @@ On the **Overview** pane of your free instance in the Azure portal, you can iden
 > [!NOTE]  
 > If you delete your original free SQL managed instance and create a new one, your free credits don't reset. The remaining vCore hours for the current month carry over to the new instance and you regain your full 720 vCore hours on your original monthly renewal date.
 
-## Supported subscription types
+## Supportability
 
-The free Azure SQL Managed Instance offer is available on the following subscription types:
-
-:::row:::
-    :::column:::
-      - [Pay-as-you-go (0003P)](https://azure.microsoft.com/pricing/offers/ms-azr-0003p/)
-      - [Azure in CSP (0145P)](https://azure.microsoft.com/pricing/offers/ms-azr-0145p/)
-      - [Azure Plan (0017G)](https://azure.microsoft.com/pricing/offers/ms-azr-0017g/)
-      - [Enterprise Agreement Support](https://azure.microsoft.com/pricing/offers/enterprise-agreement-support/)
-      - [Microsoft Azure EA Sponsorship (0136P)](https://azure.microsoft.com/pricing/offers/ms-azr-0136p/)
-      - [Visual Studio Professional subscribers (0059P)](https://azure.microsoft.com/pricing/offers/ms-azr-0059p/)
-    :::column-end:::
-    :::column:::
-      - [Visual Studio Test Professional subscribers (0059P)](https://azure.microsoft.com/pricing/offers/ms-azr-0059p/)
-      - [Visual Studio Enterprise subscribers (0063P)](https://azure.microsoft.com/pricing/offers/ms-azr-0063p/)
-      - [Pay-As-You-Go Dev/Test (0023P)](https://azure.microsoft.com/pricing/offers/ms-azr-0023p/)
-      - [Enterprise Dev/Test (0148P)](https://azure.microsoft.com/pricing/offers/ms-azr-0148p/)
-      - [Azure in Open Licensing (0111P)](https://azure.microsoft.com/pricing/offers/ms-azr-0111p?cid=msft_learn)
-    :::column-end:::
-:::row-end:::
+The free Azure SQL Managed Instance offer is available in all regions, and for all subscription types, that support the paid Azure SQL Managed Instance offer. 
 
 ## Related content
 
