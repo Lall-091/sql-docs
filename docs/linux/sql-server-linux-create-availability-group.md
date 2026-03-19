@@ -3,7 +3,7 @@ title: Create and Configure an Availability Group for SQL Server on Linux
 description: This tutorial shows how to create and configure availability groups for SQL Server on Linux, as well as create availability group endpoints and certificates.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/02/2026
+ms.date: 03/19/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -319,7 +319,7 @@ This section shows how to create an AG with a cluster type of External using SSM
 
 1. On the Introduction dialog, select **Next**.
 
-1. In the Specify Availability Group Options dialog, enter a name for the availability group, and select a cluster type of `EXTERNAL` or `NONE` in the dropdown list. Use `EXTERNAL` when you deploy Pacemaker. Use `NONE` for specialized scenarios, such as read scale-out. Selecting the option for database level health detection is optional. For more information on this option, see [Availability group database level health detection failover option](../database-engine/availability-groups/windows/sql-server-always-on-database-health-detection-failover-option.md). Select **Next**.
+1. In the **Specify Availability Group Options** dialog, enter a name for the AG, and select a cluster type of `EXTERNAL` or `NONE` in the dropdown list. Use `EXTERNAL` when you deploy Pacemaker. Use `NONE` for specialized scenarios, such as read scale-out. Selecting the option for database level health detection is optional. For more information on this option, see [Availability group database level health detection failover option](../database-engine/availability-groups/windows/sql-server-always-on-database-health-detection-failover-option.md). Select **Next**.
 
    :::image type="content" source="media/sql-server-linux-create-availability-group/image3.png" alt-text="Screenshot of Create Availability Group showing cluster type." lightbox="media/sql-server-linux-create-availability-group/image3.png":::
 
@@ -478,11 +478,11 @@ This example shows three full replicas and how you can configure read-only routi
 
    A few things to note about this configuration:
 
-   - `AGName` is the name of the availability group.
-   - `DBName` is the name of the database that you use with the availability group. It can also be a list of names separated by commas.
+   - `AGName` is the name of the AG.
+   - `DBName` is the name of the database that you use with the AG. It can also be a list of names separated by commas.
    - `ListenerName` is a name that's different from any of the underlying servers or nodes. It's registered in DNS along with `IPAddress`.
    - `IPAddress` is an IP address that's associated with `ListenerName`. It's also unique and not the same as any of the servers or nodes. Applications and end users use either `ListenerName` or `IPAddress` to connect to the AG.
-      - `SubnetMask` is the subnet mask of `IPAddress`. In [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and previous versions, this value is `255.255.255.255`. In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, this value is `0.0.0.0`.
+     - `SubnetMask` is the subnet mask of `IPAddress`. In [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and previous versions, this value is `255.255.255.255`. In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, this value is `0.0.0.0`.
 
 1. In a query window connected to the other replica, execute the following statement to join the replica to the AG and initiate the seeding process from the primary to the secondary replica.
 
@@ -542,13 +542,13 @@ This example shows the creation of a two-replica configuration using a cluster t
 
    In this example:
 
-   - `AGName` is the name of the availability group.
-   - `DBName` is the name of the database that you use with the availability group. It can also be a list of names separated by commas.
+   - `AGName` is the name of the AG.
+   - `DBName` is the name of the database that you use with the AG. It can also be a list of names separated by commas.
    - `PortOfEndpoint` is the port number used by the endpoint you create.
-      - `PortOfInstance` is the port number used by the instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+     - `PortOfInstance` is the port number used by the instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
    - `ListenerName` is a name that's different from any of the underlying replicas but isn't actually used.
    - `PrimaryReplicaIPAddress` is the IP address of the primary replica.
-      - `SubnetMask` is the subnet mask of `IPAddress`. In [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and previous versions, this value is `255.255.255.255`. In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, this value is `0.0.0.0`.
+     - `SubnetMask` is the subnet mask of `IPAddress`. In [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and previous versions, this value is `255.255.255.255`. In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, this value is `0.0.0.0`.
 
 1. Join the secondary replica to the AG and initiate automatic seeding.
 
@@ -564,12 +564,13 @@ This example shows the creation of a two-replica configuration using a cluster t
 
 ## Create the SQL Server login and permissions for Pacemaker
 
-A Pacemaker high availability cluster that uses [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux needs access to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance, and permissions on the availability group itself. These steps create the login and the associated permissions, along with a file that tells Pacemaker how to log into [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+A Pacemaker high availability cluster that uses [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux needs access to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance, and permissions on the AG itself. These steps create the login and the associated permissions, along with a file that tells Pacemaker how to log into [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
 1. In a query window connected to the first replica, execute the following script:
 
    ```sql
-   CREATE LOGIN PMLogin WITH PASSWORD ='<password>';
+   CREATE LOGIN PMLogin
+       WITH PASSWORD = '<password>';
    GO
 
    GRANT VIEW SERVER STATE TO PMLogin;
@@ -610,19 +611,47 @@ A Pacemaker high availability cluster that uses [!INCLUDE [ssnoversion-md](../in
 
 ## Create the availability group resources in the Pacemaker cluster (External only)
 
-After you create an availability group in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must create the corresponding resources in Pacemaker when you specify a cluster type of External. Two resources are associated with an availability group: the availability group itself, and an IP address. Configuring the IP address resource is optional if you aren't using the listener functionality, but it's recommended.
+After you create an AG in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must create the corresponding resources in Pacemaker when you specify a cluster type of External. Two resources are associated with an AG: the availability group resource, and an IP address resource. Configuring the IP address resource is optional if you aren't using a listener. However, it's recommended when listener functionality is required.
 
-The AG resource you create is a type of resource called a *clone*. The AG resource has copies on each node, and one controlling resource called the *master*. The master is associated with the server hosting the primary replica. The other resources host secondary replicas (regular or configuration-only) and can be promoted to master in a failover.
+The AG resource you create is a type of resource called a *clone*. The AG resource has copies on each node, and one controlling resource called the *master*. The *master* is associated with the server hosting the primary replica. The other resources host secondary replicas (regular or configuration-only) and can be promoted to *master* in a failover.
+
+### Pacemaker HA agent v2 (preview)
+
+In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] with Cumulative Update (CU) 3 and later versions, a new Pacemaker HA agent v2 (`mssql-server-ha`) is available for Red Hat Enterprise Linux (RHEL) and Ubuntu.
+
+Pacemaker HA agent v2 introduces reliability and performance improvements over the previous agent, including:
+
+- Significantly improved failover performance to reduce both planned and unplanned failover times.
+- Support for flexible automatic failover policies, including configuration of health-check timeout and failure-condition level.
+- Support for TLS 1.3 for communication between the Pacemaker cluster and SQL Server.
+
+Pacemaker HA agent v2 is currently in preview. The existing Pacemaker HA agent (v1) remains fully supported for production deployments.
 
 ### [Red Hat Enterprise Linux (RHEL) and Ubuntu](#tab/ru)
 
-1. Create the AG resource with the following syntax:
+1. Create the AG resource in Pacemaker using the existing Pacemaker HA agent (v1):
 
    ```bash
    sudo pcs resource create <NameForAGResource> ocf:mssql:ag ag_name=<AGName> meta failure-timeout=30s promotable notify=true
    ```
 
    In this example, `NameForAGResource` is the unique name you give to this cluster resource for the AG, and `AGName` is the name of the AG that you created.
+
+   To use Pacemaker HA agent v2, create the AG resource using the `agv2` resource agent:
+
+   ```bash
+   sudo pcs resource create <NameForAGResource> ocf:mssql:agv2 ag_name=<AGName> meta failure-timeout=30s promotable notify=true
+   ```
+
+   New deployments on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] can evaluate Pacemaker HA agent v2. Existing production deployments should upgrade when appropriate.
+
+   When upgrading to or deploying pacemaker HA agent v2, create the new AG resource using the `agv2` agent instead of the previous ag agent. If an existing AG resource is already configured, remove it and create a new resource using `agv2`:
+
+   ```bash
+   sudo pcs resource delete <NameForAGResource>
+   ```
+
+   This operation temporarily stops AG synchronization while the resource is being recreated. Deleting and recreating the Pacemaker AG resource doesn't delete the AG. After the resource is recreated, Pacemaker resumes management and AG synchronization automatically.
 
 1. Create the IP address resource for the AG that you associate with the listener functionality.
 
@@ -709,18 +738,6 @@ The AG resource you create is a type of resource called a *clone*. The AG resour
 
 ---
 
-## Next step
+## Related content
 
-In this tutorial, you learned how to create and configure an availability group for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. You learned how to:
-
-> [!div class="checklist"]
-> - Enable availability groups.
-> - Create AG endpoints and certificates.
-> - Use [!INCLUDE [ssmanstudiofull-md](../includes/ssmanstudiofull-md.md)] (SSMS) or Transact-SQL to create an AG.
-> - Create the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] login and permissions for Pacemaker.
-> - Create AG resources in a Pacemaker cluster.
-
-For most AG administration tasks, including upgrades and failing over, see:
-
-> [!div class="nextstepaction"]
-> [Always On availability group failover on Linux](sql-server-linux-availability-group-failover-ha.md)
+- [Always On availability group failover on Linux](sql-server-linux-availability-group-failover-ha.md)
