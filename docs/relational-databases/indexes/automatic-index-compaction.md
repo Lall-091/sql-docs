@@ -4,7 +4,7 @@ description: Describes the automatic index compaction feature in the SQL Server 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: dfurman, randolphwest
-ms.date: 03/11/2026
+ms.date: 03/18/2026
 ms.service: sql
 ms.topic: concept-article
 monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
@@ -17,7 +17,7 @@ monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 Automatic index compaction helps you reduce the consumption of storage space, disk I/O, CPU, memory, and improve workload performance without investing time and effort into index maintenance jobs. Index compaction is performed continuously and with low overhead as the data in the database changes.
 
 > [!NOTE]  
-> Automatic index compaction is currently in preview in Azure SQL Database, Azure SQL Managed Instance with the always-up-to-date [update policy](/azure/azure-sql/managed-instance/update-policy), and SQL database in Fabric.
+> Automatic index compaction is currently in preview in Azure SQL Database, Azure SQL Managed Instance with the Always-up-to-date [update policy](/azure/azure-sql/managed-instance/update-policy), and SQL database in Fabric.
 
 For answers to common questions, see [Frequently asked questions (FAQ)](#frequently-asked-questions-faq).
 
