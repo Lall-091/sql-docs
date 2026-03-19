@@ -58,6 +58,14 @@ The following links provide more information about how Windows supports **Extend
 - [Integrated Windows Authentication with Extended Protection](/previous-versions/visualstudio/visual-studio-2008/dd639324(v=vs.90))
 - [Microsoft Security Advisory (973811), Extended Protection for Authentication](/security-updates/SecurityAdvisories/2009/973811)
 
+### Driver support
+
+The only drivers that support Extended Protection are Windows-based
+- Microsoft ODBC Driver for SQL Server (on Windows only)
+- Microsoft OLE DB Driver for SQL Server
+- System.Data.SqlClient (in .NET Framework on Windows)
+- Microsoft.Data.SqlClient (on Windows)
+
 ## Settings
 
 There are three SQL Server connection settings that affect service binding and channel binding. The settings can be configured using the SQL Server Configuration Manager or WMI and viewed using the **Server Protocol Settings** facet of Policy Based Management.
