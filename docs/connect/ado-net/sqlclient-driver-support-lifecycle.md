@@ -69,7 +69,7 @@ New stable (GA) releases for `Microsoft.Data.SqlClient.AlwaysEncrypted.AzureKeyV
 | 2.x | March 3, 2021 | 2.0.0 | March 3, 2021 | LTS | March 4, 2024 |
 | 1.x | November 19, 2019 | 1.2.0 | December 01, 2020 | LTS | November 21, 2022 |
 
-## Microsoft.Data.SqlClient Extensions
+## Microsoft.Data.SqlClient extensions
 
 The major versions of extensions NuGet packages shipped starting with Microsoft.Data.SqlClient v7.0 onwards follow an LTS support cycle:
 

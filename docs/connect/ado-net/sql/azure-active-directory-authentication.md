@@ -28,7 +28,7 @@ This article describes how to connect to Azure SQL data sources by using Microso
 Microsoft Entra authentication uses identities in Microsoft Entra ID to access data sources such as Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics. The **Microsoft.Data.SqlClient** namespace allows client applications to specify Microsoft Entra credentials in different authentication modes when they're connecting to Azure SQL Database and Azure SQL Managed Instance. To use Microsoft Entra authentication with Azure SQL, you must [configure and manage Microsoft Entra authentication with Azure SQL](/azure/azure-sql/database/authentication-aad-configure).
 
 > [!IMPORTANT]
-> Starting with **Microsoft.Data.SqlClient 7.0**, Azure and Microsoft Entra ID dependencies are no longer included in the core `Microsoft.Data.SqlClient` package. If your application uses any Microsoft Entra authentication mode (such as `Active Directory Default`, `Active Directory Managed Identity`, `Active Directory Interactive`, etc.) with driver implementation, you must install the **Microsoft.Data.SqlClient.Extensions.Azure** NuGet package separately. For migration steps, see [Migrate to Microsoft.Data.SqlClient 7.0](#migrate-to-microsoftdatasqlclient-70).
+> Starting with **Microsoft.Data.SqlClient 7.0**, Azure and Microsoft Entra ID dependencies are no longer included in the core `Microsoft.Data.SqlClient` package. If your library or application supports any Microsoft Entra authentication mode (such as `Active Directory Default`, `Active Directory Managed Identity`, `Active Directory Interactive`, etc.), you must include a dependency on the **Microsoft.Data.SqlClient.Extensions.Azure** NuGet package. For migration steps, see [Migrate to Microsoft.Data.SqlClient 7.0](#migrate-to-microsoftdatasqlclient-70).  
 
 When you set the `Authentication` connection property in the connection string, the client can choose a preferred Microsoft Entra authentication mode according to the value provided:
 
@@ -37,7 +37,7 @@ When you set the `Authentication` connection property in the connection string, 
 
   A new `Active Directory Service Principal` authentication mode is also added in SqlClient 2.0.0. It makes use of the client ID and secret of a service principal identity to accomplish authentication.
 - More authentication modes are added in **Microsoft.Data.SqlClient** 2.1.0, including `Active Directory Device Code Flow` and `Active Directory Managed Identity` (also known as `Active Directory MSI`). These new modes enable the application to acquire an access token to connect to the server.
-- Starting with **Microsoft.Data.SqlClient** 7.0.0, all Microsoft Entra authentication implementation is delivered through the separate `Microsoft.Data.SqlClient.Extensions.Azure` package. The core driver package no longer carries Azure dependencies.
+- Starting with **Microsoft.Data.SqlClient** 7.0.0, Microsoft Entra authentication support is provided through the separate `Microsoft.Data.SqlClient.Extensions.Azure` package. The core driver package no longer carries Azure dependencies.  
 
 For information about Microsoft Entra authentication beyond what the following sections describe, see [Use Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-overview).
 
@@ -452,7 +452,7 @@ Or by using the NuGet Package Manager in Visual Studio, search for **Microsoft.D
 > No code changes are required beyond adding the package reference. The extension package registers its authentication providers automatically.
 
 > [!NOTE]
-> You are not required to include the **Microsoft.Data.SqlClient.Extensions.Azure** package reference if your application references code that implements the Entra ID Authentication modes or you connect to Azure SQL using token-based authentication. This package reference is only needed to utilize driver-provided implementation of Entra ID authentication modes.
+> You are not required to include the **Microsoft.Data.SqlClient.Extensions.Azure** package reference if your application implements the Entra ID Authentication modes itself or you connect to Azure SQL using token-based authentication. This package reference is only required for the driver-provided implementation of Entra ID authentication modes.  
 
 ### Step 2: Replace deprecated authentication modes
 

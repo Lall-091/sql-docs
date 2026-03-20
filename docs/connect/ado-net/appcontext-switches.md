@@ -12,6 +12,7 @@ dev_langs:
 ms.custom: sfi-ropc-nochange
 ai-usage: ai-assisted
 ---
+
 # AppContext switches in SqlClient
 
 [!INCLUDE [dotnet-all](../../includes/products/applies-full/dotnet-all.md)]
@@ -26,7 +27,7 @@ The AppContext class allows SqlClient to provide new functionality while continu
 
 (Available starting with version 7.0)
 
-To set `MultiSubnetFailover=true` globally without modifying individual connection strings, you can enable the AppContext switch **"Switch.Microsoft.Data.SqlClient.EnableMultiSubnetFailoverByDefault"** to `true` at application startup:
+To set `MultiSubnetFailover=true` globally without modifying individual connection strings, you can set the AppContext switch **"Switch.Microsoft.Data.SqlClient.EnableMultiSubnetFailoverByDefault"** to `true` at application startup:  
 
 ```csharp
 AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.EnableMultiSubnetFailoverByDefault", true);
@@ -63,7 +64,7 @@ By default, both switches are `true`, which preserves the existing (compatible) 
 
 (Available starting with version 7.0)
 
-When the AppContext switch **"Switch.Microsoft.Data.SqlClient.EnableUserAgent"** is enabled, the driver sends more detailed user agent strings during connection. This information assists with troubleshooting and quantifying driver usage by version and operating system. This switch is disabled by default. To enable it, set the AppContext switch to `true` at application startup:
+When the AppContext switch **"Switch.Microsoft.Data.SqlClient.EnableUserAgent"** is enabled, the driver sends user agent details to the server as part of the connection. This information assists with troubleshooting and quantifying driver usage by version and operating system. This switch is disabled by default. To enable it, set the AppContext switch to `true` at application startup:  
 
 ```csharp
 AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.EnableUserAgent", true);

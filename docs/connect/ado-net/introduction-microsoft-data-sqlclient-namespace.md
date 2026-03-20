@@ -12,6 +12,7 @@ ms.custom:
   - sfi-ropc-nochange
   - ignite-2025
 ---
+
 # Introduction to Microsoft.Data.SqlClient namespace
 
 [!INCLUDE [Driver_ADONET_Download](../../includes/driver_adonet_download.md)]
@@ -26,7 +27,7 @@ The Microsoft.Data.SqlClient API details can be found in the [.NET API Browser](
 
 ## Stable Release 7.0.0 - 2026-03-17
 
-This is the general availability release of **Microsoft.Data.SqlClient 7.0**, a major milestone for the .NET data provider for SQL Server. This release addresses the most upvoted issue in the repository's history — extracting Azure dependencies from the core package — introduces pluggable SSPI authentication, adds enhanced routing for Azure SQL Hyperscale, and delivers async read performance improvements.
+This is the general availability release of **Microsoft.Data.SqlClient 7.0**, a major milestone for the .NET data provider for SQL Server. This release addresses the most upvoted issue in the repository's history — extracting Azure dependencies from the core package — introduces pluggable SSPI authentication, adds enhanced routing for Azure, and delivers async read performance improvements.  
 
 Also released as part of this milestone:
 
@@ -35,9 +36,9 @@ Also released as part of this milestone:
 - Released Microsoft.Data.SqlClient.Internal.Logging 1.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/Internal/Logging/1.0/1.0.0.md).
 - Released Microsoft.Data.SqlClient.AlwaysEncrypted.AzureKeyVaultProvider 7.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/add-ons/AzureKeyVaultProvider/7.0/7.0.0.md).
 
-### Breaking Changes
+### Breaking changes in 7.0
 
-#### Azure Dependencies Removed from Core Package
+#### Azure dependencies removed from core package
 
 *What Changed:*
 
@@ -51,7 +52,7 @@ Also released as part of this milestone:
    [#3982](https://github.com/dotnet/SqlClient/pull/3982),
    [#3978](https://github.com/dotnet/SqlClient/pull/3978),
    [#3986](https://github.com/dotnet/SqlClient/pull/3986))
-- Two additional packages were introduced to support this separation: `Microsoft.Data.SqlClient.Extensions.Abstractions` (shared types between the core driver and extensions) and `Microsoft.Data.SqlClient.Internal.Logging` (shared ETW tracing infrastructure).
+- Two additional packages are introduced to support this separation: `Microsoft.Data.SqlClient.Extensions.Abstractions` (shared types between the core driver and extensions) and `Microsoft.Data.SqlClient.Internal.Logging` (shared ETW tracing infrastructure).  
   ([#3626](https://github.com/dotnet/SqlClient/pull/3626),
    [#3628](https://github.com/dotnet/SqlClient/pull/3628),
    [#3967](https://github.com/dotnet/SqlClient/pull/3967),
@@ -74,14 +75,14 @@ dotnet add package Microsoft.Data.SqlClient.Extensions.Azure
 - No code changes are required beyond adding the package reference.
 - If an Entra ID authentication method is used without the Azure package installed, the driver now provides an actionable error message guiding users to install the correct package.
 
-#### Other breaking changes
+#### Other breaking changes in 7.0
 
 - Reverted public visibility of internal interop enums (`IoControlCodeAccess` and `IoControlTransferType`) that were accidentally made public during the project merge.
   ([#3900](https://github.com/dotnet/SqlClient/pull/3900))
 
-### Added
+### Added in 7.0
 
-#### Pluggable Authentication with SspiContextProvider
+#### Pluggable authentication with SspiContextProvider  
 
 *What Changed:*
 
@@ -106,9 +107,9 @@ connection.Open();
 ```
 
 - The provider handles the authentication token exchange during integrated authentication. Existing authentication behavior is unchanged when no custom provider is set. See [SspiContextProvider_CustomProvider.cs](https://github.com/dotnet/SqlClient/tree/main/doc/samples/SspiContextProvider_CustomProvider.cs) for a sample implementation.
-- **Note:** The `SspiContextProvider` is part of the connection pool key. Care should be taken when using this property to ensure the implementation returns a stable identity per resource.
+- **Note:** The `SspiContextProvider` is part of the connection pool key. Ensure the implementation returns a consistent identity per resource.  
 
-#### Async Read Performance: Packet Multiplexing (Preview)
+#### Async read performance: Packet multiplexing (preview)
 
 *What Changed:*
 
@@ -144,7 +145,7 @@ AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseCompatibilityProcessSni
 
 *Who Benefits:*
 
-- Users connecting to Azure SQL Hyperscale environments that use named read replicas and gateway-based load balancing.
+- Users connecting to Azure environments that use named read replicas and gateway-based load balancing.
 
 *Impact:*
 
@@ -165,7 +166,7 @@ AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseCompatibilityProcessSni
 
 - SqlClient 7.0 compiles and tests against .NET 10, ensuring compatibility.
 
-#### Strongly-Typed Diagnostic Events on .NET Framework
+#### Strongly-typed diagnostic events on .NET Framework
 
 *What Changed:*
 
@@ -201,7 +202,7 @@ listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
 
 - The types implement `IReadOnlyList<KeyValuePair<string, object>>` for backward compatibility with code that iterates properties generically.
 
-#### Other Additions
+#### Other additions in 7.0
 
 - Added `SqlConfigurableRetryFactory.BaselineTransientErrors` static property exposing the default transient error codes list as a `ReadOnlyCollection<int>`, making it easier to extend the default list with application-specific error codes.
   ([#3903](https://github.com/dotnet/SqlClient/pull/3903))
@@ -215,7 +216,7 @@ listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
 - Enabled User Agent Feature Extension (opt-in via `Switch.Microsoft.Data.SqlClient.EnableUserAgent`).
   ([#3606](https://github.com/dotnet/SqlClient/pull/3606))
 
-### Changed
+### Changed in 7.0
 
 #### Deprecation of `SqlAuthenticationMethod.ActiveDirectoryPassword`
 
@@ -241,7 +242,7 @@ listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
 
 - See [Connect to Azure SQL with Microsoft Entra authentication](/connect/ado-net/sql/azure-active-directory-authentication) for more information.
 
-## Target Platform Support
+## Target Platform Support for 7.0
 
 - .NET Framework 4.6.2+ (Windows x86, Windows x64, Windows ARM64)
 - .NET 8.0+ (Windows x86, Windows x64, Windows ARM, Windows ARM64, Linux, macOS)
