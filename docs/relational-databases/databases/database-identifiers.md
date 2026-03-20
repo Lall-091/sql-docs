@@ -123,6 +123,42 @@ The names of variables, functions, and stored procedures must comply with the fo
 
 1. The identifier must not be a [!INCLUDE [tsql](../../includes/tsql-md.md)] reserved word. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] reserves both the uppercase and lowercase versions of reserved words. When identifiers are used in [!INCLUDE [tsql](../../includes/tsql-md.md)] statements, the identifiers that don't comply with these rules must be delimited by double quotation marks or brackets. The words that are reserved depend on the database compatibility level. This level can be set by using the [ALTER DATABASE compatibility level](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md) statement.
 
+1. Identifiers must be named uniquely within a database schema or database object. For example, two keys in the same schema may not share a name, so the second table creation statement would not be allowed:
+   ```sql
+   USE AdventureWorks2022;
+   GO
+
+   CREATE TABLE [SalesOrderGeneral Table] (
+       [Order] INT NOT NULL,
+       [SalesOrderID] INT IDENTITY(1, 1) NOT NULL,
+       [SalesOrderDetailId] INT NOT NULL,
+       [ModifiedDate] DATETIME NOT NULL,
+       CONSTRAINT [PK_SalesOrder] PRIMARY KEY CLUSTERED (
+         [Order] ASC,
+         [SalesOrderID] ASC
+       )
+   );
+   GO
+   
+   --Primary key identifier conflicts with existing primary key, and so will result in an error
+   CREATE TABLE [SalesOrderDetail Table] (
+       [Order] INT NOT NULL,
+       [SalesOrderDetailID] INT IDENTITY(1, 1) NOT NULL,
+       [OrderQty] SMALLINT NOT NULL,
+       [ProductID] INT NOT NULL,
+       [UnitPrice] MONEY NOT NULL,
+       [UnitPriceDiscount] MONEY NOT NULL,
+       [ModifiedDate] DATETIME NOT NULL,
+       CONSTRAINT [PK_SalesOrder] PRIMARY KEY CLUSTERED (
+           [Order] ASC,
+           [SalesOrderDetailID] ASC
+       )
+   );
+   GO
+   ```
+
+   However, each table may contain its own column named `Order`, as the column name is unique among columns within the table.
+
 1. Embedded spaces or special characters aren't allowed.
 
 1. [Supplementary characters](../../relational-databases/collations/collation-and-unicode-support.md#Supplementary_Characters) aren't allowed.
