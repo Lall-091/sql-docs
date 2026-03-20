@@ -128,7 +128,7 @@ SqlPackage /at:$($AccessToken_Object.Token) /Action:Export /TargetFile:"C:\Adven
     /SourceConnectionString:"Server=tcp:{yourserver}.database.windows.net,1433;Initial Catalog=AdventureWorksLT;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 ```
 
-Alternatively, you can pass the service principal client ID and secret to SqlPackage in the connection string. The [connection string format](../../connect/ado-net/sql/azure-active-directory-authentication.md#using-service-principal-authentication) includes `Authentication=Active Directory Service Principal;` and `User Id=AppId; Password=<password>`. When the service principal credentials are passed in the connection string, the `/at` parameter isn't required and SqlPackage refreshes the authentication as needed during the operation.
+Alternatively, you can pass the service principal client ID and secret to SqlPackage in the connection string. The [connection string format](/sql/connect/ado-net/sql/azure-active-directory-authentication.md#using-service-principal-authentication) includes `Authentication=Active Directory Service Principal;` and `User Id=AppId; Password=<password>`. When the service principal credentials are passed in the connection string, the `/at` parameter isn't required and SqlPackage refreshes the authentication as needed during the operation.
 
 Service principals are supported in both [Azure DevOps](/azure/devops/integrate/get-started/authentication/service-principal-managed-identity) and [GitHub actions](https://github.com/azure/login) CI/CD pipelines.
 
