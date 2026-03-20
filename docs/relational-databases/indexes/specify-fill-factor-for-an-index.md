@@ -52,7 +52,7 @@ When a new row is added to a full index page, the [!INCLUDE[ssDE](../../includes
 
 A well-chosen fill factor value can reduce page splits by providing enough space for index expansion when data is added in the middle of the index. If page splits affect performance, the index can be rebuilt by using a new or existing fill factor value in the 70-95 percent range. However, don't reduce the fill factor unnecessarily or set it too low. For more information, see [Optimize index maintenance to improve query performance and reduce resource consumption](../../relational-databases/indexes/reorganize-and-rebuild-indexes.md).
 
-Most workloads perform optimally with the default 100 percent fill factor. With a reduced fill factor, the index requires more storage space, memory, and disk I/O, which can decrease performance. Even for a write-intensive workload, database reads typically outnumber database writes by a factor of five to ten. Therefore, specifying a fill factor other than the default can increase resource utilization by an amount inversely proportional to the fill factor setting.
+Most workloads perform optimally with the default fill factor (100 percent). With a reduced fill factor, the index requires more storage space, memory, and disk I/O, which can decrease performance. Even for a write-intensive workload, database reads typically outnumber database writes by a factor of five to ten. Therefore, specifying a fill factor other than the default can increase resource utilization by an amount inversely proportional to the fill factor setting.
 
 For example, a fill factor value of 50 doubles the disk I/O and memory required to read and cache the same amount of data.
 
