@@ -278,6 +278,8 @@ When creating external table statistics, [!INCLUDE [ssNoVersion](../../includes/
 
 When the external table is using `DELIMITEDTEXT`, `CSV`, `PARQUET`, or `DELTA` as data types, external tables only support statistics for one column per `CREATE STATISTICS` command.
 
+When the external table uses an ODBC-based external data source, `CREATE STATISTICS` doesn't support the `SAMPLE ... PERCENT` option. Only default sampling (without the `SAMPLE` clause) or `FULLSCAN` is supported.
+
 ### Statistics with a filtered condition
 
 Filtered statistics can improve query performance for queries that select from well-defined subsets of data. Filtered statistics use a filter predicate in the `WHERE` clause to select the subset of data that is included in the statistics.

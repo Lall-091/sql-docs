@@ -4,7 +4,7 @@ description: Describes the automatic index compaction feature in the SQL Server 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: dfurman, randolphwest
-ms.date: 03/18/2026
+ms.date: 03/19/2026
 ms.service: sql
 ms.topic: concept-article
 monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
@@ -94,7 +94,7 @@ The compaction process might skip some pages because of concurrent activity, suc
 - A large PVS size or a large number of aborted transactions to clean up from PVS.
   - PVS cleanup is prioritized over automatic compaction. Compaction is suspended if PVS size exceeds 150 GB, or if the number of aborted transactions exceeds 1,000.
 
-For other reasons why the compaction process might skip pages, see [Use an extended event to monitor compaction statistics](#use-an-extended-event-to-monitor-compaction-statistics).
+For less common reasons why the compaction process might skip pages, see [Use an extended event to monitor compaction statistics](#use-an-extended-event-to-monitor-compaction-statistics).
 
 If a page is skipped, it's considered for compaction the next time it's processed by the PVS cleaner.
 
@@ -111,9 +111,10 @@ Consider the following differences between the traditional index maintenance ope
 | Considerations | Recommendations |
 | --- | --- |
 | Compaction occurs continuously and with minimal overhead as long as data in the database is modified. | You don't need to set up, monitor, and maintain index maintenance jobs to gain the benefits that these jobs might provide. |
-| Unlike index reorganization and rebuild which process all pages, the compaction process only considers the pages modified after you enable automatic index compaction. | If the page density for an index is already low, consider running a one-time index reorganization or index rebuild to increase it, and then enable automatic compaction to keep indexes compact as future data modifications occur. |
+| Unlike index reorganization and rebuild which process all pages, the compaction process only considers the pages modified after you enable automatic index compaction. | If the page density for an index is already low, consider running a one-time index reorganization or index rebuild to increase it. This one-time operation is an extra optimization to increase page density right away. From that point on, automatic compaction keeps indexes compact without any user action. |
 | Each index rebuild operation requires a substantial free space in the data files, commonly equal to the size of the index or partition being rebuilt. | You don't need to allocate free space in data files for automatic index compaction or for index reorganization. |
 | Unlike index rebuild or index reorganization, compaction doesn't reduce index fragmentation. | Increased page density after compaction is more important than index fragmentation. For most workloads, a higher index fragmentation doesn't affect query performance or resource consumption. |
+| When the fill factor for an index is less than 100 percent but the amount of data on a page exceeds the fill factor, neither index compaction nor reorganization move rows away from the page. An index rebuild creates new pages and fills them according to the fill factor. | For most workloads, a higher page density is preferred. Workloads that require a lower fill factor to reduce page splits might benefit from an occasional index rebuild. The rebuild creates pages with a lower page density that matches the fill factor. |
 | Unlike index rebuild, compaction doesn't update statistics on the index. | If [automatic statistics update](../statistics/statistics.md#auto_update_statistics-option) is insufficient for your workload and you rely on the [index rebuild to update statistics](reorganize-and-rebuild-indexes.md#a-positive-side-effect-of-index-rebuild), consider using automatic compaction in combination with a statistics update job. |
 
 For more information about index reorganization and rebuild, see [Optimize index maintenance to improve query performance and reduce resource consumption](reorganize-and-rebuild-indexes.md).
@@ -128,7 +129,7 @@ You might observe that index fragmentation is higher when you enable automatic i
 
 | Considerations | Recommendations |
 | --- | --- |
-| In some write-intensive workloads, pages might split again soon after compaction. Page splits increase index fragmentation. | If workload performance is affected as a result, use a one-time index rebuild with a slightly reduced [fill factor](specify-fill-factor-for-an-index.md) to reduce page splits after compaction.<br /><br />For example, set the fill factor to 95 percent. However, don't reduce the fill factor unnecessarily or set it too low. Most workloads perform optimally with the fill factor set to the default 100 percent. |
+| In some write-intensive workloads, pages might split again soon after compaction. Page splits increase index fragmentation. | If workload performance is affected as a result, use a one-time index rebuild with a slightly reduced [fill factor](specify-fill-factor-for-an-index.md) to reduce page splits after compaction.<br /><br />For example, set the fill factor in the 70-95 percent range. However, don't reduce the fill factor unnecessarily or set it too low. Most workloads achieve optimal performance and resource utilization with the fill factor set to the default 100 percent. |
 | Deallocating an empty page during compaction can create a gap in the page numbering sequence within an [extent](../pages-and-extents-architecture-guide.md#extents). Gaps within extents increase index fragmentation, potentially reducing the size of [read-ahead](../reading-pages.md#read-ahead) I/O. | Even for workloads that benefit from read-ahead, the performance impact of higher fragmentation is minimized because queries read fewer pages after compaction. |
 
 > [!TIP]  
@@ -183,7 +184,7 @@ If a query is blocked, check the command of the head blocker in [sys.dm_exec_req
 
 ### Does it honor the fill factor?
 
-Yes. If you specify a non-default [fill factor](specify-fill-factor-for-an-index.md) for an index, auto compaction fills pages according to that fill factor. Otherwise, it uses the default fill factor of 100 percent, which is recommended for most workloads.
+Auto compaction never fills a page above the [fill factor](specify-fill-factor-for-an-index.md). However, if a page is already filled above the fill factor by the previous DML statements, then compaction doesn't reduce page density. Pages might remain filled above the fill factor after compaction.
 
 ### Does it work if an index uses row or page compression?
 
