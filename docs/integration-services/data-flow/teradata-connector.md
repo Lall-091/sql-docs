@@ -4,7 +4,7 @@ description: "Microsoft connector for Teradata"
 author: chugugrace
 ms.author: chugu
 ms.reviewer: 
-ms.date: 10/10/2022
+ms.date: 03/20/2026
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: how-to
@@ -24,6 +24,7 @@ Microsoft Connector supports the following Microsoft SQL Server products for Ter
 
 - Microsoft SQL Server 2022
 - Microsoft SQL Server 2019
+- Microsoft SQL Server 2025
 - SQL Server Integration Services Projects for Visual Studio 2022
 
 Microsoft Connector for Teradata depends on Teradata Tools and Utilities (TTU) 20.00.
