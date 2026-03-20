@@ -647,7 +647,7 @@ Pacemaker HA agent v2 is currently in preview. The existing Pacemaker HA agent (
 
    New deployments on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] can evaluate Pacemaker HA agent v2. Existing production deployments should upgrade when appropriate.
 
-         When upgrading to or deploying Pacemaker HA agent v2, create the new AG resource using the `agv2` agent instead of the previous `ag` agent. If you already configured an existing AG resource, remove it and create a new resource using `agv2`:
+   When upgrading to or deploying Pacemaker HA agent v2, create the new AG resource using the `agv2` agent instead of the previous `ag` agent. If you already configured an existing AG resource, remove it and create a       new resource using `agv2`:
 
    ```bash
    sudo pcs resource delete <NameForAGResource>
