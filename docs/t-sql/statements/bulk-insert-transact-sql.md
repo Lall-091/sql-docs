@@ -4,7 +4,7 @@ description: Transact-SQL reference for the BULK INSERT statement.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: jovanpop, randolphwest, wiassaf
-ms.date: 03/11/2026
+ms.date: 03/20/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -627,7 +627,7 @@ The following permissions apply to the location where the data is being bulk-imp
 
 Requires `INSERT` and `ADMINISTER BULK OPERATIONS` permissions. In Azure SQL Database, `INSERT` and `ADMINISTER DATABASE BULK OPERATIONS` permissions are required.
 
-Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] Cumulative Update (CU) 3, [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Linux supports the `ADMINISTER BULK OPERATIONS` permission and the **bulkadmin** role. In earlier versions, only the **sysadmin** role can perform bulk inserts for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Linux. For more information, see [Configure bulk import operations for SQL Server on Linux](../../linux/sql-server-linux-bulk-operations.md).
+Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] Cumulative Update 24 (CU24) and [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] Cumulative Update 3 (CU3), [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Linux supports the `ADMINISTER BULK OPERATIONS` permission and the **bulkadmin** role. In earlier versions, only the **sysadmin** role can perform bulk inserts for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Linux. For more information, see [Configure bulk import operations for SQL Server on Linux](../../linux/sql-server-linux-bulk-operations.md).
 
 Additionally, `ALTER TABLE` permission is required if one or more of the following conditions is true:
 
