@@ -205,9 +205,11 @@ When an index is fragmented in a way that is affecting query performance, there 
 
   Recreating a clustered index redistributes the data and results in full data pages. The level of fullness can be configured by using the `FILLFACTOR` option in `CREATE INDEX`. The drawbacks in this method are that the index is offline during the drop and recreate cycle, and that the operation is atomic. If the index creation is interrupted, the index isn't recreated. For more information, see [CREATE INDEX](../../t-sql/statements/create-index-transact-sql.md).
 
-- Use `ALTER INDEX REORGANIZE`, the replacement for `DBCC INDEXDEFRAG`, to reorder the leaf level pages of the index in a logical order. Because this is an online operation, the index is available while the statement is running. The operation can also be interrupted without losing work already completed. The drawback in this method is that it doesn't reduce page fullness to the level specified by the fill factor, which might cause more page splits over time. Unlike recreating or rebuilding an index, `ALTER INDEX REORGANIZE` doesn't update statistics.
+- Use `ALTER INDEX REORGANIZE`, the replacement for `DBCC INDEXDEFRAG`, to reorder the leaf level pages of the index in a logical order. Because this is an online operation, the index is available while the statement is running. The operation can also be interrupted without losing work already completed. This method compacts pages and can increase page density up to the fill factor, but it doesn't move rows off already-full pages to create free space according to a lower fill factor. Compared to rebuilding an index with a lower fill factor, `ALTER INDEX REORGANIZE` might cause more page splits for some workloads.
 
-- Use `ALTER INDEX REBUILD`, the replacement for `DBCC DBREINDEX`, to rebuild the index online or offline. For more information, see [ALTER INDEX (Transact-SQL)](../../t-sql/statements/alter-index-transact-sql.md).
+  Unlike recreating or rebuilding an index, `ALTER INDEX REORGANIZE` doesn't update statistics.
+
+- Use `ALTER INDEX REBUILD`, the replacement for `DBCC DBREINDEX`, to rebuild the index. An online rebuild keeps the data accessible during the operation but isn't available in all [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] editions. For more information, see [ALTER INDEX (Transact-SQL)](../../t-sql/statements/alter-index-transact-sql.md).
 
 Fragmentation alone isn't a sufficient reason to reorganize or rebuild an index. The main effect of fragmentation is that it might reduce the effectiveness of [page read-ahead](../reading-pages.md#read-ahead) during large index scans. If the query workload on a fragmented table or index doesn't involve large scans, removing fragmentation has no effect.
 
@@ -233,7 +235,7 @@ The `avg_page_space_used_in_percent` column indicates page fullness, or page den
 
 If page splits significantly affect workload performance, you might need to reduce page density below 100 percent. Rebuilding an index with the `FILLFACTOR` option specified allows the page fullness to be changed to better match this specific workload pattern. For more information about fill factor, see [Specify Fill Factor for an Index](../indexes/specify-fill-factor-for-an-index.md). 
 
-`ALTER INDEX REORGANIZE` compacts an index by trying to fill pages up to the `FILLFACTOR` value that was last specified. This increases the value in `avg_space_used_in_percent`. However, if a page is already filled above the `FILLFACTOR` value, `ALTER INDEX REORGANIZE` can't reduce page fullness and page splits. Instead, an index rebuild must be performed.
+`ALTER INDEX REORGANIZE` compacts an index by trying to fill pages up to the `FILLFACTOR` value that was last specified. This increases the value in `avg_page_space_used_in_percent`. However, if a page is already filled above the `FILLFACTOR` value, `ALTER INDEX REORGANIZE` can't reduce page fullness and page splits. Instead, an index rebuild must be performed.
 
 ## Evaluate index fragments
 
