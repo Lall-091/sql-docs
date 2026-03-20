@@ -80,7 +80,7 @@ Microsoft SqlClient Data Provider is supported in [!INCLUDE [sssql25-md](../../i
 
 For package design, use [SQL Server Integration Services Projects 2022](https://marketplace.visualstudio.com/items?itemName=SSIS.MicrosoftDataToolsIntegrationServices) or above.
 
-For guidance on configuring Microsoft Entra authentication modes, see [Connect to Azure SQL with Microsoft Entra authentication and SqlClient](/sql/connect/ado-net/sql/azure-active-directory-authentication.md).
+For guidance on configuring Microsoft Entra authentication modes, see [Connect to Azure SQL with Microsoft Entra authentication and SqlClient](../../connect/ado-net/sql/azure-active-directory-authentication.md).
 
 #### Managed identities for Azure resources authentication
 
