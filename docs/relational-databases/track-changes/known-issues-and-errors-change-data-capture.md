@@ -95,12 +95,13 @@ When the data type of a column on a CDC-enabled table is changed to an unsupport
 The following are examples of `ALTER COLUMN` data type changes that aren't supported when CDC is enabled on a table:
 
 - **bigint** to **int**
-- **char(x)**, **nvarchar(x)**, or **nvarchar(x)** to **uniqueidentifier**, **DATE**, or **INT**
+- **char(x)**, **nvarchar(x)**, or **nvarchar(x)** to **uniqueidentifier**, **DATE**, **Numeric** or **INT**
 
 Changing the data type of a column in a CDC-enabled table can result in the following errors: 
 
 - [Error 241](#error-241---conversion-failed-when-converting-date-andor-time-from-character-string) - Conversion failed when converting date and/or time from character string.
-- [Error 245](#error-245---conversion-failed-when-converting-the-value-from-string-to-int) - Conversion failed when converting the value. 
+- [Error 245](#error-245---conversion-failed-when-converting-the-value-from-string-to-int) - Conversion failed when converting the value.
+- [Error 8114](#error-8114---conversion-failed-when-converting-from-a-character-string-to-numeric-value) - Conversion failed when converting from a character string to numeric value.
 - [Error 8169](#error-8169---conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier) - Conversion failed when converting from a character string to uniqueidentifier.
 
 Changing the size of columns of a CDC-enabled table using DDL statements can cause issues with the subsequent CDC capture process can result in the following errors: 
@@ -239,6 +240,12 @@ These are the different troubleshooting categories included in this section:
 
 * **Recommendation**: Before making any changes to column size, you must assess whether the alteration is compatible with the existing data in CDC change tables. To address this problem, you need to disable and re-enable CDC for your database. For more information about enabling CDC for a database or a table, see [Enable CDC for a database](enable-and-disable-change-data-capture-sql-server.md#enable-for-a-database) and [Enable CDC for a table](enable-and-disable-change-data-capture-sql-server.md#enable-for-a-table).
 
+#### Error 8114 - Conversion failed when converting from a character string to numeric value
+
+* **Cause**: This error occurs when an [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) command is issued to change the data type of a column when the table has CDC enabled. For example, if a table has a **char(x)**, **nvarchar(x)**, **nvarchar(x)** column and you change the data type to **numeric** (such as: `ALTER TABLE table_name ALTER COLUMN [column_name] numeric`), you might see this error in the [sys.dm_cdc_errors](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) Dynamic Management View (DMV). Error 8114 indicates an unsupported data conversion in the change table, even though the ALTER command on the source table succeeds.
+
+* **Recommendation**: To resolve this issue, disable and re-enable CDC for your table after altering the column. Alternatively, disable CDC before running the `ALTER COLUMN` command, and then reenable CDC after the `ALTER COLUMN` change.
+
 #### Error 8115 - Arithmetic overflow error converting data type from bigint to int
 
 * **Cause**: This error occurs when an [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) DDL is executed on a CDC-enabled table that results in a decrease in the precision of the column (such as changing the data type of the column from **bigint** to **int**). The decreased precision column is unable to hold the values present in the change table.
@@ -247,9 +254,11 @@ These are the different troubleshooting categories included in this section:
 
 #### Error 8169 - Conversion failed when converting from a character string to uniqueidentifier
 
-* **Cause**: This error occurs when an [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) command is issued to change the data type of a column when table has CDC enabled. For example, if a table has a **char(x)**, **nvarchar(x)**, **nvarchar(x)** column and you change the data type to **uniqueidentifier** (such as: `ALTER TABLE table_name ALTER COLUMN [column_name] uniqueidentifier`), you might see this error in the [sys.dm_cdc_errors](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) Dynamic Management View (DMV). Error 8169 indicates an unsupported data conversion in the change table, even though the ALTER command on the source table succeeds.
+* **Cause**: This error occurs when an [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) command is issued to change the data type of a column when the table has CDC enabled. For example, if a table has a **char(x)**, **nvarchar(x)**, **nvarchar(x)** column and you change the data type to **uniqueidentifier** (such as: `ALTER TABLE table_name ALTER COLUMN [column_name] uniqueidentifier`), you might see this error in the [sys.dm_cdc_errors](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) Dynamic Management View (DMV). Error 8169 indicates an unsupported data conversion in the change table, even though the ALTER command on the source table succeeds.
 
 * **Recommendation**: To resolve this issue, disable and re-enable CDC for your table after altering the column. Alternatively, disable CDC before running the `ALTER COLUMN` command, and then reenable CDC after the `ALTER COLUMN` change.
+
+
 
 ## Create user and assign role
 
