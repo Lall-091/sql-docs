@@ -200,7 +200,7 @@ For more information on REST endpoints, see [Data API builder REST API](/azure/d
 
 ### GraphQL
 
-Select **Nitro** to open the [Nitro](https://github.com/nicedoc/nitro) GraphQL playground, where you can write and test GraphQL queries and mutations interactively.
+Select **Nitro** to open the [Nitro](https://chillicream.com/docs/nitro) GraphQL playground, where you can write and test GraphQL queries and mutations interactively.
 
 For more information on GraphQL endpoints, see [Data API builder GraphQL API](/azure/data-api-builder/concept/api/graphql).
 
