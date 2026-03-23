@@ -101,49 +101,60 @@ Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Ins
 
 ## Zone redundancy 
 
-[Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) is available in the following regions: 
+[Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) is supported in the following regions: 
 
 #### [Americas](#tab/americas)
 
 - Brazil South
 - Canada Central
-- Mexico Central
-- Spain Central
+- Central US
+- Chile Central
 - East US
 - East US 2
-- Central US
+- Mexico Central
+- North Central US
+- South Central US
 - West US 2 
 - West US 3
 
 #### [Asia Pacific](#tab/asia)
 
-- East Asia
-- Southeast Asia
 - Australia East
-- Central India
-- Korea Central
+- Australia Southeast
+- East Asia
+- India Central
+- Indonesia Central
 - Japan East
 - Japan West
+- Korea Central
+- Malaysia West
 - New Zealand North
+- Southeast Asia
 
 #### [Europe, the Middle East, and Africa](#tab/emea)
 
-- North Europe
-- West Europe
+- Austria East
+- Belgium Central
 - France Central
 - Germany West Central
-- Italy North
 - Israel Central
+- Italy North
+- North Europe
 - Norway East
 - Poland Central
 - Qatar Central
 - South Africa North
-- Switzerland North
+- Spain Central
 - Sweden Central
+- Switzerland North
 - UAE North
 - UK South
+- West Europe
 
 ---
+
+> [!NOTE]
+> Zone redundant deployments to create a new instance or modify an existing instance in a supported region might be temporarily disabled due to limited hardware capacity. Consider using an alternative hardware generation or an alternative Azure region which satisfies your data residency requirements.
 
 ## Database watcher
 
