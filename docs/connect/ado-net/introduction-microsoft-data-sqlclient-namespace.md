@@ -25,7 +25,7 @@ There are a few differences in less-used APIs compared to System.Data.SqlClient 
 
 The Microsoft.Data.SqlClient API details can be found in the [.NET API Browser](/dotnet/api/microsoft.data.sqlclient).
 
-## Stable Release 7.0.0 - 2026-03-17
+## Release notes for 7.0
 
 This is the general availability release of **Microsoft.Data.SqlClient 7.0**, a major milestone for the .NET data provider for SQL Server. This release addresses the most upvoted issue in the repository's history — extracting Azure dependencies from the core package — introduces pluggable SSPI authentication, adds enhanced routing for Azure, and delivers async read performance improvements.  
 
@@ -80,7 +80,7 @@ dotnet add package Microsoft.Data.SqlClient.Extensions.Azure
 - Reverted public visibility of internal interop enums (`IoControlCodeAccess` and `IoControlTransferType`) that were accidentally made public during the project merge.
   ([#3900](https://github.com/dotnet/SqlClient/pull/3900))
 
-### Added in 7.0
+### New Features in 7.0
 
 #### Pluggable authentication with SspiContextProvider  
 
@@ -216,7 +216,7 @@ listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
 - Enabled User Agent Feature Extension (opt-in via `Switch.Microsoft.Data.SqlClient.EnableUserAgent`).
   ([#3606](https://github.com/dotnet/SqlClient/pull/3606))
 
-### Changed in 7.0
+### Changes in 7.0
 
 #### Deprecation of `SqlAuthenticationMethod.ActiveDirectoryPassword`
 
@@ -240,16 +240,16 @@ listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
 | Azure-hosted workloads | `Active Directory Managed Identity` |
 | Developer / CI environments | `Active Directory Default` |
 
-- See [Connect to Azure SQL with Microsoft Entra authentication](/sql/connect/ado-net/sql/azure-active-directory-authentication) for more information.
+- See [Connect to Azure SQL with Microsoft Entra authentication](sql/azure-active-directory-authentication.md) for more information.
 
-## Target Platform Support for 7.0
+### 7.0 Target Platform Support
 
 - .NET Framework 4.6.2+ (Windows x86, Windows x64, Windows ARM64)
 - .NET 8.0+ (Windows x86, Windows x64, Windows ARM, Windows ARM64, Linux, macOS)
 
 Full release notes, including dependencies, are available in the GitHub Repository: [7.0 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/7.0).
 
-## Release notes for Microsoft.Data.SqlClient 6.1
+## Release notes for 6.1
 
 ### New features in 6.1
 
@@ -320,7 +320,7 @@ Full release notes, including dependencies, are available in the GitHub Reposito
 
 Full release notes, including dependencies, are available in the GitHub Repository: [6.1 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/6.1).
 
-## Release notes for Microsoft.Data.SqlClient 6.0
+## Release notes for 6.0
 
 ### Breaking changes in 6.0
 
@@ -433,7 +433,7 @@ using(SqlConnection sqlConnection = new SqlConnection("Data Source=(local);Integ
 
 Full release notes, including dependencies, are available in the GitHub Repository: [6.0 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/6.0).
 
-## Release notes for Microsoft.Data.SqlClient 5.2
+## Release notes for 5.2
 
 ### New features in 5.2
 
@@ -572,7 +572,7 @@ class Program
 
 Full release notes, including dependencies, are available in the GitHub Repository: [5.2 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/5.2).
 
-## Release notes for Microsoft.Data.SqlClient 5.1
+## Release notes for 5.1
 
 ### Breaking changes in 5.1
 
@@ -601,7 +601,7 @@ The default value of the `ServerCertificate` connection setting is an empty stri
 
 Full release notes, including dependencies, are available in the GitHub Repository: [5.1 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/5.1).
 
-## Release notes for Microsoft.Data.SqlClient 5.0
+## Release notes for 5.0
 
 ### Breaking changes in 5.0
 
@@ -694,7 +694,7 @@ Switch.Microsoft.Data.SqlClient.SuppressInsecureTLSWarning
 
 Full release notes, including dependencies, are available in the GitHub Repository: [5.0 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/5.0).
 
-## Release notes for Microsoft.Data.SqlClient 4.1
+## Release notes for 4.1
 
 Full release notes, including dependencies, are available in the GitHub Repository: [4.1 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/4.1).
 
@@ -717,7 +717,7 @@ Connection string example:
 - .NET Core 3.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 4.0
+## Release notes for 4.0
 
 Full release notes, including dependencies, are available in the GitHub Repository: [4.0 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/4.0).
 
@@ -802,7 +802,30 @@ using (SqlConnection connection = new SqlConnection(connectionString))
 - .NET Core 3.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 3.0
+## Release notes for 3.1
+
+Full release notes, including dependencies, are available in the GitHub Repository: [3.1 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/3.1).
+
+### New features in 3.1
+
+#### Introduced Attestation Protocol 'None'
+
+A new attestation protocol called `None` will be allowed in the connection string. This protocol will allow users to forgo enclave attestation for `VBS` enclaves. When this protocol is set, the enclave attestation URL property is optional.  
+
+Connection string example:
+
+```cs
+//Attestation protocol NONE with no URL
+"Data Source = {server}; Initial Catalog = {db}; Column Encryption Setting = Enabled; Attestation Protocol = None;"
+```
+
+## Target Platform Support
+
+- .NET Framework 4.6.1+ (Windows x86, Windows x64)
+- .NET Core 3.1+ (Windows x86, Windows x64, Windows ARM64, Windows ARM, Linux, macOS)
+- .NET Standard 2.0+ (Windows x86, Windows x64, Windows ARM64, Windows ARM, Linux, macOS)
+
+## Release notes for 3.0
 
 Full release notes, including dependencies, are available in the GitHub Repository: [3.0 Release Notes](https://github.com/dotnet/SqlClient/tree/master/release-notes/3.0).
 
@@ -1027,7 +1050,7 @@ A new connection property `IPAddressPreference` is introduced to specify the IP 
 - .NET Core 2.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 2.1
+## Release notes for 2.1
 
 Full release notes, including dependencies, are available in the GitHub Repository: [2.1 Release Notes](https://github.com/dotnet/SqlClient/tree/master/release-notes/2.1).
 
@@ -1269,7 +1292,7 @@ Starting with Microsoft.Data.SqlClient v2.1, Microsoft.Data.SqlClient symbols ar
 - .NET Core 2.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 2.0
+## Release notes for 2.0
 
 Full release notes, including dependencies, are available in the GitHub Repository: [2.0 Release Notes](https://github.com/dotnet/SqlClient/tree/master/release-notes/2.0).
 
@@ -1376,7 +1399,7 @@ Microsoft.Data.SqlClient (.NET Core and .NET Standard) on Windows is now depende
 - .NET Core 2.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 1.1.0
+## Release notes for 1.1
 
 Full release notes, including dependencies, are available in the GitHub Repository: [1.1 Release Notes](https://github.com/dotnet/SqlClient/tree/master/release-notes/1.1).
 
@@ -1401,7 +1424,7 @@ For more information, see:
 - .NET Core 2.1+ (Windows x86, Windows x64, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 1.0
+## Release notes for 1.0
 
 The initial release for the Microsoft.Data.SqlClient namespace offers more functionality over the existing System.Data.SqlClient namespace.
 

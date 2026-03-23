@@ -432,7 +432,7 @@ public class ActiveDirectoryAuthenticationProvider
 ### What changed in 7.0
 
 - **Azure dependency extraction** — The core `Microsoft.Data.SqlClient` package no longer depends on `Azure.Core`, `Azure.Identity`, or their transitive dependencies (such as `Microsoft.Identity.Client` and `Microsoft.Web.WebView2`). The `ActiveDirectoryAuthenticationProvider` class and related types moved to the new `Microsoft.Data.SqlClient.Extensions.Azure` package.
-- **New packages** — Three new packages were introduced to support this separation:
+- **New packages** — Two new packages were introduced to support this separation:
   - `Microsoft.Data.SqlClient.Extensions.Azure` — contains Entra ID authentication support.
   - `Microsoft.Data.SqlClient.Extensions.Abstractions` — shared types between the core driver and extensions.
 - **`ActiveDirectoryPassword` deprecation** — `SqlAuthenticationMethod.ActiveDirectoryPassword` is now marked `[Obsolete]` and generates a compiler warning. This aligns with [mandatory multifactor authentication](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
@@ -473,22 +473,6 @@ All `Authentication` connection string values continue to work the same way. No 
 ### Applications that don't use Entra ID authentication
 
 If your application connects using SQL authentication, Windows integrated authentication, or `AccessToken`/`AccessTokenCallback`, no changes are required. You benefit from a lighter core package with fewer dependencies.
-
-### Using pluggable SSPI authentication (new in 7.0)
-
-Applications can now supply a custom SSPI context provider for integrated authentication. This enables custom Kerberos ticket negotiation and NTLM username/password authentication in environments such as non-domain-joined machines, containers, or cross-platform scenarios.
-
-```csharp
-// Use your own server, database, and SSPI provider implementation.
-var connection = new SqlConnection(connectionString);
-connection.SspiContextProvider = new MyKerberosProvider();
-connection.Open();
-```
-
-> [!NOTE]
-> The `SspiContextProvider` is part of the connection pool key. Ensure the implementation returns a stable identity per resource.
-
-For a sample implementation, see [SspiContextProvider_CustomProvider.cs](https://github.com/dotnet/SqlClient/blob/main/doc/samples/SspiContextProvider_CustomProvider.cs) in the SqlClient repository.
 
 ## See also
 
