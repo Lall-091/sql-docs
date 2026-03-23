@@ -127,7 +127,7 @@ Create the logins that must be present in the `master` database on the new prima
 
 ### Setup telemetry alerts
 
-You need to make sure your existing alert rule settings are updated to map to the new primary database and the different server. For more information about database alert rules, see [Receive Alert Notifications](/azure/azure-monitor/alerts/alerts-overview) and [Track Service Health](/azure/service-health/service-notifications).
+You need to make sure your existing alert rule settings are updated to map to the new primary database and the different server. For more information about database alert rules, see [Receive Alert Notifications](/azure/azure-monitor/alerts/alerts-overview) and [Service Health notifications](/azure/service-health/service-health-notifications-properties).
 
 ### Enable auditing
 
