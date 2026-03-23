@@ -15593,6 +15593,8 @@ items:
       - name: Aggregate
         href: t-sql/functions/aggregate-functions-transact-sql.md
         items:
+        - name: ANY_VALUE
+          href: t-sql/functions/any-value-transact-sql.md
         - name: APPROX_COUNT_DISTINCT
           href: t-sql/functions/approx-count-distinct-transact-sql.md
         - name: APPROX_PERCENTILE_CONT
