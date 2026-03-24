@@ -4,7 +4,7 @@ description: Learn how to get started with Azure SQL Managed Instance auditing u
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: vanto, randolphwest, mathoma
-ms.date: 08/27/2025
+ms.date: 03/20/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: how-to
@@ -19,7 +19,7 @@ f1_keywords:
 
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) auditing tracks database events and writes them to an audit log in your Azure storage account. 
+This article teaches you to configure auditing for [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md). Auditing tracks database events and writes them to an audit log in your Azure storage account. 
 
 Auditing also:
 
@@ -303,6 +303,20 @@ The key differences in the `CREATE AUDIT` syntax for auditing to Azure Blob stor
 - The syntax `TO FILE` is **not supported** because Azure SQL Managed Instance can't access Windows file shares.
 - Shutdown option is **not supported**.
 - `queue_delay` of 0 is **not supported**.
+
+## Permissions
+
+To set up auditing, you need database permissions within SQL managed instance, and you also need permissions to the Azure resources that are used for storing and accessing the audit logs.
+
+To set up SQL managed instance auditing you need to following database permissions:
+
+|Database permissions  |Configure audit  |View audit logs using T-SQL  |
+|---------|---------|---------|
+|**VIEW DATABASE SECURITY AUDIT** |No|Yes|
+|**ALTER ANY DATABASE AUDIT**      | Yes        | No        |
+|**CONTROL DATABASE**          | Yes        | Yes        |
+
+To configure auditing to Azure storage, you need the **Storage blob data contributor** role on the storage account or higher permissions. To configure auditing to Event Hubs or Log Analytics, you need the **Monitoring Contributor** role or higher permissions on the resource group where the Event Hub or Log Analytics workspace is provisioned.
 
 ## Next step
 
