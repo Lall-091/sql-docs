@@ -22,13 +22,13 @@ ai-usage: ai-assisted
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-Microsoft SQL Server Express LocalDB is a feature of [!INCLUDE [ssexpress-md](../../includes/ssexpress-md.md)] targeted to developers. It's available on SQL Server Express edition with Advanced Services. In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, it's available on [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Express edition.
+Microsoft SQL Server Express LocalDB is a feature of [!INCLUDE [ssexpress-md](../../includes/ssexpress-md.md)] targeted to developers. In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, LocalDB is included with [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Express edition. In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, LocalDB is available on SQL Server Express edition with Advanced Services.
 
 LocalDB installation copies a minimal set of files necessary to start the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)]. After LocalDB is installed, you can initiate a connection using a special connection string. When you connect, the necessary [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] infrastructure is automatically created and started, enabling the application to use the database without complex configuration tasks. Developer Tools can provide developers with a [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] that lets them write and test [!INCLUDE [tsql](../../includes/tsql-md.md)] code without having to manage a full server instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
 ## Installation media
 
-LocalDB is a feature you select during SQL Server Express installation, and is available when you download the media. If you download the media, either choose **Express Advanced** or the **LocalDB** package.
+LocalDB is a feature you select during SQL Server Express installation, and is available when you download the media. For [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, LocalDB is included with the **Express** edition download. For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, the edition is called **Express Advanced**, and you can choose either that or the standalone **LocalDB** package when downloading.
 
 - [SQL Server 2025 Express edition](https://go.microsoft.com/fwlink/?linkid=2216019)
 - [SQL Server 2022 Express edition](https://go.microsoft.com/fwlink/?linkid=2215160)
