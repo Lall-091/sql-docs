@@ -364,7 +364,7 @@ static byte[]  GetEncryptedColumnEncryptionKey()
 {
     int cekLength = 32;
     String certificateStoreLocation = "CurrentUser";
-    String certificateThumbprint = "698C7F8E21B2158E9AED4978ADB147CF66574180";
+    String certificateThumbprint = "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00";
     // Generate the plaintext column encryption key.
     byte[] columnEncryptionKey = new byte[cekLength];
     RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider();
