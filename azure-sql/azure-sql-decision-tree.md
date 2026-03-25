@@ -7,7 +7,7 @@ ms.reviewer: ivujic
 ms.date: 03/12/2026
 ms.service: azure-sql
 ms.subservice: service-overview
-ms.topic: article
+ms.topic: product-comparison
 monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 # http://aka.ms/AzureSQLdecisionTree
 ---

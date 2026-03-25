@@ -8,7 +8,7 @@ ms.reviewer: mathoma, urosmil, scottkim
 ms.date: 06/25/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: feature-guide
 ms.custom:
   - azure-sql-split
 monikerRange: "=azuresql||=azuresql-mi"

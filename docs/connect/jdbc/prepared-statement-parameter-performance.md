@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 12/18/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: best-practice
 ai-usage: ai-assisted
 ---
 # Prepared statement parameter performance for the JDBC driver
