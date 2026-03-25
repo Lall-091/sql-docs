@@ -3,7 +3,7 @@ title: "sys.traces (Transact-SQL)"
 description: sys.traces contains the current running traces on the system.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 02/05/2026
+ms.date: 03/23/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -53,7 +53,7 @@ For a complete list of supported trace events, see [SQL Server Event Class Refer
 
 [!INCLUDE [ssCatViewPerm](../../includes/sscatviewperm-md.md)] For more information, see [Metadata Visibility Configuration](../../relational-databases/security/metadata-visibility-configuration.md).
 
-[!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions require VIEW SERVER PERFORMANCE STATE permission on the server.
+Requires ALTER TRACE permission on the server.
 
 ## Related content
 
@@ -63,5 +63,3 @@ For a complete list of supported trace events, see [SQL Server Event Class Refer
 - [sys.trace_events (Transact-SQL)](../../relational-databases/system-catalog-views/sys-trace-events-transact-sql.md)
 - [sys.trace_event_bindings (Transact-SQL)](../../relational-databases/system-catalog-views/sys-trace-event-bindings-transact-sql.md)
 - [sys.trace_subclass_values (Transact-SQL)](../../relational-databases/system-catalog-views/sys-trace-subclass-values-transact-sql.md)  
-  
-  
