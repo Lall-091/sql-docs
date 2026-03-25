@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 02/10/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: reference
 ai-usage: ai-assisted
 ---
 # Vector data type (ODBC)
