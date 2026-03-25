@@ -62,4 +62,3 @@ ADO.NET is the core data access technology for .NET languages. Use the Microsoft
 ## More samples
 
 * [ADO.NET Code Examples](/dotnet/framework/data/adonet/ado-net-code-examples)
-
