@@ -67,7 +67,8 @@ To view and reconfigure service account information, always use the [!INCLUDE[ss
  For best results, specify an account that has network connection permissions, with access to network domain controllers and corporate Simple Mail Transfer Protocol(SMTP) servers or gateways. The following table summarizes the accounts and provides recommendations for how to use them.
 
 > [!NOTE]
-> [Group Managed Service Accounts Overview](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) aren't supported as a report server service account.
+> Managed Service Accounts and [Group Managed Service Accounts Overview](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) aren't supported as a report server service account.
+> 
 
 |Account|Explanation|
 |-------------|-----------------|
