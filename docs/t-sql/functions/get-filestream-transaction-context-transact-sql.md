@@ -4,7 +4,7 @@ description: GET_FILESTREAM_TRANSACTION_CONTEXT returns a token that represents 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 02/09/2026
+ms.date: 03/24/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -170,7 +170,7 @@ namespace ConsoleApplication
 
 ```vb
 Imports System
-Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 Imports System.Data
 
 Namespace ConsoleApplication

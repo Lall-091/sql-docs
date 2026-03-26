@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/22/2024
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: feature-guide
 f1_keywords:
   - "sql13.dts.designer.executeprocesstask.f1"
   - "sql13.dts.designer.executeprocesstask.general.f1"

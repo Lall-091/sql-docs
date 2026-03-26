@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, mathoma
 ms.date: 01/16/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresql||=azuresql-mi"
 ---
 
