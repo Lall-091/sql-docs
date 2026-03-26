@@ -705,7 +705,7 @@
         href: database/standby-replica-how-to-configure.md
       - name: Enable zone redundancy
         href: database/enable-zone-redundancy.md
-      - name: Deleted server restore
+      - name: Restore deleted server
         href: database/deleted-logical-server-restore.md
       - name: Restart database
         href: database/restart-database.md
