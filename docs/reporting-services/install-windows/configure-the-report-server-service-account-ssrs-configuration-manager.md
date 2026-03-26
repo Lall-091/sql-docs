@@ -23,7 +23,7 @@ The Report Server service account is defined during Setup. You can run the servi
 > [!IMPORTANT]
 > Although the Report Server Web service and [!INCLUDE[ssRSWebPortal](../../includes/ssrswebportal.md)] are separate [!INCLUDE[vstecasp](../../includes/vstecasp-md.md)] applications, they run under a single service architecture within the same Report Server process identity.
 > [!NOTE]
-> Built-in Windows service accounts (Local Service or Network Service) aren't supported as report server service accounts on a computer that is a domain controller.
+> Managed Service Account (MSA), including both standalone MSA (sMSA) and group MSA (gMSA), are not supported as a report server service account.
 
 ## Change the service account
 
