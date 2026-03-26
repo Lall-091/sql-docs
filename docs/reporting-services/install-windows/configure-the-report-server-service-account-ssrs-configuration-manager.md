@@ -24,7 +24,7 @@ The Report Server service account is defined during Setup. You can run the servi
 > Although the Report Server Web service and [!INCLUDE[ssRSWebPortal](../../includes/ssrswebportal.md)] are separate [!INCLUDE[vstecasp](../../includes/vstecasp-md.md)] applications, they run under a single service architecture within the same Report Server process identity.
 > [!NOTE]
 > Built-in Windows service accounts (Local Service or Network Service) aren't supported as report server service accounts on a computer that is a domain controller.
-> 
+ 
 ## Change the service account
 
 To view and reconfigure service account information, always use the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] Configuration Manager. Service identity information is stored internally in multiple locations. When you use the tool, all references are updated accordingly whenever you change the account or password. The [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] Configuration Manager performs the following extra steps to ensure the report server remains available:
