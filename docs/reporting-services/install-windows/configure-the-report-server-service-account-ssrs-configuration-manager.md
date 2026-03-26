@@ -23,8 +23,8 @@ The Report Server service account is defined during Setup. You can run the servi
 > [!IMPORTANT]
 > Although the Report Server Web service and [!INCLUDE[ssRSWebPortal](../../includes/ssrswebportal.md)] are separate [!INCLUDE[vstecasp](../../includes/vstecasp-md.md)] applications, they run under a single service architecture within the same Report Server process identity.
 > [!NOTE]
-> Managed Service Account (MSA), including both standalone MSA (sMSA) and group MSA (gMSA), are not supported as a report server service account.
-
+> Built-in Windows service accounts (Local Service or Network Service) aren't supported as report server service accounts on a computer that is a domain controller.
+> 
 ## Change the service account
 
 To view and reconfigure service account information, always use the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] Configuration Manager. Service identity information is stored internally in multiple locations. When you use the tool, all references are updated accordingly whenever you change the account or password. The [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] Configuration Manager performs the following extra steps to ensure the report server remains available:
@@ -67,8 +67,7 @@ To view and reconfigure service account information, always use the [!INCLUDE[ss
  For best results, specify an account that has network connection permissions, with access to network domain controllers and corporate Simple Mail Transfer Protocol(SMTP) servers or gateways. The following table summarizes the accounts and provides recommendations for how to use them.
 
 > [!NOTE]
-> Managed Service Accounts and [Group Managed Service Accounts Overview](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) aren't supported as a report server service account.
-> 
+> Managed Service Account (MSA), including both standalone MSA (sMSA) and [group MSA (gMSA)](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) aren't supported as a report server service account.
 
 |Account|Explanation|
 |-------------|-----------------|
