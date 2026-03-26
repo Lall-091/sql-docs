@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 03/11/2026
+ms.date: 03/24/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -54,10 +54,11 @@ The following table lists the features of Azure SQL Database that are currently 
 | **Import and export using Private Link** | You can [import or export an Azure SQL Database using private link](database-import-export-private-link.md). Leave *Allow Access to Azure Services* off when you import or export a database using a service-managed endpoint. |
 | **Microsoft Entra server principals** | The ability to [create server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) in Azure SQL Database is in preview. |
 | **Multiple geo-replicas for Hyperscale** | The ability to create up to four geo-replicas for Azure SQL Hyperscale is in preview.  Learn more about [multiple geo-replicas for Hyperscale](https://aka.ms/sqlhs-multi-geo-announcement). |
+| **Multiple secondaries for failover groups** | You can [configure multiple secondary servers for failover groups](failover-group-sql-db.md#multiple-secondaries) in Azure SQL Database. |
 | **Network Security Perimeter** | [Azure Network Security Perimeter](network-security-perimeter.md) allows organizations to define a logical network isolation boundary for PaaS resources (for example, Azure Storage and SQL Database) that are deployed outside your organization's virtual networks. It restricts public network access to PaaS resources outside of the perimeter, and access can be exempted by using explicit access rules for public inbound and outbound. |
 | **New Query editor experience in the Azure portal** | As of March 2026, there's a new [query editor in the Azure portal](query-editor.md) that allows you to run queries against your Azure SQL Database directly from a web browser. |
 | **Restart database in the Azure portal** | You can [restart your SQL database or elastic pool](restart-database.md) from the Azure portal. |
-| **Multiple secondaries for failover groups** | You can [configure multiple secondary servers for failover groups](failover-group-sql-db.md#multiple-secondaries) in Azure SQL Database. |
+| **Soft delete retention for logical server** | You can [configure a soft delete retention period](deleted-logical-server-restore.md) for a logical server and restore a deleted server within the retention period.|
 | **Vector indexing and VECTOR_SEARCH enhancements** | DiskANN vector indexes are now in preview with full DML support, iterative filtering, the new `SELECT TOP (N) WITH APPROXIMATE` syntax, and the `FORCE_ANN_ONLY` table hint. Earlier vector index versions and the `TOP_N` parameter are deprecated. For more information, see [CREATE VECTOR INDEX](/sql/t-sql/statements/create-vector-index-transact-sql?view=azuresqldb-current&preserve-view=true) and [VECTOR_SEARCH](/sql/t-sql/functions/vector-search-transact-sql?view=azuresqldb-current&preserve-view=true). |
 
 ## General availability (GA)
@@ -94,8 +95,9 @@ Learn about significant changes to the Azure SQL Database documentation. For pre
 | --- | --- |
 | **160 and 192 vCore for Hyperscale Premium-series**|160 and 192 vCore options for Hyperscale Premium-series are now available as a preview offering, for both single Hyperscale databases and Hyperscale elastic pools. For more information, see [160 and 192 vCore offering for Hyperscale Premium-series](https://aka.ms/PRMS192vCores).|
 | **Automatic index compaction preview** | [Automatic index compaction](/sql/relational-databases/indexes/automatic-index-compaction) helps you reduce the consumption of storage space, disk I/O, memory, and improve workload performance without investing time and effort into index maintenance jobs. This feature is now in preview. |
-| **New Azure portal query editor experience**|A new Query editor (preview) experience in the Azure portal offers a new modernized authentication page and consistency with other portal query editor experiences. For more information, see [Quickstart: Use the Azure portal query editor to query Azure SQL Database](connect-query-portal.md). |
 | **Import and export using managed identity preview** | You can [import or export an Azure SQL Database BACPAC file with managed identity authentication](database-import-export-managed-identity.md). Use managed identity authentication for enhanced security when importing or exporting databases. This capability is currently in preview for Azure SQL Database. |
+| **New Azure portal query editor experience**|A new Query editor (preview) experience in the Azure portal offers a new modernized authentication page and consistency with other portal query editor experiences. For more information, see [Quickstart: Use the Azure portal query editor to query Azure SQL Database](connect-query-portal.md). |
+| **Soft delete retention for logical server preview** | You can [configure a soft delete retention period](deleted-logical-server-restore.md) for a logical server and restore a deleted server within the retention period. This capability is now in preview.|
 | **Vector indexing and VECTOR_SEARCH enhancements** | Latest version vector indexes now support full DML operations, iterative filtering, new `SELECT TOP (N) WITH APPROXIMATE` syntax, the `FORCE_ANN_ONLY` table hint, and the new [sys.dm_db_vector_indexes](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-vector-indexes-transact-sql?view=azuresqldb-current&preserve-view=true) DMV for monitoring index health. Regional availability is documented at [Feature availability by region](region-availability.md#vector-search). For more information, see [VECTOR_SEARCH](/sql/t-sql/functions/vector-search-transact-sql?view=azuresqldb-current&preserve-view=true) and [CREATE VECTOR INDEX](/sql/t-sql/statements/create-vector-index-transact-sql?view=azuresqldb-current&preserve-view=true). |
 
 ### January 2026
