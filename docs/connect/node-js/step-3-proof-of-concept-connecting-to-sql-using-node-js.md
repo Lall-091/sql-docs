@@ -3,7 +3,7 @@ title: "Step 3: Connecting to SQL using Node.js"
 description: "This example should be considered a proof of concept showing how to connect to SQL using Node.js and is simplified for clarity."
 author: David-Engel
 ms.author: davidengel
-ms.date: "02/26/2026"
+ms.date: "03/25/2026"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: install-set-up-deploy
@@ -13,7 +13,22 @@ ms.topic: install-set-up-deploy
 :::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Node.js SQL driver](../sql-connection-libraries.md#anchor-20-drivers-relational-access)**
 
 This example should be considered a proof of concept only. The sample code is simplified for clarity, and doesn't necessarily represent best practices recommended by Microsoft. Other examples, which use the same crucial functions are available in the [GitHub sample repository](https://github.com/tediousjs/tedious/blob/master/examples/).
-  
+
+## Prerequisites
+
+Before you run the sample code, make sure the following prerequisites are met:
+
+- **Node.js** is installed on your development machine. Download it from [nodejs.org](https://nodejs.org/).
+- The **tedious** npm package is installed. Run `npm install tedious` in your project directory.
+- A SQL Server instance is available and configured to accept connections:
+  - **TCP/IP protocol** is enabled in SQL Server Configuration Manager. TCP/IP is disabled by default on SQL Server Express editions.
+  - **SQL Server Browser service** is running if you're connecting to a named instance.
+  - The firewall allows connections on the SQL Server port (default: 1433).
+  - For SQL Server authentication, a SQL login is enabled and SQL Server is configured for **mixed mode authentication**.
+
+> [!TIP]
+> If you receive a connection error such as `Failed to connect`, verify that TCP/IP is enabled and the SQL Server service is running. For local development, try connecting with `server: 'localhost'` or `server: '127.0.0.1'`.
+
 ## Step 1: Connect  
   
 Use the **new Connection** function to connect to SQL Database.  
@@ -45,7 +60,7 @@ Use the **new Connection** function to connect to SQL Database.
 
 ```  
   
-## Step 2:  Execute a query  
+## Step 2: Execute a query  
   
   
 Execute all SQL statements using the **new Request** function. If the statement returns rows, such as a select statement, you can retrieve them using the **request.on** function. If there are no rows, the request.on function returns empty lists.  

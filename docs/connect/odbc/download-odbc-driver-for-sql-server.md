@@ -3,7 +3,7 @@ title: Download ODBC Driver for SQL Server
 description: Download the Microsoft ODBC Driver for SQL Server to develop native-code applications that connect to SQL Server and Azure SQL Database.
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/17/2025
+ms.date: 03/25/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -17,6 +17,17 @@ ms.custom:
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Microsoft ODBC Driver for SQL Server is a single dynamic-link library (DLL) containing run-time support for applications using native-code APIs to connect to SQL Server. Use Microsoft ODBC Driver 18 for SQL Server to create new applications or enhance existing applications that need to take advantage of newer SQL Server features.
+
+## Prerequisites
+
+Before you install the ODBC driver on Windows, make sure you have the following prerequisites:
+
+- **Visual C++ Redistributable**: The ODBC Driver for SQL Server requires the Microsoft Visual C++ Redistributable. If this component isn't already installed on your system, download and install it before installing the ODBC driver. Download the version that matches your system architecture (x64, x86, or ARM64) from [Microsoft Visual C++ Redistributable latest supported downloads](/cpp/windows/latest-supported-vc-redist).
+
+> [!NOTE]
+> Most Windows systems already have the Visual C++ Redistributable installed. If the ODBC driver installation fails or the driver doesn't load correctly, verify that the Visual C++ Redistributable is installed on your system.
+
+Linux and macOS don't require this component. For Linux and macOS prerequisites, see the installation guides linked in the [Download for Linux and macOS](#download-for-linux-and-macos) section.
 
 ## Download for Windows
 
