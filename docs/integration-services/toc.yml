@@ -75,6 +75,8 @@
     href: ../integration-services/fabric-integration/integrate-fabric-data-warehouse.md
   - name: Tutorial - Integrating SSIS with SQL database in Fabric
     href: ../integration-services/fabric-integration/integrate-fabric-sql-database.md
+  - name: Tutorial - Integrating SSIS with OneLake through Azure Data Lake Storage Gen2
+    href: ../integration-services/fabric-integration/tutorial-ssis-write-files-onelake.md
 - name: Install Integration Services
   href: ../integration-services/install-windows/install-integration-services.md
 - name: Installing Integration Services Versions Side by Side
