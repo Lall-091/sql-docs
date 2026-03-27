@@ -18,6 +18,8 @@ monikerRange: ">=sql-server-2016"
 
 This article provides information on how to receive Extended Security Updates (ESUs) for versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] that are out of extended support.
 
+[!INCLUDE [2016-esu](../../includes/2016-esu.md)]
+
 Extended Security Updates (ESUs) are available for [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)].
 
 ESUs released for **[!INCLUDE [sssql14-md](../../includes/sssql14-md.md)]** include the most recent cumulative update (CU). If you only applied [general distribution release](/troubleshoot/sql/releases/servicing-models-sql-server#general-distribution-release-gdr) (GDR) updates during the normal support period, install and validate the latest CU at the time you subscribe to receive ESUs, instead of waiting until the first ESU is released. This preemptive validation avoids potential problems when installing the ESU later.

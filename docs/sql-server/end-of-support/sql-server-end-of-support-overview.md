@@ -154,6 +154,8 @@ Tools:
 
 ## Extend support
 
+[!INCLUDE [2016-esu](../../includes/2016-esu.md)]
+
 If you're not ready to upgrade, and you're not ready to move to the cloud, you have the ability to purchase an Extended Security Updates subscription to receive **Critical** security updates for up to three years past the end of the support date.
 
 ### Benefits

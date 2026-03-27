@@ -100,6 +100,8 @@ Select the **Use physical core license** checkbox if you're configuring a virtua
 
 #### Subscribe to Extended Security Updates
 
+[!INCLUDE [2016-esu](../../includes/2016-esu.md)]
+
 You can subscribe to Extended Security Updates (ESUs) for the individual host. To qualify for an ESU subscription, the host must have **License type** set to **Pay-as-you-go** or **License with Software Assurance**. This option allows you to subscribe by using vCPUs (v-cores) when the host is a virtual machine, or by using physical cores when the host is a physical server that runs without using virtual machines.
 
 Select **Subscribe to Extended Security Updates**. It sets the host configuration property `EnableExtendedSecurityUpdates` to `True`. The subscription is activated after you select **Save**.
@@ -301,7 +303,7 @@ For more examples of Azure Resource Graph queries, see [Starter Resource Graph q
 
 #### List Azure Arc-enabled SQL Server instances subscribed to ESUs
 
-The following example shows how you can view all eligible [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] or [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] instances and their ESU subscription status:
+The following example shows how you can view all eligible [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] instances and their ESU subscription status:
 
 ```kusto
 resources
@@ -309,7 +311,7 @@ resources
 | extend Version = properties.version
 | extend Edition = properties.edition
 | extend containerId = tolower(tostring (properties.containerResourceId))
-| where Version in ("SQL Server 2012", "SQL Server 2014")
+| where Version in ("SQL Server 2014")
 | where Edition in ("Enterprise", "Standard")
 | where isnotempty(containerId)
 | project containerId, SQL_instance = name, Version, Edition
