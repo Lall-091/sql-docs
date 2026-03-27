@@ -21,7 +21,7 @@ monikerRange: "=fabric"
 
 # ANY_VALUE (Transact-SQL)
 
-[!INCLUDE [fabricdw](../../includes/applies-to-version/fabric-dw.md)]
+[!INCLUDE [fabricdw](../../includes/applies-to-version/fabric-se-dw.md)]
 
 The `ANY_VALUE` function returns any (non-`NULL` if possible) value from a group of rows. You can use it as both an aggregate function and a window (analytic) function:
 
