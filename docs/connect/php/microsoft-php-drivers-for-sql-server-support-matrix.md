@@ -3,7 +3,7 @@ title: "Microsoft Drivers for PHP Support Matrix"
 description: "This page contains the support matrix and support lifecycle policy for the Microsoft PHP Drivers for SQL Server."
 author: David-Engel
 ms.author: davidengel
-ms.date: 02/24/2026
+ms.date: 03/25/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -161,10 +161,8 @@ The following Linux and macOS operating system versions (64-bit only) are suppor
 |macOS Sierra (64-bit)                      |   |   |   |   |   |   |Yes|Yes|Yes|Yes|   |   |
 |macOS El Capitan (64-bit)                  |   |   |   |   |   |   |   |Yes|Yes|Yes|   |   |
 
-## See Also
+## Related content
 
-[Release Notes](release-notes-php-sql-driver.md)
-
-[Support Resources](support-resources-for-the-php-sql-driver.md)
-
-[System Requirements](system-requirements-for-the-php-sql-driver.md)
+- [Release notes for the Microsoft PHP Drivers for SQL Server](release-notes-php-sql-driver.md)
+- [Support resources for the PHP SQL driver](support-resources-for-the-php-sql-driver.md)
+- [System requirements for the Microsoft PHP Drivers for SQL Server](system-requirements-for-the-php-sql-driver.md)

@@ -4,7 +4,7 @@ description: Learn how to install the Microsoft ODBC Driver for SQL Server on ma
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: vanto
-ms.date: 09/12/2024
+ms.date: 03/25/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: install-set-up-deploy
@@ -85,10 +85,27 @@ The driver needs to load the resource file in order to function. This file is ca
 
 Some users encounter an issue when trying to connect after installing the ODBC driver and receive an error like: `"[01000] [unixODBC][Driver Manager]Can't open lib 'ODBC Driver 18 for SQL Server' : file not found (0) (SQLDriverConnect)"`. It might be the case that unixODBC isn't configured correctly to find registered drivers. In these cases, creating symbolic links can resolve the issue.
 
+The correct paths depend on your Mac's architecture. Run `brew --prefix` to determine your Homebrew installation prefix:
+
+- **Apple Silicon (ARM64)** — Homebrew prefix is `/opt/homebrew`
+- **Intel (x64)** — Homebrew prefix is `/usr/local`
+
+For **Apple Silicon (ARM64)** Macs:
+
+```bash
+sudo ln -s /opt/homebrew/etc/odbcinst.ini /etc/odbcinst.ini
+sudo ln -s /opt/homebrew/etc/odbc.ini /etc/odbc.ini
+```
+
+For **Intel (x64)** Macs:
+
 ```bash
 sudo ln -s /usr/local/etc/odbcinst.ini /etc/odbcinst.ini
 sudo ln -s /usr/local/etc/odbc.ini /etc/odbc.ini
 ```
+
+> [!NOTE]
+> On macOS 15 (Sequoia) and later, the `/usr/local/etc/` directory might not exist by default, especially on Apple Silicon Macs. If the directory doesn't exist, the ODBC configuration files are located under your Homebrew prefix. Run `brew --prefix` to verify the correct path for your system.
 
 For other cases where you're unable to make a connection to SQL Server using the ODBC driver, see the known issues article on [troubleshooting connection problems](known-issues-in-this-version-of-the-driver.md#connectivity).
 
