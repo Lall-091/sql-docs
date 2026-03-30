@@ -378,7 +378,6 @@ ALTER DATABASE { database_name | CURRENT }
       | 'BC_Gen5_n' 
       | 'BC_M_n' 
       | 'GP_DC_n'
-      | 'GP_Fsv2_n' 
       | 'GP_Gen5_n' 
       | 'GP_S_Gen5_n' 
       | 'HS_DC_n'

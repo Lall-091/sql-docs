@@ -764,7 +764,7 @@ The following table covers these SLOs: `GP_Gen5_24`, `GP_Gen5_32`, `GP_Gen5_40`,
 ## General Purpose - provisioned compute - Fsv2-series
 
 > [!NOTE]
-> Fsv2-series hardware will be retired October 1, 2026.
+> Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
 
 ### General Purpose Fsv2-series hardware (part 1 of 2)
 
@@ -806,7 +806,7 @@ The following table covers these SLOs: `GP_Fsv2_8`, `GP_Fsv2_10`, `GP_Fsv2_12`, 
 ### General Purpose Fsv2-series hardware (part 2 of 2)
 
 > [!NOTE]
-> Fsv2-series hardware will be retired October 1, 2026.
+> Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
 
 Compute sizes (service level objectives, or SLOs) for General Purpose Fsv2-series databases follow the naming convention `GP_Fsv2_` followed by the number of vCores. 
 

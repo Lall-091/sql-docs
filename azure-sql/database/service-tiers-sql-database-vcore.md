@@ -227,7 +227,7 @@ The following table compares compute resources in different hardware configurati
   - Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake) or AMD EPYC&trade; 7763v (Milan) appear as Gen8
   - AMD EPYC&trade; 9004 (Genoa) appear as Gen9 or Intel&reg; Xeon&reg; Platinum 8573C (Emerald Rapids) appear as Gen10
 
-\*\* Fsv2-series hardware will be retired October 1, 2026.
+\*\* Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
 
 For more information, see resource limits for [single databases](resource-limits-vcore-single-databases.md) and [elastic pools](resource-limits-vcore-elastic-pools.md).
 
@@ -299,7 +299,9 @@ For information on current generation hardware availability, see [Feature Availa
 
 #### Fsv2-series
 
-Fsv2-series hardware for Azure SQL Database will be retired October 1, 2026. To minimize service disruption and maintain price-performance, transition to Hyperscale premium-series or Standard-series (Gen5) hardware. For more information, see [Retirement Notice: Azure SQL Database FSV2-series offer](https://azure.microsoft.com/updates?id=485030). For most databases and workloads, Hyperscale premium-series or Standard-series (Gen5) hardware provide similar or better price performance than Fsv2. To make sure, please validate this with your specific database and workloads.
+Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
+
+To minimize service disruption and maintain price-performance, transition to Hyperscale premium-series or Standard-series (Gen5) hardware. For more information, see [Retirement Notice: Azure SQL Database FSV2-series offer](https://azure.microsoft.com/updates?id=485030). For most databases and workloads, Hyperscale premium-series or Standard-series (Gen5) hardware provide similar or better price performance than Fsv2. To make sure, please validate this with your specific database and workloads.
 
 - Fsv2 provides less memory and `tempdb` per vCore than other hardware, so workloads sensitive to those limits might perform better on standard-series (Gen5).
 - Fsv2-series is only supported in the General Purpose tier.
