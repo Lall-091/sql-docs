@@ -1,10 +1,10 @@
 ---
-title: Database identifiers
-description: "Get acquainted with database identifiers. Learn about their collation, various classes, delimiting requirements, and naming rules."
+title: Database Identifiers
+description: Get acquainted with database identifiers. Learn about their collation, various classes, delimiting requirements, and naming rules.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 08/06/2024
+ms.date: 03/30/2026
 ms.service: sql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -19,7 +19,7 @@ helpviewer_keywords:
   - "Transact-SQL identifiers"
   - "database objects [SQL Server], names"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Database identifiers
@@ -39,42 +39,7 @@ CREATE TABLE TableX (
 
 This table also has an unnamed constraint. The `PRIMARY KEY` constraint has no identifier.
 
-Some identifiers, such as constraint names and other schema-scoped objects, must be unique within a database schema. For example, two primary key constraints in the same schema can't share a name, so the second table creation statement isn't allowed:
-
-```sql
-USE AdventureWorks2022;
-GO
-
-CREATE TABLE [SalesOrderGeneral Table] (
-   [Order] INT NOT NULL,
-   [SalesOrderID] INT IDENTITY(1, 1) NOT NULL,
-   [SalesOrderDetailID] INT NOT NULL,
-   [ModifiedDate] DATETIME NOT NULL,
-   CONSTRAINT [PK_SalesOrder] PRIMARY KEY CLUSTERED (
-     [Order] ASC,
-     [SalesOrderID] ASC
-   )
-);
-GO
-
--- Primary key identifier conflicts with existing primary key, and so will result in an error.
-CREATE TABLE [SalesOrderDetail Table] (
-   [Order] INT NOT NULL,
-   [SalesOrderDetailID] INT IDENTITY(1, 1) NOT NULL,
-   [OrderQty] SMALLINT NOT NULL,
-   [ProductID] INT NOT NULL,
-   [UnitPrice] MONEY NOT NULL,
-   [UnitPriceDiscount] MONEY NOT NULL,
-   [ModifiedDate] DATETIME NOT NULL,
-   CONSTRAINT [PK_SalesOrder] PRIMARY KEY CLUSTERED (
-       [Order] ASC,
-       [SalesOrderDetailID] ASC
-   )
-);
-GO
-```
-
-However, each table can contain its own column named `Order`, because column names only need to be unique within each table, not within the schema.
+Some identifiers, such as constraint names and other schema-scoped objects, must be unique within a database schema. For example, two primary key constraints can't share a name. However, column names only need to be unique within each table, not within the schema.
 
 The collation of an identifier depends on the level at which it's defined. Identifiers of instance-level objects, such as logins and database names, are assigned the default collation of the instance. Identifiers of objects in a database, such as tables, views, and column names, are assigned the default collation of the database. For example, two tables with names that differ only in case can be created in a database that has case-sensitive collation, but can't be created in a database that has case-insensitive collation.
 
@@ -162,7 +127,7 @@ The names of variables, functions, and stored procedures must comply with the fo
 
 1. Embedded spaces or special characters aren't allowed.
 
-1. [Supplementary characters](../../relational-databases/collations/collation-and-unicode-support.md#Supplementary_Characters) aren't allowed.
+1. [Supplementary characters](../collations/collation-and-unicode-support.md#Supplementary_Characters) aren't allowed.
 
 When identifiers are used in [!INCLUDE [tsql](../../includes/tsql-md.md)] statements, the identifiers that don't comply with these rules must be delimited by double quotation marks or brackets.
 
