@@ -88,6 +88,8 @@ Azure SQL Managed Instance is a service in Azure providing nearly 100% compatibi
 
 #### What options do I have to run SQL Server in Azure?
 
+[!INCLUDE [2016-esu](../../includes/2016-esu.md)]
+
 You can move legacy [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] environments to Azure SQL Managed Instance, a fully managed data platform service (PaaS) that offers a "version-free" option to eliminate concerns with End of Support dates, or to Azure Virtual Machines to have access to Security Updates. The migrated databases retain their compatibility with the legacy system. For more information, see [Compatibility certification](../../database-engine/install-windows/compatibility-certification.md).
 
 ESUs are available for [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] in Azure Virtual Machines after the End of Support date of July 9, 2024, for the next three years.
