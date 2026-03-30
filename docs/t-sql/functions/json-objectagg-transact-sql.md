@@ -106,6 +106,16 @@ FROM sys.columns AS c
 GROUP BY c.object_id;
 ```
 
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
+
+| object_id | column_list |
+| --- | --- |
+| 3 | `{"bitpos":12,"cid":6,"colguid":13,"hbcolid":3,"maxinrowlen":8,"nullbit":11,"offset":10,"ordkey":7,"ordlock":14,"rcmodified":4,"rscolid":2,"rsid":1,"status":9,"ti":5}` |
+| 5 | `{"cmprlevel":9,"fgidfs":7,"fillfact":10,"idmajor":3,"idminor":4,"lockres":17,"maxint":13,"maxleaf":12,"maxnullbit":11,"minint":15,"minleaf":14,"numpart":5,"ownertype":2,"rcrows":8,"rowsetid":1,"rsguid":16,"scope_id":18,"status":6}` |
+| 6 | `{"cloneid":6,"dbfragid":8,"id":1,"partid":3,"rowsetid":7,"segid":5,"status":9,"subid":2,"version":4}` |
+| 7 | `{"auid":1,"fgid":5,"ownerid":3,"pcdata":10,"pcreserved":11,"pcused":9,"pgfirst":6,"pgfirstiam":8,"pgroot":7,"status":4,"type":2}` |
+| 8 | `{"fileid":2,"filename":4,"name":3,"status":1}` |
+
 ### D. Return a JSON object as JSON type
 
 The following example returns a JSON object as **json** type.
@@ -119,16 +129,6 @@ SELECT JSON_OBJECTAGG('a':1 RETURNING JSON);
 ```json
 {"a":1}
 ```
-
-[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
-
-| object_id | column_list |
-| --- | --- |
-| 3 | `{"bitpos":12,"cid":6,"colguid":13,"hbcolid":3,"maxinrowlen":8,"nullbit":11,"offset":10,"ordkey":7,"ordlock":14,"rcmodified":4,"rscolid":2,"rsid":1,"status":9,"ti":5}` |
-| 5 | `{"cmprlevel":9,"fgidfs":7,"fillfact":10,"idmajor":3,"idminor":4,"lockres":17,"maxint":13,"maxleaf":12,"maxnullbit":11,"minint":15,"minleaf":14,"numpart":5,"ownertype":2,"rcrows":8,"rowsetid":1,"rsguid":16,"scope_id":18,"status":6}` |
-| 6 | `{"cloneid":6,"dbfragid":8,"id":1,"partid":3,"rowsetid":7,"segid":5,"status":9,"subid":2,"version":4}` |
-| 7 | `{"auid":1,"fgid":5,"ownerid":3,"pcdata":10,"pcreserved":11,"pcused":9,"pgfirst":6,"pgfirstiam":8,"pgroot":7,"status":4,"type":2}` |
-| 8 | `{"fileid":2,"filename":4,"name":3,"status":1}` |
 
 ### E. Return aggregated result with four columns
 
