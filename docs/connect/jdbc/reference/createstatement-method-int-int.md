@@ -3,7 +3,7 @@ title: "createStatement Method (int, int)"
 description: "createStatement Method (int, int)"
 author: David-Engel
 ms.author: davidengel
-ms.date: "01/19/2017"
+ms.date: 03/27/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: reference
@@ -24,16 +24,27 @@ public java.sql.Statement createStatement(int resultSetType,
                                           int resultSetConcurrency)  
 ```  
   
-#### Parameters  
- *resultSetType*  
+#### Parameters
+ *resultSetType*
+
+ The **int** value representing the result set type. Use one of the following `java.sql.ResultSet` constants:
+
+ | Constant | Description |
+ |---|---|
+ | `ResultSet.TYPE_FORWARD_ONLY` | Cursor moves forward only. Best performance for sequential reads. |
+ | `ResultSet.TYPE_SCROLL_INSENSITIVE` | Scrollable result set that doesn't reflect changes made to the underlying data after the result set is created. |
+ | `ResultSet.TYPE_SCROLL_SENSITIVE` | Scrollable result set that reflects changes made to the underlying data. |
+
+ *resultSetConcurrency*
+
+ The **int** value representing the result set concurrency type. Use one of the following `java.sql.ResultSet` constants:
+
+ | Constant | Description |
+ |---|---|
+ | `ResultSet.CONCUR_READ_ONLY` | The result set can't be updated. |
+ | `ResultSet.CONCUR_UPDATABLE` | The result set can be updated by using positioned updates and deletes. |  
   
- The **int** value representing the result set type.  
-  
- *resultSetConcurrency*  
-  
- The **int** value representing the result set concurrency type.  
-  
-## Return Value  
+## Return value  
  The Statement object.  
   
 ## Exceptions  
@@ -42,9 +53,8 @@ public java.sql.Statement createStatement(int resultSetType,
 ## Remarks  
  This createStatement method is specified by the createStatement method in the java.sql.Connection interface.  
   
-## See Also  
- [createStatement Method &#40;SQLServerConnection&#41;](../../../connect/jdbc/reference/createstatement-method-sqlserverconnection.md)   
- [SQLServerConnection Members](../../../connect/jdbc/reference/sqlserverconnection-members.md)   
- [SQLServerConnection Class](../../../connect/jdbc/reference/sqlserverconnection-class.md)  
-  
-  
+## Related content
+
+- [createStatement Method (SQLServerConnection)](../../../connect/jdbc/reference/createstatement-method-sqlserverconnection.md)
+- [SQLServerConnection Members](../../../connect/jdbc/reference/sqlserverconnection-members.md)
+- [SQLServerConnection Class](../../../connect/jdbc/reference/sqlserverconnection-class.md)
