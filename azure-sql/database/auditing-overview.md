@@ -5,7 +5,7 @@ description: SQL Auditing for Azure SQL Database and Azure Synapse Analytics tra
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: srsaluru, vanto, mathoma
-ms.date: 12/19/2025
+ms.date: 03/30/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: concept-article
@@ -48,9 +48,9 @@ You can use SQL Database auditing to:
 ### Changes from the re-architecture of server auditing
 
 - Folder structure change for storage account:
-  - One of the primary changes involves a folder structure change for audit logs stored in storage account containers. Previously, server audit logs were written to separate folders; one for each database, with the database name serving as the folder name. With the new update, all server audit logs will be consolidated into a single folder labeled `master`. This behavior is the same as Azure SQL Managed Instance and SQL Server.
+  - One of the primary changes involves a folder structure change for audit logs stored in storage account containers. Previously, server audit logs were written to separate folders; one for each database, with the database name serving as the folder name. With the new update, all server audit logs are consolidated into a single folder labeled `master`. This behavior is the same as Azure SQL Managed Instance and SQL Server.
 - Folder structure change for read-only replicas:
-  - Read-only database replicas previously had their logs stored in a read-only folder. Those logs will now be written into the `master` folder. You can retrieve these logs by filtering on the new column `is_secondary_replica_true`.
+  - Read-only database replicas previously had their logs stored in a read-only folder. Those logs are now written into the `master` folder. You can retrieve these logs by filtering on the new column `is_secondary_replica_true`.
 - Permissions required to view Audit logs:
   - `VIEW DATABASE SECURITY AUDIT` permission in user database
 
@@ -66,6 +66,9 @@ For environments with many databases running heavy OLTP workloads, using serverâ
 - Enabling auditing on a paused **Azure Synapse SQL pool** isn't supported. To enable auditing, resume the **Synapse SQL pool**.
 - Enabling auditing by using User Assigned Managed Identity (UAMI) isn't supported on **Azure Synapse**.
 - Currently, managed identities aren't supported for Azure Synapse, unless the storage account is behind a virtual network or firewall.
+
+> [!NOTE]
+> For Azure Synapse Analytics, auditing to a storage account behind a VNet requires the server's **system-assigned managed identity** with the **Storage Blob Data Contributor** role. User-assigned managed identities (UAMI) aren't supported for Synapse auditing. If you need to audit to a storage account that uses Microsoft Entra-only authentication, configure the system-assigned managed identity on the server and grant it the Storage Blob Data Contributor role on the target storage account. For more information, see [Write audit to a storage account behind VNet and firewall](audit-write-storage-account-behind-vnet-firewall.md).
 - Due to performance constraints, we don't audit the **tempdb** and **temporary tables**. While the batch completed action group captures statements against temporary tables, it might not correctly populate the object names. However, the source table is always audited, ensuring that all inserts from the source table to temporary tables are recorded.
 - Auditing for **Azure Synapse SQL pools** supports default audit action groups **only**.
 - When you configure auditing for a [logical server in Azure](logical-servers.md) or Azure SQL Database with the log destination as a storage account, the authentication mode must match the configuration for that storage account. If using storage access keys as the authentication type, the target storage account must be enabled with access to the storage account keys. If the storage account is configured to only use authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), auditing can be configured to use managed identities for authentication.
@@ -77,7 +80,7 @@ For environments with many databases running heavy OLTP workloads, using serverâ
 ## Remarks
 
 - **Premium storage** with **BlockBlobStorage** is supported. Standard storage is supported. However, for audit to write to a storage account behind a virtual network or firewall, you must have a **general-purpose v2 storage account**. If you have a general-purpose v1 or Blob Storage account, [upgrade to a general-purpose v2 storage account](/azure/storage/common/storage-account-upgrade). For specific instructions see, [Write audit to a storage account behind VNet and firewall](audit-write-storage-account-behind-vnet-firewall.md). For more information, see [Types of storage accounts](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
-- When customers enable SQL auditing and also configure **outbound networking** restrictions, they must allow list the fully qualified domain names of their auditing storage account to ensure audit events can successfully reach the destination. If the storage endpoint is not allowlisted, audit traffic is blocked, resulting in audit event loss. After adding the required storage account FQDNs to the allow list, customers must **reâ€‘save** their auditing configuration to resume normal audit event flow.
+- When customers enable SQL auditing and also configure **outbound networking** restrictions, they must allow list the fully qualified domain names of their auditing storage account to ensure audit events can successfully reach the destination. If the storage endpoint isn't allowlisted, audit traffic is blocked, resulting in audit event loss. After adding the required storage account FQDNs to the allow list, customers must **reâ€‘save** their auditing configuration to resume normal audit event flow.
 - **Hierarchical namespace** for all types of **standard storage account** and **premium storage account with BlockBlobStorage** is supported.
 - Audit logs are written to **Append Blobs** in an Azure Blob Storage on your Azure subscription
 - Audit logs are in .xel format and can be opened with [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).

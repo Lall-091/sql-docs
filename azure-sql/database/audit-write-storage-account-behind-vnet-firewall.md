@@ -5,7 +5,7 @@ description: Configure auditing to write database events on a storage account be
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 06/10/2025
+ms.date: 03/30/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -22,6 +22,9 @@ ms.custom:
 Auditing for [Azure SQL Database](sql-database-paas-overview.md) and [Azure Synapse Analytics](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) supports writing database events to an [Azure Storage account](/azure/storage/common/storage-account-overview) behind a virtual network and firewall.
 
 This article explains two ways to configure Azure SQL Database and Azure storage account for this option. The first uses the Azure portal, the second uses REST.
+
+> [!IMPORTANT]
+> When a storage account is behind a virtual network or firewall, you must use **managed identity** authentication (Storage Blob Data Contributor role), not storage access keys. The Azure portal configures this automatically when you save your auditing settings. If you configure auditing via REST API or PowerShell, don't specify a `storageAccountAccessKey` — the server's managed identity authenticates to the storage account instead.
 
 ## Background
 
@@ -53,16 +56,16 @@ Connect to [Azure portal](https://portal.azure.com) with your subscription. Navi
 
 1. Select **Auditing** under the Security heading. Select **On**.
 
-1. Select **Storage**. Select the storage account where logs will be saved. The storage account must comply with the requirements listed in [Prerequisites](#prerequisites).
+1. Select **Storage**. Select the storage account where logs are saved. The storage account must comply with the requirements listed in [Prerequisites](#prerequisites).
 
 1. Open **Storage details**
 
    > [!NOTE]
-   > If the selected Storage account is behind VNet, you will see the following message:
+   > If the selected Storage account is behind VNet, you see the following message:
    >
    >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage requires to enable 'Allow trusted Microsoft services to access this storage account' on the storage account and creates a server managed identity with 'storage blob data contributor' RBAC.`
    >
-   >If you do not see this message, then storage account is not behind a VNet.
+   >If you don't see this message, then the storage account isn't behind a VNet.
 
 1. Select the number of days for the retention period. Then select **OK**. Logs older than the retention period are deleted.
 
@@ -166,7 +169,7 @@ You can configure auditing to write database events on a storage account behind 
 - [Deploy an Azure SQL Server with Auditing enabled to write audit logs to a blob storage](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-blob-storage/)
 
 > [!NOTE]
-> The linked sample is on an external public repository and is provided 'as is', without warranty, and are not supported under any Microsoft support program/service.
+> The linked sample is on an external public repository and is provided 'as is', without warranty, and aren't supported under any Microsoft support program/service.
 
 ## Related content
 
