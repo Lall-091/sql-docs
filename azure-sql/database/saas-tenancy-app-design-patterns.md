@@ -80,7 +80,7 @@ The vendor can access all the databases in all the standalone app instances, eve
 
 This next pattern uses a multitenant application with many databases, all being single-tenant databases. A new database is provisioned for each new tenant. The application tier is scaled *up* vertically by adding more resources per node. Or the app is scaled *out* horizontally by adding more nodes. The scaling is based on workload, and is independent of the number or scale of the individual databases.
 
-:::image type="content" source="media/saas-tenancy-app-design-patterns/saas-multitenant-app-database-per-tenant.png" alt-text="Diagram of the design of a multitenant app with database-per-tenant.":::
+:::image type="content" source="media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant.png" alt-text="Diagram of the design of a multitenant app with database-per-tenant.":::
 
 ### Customize for a tenant
 
