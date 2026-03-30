@@ -3,7 +3,7 @@ title: "Linux and macOS Installation for the Drivers for PHP"
 description: "In these instructions, learn how to install the Microsoft Drivers for PHP for SQL Server on Linux or macOS."
 author: David-Engel
 ms.author: davidengel
-ms.date: 02/24/2026
+ms.date: 03/27/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: how-to
@@ -399,7 +399,7 @@ To test your installation, see [Testing your installation](#testing-your-install
 If you don't already have it, install brew as follows:
 
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 > [!NOTE]
@@ -482,7 +482,7 @@ sudo apachectl restart
 
 To test your installation, see [Testing your installation](#testing-your-installation) at the end of this document.
 
-## Testing Your Installation
+## Testing your installation
 
 To test this sample script, create a file called testsql.php in your system's document root. This path is `/var/www/html/` on Ubuntu, Debian, and Red Hat, `/srv/www/htdocs` on SUSE, `/var/www/localhost/htdocs` on Alpine, or `/usr/local/var/www` on macOS. Copy the following script to it, replacing the server, database, username, and password as appropriate.
 
@@ -600,10 +600,8 @@ php testsql.php
 
 If running from the command line is successful but nothing shows in your browser, check the [Apache log files](https://linuxize.com/post/apache-log-files/#location-of-the-log-files). For more help, see [Support resources](support-resources-for-the-php-sql-driver.md) for places to go.
 
-## See Also
+## Related content
 
-[Getting Started with the Microsoft Drivers for PHP for SQL Server](../../connect/php/getting-started-with-the-php-sql-driver.md)
-
-[Loading the Microsoft Drivers for PHP for SQL Server](../../connect/php/loading-the-php-sql-driver.md)
-
-[System Requirements for the Microsoft Drivers for PHP for SQL Server](../../connect/php/system-requirements-for-the-php-sql-driver.md)
+- [Getting Started with the Microsoft Drivers for PHP for SQL Server](../../connect/php/getting-started-with-the-php-sql-driver.md)
+- [Loading the Microsoft Drivers for PHP for SQL Server](../../connect/php/loading-the-php-sql-driver.md)
+- [System Requirements for the Microsoft Drivers for PHP for SQL Server](../../connect/php/system-requirements-for-the-php-sql-driver.md)

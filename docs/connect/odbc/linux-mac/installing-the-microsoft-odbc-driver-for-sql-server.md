@@ -4,7 +4,7 @@ description: Learn how to install the Microsoft ODBC Driver for SQL Server on Li
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 01/06/2026
+ms.date: 03/27/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -185,6 +185,9 @@ sudo apt-get install -y unixodbc-dev
 > ```
 
 ### [Azure Linux](#tab/azure18-install)
+
+> [!NOTE]
+> Azure Linux 3.0 includes the Microsoft packages repository by default. You don't need to manually configure the repository before you install the driver. If your Azure Linux image uses `tdnf` as the package manager, the following commands work directly.
 
 ```bash
 if ! [[ "3.0" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
@@ -721,6 +724,8 @@ The driver needs to load the resource file to function. This file is called `mso
 
 ## Troubleshoot
 
+### Previous driver version conflict
+
 If you previously installed and registered a version of the driver with unixODBC, installation might fail with an error similar to:
 
 ```output
@@ -734,6 +739,44 @@ odbcinst -u -d -n "ODBC Driver $1 for SQL Server"
 ```
 
 If uninstalling by using the `odbcinst` command fails, you can manually remove driver sections from the `odbcinst.ini` file. You can find the location of the `odbcinst.ini` file by using the command `odbcinst -j`.
+
+### Package download errors on Debian and Ubuntu
+
+On Debian-based distributions, you might see the following error when you install the `packages-microsoft-prod.deb` package:
+
+```output
+dpkg-deb: error: 'packages-microsoft-prod.deb' is not a Debian format archive
+```
+
+This error typically means the downloaded file is corrupted or incomplete, often caused by a network interruption or proxy issue. To resolve the problem:
+
+1. Delete the corrupted file and download it again. For Ubuntu:
+
+   ```bash
+   rm packages-microsoft-prod.deb
+   curl -sSL -O https://packages.microsoft.com/config/ubuntu/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)/packages-microsoft-prod.deb
+   ```
+
+   For Debian, replace `ubuntu` and use the major version number only:
+
+   ```bash
+   rm packages-microsoft-prod.deb
+   curl -sSL -O https://packages.microsoft.com/config/debian/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.deb
+   ```
+
+1. Verify the download is a valid Debian package (the output should include `Debian binary package`):
+
+   ```bash
+   file packages-microsoft-prod.deb
+   ```
+
+1. If the download continues to fail, check your network connection and proxy settings, or use `wget` instead of `curl`:
+
+   ```bash
+   wget https://packages.microsoft.com/config/ubuntu/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)/packages-microsoft-prod.deb
+   ```
+
+### Connection problems
 
 If you can't make a connection to SQL Server by using the ODBC driver, see the known issues article on [troubleshooting connection problems](known-issues-in-this-version-of-the-driver.md#connectivity).
 

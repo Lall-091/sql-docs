@@ -3,7 +3,7 @@ title: "SQLServerDatabaseMetaData Members"
 description: "SQLServerDatabaseMetaData Members"
 author: David-Engel
 ms.author: davidengel
-ms.date: "01/19/2017"
+ms.date: 03/27/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: reference
@@ -12,8 +12,22 @@ ms.custom: sfi-ropc-nochange
 # SQLServerDatabaseMetaData Members
 [!INCLUDE[Driver_JDBC_Download](../../../includes/driver_jdbc_download.md)]
 
-  The following tables list the members that are exposed by the [SQLServerDatabaseMetaData](../../../connect/jdbc/reference/sqlserverdatabasemetadata-class.md) class.  
-  
+The following tables list the members that are exposed by the [SQLServerDatabaseMetaData](../../../connect/jdbc/reference/sqlserverdatabasemetadata-class.md) class.
+
+> [!TIP]
+> To use these methods, first obtain a `DatabaseMetaData` object from an active connection:
+>
+> ```java
+> Connection conn = DriverManager.getConnection(connectionUrl);
+> DatabaseMetaData dbmd = conn.getMetaData();
+>
+> // Example: list all tables in the database
+> ResultSet rs = dbmd.getTables(null, null, "%", new String[]{"TABLE"});
+> while (rs.next()) {
+>     System.out.println(rs.getString("TABLE_NAME"));
+> }
+> ```
+
 ## Constructors  
  None.  
   
@@ -208,7 +222,6 @@ ms.custom: sfi-ropc-nochange
 |java.lang.Object|clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait|  
 |java.sql.Wrapper|isWrapperFor, unwrap|  
   
-## See Also  
- [SQLServerDatabaseMetaData Class](../../../connect/jdbc/reference/sqlserverdatabasemetadata-class.md)  
-  
-  
+## Related content
+
+- [SQLServerDatabaseMetaData Class](../../../connect/jdbc/reference/sqlserverdatabasemetadata-class.md)
