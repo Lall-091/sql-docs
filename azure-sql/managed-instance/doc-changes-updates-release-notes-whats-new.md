@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, randolphwest
-ms.date: 03/18/2026
+ms.date: 03/27/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -51,6 +51,7 @@ The following table lists features of Azure SQL Managed Instance that have been 
 
 | Feature | GA Month | Details |
 | ---| --- |--- |
+|[Block T-SQL CRUD commands](../database/block-crud-tsql.md) | March 2026 | Azure administrators can block T-SQL commands to create or modify Azure SQL resources. |
 |[SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy) | March 2026 | Align your SQL managed instance database format with the SQL Server 2025 database engine. | 
 |[Regular expression functions](/sql/relational-databases/regular-expressions/overview) | November 2025 | Regular expression (REGEX) functions return text based on values in a search pattern. |
 |[Flexible memory](resource-limits.md#flexible-memory) | November 2025 | Save on cost by choosing the memory allocation for your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance based on your workload needs.|
@@ -79,6 +80,7 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | Changes | Details |
 | --- | --- |
 | **Automatic index compaction preview** | Automatic index compaction helps you reduce the consumption of storage space, disk I/O, memory, and improve workload performance without investing time and effort into index maintenance jobs. This feature is now in preview. To learn more, review [Automatic index compaction](/sql/relational-databases/indexes/automatic-index-compaction). |
+| **Block T-SQL CRUD GA** | Allow Azure administrators to block the creation or modification of Azure SQL Managed Instance resources through T-SQL. This is enforced at the subscription level to block T-SQL commands from affecting SQL managed instance resources. This feature is generally available for Azure SQL Managed Instance. To learn more, review [Block T-SQL CRUD](../database/block-crud-tsql.md). |
 | **Change event streaming preview** | Capture and publish incremental DML changes of data (such as updates, inserts, and deletes) in near real-time. Change event streaming sends details of data changes such as the schema, previous values, and new values to Azure Event Hubs in a simple CloudEvent, serialized as either native JSON or Avro Binary. This feature is now in preview for Azure SQL Managed Instance configured with the SQL Server 2025 and Always-up-to-date update policy. To learn more, review [Change event streaming](/sql/relational-databases/track-changes/change-event-streaming/overview).
 | **Deploy free instance with command line tools** | You can now create your free SQL managed instance by using [Azure PowerShell](free-offer.md?tabs=powershell#create-a-free-sql-managed-instance), the [Azure CLI](free-offer.md?tabs=azure-cli#create-a-free-sql-managed-instance), and the [REST API](free-offer.md?tabs=rest-api#create-a-free-sql-managed-instance). |
 | **Easily upgrade your free instance** | You can now easily upgrade your free SQL managed instance to a paid offer in the Azure portal. To upgrade, navigate to the **Overview** page for your instance and select **Upgrade** from the navigation bar to open the **Compute + storage** page, where you can choose the paid offer under **Offer type**. For more information, see [Free SQL Managed Instance](free-offer.md#upgrade-to-paid-instance). |
