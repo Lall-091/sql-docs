@@ -30,6 +30,9 @@ You can use several different environment variables to configure [!INCLUDE [ssno
 | --- | --- |
 | `ACCEPT_EULA` | Set the `ACCEPT_EULA` variable to any value to confirm your acceptance of the [End-User Licensing Agreement](https://go.microsoft.com/fwlink/?LinkId=746388). Required setting for the SQL Server image. |
 | `MSSQL_SA_PASSWORD` | Configure the `sa` password.<br /><br />The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead. |
+| `MSSQL_DB` | Sets the name of a database to create on container startup. |
+| `MSSQL_USER` | If `MSSQL_DB` is set, sets the name of a non-`sa` user to create on container startup. User will be granted access rights on the `MSSQL_DB` database. If this variable is used, `MSSQL_PASSWORD` must also be set. If `MSSQL_DB` is not set, this variable is ignored. |
+| `MSSQL_PASSWORD` | Sets the password of the user whose name is in `MSSQL_USER`. If this variable is used, `MSSQL_USER` must also be set. If `MSSQL_DB` is not set, this variable is ignored. |
 | `MSSQL_PID` | Set the [SQL Server edition](../sql-server/editions-and-components-of-sql-server-2025.md#sql-server-editions) or product key. Possible values are listed in the following [SQL Server editions](#sql-server-editions) table. If you specify a product key, it must be in the form of `#####-#####-#####-#####-#####`, where `#` is a number or a letter. |
 | `MSSQL_LCID` | Sets the language ID to use for SQL Server. For example, 1036 is French. |
 | `MSSQL_COLLATION` | Sets the default collation for SQL Server. This overrides the default mapping of language ID (LCID) to collation. |
