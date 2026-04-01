@@ -2,7 +2,7 @@
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 05/10/2023
+ms.date: 04/01/2026
 ms.topic: include
 ms.custom: ignite-2023
 ---
@@ -11,7 +11,7 @@ The following table identifies features available by operating system:
 | Feature | Windows | Linux |
 | --- | --- | --- |
 | [Discover and register SQL Server instances in Azure](../prerequisites.md) | Yes | Yes |
-| [Azure pay-as-you-go billing](../manage-configuration.md) | Yes | Yes |
+| [Azure pay-as-you-go billing](../manage-configuration.md) | Yes | Yes <sup>2</sup> |
 | [Install Azure extension for SQL Server during setup](../../../database-engine/install-windows/install-sql-server-from-the-installation-wizard-setup.md#install-sql-server-2022) <sup>1</sup> | Yes | No |
 | [Best practices assessment](../assess.md) | Yes | No |
 | [Migration assessment](../migration-assessment.md) | Yes | No |
@@ -31,3 +31,5 @@ The following table identifies features available by operating system:
 | [Operate with least privilege](../configure-least-privilege.md)| Yes | No |
 
 <sup>1</sup> [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] only.
+
+<sup>2</sup> PAYG billing is supported on Linux with limitations. Passive instance detection, connected user verification, and Database Engine-level core visibility aren't available. All instances are billed as active. For details, see [Manage licensing and billing](../manage-license-billing.md).
