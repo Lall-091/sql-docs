@@ -5,7 +5,7 @@ description: Learn how to set up Windows authentication for Microsoft Entra ID w
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: mathoma, bonova, urmilano, wiassaf, randolphwest
-ms.date: 11/04/2024
+ms.date: 03/31/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: how-to
@@ -14,9 +14,9 @@ ms.custom: sfi-ga-blocked
 
 # How to set up Windows Authentication for Microsoft Entra ID with the incoming trust-based flow
 
-This article describes how to implement the incoming trust-based authentication flow to allow Active Directory (AD) joined clients running Windows 10, Windows Server 2012, or higher versions of Windows to authenticate to an Azure SQL Managed Instance using Windows Authentication.
+Learn how to implement the incoming trust-based authentication flow to allow Active Directory (AD) joined clients running Windows 10, Windows Server 2012, or higher versions of Windows to authenticate to Azure SQL Managed Instance using Windows Authentication.
 
-This article also includes steps to rotate a Kerberos Key for your service account in Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) and Trusted Domain Object, and steps to remove a Trusted Domain Object and all Kerberos settings, if desired.
+This article also describes how to rotate a Kerberos key for your service account in Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) and Trusted Domain Object, and how to remove a Trusted Domain Object and all Kerberos settings.
 
 Enabling the incoming trust-based authentication flow is one step in [setting up Windows Authentication for Azure SQL Managed Instance using Microsoft Entra ID and Kerberos](winauth-azuread-setup.md). The [modern interactive flow](winauth-azuread-setup-modern-interactive-flow.md) is available for enlightened clients running Windows 10 20H1, Windows Server 2022, or a higher version of Windows.
 
@@ -24,14 +24,14 @@ Enabling the incoming trust-based authentication flow is one step in [setting up
 
 ## Permissions
 
-Have the credentials required to complete the steps in the scenario:
+To complete the steps in this article, you need the following credentials:
 
 - An Active Directory user who is a member of the Domain Admins group for a domain and a member of the Enterprise Admins group for a forest.
 - A Microsoft Entra user with the Hybrid Identity Administrators role.
 
 ## Prerequisites
 
-To implement the incoming trust-based authentication flow, first, ensure that the following prerequisites have been met:
+To implement the incoming trust-based authentication flow, first ensure that the following prerequisites are met:
 
 | Prerequisite | Description |
 | --- | --- |
@@ -46,9 +46,9 @@ To implement the incoming trust-based authentication flow, first, ensure that th
 
 ## Create and configure the Microsoft Entra Kerberos Trusted Domain Object
 
-To create and configure the Microsoft Entra Kerberos Trusted Domain Object, you install the Azure AD Hybrid Authentication Management PowerShell module.
+To create and configure the Microsoft Entra Kerberos Trusted Domain Object, install the [Azure AD Hybrid Authentication Management PowerShell module](https://www.powershellgallery.com/packages/AzureADHybridAuthenticationManagement/2.0.55.0).
 
-You'll then use the Azure AD Hybrid Authentication Management PowerShell module to set up a Trusted Domain Object in the on-premises AD domain and register trust information with Microsoft Entra ID. This creates an in-bound trust relationship into the on-premises AD, which enables Microsoft Entra ID to trust on-premises AD.
+Use the Azure AD Hybrid Authentication Management PowerShell module to set up a Trusted Domain Object in the on-premises AD domain and register trust information with Microsoft Entra ID. This configuration creates an inbound trust relationship into the on-premises AD, which enables Microsoft Entra ID to trust on-premises AD.
 
 ### Set up the Trusted Domain Object
 
@@ -58,15 +58,15 @@ To set up the Trusted Domain Object, first install the Azure AD Hybrid Authentic
 
 1. Start a Windows PowerShell session with the **Run as administrator** option.
 
-1. Install the Azure AD Hybrid Authentication Management PowerShell module using the following script. The script:
+1. Install the Azure AD Hybrid Authentication Management PowerShell module by running the following script. The script does the following:
 
     - Enables TLS 1.2 for communication.
     - Installs the NuGet package provider.
     - Registers the PSGallery repository.
     - Installs the PowerShellGet module.
     - Installs the Azure AD Hybrid Authentication Management PowerShell module.
-        - The Azure AD Hybrid Authentication Management PowerShell uses the AzureADPreview module, which provides advanced Microsoft Entra management feature.
-        - To protect against unnecessary installation conflicts with the Azure AD PowerShell module, this command includes the –AllowClobber option flag.
+        - The Azure AD Hybrid Authentication Management PowerShell uses the AzureADPreview module, which provides advanced Microsoft Entra management features.
+        - To protect against unnecessary installation conflicts with the Azure AD PowerShell module, this command includes the `-AllowClobber` option flag.
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -94,7 +94,7 @@ Install-Module -Name AzureADHybridAuthenticationManagement -AllowClobber
     - Set the `$cloudUserName` parameter to the username of a Global Administrator privileged account for Microsoft Entra cloud access.
 
     > [!NOTE]  
-    > If you wish to use your current Windows login account for your on-premises Active Directory access, you can skip the step where credentials are assigned to the `$domainCred` parameter. If you take this approach, don't include the `-DomainCredential` parameter in the PowerShell commands following this step.
+    > If you want to use your current Windows sign-in account for your on-premises Active Directory access, skip the step where you assign credentials to the `$domainCred` parameter. If you take this approach, don't include the `-DomainCredential` parameter in the PowerShell commands following this step.
 
     ```powershell
     $domain = "your on-premises domain name, for example contoso.com"
@@ -109,7 +109,7 @@ Install-Module -Name AzureADHybridAuthenticationManagement -AllowClobber
     Run the following command to check your domain's current Kerberos settings:
 
     ```powershell
-    Get-AzureAdKerberosServer -Domain $domain `
+    Get-AzureADKerberosServer -Domain $domain `
         -DomainCredential $domainCred `
         -UserPrincipalName $cloudUserName
     ```
@@ -118,7 +118,7 @@ Install-Module -Name AzureADHybridAuthenticationManagement -AllowClobber
       - Enter the password for your Microsoft Entra Global Administrator account.
       - If your organization uses other modern authentication methods such as Microsoft Entra multifactor authentication or Smart Card, follow the instructions as requested for sign in.
 
-    If this is the first time you're configuring Microsoft Entra Kerberos settings, the [Get-AzureAdKerberosServer cmdlet](/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises#view-and-verify-the-azure-ad-kerberos-server) displays empty information, as in the following sample output:
+    If this is the first time you're configuring Microsoft Entra Kerberos settings, the [Get-AzureADKerberosServer cmdlet](/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises#view-and-verify-the-azure-ad-kerberos-server) displays empty information, as in the following sample output:
 
     ```output
     ID                  :
@@ -137,7 +137,7 @@ Install-Module -Name AzureADHybridAuthenticationManagement -AllowClobber
     CloudTrustDisplay   :
     ```
 
-    If your domain already supports FIDO authentication, the `Get-AzureAdKerberosServer` cmdlet displays Microsoft Entra service account information, as in the following sample output. The `CloudTrustDisplay` field returns an empty value.
+    If your domain already supports FIDO authentication, the `Get-AzureADKerberosServer` cmdlet displays Microsoft Entra service account information, as in the following sample output. The `CloudTrustDisplay` field returns an empty value.
 
     ```output
     ID                  : 25614
@@ -158,19 +158,19 @@ Install-Module -Name AzureADHybridAuthenticationManagement -AllowClobber
 
 1. Add the Trusted Domain Object.
 
-    Run the [Set-AzureAdKerberosServer PowerShell cmdlet](/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises#create-a-kerberos-server-object) to add the Trusted Domain Object. Be sure to include `-SetupCloudTrust` parameter. If there's no Microsoft Entra service account, this command creates a new Microsoft Entra service account. This command only creates the requested Trusted Domain object if there's a Microsoft Entra service account.
+    Run the [Set-AzureADKerberosServer PowerShell cmdlet](/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises#create-a-kerberos-server-object) to add the Trusted Domain Object. Be sure to include the `-SetupCloudTrust` parameter. If there's no Microsoft Entra service account, this command creates a new Microsoft Entra service account. This command only creates the requested Trusted Domain object if there's a Microsoft Entra service account.
 
     ```powershell
     Set-AzureADKerberosServer -Domain $domain -UserPrincipalName $cloudUserName -DomainCredential $domainCred -SetupCloudTrust
     ```
 
     > [!NOTE]  
-    > On a multiple domain forest, to avoid the error *LsaCreateTrustedDomainEx 0x549* when running the command on a child domain:
+    > In a multiple domain forest, to avoid the error *LsaCreateTrustedDomainEx 0x549* when running the command on a child domain:
     >
     > 1. Run the command on root domain (include `-SetupCloudTrust` parameter).
     > 1. Run the same command on the child domain without the `-SetupCloudTrust` parameter.
 
-    After creating the Trusted Domain Object, you can check the updated Kerberos Settings using the `Get-AzureAdKerberosServer` PowerShell cmdlet, as shown in the previous step. If the `Set-AzureAdKerberosServer` cmdlet was run successfully with the `-SetupCloudTrust` parameter, the `CloudTrustDisplay` field should now return `Microsoft.AzureAD.Kdc.Service.TrustDisplay`, as in the following sample output:
+    After creating the Trusted Domain Object, you can check the updated Kerberos Settings by using the `Get-AzureADKerberosServer` PowerShell cmdlet, as shown in the previous step. If you run the `Set-AzureADKerberosServer` cmdlet successfully with the `-SetupCloudTrust` parameter, the `CloudTrustDisplay` field returns `Microsoft.AzureAD.Kdc.Service.TrustDisplay`, as in the following sample output:
 
     ```output
     ID                  : 25614
@@ -190,19 +190,19 @@ Install-Module -Name AzureADHybridAuthenticationManagement -AllowClobber
     ```
 
     > [!NOTE]  
-    > Azure sovereign clouds require setting the `TopLevelNames` property, which is set to `windows.net` by default. Azure sovereign cloud deployments of SQL Managed Instance use a different top-level domain name, such as `usgovcloudapi.net` for Azure US Government. Set your Trusted Domain Object to that top-level domain name using the following PowerShell command: `Set-AzureADKerberosServer -Domain $domain -DomainCredential $domainCred -CloudCredential $cloudCred -SetupCloudTrust -TopLevelNames "usgovcloudapi.net,windows.net"`. You can verify the setting with the following PowerShell command: `Get-AzureAdKerberosServer -Domain $domain -DomainCredential $domainCred -UserPrincipalName $cloudUserName | Select-Object -ExpandProperty CloudTrustDisplay`.
+    > Azure sovereign clouds require setting the `TopLevelNames` property, which is set to `windows.net` by default. Azure sovereign cloud deployments of SQL Managed Instance use a different top-level domain name, such as `usgovcloudapi.net` for Azure US Government. Set your Trusted Domain Object to that top-level domain name by running the following PowerShell command: `Set-AzureADKerberosServer -Domain $domain -DomainCredential $domainCred -CloudCredential $cloudCred -SetupCloudTrust -TopLevelNames "usgovcloudapi.net,windows.net"`. You can verify the setting by running the following PowerShell command: `Get-AzureADKerberosServer -Domain $domain -DomainCredential $domainCred -UserPrincipalName $cloudUserName | Select-Object -ExpandProperty CloudTrustDisplay`.
 
 ## Configure the Group Policy Object (GPO)
 
 1. Identify your [Microsoft Entra tenant ID](/azure/active-directory/fundamentals/how-to-find-tenant).
 
-1. Deploy the following Group Policy setting to client machines using the incoming trust-based flow:
+1. Deploy the following Group Policy setting to client machines by using the incoming trust-based flow:
 
     1. Edit the **Administrative Templates\System\Kerberos\Specify KDC proxy servers for Kerberos clients** policy setting.
     1. Select **Enabled**.
-    1. Under **Options**, select **Show...**. This opens the Show Contents dialog box.
+    1. Under **Options**, select **Show...**. This selection opens the **Show Contents** dialog box.
 
-       :::image type="content" source="media/winauth-azuread/configure-policy-kdc-proxy.png" alt-text="Screenshot of dialog box to enable 'Specify KDC proxy servers for Kerberos clients'. The 'Show Contents' dialog allows input of a value name and the related value." lightbox="media/winauth-azuread/configure-policy-kdc-proxy.png":::
+       :::image type="content" source="media/winauth-azuread/configure-policy-kdc-proxy.png" alt-text="Screenshot of dialog box to enable Specify KDC proxy servers for Kerberos clients. The Show Contents dialog allows input of a value name and the related value." lightbox="media/winauth-azuread/configure-policy-kdc-proxy.png":::
 
     1. Define the KDC proxy servers settings using mappings as follows. Substitute your Microsoft Entra tenant ID for the `your_Azure_AD_tenant_id` placeholder. Note the space following `https` and before the closing `/` in the value mapping.
 
@@ -210,34 +210,34 @@ Install-Module -Name AzureADHybridAuthenticationManagement -AllowClobber
         | --- | --- |
         | KERBEROS.MICROSOFTONLINE.COM | <https login.microsoftonline.com:443:`your_Azure_AD_tenant_id`/kerberos /> |
 
-        :::image type="content" source="media/winauth-azuread/configure-policy-kdc-proxy-server-settings-detail.png" alt-text="Screenshot of the 'Define KDC proxy server settings' dialog box. A table allows input of multiple rows. Each row consists of a value name and a value." lightbox="media/winauth-azuread/configure-policy-kdc-proxy-server-settings-detail.png":::
+        :::image type="content" source="media/winauth-azuread/configure-policy-kdc-proxy-server-settings-detail.png" alt-text="Screenshot of the Define KDC proxy server settings dialog box. A table allows input of multiple rows. Each row consists of a value name and a value." lightbox="media/winauth-azuread/configure-policy-kdc-proxy-server-settings-detail.png":::
 
-    1. Select **OK** to close the 'Show Contents' dialog box.
-    1. Select **Apply** on the 'Specify KDC proxy servers for Kerberos clients' dialog box.
+    1. Select **OK** to close the **Show Contents** dialog box.
+    1. Select **Apply** on the **Specify KDC proxy servers for Kerberos clients** dialog box.
 
-## Rotate the Kerberos Key
+## Rotate the Kerberos key
 
-You might periodically rotate the Kerberos Key for the created Microsoft Entra service account and Trusted Domain Object for management purposes.
+For management purposes, rotate the Kerberos key periodically for the created Microsoft Entra service account and trusted domain object.
 
 ```powershell
-Set-AzureAdKerberosServer -Domain $domain `
+Set-AzureADKerberosServer -Domain $domain `
    -DomainCredential $domainCred `
    -UserPrincipalName $cloudUserName -SetupCloudTrust `
    -RotateServerKey
 ```
 
-Once the key is rotated, it takes several hours to propagate the changed key between the Kerberos KDC servers. Due to this key distribution timing, you can rotate the key once within 24 hours. If you need to rotate the key again within 24 hours for any reason, for example, just after creating the Trusted Domain Object, you can add the `-Force` parameter:
+After you rotate the key, it takes several hours to propagate the changed key between the Kerberos KDC servers. Due to this key distribution timing, you can rotate the key once within 24 hours. If you need to rotate the key again within 24 hours for any reason, such as just after creating the trusted domain object, add the `-Force` parameter:
 
 ```powershell
-Set-AzureAdKerberosServer -Domain $domain `
+Set-AzureADKerberosServer -Domain $domain `
    -DomainCredential $domainCred `
    -UserPrincipalName $cloudUserName -SetupCloudTrust `
    -RotateServerKey -Force
 ```
 
-## Remove the Trusted Domain Object
+## Remove the trusted domain object
 
-You can remove the added Trusted Domain Object using the following command:
+Remove the added trusted domain object by using the following command:
 
 ```powershell
 Remove-AzureADKerberosServerTrustedDomainObject -Domain $domain `
@@ -245,14 +245,14 @@ Remove-AzureADKerberosServerTrustedDomainObject -Domain $domain `
    -UserPrincipalName $cloudUserName
 ```
 
-This command will only remove the Trusted Domain Object. If your domain supports FIDO authentication, you can remove the Trusted Domain Object while maintaining the Microsoft Entra service account required for the FIDO authentication service.
+This command only removes the trusted domain object. If your domain supports FIDO authentication, you can remove the trusted domain object while maintaining the Microsoft Entra service account required for the FIDO authentication service.
 
-## Remove all Kerberos Settings
+## Remove all Kerberos settings
 
-You can remove both the Microsoft Entra service account and the Trusted Domain Object using the following command:
+Remove both the Microsoft Entra service account and the trusted domain object by using the following command:
 
 ```powershell
-Remove-AzureAdKerberosServer -Domain $domain `
+Remove-AzureADKerberosServer -Domain $domain `
    -DomainCredential $domainCred `
    -UserPrincipalName $cloudUserName
 ```
