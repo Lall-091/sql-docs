@@ -75,7 +75,7 @@ Microsoft Purview provides a unified data governance solution to help manage and
 Now, with [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)], you have the option of purchasing SQL Server using a 'pay-as-you-go' model instead of purchasing licenses. This model is a great alternative if you're looking to save costs on SQL Server instances that have variable demand for compute capacity over time. For example, when you can turn off a SQL Server at night or on weekends, or even just scale down the number of cores used during less busy times. It's also a great option if you only plan to use a SQL Server for a short period of time and then won't need it anymore. Pay-as-you-go, billed through Azure, is now available for all versions of SQL Server from 2012 to 2022.
 
 > [!NOTE]
-> On Linux, certain PAYG features aren't available, including automatic passive instance detection and connected user verification. All SQL Server instances on Linux are billed as active. For details, see [Manage licensing and billing](azure-arc/manage-license-billing.md).
+> On Linux, certain PAYG features aren't available, including automatic passive instance detection and connected user verification. All SQL Server instances on Linux are billed as active. For details, see [Manage licensing and billing](manage-license-billing.md).
 
 ## Extended Security Updates (ESU)
 
