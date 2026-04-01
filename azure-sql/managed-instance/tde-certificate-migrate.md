@@ -4,7 +4,7 @@ description: Learn how to migrate a SQL Server TDE certificate when you're migra
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma, jovanpop
-ms.date: 02/27/2025
+ms.date: 03/31/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: how-to
@@ -17,13 +17,13 @@ ms.custom:
 # Migrate a SQL Server TDE certificate to Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-In this article, learn how to migrate the certificate before you migrate your TDE-protected SQL Server database to Azure SQL Managed Instance by using the native restore option. 
+In this article, learn how to migrate the certificate before you migrate your TDE-protected SQL Server database to Azure SQL Managed Instance by using the native restore option.
 
-When you migrate a database protected by [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) from SQL Server to Azure SQL Managed Instance using the _native restore option_, you must first migrate the corresponding certificate before you restore the database to SQL managed instance. 
+When you migrate a database protected by [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) from SQL Server to Azure SQL Managed Instance by using the _native restore option_, you must first migrate the corresponding certificate before you restore the database to the SQL managed instance.
 
 Alternatively, you can use the fully managed [Azure Database Migration Service](/data-migration/sql-server/managed-instance/database-migration-service) to seamlessly migrate both a TDE-protected database and the corresponding certificate.
 
-This article focuses on migrating databases from SQL Server to Azure SQL Managed Instance. To move databases between SQL managed instances, review: 
+This article focuses on migrating databases from SQL Server to Azure SQL Managed Instance. To move databases between SQL managed instances, see: 
 - [Copy-only backups](/sql/relational-databases/backup-restore/copy-only-backups-sql-server)
 - [Point-in-time restore](point-in-time-restore.md)
 - [Copy or move a database](database-copy-move-how-to.md)
@@ -37,13 +37,13 @@ To complete the steps in this article, you need the following prerequisites:
 
 # [PowerShell](#tab/azure-powershell)
 
-Make sure you have the following:
+Make sure you have the following prerequisites:
 
-* Azure PowerShell module [installed and updated](/powershell/azure/install-az-ps).
+* [Azure PowerShell module installed and updated](/powershell/azure/install-az-ps).
 * [Az.Sql module](https://www.powershellgallery.com/packages/Az.Sql).
 
 
-Run the following commands in PowerShell to install/update the module:
+Run the following commands in PowerShell to install or update the module:
 
 ```azurepowershell
 Install-Module -Name Az.Sql
@@ -54,11 +54,11 @@ Update-Module -Name Az.Sql
 
 ## Export the TDE certificate to a .pfx file
 
-The certificate can be exported directly from the source SQL Server instance, or from the certificate store if it's being kept there.
+You can export the certificate directly from the source SQL Server instance, or from the certificate store if you're keeping it there.
 
 ### Export the certificate from the source SQL Server instance
 
-Use the following steps to export the certificate with SQL Server Management Studio and convert it into .pfx format. The generic names *TDE_Cert* and *full_path* are being used for certificate and file names and paths through the steps. They should be replaced with the actual names.
+The following steps export the certificate by using SQL Server Management Studio and convert it into .pfx format. The generic names *TDE_Cert* and *full_path* are placeholders for certificate names, file names, and paths. Replace them with the actual names.
 
 1. In SSMS, open a new query window and connect to the source SQL Server instance.
 
@@ -76,7 +76,7 @@ Use the following steps to export the certificate with SQL Server Management Stu
    WHERE dek.encryption_state = 3
    ```
 
-   ![Screenshot in SSMS showing a List of TDE certificates.](./media/tde-certificate-migrate/onprem-certificate-list.png)
+   :::image type="content" source="./media/tde-certificate-migrate/on-premises-certificate-list.png" alt-text="Screenshot in SSMS that shows a list of TDE certificates." lightbox="./media/tde-certificate-migrate/on-premises-certificate-list.png":::
 
 1. Execute the following script to export the certificate to a pair of files (.cer and .pvk), keeping the public and private key information:
 
@@ -91,9 +91,9 @@ Use the following steps to export the certificate with SQL Server Management Stu
    )
    ```
 
-   ![Screenshot in SSMS that shows the backed up TDE certificate.](./media/tde-certificate-migrate/backup-onprem-certificate.png)
+   :::image type="content" source="./media/tde-certificate-migrate/backup-on-premises-certificate.png" alt-text="Screenshot in SSMS that shows the backed up TDE certificate." lightbox="./media/tde-certificate-migrate/backup-on-premises-certificate.png":::
 
-1. Use the PowerShell console to copy certificate information from a pair of newly created files to a .pfx file, using the Pvk2Pfx tool:
+1. Use the PowerShell console to copy certificate information from a pair of newly created files to a .pfx file by using the Pvk2Pfx tool:
 
    ```cmd
    .\pvk2pfx -pvk c:/full_path/TDE_Cert.pvk  -pi "<SomeStrongPassword>" -spc c:/full_path/TDE_Cert.cer -pfx c:/full_path/TDE_Cert.pfx
@@ -101,24 +101,24 @@ Use the following steps to export the certificate with SQL Server Management Stu
 
 ### Export the certificate from a certificate store
 
-If the certificate is kept in the SQL Server local machine certificate store, it can be exported using the following steps:
+If you keep the certificate in the SQL Server local machine certificate store, use the following steps to export it:
 
-1. Open the PowerShell console and execute the following command to open the Certificates snap-in of Microsoft Management Console:
+1. Open the PowerShell console and run the following command to open the Certificates snap-in of Microsoft Management Console:
 
    ```cmd
    certlm
    ```
 
-2. In the Certificates MMC snap-in, expand the path Personal > Certificates to see the list of certificates.
+2. In the Certificates MMC snap-in, expand the path **Personal** > **Certificates** to see the list of certificates.
 
-3. Right-click the certificate and click **Export**.
+3. Right-click the certificate and select **Export**.
 
 4. Follow the wizard to export the certificate and private key to a .pfx format.
 
-## Upload the certificate to Azure SQL Managed Instance using an Azure PowerShell cmdlet
+## Upload the certificate to Azure SQL Managed Instance by using an Azure PowerShell cmdlet
 
 > [!IMPORTANT]
-> A migrated certificate is only used to restore the TDE-protected database. Shortly after the restore completes, the migrated certificate is replaced by a different protector, either a service-managed certificate or an asymmetric key from the key vault, depending on the type of TDE you set on the instance.
+> Use a migrated certificate only to restore the TDE-protected database. Shortly after the restore finishes, the migrated certificate is replaced by a different protector. The new protector is either a service-managed certificate or an asymmetric key from the key vault, depending on the type of TDE you set on the instance.
 
 # [PowerShell](#tab/azure-powershell)
 
@@ -135,7 +135,7 @@ If the certificate is kept in the SQL Server local machine certificate store, it
    Select-AzSubscription <subscriptionId>
    ```
 
-2. Once all preparation steps are done, run the following commands to upload base-64 encoded certificate to the target managed instance:
+2. After you complete all preparation steps, run the following commands to upload the base-64 encoded certificate to the target SQL managed instance:
 
    ```azurepowershell
    # If you are using PowerShell 6.0 or higher, run this command:
@@ -152,13 +152,11 @@ If the certificate is kept in the SQL Server local machine certificate store, it
 
 * * *
 
-The certificate is now available to the specified managed instance, and the backup of the corresponding TDE-protected database can be restored successfully.
+The certificate is now available to the specified SQL managed instance, and you can restore the backup of the corresponding TDE-protected database.
 
 > [!NOTE]
-> Uploaded certificate is not visible in the sys.certificates catalog view. To confirm successful upload of the certificate you can run [RESTORE FILELISTONLY](/sql/t-sql/statements/restore-statements-filelistonly-transact-sql) command.
+> The uploaded certificate isn't visible in the `sys.certificates` catalog view. To confirm successful upload of the certificate, run the [RESTORE FILELISTONLY](/sql/t-sql/statements/restore-statements-filelistonly-transact-sql) command.
 
-## Next steps
+## Related content
 
-In this article, you learned how to migrate a certificate protecting the encryption key of a database with Transparent Data Encryption, from the on-premises or IaaS SQL Server instance to Azure SQL Managed Instance.
-
-See [Restore a database backup to an Azure SQL Managed Instance](restore-sample-database-quickstart.md) to learn how to restore a database backup to Azure SQL Managed Instance.
+- [Restore a database backup to Azure SQL Managed Instance](restore-sample-database-quickstart.md)

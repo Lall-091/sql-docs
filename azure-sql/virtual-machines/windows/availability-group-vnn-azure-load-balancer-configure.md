@@ -1,41 +1,42 @@
 ---
-title: Configure an Azure load balancer for an AG VNN listener
+title: Configure an Azure Load Balancer for an AG VNN Listener
 description: Learn to configure an Azure load balancer to route traffic to the virtual network name (VNN) listener for your availability group with SQL Server on Azure VMs for high availability and disaster recovery (HADR).
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mathoma
-ms.date: 04/30/2025
+ms.date: 03/31/2026
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: how-to
 tags: azure-resource-manager
 ---
 # Configure an Azure load balancer for an AG VNN listener - SQL Server on Azure VMs
-[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-[!INCLUDE[tip-for-multi-subnet-ag](../../includes/virtual-machines-ag-listener-multi-subnet.md)]
+[!INCLUDE [appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-On Azure virtual machines, clusters use a load balancer to hold an IP address that needs to be on one cluster node at a time. In this solution, the load balancer holds the IP address for the virtual network name (VNN) listener for the Always On availability group when the SQL Server VMs are in a single subnet. 
+[!INCLUDE [tip-for-multi-subnet-ag](../../includes/virtual-machines-ag-listener-multi-subnet.md)]
 
-This article teaches you to configure a load balancer by using the Azure Load Balancer service. The load balancer will route traffic to your [availability group listener](availability-group-overview.md) with SQL Server on Azure VMs for high availability and disaster recovery (HADR). 
+On Azure virtual machines, clusters use a load balancer to hold an IP address that needs to be on one cluster node at a time. In this solution, the load balancer holds the IP address for the virtual network name (VNN) listener for the Always On availability group when the SQL Server VMs are in a single subnet.
 
-For an alternative connectivity option for customers who are on SQL Server 2019 CU8 and later, consider a [distributed network name (DNN) listener](availability-group-vnn-azure-load-balancer-configure.md) instead. A DNN listener offers simplified configuration and improved failover.  
+This article teaches you to configure a load balancer by using the Azure Load Balancer service. The load balancer routes traffic to your [availability group listener](availability-group-overview.md) with SQL Server on Azure VMs for high availability and disaster recovery (HADR).
+
+For an alternative connectivity option for customers who are on SQL Server 2019 CU8 and later, consider a [distributed network name (DNN) listener](availability-group-distributed-network-name-dnn-listener-configure.md) instead. A DNN listener offers simplified configuration and improved failover.
 
 ## Prerequisites
 
 Before you complete the steps in this article, you should already have:
 
 - Decided that Azure Load Balancer is the appropriate [connectivity option for your availability group](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn).
-- Installed the latest version of [PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows). 
+- Installed the latest version of [PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows).
 
 ## Create a load balancer
 
 You can create either of these types of load balancers:
 
-- **Internal**: An internal load balancer can be accessed only from private resources that are internal to the network. When you configure an internal load balancer and its rules, use the same IP address as the availability group listener for the frontend IP address. 
-- **External**: An external load balancer can route traffic from the public to internal resources. When you configure an external load balancer, you can't use the same IP address as the availability group listener because the listener IP address can't be a public IP address. 
+- **Internal**: Only private resources can access an internal load balancer. When you configure an internal load balancer and its rules, use the same IP address as the availability group listener for the frontend IP address.
+- **External**: An external load balancer routes traffic from the public to internal resources. When you configure an external load balancer, you can't use the same IP address as the availability group listener because the listener IP address can't be a public IP address.
 
-  To use an external load balancer, logically allocate an IP address in the same subnet as the availability group that doesn't conflict with any other IP address. Use this address as the frontend IP address for the load-balancing rules. 
+  To use an external load balancer, logically allocate an IP address in the same subnet as the availability group that doesn't conflict with any other IP address. Use this address as the frontend IP address for the load-balancing rules.
 
 [!INCLUDE [sql-vm-basic-load-balancer-retired](../../includes/sql-vm-basic-load-balancer-retired.md)]
 
@@ -82,15 +83,15 @@ To create the load balancer:
 
 1. Return to the Azure resource group that contains the virtual machines and locate the new load balancer. You might need to refresh the view on the resource group. Select the load balancer.
 
-1. Select **Backend pools**, and then select **+Add**.
+1. Select **Backend pools**, and then select **+ Add**.
 
-1. For **Name**, provide a name for the backend pool.
+1. For **Name**, enter a name for the backend pool.
 
 1. For **Backend Pool Configuration**, select **NIC**.
 
 1. Select **Add** to associate the backend pool with the availability set that contains the VMs.
 
-1. Under **Virtual machine**, choose the virtual machines that will participate as cluster nodes. Be sure to include all virtual machines that will host the availability group. 
+1. Under **Virtual machine**, choose the virtual machines that will participate as cluster nodes. Be sure to include all virtual machines that will host the availability group.
 
    Add only the primary IP address of each VM. Don't add any secondary IP addresses.
 
@@ -102,7 +103,7 @@ To create the load balancer:
 
 1. On the pane for the load balancer, select **Health probes**.
 
-1. On the **Add health probe** pane, <span id="probe"> </span> set the following parameters:
+1. On **Add health probe**, <span id="probe"> </span> set the following parameters:
 
    - **Name**: A name for the health probe.
    - **Protocol**: **TCP**.
@@ -137,12 +138,12 @@ Set the cluster probe's port parameter in PowerShell.
 
 # [Private load balancer](#tab/ilb)
 
-Update the variables in the following script with values from your environment. Remove the angle brackets (`<` and `>`) from the script.
+Update the variables in the following script with values from your environment. Remove the angle brackets (`<` and `>`).
 
 ```powershell
 $ClusterNetworkName = "<Cluster Network Name>"
-$IPResourceName = "<AG Listener IP Address Resource Name>" 
-$ILBIP = "<n.n.n.n>" 
+$IPResourceName = "<AG Listener IP Address Resource Name>"
+$ILBIP = "<n.n.n.n>"
 [int]$ProbePort = <nnnnn>
 
 Import-Module FailoverClusters
@@ -158,9 +159,9 @@ The following table describes the values that you need to update:
 |`IPResourceName`|The resource name for the IP address of the AG listener. In **Failover Cluster Manager** > **Roles**, under the availability group role, under **Server Name**, right-click the IP address resource and select **Properties**. The correct value is under **Name** on the **General** tab.|
 |`ILBIP`|The IP address of the internal load balancer. This address is configured in the Azure portal as the frontend address of the internal load balancer. This is the same IP address as the availability group listener. You can find it in **Failover Cluster Manager**, on the same properties page where you located the value for `IPResourceName`.|
 |`ProbePort`|The probe port that you configured in the health probe of the load balancer. Any unused TCP port is valid.|
-|`SubnetMask`| The subnet mask for the cluster parameter. It must be the TCP/IP broadcast address: `255.255.255.255`.| 
+|`SubnetMask`| The subnet mask for the cluster parameter. It must be the TCP/IP broadcast address: `255.255.255.255`.|
 
-The changes you made do not take effect until the IP address resource is taken offline and brought online again. Perform a failover of the availability group for this change to take effect.
+The changes you made don't take effect until you take the IP address resource offline and bring it online again. Perform a failover of the availability group for this change to take effect.
 After you set the cluster probe, you can see all the cluster parameters in PowerShell. Run this script:
 
 ```powershell
@@ -169,12 +170,12 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 # [Public load balancer](#tab/elb)
 
-Update the variables in the following script with values from your environment. Remove the angle brackets (`<` and `>`) from the script.
+Update the variables in the following script with values from your environment. Remove the angle brackets (`<` and `>`).
 
 ```powershell
 $ClusterNetworkName = "<Cluster Network Name>"
-$IPResourceName = "<AG Listener IP Address Resource Name>" 
-$ELBIP = "<n.n.n.n>" 
+$IPResourceName = "<AG Listener IP Address Resource Name>"
+$ELBIP = "<n.n.n.n>"
 [int]$ProbePort = <nnnnn>
 
 Import-Module FailoverClusters
@@ -188,84 +189,81 @@ The following table describes the values that you need to update:
 |---------|---------|
 |`ClusterNetworkName`| The name of the Windows Server failover cluster for the network. In **Failover Cluster Manager** > **Networks**, right-click the network and select **Properties**. The correct value is under **Name** on the **General** tab.|
 |`IPResourceName`|The resource name for the IP address of the AG listener. In **Failover Cluster Manager** > **Roles**, under the availability group role, under **Server Name**, right-click the IP address resource and select **Properties**. The correct value is under **Name** on the **General** tab.|
-|`ELBIP`|The IP address of the external load balancer. This address is configured in the Azure portal as the frontend address of the external load balancer. It's used to connect to the public load balancer from external resources.|
+|`ELBIP`|The IP address of the external load balancer. You configure this address in the Azure portal as the frontend address of the external load balancer. Use it to connect to the public load balancer from external resources.|
 |`ProbePort`|The probe port that you configured in the health probe of the load balancer. Any unused TCP port is valid.|
-|`SubnetMask`| The subnet mask for the cluster parameter. It must be the TCP/IP broadcast address: `255.255.255.255`.| 
+|`SubnetMask`| The subnet mask for the cluster parameter. It must be the TCP/IP broadcast address: `255.255.255.255`.|
 
-The changes you made do not take effect until the IP address resource is taken offline and brought online again. Perform a failover of the availability group for this change to take effect.
+The changes you made don't take effect until you take the IP address resource offline and bring it online again. Perform a failover of the availability group for this change to take effect.
 After you set the cluster probe, you can see all the cluster parameters in PowerShell. Run this script:
 
 ```powershell
 Get-ClusterResource $IPResourceName | Get-ClusterParameter
 ```
 
-> [!NOTE]
-> Because there is no private IP address for the external load balancer, users can't directly use the VNN DNS name as it resolves the IP address within the subnet. Use the public IP address of the public load balancer, or configure another DNS mapping on the DNS server. 
+> [!NOTE]  
+> Because there's no private IP address for the external load balancer, users can't directly use the VNN DNS name as it resolves the IP address within the subnet. Use the public IP address of the public load balancer, or configure another DNS mapping on the DNS server.
 
 ---
 
-## Configure port exclusion 
+## Configure port exclusion
 
-When using a health probe port between 49,152 and 65,536 (the [default dynamic port range for TCP/IP](/windows/client-management/troubleshoot-tcpip-port-exhaust#default-dynamic-port-range-for-tcpip)), add an exclusion for each health probe port on every VM. 
+When you use a health probe port between 49,152 and 65,536 (the [default dynamic port range for TCP/IP](/windows/client-management/troubleshoot-tcpip-port-exhaust#default-dynamic-port-range-for-tcpip)), add an exclusion for each health probe port on every VM.
 
-Configuring port exclusion prevents other system processes from being dynamically assigned the same port on the VM
+Configuring port exclusion prevents other system processes from dynamically assigning the same port on the VM.
 
-To set a port exclusion, use the following PowerShell script: 
--  for each health probe port 
--  on every VM
-
+To set a port exclusion on every VM for each health probe port, use the following PowerShell script:
 ```powershell
-[int]$ProbePort = <nnnnn> # The probe port that you configured in the health probe of the load balancer. Any unused TCP port is valid. 
+[int]$ProbePort = <nnnnn> # The probe port that you configured in the health probe of the load balancer. Any unused TCP port is valid.
 
-netsh int ipv4 add excludedportrange tcp startport=$ProbePort numberofports=1 store=persistent 
+netsh int ipv4 add excludedportrange tcp startport=$ProbePort numberofports=1 store=persistent
 ```
 
-To confirm that exclusions have been configured correctly, use the following command: 
+To confirm that you configured exclusions correctly, use the following command:
 
 ```powershell
-netsh int ipv4 show excludedportrange tcp 
+netsh int ipv4 show excludedportrange tcp
 ```
 
-## Modify the connection string 
+## Modify the connection string
 
-For clients that support it, add `MultiSubnetFailover=True` to the connection string. Although the `MultiSubnetFailover` connection option isn't required, it provides the benefit of a faster subnet failover. This is because the client driver tries to open a TCP socket for each IP address in parallel. The client driver waits for the first IP address to respond with success. After the successful response, the client driver uses that IP address for the connection.
+For clients that support it, add `MultiSubnetFailover=True` to the connection string. Although the `MultiSubnetFailover` connection option isn't required, it provides the benefit of a faster subnet failover. This benefit is because the client driver tries to open a TCP socket for each IP address in parallel. The client driver waits for the first IP address to respond with success. After the successful response, the client driver uses that IP address for the connection.
 
-If your client doesn't support the `MultiSubnetFailover` parameter, you can modify the `RegisterAllProvidersIP` and `HostRecordTTL` settings to prevent connectivity delays after failover. 
+If your client doesn't support the `MultiSubnetFailover` parameter, you can modify the `RegisterAllProvidersIP` and `HostRecordTTL` settings to prevent connectivity delays after failover.
 
-Use PowerShell to modify the `RegisterAllProvidersIp` and `HostRecordTTL` settings: 
+Use PowerShell to modify the `RegisterAllProvidersIp` and `HostRecordTTL` settings:
 
 ```powershell
-Get-ClusterResource yourListenerName | Set-ClusterParameter RegisterAllProvidersIP 0  
-Get-ClusterResource yourListenerName | Set-ClusterParameter HostRecordTTL 300 
+Get-ClusterResource yourListenerName | Set-ClusterParameter RegisterAllProvidersIP 0
+Get-ClusterResource yourListenerName | Set-ClusterParameter HostRecordTTL 300
 ```
 
-To learn more, see the [documentation about listener connection timeout in SQL Server](/troubleshoot/sql/availability-groups/listener-connection-times-out). 
+To learn more, see the [documentation about listener connection timeout in SQL Server](/troubleshoot/sql/availability-groups/listener-connection-times-out).
 
-> [!TIP]
-> - Set the `MultiSubnetFailover parameter` to `true` in the connection string, even for HADR solutions that span a single subnet. This setting supports future spanning of subnets without the need to update connection strings.  
+> [!TIP]  
+> - Set the `MultiSubnetFailover` parameter to `true` in the connection string, even for HADR solutions that span a single subnet. This setting supports future spanning of subnets without the need to update connection strings.  
 > - By default, clients cache cluster DNS records for 20 minutes. By reducing `HostRecordTTL`, you reduce the time to live (TTL) for the cached record. Legacy clients can then reconnect more quickly. As such, reducing the `HostRecordTTL` setting might increase traffic to the DNS servers.
 
 ## Test failover
 
 Test failover of the clustered resource to validate cluster functionality:
 
-1. Open [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) and connect to your availability group listener. 
-1. In **Object Explorer**, expand **Always On Availability Group**. 
-1. Right-click the availability group and select **Failover**. 
-1. Follow the wizard prompts to fail over the availability group to a secondary replica. 
+1. Open [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) and connect to your availability group listener.
+1. In **Object Explorer**, expand **Always On Availability Group**.
+1. Right-click the availability group and select **Failover**.
+1. Follow the wizard prompts to fail over the availability group to a secondary replica.
 
-Failover succeeds when the replicas switch roles and are both synchronized. 
+Failover succeeds when the replicas switch roles and are both synchronized.
 
 ## Test connectivity
 
 To test connectivity, sign in to another virtual machine in the same virtual network. Open SQL Server Management Studio and connect to the availability group listener.
 
-> [!NOTE]
+> [!NOTE]  
 > Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## Next steps
 
-After the VNN is created, consider optimizing the [cluster settings for SQL Server VMs](hadr-cluster-best-practices.md). 
+After you create the VNN, consider optimizing the [cluster settings for SQL Server VMs](hadr-cluster-best-practices.md). 
 
 To learn more, see:
 
