@@ -4,7 +4,7 @@ description: This page contains a listing of bugs fixed in each release of the M
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 12/29/2025
+ms.date: 03/31/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
@@ -15,9 +15,20 @@ helpviewer_keywords:
 
 This page contains a listing of bugs fixed in each release of the [!INCLUDE [msCoName](../../includes/msconame-md.md)] ODBC Driver for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], starting with the most recent versions.
 
+### Bug fixes in the Microsoft ODBC Driver 18.6.2.1 for SQL Server
+
+- Fix SQL_ATTR_PARAMS_PROCESSED_PTR updates so the number of processed parameter sets is reported correctly when executing parameter arrays.
+- Fix SQL_ATTR_PARAMS_PROCESSED_PTR and row counting when SQL_PARAM_IGNORE is used in parameter arrays.
+- Fix segmentation fault when calling SQLNumResultCol in describe-only scenarios where no parameter bindings are present.
+- Fix bcp_bind to correctly handle consecutive field terminators without misinterpreting them as empty fields.
+- Fix RPM packaging rules to allow installing multiple driver versions side by side.
+- Fix XA (X/Open distributed transaction) recovery to compute transaction identifiers correctly and avoid missing recoverable transactions.
+- Fix segmentation fault on handling of NULL values in table-valued parameter (TVP) arguments.
+
+
 ### Bug fixes in the Microsoft ODBC Driver 18.6.1.1 for SQL Server
 
-- Fix TDS packet size in BID trace
+- Fix Tabular Data Stream (TDS) packet size handling in Built-In Diagnostics (BID) traces.
 
 ### Bug fixes in the Microsoft ODBC Driver 18.5.1.1 for SQL Server
 
@@ -32,14 +43,14 @@ This page contains a listing of bugs fixed in each release of the [!INCLUDE [msC
 - Fix 10-minute delay upon disconnection after timeout
 - Fix memory leak upon disconnection when an error occurs
 - Fix memory leak upon reconnection with Strict encryption
-- Fix intermittent crash when connecting with Strict encryption and TLS 1.3
+- Fix intermittent crash when connecting with Strict encryption enabled and Transport Layer Security (TLS) 1.3.
 - Fix crashes under low-memory conditions
 
 ### Bug fixes in the Microsoft ODBC Driver 18.3.3.1 for SQL Server
 
 - Fix crashes when receiving invalid data from server
 - Fix infinite loop when receiving invalid data from server
-- Fix App Service Containers MSI Authentication
+- Fix App Service Containers managed identity (formerly Managed Service Identity, MSI) authentication.
 
 ### Bug fixes in the Microsoft ODBC Driver 17.10.6.1 for SQL Server
 
@@ -47,7 +58,7 @@ This page contains a listing of bugs fixed in each release of the [!INCLUDE [msC
 - Fix infinite loop when receiving invalid data from server
 - Fix a crash when attempting to connect under low-memory conditions
 - Fix memory leak upon reconnect
-- Fix App Service Containers MSI Authentication
+- Fix App Service Containers managed identity (formerly Managed Service Identity, MSI) authentication.
 
 ### Bug fixes in the Microsoft ODBC Driver 18.3.2 for SQL Server
 
@@ -65,7 +76,7 @@ This page contains a listing of bugs fixed in each release of the [!INCLUDE [msC
 
 ### Bug fixes in the Microsoft ODBC Driver 18.2.2 for SQL Server
 
-- Fix a crash when retrieving data with AutoTranslate option off
+- Fix a crash when retrieving data with Auto-Translate option off
 - Fix partial writes on Linux in presence of signals
 - Fix crashes when receiving invalid data from server
 - Fix memory leak when processing encrypted columns
@@ -73,7 +84,7 @@ This page contains a listing of bugs fixed in each release of the [!INCLUDE [msC
 
 ### Bug fixes in the Microsoft ODBC Driver 17.10.4.1 for SQL Server
 
-- Fix a crash when retrieving data with AutoTranslate option off
+- Fix a crash when retrieving data with `AutoTranslate` option off
 - Fix partial writes on Linux in presence of signals
 - Fix crashes when receiving invalid data from server
 - Fix memory leak when processing encrypted columns
@@ -126,7 +137,7 @@ This page contains a listing of bugs fixed in each release of the [!INCLUDE [msC
 
 - Fix intermittent issue with polling for first successful connection when multiple IP addresses are resolved.
 - Fix missing dependency in Debian package.
-- Fix for only using ADAL when required.
+- Fix for only using Microsoft Authentication Library when required.
 - Fix issue with idle connection resiliency when Kerberos auth was used.
 
 ### Bug fixes in the Microsoft ODBC Driver 17.9 for SQL Server
@@ -141,8 +152,8 @@ This page contains a listing of bugs fixed in each release of the [!INCLUDE [msC
 
 - Fix for restrictions on connection string regarding usage of `UID` and `PWD` keywords
 - Fix for inconsistent fonts in non-English dialogs
-- Fix issue with having multiple connections with different AKV credentials
-- Fix issue with NVDA not reading connection test results in DSN configuration UI
+- Fix issue with having multiple connections using different Azure Key Vault (AKV) credentials.
+- Fix issue with NonVisual Desktop Access (NVDA) not reading connection test results in the Data Source Name (DSN) configuration UI.
 
 ### Bug fixes in the Microsoft ODBC Driver 17.7.2 for SQL Server
 
@@ -161,7 +172,7 @@ This page contains a listing of bugs fixed in each release of the [!INCLUDE [msC
 
 ### Bug fixes in the Microsoft ODBC Driver 17.6 for SQL Server
 
-- Fix ADAL error when authenticating with a federated account (Windows)
+- Fix Microsoft Authentication Library error when authenticating with a federated account (Windows)
 - Fix an issue where the driver becomes unresponsive when a timeout occurs during an asynchronous notification operation
 - Fix driver reference count upon upgrade in Alpine Linux
 - Fix libc6 dependency version for Ubuntu

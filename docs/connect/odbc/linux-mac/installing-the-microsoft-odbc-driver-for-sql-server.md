@@ -4,7 +4,7 @@ description: Learn how to install the Microsoft ODBC Driver for SQL Server on Li
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 03/27/2026
+ms.date: 03/31/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -25,7 +25,7 @@ This article provides commands for installing the ODBC driver from the bash shel
 
 ## Microsoft ODBC 18
 
-The following sections explain how to install the Microsoft ODBC driver 18 from the bash shell for different Linux distributions. Supported distributions are Alpine Linux, Debian, Red Hat Enterprise Linux (RHEL), Oracle Linux, SUSE Linux Enterprise Server (SLES), Ubuntu, and Azure Linux. Starting with version 18.4, to accept the EULA automatically when installing the non-Alpine Linux (`.deb` or `.rpm`) driver, you can create the file `/opt/microsoft/msodbcsql18/ACCEPT_EULA`.
+The following sections explain how to install the Microsoft ODBC driver 18 from the bash shell for different Linux distributions. Supported distributions are Alpine Linux, Debian, Red Hat Enterprise Linux (RHEL), Oracle Linux, SUSE Linux Enterprise Server (SLES), Ubuntu, and Azure Linux. Starting with version 18.4, to accept the End User License Agreement (EULA) automatically when installing the non-Alpine Linux (`.deb` or `.rpm`) driver, you can create the file `/opt/microsoft/msodbcsql18/ACCEPT_EULA`.
 
 ### [Alpine](#tab/alpine18-install)
 
@@ -42,20 +42,20 @@ then
 fi
 
 #Download the desired package(s)
-curl -O https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_$architecture.apk
-curl -O https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_$architecture.apk
+curl -O https://download.microsoft.com/download/0b3d5518-b4a7-4a2b-afc7-7ee9e967f93c/msodbcsql18_18.6.2.1-1_$architecture.apk
+curl -O https://download.microsoft.com/download/cad0d30f-b9b1-4765-a011-81d8a66c8b8d/mssql-tools18_18.6.2.1-1_$architecture.apk
 
 #(Optional) Verify signature, if 'gpg' is missing install it using 'apk add gnupg':
-curl -O https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_$architecture.sig
-curl -O https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_$architecture.sig
+curl -O https://download.microsoft.com/download/0b3d5518-b4a7-4a2b-afc7-7ee9e967f93c/msodbcsql18_18.6.2.1-1_$architecture.sig
+curl -O https://download.microsoft.com/download/cad0d30f-b9b1-4765-a011-81d8a66c8b8d/mssql-tools18_18.6.2.1-1_$architecture.sig
 
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --import -
-gpg --verify msodbcsql18_18.6.1.1-1_$architecture.sig msodbcsql18_18.6.1.1-1_$architecture.apk
-gpg --verify mssql-tools18_18.6.1.1-1_$architecture.sig mssql-tools18_18.6.1.1-1_$architecture.apk
+gpg --verify msodbcsql18_18.6.2.1-1_$architecture.sig msodbcsql18_18.6.2.1-1_$architecture.apk
+gpg --verify mssql-tools18_18.6.2.1-1_$architecture.sig mssql-tools18_18.6.2.1-1_$architecture.apk
 
 #Install the package(s)
-sudo apk add --allow-untrusted msodbcsql18_18.6.1.1-1_$architecture.apk
-sudo apk add --allow-untrusted mssql-tools18_18.6.1.1-1_$architecture.apk
+sudo apk add --allow-untrusted msodbcsql18_18.6.2.1-1_$architecture.apk
+sudo apk add --allow-untrusted mssql-tools18_18.6.2.1-1_$architecture.apk
 ```
 
 > [!NOTE]  
