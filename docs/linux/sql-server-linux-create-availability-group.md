@@ -615,23 +615,14 @@ After you create an AG in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.
 
 The AG resource you create is a type of resource called a *clone*. The AG resource has copies on each node, and one controlling resource called the *master*. The *master* is associated with the server hosting the primary replica. The other resources host secondary replicas (regular or configuration-only) and can be promoted to *master* in a failover.
 
-### Pacemaker HA agent v2 (preview)
-
-In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] with Cumulative Update (CU) 3 and later versions, a new Pacemaker HA agent v2 (`mssql-server-ha`) is available for Red Hat Enterprise Linux (RHEL) and Ubuntu.
-
-Pacemaker HA agent v2 introduces reliability and performance improvements over the previous agent, including:
-
-- Improved failover performance to reduce both planned and unplanned failover times.
-
-- Support for flexible automatic failover policies, including configuration of [health-check timeout](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#HCtimeout) and [failure-condition level](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#failure-condition-level).
-
-- Support for TLS 1.3 for communication between the Pacemaker cluster and SQL Server.
-
-Pacemaker HA agent v2 is currently in preview. The existing Pacemaker HA agent (v1) remains fully supported for production deployments.
+> [!NOTE]  
+> In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] with Cumulative Update (CU) 3 and later versions, Pacemaker HA agent v2 (Preview) is available for Red Hat Enterprise Linux (RHEL) and Ubuntu through the `mssql-server-ha` package. Non-production deployments can evaluate Pacemaker HA agent v2. The existing Pacemaker HA agent (v1) remains fully supported for production deployments. For more information, see [Pacemaker HA agent v2 (Preview)](#pacemaker-ha-agent-v2-preview).
 
 ### [Red Hat Enterprise Linux (RHEL) and Ubuntu](#tab/ru)
 
-1. Create the AG resource in Pacemaker using the existing Pacemaker HA agent (v1):
+#### Pacemaker HA agent v1
+
+1. Create the AG resource in Pacemaker by using the Pacemaker HA agent (v1): (`ocf:mssql:ag`)
 
    ```bash
    sudo pcs resource create <NameForAGResource> ocf:mssql:ag ag_name=<AGName> meta failure-timeout=30s promotable notify=true
@@ -639,15 +630,86 @@ Pacemaker HA agent v2 is currently in preview. The existing Pacemaker HA agent (
 
    In this example, `NameForAGResource` is the unique name you give to this cluster resource for the AG, and `AGName` is the name of the AG that you created.
 
-   To use Pacemaker HA agent v2, create the AG resource using the `agv2` resource agent:
+1. Create the IP address resource for the AG that you associate with the listener functionality.
+
+   ```bash
+   sudo pcs resource create <NameForIPResource> ocf:heartbeat:IPaddr2 ip=<IPAddress> cidr_netmask=<Netmask>
+   ```
+
+   In this example, `NameForIPResource` is the unique name for the IP resource, and `IPAddress` is the static IP address you assign to the resource.
+
+1. To ensure that the IP address and the AG resource run on the same node, configure a colocation constraint.
+
+   ```bash
+   sudo pcs constraint colocation add <NameForIPResource> with promoted <NameForAGResource>-clone INFINITY
+   ```
+
+   In this example, `NameForIPResource` is the name for the IP resource, and `NameForAGResource` is the name for the AG resource.
+
+1. Create an ordering constraint to ensure that the AG resource is up and running before the IP address. While the colocation constraint implies an ordering constraint, this step enforces it.
+
+   ```bash
+   sudo pcs constraint order promote <NameForAGResource>-clone then start <NameForIPResource>
+   ```
+
+   In this example, `NameForIPResource` is the name for the IP resource, and `NameForAGResource` is the name for the AG resource.
+
+#### Pacemaker HA agent v2 (Preview)
+
+Pacemaker HA agent v2 uses a service‑based architecture. The agent runs as a dedicated system service named `mssql-pcsag`, which is responsible for handling SQL Server–specific high availability operations and communication with Pacemaker.
+
+The `mssql-pcsag` service is managed by using standard system service controls. You can start, stop, restart, and check the status of this service as needed by using the following commands:
+
+```bash
+sudo systemctl start mssql-pcsag  # Start the Pacemaker HA agent v2 (mssql-pcsag) service
+sudo systemctl stop mssql-pcsag  # Stop the Pacemaker HA agent v2 (mssql-pcsag) service
+sudo systemctl restart mssql-pcsag  # Restart the Pacemaker HA agent v2 (mssql-pcsag) service
+sudo systemctl status mssql-pcsag  # Check the status of the Pacemaker HA agent v2 (mssql-pcsag) service
+```   
+
+
+Pacemaker interacts with SQL Server availability groups through the `mssql-pcsag` service. For availability group monitoring and failover to function correctly:
+
+- The Pacemaker cluster must be running.
+- The `mssql-pcsag` service must be running.
+
+While Pacemaker and `mssql-pcsag` are deployed as separate components, they operate together at runtime. If either Pacemaker or the `mssql-pcsag` service is stopped, availability group failover operations don't function as expected.
+
+> [!NOTE]
+> Restarting the `mssql-pcsag` service doesn't restart SQL Server. Similarly, restarting SQL Server doesn't automatically restart the Pacemaker HA agent. Verify that both services are running during troubleshooting.
+
+Pacemaker HA agent v2 introduces reliability and performance improvements over the previous agent, including:
+
+- Improved failover performance to reduce both planned and unplanned failover times.
+
+- Support for flexible automatic failover policies, including configuration of [failure-condition level](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#failure-condition-level) and [health-check timeout](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#HCtimeout).
+
+   Example: The following Transact-SQL statement changes the failure-condition level of an existing availability group named AG1 to level 2:
+
+   ```sql
+   ALTER AVAILABILITY GROUP AG1 SET (FAILURE_CONDITION_LEVEL = 2);
+   ```
+
+   Example: The following Transact-SQL statement changes the health-check timeout threshold of an existing availability group named AG1 to 60,000 milliseconds (60 seconds).
+
+   ```sql
+   ALTER AVAILABILITY GROUP AG1 SET (HEALTH_CHECK_TIMEOUT = 60000);
+   ```
+   Example: After applying the configuration, use the following Transact-SQL statement to verify the configured failure-condition level and health-check timeout for availability groups.
+
+   ```sql
+   SELECT failure_condition_level, health_check_timeout FROM sys.availability_groups;
+   ```
+
+- Support for TLS 1.3 for communication between the Pacemaker cluster and SQL Server.
+
+1. Create the AG resource in Pacemaker by using Pacemaker HA agent v2: (`ocf:mssql:agv2`)
 
    ```bash
    sudo pcs resource create <NameForAGResource> ocf:mssql:agv2 ag_name=<AGName> meta failure-timeout=30s promotable notify=true
-   ```
+   ```   
 
-   New deployments on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] can evaluate Pacemaker HA agent v2. Existing production deployments should upgrade when appropriate.
-
-   When upgrading to or deploying Pacemaker HA agent v2, create the new AG resource using the `agv2` agent instead of the previous `ag` agent. If you already configured an existing AG resource, remove it and create a       new resource using `agv2`:
+   If upgrading from Pacemaker HA agent v1 to v2, remove the existing AG resource before creating the `agv2` resource:
 
    ```bash
    sudo pcs resource delete <NameForAGResource>
@@ -678,6 +740,7 @@ Pacemaker HA agent v2 is currently in preview. The existing Pacemaker HA agent (
    ```
 
    In this example, `NameForIPResource` is the name for the IP resource, and `NameForAGResource` is the name for the AG resource.
+
 
 ### [SUSE Linux Enterprise Server (SLES)](#tab/sles)
 
