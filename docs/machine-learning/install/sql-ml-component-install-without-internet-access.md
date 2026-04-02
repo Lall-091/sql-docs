@@ -3,7 +3,7 @@ title: Offline Install Without Internet Access
 description: Offline install SQL Server Machine Learning Services with Python and R on computers isolated behind a network firewall.
 author: VanMSFT
 ms.author: vanto
-ms.date: 09/12/2025
+ms.date: 03/30/2026
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
@@ -18,6 +18,9 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-ver15"
 This article describes how to install SQL Server Machine Learning Services on Windows offline on computers with no internet access isolated behind a network firewall.
 
 By default, installers connect to Microsoft download sites to get required and updated components for machine learning on SQL Server. If firewall constraints prevent the installer from reaching these sites, you can use an internet-connected device to download files, transfer files to an offline server, and then run setup.
+
+> [!IMPORTANT]
+> Beginning with SQL Server 2022, R, Python, and Java runtimes are **no longer installed with SQL Setup** and **don't use CAB files**. Instead, you install your desired custom runtime(s) and packages separately. The offline installation process for SQL Server 2022 and later versions is similar to the online process — download and copy the runtime installers to the offline server. For CAB-based offline installation, see the SQL Server 2016, 2017, or 2019 sections in this article.
 
 > [!NOTE]  
 > Feature capabilities and installation options vary between versions of SQL Server. Use the version selector dropdown list to choose the appropriate version of SQL Server.

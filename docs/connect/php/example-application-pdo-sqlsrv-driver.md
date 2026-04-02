@@ -3,7 +3,7 @@ title: "Example Application (PDO_SQLSRV Driver)"
 description: "The AdventureWorks Product Reviews example is a Web application that uses the PDO_SQLSRV driver of the Microsoft Drivers for PHP for SQL Server."
 author: David-Engel
 ms.author: davidengel
-ms.date: "03/26/2018"
+ms.date: "03/30/2026"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: sample
@@ -13,20 +13,30 @@ ms.topic: sample
 
 The AdventureWorks Product Reviews example application is a Web application that uses the PDO_SQLSRV driver of the [!INCLUDE[ssDriverPHP](../../includes/ssdriverphp_md.md)]. The application lets a user search for products by entering a keyword, see reviews for a selected product, write a review for a selected product, and upload an image for a selected product.  
   
-### Running the Example Application  
+### Running the example application  
   
 1.  Install the [!INCLUDE[ssDriverPHP](../../includes/ssdriverphp_md.md)]. For detailed information, see [Getting Started with the Microsoft Drivers for PHP for SQL Server](getting-started-with-the-php-sql-driver.md)
 2.  Copy the code listed later in this document into two files: adventureworks_demo.php and photo.php.  
 3.  Put the adventureworks_demo.php and photo.php files in the root directory of your Web server.  
 4.  Run the application by starting https\://localhost/adventureworks_demo.php from your browser.  
   
-## Requirements  
-To run the AdventureWorks Product Reviews example application, the following must be true for your computer:  
-  
--   Your system meets the requirements for the [!INCLUDE[ssDriverPHP](../../includes/ssdriverphp_md.md)]. For detailed information, see [System Requirements for the Microsoft Drivers for PHP for SQL Server](system-requirements-for-the-php-sql-driver.md).  
- -   The adventureworks_demo.php and photo.php files are in the root directory of your Web server. The files must contain the code listed later in this document.  
--   SQL Server 2005 or SQL Server 2008, with the [AdventureWorks2008](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) database attached, is installed on the local computer.  
--   A Web browser is installed.  
+## Prerequisites
+
+Before you run this example, verify the following:
+
+1. Install the [!INCLUDE[ssDriverPHP](../../includes/ssdriverphp_md.md)]. For detailed information, see [System Requirements for the Microsoft Drivers for PHP for SQL Server](system-requirements-for-the-php-sql-driver.md).
+1. Verify the PDO_SQLSRV extension is loaded in your `php.ini` file. Run `php -m | grep pdo_sqlsrv` to confirm.
+1. SQL Server is installed and configured to accept TCP/IP connections. TCP/IP is disabled by default on SQL Server Express.
+1. The [AdventureWorks sample database](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) is attached to your SQL Server instance.
+1. A web server (such as IIS or Apache) is configured to serve PHP files.
+1. A web browser is installed.
+
+> [!TIP]
+> If the PDO connection fails, check the following common causes:
+>
+> - **"could not find driver"**: The `pdo_sqlsrv` extension isn't loaded. Verify `extension=php_pdo_sqlsrv_*.dll` (Windows) or `extension=pdo_sqlsrv.so` (Linux/macOS) in your `php.ini`.
+> - **"Connection refused"**: SQL Server isn't listening on TCP/IP. Enable TCP/IP in SQL Server Configuration Manager and restart the SQL Server service.
+> - **"Login failed"**: Verify the connection credentials. The example uses Windows Authentication by default. For SQL Authentication, pass username and password to the PDO constructor.
   
 ## AdventureWorks example  
 The AdventureWorks Product Reviews example application demonstrates the following:  
@@ -493,7 +503,7 @@ die( print_r( $e->getMessage() ) );
 ?>  
 ```  
   
-## See Also  
+## Related content  
 [Connecting to the Server](connecting-to-the-server.md)
 
 [Comparing Execution Functions](comparing-execution-functions.md)
