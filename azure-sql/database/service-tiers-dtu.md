@@ -94,7 +94,7 @@ Choosing a service tier depends primarily on business continuity, storage, and p
 | | Basic | Standard | Premium |
 | --- | ---: | ---: | ---: |
 | **Target workload** | Development and production | Development and production | Development and production |
-| **Uptime SLA** | 99.99% | 99.99% | 99.99% |
+| **Uptime SLA** | [Enterprise class SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1) increased with [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) | [Enterprise class SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1) increased with [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability)  | [Enterprise class SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1) increased with [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) |
 | **Backup** | A choice of geo-redundant, zone-redundant, or locally redundant backup storage, 1-7 day retention (default 7 days)<br />Long term retention available up to 10 years | A choice of geo-redundant, zone-redundant, or locally redundant backup storage, 1-35 day retention (default 7 days)<br />Long term retention available up to 10 years | A choice of locally-redundant (LRS), zone-redundant (ZRS), or geo-redundant (GRS) storage<br />1-35 days (7 days by default) retention, with up to 10 years of long-term retention available |
 | **CPU** | Low | Low, Medium, High | Medium, High |
 | **IOPS (approximate)** <sup>1</sup> | 1-4 IOPS per DTU | 1-4 IOPS per DTU | >25 IOPS per DTU |
