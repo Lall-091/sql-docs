@@ -80,7 +80,7 @@ Consider the following VM series based on your SQL Server workloads:
 
 ### Memory-to-vCore ratio scaling
 
-For smaller SQL Server environment that don't require large amounts of memory, a 4:1 memory-to-vCore ratio such as the D-Series is a good starting point in Azure.
+For smaller SQL Server environments that don't require large amounts of memory, a 4:1 memory-to-vCore ratio such as the D-Series is a good starting point in Azure.
  
 For mission critical OLTP, and the best starting point for SQL Server workloads, use an 8:1 memory-to-vCore ratio with the Ebdsv5 as the recommended option.
  
@@ -496,12 +496,13 @@ Configurable Constrained Cores preserves the parent VM's memory and I/O capabili
 
 ## Related content
 
-To learn more, see the other articles in this best practices series:
+For detailed guidance on each optimization area:
 
-- [Quick checklist](performance-guidelines-best-practices-checklist.md)
-- [Storage](performance-guidelines-best-practices-storage.md)
-- [Security](security-considerations-best-practices.md)
-- [HADR settings](hadr-cluster-best-practices.md)
-- [Collect baseline](performance-guidelines-best-practices-collect-baseline.md)
+- **[Quick checklist](performance-guidelines-best-practices-checklist.md)** - Review the full best practices checklist
+- **[Storage](performance-guidelines-best-practices-storage.md)** - Optimize disk configuration and performance
+- **[Security](security-considerations-best-practices.md)** - Implement security best practices
+- **[HADR settings](hadr-cluster-best-practices.md)** - Configure high availability and disaster recovery
+- **[Collect baseline](performance-guidelines-best-practices-collect-baseline.md)** - Establish performance baselines
+- **[Updating SQL Server](servicing-updates-guidelines.md)** - Keep SQL Server up to date
 
-For other SQL Server Virtual Machine articles, see [SQL Server on Azure Virtual Machines Overview](sql-server-on-azure-vm-iaas-what-is-overview.md). If you have questions about SQL Server virtual machines, see the [Frequently Asked Questions](frequently-asked-questions-faq.yml).
+Review other SQL Server Virtual Machine articles at [SQL Server on Azure Virtual Machines Overview](sql-server-on-azure-vm-iaas-what-is-overview.md). If you have questions about SQL Server virtual machines, see the [Frequently Asked Questions](frequently-asked-questions-faq.yml).

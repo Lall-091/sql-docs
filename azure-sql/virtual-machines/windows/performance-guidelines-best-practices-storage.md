@@ -302,11 +302,15 @@ If you need to extend your disk, you can do so on the [Storage pane](storage-con
 
 ## Related content
 
-- [Checklist: Best practices for SQL Server on Azure VMs](performance-guidelines-best-practices-checklist.md)
-- [VM size: Performance best practices for SQL Server on Azure VMs](performance-guidelines-best-practices-vm-size.md)
-- [Security considerations for SQL Server on Azure Virtual Machines](security-considerations-best-practices.md)
-- [HADR configuration best practices (SQL Server on Azure VMs)](hadr-cluster-best-practices.md)
-- [Collect baseline: Performance best practices for SQL Server on Azure VMs](performance-guidelines-best-practices-collect-baseline.md)
-- [Optimize OLTP performance](https://techcommunity.microsoft.com/t5/sql-server/optimize-oltp-performance-with-sql-server-on-azure-vm/ba-p/916794)
-- [What is SQL Server on Azure Windows Virtual Machines?](sql-server-on-azure-vm-iaas-what-is-overview.md)
-- [Frequently Asked Questions](frequently-asked-questions-faq.yml)
+For detailed guidance on each optimization area:
+
+- **[Quick checklist](performance-guidelines-best-practices-checklist.md)** - Review the full best practices checklist
+- **[VM size](performance-guidelines-best-practices-vm-size.md)** - Choose the right VM series and configuration
+- **[Security](security-considerations-best-practices.md)** - Implement security best practices
+- **[HADR settings](hadr-cluster-best-practices.md)** - Configure high availability and disaster recovery
+- **[Collect baseline](performance-guidelines-best-practices-collect-baseline.md)** - Establish performance baselines
+- **[Updating SQL Server](servicing-updates-guidelines.md)** - Keep SQL Server up to date
+
+For detailed testing of SQL Server performance on Azure VMs with TPC-E and TPC_C benchmarks, refer to the blog [Optimize OLTP performance](https://techcommunity.microsoft.com/t5/sql-server/optimize-oltp-performance-with-sql-server-on-azure-vm/ba-p/916794).
+
+Review other SQL Server Virtual Machine articles at [SQL Server on Azure Virtual Machines Overview](sql-server-on-azure-vm-iaas-what-is-overview.md). If you have questions about SQL Server virtual machines, see the [Frequently Asked Questions](frequently-asked-questions-faq.yml).
