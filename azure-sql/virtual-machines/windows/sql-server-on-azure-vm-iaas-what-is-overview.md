@@ -111,7 +111,7 @@ Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
 For more information about deploying SQL Server VMs by using PowerShell, see [How to provision SQL Server virtual machines with Azure PowerShell](create-sql-vm-powershell.md).
 
 > [!IMPORTANT]  
-> Older images might be outdated. Remember to apply all SQL Server and Windows updates before using them for production.
+> SQL Server images from Azure Marketplace deploy at RTM and aren't updated over time. For more information, see [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md).
 
 ## Azure Hybrid Benefit
 
@@ -143,6 +143,7 @@ Since SQL Server on Azure VMs is integrated into the Azure platform, review reso
 
 ## Related content
 
+- [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md)
 - [Quickstart: Create SQL Server VM in the Azure portal](sql-vm-create-portal-quickstart.md)
 - [SQL Server on Azure Virtual Machines FAQ](frequently-asked-questions-faq.yml)
 - [Windows N-tier application on Azure with SQL Server](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)

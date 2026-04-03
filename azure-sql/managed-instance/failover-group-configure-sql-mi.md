@@ -471,7 +471,9 @@ Instances in a failover group remain separate Azure resources, and no changes ma
 This section is duplicated in /managed-instance/failover-group-sql-mi.md.. Please ensure changes are made to both documents.  
 -->
 
-The configuration of your primary and secondary instance should be the same. This includes the compute size, storage size, and service tier. If you need to change the configuration of your failover group, you can do so by scaling each instance to the same configuration accordingly. 
+The configuration of your primary and secondary instance should be the same. This includes the compute size, storage size, and service tier. If you need to change the configuration of your failover group, you can do so by scaling each instance to the same configuration accordingly.
+
+Downgrading the secondary instance to a lower service tier or compute size than the primary instance can cause performance degradation after failover.
 
 To avoid problems from a lower service tier or under-resourced geo-secondary getting overloaded, or having to reseed during an upgrade or downgrade process, consider the following: 
 
@@ -484,7 +486,12 @@ To avoid problems from a lower service tier or under-resourced geo-secondary get
   - Scaling the storage size.
   - [Changing the memory allocation](resource-limits.md#flexible-memory) of your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance.
 
+When trying to scale the service tier, vCores, and storage at the same time (for example, scaling up vCores and service tier while scaling down storage), don't change all three simultaneously. Instead, use one of the following approaches:
 
+- **Option 1**: Scale the service tier first (keep storage and vCores the same), following the upgrade/downgrade order described previously. Then scale storage and vCores separately.
+- **Option 2**: Scale storage first (keep service tier and vCores the same), following the upgrade/downgrade order described previously. Then scale the service tier and vCores separately.
+
+This two-step approach prevents the secondary replica with fewer resources from becoming overloaded, which can cause reseeding during the scaling process.
 
 ## Permissions
 

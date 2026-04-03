@@ -99,7 +99,7 @@ The following checklist summarizes best practices for SQL Server configuration s
 - Set max [SQL Server memory limit](/sql/database-engine/configure-windows/server-memory-server-configuration-options#use-) to leave enough memory for the operating system. ([Use Memory\Available Bytes](/sql/relational-databases/performance-monitor/monitor-memory-usage) to monitor the operating system memory health).
 - Enable [lock pages in memory](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows).
 - Enable [optimize for adhoc workloads](/sql/database-engine/configure-windows/optimize-for-ad-hoc-workloads-server-configuration-option) for OLTP heavy environments.
-- Evaluate and apply the [latest cumulative updates](/sql/database-engine/install-windows/latest-updates-for-microsoft-sql-server) for the installed versions of SQL Server.
+- Evaluate and apply the [latest cumulative updates](/sql/database-engine/install-windows/latest-updates-for-microsoft-sql-server) for the installed versions of SQL Server. For more information, see [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md).
 - Enable [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) on all production SQL Server databases [following best practices](/sql/relational-databases/performance/best-practice-with-the-query-store).
 - Enable [automatic tuning](/sql/relational-databases/automatic-tuning/automatic-tuning) on mission critical application databases.
 - Ensure that all [tempdb best practices](/sql/relational-databases/databases/tempdb-database#optimizing-tempdb-performance-in-sql-server) are followed.
@@ -125,6 +125,7 @@ The following checklist covers best practices for Azure-specific guidance when r
 - Implement a high availability and disaster recovery (HADR) solution that meets your business continuity SLAs. See the [HADR options](business-continuity-high-availability-disaster-recovery-hadr-overview.md#business-continuity-features) available for SQL Server on Azure VMs.
 - Use the Azure portal (support + troubleshooting) to evaluate [resource health](/azure/service-health/resource-health-overview) and history. Submit new support requests when needed.
 
+
 ## HADR configuration
 
 The checklist in this section covers the [HADR best practices](hadr-cluster-best-practices.md) for SQL Server on Azure VMs.
@@ -147,11 +148,12 @@ When you encounter SQL Server performance problems, use these diagnostic resourc
 
 For detailed guidance on each optimization area, see:
 
-- **[VM size](performance-guidelines-best-practices-vm-size.md)** - Choose the right VM series and configuration.
-- **[Storage](performance-guidelines-best-practices-storage.md)** - Optimize disk configuration and performance.
-- **[Security](security-considerations-best-practices.md)** - Implement security best practices.
-- **[HADR settings](hadr-cluster-best-practices.md)** - Configure high availability and disaster recovery.
-- **[Collect baseline](performance-guidelines-best-practices-collect-baseline.md)** - Establish performance baselines.
+- **[VM size](performance-guidelines-best-practices-vm-size.md)** - Choose the right VM series and configuration
+- **[Storage](performance-guidelines-best-practices-storage.md)** - Optimize disk configuration and performance
+- **[Security](security-considerations-best-practices.md)** - Implement security best practices
+- **[HADR settings](hadr-cluster-best-practices.md)** - Configure high availability and disaster recovery
+- **[Collect baseline](performance-guidelines-best-practices-collect-baseline.md)** - Establish performance baselines
+- **[Updating SQL Server](servicing-updates-guidelines.md)** - Keep SQL Server up to date
 
 **Recommended tool:** [Enable SQL Assessment for SQL Server on Azure VMs](sql-assessment-for-sql-vm.md) to automatically evaluate your configuration against these best practices.
 

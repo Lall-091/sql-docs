@@ -4,7 +4,7 @@ description: Learn about the new features for and improvements to SQL Server on 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, dpless
-ms.date: 03/16/2026
+ms.date: 04/01/2026
 ms.service: azure-vm-sql-server
 ms.topic: whats-new
 ms.custom:
@@ -56,12 +56,17 @@ The following table lists features of SQL Server on Azure VMs that have been mad
 
 Learn about significant changes to the SQL Server on Azure VMs documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
 
+### April 2026
+
+| Changes | Details |
+| --- | --- |
+| **SQL Server servicing and updates guidance** | New article that describes the supported methods to keep SQL Server up to date on Azure VMs, including Azure Update Manager, Automated Patching, custom images, winget for client tools, and post-deployment automation. SQL Server images from Azure Marketplace are deployed at RTM and aren't updated over time. For more information, see [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md). |
+
 ### March 2026
 
 | Changes | Details |
 | --- | --- | --- |
 | **Unified inventory preview** | You can now view your SQL Server on Azure VM and SQL Server enabled by Azure Arc resources in a single pane in the Azure portal. With unified inventory, you can view your *SQL Server instance* resources, making it easier to monitor and maintain your SQL Server workloads in Azure. This feature is now in preview. For more information, see [Unified inventory for SQL Server on Azure VMs](unified-inventory-sql-vm.md). |
-
 
 ### January 2026
 
@@ -77,7 +82,6 @@ Learn about significant changes to the SQL Server on Azure VMs documentation. Fo
 
 
 ## Archive
-
 
 For updates made in previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md). 
 

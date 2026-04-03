@@ -1615,6 +1615,8 @@
           href: virtual-machines/windows/change-sql-server-edition.md
         - name: Change version
           href: virtual-machines/windows/change-sql-server-version.md
+        - name: Updating SQL Server
+          href: virtual-machines/windows/servicing-updates-guidelines.md
       - name: SQL IaaS Agent extension
         displayName: resource provider, registration, sql vm rp
         items:
