@@ -3,8 +3,8 @@ title: "Tutorial: Integrate SSIS with SQL Database in Microsoft Fabric"
 description: Learn how to integrate SSIS with Fabric SQL Database
 author: chugugrace
 ms.author: chugu
-ms.reviewer: randolphwest
-ms.date: 02/02/2026
+ms.reviewer: randolphwest, mathoma
+ms.date: 04/06/2026
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: tutorial
@@ -44,8 +44,32 @@ Use the Microsoft OLE DB Driver for SQL Server (MSOLEDBSQL) and configure:
 
   :::image type="content" source="media/ole-db-connection-2.png" alt-text="Screenshot of OLE DB Connection Manager part 2." lightbox="media/ole-db-connection-2.png":::
 
+## Run in Fabric with Invoke SSIS Package activity
+
+When running in Fabric with the [Invoke SSIS Package activity](/fabric/data-factory/invoke-ssis-package-activity), if your package uses the `DontSaveSensitive` protection level, credentials aren't persisted in the package file. You supply them at runtime through the **Connection Managers** tab of the Invoke SSIS Package activity. Alternatively, you can set the package protection level to `EncryptSensitiveWithPassword`, which encrypts credentials inside the package. You then provide the package password in the Invoke SSIS Package activity at runtime instead of supplying individual connection manager credentials.
+
+### Steps to override connection for DontSaveSensitive
+
+1. In the Invoke SSIS Package activity, select the **Connection Managers** tab.
+1. Select **+ New** to add a connection manager override entry.
+1. Set the **Name** field to match your OLE DB Connection Manager name in the package.
+1. Fill in the connection properties, including **User name** (Application/client ID) and **Password** (client secret) for service principal authentication.
+1. Repeat for each connection manager that requires credentials.
+
+:::image type="content" source="media/activity-configuration-manager.png" alt-text="Screenshot of the Connection Managers tab in the Invoke SSIS Package activity." lightbox="media/activity-configuration-manager.png":::
+
+### Steps to provide package password for EncryptSensitiveWithPassword
+
+1. In the SSIS package, set the **ProtectionLevel** property to `EncryptSensitiveWithPassword` and assign a package password. This encrypts all sensitive data (connection strings, credentials) inside the package file.
+1. In the Invoke SSIS Package activity, go to the **Settings** tab.
+1. In the **Encryption password** field, enter the same password used to encrypt the package.
+1. The runtime decrypts the embedded credentials automatically; no individual connection manager overrides are needed.
+
+:::image type="content" source="media/activity-package-encryption.png" alt-text="Screenshot of the package encryption in the Invoke SSIS Package activity." lightbox="media/activity-package-encryption.png":::
+
 ## References
 
+- [Invoke SSIS Package activity](/fabric/data-factory/invoke-ssis-package-activity)
 - [Authentication in SQL database in Microsoft Fabric](/fabric/database/sql/authentication)
 - [Use Microsoft Entra ID](../../connect/oledb/features/using-azure-active-directory.md)
 - [Connect to your SQL database in Microsoft Fabric](/fabric/database/sql/connect)
