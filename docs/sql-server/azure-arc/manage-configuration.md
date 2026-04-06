@@ -576,7 +576,7 @@ resources
 
 ## Manage the unlimited virtualization benefit for a SQL Server ESU subscription
 
-To enable unlimited virtualization for an ESU subscription, SQL Server enabled by Azure Arc supports a special resource type: *SQLServerEsuLicense*. You can use this resource to enable an ESU subscription for a set of physical hosts with an unlimited number of virtual machines running the out-of-support SQL Server instances. For details about the licensing model, see [Subscribe to SQL Server ESUs by using physical cores with unlimited virtualization](extended-security-updates.md#unlimited-virtualization).
+To enable unlimited virtualization for an ESU subscription, SQL Server enabled by Azure Arc supports a special resource type: *SqlServerEsuLicenses*. You can use this resource to enable an ESU subscription for a set of physical hosts with an unlimited number of virtual machines running the out-of-support SQL Server instances. For details about the licensing model, see [Subscribe to SQL Server ESUs by using physical cores with unlimited virtualization](extended-security-updates.md#unlimited-virtualization).
 
 ### Prerequisites
 
