@@ -3,7 +3,7 @@ title: "What's New for SQL Server 2025 on Linux"
 description: In this article, learn about the major features and services available for SQL Server 2025 running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/11/2026
+ms.date: 04/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: whats-new
@@ -68,6 +68,15 @@ The following updates are available in [!INCLUDE [sssql25-md](../includes/sssql2
 | Custom password policy | [Set custom password policy for SQL logins in SQL Server on Linux](sql-server-linux-custom-password-policy.md) |
 | tmpfs support for `tempdb` | [Enable and run tempdb on tmpfs for SQL Server 2025 on Linux](sql-server-linux-tmpfs-tempdb.md) |
 | Generic ODBC data source support for PolyBase | [Connect to ODBC data sources with PolyBase on SQL Server on Linux](sql-server-linux-polybase.md) |
+
+## AI developer features
+
+- [Intelligent applications and AI in SQL Server](/sql/sql-server/ai/artificial-intelligence-intelligent-applications?view=azuresqldb-mi-current&preserve-view=true)
+- [Multi-model capabilities in Azure SQL](/azure/azure-sql/multi-model-features)
+- [Connect to REST API endpoints for a SQL database](/azure/data-api-builder/concept/rest/overview)
+- [Connect to GraphQL endpoints for a SQL database](/azure/data-api-builder/concept/graphql/overview)
+- [Data API builder (DAB)](/azure/data-api-builder/overview)
+- [SQL MCP Server](/azure/data-api-builder/mcp/overview)
 
 ## Related content
 

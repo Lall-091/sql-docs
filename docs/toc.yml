@@ -9935,7 +9935,9 @@ items:
   - name: Blogs
     items:
     - name: SQL Server >>
-      href: https://blogs.technet.microsoft.com/dataplatforminsider/
+      href: https://www.microsoft.com/sql-server/blog/
+    - name: Azure SQL Dev Corner >>
+      href: https://devblogs.microsoft.com/azure-sql/
     - name: Database Engine >>
       href: /archive/blogs/sqlserverstorageengine/
     - name: Security >>

@@ -4,7 +4,7 @@ description: Learn how to run full editions of SQL Server on Azure Virtual Machi
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 04/02/2026
 ms.service: azure-vm-sql-server
 ms.subservice: service-overview
 ms.topic: overview
@@ -136,6 +136,12 @@ The Customer Experience Improvement Program (CEIP) is enabled by default. This p
 
 Since SQL Server on Azure VMs is integrated into the Azure platform, review resources from related products and services that interact with the SQL Server on Azure VM ecosystem:
 
+- **AI capabilities and features**: 
+    - [Intelligent applications and AI in SQL Server](/sql/sql-server/ai/artificial-intelligence-intelligent-applications?view=azuresqldb-mi-current&preserve-view=true)
+    - [Multi-model capabilities in Azure SQL](../../multi-model-features.md)
+    - [Connect to REST API endpoints for a SQL database](/azure/data-api-builder/concept/rest/overview)
+    - [Connect to GraphQL endpoints for a SQL database](/azure/data-api-builder/concept/graphql/overview)
+    - [SQL MCP Server](/azure/data-api-builder/mcp/overview)
 - **Windows virtual machines**: [Azure Virtual Machines overview](/azure/virtual-machines/windows/overview)
 - **Storage**: [Introduction to Azure Storage](/azure/storage/common/storage-introduction)
 - **Networking**: [Azure Virtual Network overview](/azure/virtual-network/virtual-networks-overview), [IP addresses in Azure](/azure/virtual-network/ip-services/public-ip-addresses), [Create a Fully Qualified Domain Name in the Azure portal](/azure/virtual-machines/create-fqdn)
