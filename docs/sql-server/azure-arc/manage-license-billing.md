@@ -295,7 +295,9 @@ The current passive instance detection logic has the following limitations:
 
 If you're unable to work within these limitations, you can use volume licensing instead of `PAYG`. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
-[!INCLUDE [billing-after-failover](includes/billing-after-failover.md)]
+### Billing after failover
+
+During failovers, the extension detects the role transition and automatically switches billing to the active replica without duplicate charges.
 
 <a id="server-cal"></a>
 

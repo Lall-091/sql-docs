@@ -9,7 +9,7 @@ metadata:
   author: MashaMSFT
   ms.author: mathoma
   ms.reviewer: randolphwest, wiassaf
-  ms.date: 03/09/2026
+  ms.date: 04/02/2026
   ms.custom: build-2025
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | tutorial | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -109,6 +109,12 @@ landingContent:
             url: /azure/azure-sql/copilot/copilot-azure-sql-overview
           - text: SQL Server Machine Learning (R & Python)
             url: ../machine-learning/index.yml
+          - text: Connect to REST API endpoints for a SQL database
+            url:  /azure/data-api-builder/concept/rest/overview
+          - text: Connect to GraphQL endpoints for a SQL database
+            url:  /azure/data-api-builder/concept/graphql/overview
+          - text: SQL MCP Server
+            url:  /azure/data-api-builder/mcp/overview
 
   - title: Business Intelligence & Machine Learning
     linkLists:

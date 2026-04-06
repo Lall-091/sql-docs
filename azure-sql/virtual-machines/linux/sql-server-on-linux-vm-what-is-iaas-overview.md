@@ -3,7 +3,7 @@ title: Overview of SQL Server on Azure Virtual Machines for Linux
 description: Learn about how to run full SQL Server editions on Azure Virtual Machines for Linux. Get direct links to all Linux SQL Server VM images and related content.
 author: MashaMSFT
 ms.author: mathoma
-ms.date: 09/15/2025
+ms.date: 04/02/2026
 ms.service: azure-vm-sql-server
 ms.subservice: service-overview
 ms.topic: overview
@@ -60,6 +60,14 @@ When you configure SQL Server on Linux, you install the Database Engine package 
 > SQL IaaS Agent extension for SQL Server on Azure Linux Virtual Machines is only available for Ubuntu Linux distribution.
 
 ## Related products and services
+
+### AI capabilities and features
+
+- [Intelligent applications and AI in SQL Server](/sql/sql-server/ai/artificial-intelligence-intelligent-applications?view=azuresqldb-mi-current&preserve-view=true)
+- [Multi-model capabilities in Azure SQL](../../multi-model-features.md)
+- [Connect to REST API endpoints for a SQL database](/azure/data-api-builder/concept/rest/overview)
+- [Connect to GraphQL endpoints for a SQL database](/azure/data-api-builder/concept/graphql/overview)
+- [SQL MCP Server](/azure/data-api-builder/mcp/overview)
 
 ### Linux virtual machines
 

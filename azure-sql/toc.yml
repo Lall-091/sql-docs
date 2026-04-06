@@ -2003,14 +2003,21 @@
     - name: Ruby
       href: /sql/connect/ruby/ruby-driver-for-sql-server
 
+- name: Blogs
+  items:
+  - name: Azure SQL Database Blog
+    href: https://www.microsoft.com/sql-server/blog/product/azure-sql-database/
+  - name: Azure SQL Dev Corner
+    href: https://devblogs.microsoft.com/azure-sql/
+  - name: SQL Server
+    href: https://www.microsoft.com/sql-server/blog/
+  - name: Microsoft Azure Blog
+    href: https://azure.microsoft.com/blog/
+
 - name: Resources
   items:
   - name: Build your skills with Microsoft Learn training
     href: /training/browse/?products=azure-sql-database
-  - name: SQL Server Blog
-    href: https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database
-  - name: Microsoft Azure Blog
-    href: https://azure.microsoft.com/blog/
   - name: Azure Roadmap
     href: https://techcommunity.microsoft.com/discussions/microsoft-entra/introducing-the-azure-roadmap/113500
   - name: Public data sets
