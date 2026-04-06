@@ -74,7 +74,7 @@ Place data and log files on data disks that you provision to best suit performan
 Format your data disk to use 64-KB allocation unit size for all data files placed on a drive other than the temporary `D:\` drive (which has a default of 4 KB). SQL Server VMs deployed through Azure Marketplace come with data disks formatted with allocation unit size and interleave for the storage pool set to 64 KB.
 
 > [!NOTE]  
-> You can also host your SQL Server database files directly on [Azure Blob storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) or on [SMB storage](/sql/database-engine/install-windows/install-sql-server-with-smb-fileshare-as-a-storage-option) such as [Azure premium file share](/azure/storage/files/storage-how-to-create-file-share). For the best performance, reliability, and feature availability, use [Azure Managed Disks](/azure/virtual-machines/managed-disks-overview).
+> You can also host your SQL Server database files directly on [Azure Blob storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) or on [SMB storage](/sql/database-engine/install-windows/install-sql-server-with-smb-fileshare-as-a-storage-option) such as [Azure premium file share](/azure/storage/files/storage-how-to-create-file-share). For the best performance, reliability, and feature availability, use [Azure managed disks](/azure/virtual-machines/managed-disks-overview).
 
 ## Premium SSD v2
 
