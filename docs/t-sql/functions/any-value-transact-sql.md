@@ -4,7 +4,7 @@ description: The ANY_VALUE function returns any non-NULL value from a group of r
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop
-ms.date: 03/17/2026
+ms.date: 03/30/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -21,7 +21,7 @@ monikerRange: "=fabric"
 
 # ANY_VALUE (Transact-SQL)
 
-[!INCLUDE [fabricdw](../../includes/applies-to-version/fabric-dw.md)]
+[!INCLUDE [fabric-se-dw](../../includes/applies-to-version/fabric-se-dw.md)]
 
 The `ANY_VALUE` function returns any (non-`NULL` if possible) value from a group of rows. You can use it as both an aggregate function and a window (analytic) function:
 

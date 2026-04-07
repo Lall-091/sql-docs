@@ -5,7 +5,7 @@ description: Overview of private endpoint feature.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma, randolphwest
-ms.date: 06/24/2025
+ms.date: 03/30/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: overview
@@ -27,6 +27,8 @@ ms.custom:
 
 > [!IMPORTANT]  
 > This article applies to both Azure SQL Database and [dedicated SQL pool (formerly SQL DW)](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) in Azure Synapse Analytics. These settings apply to all SQL Database and dedicated SQL pool (formerly SQL DW) databases associated with the server. For simplicity, the term 'database' refers to both databases in Azure SQL Database and Azure Synapse Analytics. Likewise, any references to 'server' is referring to the [logical server](logical-servers.md) that hosts Azure SQL Database and dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics. This article does *not* apply to Azure SQL Managed Instance or dedicated SQL pools in Azure Synapse Analytics workspaces.
+>
+> Always use the fully qualified domain name (FQDN) of the server (`<server>.database.windows.net`) in connection strings for all client drivers and tools. Login attempts made directly to the private IP address or using the private link FQDN (`<server>.privatelink.database.windows.net`) fail. This behavior is by design because the private endpoint routes traffic to the SQL Gateway, which requires the correct FQDN to route logins successfully.
 
 <a id="how-to-set-up-private-link-for-azure-sql-database"></a>
 

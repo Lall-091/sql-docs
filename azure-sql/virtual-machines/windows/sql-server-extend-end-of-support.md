@@ -72,6 +72,7 @@ As of today, [Azure Update management](/azure/automation/update-management/overv
 
 ## Next steps
 
+- [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md)
 - [Migration guide: SQL Server to SQL Server on Azure Virtual Machines](../../migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md)
 - [Create a SQL Server VM in the Azure portal](sql-vm-create-portal-quickstart.md)
 - [FAQ for SQL Server on Azure Virtual Machines](frequently-asked-questions-faq.yml)

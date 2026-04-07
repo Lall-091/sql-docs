@@ -340,6 +340,19 @@ This example guides you through setting up [!INCLUDE [sssql25-md](../../includes
 > [!IMPORTANT]  
 > This feature requires that [SQL Server Machine Learning Services](../../machine-learning/install/sql-machine-learning-services-windows-install.md) is installed.
 
+### Security considerations
+
+You can use the AI Runtime Host feature to configure and use your own LLMs and ONNX libraries with SQL Server. Because Microsoft does not validate or monitor third-party models and libraries, you are responsible for selecting appropriate models and libraries, filtering content, securing the runtime, and ensuring compliance with any applicable policies and regulations.
+
+> [!CAUTION]
+> A malicious or compromised ONNX model could exfiltrate data or execute unauthorized code. Only use models from trusted, verified sources.
+
+To mitigate these risks, consider the following security best practices:
+
+- **Implement strong access controls**: Ensure that only authorized users have access to sensitive data and ONNX Runtime models. Validate all models before loading them into SQL Server. Use the [principle of least privilege](/entra/identity-platform/secure-least-privileged-access), as well as database roles and privileges.
+- **Monitor and audit access**: Regularly monitor and audit access to the database and `AI_GENERATE_EMBEDDINGS` function calls to detect suspicious activity.
+- **Conduct regular security assessments**: Perform vulnerability scans and security reviews to identify and mitigate potential risks.
+
 ### Step 1: Enable developer preview features on SQL Server 2025
 
 Run the following Transact-SQL (T-SQL) command to enable [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] preview features in the database you would like use for this example:

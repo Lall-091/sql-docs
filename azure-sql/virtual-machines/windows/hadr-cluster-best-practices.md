@@ -543,13 +543,20 @@ If you are on Windows Server 2019 and you don't see a Windows Cluster IP, you ha
 
 Review other Windows Failover [Failover Clustering system log events](/windows-server/failover-clustering/system-events) and their solutions.
 
-## Next steps
+## Related content
 
-To learn more, see:
+For detailed guidance on each optimization area:
 
-- [HADR settings for SQL Server on Azure VMs](hadr-cluster-best-practices.md)
+- **[Quick checklist](performance-guidelines-best-practices-checklist.md)** - Review the full best practices checklist
+- **[VM size](performance-guidelines-best-practices-vm-size.md)** - Choose the right VM series and configuration
+- **[Storage](performance-guidelines-best-practices-storage.md)** - Optimize disk configuration and performance
+- **[Security](security-considerations-best-practices.md)** - Implement security best practices
+- **[Collect baseline](performance-guidelines-best-practices-collect-baseline.md)** - Establish performance baselines
+- **[Updating SQL Server](servicing-updates-guidelines.md)** - Keep SQL Server up to date
+
+For more information about HADR:
+
 - [Windows Server Failover Cluster with SQL Server on Azure VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On availability groups with SQL Server on Azure VMs](availability-group-overview.md)
-- [Windows Server Failover Cluster with SQL Server on Azure VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Failover cluster instances with SQL Server on Azure VMs](failover-cluster-instance-overview.md)
 - [Failover cluster instance overview](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

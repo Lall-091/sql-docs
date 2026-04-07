@@ -21,9 +21,11 @@ This article explains how to install the Microsoft ODBC Driver for SQL Server on
 
 This article provides commands for installing the ODBC driver from the bash shell. If you want to download the packages directly, see [Download ODBC Driver for SQL Server](../download-odbc-driver-for-sql-server.md).
 
-> [!NOTE]  
-> The Microsoft ODBC driver for SQL Server on macOS is only supported on the x64 architecture through version 17.7. Apple ARM64 support was added starting with version 17.8. The architecture will be detected and the correct package will be automatically installed by the Homebrew formula. If your command prompt is running in x64 emulation mode on ARM64, the x64 package will be installed. If you're not running in emulation mode in your command prompt, the ARM64 package will be installed.
+> [!NOTE]
+> The Microsoft ODBC driver for SQL Server on macOS is only supported on the x64 architecture through version 17.7. Apple ARM64 (M1, M2, M3, and later Apple Silicon chips) support was added starting with version 17.8. The Homebrew formula detects the architecture and automatically installs the correct package. If your command prompt is running in x64 emulation mode on ARM64, the x64 package is installed. If you aren't running in emulation mode, the ARM64 package is installed.
 > Additionally, the Homebrew default directory changed with the ARM64 architecture, to `/opt/homebrew`. The paths in the [Driver files](#driver-files) section use the x64 Homebrew paths, which default to `/usr/local`, so your file paths will vary accordingly.
+>
+> The Microsoft ODBC driver for macOS is designed to work with **unixODBC** (installed by Homebrew). If you use **iODBC** as your driver manager, you might encounter architecture mismatch errors such as `incompatible architecture (have 'arm64', need 'x86_64')`. To resolve this issue, use unixODBC instead of iODBC. Homebrew automatically installs unixODBC as a dependency of the `msodbcsql18` package.
 
 ## Microsoft ODBC 18
 

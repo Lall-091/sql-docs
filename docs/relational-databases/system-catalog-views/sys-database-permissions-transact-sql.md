@@ -3,7 +3,7 @@ title: "sys.database_permissions (Transact-SQL)"
 description: sys.database_permissions returns a row for every permission or column-exception permission in the database.
 author: VanMSFT
 ms.author: vanto
-ms.date: 06/16/2023
+ms.date: 04/02/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -180,7 +180,8 @@ SELECT pr.principal_id
 FROM sys.database_principals AS pr
 INNER JOIN sys.database_permissions AS pe ON pe.grantee_principal_id = pr.principal_id
 INNER JOIN sys.objects AS o ON pe.major_id = o.object_id
-INNER JOIN sys.schemas AS s ON o.schema_id = s.schema_id;
+INNER JOIN sys.schemas AS s ON o.schema_id = s.schema_id
+WHERE pe.class = 1;
 ```  
 
 ### C. List permissions for a specific object
@@ -207,7 +208,8 @@ FROM sys.database_principals AS pr
 INNER JOIN sys.database_permissions AS pe ON pe.grantee_principal_id = pr.principal_id
 INNER JOIN sys.objects AS o ON pe.major_id = o.object_id
 INNER JOIN sys.schemas AS s ON o.schema_id = s.schema_id
-WHERE o.name = 'vAssocSeqOrders'
+WHERE pe.class = 1
+    AND o.name = 'vAssocSeqOrders'
     AND s.name = 'dbo';
 ```
 

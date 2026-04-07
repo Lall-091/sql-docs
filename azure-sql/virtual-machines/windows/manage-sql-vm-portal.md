@@ -151,6 +151,7 @@ From the **SQL IaaS Agent Extension Settings** page, you can [repair the extensi
 
 ## Related content
 
+- [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md)
 - [What is SQL Server on Azure Windows Virtual Machines?](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [FAQ for SQL Server on Windows VMs](frequently-asked-questions-faq.yml)
 - [Pricing guidance for SQL Server on Azure VMs](pricing-guidance.md)

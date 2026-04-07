@@ -4,7 +4,7 @@ description: Learn how to install the Microsoft ODBC Driver for SQL Server on Li
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 01/06/2026
+ms.date: 03/31/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -25,7 +25,7 @@ This article provides commands for installing the ODBC driver from the bash shel
 
 ## Microsoft ODBC 18
 
-The following sections explain how to install the Microsoft ODBC driver 18 from the bash shell for different Linux distributions. Supported distributions are Alpine Linux, Debian, Red Hat Enterprise Linux (RHEL), Oracle Linux, SUSE Linux Enterprise Server (SLES), Ubuntu, and Azure Linux. Starting with version 18.4, to accept the EULA automatically when installing the non-Alpine Linux (`.deb` or `.rpm`) driver, you can create the file `/opt/microsoft/msodbcsql18/ACCEPT_EULA`.
+The following sections explain how to install the Microsoft ODBC driver 18 from the bash shell for different Linux distributions. Supported distributions are Alpine Linux, Debian, Red Hat Enterprise Linux (RHEL), Oracle Linux, SUSE Linux Enterprise Server (SLES), Ubuntu, and Azure Linux. Starting with version 18.4, to accept the End User License Agreement (EULA) automatically when installing the non-Alpine Linux (`.deb` or `.rpm`) driver, you can create the file `/opt/microsoft/msodbcsql18/ACCEPT_EULA`.
 
 ### [Alpine](#tab/alpine18-install)
 
@@ -42,20 +42,20 @@ then
 fi
 
 #Download the desired package(s)
-curl -O https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_$architecture.apk
-curl -O https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_$architecture.apk
+curl -O https://download.microsoft.com/download/0b3d5518-b4a7-4a2b-afc7-7ee9e967f93c/msodbcsql18_18.6.2.1-1_$architecture.apk
+curl -O https://download.microsoft.com/download/cad0d30f-b9b1-4765-a011-81d8a66c8b8d/mssql-tools18_18.6.2.1-1_$architecture.apk
 
 #(Optional) Verify signature, if 'gpg' is missing install it using 'apk add gnupg':
-curl -O https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_$architecture.sig
-curl -O https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_$architecture.sig
+curl -O https://download.microsoft.com/download/0b3d5518-b4a7-4a2b-afc7-7ee9e967f93c/msodbcsql18_18.6.2.1-1_$architecture.sig
+curl -O https://download.microsoft.com/download/cad0d30f-b9b1-4765-a011-81d8a66c8b8d/mssql-tools18_18.6.2.1-1_$architecture.sig
 
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --import -
-gpg --verify msodbcsql18_18.6.1.1-1_$architecture.sig msodbcsql18_18.6.1.1-1_$architecture.apk
-gpg --verify mssql-tools18_18.6.1.1-1_$architecture.sig mssql-tools18_18.6.1.1-1_$architecture.apk
+gpg --verify msodbcsql18_18.6.2.1-1_$architecture.sig msodbcsql18_18.6.2.1-1_$architecture.apk
+gpg --verify mssql-tools18_18.6.2.1-1_$architecture.sig mssql-tools18_18.6.2.1-1_$architecture.apk
 
 #Install the package(s)
-sudo apk add --allow-untrusted msodbcsql18_18.6.1.1-1_$architecture.apk
-sudo apk add --allow-untrusted mssql-tools18_18.6.1.1-1_$architecture.apk
+sudo apk add --allow-untrusted msodbcsql18_18.6.2.1-1_$architecture.apk
+sudo apk add --allow-untrusted mssql-tools18_18.6.2.1-1_$architecture.apk
 ```
 
 > [!NOTE]  
@@ -185,6 +185,9 @@ sudo apt-get install -y unixodbc-dev
 > ```
 
 ### [Azure Linux](#tab/azure18-install)
+
+> [!NOTE]
+> Azure Linux 3.0 includes the Microsoft packages repository by default. You don't need to manually configure the repository before you install the driver. If your Azure Linux image uses `tdnf` as the package manager, the following commands work directly.
 
 ```bash
 if ! [[ "3.0" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
@@ -721,6 +724,8 @@ The driver needs to load the resource file to function. This file is called `mso
 
 ## Troubleshoot
 
+### Previous driver version conflict
+
 If you previously installed and registered a version of the driver with unixODBC, installation might fail with an error similar to:
 
 ```output
@@ -734,6 +739,44 @@ odbcinst -u -d -n "ODBC Driver $1 for SQL Server"
 ```
 
 If uninstalling by using the `odbcinst` command fails, you can manually remove driver sections from the `odbcinst.ini` file. You can find the location of the `odbcinst.ini` file by using the command `odbcinst -j`.
+
+### Package download errors on Debian and Ubuntu
+
+On Debian-based distributions, you might see the following error when you install the `packages-microsoft-prod.deb` package:
+
+```output
+dpkg-deb: error: 'packages-microsoft-prod.deb' is not a Debian format archive
+```
+
+This error typically means the downloaded file is corrupted or incomplete, often caused by a network interruption or proxy issue. To resolve the problem:
+
+1. Delete the corrupted file and download it again. For Ubuntu:
+
+   ```bash
+   rm packages-microsoft-prod.deb
+   curl -sSL -O https://packages.microsoft.com/config/ubuntu/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)/packages-microsoft-prod.deb
+   ```
+
+   For Debian, replace `ubuntu` and use the major version number only:
+
+   ```bash
+   rm packages-microsoft-prod.deb
+   curl -sSL -O https://packages.microsoft.com/config/debian/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.deb
+   ```
+
+1. Verify the download is a valid Debian package (the output should include `Debian binary package`):
+
+   ```bash
+   file packages-microsoft-prod.deb
+   ```
+
+1. If the download continues to fail, check your network connection and proxy settings, or use `wget` instead of `curl`:
+
+   ```bash
+   wget https://packages.microsoft.com/config/ubuntu/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)/packages-microsoft-prod.deb
+   ```
+
+### Connection problems
 
 If you can't make a connection to SQL Server by using the ODBC driver, see the known issues article on [troubleshooting connection problems](known-issues-in-this-version-of-the-driver.md#connectivity).
 

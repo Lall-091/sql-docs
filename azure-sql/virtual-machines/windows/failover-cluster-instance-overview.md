@@ -56,7 +56,7 @@ The rest of this section lists the benefits and limitations of each storage opti
 
 ### Azure shared disks
 
-[Azure shared disks](/azure/virtual-machines/disks-shared) are a feature of [Azure Managed Disks](/azure/virtual-machines/managed-disks-overview). Windows Server Failover Clustering supports using Azure shared disks with a failover cluster instance.
+[Azure shared disks](/azure/virtual-machines/disks-shared) are a feature of [Azure managed disks](/azure/virtual-machines/managed-disks-overview). Windows Server Failover Clustering supports using Azure shared disks with a failover cluster instance.
 
 **Supported OS**: All   
 **Supported SQL version**: All
@@ -79,7 +79,7 @@ The rest of this section lists the benefits and limitations of each storage opti
 
 - Premium SSD caching isn't supported.
 - Ultra Disks don't support availability sets or Zone Redundant Storage (ZRS).
-- Availability zones are supported for Ultra Disks, but the VMs must be in the same availability zone, which reduces the availability of the virtual machine to 99.9%.
+- Availability zones are supported for Ultra Disks, but the VMs must be in the same availability zone, which reduces the availability of the virtual machine.
 
 To get started, see [Configure failover cluster instance with Azure shared disks](failover-cluster-instance-azure-shared-disks-manually-configure.md).
 

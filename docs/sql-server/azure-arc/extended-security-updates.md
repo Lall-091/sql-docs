@@ -107,14 +107,14 @@ The option of subscribing to SQL Server ESUs by physical cores with unlimited vi
 - Your infrastructure and the selected payment method support the unlimited virtualization benefit for ESU.
 - Subscribing to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESUs by v-cores is more expensive than subscribing by the p-cores of the host.
 
-To use the unlimited virtualization benefit, you need to create a *SQLServerEsuLicense* resource that represents one or more physical hosts. The covered SQL Server instances must be connected to Azure Arc and configured to use the p-core ESU license. For details about managing *SQLServerEsuLicense* resources, see [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license).
+To use the unlimited virtualization benefit, you need to create a *SqlServerEsuLicenses* resource that represents one or more physical hosts. The covered SQL Server instances must be connected to Azure Arc and configured to use the p-core ESU license. For details about managing *SqlServerEsuLicenses* resources, see [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license).
 
 > [!CAUTION]  
-> The unlimited virtualization benefit isn't available to VMs running on infrastructure from any of the [listed providers](https://aka.ms/listedproviders). These VMs can be licensed only by v-cores. If you create a *SqlServerEsuLicense* resource with the intent of licensing these VMs by using unlimited virtualization, you'll be charged for the consumption of v-cores based on the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] configuration of the host. Any existing p-core licenses don't apply to offset such charges.
+> The unlimited virtualization benefit isn't available to VMs running on infrastructure from any of the [listed providers](https://aka.ms/listedproviders). These VMs can be licensed only by v-cores. If you create a *SqlServerEsuLicenses* resource with the intent of licensing these VMs by using unlimited virtualization, you'll be charged for the consumption of v-cores based on the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] configuration of the host. Any existing p-core licenses don't apply to offset such charges.
 
 For more information about licensing by physical cores with unlimited virtualization, see the section "Licensing for maximum virtualization" in the [SQL Server licensing guide (download link)](https://download.microsoft.com/download/e/2/9/e29a9331-965d-4faa-bd2e-7c1db7cd8348/SQL_Server_2019_Licensing_guide.pdf).
 
-A single *SqlServerEsuLicense* resource can cover multiple virtual machines connected to Azure Arc. It includes several properties that define how the license is applied and billed.
+A single *SqlServerEsuLicenses* resource can cover multiple virtual machines connected to Azure Arc. It includes several properties that define how the license is applied and billed.
 
 ### License details
 
@@ -194,7 +194,9 @@ For information, see:
 
 The ESU subscription enabled on a connected server with passive SQL Server instances doesn't incur the ESU charges. This way you can guarantee that future ESUs will be applied to that server. To qualify, all SQL Server instances on this server must meet the passivity criteria defined in [Manage passive license for high availability and disaster recovery](manage-license-billing.md#free-dr).
 
-[!INCLUDE [billing-after-failover](includes/billing-after-failover.md)]
+### ESU billing after failover
+
+During the failovers, the extension is aware of the transition and automatically switches the ESU billing to the active replica without new bill-back charges.
 
 <a id="server-cal"></a>
 
@@ -264,7 +266,7 @@ The usage of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESU 
 
 - If multiple instances of SQL Server or SQL Server associated services are installed with the same version that is eligible for ESU, only one ESU subscription usage is reported per OSE. The reported usage is associated with the instance that has the highest edition.
 
-- If two or more instances of SQL Server or SQL Server associated services are installed with different versions that are eligible for ESU, each eligible version will report ESU usage separately based the instance of that version with the highest edition. This reflects the differences in ESU prices and bill-back periods for different versions.
+- If two or more instances of SQL Server or SQL Server associated services are installed with different versions that are eligible for ESU, each eligible version will report ESU usage separately based on the instance of that version with the highest edition. This reflects the differences in ESU prices and bill-back periods for different versions.
 
 The following table shows the ESU subscription meters (also called *SKUs*) that are used for metering and billing for a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESU subscription on a single OSE:
 
@@ -327,7 +329,7 @@ If the Arc enabled machine goes offline and reconnects to Azure in a different s
 
 ESU subscriptions are pinned to a specific Azure location. If the Arc enabled machine with an active ESU subscription is moved to a different Azure location, the subscription is terminated. To resume ESU coverage, you must activate a new ESU subscription and pay all the associated bill-back charges.
 
-[!IMPORTANT]
+> [!IMPORTANT]
 > The bill-back charge for the disconnected time is recorded within the first hour after the connectivity is restored, and is associated with the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance that is eligible for ESU coverage. The amount of the charge reflects the time since the previous heartbeat was registered.
 
 ## Related content

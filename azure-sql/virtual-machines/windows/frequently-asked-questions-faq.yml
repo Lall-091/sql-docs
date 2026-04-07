@@ -381,7 +381,7 @@ sections:
       - question: | 
           What permissions does the SQL Server IaaS Agent extension use? 
         answer: | 
-          October 2022 introduced the least privilege permissions model for the extension, granting minimal permissions necessary for each feature used by the extension. SQL Server VMs deployed after October 2022 via Azure Marketplace have the least privilege permissions model enabled by default. The extension uses **sysadmin** rights for SQL Server VMs that were deployed prior to October 2022, or self-installed SQL Server VMs that haven't manually enabled the least privilege model in the Azure portal. Review [SQL IaaS Agent extension permissions](sql-server-iaas-agent-extension-automate-management.md#permissions-models) to learn more. 
+          October 2022 introduced the least privilege permissions model for the extension, granting minimal permissions necessary for each feature used by the extension. SQL Server VMs deployed after October 2022 via Azure Marketplace have the least privilege permissions model enabled by default. The extension uses **sysadmin** rights for SQL Server VMs that were deployed prior to October 2022, or self-installed SQL Server VMs that haven't manually enabled the least privilege model in the Azure portal. Review [SQL IaaS Agent extension permissions](sql-server-iaas-agent-extension-automate-management.md#permission-models) to learn more. 
 
       - question: | 
           Why do I see SQL virtual machines resource in the Azure portal? Who created it? Do I get billed for this?

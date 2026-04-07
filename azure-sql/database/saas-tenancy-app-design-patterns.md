@@ -80,7 +80,7 @@ The vendor can access all the databases in all the standalone app instances, eve
 
 This next pattern uses a multitenant application with many databases, all being single-tenant databases. A new database is provisioned for each new tenant. The application tier is scaled *up* vertically by adding more resources per node. Or the app is scaled *out* horizontally by adding more nodes. The scaling is based on workload, and is independent of the number or scale of the individual databases.
 
-:::image type="content" source="media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant.png" alt-text="Diagram of the design of a multi-tenant app with database-per-tenant.":::
+:::image type="content" source="media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant.png" alt-text="Diagram of the design of a multitenant app with database-per-tenant.":::
 
 ### Customize for a tenant
 
@@ -92,7 +92,7 @@ With database-per-tenant, customizing the schema for one or more individual tena
 
 When databases are deployed in the same resource group, they can be grouped into elastic pools. The pools provide a cost-effective way of sharing resources across many databases. This pool option is cheaper than requiring each database to be large enough to accommodate the usage peaks that it experiences. Even though pooled databases share access to resources they can still achieve a high degree of performance isolation.
 
-:::image type="content" source="media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool.png" alt-text="Diagram of the design of multi-tenant app with database-per-tenant, using elastic pool.":::
+:::image type="content" source="media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool.png" alt-text="Diagram of the design of multitenant app with database-per-tenant, using elastic pool.":::
 
 Azure SQL Database provides the tools necessary to configure, monitor, and manage the sharing. Both pool-level and database-level performance metrics are available in the Azure portal, and through Azure Monitor logs. The metrics can give great insights into both aggregate and tenant-specific performance. Individual databases can be moved between pools to provide reserved resources to a specific tenant. These tools enable you to ensure good performance in a cost effective manner.
 
@@ -141,7 +141,7 @@ Management operations that are focused on individual tenants are more complex to
 
 Most SaaS applications access the data of only one tenant at a time. This access pattern allows tenant data to be distributed across multiple databases or shards, where all the data for any one tenant is contained in one shard. Combined with a multitenant database pattern, a sharded model allows almost limitless scale.
 
-:::image type="content" source="media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases.png" alt-text="Diagram of the design of a multi-tenant app with sharded multi-tenant databases.":::
+:::image type="content" source="media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases.png" alt-text="Diagram of the design of a multitenant app with sharded multitenant databases.":::
 
 ### Manage shards
 

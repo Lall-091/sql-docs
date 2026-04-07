@@ -113,4 +113,4 @@ To create and manage SQL Database elastic pools and pooled databases, use these 
 
 ## Related content
 
-- To learn more about design patterns for SaaS applications using elastic pools, see [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](saas-tenancy-app-design-patterns.md).
+- To learn more about design patterns for SaaS applications using elastic pools, see [Design Patterns for multitenant SaaS Applications with Azure SQL Database](saas-tenancy-app-design-patterns.md).

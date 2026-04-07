@@ -15,7 +15,7 @@ metadata:
   author: WilliamDAssafMSFT
   ms.author: wiassaf
   ms.reviewer: mathoma
-  ms.date: 08/07/2025
+  ms.date: 04/02/2026
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
 
@@ -129,6 +129,22 @@ landingContent:
           - text: High availability & disaster recovery
             url: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
 
+
+# Card
+  - title: Artificial Intelligence
+    linkLists:
+      - linkListType: concept
+        links:
+        - text: Intelligent applications and AI in Azure SQL
+          url: database/ai-artificial-intelligence-intelligent-applications.md?view=azuresql-db&preserve-view=true
+        - text: Multi-model capabilities in Azure SQL
+          url: multi-model-features.md
+        - text: SQL MCP Server
+          url:  /azure/data-api-builder/mcp/overview
+        - text: Connect to REST API endpoints for a SQL database
+          url:  /azure/data-api-builder/concept/rest/overview
+        - text: Connect to GraphQL endpoints for a SQL database
+          url:  /azure/data-api-builder/concept/graphql/overview
 
   # Card 
   - title: Learn Azure SQL 

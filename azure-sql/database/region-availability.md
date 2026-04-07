@@ -4,7 +4,7 @@ description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: rsetlem, peskount, rokhot, shrtiwar
-ms.date: 03/13/2026
+ms.date: 04/02/2026
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
@@ -98,6 +98,10 @@ Standard-series (Gen5) hardware is available in [all public regions worldwide wh
 | UK South | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
 
 ---
+
+US Gov Arizona supports **Hyperscale premium-series** up to 80 vCores.
+
+US Gov Texas and US Gov Virginia support **Hyperscale premium-series** up to 128 vCores.
 
 160 vCore and 192 vCore hardware for **Hyperscale premium-series** for single databases and elastic pools are a preview feature in the following regions:
 
