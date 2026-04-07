@@ -5,7 +5,7 @@ description: Learn about restoring a deleted logical server in Azure SQL Databas
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dinethi, jaypatel, mathoma
-ms.date: 03/24/2026
+ms.date: 04/07/2026
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -100,9 +100,9 @@ Set-AzSqlServer `
 
 ### [Azure CLI](#tab/azure-cli)
 
-Use the `retention-days` parameter for the [az sql server create](/cli/azure/sql/server#az-sql-server-create) and [az sql server update](/cli/azure/sql/server#az-sql-server-update) commands to configure soft delete retention for a new or existing server.
+Use the `soft-delete-retention-days` parameter for the [az sql server create](/cli/azure/sql/server#az-sql-server-create) and [az sql server update](/cli/azure/sql/server#az-sql-server-update) commands to configure soft delete retention for a new or existing server.
 
-The `retention-days` parameter is an integer between **0 and 7** where:
+The `soft-delete-retention-days` parameter is an integer between **0 and 7** where:
 - A value of `0` turns soft delete OFF. When the logical server is deleted, it can't be recovered.
 - A value between `1` and `7` sets the number of days the server enters into a soft-deleted state when deleted. The server can be restored during the retention period.
 
