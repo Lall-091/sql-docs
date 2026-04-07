@@ -112,7 +112,7 @@ Create the logins that must be present in the `master` database on the secondary
 
 ### Setup telemetry alerts
 
-Make sure your existing alert rule settings are updated to map to the new primary instance. For more information about database alert rules, see [Receive Alert Notifications](/azure/azure-monitor/alerts/alerts-overview) and [Track Service Health](/azure/service-health/service-notifications-old).
+Make sure your existing alert rule settings are updated to map to the new primary instance. For more information about database alert rules, see [Receive Alert Notifications](/azure/azure-monitor/alerts/alerts-overview) and [Track Service Health](/azure/service-health/service-health-notifications-properties).
 
 ### Enable auditing
 
