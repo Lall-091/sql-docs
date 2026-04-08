@@ -221,7 +221,7 @@ Requires these user permissions:
 - `ALTER ANY EXTERNAL FILE FORMAT` (only applies to Hadoop and Azure Storage external data sources)
 - `CONTROL DATABASE` (only applies to Hadoop and Azure Storage external data sources)
 
-Note, the remote login specified in the `DATABASE SCOPED CREDENTIAL` used in the `CREATE EXTERNAL TABLE` command must have **Read** permission for the path/table/collection on the external data source specified in the `LOCATION` parameter. If you're planning to use this `EXTERNAL TABLE` to export data to a Hadoop or Azure Storage external data source, then the login specified must have write permission on the path specified in `LOCATION`. Hadoop isn't supported in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
+The remote login specified in the `DATABASE SCOPED CREDENTIAL` used in the `CREATE EXTERNAL TABLE` command must have **Read** permission for the path/table/collection on the external data source specified in the `LOCATION` parameter. If you're planning to use this `EXTERNAL TABLE` to export data to a Hadoop or Azure Storage external data source, then the login specified must have write permission on the path specified in `LOCATION`. Hadoop isn't supported in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
 
 For Azure Blob Storage, when configuring the access keys and shared access signature (SAS) in the Azure portal, the Azure Blob Storage or ADLS Gen2 storage accounts, configure the **Allowed permissions** to grant at least **Read** and **Write** permissions. **List** permission might also be required when searching across folders. You must also select both **Container** and **Object** as the allowed resource types.
 
@@ -844,7 +844,7 @@ Users with access to the external table automatically gain access to the underly
 - `ALTER ANY EXTERNAL FILE FORMAT`
 - `CONTROL DATABASE` permissions are required to create only the master key, database scoped credential, and external data source.
 
-Note, the login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
+The login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
 
 > [!IMPORTANT]  
 > The `ALTER ANY EXTERNAL DATA SOURCE` permission grants any principal the ability to create and modify any external data source object, and therefore, it also grants the ability to access all database scoped credentials on the database. This permission must be considered as highly privileged, and therefore must be granted only to trusted principals in the system.
@@ -1271,7 +1271,7 @@ Requires these user permissions:
 - `ALTER ANY EXTERNAL FILE FORMAT`
 - `CONTROL DATABASE` permissions are required to create only the master key, database scoped credential, and external data source.
 
-Note, the remote login specified in the `DATABASE SCOPED CREDENTIAL` used in the `CREATE EXTERNAL TABLE` command must have **Read** permission for the path on the external data source specified in the `LOCATION` parameter. If you plan to use this external table to export data to Azure Blob Storage or Azure Data Lake Storage, the login must also have **Write** and **List** permissions on the path specified in `LOCATION`.
+The remote login specified in the `DATABASE SCOPED CREDENTIAL` used in the `CREATE EXTERNAL TABLE` command must have **Read** permission on the path specified in the `LOCATION` parameter. If you plan to use this external table to export data to Azure Blob Storage or Azure Data Lake Storage, the login must also have **Write** and **List** permissions on the same path.
 
 > [!IMPORTANT]  
 > The `ALTER ANY EXTERNAL DATA SOURCE` permission grants any principal the ability to create and modify any external data source object, and therefore, it also grants the ability to access all database scoped credentials on the database. This permission must be considered as highly privileged, and therefore must be granted only to trusted principals in the system.
@@ -1599,7 +1599,7 @@ Requires these user permissions:
 - `ALTER ANY EXTERNAL FILE FORMAT`
 - `CONTROL DATABASE`
 
-Note, the login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
+The login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
 
 > [!IMPORTANT]  
 > The `ALTER ANY EXTERNAL DATA SOURCE` permission grants any principal the ability to create and modify any external data source object, and therefore, it also grants the ability to access all database scoped credentials on the database. This permission must be considered as highly privileged, and therefore must be granted only to trusted principals in the system.
@@ -1811,7 +1811,7 @@ Requires these user permissions:
 - `ALTER ANY EXTERNAL FILE FORMAT`
 - `CONTROL DATABASE` permissions are required to create only the master key, database scoped credential, and external data source.
 
-Note, the login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
+The login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
 
 > [!IMPORTANT]  
 > The `ALTER ANY EXTERNAL DATA SOURCE` permission grants any principal the ability to create and modify any external data source object, and therefore, it also grants the ability to access all database scoped credentials on the database. This permission must be considered as highly privileged, and therefore must be granted only to trusted principals in the system.
