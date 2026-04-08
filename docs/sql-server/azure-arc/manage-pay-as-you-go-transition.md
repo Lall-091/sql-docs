@@ -4,7 +4,8 @@ description: How to transition SQL Server from the legacy licensing model to Azu
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, maghan
-ms.date: 07/08/2025
+ms.date: 01/28/2026
+ai-usage: ai-assisted
 ms.topic: how-to
 ---
 
@@ -83,6 +84,17 @@ If the machine remains disconnected for more than 30 days, the SQL Arc service s
 - Ongoing hourly charges until the machine reconnects.
 
 These charges use separate recurring pay-as-you-go (`PAYG`) meters to track usage during the disconnected state.
+
+For more information, see [Billing during connectivity loss and other disruptions](extended-security-updates.md#billing-during-connectivity-loss-and-other-disruptions).
+
+> [!IMPORTANT]
+> During disconnected periods exceeding 30 days, if your machine's Virtual Machine ID changes (due to VM rebuild, migration, or other infrastructure changes), the system treats it as a new machine when reconnected. This results in:
+>
+> - Continued recurring billing on the original machine resource (until manually deactivated)
+> - New billing starting on the newly identified machine resource
+> - Potential double billing for the same workload
+>
+> Always disconnect machines from Azure Arc before performing operations that might change the VMID.
 
 ### Intermittent use of SQL Server
 
