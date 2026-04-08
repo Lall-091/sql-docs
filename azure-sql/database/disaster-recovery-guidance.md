@@ -20,9 +20,9 @@ ms.custom:
 > * [Azure SQL Database](disaster-recovery-guidance.md?view=azuresql-db&preserve-view=true)
 > * [Azure SQL Managed Instance](../managed-instance/disaster-recovery-guidance.md?view=azuresql-mi&preserve-view=true)
 
-Azure SQL Database provides an industry leading high availability guarantee of at least 99.99% to support a wide variety of applications, including mission critical, that _always need to be available_. Azure SQL Database also has turn key business continuity capabilities that you can perform for quick disaster recovery in the event of a regional outage. This article contains valuable information to review in advance of application deployment.
+Azure SQL Database provides an [enterprise class availability SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1) to support a wide variety of applications, including mission critical, that _always need to be available_. Azure SQL Database also has turn key business continuity capabilities that you can perform for quick disaster recovery in the event of a regional outage. This article contains valuable information to review in advance of application deployment.
 
-Though we continuously strive to provide high availability, there are times when the Azure SQL Database service incurs outages that cause the unavailability of your database and thus impacts your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.  
+Though we continuously strive to provide availability, there are times when the Azure SQL Database service incurs outages that cause the unavailability of your database and thus impacts your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.  
 
 ## Service outage
 

@@ -15,7 +15,7 @@ ms.custom: references_regions
 
 An Azure Arc-enabled instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] is an instance on-premises or in a cloud provider that is connected to Azure Arc. This article explains those prerequisites.
 
-If your SQL Server virtual machines are on VMware clusters, review [Support on VMware](#support-on-vmware).
+If your SQL Server virtual machines are running in VMware vSphere–based environments (including environments licensed through VMware vSphere Foundation or VMware Cloud Foundation), review [Support on VMware](#support-on-vmware).
 
 ## Before you deploy
 
@@ -179,7 +179,7 @@ The [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] Setup Installation Wiz
 - [SQL Server enabled by Azure Arc deployment options](deployment-options.md)
 - [Install Azure extension for SQL Server from the command line](../../database-engine/install-windows/install-sql-server-from-the-command-prompt.md#install-and-connect-to-azure)
 
-For VMware clusters, review [Support on VMware](#support-on-vmware).
+For VMware vSphere–based environments, review [Support on VMware](#support-on-vmware).
 
 ## Related content
 

@@ -231,6 +231,7 @@ To install the SQL Server IaaS extension to SQL Server on Azure VMs, see the art
 
 To learn more, see the following articles:
 
+- [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md)
 - [Overview of SQL Server on Windows VMs](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [FAQ for SQL Server on Windows VMs](frequently-asked-questions-faq.yml)
 - [Pricing guidance for SQL Server on Azure VMs](../windows/pricing-guidance.md)

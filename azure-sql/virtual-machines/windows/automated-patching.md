@@ -129,5 +129,6 @@ If you're currently using Automated Patching, you can [migrate to Azure Update M
 
 ## Related content
 
+- [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md)
 - [Automate management with the Windows SQL Server IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md)
 - [What is SQL Server on Azure Windows Virtual Machines?](sql-server-on-azure-vm-iaas-what-is-overview.md)

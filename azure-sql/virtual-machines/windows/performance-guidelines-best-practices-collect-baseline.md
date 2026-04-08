@@ -73,17 +73,15 @@ The following PerfMon counters can help validate the compute health of a SQL Ser
 > Aim to use 80% of your compute, with peaks above 90% but don't reach 100% for any sustained period of time. Fundamentally, only provision the compute the application needs. Plan to scale up or down as the business requires.
 
 
-## Next steps
+## Related content
 
-To learn more, see the other articles in this best practices series:
+For detailed guidance on each optimization area:
 
-- [Quick checklist](performance-guidelines-best-practices-checklist.md)
-- [VM size](performance-guidelines-best-practices-vm-size.md)
-- [Storage](performance-guidelines-best-practices-storage.md)
-- [Security](security-considerations-best-practices.md)
-- [HADR settings](hadr-cluster-best-practices.md)
-
-
-For security best practices, see [Security considerations for SQL Server on Azure Virtual Machines](security-considerations-best-practices.md).
+- **[Quick checklist](performance-guidelines-best-practices-checklist.md)** - Review the full best practices checklist
+- **[VM size](performance-guidelines-best-practices-vm-size.md)** - Choose the right VM series and configuration
+- **[Storage](performance-guidelines-best-practices-storage.md)** - Optimize disk configuration and performance
+- **[Security](security-considerations-best-practices.md)** - Implement security best practices
+- **[HADR settings](hadr-cluster-best-practices.md)** - Configure high availability and disaster recovery
+- **[Updating SQL Server](servicing-updates-guidelines.md)** - Keep SQL Server up to date
 
 Review other SQL Server Virtual Machine articles at [SQL Server on Azure Virtual Machines Overview](sql-server-on-azure-vm-iaas-what-is-overview.md). If you have questions about SQL Server virtual machines, see the [Frequently Asked Questions](frequently-asked-questions-faq.yml).

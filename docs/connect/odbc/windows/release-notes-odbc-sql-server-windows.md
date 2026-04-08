@@ -4,7 +4,7 @@ description: This release notes article describes the changes in each release of
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 02/10/2026
+ms.date: 03/31/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
@@ -14,6 +14,28 @@ ms.topic: release-notes
 This release notes article describes what's new for the Microsoft ODBC driver for SQL Server on Windows.
 
 ## 18.6
+
+Version number: 18.6.2.1  
+Released: March 31, 2026
+
+:::image type="icon" source="../../../includes/media/download.svg" border="false"::: **[Download x64 installer](https://go.microsoft.com/fwlink/?linkid=2358430)**  
+:::image type="icon" source="../../../includes/media/download.svg" border="false"::: **[Download x86 installer](https://go.microsoft.com/fwlink/?linkid=2358335)**  
+:::image type="icon" source="../../../includes/media/download.svg" border="false"::: **[Download ARM64 installer](https://go.microsoft.com/fwlink/?linkid=2358431)**
+
+If you need to download the installer in a language other than the one detected for you, you can use these direct links.  
+For the x64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2358430&clcid=0x41f)  
+For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2358335&clcid=0x41f)  
+For the ARM64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2358431&clcid=0x41f)  
+
+| Feature added | Details |
+| :------- | :------ |
+| Vector parameters. | Improve handling of output and input/output vector parameters when using prepared statements. |
+| Server redirections. | Support Microsoft Fabric redirection scenarios allowing up to 10 server redirections per connection attempt. |
+| Bug fixes. | [Bug fixes](../bug-fixes.md). |
+
+## Previous Releases
+
+## 18.6.1
 
 Version number: 18.6.1.1  
 Released: December 17, 2025
@@ -41,8 +63,6 @@ When you use a terminator as the separator in `bcp_bind` for strings, two consec
 
 - Before the 18.6.1.1 release, the ODBC driver interpreted consecutive terminators (zero-length data) as empty strings.
 - In the 18.6.1.1 release, the ODBC driver interprets zero-length data as a NULL value instead of an empty string.
-
-## Previous Releases
 
 ## 18.5.2
 

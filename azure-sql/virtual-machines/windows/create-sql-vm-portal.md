@@ -207,11 +207,11 @@ If you chose a free license image, such as the developer edition, the **SQL Serv
 
 ### Automated patching
 
-**Automated patching** is disabled by default. [Automated Patching](automated-patching.md) allows Azure to automatically apply SQL Server and operating system security updates. If yoou want Azure to automatically patch SQL Server and the operating system, select **Enable**. Specify a day of the week, time, and duration for a maintenance window. Azure performs patching in this maintenance window. 
+**Automated patching** is disabled by default. [Automated Patching](automated-patching.md) allows Azure to automatically apply SQL Server and operating system security updates. If you want Azure to automatically patch SQL Server and the operating system, select **Enable**. Specify a day of the week, time, and duration for a maintenance window. Azure performs patching in this maintenance window. 
 
 :::image type="content" source="./media/create-sql-vm-portal/azure-sqlvm-automated-patching.png" alt-text="Screenshot from the Azure portal of SQL VM automated patching.":::
 
-For improved patching management, which also includes Cumulative Updates, try the integrated [Azure Update Manager](../azure-update-manager-sql-vm.md) experience after your SQL Server VM finishes deployment.
+For improved patching management, which also includes Cumulative Updates, try the integrated [Azure Update Manager](../azure-update-manager-sql-vm.md) experience after your SQL Server VM finishes deployment. For more information about all supported update methods, see [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md).
 
 ### Automated backup
 
@@ -284,6 +284,7 @@ SQL Server images from Azure Marketplace install the SQL Server binaries to the 
 
 ## Related content
 
+- [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md)
 - [What is SQL Server on Azure Windows Virtual Machines?](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [Frequently asked questions for SQL Server on Azure VMs](frequently-asked-questions-faq.yml)
 - [Checklist: Best practices for SQL Server on Azure VMs](performance-guidelines-best-practices-checklist.md)

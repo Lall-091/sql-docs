@@ -4,7 +4,7 @@ description: "Learn what's new and changed in released versions of the Microsoft
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 02/10/2026
+ms.date: 03/31/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
@@ -29,6 +29,13 @@ NOW NEW FILE NAME:    linux-mac/release-notes-odbc-sql-server-linux-mac.md
 Thank you.
 GeneMi.  2019/04/03.
 -->
+## 18.6.2, March 2026
+
+| New item | Details |
+| :------- | :------ |
+| Vector parameters. | Improve handling of output and input/output vector parameters when using prepared statements. |
+| Server redirections. | Support Microsoft Fabric redirection scenarios allowing up to 10 server redirections per connection attempt. |
+| Bug fixes. | [Bug fixes](../bug-fixes.md). |
 
 ## 18.6.1, December 2025
 

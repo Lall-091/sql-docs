@@ -1,7 +1,7 @@
 ---
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 03/09/2026
+ms.date: 04/02/2026
 ms.service: sql
 ms.topic: include
 ---
@@ -30,6 +30,8 @@ Recommended tools:
 - **[SQL Server Management Studio (SSMS)](../tools/overview-sql-tools.md#ssms)**: Create objects, run queries, and perform lightweight tasks
 - **[SQL Server Data Tools (SSDT)](../tools/overview-sql-tools.md#ssdt)** for Visual Studio: Schema and project-based development
 - **[.NET libraries](/azure/azure-sql/database/connect-query-dotnet-core)**: Programmatic access using libraries such as `Microsoft.Data.SqlClient`
+- **[Data API builder](/azure/data-api-builder/)**: Connect apps to the database over [automatic REST](/azure/data-api-builder/concept/rest/overview) or [GraphQL endpoints](/azure/data-api-builder/concept/graphql/overview).
+- **[SQL MCP Server](/azure/data-api-builder/mcp/overview)**: Connect custom and [Foundry agents](/azure/data-api-builder/mcp/quickstart-azure-ai-foundry) to the database with a secure MCP Server.
 
 ### [Data analyst](#tab/analyst)
 

@@ -143,6 +143,12 @@ sections:
           - Subscribe to Activity Log events for when usage records are not received when expected or when recurring billing starts or is happening.
           Review [Manage recurrent billing for pay-as-you go licenses](manage-pay-as-you-go-transition.md) for details. 
 
+  - name: VMware
+    questions:
+      - question: Is SQL Server enabled by Azure Arc tied to VMware vSphere Foundation or VMware Cloud Foundation?
+        answer: >
+          No. SQL Server enabled by Azure Arc is independent of VMware commercial bundles. It supports SQL Server instances running on VMware-hosted virtual machines that meet Azure Arc, operating system, and SQL Server requirements.
+
 additionalContent: |
 
      ## Related content
