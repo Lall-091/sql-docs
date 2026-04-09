@@ -40,7 +40,7 @@ sections:
         answer: No. The usage data collection requires an active SQL Server instance. Therefore, you'll not be charged for the time the SQL Server instance was stopped.  
 
       - question: Do I get charged if my SQL Server instance was running for less than an hour?
-        answer: The billing granularity is one hour. If your instance was active for less than an hour, you are billed for the full hour. 
+        answer: The billing granularity is one hour. If your instance was active for less than an hour, you're billed for the full hour. 
 
       - question: Is there a minimum number of cores with pay-as-you-go billing?
         answer: Pay-as-you-go billing doesn't change the licensing terms of SQL Server. Therefore, it's subject to the four-core limit as defined in the [SQL Server licensing terms](https://www.microsoft.com/licensing/terms/productoffering/SQLServer/EAEAS). 
@@ -55,7 +55,7 @@ sections:
         answer: |
           No. At this point, recurring billing is only enabled in the cloud solution provider (CSP) managed Azure subscriptions.
 
-      - question: How do I ensure that my VM and SQL server are not billed when it is disconnected or turned off intentionally?
+      - question: How do I ensure that my VM and SQL server aren't billed when it's disconnected or turned off intentionally?
         answer: |
           If the machine is offline for less than 30 days and then reconnects, the uploaded SQL Server usage will reflect the offline period, and the monthly invoice will account for it. If you keep the machine offline for longer than 30 days, the pay-as-you-go billing will resume when the machine is back online and reconnects to Azure Arc.
 
@@ -64,12 +64,12 @@ sections:
           - If you take your VM offline intentionally for a period longer than 30 days, and stop using SQL Server, the pay-as-you-go billing will resume when the machine is back online and reconnects to Azure Arc.
           - If your SQL Server instance is continuously running during the disconnected time period, you must restore the connectivity to stay compliant. Review [Troubleshoot extension](troubleshoot-extension.md).
 
-      - question: How can I be notified about when a given machine does not send usage data when expected or when recurring billing has happened or is happening?
+      - question: How can I be notified about when a given machine doesn't send usage data when expected or when recurring billing has happened or is happening?
         answer: |
           You can:
           - See the billing mode of each machine in the Arc-enabled SQL Server Billing dashboard in the Azure portal.
           - Write your own ARG query to get the billing mode and last billed data points.
-          - Subscribe to Activity Log events for when usage records are not received when expected or when recurring billing starts or is happening. Review [Use activity logs with SQL Server enabled by Azure Arc](activity-logs.md).
+          - Subscribe to Activity Log events for when usage records aren't received when expected or when recurring billing starts or is happening. Review [Use activity logs with SQL Server enabled by Azure Arc](activity-logs.md).
 
       - question: Does pay-as-you-go billing work on Linux?
         answer: |
@@ -89,10 +89,10 @@ sections:
         answer: Review and implement [SQL Server enabled by Azure Arc best practices](security-overview.md#best-practices).
 
       - question: Is TDE with Azure Key Vault supported?
-        answer: No. TDE with Azure Key Vault is not supported today SQL Server enabled by Azure Arc. You can manually set up TDE for your own instances.
+        answer: No. TDE with Azure Key Vault isn't supported today SQL Server enabled by Azure Arc. You can manually set up TDE for your own instances.
 
       - question: Is there key vault support?
-        answer: Yes, there is key vault support today for SQL Server enabled by Azure Arc for storing the Microsoft Entra ID certificate.
+        answer: Yes, there's key vault support today for SQL Server enabled by Azure Arc for storing the Microsoft Entra ID certificate.
 
       - question: Does SQL Server enabled by Azure Arc support Private Link?
         answer: |
@@ -105,14 +105,14 @@ sections:
         answer: You need to open up the endpoint at `*.<region>.arcdataservices.com`. For specific information, review [Prerequisites - Connect to Azure Arc data processing service](prerequisites.md#connect-to-azure-arc-data-processing-service).
 
       - question: Does TLS inspection work with Azure Extension for SQL Server? 
-        answer: If your organization uses TLS inspection, the Azure Extension for SQL Server does not use certificate pinning and will continue to work, so long as your machine trusts the certificate presented by the TLS inspection service. For information on TLS inspection with Azure Arc-enabled server extension, see [Network Security](/azure/azure-arc/servers/security-networking#general-networking).
+        answer: If your organization uses TLS inspection, the Azure Extension for SQL Server doesn't use certificate pinning and will continue to work, so long as your machine trusts the certificate presented by the TLS inspection service. For information on TLS inspection with Azure Arc-enabled server extension, see [Network Security](/azure/azure-arc/servers/security-networking#general-networking).
 
 
       - question: What are the details on the permissions assigned?
         answer: Review [Configure Windows service accounts and permissions for Azure extension for SQL Server](configure-windows-accounts-agent.md).
 
       - question: What user is the Microsoft SQL Server extension service running as?
-        answer: When the least privileges mode is enabled, then it runs as the NT Service\SQLServerExtension account. When it is disabled, it runs as Local System. To enable least privilege mode, review [Least privilege mode](configure-least-privilege.md).
+        answer: When the least privileges mode is enabled, then it runs as the NT Service\SQLServerExtension account. When it's disabled, it runs as Local System. To enable least privilege mode, review [Least privilege mode](configure-least-privilege.md).
 
       - question: Is least privilege mode supported for SQL Server enabled by Azure Arc?
         answer: Yes, least privilege mode is supported for SQL Server enabled by Azure Arc. Existing servers with extension version `1.1.2859.223` or greater will eventually have the least privileged configuration applied. This extension was released in November, 2024. To prevent the automatic application of least privilege, block extension upgrades after `1.1.2859.223`. Learn more about the permission assigned at [Configure Windows service accounts and permissions for Azure extension for SQL Server](configure-windows-accounts-agent.md).
@@ -123,24 +123,24 @@ sections:
   - name: Associated services
     questions:
       - question: How does SQL Server enabled by Azure Arc license management work with associated services? 
-        answer: The associated services are represented as SQL Server instances in Azure Resource Manager (ARM) with a service_type property reflecting if it is an engine or an associated service installation. Review [Manage licensing and billing](manage-license-billing.md) and [Extended Security Updates](extended-security-updates.md) for details. 
+        answer: The associated services are represented as SQL Server instances in Azure Resource Manager (ARM) with a service_type property reflecting if it's an engine or an associated service installation. Review [Manage licensing and billing](manage-license-billing.md) and [Extended Security Updates](extended-security-updates.md) for details. 
 
   - name: "Recurring pay-as-you-go billing"
     questions:
       - question: I have an enterprise or a small business account with Microsoft, can I enable recurring pay-as-you-go billing?
         answer: |
-          No. At this point, recurring pay-as-you-go billing is enabled and required in the CSP-managed subscriptions. It is not available with other subscription offers.
+          No. At this point, recurring pay-as-you-go billing is enabled and required in the CSP-managed subscriptions. It's not available with other subscription offers.
 
-      - question: How do I ensure that my VM and SQL server are not billed when it is disconnected or turned off intentionally?
+      - question: How do I ensure that my VM and SQL server aren't billed when it's disconnected or turned off intentionally?
         answer: |
           If the machine is offline for less than 30 days and then reconnects, the uploaded SQL Server usage will reflect the offline period, and the monthly invoice will account for it. If you plan to keep it offline for longer than 30 days, you should disconnect the Arc-enabled SQL Server. For steps, review [Disconnect SQL Server instances from Azure Arc](delete-from-azure-arc.md). Then reconnect using one of [the supported deployments options](deployment-options.md).
 
-      - question: How can I be notified about when a given machine does not send usage data when expected or when recurring billing has happened or is happening?
+      - question: How can I be notified about when a given machine doesn't send usage data when expected or when recurring billing has happened or is happening?
         answer: |
           You can:
           - See the billing mode of each machine in the Arc-enabled SQL Server Billing dashboard in the Azure portal.
           - Write your own ARG query to get the billing mode and last billed data points.
-          - Subscribe to Activity Log events for when usage records are not received when expected or when recurring billing starts or is happening.
+          - Subscribe to Activity Log events for when usage records aren't received when expected or when recurring billing starts or is happening.
           Review [Manage recurrent billing for pay-as-you go licenses](manage-pay-as-you-go-transition.md) for details. 
 
   - name: VMware
