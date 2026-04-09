@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 03/24/2026
+ms.date: 04/13/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -57,9 +57,11 @@ The following table lists the features of Azure SQL Database that are currently 
 | **Multiple secondaries for failover groups** | You can [configure multiple secondary servers for failover groups](failover-group-sql-db.md#multiple-secondaries) in Azure SQL Database. |
 | **Network Security Perimeter** | [Azure Network Security Perimeter](network-security-perimeter.md) allows organizations to define a logical network isolation boundary for PaaS resources (for example, Azure Storage and SQL Database) that are deployed outside your organization's virtual networks. It restricts public network access to PaaS resources outside of the perimeter, and access can be exempted by using explicit access rules for public inbound and outbound. |
 | **New Query editor experience in the Azure portal** | As of March 2026, there's a new [query editor in the Azure portal](query-editor.md) that allows you to run queries against your Azure SQL Database directly from a web browser. |
+| **Query Store for readable secondary replicas** | [Query Store for readable secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas) enables Query Store insights for workloads that run on secondary replicas. When enabled, secondary replicas stream query execution information (such as runtime and wait statistics) to the primary replica, where the data is persisted in Query Store and made visible across all replicas. |
 | **Restart database in the Azure portal** | You can [restart your SQL database or elastic pool](restart-database.md) from the Azure portal. |
 | **Soft delete retention for logical server** | You can [configure a soft delete retention period](deleted-logical-server-restore.md) for a logical server and restore a deleted server within the retention period.|
 | **Vector indexing and VECTOR_SEARCH enhancements** | DiskANN vector indexes are now in preview with full DML support, iterative filtering, the new `SELECT TOP (N) WITH APPROXIMATE` syntax, and the `FORCE_ANN_ONLY` table hint. Earlier vector index versions and the `TOP_N` parameter are deprecated. For more information, see [CREATE VECTOR INDEX](/sql/t-sql/statements/create-vector-index-transact-sql?view=azuresqldb-current&preserve-view=true) and [VECTOR_SEARCH](/sql/t-sql/functions/vector-search-transact-sql?view=azuresqldb-current&preserve-view=true). |
+
 
 ## General availability (GA)
 
