@@ -84,3 +84,7 @@ Make sure to migrate the Arc-enabled SQL Server resource to `Microsoft.AzureArcD
 
 [Disconnect your SQL Server instances from Azure Arc](delete-from-azure-arc.md)
 
+## Deleted resource still appears in the Azure portal
+
+[!INCLUDE [resource-caching-after-deletion](includes/resource-caching-after-deletion.md)]
+
