@@ -4,14 +4,15 @@ titleSuffix: Azure SQL Managed Instance
 description: This article provides an overview of the resource limits for Azure SQL Managed Instance.
 author: vladai78
 ms.author: vladiv
-ms.reviewer: mathoma, vladiv, sachinp, wiassaf, randolphwest
-ms.date: 03/10/2026
+ms.reviewer: mathoma, sachinp, wiassaf, randolphwest
+ms.date: 05/06/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: reference
 ms.custom:
   - references_regions
   - ignite-2025
+ai-usage: ai-assisted
 ---
 # Overview of Azure SQL Managed Instance resource limits
 
@@ -302,11 +303,14 @@ Find more information about the [resource limits in SQL Managed Instance pools i
 
 ## Flexible memory
 
-By default, the amount of memory allocated to Azure SQL Managed Instance is a static value determined by the selected number of vCores. The flexible memory feature for the [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) service tier allows you to change the amount of memory allocated to your managed instance without changing the number of vCores. This feature is useful for workloads that require more memory than the default allocation for a given number of vCores. 
+By default, the amount of memory allocated to Azure SQL Managed Instance is a static value determined by the selected number of vCores. The flexible memory feature allows you to change the amount of memory allocated to your SQL managed instance without changing the number of vCores. This feature is useful for workloads that require more memory than the default allocation for a given number of vCores.
 
-The flexible memory feature is currently only available to [locally redundant](high-availability-sla-local-zone-redundancy.md#locally-redundant-availability) instances in the **Next-gen General Purpose** service tier on [Premium-series](#hardware-configuration-characteristics) hardware.
+The flexible memory feature is available in the following service tiers and deployment configurations on [Premium-series](#hardware-configuration-characteristics) hardware:
 
-You can change the amount of memory allocated to your managed instance at any time for new and existing instances by using the Azure portal, or the REST API. The memory allocation change is applied to all databases in the instance and performs a failover of the instance as the final operation step. Check [management operations duration](management-operations-duration.md#management-operation-duration) to determine the estimated time for the operation to complete. 
+- **[Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md)**: [locally redundant](high-availability-sla-local-zone-redundancy.md#locally-redundant-availability) instances. Flexible memory for the Next-gen General purpose tier is generally available (GA).
+- **[Business Critical](../database/service-tiers-sql-database-vcore.md#business-critical)**: [locally redundant](high-availability-sla-local-zone-redundancy.md#locally-redundant-availability) and [zone-redundant](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) instances. Flexible memory is currently in preview for the Business Critical service tier.
+
+You can change the amount of memory allocated to your SQL managed instance at any time for new and existing instances by using the Azure portal, or the REST API. The memory allocation change is applied to all databases in the instance and performs a failover of the instance as the final operation step. Check [management operations duration](management-operations-duration.md#management-operation-duration) to determine the estimated time for the operation to complete.
 
 Use the **Compute + storage** blade in the Azure portal to change the memory allocation, or the `properties.memorySizeInGB` value of the [Managed Instance - Create or Update](/rest/api/sql/managed-instances/create-or-update) REST API call starting with the **2024-08-01-preview** version. The memory allocation is specified in gigabytes (GB).
 
