@@ -3,7 +3,7 @@ title: "CREATE SECURITY POLICY (Transact-SQL)"
 description: CREATE SECURITY POLICY a security policy for use with row-level security.
 author: VanMSFT
 ms.author: vanto
-ms.date: 10/04/2023
+ms.date: 04/08/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -30,7 +30,13 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricse-fabricdw-fabricsqldb.md)]
 
-  Creates a security policy for [row-level security](../../relational-databases/security/row-level-security.md).
+  Creates a security policy for [row-level security](../../relational-databases/security/row-level-security.md) in the SQL Database Engine.
+
+:::moniker range="=fabric"
+  
+  Row-level security in Fabric Data Warehouse operates similarly to other SQL Database Engine products. For more information and examples of row-level security in Fabric Data Warehouse or the SQL analytics endpoint, see [Row-level security in Fabric data warehousing](/fabric/data-warehouse/row-level-security).
+
+:::moniker-end
   
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md) 
   
@@ -54,27 +60,30 @@ CREATE SECURITY POLICY [schema_name. ] security_policy_name
 
 #### *security_policy_name*
 
- The name of the security policy. Security policy names must comply with the rules for identifiers and must be unique within the database and to its schema.  
+ The name of the security policy. Security policy names must follow the rules for identifiers and be unique within the database and its schema.  
   
 #### *schema_name*
 
- Is the name of the schema to which the security policy belongs. *schema_name* is required because of schema binding.  
+ The name of the schema to which the security policy belongs. *schema_name* is required because of schema binding.  
   
 #### [ FILTER | BLOCK ]
 
- The type of security predicate for the function being bound to the target table. `FILTER` predicates silently filter the rows that are available to read operations. `BLOCK` predicates explicitly block write operations that violate the predicate function.  
+ The type of security predicate for the function to bind to the target table. 
+
+- `FILTER` predicates silently filter the rows that are available to read operations. 
+- `BLOCK` predicates explicitly block write operations that violate the predicate function.    
   
 #### *tvf_schema_name.security_predicate_function_name*
 
- Is the inline table value function that will be used as a predicate and that will be enforced upon queries against a target table. At most one security predicate can be defined for a particular DML operation against a particular table. The inline table value function must have been created using the `SCHEMABINDING` option.  
+ The inline table value function that will be used as a predicate and that will be enforced upon queries against a target table. At most one security predicate can be defined for a particular DML operation against a particular table. The inline table value function must have been created using the `SCHEMABINDING` option.  
   
 #### { *column_name* | *expression* }
 
- A column name or expression used as a parameter for the security predicate function. Any column on the target table can be used. An [Expression](../../t-sql/language-elements/expressions-transact-sql.md) can only include constants, built in scalar functions, operators and columns from the target table. A column name or expression needs to be specified for each parameter of the function.  
+ A column name or expression used as a parameter for the security predicate function. Any column on the target table can be used. An [Expression](../../t-sql/language-elements/expressions-transact-sql.md) can only include constants, built in scalar functions, operators, and columns from the target table. A column name or expression needs to be specified for each parameter of the function.  
   
 #### *table_schema_name.table_name*
 
- Is the target table to which the security predicate will be applied. Multiple disabled security policies can target a single table for a particular DML operation, but only one can be enabled at any given time.  
+ The target table to which the security predicate will be applied. Multiple disabled security policies can target a single table for a particular DML operation, but only one can be enabled at any given time.  
   
 #### *block_dml_operation*
 
@@ -94,26 +103,26 @@ CREATE SECURITY POLICY [schema_name. ] security_policy_name
   
 #### [ *table_schema_name*. ] *table_name*
 
- Is the target table to which the security predicate will be applied. Multiple disabled security policies can target a single table, but only one can be enabled at any given time.  
+ The target table to which the security predicate will be applied. Multiple disabled security policies can target a single table, but only one can be enabled at any given time.  
   
 
 ## Remarks
 
  When using predicate functions with memory-optimized tables, you must include `SCHEMABINDING` and use the `WITH NATIVE_COMPILATION` compilation hint.  
   
- Block predicates are evaluated after the corresponding DML operation is executed. Therefore, there is danger that a READ UNCOMMITTED query can see transient values that will be rolled back.  
-  
+ Block predicates are evaluated after the corresponding DML operation is executed. Therefore, there is danger that a `READ UNCOMMITTED` query can see transient values that will be rolled back.  
+
 ## Permissions
 
- Requires the ALTER ANY SECURITY POLICY permission and ALTER permission on the schema.  
+ Requires the `ALTER ANY SECURITY POLICY` permission and `ALTER` permission on the schema.  
   
  Additionally the following permissions are required for each predicate that is added:  
   
--   SELECT and REFERENCES permissions on the function being used as a predicate.  
+-   `SELECT` and `REFERENCES` permissions on the function being used as a predicate.  
   
--   REFERENCES permission on the target table being bound to the policy.  
+-   `REFERENCES` permission on the target table being bound to the policy.  
   
--   REFERENCES permission on every column from the target table used as arguments.  
+-   `REFERENCES` permission on every column from the target table used as arguments.  
   
 ## Examples
 
