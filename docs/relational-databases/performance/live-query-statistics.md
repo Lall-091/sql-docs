@@ -55,7 +55,7 @@ Internally, live query statistics use the [sys.dm_exec_query_profiles](../system
 
 You can also access the live execution plan from **[Activity Monitor](../performance-monitor/activity-monitor.md)** by right-clicking any query in the **Processes** or **Active Expensive Queries** table.  
 
-:::image type="content" source="../../relational-databases/performance/media/livequerystatsactmon.png" alt-text="Live Query Stats button in Activity Monitor.":::  
+:::image type="content" source="../../relational-databases/performance/media/livequerystatsactmon.png" alt-text="Screenshot of Live Query Stats button in Activity Monitor.":::  
 
 ## Remarks
 
