@@ -230,6 +230,10 @@ resources
 | order by numExtensions desc
 ```
 
+## Deleted resource still appears in the Azure portal
+
+[!INCLUDE [resource-caching-after-deletion](includes/resource-caching-after-deletion.md)]
+
 ## Upgrade the extension
 
 [!INCLUDE [manage-extension](includes/manage-extension.md)]
