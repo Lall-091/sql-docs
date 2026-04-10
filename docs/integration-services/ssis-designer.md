@@ -3,7 +3,8 @@ title: "SSIS Designer"
 description: "SSIS Designer"
 author: chugugrace
 ms.author: chugu
-ms.date: "09/01/2016"
+ms.date: "04/01/2026"
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: concept-article
@@ -62,45 +63,6 @@ helpviewer_keywords:
  [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer has five permanent tabs: one each for building package control flow, data flows, parameters, and event handlers, and one tab for viewing the contents of a package. At run time a sixth tab appears that shows the execution progress of a package while it is running and the execution results after it finishes.  
   
  In addition, [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer includes the Connection Managers area for adding and configuring the connection managers that a package uses to connect to data.  
-  
-### Control Flow Tab  
- You construct the control flow in a package on the design surface of the **Control Flow** tab. Drag items from **Toolbox** to the design surface and connect them into a control flow by clicking the icon for the item, and then dragging the arrow from one item to another.  
-  
- For more information, see [Control Flow](../integration-services/control-flow/control-flow.md).  
-  
-### Data Flow Tab  
- If a package contains a Data flow task, you can add data flows to the package. You construct the data flows in a package on the design surface of the **Data Flow** tab. Drag items from **Toolbox** to the design surface and connect them into a data flow by clicking the icon for the item, and then dragging the arrow from one item to another.  
-  
- For more information, see [Data Flow](../integration-services/data-flow/data-flow.md).  
-  
-### Parameters Tab  
- Integration Services (SSIS) parameters allow you to assign values to properties within packages at the time of package execution. You can create project parameters at the project level and package parameters at the package level. Project parameters are used to supply any external input the project receives to one or more packages in the project. Package parameters allow you to modify package execution without having to edit and redeploy the package. This tab allows you to manage package parameters.  
-  
- For more information about parameters, see [Integration Services (SSIS) Parameters](integration-services-ssis-package-and-project-parameters.md).  
-  
-> [!IMPORTANT]  
-> Parameters are available only to projects developed for the project deployment model. Therefore, you will see the Parameters tab only for packages that are part of a project configured to use the project deployment model.  
-  
-### Event Handlers Tab  
- You construct the events in a package on the design surface of the **Event Handlers** tab. On the **Event Handlers** tab, you select the package or package object that you want to create an event handler for, and then select the event to associate with the event handler. An event handler has a control flow and optional data flows.  
-  
- For more information, see [Add an Event Handler to a Package](./integration-services-ssis-event-handlers.md).  
-  
-### Package Explorer Tab  
- Packages can be complex, including many tasks, connection managers, variables, and other elements. The explorer view of the package lets you see a complete list of package elements.  
-  
- For more information, see [View Package Objects](../integration-services/view-package-objects.md).  
-  
-### Progress/Execution Result Tab  
- While a package is running, the **Progress** tab shows the execution progress of the package. After the package has finished running, the execution results remain available on the **Execution Result** tab.  
-  
-> [!NOTE]  
-> To enable or disable the display of messages on the **Progress** tab, toggle the **Debug Progress Reporting** option on the **SSIS** menu.  
-  
-#### Connection Managers Area  
- You add and modify the connection managers that a package uses in the **Connection Managers** area. [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] includes connection managers to connect to a variety of data sources, such as text files, OLE DB databases, and .NET providers.  
-  
- For more information, see [Integration Services &#40;SSIS&#41; Connections](../integration-services/connection-manager/integration-services-ssis-connections.md) and [Create Connection Managers](./connection-manager/integration-services-ssis-connections.md).  
  
 ## Control Flow tab
 Use the **Control Flow** tab of [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer to build the control flow in a [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] package.  
@@ -122,6 +84,8 @@ Use the **Control Flow** tab of [!INCLUDE[ssIS](../includes/ssis-md.md)] Designe
 -   Configure breakpoints  
   
  To add these functions to individual tasks or containers in [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer, right-click the object on the design surface, and then select the option.  
+  
+ For more information, see [Control Flow](../integration-services/control-flow/control-flow.md).  
  
 ## Data Flow tab
 Use the **Data Flow** tab of [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer to create data flows in a [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] package.  
@@ -137,9 +101,21 @@ Use the **Data Flow** tab of [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer t
 -   Add annotations  
   
  To add these functions in [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer, right-click the design surface, and then select the option you want.  
+  
+ For more information, see [Data Flow](../integration-services/data-flow/data-flow.md).  
+ 
+## Parameters tab
+ Integration Services (SSIS) parameters allow you to assign values to properties within packages at the time of package execution. You can create project parameters at the project level and package parameters at the package level. Project parameters are used to supply any external input the project receives to one or more packages in the project. Package parameters allow you to modify package execution without having to edit and redeploy the package. This tab allows you to manage package parameters.  
+  
+ For more information about parameters, see [Integration Services (SSIS) Parameters](integration-services-ssis-package-and-project-parameters.md).  
+  
+> [!IMPORTANT]  
+> Parameters are available only to projects developed for the project deployment model. Therefore, you will see the Parameters tab only for packages that are part of a project configured to use the project deployment model.  
  
 ## Event Handlers tab
   Use the **Event Handlers** tab of [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer to build a control flow in an [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] package. An event handler runs in response to an event raised by the package or by a task or container in the package.  
+  
+ For more information, see [Add an Event Handler to a Package](./integration-services-ssis-event-handlers.md).  
   
 ## Options  
  **Executable**  
@@ -161,7 +137,9 @@ Use the **Data Flow** tab of [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer t
 ## Package Explorer tab
 Use the **Package Explorer** tab of [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer to see a hierarchical view of all of the elements in a package: configurations, connections, event handlers, executable objects such as tasks and containers, log providers, precedence constraints, and variables. If a package contains a Data Flow task, the **Package Explorer** tab includes a node that contains a hierarchical view of the data flow components.  
   
- Right-click a package element, and then click **Properties** to show the properties of the element in the **Properties** window, or click **Delete** to delete the element. 
+ Right-click a package element, and then click **Properties** to show the properties of the element in the **Properties** window, or click **Delete** to delete the element.  
+  
+ For more information, see [View Package Objects](../integration-services/view-package-objects.md).  
  
 ## Progress tab
 Use the **Progress** tab of [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer to view the progress of execution of an [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] package when you run the package in [!INCLUDE[ssBIDevStudioFull](../includes/ssbidevstudiofull-md.md)]. The **Progress** tab lists the start time, the finish time, and the elapsed time for validation and execution of the package and its executables; any information or warnings for the package; progress notifications; the success or failure of the package; and any error messages that are generated during package execution.  
@@ -175,7 +153,9 @@ Packages use connection managers to connect to data sources such as files, relat
   
  Use the **Connections Managers** area of [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer to add, delete, modify, rename, and copy and paste the connection managers.  
   
- Right-click in this area, and then on the menu, click the option for the task you want to perform.
+ Right-click in this area, and then on the menu, click the option for the task you want to perform.  
+  
+ For more information, see [Integration Services &#40;SSIS&#41; Connections](../integration-services/connection-manager/integration-services-ssis-connections.md) and [Create Connection Managers](./connection-manager/integration-services-ssis-connections.md).  
  
 ## Related Tasks  
   

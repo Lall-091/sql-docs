@@ -96,7 +96,11 @@ Deleted Hyperscale databases incur backup costs to support recovery to a point i
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
+> [!NOTE]
+> The data backup storage size metric only reflects billable backup storage consumed beyond the free allowance of one full database size. The data backup storage size metric only emits a value *after* backup storage consumption exceeds the free allowance.
+
 Billable backup storage for a deleted database reduces gradually over time after it's deleted. It becomes zero when backups are no longer retained, and then recovery is no longer possible. If it's a permanent deletion and you no longer need backups, you can optimize costs by reducing retention before deleting the database.
+
 
 ### Monitor backup costs
 

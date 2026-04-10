@@ -4,7 +4,8 @@ description: Learn how to manage configuration options for SQL Server enabled by
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 07/03/2025
+ms.date: 04/01/2026
+ai-usage: ai-assisted
 ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
@@ -86,6 +87,9 @@ There are two ways to configure the SQL Server host in the Azure portal:
 #### Set the license type property
 
 Choose one of the license types. For descriptions, see [License types](manage-license-billing.md#license-types).
+
+> [!NOTE]
+> On Linux, certain configuration features aren't available, including passive instance detection and connected user verification. When you configure PAYG billing on Linux, all instances are billed as active regardless of their HA/DR role. For details, see [Manage licensing and billing](manage-license-billing.md).
 
 <a id="use-physical-core-license"></a>
 

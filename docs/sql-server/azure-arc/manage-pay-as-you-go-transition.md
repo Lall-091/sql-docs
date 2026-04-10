@@ -4,7 +4,7 @@ description: How to transition SQL Server from the legacy licensing model to Azu
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, maghan
-ms.date: 01/28/2026
+ms.date: 04/01/2026
 ai-usage: ai-assisted
 ms.topic: how-to
 ---
@@ -71,6 +71,17 @@ Azure Arc-connected servers must check in with Azure at least once every 30 days
 ## Customer consent
 
 You or your cloud solutions provider must explicitly provide consent before you enabled pay-as-you-go billing. For details, review [Recurring billing consent](#recurring-billing-consent).
+
+## Linux-specific considerations
+
+When transitioning SQL Server on Linux to pay-as-you-go, be aware of the following limitations compared to Windows:
+
+- **Passive instance detection**: Automatic detection of passive replicas in availability groups or failover cluster instances isn't available on Linux. All instances are billed as active.
+- **Core detection**: Core count is reported based on the operating system environment. Database Engine-level core verification isn't available.
+- **Connected user detection**: Verification of active user connections on readable secondary replicas isn't available.
+- **Agent health monitoring**: Ensure the Azure Connected Machine agent stays healthy and connected. The 30-day reconnection window and recurring billing behavior work the same as on Windows.
+
+These limitations don't block the transition to PAYG on Linux. However, plan for the billing differences described in [Manage licensing and billing](manage-license-billing.md).
 
 ### Reconnection within 30 days
 
