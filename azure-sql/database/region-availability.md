@@ -127,37 +127,7 @@ US Gov Texas and US Gov Virginia support **Hyperscale premium-series** up to 128
 
 ### Fsv2-series availability
 
-Fsv2-series is available in the following regions:
-
-#### [Americas](#tab/americas)
-
-- Brazil South
-- Canada Central
-- US East
-- US West 2
-
-#### [Asia Pacific](#tab/asia)
-
-- East Asia
-- Southeast Asia
-- Australia Central
-- Australia Central 2
-- Australia East
-- Australia Southeast
-- Central India
-- Korea Central
-- Korea South
-
-#### [Europe, the Middle East, and Africa](#tab/emea)
-
-- Europe North
-- Europe West 
-- France Central
-- South Africa North
-- UK South
-- UK West
-
----
+Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
 
 ### DC-series availability
 
