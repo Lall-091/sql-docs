@@ -8725,6 +8725,8 @@ items:
         href: tools/sql-database-projects/concepts/schema-comparison.md
       - name: SQLCMD variables
         href: tools/sql-database-projects/concepts/sqlcmd-variables.md
+      - name: Publish profiles
+        href: tools/sql-database-projects/concepts/publish-profiles.md
       - name: System objects
         href: tools/sql-database-projects/concepts/system-objects.md
       - name: Target platform
