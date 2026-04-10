@@ -4,7 +4,7 @@ description: This tutorial walks you through creating Microsoft Entra users with
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/18/2026
+ms.date: 04/10/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: tutorial
@@ -77,6 +77,9 @@ In this tutorial, you learn how to:
    - In the **Microsoft Entra ID** resource, go to **Enterprise applications**. Type in the name of your logical server. The **Object ID** that appears on the resource is the ID of the primary server identity.
 
    :::image type="content" source="media/authentication-aad-service-principals-tutorial/enterprise-applications-object-id.png" alt-text="Screenshot shows where to find the Object ID for an enterprise application.":::
+
+> [!TIP]
+> As an alternative to a system-assigned managed identity, you can use a **user-assigned managed identity**. A user-assigned managed identity can be shared across multiple logical servers, which reduces the number of identities to manage and simplifies role assignments. For more information, see [User-assigned managed identity in Microsoft Entra ID for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md).
 
 ## Add server identity to Directory Readers role
 
