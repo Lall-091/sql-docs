@@ -91,9 +91,9 @@ If you're already familiar with [!INCLUDE [ssnoversion-md](../includes/ssnoversi
 | SQL Server version | Release notes (Linux) | What's new (Linux) | What's new (Windows) |
 | --- | --- | --- | --- |
 | [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] | [Release notes](sql-server-linux-release-notes-2025.md) | [SQL Server on Linux](sql-server-linux-whats-new-2025.md) | [SQL Server on Windows](../sql-server/what-s-new-in-sql-server-2025.md) |
-| [!INCLUDE [sssql22-md](../includes/sssql25-md.md)] | [Release notes](sql-server-linux-release-notes-2022.md) | [SQL Server on Linux](sql-server-linux-whats-new-2022.md) | [SQL Server on Windows](../sql-server/what-s-new-in-sql-server-2022.md) |
-| [!INCLUDE [sssql19-md](../includes/sssql25-md.md)] | [Release notes](sql-server-linux-release-notes-2019.md) | [SQL Server on Linux](sql-server-linux-whats-new-2019.md) | [SQL Server on Windows](../sql-server/what-s-new-in-sql-server-2019.md) |
-| [!INCLUDE [sssql17-md](../includes/sssql25-md.md)] | [Release notes](sql-server-linux-release-notes-2017.md) | [SQL Server on Linux](sql-server-linux-whats-new-2017.md) | [SQL Server on Windows](../sql-server/what-s-new-in-sql-server-2017.md) |
+| [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] | [Release notes](sql-server-linux-release-notes-2022.md) | [SQL Server on Linux](sql-server-linux-whats-new-2022.md) | [SQL Server on Windows](../sql-server/what-s-new-in-sql-server-2022.md) |
+| [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] | [Release notes](sql-server-linux-release-notes-2019.md) | [SQL Server on Linux](sql-server-linux-whats-new-2019.md) | [SQL Server on Windows](../sql-server/what-s-new-in-sql-server-2019.md) |
+| [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] | [Release notes](sql-server-linux-release-notes-2017.md) | [SQL Server on Linux](sql-server-linux-whats-new-2017.md) | [SQL Server on Windows](../sql-server/what-s-new-in-sql-server-2017.md) |
 
 > [!TIP]  
 > For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql-server-linux-faq.yml).

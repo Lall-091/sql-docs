@@ -251,7 +251,7 @@ The process for creating a Pacemaker cluster is different on SLES than it is on 
 
 1. If you configured an IP address for administration, you can test it in a browser. This test also checks the password change for `hacluster`.
 
-   :::image type="content" source="media/sql-server-linux-deploy-pacemaker-cluster/image2.png" alt-text="Screenshot of hacluster.":::
+   :::image type="content" source="media/sql-server-linux-deploy-pacemaker-cluster/image2.png" alt-text="Screenshot of the Pacemaker web UI login page with the hacluster username entered.":::
 
 1. On another SLES server that will act as a node of the cluster, run the following command:
 

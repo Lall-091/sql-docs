@@ -148,11 +148,11 @@ An AG that has a cluster type of External or one that is WSFC can't have its rep
 
 An AG with a cluster type of NONE can have its replicas cross OS boundaries, so there could be both Linux- and Windows-based replicas in the same AG. An example is shown here where the primary replica is Windows-based, while the secondary is on one of the Linux distributions.
 
-:::image type="content" source="media/sql-server-linux-availability-group-overview/image1.png" alt-text="Diagram of Hybrid None.":::
+:::image type="content" source="media/sql-server-linux-availability-group-overview/image1.png" alt-text="Diagram of a cross-platform availability group with cluster type None, showing a Windows Server primary replica replicating to a Linux secondary replica.":::
 
 A distributed AG can also cross OS boundaries. The underlying AGs are bound by the rules for how they're configured, such as one configured with External being Linux-only, but the AG that it's joined to could be configured using a WSFC. Consider the following example:
 
-:::image type="content" source="media/sql-server-linux-availability-group-overview/image2.png" alt-text="Diagram of Hybrid Dist AG.":::
+:::image type="content" source="media/sql-server-linux-availability-group-overview/image2.png" alt-text="Diagram of a distributed availability group spanning a Windows Server Failover Cluster and a Pacemaker cluster.":::
 
 ## Related content
 

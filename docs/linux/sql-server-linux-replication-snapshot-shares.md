@@ -18,7 +18,7 @@ monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15"
 
 The snapshot folder is a directory that you have designated as a share; agents that read from and write to this folder must have enough permissions to access it.
 
-:::image type="content" source="media/sql-server-linux-replication-snapshot-shares/snapshot-share-replication.png" alt-text="Diagram showing replication and the snapshot share." lightbox="media/sql-server-linux-replication-snapshot-shares/snapshot-share-replication.png":::
+:::image type="content" source="media/sql-server-linux-replication-snapshot-shares/snapshot-share-replication.png" alt-text="Diagram of SQL Server replication using a Samba share between a publisher and subscriber." lightbox="media/sql-server-linux-replication-snapshot-shares/snapshot-share-replication.png":::
 
 ### Replication snapshot folder share explained
 
