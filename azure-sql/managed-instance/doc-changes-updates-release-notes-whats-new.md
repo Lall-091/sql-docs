@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, randolphwest
-ms.date: 03/27/2026
+ms.date: 04/13/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -43,7 +43,7 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 |[SDK-style SQL project](/sql/tools/sql-database-projects/sql-database-projects) | Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Visual Studio Code. SDK-style SQL projects are especially advantageous for applications shipped through pipelines or built in cross-platform environments.|
 |[Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) | Support for cross-instance message exchange using Service Broker between instances of Azure SQL Managed Instance, and between SQL Server and Azure SQL Managed Instance. |
 |[Vector data type and functions](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) | Working with vector data is now easier in Azure SQL Managed Instance with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true). For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
-
+| [Query Store for readable secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas) | Query Store for readable secondary replicas enables Query Store insights for workloads that run on secondary replicas. When enabled, secondary replicas stream query execution information (such as runtime and wait statistics) to the primary replica, where the data is persisted in Query Store and made visible across all replicas. |
 
 ## General availability (GA)
 
@@ -87,6 +87,12 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | **Free offer supportability** | The free SQL Managed Instance offer is now available in all regions, and for all subscription types, that support the paid Azure SQL Managed Instance offer. For more information about the free offer, see [Free SQL Managed Instance](free-offer.md#supportability). |
 |**Migrate multiple DBs through Azure Arc** | You can now migrate multiple databases simultaneously from a SQL Server instance enabled with Azure Arc to Azure SQL Managed Instance by using the Managed Instance link. For more information, see [Migrate SQL Server database to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migration-sql-mi-prepare-link). |
 | **SQL Server 2025 update policy GA** | Align your SQL managed instance database format with the SQL Server 2025 Database Engine. This update policy is now generally available. For more information, review [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy). |
+
+### February 2026
+
+| Changes | Details |
+| --- | --- |
+| **Query Store for readable secondary replicas preview** | Query Store for readable secondary replicas enables Query Store insights for workloads that run on secondary replicas. When enabled, secondary replicas stream query execution information (such as runtime and wait statistics) to the primary replica, where the data is persisted in Query Store and made visible across all replicas. This feature is in preview for Azure SQL Managed Instance configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy), and is enabled by default. For more information, see [Query Store for readable secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas). |
 
 ### December 2025
 
