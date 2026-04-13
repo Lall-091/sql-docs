@@ -66,6 +66,10 @@ For minimum permissions, see [Custom permissions](/azure/azure-sql/managed-insta
 > [!NOTE]  
 > Users with the `SqlServerAvailabilityGroups_CreateManagedInstanceLink`, `SqlServerAvailabilityGroups_failoverMiLink`, and `SqlServerAvailabilityGroups_deleteMiLink` permissions in Azure can perform actions on the **Database migration** pane during the migration process that elevate the SQL Server permissions of the account used by the extension, including the `sysadmin` role.
 
+## Match performance capacity between replicas
+
+When you use the link feature, it's important to match the performance capacity between SQL Server and SQL Managed Instance. This matching helps you avoid performance problems if the secondary replica can't keep up with replication from the primary replica, or after failover. Performance capacity includes CPU cores (or vCores in Azure), memory, and I/O throughput.  
+
 ## Prepare your SQL Server instance
 
 To prepare your SQL Server instance, complete the following steps:

@@ -137,6 +137,9 @@ After you assess your SQL Server instance, select a SQL Managed Instance target.
 
 After your target is ready, start the migration process.
 
+> [!NOTE]
+> If newly added databases aren't visible in the Azure portal, you might need to [restart the Arc agent](migrate-to-azure-sql-managed-instance-troubleshoot.md#new-databases-unavailable-in-the-azure-portal).
+
 #### [MI link migration](#tab/mi-link)
 
 Once you've prepared your environment for [Managed Instance link migration](migration-sql-mi-prepare-link.md), you can migrate your SQL Server databases to Azure SQL Managed Instance.
@@ -167,6 +170,18 @@ Follow these steps to migrate your SQL Server databases to SQL Managed Instance 
 
 > [!NOTE]  
 > When you start the migration process by using the Managed Instance link migration method, the system grants [just-in-time permissions](configure-windows-accounts-agent.md#create-managed-instance-link-migration) for the entire workflow until creating the distributed availability group completes, at which point just-in-time permissions are removed.
+
+### Monitor replication lag before cutover
+
+After you start your migration, you can monitor for replication lag between the primary and secondary replicas. A large discrepancy indicates that the secondary replica is having trouble keeping up with the primary replica, which is typically caused by slow network throughput in the link between the two instances, mismatched resource allocation between the two replicas, or by an excessively high workload on the primary replica.
+
+Monitoring replication lag is especially important when cutting over to the target SQL Managed Instance. Cutting over performs a planned failover which requires the secondary replica to be fully synchronized with the primary replica before the failover execute. If replication lag is high, the failover might take longer to complete, and in some cases, it might even fail.
+
+On the **Database migration** pane, select **Monitor migrations** and then check the **Lag** column. Two dashes indicates there is no lag, while a time value indicates the amount of lag.
+
+If replication lag is high, wait for the secondary replica to catch up with the primary replica before cutting over. You might need to perform additional troubleshooting steps if the lag persists, such as pausing workloads on the primary replica, improving link network throughput between the two instances, or increasing resource capacity on the secondary replica. The easiest way to stop workloads on a SQL Server primary replica is to cut application connections to the instance.
+
+You can also use a T-SQL script to monitor replication lag. For more information, see [Monitoring replication lag](/azure/azure-sql/managed-instance/managed-instance-link-best-practices#monitor-replication-lag).
 
 #### [LRS migration](#tab/lrs)
 

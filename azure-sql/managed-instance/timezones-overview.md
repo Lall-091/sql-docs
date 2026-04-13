@@ -34,7 +34,7 @@ A set of supported time zones is inherited from the underlying operating system 
 A list with names of the supported time zones is exposed through the [sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) system view.
 
 > [!NOTE]
-> On October 14, 2024, the Paraguayan government announced a permanent change to the time zone policy. Paraguay now remains on Daylight Saving Time (DST), effectively adopting UTC-3 as its standard time. As a result, clocks did not advance by 60 minutes at 12:00 a.m. on March 23, 2025, as previously scheduled. This change affects the Paraguay Standard time zone. Microsoft has released related [Windows updates in February and March 2025](https://techcommunity.microsoft.com/blog/dstblog/paraguay-2025-time-zone-update-now-available/4386720). SQL managed instances using the affected time zone reflect this change, and align to to the new UTC-3 offset.
+> On October 14, 2024, the Paraguayan government announced a permanent change to the time zone policy. Paraguay now remains on Daylight Saving Time (DST), effectively adopting UTC-3 as its standard time. As a result, clocks did not advance by 60 minutes at 12:00 a.m. on March 23, 2025, as previously scheduled. This change affects the Paraguay Standard time zone. Microsoft has released related [Windows updates in February and March 2025](https://techcommunity.microsoft.com/blog/dstblog/paraguay-2025-time-zone-update-now-available/4386720). SQL managed instances using the affected time zone reflect this change, and align to the new UTC-3 offset.
 
 
 ## Set a time zone
