@@ -82,7 +82,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).
 > To view the features of [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver15&preserve-view=true#syntax).
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver16&preserve-view=true#syntax).
 
@@ -310,7 +310,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 ::: moniker range="=sql-server-linux-2017"
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server on Linux. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of SQL Server on Linux. Use the version selector dropdown list to choose the appropriate version.  
 > To view the features of [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-linux-ver15&preserve-view=true#syntax).
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-linux-ver16&preserve-view=true#syntax).
 
@@ -319,7 +319,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 ::: moniker range="=sql-server-2017"
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).    
 > To view the features of [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver15&preserve-view=true#syntax).
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver16&preserve-view=true#syntax).
 
@@ -610,7 +610,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 ::: moniker range="=sql-server-linux-ver15"
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).    
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-linux-ver16&preserve-view=true#syntax).
 
 ::: moniker-end
@@ -618,7 +618,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 ::: moniker range="=sql-server-ver15"
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).    
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver16&preserve-view=true#syntax).
 
 ::: moniker-end
@@ -1157,7 +1157,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version. This content applies to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions.
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).   This content applies to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions.
 
 <a id="syntax"></a>
 
@@ -1731,7 +1731,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 Supports Managed Identity connections for instances enabled by Azure Arc. For details, review [Connect to Azure Storage with managed identity from PolyBase](../../relational-databases/polybase/managed-identity.md).
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version. This content applies to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).   This content applies to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
 
 <a id="syntax"></a>
 
