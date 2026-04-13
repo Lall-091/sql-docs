@@ -176,9 +176,9 @@ You can also create and manage jobs remotely using SQL Server Management Studio 
 
 1. Specify what subsystem you want to use and what the job step should do.
 
-   :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-4.png" alt-text="Screenshot showing job subsystem." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-4.png":::
+   :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-4.png" alt-text="Screenshot of the New Job dialog box in SSMS, showing the Steps page with the New button highlighted to create a job step." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-4.png":::
 
-   :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-5.png" alt-text="Screenshot showing job step action." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-5.png":::
+   :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-5.png" alt-text="Screenshot of the New Job Step dialog box showing a T-SQL BACKUP DATABASE command for SampleDB with the OK button highlighted." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-5.png":::
 
 1. Create a new job schedule.
 
