@@ -4,7 +4,7 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 03/18/2026
+ms.date: 04/13/2026
 ms.topic: release-notes
 ms.custom:
   - ignite-2025

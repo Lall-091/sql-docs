@@ -5,7 +5,7 @@ description: SQL Server migration in Azure Arc to Azure SQL Managed Instance in 
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 03/18/2026
+ms.date: 04/13/2026
 ms.topic: how-to
 ---
 
@@ -36,7 +36,7 @@ First, you choose an appropriate SQL Managed Instance target and prepare your en
 
 Database migration is available by default for all SQL Server instances enabled by Azure Arc, starting with [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)].
 
-The **Database Migration** pane also has a useful summary of the migration status for your instance, such as the number of total databases, the recommended target, the number of completed migrations, and the number of ongoing migrations: 
+The **Database Migration** pane also has a useful summary of the migration status for your instance, such as the number of total databases, the recommended target, the number of completed migrations, and the number of ongoing migrations:
 
 :::image type="content" source="media/migrate-to-azure-sql-managed-instance/database-migration-summary.png" alt-text="Screenshot of the summary on the Database Migration pane in the Azure portal." lightbox="media/migrate-to-azure-sql-managed-instance/database-migration-summary.png":::
 
@@ -83,7 +83,7 @@ To use SQL Server migration in Azure Arc, you need the following prerequisites:
 - An active Azure subscription. If you don't have one, you can [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
 
-Before you start the migration process, make sure that you've prepared your environment for your [chosen migration method](#integrated-migration-methods): 
+Before you start the migration process, make sure that you've prepared your environment for your [chosen migration method](#integrated-migration-methods):
 - Prepare for [Managed Instance link migration](migration-sql-mi-prepare-link.md).
 - Prepare for [LRS migration](migration-sql-mi-prepare-log-replay-service.md).
 
@@ -139,9 +139,9 @@ After your target is ready, start the migration process.
 
 #### [MI link migration](#tab/mi-link)
 
-Once you've prepared your environment for [Managed Instance link migration](migration-sql-mi-prepare-link.md), you can migrate your SQL Server databases to Azure SQL Managed Instance. 
+Once you've prepared your environment for [Managed Instance link migration](migration-sql-mi-prepare-link.md), you can migrate your SQL Server databases to Azure SQL Managed Instance.
 
-> [!NOTE]
+> [!NOTE]  
 > Creating each link can take up to 10 minutes. Use the [Activity log](migrate-to-azure-sql-managed-instance-troubleshoot.md#view-azure-activity-log-for-migration-issues) to track background changes during the link creation process.
 
 Follow these steps to migrate your SQL Server databases to SQL Managed Instance by using the Managed Instance link:
@@ -218,7 +218,7 @@ Select a database and then use **Cutover** to open the **Cutover** pane and see 
 
 ## Reverse a migration
 
-Reverse migration back to SQL Server from Azure SQL Managed Instance might be supported depending on the [update policy](/azure/azure-sql/managed-instance/update-policy) of your SQL managed instance. For example: 
+Reverse migration back to SQL Server from Azure SQL Managed Instance might be supported depending on the [update policy](/azure/azure-sql/managed-instance/update-policy) of your SQL managed instance. For example:
 - [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy): Databases from instances configured with the **SQL Server 2022** update policy can be restored back to SQL Server 2022 instances.
 - [SQL Server 2025 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2025-update-policy): Databases from instances configured with the **SQL Server 2025** update policy can be restored back to SQL Server 2025 instances.
 - [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy): Databases from instances configured with the **Always-up-to-date** update policy can't be restored back to SQL Server.
@@ -226,7 +226,6 @@ Reverse migration back to SQL Server from Azure SQL Managed Instance might be su
 If your source SQL Server version is earlier than SQL Server 2022, reverse migration isn't possible. When your database is migrated to SQL Managed Instance, it undergoes an internal upgrade to a newer database version that isn't compatible with earlier SQL Server versions. Reverse migration database compatibility is only available when SQL Managed instance is configured with the corresponding update policy.
 
 Reverse migration isn't available through the SQL Server migration in Azure Arc experience. You can manually reverse a migration through other tools such as [native backup and restore](/azure/azure-sql/managed-instance/restore-database-to-sql-server), or [manually configuring a link in SSMS](/azure/azure-sql/managed-instance/managed-instance-link-configure-how-to-ssms).
-
 
 ## Limitations
 

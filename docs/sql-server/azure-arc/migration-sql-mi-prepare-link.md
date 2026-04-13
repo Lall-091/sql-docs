@@ -5,7 +5,7 @@ description: Prepare your SQL Server instance enabled by Azure Arc for migration
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 03/18/2026
+ms.date: 04/13/2026
 ms.topic: how-to
 ---
 
@@ -39,9 +39,9 @@ The following table lists the minimum supported SQL Server versions for the link
 | SQL Server version | Minimum required servicing update |
 | --- | --- |
 | SQL Server 2025 (17.x) | [SQL Server 2025 RTM (17.0.1000.7)](../sql-server-2025-release-notes.md) |
-| SQL Server 2022 (16.x) | [SQL Server 2022 RTM (16.0.1000.6)](../sql-server-2022-release-notes.md) | 
+| SQL Server 2022 (16.x) | [SQL Server 2022 RTM (16.0.1000.6)](../sql-server-2022-release-notes.md) |
 | SQL Server 2019 (15.x) | [SQL Server 2019 CU20 (15.0.4312.2)](https://support.microsoft.com/topic/kb5024276-cumulative-update-20-for-sql-server-2019-4b282be9-b559-46ac-9b6a-badbd44785d2) |
-| SQL Server 2017 (14.x) | [SQL Server 2017 CU31 (14.0.3456.2)](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate31) or later and the matching [SQL Server 2017 Azure Connect pack (14.0.3490.10)](/troubleshoot/sql/releases/sqlserver-2017/azureconnect) build | 
+| SQL Server 2017 (14.x) | [SQL Server 2017 CU31 (14.0.3456.2)](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate31) or later and the matching [SQL Server 2017 Azure Connect pack (14.0.3490.10)](/troubleshoot/sql/releases/sqlserver-2017/azureconnect) build |
 | SQL Server 2016 (13.x) | [SQL Server 2016 SP3 (13.0.6300.2)](/troubleshoot/sql/releases/sqlserver-2016/build-versions#sql-server-2016-service-pack-3-sp3-cumulative-update-cu-builds) and the matching [SQL Server 2016 Azure Connect pack (13.0.7000.253)](/troubleshoot/sql/releases/sqlserver-2016/build-versions#sql-server-2016-service-pack-3-sp3-azure-connect-pack-builds) build |
 | SQL Server 2014 (12.x) and earlier | Versions before SQL Server 2016 aren't supported. |
 
@@ -54,7 +54,7 @@ This section describes the permissions that you need to migrate your SQL Server 
 On the source SQL Server instance, you need the following permissions:
 
 - If you enable [least privilege](configure-least-privilege.md), necessary permissions such as **sysadmin** are [granted](configure-windows-accounts-agent.md#database-migration) as needed during the database migration process.
-- If you can't use least privilege, the person performing the migration needs **sysadmin** permissions on the source SQL Server instance. Additionally, if you need to cancel a migration, also manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account. 
+- If you can't use least privilege, the person performing the migration needs **sysadmin** permissions on the source SQL Server instance. Additionally, if you need to cancel a migration, also manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account.
 
 To migrate with the Managed Instance link, you need one of the following permissions on the SQL Managed Instance target:
 
@@ -186,7 +186,7 @@ For more information, see the [syntax to enable trace flags](../../t-sql/databas
 
 ### Restart SQL Server and validate the configuration
 
-If you did not need to upgrade the version of SQL Server, enable the availability group feature, or add startup trace flags, you can skip this section.
+If you didn't need to upgrade the version of SQL Server, enable the availability group feature, or add startup trace flags, you can skip this section.
 
 After you ensure that you're on a supported version of SQL Server, enable the Always On availability groups feature, and add your startup trace flags, restart your SQL Server instance to apply all of these changes:
 
@@ -385,11 +385,11 @@ Consider the following points:
 
 ## Limitations
 
-Consider the following limitations: 
+Consider the following limitations:
 - The limitations of the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview#limitations) apply to migrations through the Azure portal.
-- Azure Extension for SQL Server version `1.1.3238.349` and earlier only supports migrating one database at a time through the link. To migrate multiple databases at the same time, upgrade to Azure Extension for SQL Server version `1.1.3348.364` or later. 
-- Cancelling a migration requires **sysadmin** permissions on the source SQL Server instance. If your SQL Server instance isn't using least privilege, manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account. 
-- Configuring a link through the Azure portal for the purpose of migration isn't compatible with links created manually, either through SQL Server Management Studio (SSMS), or Transact-SQL (T-SQL). Review the [known issue](migrate-to-azure-sql-managed-instance-troubleshoot.md#known-interoperability-issue-with-existing-links) to learn more. 
+- Azure Extension for SQL Server version `1.1.3238.349` and earlier only supports migrating one database at a time through the link. To migrate multiple databases at the same time, upgrade to Azure Extension for SQL Server version `1.1.3348.364` or later.
+- Canceling a migration requires **sysadmin** permissions on the source SQL Server instance. If your SQL Server instance isn't using least privilege, manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account.
+- Configuring a link through the Azure portal for the purpose of migration isn't compatible with links created manually, either through SQL Server Management Studio (SSMS), or Transact-SQL (T-SQL). Review the [known issue](migrate-to-azure-sql-managed-instance-troubleshoot.md#known-interoperability-issue-with-existing-links) to learn more.
 - Monitoring the migration through the Azure portal is available only to SQL Server instances that meet monitoring [licensing requirements](sql-monitoring.md#prerequisites).
 
 ## Troubleshoot common issues
@@ -399,8 +399,8 @@ To troubleshoot common issues when migrating to Azure SQL Managed Instance, see 
 ## Related content
 
 - [Managed Instance link best practices](/azure/azure-sql/managed-instance/managed-instance-link-best-practices)
-- [SQL Server migration in Azure Arc](migration-overview.md)
-- [Prepare environment for an LRS migration](migration-sql-mi-prepare-log-replay-service.md)
-- [SQL Server enabled by Azure Arc overview](overview.md)    
+- [SQL Server migration in Azure Arc Overview](migration-overview.md)
+- [Prepare environment for LRS migration - SQL Server migration in Azure Arc](migration-sql-mi-prepare-log-replay-service.md)
+- [SQL Server enabled by Azure Arc](overview.md)
 - [Migration experience feedback directly to the product group](https://aka.ms/arc-migrations-feedback)
 - [Migration to Azure SQL Managed Instance - SQL Server migration in Azure Arc](migrate-to-azure-sql-managed-instance.md)
