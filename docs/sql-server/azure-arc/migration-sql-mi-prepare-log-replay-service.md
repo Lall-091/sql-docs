@@ -47,6 +47,9 @@ The following table lists the minimum supported SQL Server versions for LRS:
 
 Reverse migration is only supported to SQL Server 2025 and SQL Server 2022 from SQL managed instances with the corresponding [update policy](/azure/azure-sql/managed-instance/update-policy). You can manually reverse a migration through other tools such as [native backup and restore](/azure/azure-sql/managed-instance/restore-database-to-sql-server), or [manually configuring a link in SSMS](/azure/azure-sql/managed-instance/managed-instance-link-configure-how-to-ssms).
 
+> [!NOTE]
+> For unsupported SQL Server instances such as earlier than SQL Server 2012, or on Linux, consider using [Log Replay Service](/azure/azure-sql/managed-instance/log-replay-service-overview) directly to migrate to Azure SQL Managed Instance.
+
 ## Permissions
 
 This section describes the permissions that you need to migrate your SQL Server instance to SQL Managed Instance through the Azure portal.
@@ -170,6 +173,7 @@ When your blob container is ready and you've confirmed that your SQL managed ins
 To upload your backups to Azure:
 - [Take backups on a SQL Server instance](#take-backups-on-a-sql-server-instance).
 - [Copy your backups to your Blob Storage account](#copy-backups-to-your-blob-storage-account).
+- Alternatively, [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Windows Server introduces managed identity support for [backups directly to URL](backup-to-url.md). To [backup directly to URL for SQL Server 2022 and earlier](../../relational-databases/backup-restore/sql-server-backup-to-url.md), you must use a SAS token. To use a managed identity with SQL Server 2022 and earlier, copy your backups to your Blob Storage account by using [AzCopy](/azure/storage/common/storage-use-azcopy-authorize-managed-identity). The only exception is if you're migrating from SQL Server on Azure VMs, which supports backup directly to URL with managed identity authentication starting with [SQL Server 2022 CU 17](/azure/azure-sql/virtual-machines/windows/backup-restore-to-url-using-managed-identities).
 
 Consider the following best practices:
 - Take backups with `COMPRESSION` and `CHECKSUM` options to reduce the size of backup files and to prevent migrating a corrupt database.

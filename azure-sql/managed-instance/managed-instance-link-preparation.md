@@ -29,7 +29,7 @@ To create a link between SQL Server and Azure SQL Managed Instance, you need the
 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites) with the required service update.
-- Azure SQL Managed Instance. [Get started](instance-create-quickstart.md) if you don't have one.
+- Azure SQL Managed Instance with an appropriate [update policy](update-policy.md). [Get started](instance-create-quickstart.md) if you don't have one.
 - A server that you intend to be the initial primary. This choice determines where you should create the link from.
   - Configuring a link *from* a SQL Managed Instance primary to a SQL Server 2025 secondary is only supported with SQL managed instances configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy).
   - Configuring a link *from* a SQL Managed Instance primary to a SQL Server 2022 secondary is only supported starting with [SQL Server 2022 CU10](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate10) and with SQL managed instances configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy).
@@ -54,6 +54,10 @@ For Azure SQL Managed Instance, you should be a member of the [SQL Managed Insta
 | Microsoft.Sql/managedInstances/hybridLink | /read, /write, /delete |
 | Microsoft.Sql/managedInstances/serverTrustCertificates | /write, /delete, /read |
 
+## Match performance capacity between replicas
+
+When you use the link feature, it's important to match the performance capacity between SQL Server and SQL Managed Instance. This matching helps you avoid performance problems if the secondary replica can't keep up with replication from the primary replica, or after failover. Performance capacity includes CPU cores (or vCores in Azure), memory, and I/O throughput.
+
 ## Prepare your SQL Server instance
 
 To prepare your SQL Server instance, you need to validate that:
@@ -62,6 +66,7 @@ To prepare your SQL Server instance, you need to validate that:
 - You've [created a database master key](#create-a-database-master-key-in-the-master-database) in the `master` database.
 - You've [enabled the availability groups feature](#enable-availability-groups).
 - You've [added the proper trace flags](#enable-startup-trace-flags) at startup.
+- Your backups use [checksums](#use-backups-with-checksums).
 - You've enabled [accelerated database recovery](#enable-accelerated-database-recovery) if you're on SQL Server 2019 or later, and plan to use it on the target SQL managed instance.
 - You've enabled [Service Broker](#enable-service-broker) if you plan to use it on the target SQL managed instance.
 
@@ -173,6 +178,10 @@ To enable these trace flags at startup, use the following steps:
 1. Select **OK** to close the **Properties** window.
 
 For more information, see the [syntax to enable trace flags](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql).
+
+### Use backups with checksums
+
+When you create a link, the initial seeding between the primary and secondary replicas is done by taking a full backup of the database on the primary replica, transferring it to the secondary replica, and restoring it there. When you take the full backup, we recommend that you use the `WITH CHECKSUM` option to ensure that the backup is valid and doesn't have any corruption. For more information, see [BACKUP (Transact-SQL)](/sql/t-sql/statements/backup-transact-sql).
 
 ### Restart SQL Server and validate the configuration
 
