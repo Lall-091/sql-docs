@@ -18,9 +18,11 @@ The SQL Database Engine is the common underlying engine behind all Microsoft SQL
 
 For millions of customers worldwide, in every industry and level of organization, the Microsoft SQL Database Engine is the database service for secure data processing and storage. Demanding applications can reliably read and modify information while preserving integrity at scale. The SQL Database Engine runs as a service that accepts client connections and then executes the requested operations against databases. Secured with enterprise-class data access and encryption features, and with built-in high availability and database recovery features, the SQL Database Engine is a complete database platform.
 
-## Multimodal database engine
+<a id="multimodal-database-engine"></a>
 
-The SQL Database Engine is a multimodal database engine with purpose-built storage formats, purpose-built index structures, and a single query optimizer that makes cost-based decisions across all data models.
+## Multi-model database engine
+
+The SQL Database Engine is a multi-model database engine with purpose-built storage formats, purpose-built index structures, and a single query optimizer that makes cost-based decisions across all data models.
 
 Products that use the SQL Database Engine can be the enterprise-class online transactional processing (OLTP), online analytical processing (OLAP), or non-relational solution for your modern applications. Relational, normalized data might be common for databases, but the SQL Database Engine supports many data models and data formats. 
 
