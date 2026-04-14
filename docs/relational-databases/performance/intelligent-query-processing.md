@@ -4,7 +4,7 @@ description: Intelligent query processing features to improve query performance 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, randolphwest
-ms.date: 01/07/2026
+ms.date: 04/10/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
@@ -89,9 +89,10 @@ The following table details all intelligent query processing features, along wit
 | [Memory grant feedback (Row Mode)](intelligent-query-processing-memory-grant-feedback.md#row-mode-memory-grant-feedback) | Yes, starting with database compatibility level 150 | If a row mode query has operations that spill to disk, add more memory for consecutive executions. If a query wastes > 50% of the memory allocated to it, reduce the memory grant size for consecutive executions. |
 | [Memory grant feedback (Percentile)](intelligent-query-processing-memory-grant-feedback.md#percentile-and-persistence-mode-memory-grant-feedback) | Yes, starting with database compatibility level 160 | Addresses existing limitations of memory grant feedback in a non-intrusive way by incorporating past query execution to refine feedback. |
 | [Memory Grant, CE, and DOP feedback persistence](intelligent-query-processing-memory-grant-feedback.md#percentile-and-persistence-mode-memory-grant-feedback) | Yes, starting with database compatibility level 160 | Provides new functionality to persist memory grant feedback. CE and DOP feedback is always persisted. Requires Query Store to be enabled for the database and in `READ_WRITE` mode. |
+| [Optional parameter plan optimization (OPPO)](optional-parameter-optimization.md) | Yes, starting with database compatibility level 170 in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy). No, for the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy). | Leverages the adaptive plan optimization (Multiplan) infrastructure that was introduced with the Parameter Sensitive Plan Optimization (PSPO) improvement, which generates multiple plans from a single statement. The feature can choose a more optimal plan at runtime based on whether a parameter is `NULL OR NOT NULL`, which improves performance for queries that could otherwise default to suboptimal performance for such query patterns. |
 | [Optimized plan forcing with Query Store](optimized-plan-forcing-query-store.md) | No <!--Yes, starting with database compatibility level 160--> | Reduces compilation overhead for repeating forced queries. For more information, see [Optimized plan forcing with Query Store](optimized-plan-forcing-query-store.md). |
-| [Scalar UDF Inlining](intelligent-query-processing-details.md#scalar-udf-inlining) | Yes, starting with database compatibility level 150 | Scalar UDFs are transformed into equivalent relational expressions that are "inlined" into the calling query, often resulting in significant performance gains. |
 | [Parameter Sensitive Plan optimization](parameter-sensitive-plan-optimization.md) | Yes, starting with database compatibility level 160 | Parameter Sensitivity Plan Optimization addresses the scenario where a single cached plan for a parameterized query isn't optimal for all possible incoming parameter values, for example non-uniform data distributions. |
+| [Scalar UDF Inlining](intelligent-query-processing-details.md#scalar-udf-inlining) | Yes, starting with database compatibility level 150 | Scalar UDFs are transformed into equivalent relational expressions that are "inlined" into the calling query, often resulting in significant performance gains. |
 | [Table Variable Deferred Compilation](intelligent-query-processing-details.md#table-variable-deferred-compilation) | Yes, starting with database compatibility level 150 | Uses the actual cardinality of the table variable encountered on first compilation instead of a fixed guess. |
 
 <a id="sql2019"></a>
