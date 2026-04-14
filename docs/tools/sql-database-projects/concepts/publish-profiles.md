@@ -132,9 +132,7 @@ In Visual Studio Code with the SQL Database Projects extension, publish profiles
 
 ::: zone pivot="sq1-sql-server-management-studio"
 
-In SQL Server Management Studio (SSMS), create and load publish profiles from the **Publish** dialog. When you configure deployment settings and select **Save Profile As**, the settings are saved to a `.publish.xml` file. You can load a previously saved profile by selecting **Load Profile** in the **Publish** dialog. Publish profiles are stored as items in the SQL project and appear in **Solution Explorer**.
-
-Add new publish profiles to the project with the **Add New Item** dialog, and selecting the **Publish Profile** item template. Add existing publish profile files to the project using **Add > Existing Item**.
+Publish profiles aren't currently supported in SQL Server Management Studio (SSMS).
 
 ::: zone-end
 
