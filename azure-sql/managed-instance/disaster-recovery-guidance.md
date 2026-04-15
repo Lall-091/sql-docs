@@ -116,7 +116,7 @@ Make sure your existing alert rule settings are updated to map to the new primar
 
 ### Enable auditing
 
-If you have auditing configured on the primary instance, make it identical on the secondary instance. For more information, see [Azure SQL Auditing for Azure SQL Managed Instance](auditing-configure.md).
+If you have auditing configured on the primary instance, make it identical on the secondary instance. For more information, see [SQL Server Audit in Azure SQL Managed Instance](auditing.md) and [Get started with Azure SQL Managed Instance auditing](auditing-configure.md).
 
 ## Related content
 
