@@ -3,8 +3,8 @@ title: Serverless compute tier
 description: This article describes the new serverless compute tier and compares it with the existing provisioned compute tier for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: moslake, mathoma, dfurman
-ms.date: 2/12/2026
+ms.reviewer: kendalv, moslake, mathoma, dfurman
+ms.date: 04/14/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -18,8 +18,7 @@ ms.custom:
 
 Serverless is a [compute tier](service-tiers-sql-database-vcore.md#compute) for single databases in Azure SQL Database that automatically scales compute based on workload demand and bills for the amount of compute used per second. The serverless compute tier also automatically pauses databases during inactive periods when only storage is billed and automatically resumes databases when activity returns. The serverless compute tier is available in the [General Purpose](service-tiers-sql-database-vcore.md#general-purpose) service tier and the [Hyperscale](service-tier-hyperscale.md) service tier.
 
-> [!NOTE]
-> Auto-pause and auto-resume are currently only supported in the General Purpose service tier.
+Currently, auto-pause and auto-resume are currently only supported in the General Purpose service tier.
 
 ## Overview
 
@@ -202,7 +201,7 @@ Auto-resuming is triggered if any of the following conditions are true at any ti
 |Auto-tuning|Application and verification of auto-tuning recommendations such as auto-indexing|
 |Database copying|Create database as copy.<br>Export to a BACPAC file.|
 |SQL data sync|Synchronization between hub and member databases that run on a configurable schedule or are performed manually|
-|Modifying certain database metadata|Adding new database tags.<br>Changing maximum vCores, minimum vCores, or auto-pause delay.|
+|Modifying certain database metadata|Adding or modify Azure tags on the database.<br>Changing maximum vCores, minimum vCores, or auto-pause delay.|
 |SQL Server Management Studio (SSMS)|When using SSMS versions earlier than 18.1 and opening a new query window for any database in the server, any auto-paused database in the same server is resumed. This behavior does not occur if using SSMS version 18.1 or later.|
 
 Monitoring, management, or other solutions performing any of these operations trigger auto-resuming. Auto-resuming is also triggered during the deployment of some service updates that require the database be online.
