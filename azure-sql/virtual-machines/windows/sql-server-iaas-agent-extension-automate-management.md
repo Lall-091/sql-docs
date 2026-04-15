@@ -212,6 +212,7 @@ The SQL IaaS Agent extension only supports:
 - VMs with a default instance, or a single named instance when no default instance is present.
 - If the VM has multiple named instances, then one of the instances must be the default instance to work with the SQL IaaS Agent extension.
 - SQL Server instance images only. The SQL IaaS Agent extension doesn't support Reporting Services or Analysis services, such as the following images: SQL Server Reporting Services, Power BI Report Server, SQL Server Analysis Services.
+- On SQL Server instances using binary collations (BIN/BIN2), databases and availability groups with trailing whitespace in their names aren't managed by the extension. Rename or drop the affected objects to include them. On non-binary collations, trailing whitespace is automatically trimmed.
 
 <a id="in-region-data-residency"></a>
 

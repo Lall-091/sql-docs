@@ -233,6 +233,14 @@ If you see this, [remove and reinstall the extension](sql-agent-extension-manual
 
 This is expected. At this time, SQL Server failover cluster instances on Azure virtual machines registered with the SQL IaaS Agent extension only support a [limited number](failover-cluster-instance-overview.md#limitations) of features available through basic registration.
 
+## Databases or availability groups with trailing spaces in names
+
+The SQL IaaS Agent extension handles database and availability group (AG) names that contain trailing whitespace based on the server collation:
+
+- **Non-binary collations** *(default)*: Trailing whitespace is automatically trimmed. The trimmed name is functionally equivalent under SQL Server's pad-space comparison semantics, so all extension operations continue normally.
+- **Binary collations** (`BIN`/`BIN2`): Databases and AGs with trailing whitespace in their names are excluded from extension management. A warning is logged, identifying each skipped object and the number of trailing whitespace characters. To include these objects, rename, or drop and recreate them without trailing spaces at the SQL Server level.
+- This behavior applies to all extension features including backup, patching, inventory upload, and migration assessment.
+
 ## Related content
 
 - [Automate management with the Windows SQL Server IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md)
