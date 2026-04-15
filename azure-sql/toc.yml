@@ -1126,7 +1126,9 @@
         href: managed-instance/secure-managed-instance.md
       - name: Always Encrypted
         href: database/always-encrypted-landing.yml
-      - name: Auditing
+      - name: SQL Server Audit in Azure SQL Managed Instance
+        href: managed-instance/auditing.md
+      - name: How to configure SQL Server Audit in Azure SQL Managed Instance
         href: managed-instance/auditing-configure.md
       - name: Native Windows principals
         href: managed-instance/native-windows-principals.md

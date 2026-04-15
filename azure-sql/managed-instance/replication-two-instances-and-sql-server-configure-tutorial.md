@@ -556,7 +556,7 @@ While it's possible that this error message is accurate, and there really aren't
 ## Related content
 
 - [What is Azure SQL Managed Instance?](sql-managed-instance-paas-overview.md#advanced-security-and-compliance)
-- [Get started with Azure SQL Managed Instance auditing](auditing-configure.md)
+- [SQL Server Audit in Azure SQL Managed Instance](auditing.md)
 - [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Configure Advanced Threat Protection in Azure SQL Managed Instance](threat-detection-configure.md)
 - [Dynamic data masking](/sql/relational-databases/security/dynamic-data-masking)
