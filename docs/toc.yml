@@ -9542,14 +9542,20 @@ items:
         href: sql-server/azure-arc/migration-assessment.md
       - name: Migrate to Azure SQL Managed Instance
         items: 
-        - name: Overview
-          href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance.md
         - name: Prepare MI link migration 
           href: sql-server/azure-arc/migration-sql-mi-prepare-link.md
         - name: Prepare LRS migration 
           href: sql-server/azure-arc/migration-sql-mi-prepare-log-replay-service.md
+        - name: Migrate to SQL managed instance
+          href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance.md
         - name: Troubleshoot common issues 
           href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance-troubleshoot.md
+      - name: Migrate to SQL Server on Azure VMs
+        items: 
+        - name: Prepare for migration 
+          href: sql-server/azure-arc/migration-sql-vm-prepare.md
+        - name: Migrate to SQL Server VM
+          href: sql-server/azure-arc/migrate-to-sql-server-on-azure-vms.md
     - name: SQL Server enabled by Azure Arc FAQ
       href: sql-server/azure-arc/faq.yml
     - name: Data collection & reporting
