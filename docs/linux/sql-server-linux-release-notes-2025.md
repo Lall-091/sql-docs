@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, atsingh
-ms.date: 04/14/2026
+ms.date: 04/16/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -55,17 +55,17 @@ This section lists the latest versions of each package per distribution, for [!I
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
 | **Red Hat Enterprise Linux** | | | |
-| RHEL 10 | Database Engine | 17.0.4030.1-10 | [Database Engine RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-17.0.4030.1-10.x86_64.rpm) |
-| RHEL 10 | Extensibility | 17.0.4030.1-10 | [Extensibility RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-extensibility-17.0.4030.1-10.x86_64.rpm) |
-| RHEL 10 | Full-Text Search | 17.0.4030.1-10 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-fts-17.0.4030.1-10.x86_64.rpm) |
-| RHEL 10 | High Availability | 17.0.4030.1-10 | [High Availability RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-ha-17.0.4030.1-10.x86_64.rpm) |
-| RHEL 10 | PolyBase | 17.0.4030.1-10 | [PolyBase RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-polybase-17.0.4030.1-10.x86_64.rpm) |
+| RHEL 10 | Database Engine | 17.0.4035.5-1 | [Database Engine RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-17.0.4035.5-1.x86_64.rpm) |
+| RHEL 10 | Extensibility | 17.0.4035.5-1 | [Extensibility RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-extensibility-17.0.4035.5-1.x86_64.rpm) |
+| RHEL 10 | Full-Text Search | 17.0.4035.5-1 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-fts-17.0.4035.5-1.x86_64.rpm) |
+| RHEL 10 | High Availability | 17.0.4035.5-1 | [High Availability RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-ha-17.0.4035.5-1.x86_64.rpm) |
+| RHEL 10 | PolyBase | 17.0.4035.5-1 | [PolyBase RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-polybase-17.0.4035.5-1.x86_64.rpm) |
 | **Ubuntu** | | | |
-| Ubuntu 24.04 | Database Engine | 17.0.4030.1-10 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server/mssql-server_17.0.4030.1-10_amd64.deb) |
-| Ubuntu 24.04 | Extensibility | 17.0.4030.1-10 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_17.0.4030.1-10_amd64.deb) |
-| Ubuntu 24.04 | Full-Text Search | 17.0.4030.1-10 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-fts/mssql-server-fts_17.0.4030.1-10_amd64.deb) |
-| Ubuntu 24.04 | High Availability | 17.0.4030.1-10 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-ha/mssql-server-ha_17.0.4030.1-10_amd64.deb) |
-| Ubuntu 24.04 | PolyBase | 17.0.4030.1-10 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-polybase/mssql-server-polybase_17.0.4030.1-10_amd64.deb) |
+| Ubuntu 24.04 | Database Engine | 17.0.4035.5-1 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server/mssql-server_17.0.4035.5-1_amd64.deb) |
+| Ubuntu 24.04 | Extensibility | 17.0.4035.5-1 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_17.0.4035.5-1_amd64.deb) |
+| Ubuntu 24.04 | Full-Text Search | 17.0.4035.5-1 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-fts/mssql-server-fts_17.0.4035.5-1_amd64.deb) |
+| Ubuntu 24.04 | High Availability | 17.0.4035.5-1 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-ha/mssql-server-ha_17.0.4035.5-1_amd64.deb) |
+| Ubuntu 24.04 | PolyBase | 17.0.4035.5-1 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-polybase/mssql-server-polybase_17.0.4035.5-1_amd64.deb) |
 
 <a id="cuinstall"></a>
 
