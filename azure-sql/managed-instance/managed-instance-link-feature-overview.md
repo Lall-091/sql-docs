@@ -17,13 +17,13 @@ ms.custom:
 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-This article provides an overview of the Managed Instance link, which enables near real-time data replication between SQL Server and [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md). The link provides hybrid flexibility and database mobility as it unlocks several scenarios, such as scaling read-only workloads, offloading analytics and reporting to Azure, and migrating to Azure. And, with SQL Server 2022, the link enables online disaster recovery with fail back to SQL Server, as well as configuring the link from SQL Managed Instance to SQL Server 2022. 
+This article provides an overview of the Managed Instance link, which enables near real-time data replication between SQL Server and [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md). The link provides hybrid flexibility and database mobility as it unlocks several scenarios, such as scaling read-only workloads, offloading analytics and reporting to Azure, and migrating to Azure. And, with SQL Server 2022 and later, the link enables online disaster recovery with fail back to SQL Server, as well as configuring the link from SQL Managed Instance to SQL Server. 
 
 To get started, review [prepare your environment for the link](managed-instance-link-preparation.md). 
 
 ## Overview
 
-The Managed Instance link uses [distributed availability groups](/sql/database-engine/availability-groups/windows/distributed-availability-groups) to extend your data estate in a safe and secure manner. It replicates data in near real-time from SQL Server hosted anywhere to Azure SQL Managed Instance, or from Azure SQL Managed Instance to SQL Server 2022 hosted anywhere. 
+The Managed Instance link uses [distributed availability groups](/sql/database-engine/availability-groups/windows/distributed-availability-groups) to extend your data estate in a safe and secure manner. It replicates data in near real-time from SQL Server hosted anywhere to Azure SQL Managed Instance, or from Azure SQL Managed Instance to SQL Server 2022 or later hosted anywhere. 
 
 The link supports single node and multiple-node SQL Server instances with or without existing availability groups. Through the link, you can use benefits of Azure without migrating your SQL Server data estate to the cloud. 
 
@@ -149,7 +149,7 @@ Because the link feature enables minimal downtime migration, you can migrate to 
 
 ## Copy data on-premises
 
-With SQL Server 2022, you can establish your link from SQL Managed Instance to SQL Server, unlocking additional scenarios, such as creating a near real-time database replica outside of Azure, testing business continuity plans, and meeting compliance requirements. 
+With SQL Server 2022 and later, you can establish your link from SQL Managed Instance to SQL Server, unlocking additional scenarios, such as creating a near real-time database replica outside of Azure, testing business continuity plans, and meeting compliance requirements. 
 
 ## Automated backups
 
@@ -183,16 +183,16 @@ Version supportability limitations include:
 
 - You can't use Windows 10 and 11 clients to host your SQL Server instance, because it's not possible to enable the Always On availability group feature that's required for the link. You must host SQL Server instances on Windows Server 2012 or later.
 - The link feature doesn't support SQL Server versions 2008 to 2014, because the SQL engine of these releases doesn't have built-in support for distributed availability groups required for the link. Upgrade to a newer version of SQL Server to use the link.
-- Data replication and failover *from* SQL Managed Instance to SQL Server 2022 is not supported by instances configured with the **Always-up-to-date** update policy.  Your instance must be configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy) to do the following: 
-    - Establish a link _from_ SQL Managed Instance _to_ SQL Server. 
-    - Fail over from SQL Managed Instance to SQL Server 2022. 
-- While you can establish a link from SQL Server 2022 to a SQL managed instance configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy), after failover to SQL Managed Instance, you can't replicate data or fail back to SQL Server 2022. 
+- Data replication and failover *from* SQL Managed Instance to SQL Server 2022 or SQL Server 2025 is not supported by instances configured with the **Always-up-to-date** update policy. Your instance must be configured with the corresponding SQL Server 2022 or SQL Server 2025 [update policy](update-policy.md) to do the following: 
+    - Establish a link _from_ SQL Managed Instance _to_ SQL Server.
+    - Fail over from SQL Managed Instance to SQL Server.
+- While you can establish a link from SQL Server 2022 or SQL Server 2025 to a SQL managed instance configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy), after failover to SQL Managed Instance, you can't replicate data, or fail back, to SQL Server.
 
 Data replication limitations include:
 
 - You can replicate only user databases. Replication of system databases isn't supported.
 - The solution doesn't replicate server-level objects, agent jobs, or user logins from SQL Server to SQL Managed Instance.
-- For SQL Server versions 2016, 2017 and 2019, replication of user databases from SQL Server instances to SQL Managed Instance deployments is one way. You can't replicate user databases from SQL Managed Instance deployments back to SQL Server instances via the link. Two-way replication with failback to a SQL Server instance is available only for SQL Server 2022.
+- For SQL Server versions 2016, 2017 and 2019, replication of user databases from SQL Server instances to SQL Managed Instance deployments is one way. You can't replicate user databases from SQL Managed Instance deployments back to SQL Server instances via the link. Two-way replication with failback to a SQL Server instance is available only for SQL Server 2022 or SQL Server 2025 when SQL Managed Instance is configured with the corresponding [update policy](update-policy.md).
 - Configuring a link from SQL Managed Instance to SQL Server is unsupported for SQL Managed Instance databases that are already linked. 
 
 Configuration limitations include: 
