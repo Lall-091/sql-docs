@@ -21,7 +21,8 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest"
 ---
-# EXECUTE AS (Transact-SQL)
+#         EXECUTE AS (Transact-SQL)
+
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
 
   Sets the execution context of a session.  
