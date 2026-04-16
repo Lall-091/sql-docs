@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, atsingh
-ms.date: 04/14/2026
+ms.date: 04/16/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -46,26 +46,26 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Latest versions for all packages
 
-This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)]. The following table shows the most recent release, which is **CU 3 GDR (Apr 2026)**. For full release history, see [Release history for SQL Server 2025 on Linux](/troubleshoot/sql/releases/linux/release-history-2025).
+This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)]. The following table shows the most recent release, which is **CU 4**. For full release history, see [Release history for SQL Server 2025 on Linux](/troubleshoot/sql/releases/linux/release-history-2025).
 
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
-| [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | CU 3 GDR | 2026-04-14 | 17.0.4030.1 | [KB 5083245](https://support.microsoft.com/help/5083245) |
+| [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | CU 4 | 2026-04-16 | 17.0.4035.5 | [Support article](/troubleshoot/sql/releases/sqlserver-2025/cumulativeupdate4) |
 
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
 | **Red Hat Enterprise Linux** | | | |
-| RHEL 10 | Database Engine | 17.0.4030.1-10 | [Database Engine RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-17.0.4030.1-10.x86_64.rpm) |
-| RHEL 10 | Extensibility | 17.0.4030.1-10 | [Extensibility RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-extensibility-17.0.4030.1-10.x86_64.rpm) |
-| RHEL 10 | Full-Text Search | 17.0.4030.1-10 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-fts-17.0.4030.1-10.x86_64.rpm) |
-| RHEL 10 | High Availability | 17.0.4030.1-10 | [High Availability RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-ha-17.0.4030.1-10.x86_64.rpm) |
-| RHEL 10 | PolyBase | 17.0.4030.1-10 | [PolyBase RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-polybase-17.0.4030.1-10.x86_64.rpm) |
+| RHEL 10 | Database Engine | 17.0.4035.5-1 | [Database Engine RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-17.0.4035.5-1.x86_64.rpm) |
+| RHEL 10 | Extensibility | 17.0.4035.5-1 | [Extensibility RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-extensibility-17.0.4035.5-1.x86_64.rpm) |
+| RHEL 10 | Full-Text Search | 17.0.4035.5-1 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-fts-17.0.4035.5-1.x86_64.rpm) |
+| RHEL 10 | High Availability | 17.0.4035.5-1 | [High Availability RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-ha-17.0.4035.5-1.x86_64.rpm) |
+| RHEL 10 | PolyBase | 17.0.4035.5-1 | [PolyBase RPM package](https://packages.microsoft.com/rhel/10/mssql-server-2025/Packages/m/mssql-server-polybase-17.0.4035.5-1.x86_64.rpm) |
 | **Ubuntu** | | | |
-| Ubuntu 24.04 | Database Engine | 17.0.4030.1-10 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server/mssql-server_17.0.4030.1-10_amd64.deb) |
-| Ubuntu 24.04 | Extensibility | 17.0.4030.1-10 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_17.0.4030.1-10_amd64.deb) |
-| Ubuntu 24.04 | Full-Text Search | 17.0.4030.1-10 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-fts/mssql-server-fts_17.0.4030.1-10_amd64.deb) |
-| Ubuntu 24.04 | High Availability | 17.0.4030.1-10 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-ha/mssql-server-ha_17.0.4030.1-10_amd64.deb) |
-| Ubuntu 24.04 | PolyBase | 17.0.4030.1-10 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-polybase/mssql-server-polybase_17.0.4030.1-10_amd64.deb) |
+| Ubuntu 24.04 | Database Engine | 17.0.4035.5-1 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server/mssql-server_17.0.4035.5-1_amd64.deb) |
+| Ubuntu 24.04 | Extensibility | 17.0.4035.5-1 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_17.0.4035.5-1_amd64.deb) |
+| Ubuntu 24.04 | Full-Text Search | 17.0.4035.5-1 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-fts/mssql-server-fts_17.0.4035.5-1_amd64.deb) |
+| Ubuntu 24.04 | High Availability | 17.0.4035.5-1 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-ha/mssql-server-ha_17.0.4035.5-1_amd64.deb) |
+| Ubuntu 24.04 | PolyBase | 17.0.4035.5-1 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-2025/pool/main/m/mssql-server-polybase/mssql-server-polybase_17.0.4035.5-1_amd64.deb) |
 
 <a id="cuinstall"></a>
 
@@ -88,6 +88,7 @@ The following table lists the release history for [!INCLUDE [ssSQL25](../include
 
 | Release | Version | Release date |
 | --- | --- | --- |
+| [CU 4](/troubleshoot/sql/releases/linux/release-history-2025#17-0-4035) | 17.0.4035.5 | 2026-04-16 |
 | [CU 3 GDR (Apr 2026)](/troubleshoot/sql/releases/linux/release-history-2025#17-0-4030) | 17.0.4030.1 | 2026-04-14 |
 | [CU 3](/troubleshoot/sql/releases/linux/release-history-2025#17-0-4025) | 17.0.4025.3 | 2026-03-12 |
 | [CU 2 GDR (Mar 2026)](/troubleshoot/sql/releases/linux/release-history-2025#17-0-4020) | 17.0.4020.2 | 2026-03-10 |
