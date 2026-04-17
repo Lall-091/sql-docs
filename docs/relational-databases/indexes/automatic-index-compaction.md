@@ -4,7 +4,7 @@ description: Describes the automatic index compaction feature in the SQL Server 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: dfurman, randolphwest
-ms.date: 03/19/2026
+ms.date: 04/16/2026
 ms.service: sql
 ms.topic: concept-article
 monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
@@ -76,9 +76,9 @@ While the overhead of the compaction process is minimal, it's not zero. When you
 
 Automatic index compaction is part of the background [persistent version store (PVS)](../accelerated-database-recovery-concepts.md#adr-recovery-components) cleaner process. This process periodically removes obsolete row versions from data pages. If you enable automatic index compaction for the database, the PVS cleaner also compacts indexes.
 
-As the cleaner visits each page with the recently inserted, updated, or deleted rows, it checks the free space on the current page and the used space in several of the following pages. If there's enough free space on the current page, the cleaner moves rows from the following pages to the current page if that action makes at least one of the following pages empty.
+As the cleaner visits each page with recently inserted, updated, or deleted rows, it checks whether the current page has free space available, excluding the free space reserved by the fill factor. If so, the cleaner moves rows from the next page to the current page as long as they fit into the free space. This process then advances forward and repeats for a small number of consecutive page pairs following the page being cleaned.
 
-Empty pages are deallocated. As a result, the total number of used pages in the database decreases, [page density](reorganize-and-rebuild-indexes.md#concepts-index-fragmentation-and-page-density) increases, and the consumption of storage space, disk I/O, CPU, and buffer pool memory is reduced.
+If a page becomes empty after its rows are moved, it is deallocated. As a result, the total number of used pages in the database decreases, [page density](reorganize-and-rebuild-indexes.md#concepts-index-fragmentation-and-page-density) increases, and the consumption of storage space, disk I/O, CPU, and buffer pool memory is reduced.
 
 The following diagram shows a conceptual view of data pages in an index before and after compaction.
 
@@ -92,7 +92,7 @@ The compaction process might skip some pages because of concurrent activity, suc
 - An index build or reorganization in progress.
 - A shrink operation in progress.
 - A large PVS size or a large number of aborted transactions to clean up from PVS.
-  - PVS cleanup is prioritized over automatic compaction. Compaction is suspended if PVS size exceeds 150 GB, or if the number of aborted transactions exceeds 1,000.
+  - PVS cleanup is prioritized over automatic compaction. Compaction is suspended if PVS size is 150 GB or greater, or if the number of aborted transactions is 1,000 or greater.
 
 For less common reasons why the compaction process might skip pages, see [Use an extended event to monitor compaction statistics](#use-an-extended-event-to-monitor-compaction-statistics).
 
@@ -184,7 +184,7 @@ If a query is blocked, check the command of the head blocker in [sys.dm_exec_req
 
 ### Does it honor the fill factor?
 
-Auto compaction never fills a page above the [fill factor](specify-fill-factor-for-an-index.md). However, if a page is already filled above the fill factor by the previous DML statements, then compaction doesn't reduce page density. Pages might remain filled above the fill factor after compaction.
+Auto compaction doesn't use the free page space reserved by [fill factor](specify-fill-factor-for-an-index.md). However, if that reserved space is already used by the previous DML statements, then compaction doesn't free it up.
 
 ### Does it work if an index uses row or page compression?
 

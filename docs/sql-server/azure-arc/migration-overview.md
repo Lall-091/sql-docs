@@ -5,7 +5,7 @@ description: Learn about the capabilities of SQL Server migration in Azure Arc.
 author: ajithkr-ms
 ms.author: ajithkr
 ms.reviewer: mikeray, mathoma
-ms.date: 11/19/2025
+ms.date: 04/16/2026
 ms.topic: how-to
 ---
 
@@ -31,11 +31,11 @@ SQL Server migration in Azure Arc is available by default for all SQL Server ins
 
 ## Migration targets
 
-Currently, you can only migrate to [Migration to Azure SQL Managed Instance - SQL Server migration in Azure Arc](migrate-to-azure-sql-managed-instance.md).
+You can migrate to [Azure SQL Managed Instance](migrate-to-azure-sql-managed-instance.md) or [SQL Server on Azure VMs](migrate-to-sql-server-on-azure-vms.md).
 
 ## Microsoft Copilot assisted migration
 
-On the [database migration](migrate-to-azure-sql-managed-instance.md) pane in the Azure portal, Microsoft Copilot is built into the experience to assist you throughout the migration process. Interactively chatting with Microsoft Copilot searches through the Microsoft knowledgebase to help you along the way as you migrate to Azure.
+On the database migration pane in the Azure portal, Microsoft Copilot is built into the experience to assist you throughout the migration process. Interactively chatting with Microsoft Copilot searches through the Microsoft knowledgebase to help you along the way as you migrate to Azure.
 
 Microsoft Copilot provides AI-powered assistance to help you make decisions or take actions at certain points with prompts such as:
 - How are assessments made?
@@ -45,9 +45,9 @@ Microsoft Copilot provides AI-powered assistance to help you make decisions or t
 - Monitor the migration.
 - Complete the migration.
 
-Select the **Copilot** icon on the **Database migration** pane to open the Copilot chat window:
+Select the **Copilot Start migration** icon on the **Database migration** pane to open the Copilot chat window:
 
-:::image type="content" source="media/migrate-to-azure-sql-managed-instance/copilot-integration.png" alt-text="Screenshot that shows the Copilot icon on the Database migration pane in the Azure portal.":::
+:::image type="content" source="media/migrate-to-azure-sql-managed-instance/copilot-integration.png" alt-text="Screenshot that shows the Copilot Start migration icon on the Database migration pane in the Azure portal.":::
 
 ## Migration dashboard
 
@@ -95,7 +95,7 @@ The assessment is available for any instance of SQL Server enabled by Azure Arc.
 
 ## Database migration
 
-On the **Database migration** pane, you can migrate your SQL Server databases to Azure SQL Managed Instance. The migration process is fully managed and automated from the Azure portal. Once you're ready to start, you can use the tiles to assess your SQL Server databases, choose a migration target, and start the migration process.
+On the **Database migration** pane, you can migrate your SQL Server databases to Azure SQL Managed Instance or SQL Server on Azure VMs. The migration process is fully managed and automated from the Azure portal. Once you're ready to start, you can use the tiles to assess your SQL Server databases, choose a migration target, and start the migration process.
 
 **Database migration** guides you through the migration with easy to follow tiles for each step of the process:
 

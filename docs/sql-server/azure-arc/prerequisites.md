@@ -4,9 +4,11 @@ description: Describes prerequisites required for SQL Server enabled by Azure Ar
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 10/21/2025
+ms.date: 04/16/2026
 ms.topic: checklist
-ms.custom: references_regions
+ms.custom:
+  - references_regions
+ai-usage: ai-assisted
 ---
 
 # Prerequisites - SQL Server enabled by Azure Arc
@@ -15,14 +17,14 @@ ms.custom: references_regions
 
 An Azure Arc-enabled instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] is an instance on-premises or in a cloud provider that is connected to Azure Arc. This article explains those prerequisites.
 
-If your SQL Server virtual machines are running in VMware vSphere–based environments (including environments licensed through VMware vSphere Foundation or VMware Cloud Foundation), review [Support on VMware](#support-on-vmware).
+If your SQL Server virtual machines run in VMware vSphere-based environments (including environments licensed through VMware vSphere Foundation or VMware Cloud Foundation), review [Support on VMware](#support-on-vmware).
 
 ## Before you deploy
 
 Before you can Arc-enable an instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], you need to:
 
-- Have an Azure account with an active subscription. If needed, [create a free Azure Account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- Verify [Arc connected machine agent prerequisites](/azure/azure-arc/servers/prerequisites).  The Arc agent must be running in the typical 'full' mode.
+- Create an Azure account with an active subscription. If needed, [create a free Azure Account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+- Verify [Arc connected machine agent prerequisites](/azure/azure-arc/servers/prerequisites). The Arc agent must run in the typical 'full' mode.
 - Verify [Arc connected machine agent network requirements](/azure/azure-arc/servers/network-requirements).
 - Open firewall to [Azure Arc data processing service](#connect-to-azure-arc-data-processing-service).
 - Register resource providers. Specifically:
@@ -33,21 +35,21 @@ Before you can Arc-enable an instance of [!INCLUDE [ssnoversion-md](../../includ
 
 ### Installation account permissions
 
-The user or service principal requires:
+The user or service principal needs:
 
 - Read permission on the subscription
 - Local administrator permission on the operating system to install and configure the agent
   - For Linux, use the root account
-  - For Windows, use an account that is a member of the Local Administrators group
+  - For Windows, use an account that's a member of the Local Administrators group
 
 Before enabling SQL Servers with Arc, the installation script checks:
-  
+
 - The region where the Arc-enabled SQL Server is supported
 - `Microsoft.AzureArcData` resource provider is registered
-  
+
 These checks require read permission on the subscription for the user.
 
-The user or service principal requires the following permissions in the Azure resource group to complete the task. Specifically:
+To complete the task, the user or service principal needs the following permissions in the Azure resource group:
 
 - [`Azure Connected Machine Onboarding`](/azure/role-based-access-control/built-in-roles#azure-connected-machine-onboarding) role
 - `Microsoft.AzureArcData/register/action`
@@ -55,7 +57,7 @@ The user or service principal requires the following permissions in the Azure re
 - `Microsoft.HybridCompute/machines/extensions/write`
 - `Microsoft.Resources/deployments/validate/action`
 
-Users can be assigned to built-in roles that have these permissions, for example:
+Assign users to built-in roles that have these permissions, such as:
 
 - [Contributor](/azure/role-based-access-control/built-in-roles#contributor)
 - [Owner](/azure/role-based-access-control/built-in-roles#owner)
@@ -64,26 +66,23 @@ For more information, see [Assign Azure roles using the Azure portal](/azure/rol
 
 ### Verify state of user databases
 
-When a SQL Server instance is enabled by Azure Arc, the connection sets some database permissions so that you can manage databases from Azure. For details about the permissions set at a database level, review [SQL permissions](configure-windows-accounts-agent.md#sql-permissions).
+When a SQL Server instance is enabled by Azure Arc, the connection sets some database permissions so that you can manage databases from Azure. For details about the permissions set at a database level, see [SQL permissions](configure-windows-accounts-agent.md#sql-permissions).
 
-Only databases that are online and updateable are included.
+Only databases that are online and updatable are included.
 
 Verify the state of any databases you plan to manage from Azure.
 
-This query lists all databases, their status, and if they're updateable:
+This query lists all databases, their status, and if they're updatable:
 
 ```sql
-SELECT 
-    name AS DatabaseName,
-    CASE 
-        WHEN state_desc = 'ONLINE' THEN 'Online'
-        WHEN state_desc = 'OFFLINE' THEN 'Offline'
-        ELSE 'Unknown'
-    END AS Status,
-    CASE 
-        WHEN is_read_only = 0 THEN 'READ_WRITE'
-        ELSE 'READ_ONLY'
-    END AS UpdateableStatus
+SELECT name AS DatabaseName,
+       CASE WHEN state_desc = 'ONLINE' THEN 'Online'
+            WHEN state_desc = 'OFFLINE' THEN 'Offline'
+            ELSE 'Unknown'
+       END AS Status,
+       CASE WHEN is_read_only = 0 THEN 'READ_WRITE'
+            ELSE 'READ_ONLY'
+       END AS UpdateableStatus
 FROM sys.databases;
 ```
 
@@ -91,34 +90,60 @@ Run that query on any instance that you enable.
 
 ### Service account permissions
 
-The SQL Server service account must be a member of the `sysadmin` fixed server role on each SQL Server instance. By default, the SQL Server service account is a member of the `sysadmin` fixed server role. 
+The SQL Server service account must be a member of the **sysadmin** fixed server role on each SQL Server instance. By default, the SQL Server service account is a member of the **sysadmin** fixed server role.
 
-For more information about this requirement, review [SQL Server service account](configure-least-privilege.md#sql-server-service-account).
+For more information about this requirement, see [SQL Server service account](configure-least-privilege.md#sql-server-service-account).
+
+### NT AUTHORITY\SYSTEM login requirements
+
+The Azure extension for SQL Server Deployer runs under the `LocalSystem` (`NT AUTHORITY\SYSTEM`) account to perform permission configuration. As part of this process, the deployer connects to each SQL Server instance using Windows integrated authentication.
+
+By default, `NT AUTHORITY\SYSTEM` has a SQL Server login with `CONNECT SQL` permission. In environments where SQL Server security hardening removes or restricts the `NT AUTHORITY\SYSTEM` login (such as by disabling the login or denying `CONNECT SQL`), the Azure extension for SQL Server fails to provision successfully.
+
+Before running this query in a production environment, review and test it in a non-production or test environment to validate the results. To verify that `NT AUTHORITY\SYSTEM` can connect to SQL Server, run the following query on each instance (review and test in a non-production or test environment before running in production):
+
+```sql
+SELECT sp.name AS login_name,
+       CASE WHEN sp.is_disabled = 1 THEN 'DISABLED' ELSE 'ENABLED' END AS login_status,
+       ISNULL(p.state_desc, 'NONE (implicit)') AS connect_sql_permission
+FROM sys.server_principals AS sp
+     LEFT OUTER JOIN sys.server_permissions AS p
+         ON p.grantee_principal_id = sp.principal_id
+        AND p.permission_name = N'CONNECT SQL'
+        AND p.class_desc = N'SERVER'
+WHERE sp.name = N'NT AUTHORITY\SYSTEM';
+```
+
+Successful provisioning requires that:
+
+- The login exists (a row is returned)
+- The login status is `ENABLED`
+- `CONNECT SQL` permission is granted
+
+If your organization determines that re-adding the `NT AUTHORITY\SYSTEM` account or granting extra permissions is acceptable for your environment, restore connectivity by creating the authentication and granting `CONNECT SQL` permission:
+
+```sql
+CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS;
+GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM];
+```
+
+After making changes, verify that the extension provisions successfully.
 
 ### Set proxy exclusions
 
-> [!NOTE]
-> The exclusion in this section is required for the March 2024 release and before.
->
-> Beginning with the release in April 2024, this exclusion isn't required.
+> [!NOTE]  
+> Starting with the April 2024 release, this exclusion isn't required. Beginning with extension version 1.1.2986.256, you can set the `NO_PROXY` environment variable to bypass the proxy for specific URLs while routing all other requests through the proxy server. For example, use `NO_PROXY` to route requests to Azure Key Vault through private endpoints.
 
-If a proxy server is used, set the `NO_PROXY` environment variable to exclude proxy traffic for:
+If you use a proxy server, set the `NO_PROXY` environment variable to exclude proxy traffic for:
 
 - `localhost`
 - `127.0.0.1`
-
-> [!NOTE]
-> Beginning with extension version `1.1.2986.256`, you can set `NO_PROXY` environment variable to bypass proxy for URLs.
-> 
-> You can configure the extension to bypass the proxy endpoint for requests to specific URLs while using a proxy server for all other requests.
-> 
-> For example, you can configure the extension by setting `NO_PROXY` environment variable to use private endpoints for requests to Azure Key Vault, while all other requests use the proxy server.
 
 ### Connect to Azure Arc data processing service
 
 [!INCLUDE [data-processing-service-permission](includes/data-processing-service-permission.md)]
 
-> [!NOTE]
+> [!NOTE]  
 > You can't use Azure Private Link connections to the Azure Arc data processing service. See [Unsupported configurations](#unsupported-configurations).
 
 ### Network requirements for enabling Microsoft Entra authentication
@@ -166,7 +191,7 @@ az provider register --namespace 'Microsoft.AzureArcData'
 
 ## Azure subscription and service limits
 
-Before configuring your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances and machines with Azure Arc, review the Azure Resource Manager [subscription limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#subscription-limits) and [resource group limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits) to plan for the number of machines to be connected. 
+Before configuring your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances and machines with Azure Arc, review the Azure Resource Manager [subscription limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#subscription-limits) and [resource group limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits) to plan for the number of machines to connect.
 
 ## Supported regions
 
@@ -174,12 +199,14 @@ Before configuring your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md
 
 ## Install Azure extension for SQL Server
 
-The [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] Setup Installation Wizard doesn't support installation of the Azure extension for SQL Server. There are two ways to install this component. Do one of the following:
+The [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] Setup Installation Wizard doesn't support installation of the Azure extension for SQL Server.
+
+You can install this component in two ways:
 
 - [SQL Server enabled by Azure Arc deployment options](deployment-options.md)
 - [Install Azure extension for SQL Server from the command line](../../database-engine/install-windows/install-sql-server-from-the-command-prompt.md#install-and-connect-to-azure)
 
-For VMware vSphere–based environments, review [Support on VMware](#support-on-vmware).
+For VMware vSphere-based environments, review [Support on VMware](#support-on-vmware).
 
 ## Related content
 
