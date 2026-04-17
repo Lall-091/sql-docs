@@ -53,7 +53,7 @@ Avoid using **datetime** for new work. Instead, use the **time**, **date**, **da
 
 ## Supported string literal formats for datetime
 
-The following tables list the supported string literal formats for **datetime**. Except for ODBC, **datetime** string literals are in single quotation marks (`'`), for example, `'string_literaL'`. If the environment isn't `us_english`, the string literals should be in Unicode format `N'string_literaL'`.
+The following tables list the supported string literal formats for **datetime**. Except for ODBC, **datetime** string literals are in single quotation marks (`'`), for example, `'string_literal'`. If the environment isn't `us_english`, the string literals should be in Unicode format `N'string_literal'`.
 
 ### Numeric format
 
