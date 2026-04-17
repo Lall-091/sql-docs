@@ -118,7 +118,8 @@ If the user is orphaned (the associated login no longer exists), and the user wa
 > [!CAUTION]  
 >  The EXECUTE AS statement can succeed as long as the [!INCLUDE[ssDE](../../includes/ssde-md.md)] can resolve the name. If a domain user exists, Windows might be able to resolve the user for the [!INCLUDE[ssDE](../../includes/ssde-md.md)], even though the Windows user does not have access to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. This can lead to a condition where a login with no access to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] appears to be logged in, though the impersonated login would only have the permissions granted to public or guest.  
 
-## Security Considerations  
+## Security considerations
+
 Executing under the dbo ownership context, for example by using the statement `EXECUTE AS USER = 'dbo'`, changes how explicit DENY permissions are evaluated. When you switch the execution context to the dbo ownership context, permission-based DENY restrictions that apply to the original calling principal aren't enforced for the duration of the impersonation. As a result, a principal that can switch execution context to dbo, for example through membership in the db_owner fixed database role, can perform actions that would otherwise be blocked by explicit DENY permissions applied to that principal.
  
 This behavior is by design. Take it into account when you grant permissions that allow ownership impersonation. DENY permissions can't serve as a compensating control to limit the effective permissions of principals that can execute as dbo.
