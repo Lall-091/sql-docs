@@ -87,31 +87,31 @@
         - name: Overview
           href: user-interface-reference-accesstosql.md
         - name: Advanced object selection
-          href: advanced-object-selection-accesstosql.md
+          href: ../shared/advanced-object-selection.md
         - name: Assessment report
           href: assessment-report-accesstosql.md
         - name: Connect to Azure SQL Database
           href: connect-to-azure-sql-db-accesstosql.md
         - name: Connect to SQL Server
-          href: connect-to-sql-server-accesstosql.md
+          href: ../shared/connect-to-sql-server.md
         - name: Data migration report
-          href: data-migration-report-accesstosql.md
+          href: ../shared/data-migration-report.md
         - name: Edit type mapping
-          href: edit-type-mapping-accesstosql.md
+          href: ../shared/edit-type-mapping.md
         - name: Global settings
           items:
             - name: Menu commands and other shortcut keys
-              href: menu-commands-and-other-shortcut-keys-accesstosql.md
+              href: ../shared/menu-commands-and-other-shortcut-keys.md
             - name: Editor
-              href: global-settings-editor-accesstosql.md
+              href: ../shared/global-settings-editor.md
             - name: Logging
-              href: global-settings-logging-accesstosql.md
+              href: ../shared/global-settings-logging.md
             - name: Dialogs
-              href: global-settings-dialogs-accesstosql.md
+              href: ../shared/global-settings-dialogs.md
             - name: Output window
-              href: global-settings-output-window-accesstosql.md
+              href: ../shared/global-settings-output-window.md
         - name: New project
-          href: new-project-ssma-accesstosql.md
+          href: ../shared/new-project.md
         - name: Project settings
           items:
             - name: Conversion
@@ -121,12 +121,12 @@
             - name: Azure SQL Database
               href: project-settings-azure-sql-db-accesstosql.md
             - name: GUI
-              href: project-settings-gui-accesstosql.md
+              href: ../shared/project-settings-gui.md
             - name: Type-mapping
               href: project-settings-type-mapping-accesstosql.md
             - name: Migration
               href: project-settings-migration-accesstosql.md
         - name: Refresh from database
-          href: refresh-from-database-accesstosql.md
+          href: ../shared/refresh-from-database.md
         - name: Save metadata
-          href: save-metadata-accesstosql.md
+          href: ../shared/save-metadata.md

@@ -37,7 +37,7 @@
   - name: Migrating Db2 databases to SQL Server
     href: migrating-db2-databases-to-sql-server-db2tosql.md
   - name: Data migration settings
-    href: data-migration-settings-db2tosql.md
+    href: ../shared/data-migration-settings.md
 - name: Working with SSMA for Db2 console
   href: working-with-ssma-for-db2-console-db2tosql.md
   items:
@@ -67,27 +67,27 @@
     href: user-interface-reference-db2tosql.md
     items:
     - name: Advanced object selection
-      href: advanced-object-selection-db2tosql.md
+      href: ../shared/advanced-object-selection.md
     - name: Assessment report
-      href: assessment-report-db2tosql.md
+      href: ../shared/assessment-report.md
     - name: Connect to SQL Server
-      href: connect-to-sql-server-db2tosql.md
+      href: ../shared/connect-to-sql-server.md
     - name: Data migration report
-      href: data-migration-report-db2tosql.md
+      href: ../shared/data-migration-report.md
     - name: Edit type mapping
-      href: edit-type-mapping-db2tosql.md
+      href: ../shared/edit-type-mapping.md
     - name: Global settings
       items:
       - name: Editor
-        href: global-settings-editor-db2tosql.md
+        href: ../shared/global-settings-editor.md
       - name: Logging
-        href: global-settings-logging-db2tosql.md
+        href: ../shared/global-settings-logging.md
       - name: Dialogs
-        href: global-settings-dialogs-db2tosql.md
+        href: ../shared/global-settings-dialogs.md
       - name: Output window
-        href: global-settings-output-window-db2tosql.md
+        href: ../shared/global-settings-output-window.md
     - name: New project
-      href: new-project-db2tosql.md
+      href: ../shared/new-project.md
     - name: Project settings
       items:
       - name: Setting project options
@@ -101,18 +101,18 @@
       - name: Migrating Db2 Data into SQL Server
         href: migrating-db2-data-into-sql-server-db2tosql.md
       - name: Synchronization
-        href: project-settings-synchronization-db2tosql.md
+        href: ../shared/project-settings-synchronization.md
       - name: GUI
-        href: project-settings-gui-db2tosql.md
+        href: ../shared/project-settings-gui.md
       - name: Type-mapping
         href: project-settings-type-mapping-db2tosql.md
       - name: Migration
         href: project-settings-migration-db2tosql.md
     - name: Refresh from database
-      href: refresh-from-database-db2tosql.md
+      href: ../shared/refresh-from-database.md
     - name: Save metadata
-      href: save-metadata-db2tosql.md
+      href: ../shared/save-metadata.md
   - name: Menu commands & other shortcut keys
-    href: menu-commands-and-other-shortcut-keys-db2tosql.md
+    href: ../shared/menu-commands-and-other-shortcut-keys.md
   - name: Conversion messages
     href: messages/toc.yml
