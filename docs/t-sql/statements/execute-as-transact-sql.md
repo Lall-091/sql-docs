@@ -21,7 +21,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest"
 ---
-#         EXECUTE AS (Transact-SQL)
+# EXECUTE AS (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
 
@@ -119,9 +119,9 @@ If the user is orphaned (the associated login no longer exists), and the user wa
 >  The EXECUTE AS statement can succeed as long as the [!INCLUDE[ssDE](../../includes/ssde-md.md)] can resolve the name. If a domain user exists, Windows might be able to resolve the user for the [!INCLUDE[ssDE](../../includes/ssde-md.md)], even though the Windows user does not have access to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. This can lead to a condition where a login with no access to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] appears to be logged in, though the impersonated login would only have the permissions granted to public or guest.  
 
 ## Security Considerations  
- Executing under the dbo ownership context, such as, by using the statement `EXECUTE AS USER = 'dbo'`, changes how explicit DENY permissions are evaluated. When execution context is switched to the 'dbo' ownership context, permission-based DENY restrictions that apply to the original calling principal are not enforced for the duration of the impersonation. As a result, a principal that is able to switch execution context to dbo, for example through membership in the db_owner fixed database role, can perform actions that would otherwise be blocked by explicit DENY permissions applied to that principal.
+Executing under the dbo ownership context, for example by using the statement `EXECUTE AS USER = 'dbo'`, changes how explicit DENY permissions are evaluated. When you switch the execution context to the dbo ownership context, permission-based DENY restrictions that apply to the original calling principal aren't enforced for the duration of the impersonation. As a result, a principal that can switch execution context to dbo, for example through membership in the db_owner fixed database role, can perform actions that would otherwise be blocked by explicit DENY permissions applied to that principal.
  
- This behavior is by design and should be taken into account when granting permissions that allow ownership impersonation. DENY permissions cannot be relied upon as a compensating control to limit the effective permissions of principals that can execute as dbo.
+This behavior is by design. Take it into account when you grant permissions that allow ownership impersonation. DENY permissions can't serve as a compensating control to limit the effective permissions of principals that can execute as dbo.
   
 ## Using WITH NO REVERT  
  When the EXECUTE AS statement includes the optional WITH NO REVERT clause, the execution context of a session cannot be reset using REVERT or by executing another EXECUTE AS statement. The context set by the statement remains in effect until the session is dropped.  
