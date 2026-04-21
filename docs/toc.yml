@@ -9104,7 +9104,7 @@ items:
       href: linux/sql-server-linux-faq.yml
   - name: Getting started and deployment
     items:
-    - name: Install
+    - name: Install and upgrade
       items:
       - name: Overview
         href: linux/sql-server-linux-setup.md
@@ -9140,6 +9140,8 @@ items:
         href: linux/sql-server-linux-change-repo.md
       - name: Configure repositories (SQL Server 2025 and later)
         href: linux/sql-server-linux-change-repo-2025.md
+      - name: Upgrade SQL Server on Linux
+        href: linux/install-upgrade/upgrade-considerations.md
     - name: Quickstarts
       items:
       - name: Deploy SQL Server container cluster
