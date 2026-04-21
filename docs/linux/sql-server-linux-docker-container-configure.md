@@ -1,9 +1,9 @@
 ---
 title: Configure and Customize SQL Server Docker Containers
 description: Understand the different ways to customize SQL Server Docker Containers and how you can configure it based on your requirements.
-author: amitkh-msft
-ms.author: amitkh
-ms.reviewer: vanto, randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh, atsingh
 ms.date: 09/05/2025
 ms.service: sql
 ms.subservice: linux
@@ -892,7 +892,7 @@ For examples of custom Docker containers, see <https://github.com/microsoft/mssq
 
 For information on how to build and run Docker containers using Dockerfiles, see the [ML Services samples](https://github.com/microsoft/mssql-docker/tree/master/linux/preview/examples/mssql-mlservices) on GitHub.
 
-## Configure memory limits with control group (cgroup) v2
+## Control group (cgroup) v2 support
 
 [!INCLUDE [cgroup-support](includes/cgroup-support.md)]
 
