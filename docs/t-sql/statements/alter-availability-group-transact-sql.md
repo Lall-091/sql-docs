@@ -676,7 +676,7 @@ Specifies manual seeding. This method requires you to create a backup of the dat
 Modifies any of the availability group settings of a distributed availability group. The list of availability groups to modify contains the availability group name and a `WITH (...)` clause for each availability group.
 
 > [!IMPORTANT]  
-> You must run this command on both the primary availability group and secondary availability group instances.
+> You must run this command on both the primary availability group and secondary availability group instances as `sysadmin`. 
 
 #### GRANT CREATE ANY DATABASE
 
