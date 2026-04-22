@@ -53937,17 +53937,17 @@
     },
     {
       "source_path": "docs/connect/odbc/connecting-with-bcp.md",
-      "redirect_url": "/sql/tools/bcp-utility",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/connect/odbc/linux/connecting-with-bcp.md",
-      "redirect_url": "/sql/tools/bcp-utility",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/connect/odbc/linux-mac/connecting-with-bcp.md",
-      "redirect_url": "/sql/tools/bcp-utility",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": false
     },
     {
@@ -67628,6 +67628,11 @@
     {
       "source_path": "docs/tools/sqlcmd-utility.md",
       "redirect_url": "/sql/tools/sqlcmd/sqlcmd-utility",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/tools/bcp-utility.md",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": true
     },
     {
