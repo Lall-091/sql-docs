@@ -4,7 +4,7 @@ description: "The queryinsights.exec_requests_history in Microsoft Fabric provid
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mariyaali, randolphwest, emtehran
-ms.date: 03/12/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
