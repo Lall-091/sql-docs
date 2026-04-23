@@ -134,15 +134,20 @@ Run the following **mssql-conf** commands to set each policy configuration prope
    sudo /opt/mssql/bin/mssql-conf set passwordpolicy.passwordmaximumage 45
    ```
 
-1. Restart SQL Server service.
+1. Starting with SQL Server 2025 CU3 and SQL Server 2022 CU23, you do not need to restart SQL service for the changes to take effect. You can run the following stored procedure after connecting to the SQL instance to reload mssql.conf changes.
+   ```sql
+   sp_reload_mssqlconf
+   ```
+   Or
+   If you are on a lower build then restart SQL Server service.
 
    ```bash
    sudo systemctl restart mssql-server
    ```
-
+   
 ## Limitations
 
-Currently, the `passwordminimumlength` can't be set to more than 14 characters.
+Currently, the `passwordminimumlength` can't be set to more than 14 characters.Starting with SQL Server 2025 CU3 and SQL Server 2022 CU23 this limitation has been removed.
 
 After updating the group password policy in Active Directory, you must manually run the `adutil updatepasswordpolicy` command to update `mssql.conf`. This command doesn't run automatically. Ensure the Linux machine running SQL Server is part of the domain, or manually set it using **mssql-conf**.
 
