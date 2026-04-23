@@ -3,7 +3,7 @@ title: Download the Microsoft Drivers for PHP for SQL Server
 description: Download the Microsoft Drivers for PHP for SQL Server to develop PHP applications that connect to SQL Server and Azure SQL Database.
 author: David-Engel
 ms.author: davidengel
-ms.date: 02/24/2026
+ms.date: 04/24/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: install-set-up-deploy
@@ -16,18 +16,18 @@ On Linux and macOS, the drivers for PHP are easily downloaded and installed usin
 
 ## Download
 
-Microsoft Drivers 5.13 for PHP for SQL Server is the latest general availability (GA) version.
+Microsoft Drivers 5.13.1 for PHP for SQL Server is the latest general availability (GA) version.
 
 :::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft Drivers for PHP for SQL Server (Windows)](https://go.microsoft.com/fwlink/?linkid=2353424)**  
-[GitHub Release Tag v5.13.0 (Linux and macOS packages are available here)](https://github.com/Microsoft/msphpsql/releases/v5.13.0)
+[GitHub Release Tag v5.13.1 (Linux and macOS packages are available here)](https://github.com/Microsoft/msphpsql/releases/v5.13.1)
 
 > [!NOTE]
 > Make sure you have the latest version of the ODBC driver installed to ensure optimal performance and security. For download information, see [Download ODBC Driver for SQL Server](../odbc/download-odbc-driver-for-sql-server.md).
 
 ### Version information
 
-- Release number: 5.13.0
-- Released: February 27, 2026
+- Release number: 5.13.1
+- Released: April 24, 2026
 
 If you have feedback, the best way to contact the Microsoft Drivers for PHP for SQL Server team is by filing an issue on the [GitHub repository](https://github.com/Microsoft/msphpsql/issues).
 

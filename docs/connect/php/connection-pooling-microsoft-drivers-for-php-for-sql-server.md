@@ -3,7 +3,7 @@ title: "Connection Pooling (Microsoft Drivers for PHP for SQL Server)"
 description: "Learn the details of connection pooling when using the Microsoft Drivers for PHP for SQL Server and how the experience may differ depending on your operating system."
 author: David-Engel
 ms.author: davidengel
-ms.date: "08/01/2020"
+ms.date: "04/24/2026"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -73,6 +73,8 @@ Pooling=No
 - In Linux or macOS, connection pooling is not recommended with unixODBC < 2.3.7. All connections will be pooled if pooling is enabled in the odbcinst.ini file, which means the ConnectionPooling connection option has no effect. To disable pooling, set Pooling=No in the odbcinst.ini file and reload the drivers. 
   - unixODBC <= 2.3.4 (Linux and macOS) might not return proper diagnostic information, such as error messages, warnings and informative messages
   - for this reason, SQLSRV and PDO_SQLSRV drivers might not be able to properly fetch long data (such as xml, binary) as strings. Long data can be fetched as streams as a workaround. See the example below for SQLSRV.
+
+- When using `AccessToken` with connection pooling, the driver appends a hash of the token content to the `APP` connection keyword to ensure that connections with different access tokens are not pooled together. This prevents identity cross-contamination where a pooled connection authenticated as one identity could be reused for a different identity. Token data is cached with TTL-based expiry to ensure pointer stability for the ODBC driver. This behavior was introduced in version 5.13.1.
 
 ```
 <?php
