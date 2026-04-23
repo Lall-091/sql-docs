@@ -75,6 +75,7 @@ GO
 
 DECLARE @MyVariable AS INT;
 SET @MyVariable = 1;
+GO
 
 SELECT BusinessEntityID,
        NationalIDNumber,
