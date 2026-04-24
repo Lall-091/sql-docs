@@ -4,7 +4,7 @@ description: This page discusses what was changed in each version of the Microso
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: v-davidengel
-ms.date: 04/24/2026
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
@@ -22,7 +22,7 @@ This page discusses what was added in each version of the [!INCLUDE[ssDriverPHP]
 [GitHub Release Tag v5.13.1 (Linux and macOS packages are available here)](https://github.com/Microsoft/msphpsql/releases/v5.13.1)
 
 - Release number: 5.13.1
-- Released: April 24, 2026
+- Released: April 30, 2026
 
 ### What's new in 5.13.1
 
