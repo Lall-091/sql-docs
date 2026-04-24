@@ -1,10 +1,10 @@
 ---
-title: "SQL Server Migration Assistant for Access (AccessToSQL)"
-description: Learn about SSMA for Access and follow step-by-step instructions for migrating Access databases to SQL Server or Azure SQL Database.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 12/30/2025
+title: SQL Server Migration Assistant for Access (AccessToSQL)
+description: Learn about SSMA for Access and follow step-by-step instructions for migrating Access databases to SQL Server and Azure SQL.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: concept-article
@@ -15,7 +15,7 @@ f1_keywords:
 ---
 # SQL Server Migration Assistant for Access (AccessToSQL)
 
-SQL Server Migration Assistant (SSMA) for Access is a tool for migrating databases from [!INCLUDE [msCoName](../../includes/msconame-md.md)] Access versions 97 through 2010, to [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] through [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Windows and Linux, or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. SSMA for Access converts Access database objects to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL objects, loads those objects into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL, and then migrates data from Access to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL.
+SQL Server Migration Assistant (SSMA) for Access is a tool for migrating databases from [!INCLUDE [msCoName](../../includes/msconame-md.md)] Access to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and Azure SQL. [!INCLUDE [ssma-target-description](../includes/ssma-target-description.md)]
 
 This documentation introduces you to SSMA for Access and provides step-by-step instructions for migrating Access databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL Database and information about issues that might occur after migration.
 

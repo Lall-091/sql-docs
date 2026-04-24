@@ -29,13 +29,7 @@ Enter or browse to the folder or network location to save the project.
 
 Select one of the target database versions from the following list:
 
-- [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]
-- [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]
-- [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]
-- [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]
-- [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]
-- [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
-- [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]
+[!INCLUDE [ssma-target-versions](../includes/ssma-target-versions.md)]
 
 ## Related content
 
