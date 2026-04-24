@@ -4,7 +4,7 @@ description: Learn how to transition from Azure Data Studio to the MSSQL extensi
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: tsiddique, roblescarlos
-ms.date: 02/21/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 
 The Azure Data Studio Migration feature in the MSSQL extension for Visual Studio Code helps you transition from Azure Data Studio to the MSSQL extension by importing existing connections, connection groups, and settings. This feature ensures a familiar and productive experience when you move to Visual Studio Code.
 
-> [!TIP]
+> [!TIP]  
 > Azure Data Studio Migration is currently in preview and might change based on feedback. Join our community at [GitHub Discussions](https://aka.ms/vscode-mssql-discussions) to share ideas or report issues.
 
 ## Features
@@ -67,7 +67,7 @@ The extension provides the following key bindings:
 | Toggle actual plan | <kbd>Ctrl</kbd>+<kbd>M</kbd> | <kbd>Cmd</kbd>+<kbd>M</kbd> |
 | Cancel running query | <kbd>Alt</kbd>+<kbd>Break</kbd> | <kbd>Option</kbd>+<kbd>Break</kbd> |
 
-> [!NOTE]
+> [!NOTE]  
 > This key map doesn't include user-customized key bindings from Azure Data Studio. You need to manually configure custom key bindings in the MSSQL keyboard preferences settings, accessible from the Command Palette. This extension overrides some default Visual Studio Code shortcuts for database management scenarios.
 
 ## Feedback and support
@@ -77,7 +77,7 @@ The extension provides the following key bindings:
 ## Related content
 
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
-- [Database operations (preview)](mssql-database-operations.md)
+- [Database operations](mssql-database-operations.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
 - [MSSQL extension for Visual Studio Code repository on GitHub](https://github.com/Microsoft/vscode-mssql)
