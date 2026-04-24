@@ -1,10 +1,10 @@
 ---
-title: "CREATE SERVER AUDIT (Transact-SQL)"
+title: CREATE SERVER AUDIT (Transact-SQL)
 description: CREATE SERVER AUDIT creates a server audit object using SQL Server Audit.
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: randolphwest
-ms.date: 07/25/2025
+ms.date: 04/23/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "CREATE SERVER AUDIT statement"
   - "audits [SQL Server], creating"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: "=azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
 
@@ -35,13 +35,19 @@ Creates a server audit object using [!INCLUDE [ssNoVersion](../../includes/ssnov
 ```syntaxsql
 CREATE SERVER AUDIT audit_name
 {
-    TO { [ FILE (<file_options> [ , ...n ] ) ] | APPLICATION_LOG | SECURITY_LOG | URL | EXTERNAL_MONITOR }
-    [ WITH ( <audit_options> [ , ...n ] ) ]
+    TO {
+        [ FILE ( <file_options> [ ,... n ] ) ]
+        | APPLICATION_LOG
+        | SECURITY_LOG
+        | URL
+        | EXTERNAL_MONITOR
+    }
+    [ WITH ( <audit_options> [ ,... n ] ) ]
     [ WHERE <predicate_expression> ]
 }
 [ ; ]
 
-<file_options>::=
+<file_options> ::=
 {
     FILEPATH = 'os_file_path'
     [ , MAXSIZE = { max_size { MB | GB | TB } | UNLIMITED } ]
@@ -59,25 +65,23 @@ CREATE SERVER AUDIT audit_name
 }
 
 <predicate_expression> ::=
-{
-    [ NOT ] <predicate_factor>
-    [ { AND | OR } [ NOT ] { <predicate_factor> } ]
-    [ , ...n ]
-}
+    { [ NOT ] <predicate_factor>
+    [ { AND | OR } [ NOT ] { <predicate_factor> } ] [ ,... n ] }
 
-<predicate_factor>::=
-    event_field_name { = | < > | != | > | >= | < | <= | LIKE } { number | 'string' }
+<predicate_factor> ::=
+    event_field_name { = | < > | != | > | >= | < | <= | LIKE }
+    { number | 'string' }
 ```
 
 ## Arguments
 
 #### *audit_name*
 
-The name of the audit. Can't contain spaces in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and earlier versions.
+The name of the audit. [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and earlier versions can't contain spaces in the audit name.
 
 #### TO { FILE | APPLICATION_LOG | SECURITY_LOG | URL | EXTERNAL_MONITOR }
 
-Determines the location of the audit target. The options are a binary file, The Windows Application log, or the Windows Security log. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] can't write to the Windows Security log without configuring extra settings in Windows. For more information, see [Write SQL Server Audit events to the Security log](../../relational-databases/security/auditing/write-sql-server-audit-events-to-the-security-log.md).
+Determines the location of the audit target. The options are a binary file, the Windows Application log, or the Windows Security log. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] can't write to the Windows Security log without configuring extra settings in Windows. For more information, see [Write SQL Server Audit events to the Security log](../../relational-databases/security/auditing/write-sql-server-audit-events-to-the-security-log.md).
 
 The `URL` target isn't supported for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].
 
@@ -92,19 +96,19 @@ The path of the audit log. The file name is generated based on the audit name an
 
 #### MAXSIZE = *max_size*
 
-Specifies the maximum size to which the audit file can grow. The *max_size* value must be an integer followed by MB, GB, TB, or `UNLIMITED`. The minimum size that you can specify for *max_size* is 2 MB and the maximum is 2,147,483,647 TB. When `UNLIMITED` is specified, the file grows until the disk is full. (`0` also indicates `UNLIMITED`.) Specifying a value lower than 2 MB raises the error `MSG_MAXSIZE_TOO_SMALL`. The default value is `UNLIMITED`.
+Specifies the maximum size to which the audit file can grow. The *max_size* value must be an integer followed by MB, GB, TB, or `UNLIMITED`. The minimum size that you can specify for *max_size* is 2 MB and the maximum is 2,147,483,647 TB. When you specify `UNLIMITED`, the file grows until the disk is full. (`0` also indicates `UNLIMITED`.) Specifying a value lower than 2 MB raises the error `MSG_MAXSIZE_TOO_SMALL`. The default value is `UNLIMITED`.
 
 `MAXSIZE` target isn't supported for [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
 
 #### MAX_ROLLOVER_FILES = { *integer* | UNLIMITED }
 
-Specifies the maximum number of files to retain in the file system in addition to the current file. The `MAX_ROLLOVER_FILES` value must be an integer or `UNLIMITED`. The default value is `UNLIMITED`. This parameter is evaluated whenever the audit restarts (which can happen when the instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] restarts or when the audit is turned off and then on again) or when a new file is needed because the `MAXSIZE` is reached. When `MAX_ROLLOVER_FILES` is evaluated, if the number of files exceeds the `MAX_ROLLOVER_FILES` setting, the oldest file is deleted. As a result, when the setting of `MAX_ROLLOVER_FILES` is 0 a new file is created each time the `MAX_ROLLOVER_FILES` setting is evaluated. Only one file is automatically deleted when `MAX_ROLLOVER_FILES` setting is evaluated, so when the value of `MAX_ROLLOVER_FILES` is decreased, the number of files doesn't shrink unless old files are manually deleted. The maximum number of files that can be specified is 2,147,483,647.
+Specifies the maximum number of files to retain in the file system in addition to the current file. The `MAX_ROLLOVER_FILES` value must be an integer or `UNLIMITED`. The default value is `UNLIMITED`. This parameter is evaluated whenever the audit restarts (which can happen when the instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] restarts or when the audit is turned off and then on again) or when a new file is needed because the `MAXSIZE` is reached. When `MAX_ROLLOVER_FILES` is evaluated, if the number of files exceeds the `MAX_ROLLOVER_FILES` setting, the oldest file is deleted. As a result, when the setting of `MAX_ROLLOVER_FILES` is 0 a new file is created each time the `MAX_ROLLOVER_FILES` setting is evaluated. Only one file is automatically deleted when `MAX_ROLLOVER_FILES` setting is evaluated, so when the value of `MAX_ROLLOVER_FILES` is decreased, the number of files doesn't shrink unless old files are manually deleted. The maximum number of files that you can specify is 2,147,483,647.
 
 `MAX_ROLLOVER_FILES` isn't supported for [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
 
 #### MAX_FILES = *integer*
 
-Specifies the maximum number of audit files that can be created. Doesn't roll over to the first file when the limit is reached. When the `MAX_FILES` limit is reached, any action that causes more audit events to be generated, fails with an error.
+Specifies the maximum number of audit files that can be created. The audit doesn't roll over to the first file when the limit is reached. When the `MAX_FILES` limit is reached, any action that causes more audit events to be generated fails with an error.
 
 #### RESERVE_DISK_SPACE = { ON | OFF }
 
@@ -130,88 +134,94 @@ Forces the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)
 
 #### FAIL_OPERATION
 
-Database actions fail if they cause audited events. Actions, which don't cause audited events can continue, but no audited events can occur. The audit continues to attempt to log events and resumes if the failure condition is resolved. Use this option when maintaining a complete audit is more important than full access to the [!INCLUDE [ssDE](../../includes/ssde-md.md)].
+Database actions fail if they cause audited events. Actions that don't cause audited events can continue, but no audited events can occur. The audit continues to attempt to log events and resumes if the failure condition is resolved. Use this option when maintaining a complete audit is more important than full access to the [!INCLUDE [ssDE](../../includes/ssde-md.md)].
 
 #### AUDIT_GUID = *uniqueidentifier*
 
-To support scenarios such as database mirroring or databases participating in an Always On availability group, an audit needs a specific GUID that matches the GUID found in the mirrored database. The GUID can't be modified after the audit is created.
+To support scenarios such as database mirroring or databases participating in an Always On availability group, an audit needs a specific GUID that matches the GUID found in the mirrored database. You can't modify the GUID after creating the audit.
 
 #### OPERATOR_AUDIT
 
-**Applies to:** [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] only.
+**Applies to**: [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] only.
 
 Indicates whether auditing captures Microsoft support engineer operations when they need to access your server during a support request.
 
-#### RETENTION_DAYS 
+#### RETENTION_DAYS = *integer*
 
-**Applies to:** Azure SQL Managed Instance and Azure SQL Database only.
+**Applies to**: [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] only.
 
-Indicates the number of days of the audit log file storage period.
+Indicates the number of days to store the audit log file.
 
-#### predicate_expression
+#### *predicate_expression*
 
 Specifies the predicate expression used to determine if an event should be processed or not. Predicate expressions are limited to a length of 3,000 characters, which limits string arguments.
 
-#### event_field_name
+#### *event_field_name*
 
-The name of the event field that identifies the predicate source. Audit fields are described in [sys.fn_get_audit_file](../../relational-databases/system-functions/sys-fn-get-audit-file-transact-sql.md). All fields can be filtered except `file_name`, `audit_file_offset`, and `event_time`.
+The name of the event field that identifies the predicate source. Audit fields are described in [sys.fn_get_audit_file](../../relational-databases/system-functions/sys-fn-get-audit-file-transact-sql.md). You can filter all fields except `file_name`, `audit_file_offset`, and `event_time`.
 
-> [!NOTE]  
-> While the `action_id` and `class_type` fields are of type **varchar** in `sys.fn_get_audit_file`, they can only be used with numbers when they are a predicate source for filtering. To get the list of values to be used with `class_type`, execute the following query:
+While the `action_id` and `class_type` fields are of type **varchar** in `sys.fn_get_audit_file`, you can only use them with numbers when they're a predicate source for filtering. To get the list of values to use with `class_type`, run the following query:
 
-> ```sql
-> SELECT spt.[name], spt.[number]
-> FROM   [master].[dbo].[spt_values] spt
-> WHERE spt.[type] = N'EOD'
-> ORDER BY spt.[name];
-> ```
+```sql
+SELECT spt.[name], spt.[number]
+FROM [master].[dbo].[spt_values] spt
+WHERE spt.[type] = N'EOD'
+ORDER BY spt.[name];
+```
 
-#### number
+#### *number*
 
-Any numeric type including **decimal**. Limitations are the lack of available physical memory or a number that is too large to be represented as a 64-bit integer.
+Any numeric type, including **decimal**. Limitations are the lack of available physical memory or a number that is too large to be represented as a 64-bit integer.
 
 #### '*string*'
 
-Either an ANSI or Unicode string as required by the predicate compare. No implicit string type conversion is performed for the predicate compare functions. Passing the wrong type results in an error.
+Either an ANSI or Unicode string as required by the predicate compare. The predicate compare functions perform no implicit string type conversion. Passing the wrong type results in an error.
 
 ## Remarks
 
-When a server audit is created, it's in a disabled state.
+A server audit is created in a disabled state.
 
-The `CREATE SERVER AUDIT` statement is in a transaction's scope. If the transaction is rolled back, the statement is also rolled back.
+The `CREATE SERVER AUDIT` statement is part of a transaction. If you roll back the transaction, the statement is also rolled back.
 
 ## Permissions
 
-To create, alter, or drop a server audit, principals require the `ALTER ANY SERVER AUDIT` or the `CONTROL SERVER` permission.
+To create, alter, or drop a server audit, principals need the `ALTER ANY SERVER AUDIT` or the `CONTROL SERVER` permission.
 
-When you're saving audit information to a file, to help prevent tampering, restrict access to the file location.
+When you save audit information to a file, restrict access to the file location to help prevent tampering.
 
 ## Examples
 
 ### A. Create a server audit with a file target
 
-The following example creates a server audit called `HIPAA_Audit` with a binary file as the target and no options.
+The following example creates a server audit named `HIPAA_Audit` with a binary file as the target and no options.
 
 ```sql
-CREATE SERVER AUDIT HIPAA_Audit TO FILE (
-    FILEPATH = '\\SQLPROD_1\Audit\'
-);
+CREATE SERVER AUDIT HIPAA_Audit
+TO FILE (FILEPATH = '\\SQLPROD_1\Audit\');
 ```
 
 ### B. Create a server audit with a Windows Application log target with options
 
-The following example creates a server audit called `HIPAA_Audit` with the target set for the Windows Application log. The queue is written every second and shuts down the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] engine on failure.
+The following example creates a server audit named `HIPAA_Audit` with the target set for the Windows Application log. The queue is written every second and shuts down the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] engine on failure.
 
 ```sql
-CREATE SERVER AUDIT HIPAA_Audit TO APPLICATION_LOG
-WITH (QUEUE_DELAY = 1000, ON_FAILURE = SHUTDOWN);
+CREATE SERVER AUDIT HIPAA_Audit
+TO APPLICATION_LOG
+WITH (
+    QUEUE_DELAY = 1000,
+    ON_FAILURE = SHUTDOWN
+);
 ```
 
 <a id="ExampleWhere"></a>
 
 ### C. Create a server audit containing a WHERE clause
 
-The following example creates a database, schema, and two tables for the example. The table named `DataSchema.SensitiveData` contains confidential data and access to the table must be recorded in the audit. The table named `DataSchema.GeneralData` doesn't contain confidential data. The database audit specification audits access to all objects in the `DataSchema` schema. The server audit is created with a WHERE clause that limits the server audit to only the `SensitiveData` table. The server audit presumes an audit folder exists at `C:\SQLAudit`.
+The following example creates a database, schema, and two tables for the example. The table named `DataSchema.SensitiveData` contains confidential data and access to the table must be recorded in the audit.
+
+The table named `DataSchema.GeneralData` doesn't contain confidential data. The database audit specification audits access to all objects in the `DataSchema` schema.
+
+The server audit is created with a `WHERE` clause that limits the server audit to only the `SensitiveData` table. The server audit presumes an audit folder exists at `C:\SQLAudit`.
 
 ```sql
 CREATE DATABASE TestDB;
@@ -236,8 +246,11 @@ CREATE TABLE DataSchema.SensitiveData
     DataField VARCHAR (50) NOT NULL
 );
 GO
+```
 
--- Create the server audit in the master database
+Create the server audit in the `master` database:
+
+```sql
 USE master;
 GO
 
@@ -247,8 +260,11 @@ GO
 
 ALTER SERVER AUDIT AuditDataAccess WITH (STATE = ON);
 GO
+```
 
--- Create the database audit specification in the TestDB database
+Create the database audit specification in the `TestDB` database:
+
+```sql
 USE TestDB;
 GO
 
@@ -257,8 +273,11 @@ CREATE DATABASE AUDIT SPECIFICATION [FilterForSensitiveData]
     ADD (SELECT ON SCHEMA::[DataSchema] BY [public])
     WITH(STATE = ON);
 GO
+```
 
--- Trigger the audit event by selecting from tables
+Trigger the audit event by selecting from tables:
+
+```sql
 SELECT ID,
        DataField
 FROM DataSchema.GeneralData;
@@ -267,8 +286,11 @@ SELECT ID,
        DataField
 FROM DataSchema.SensitiveData;
 GO
+```
 
--- Check the audit for the filtered content
+Check the audit for the filtered content:
+
+```sql
 SELECT *
 FROM fn_get_audit_file('C:\SQLAudit\AuditDataAccess_*.sqlaudit', DEFAULT, DEFAULT);
 GO
@@ -276,15 +298,15 @@ GO
 
 ## Transact-SQL reference
 
-- [ALTER SERVER AUDIT (Transact-SQL)](alter-server-audit-transact-sql.md)
-- [DROP SERVER AUDIT (Transact-SQL)](drop-server-audit-transact-sql.md)
-- [CREATE SERVER AUDIT SPECIFICATION (Transact-SQL)](create-server-audit-specification-transact-sql.md)
-- [ALTER SERVER AUDIT SPECIFICATION (Transact-SQL)](alter-server-audit-specification-transact-sql.md)
-- [DROP SERVER AUDIT SPECIFICATION (Transact-SQL)](drop-server-audit-specification-transact-sql.md)
-- [CREATE DATABASE AUDIT SPECIFICATION (Transact-SQL)](create-database-audit-specification-transact-sql.md)
-- [ALTER DATABASE AUDIT SPECIFICATION (Transact-SQL)](alter-database-audit-specification-transact-sql.md)
-- [DROP DATABASE AUDIT SPECIFICATION (Transact-SQL)](drop-database-audit-specification-transact-sql.md)
-- [ALTER AUTHORIZATION (Transact-SQL)](alter-authorization-transact-sql.md)
+- [ALTER SERVER AUDIT](alter-server-audit-transact-sql.md)
+- [DROP SERVER AUDIT](drop-server-audit-transact-sql.md)
+- [CREATE SERVER AUDIT SPECIFICATION](create-server-audit-specification-transact-sql.md)
+- [ALTER SERVER AUDIT SPECIFICATION](alter-server-audit-specification-transact-sql.md)
+- [DROP SERVER AUDIT SPECIFICATION](drop-server-audit-specification-transact-sql.md)
+- [CREATE DATABASE AUDIT SPECIFICATION](create-database-audit-specification-transact-sql.md)
+- [ALTER DATABASE AUDIT SPECIFICATION](alter-database-audit-specification-transact-sql.md)
+- [DROP DATABASE AUDIT SPECIFICATION](drop-database-audit-specification-transact-sql.md)
+- [ALTER AUTHORIZATION](alter-authorization-transact-sql.md)
 
 ## Related content
 
