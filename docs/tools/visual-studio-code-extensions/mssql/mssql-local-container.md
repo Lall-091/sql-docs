@@ -4,7 +4,7 @@ description: Learn how to use the MSSQL extension for Visual Studio Code to crea
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: roblescarlos
-ms.date: 02/21/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -152,7 +152,7 @@ This feature makes a local SQL Server container ideal for:
 
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
-- [Database operations (preview)](mssql-database-operations.md)
+- [Database operations](mssql-database-operations.md)
 - [Schema Designer](mssql-schema-designer.md)
 - [Schema Compare](mssql-schema-compare.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
