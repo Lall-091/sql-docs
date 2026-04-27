@@ -13,7 +13,7 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 
 # Back up and restore SQL Server with S3-compatible object storage
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022 and later](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article introduces the concepts, requirements, and components necessary to use S3-compatible object storage as a backup destination.
 

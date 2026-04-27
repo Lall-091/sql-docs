@@ -98,7 +98,10 @@ helpviewer_keywords:
 9. On the Feature Selection page, select the components for your installation. A description for each component group appears in the right pane after you select the feature name. You can select any combination of check boxes, but only [!INCLUDE[ssDE](../../../includes/ssde-md.md)], [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] in tabular mode, and [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] in multidimensional mode support failover clustering. Other selected components will run as a stand-alone feature without failover capability on the current node that you are running Setup on. For more information on [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] modes, see [Determine the Server Mode of an Analysis Services Instance](/analysis-services/instances/determine-the-server-mode-of-an-analysis-services-instance).  
 
      > [!NOTE]
-     > You cannot add features to a failover cluster instance after creation. For example, you cannot add the PolyBase feature to an existing failover cluster instance. Make note of what features are needed before beginning the installation of a failover cluster instance.
+     > You can't add or remove components or features to a failover cluster instance after the instance is created. Carefully plan what features your business needs before you begin the installation of your failover cluster instance. For example, the following scenarios are unsupported: 
+     >    - Adding Analysis Services or the PolyBase feature to an existing failover cluster instance.
+     >    - Adding the SQL Server Database Engine to an existing Analysis Services-only failover cluster.   
+     >
   
      The prerequisites for the selected features are displayed on the right-hand pane. [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Setup will install the prerequisite that are not already installed during the installation step described later in this procedure.  
   

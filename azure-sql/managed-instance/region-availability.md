@@ -99,11 +99,11 @@ Supports for the memory-optimized premium-series hardware and the premium-series
 
 Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Instance other than the default is available in all regions.
 
-## Zone redundancy 
+## Zone redundancy
 
 [Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) is supported in the following regions: 
 
-#### [Americas](#tab/americas)
+#### [Americas](#tab/americas1)
 
 - Brazil South
 - Canada Central
@@ -117,7 +117,7 @@ Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Ins
 - West US 2 
 - West US 3
 
-#### [Asia Pacific](#tab/asia)
+#### [Asia Pacific](#tab/asia1)
 
 - Australia East
 - Australia Southeast
@@ -131,10 +131,8 @@ Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Ins
 - New Zealand North
 - Southeast Asia
 
-#### [Europe, the Middle East, and Africa](#tab/emea)
+#### [Europe, the Middle East, and Africa](#tab/emea1)
 
-- Austria East
-- Belgium Central
 - France Central
 - Germany West Central
 - Israel Central
@@ -150,6 +148,11 @@ Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Ins
 - UAE North
 - UK South
 - West Europe
+
+#### [Azure Government](#tab/azgov1)
+
+- USGov Arizona
+- USGov Virginia
 
 ---
 

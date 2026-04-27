@@ -4,8 +4,8 @@ titleSuffix: Azure SQL Database and Azure Synapse Analytics
 description: SQL Auditing for Azure SQL Database and Azure Synapse Analytics tracks database events and writes them to an audit log in your Azure storage account, Log Analytics workspace, or Event Hubs.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: srsaluru, vanto, mathoma
-ms.date: 03/30/2026
+ms.reviewer: peskount, srsaluru, vanto, mathoma
+ms.date: 04/15/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: concept-article
@@ -56,11 +56,11 @@ You can use SQL Database auditing to:
 
 ### Recommended auditing approach for large OLTP workloads
 
-For environments with many databases running heavy OLTP workloads, using serverâ€‘level auditing with default settings can lead to very large audit volumes across the logical server. Since all events from all databases are written into the same audit folder, querying audit logs for a single database becomes slow and operationally expensive. To improve performance and reduce noise:
+For environments with many databases running heavy OLTP workloads, using server-level auditing with default settings can lead to very large audit volumes across the logical server. Since all events from all databases are written into the same audit folder, querying audit logs for a single database becomes slow and operationally expensive. To improve performance and reduce noise:
 
-   - **Switch to databaseâ€‘level auditing**. Each database writes to its own audit log folder, reducing the total volume scanned and making retrieval faster.
-   - **Review the audit configuration**. Determine whether capturing all batchâ€‘completed events is necessary, or if a custom filtered configuration can meet your security and compliance requirements.
-    
+   - **Switch to database-level auditing**. Each database writes to its own audit log folder, reducing the total volume scanned and making retrieval faster.
+   - **Review the audit configuration**. Determine whether capturing all batch-completed events is necessary, or if a custom filtered configuration can meet your security and compliance requirements.
+
 ## Auditing limitations
 
 - Enabling auditing on a paused **Azure Synapse SQL pool** isn't supported. To enable auditing, resume the **Synapse SQL pool**.
@@ -69,7 +69,7 @@ For environments with many databases running heavy OLTP workloads, using serverâ
 
 > [!NOTE]
 > For Azure Synapse Analytics, auditing to a storage account behind a VNet requires the server's **system-assigned managed identity** with the **Storage Blob Data Contributor** role. User-assigned managed identities (UAMI) aren't supported for Synapse auditing. If you need to audit to a storage account that uses Microsoft Entra-only authentication, configure the system-assigned managed identity on the server and grant it the Storage Blob Data Contributor role on the target storage account. For more information, see [Write audit to a storage account behind VNet and firewall](audit-write-storage-account-behind-vnet-firewall.md).
-- Due to performance constraints, we don't audit the **tempdb** and **temporary tables**. While the batch completed action group captures statements against temporary tables, it might not correctly populate the object names. However, the source table is always audited, ensuring that all inserts from the source table to temporary tables are recorded.
+- Due to performance constraints, we don't audit the `tempdb` and **temporary tables**. While the batch completed action group captures statements against temporary tables, it might not correctly populate the object names. However, the source table is always audited, ensuring that all inserts from the source table to temporary tables are recorded.
 - Auditing for **Azure Synapse SQL pools** supports default audit action groups **only**.
 - When you configure auditing for a [logical server in Azure](logical-servers.md) or Azure SQL Database with the log destination as a storage account, the authentication mode must match the configuration for that storage account. If using storage access keys as the authentication type, the target storage account must be enabled with access to the storage account keys. If the storage account is configured to only use authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), auditing can be configured to use managed identities for authentication.
 
@@ -79,8 +79,9 @@ For environments with many databases running heavy OLTP workloads, using serverâ
 
 ## Remarks
 
+- Events initiated by `SQLDBControlPlaneFirstPartyApp` in the Activity log are an internal Azure function of the [Azure SQL Database control plane](/azure/azure-resource-manager/management/control-plane-and-data-plane#control-plane). Events initiated by `SQLDBControlPlaneFirstPartyApp` are part of an internal synchronization operation between the SQL engine and Azure Resource Manager. These events are a normal part of Azure SQL Database management and are required for correct resource representation and operation in Azure.
 - **Premium storage** with **BlockBlobStorage** is supported. Standard storage is supported. However, for audit to write to a storage account behind a virtual network or firewall, you must have a **general-purpose v2 storage account**. If you have a general-purpose v1 or Blob Storage account, [upgrade to a general-purpose v2 storage account](/azure/storage/common/storage-account-upgrade). For specific instructions see, [Write audit to a storage account behind VNet and firewall](audit-write-storage-account-behind-vnet-firewall.md). For more information, see [Types of storage accounts](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
-- When customers enable SQL auditing and also configure **outbound networking** restrictions, they must allow list the fully qualified domain names of their auditing storage account to ensure audit events can successfully reach the destination. If the storage endpoint isn't allowlisted, audit traffic is blocked, resulting in audit event loss. After adding the required storage account FQDNs to the allow list, customers must **reâ€‘save** their auditing configuration to resume normal audit event flow.
+- When customers enable SQL auditing and also configure **outbound networking** restrictions, they must allow list the fully qualified domain names of their auditing storage account to ensure audit events can successfully reach the destination. If the storage endpoint isn't allowlisted, audit traffic is blocked, resulting in audit event loss. After adding the required storage account FQDNs to the allow list, customers must **re-save** their auditing configuration to resume normal audit event flow.
 - **Hierarchical namespace** for all types of **standard storage account** and **premium storage account with BlockBlobStorage** is supported.
 - Audit logs are written to **Append Blobs** in an Azure Blob Storage on your Azure subscription
 - Audit logs are in .xel format and can be opened with [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
@@ -98,5 +99,4 @@ For environments with many databases running heavy OLTP workloads, using serverâ
 - [What's New in Azure SQL Auditing](/shows/data-exposed/server-audit-redesign-for-azure-sql-database-data-exposed)
 - [Get started with Azure SQL Managed Instance auditing](../managed-instance/auditing-configure.md)
 - [Auditing for SQL Server](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
-
 - [Set up Auditing for Azure SQL Database and Azure Synapse Analytics](auditing-setup.md)

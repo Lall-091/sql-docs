@@ -3,7 +3,7 @@ title: Configure Environment Variables for SQL Server on Linux
 description: This article describes how to use environment variables to configure specific SQL Server settings on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 04/13/2026
+ms.date: 04/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to

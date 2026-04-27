@@ -48,5 +48,5 @@ You can receive notifications about the detected threats via [email notification
 - Learn more about [Advanced Threat Protection](../database/threat-detection-overview.md).
 - Learn about managed instances, see [What is an Azure SQL Managed Instance](sql-managed-instance-paas-overview.md).
 - Learn more about [Advanced Threat Protection for Azure SQL Database](../database/threat-detection-configure.md).
-- Learn more about [SQL Managed Instance auditing](./auditing-configure.md).
+- Learn more about [SQL Server Audit in Azure SQL Managed Instance](auditing.md).
 - Learn more about [Microsoft Defender for Cloud](/azure/security-center/security-center-introduction).

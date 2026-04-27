@@ -61,7 +61,7 @@ Controlling privileged access prevents unauthorized changes, reduces the impact 
 
 - **Use Azure role-based access control (RBAC)**: Implement Azure RBAC to control access to SQL managed instance management operations. Create custom roles that provide only the necessary permissions for specific administrative tasks. For more information, see [Azure RBAC for SQL Managed Instance](/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor).
 
-- **Monitor privileged activities**: Enable auditing to track all actions performed by privileged accounts. Regularly review audit logs for suspicious activities or unauthorized changes. For more information, see [SQL Managed Instance auditing](auditing-configure.md).
+- **Monitor privileged activities**: Enable auditing to track all actions performed by privileged accounts. Regularly review audit logs for suspicious activities or unauthorized changes. For more information, see [SQL Server Audit in Azure SQL Managed Instance](auditing.md).
 
 - **Use server roles for database-level access**: Leverage built-in server roles and create custom roles to implement role-based security. Assign users to roles rather than granting individual permissions to simplify management and reduce errors. For more information, see [Server-level roles](/sql/relational-databases/security/authentication-access/server-level-roles).
 
@@ -107,7 +107,7 @@ Comprehensive monitoring and threat detection help you identify security issues,
 
 - **Configure Advanced Threat Protection**: Set up Advanced Threat Protection to detect specific threats including potential SQL injection, access from unusual locations or data centers, access from unfamiliar principals, and brute force SQL credentials. Configure email notifications and storage accounts for threat alerts. For more information, see [Configure Advanced Threat Protection](threat-detection-configure.md).
 
-- **Configure SQL auditing**: Enable comprehensive auditing to track database events and write them to Azure Storage, Log Analytics, or Event Hubs. This provides detailed logs for security analysis and compliance reporting. For more information, see [SQL Managed Instance auditing](auditing-configure.md).
+- **Configure SQL auditing**: Enable comprehensive auditing to track database events and write them to Azure Storage, Log Analytics, or Event Hubs. This provides detailed logs for security analysis and compliance reporting. For more information, see [SQL Server Audit in Azure SQL Managed Instance](auditing.md).
 
 - **Set up Azure Monitor**: Use Azure Monitor to collect platform metrics, diagnostic logs, and create custom alerts for your SQL managed instance. Monitor resource consumption, performance metrics, and security events in a centralized location. For more information, see [Monitor Azure SQL Managed Instance](monitoring-sql-managed-instance-azure-monitor.md).
 

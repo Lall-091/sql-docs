@@ -4,7 +4,7 @@ description: "The queryinsights.exec_requests_history in Microsoft Fabric provid
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mariyaali, randolphwest, emtehran
-ms.date: 03/12/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -53,6 +53,7 @@ The `queryinsights.exec_requests_history` in [!INCLUDE [fabric](../../includes/f
 | `data_scanned_memory_mb` | **decimal(18,3)** | Shows how much data was scanned from local memory. Data scanned from disk and memory together indicates how much data was read from cache. |
 | `data_scanned_disk_mb` | **decimal(18,3)** | Shows how much data was scanned/read from local disk. Data scanned from disk and memory together indicates how much data was read from cache. |
 | `command` | **varchar(max)** | Complete text of the executed query. |
+| `error_code` | **int** | Error code if query failed after beginning execution. `0` if no error encountered. |
 
 ## Permissions
 

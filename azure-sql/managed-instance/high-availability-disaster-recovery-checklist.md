@@ -61,7 +61,7 @@ To successfully recover to another data region using failover groups, or geo-res
 * Determine how you're going to redirect users to the new primary server. Redirecting users could be accomplished by manually changing application connection strings or DNS entries. If you've configured failover groups and use the read-write and read-only listener in application connection strings, no further action is needed - connections are automatically directed to new primary after failover.
 * Identify, and optionally define, the [NSG and route table configuration](connectivity-architecture-overview.md#service-aided-subnet-configuration) that users need to access the new primary database on the new primary.
 * Identify, and optionally create, the logins that must be present in the `master` database on the new primary server, and ensure these logins have appropriate permissions in the `master` database, if any. 
-* Document the [auditing configuration](auditing-configure.md) on the current primary and make it identical on the secondary instance. 
+* Document the [SQL Server Audit configuration](auditing.md) on the current primary and make it identical on the secondary instance. 
 
 ## Related content
 

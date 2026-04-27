@@ -423,7 +423,7 @@ Cross-database queries are supported for Microsoft Entra accounts with Microsoft
 
 - SQL Agent management and job executions are supported for Microsoft Entra logins.
 - Microsoft Entra logins can execute database backup and restore operations.
-- [Auditing](auditing-configure.md) of all statements related to Microsoft Entra logins and authentication events.
+- [Auditing](auditing.md) of all statements related to Microsoft Entra logins and authentication events.
 - Dedicated administrator connection for Microsoft Entra logins that are members of the **sysadmin** server-role.
 - Microsoft Entra logins are supported with using the [sqlcmd utility](/sql/tools/sqlcmd-utility) and [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) tool.
 - Logon triggers are supported for logon events coming from Microsoft Entra logins.

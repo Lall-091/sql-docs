@@ -4,7 +4,7 @@ description: Query Store can be configured to monitor and tuning workloads on se
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, randolphwest, wiassaf
-ms.date: 01/27/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
@@ -12,33 +12,37 @@ ms.custom:
   - build-2025
 helpviewer_keywords:
   - "Query Store secondary replicas"
-monikerRange: ">=sql-server-ver16 || =azuresqldb-current"
+monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current"
 ---
-# Query Store for readable secondary replicas
+# Query Store for readable secondary replicas (preview)
 
 [!INCLUDE [sqlserver2022-asdb-asmi](../../includes/applies-to-version/sqlserver2022-asdb-asmi.md)]
 
 Query Store for readable secondary replicas enables Query Store insights for workloads that run on secondary replicas. When enabled, secondary replicas stream query execution information (such as runtime and wait statistics) to the primary replica, where the data is persisted in Query Store and made visible across all replicas.
 
+> [!NOTE]
+> Query store for readable secondary replicas is currently in preview in all SQL Database Engine platforms. 
+
 <a id="platform-support"></a>
 
 ## Availability
 
-Beginning with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], and in Azure SQL Database, Query Store for readable secondary replicas is enabled by default. 
+Query Store for readable secondary replicas is available starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], as well as Azure SQL Database and Azure SQL Managed Instance with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy). For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], Query Store for readable secondary replicas requires enabling trace flag 12606 to use the feature.
 
 The following table summarizes the availability and the enabled state of Query store for readable secondaries.
 
 | Platform | Available | Enabled by default |
 | --- | --- | --- |
-| [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] | Yes | Yes (always enabled) |
+| [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] | Yes<sup>1</sup> | Yes (always enabled) |
 | [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] | Yes | Yes (always enabled) |
 | [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[AUTD](/azure/azure-sql/managed-instance/update-policy?view=azuresql-mi&preserve-view=true#always-up-to-date-update-policy)</sup> | Yes | Yes (always enabled) |
 | [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[2025](/azure/azure-sql/managed-instance/update-policy?view=azuresql-mi&preserve-view=true#sql-server-2025-update-policy)</sup> | No | No |
 | [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[2022](/azure/azure-sql/managed-instance/update-policy?view=azuresql-mi&preserve-view=true#sql-server-2022-update-policy)</sup> | No | No |
 | [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] | Yes | No (can be enabled, per database) |
-| [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] | No\* | No |
+| [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] | No<sup>2</sup> | No |
 
-\* Query Store for readable secondaries remains in preview for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], and is therefore **not** supported in production, and is disabled by default. To enable Query Store for readable secondaries in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] only, a trace flag 12606 is required to be enabled to the primary and all readable secondary replicas. Trace flag 12606 **is not** intended for production deployments that are based on [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. For more information, see [SQL Server 2022 release notes](../../sql-server/sql-server-2022-release-notes.md).
+<sup>1</sup> Query store for readable secondaries is not currently available in the Hyperscale service tier of Azure SQL Database.   
+<sup>2</sup> Query Store for readable secondaries remains in **limited** preview for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], and is therefore **not** supported in production, and is disabled by default. To enable Query Store for readable secondaries in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] only, a trace flag 12606 is required to be enabled to the primary and all readable secondary replicas. Trace flag 12606 **is not** intended for production deployments that are based on [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. For more information, see [SQL Server 2022 release notes](../../sql-server/sql-server-2022-release-notes.md).
 
 ## Supported high availability scenarios
 

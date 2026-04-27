@@ -4,7 +4,7 @@ description: Install and configure the SQL Server Connector for Azure Key Vault.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 10/06/2025
+ms.date: 04/22/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -52,6 +52,9 @@ Before you begin using Azure Key Vault with your SQL Server instance, be sure th
 
 > [!NOTE]  
 > In [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] CU 14 and later versions, [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] on Linux supports TDE Extensible Key Management with Azure Key Vault. Steps 3 and 4 in this guide aren't required for [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] on Linux.
+
+> [!IMPORTANT]  
+> The SQL Server Connector for Azure Key Vault supports **asymmetric RSA keys only** for TDE encryption. Azure Key Vault certificates (`.pfx` and `.pem` formats) aren't used by the SQL Server Connector. If you have existing certificates in `.cer`, `.cert`, or `.cerbak` format that you want to use for TDE, consider using [certificate-based TDE without EKM](transparent-data-encryption.md) instead, which stores the certificate directly in the SQL Server `master` database.
 
 <a id="step-1-set-up-an-azure-ad-service-principal"></a>
 

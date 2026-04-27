@@ -1,10 +1,10 @@
 ---
-title: "Installing SQL Server Migration Assistant for Access (AccessToSQL)"
+title: Installing SQL Server Migration Assistant for Access (AccessToSQL)
 description: Learn about installation prerequisites for SQL Server Migration Assistant (SSMA) for Access and how to install, license, upgrade, and uninstall.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 12/30/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: install-set-up-deploy
@@ -28,14 +28,20 @@ helpviewer_keywords:
 ---
 # Install SQL Server Migration Assistant for Access (AccessToSQL)
 
-SQL Server Migration Assistant (SSMA) for Access is installed by using a Windows Installer-based wizard. This article provides information about installation prerequisites, a link to the latest version of SSMA, and instructions for installing, licensing, uninstalling, and upgrading SSMA.
+The SQL Server Migration Assistant (SSMA) client migrates Access databases. [!INCLUDE [ssma-target-description](../includes/ssma-target-description.md)] The client:
+
+- Connects to the Access source and the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] target.
+- Converts database objects for the target.
+- Loads the converted objects into the target.
+- Migrates the data.
+
+This article provides information about installation prerequisites, a link to the latest version of SSMA, and instructions for installing, licensing, uninstalling, and upgrading SSMA.
 
 ## Prerequisites
 
 Before you install SSMA, make sure that your system meets the following requirements:
 
-- Windows 7 or a later version, or Windows Server 2008 or a later version.
-- Windows Installer 3.1 or a later version.
+- Windows 11 or later versions, or Windows Server 2022 or later versions.
 - The .NET Framework version 4.7.2 or a later version. The .NET Framework is available at [Microsoft .NET Guide](/dotnet/framework/).
 - Access to and sufficient permissions on the computer that hosts the target instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] to which you're migrating database objects and data.
 - Microsoft Data Access Object (DAO) provider version 12.0 or 14.0. You can install DAO provider from Microsoft Office 2010/2007 product or download it from Microsoft web site.

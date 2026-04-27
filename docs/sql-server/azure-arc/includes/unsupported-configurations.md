@@ -2,7 +2,7 @@
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/29/2025
+ms.date: 04/23/2026
 ms.topic: include
 ms.custom:
   - ignite-2023
@@ -22,4 +22,5 @@ Azure Arc-enabled [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md
 - An Always On availability group where one or more replicas is on a failover cluster instance.
 - SQL Server Reporting Services (SharePoint Mode).
 - [DBCC CLONEDATABASE (Transact-SQL)](../../../t-sql/database-console-commands/dbcc-clonedatabase-transact-sql.md) throws error on the default installation of the Azure extension for SQL Server. To run the `DBCC CLONEDATABASE`, the Azure extension must be run in [least privilege mode](../configure-least-privilege.md).
+- Database and availability group names with trailing whitespace (for example, `MyDb `) aren't supported on instances using binary collations (`BIN`/`BIN2`). These objects are skipped by the extension with a warning. On non-binary collations (the default), trailing whitespace is automatically trimmed, and the objects are managed normally.
 - SQL Server instance names containing a `#` symbol aren't supported. For a complete list of naming rules and restrictions, review [naming rules and restrictions](/azure/azure-resource-manager/management/resource-name-rules).
