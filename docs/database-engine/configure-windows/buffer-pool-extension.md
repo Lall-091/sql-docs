@@ -1,9 +1,9 @@
 ---
-title: "Buffer Pool Extension"
+title: Buffer Pool Extension
 description: Learn about buffer pool extension and its benefits, which include improved I/O throughput. View best practices to follow when turning on this feature.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/28/2025
+ms.date: 04/24/2026
 ms.service: sql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -91,11 +91,9 @@ The following XEvents are available.
 | `sqlserver.`<br />`buffer_pool_extension_pages_evicted` | Fires when a page is evicted from the buffer pool extension file. | `number_page`<br />`first_page_id`<br />`first_page_offset`<br />`initiator_numa_node_id` |
 | `sqlserver.`<br />`buffer_pool_eviction_thresholds_recalculated` | Fires when the eviction threshold is calculated. | `warm_threshold`<br />`cold_threshold`<br />`pages_bypassed_eviction`<br />`eviction_bypass_reason`<br />`eviction_bypass_reason_description` |
 
-## Related tasks
+## Related content
 
-| Task Description | Article |
-| --- | --- |
-| Enable and configure the buffer pool extension. | [ALTER SERVER CONFIGURATION](../../t-sql/statements/alter-server-configuration-transact-sql.md) |
-| Modify the buffer pool extension configuration | [ALTER SERVER CONFIGURATION](../../t-sql/statements/alter-server-configuration-transact-sql.md) |
-| View the buffer pool extension configuration | [sys.dm_os_buffer_pool_extension_configuration](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-pool-extension-configuration-transact-sql.md) |
-| Monitor the buffer pool extension | [sys.dm_os_buffer_descriptors](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-descriptors-transact-sql.md)<br /><br />[SQL Server, Buffer Manager object](../../relational-databases/performance-monitor/sql-server-buffer-manager-object.md) |
+- [ALTER SERVER CONFIGURATION (Transact-SQL)](../../t-sql/statements/alter-server-configuration-transact-sql.md)
+- [sys.dm_os_buffer_pool_extension_configuration (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-pool-extension-configuration-transact-sql.md)
+- [sys.dm_os_buffer_descriptors (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-descriptors-transact-sql.md)
+- [SQL Server, Buffer Manager object](../../relational-databases/performance-monitor/sql-server-buffer-manager-object.md)
