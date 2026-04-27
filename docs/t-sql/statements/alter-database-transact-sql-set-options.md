@@ -5101,11 +5101,15 @@ Enables or disables result set caching for the target item. The default setting 
 
 Enables or disables proactive statistics refresh for the target item. The default is `ON`. You should use the default setting for most items. For more information, see [Statistics](/fabric/data-warehouse/statistics).
 
-#### TIME_TRAVEL_RETENTION_PERIOD
+#### TIME_TRAVEL_RETENTION_PERIOD = { n } DAYS
 
 **Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric](../../includes/fabric-dw.md)].
 
-You can configure the [data retention period](/fabric/data-warehouse/data-retention) for a warehouse in Microsoft Fabric. This retention period determines how far back in time you can perform [time travel](/fabric/data-warehouse/time-travel) queries, create [table clones](/fabric/data-warehouse/clone-table), use [restore points](/fabric/data-warehouse/restore-in-place), and access [warehouse snapshots](/fabric/data-warehouse/warehouse-snapshot). Specify the retention period in days.
+Specify the retention period of the warehouse in days between `1` and `120`. The default is `30`. 
+
+You can configure the [data retention period](/fabric/data-warehouse/data-retention) for a warehouse in Microsoft Fabric. This retention period determines how far back in time you can perform [time travel](/fabric/data-warehouse/time-travel) queries, create [table clones](/fabric/data-warehouse/clone-table), use [restore points](/fabric/data-warehouse/restore-in-place), and create [warehouse snapshots](/fabric/data-warehouse/warehouse-snapshot). 
+
+View the current value in `time_travel_retention_period_days` in [sys.databases](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md?view=fabric&preserve-view=true).
 
 ## Permissions
 
