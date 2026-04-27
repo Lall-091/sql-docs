@@ -11,7 +11,7 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 ---
 # SQL Server back up to URL for S3-compatible object storage best practices and troubleshooting
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022 and later](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article includes best practices and troubleshooting tips for SQL Server backup and restores to S3-compatible object storage.
 
