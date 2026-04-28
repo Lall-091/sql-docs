@@ -13,7 +13,7 @@ monikerRange: ">=sql-server-ver15||>= sql-server-linux-ver16"
 
 # Microsoft Entra authentication for SQL Server
 
-[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] introduces support for [authentication](/azure/active-directory/authentication/overview-authentication) with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), on both Windows and Linux on-premises, and [SQL Server on Azure Windows VMs](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm).
 

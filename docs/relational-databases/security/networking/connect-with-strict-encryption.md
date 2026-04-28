@@ -13,7 +13,7 @@ ms.custom: sfi-image-nochange
 
 # Connect to SQL Server with strict encryption
 
-[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 Strict connection encryption enforces good security practices and makes SQL Server traffic manageable by standard network appliances.
 
