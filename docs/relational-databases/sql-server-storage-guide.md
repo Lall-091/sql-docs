@@ -3,7 +3,7 @@ title: SQL Server I/O Fundamentals
 description: Learn how storage choice and caching affect SQL Server performance.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 04/23/2026
+ms.date: 04/29/2026
 ms.service: sql
 ms.subservice: supportability
 ms.topic: concept-article
@@ -27,31 +27,40 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 The primary purpose of a [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] database is to store and retrieve data, so intensive disk input/output (I/O) is a core characteristic of the [!INCLUDE [ssde-md](../includes/ssde-md.md)]. Because disk I/O operations can consume many resources and take a relatively long time to finish, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] focuses on making I/O highly efficient.
 
-Storage subsystems for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] are provided in multiple form factors, including mechanical drives and solid-state storage. This article provides details on how to use drive caching principles to improve [!INCLUDE [ssde-md](../includes/ssde-md.md)] I/O.
+Storage subsystems for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] are available in multiple form factors, including mechanical drives and solid-state storage. This article provides details on how to use drive caching principles to improve [!INCLUDE [ssde-md](../includes/ssde-md.md)] I/O.
 
-[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] requires that systems support *guaranteed delivery to stable media* as outlined under the [SQL Server I/O Reliability Program Requirements](https://download.microsoft.com/download/f/1/e/f1ecc20c-85ee-4d73-baba-f87200e8dbc2/sql_server_io_reliability_program_review_requirements.pdf). For more information about the input and output requirements for the [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)], see [SQL Server Database Engine Disk Input/Output (I/O) requirements](/troubleshoot/sql/database-engine/database-file-operations/database-engine-input-output-requirements).
+[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] requires that systems support *guaranteed delivery to stable media* as outlined under the [SQL Server I/O Reliability Program Requirements](https://download.microsoft.com/download/f/1/e/f1ecc20c-85ee-4d73-baba-f87200e8dbc2/sql_server_io_reliability_program_review_requirements.pdf).
+
+This requirement includes, but isn't limited to, the following conditions:
+
+- [Windows Hardware Compatibility Program](/windows-hardware/design/compatibility/)
+- Write ordering
+- Caching stability
+- No data rewrites
+
+Systems that meet these requirements support [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database storage. Systems don't have to be listed on [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] storage solutions programs, but they must guarantee that the requirements are met.
 
 ## Disk I/O
 
-The buffer manager only performs reads and writes to the database. Other file and database operations such as open, close, extend, and shrink are performed by the database manager and file manager components.
+The buffer manager only performs reads and writes to the database. Other file and database operations, such as open, close, extend, and shrink, are handled by the database manager and file manager components.
 
 Disk I/O operations by the buffer manager have the following characteristics:
 
-- I/O is typically performed asynchronously, which allows the calling thread to continue processing while the I/O operation takes place in the background. Under some circumstances (for example, misaligned log I/O), synchronous I/Os can occur.
+- I/O is typically performed asynchronously, which allows the calling thread to continue processing while the I/O operation takes place in the background. Under some circumstances, such as misaligned log I/O, synchronous I/Os can occur.
 
-- All I/Os are issued in the calling threads unless the affinity I/O option is in use. The affinity I/O mask option binds [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] disk I/O to a specified subset of CPUs. In high-end [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] online transactional processing (OLTP) environments, this extension can enhance the performance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] threads issuing I/Os.
+- All I/Os are issued in the calling threads unless the affinity I/O option is in use. The [affinity I/O mask](../database-engine/configure-windows/affinity-input-output-mask-server-configuration-option.md) option binds [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] disk I/O to a specified subset of CPUs. In high-end [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] online transactional processing (OLTP) environments, this extension can enhance the performance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] threads issuing I/Os.
 
-- Multiple page I/Os are accomplished with scatter-gather I/O, which allows data to be transferred into or out of noncontiguous areas of memory. This means that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can quickly fill or flush the buffer cache while avoiding multiple physical I/O requests.
+- Multiple page I/Os are accomplished with scatter-gather I/O, which allows data to be transferred into or out of noncontiguous areas of memory. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can quickly fill or flush the buffer cache while avoiding multiple physical I/O requests.
 
 ### Long I/O requests
 
-The buffer manager reports on any I/O request that is outstanding for at least 15 seconds. This process helps the system administrator distinguish between [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] problems and I/O subsystem problems. Error message [MSSQLSERVER_833](errors-events/mssqlserver-833-database-engine-error.md) is reported and appears in the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] error log as follows:
+The buffer manager reports any I/O request that is outstanding for at least 15 seconds. This process helps the system administrator distinguish between [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] problems and I/O subsystem problems. Error message [MSSQLSERVER_833](errors-events/mssqlserver-833-database-engine-error.md) is reported and appears in the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] error log as follows:
 
 ```output
 SQL Server has encountered ## occurrence(s) of I/O requests taking longer than 15 seconds to complete on file [##] in database [##] (#). The OS file handle is 0x00000. The offset of the latest long I/O is: 0x00000.
 ```
 
-A long I/O can be either a read or a write; the message doesn't currently indicate which. Long-I/O messages are warnings, not errors. They don't indicate problems with [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] but with the underlying I/O system. The messages help the system administrator find the cause of poor [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] response times more quickly, and distinguish problems that are outside the control of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. As such, they don't require any action, but the system administrator should investigate why the I/O request took so long, and whether the time is justifiable.
+A long I/O can be either a read or a write operation. The message doesn't currently indicate which. Long-I/O messages are warnings, not errors. They don't indicate problems with [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] but with the underlying I/O system. The messages help the system administrator find the cause of poor [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] response times more quickly, and distinguish problems that are outside the control of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. As such, they don't require any action, but the system administrator should investigate why the I/O request took so long, and whether the time is justifiable.
 
 ### Causes of long I/O requests
 
@@ -76,7 +85,7 @@ For information on how to configure antivirus protection on [!INCLUDE [ssnoversi
 
 ## Write caching in storage controllers
 
-I/O transfers that don't use a cache can take much longer on mechanical drives because of hard drive spin rates, the mechanical time needed to move the drive heads, and other limiting factors. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] installations target systems that provide caching controllers. These controllers disable the on-disk caches and provide stable media caches to satisfy [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] I/O requirements. They avoid performance issues related to storage seek and write times by using the various optimizations of the caching controller.
+I/O transfers that don't use a cache can take much longer on mechanical drives because of hard drive spin rates, the mechanical time needed to move the drive heads, and other limiting factors. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] installations target systems that provide caching controllers. These controllers disable the on-disk caches and provide stable media caches to satisfy [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] I/O requirements. They avoid performance problems related to storage seek and write times by using the various optimizations of the caching controller.
 
 > [!NOTE]  
 > Some storage vendors use persistent memory (PMEM) as storage rather than a cache, which can improve overall performance. For more information, see [Configure persistent memory (PMEM) for SQL Server on Windows](../database-engine/configure-windows/configure-persistent-memory.md) and [Configure persistent memory (PMEM) for SQL Server on Linux](../linux/sql-server-linux-configure-pmem.md).
@@ -92,7 +101,7 @@ Caching controllers and storage subsystems can be safe for use by [!INCLUDE [ssn
 
 Write-back caching controllers can improve performance if they meet specific safety requirements:
 
-- Include battery-backed cache or non-volatile memory, such as NVDIMM or super-capacitor-backed flash.
+- Include battery-backed cache or nonvolatile memory, such as NVDIMM or super-capacitor-backed flash.
 - Be certified by the vendor for data-critical OLTP database environments.
 - Provide protection that covers all failure conditions, not just power loss.
 
@@ -102,6 +111,8 @@ Write-back caching controllers can improve performance if they meet specific saf
 ## Write-ahead logging
 
 [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] data modification statements generate logical page writes. You can picture this stream of writes as going to two places: the log and the database itself. For performance reasons, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] defers writes to the database through its own cache buffer system. The system only momentarily defers writes to the log until `COMMIT` time. It doesn't cache these writes in the same way as data writes. Because log writes for a given page always come before the page's data writes, the log is sometimes referred to as a *write-ahead log* (WAL).
+
+[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] maintains the [atomicity, consistency, isolation, and durability (ACID) properties of transactions](sql-server-transaction-locking-and-row-versioning-guide.md#transaction-basics) through the WAL protocol.
 
 ### Write-ahead logging (WAL) protocol
 
@@ -119,13 +130,13 @@ For more information on FUA support by Linux distribution and its effect on [!IN
 
 ## Transactional integrity and SQL Server recovery
 
-Transactional integrity is one of the fundamental concepts of a relational database system. Transactions are atomic units of work that are either totally applied or totally rolled back. The [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] write-ahead transaction log is a vital component in implementing transactional integrity.
+Transactional integrity is one of the fundamental concepts of a relational database system. Transactions are atomic units of work that are either fully applied or fully rolled back. The [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] write-ahead transaction log plays a vital role in implementing transactional integrity.
 
-Any relational database system must also deal with a concept closely related to transactional integrity, which is recovery from unplanned system failure. Several non-ideal, real-world effects can cause this failure. On many database management systems, system failure can result in a lengthy human-directed manual recovery process.
+Any relational database system must also handle a concept closely related to transactional integrity: recovery from unplanned system failure. Several nonideal, real-world effects can cause this failure. On many database management systems, system failure can result in a lengthy, human-directed manual recovery process.
 
 In contrast, the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] recovery mechanism is automatic and operates without human intervention. For example, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] could be supporting a mission-critical production application, and experience a system failure due to a momentary power fluctuation. Upon restoration of power, the server hardware restarts, networking software loads and initializes, and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] restarts. As [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] initializes, it automatically runs its recovery process based on data in the transaction log. This entire process occurs without human intervention. When client workstations restart, users find all of their data present, up to the last transaction they entered.
 
-Transactional integrity and automatic recovery in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] constitute a powerful time-and-labor saving capability. If a write caching controller isn't properly designed for use in a data-critical transactional DBMS environment, it can compromise the ability of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to recover, potentially corrupting the database. This problem can occur if the controller intercepts [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] transaction log writes and buffers them in a hardware cache on the controller board, but doesn't preserve these written pages during a system failure.
+Automatic recovery and transactional integrity work together to reduce the time and effort required to restore operations after a failure. If a write caching controller isn't properly designed for use in a data-critical transactional DBMS environment, it can compromise the ability of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to recover, potentially corrupting the database. This problem can occur if the controller intercepts [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] transaction log writes and buffers them in a hardware cache on the controller board, but doesn't preserve these written pages during a system failure.
 
 > [!WARNING]  
 > If cached writes are discarded due to a system reset, database corruption can occur even if a UPS is present. Always ensure write caches are backed by battery or equivalent technology to guarantee data persistence.
@@ -142,11 +153,11 @@ It's possible to design a hardware write cache that takes into account all possi
 
 ## Use storage caches with SQL Server
 
-A database system is first and foremost responsible for the accurate storage and retrieval of data, even in the event of unexpected system failures.
+A database system is primarily responsible for the accurate storage and retrieval of data, even during unexpected system failures.
 
-The system must guarantee the atomicity and durability of transactions, while accounting for current execution, multiple transactions, and various failure points. This property is often referred to as the ACID (Atomicity, Consistency, Isolation, and Durability) properties.
+The system must guarantee the atomicity and durability of transactions while accounting for current execution, multiple transactions, and various failure points. This property is often referred to as the ACID (Atomicity, Consistency, Isolation, and Durability) properties.
 
-This section addresses the implications of storage caches. For further information on caching and alternate failure mode discussions, see the following articles:
+This section addresses the implications of storage caches. For more information on caching and alternate failure mode discussions, see:
 
 - [86903 SQL Server and caching disk controllers](https://support.microsoft.com/help/86903)
 - [Description of logging and data storage algorithms that extend data reliability in SQL Server](/troubleshoot/sql/database-engine/database-file-operations/logging-data-storage-algorithms)
@@ -287,14 +298,14 @@ Don't rely on OS-level settings alone. Some drives ignore Windows settings and r
 
 ## Cache considerations and SQLIOSim
 
-To confirm transactional durability guarantees, validate your I/O subsystem by using **SQLIOSim** before moving to production. This utility simulates heavy asynchronous read and write activity to a simulated data device and log device. For more information, see [Use the SQLIOSim utility to simulate SQL Server activity on a disk subsystem](/troubleshoot/sql/tools/sqliosim-utility-simulate-activity-disk-subsystem).
+To confirm transactional durability guarantees, validate your I/O subsystem by using **SQLIOSim** before moving to production. This utility simulates heavy asynchronous read and write activity to a simulated data device and log device. For more information, see [Use the SQLIOSim utility to simulate SQL Server activity on a disk subsystem](/troubleshoot/sql/tools/sqliosim-utility-simulate-activity-disk-subsystem). For broader storage benchmarking, you can also use the **[diskspd](https://github.com/microsoft/diskspd)** storage testing tool.
 
 > [!NOTE]  
 > Ensure that any alternate caching mechanism can properly handle multiple types of failure.
 
-Many PC manufacturers order the drives with the write cache disabled. However, testing shows that this condition might not always be the case, so you should always test it completely. If you have any questions about the caching status of your storage device, contact the manufacturer and obtain the appropriate utility to disable write caching operations. On older storage media, you might also need jumper settings.
+Many PC manufacturers order the drives with the write cache disabled. However, testing shows that this condition might not always be the case, so you should always test it completely. If you have any questions about the caching status of your storage device, contact the manufacturer and obtain the appropriate utility to disable write-caching operations. On older storage media, you might also need jumper settings.
 
-[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] requires systems to support *guaranteed delivery to stable media*, as outlined under the [SQL Server I/O Reliability Program Requirements](https://download.microsoft.com/download/f/1/e/f1ecc20c-85ee-4d73-baba-f87200e8dbc2/sql_server_io_reliability_program_review_requirements.pdf). For more information about the input and output requirements for the [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)], see [SQL Server Database Engine Disk Input/Output (I/O) requirements](/troubleshoot/sql/database-engine/database-file-operations/database-engine-input-output-requirements).
+[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] requires systems to support *guaranteed delivery to stable media*, as outlined under the [SQL Server I/O Reliability Program Requirements](https://download.microsoft.com/download/f/1/e/f1ecc20c-85ee-4d73-baba-f87200e8dbc2/sql_server_io_reliability_program_review_requirements.pdf).
 
 ### Improper write caching risks
 
@@ -311,9 +322,40 @@ When you enable write caching without proper safeguards, some storage subsystems
 >
 > External UPS devices aren't sufficient because they might not protect against all failure modes, such as a controller firmware fault.
 
+## Support for I/O issues
+
+[!INCLUDE [msconame-md](../includes/msconame-md.md)] fully supports [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]-based applications, but the device manufacturer is responsible for support when the I/O solution causes problems. Symptoms include, but aren't limited to:
+
+- Database corruption
+- Backup corruption
+- Unexpected data loss
+- Missing transactions
+- Unexpected I/O performance variances
+
+> [!NOTE]
+> [!INCLUDE [msconame-md](../includes/msconame-md.md)] doesn't certify or validate that third-party hardware or software products work with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. [!INCLUDE [msconame-md](../includes/msconame-md.md)] publishes environmental requirements, including I/O subsystem and caching system requirements, to support transactional semantics. Third-party vendors are responsible for verifying that their products meet these requirements. If a problem occurs in a configuration that includes a third-party product, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] support might ask you to reproduce the issue without the third-party product before continuing the investigation.
+
+For more information, see:
+
+- [Write pages in the Database Engine](writing-pages.md)
+- [Read data pages in the Database Engine](reading-pages.md)
+
+## File system configuration
+
+The following table provides links to additional information for specific I/O configurations.
+
+| Configuration | Details |
+| --- | --- |
+| File system features | [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] databases aren't supported on compressed volumes, except for read-only files. For more information, see:<br /><br />- [Description of support for SQL Server databases on compressed volumes](/troubleshoot/sql/database-engine/database-file-operations/support-databases-compressed-volumes)<br />- [Decreased performance in SQL Server when you use EFS to encrypt database files](/troubleshoot/sql/database-engine/performance/decreased-performance-use-efs) |
+| **Physical layout and design** | - [Physical Database Storage Design](/previous-versions/sql/sql-server-2005/administrator/cc966414(v=technet.10))<br />- [Scalable Shared Databases Overview](/previous-versions/sql/sql-server-2008-r2/ms345392(v=sql.105)) |
+| `tempdb` | - [Microsoft SQL Server I/O subsystem requirements for the tempdb database](/troubleshoot/sql/database-engine/database-file-operations/io-subsystem-requirements-tempdb)<br />- [Recommendations to reduce allocation contention in SQL Server tempdb database](/troubleshoot/sql/database-engine/performance/recommendations-reduce-allocation-contention) |
+| **Diagnostics** | - [Asynchronous disk I/O appears as synchronous on Windows](/previous-versions/troubleshoot/windows/win32/asynchronous-disk-io-synchronous)<br />- [SQL Server diagnostics detects unreported I/O problems due to stale reads or lost writes](/troubleshoot/sql/database-engine/database-file-operations/diagnostics-for-unreported-io-problems)<br />- [MSSQLSERVER error 823](errors-events/mssqlserver-823-database-engine-error.md) |
+| **Network attached storage (NAS)** | - [Description of support for network database files in SQL Server](/troubleshoot/sql/database-engine/database-file-operations/support-network-database-files) |
+| **Always On AG and FCI** | - [Prerequisites, restrictions, and recommendations for Always On availability groups](../database-engine/availability-groups/windows/prereqs-restrictions-recommendations-always-on-availability.md)<br />- [Always On failover cluster instances](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server) |
+
 ## Related content
 
-- [Pages and extents architecture guide](pages-and-extents-architecture-guide.md)
+- [Page and extent architecture guide](pages-and-extents-architecture-guide.md)
 - [Memory management architecture guide](memory-management-architecture-guide.md)
 - [Storage: Performance best practices for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-storage)
 - [SQL Server On Linux: Forced Unit Access (FUA) Internals](https://techcommunity.microsoft.com/blog/sqlserver/sql-server-on-linux-forced-unit-access-fua-internals/3199102)
