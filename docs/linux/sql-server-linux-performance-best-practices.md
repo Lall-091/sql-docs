@@ -1,9 +1,9 @@
 ---
 title: Performance Best Practices for SQL Server on Linux
 description: This article provides performance best practices and guidelines for running SQL Server on Linux.
-author: tejasaks
-ms.author: tejasaks
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh, atsingh
 ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
@@ -487,7 +487,7 @@ For example, on a system with 1 TB of RAM, the default setting would leave aroun
 
 When changing this setting, be careful not to set this value too high. If you don't leave enough memory, you could experience problems with the Linux OS and other Linux applications.
 
-## Configure memory limits with control group (cgroup) v2
+## Control group (cgroup) v2 support
 
 [!INCLUDE [cgroup-support](includes/cgroup-support.md)]
 

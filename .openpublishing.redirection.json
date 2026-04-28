@@ -51761,6 +51761,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "docs/sql-server/migrate/dma-azure-migrate-compare-migration-tools.md",
+      "redirect_url": "/sql/sql-server/migrate/compare-sql-migration-tools",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/2014/2014-toc/books-online-for-sql-server-2014.md",
       "redirect_url": "/sql/sql-server/previous-versions-sql-server?view=sql-server-ver16",
       "redirect_document_id": false
@@ -53932,17 +53937,17 @@
     },
     {
       "source_path": "docs/connect/odbc/connecting-with-bcp.md",
-      "redirect_url": "/sql/tools/bcp-utility",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/connect/odbc/linux/connecting-with-bcp.md",
-      "redirect_url": "/sql/tools/bcp-utility",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/connect/odbc/linux-mac/connecting-with-bcp.md",
-      "redirect_url": "/sql/tools/bcp-utility",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": false
     },
     {
@@ -67623,6 +67628,11 @@
     {
       "source_path": "docs/tools/sqlcmd-utility.md",
       "redirect_url": "/sql/tools/sqlcmd/sqlcmd-utility",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/tools/bcp-utility.md",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": true
     },
     {

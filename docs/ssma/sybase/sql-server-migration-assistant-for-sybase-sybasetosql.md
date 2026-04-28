@@ -1,10 +1,10 @@
 ---
-title: "SQL Server Migration Assistant for Sybase (SybaseToSQL)"
-description: Learn about SSMA for Sybase and follow step-by-step instructions for migrating ASE databases to SQL Server or Azure SQL Database.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 07/10/2023
+title: SQL Server Migration Assistant for Sybase (SybaseToSQL)
+description: Learn about SSMA for SAP ASE and follow step-by-step instructions for migrating ASE databases to SQL Server and Azure SQL.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: overview
@@ -15,9 +15,9 @@ f1_keywords:
 ---
 # SQL Server Migration Assistant for Sybase (SybaseToSQL)
 
-[!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Migration Assistant (SSMA) for Sybase Adaptive Server Enterprise (ASE) is a tool for migrating ASE databases to [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] through [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] on Windows and Linux, or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. SSMA for ASE converts ASE database objects to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL objects, loads those objects into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL, and then migrates data from ASE to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL.
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Migration Assistant (SSMA) for SAP ASE is a tool for migrating SAP Adaptive Server Enterprise (ASE) databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and Azure SQL. [!INCLUDE [ssma-target-description](../includes/ssma-target-description.md)]
 
-This documentation introduces you to SSMA for Sybase and provides step-by-step instructions for migrating ASE databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL Database and information about issues that might occur after migration. To learn more, see the following articles.
+This documentation introduces you to SSMA for SAP ASE (formerly Sybase ASE) and provides step-by-step instructions for migrating ASE databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL Database and information about issues that might occur after migration. To learn more, see the following articles.
 
 ## Contents
 

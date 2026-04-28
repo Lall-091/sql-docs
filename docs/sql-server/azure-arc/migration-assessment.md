@@ -4,7 +4,7 @@ description: Select the optimal Azure SQL target by using migration assessment w
 author: ajithkr-ms
 ms.author: ajithkr
 ms.reviewer: mikeray, randolphwest
-ms.date: 06/30/2025
+ms.date: 04/27/2026
 ms.topic: how-to
 ---
 
@@ -239,6 +239,6 @@ Contact [Microsoft Support](/azure/azure-portal/supportability/how-to-create-azu
 
 - [Assessment rules for SQL Server to Azure SQL Managed Instance migration](/azure/azure-sql/migration-guides/managed-instance/sql-server-to-sql-managed-instance-assessment-rules)
 - [Assessment rules for SQL Server to Azure SQL Database migration](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules)
-- [Migrate SQL Server to Azure SQL](/azure/dms/dms-overview)
+- [Migrate SQL Server to Azure SQL](/data-migration/sql-server/overview)
 - [SQL Server enabled by Azure Arc](overview.md)
 - [Deployment options for SQL Server enabled by Azure Arc](deployment-options.md)
