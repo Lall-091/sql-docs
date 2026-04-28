@@ -4,7 +4,7 @@ description: Feature overview. Explains how you can manage instances of SQL Serv
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 04/01/2026
+ms.date: 04/28/2026
 ai-usage: ai-assisted
 ms.topic: concept-article
 ms.custom: references_regions
@@ -34,6 +34,7 @@ Azure Arc enables you to manage all of your SQL Server instances from a single p
 - View a list of every database on a SQL Server and do cross-SQL Server queries of databases to see:
   - Databases that haven't been backed up recently.
   - Databases that aren't encrypted.
+- Execute custom T-SQL scripts across onboarded instances using Azure Arc-enabled servers Run Command to gather specific information like permissions, configurations, or compliance data, then aggregate results centrally for reporting and analysis.
 
 ## Example custom dashboard
 
@@ -89,6 +90,8 @@ Monitor SQL Server instances from Azure portal with performance dashboards. Perf
 
 For details, see [Monitor SQL Server enabled by Azure Arc (preview)](sql-monitoring.md).
 
+Organizations can also build custom KQL dashboards and alerts over custom tables populated through the Logs Ingestion API, such as centralized SQL permissions results, complementing the built-in performance and assessment experiences.
+
 ## Migration assessment
 
 [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] migration assessment is a crucial tool for your cloud migration and modernization journey. It simplifies the discovery and readiness assessment for migration by providing:
@@ -103,6 +106,19 @@ For details, see [Monitor SQL Server enabled by Azure Arc (preview)](sql-monitor
 Migration assessment is for SQL Servers located in various environments, including your data center, edge sites, or any public cloud or hosting provider. It is available for any instance of SQL Server that is enabled by Azure Arc.
 
 For details, review [Configure SQL best practices assessment - SQL Server enabled by Azure Arc](assess.md).
+
+### Custom data collection pipeline
+
+For organizations requiring custom datasets beyond the built-in telemetry, an optional data collection pipeline can be implemented. This pipeline uses an [Azure Automation Runbook](/azure/automation/automation-runbook-types) authenticated with a Microsoft Entra ID service principal to:
+
+1. Enumerate Arc-enabled SQL Server resources using Azure Resource Manager APIs
+2. Invoke [Azure Arc-enabled servers Run Command](/azure/azure-arc/servers/run-command) to execute T-SQL scripts on each host
+3. Collect and process script output
+4. Send results to Azure Monitor Log Analytics via a [Data Collection Endpoint and Data Collection Rule](/azure/azure-monitor/logs/logs-ingestion-api-overview) using the Logs Ingestion API
+
+This approach operates independently of the Azure Monitoring Agent and enables custom reporting scenarios like centralized permission auditing, compliance checks, or configuration validation.
+
+For security best practices when implementing at-scale operations, including RBAC requirements, identity management, and network security, see [Security overview | SQL Server enabled by Azure Arc](security-overview.md#at-scale-query-execution-via-arc-enabled-servers-run-command).
 
 ## Architecture
 
@@ -177,3 +193,7 @@ For VMware vSphere–based environments, review [Support on VMware](#support-on-
 - [SQL Server enabled by Azure Arc deployment options](deployment-options.md)
 - [Learn more about Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-sql-usage)
 - [Learn more about Microsoft Purview](/azure/purview/register-scan-azure-arc-enabled-sql-server)
+- [Azure Arc-enabled servers Run Command](/azure/azure-arc/servers/run-command)
+- [Tutorial: Send data to Azure Monitor Logs with Logs ingestion API](/azure/azure-monitor/logs/tutorial-logs-ingestion-api)
+- [Azure Automation Runbooks](/azure/automation/automation-runbook-types)
+- [Security overview | SQL Server enabled by Azure Arc](security-overview.md)
