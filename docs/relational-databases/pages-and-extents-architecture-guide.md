@@ -52,7 +52,7 @@ A structure called the *slot array* is stored at the end of the page. Each 2-byt
 
 When the [!INCLUDE [ssde-md](../includes/ssde-md.md)] adds a row to an empty page, it stores the row immediately after the header. The slot array element for the first row is stored at the very end of the page. As more rows are added, they are stored one after another from the beginning to the end of the page, while the slot array grows from the end to the beginning of the page, as shown on the following diagram.
 
-:::image type="content" source="media/pages-and-extents-architecture-guide/page-architecture.svg" alt-text="Diagram of a data page.":::
+:::image type="content" source="media/pages-and-extents-architecture-guide/page-architecture.png" alt-text="Diagram of a data page.":::
 
 As rows on a page are deleted or updated over time, free space might appear among remaining rows. When a new row is added, it might be stored in this free space, if the space is sufficient. This means that rows on a page might not be physically stored in any particular order. However, the [!INCLUDE [ssde-md](../includes/ssde-md.md)] maintains the slot array entries in a logical order. As a result, rows on a page are also accessed in a logical order, for example the order defined by the key of the BTree index that owns the page.
 

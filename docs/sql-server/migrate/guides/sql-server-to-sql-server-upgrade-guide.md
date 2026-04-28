@@ -1,10 +1,10 @@
 ---
 title: Upgrade to the Latest Version of SQL Server
 description: Step-by-step guidance for modernizing your data assets
-author: ajithkr-ms
-ms.author: ajithkr
-ms.reviewer: randolphwest
-ms.date: 11/26/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: ajithkr
+ms.date: 04/27/2026
 ms.service: sql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -41,12 +41,14 @@ View [linked servers](../../../relational-databases/linked-servers/linked-server
 
 You might need to consider the following factors, depending on the complexity of your data and environment.
 
-- [Troubleshoot orphaned users (SQL Server)](../../failover-clusters/troubleshoot-orphaned-users-sql-server.md)
-- [Migrating Triggers](../../../relational-databases/in-memory-oltp/migrating-triggers.md)
-- [Generate and Publish Scripts Wizard](/ssms/scripting/generate-and-publish-scripts-wizard)
-- [Mirrored Backup Media Sets (SQL Server)](../../../relational-databases/backup-restore/mirrored-backup-media-sets-sql-server.md)
-- [Backup overview (SQL Server)](../../../relational-databases/backup-restore/backup-overview-sql-server.md)
-- [Editions and supported features of SQL Server 2025](../../editions-and-components-of-sql-server-2025.md)
+| Article | Description |
+| --- | --- |
+| [Troubleshoot orphaned users (SQL Server)](../../failover-clusters/troubleshoot-orphaned-users-sql-server.md) | Logins that exist on the source instance but not the target can result in orphaned database users after migration. Remap them before or after the upgrade. |
+| [Migrating Triggers](../../../relational-databases/in-memory-oltp/migrating-triggers.md) | If your databases use In-Memory OLTP (memory-optimized tables), review how triggers are handled during migration. |
+| [Generate and Publish Scripts Wizard](/ssms/scripting/generate-and-publish-scripts-wizard) | Use this tool to script database objects when you need to transfer schemas between instances that can't use backup and restore directly. |
+| [Mirrored Backup Media Sets (SQL Server)](../../../relational-databases/backup-restore/mirrored-backup-media-sets-sql-server.md) | Relevant if your backup strategy uses mirrored media sets. Verify that your backup and restore workflow is compatible with the target version. |
+| [Backup overview (SQL Server)](../../../relational-databases/backup-restore/backup-overview-sql-server.md) | Take full backups of all databases before upgrading. Backup compatibility is forward-only: backups from a newer version can't be restored to an older version. |
+| [Editions and supported features of SQL Server 2025](../../editions-and-components-of-sql-server-2025.md) | Verify that features you depend on are available in your target edition. Some features are edition-specific. |
 
 ### Migrate databases and logins
 
@@ -59,11 +61,12 @@ After you successfully complete the **Migration** stage, go through the post-mig
 For more information about these issues, specific steps to mitigate them, and after the migration
 see the [Post-migration validation and optimization guide](../../../relational-databases/post-migration-validation-and-optimization-guide.md).
 
-#### Verify applications
+### Verify applications
 
 After the data migrates to the target environment, all the applications that formerly consumed the source need to start consuming the target. You might need to change the applications to accomplish this goal. Test against the databases to verify that the applications work as expected after the migration.
 
 ## Related content
 
+- [Compare SQL data migration tools](/sql/sql-server/migrate/dma-azure-migrate-compare-migration-tools)
 - [Services and tools for data migration](/azure/dms/dms-tools-matrix)
 - [Azure Database Migration Guide](/data-migration/)

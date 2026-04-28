@@ -4,7 +4,7 @@ description: This guide teaches you to migrate your SQL Server databases to Azur
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma, danil
-ms.date: 02/19/2026
+ms.date: 04/27/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -169,7 +169,20 @@ To migrate using backup and restore, follow these steps:
 To learn more about this migration option, see [Quickstart: Restore a database to Azure SQL Managed Instance with SSMS](/azure/azure-sql/managed-instance/restore-sample-database-quickstart).
 
 > [!NOTE]  
-> A database restore operation is asynchronous and can be retried. You might get an error in SSMS if the connection breaks, or a timeout expires. Azure SQL Database keeps trying to restore the database in the background, and you can track the progress of the restore by using the [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) and [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) views.
+> A database restore operation is asynchronous and can be retried. You might get an error in SSMS if the connection breaks, or a timeout expires. SQL Managed Instance keeps trying to restore the database in the background, and you can track the progress of the restore by using the [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) and [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) views.
+
+## Common migration blockers
+
+Before starting a migration, review these frequently encountered issues.
+
+| Issue | Description |
+| -- | --- |
+| **Unsupported features** | Some SQL Server features aren't available in Azure SQL Managed Instance. Run a [migration assessment](/sql/sql-server/azure-arc/migration-assessment) to identify blockers before you begin. For a complete list, see [T-SQL differences between SQL Server and Azure SQL Managed Instance](/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server). |
+| **Virtual network configuration** | SQL Managed Instance requires a [dedicated subnet](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements) in a virtual network. Misconfigured subnets, missing service endpoints, or incorrect network security group (NSG) rules prevent instance creation or block connectivity. Verify your network configuration before provisioning the target instance. |
+| **Login and user migration** | SQL Server logins and database users don't transfer automatically. Script logins from the source instance and recreate them on the target. Pay attention to [orphaned users](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server) that might result from SID mismatches. |
+| **SQL Server Agent jobs** | Agent jobs, alerts, and operators aren't migrated with the database. Script and recreate them on the target instance after migration. |
+| **TDE-protected databases** | If your database uses [transparent data encryption (TDE)](/azure/azure-sql/database/transparent-data-encryption-tde-overview), you must [migrate the TDE certificate](/azure/azure-sql/managed-instance/tde-certificate-migrate) to the target instance before restoring the database. |
+| **Database size and throughput limits** | Large databases might exceed the [resource limits](/azure/azure-sql/managed-instance/resource-limits) for your chosen service tier. Check that your target configuration can accommodate the database size and I/O throughput requirements. |
 
 ## Data sync and cutover
 
@@ -215,6 +228,7 @@ Some SQL Server features are only available when you change the [database compat
 
 ## Related content
 
+- [Compare SQL data migration tools](/sql/sql-server/migrate/dma-azure-migrate-compare-migration-tools)
 - [Services and tools available for data migration scenarios](/azure/dms/dms-tools-matrix)
 - [Service Tiers in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview#service-tiers)
 - [T-SQL differences between SQL Server and Azure SQL Managed Instance](/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server)
