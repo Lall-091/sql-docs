@@ -1,19 +1,19 @@
 ---
-title: "Working with SSMA Projects (SybaseToSQL)"
-description: Working with SSMA Projects (SybaseToSQL)
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 11/10/2025
+title: Work with SSMA Projects (SybaseToSQL)
+description: Learn how to create, customize, save, and open projects in SQL Server Migration Assistant (SSMA) for SAP ASE.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: how-to
 ms.collection:
   - sql-migration-content
 ---
-# Working with SSMA Projects (SybaseToSQL)
+# Work with SSMA projects (SybaseToSQL)
 
-To migrate Sybase Adaptive Server Enterprise (ASE) databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure, you first create an SSMA project. The project is a file that contains metadata about the ASE databases that you want to migrate to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure, metadata about the target instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure that will receive the migrated objects and data, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure connection information, and project settings.
+To migrate SAP Adaptive Server Enterprise (ASE) databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure, you first create an SSMA project. The project is a file that contains metadata about the ASE databases that you want to migrate to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure, metadata about the target instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure that will receive the migrated objects and data, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure connection information, and project settings.
 
 When you open a project, it's disconnected from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure. This lets you work offline. You can reconnect to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure. For more information, see [Connecting to SQL Server](connecting-to-sql-server-sybasetosql.md) / [Connecting to Azure SQL Database](connecting-to-azure-sql-db-sybasetosql.md).
 
@@ -58,15 +58,9 @@ To migrate data from ASE databases to [!INCLUDE [ssNoVersion](../../includes/ssn
 
 1. In the **Migration To** dropdown list, select the version of target [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] used for migration. The options available are:
 
-   - [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]
-   - [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]
-   - [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]
-   - [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]
-   - [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]
-   - [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
-   - [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]
+   [!INCLUDE [ssma-target-versions](../includes/ssma-target-versions.md)]
 
-And then select **OK**.
+   And then select **OK**.
 
 ## Customize project settings
 
@@ -88,7 +82,7 @@ When you save a project, SSMA retains the project settings, and optionally the d
 
   1. Select the **Save** button.
 
-     SSMA will parse the Sybase ASE schemas and save the metadata to the project file.
+     SSMA will parse the SAP ASE schemas and save the metadata to the project file.
 
 ## Open projects
 

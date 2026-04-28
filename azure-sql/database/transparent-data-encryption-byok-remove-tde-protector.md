@@ -5,7 +5,7 @@ description: Learn how to respond to a potentially compromised TDE protector for
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 03/05/2026
+ms.date: 04/22/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -24,7 +24,7 @@ This article describes how to respond to a potentially compromised TDE protect f
 > [!CAUTION]
 > The procedures outlined in this article should only be done in extreme cases or in test environments. Review the steps carefully, as deleting actively used TDE protectors from Azure Key Vault will result in **database becoming unavailable**.
 
-If a key is ever suspected to be compromised, such that a service or user had unauthorized access to the key, it's best to delete the key.
+If a key is ever suspected to be compromised, such that a service or user had unauthorized access to the key, the recommended response is to first rotate to a new TDE protector and migrate all databases before deleting the old key. Deleting or disabling a key without first rotating the TDE protector causes all encrypted databases to become inaccessible. In addition, deleting or disabling a key does not invalidate any copies that were previously backed up and restored to another vault. Those copies remain fully functional. For more information about Key Vault backup copy behavior, see [Backup security considerations](/azure/key-vault/general/backup#security-considerations).
 
 Keep in mind that once the TDE protector is deleted in Azure Key Vault, in up to 10 minutes, all encrypted databases will start denying all connections with the corresponding error message and change its state to [Inaccessible](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector).
 

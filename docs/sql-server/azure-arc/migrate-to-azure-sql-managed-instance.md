@@ -5,7 +5,7 @@ description: SQL Server migration in Azure Arc to Azure SQL Managed Instance in 
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 04/13/2026
+ms.date: 04/16/2026
 ms.topic: how-to
 ---
 
@@ -81,7 +81,7 @@ Select the **Copilot** icon on the **Database migration** pane to open the Copil
 To use SQL Server migration in Azure Arc, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, you can [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
+- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the [latest version](release-notes.md) of the Azure extension for SQL Server. To upgrade your extension, see [Upgrade the extension](connect.md#upgrade-the-extension).
 
 Before you start the migration process, make sure that you've prepared your environment for your [chosen migration method](#integrated-migration-methods):
 - Prepare for [Managed Instance link migration](migration-sql-mi-prepare-link.md).
@@ -104,7 +104,7 @@ The following screenshot shows the tiles on the **Database migration** pane for 
 
 To assess the source instance, follow these steps:
 
-1. Go to your [SQL Server instance](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/sqlServerInstances) in the Azure portal.
+1. Go to your [SQL Server instance](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/SqlServerInstance) in the Azure portal.
 1. Under **Migration**, select **Database migration** to open the **Database migration** pane. Under **Assess source instance**, select **View report** to open the **Assessments** pane.
 
    :::image type="content" source="media/migrate-to-azure-sql-managed-instance/database-migration-pane.png" alt-text="Screenshot that shows the Database migration pane for the SQL Server instance in the Azure portal, with View report highlighted.":::
@@ -112,7 +112,7 @@ To assess the source instance, follow these steps:
 1. On the **Assessments** pane:
 
    - Use **Run assessment** to start a new assessment if one wasn't run recently.
-   - Use **View assessment details** in the **Azure SQL MI Recommended Target** box to learn more about your assessment results, including the readiness of your SQL Server instance to migrate to SQL Managed Instance. You also learn about the recommended service tier and configuration for your target instance.
+   - Use **View assessment details** in the **Azure SQL MI** tile to learn more about your assessment results, including the readiness of your SQL Server instance to migrate to SQL Managed Instance. You also learn about the recommended service tier and configuration for your target instance.
 
 ### Select target
 

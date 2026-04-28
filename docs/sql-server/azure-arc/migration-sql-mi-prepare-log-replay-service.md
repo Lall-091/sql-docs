@@ -5,7 +5,7 @@ description: Prepare your SQL Server instance enabled by Azure Arc for migration
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 12/12/2025
+ms.date: 04/16/2026
 ms.topic: how-to
 ---
 
@@ -27,7 +27,7 @@ With LRS, you can migrate your SQL Server databases to Azure SQL Managed Instanc
 To migrate your SQL Server databases to Azure SQL Managed Instance through the Azure portal, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
+- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the [latest version](release-notes.md) of the Azure extension for SQL Server. To upgrade your extension, see [Upgrade the extension](connect.md#upgrade-the-extension).
 
 ## Supported SQL Server versions
 
@@ -184,7 +184,9 @@ Consider the following best practices:
 
 ### Take backups on a SQL Server instance
 
-Set databases that you want to migrate to the full recovery model to allow log backups.
+The steps in this section show you how to back up locally, but it's also possible to [back up directly to URL](../../relational-databases/backup-restore/sql-server-backup-to-url.md).
+
+Set databases that you want to migrate to the full recovery model to allow log backups. 
 
 ```sql
 -- To permit log backups, before the full database backup, modify the database to use the full recovery
@@ -268,6 +270,11 @@ Monitoring the migration through the Azure portal is available only to SQL Serve
 ## Troubleshoot common issues
 
 To troubleshoot common issues when migrating to Azure SQL Managed Instance, see [Troubleshoot migration issues](migrate-to-azure-sql-managed-instance-troubleshoot.md).
+
+## Next step
+
+> [!div class="nextstepaction"]
+> [Migrate to Azure SQL Managed Instance](migrate-to-azure-sql-managed-instance.md)
 
 ## Related content
 

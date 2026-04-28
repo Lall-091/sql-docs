@@ -5,7 +5,7 @@ description: Learn how to use the Data-tier Application experience in the MSSQL 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: tsiddique, roblescarlos
-ms.date: 03/13/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -57,7 +57,7 @@ To launch the experience in the MSSQL extension for Visual Studio Code, right-cl
 - [Data-tier applications (DAC) overview](../../sql-database-projects/concepts/data-tier-applications/overview.md)
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
-- [Database operations (preview)](mssql-database-operations.md)
+- [Database operations](mssql-database-operations.md)
 - [Schema Compare](mssql-schema-compare.md)
 - [Schema Designer](mssql-schema-designer.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)

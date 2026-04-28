@@ -4,7 +4,7 @@ description: Track the SQL Server estate migration journey in the Azure Arc cent
 author: ajithkr-ms
 ms.author: ajithkr
 ms.reviewer: mikeray
-ms.date: 06/30/2025
+ms.date: 04/16/2026
 ms.topic: how-to
 ---
 
@@ -26,7 +26,7 @@ The dashboard provides:
 You can access the migration dashboard in the following ways:
 
 - In the Azure portal, search for **Azure Arc** and go to the Azure Arc center.
-- On the left pane, expand **Data services** and go to **SQL Server instances**.
+- On the left pane, expand **Data services** and go to **SQL servers**.
 - Select the **Migration Dashboard** tab.
 
 :::image type="content" source="media/migration-assessment/migration-dashboard.png" alt-text="Screenshot that shows the migration dashboard for SQL Server enabled by Azure Arc." lightbox="media/migration-assessment/migration-dashboard.png":::

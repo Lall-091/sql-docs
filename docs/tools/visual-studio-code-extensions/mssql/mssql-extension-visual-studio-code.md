@@ -4,7 +4,7 @@ description: Learn about the MSSQL extension for Visual Studio Code, which provi
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: roblescarlos
-ms.date: 03/13/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -57,18 +57,18 @@ The following table provides an overview of the features available in the MSSQL 
 | [View & Edit Data](#view--edit-data) | GA | Browse and modify table data inline without writing DML |
 | [Data-tier Application (DACPAC and BACPAC)](mssql-data-tier-application.md) | GA | Deploy, extract, import, and export DACPAC and BACPAC files |
 | [Fabric integration](mssql-fabric-integration.md) | GA | Browse Fabric workspaces and provision SQL databases |
-| [Database management](mssql-database-operations.md) | Preview | Create, rename, and drop databases from Object Explorer |
-| [Backup and restore](mssql-database-operations.md#backup-database) | Preview | Back up databases to disk or URL and restore from backups |
-| [Database object search](mssql-database-operations.md#database-object-search) | Preview | Find tables, views, functions, and stored procedures with type-aware search |
-| [Import flat file](mssql-database-operations.md#import-flat-file) | Preview | Import `.csv` and `.txt` files into new SQL Server tables |
-| [Query Profiler](mssql-query-profiler.md) | Preview | Real-time database activity monitoring with Extended Events |
+| [Database management](mssql-database-operations.md) | GA | Create, rename, and drop databases from Object Explorer |
+| [Backup and restore](mssql-database-operations.md#backup-database) | GA | Back up databases to disk or URL and restore from backups |
+| [Database object search](mssql-database-operations.md#database-object-search) | GA | Find tables, views, functions, and stored procedures with type-aware search |
+| [Import flat file](mssql-database-operations.md#import-flat-file) | GA | Import `.csv` and `.txt` files into new SQL Server tables |
+| [Query Profiler](mssql-query-profiler.md) | GA | Real-time database activity monitoring with Extended Events |
 | [Schema Designer with GitHub Copilot](mssql-schema-designer-copilot.md) | Preview | Natural language schema design within the visual Schema Designer |
 | [Data API builder](mssql-data-api-builder.md) | Preview | Create REST, GraphQL, and MCP endpoints for SQL databases |
 | [SQL notebooks](mssql-sql-notebooks.md) | Preview | Jupyter-based SQL notebooks with rich results and multi-kernel support |
 
 ### Connection dialog
 
-The Connection dialog provides a simple and intuitive interface for connecting to databases hosted in Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VMs), SQL database in Fabric, or SQL Server. It offers multiple input options to cater to different scenarios:
+The Connection dialog provides an intuitive interface for connecting to databases hosted in Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VMs), SQL database in Fabric, or SQL Server. It offers multiple input options to cater to different scenarios:
 
 - **Parameters**: Enter individual connection details such as server name, database name, username, and password.
 
@@ -213,7 +213,7 @@ The extension can download and install a required `SqlToolsService` package duri
 
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
-- [Database operations (preview)](mssql-database-operations.md)
+- [Database operations](mssql-database-operations.md)
 - [Schema Designer](mssql-schema-designer.md)
 - [GitHub Copilot integration in Schema Designer (preview)](mssql-schema-designer-copilot.md)
 - [Data API builder (preview)](mssql-data-api-builder.md)

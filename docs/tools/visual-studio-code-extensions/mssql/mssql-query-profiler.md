@@ -1,10 +1,10 @@
 ---
-title: Query Profiler in MSSQL Extension for Visual Studio Code (Preview)
+title: Query Profiler in MSSQL Extension for Visual Studio Code
 description: Learn how to use Query Profiler in the MSSQL extension for Visual Studio Code to capture and monitor database activity using Extended Events.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: roblescarlos
-ms.date: 03/13/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -13,16 +13,13 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# Query Profiler (preview)
+# Query Profiler
 
 The Query Profiler in the MSSQL extension for Visual Studio Code captures and monitors database activity in real time using [Extended Events](../../../relational-databases/extended-events/extended-events.md). You can observe live T-SQL activity, identify slow operations, and find performance bottlenecks during development.
 
 Query Profiler supports SQL Server (on-premises or in cloud environments), Azure SQL Database, and SQL database in Fabric endpoints. You can monitor active sessions, review execution details, and understand how your application interacts with your database during development and testing.
 
 :::image type="content" source="media/mssql-query-profiler/query-profiler-grid.png" alt-text="Screenshot of the Query Profiler live events grid showing captured database activity in the MSSQL extension for Visual Studio Code." lightbox="media/mssql-query-profiler/query-profiler-grid.png":::
-
-> [!TIP]  
-> Query Profiler is currently in preview and might change based on feedback. Join the community at [GitHub Discussions](https://aka.ms/vscode-mssql-discussions) to share ideas or report issues.
 
 ## Features
 
@@ -53,7 +50,7 @@ You can launch Query Profiler from the **Connections** view or the **Command Pal
 
 1. In the **Connections** view, right-click a SQL Server instance.
 
-1. Select **Launch Query Profiler (Preview)**.
+1. Select **Launch Query Profiler**.
 
    :::image type="content" source="media/mssql-query-profiler/query-profiler-context-menu.png" alt-text="Screenshot of the Launch Query Profiler option in the Connections context menu.":::
 
@@ -216,12 +213,12 @@ Query Profiler works with the following SQL Server and Azure SQL targets:
 
 ## Limitations
 
-- No AI or GitHub Copilot integration in this preview.
+- No AI or GitHub Copilot integration currently.
 - No cross-database or cross-server correlation beyond what Extended Events and the current templates provide.
 - No saving or loading of filter presets.
 - No replay of traces or script generation from captured events.
 - No offline analysis without an existing `.xel` file or a live connection.
-- Azure SQL Managed Instance endpoints aren't guaranteed to be supported in this preview.
+- Azure SQL Managed Instance endpoints aren't currently guaranteed to be supported.
 
 ## Feedback and support
 

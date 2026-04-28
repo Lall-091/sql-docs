@@ -4,7 +4,7 @@ description: Learn how the Schema Compare feature simplifies comparing databases
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: tsiddique, roblescarlos
-ms.date: 02/21/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -83,6 +83,6 @@ To compare schemas, open the Schema Compare dialog box. Follow these steps:
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Schema Designer](mssql-schema-designer.md)
-- [Data-tier Application (preview)](mssql-data-tier-application.md)
+- [Data-tier Application (DACPAC and BACPAC) import and export](mssql-data-tier-application.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
 - [MSSQL extension for Visual Studio Code repository on GitHub](https://github.com/Microsoft/vscode-mssql)

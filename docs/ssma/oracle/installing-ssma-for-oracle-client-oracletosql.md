@@ -1,10 +1,10 @@
 ---
-title: "Installing SSMA for Oracle client (OracleToSQL)"
+title: Installing SSMA for Oracle Client (OracleToSQL)
 description: Learn about installation prerequisites for the SQL Server Migration Assistant (SSMA) for Oracle client and how to install.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 07/10/2023
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: install-set-up-deploy
@@ -15,27 +15,25 @@ ms.custom:
 ---
 # Install SSMA for Oracle client (OracleToSQL)
 
-The SSMA client consists of the program files that perform the following tasks:
+The SQL Server Migration Assistant (SSMA) client migrates Oracle databases. [!INCLUDE [ssma-target-description](../includes/ssma-target-description.md)] The client:
 
-- Connect to an Oracle database.
-- Connect to an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
-- Convert Oracle database objects to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] syntax.
-- Load the objects into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
-- Migrate data to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+- Connects to the Oracle source and the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] target.
+- Converts database objects for the target.
+- Loads the converted objects into the target.
+- Migrates the data.
 
 This article provides the installation prerequisites and instructions for installing SSMA.
 
 ## Prerequisites
 
-SSMA is designed to work with Oracle 9 or later versions and all editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+SSMA is designed to work with Oracle 9 and later versions.
 
 Before you install SSMA, make sure that the computer meets the following requirements:
 
-- Windows 7 or later versions, or Windows Server 2008 or later versions.
-- [!INCLUDE [msCoName](../../includes/msconame-md.md)] Windows Installer 3.1 or a later version.
-- The [!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] version 4.7.2 or a later version. You can obtain it from the [.NET Framework Developer Center](https://go.microsoft.com/fwlink/?LinkId=48882).
+- Windows 11 or later versions, or Windows Server 2022 or later versions.
+- The [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] version 4.7.2 or a later version. [Download .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
 - Connectivity to the Oracle databases that you want to migrate.
-- Access to and sufficient permissions on the computer that hosts the target instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] where you are migrating database objects and data. For more information, see [Connecting to SQL Server (OracleToSQL)](connecting-to-sql-server-oracletosql.md).
+- Access to and sufficient permissions on the computer that hosts the target instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] where you're migrating database objects and data. For more information, see [Connecting to SQL Server (OracleToSQL)](connecting-to-sql-server-oracletosql.md).
 - 4 GB of RAM recommended.
 
 ## Install the SSMA for Oracle client
@@ -60,7 +58,7 @@ The default installation location is `C:\Program Files\Microsoft SQL Server Migr
 
 In addition to the SSMA program files, you must also install the SSMA for Oracle Extension Pack on [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For more information, see [Installing SSMA Components on SQL Server](installing-ssma-components-on-sql-server-oracletosql.md).
 
-## See also
+## Related content
 
 - [Installing SSMA Components on SQL Server](installing-ssma-components-on-sql-server-oracletosql.md)
 - [Migrating Oracle Databases to SQL Server](migrating-oracle-databases-to-sql-server-oracletosql.md)

@@ -5,7 +5,7 @@ description: Prepare your SQL Server instance enabled by Azure Arc for migration
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 04/13/2026
+ms.date: 04/16/2026
 ms.topic: how-to
 ---
 
@@ -28,7 +28,7 @@ With the link, you can migrate your SQL Server databases to Azure SQL Managed In
 To migrate your SQL Server databases to Azure SQL Managed Instance through the Azure portal, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349`, which supports migrating one database at a time. Azure Extension for SQL Server version `1.1.3348.364` or later is required to migrate up to 10 databases at the same time. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
+- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the [latest version](release-notes.md) of the Azure extension for SQL Server. To upgrade your extension, see [Upgrade the extension](connect.md#upgrade-the-extension).
 
 ## Supported SQL Server versions
 
@@ -399,6 +399,12 @@ Consider the following limitations:
 ## Troubleshoot common issues
 
 To troubleshoot common issues when migrating to Azure SQL Managed Instance, see [Troubleshoot migration issues](migrate-to-azure-sql-managed-instance-troubleshoot.md).
+
+## Next step
+
+> [!div class="nextstepaction"]
+> [Migrate to Azure SQL Managed Instance](migrate-to-azure-sql-managed-instance.md)
+
 
 ## Related content
 

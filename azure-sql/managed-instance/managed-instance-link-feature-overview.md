@@ -44,7 +44,7 @@ You can use databases that are replicated through the link between SQL Server an
 - Migrating to Azure
 - Copying data on-premises
 
-:::image type="content" source="./media/managed-instance-link-feature-overview/mi-link-main-scenario.svg" alt-text="Diagram that illustrates the main Managed Instance link scenario." lightbox="./media/managed-instance-link-feature-overview/mi-link-main-scenario.svg":::
+:::image type="content" source="./media/managed-instance-link-feature-overview/mi-link-main-scenario.svg" alt-text="Diagram that illustrates the main Managed Instance link scenario." :::
 
 <a id="prerequisites"></a>
 
@@ -89,7 +89,7 @@ You also need the following tools:
 
 The link feature for SQL Managed Instance works by creating a distributed availability group between SQL Server and Azure SQL Managed Instance. The solution supports single-node systems with or without existing availability groups, or multiple node systems with existing availability groups.  
 
-:::image type="content" source="./media/managed-instance-link-feature-overview/mi-link-distributed-availability-group.svg" alt-text="Diagram showing how the link feature for SQL Managed Instance works using distributed availability group technology." lightbox="./media/managed-instance-link-feature-overview/mi-link-distributed-availability-group.svg":::
+:::image type="content" source="./media/managed-instance-link-feature-overview/mi-link-distributed-availability-group.svg" alt-text="Diagram showing how the link feature for SQL Managed Instance works using distributed availability group technology.":::
 
 A private connection such as a VPN or Azure ExpressRoute connects an on-premises network and Azure. If you host SQL Server on an Azure VM, the internal Azure backbone can connect the VM and SQL managed instance, such as with virtual network peering. The two systems establish trust using certificate-based authentication, where SQL Server and SQL Managed Instance exchange public keys of their respective certificates.
 
