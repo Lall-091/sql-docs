@@ -35,6 +35,7 @@ monikerRange: "=fabric"
 | `last_run_total_elapsed_time_ms` | **int** | Time taken by the last execution (ms).|
 | `last_dist_statement_id` | **uniqueidentifier** | ID linking the query to `queryinsights.exec_requests_history`.|
 | `last_run_session_id` | **smallint** | User session ID for the last execution.|
+| `query_hash` | **varchar(200)** | Binary hash value calculated on the query and used to identify queries with similar logic. You can use the query hash to correlate between Query Insight views. For more information, see [Query Insights - Aggregation](/fabric/data-warehouse/query-insights#similar-queries). |
 
 ## Permissions
 
