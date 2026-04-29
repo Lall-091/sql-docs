@@ -3,7 +3,7 @@ title: Vector Data Type - Half Precision Float
 description: Introduces dimension type of half-precision floating point for vector data type.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: damauri, pookam, mikeray, randolphwest
+ms.reviewer: pookam, mikeray, randolphwest
 ms.date: 12/08/2025
 ms.service: sql
 ms.subservice: t-sql
