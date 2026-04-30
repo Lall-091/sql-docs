@@ -345,7 +345,7 @@ There are problems with the AS Processing Task when you work with tabular models
 
 **Issue:** DQS isn't supported in a SQL Server cluster installation. If you're installing a cluster instance of SQL Server, you must not select the **Data Quality Services** and **Data Quality Client** check boxes on the **Feature Selection** page. If these check boxes are selected during cluster instance installation (and you complete the Data Quality Server installation by running the DQSInstaller.exe file), DQS is installed on this node, but isn't available on additional nodes when you add more nodes to the cluster, and hence doesn't work on additional nodes.
 
-**Workaround:** Install SQL Server 2012 Cumulative Update 1 to resolve this issue. For instructions, see [https://support.microsoft.com/kb/2674817](https://support.microsoft.com/help/2674817).
+**Workaround:** Install SQL Server 2012 Cumulative Update 1 to resolve this issue.
 
 ### 4.2 To reinstall Data Quality Server, delete the DQS objects after uninstalling Data Quality Server
 
@@ -668,8 +668,6 @@ The CDC Service for Oracle is a Windows service that scans Oracle transaction lo
 1. Download SQL Server 2012 CU1 into a local directory.
 
 1. Install SQL Server 2012 with the MDS feature on the primary cluster node, and then install SQL Server 2012 with the MDS feature on any other cluster nodes.
-
-For more information about the issues, and information about how to perform the above steps, see [https://support.microsoft.com/kb/2683467](https://support.microsoft.com/help/2683467).
 
 ### 7.2 Microsoft Silverlight 5 required
 

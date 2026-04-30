@@ -31,7 +31,7 @@ landingContent:
       - linkListType: quickstart
         links:
           - text: Create SQL Database
-            url: single-database-create-quickstart.md
+            url: hyperscale-database-create-quickstart.md
           - text: Configure firewall
             url: firewall-create-server-level-portal-quickstart.md
           - text: Try for free 

@@ -3,7 +3,7 @@ title: System Requirements, Installation, and Driver Files
 description: This article describes the system requirements for the Microsoft ODBC Driver for SQL Server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/17/2025
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -30,6 +30,7 @@ Compatibility indicates that a driver was tested for compatibility against exist
 | 18.2 | | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | | | | |
 | 18.1 | | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | | | | |
 | 18.0 | | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | | | |
+| 17.11 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | | | | |
 | 17.10 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | | | |
 | 17.9 | | Yes | Yes | Yes | | | Yes | Yes | Yes | Yes | Yes | | | |
 | 17.8 | | Yes | Yes | Yes | | | Yes | Yes | Yes | Yes | Yes | | | |
