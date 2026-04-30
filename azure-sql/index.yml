@@ -39,7 +39,7 @@ landingContent:
       - linkListType: quickstart
         links:
           - text: Create SQL Database
-            url: database/single-database-create-quickstart.md
+            url: database/hyperscale-database-create-quickstart.md
           - text: Configure firewall
             url: database/firewall-create-server-level-portal-quickstart.md  
       - linkListType: video
