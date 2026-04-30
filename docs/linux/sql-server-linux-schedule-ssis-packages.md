@@ -88,4 +88,4 @@ Here's a partial example of the output that helps to explain the example in this
 - [Extract, transform, and load data on Linux with SSIS](sql-server-linux-migrate-ssis.md)
 - [Install SQL Server Integration Services (SSIS) on Linux](sql-server-linux-setup-ssis.md)
 - [Configure SQL Server Integration Services on Linux with ssis-conf](sql-server-linux-configure-ssis.md)
-- [Limitations and known issues for SSIS on Linux](sql-server-linux-ssis-known-issues.md)
+- [Feature support and considerations for SQL Server Integration Services (SSIS) on Linux](sql-server-linux-ssis-known-issues.md)
