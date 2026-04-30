@@ -104,7 +104,7 @@ Run **only one** of the following scripts:
 
 In the current implementation of the SQL Server resource agent, the node name must match the `ServerName` property from your instance. For example, if your node name is `node1`, make sure `SERVERPROPERTY('ServerName')` returns `node1` in your SQL Server instance. If there's a mismatch, your replicas go into a resolving state after the Pacemaker resource is created.
 
-This rule is important when you use fully qualified domain names. For example, if you use `node1.yourdomain.com` as the node name during cluster setup, make sure `SERVERPROPERTY('ServerName')` returns `node1.yourdomain.com`, and not just `node1`. To fix this problem, you can:
+This rule is important when you use fully qualified domain names. For example, if you use `node1.contoso.onmicrosoft.com` as the node name during cluster setup, make sure `SERVERPROPERTY('ServerName')` returns `node1.contoso.onmicrosoft.com`, and not just `node1`. To fix this problem, you can:
 
 - Rename your host name to the FQDN and use the `sp_dropserver` and `sp_addserver` stored procedures to ensure the metadata in SQL Server matches the change.  
 - Use the `addr` option in the `pcs cluster auth` command to match the node name to the `SERVERPROPERTY('ServerName')` value and use a static IP as the node address.
