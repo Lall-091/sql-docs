@@ -4,7 +4,7 @@ description: This page contains a listing of bugs fixed in each release of the M
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 03/31/2026
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
@@ -14,6 +14,14 @@ helpviewer_keywords:
 # List of bugs fixed
 
 This page contains a listing of bugs fixed in each release of the [!INCLUDE [msCoName](../../includes/msconame-md.md)] ODBC Driver for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], starting with the most recent versions.
+
+### Bug fixes in the Microsoft ODBC Driver 17.11.1.1 for SQL Server
+
+- Fix connection recovery to obtain the active primary node when a server moves.
+- Fix DATACLASSIFICATION async timeout.
+- Fix XA Recovery XIDs Calculation.
+- Fix SQL_ATTR_PARAMS_PROCESSED_PTR updates so the number of processed parameter sets is reported correctly when executing parameter arrays.
+- Fix SQL_ATTR_PARAMS_PROCESSED_PTR and row counting when SQL_PARAM_IGNORE is used in parameter arrays.
 
 ### Bug fixes in the Microsoft ODBC Driver 18.6.2.1 for SQL Server
 

@@ -4,7 +4,7 @@ description: Learn how to install the Microsoft ODBC Driver for SQL Server on Li
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 03/31/2026
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -232,20 +232,20 @@ The following sections explain how to install the Microsoft ODBC driver 17 from 
 
 ```bash
 #Download the desired package(s)
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.10.6.1-1_amd64.apk
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.10.1.1-1_amd64.apk
+curl -O https://download.microsoft.com/download/607ebe2c-e17c-4c34-b367-10a75b83bef9/msodbcsql17_17.11.1.1-1_amd64.apk
+curl -O https://download.microsoft.com/download/aca0282f-6a67-49c0-ae08-887d59d16d1a/mssql-tools_17.11.1.1-1_amd64.apk
 
 #(Optional) Verify signature, if 'gpg' is missing install it using 'apk add gnupg':
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.10.6.1-1_amd64.sig
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.10.1.1-1_amd64.sig
+curl -O https://download.microsoft.com/download/607ebe2c-e17c-4c34-b367-10a75b83bef9/msodbcsql17_17.11.1.1-1_amd64.sig
+curl -O https://download.microsoft.com/download/aca0282f-6a67-49c0-ae08-887d59d16d1a/mssql-tools_17.11.1.1-1_amd64.sig
 
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --import -
-gpg --verify msodbcsql17_17.10.6.1-1_amd64.sig msodbcsql17_17.10.6.1-1_amd64.apk
-gpg --verify mssql-tools_17.10.1.1-1_amd64.sig mssql-tools_17.10.1.1-1_amd64.apk
+gpg --verify msodbcsql17_17.11.1.1-1_amd64.sig msodbcsql17_17.11.1.1-1_amd64.apk
+gpg --verify mssql-tools_17.11.1.1-1_amd64.sig mssql-tools_17.11.1.1-1_amd64.apk
 
 #Install the package(s)
-sudo apk add --allow-untrusted msodbcsql17_17.10.6.1-1_amd64.apk
-sudo apk add --allow-untrusted mssql-tools_17.10.1.1-1_amd64.apk
+sudo apk add --allow-untrusted msodbcsql17_17.11.1.1-1_amd64.apk
+sudo apk add --allow-untrusted mssql-tools_17.11.1.1-1_amd64.apk
 ```
 
 > [!NOTE]  
@@ -254,7 +254,7 @@ sudo apk add --allow-untrusted mssql-tools_17.10.1.1-1_amd64.apk
 ### [Debian](#tab/debian17-install)
 
 ```bash
-if ! [[ "8 9 10 11 12" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+if ! [[ "8 9 10 11 12 13" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
 then
     echo "Debian $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
     exit;
@@ -289,7 +289,7 @@ sudo apt-get install -y libgssapi-krb5-2
 ### [RHEL and Oracle Linux](#tab/redhat17-install)
 
 ```bash
-if ! [[ "6 7 8 9" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+if ! [[ "6 7 8 9 10" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
 then
     echo "RHEL $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
     exit;
@@ -315,7 +315,7 @@ sudo yum install -y unixODBC-devel
 ### [SLES](#tab/suse17-install)
 
 ```bash
-if ! [[ "11 12 15" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+if ! [[ "11 12 15 16" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
 then
     echo "SLES $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
     exit;
@@ -346,7 +346,7 @@ sudo zypper install -y unixODBC-devel
 ### [Ubuntu](#tab/ubuntu17-install)
 
 ```bash
-if ! [[ "14.04 16.04 18.04 20.04 22.04" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
+if ! [[ "14.04 16.04 18.04 20.04 22.04 24.04 25.10" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
 then
     echo "Ubuntu $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) is not currently supported.";
     exit;
