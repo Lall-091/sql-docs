@@ -1,10 +1,10 @@
 ---
 title: Use Custom Password Policy for SQL Logins on Linux
 description: Learn how to use a custom password policy for SQL logins with SQL Server on Linux.
-author: Madhumitatripathy
-ms.author: matripathy
-ms.reviewer: mikeray, randolphwest
-ms.date: 01/16/2026
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: matripathy, mikeray
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -19,22 +19,16 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 
 [!INCLUDE [sqlserver2022-and-later-linux](../includes/applies-to-version/sqlserver2022-and-later-linux.md)]
 
-This article describes how you can set up and manage SQL login password policies, starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Cumulative Update (CU) 23, and [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
+This article describes how to set up and manage password policies for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] logins on Linux. Custom password policies are available starting in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Cumulative Update (CU) 23, and [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
-Password policies are a crucial aspect of securing any database environment. They enforce:
-
-- Complexity
-- Expiration
-- Changes
-
-This enforcement ensures that logins that use SQL Server authentication are secure.
+Password policies enforce rules for complexity, expiration, and changes, which help to keep [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] logins secure.
 
 > [!NOTE]  
-> Password policies are available on Windows. For more information, see [Password policy](../relational-databases/security/password-policy.md).
+> Password policies are also available on Windows. For more information, see [Password policy](../relational-databases/security/password-policy.md).
 
 ## Custom policy settings
 
-In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions on Linux, you can set the following configuration parameters in the `mssql.conf` file to enforce a custom password policy.
+Set the following configuration parameters in the `mssql.conf` file to enforce a custom password policy:
 
 | Configuration option | Description |
 | --- | --- |
@@ -46,10 +40,10 @@ In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions on Linu
 > [!NOTE]  
 > You can currently set the `passwordminimumlength` to fewer than eight characters. [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-You can configure custom password policies for SQL authentication logins in SQL Server on Linux in two ways:
+Configure the policy in one of two ways:
 
-- [Enforce custom password policy](#adutil) with **adutil**
-- [Manually configure the `mssql.conf` file](#manual) using the **mssql-conf** tool
+- [Set the policy with adutil](#adutil), which fetches values from Active Directory.
+- [Set the policy manually with mssql-conf](#manual).
 
 <a id="adutil"></a>
 
@@ -102,13 +96,11 @@ Use [adutil](sql-server-linux-ad-auth-adutil-introduction.md) to fetch the passw
 
 <a id="manual"></a>
 
-## Manually set a custom password policy using mssql-conf
+## Manually set a custom password policy with mssql-conf
 
-You can set the SQL authentication login password policy by updating the parameters in the `mssql.conf` file with **mssql-conf**. This approach provides simplicity and direct control over the policy settings.
+Update the policy parameters in `mssql.conf` directly by using **mssql-conf**. Use this method when the Linux host isn't joined to a domain, or when no domain controller is available to source the policy from.
 
-Use this method when the Linux host running SQL Server isn't part of the domain, and there's no domain controller to get the password policies from.
-
-Run the following **mssql-conf** commands to set each policy configuration property.
+Run the following **mssql-conf** commands to set each policy property.
 
 1. Set the minimum password length to 14 characters, adhering to the complexity requirements outlined in the [Password policy](../relational-databases/security/password-policy.md).
 
@@ -134,28 +126,31 @@ Run the following **mssql-conf** commands to set each policy configuration prope
    sudo /opt/mssql/bin/mssql-conf set passwordpolicy.passwordmaximumage 45
    ```
 
-1. Starting with SQL Server 2025 CU3 and SQL Server 2022 CU23, you do not need to restart SQL service for the changes to take effect. You can run the following stored procedure after connecting to the SQL instance to reload mssql.conf changes.
-   ```sql
-   sp_reload_mssqlconf
-   ```
-   Or
-   If you are on a lower build then restart SQL Server service.
+1. Apply the changes.
 
-   ```bash
-   sudo systemctl restart mssql-server
-   ```
-   
+   - In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 23 and later versions, and in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 3 and later versions, reload `mssql.conf` without restarting the service. Connect to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance and run:
+
+     ```sql
+     EXECUTE sp_reload_mssqlconf;
+     ```
+
+   - Or, on earlier versions, restart the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service instead:
+
+     ```bash
+     sudo systemctl restart mssql-server
+     ```
+
 ## Limitations
 
-Currently, the `passwordminimumlength` can't be set to more than 14 characters.Starting with SQL Server 2025 CU3 and SQL Server 2022 CU23 this limitation has been removed.
+Before [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 23 and [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 3, the `passwordminimumlength` parameter can't be set to more than 14 characters.
 
-After updating the group password policy in Active Directory, you must manually run the `adutil updatepasswordpolicy` command to update `mssql.conf`. This command doesn't run automatically. Ensure the Linux machine running SQL Server is part of the domain, or manually set it using **mssql-conf**.
+Changes to the group password policy in Active Directory don't automatically propagate. Run `adutil updatepasswordpolicy` to refresh `mssql.conf` after each change, or set the values manually by using **mssql-conf** if the Linux host isn't joined to the domain.
 
-In Active Directory, you can define or undefine each group-level password policy using a checkbox.
+In Active Directory, you can define or undefine each group-level password policy using a checkbox:
 
 :::image type="content" source="media/sql-server-linux-custom-password-policy/password-length-properties.png" alt-text="Screenshot of minimum password length security policy setting.":::
 
-However, unchecking the policy doesn't disable it in SQL Server on Linux. To avoid applying the custom password policy, update the settings in **mssql-conf** instead of relying on the checkbox.
+Clearing the checkbox doesn't disable the policy in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. To stop enforcing a value, update it directly in **mssql-conf**.
 
 ## Related content
 
