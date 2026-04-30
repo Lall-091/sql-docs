@@ -3,7 +3,7 @@ title: "Vector & Embeddings Frequently Asked Questions (FAQ)"
 description: Answers to common questions about vector search and vector indexes in the SQL Server Database Engine.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: damauri, mikeray, randolphwest
+ms.reviewer: mikeray, randolphwest
 ms.date: 01/06/2026
 ms.service: sql
 ms.topic: faq

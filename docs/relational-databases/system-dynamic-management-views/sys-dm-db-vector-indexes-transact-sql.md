@@ -3,7 +3,7 @@ title: "sys.dm_db_vector_indexes (Transact-SQL)"
 description: sys.dm_db_vector_indexes provides real-time insights into vector index health and performance for monitoring and diagnostics.
 author: mikerayMSFT
 ms.author: mikeray
-ms.reviewer: pookam, damauri, randolphwest, wiassaf
+ms.reviewer: pookam, randolphwest, wiassaf
 ms.date: 03/07/2026
 ms.service: sql
 ms.subservice: system-objects

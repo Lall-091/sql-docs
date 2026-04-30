@@ -3,7 +3,7 @@ title: Intelligent Applications and AI
 description: Use AI options such as OpenAI and vectors to build intelligent applications with SQL Server and Azure SQL Managed Instance.
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: damauri, randolphwest, wiassaf
+ms.reviewer: randolphwest, wiassaf
 ms.date: 04/02/2026
 ms.service: sql
 ms.topic: concept-article
