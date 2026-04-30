@@ -122,10 +122,6 @@ Use the following table to determine which file to download and install. Verify 
 | No 64-bit version of SQL Server 2012 RTM Express | Install 64-bit SQL Server 2012 Express including SP1 | [SQLEXPR_x64_ENU.exe](https://go.microsoft.com/fwlink/p/?LinkID=267905) |
 | A 64-bit installation of **SQL Server 2008** or **SQL Server 2008 R2** | **In place upgrade** to 64-bit SQL Server 2012 including SP1 | SQLServer2012SP1-FullSlipstream-x64-ENU.exe **and** SQLServer2012SP1-FullSlipstream-x64-ENU.box. [Download Service Pack 1](https://go.microsoft.com/fwlink/p/?LinkID=268158). |
 
-### Known issues fixed in this service pack
-
-For a complete list of bugs and known issues fixed in this service pack, see [this KB article](https://support.microsoft.com/help/2674319).
-
 ### Reinstall instances of SQL Server Failover Cluster fails if you use the same IP address
 
 **Issue:** If you specify an incorrect IP address during an installation of a SQL Server Failover Cluster instance, the installation fails. After you uninstall the failed instance, and if you try to reinstall the SQL Server failover cluster instance with the same instance name, and correct IP address, the installation fails. The failure is because of the duplicate resource group left behind by the previous installation.

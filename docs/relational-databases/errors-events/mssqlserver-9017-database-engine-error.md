@@ -77,13 +77,5 @@ To resolve this problem, follow these steps:
 
 1. Increase the `FILEGROWTH` parameter to a larger value than what is currently configured. This should be based on the activity of your database and how frequently your log file is growing.
 
-1. Additionally, you can review the following fix articles, depending on the version of SQL Server that you're currently running:
-
-   - [FIX: It takes a long time to restore a database in SQL Server 2008 R2, SQL Server 2008, or SQL Server 2012](https://support.microsoft.com/help/2653893)
-
-   - [FIX: Slow performance when you recover a database if there are many VLFs inside the transaction log in SQL Server 2005, SQL Server 2008, or SQL Server 2008 R2](https://support.microsoft.com/help/2455009)
-
-   - [FIX: Recovery takes longer than expected for a database in a SQL Server 2008 or SQL Server 2008 R2 environment](https://support.microsoft.com/help/2524743)
-
 > [!TIP]  
 > To determine the optimal VLF distribution for the current transaction log size of all databases in a given instance, and the required growth increments to achieve the required size, see this [script](https://github.com/Microsoft/tigertoolbox/tree/master/Fixing-VLFs).
