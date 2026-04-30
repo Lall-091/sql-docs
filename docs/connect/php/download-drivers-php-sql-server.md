@@ -18,7 +18,7 @@ On Linux and macOS, the drivers for PHP are easily downloaded and installed usin
 
 Microsoft Drivers 5.13.1 for PHP for SQL Server is the latest general availability (GA) version.
 
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft Drivers for PHP for SQL Server (Windows)](https://go.microsoft.com/fwlink/?linkid=2353424)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft Drivers for PHP for SQL Server (Windows)](https://go.microsoft.com/fwlink/?linkid=2362088)**  
 [GitHub Release Tag v5.13.1 (Linux and macOS packages are available here)](https://github.com/Microsoft/msphpsql/releases/v5.13.1)
 
 > [!NOTE]

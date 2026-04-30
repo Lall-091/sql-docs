@@ -18,7 +18,7 @@ This page discusses what was added in each version of the [!INCLUDE[ssDriverPHP]
 
 ## 5.13.1
 
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft Drivers for PHP for SQL Server (Windows)](https://go.microsoft.com/fwlink/?linkid=2353424)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft Drivers for PHP for SQL Server (Windows)](https://go.microsoft.com/fwlink/?linkid=2362088)**  
 [GitHub Release Tag v5.13.1 (Linux and macOS packages are available here)](https://github.com/Microsoft/msphpsql/releases/v5.13.1)
 
 - Release number: 5.13.1
