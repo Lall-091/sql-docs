@@ -37,7 +37,7 @@ monikerRange: "=fabric"
 | `number_of_successful_runs` | **int** |Number of successful query executions.|
 | `number_of_failed_runs` | **int** |Number of failed query executions.|
 | `number_of_cancelled_runs` |**int** |Number of canceled query executions.|
-| `query_hash` | **varchar(200)** | Binary hash value calculated on the query and used to identify queries. You can use the query hash to correlate between Query Insight views. For more information, see [Query Insights - Aggregation](/fabric/data-warehouse/query-insights#similar-queries). |
+| `query_hash` | **varchar(200)** | Binary hash value calculated on the query and used to identify semantically-similar queries. For example, queries that are identical but have different parameterized values will share a `query_hash`. You can use the query hash to correlate between Query Insight views. For more information, see [Query Insights - Aggregation](/fabric/data-warehouse/query-insights#similar-queries). |
 
 ## Permissions
 
