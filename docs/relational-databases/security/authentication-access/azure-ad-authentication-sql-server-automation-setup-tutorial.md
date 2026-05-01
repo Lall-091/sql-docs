@@ -17,7 +17,7 @@ ms.custom:
 
 # Tutorial: Using automation to set up the Microsoft Entra admin for SQL Server
 
-[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 > [!NOTE]
 > This feature is available in [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] or later versions, and is only supported for SQL Server on-premises, for Windows and Linux hosts and [SQL Server 2022 on Windows Azure VMs](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm).

@@ -15,7 +15,7 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 ---
 # Create a Transact-SQL snapshot backup
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article explains what, why, and how to use Transact-SQL snapshot backups. Transact-SQL (T-SQL) snapshot backups were introduced in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
 

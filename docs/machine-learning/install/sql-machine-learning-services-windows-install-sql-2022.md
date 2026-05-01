@@ -14,7 +14,7 @@ monikerRange: ">=sql-server-ver16"
 ---
 # Install SQL Server 2022 Machine Learning Services (Python and R) on Windows
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article shows you how to install [SQL Server Machine Learning Services with Python and R](../sql-server-machine-learning-services.md) on Windows. With Machine Learning Services, you can run Python and R scripts in-database.
 

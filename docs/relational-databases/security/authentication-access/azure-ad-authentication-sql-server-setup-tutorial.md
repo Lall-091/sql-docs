@@ -15,6 +15,6 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 
 # Tutorial: Set up Microsoft Entra authentication for SQL Server with app registration
 
-[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022.md)] only.
+[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 [!INCLUDE [entra-id-tutorial](../../../includes/entra-id-tutorial.md)]
