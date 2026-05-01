@@ -4,7 +4,8 @@ description: Learn how to manage licensing and billing of Extended Security Upda
 author: MikeRayMSFT
 ms.author: sashan
 ms.reviewer: randolphwest, maghan
-ms.date: 12/20/2025
+ms.date: 01/28/2026
+ai-usage: ai-assisted
 ms.topic: how-to
 ms.custom:
   - references_regions
@@ -328,6 +329,18 @@ If in the meantime the server permanently lost connectivity due to certificate e
 If the Arc enabled machine goes offline and reconnects to Azure in a different subscription, in a different resource group, or with a different name, it will be treated as the same machine as long as the [Virtual Machine ID property](/azure/azure-arc/servers/agent-overview#instance-metadata) remains unchanged and the machine resource is in the same Azure location as the original machine resource.
 
 ESU subscriptions are pinned to a specific Azure location. If the Arc enabled machine with an active ESU subscription is moved to a different Azure location, the subscription is terminated. To resume ESU coverage, you must activate a new ESU subscription and pay all the associated bill-back charges.
+
+#### Scenarios that may result in VMID changes
+
+Certain operational scenarios can result in a Virtual Machine ID change, which causes the system to treat the machine as a new resource and trigger bill-back charges. These scenarios include:
+
+- **Renaming an on-premises Windows machine**: When you [rename an Azure Arc-enabled server resource](/azure/azure-arc/servers/manage-agent?tabs=windows#rename-an-azure-arc-enabled-server-resource), the VMID may change.
+
+- **Moving a private link scope**: When moving a private link scope in Azure Arc, the agent may disconnect and require reconnection. If the agent is disconnected and re-onboarded, a new VMID is generated.
+
+- **Certificate expiration after extended disconnection**: If the Azure Connected Machine agent remains offline for more than 45 days, the server certificate expires. To recover, you must fully re-onboard the machine to Azure. If the new resource URI matches the original, the ESU subscription isn't terminated. The bill-back charge is based on the time elapsed since the machine last connected to Azure Arc and reported usage. If the new resource URI differs from the original, a new ESU subscription is created, and a full bill-back charge is generated. For more information about the server certificate lifecycle, review [Agent Status](/azure/azure-arc/servers/overview#agent-status).
+
+To avoid unexpected charges, monitor your Azure Arc-enabled machines for connectivity issues and address them promptly before certificates expire.
 
 > [!IMPORTANT]
 > The bill-back charge for the disconnected time is recorded within the first hour after the connectivity is restored, and is associated with the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance that is eligible for ESU coverage. The amount of the charge reflects the time since the previous heartbeat was registered.

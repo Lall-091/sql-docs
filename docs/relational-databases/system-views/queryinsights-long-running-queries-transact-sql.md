@@ -4,7 +4,7 @@ description: "The queryinsights.long_running_queries in Microsoft Fabric provide
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mariyaali
-ms.date: 11/03/2025
+ms.date: 04/30/2026
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -35,6 +35,7 @@ monikerRange: "=fabric"
 | `last_run_total_elapsed_time_ms` | **int** | Time taken by the last execution (ms).|
 | `last_dist_statement_id` | **uniqueidentifier** | ID linking the query to `queryinsights.exec_requests_history`.|
 | `last_run_session_id` | **smallint** | User session ID for the last execution.|
+| `query_hash` | **varchar(200)** | Binary hash value calculated on the query and used to identify semantically-similar queries. For example, queries that are identical but have different parameterized values will share a `query_hash`. You can use the query hash to correlate between Query Insight views. For more information, see [Query Insights - Aggregation](/fabric/data-warehouse/query-insights#similar-queries). |
 
 ## Permissions
 

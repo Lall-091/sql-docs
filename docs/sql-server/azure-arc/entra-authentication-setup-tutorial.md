@@ -15,7 +15,7 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 
 # Tutorial: Set up Microsoft Entra authentication for SQL Server enabled by Azure Arc
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 > [!div class="op_single_selector"]
 > - [SQL Server 2022](entra-authentication-setup-tutorial.md)

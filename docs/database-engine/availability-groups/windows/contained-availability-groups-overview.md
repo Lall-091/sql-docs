@@ -19,7 +19,7 @@ monikerRange: ">=sql-server-ver16"
 
 # What is a contained availability group?
 
-[!INCLUDE [sqlserver2022](../../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [sqlserver2022](../../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 A contained availability group is an Always On availability group (AG) that supports:
 
