@@ -46,7 +46,7 @@ SQL Server 2014 SP2 contains rollups of released hotfixes for SQL Server 2014 SP
 | Memory Grants - Handling issues | You can use diagnostic hints while running queries by capping their memory grants to prevent memory contention. | [Query hints](../t-sql/queries/hints-transact-sql-query.md) |
 | Query execution lightweight per-operator profiling | Optimizes collecting per-operator query execution statistics such as actual number of rows. | [Developers Choice: Query progress - anytime, anywhere](/archive/blogs/sql_server_team/query-progress-anytime-anywhere) |
 | Query execution diagnostics | Actual rows read are now reported in the query execution plans to help improve query performance troubleshooting. | [KB 3107397](https://support.microsoft.com/help/3107397/improved-diagnostics-for-query-execution-plans-that-involve-residual-p) |
-| Query execution diagnostics for `tempdb` spill | Hash Warning and Sort Warnings now have additional columns to track physical I/O statistics, memory used, and rows affected. | [Improve temptdb spill diagnostics](https://support.microsoft.com/help/3107172/improve-tempdb-spill-diagnostics-by-using-extended-events-in-sql-serve) |
+| Query execution diagnostics for `tempdb` spill | Hash Warning and Sort Warnings now have additional columns to track physical I/O statistics, memory used, and rows affected. | |
 | `tempdb` supportability | Use a new Errorlog message for the number of tempdb files, and tempdb data file changes, at server startup. | [KB 2963384](https://support.microsoft.com/help/2963384/fix-sql-server-crashes-when-the-log-file-of-tempdb-database-is-full-in) |
 
 In addition, note the following fixes:
