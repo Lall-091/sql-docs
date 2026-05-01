@@ -1,10 +1,10 @@
 ---
-title: "Working with SSMA Projects (MySQLToSQL)"
-description: Working with SSMA Projects (MySQLToSQL)
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 11/10/2025
+title: Work with SSMA Projects (MySQLToSQL)
+description: Learn how to create, customize, save, and open projects in SQL Server Migration Assistant (SSMA) for MySQL.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: how-to
@@ -16,7 +16,7 @@ helpviewer_keywords:
   - "Working with SSMA projects, Open project"
   - "Working with SSMA projects, Save project"
 ---
-# Working with SSMA projects (MySQLToSQL)
+# Work with SSMA projects (MySQLToSQL)
 
 To migrate MySQL databases to SQL Server or Azure SQL, you must first create a SQL Server Migration Assistant (SSMA) project. The project is a file that contains the following information:
 
@@ -69,15 +69,9 @@ To migrate data from MySQL databases to SQL Server or Azure SQL, you must create
 
 1. In the **Migration To** dropdown list, select the version of target [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] used for migration. The options available are:
 
-   - [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]
-   - [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]
-   - [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]
-   - [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]
-   - [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]
-   - [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
-   - [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]
+   [!INCLUDE [ssma-target-versions](../includes/ssma-target-versions.md)]
 
-And then select **OK**.
+   And then select **OK**.
 
 SSMA creates the project file.
 

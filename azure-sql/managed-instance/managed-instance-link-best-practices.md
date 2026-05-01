@@ -65,6 +65,37 @@ You can monitor the performance of replication by checking the redo queue size o
 
 If the redo queue size is consistently high, consider increasing resources on the secondary replica.
 
+## Monitor replication lag
+
+Monitoring replication lag helps you determine the speed of which the secondary replica synchronizes with the primary replica. A large discrepancy indicates that the secondary replica is having trouble keeping up with the primary replica, which is typically caused by slow network throughput in the link between the two instances, mismatched resource allocation between the two replicas, or by an excessively high workload on the primary replica.
+
+Monitoring replication lag is especially important when performing a planned failover, which requires the secondary replica to be fully synchronized with the primary replica before the failover can be executed. If replication lag is high, the failover might take longer to complete, and in some cases, it might even fail.
+
+Use the following T-SQL query on both SQL Server and SQL Managed Instance to monitor replication lag between the replicas:
+
+```sql
+-- Execute on SQL Server and SQL Managed Instance 
+USE master
+DECLARE @link_name varchar(max) = '<DAGname>'
+SELECT
+   ag.name [Link name], 
+   ars1.role_desc [Link role],
+   ars2.connected_state_desc [Link connected state],
+   ars2.synchronization_health_desc [Link sync health],
+   drs.secondary_lag_seconds [Link replication latency (seconds)]
+FROM
+   sys.availability_groups ag 
+   JOIN sys.dm_hadr_availability_replica_states ars1
+   ON ag.group_id = ars1.group_id
+   JOIN sys.dm_hadr_availability_replica_states ars2
+   ON ag.group_id = ars2.group_id
+   JOIN sys.dm_hadr_database_replica_states drs
+   ON ars2.replica_id = drs.replica_id
+WHERE 
+   ag.is_distributed = 1 AND ag.name = @link_name AND ars1.is_local = 1 AND ars2.is_local = 0
+GO
+```
+
 ## Rotate certificate
 
 You might need to manually rotate the certificate used to secure the database mirroring endpoint on SQL Server. Since the service manages and automatically rotates the certificate used to secure the database mirroring endpoint on SQL Managed Instance, you don't need to manually rotate it. 

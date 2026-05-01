@@ -4,7 +4,7 @@ titleSuffix: SQL Server 2025 on Linux
 description: This article describes editions, features, and components supported by the various editions of SQL Server 2025 on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: amitkh, vanto
+ms.reviewer: amitkh, atsingh
 ms.date: 01/08/2026
 ms.service: sql
 ms.subservice: linux
@@ -284,7 +284,7 @@ For info about the Integration Services (SSIS) features supported by the edition
 | Advanced spatial libraries | Yes | Yes | Yes |
 | Import/export of industry-standard spatial data formats | Yes | Yes | Yes |
 
-## Configure memory limits with control group (cgroup) v2
+## Control group (cgroup) v2 support
 
 [!INCLUDE [cgroup-support](includes/cgroup-support.md)]
 

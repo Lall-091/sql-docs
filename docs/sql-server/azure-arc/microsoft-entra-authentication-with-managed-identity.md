@@ -173,15 +173,13 @@ For details, review [How to add, modify, or delete registry subkeys and values b
 > [!IMPORTANT]  
 > Only a [Privileged Role Administrator](/entra/identity/role-based-access-control/permissions-reference#privileged-role-administrator) or higher role can grant these permissions.
 
-The system-assigned managed identity, which uses the Arc-enabled machine name, must have the following Microsoft Graph application permissions (app roles):
+To enable Microsoft Entra authentication for SQL Server instances, each system-assigned managed identity requires `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.All` permissions to query Microsoft Graph. For more information about these permissions, see:
 
 - [User.Read.All](/graph/permissions-reference#user-permissions): Allows access to Microsoft Entra user information.
-
 - [GroupMember.Read.All](/graph/permissions-reference#group-permissions): Allows access to Microsoft Entra group information.
+- [Application.Read.All](/graph/permissions-reference#application-resource-permissions): Allows access to Microsoft Entra service principal (application) information.
 
-- [Application.Read.ALL](/graph/permissions-reference#application-resource-permissions): Allows access to Microsoft Entra service principal (application) information.
-
-You can use PowerShell to grant required permissions to the managed identity. Alternatively, you can [create a role-assignable group](/entra/identity/role-based-access-control/groups-create-eligible). After the group is created, assign the **Directory Readers** role or the `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.All` permissions to the group, and add all system-assigned managed identities for your Azure Arc-enabled machines to the group. We don't recommend using the **Directory Readers** role in your production environment.
+These permissions are application-level permissions (app roles) and must be assigned directly to each managed identity. They can't be manually assigned to a Microsoft Entra security group and granted to members through group membership. For environments with many machines, an alternative is to assign the [Directory Readers](/entra/identity/role-based-access-control/permissions-reference#directory-readers) role to a [role-assignable Microsoft Entra security group](/entra/identity/role-based-access-control/groups-concept) and add the managed identities as members. Unlike app role permissions, this Microsoft Entra role can be granted at the group level, simplifying management at scale. However, **Directory Readers** grants broad read access across all directory objects, significantly exceeding the three targeted Graph API permissions. The **Directory Readers** role isn't recommended for production environments where least-privilege access is required.
 
 The following PowerShell script grants the required permissions to the managed identity. Make sure this script is run on PowerShell 7.5 or a later version, and has the `Microsoft.Graph` module 2.28 or later installed.
 

@@ -1,10 +1,10 @@
 ---
 title: SQL Projects Tools
-description: This overview reviews the tooling for SQL database projects.
+description: Compare SQL project tools available in Visual Studio Code, SSMS, Visual Studio, and the command line.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: drskwier
-ms.date: 03/11/2026
+ms.date: 04/15/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: overview
@@ -27,7 +27,7 @@ Tools included in this article:
 
 ## Graphical tools
 
-These tools provide a graphical interface for SQL projects, a T-SQL editor, and a build and publish process.
+These tools provide a graphical interface for SQL projects, a Transact-SQL (T-SQL) editor, and a build and publish process.
 
 [SQL Database Projects extension](../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md) is an extension for **Visual Studio Code**. This extension provides a graphical interface for SQL projects, a T-SQL editor, and a build and publish process.
 
@@ -37,8 +37,8 @@ These tools provide a graphical interface for SQL projects, a T-SQL editor, and 
 
 ### Feature set comparison
 
-| Feature | VS Code | SSMS | SSDT (VS2022-2026) | SDK-style SSDT, preview (VS2022) |
-| --- | --- | --- | --- |
+| Feature | Visual Studio Code | SSMS | SSDT (VS2022-2026) | SDK-style SSDT (preview) (VS2022) |
+| --- | --- | --- | --- | --- |
 | [Create new empty project](get-started.md) | Yes | Yes | Yes | Yes |
 | [Create new project from existing database](tutorials/start-from-existing-database.md) | Yes | Yes | Yes | Yes |
 | Open existing Microsoft.Build.Sql projects | Yes | Yes | No | Yes |
@@ -47,17 +47,17 @@ These tools provide a graphical interface for SQL projects, a T-SQL editor, and 
 | Project run build | Yes | Yes | Yes | Yes |
 | Publish project to existing server | Yes | Yes | Yes | Yes |
 | Publish project to a local development instance | Yes<sup>1</sup> | Yes<sup>2</sup> | Yes<sup>3</sup> | Yes<sup>3</sup> |
-| Publish options/properties | Yes | No | Yes | Yes |
+| Publish options/properties | Yes | Yes | Yes | Yes |
 | [Target platform](concepts/target-platform.md) can be updated | Yes | Yes | Yes | Yes |
 | [SQLCMD variables](concepts/sqlcmd-variables.md) | Yes | Yes | Yes | Yes |
 | [Project references](concepts/project-references.md) | Yes | Yes | Yes | Yes |
 | [DACPAC references](concepts/database-references.md) | Yes | Yes | Yes | Yes |
 | [Package references](concepts/package-references.md) | Yes | Yes | No | No |
-| Publish profile creation | Yes | Yes | Yes | Yes |
+| Publish profile creation | Yes | No | Yes | Yes |
 | SQL files can be added by placing in project folder | Yes | Yes | No | Yes |
 | SQL files can be excluded from build | Yes | Yes | Yes | No |
 | [Pre-deployment and post-deployment scripts](concepts/pre-post-deployment-scripts.md) | Yes | Yes | Yes | Yes |
-| New object templates | Yes<sup>4</sup> | Yes<sup>4</sup> | Yes | Yes<sup>4</sup> |
+| New object templates | Yes<sup>4</sup> | Yes | Yes | Yes<sup>4</sup> |
 | Project files can be organized into folders | Yes | Yes | Yes | Yes |
 | [Schema comparison](concepts/schema-comparison.md) project to database | Yes | No | Yes | Yes |
 | [Schema comparison](concepts/schema-comparison.md) database to project | Yes | No | Yes | No |
@@ -69,10 +69,10 @@ These tools provide a graphical interface for SQL projects, a T-SQL editor, and 
 | Object renaming and refactoring | No | No | Yes | No |
 | Intellisense provided in database files from project model | No | No | Yes | No |
 
-1. Local development instance is a SQL Server container.
-1. Any pre-installed Microsoft SQL database can be used as a local development instance.
-1. Local development instance is a SQL Server LocalDB instance.
-1. Limited subset of templates available
+<sup>1</sup> Local development instance is a SQL Server container.  
+<sup>2</sup> Any pre-installed Microsoft SQL database can be used as a local development instance.  
+<sup>3</sup> Local development instance is a SQL Server LocalDB instance.  
+<sup>4</sup> Limited subset of templates available.
 
 ## Command line tools
 

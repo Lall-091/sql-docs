@@ -5,7 +5,7 @@ description: Learn about the currently known issues with Azure SQL Managed Insta
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 03/03/2026
+ms.date: 04/28/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: troubleshooting-known-issue
@@ -27,13 +27,14 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | [Unable to use accelerated database recovery after migrating to SQL Managed Instance](#unable-to-use-accelerated-database-recovery-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
 | [Misleading error message when connecting to a read replica using invalid credentials](#misleading-error-message-when-connecting-to-a-read-replica-using-invalid-credentials) | February 2026 |No resolution| |
 | [Modifying backup retention period for the free offer](#modifying-backup-retention-period-for-the-free-offer) | June 2025 | Has workaround | |
+| [Error 1412 when creating a Managed Instance link](#error-1412-when-creating-a-managed-instance-link) | May 2025 | Has workaround | |
 | [Login to read-secondary failed due to long wait on "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING"](#login-to-read-secondary-failed-due-to-long-wait-on-hadr_database_wait_for_transition_to_versioning) | April 2025 | Has workaround | |
 | [Interim guidance on 2024 time zone updates for Paraguay](#interim-guidance-on-2024-time-zone-updates-for-paraguay) | March 2025 | Resolved | February 2026 |
 | [Error 8992 when running DBCC CHECKDB on a SQL Server database that originated from SQL Managed Instance](#error-8992-when-running-dbcc-checkdb-on-a-sql-server-database-that-originated-from-sql-managed-instance) | March 2025 | Has workaround | |
 | [Differential backups aren't taken when an instance is linked to SQL Server](#differential-backups-arent-taken-when-an-instance-is-linked-to-sql-server) | Sept 2024 | By design | |
 | [List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name](#list-of-long-term-backups-in-azure-portal-shows-backup-files-for-active-and-deleted-databases-with-the-same-name) | Mar 2024 | Has workaround | |
 | [Temporary instance inaccessibility using the failover group listener during scaling operation](#temporary-instance-inaccessibility-using-the-failover-group-listener-during-scaling-operation) | Jan 2024 | Resolved | April 2025 |
-| [The event_file target of the system_health event session isn't accessible](#the-event_file-target-of-the-system_health-event-session-isnt-accessible) | Dec 2023 | Partially resolved | May 2025 |
+| [The event_file target of the system_health event session is not accessible](#the-event_file-target-of-the-system_health-event-session-is-not-accessible) | Dec 2023 | Resolved | March 2026 |
 | [Procedure sp_send_dbmail might fail when @query parameter is used](#procedure-sp_send_dbmail-might-fail-when-query-parameter-is-used) | Dec 2023 | Has workaround | |
 | [Increased number of system logins used for transactional replication](#increased-number-of-system-logins-used-for-transactional-replication) | Dec 2022 | No resolution | |
 | [msdb table for manual backups doesn't preserve the username](#msdb-table-for-manual-backups-doesnt-preserve-the-username) | Nov 2022 | Resolved | Aug 2023 |
@@ -65,7 +66,6 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 
 [!INCLUDE [known-issues-after-migration](../includes/sql-managed-instance/known-issues-after-migration.md)]
 
-
 ### Modifying backup retention period for the free offer
 
 You can only modify the backup retention policy of your databases in the free SQL managed instance by using [REST API](/rest/api/sql/managed-backup-short-term-retention-policies), [PowerShell](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy), and [Azure CLI](/cli/azure/sql/midb/short-term-retention-policy) commands. You can't modify the backup retention policy through the [Azure portal](https://portal.azure.com).
@@ -92,6 +92,14 @@ To work around the issue, first drop the index, or the table with the index, fro
 
 > [!CAUTION]  
 > If you create a partitioned index on a table after dropping an index as described in this scenario, the table becomes inaccessible.
+
+### Error 1412 when creating a Managed Instance link
+
+When you first create a [link](managed-instance-link-feature-overview.md), the first part of the process seeds a full backup of the database from the primary replica to the secondary replica. After seeding of the full backup completes, the link starts to replicate data by applying the differential data from the primary replica to the secondary replica. This process continues indefinitely until a failover command is issued, or the link is removed.
+
+If a transaction log backup occurs on the primary replica during initial seeding of the full backup, the transaction log truncates. Creating the link fails with error 1412 since the data in the transaction log necessary for initial seeding is no longer available.
+
+If you see error 1412 in the SQL Server error log on Azure SQL Managed Instance, then you must [drop](managed-instance-link-configure-how-to-ssms.md#drop-a-link) and recreate the link. To preemptively avoid this issue, pause transaction log backups during the initial seeding phase. If transaction log backups are necessary during the initial seeding phase, then begin an open transaction to prevent log truncation. For more information, review [Error 1412 when creating a Managed Instance link](managed-instance-link-troubleshoot-how-to.md#error-1412) in the troubleshooting guide for the link feature.
 
 ### List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name
 
@@ -267,11 +275,19 @@ Error logs that are available in SQL Managed Instance aren't persisted, and thei
 
 ## Resolved
 
+### The event_file target of the system_health event session is not accessible
+
+**(Resolved in March 2026)** When you attempted to read the contents of the `event_file` target of the `system_health` event session, you would get error 40538, "A valid URL beginning with 'https://' is required as value for any filepath specified."
+
+This issue occurred in SQL Server Management Studio (SSMS), or when reading the session data using the [sys.fn_xe_file_target_read_file](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql) function. The issue is resolved in both cases.
+
+This change in behavior was an unintended consequence of a required security fix. Customers could work around this issue by creating their own equivalent of the `system_health` session with an `event_file` target in Azure blob storage. For more information, including a T-SQL script to create the `system_health` session that can be modified to create your own equivalent of `system_health`, see [Use the system_health session](/sql/relational-databases/extended-events/use-the-system-health-session).
+
 ### Interim guidance on 2024 time zone updates for Paraguay
 
 **(Resolved in February 2026)**
 
-On October 14, 2024, the Paraguayan government announced a permanent change to the time zone policy. Paraguay now remains on Daylight Saving Time (DST) year-round, effectively adopting UTC-3 as its standard time. As a result, clocks did not advance by 60 minutes at 12:00 a.m. on March 23, 2025, as previously scheduled. This change affects the Paraguay Standard time zone. Microsoft has released related [Windows updates in February and March 2025](https://techcommunity.microsoft.com/blog/dstblog/paraguay-2025-time-zone-update-now-available/4386720). SQL managed instances using the affected time zone reflect this change, and align to to the new UTC-3 offset.
+On October 14, 2024, the Paraguayan government announced a permanent change to the time zone policy. Paraguay now remains on Daylight Saving Time (DST) year-round, effectively adopting UTC-3 as its standard time. As a result, clocks did not advance by 60 minutes at 12:00 a.m. on March 23, 2025, as previously scheduled. This change affects the Paraguay Standard time zone. Microsoft has released related [Windows updates in February and March 2025](https://techcommunity.microsoft.com/blog/dstblog/paraguay-2025-time-zone-update-now-available/4386720). SQL managed instances using the affected time zone reflect this change, and align to the new UTC-3 offset.
 
 ### Changing the connection type doesn't affect connections through the failover group endpoint
 

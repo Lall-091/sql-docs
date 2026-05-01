@@ -4,7 +4,7 @@ description: Learn how to manage databases, search objects, back up and restore 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: tsiddique, roblescarlos
-ms.date: 02/21/2026
+ms.date: 04/23/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -13,7 +13,7 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# Database operations (preview)
+# Database operations
 
 The MSSQL extension for Visual Studio Code provides built-in tools for common database operations. You can create and manage databases, search for objects, back up and restore databases, and import data from flat files, all without leaving the editor.
 
@@ -36,7 +36,7 @@ The MSSQL extension provides dialogs for creating, renaming, and dropping databa
 
 1. In the **Connections** view, right-click a SQL Server instance node.
 
-1. Select **Create Database (Preview)**.
+1. Select **Create Database**.
 
 1. In the **Create Database** dialog, enter the following information:
 
@@ -55,7 +55,7 @@ After you create the database, it appears in the server's **Databases** list.
 
 1. In the **Connections** view, right-click a database node.
 
-1. Select **Rename Database (Preview)**.
+1. Select **Rename Database**.
 
 1. In the inline input box, enter the new name and press **Enter** to confirm, or press **Escape** to cancel.
 
@@ -65,7 +65,7 @@ After you create the database, it appears in the server's **Databases** list.
 
 1. In the **Connections** view, right-click a database node.
 
-1. Select **Drop Database (Preview)**.
+1. Select **Drop Database**.
 
 1. In the **Drop Database** dialog, review the database details (name, owner, and status).
 
@@ -124,7 +124,7 @@ The MSSQL extension provides a guided dialog for backing up SQL Server databases
 
 1. Right-click the database you want to back up.
 
-1. Select **Backup Database (Preview)**.
+1. Select **Backup Database**.
 
    :::image type="content" source="media/mssql-database-operations/backup-entry.png" alt-text="Screenshot of the Backup Database option in the Object Explorer context menu.":::
 
@@ -166,7 +166,7 @@ The MSSQL extension provides a guided dialog for restoring SQL Server databases 
 
 1. Right-click a database.
 
-1. Select **Restore Database (Preview)**.
+1. Select **Restore Database**.
 
    :::image type="content" source="media/mssql-database-operations/restore-entry.png" alt-text="Screenshot of the Restore Database option in the Object Explorer context menu.":::
 
@@ -223,7 +223,7 @@ Currently, the following text-based flat files are supported:
 
 1. Right-click the database where you want to create the table.
 
-1. Select **Import flat file (Preview)**.
+1. Select **Import flat file**.
 
    :::image type="content" source="media/mssql-database-operations/flat-file-import-entry.png" alt-text="Screenshot of the Import flat file option in the Object Explorer context menu.":::
 

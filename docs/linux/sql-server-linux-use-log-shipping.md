@@ -18,7 +18,7 @@ ms.custom:
 
 Log shipping is a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] high availability (HA) configuration where a database from a primary server is replicated onto one or more secondary servers. Log shipping allows backup files from the source database to restore onto the secondary server. The primary server creates transaction log backups periodically, and the secondary servers restore them, updating the secondary copy of the database.
 
-:::image type="content" source="media/sql-server-linux-use-log-shipping/log-shipping.png" alt-text="Diagram showing the log shipping workflow.":::
+:::image type="content" source="media/sql-server-linux-use-log-shipping/log-shipping.png" alt-text="Diagram of the log shipping workflow from primary server backup to secondary server restore.":::
 
 As described in the previous diagram, a log shipping session involves the following steps:
 

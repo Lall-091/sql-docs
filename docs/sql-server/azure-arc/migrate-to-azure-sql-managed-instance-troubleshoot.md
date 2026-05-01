@@ -28,7 +28,6 @@ To enable migration and monitoring capabilities,
 please update your Azure Arc agent extension "WindowsAgentSQLServer" to the latest version.
 ```
 
-
 ## Arc agent issues
 
 If you encounter issues with the Arc agent, such as an unhealthy extension state or a disconnected SQL Server instance, use the following extension troubleshooting guide: [Troubleshoot Azure extension for SQL Server](troubleshoot-extension.md).
@@ -64,6 +63,42 @@ You can also access the subscription-level activity log for a broader view of ev
 :::image type="content" source="media/migrate-to-azure-sql-managed-instance-troubleshoot/notification-bell.png" alt-text="Screenshot of the notification bell icon highlighted in the Azure portal.":::
 
 Select an event from the activity log to open a pane of event details. Use the **Summary** and **JSON** tabs to view detailed information about the event, including particular error messages. If you create a support request, communicate this information with as much detail as possible.
+
+## New databases unavailable in the Azure portal
+
+Recently added databases to your SQL Server instance might not be immediately visible in the Azure portal when trying to select databases for migration. This is because it takes about an hour for the Arc agent to auto-refresh the database list. 
+
+To work around this issue, you can restart the Arc service to trigger an immediate refresh of the database list. 
+
+On Windows, use the following command in an elevated command prompt on the server that hosts your SQL Server instance:
+
+```cmd
+Restart-Service himds
+Restart-Service gcarcservice
+Restart-Service extensionservice
+```
+
+Wait for the services to restart, and then use the following command to verify the service is running with the following command:
+
+```cmd
+& "$env:ProgramW6432\AzureConnectedMachineAgent\azcmagent.exe" show
+```
+
+On Linux servers, use the following command in an elevated terminal:
+
+```bash
+sudo systemctl restart himdsd
+sudo systemctl restart gcad
+sudo systemctl restart extd
+```
+
+Wait for the services to restart, and then use the following command to verify the service is running with the following command:
+
+```bash
+azcmagent show
+```
+
+Go to the **Databases** page in the Azure portal for your [SQL Server instance](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/SqlServerInstance), and select **Refresh** to see the newly added databases. You can now select these new databases for migration.
 
 ## Managed Instance link migration issues
 

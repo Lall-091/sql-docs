@@ -4,7 +4,7 @@ description: "Transact-SQL reference for how to use common table expressions (CT
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/25/2025
+ms.date: 04/10/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -126,6 +126,9 @@ The number of columns in the anchor and recursive members must be the same.
 The data type of a column in the recursive member must be the same as the data type of the corresponding column in the anchor member.
 
 The `FROM` clause of a recursive member must refer only one time to the CTE *expression_name*.
+
+> [!NOTE]
+> A recursive CTE executes in the following order: first, the anchor member query runs and produces the initial result set. Then, the recursive member runs repeatedly, with each iteration using the previous iteration's output as its input. Recursion stops when the recursive member returns no rows. Finally, `UNION ALL` combines the results of the anchor member and all recursive iterations into a single result set. This means that `UNION ALL` doesn't deduplicate rows during each recursive step — it concatenates all intermediate results after recursion completes.
 
 The following items aren't allowed in the *CTE_query_definition* of a recursive member:
 

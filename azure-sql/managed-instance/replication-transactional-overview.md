@@ -50,8 +50,6 @@ The **Subscriber** receives changes made on the Publisher. A SQL Server instance
 Azure SQL Managed Instance can support being a Subscriber from the following versions of SQL Server:
 
 - SQL Server 2016 and later versions
-- SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) or [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
-- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) or [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996) or [SP4 (11.0.7001.0)](https://www.microsoft.com/download/details.aspx?id=56040)
 
 > [!NOTE]  
 > For other versions of SQL Server that do not support publishing to objects in Azure, you can use the [republishing data](/sql/relational-databases/replication/republish-data) method to move data to newer versions of SQL Server.

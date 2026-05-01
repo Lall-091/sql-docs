@@ -1,10 +1,10 @@
 ---
-title: "Install SSMA for Db2 client (Db2ToSQL)"
+title: Install SSMA for Db2 Client (Db2ToSQL)
 description: Learn about installation prerequisites for the SQL Server Migration Assistant (SSMA) for Db2 client and how to install.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 09/24/2024
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: install-set-up-deploy
@@ -16,13 +16,12 @@ ms.custom:
 
 # Install SSMA for Db2 client (Db2ToSQL)
 
-The SQL Server Migration Assistant (SSMA) client consists of the program files that perform the following tasks:
+The SQL Server Migration Assistant (SSMA) client migrates Db2 databases. [!INCLUDE [ssma-target-description](../includes/ssma-target-description.md)] The client:
 
-- Connect to a Db2 database.
-- Connect to an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
-- Convert Db2 database objects to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] syntax.
-- Load the objects into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
-- Migrate data to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+- Connects to the Db2 source and the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] target.
+- Converts database objects for the target.
+- Loads the converted objects into the target.
+- Migrates the data.
 
 This article provides the installation prerequisites and instructions for installing SSMA.
 
@@ -32,9 +31,8 @@ SSMA is designed to work with Db2 on z/OS version 9.0, 10.0, and later versions,
 
 Before you install SSMA, make sure that the computer meets the following requirements:
 
-- Windows 7 or later versions, or Windows Server 2008 or later versions.
-- Windows Installer 3.1 or later versions.
-- The [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] version 4.7.2 or a later version. You can obtain it from the [.NET Framework Developer Center](https://go.microsoft.com/fwlink/?LinkId=48882).
+- Windows 11 or later versions, or Windows Server 2022 or later versions.
+- The [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] version 4.7.2 or a later version. [Download .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
 - Microsoft OLE DB Provider for Db2 version 5 or a later version, and connectivity to the Db2 databases that you want to migrate.
 - Access to and sufficient permissions on the computer that hosts the target instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL Database where you're migrating database objects and data. For more information, see [Connect to SQL Server](connecting-to-sql-server-db2tosql.md).
 - 4 GB of RAM is recommended.

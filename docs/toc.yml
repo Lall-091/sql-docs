@@ -4831,11 +4831,11 @@ items:
   - name: Migration documentation
     href: sql-server/migrate/index.yml
   - name: Compare migration tools
-    href: sql-server/migrate/dma-azure-migrate-compare-migration-tools.md
+    href: sql-server/migrate/compare-sql-migration-tools.md
   - name: SQL Server Integration Services (SSIS) >
     href: ./integration-services/sql-server-integration-services.md
   - name: Bulk Copy Utility (bcp)
-    href: tools/bcp-utility.md
+    href: tools/bcp/bcp-utility.md
   - name: Big data options on the Microsoft SQL Server platform
     href: big-data-cluster/big-data-options.md
   - name: Azure Migration Services >
@@ -8455,9 +8455,19 @@ items:
         href: tools/configuration-manager/viewing-the-sql-server-error-log.md
       - name: Viewing the Windows Application Log
         href: tools/configuration-manager/viewing-the-windows-application-log.md
+  - name: BCP (bulk copy utility)
+    items:
+    - name: Overview
+      href: tools/bcp/bcp-utility.md
+    - name: Download and install
+      href: tools/bcp/bcp-download-install.md
+    - name: Authenticate bcp with Microsoft Entra ID
+      href: tools/bcp/bcp-authentication.md
+    - name: Use the utility
+      href: tools/bcp/bcp-use-utility.md
   - name: SQLCMD
     items:
-    - name: sqlcmd overview
+    - name: Overview
       href: tools/sqlcmd/sqlcmd-utility.md
     - name: Check installed version
       href: tools/sqlcmd/sqlcmd-installed-version.md
@@ -8725,6 +8735,8 @@ items:
         href: tools/sql-database-projects/concepts/schema-comparison.md
       - name: SQLCMD variables
         href: tools/sql-database-projects/concepts/sqlcmd-variables.md
+      - name: Publish profiles
+        href: tools/sql-database-projects/concepts/publish-profiles.md
       - name: System objects
         href: tools/sql-database-projects/concepts/system-objects.md
       - name: Target platform
@@ -9102,7 +9114,7 @@ items:
       href: linux/sql-server-linux-faq.yml
   - name: Getting started and deployment
     items:
-    - name: Install
+    - name: Install and upgrade
       items:
       - name: Overview
         href: linux/sql-server-linux-setup.md
@@ -9138,6 +9150,8 @@ items:
         href: linux/sql-server-linux-change-repo.md
       - name: Configure repositories (SQL Server 2025 and later)
         href: linux/sql-server-linux-change-repo-2025.md
+      - name: Upgrade SQL Server on Linux
+        href: linux/install-upgrade/upgrade-considerations.md
     - name: Quickstarts
       items:
       - name: Deploy SQL Server container cluster
@@ -9380,7 +9394,7 @@ items:
       items:
       - name: Overview
         href: linux/sql-server-linux-migrate-ssis.md
-      - name: Limitations and known issues
+      - name: Feature support and considerations for SSIS
         href: linux/sql-server-linux-ssis-known-issues.md
       - name: Configure SSIS
         href: linux/sql-server-linux-configure-ssis.md
@@ -9540,14 +9554,20 @@ items:
         href: sql-server/azure-arc/migration-assessment.md
       - name: Migrate to Azure SQL Managed Instance
         items: 
-        - name: Overview
-          href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance.md
         - name: Prepare MI link migration 
           href: sql-server/azure-arc/migration-sql-mi-prepare-link.md
         - name: Prepare LRS migration 
           href: sql-server/azure-arc/migration-sql-mi-prepare-log-replay-service.md
+        - name: Migrate to SQL managed instance
+          href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance.md
         - name: Troubleshoot common issues 
           href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance-troubleshoot.md
+      - name: Migrate to SQL Server on Azure VMs
+        items: 
+        - name: Prepare for migration 
+          href: sql-server/azure-arc/migration-sql-vm-prepare.md
+        - name: Migrate to SQL Server VM
+          href: sql-server/azure-arc/migrate-to-sql-server-on-azure-vms.md
     - name: SQL Server enabled by Azure Arc FAQ
       href: sql-server/azure-arc/faq.yml
     - name: Data collection & reporting

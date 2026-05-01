@@ -4,7 +4,8 @@ description: Learn how to identify and resolve access issues and common errors w
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 03/03/2026
+ms.date: 04/28/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: security
 ms.topic: troubleshooting-general
@@ -181,8 +182,68 @@ To revalidate the TDE protector key using the Azure portal:
 
 For more information, see [Inaccessible TDE protector](/azure/azure-sql/database/transparent-data-encryption-byok-overview#inaccessible-tde-protector).
 
-> [!NOTE]  
-> Keys should be rotated at a specified number of days prior to expiration to provide sufficient time to react to a failure. For more information, see [Azure Policy built-in definitions for Key Vault](/azure/key-vault/policy-reference).
+> [!TIP]
+> **Prevent key expiration before it causes an outage.**
+>
+> After a TDE protector key expires, the database becomes inaccessible within approximately 10 minutes. If you don't restore the key within 30 minutes, the auto-heal window closes and you have to do manual recovery. Settings such as geo-replication configuration and PITR retention can be lost. Use the following steps to make sure you're alerted well in advance.
+
+#### Set a Key Vault rotation policy with advance notification
+
+Create a JSON file named `rotation-policy.json`:
+
+```json
+{
+  "lifetimeActions": [
+    {
+      "trigger": { "timeBeforeExpiry": "P30D" },
+      "action": { "type": "Notify" }
+    }
+  ],
+  "attributes": {
+    "expiryTime": "P365D"
+  }
+}
+```
+
+Apply the policy by using the Azure CLI:
+
+```azurecli
+az keyvault key rotation-policy update \
+  --vault-name <YourVaultName> \
+  --name <YourKeyName> \
+  --value rotation-policy.json
+```
+
+This policy triggers a `Microsoft.KeyVault.KeyNearExpiry` Event Grid event 30 days before expiration. Subscribe to the event with an Azure Monitor action group to email or page your team.
+
+Alternatively, use PowerShell:
+
+```powershell
+Set-AzKeyVaultKeyRotationPolicy -VaultName <YourVaultName> `
+  -Name <YourKeyName> `
+  -ExpiresIn P365D `
+  -KeyRotationLifetimeAction @{
+    Action = "Notify"
+    TimeBeforeExpiry = "P30D"
+  }
+```
+
+#### Enforce a minimum remaining lifetime with Azure Policy
+
+Assign the built-in policy [Keys should have more than the specified number of days before expiration](/azure/key-vault/policy-reference) to every subscription that holds TDE protector keys. Set the parameter to at least 30 days. The policy flags or denies any key that's too close to expiration.
+
+#### Extend the expiration date of an existing key
+
+If a key is approaching expiration and you can't rotate it yet, extend the expiration date:
+
+```powershell
+$newExpiry = (Get-Date).AddYears(1)
+Update-AzKeyVaultKey -VaultName <YourVaultName> `
+  -Name <YourKeyName> `
+  -Expires $newExpiry
+```
+
+Changing the expiration date doesn't restart any countdown from the original expiry; the new date takes effect immediately.
 
 ### Missing permissions
 

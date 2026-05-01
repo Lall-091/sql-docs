@@ -3,7 +3,7 @@ title: Release notes for mssql-tools on Linux and macOS
 description: "Learn what's new and changed in released versions of the Microsoft SQL Server Tools."
 author: David-Engel
 ms.author: davidengel
-ms.date: 03/31/2026
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
@@ -14,6 +14,12 @@ ms.topic: release-notes
 [!INCLUDE[Driver_ODBC_Download](../../../includes/driver_odbc_download.md)]
 
 This article lists and describes what's new in the versioned releases of the [!INCLUDE[msCoName](../../../includes/msconame-md.md)] SQL Server Tools on Linux and macOS.
+
+## 17.11.1.1, April 2026
+
+| New item | Details |
+| :------- | :------ |
+| Debian package License | Debian package installation to honor License acceptance and complete successfully. |
 
 ## 18.6.2.1, December 2025
 

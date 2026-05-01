@@ -99,7 +99,7 @@ SqlPackage /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial
 > [!IMPORTANT]  
 > To connect to Azure SQL Database from behind a corporate firewall, the firewall must have port 1433 open. To connect to SQL Managed Instance, you must have a [point-to-site connection](../managed-instance/point-to-site-p2s-configure.md) or an express route connection.
 
-As an alternative to username and password, you can use Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)). Currently, the Import/Export service doesn't support Microsoft Entra ID authentication when MFA is required. Substitute the username and password parameters for `/ua:true` and `/tid:"yourdomain.onmicrosoft.com"`. This example shows how to import a database using SqlPackage with Microsoft Entra authentication:
+As an alternative to username and password, you can use Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)). Currently, the Import/Export service doesn't support Microsoft Entra ID authentication when MFA is required. Substitute the username and password parameters for `/ua:true` and `/tid:"contoso.onmicrosoft.com"`. This example shows how to import a database using SqlPackage with Microsoft Entra authentication:
 
 ```cmd
 SqlPackage /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"

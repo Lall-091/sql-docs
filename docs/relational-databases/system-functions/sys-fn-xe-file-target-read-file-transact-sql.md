@@ -4,7 +4,7 @@ description: "The sys.fn_xe_file_target_read_file system function reads files cr
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 09/10/2025
+ms.date: 04/28/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -99,7 +99,9 @@ In [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] or [!INCLUDE [ssazu
 
 You can use `sys.fn_xe_file_target_read_file` to read data from these blobs if a credential allowing access to the Azure Storage container exists. For a walkthrough, review [Create an event session with an event_file target in Azure Storage](/azure/azure-sql/database/xevent-code-event-file).
 
-If you specify a local file system path, you receive an error message similar to:
+You can specify a local file name to read the `system_health` session in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] without creating a credential. For more information, see the last example in [A. Retrieve data from files in the local file system](#a-retrieve-data-from-files-in-the-local-file-system).
+
+In all other cases, if you specify a local file system path, you receive an error message similar to:
 
 ```output
 Msg 40538, Level 16, State 3, Line 15
@@ -130,7 +132,7 @@ SELECT *
 FROM sys.fn_xe_file_target_read_file('*.xel', NULL, NULL, NULL);
 ```
 
-In [!INCLUDE [sssql17](../../includes/sssql17-md.md)] and later versions, the following example retrieves only data from the last day, from the built-in system_health session. The system_health session is an Extended Events session that is included by default with SQL Server. For more information, see [Use the system_health session](../extended-events/use-the-system-health-session.md).
+In [!INCLUDE [sssql17](../../includes/sssql17-md.md)] and later versions, the following example retrieves only data from the last day, from the built-in `system_health` session. The `system_health` session is an Extended Events session that is included by default with SQL Server. For more information, see [Use the system_health session](../extended-events/use-the-system-health-session.md).
 
 ```sql
 SELECT *

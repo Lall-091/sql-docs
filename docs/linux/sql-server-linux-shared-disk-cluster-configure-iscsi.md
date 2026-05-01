@@ -30,7 +30,7 @@ The target should never be configured on any of the FCI nodes if using a Linux-b
 
 The most important thing to ensure is completed on the target is that the disks that are created are assigned the proper permissions so that only those servers participating in the FCI have access to them. An example is shown here from the Microsoft iSCSI target where `linuxnodes1` is the name created, and in this case, the IP addresses of the nodes are assigned so that `NewFCIDisk1.vhdx` appears to them.
 
-:::image type="content" source="media/sql-server-linux-shared-disk-cluster-configure-iscsi/05-initiator.png" alt-text="Screenshot of the initiator." lightbox="media/sql-server-linux-shared-disk-cluster-configure-iscsi/05-initiator.png":::
+:::image type="content" source="media/sql-server-linux-shared-disk-cluster-configure-iscsi/05-initiator.png" alt-text="Screenshot of the iSCSI target properties dialog for linuxnodes1, showing the Initiators tab with IP addresses assigned to the target." lightbox="media/sql-server-linux-shared-disk-cluster-configure-iscsi/05-initiator.png":::
 
 ### Instructions
 

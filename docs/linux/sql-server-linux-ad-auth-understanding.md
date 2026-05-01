@@ -102,15 +102,15 @@ As with Kerberos authentication on Windows, the first two steps to obtain a tick
 
 - The client starts the Kerberos handshake by requesting a session key from the DC for that SPN. Both the TGT and the SPN are sent to the DC.
 
-:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-tgt-spn.png" alt-text="Diagram showing Active Directory authentication for SQL Server on Linux - Ticket-Granting Ticket and Service Principal Name sent to Domain Controller." lightbox="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-tgt-spn.svg":::
+:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-tgt-spn.svg" alt-text="Diagram showing Active Directory authentication for SQL Server on Linux - Ticket-Granting Ticket and Service Principal Name sent to Domain Controller.":::
 
 - After the DC validates the TGT and SPN, it sends the session key to the client, for connecting to the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] SPN.
 
-:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-session-key-received.png" alt-text="Diagram showing Active Directory authentication for SQL Server on Linux - session key returned to client by DC." lightbox="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-session-key-received.svg":::
+:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-session-key-received.svg" alt-text="Diagram showing Active Directory authentication for SQL Server on Linux - session key returned to client by DC.":::
 
 - The encrypted blob from the session key is sent to the server.
 
-:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-session-key-sent.png" alt-text="Diagram showing Active Directory authentication for SQL Server on Linux - session key sent to server." lightbox="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-session-key-sent.svg":::
+:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-session-key-sent.svg" alt-text="Diagram showing Active Directory authentication for SQL Server on Linux - session key sent to server.":::
 
 - [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] reads the password for the SPN from its keytab (`mssql.keytab`), which is a file on disk containing encrypted (SPN, password) tuples.
 
@@ -120,7 +120,7 @@ As with Kerberos authentication on Windows, the first two steps to obtain a tick
 
 - The connection is either accepted or denied.
 
-:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-approved-or-denied.png" alt-text="Diagram showing Active Directory authentication for SQL Server on Linux - connection accepted or denied." lightbox="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-approved-or-denied.svg":::
+:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-approved-or-denied.svg" alt-text="Diagram showing Active Directory authentication for SQL Server on Linux - connection accepted or denied.":::
 
 ## Configure Kerberos for SQL Server containers
 
@@ -135,7 +135,7 @@ You must use the SPN that is stored in `mssql.keytab` to connect to the [!INCLUD
 > [!NOTE]  
 > [!INCLUDE [connect-instance-client](../includes/connect-instance-client.md)]
 
-:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-container.png" alt-text="Diagram showing Active Directory authentication for SQL Server Containers." lightbox="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-container.svg":::
+:::image type="content" source="media/sql-server-linux-ad-auth-understanding/active-directory-authentication-explained-container.svg" alt-text="Diagram showing Active Directory authentication for SQL Server Containers.":::
 
 ## SQL Server group refresh
 

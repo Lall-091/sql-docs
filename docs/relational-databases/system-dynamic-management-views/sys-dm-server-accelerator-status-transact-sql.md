@@ -20,7 +20,7 @@ dev_langs:
 
 # sys.dm_server_accelerator_status (Transact-SQL)
 
-[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 Returns information about integrated offload and acceleration solutions that are available to the current instance of SQL Server. Introduced in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
 

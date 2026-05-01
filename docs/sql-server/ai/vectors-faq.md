@@ -3,7 +3,7 @@ title: "Vector & Embeddings Frequently Asked Questions (FAQ)"
 description: Answers to common questions about vector search and vector indexes in the SQL Server Database Engine.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: damauri, mikeray, randolphwest
+ms.reviewer: mikeray, randolphwest
 ms.date: 01/06/2026
 ms.service: sql
 ms.topic: faq
@@ -41,7 +41,7 @@ A SQL Server data page can hold up to 8,060 bytes, so the size of the vector aff
 
 ## What embedding model should I use, and when?
 
-Many embedding models are available. The choice depends on your specific use case and the type of data you're processing. Some models support multiple languages, while others support multimodal data (text, images, and more). Some models are available only online, while others can run locally.
+Many embedding models are available. The choice depends on your specific use case and the type of data you're processing. Some models support multiple languages, while others support multi-model data (text, images, and more). Some models are available only online, while others can run locally.
 
 In addition to the model itself, consider the size of the model and the number of dimensions it produces. Larger models might provide better accuracy but require more computational resources and storage space. In many cases, having more dimensions doesn't significantly change the quality for common use cases.
 

@@ -3,7 +3,7 @@ title: "Editions and Supported Features of SQL Server 2022 - Linux"
 description: This article describes editions, features, and components supported by the various editions of SQL Server 2022 on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: amitkh, vanto
+ms.reviewer: amitkh, atsingh
 ms.date: 11/27/2025
 ms.service: sql
 ms.subservice: linux
@@ -215,7 +215,7 @@ For info about the Integration Services (SSIS) features supported by the edition
 | Advanced spatial libraries | Yes | Yes | Yes | Yes |
 | Import/export of industry-standard spatial data formats | Yes | Yes | Yes | Yes |
 
-## Configure memory limits with control group (cgroup) v2
+## Control group (cgroup) v2 support
 
 [!INCLUDE [cgroup-support](includes/cgroup-support.md)]
 

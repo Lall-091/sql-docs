@@ -31,13 +31,13 @@ There are two ways to handle this scenario:
 
 The IP address creation for the AG or FCI is done on the VLAN. In the following example, the VLAN has a subnet of `192.168.3.<x>`, so the IP address created for the AG or FCI is `192.168.3.104`. Nothing additional needs to be configured, since there's a single IP address assigned to the AG or FCI.
 
-:::image type="content" source="media/sql-server-linux-configure-multiple-subnet/image1.png" alt-text="Diagram showing how to configure multiple subnets with VLAN.":::
+:::image type="content" source="media/sql-server-linux-configure-multiple-subnet/image1.png" alt-text="Diagram of a multi-subnet configuration using a VLAN with servers at two sites sharing a single availability group or FCI IP address.":::
 
 ## Configuration with Pacemaker
 
 On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple subnets and handles multiple IP addresses via an OR dependency on the IP address. On Linux, there's no OR dependency, but there's a way to achieve a proper multi-subnet natively with Pacemaker, though you can't use the normal Pacemaker command line. Instead, you need to modify the cluster information base (CIB). The CIB is an XML file with the Pacemaker configuration.
 
-:::image type="content" source="media/sql-server-linux-configure-multiple-subnet/image2.png" alt-text="Diagram showing how to configure multiple subnets with Pacemaker.":::
+:::image type="content" source="media/sql-server-linux-configure-multiple-subnet/image2.png" alt-text="Diagram of a multi-subnet configuration using Pacemaker, with two servers at Site A on subnet 192.168.1.x and one server at Site B on subnet 192.168.2.x, with AG or FCI IP addresses on each subnet.":::
 
 ### Update the CIB
 
