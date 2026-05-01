@@ -4,7 +4,7 @@ description: Migrate SQL Server databases to Azure SQL Managed Instance by using
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, randolphwest
-ms.date: 09/17/2025
+ms.date: 04/16/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: migration
 ms.topic: how-to
@@ -185,34 +185,33 @@ You can use an Azure Blob Storage account as intermediary storage for backup fil
 
 Follow these steps to generate the token:
 
-1. In the Azure portal, open **Storage Explorer**.
-1. Expand **Blob Containers**.
-1. Right-click the blob container, and then select **Get Shared Access Signature**.
+1. Go to the [Storage center](https://portal.azure.com/#view/Microsoft_Azure_StorageHub/StorageHub.MenuView/~/StorageAccountsBrowse) in the Azure portal and select your storage account.
+1. Under **Security + networking**, select **Shared access signature** to open the **Shared access signature** pane.
+1. On the **Shared access signature** pane, configure the settings to generate a SAS token for LRS. Use the following guidelines to configure the settings:
+   1. **Allowed services**: **Blob** and **File**.
+   1. **Allowed resource types**: **Service**. 
+   1. **Permissions**: **Read** and **List** only.
 
-   :::image type="content" source="media/log-replay-service-migrate/lrs-sas-token-01.png" alt-text="Screenshot that shows selections for generating a SAS authentication token." lightbox="media/log-replay-service-migrate/lrs-sas-token-01.png":::
+      > [!IMPORTANT]  
+      > Don't select any other permissions. If you do, LRS won't start. This security requirement is by design.
 
-1. Select the time frame for token expiration. Ensure that the token is valid during your migration.
+   1. **Blob versioning permissions**: Optional
+   1. **Allowed blob index permissions**: Can be disabled.
+   1. Select the time zone for the token: UTC or your local time.
+    
+      > [!IMPORTANT]  
+      > The time zone of the token and your managed instance might mismatch. Ensure that the SAS token has the appropriate time validity, taking time zones into consideration. To account for time zone differences, set the validity **From** value well before your migration window starts, and the **To** value well after you expect your migration to finish.
 
-1. Select the time zone for the token: UTC or your local time.
-
-   > [!IMPORTANT]  
-   > The time zone of the token and your managed instance might mismatch. Ensure that the SAS token has the appropriate time validity, taking time zones into consideration. To account for time zone differences, set the validity **From** value well before your migration window starts, and the **To** value well after you expect your migration to finish.
-
-1. Select **Read** and **List** permissions only.
-
-   > [!IMPORTANT]  
-   > Don't select any other permissions. If you do, LRS won't start. This security requirement is by design.
-
-1. Select **Create**.
+   1. Select **Generate SAS and connection string** to generate the token: 
 
    :::image type="content" source="media/log-replay-service-migrate/lrs-sas-token-02.png" alt-text="Screenshot that shows selections for SAS token expiration, time zone, and permissions, along with the Create button." lightbox="media/log-replay-service-migrate/lrs-sas-token-02.png":::
 
-The SAS authentication is generated with the time validity that you specified. You need the URI version of the token, as shown in the following screenshot:
+   The SAS authentication is generated with the time validity that you specified.
 
-:::image type="content" source="media/log-replay-service-migrate/lrs-generated-uri-token.png" alt-text="Screenshot that shows an example of the URI version of a SAS token.":::
+1. Copy the value provided in the **Blob Service SAS URL** field, which is the URI version of the token that you need to start LRS.
 
-   > [!NOTE]  
-   > Using SAS tokens created with permissions that were set by defining a [stored access policy](/rest/api/storageservices/define-stored-access-policy) isn't supported at this time. Follow the instructions in this procedure to manually specify **Read** and **List** permissions for the SAS token.
+> [!NOTE]  
+> Using SAS tokens created with permissions that were set by defining a [stored access policy](/rest/api/storageservices/define-stored-access-policy) isn't supported at this time. Follow the instructions in this procedure to manually specify **Read** and **List** permissions for the SAS token.
 
 ### Copy parameters from the SAS token
 
@@ -230,11 +229,7 @@ Copy the parameters as follows:
 
 1. Copy the first part of the token, from `https://` up to but not including the question mark (`?`). Use it as the `StorageContainerUri` parameter in PowerShell or the Azure CLI when you're starting LRS.
 
-   :::image type="content" source="media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png" alt-text="Screenshot that shows where to copy the first part of the token." lightbox="media/log-replay-service-migrate/lrs-token-uri-copy-part-01.png":::
-
 1. Copy the second part of the token, from after the question mark (`?`) through the end of the string. Use it as the `StorageContainerSasToken` parameter in PowerShell or the Azure CLI when you're starting LRS.
-
-   :::image type="content" source="media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png" alt-text="Screenshot that shows where to copy the second part of the token." lightbox="media/log-replay-service-migrate/lrs-token-uri-copy-part-02.png":::
 
 > [!NOTE]  
 > Don't include the question mark (`?`) when you copy either part of the token.
@@ -270,7 +265,7 @@ Next, connect to your managed instance, and run a sample test query to determine
 If you're using a SAS token to authenticate to your storage account, then replace the `<sastoken>` with your SAS token and run the following query on your instance:
 
 ```sql
-CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
+CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/databases]
     WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
     SECRET = '<sastoken>';
 
@@ -634,7 +629,6 @@ Consider the following limitations when migrating with LRS:
   - If a failover occurs after migration cutover is initiated, the migration job must be manually restarted from the beginning. Ensure the last backup file is as small as possible to minimize cutover time and reduce the risk of a failover during the cutover process.
 - If [accelerated database recovery](/sql/relational-databases/accelerated-database-recovery-concepts) is disabled on your source SQL Server 2019 and later instances, you can no longer enable it after migrating to Azure SQL Managed Instance. Additionally, if the persistent version store (PVS) isn't set to `PRIMARY`, you can experience issues with restore operations on the target SQL managed instance.
 - If [Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) is disabled on the source SQL Server instance, you can't use Service Broker on the target SQL managed instance after migration.
-
 
 > [!NOTE]  
 > If you require a database to be read-only accessible during the migration, with a much longer time frame for performing the migration and with minimal downtime, consider using the [Overview of the Managed Instance link](managed-instance-link-feature-overview.md) feature as a recommended migration solution.

@@ -4,7 +4,7 @@ description: This article discusses the Transact-SQL (T-SQL) differences between
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 02/19/2026
+ms.date: 04/02/2026
 ms.service: azure-sql-database
 ms.subservice: migration
 ms.topic: reference
@@ -38,6 +38,7 @@ The core DDL statements are available, but DDL statement extensions related to u
 - The `CREATE TABLE` and `ALTER TABLE` statements have `FILETABLE` and `FILESTREAM` options that can't be used on SQL Database because these features aren't supported.
 - Creating, altering, or dropping user objects such as tables, views, or stored procedures using the corresponding `CREATE`, `ALTER`, and `DROP` statements in the `master` database on a [logical server](logical-servers.md) is not supported.
 - `CREATE LOGIN` and `ALTER LOGIN` statements are supported, but don't offer all options available in SQL Server. To make your database more portable, SQL Database encourages using contained database users instead of logins whenever possible. For more information, see [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true), [ALTER LOGIN](/sql/t-sql/statements/alter-login-transact-sql?view=azuresqldb-current&preserve-view=true), and [Authorize database access to SQL Database, SQL Managed Instance, and Azure Synapse Analytics](logins-create-manage.md).
+- For a given database, the `database_id` column doesn't provide the same value across all system views. For more information, see the [Remarks](/sql/t-sql/functions/db-id-transact-sql#remarks) section for the `DB_ID` built-in function.
 
 ## T-SQL syntax not supported in Azure SQL Database
 

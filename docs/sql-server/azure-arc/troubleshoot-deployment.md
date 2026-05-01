@@ -1,9 +1,9 @@
 ---
-title: "Troubleshoot deployment"
-description: "Describes how to troubleshoot SQL Server enabled by Azure Arc deployment."
+title: Troubleshoot Deployment
+description: Describes how to troubleshoot SQL Server enabled by Azure Arc deployment.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 02/01/2023
+ms.date: 04/13/2026
 ms.topic: troubleshooting-general
 ---
 
@@ -23,11 +23,11 @@ Before you start, note the logs locations.
 
 The deployer logs are deployed at:
 
-   `C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureData.WindowsAgent.SqlServer\<extension version>\deployer.log`
+`C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureData.WindowsAgent.SqlServer\<extension version>\deployer.log`
 
-   Replace `<extension version>` with your extension version. For example:
+Replace `<extension version>` with your extension version. For example:
 
-   `C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureData.WindowsAgent.SqlServer\1.1.0.0\deployer.log`
+`C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureData.WindowsAgent.SqlServer\1.1.0.0\deployer.log`
 
 The failure to create the Arc-enabled SQL Server resource could be caused by several issues.
 
@@ -42,9 +42,9 @@ Go to the connected server and check the deployer log. You should see the below 
 
 If you can't see it, the extension didn't install properly. Try the following steps.
 
-1. Check event logs to see if anything preventing installation. Try installing SqlServerExtension.msi from the following folder `C:\Packages\Plugins\Microsoft.AzureData.WindowsAgent.SqlServer{version}`. The installation UI may provide the error details.
+1. Check event logs to see if anything preventing installation. Try installing SqlServerExtension.msi from the following folder `C:\Packages\Plugins\Microsoft.AzureData.WindowsAgent.SqlServer{version}`. The installation UI might provide the error details.
 
-2. Close services app, server manager and retry using [connection method](./connect-already-enabled.md) to install the extension, and see if that helps.
+1. Close services app, server manager and retry using [connection method](connect-already-enabled.md) to install the extension, and see if that helps.
 
 ## Extension installed but didn't start
 
@@ -58,7 +58,7 @@ Check the extension log for the following record:
 [YY/MM/DDDD HH:MM:SS PM UTC] [ERROR]   [UploadServiceProvider]      [ExtensionHandlerStatusQueryError] ArcSqlInstancesRequest request is null, not sending data to RP.
 ```
 
-This means the machine is no longer recognized as a connected server. [Onboard the server to Azure Arc](/azure/azure-arc/servers/onboard-portal) and retry one of the [connection methods](./connect.md) to install the extension.
+This means the machine is no longer recognized as a connected server. [Onboard the server to Azure Arc](/azure/azure-arc/servers/onboard-portal) and retry one of the [connection methods](connect.md) to install the extension.
 
 ## Server managed identity has insufficient permissions
 
@@ -84,3 +84,6 @@ Make sure to migrate the Arc-enabled SQL Server resource to `Microsoft.AzureArcD
 
 [Disconnect your SQL Server instances from Azure Arc](delete-from-azure-arc.md)
 
+## Deleted resource still appears in the Azure portal
+
+[!INCLUDE [resource-caching-after-deletion](includes/resource-caching-after-deletion.md)]

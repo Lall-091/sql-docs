@@ -142,11 +142,13 @@ The following are security considerations and requirements when backing up to or
 
 ## Limitations of backup/restore to Azure Blob Storage
 
-- SQL Server limits the maximum backup size supported using a page blob to 1 TB. The maximum backup size supported using block blobs is limited to approximately 200 GB (50,000 blocks * 4 MB `MAXTRANSFERSIZE`). Block blobs support striping to support substantially larger backup sizes - the limit is a maximum of 64 URLs, which results in the following formula: `64 stripes * 50,000 blocks * 4MB maxtransfersize = 12.8 TB`.
+- SQL Server limits the maximum backup size supported using a page blob to 1 TB. The maximum backup size supported using block blobs is limited to approximately 195.3 GB (50,000 blocks * 4 MB `MAXTRANSFERSIZE`). Block blobs support striping to support substantially larger backup sizes - the limit is a maximum of 64 URLs, which results in the following formula: `64 stripes * 50,000 blocks * 4MB maxtransfersize = 12.8 TB`.
 
   > [!IMPORTANT]  
-  > Although the maximum backup size supported by a single block blob is 200 GB, it's possible for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to write in smaller block sizes, which can lead [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to reach the 50,000 block limit before the entire backup is transferred. Stripe backups (even if they're smaller than 200 GB) to avoid the block limit, especially when if you use differential or uncompressed backups.
+  > Although the maximum backup size supported by a single block blob is approximately 195.3 GB, it's possible for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to write in smaller block sizes, which can lead [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to reach the 50,000 block limit before the entire backup is transferred. Stripe backups (even if they're smaller than 200 GB) to avoid the block limit, especially when if you use differential or uncompressed backups.
 
+- Transaction log backups ignore the user-specified `MAXTRANSFERSIZE` when backing up to multiple backup files. Instead, 64KB is used if more than one file is specified, regardless of the `MAXTRANSFERSIZE` value in the backup command. Therefore, the maximum size of a transaction log backup to URL is approximately 195.3GB (50,000 blocks * 4 MB `MAXTRANSFERSIZE` * 1 file OR 50,000 blocks * 64 KB * 64 files). Compression can allow for a larger transaction log to be backed up, but compression ratios will vary.
+  
 - You can issue backup or restore statements by using Transact-SQL, SMO, PowerShell cmdlets, or the SQL Server Management Studio Backup or Restore wizard.
 
 - When backing up to an Azure Storage account, SQL Server only supports authentication with Shared Access Signature (SAS) tokens or storage account keys. All other authentication methods, including authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), aren't supported.

@@ -73,12 +73,15 @@ For Azure SQL Managed Instance, you need to be a member of the [SQL Managed Inst
 
 If SQL Server is your initial primary, you need to create a backup of your database. Since Azure SQL Managed Instance takes backups automatically, skip this step if SQL Managed Instance is your initial primary. 
 
+When you create a link, the initial seeding between the primary and secondary replicas happens by taking a full backup of the database on the primary replica, transferring it to the secondary replica, and restoring it there. When you take the full backup, we recommend that you use the `WITH CHECKSUM` option to ensure that the backup is valid and doesn't have any corruption. For more information, see [BACKUP (Transact-SQL)](/sql/t-sql/statements/backup-transact-sql).
+
 Use SSMS to back up your database on SQL Server. Follow these steps:
 
 1. Connect to your SQL Server in SQL Server Management Studio (SSMS). 
 1. In **Object Explorer**, right-click the database, hover over **Tasks**, and then choose **Back up**. 
 1. Choose **Full** for backup type. 
 1. Ensure the **Back up to** option has the backup path to a disk with sufficient free storage space available. 
+1. (Optional but recommended) On the **Media Options** tab, check the box for **Perform checksum before writing to media** to have SQL Server verify the integrity of the backup after it's created.
 1. Select **OK** to complete the full backup. 
 
 For more information, see [Create a Full Database Backup](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server).

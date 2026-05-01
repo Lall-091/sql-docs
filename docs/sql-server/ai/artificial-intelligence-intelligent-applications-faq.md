@@ -1,9 +1,9 @@
 ---
 title: Intelligent Applications and AI Frequently Asked Questions (FAQ)
 description: "Answers to common questions about using AI with the SQL Database Engine."
-author: yorek
-ms.author: damauri
-ms.reviewer: damauri, randolphwest, mathoma
+author: markingmyname
+ms.author: maghan
+ms.reviewer: randolphwest, mathoma
 ms.date: 08/20/2025
 ms.service: sql
 ms.topic: faq

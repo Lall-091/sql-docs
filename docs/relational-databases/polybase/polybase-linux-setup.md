@@ -5,7 +5,7 @@ description: Learn how to install SQL Server PolyBase on Linux. PolyBase enables
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: dakryze, hudequei, randolphwest
-ms.date: 02/06/2026
+ms.date: 04/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -22,13 +22,13 @@ The following steps install [PolyBase](overview.md) (`mssql-server-polybase` and
 
 ## Prerequisites
 
-Before you install PolyBase, first [install SQL Server](../../linux/sql-server-linux-setup.md#platforms). This step configures the keys and repositories that you use when installing the `mssql-server-polybase` and `mssql-server-polybase-hadoop` package.
+Before you install PolyBase, first [install SQL Server](../../linux/sql-server-linux-setup.md#platforms). This step configures the keys and repositories that you use when installing the `mssql-server-polybase` and `mssql-server-polybase-hadoop` packages.
 
 ## Support for ODBC data sources
 
 **Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]
 
-Starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], PolyBase supports ODBC data sources on Linux. ODBC data source support for Linux requires the .NET runtime, which is automatically downloaded and installed during PolyBase setup. Internet access is required during the installation.
+In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, PolyBase supports ODBC data sources on Linux. ODBC data source support for Linux requires the .NET runtime, which is automatically downloaded and installed during PolyBase setup. Internet access is required during the installation.
 
 ## Limitations
 
@@ -36,7 +36,7 @@ The hostname where [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]
 
 PolyBase isn't supported on [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] for Linux.
 
-Scale-out for PolyBase on Linux is currently unavailable.
+Scale-out for PolyBase on Linux isn't currently available.
 
 Hadoop isn't supported on [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions.
 
@@ -354,13 +354,27 @@ sudo systemctl restart mssql-server
 > [!NOTE]  
 > After installation, [enable the PolyBase feature](#enable).
 
-## Known issues
+## PolyBase offline installation
 
-### Offline installation isn't available for SQL Server 2025
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
 
-**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]
+In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], PolyBase on Linux supports ODBC data sources and requires .NET components that the package manager typically installs.
 
-Currently, installing PolyBase on Linux for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] requires internet access because the setup downloads the .NET runtime. An offline installation method will be provided in a future update.
+Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] Cumulative Update (CU) 4, you can install the required .NET components offline. This method is useful for large-scale deployments and environments without internet access.
+
+You need a machine with internet access to download the .NET runtime and a target [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] machine where you install PolyBase.
+
+1. On a machine with internet access, download the supported .NET runtime that PolyBase requires (**.NET 8.0.418**). Extract the package, and copy the extracted files to the target [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] machine.
+
+   On the target machine, create the following directory if it doesn't exist: `/opt/mssql-ees-dotnet/`.
+
+   Copy the extracted .NET components to `/opt/mssql-ees-dotnet/`.
+
+1. Install PolyBase.
+
+   If setup can't find the components in the default location (`/opt/mssql-ees-dotnet/`), provide the path when prompted.
+
+1. If you don't provide a path, setup prompts you to download the components.
 
 ## Related links
 

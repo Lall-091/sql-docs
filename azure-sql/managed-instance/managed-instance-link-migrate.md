@@ -73,15 +73,52 @@ After you've assessed your existing environment, and determined the appropriate 
 
 After your target SQL managed instance is created, configure a link between the database on your SQL Server instance and Azure SQL Managed Instance. First, [prepare your environment](managed-instance-link-preparation.md) and then configure a link by using [SQL Server Management Studio (SSMS)](managed-instance-link-configure-how-to-ssms.md) or [scripts](managed-instance-link-configure-how-to-scripts.md).
 
+## Check replication lag
+
+It's important that the secondary replica catches up to the primary replica before performing a planned migration failover. Planned failover can time out and fail if the secondary replica lags far behind the primary replica.
+
+Use the following T-SQL query on both SQL Server and SQL Managed Instance to monitor replication lag between the replicas:
+
+```sql
+-- Execute on SQL Server and SQL Managed Instance 
+USE master
+DECLARE @link_name varchar(max) = '<DAGname>'
+SELECT
+   ag.name [Link name], 
+   ars1.role_desc [Link role],
+   ars2.connected_state_desc [Link connected state],
+   ars2.synchronization_health_desc [Link sync health],
+   drs.secondary_lag_seconds [Link replication latency (seconds)]
+FROM
+   sys.availability_groups ag 
+   JOIN sys.dm_hadr_availability_replica_states ars1
+   ON ag.group_id = ars1.group_id
+   JOIN sys.dm_hadr_availability_replica_states ars2
+   ON ag.group_id = ars2.group_id
+   JOIN sys.dm_hadr_database_replica_states drs
+   ON ars2.replica_id = drs.replica_id
+WHERE 
+   ag.is_distributed = 1 AND ag.name = @link_name AND ars1.is_local = 1 AND ars2.is_local = 0
+GO
+```
+
+If replication lag is high, wait for the secondary replica to catch up with the primary replica. You might need to perform additional troubleshooting steps if the lag persists, such as pausing workloads on the primary replica, improving link network throughput between the two instances, or increasing resource capacity on the secondary replica. The easiest way to stop workloads on a SQL Server primary replica is to cut application connections to the instance.
+
+## Migrate multiple databases
+
+If you plan to migrate multiple databases from instances on the same server, for optimal performance and predictability, migrate 8 databases per instance at a time. For example, if you have 10 instances with 32 linked databases each, migrate 8 databases at a time from each instance by using planned failovers, and repeat the process until all databases are migrated.
+
 ## Data sync and cutover
 
 After your link is established, and you're ready to migrate, follow these steps (typically during a maintenance window):
 
-1. Stop the workload on the primary SQL Server database so the secondary database on SQL Managed Instance catches up.
-1. Validate all data has made it over to the secondary database on SQL Managed Instance.
+1. Stop the workload on the primary SQL Server database so the secondary database on SQL Managed Instance catches up. The easiest way to stop workloads on a SQL Server primary replica is to cut application connections to the instance.
+1. Validate all data has made it over to the secondary database on SQL Managed Instance. Check [replication lag](#check-replication-lag) to ensure the secondary replica is caught up with the primary replica.
 1. [Fail over the link](managed-instance-link-failover-how-to.md) to the secondary SQL managed instance by choosing **Planned failover**.
-1. (For SQL Server 2022 migrations) Check the box to **Remove link after successful failover** to ensure that failover is one way, and the link is removed.
+1. (Optionally) Check the box to **Remove link after successful failover** to ensure that failover is one way, and the link is removed. 
+1. (Optionally) If you're on a supported SQL Server version with a matching SQL Managed Instance [update policy](update-policy.md), you can keep the link after failover to reverse a migration if needed. Check the [reverse a migration section](#reverse-a-migration) for specific version details.
 1. Cut over the application to connect to the SQL managed instance endpoint.
+1. (Optionally) If you didn't choose to remove the link during failover, you can remove the link after cutover once you no longer need it.
 
 ## Validate migration
 

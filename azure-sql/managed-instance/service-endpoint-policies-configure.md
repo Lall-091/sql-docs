@@ -45,7 +45,7 @@ Before you configure service endpoint policies on a subnet, create a list of sto
 
 The following workflows might contact Azure Storage:
 
-- [Auditing](auditing-configure.md) to Azure Storage.
+- [SQL Server Audit in Azure SQL Managed Instance](auditing.md) to Azure Storage.
 - Performing a [copy-only backup](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) to Azure Storage.
 - [Restoring](restore-sample-database-quickstart.md) a database from Azure Storage.
 - Importing data by using [BULK INSERT or OPENROWSET(BULK ...)](/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server).
@@ -98,7 +98,7 @@ To create a service endpoint policy, follow these steps:
    :::image type="content" source="./media/service-endpoint-policies-configure/add-a-resource.png" alt-text="Screenshot that shows adding a resource to a service endpoint policy." lightbox="./media/service-endpoint-policies-configure/add-a-resource.png":::
 
 1. (Optional) Configure tags on the service endpoint policy under **Tags**.
-1.	Select **Review + Create**. Validate the information and select **Create**. To make further edits, select **Previous**.
+1.    Select **Review + Create**. Validate the information and select **Create**. To make further edits, select **Previous**.
 
    > [!TIP]
    > First, configure policies to allow access to entire subscriptions. Validate the configuration by ensuring that all workflows operate normally. Then, optionally, reconfigure policies to allow individual storage accounts, or accounts in a resource group. To do so, select **Single account** or **All accounts in resource group** in the _Scope:_ field instead and fill in the other fields accordingly.

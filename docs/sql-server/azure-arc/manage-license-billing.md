@@ -4,7 +4,7 @@ description: This article explains how to manage SQL Server licensing options. I
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, maghan, mathoma
-ms.date: 03/04/2026
+ms.date: 04/01/2026
 ai-usage: ai-assisted
 ms.topic: how-to
 ms.custom:
@@ -97,6 +97,15 @@ The following license types are supported when you're licensing v-cores:
    Built-in resilience tolerates intermittent connectivity disruptions for up to 30 consecutive days without affecting billing accuracy. This means that as long as connectivity is not interrupted for more than 30 days, your billing remains correct—even if there are short, intermittent disconnections. If the machine stays disconnected for more than 30 days, the pay-as-you-go subscription expires, and you're no longer authorized to use the software.
 
 - If you're using an Azure subscription managed by a Cloud Service Provider (CSP), enabling pay-as-you-go requires that you or the CSP consents to recurrent billing. For details, review [Manage recurrent billing for SQL Server enabled by Azure Arc with pay-as-you-go license](manage-pay-as-you-go-transition.md).
+
+> [!IMPORTANT]
+> **Pay-as-you-go on Linux**: The following PAYG limitations apply to SQL Server on Linux:
+>
+> - **Passive instance detection**: Automatic detection of passive replicas in availability groups or failover cluster instances isn't available. All instances are billed as active.
+> - **Core visibility**: Core count is based on the operating system environment. Database Engine-level core verification isn't available.
+> - **Connected user detection**: Verification of active user connections on readable secondary replicas isn't available.
+>
+> These limitations don't affect license compliance or the ability to use PAYG billing on Linux. However, you should account for the billing differences when planning PAYG deployments on Linux. For more information about feature availability by operating system, see [Feature availability by operating system](overview.md#feature-availability-by-operating-system).
 
 - By selecting a license with Software Assurance, you attest that you have Enterprise or Standard licenses with active Software Assurance or an active SQL Server subscription license, and that the device is in compliance with the [Product Terms outsourcing restrictions](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/allprograms#:~:text=When%20using%20SQL%20Server%20enabled%20by%20Azure%20Arc%20with%20a,%2C%20regardless%20of%20whether%20those%20Servers%20are%20dedicated%20to%20Customer).
 
@@ -292,10 +301,13 @@ The current passive instance detection logic has the following limitations:
 - Passive instances for other disaster recovery technologies like log shipping or mirroring aren't automatically detected at this time.
 - The detection logic doesn't support free disaster recovery testing.
 - The detection logic doesn't support monitoring connections like database consistency checks, backups, or monitoring resource usage data.
+- On Linux, passive instance detection isn't available. All SQL Server instances on Linux are billed as active, regardless of their HA/DR role.
 
 If you're unable to work within these limitations, you can use volume licensing instead of `PAYG`. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
-[!INCLUDE [billing-after-failover](includes/billing-after-failover.md)]
+### Billing after failover
+
+During failovers, the extension detects the role transition and automatically switches billing to the active replica without duplicate charges.
 
 <a id="server-cal"></a>
 

@@ -13,7 +13,7 @@ metadata:
   author: MashaMSFT
   ms.author: mathoma
   ms.reviewer: mathoma
-  ms.date: 07/30/2023
+  ms.date: 04/02/2026
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
 
@@ -72,6 +72,22 @@ landingContent:
           url:  replication-transactional-overview.md
         - text: Connect apps to Azure SQL Managed Instance 
           url: ../database/develop-overview.md#client-connections
+
+# Card
+  - title: Artificial Intelligence
+    linkLists:
+      - linkListType: concept
+        links:
+        - text: Intelligent applications and AI in SQL Server
+          url: /sql/sql-server/ai/artificial-intelligence-intelligent-applications?view=azuresqldb-mi-current&preserve-view=true
+        - text: Multi-model capabilities in Azure SQL
+          url: ../multi-model-features.md
+        - text: Connect to REST API endpoints for a SQL database
+          url:  /azure/data-api-builder/concept/rest/overview
+        - text: Connect to GraphQL endpoints for a SQL database
+          url:  /azure/data-api-builder/concept/graphql/overview
+        - text: SQL MCP Server
+          url:  /azure/data-api-builder/mcp/overview
 
 
   # Card 

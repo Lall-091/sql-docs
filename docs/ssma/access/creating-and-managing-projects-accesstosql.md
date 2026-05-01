@@ -1,10 +1,10 @@
 ---
-title: "Creating and Managing Projects (AccessToSQL)"
-description: "Creating and Managing Projects (AccessToSQL)"
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 12/30/2025
+title: Creating and Managing Projects (AccessToSQL)
+description: Learn how to create, customize, save, and open projects in SQL Server Migration Assistant (SSMA) for Access.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: how-to
@@ -66,13 +66,7 @@ SSMA starts without loading a default project. To migrate data from Access datab
 
 1. In the **Migration To** dropdown list, select one of the following versions, and then select **OK**:
 
-   - [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]
-   - [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]
-   - [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]
-   - [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]
-   - [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]
-   - [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
-   - [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]
+   [!INCLUDE [ssma-target-versions](../includes/ssma-target-versions.md)]
 
 SSMA creates the project file. You can now perform the next step of [adding one or more Access databases](adding-and-removing-access-database-files-accesstosql.md).
 

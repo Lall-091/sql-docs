@@ -13,7 +13,7 @@ metadata:
   author: WilliamDAssafMSFT
   ms.author: wiassaf
   ms.reviewer: mathoma
-  ms.date: 07/24/2025
+  ms.date: 04/02/2026
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
 
@@ -31,7 +31,7 @@ landingContent:
       - linkListType: quickstart
         links:
           - text: Create SQL Database
-            url: single-database-create-quickstart.md
+            url: hyperscale-database-create-quickstart.md
           - text: Configure firewall
             url: firewall-create-server-level-portal-quickstart.md
           - text: Try for free 
@@ -86,8 +86,14 @@ landingContent:
         links:
         - text: Copilot in Azure SQL Database 
           url: ../copilot/copilot-azure-sql-overview.md
-        - text: Intelligent Applications
+        - text: Intelligent Applications and AI
           url: ai-artificial-intelligence-intelligent-applications.md
+        - text: Connect to REST API endpoints for a SQL database
+          url:  /azure/data-api-builder/concept/rest/overview
+        - text: Connect to GraphQL endpoints for a SQL database
+          url:  /azure/data-api-builder/concept/graphql/overview
+        - text: SQL MCP Server
+          url:  /azure/data-api-builder/mcp/overview
 
   # Card 
   - title: Advanced security

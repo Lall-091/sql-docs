@@ -24,7 +24,7 @@ For information about migrating a database from one SQL Server instance to anoth
 
 1. Start SSMS by typing **Microsoft SQL Server Management Studio** in the Windows search box, and then select the desktop app.
 
-   :::image type="content" source="media/sql-server-linux-manage-ssms/ssms.png" alt-text="Screenshot of SQL Server Management Studio.":::
+   :::image type="content" source="media/sql-server-linux-manage-ssms/ssms.png" alt-text="Screenshot of the SQL Server Management Studio application icon in Windows search results.":::
 
 1. Connect to your source database in Object Explorer. The source database can be in Microsoft SQL Server running on-premises or in the cloud, on Linux, Windows, or Docker and Azure SQL Database or Azure Synapse Analytics.
 
@@ -42,7 +42,7 @@ The `.bacpac` file is successfully created at the location you chose, and you're
 
 1. Start SSMS by typing **Microsoft SQL Server Management Studio** in the Windows search box, and then select the desktop app.
 
-   :::image type="content" source="media/sql-server-linux-manage-ssms/ssms.png" alt-text="Screenshot of SQL Server Management Studio again.":::
+   :::image type="content" source="media/sql-server-linux-manage-ssms/ssms.png" alt-text="Screenshot of the SQL Server Management Studio application icon in Windows search results.":::
 
 1. Connect to your target server in Object Explorer. The target server can be Microsoft SQL Server running on-premises or in the cloud, on Linux, Windows, or Docker and Azure SQL Database or Azure Synapse Analytics.
 

@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, randolphwest
-ms.date: 03/27/2026
+ms.date: 04/13/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -37,13 +37,12 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 | [Automatic index compaction](/sql/relational-databases/indexes/automatic-index-compaction) | Reduce the consumption of storage space, disk I/O, memory, and improve workload performance without investing time and effort into index maintenance jobs. |
 | [Change event streaming](/sql/relational-databases/track-changes/change-event-streaming/overview) | Capture and publish incremental DML changes of data (such as updates, inserts, and deletes) in near real-time. Change event streaming sends details of data changes such as the schema, previous values, and new values to Azure Event Hubs in a simple CloudEvent, serialized as either native JSON or Avro Binary. |
 |[Database watcher for Azure SQL](../database-watcher-overview.md) | Database watcher is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement).|
-|[DATEADD number allows bigint](/sql/t-sql/functions/dateadd-transact-sql) | For `DATEADD (datepart, number, date)`, number can be expressed as a **bigint**.|
 |[Endpoint policies](./service-endpoint-policies-configure.md) | Configure which Azure Storage accounts can be accessed from a SQL Managed Instance subnet. Grants an extra layer of protection against inadvertent or malicious data exfiltration.|
 |[Modernization Advisor](../virtual-machines/modernization-advisor.md) | Use the Modernization Advisor in the Azure portal to help you determine if migrating to Azure SQL Managed Instance from a SQL Server VM saves you money or optimizes performance. |
 |[SDK-style SQL project](/sql/tools/sql-database-projects/sql-database-projects) | Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Visual Studio Code. SDK-style SQL projects are especially advantageous for applications shipped through pipelines or built in cross-platform environments.|
 |[Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) | Support for cross-instance message exchange using Service Broker between instances of Azure SQL Managed Instance, and between SQL Server and Azure SQL Managed Instance. |
 |[Vector data type and functions](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) | Working with vector data is now easier in Azure SQL Managed Instance with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true). For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
-
+| [Query Store for readable secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas) | Query Store for readable secondary replicas enables Query Store insights for workloads that run on secondary replicas. When enabled, secondary replicas stream query execution information (such as runtime and wait statistics) to the primary replica, where the data is persisted in Query Store and made visible across all replicas. |
 
 ## General availability (GA)
 
@@ -53,6 +52,7 @@ The following table lists features of Azure SQL Managed Instance that have been 
 | ---| --- |--- |
 |[Block T-SQL CRUD commands](../database/block-crud-tsql.md) | March 2026 | Azure administrators can block T-SQL commands to create or modify Azure SQL resources. |
 |[SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy) | March 2026 | Align your SQL managed instance database format with the SQL Server 2025 database engine. | 
+|[DATEADD number allows bigint](/sql/t-sql/functions/dateadd-transact-sql) | November 2025 | For `DATEADD (datepart, number, date)`, number can be expressed as a **bigint**.|
 |[Regular expression functions](/sql/relational-databases/regular-expressions/overview) | November 2025 | Regular expression (REGEX) functions return text based on values in a search pattern. |
 |[Flexible memory](resource-limits.md#flexible-memory) | November 2025 | Save on cost by choosing the memory allocation for your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance based on your workload needs.|
 |[Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) | November 2025 | An architectural upgrade of the General Purpose service tier that uses [Elastic SAN storage](/azure/storage/elastic-san/elastic-san-introduction) for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier.  |
@@ -87,6 +87,12 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | **Free offer supportability** | The free SQL Managed Instance offer is now available in all regions, and for all subscription types, that support the paid Azure SQL Managed Instance offer. For more information about the free offer, see [Free SQL Managed Instance](free-offer.md#supportability). |
 |**Migrate multiple DBs through Azure Arc** | You can now migrate multiple databases simultaneously from a SQL Server instance enabled with Azure Arc to Azure SQL Managed Instance by using the Managed Instance link. For more information, see [Migrate SQL Server database to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migration-sql-mi-prepare-link). |
 | **SQL Server 2025 update policy GA** | Align your SQL managed instance database format with the SQL Server 2025 Database Engine. This update policy is now generally available. For more information, review [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy). |
+
+### February 2026
+
+| Changes | Details |
+| --- | --- |
+| **Query Store for readable secondary replicas preview** | Query Store for readable secondary replicas enables Query Store insights for workloads that run on secondary replicas. When enabled, secondary replicas stream query execution information (such as runtime and wait statistics) to the primary replica, where the data is persisted in Query Store and made visible across all replicas. This feature is in preview for Azure SQL Managed Instance configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy), and is enabled by default. For more information, see [Query Store for readable secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas). |
 
 ### December 2025
 

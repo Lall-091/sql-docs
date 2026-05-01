@@ -4,7 +4,8 @@ description: How to transition SQL Server from the legacy licensing model to Azu
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, maghan
-ms.date: 07/08/2025
+ms.date: 04/01/2026
+ai-usage: ai-assisted
 ms.topic: how-to
 ---
 
@@ -50,12 +51,15 @@ These scripts are provided "as is" under the [MIT license](https://github.com/mi
 > [!IMPORTANT]
 > If you are leveraging the unlimited virtualization benefit of SQL Server Software assurance or SQL Server subscription, make sure to switch the SQL Server license billing plan from `Paid` to `PAYG` before switching the individual VMs in scope of the license to `PAYG`. This way you can ensure that the VMs are not individually billed. For details, see [Change SQL Server license resource](manage-configuration.md#change-license-resource).
 
+<a id="transition-from-spla"></a>
+
 ## Transition from License provided by SPLA vendor
 
-Transitioning of the SQL Servers licensed through a Services Provider License Agreement (SPLA) to Azure pay-as-you-go billing requires that:
+Transitioning of the SQL Server instances licensed through a Services Provider License Agreement (SPLA) to Azure pay-as-you-go billing requires that:
 
-- The end customer SQL Servers are onboarded to Azure Arc in CSP-managed Azure subscriptions.
-- Pay-as-you-go billing is selected with the consent to recurring billing on each connected machine.
+- SQL Server instances are onboarded to the CSP-managed Azure subscriptions either manually or using auto-deployment. See [Manage automatic connection for SQL Server enabled by Azure Arc](manage-autodeploy.md) for details.
+- The `ArcSQLServerExtensionDeployment`:`PAYG-Recurring` tag is assigned to each CSP-managed Azure subscription to ensure that all auto-deployed machines are configured with recurring pay-as-you-go and have a registered consent. For more information about auto-deployment tags, see [Set license type for automatically connected SQL Servers](manage-autodeploy.md#license-type-tag).
+- Recurring pay-as-you-go billing with consent is selected on each machine that is manually onboarded to Azure Arc.
 
 When moving customers to Azure pay-as-you-go billing, it's essential to ensure that the Azure Connected Machine agent and the SQL Server extension are healthy and can connect to Azure. If the extension is broken, blocked by firewalls, or misconfigured (for example, proxy issues), it may stop reporting SQL Server usage correctly. This can result in underreported usage, billing errors, and noncompliance.
 
@@ -70,6 +74,17 @@ Azure Arc-connected servers must check in with Azure at least once every 30 days
 ## Customer consent
 
 You or your cloud solutions provider must explicitly provide consent before you enabled pay-as-you-go billing. For details, review [Recurring billing consent](#recurring-billing-consent).
+
+## Linux-specific considerations
+
+When transitioning SQL Server on Linux to pay-as-you-go, be aware of the following limitations compared to Windows:
+
+- **Passive instance detection**: Automatic detection of passive replicas in availability groups or failover cluster instances isn't available on Linux. All instances are billed as active.
+- **Core detection**: Core count is reported based on the operating system environment. Database Engine-level core verification isn't available.
+- **Connected user detection**: Verification of active user connections on readable secondary replicas isn't available.
+- **Agent health monitoring**: Ensure the Azure Connected Machine agent stays healthy and connected. The 30-day reconnection window and recurring billing behavior work the same as on Windows.
+
+These limitations don't block the transition to PAYG on Linux. However, plan for the billing differences described in [Manage licensing and billing](manage-license-billing.md).
 
 ### Reconnection within 30 days
 
@@ -132,7 +147,7 @@ Review the complete script in GitHub at [sql-server-samples modify-license-type]
 
 ## Manage automatic deployment
 
-SQL Server enabled by Azure Arc automatically installs Azure extension for SQL Server on any new connected machine and supports an option to [specify the license type as a subscription tag](manage-autodeploy.md#specify-license-type). Because these tags are generic and don't support the option to consent to recurring pay-as-you-go, these tags shouldn't be assigned to CSP-managed subscriptions.
+SQL Server enabled by Azure Arc automatically installs Azure extension for SQL Server on any new connected machine and supports an option to [specify the license type as a subscription tag](manage-autodeploy.md#specify-license-type). For CSP-managed subscriptions, use the `PAYG-Recurring` tag to ensure consent to recurring pay-as-you-go billing is registered during auto-deployment.
 
 ## Manage extension health
 

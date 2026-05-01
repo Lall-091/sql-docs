@@ -1,10 +1,10 @@
 ---
-title: "Working with SSMA Projects (OracleToSQL)"
-description: Learn how to create an SSMA project that contains metadata for Oracle databases to migrate and SQL Server, along with settings and connection information.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 11/12/2025
+title: Work with SSMA Projects (OracleToSQL)
+description: Learn how to create, customize, save, and open projects in SQL Server Migration Assistant (SSMA) for Oracle.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: how-to
@@ -15,7 +15,7 @@ f1_keywords:
 helpviewer_keywords:
   - "Customizing Project Settings"
 ---
-# Work with SSMA Projects (OracleToSQL)
+# Work with SSMA projects (OracleToSQL)
 
 To migrate Oracle databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], you first create an SSMA project. The project is a file that contains the following information:
 
@@ -60,7 +60,7 @@ To migrate data from Oracle databases to [!INCLUDE [ssNoVersion](../../includes/
 
 1. On the **File** menu, select **New Project**.
 
-    The **New Project** dialog box appears.
+   The **New Project** dialog box appears.
 
 1. In the **Name** box, enter a name for your project.
 
@@ -68,15 +68,9 @@ To migrate data from Oracle databases to [!INCLUDE [ssNoVersion](../../includes/
 
 1. In the **Migration To** dropdown list, select the version of target [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] used for migration. The options available are:
 
-    - [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]
-    - [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]
-    - [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]
-    - [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]
-    - [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]
-    - [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
-    - [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]
-  
-And then select **OK**.
+   [!INCLUDE [ssma-target-versions](../includes/ssma-target-versions.md)]
+
+   And then select **OK**.
 
 ## Customize project settings
 
@@ -92,15 +86,15 @@ When you save a project, SSMA retains the project settings, and optionally the d
 
 - On the **File** menu, select **Save Project**.
 
-    If schemas in the project have changed or haven't been converted, SSMA prompts you to load and save metadata. Loading and saving metadata lets you work offline. It also lets you send a complete project file to other people, such as technical support personnel. If you're prompted to save metadata, do the following:
+  If schemas in the project have changed or haven't been converted, SSMA prompts you to load and save metadata. Loading and saving metadata lets you work offline. It also lets you send a complete project file to other people, such as technical support personnel. If you're prompted to save metadata, do the following:
 
-    1. For each schema that shows a status of **Metadata missing**, select the check box next to the database name.
+  1. For each schema that shows a status of **Metadata missing**, select the check box next to the database name.
 
-        Saving metadata might take several minutes. If you don't want to save metadata yet, don't select any check boxes.
+     Saving metadata might take several minutes. If you don't want to save metadata yet, don't select any check boxes.
 
-    1. Select the **Save** button.
+  1. Select the **Save** button.
 
-        SSMA parses the Oracle schemas and saves the metadata to the project file.
+     SSMA parses the Oracle schemas and saves the metadata to the project file.
 
 ## Open projects
 

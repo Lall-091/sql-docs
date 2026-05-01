@@ -5,7 +5,7 @@ description: Bring Your Own Key (BYOK) support for transparent data encryption (
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: wiassaf, vanto, mathoma, randolphwest
-ms.date: 03/05/2026
+ms.date: 04/22/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: concept-article
@@ -217,7 +217,7 @@ Auditors can use Azure Monitor to review managed HSM AuditEvent logs, if logging
 
 - Keep all previously used keys in Azure Key Vault or Azure Managed HSM even after switching to service-managed keys. It ensures database backups can be restored with the TDE protectors stored in Azure Key Vault or Azure Managed HSM. TDE protectors created with Azure Key Vault or Azure Managed HSM have to be maintained until all remaining stored backups have been created with service-managed keys. Make recoverable backup copies of these keys using [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/backup-azkeyvaultkey).
 
-- To remove a potentially compromised key during a security incident without the risk of data loss, follow the steps in the article [Remove a Transparent Data Encryption (TDE) protector using PowerShell](transparent-data-encryption-byok-remove-tde-protector.md).
+- To remove a potentially compromised key during a security incident without the risk of data loss, follow the steps in the article [Remove a Transparent Data Encryption (TDE) protector using PowerShell](transparent-data-encryption-byok-remove-tde-protector.md). Always rotate to a new TDE protector and verify that all databases are using the new key before deleting or disabling the compromised key. Deleting or disabling the key without rotating first causes all encrypted databases to become inaccessible, and does not invalidate any key copies that were previously backed up and restored to another vault.
 
 > [!TIP]
 > **Using versioned and versionless Azure Key Vault keys for TDE**

@@ -123,7 +123,7 @@ Consider the following:
   - Azure Disk Encryption (ADE) leverages the industry-standard BitLocker feature of Windows and the DM-Crypt feature of Linux toprovide OS and data disk encryption.
 - Managed Disk Encryption
   - [Managed Disks are encrypted](/azure/virtual-machines/disk-encryption) at rest by default using Azure Storage Service Encryption where the encryption keys are Microsoft managed keys stored in Azure.
-  - Data in Azure Managed Disks is encrypted transparently using 256-bit AES encryption, one of the strongest block ciphers available, and is FIPS 140-2 compliant.
+  - Data in Azure managed disks is encrypted transparently using 256-bit AES encryption, one of the strongest block ciphers available, and is FIPS 140-2 compliant.
 - For a comparison of the managed disk encryption options, review the [managed disk encryption comparison chart](/azure/virtual-machines/disk-encryption-overview#comparison).
 
 ### Azure confidential VMs
@@ -213,12 +213,13 @@ SQL Server isn't currently FIPS compliant on Linux Azure VMs.
 
 Review the security best practices for [SQL Server](/sql/relational-databases/security/) and [Azure VMs](/azure/virtual-machines/security-recommendations), and then review this article for the best practices that apply to SQL Server on Azure VMs specifically.
 
-For other topics related to running SQL Server in Azure VMs, see [SQL Server on Azure Virtual Machines overview](sql-server-on-azure-vm-iaas-what-is-overview.md). If you have questions about SQL Server virtual machines, see the [Frequently Asked Questions](frequently-asked-questions-faq.yml).
+For detailed guidance on each optimization area:
 
-To learn more, see the other articles in this best practices series:
+- **[Quick checklist](performance-guidelines-best-practices-checklist.md)** - Review the full best practices checklist
+- **[VM size](performance-guidelines-best-practices-vm-size.md)** - Choose the right VM series and configuration
+- **[Storage](performance-guidelines-best-practices-storage.md)** - Optimize disk configuration and performance
+- **[HADR settings](hadr-cluster-best-practices.md)** - Configure high availability and disaster recovery
+- **[Collect baseline](performance-guidelines-best-practices-collect-baseline.md)** - Establish performance baselines
+- **[Updating SQL Server](servicing-updates-guidelines.md)** - Keep SQL Server up to date
 
-- [Quick checklist](performance-guidelines-best-practices-checklist.md)
-- [VM size](performance-guidelines-best-practices-vm-size.md)
-- [Storage](performance-guidelines-best-practices-storage.md)
-- [HADR settings](hadr-cluster-best-practices.md)
-- [Collect baseline](performance-guidelines-best-practices-collect-baseline.md)
+Review other SQL Server Virtual Machine articles at [SQL Server on Azure Virtual Machines Overview](sql-server-on-azure-vm-iaas-what-is-overview.md). If you have questions about SQL Server virtual machines, see the [Frequently Asked Questions](frequently-asked-questions-faq.yml).

@@ -28,7 +28,7 @@ Kubernetes 1.6 and later has support for [*storage classes*](https://kubernetes.
 
 In this configuration, Kubernetes plays the role of the container orchestrator.
 
-:::image type="content" source="media/sql-server-linux-container-ha-overview/kubernetes-sql.png" alt-text="Diagram showing a Kubernetes SQL Server cluster.":::
+:::image type="content" source="media/sql-server-linux-container-ha-overview/kubernetes-sql.png" alt-text="Diagram of a Kubernetes cluster architecture showing an application connecting through a Service to a Pod running the mssql-server container in a replica set, backed by a persistent volume across multiple nodes.":::
 
 In the preceding diagram, `mssql-server` is a SQL Server instance (container) in a [*pod*](https://kubernetes.io/docs/concepts/workloads/pods/pod/). A [replica set](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) ensures that the pod is automatically recovered after a node failure. Applications connect to the service. In this case, the service represents a load balancer that hosts an IP address that stays the same after failure of the `mssql-server`.
 

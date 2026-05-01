@@ -50,7 +50,7 @@ The general workflow to move resources to a different region consists of the fol
     - For more information and best practices on configuring customer-managed TDE on the target instance, see [Azure SQL transparent data encryption with customer-managed keys in Azure Key Vault](../database/transparent-data-encryption-byok-overview.md).
 1. If audit is enabled for the managed instance, ensure that:
     - The storage container or event hub with the existing logs is moved to the target region.
-    - Audit is configured on the target instance. For more information, see [Auditing with SQL Managed Instance](auditing-configure.md).
+    - [SQL Server Audit](auditing.md) is configured on the target instance. For more information, see [Get started with Azure SQL Managed Instance auditing](auditing-configure.md).
 1. If your instance has a long-term retention policy (LTR), the existing LTR backups will remain associated with the current instance. Because the target instance is different, you'll be able to access the older LTR backups in the source region using the source instance, even if the instance is deleted.
 
   > [!NOTE]

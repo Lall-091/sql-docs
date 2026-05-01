@@ -4,7 +4,8 @@ description: Learn how to manage configuration options for SQL Server enabled by
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 07/03/2025
+ms.date: 04/01/2026
+ai-usage: ai-assisted
 ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
@@ -86,6 +87,9 @@ There are two ways to configure the SQL Server host in the Azure portal:
 #### Set the license type property
 
 Choose one of the license types. For descriptions, see [License types](manage-license-billing.md#license-types).
+
+> [!NOTE]
+> On Linux, certain configuration features aren't available, including passive instance detection and connected user verification. When you configure PAYG billing on Linux, all instances are billed as active regardless of their HA/DR role. For details, see [Manage licensing and billing](manage-license-billing.md).
 
 <a id="use-physical-core-license"></a>
 
@@ -576,7 +580,7 @@ resources
 
 ## Manage the unlimited virtualization benefit for a SQL Server ESU subscription
 
-To enable unlimited virtualization for an ESU subscription, SQL Server enabled by Azure Arc supports a special resource type: *SQLServerEsuLicense*. You can use this resource to enable an ESU subscription for a set of physical hosts with an unlimited number of virtual machines running the out-of-support SQL Server instances. For details about the licensing model, see [Subscribe to SQL Server ESUs by using physical cores with unlimited virtualization](extended-security-updates.md#unlimited-virtualization).
+To enable unlimited virtualization for an ESU subscription, SQL Server enabled by Azure Arc supports a special resource type: *SqlServerEsuLicenses*. You can use this resource to enable an ESU subscription for a set of physical hosts with an unlimited number of virtual machines running the out-of-support SQL Server instances. For details about the licensing model, see [Subscribe to SQL Server ESUs by using physical cores with unlimited virtualization](extended-security-updates.md#unlimited-virtualization).
 
 ### Prerequisites
 

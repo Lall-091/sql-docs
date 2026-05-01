@@ -58,10 +58,6 @@ Use the following table to determine which file to download and install. Verify 
 
 **Workaround**: Rename C:\Windows\system32\SQAGTRES.DLL to a temporary name such as C:\Windows\system32\SQAGTRES_old.DLL, and then select the Retry option on the setup error message. That allows Setup to continue. After a restart, you can delete the temporary file C:\Windows\system32\SQAGTRES_old.DLL.
 
-## 3.0 Known issues fixed in this Service Pack
-
-For a complete list of bugs and known issues fixed in this service pack, see this [KB article](https://support.microsoft.com/help/2630455).
-
 ## Related content
 
 - [Latest updates and version history for SQL Server](/troubleshoot/sql/releases/download-and-install-latest-updates)

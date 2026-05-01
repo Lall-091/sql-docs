@@ -35,7 +35,7 @@ Save on costs by bringing your own license with the [Azure Hybrid Benefit licens
 
 ## Choose appropriate target
 
-Azure Virtual Machines run in many different regions of Azure and also offer various [machine sizes](/azure/virtual-machines/sizes) and [Azure Managed Disk types](/azure/virtual-machines/disks-types).
+Azure Virtual Machines run in many different regions of Azure and also offer various [machine sizes](/azure/virtual-machines/sizes) and [Azure managed disk types](/azure/virtual-machines/disks-types).
 
 When determining the correct size of VM and Storage for your SQL Server workload, refer to the [Performance Guidelines for SQL Server on Azure Virtual Machines.](/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist#vm-size).
 

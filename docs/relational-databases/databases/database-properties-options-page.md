@@ -109,10 +109,10 @@ When connected to Azure SQL Database, this section has settings to control the S
  Specify the default [MAXDOP](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md) setting for secondaries, if any, that should be used for statements.  
   
  **Parameter Sniffing**  
- Enables or disables parameter sniffing on the primary. This is equivalent to [trace flag 4136](https://support.microsoft.com/kb/980653).  
+ Enables or disables parameter sniffing on the primary. This is equivalent to [trace flag 4136](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf4136).  
   
  **Parameter Sniffing for Secondary**  
- Enables or disables parameter sniffing on secondaries, if any. This is equivalent to [trace flag 4136](https://support.microsoft.com/kb/980653).  
+ Enables or disables parameter sniffing on secondaries, if any. This is equivalent to [trace flag 4136](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf4136).  
   
  **Query Optimizer Fixes**  
  Enables or disables query optimization hotfixes on the primary regardless of the compatibility level of the database. This is equivalent to [trace flag 4199](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md). For details, see [QUERY_OPTIMIZER_HOTFIXES](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#qo_hotfixes).  

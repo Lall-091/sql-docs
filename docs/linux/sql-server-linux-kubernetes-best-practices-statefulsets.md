@@ -1,9 +1,9 @@
 ---
 title: Deploy SQL Server Containers on Kubernetes with StatefulSets
 description: This article provides best practices and guidance for running SQL Server Linux containers on Kubernetes with StatefulSets.
-author: amitkh-msft
-ms.author: amitkh
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh, atsingh
 ms.date: 09/05/2025
 ms.service: sql
 ms.subservice: linux
@@ -508,7 +508,7 @@ Tolerations:               node.kubernetes.io/memory-pressure:NoSchedule op=Exis
 ...
 ```
 
-## Configure memory limits with control group (cgroup) v2
+## Control group (cgroup) v2 support
 
 [!INCLUDE [cgroup-support](includes/cgroup-support.md)]
 

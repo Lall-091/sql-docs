@@ -58,7 +58,7 @@ Before you start, ensure the computer you're using is running Windows Server 201
 
    ```powershell
    # Note: the name you provide here will be shared by all HGS nodes and used to point your SQL Server computers to the HGS cluster.
-   # For example, if you provide "attsvc" here, a DNS record for "attsvc.yourdomain.com" will be created for every HGS computer.
+   # For example, if you provide "contoso" here, a DNS record for "contoso.onmicrosoft.com" will be created for every HGS computer.
    Initialize-HgsAttestation -HgsServiceName 'hgs'
    ```
 

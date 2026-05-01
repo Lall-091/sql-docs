@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 01/15/2026
+ms.date: 04/16/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -418,6 +418,7 @@ ms.topic: include
 | 22641 | 16 | No | Disabling of mirroring for the table '%.\*ls' failed. Please retry this operation later. |
 | 22642 | 16 | No | Can not enable Fabric Mirroring on a table where primary key (if there exists no primary key then applies to unique key) uses columns of the following types: user-defined types, geometry, geography, hierarchyid, sql_variant or timestamp, datetime2(7), DateTimeOffset(7) and Time(7). |
 | 22643 | 16 | No | Publishing a drop table notification to Fabric OneLake failed. Retry this operation later. |
+| 22644 | 16 | No | Unable to acquire a lock on the source table with object id '%d' because it is in use. If a user session is locking, consider terminating it or retry later. |
 | 22645 | 16 | No | Fabric Mirroring cannot be enabled on a table where its primary key, or if no primary key exists, its clustered index, includes any of the following column types: user-defined types, geometry, geography, hierarchyid, sql_variant, timestamp, datetime2(7), datetimeoffset(7), or time(7). |
 | 22697 | 16 | No | Cannot enable fabric link on the database because the metadata tables are corrupted. |
 | 22698 | 16 | No | Cannot add encrypted column on table '%.\*ls' in SQL Database on the 'Microsoft Fabric' platform |

@@ -23,7 +23,7 @@ Even though [!INCLUDE [sqlonlinux-md](../includes/sqlonlinux-md.md)] runs under 
 | --- | --- | --- |
 | `BUILTIN\Administrators` | **sysadmin** | Maps to the root‑level administrators of the host. Certain system objects run in the context of this account. |
 | `NT AUTHORITY\SYSTEM` | **public** | Service identifier (SID) reserved for the Windows `SYSTEM` account. Still created so that cross‑platform scripts that expect it succeed. |
-| `NT AUTHORITY\NETWORK SERVICE` | **sysadmin** (no fixed role) | Historically the default startup account for several SQL Server services on Windows. Present only for backward compatibility. Not used by the [!INCLUDE [sqlonlinux-md](../includes/sqlonlinux-md.md)] [!INCLUDE [ssde-md](../includes/ssde-md.md)] itself. |
+| `NT AUTHORITY\NETWORK SERVICE` | None (compatibility only) | Historically the default startup account for several SQL Server services on Windows. Present only for backward compatibility. Not used by the [!INCLUDE [sqlonlinux-md](../includes/sqlonlinux-md.md)] [!INCLUDE [ssde-md](../includes/ssde-md.md)] itself. |
 
 ## File and directory ownership
 

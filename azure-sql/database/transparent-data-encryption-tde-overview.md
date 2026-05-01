@@ -145,7 +145,7 @@ Use the following set of commands for Azure SQL Database and Azure Synapse:
 | [List Encryption Protectors By Server](/rest/api/sql/encryption-protectors/list-by-server) | Gets the TDE protectors for a server. |
 | [Create Or Update Transparent Data Encryption Configuration](/rest/api/sql/transparent-data-encryptions/create-or-update) | Enables or disables TDE for a database. |
 | [Get Transparent Data Encryption Configuration](/rest/api/sql/transparent-data-encryptions/get) | Gets the TDE configuration for a database. |
-| [List Transparent Data Encryption Configuration Results](/rest/api/sql/transparent-data-encryption-activities/list-by-configuration) | Gets the encryption result for a database. |
+| [List Transparent Data Encryption Configuration Results](/rest/api/sql/transparent-data-encryptions/list-by-database) | Gets the encryption result for a database. |
 
 ---
 
