@@ -24,13 +24,15 @@ This article details how the streamlined process of connecting SQL Server to Azu
 1. Complete the [Prerequisites - SQL Server enabled by Azure Arc](prerequisites.md).
  1. For Always On availability groups, complete the steps on all nodes. 
 
+<a id="license-type-tag"></a>
+
 ## Specify license type
 
 Optionally, specify the license type for each instance of SQL Server.
 
 To specify the desired license type, provide the license type value tag. The automatic connecting workflow requires that tag. For more information, visit [Tag resources, resource groups, and subscriptions for a logical organization](/azure/azure-resource-manager/management/tag-resources). 
 
-You can set tag values at the subscription, resource group, or resource level. Tag values set at subscription level supersede values set at the resource group and resource level. Tag values set at the resource group level supersede values set at the resource level.
+The automatic connection workflow checks for the tag at the subscription level first, then resource group level, then resource level.
 
 Add one of the following tags and values to your subscription, resource groups, or Arc Server resources.
 
@@ -38,10 +40,12 @@ Add one of the following tags and values to your subscription, resource groups, 
 | --- | --- |
 | `ArcSQLServerExtensionDeployment` | `Paid` |
 | `ArcSQLServerExtensionDeployment` | `PAYG` |
+| `ArcSQLServerExtensionDeployment` | `PAYG-Recurring` |
 | `ArcSQLServerExtensionDeployment` | `LicenseOnly` |
 
 > [!IMPORTANT]  
-> To maximize the value of Azure Arc for SQL Server customers, Microsoft uses an automated process of determining the license type value if you haven't set the default value using the `ArcSQLServerExtensionDeployment` tag. If your SQL Server is covered by Software Assurance (SA) or Subscription and Support, and the number of licenses you have purchased is greater than the number of licenses you already committed to Azure to use Azure Hybrid Benefit, this process sets the license type value to **Paid** for the onboarded SQL Server instances on a first-come-first-serve basis. As a result, you automatically have access to valuable management features provided to SA customers.
+> - **CSP-managed subscriptions**: Use the `PAYG-Recurring` tag to register consent for recurring pay-as-you-go billing. This is required for CSP subscriptions. For more information, see [Transition from License provided by SPLA vendor](manage-pay-as-you-go-transition.md#transition-from-spla).
+> - **Automatic license detection**: If no tag is set and you have Software Assurance or SQL Server subscription with available licenses, Microsoft automatically sets the license type to **Paid** for newly onboarded instances, giving you access to SA customer features.
 
 ### License type setting precedence
 
