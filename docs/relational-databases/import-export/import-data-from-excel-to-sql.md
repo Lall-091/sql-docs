@@ -178,10 +178,6 @@ For more info about linked servers, see the following articles:
 - [Create linked servers (SQL Server Database Engine)](../linked-servers/create-linked-servers-sql-server-database-engine.md)
 - [OPENQUERY (Transact-SQL)](../../t-sql/functions/openquery-transact-sql.md)
 
-For more examples and info about both linked servers and distributed queries, see the following article:
-
-- [How to use Excel with SQL Server linked servers and distributed queries](https://support.microsoft.com/help/306397/)
-
 ## Prerequisites
 
 To use the rest of the methods described on this page (the `BULK INSERT` statement, the **bcp** tool, or Azure Data Factory), first you have to export your Excel data to a text file.

@@ -145,8 +145,6 @@ Many RevoScaleR algorithms support parameters to control how the trained model i
 
 For more information on optimization of RevoScaleR, see these articles:
 
-+ Support article: [Performance tuning options for rxDForest and rxDTree](https://support.microsoft.com/kb/3104235)
-
 + Methods for controlling model fit in a boosted tree model: [Estimating Models Using Stochastic Gradient Boosting](/r-server/r/how-to-revoscaler-boosting)
 
 + Overview of how RevoScaleR moves and processes data: [Write custom chunking algorithms in ScaleR](/r-server/r/how-to-developer-write-chunking-algorithms)

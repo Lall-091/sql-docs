@@ -3,7 +3,7 @@ title: Vector Data Type
 description: The vector data type stores vector data optimized for machine learning applications and similarity search operations.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: damauri, pookam, randolphwest
+ms.reviewer: pookam, randolphwest
 ms.date: 02/18/2026
 ms.service: sql
 ms.subservice: t-sql

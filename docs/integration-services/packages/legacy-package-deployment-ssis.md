@@ -586,7 +586,7 @@ ConfiguredValueType NVARCHAR(20) NOT NULL
  **Configuration file**  
  Edit the contents of a configuration file by selecting the file from the list.  
   
- **Related Topics:** [Create Package Configurations]()  
+ **Related Topics:** [Create Package Configurations](#create-package-configurations)  
   
  **Path**  
  View the path of the property to be configured.  

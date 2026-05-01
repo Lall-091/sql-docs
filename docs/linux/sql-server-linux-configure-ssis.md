@@ -148,5 +148,5 @@ lcid = 2052
 
 - [Extract, transform, and load data on Linux with SSIS](sql-server-linux-migrate-ssis.md)
 - [Install SQL Server Integration Services (SSIS) on Linux](sql-server-linux-setup-ssis.md)
-- [Limitations and known issues for SSIS on Linux](sql-server-linux-ssis-known-issues.md)
+- [Feature support and considerations for SQL Server Integration Services (SSIS) on Linux](sql-server-linux-ssis-known-issues.md)
 - [Schedule SQL Server Integration Services package execution on Linux with cron](sql-server-linux-schedule-ssis-packages.md)

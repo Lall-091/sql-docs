@@ -4,7 +4,7 @@ description: This release notes article describes the changes in each release of
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 03/31/2026
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
@@ -32,6 +32,23 @@ For the ARM64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?li
 | Vector parameters. | Improve handling of output and input/output vector parameters when using prepared statements. |
 | Server redirections. | Support Microsoft Fabric redirection scenarios allowing up to 10 server redirections per connection attempt. |
 | Bug fixes. | [Bug fixes](../bug-fixes.md). |
+
+## 17.11
+
+:::image type="icon" source="../../../includes/media/download.svg" border="false"::: **[Download x64 installer](https://go.microsoft.com/fwlink/?linkid=2361646)**  
+:::image type="icon" source="../../../includes/media/download.svg" border="false"::: **[Download x86 installer](https://go.microsoft.com/fwlink/?linkid=2361647)**  
+
+Version number: 17.11.1.1  
+Released: April 30, 2026  
+
+If you need to download the installer in a language other than the one detected for you, you can use these direct links.  
+For the x64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2361646&clcid=0x40a)  
+For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2361647&clcid=0x40a)  
+
+| Feature added | Details |
+| :------- | :------ |
+| Install all features | Modify installer to install both features (Core and SDK) by default. |
+| Bug fixes | [Bug fixes](../bug-fixes.md). |
 
 ## Previous Releases
 

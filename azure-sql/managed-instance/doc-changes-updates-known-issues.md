@@ -5,7 +5,7 @@ description: Learn about the currently known issues with Azure SQL Managed Insta
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 03/03/2026
+ms.date: 04/28/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: troubleshooting-known-issue
@@ -34,7 +34,7 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | [Differential backups aren't taken when an instance is linked to SQL Server](#differential-backups-arent-taken-when-an-instance-is-linked-to-sql-server) | Sept 2024 | By design | |
 | [List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name](#list-of-long-term-backups-in-azure-portal-shows-backup-files-for-active-and-deleted-databases-with-the-same-name) | Mar 2024 | Has workaround | |
 | [Temporary instance inaccessibility using the failover group listener during scaling operation](#temporary-instance-inaccessibility-using-the-failover-group-listener-during-scaling-operation) | Jan 2024 | Resolved | April 2025 |
-| [The event_file target of the system_health event session isn't accessible](#the-event_file-target-of-the-system_health-event-session-isnt-accessible) | Dec 2023 | Partially resolved | May 2025 |
+| [The event_file target of the system_health event session is not accessible](#the-event_file-target-of-the-system_health-event-session-is-not-accessible) | Dec 2023 | Resolved | March 2026 |
 | [Procedure sp_send_dbmail might fail when @query parameter is used](#procedure-sp_send_dbmail-might-fail-when-query-parameter-is-used) | Dec 2023 | Has workaround | |
 | [Increased number of system logins used for transactional replication](#increased-number-of-system-logins-used-for-transactional-replication) | Dec 2022 | No resolution | |
 | [msdb table for manual backups doesn't preserve the username](#msdb-table-for-manual-backups-doesnt-preserve-the-username) | Nov 2022 | Resolved | Aug 2023 |
@@ -274,6 +274,14 @@ If you enable transactional replication on a database in a failover group, the S
 Error logs that are available in SQL Managed Instance aren't persisted, and their size isn't included in the maximum storage limit. Error logs might be automatically erased if failover occurs. Gaps might exist in the error log history because SQL Managed Instance was moved several times on several virtual machines.
 
 ## Resolved
+
+### The event_file target of the system_health event session is not accessible
+
+**(Resolved in March 2026)** When you attempted to read the contents of the `event_file` target of the `system_health` event session, you would get error 40538, "A valid URL beginning with 'https://' is required as value for any filepath specified."
+
+This issue occurred in SQL Server Management Studio (SSMS), or when reading the session data using the [sys.fn_xe_file_target_read_file](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql) function. The issue is resolved in both cases.
+
+This change in behavior was an unintended consequence of a required security fix. Customers could work around this issue by creating their own equivalent of the `system_health` session with an `event_file` target in Azure blob storage. For more information, including a T-SQL script to create the `system_health` session that can be modified to create your own equivalent of `system_health`, see [Use the system_health session](/sql/relational-databases/extended-events/use-the-system-health-session).
 
 ### Interim guidance on 2024 time zone updates for Paraguay
 

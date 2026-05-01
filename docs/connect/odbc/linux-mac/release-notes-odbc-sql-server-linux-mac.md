@@ -4,7 +4,7 @@ description: "Learn what's new and changed in released versions of the Microsoft
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 03/31/2026
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
@@ -29,6 +29,13 @@ NOW NEW FILE NAME:    linux-mac/release-notes-odbc-sql-server-linux-mac.md
 Thank you.
 GeneMi.  2019/04/03.
 -->
+## 17.1.1, April 2026
+
+| New item | Details |
+| :------- | :------ |
+| New distributions supported. | macOS 14, 15, 26, Debian 13, Red Hat 10, Oracle Linux 9, 10, SUSE 16, Ubuntu 24.04, 25.10, Alpine 3.21, 3.22, 3.23 |
+| Bug fixes. | [Bug fixes](../bug-fixes.md). |
+
 ## 18.6.2, March 2026
 
 | New item | Details |
