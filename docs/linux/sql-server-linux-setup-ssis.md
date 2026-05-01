@@ -17,7 +17,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-Follow the steps in this article to install SQL Server Integration Services (**mssql-server-is**) on Linux. For more information about the features that are supported in Integration Services for Linux, see [Limitations and known issues for SSIS on Linux](sql-server-linux-ssis-known-issues.md).
+Follow the steps in this article to install SQL Server Integration Services (**mssql-server-is**) on Linux. For more information about the features that are supported in Integration Services for Linux, see [Feature support and considerations for SQL Server Integration Services (SSIS) on Linux](sql-server-linux-ssis-known-issues.md).
 
 You can install SQL Server Integration Services (SSIS) on Red Hat Enterprise Linux (RHEL) and Ubuntu. SUSE Linux Enterprise Server (SLES) isn't supported. Installing SSIS on containers is also not supported.
 
@@ -303,5 +303,5 @@ sudo SSIS_PID=Developer ACCEPT_EULA=Y /opt/ssis/bin/ssis-conf -n setup
 
 - [Extract, transform, and load data on Linux with SSIS](sql-server-linux-migrate-ssis.md)
 - [Configure SQL Server Integration Services on Linux with ssis-conf](sql-server-linux-configure-ssis.md)
-- [Limitations and known issues for SSIS on Linux](sql-server-linux-ssis-known-issues.md)
+- [Feature support and considerations for SQL Server Integration Services (SSIS) on Linux](sql-server-linux-ssis-known-issues.md)
 - [Schedule SQL Server Integration Services package execution on Linux with cron](sql-server-linux-schedule-ssis-packages.md)

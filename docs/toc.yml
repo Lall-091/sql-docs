@@ -9394,7 +9394,7 @@ items:
       items:
       - name: Overview
         href: linux/sql-server-linux-migrate-ssis.md
-      - name: Limitations and known issues
+      - name: Feature support and considerations for SSIS
         href: linux/sql-server-linux-ssis-known-issues.md
       - name: Configure SSIS
         href: linux/sql-server-linux-configure-ssis.md

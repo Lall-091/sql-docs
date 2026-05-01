@@ -1,9 +1,9 @@
 ---
 title: Preview Features FAQ
 description: Frequently asked questions about the PREVIEW_FEATURES opt-in mechanism.
-author: yorek
-ms.author: damauri
-ms.reviewer: mikeray, randolphwest
+author: MikeRayMSFT
+ms.author: mikeray
+ms.reviewer: randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
@@ -27,7 +27,7 @@ Preview features that become generally available in a subsequent cumulative upda
 
 `PREVIEW_FEATURES` is a database-scoped configuration that lets you try out new SQL Server features before they're generally available. This option is intended for development and testing environments and shouldn't be used in production.
 
-## How do I enable the PREVIEW_FEATURES option ?
+## How do I enable the PREVIEW_FEATURES option?
 
 `PREVIEW_FEATURES` is a `DATABASE SCOPED CONFIGURATION` option, therefore you can enable it by executing the following code:
 

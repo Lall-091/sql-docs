@@ -4,7 +4,7 @@ description: This page discusses what was changed in each version of the Microso
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: v-davidengel
-ms.date: 02/24/2026
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
@@ -15,6 +15,24 @@ helpviewer_keywords:
 # Release Notes for the Microsoft Drivers for PHP for SQL Server
 
 This page discusses what was added in each version of the [!INCLUDE[ssDriverPHP](../../includes/ssdriverphp_md.md)].  
+
+## 5.13.1
+
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft Drivers for PHP for SQL Server (Windows)](https://go.microsoft.com/fwlink/?linkid=2362088)**  
+[GitHub Release Tag v5.13.1 (Linux and macOS packages are available here)](https://github.com/Microsoft/msphpsql/releases/v5.13.1)
+
+- Release number: 5.13.1
+- Released: April 30, 2026
+
+### What's new in 5.13.1
+
+| New item | Details |
+| :------- | :------ |
+| Fixed access token identity leaking across pooled connections. | Connections with different access tokens could share the same pool entry, causing identity cross-contamination. When using `AccessToken` with connection pooling, the driver now appends a hash of the token to the `APP` keyword to ensure pool-key differentiation per token identity. |
+| Fixed silent data loss with prepared statement inserts. | Unconsumed result sets from triggers or SET NOCOUNT OFF could cause implicit transaction rollback with MARS enabled. |
+| Fixed crash re-executing prepared statements with multiple result sets. | Stale column metadata was not cleared between executions with different column layouts. |
+| Fixed `sqlsrv_errors()` returning null after connection failure. | When ODBC provides no diagnostic records, a generic error is now returned instead of null. |
+| Fixed stream invalidation when statement goes out of scope. | Binary streams now retain a reference to the statement resource, preventing premature destruction. |
 
 ## 5.13.0
 
