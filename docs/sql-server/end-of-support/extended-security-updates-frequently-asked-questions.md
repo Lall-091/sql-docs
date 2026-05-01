@@ -3,7 +3,8 @@ title: "Extended Security Updates FAQ"
 description: Frequently asked questions about using Azure Arc to get extended security updates for your end-of-support and end-of-life SQL Server products, such as SQL Server 2014.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/20/2025
+ms.date: 01/28/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: install
 ms.topic: faq
@@ -170,6 +171,27 @@ If your [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance lose
 
 > [!NOTE]  
 > The ESU setting in the Azure portal isn't automatically changed. If ESU is enabled for the server, the reconnection after 30 days of disconnection is treated as a new ESU subscription and billed accordingly.
+
+#### What happens if my machine's Virtual Machine ID (VMID) changes?
+
+If your machine's VMID changes (due to VM rebuild, migration, hardware changes, or cloning), Azure Arc treats it as an entirely new machine, even if it's running on the same physical or virtual infrastructure. This can result in double billing because:
+
+- The original machine resource continues to be billed for ESU (if you don't manually deactivate it)
+- The machine with the new VMID is treated as a new ESU subscription and triggers backbill charges
+
+**To avoid double billing:**
+
+1. Before performing any operation that might change the VMID, unsubscribe from ESU on the original machine
+1. Disconnect the machine from Azure Arc
+1. After the VMID change, onboard the machine as a new resource to Azure Arc
+1. Subscribe to ESU on the new machine resource
+
+> [!NOTE]
+> For SCVMM machines, see [Remove SCVMM management from Azure Arc](/azure/azure-arc/system-center-virtual-machine-manager/remove-scvmm-from-azure-arc?tabs=for-windows-virtual-machines).
+>
+> For VMware machines, see [Remove vCenter from Azure Arc](/azure/azure-arc/vmware-vsphere/remove-vcenter-from-arc-vmware).
+
+**If you've already experienced double billing due to a VMID change**, contact Microsoft Support immediately to resolve the billing discrepancy.
 
 #### Can I reactivate an ESU subscription if I migrated to Azure, but then decide to move back to on-premises?
 
