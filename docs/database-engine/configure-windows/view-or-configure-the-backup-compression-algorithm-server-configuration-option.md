@@ -16,7 +16,7 @@ helpviewer_keywords:
 
 # Server configuration: backup compression algorithm
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)] and later versions
+[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article describes how to view or configure the `backup compression algorithm` server configuration option in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] with [!INCLUDE [tsql](../../includes/tsql-md.md)].
 

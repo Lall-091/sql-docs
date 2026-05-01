@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Configure integrated acceleration and offloading
 
-[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article demonstrates how to configure an integrated acceleration and offloading with Intel&reg; QuickAssist Technology (QAT) for SQL Server. Intel&reg; QAT is an integrated acceleration and offloading solution. For more background, see [Integrated acceleration and offloading](overview.md).
 
