@@ -16,6 +16,12 @@ monikerRange: ">=sql-server-2017||>=sql-server-linux-2017||=azuresqldb-mi-curren
 
 [!INCLUDE [sqlserver2017-asdbmi-asa](../../includes/applies-to-version/sqlserver2017-asdbmi-asa.md)]
 
+::: moniker range="=azure-sqldw-latest"
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
+::: moniker-end
+
 Learn how to use native scoring with the [PREDICT T-SQL function](../../t-sql/queries/predict-transact-sql.md) to generate prediction values for new data inputs in near-real-time. Native scoring requires that you have an already-trained model.
 
 The `PREDICT` function uses the native C++ extension capabilities in [SQL machine learning](../index.yml). This methodology offers the fastest possible processing speed of forecasting and prediction workloads and support models in [Open Neural Network Exchange (ONNX)](https://onnx.ai/get-started.html) format (Azure Synapse Analytics only) or models trained using the [RevoScaleR](../r/ref-r-revoscaler.md) and [revoscalepy](../python/ref-py-revoscalepy.md) packages.

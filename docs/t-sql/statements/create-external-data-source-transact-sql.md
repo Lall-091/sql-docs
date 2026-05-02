@@ -2644,6 +2644,8 @@ WITH (
 
 **Applies to**: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 Creates an external data source for data virtualization. External data sources are used to establish connectivity and support the primary use case of data virtualization and data loading from external data sources. For more information, see [Use external tables with Synapse SQL](/azure/synapse-analytics/sql/develop-tables-external-tables).
 
 > [!IMPORTANT]  

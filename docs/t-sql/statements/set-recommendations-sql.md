@@ -21,6 +21,8 @@ monikerRange: "=azure-sqldw-latest"
 
 [!INCLUDE [asa](../../includes/applies-to-version/asa-dedicated-sqlpool-only.md)]
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 Enables or disables the Azure Synapse distribution advisor for the current session. For instructions and samples on the use of the distribution advisor, see [Distribution Advisor in Azure Synapse SQL](/azure/synapse-analytics/sql/distribution-advisor).
 
 > [!NOTE]
