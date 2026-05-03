@@ -81,6 +81,8 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||
 
 ## Azure Synapse Analytics
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 Alters an existing workload group.
 
 See the `ALTER WORKLOAD GROUP` behavior section below for further details on how `ALTER WORKLOAD GROUP` behaves on a system with running and queued requests.

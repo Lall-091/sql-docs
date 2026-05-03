@@ -1472,6 +1472,8 @@ CREATE DATABASE MyLedgerDB
 
 ## Azure Synapse Analytics
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 ## Overview
 
 In Azure Synapse, this statement can be used with an Azure SQL Database server to create a dedicated SQL pool. With this statement, you specify the database name, collation, maximum size, edition, and service objective.

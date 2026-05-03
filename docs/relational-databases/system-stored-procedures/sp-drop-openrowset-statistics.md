@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
 ms.date: 06/23/2025
-ms.service: azure-synapse-analytics
+ms.service: sql
 ms.topic: "reference"
 f1_keywords:
   - "sp_drop_openrowset_statistics_TSQL"
@@ -20,7 +20,9 @@ monikerRange: "=azure-sqldw-latest || =azuresqldb-mi-current"
 
 [!INCLUDE [asdbmi-asa-svrless-poolonly](../../includes/applies-to-version/asdbmi-asa-svrless-poolonly.md)]
 
-Drops column statistics for a column in the `OPENROWSET` path of Azure Synapse serverless SQL pools. For more information, see [Statistics in Synapse SQL](/azure/synapse-analytics/sql/develop-tables-statistics). This procedure is also used by [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] for column statistics in external data sources via `OPENROWSET`.
+In [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], this procedure is used to drop column statistics in external data sources via `OPENROWSET`.
+
+This procedure is also used to drop column statistics for a column in the `OPENROWSET` path of Azure Synapse serverless SQL pools. For more information, see [Statistics in Synapse SQL](/azure/synapse-analytics/sql/develop-tables-statistics).
 
 There's no direct method to update existing statistics. Instead, drop and create statistics using [sp_create_openrowset_statistics](sp-create-openrowset-statistics.md).
 

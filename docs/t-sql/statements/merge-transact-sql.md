@@ -334,6 +334,8 @@ When used after `MERGE`, [@@ROWCOUNT (Transact-SQL)](../functions/rowcount-trans
 
 ### Azure Synapse Analytics considerations
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 In Azure Synapse Analytics, the `MERGE` command has following differences compared to SQL Server and Azure SQL Database.
 
 - Using `MERGE` to update a distribution key column isn't supported in builds older than 10.0.17829.0. If unable to pause or force-upgrade, use the ANSI `UPDATE FROM ... JOIN` statement as a workaround until on version 10.0.17829.0.

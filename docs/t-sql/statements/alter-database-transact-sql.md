@@ -945,6 +945,8 @@ ALTER DATABASE WideWorldImporters
 
 ## Overview: Azure Synapse Analytics
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 In Azure Synapse, `ALTER DATABASE` modifies certain configuration options of a dedicated SQL pool.
 
 Because of its length, the `ALTER DATABASE` syntax is separated into the multiple articles. 

@@ -20,6 +20,8 @@ monikerRange: "=azure-sqldw-latest || =fabric"
  
 [!INCLUDE[applies-to-version/asa-pdw](../../includes/applies-to-version/asa-pdw.md)]
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 `CREATE TABLE AS SELECT` (CTAS) is one of the most important T-SQL features available. It's a fully parallelized operation that creates a new table based on the output of a SELECT statement. CTAS is the simplest and fastest way to create a copy of a table.
 
 For example, use CTAS to:  
