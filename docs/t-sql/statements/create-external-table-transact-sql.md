@@ -1073,6 +1073,8 @@ WITH (
 
 ## Overview: Azure Synapse Analytics
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 Use an external table to:
 
 - Dedicated SQL pools can query, import, and store data from Hadoop, Azure Blob Storage, and Azure Data Lake Storage Gen1 and Gen2.

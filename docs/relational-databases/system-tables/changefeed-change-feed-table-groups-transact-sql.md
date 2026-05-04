@@ -18,9 +18,12 @@ dev_langs:
 monikerRange: ">=sql-server-ver16||=azuresqldb-current||=azure-sqldw-latest"
 ---
 # changefeed.change_feed_table_groups (Transact-SQL)
+
 [!INCLUDE [sqlserver2022-asdb-asa](../../includes/applies-to-version/sqlserver2022-asdb-asa.md)]
 
 Contains metadata that is used to configure change feed table groups for Azure Synapse Link for SQL.
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
 
 |Column name|Data type|Description|  
 |-----------------|---------------|-----------------|  

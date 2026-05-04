@@ -18,7 +18,10 @@ dev_langs:
 monikerRange: ">=sql-server-ver16||=azuresqldb-current||=azure-sqldw-latest"
 ---
 # changefeed.change_feed_settings (Transact-SQL)
+
 [!INCLUDE [sqlserver2022-asdb-asa](../../includes/applies-to-version/sqlserver2022-asdb-asa.md)]
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
 
 Contains metadata that is used to configure change feed for Azure Synapse Link for SQL.
 

@@ -14,6 +14,8 @@ monikerRange: ">=aps-pdw-2016||=azure-sqldw-latest"
 # sys.dm_pdw_errors (Transact-SQL)
 [!INCLUDE [applies-to-version/asa-pdw](../../includes/applies-to-version/asa-pdw.md)]
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
   Holds information about all errors encountered during execution of a request or query in Azure Synapse Analytics dedicated SQL pools and Analytics Platform System (PDW).
 
 > [!NOTE]
