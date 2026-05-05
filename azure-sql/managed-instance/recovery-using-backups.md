@@ -41,6 +41,9 @@ This article provides steps to recover a database from a backup in Azure SQL Man
 If you configured [long-term retention (LTR)](../database/long-term-retention-overview.md), you can also create a new database from any long-term retention backup on any instance.
 
 > [!IMPORTANT]
+> Some older APIs used for long-term retention (LTR) backup operations are deprecated and no longer supported. Avoid using legacy PowerShell cmdlets such as `Copy-AzSqlDatabaseLongTermRetentionBackup`. Use the supported restore methods described in this article instead.
+
+> [!IMPORTANT]
 > You can't overwrite an existing database during restore.
 
 ## Recovery time
