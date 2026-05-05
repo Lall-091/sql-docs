@@ -1497,7 +1497,7 @@ You can determine this option's status by examining the `is_recursive_triggers_o
 
 Suspends databases for snapshot backup. Can define a group of one or more databases. Can designate copy only mode.
 
-#### SET SUSPEND_FOR_SNAPSHOT_BACKUP = { ON | **OFF** }
+#### SET SUSPEND_FOR_SNAPSHOT_BACKUP = { ON | OFF }
 
 Suspends, or un-suspends databases. Default OFF.
 
