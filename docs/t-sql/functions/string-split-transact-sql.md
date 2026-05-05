@@ -4,7 +4,7 @@ description: "Transact-SQL reference for the STRING_SPLIT function. This table-v
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 10/30/2023
+ms.date: 05/05/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -31,8 +31,10 @@ monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 |
 
 To change the compatibility level of a database, refer to [View or change the compatibility level of a database](../../relational-databases/databases/view-or-change-the-compatibility-level-of-a-database.md).
 
+The compatibility level requirement doesn't apply if the [ALLOW_BUILTIN_TVF_IN_ALL_COMPAT_LEVELS](../statements/alter-database-scoped-configuration-transact-sql.md#allow-builtin-tvf-in-all-compat-levels) database-scoped configuration is enabled.
+
 > [!NOTE]  
-> Compatibility configuration isn't needed for `STRING_SPLIT` in Azure Synapse Analytics.
+> Compatibility level configuration isn't needed for `STRING_SPLIT` in Azure Synapse Analytics.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
