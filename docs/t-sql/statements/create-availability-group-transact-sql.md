@@ -459,7 +459,7 @@ Beginning with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)], you can loa
 
 Specifies that when this availability replica is the primary replica, read-only routing isn't supported. This is the default behavior.  
 
-#### READ_WRITE_ROUTING_URL **='**TCP**://**_system-address_**:**_port_**'**  
+#### READ_WRITE_ROUTING_URL = 'TCP://*system-address*:*port*'  
 
 **Applies to:** [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sssql19-md](../../includes/sssql19-md.md)]) 
 

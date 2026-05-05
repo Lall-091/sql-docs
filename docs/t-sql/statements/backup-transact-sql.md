@@ -1539,7 +1539,7 @@ Specifies a textual description of the backup. The maximum length of the text is
 
 The description is stored in the metadata, and is displayed when the backup header is restored with `RESTORE HEADERONLY`.
 
-#### NAME = '*_backup *name**'
+#### NAME = '*backup *name*'
 
 Specifies the name of the backup. The backup name can be different from the database name.
 

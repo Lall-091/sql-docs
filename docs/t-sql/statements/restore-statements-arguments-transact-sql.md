@@ -54,12 +54,12 @@ This articles documents the arguments that are described in the Syntax sections 
   
  For more information, see [Apply Transaction Log Backups &#40;SQL Server&#41;](../../relational-databases/backup-restore/apply-transaction-log-backups-sql-server.md).  
   
-#### { _database\_name_ | **@**_database\_name\_var_}  
+#### { *database_name* | *@database_name_var* }  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md)  
   
  Is the database that the log or complete database is restored into. If supplied as a variable (**@**_database\_name\_var_), this name can be specified either as a string constant (**@**_database\_name\_var_ = *database*\_*name*) or as a variable of character string data type, except for the **ntext** or **text** data types.  
   
-#### \<file_or_filegroup_or_page> [ **,**...*n* ]  
+#### \<file_or_filegroup_or_page> [ ,...*n* ]  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md)  
   
  Specifies the name of a logical file or filegroup or page to include in a RESTORE DATABASE or RESTORE LOG statement. You can specify a list of files or filegroups.  
@@ -72,10 +72,10 @@ This articles documents the arguments that are described in the Syntax sections 
   
 -   If the backup contains the primary filegroup and a partial restore is being performed. In this case, the restore log is not needed because the log is restored automatically from the backup set.  
   
-#### FILE **=** { *logical_file_name_in_backup*| **@**_logical\_file\_name\_in\_backup\_var_}  
+#### FILE = { *logical_file_name_in_backup* | *@logical_file_name_in_backup_var* }  
  Names a file to include in the database restore.  
   
-#### FILEGROUP **=** { *logical_filegroup_name* | **@**_logical\_filegroup\_name\_var_ }  
+#### FILEGROUP = { *logical_filegroup_name* | *@logical_filegroup_name_var* }  
  Names a filegroup to include in the database restore.  
  
  FILEGROUP is allowed in simple recovery model only if the specified filegroup is read-only and this is a partial restore (that is, if WITH PARTIAL is used). Any unrestored read-write filegroups are marked as defunct and cannot subsequently be restored into the resulting database.  
@@ -83,7 +83,7 @@ This articles documents the arguments that are described in the Syntax sections 
 #### READ_WRITE_FILEGROUPS  
  Selects all read-write filegroups. This option is particularly useful when you have read-only filegroups that you want to restore after read-write filegroups before the read-only filegroups.  
   
-#### PAGE = **'**_file_**:**_page* [ **,**...*n* ]**'**  
+#### PAGE = '*file*:*page* [ ,...*n* ]'  
  Specifies a list of one or more pages for a page restore (which is supported only for databases using the full or bulk-logged recovery models). The values are as follows:  
   
 PAGE  
@@ -108,12 +108,12 @@ PAGE
  [ **,**...*n* ]  
  Is a placeholder indicating that multiple files and filegroups and pages can be specified in a comma-separated list. The number is unlimited.  
   
-#### FROM { \<backup_device> [ **,**...*n* ]| \<database_snapshot> } 
+#### FROM { \<backup_device> [ ,...*n* ] | \<database_snapshot> }  
  Typically, specifies the backup devices from which to restore the backup. Alternatively, in a RESTORE DATABASE statement, the FROM clause can specify the name of a database snapshot to which you are reverting the database, in which case, no WITH clause is permitted.  
   
  If the FROM clause is omitted, the restore of a backup does not take place. Instead, the database is recovered. This allows you to recover a database that has been restored with the NORECOVERY option or to switch over to a standby server. If the FROM clause is omitted, NORECOVERY, RECOVERY, or STANDBY must be specified in the WITH clause.  
   
-####  \<backup_device> [ **,**...*n* ] 
+####  \<backup_device> [ ,...*n* ] 
  Specifies the logical or physical backup devices to use for the restore operation.  
   
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md), [RESTORE FILELISTONLY](../../t-sql/statements/restore-statements-filelistonly-transact-sql.md), [RESTORE HEADERONLY](../../t-sql/statements/restore-statements-headeronly-transact-sql.md), [RESTORE LABELONLY](../../t-sql/statements/restore-statements-labelonly-transact-sql.md), [RESTORE REWINDONLY](../../t-sql/statements/restore-statements-rewindonly-transact-sql.md), and [RESTORE VERIFYONLY](../../t-sql/statements/restore-statements-verifyonly-transact-sql.md).  
@@ -194,7 +194,7 @@ DATABASE_SNAPSHOT **=**_database\_snapshot\_name_
   
  In some cases RESTORE WITH NORECOVERY rolls the roll forward set far enough forward that it is consistent with the database. In such cases, roll back does not occur and the data remains offline, as expected with this option. However, the [!INCLUDE[ssDE](../../includes/ssde-md.md)] issues an informational message that states that the roll-forward set can now be recovered by using the RECOVERY option.  
   
-#### STANDBY **=**_standby\_file\_name_  
+#### STANDBY = *standby_file_name*  
  Specifies a standby file that allows the recovery effects to be undone. The STANDBY option is allowed for offline restore (including partial restore). The option is disallowed for online restore. Attempting to specify the STANDBY option for an online restore operation causes the restore operation to fail. STANDBY is also not allowed when a database upgrade is necessary.  
   
  The standby file is used to keep a "copy-on-write" pre-image for pages modified during the undo pass of a RESTORE WITH STANDBY. The standby file allows a database to be brought up for read-only access between transaction log restores and can be used with either warm standby server situations or special recovery situations in which it is useful to inspect the database between log restores. After a RESTORE WITH STANDBY operation, the undo file is automatically deleted by the next RESTORE operation. If this standby file is manually deleted before the next RESTORE operation, then the entire database must be re-restored. While the database is in the STANDBY state, you should treat this standby file with the same care as any other database file. Unlike other database files, this file is only kept open by the [!INCLUDE[ssDE](../../includes/ssde-md.md)] during active restore operations.  
@@ -222,7 +222,7 @@ Be aware that using LOADHISTORY for backups which already exist in the `msdb` hi
 ### Restore operation options  
  These options affect the behavior of the restore operation.  
   
-#### MOVE **'**_logical\_file\_name\_in\_backup_**'** TO **'**_operating\_system\_file\_name_**'** [ ...*n* ]  
+#### MOVE '*logical_file_name_in_backup*' TO '*operating_system_file_name*' [ ,...*n* ]  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md) and [RESTORE VERIFYONLY](../../t-sql/statements/restore-statements-verifyonly-transact-sql.md)  
   
  Specifies that the data or log file whose logical name is specified by *logical_file_name_in_backup* should be moved by restoring it to the location specified by *operating_system_file_name*. The logical file name of a data or log file in a backup set matches its logical name in the database when the backup set was created.  
@@ -282,7 +282,7 @@ Be aware that using LOADHISTORY for backups which already exist in the `msdb` hi
 ### Backup set options  
  These options operate on the backup set containing the backup to be restored.  
   
-#### FILE **=**{ *backup_set_file_number* | **@**_backup\_set\_file\_number_ }  
+#### FILE = { *backup_set_file_number* | *@backup_set_file_number* }  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md), [RESTORE FILELISTONLY](../../t-sql/statements/restore-statements-filelistonly-transact-sql.md), [RESTORE HEADERONLY](../../t-sql/statements/restore-statements-headeronly-transact-sql.md), and [RESTORE VERIFYONLY](../../t-sql/statements/restore-statements-verifyonly-transact-sql.md).  
   
  Identifies the backup set to be restored. For example, a *backup_set_file_number* of **1** indicates the first backup set on the backup medium and a *backup_set_file_number* of **2** indicates the second backup set. You can obtain the *backup_set_file_number* of a backup set by using the [RESTORE HEADERONLY](../../t-sql/statements/restore-statements-headeronly-transact-sql.md) statement.  
@@ -292,7 +292,7 @@ Be aware that using LOADHISTORY for backups which already exist in the `msdb` hi
 > [!IMPORTANT]  
 >  This FILE option is unrelated to the FILE option for specifying a database file, FILE **=** { *logical_file_name_in_backup* | **@**_logical\_file\_name\_in\_backup\_var_ }.  
   
-#### PASSWORD  **=** { *password* | **@**_password\_variable_ }  
+#### PASSWORD  = { *password* | *@password_variable* }  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md), [RESTORE FILELISTONLY](../../t-sql/statements/restore-statements-filelistonly-transact-sql.md), [RESTORE HEADERONLY](../../t-sql/statements/restore-statements-headeronly-transact-sql.md), and [RESTORE VERIFYONLY](../../t-sql/statements/restore-statements-verifyonly-transact-sql.md).  
   
  Supplies the password of the backup set. A backup-set password is a character string.  
@@ -316,7 +316,7 @@ METADATA_ONLY is synonymous with SNAPSHOT. Virtual device interface (VDI) uses S
 #### Media Set Options  
  These options operate on the media set as a whole.  
   
-#### MEDIANAME **=** { *media_name* | **@**_media\_name\_variable_}  
+#### MEDIANAME = { *media_name* | *@media_name_variable* }  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md), [RESTORE FILELISTONLY](../../t-sql/statements/restore-statements-filelistonly-transact-sql.md), [RESTORE HEADERONLY](../../t-sql/statements/restore-statements-headeronly-transact-sql.md), [RESTORE LABELONLY](../../t-sql/statements/restore-statements-labelonly-transact-sql.md), and [RESTORE VERIFYONLY](../../t-sql/statements/restore-statements-verifyonly-transact-sql.md).  
   
  Specifies the name for the media. If provided, the media name must match the media name on the backup volumes; otherwise, the restore operation terminates. If no media name is given in the RESTORE statement, the check for a matching media name on the backup volumes is not performed.  
@@ -324,7 +324,7 @@ METADATA_ONLY is synonymous with SNAPSHOT. Virtual device interface (VDI) uses S
 > [!IMPORTANT]  
 >  Consistently using media names in backup and restore operations provides an extra safety check for the media selected for the restore operation.  
   
-#### MEDIAPASSWORD **=** { *mediapassword* | **@**_mediapassword\_variable_ }  
+#### MEDIAPASSWORD = { *mediapassword* | *@mediapassword_variable* }  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md), [RESTORE FILELISTONLY](../../t-sql/statements/restore-statements-filelistonly-transact-sql.md), [RESTORE HEADERONLY](../../t-sql/statements/restore-statements-headeronly-transact-sql.md), [RESTORE LABELONLY](../../t-sql/statements/restore-statements-labelonly-transact-sql.md), and [RESTORE VERIFYONLY](../../t-sql/statements/restore-statements-verifyonly-transact-sql.md).  
   
  Supplies the password of the media set. A media-set password is a character string.  
@@ -337,7 +337,7 @@ METADATA_ONLY is synonymous with SNAPSHOT. Virtual device interface (VDI) uses S
 > [!IMPORTANT]  
 >  This password provides only weak protection for the media set. For more information, see the "Permissions" section for the relevant statement.  
   
-#### BLOCKSIZE **=** { *blocksize* | **@**_blocksize\_variable_ }  
+#### BLOCKSIZE = { *blocksize* | *@blocksize_variable* }  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md)  
   
  Specifies the physical block size, in bytes. The supported sizes are 512, 1024, 2048, 4096, 8192, 16384, 32768, and 65536 (64 KB) bytes. The default is 65536 for tape devices and 512 otherwise. Typically, this option is unnecessary because RESTORE automatically selects a block size that is appropriate to the device. Explicitly stating a block size overrides the automatic selection of block size.  
@@ -350,14 +350,14 @@ METADATA_ONLY is synonymous with SNAPSHOT. Virtual device interface (VDI) uses S
 ### Data transfer options  
  The options enable you to optimize data transfer from the backup device.  
   
-#### BUFFERCOUNT **=** { *buffercount* | **@**_buffercount\_variable_ }  
+#### BUFFERCOUNT = { *buffercount* | *@buffercount_variable* }  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md)  
   
  Specifies the total number of I/O buffers to be used for the restore operation. You can specify any positive integer; however, large numbers of buffers might cause "out of memory" errors because of inadequate virtual address space in the Sqlservr.exe process.  
   
  The total space used by the buffers is determined by: _buffercount_**\**_maxtransfersize_.  
   
-#### MAXTRANSFERSIZE **=** { _maxtransfersize_ | **@**_maxtransfersize\_variable_ }  
+#### MAXTRANSFERSIZE = { *maxtransfersize* | *@maxtransfersize_variable* }  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md)  
   
  Specifies the largest unit of transfer in bytes to be used between the backup media and [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The possible values are multiples of 65536 bytes (64 KB) ranging up to 4194304 bytes (4 MB).  
@@ -409,7 +409,7 @@ METADATA_ONLY is synonymous with SNAPSHOT. Virtual device interface (VDI) uses S
 ### Monitoring options  
  These options enable you to monitor the transfer of data transfer from the backup device.  
   
-#### STATS [ **=** _percentage_ ]  
+#### STATS [ = *percentage* ]  
  **Supported by:**  [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md) and [RESTORE VERIFYONLY](../../t-sql/statements/restore-statements-verifyonly-transact-sql.md)  
   
  Displays a message each time another percentage completes, and is used to gauge progress. If *percentage* is omitted, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] displays a message after each 10 percent is completed (approximately).  
@@ -419,7 +419,7 @@ METADATA_ONLY is synonymous with SNAPSHOT. Virtual device interface (VDI) uses S
 ### Tape Options  
  These options are used only for TAPE devices. If a nontape device is being used, these options are ignored.  
   
-#### { **REWIND** | NOREWIND }  
+#### { REWIND | NOREWIND }  
  These options are used only for TAPE devices. If a non-tape device is being used, these options are ignored.  
   
  REWIND  
