@@ -493,7 +493,10 @@ Specifies the named column to alter.
 
 ::: moniker range=">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 
-`ALTER TABLE ... ALTER COLUMN` for Fabric Data Warehouse has different capabilities, to review, see [the Fabric Data Warehouse version of this article](alter-table-transact-sql.md?view=fabric&preserve-view=true#alter-column).
+`ALTER TABLE ... ALTER COLUMN` for Fabric Data Warehouse has different capabilities. For more information, see [the Fabric Data Warehouse version of this article](alter-table-transact-sql.md?view=fabric&preserve-view=true#alter-column).
+
+> [!NOTE]  
+> `ALTER TABLE ... ALTER COLUMN` is in preview for Fabric Data Warehouse.
 
 The modified column can't be:
 
@@ -546,6 +549,9 @@ When you modify a column, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] ke
 
 Supported `ALTER TABLE ... ALTER COLUMN` scenarios allow certain column definition changes to be applied *without modifying the underlying stored data files*. These operations update table metadata and enable compatible interpretation of existing data during subsequent reads.
 
+> [!NOTE]  
+> `ALTER TABLE ... ALTER COLUMN` is in preview for Fabric Data Warehouse.
+
 The updated column definition must remain compatible with the existing stored data to ensure correctness during query execution.
 
 Any ALTER TABLE DDL operation (including ALTER COLUMN) acquires a schema modification (SCH M) lock for the duration of execution. As a result, it can block, or be blocked by, concurrently executing workloads. For more information, see [Locking Transactions in Fabric Data Warehouse](/fabric/data-warehouse/transactions#understand-locking-and-blocking-in-fabric-data-warehouse).
@@ -586,6 +592,9 @@ If you need to remove type widening from a table schema, you can create a new ta
 
 ##### Limitations of ALTER COLUMN in Fabric Data Warehouse
 
+> [!NOTE]  
+> `ALTER TABLE ... ALTER COLUMN` is in preview for Fabric Data Warehouse.
+
 In Fabric Data Warehouse, these `ALTER COLUMN` operations are not supported:
 
 - Changing a column type from `NULL` to `NOT NULL`
@@ -597,7 +606,6 @@ In Fabric Data Warehouse, these `ALTER COLUMN` operations are not supported:
 - Altering a column that is a part of the [data clustering](/fabric/data-warehouse/data-clustering) index
 
 ::: moniker-end
-
 
 #### column_name
 
