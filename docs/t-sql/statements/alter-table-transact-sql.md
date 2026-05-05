@@ -4,7 +4,7 @@ description: ALTER TABLE modifies a table definition by altering, adding, or dro
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 04/12/2026
+ms.date: 05/5/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -435,6 +435,20 @@ ALTER TABLE { database_name.schema_name.source_table_name | schema_name.source_t
 ```syntaxsql
 ALTER TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
 {
+    ALTER COLUMN column_name
+    {
+        [ type_schema_name. ] type_name
+            [ (
+                {
+                    precision [ , scale ]
+                }
+            ) ]
+        [ COLLATE collation_name ] 
+        [ NULL | NOT NULL ]
+      | { ADD | DROP } MASKED [ WITH ( FUNCTION = ' mask_function ') ]
+    }
+}
+{
   ADD  { column_name <data_type> [COLLATE collation_name] [ <column_options> ] } [ ,...n ]
 | ADD { <column_constraint> FOR column_name} [ ,...n ]
 | DROP { COLUMN column_name | [CONSTRAINT] constraint_name } [ ,...n ]
@@ -476,6 +490,10 @@ The name of the table to alter. If the table isn't in the current database or if
 #### ALTER COLUMN
 
 Specifies the named column to alter.
+
+::: moniker range=">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
+
+`ALTER TABLE ... ALTER COLUMN` for Fabric Data Warehouse has different capabilities, to review, see [the Fabric Data Warehouse version of this article](alter-table-transact-sql.md?view=fabric&preserve-view=true#alter-column).
 
 The modified column can't be:
 
@@ -522,6 +540,64 @@ When you use Always Encrypted (without secure enclaves), if you modify a column 
 When you use Always Encrypted with secure enclaves, you can change any encryption setting if the column encryption key protecting the column (and the new column encryption key, if you're changing the key) supports enclave computations (encrypted with enclave-enabled column `master` keys). For details, see [Always Encrypted with secure enclaves](../../relational-databases/security/encryption/always-encrypted-enclaves.md).
 
 When you modify a column, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] keeps track of each modification by adding a row in a system table and marking the previous column modification as a dropped column. In the rare case that you modify a column too many times, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] might reach the record size limit. If this happens, you get error [MSSQLSERVER_511](../../relational-databases/errors-events/mssqlserver-511-database-engine-error.md) or 1708. To avoid these errors, either rebuild the clustered index on the table periodically or reduce the number of column modifications.
+
+::: moniker-end
+::: moniker range="=fabric"
+
+Supported `ALTER TABLE ... ALTER COLUMN` scenarios allow certain column definition changes to be applied *without modifying the underlying stored data files*. These operations update table metadata and enable compatible interpretation of existing data during subsequent reads.
+
+The updated column definition must remain compatible with the existing stored data to ensure correctness during query execution.
+
+Any ALTER TABLE DDL operation (including ALTER COLUMN) acquires a schema modification (SCH M) lock for the duration of execution. As a result, it can block, or be blocked by, concurrently executing workloads. For more information, see [Locking Transactions in Fabric Data Warehouse](/fabric/data-warehouse/transactions#understand-locking-and-blocking-in-fabric-data-warehouse).
+
+##### Supported schema changes
+
+Currently, `ALTER COLUMN` in Fabric Data Warehouse supports metadata only schema evolution scenarios where the updated column definition does not require validation of existing stored data or rewriting the underlying Parquet data files.
+
+Only the following column type changes are supported:
+
+| **Type Category** | **Source Type** |**Allowed Target Types**    |
+|---|--|-----|
+| **Integer widening** | **smallint** | - **int**<br> - **bigint** |
+|                       | **int** |  **bigint** |
+| **Floating-point widening** | **real** | **float** |
+|                             | - **smallint**<br> - **int** | **float**|
+| **Decimal widening** | **decimal**(p, s) | **decimal**(p + k1, s + k2) where k1 ≥ k2 ≥ 0 |
+|                             | - **smallint**<br> - **int** | **decimal**(10 + k1, k2) where k1 ≥ k2 ≥ 0 |
+| **Decimal/numeric interchange** | **decimal**(p, s) | **numeric**(p,s) |
+|                             | **numeric**(p,s) | **decimal**(p,s)|
+| **Float/real interchange<sup>1</sup>** | **float**(n < 25) | **real** |
+|                             | **float**(n)  | **float**(n+m) |
+|                             | **real**  | **float**(n) |
+| **Time widening<sup>2</sup>**           | **time**  | **datetime2** |
+|                             | **datetime2**(n) | **datetime2**(n+m) |
+| **String widening**         | **char**(n)   | - **varchar**(n + m)<br> - **char**(n + m)|
+|                             | **varchar**(n) | **varchar**(n + m)<br> - **char**(n + m)|
+| **Binary widening**         | **varbinary**(n) | **varbinary**(n + m)|
+
+<sup>1</sup> In the SQL Database Engine, **float** precision &lt; 25 is stored as **float/real** (4 bytes), and precision ≥ 25 is stored as **double** (8 bytes). Widening from **float** to **double** is supported, but narrowing from **double** to **float** is not supported.
+
+<sup>2</sup> When converting a column from **time** to **datetime2**, the date component is populated with the value `1970 01 01` during query interpretation. This behavior differs from SQL Server, which uses `1900 01 01`. This occurs because timestamps in Fabric Data Warehouse are stored using the Delta Lake TIMESTAMP type, which uses the Unix epoch (1970 01 01).
+
+##### ALTER COLUMN cross-engine interoperability
+
+In Fabric Data Warehouse, some `ALTER COLUMN` operations may enable **type widening** at the storage layer. When this occurs, external engines accessing the same Delta tables must support compatible read time type interpretation. **Type widening** is described in the [public Delta documentation](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#type-widening), and occurs when an existing data type is compatible with a wider type. For more information on engines that support type widening, see [Delta Lake table format interoperability](/fabric/fundamentals/delta-lake-interoperability#delta-lake-features-and-fabric-experiences).
+If you need to remove type widening from a table schema, you can create a new table using `CREATE TABLE AS SELECT`. For more information, see [CREATE TABLE AS SELECT](create-table-as-select-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
+
+##### Limitations of ALTER COLUMN in Fabric Data Warehouse
+
+In Fabric Data Warehouse, these `ALTER COLUMN` operations are not supported:
+
+- Changing a column type from `NULL` to `NOT NULL`
+- Altering an IDENTITY column
+- Altering a column to a different collation
+- Reducing the size of a column of the same type
+- Decrease precision when converting from **time** to **datetime2**
+- Altering a column with manually created stats
+- Altering a column that is a part of the [data clustering](/fabric/data-warehouse/data-clustering) index
+
+::: moniker-end
+
 
 #### column_name
 
