@@ -102,7 +102,7 @@ column_name AS computed_column_expression
 (*ref_column* )  
  Is a column from the table referenced by the FOREIGN KEY constraint.  
   
-#### ON DELETE { **NO ACTION** | CASCADE }  
+#### ON DELETE { NO ACTION | CASCADE }  
  Specifies what action happens to rows in the table if those rows have a referential relationship and the referenced row is deleted from the parent table. The default is NO ACTION.  
   
 NO ACTION  
@@ -119,7 +119,7 @@ CASCADE
   
  Do not specify CASCADE if the table will be included in a merge publication that uses logical records. For more information about logical records, see [Group Changes to Related Rows with Logical Records](../../relational-databases/replication/merge/group-changes-to-related-rows-with-logical-records.md).  
   
-#### ON UPDATE { **NO ACTION** }  
+#### ON UPDATE { NO ACTION }  
  Specifies what action happens to rows in the table created when those rows have a referential relationship and the referenced row is updated in the parent table. When NO ACTION is specified, the [!INCLUDE[ssDE](../../includes/ssde-md.md)] raises an error and rolls back the update action on the Vendor row if there is at least one row in the ProductVendor table that references it.  
   
 #### NOT FOR REPLICATION  

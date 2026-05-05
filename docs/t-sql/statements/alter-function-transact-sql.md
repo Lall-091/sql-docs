@@ -232,7 +232,7 @@ If *type_schema_name* is not specified, the [!INCLUDE[ssdenoversion-md](../../in
 
 -   The `dbo` schema in the current database.
 
-#### [ = _default_ ] **
+#### [ = *default* ]
 
 A default value for the parameter. If a *default* value is defined, the function can be executed without specifying a value for that parameter.
 

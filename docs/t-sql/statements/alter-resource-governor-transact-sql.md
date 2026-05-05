@@ -66,7 +66,7 @@ When resource governor is enabled, `RECONFIGURE` applies any configuration chang
 > [!IMPORTANT]
 > `ALTER RESOURCE GOVERNOR RECONFIGURE` must be executed for any resource governor configuration changes to take effect.
 
-#### CLASSIFIER_FUNCTION = { _schema_name_**.**_function_name_ | NULL }
+#### CLASSIFIER_FUNCTION = { *schema_name*.*function_name* | NULL }
 
 Registers the classification function specified by *schema_name.function_name*. This function classifies every new session and assigns the session to a workload group. When `NULL` is used, new sessions are automatically assigned to the `default` workload group.
 
