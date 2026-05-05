@@ -5,7 +5,7 @@ description: Learn how to migrate on-premises SQL Server to Azure SQL Database o
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: abhishekum, mathoma
-ms.date: 02/19/2026
+ms.date: 05/04/2026
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
@@ -219,6 +219,7 @@ Azure SQL Database offline migration utilizes Azure Data Factory (ADF) pipelines
 - Database names that include semicolons are currently not supported.
 - Computed columns don't get migrated.
 - Columns in the source database that have default constraints and contain `NULL` values, are migrated with their defined default values on the target Azure SQL database, rather than retaining the NULLs.
+- If your source database has [change data capture](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) (CDC) enabled and you are using Azure Database Migration Service (Azure DMS) for schema migration, you should disable CDC on the source database before starting the migration. If CDC isn't disabled beforehand, Azure DMS will migrate CDC-related objects (such as tables) to the target. This can cause problems when attempting to enable CDC on the target database post-migration.
 
 ## Related content
 
