@@ -5,7 +5,7 @@ description: Learn about the currently known issues with Azure SQL Managed Insta
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 04/28/2026
+ms.date: 05/01/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: troubleshooting-known-issue
@@ -22,6 +22,7 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 
 | Issue | Date discovered | Status | Date resolved |
 | --- | --- | --- | --- |
+| [Linked server queries that use MSDASQL fail with error 7416](#linked-server-queries-that-use-msdasql-fail-with-error-7416) | April 2026 | Has workaround | |
 | [Restore operation failures after migrating to SQL Managed Instance](#restore-operation-failures-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
 | [Unable to use Service Broker after migrating to SQL Managed Instance](#unable-to-use-service-broker-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
 | [Unable to use accelerated database recovery after migrating to SQL Managed Instance](#unable-to-use-accelerated-database-recovery-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
@@ -63,6 +64,10 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | Contained databases not supported in SQL Managed Instance | | Resolved | Aug 2019 |
 
 ## Has workaround
+
+### Linked server queries that use MSDASQL fail with error 7416
+
+[!INCLUDE [msdasql-linked-server-7416](../../docs/includes/msdasql-linked-server-7416.md)]
 
 [!INCLUDE [known-issues-after-migration](../includes/sql-managed-instance/known-issues-after-migration.md)]
 
