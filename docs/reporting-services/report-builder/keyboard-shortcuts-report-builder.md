@@ -15,7 +15,7 @@ helpviewer_keywords:
 
 [!INCLUDE[ssrs-appliesto](../../includes/ssrs-appliesto.md)] [!INCLUDE [ssrs-appliesto-ssrs-rb](../../includes/ssrs-appliesto-ssrs-rb.md)] [!INCLUDE [ssrs-appliesto-pbi-rb](../../includes/ssrs-appliesto-pbi-rb.md)]
 
-When you create and edit paginated reports in [Microsoft Report Builder](../../reporting-services/report-builder/report-builder-in-sql-server-2016.md) for Reporting Services and in [Power BI Report Builder](/power-bi/paginated-reports/report-builder-power-bi), you can use keyboard shortcuts for accessibility and navigation. You can select from several standard keyboard mapping schemes.
+When you create and edit paginated reports in [Microsoft Report Builder](../../reporting-services/report-builder/report-builder-in-sql-server.md) for Reporting Services and in [Power BI Report Builder](/power-bi/paginated-reports/report-builder-power-bi), you can use keyboard shortcuts for accessibility and navigation. You can select from several standard keyboard mapping schemes.
 
 You can navigate through the Report Builder window, or select and change options in dialog boxes, without using the mouse.
 
@@ -87,6 +87,6 @@ Report Builder provides many right-click menus for quick access to frequently us
 
 ## Related content
 
-- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Power BI Report Builder](/power-bi/paginated-reports/report-builder-power-bi)
 - [Report Design View (Report Builder)](../../reporting-services/report-builder/report-design-view-report-builder.md)

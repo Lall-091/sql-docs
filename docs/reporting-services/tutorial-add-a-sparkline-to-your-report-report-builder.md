@@ -311,7 +311,7 @@ The report is saved to the report server. The name of report server that you're 
 ## Related content
 
 - [Report Builder Tutorials](../reporting-services/report-builder-tutorials.md)
-- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Try asking the Reporting Services forum](/answers/search.html?c=&f=&includeChildren=&q=ssrs+OR+reporting+services&redirect=search%2fsearch&sort=relevance&type=question+OR+idea+OR+kbentry+OR+answer+OR+topic+OR+user)
 
 ## Next step

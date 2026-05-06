@@ -58,7 +58,7 @@ For SQL Server 2016 Reporting Services and earlier, SharePoint mode report serve
   
     - Use the Report Server Configuration Manager to connect each report server to the shared database. You can only connect to and configure one report server at a time.
     - Use the Reporting Services Configuration tool to complete the scale-out by joining new report server instances to the first report server instance already connected to the report server database.  
-    - Use SQL Server Reporting Services Enterprise Edition. See [SQL Server Reporting Services features supported by editions](../reporting-services-features-supported-by-the-editions-of-sql-server-2016.md) for details.
+    - Use SQL Server Reporting Services Enterprise Edition. See [SQL Server Reporting Services features supported by editions](../reporting-services-features-supported-by-the-editions-of-sql-server.md) for details.
 
 ## Install a SQL Server instance to host the report server databases  
   

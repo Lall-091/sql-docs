@@ -16,7 +16,7 @@ monikerRange: ">=sql-server-2016"
 
 This article walks you through a complete configuration of a clustered DTC resource for a [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] Always On availability group (AG). The complete configuration can take up to an hour to complete.
 
-The walkthrough creates a clustered DTC resource and the [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] AGs to align with the requirements at [How to cluster the DTC service for an Always On availability group](cluster-dtc-for-sql-server-2016-availability-groups.md).
+The walkthrough creates a clustered DTC resource and the [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] AGs to align with the requirements at [How to cluster the DTC service for an Always On availability group](cluster-dtc-for-sql-server-availability-groups.md).
 
 The walkthrough uses PowerShell and Transact-SQL (T-SQL) scripts. Many of the T-SQL scripts require **SQLCMD Mode** to be enabled. For more information on **SQLCMD Mode**, see [Edit SQLCMD scripts with Query Editor](/ssms/scripting/sqlcmd-scripts-query-editor). The PowerShell module `FailoverClusters` must be imported. For more information about importing a PowerShell module, see [Importing a PowerShell Module](/powershell/scripting/developer/module/importing-a-powershell-module). This walkthrough is based on the following configuration options:
 
