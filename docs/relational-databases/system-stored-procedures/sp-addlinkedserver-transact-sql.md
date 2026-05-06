@@ -1,10 +1,10 @@
 ---
 title: "sp_addlinkedserver (Transact-SQL)"
-description: "sp_addlinkedserver (Transact-SQL)"
+description: sp_addlinkedserver creates a linked server, providing access to distributed, heterogeneous queries against OLE DB data sources.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, randolphwest, mikeray
-ms.date: 12/15/2025
+ms.date: 05/01/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -134,8 +134,8 @@ The following table shows the ways that a linked server can be set up for data s
 | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB Provider | | `SQLNCLI` | *servername*\\*instancename* (for specific instance) | | | Database name (optional) |
 | Oracle, version 8 and later | Oracle Provider for OLE DB | Any <sup>2</sup> | `OraOLEDB.Oracle` | Alias for the Oracle database | | | |
 | Access/Jet | Microsoft OLE DB Provider for Jet | Any <sup>2</sup> | `Microsoft.Jet.OLEDB.4.0` | Full path of Jet database file | | | |
-| ODBC data source | Microsoft OLE DB Provider for ODBC | Any <sup>2</sup> | `MSDASQL` | System DSN of ODBC data source | | | |
-| ODBC data source | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for ODBC | Any <sup>2</sup> | `MSDASQL` | | | ODBC connection string | |
+| ODBC data source | Microsoft OLE DB Provider for ODBC | Any <sup>2</sup> | `MSDASQL` <sup>3</sup> | System DSN of ODBC data source | | | |
+| ODBC data source | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for ODBC | Any <sup>2</sup> | `MSDASQL` <sup>3</sup> | | | ODBC connection string | |
 | File system | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for Indexing Service | Any <sup>2</sup> | `MSIDXS` | Indexing Service catalog name | | | |
 | [!INCLUDE [msCoName](../../includes/msconame-md.md)] Excel Spreadsheet | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for Jet | Any <sup>2</sup> | `Microsoft.Jet.OLEDB.4.0` | Full path of Excel file | | Excel 5.0 | |
 | IBM Db2 Database | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for DB2 | Any <sup>2</sup> | `DB2OLEDB` | | | See [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for DB2 documentation. | Catalog name of DB2 database |
@@ -143,6 +143,8 @@ The following table shows the ways that a linked server can be set up for data s
 <sup>1</sup> This way of setting up a linked server forces the name of the linked server to be the same as the network name of the remote instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Use *@datasrc* to specify the server.
 
 <sup>2</sup> "Any" indicates that the product name can be anything.
+
+<sup>3</sup> Linked servers that use `MSDASQL` with a provider string (*@provstr*) might fail with error 7416 on [SQL Server 2022 CU 24](../../sql-server/sql-server-2022-release-notes.md#linked-server-queries-that-use-msdasql-fail-with-error-7416) and [SQL Server 2025 CU 4](../../sql-server/sql-server-2025-known-issues.md#linked-server-queries-that-use-msdasql-fail-with-error-7416).
 
 The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB provider is the provider that is used with [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] if no provider name is specified or if [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is specified as the product name. Even if you specify the older provider name, SQLOLEDB, it changes to SQLNCLI when persisted to the catalog.
 
