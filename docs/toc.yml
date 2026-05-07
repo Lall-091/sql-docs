@@ -1574,7 +1574,7 @@ items:
               href: database-engine/service-broker/handling-service-broker-error-messages.md
             - name: Handling Poison Messages
               href: database-engine/service-broker/handling-poison-messages.md
-            - name: 'How to: Retrieve Information from a Service Broker Error Message (Transact SQL)'
+            - name: 'How to: Retrieve Information from a Service Broker Error Message (Transact-SQL)'
               href: database-engine/service-broker/how-to-retrieve-information-from-a-service-broker-error-message-transact-sql.md
     - name: Creating Service Broker Objects
       items:
@@ -13099,7 +13099,7 @@ items:
         href: relational-databases/system-stored-procedures/sp-describe-cursor-tables-transact-sql.md
       - name: sp_execute
         href: relational-databases/system-stored-procedures/sp-execute-transact-sql.md
-      - name: sp_prepare (Transact SQL)
+      - name: sp_prepare (Transact-SQL)
         href: relational-databases/system-stored-procedures/sp-prepare-transact-sql.md
       - name: sp_prepexec
         href: relational-databases/system-stored-procedures/sp-prepexec-transact-sql.md

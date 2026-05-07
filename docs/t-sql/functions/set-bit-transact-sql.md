@@ -21,7 +21,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =azuresqldb-current || =fabric || =fabric-sqldb"
 ---
-# SET_BIT (Transact SQL)
+# SET_BIT (Transact-SQL)
 
 [!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
@@ -88,8 +88,8 @@ The result is `0xABCDEE`. The *expression_value* is converted to binary, which i
 
 ## Related content
 
-- [LEFT_SHIFT (Transact SQL)](left-shift-transact-sql.md)
-- [RIGHT_SHIFT (Transact SQL)](right-shift-transact-sql.md)
-- [BIT_COUNT (Transact SQL)](bit-count-transact-sql.md)
-- [GET_BIT (Transact SQL)](get-bit-transact-sql.md)
+- [LEFT_SHIFT (Transact-SQL)](left-shift-transact-sql.md)
+- [RIGHT_SHIFT (Transact-SQL)](right-shift-transact-sql.md)
+- [BIT_COUNT (Transact-SQL)](bit-count-transact-sql.md)
+- [GET_BIT (Transact-SQL)](get-bit-transact-sql.md)
 - [Bit manipulation functions](bit-manipulation-functions-overview.md)

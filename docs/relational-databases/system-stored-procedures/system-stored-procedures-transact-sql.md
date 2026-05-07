@@ -90,7 +90,7 @@ The system stored procedures in the following tables are used only within an ins
 | [sp_datatype_info](sp-datatype-info-transact-sql.md) | [sp_fkeys](sp-fkeys-transact-sql.md) |
 | [sp_foreignkeys](sp-foreignkeys-transact-sql.md) | [sp_indexes](sp-indexes-transact-sql.md) |
 | [sp_pkeys](sp-pkeys-transact-sql.md) | [sp_primarykeys](sp-primarykeys-transact-sql.md) |
-| [sp_prepare (Transact SQL)](sp-prepare-transact-sql.md) | [sp_prepexec](sp-prepexec-transact-sql.md) |
+| [sp_prepare (Transact-SQL)](sp-prepare-transact-sql.md) | [sp_prepexec](sp-prepexec-transact-sql.md) |
 | [sp_prepexecrpc](sp-prepexecrpc-transact-sql.md) | [sp_unprepare](sp-unprepare-transact-sql.md) |
 | [sp_server_info](sp-server-info-transact-sql.md) | [sp_special_columns](sp-special-columns-transact-sql.md) |
 | [sp_sproc_columns](sp-sproc-columns-transact-sql.md) | [sp_statistics](sp-statistics-transact-sql.md) |
