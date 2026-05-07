@@ -51,5 +51,5 @@ Signifies the use of extra parameters. The *bound_param* parameter is any data t
 ## Related content
 
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
-- [sp_prepare (Transact SQL)](sp-prepare-transact-sql.md)
+- [sp_prepare (Transact-SQL)](sp-prepare-transact-sql.md)
 - [sp_executesql (Transact-SQL)](sp-executesql-transact-sql.md)

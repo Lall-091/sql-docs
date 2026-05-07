@@ -184,7 +184,7 @@ To create a geo-replica of the database:
 
 1. Follow the instructions with Azure portal, PowerShell, or Azure CLI in [Configure active geo-replication and failover (Azure SQL Database)](active-geo-replication-configure-portal.md?view=azuresql-db&preserve-view=true) and enable zone redundancy under **Compute + Storage**
 
-1. The replica is seeded, and the time taken for seeding the data depends upon size of source database. You can monitor the status of seeding in the Azure portal or by running the following TSQL queries on the replica database:
+1. The replica is seeded, and the time taken for seeding the data depends upon size of source database. You can monitor the status of seeding in the Azure portal or by running the following T-SQL queries on the replica database:
 
     ```sql
         SELECT * FROM sys.dm_geo_replication_link_status;
