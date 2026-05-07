@@ -13,7 +13,7 @@ ms.custom:
 
 [!INCLUDE [sqlserver2016-pbirs](../includes/applies-to-version/sqlserver2016-pbirs.md)]
 
-The [Report Builder](../reporting-services/report-builder/report-builder-in-sql-server-2016.md) tutorials help you learn how to create basic [!INCLUDE[ssRSnoversion_md](../includes/ssrsnoversion-md.md)] paginated reports.
+The [Report Builder](../reporting-services/report-builder/report-builder-in-sql-server.md) tutorials help you learn how to create basic [!INCLUDE[ssRSnoversion_md](../includes/ssrsnoversion-md.md)] paginated reports.
 
 | Tutorial | Description |
 | ----- | ----- |

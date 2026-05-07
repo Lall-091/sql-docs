@@ -617,7 +617,7 @@ items:
           href: database-engine/availability-groups/windows/transactions-always-on-availability-and-database-mirroring.md
           items:
           - name: Cluster DTC
-            href: database-engine/availability-groups/windows/cluster-dtc-for-sql-server-2016-availability-groups.md
+            href: database-engine/availability-groups/windows/cluster-dtc-for-sql-server-availability-groups.md
         - name: Encrypted databases
           href: database-engine/availability-groups/windows/encrypted-databases-with-always-on-availability-groups-sql-server.md
         - name: SQL Server Analysis Services (SSAS)
@@ -9028,7 +9028,7 @@ items:
 - name: Tutorials
   items:
   - name: SQL Server
-    href: sql-server/tutorials-for-sql-server-2016.md
+    href: sql-server/tutorials-for-sql-server.md
   - name: Database Engine
     href: relational-databases/database-engine-tutorials.md
     items:

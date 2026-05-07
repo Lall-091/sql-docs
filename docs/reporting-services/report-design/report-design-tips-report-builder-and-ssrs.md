@@ -155,6 +155,6 @@ ms.custom:
   
 ## Related content
 
-- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Reporting Services Tutorials &#40;SSRS&#41;](../../reporting-services/reporting-services-tutorials-ssrs.md)
 - [Report Builder Tutorials](../../reporting-services/report-builder-tutorials.md)

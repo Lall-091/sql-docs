@@ -430,13 +430,13 @@ For information about the Analysis Services features supported by the editions o
 
 ## Report Services
 
-For information about the Reporting Services features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md).
+For information about the Reporting Services features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server.md).
 
 <a id="BIC"></a>
 
 ## Business intelligence clients
 
-For information about the Business Intelligence Client features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [Analysis Services features supported by SQL Server edition](/analysis-services/analysis-services-features-by-edition) or [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md).
+For information about the Business Intelligence Client features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [Analysis Services features supported by SQL Server edition](/analysis-services/analysis-services-features-by-edition) or [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server.md).
 
 <a id="ADS"></a>
 

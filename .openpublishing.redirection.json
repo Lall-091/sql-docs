@@ -67172,7 +67172,7 @@
     },
     {
       "source_path": "docs/reporting-services/report-builder/index.md",
-      "redirect_url": "/sql/reporting-services/report-builder/report-builder-in-sql-server-2016",
+      "redirect_url": "/sql/reporting-services/report-builder/report-builder-in-sql-server",
       "redirect_document_id": false
     },
     {
@@ -68623,6 +68623,26 @@
       "source_path": "docs/relational-databases/polybase/data-virtualization-comprehensive-guide.md",
       "redirect_url": "/sql/relational-databases/polybase/data-virtualization-guide",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/report-builder/report-builder-in-sql-server-2016.md",
+      "redirect_url": "/sql/reporting-services/report-builder/report-builder-in-sql-server",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/database-engine/availability-groups/windows/cluster-dtc-for-sql-server-2016-availability-groups.md",
+      "redirect_url": "/sql/database-engine/availability-groups/windows/cluster-dtc-for-sql-server-availability-groups",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md",
+      "redirect_url": "/sql/reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/sql-server/tutorials-for-sql-server-2016.md",
+      "redirect_url": "/sql/sql-server/tutorials-for-sql-server",
+      "redirect_document_id": true
     }
   ]
 }
