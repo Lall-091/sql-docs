@@ -4,7 +4,7 @@ description: ALTER DATABASE (Transact-SQL) syntax for SQL Server, Azure SQL Data
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, dfurman
-ms.date: 04/29/2025
+ms.date: 04/27/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -75,7 +75,7 @@ Because of its length, the `ALTER DATABASE` syntax is separated into the multipl
 | --- | --- |
 | `ALTER DATABASE` | The current article provides the syntax and related information for changing the name and the collation of a database. |
 | [ALTER DATABASE File and Filegroup Options](alter-database-transact-sql-file-and-filegroup-options.md) | Provides the syntax and related information for adding and removing files and filegroups from a database, and for changing the attributes of the files and filegroups. |
-| [ALTER DATABASE SET options](alter-database-transact-sql-set-options.md) | Provides the syntax and related information for changing the attributes of a database by using the SET options of ALTER DATABASE. |
+| [ALTER DATABASE SET options](alter-database-transact-sql-set-options.md) | Provides the syntax and related information for changing the attributes of a database by using the `SET` options of `ALTER DATABASE`. |
 | [ALTER DATABASE Database Mirroring](alter-database-transact-sql-database-mirroring.md) | Provides the syntax and related information for the SET options of ALTER DATABASE that are related to database mirroring. |
 | [ALTER DATABASE SET HADR](alter-database-transact-sql-set-hadr.md) | Provides the syntax and related information for the [!INCLUDE[ssHADR](../../includes/sshadr-md.md)] options of ALTER DATABASE for configuring a secondary database on a secondary replica of an Always On availability group. |
 | [ALTER DATABASE compatibility level](alter-database-transact-sql-compatibility-level.md) | Provides the syntax and related information for the SET options of ALTER DATABASE that are related to database compatibility levels. |
@@ -325,7 +325,7 @@ ALTER DATABASE
 The current article provides the syntax and related information for changing the name and other settings of a database.
 
 [ALTER DATABASE SET Options](../../t-sql/statements/alter-database-transact-sql-set-options.md?view=azuresqldb-current&preserve-view=true)    
-Provides the syntax and related information for changing the attributes of a database by using the SET options of ALTER DATABASE.
+Provides the syntax and related information for changing the attributes of a database by using the `SET` options of `ALTER DATABASE`.
 
 [ALTER DATABASE Compatibility Level](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md?view=azuresqldb-current&preserve-view=true)   
 Provides the syntax and related information for the SET options of ALTER DATABASE that are related to database compatibility levels.
@@ -796,7 +796,7 @@ The current article provides the syntax and related information for setting file
 | [ALTER DATABASE File and Filegroup Options](../../t-sql/statements/alter-database-transact-sql-file-and-filegroup-options.md?&tabs=sqldbmi)   |
 Provides the syntax and related information for adding and removing files and filegroups from a database, and for changing the attributes of the files and filegroups.  |
 | [ALTER DATABASE SET Options](../../t-sql/statements/alter-database-transact-sql-set-options.md?&tabs=sqldbmi)   |
-Provides the syntax and related information for changing the attributes of a database by using the SET options of ALTER DATABASE.  |
+Provides the syntax and related information for changing the attributes of a database by using the `SET` options of `ALTER DATABASE`.  |
 | [ALTER DATABASE Compatibility Level](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md?&tabs=sqldbmi)   |
 Provides the syntax and related information for the SET options of ALTER DATABASE that are related to database compatibility levels.  |
 
@@ -1390,14 +1390,15 @@ Because of its length, the `ALTER DATABASE` syntax is separated into the multipl
 | Article | Description |
 | --- | --- |
 | `ALTER DATABASE` | The current article provides the syntax and related information for changing the name and the collation of a database. |
-| [ALTER DATABASE SET options](alter-database-transact-sql-set-options.md) | Provides the syntax and related information for changing the attributes of a database by using the SET options of ALTER DATABASE. |
+| [ALTER DATABASE SET options](alter-database-transact-sql-set-options.md) | Provides the syntax and related information for changing the attributes of a database by using the `SET` options of `ALTER DATABASE`. |
 
 ## Remarks
 
-Currently, [pausing Delta Lake log publishing](/fabric/data-warehouse/query-delta-lake-logs#pausing-delta-lake-log-publishing) and [disabling V-Order behavior](/fabric/data-warehouse/disable-v-order) in a warehouse are the only uses for `ALTER DATABASE ... SET` in [!INCLUDE [fabric](../../includes/fabric.md)]. See [ALTER DATABASE SET options](alter-database-transact-sql-set-options.md).
+Currently, the uses for `ALTER DATABASE` in a Fabric warehouse are documented in `ALTER DATABASE ... SET`. See [ALTER DATABASE SET options](alter-database-transact-sql-set-options.md?view=fabric&preserve-view=true).
 
 ## Related content
 
 - [What is data warehousing in Microsoft Fabric?](/fabric/data-warehouse/data-warehousing)
+- [T-SQL surface area in Fabric Data Warehouse](/fabric/data-warehouse/tsql-surface-area)
 
 ::: moniker-end
