@@ -22,7 +22,7 @@ Use the information in this article to build a data source. For step-by-step ins
 
 ## 64-bit drivers for the report servers
 
-On the Oracle download site, install the [Oracle 64-bit ODAC Oracle Universal Installer (OUI)](https://www.oracle.com/database/technologies/dotnet-odacdev-downloads.html). You only need the following steps for Oracle Data Access Components (ODAC) drivers 12.2 and later. Otherwise, they install by default to a non-machine-wide configuration for a new Oracle home installation.
+On the Oracle download site, install the [Oracle 64-bit ODAC Oracle Universal Installer (OUI)](https://www.oracle.com/database/technologies/net-downloads.html). You only need the following steps for Oracle Data Access Components (ODAC) drivers 12.2 and later. Otherwise, they install by default to a non-machine-wide configuration for a new Oracle home installation.
 
 Prerequisite: Install the ODAC 18.x files to the c:\oracle64 folder.
 
@@ -70,7 +70,7 @@ Prerequisite: Install the ODAC 18.x files to the c:\oracle32 folder where Micros
 
 Register Managed ODP.NET:
 
-1. Install the [Oracle "ODAC with Oracle Developer Tools for Visual Studio - OUI" (32-bit)](https://www.oracle.com/database/technologies/dotnet-odacdev-downloads.html) on the Oracle download site.
+1. Install the [Oracle "ODAC with Oracle Developer Tools for Visual Studio - OUI" (32-bit)](https://www.oracle.com/database/technologies/net-downloads.html) on the Oracle download site.
 
 1. Register ODP.NET Managed Client to GAC:
 
@@ -94,7 +94,7 @@ Prerequisite: Install the ODAC 18.x files to the c:\oracle64 folder where Power 
 
 Register Managed ODP.NET:
 
-1. Install the [Oracle 64-bit ODAC Oracle Universal Installer (OUI)](https://www.oracle.com/database/technologies/dotnet-odacdev-downloads.html) on the Oracle download site.
+1. Install the [Oracle 64-bit ODAC Oracle Universal Installer (OUI)](https://www.oracle.com/database/technologies/net-downloads.html) on the Oracle download site.
 
 1. Register ODP.NET Managed Client to GAC:
 
@@ -118,7 +118,7 @@ Register Unmanaged ODP.NET:
 
 ### 64-bit Power BI Desktop
 
-1. Install the [Oracle 64-bit ODAC Oracle Universal Installer (OUI)](https://www.oracle.com/database/technologies/dotnet-odacdev-downloads.html) on the Oracle download site.
+1. Install the [Oracle 64-bit ODAC Oracle Universal Installer (OUI)](https://www.oracle.com/database/technologies/net-downloads.html) on the Oracle download site.
 
 1. Register ODP.NET Unmanaged Client to GAC:
 
@@ -134,7 +134,7 @@ Register Unmanaged ODP.NET:
 
 ### 32-bit Power BI Desktop
 
-1. Install the [Oracle "ODAC with Oracle Developer Tools for Visual Studio - OUI" (32-bit)](https://www.oracle.com/database/technologies/dotnet-odacdev-downloads.html) on the Oracle download site.
+1. Install the [Oracle "ODAC with Oracle Developer Tools for Visual Studio - OUI" (32-bit)](https://www.oracle.com/database/technologies/net-downloads.html) on the Oracle download site.
 
 1. Register ODP.NET Unmanaged Client to GAC:
 
