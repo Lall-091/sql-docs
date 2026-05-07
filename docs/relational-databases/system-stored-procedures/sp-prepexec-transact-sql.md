@@ -72,6 +72,6 @@ EXECUTE sp_unprepare @Out;
 
 ## Related content
 
-- [sp_prepare (Transact SQL)](sp-prepare-transact-sql.md)
+- [sp_prepare (Transact-SQL)](sp-prepare-transact-sql.md)
 - [sp_execute (Transact-SQL)](sp-execute-transact-sql.md)
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)

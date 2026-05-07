@@ -35,9 +35,9 @@ monikerRange: ">=sql-server-2016 <=sql-server-2016"
   
 1.  From the **Provisions and Subscriptions and Alerts** page, type credentials and click **ok**.  
   
-2.  From the Provisions and Subscriptions and Alerts page, click the **Download Script** button to download a transact SQL script that can be used to configure permissions.  
+2.  From the Provisions and Subscriptions and Alerts page, click the **Download Script** button to download a Transact-SQL script that can be used to configure permissions.  
   
-3.  Run a PowerShell cmdlet to build a transact SQL script that can be used to configure permissions.  
+3.  Run a PowerShell cmdlet to build a Transact-SQL script that can be used to configure permissions.  
   
 ### To update permissions using the provision page  
   
@@ -61,7 +61,7 @@ monikerRange: ">=sql-server-2016 <=sql-server-2016"
   
 4.  In the **View Status** area, verify SQL Server Agent is running.  
   
-5.  Click **Download Script** to download a transact SQL script you can run in SQL Server Management studio to grant permissions. The script file name that is created will contain the name of your Reporting Services service application name, for example **[name of the service application]-GrantRights.sql**.  
+5.  Click **Download Script** to download a Transact-SQL script you can run in SQL Server Management studio to grant permissions. The script file name that is created will contain the name of your Reporting Services service application name, for example **[name of the service application]-GrantRights.sql**.  
   
 ### To generate the Transact-SQL statement with PowerShell  
   

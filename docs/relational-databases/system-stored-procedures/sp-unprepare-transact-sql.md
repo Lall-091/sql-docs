@@ -56,4 +56,4 @@ EXECUTE sp_unprepare @P1;
 
 ## Related content
 
-- [sp_prepare (Transact SQL)](sp-prepare-transact-sql.md)
+- [sp_prepare (Transact-SQL)](sp-prepare-transact-sql.md)

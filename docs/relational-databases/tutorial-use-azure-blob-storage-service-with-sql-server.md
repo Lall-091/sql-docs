@@ -112,7 +112,7 @@ To create a policy on the container and generate a Shared Access Signature (SAS)
    $container = Get-AzStorageContainer -Context $storageContext -Name $containerName
    $cbc = $container.CloudBlobContainer
 
-   # Outputs the Transact SQL to the clipboard and to the screen to create the credential using the Shared Access Signature
+   # Outputs the Transact-SQL to the clipboard and to the screen to create the credential using the Shared Access Signature
    Write-Host 'Credential T-SQL'
    $tSql = "CREATE CREDENTIAL [{0}] WITH IDENTITY='SHARED ACCESS SIGNATURE', SECRET='{1}'" -f $cbc.Uri, $sas
    Set-Clipboard -Value $tSql
