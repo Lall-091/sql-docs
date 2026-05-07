@@ -1,149 +1,1011 @@
 ---
-title: Setting the connection properties
+title: Set the Connection Properties
 description: The connection string properties for the Microsoft JDBC Driver for SQL Server can be specified in various ways.
 author: David-Engel
 ms.author: davidengel
-ms.date: 03/13/2026
+ms.reviewer: randolphwest
+ms.date: 05/06/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
 ---
 
-# Setting the connection properties
+# Set the connection properties
 
-[!INCLUDE[Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]
+[!INCLUDE [Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]
 
-The connection string properties can be specified in various ways:
+You can specify the connection string properties in various ways:
 
-- As name=value properties in the connection URL when you connect by using the DriverManager class. For connection string syntax, see [Building the connection URL](building-the-connection-url.md).
-- As name=value properties in the *Properties* parameter of the [Connect method in the DriverManager class](https://javadoc.io/doc/com.microsoft.sqlserver/mssql-jdbc/latest/com.microsoft.sqlserver.jdbc/com/microsoft/sqlserver/jdbc/SQLServerDriver.html#connect(java.lang.String,java.util.Properties)).
+- As `<name>=<value>` properties in the connection URL when you connect by using the DriverManager class. For connection string syntax, see [Building the connection URL](building-the-connection-url.md).
+- As `<name>=<value>` properties in the *Properties* parameter of the [Connect method in the DriverManager class](https://javadoc.io/doc/com.microsoft.sqlserver/mssql-jdbc/latest/com.microsoft.sqlserver.jdbc/com/microsoft/sqlserver/jdbc/SQLServerDriver.html#connect(java.lang.String,java.util.Properties)).
 - As values in the appropriate setter method of the [data source of the driver](https://javadoc.io/doc/com.microsoft.sqlserver/mssql-jdbc/latest/com.microsoft.sqlserver.jdbc/com/microsoft/sqlserver/jdbc/ISQLServerDataSource.html). For example:
 
-    ```java
-    datasource.setServerName(value)
-    datasource.setDatabaseName(value)
-    ```
+  ```java
+  datasource.setServerName(value)
+  datasource.setDatabaseName(value)
+  ```
 
 ## Remarks
 
-Property names are case-insensitive, and duplicate property names are resolved in the following order:
+- Property names are case-insensitive. The driver resolves duplicate property names in the following order:
 
-1. API arguments (such as user and password)
-2. Property collection
-3. Last instance in the connection string
+  1. API arguments, such as `user` and `password`
+  1. Property collection
+  1. Last instance in the connection string
 
-Unknown values are allowed for the property names, and the JDBC driver doesn't validate for case sensitivity.
+- You can use unknown values for property names. The JDBC driver doesn't validate case sensitivity.
 
-Synonyms are allowed and are resolved in order, just as duplicate property names.
+- You can use synonyms. The driver resolves them in order, just as it does with duplicate property names.
+
+- The [!INCLUDE [jdbcNoVersion](../../includes/jdbcnoversion_md.md)] takes the server default values for connection properties except for `ANSI_DEFAULTS` and `IMPLICIT_TRANSACTIONS`. The [!INCLUDE [jdbcNoVersion](../../includes/jdbcnoversion_md.md)] automatically sets `ANSI_DEFAULTS` to `ON` and `IMPLICIT_TRANSACTIONS` to `OFF`.
+
+- If you set authentication to `ActiveDirectoryPassword [DEPRECATED]`, include the following library in the classpath: [microsoft-authentication-library-for-java](https://github.com/AzureAD/microsoft-authentication-library-for-java). Find it on [Maven Repository](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j). The simplest way to download the library and its dependencies is by using Maven:
+
+  1. Install Maven on your system.
+  1. Go to the [GitHub page](https://github.com/Microsoft/mssql-jdbc) of the driver.
+  1. Download the `pom.xml` file.
+  1. Run the following Maven command to download the library and its dependencies: `mvn dependency:copy-dependencies`.
 
 ## Properties
 
-The following table lists all the currently available connection string properties for the JDBC driver.
+The following sections describe all the currently available connection string properties for the JDBC driver.
 
-| :::no-loc text="Property":::<br/>:::no-loc text="Type":::<br/>:::no-loc text="Default"::: | Description |
-| :------------------------------ | :---------- |
-| `accessToken`<br/><br/>`String`<br/><br/>`null` | (Version 6.0+) Use this property to connect to a database using an access token. **accessToken** can't be set using the connection URL. |
-| `accessTokenCallbackClass`<br/><br/>`String`<br/><br/>`null` | (Version 12.4+) The name of the callback-implementing class to be used with access token callback. |
-| `applicationIntent`<br/><br/>`String`<br/><br/>`ReadWrite` | (Version 6.0+) Declares the application workload type to connect to a server. <br/><br/>Possible values are **ReadOnly** and **ReadWrite**. <br/><br/>For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md). |
-| `applicationName`<br/><br/>`String`<br/>`[<=128 char]`<br/><br/>`null` | The application name, or "Microsoft JDBC Driver for SQL Server" if no name is provided.<br/><br/>Used to identify the specific application in various [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] profiling and logging tools. |
-| `authentication`<br/><br/>`String`<br/><br/>`NotSpecified` | (Version 6.0+) This optional property indicates which authentication method to use for connection. Possible values are **ActiveDirectoryIntegrated**, **ActiveDirectoryManagedIdentity** (version 12.2+), **ActiveDirectoryMSI** (version 7.2+), **ActiveDirectoryInteractive** (version 9.2+), **ActiveDirectoryServicePrincipal** (version 9.2+), **ActiveDirectoryPassword [DEPRECATED]**, **SqlPassword**, and the default **NotSpecified**.<br/><br/> Use **ActiveDirectoryIntegrated** (version 6.0+) to connect to SQL using integrated Windows authentication.<br/><br/> Use **ActiveDirectoryManagedIdentity** (version 12.2+) or **ActiveDirectoryMSI** (version 7.2+) to connect to SQL from inside an Azure Resource. For example, an Azure Virtual Machine, App Service or Function App using managed identity authentication. <br><br>The two types of managed identities supported by the driver when using **ActiveDirectoryManagedIdentity** or **ActiveDirectoryMSI** authentication mode are: <br> 1. *System-Assigned Managed Identity*: Used to acquire **accessToken** by default. <br> 2. *User-Assigned Managed Identity*: Used to acquire **accessToken** if the Client ID of a managed identity is specified with the **msiClientId** connection property.<br/><br/>Use **ActiveDirectoryInteractive** to connect to a database using an interactive authentication flow. <br/><br/>Use **ActiveDirectoryServicePrincipal** (version 9.2+) to connect to a database using the client ID and secret of a service principal identity. Specify client ID in the **userName** property and secret in the **password** property (10.2+). <br/><br/>Use **ActiveDirectoryServicePrincipalCertificate** (version 12.4+) to connect to a database using the client ID and certificate of a service principal identity. Specify client ID in the **userName** property and path to the certificate in the **clientCertificate** property. For more options, see [Connect using ActiveDirectoryServicePrincipalCertificate authentication mode](connecting-using-azure-active-directory-authentication.md#connect-using-activedirectoryserviceprincipalcertificate-authentication-mode).<br/><br/> Use **ActiveDirectoryPassword [DEPRECATED]** to connect to SQL using a Microsoft Entra principal name and password.<br/><br/>ActiveDirectoryPassword is deprecated. For more information, see [Connect using ActiveDirectoryPassword authentication mode](connecting-using-azure-active-directory-authentication.md#connect-using-activedirectorypassword-authentication-mode).<br/><br/> Use **SqlPassword** to connect to SQL using **userName**/**user** and **password** properties.<br/><br/> Use **NotSpecified** if none of these authentication methods are needed.<br/><br/> **Important:**  If authentication is set to ActiveDirectoryIntegrated, the following two libraries must be installed: **mssql-jdbc_auth-\<version>-\<arch>.dll** (available in the JDBC driver package) and Microsoft Authentication Library for SQL Server (**ADAL.DLL**). Microsoft Authentication Library can be installed from [Microsoft ODBC Driver for SQL Server](../odbc/download-odbc-driver-for-sql-server.md) or [Microsoft OLE DB Driver for SQL Server](../oledb/download-oledb-driver-for-sql-server.md). The JDBC driver only supports version **1.0.2028.318 and higher** for ADAL.DLL.<br/><br/> **Note:**  When the authentication property is set to any value other than **NotSpecified**, the driver by default uses Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL), encryption.<br/><br/> For information on how to configure Microsoft Entra authentication, see [Use Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-overview). |
-| `authenticationScheme`<br/><br/>`String`<br/><br/>`NativeAuthentication` | Indicates which kind of integrated security you want your application to use. Possible values are **JavaKerberos**, **NTLM** (version 7.4+), and the default **NativeAuthentication**.<br/><br/> **NativeAuthentication** causes the driver to load `mssql-jdbc_auth-<version>-<arch>.dll` (for example, `mssql-jdbc_auth-8.2.2.x64.dll`) on Windows, which is used to obtain integrated authentication information. <br/><br/>  (The native authentication library loaded is named `sqljdbc_auth.dll` when using driver versions 6.0 through 7.4.) <br/><br/> When using **authenticationScheme=JavaKerberos**, you must specify the fully qualified domain name (FQDN) in the **serverName** or **serverSpn** property. Otherwise, an error occurs (Server not found in Kerberos database).<br/><br/> For more information about using **authenticationScheme=JavaKerberos**, see [Using Kerberos integrated authentication to connect to SQL Server](using-kerberos-integrated-authentication-to-connect-to-sql-server.md). <br/><br/> When using **authenticationScheme=NTLM**, you must specify the Windows domain by using the **domain** or **domainName** property, the Windows credentials in the **user** or **userName** property, and the **password** property. Otherwise, an error occurs (connection properties must be specified). |
-| `cacheBulkCopyMetadata`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 12.8+) When using **useBulkCopyForBatchInsert=true**, this property is used to tell the driver whether it should cache destination column metadata at the connection level. If set to `true`, make sure the destination doesn't change between bulk inserts, as the driver doesn't have a way of handling this change. |
-| `calcBigDecimalPrecision`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 12.6+) Flag to indicate whether the driver should calculate precision for BigDecimal inputs, as opposed to using the maximum allowed valued for precision (38). |
-| `cancelQueryTimeout`<br/><br/>`int`<br/><br/>`-1` | (Version 6.4+) This property can be used to cancel a **queryTimeout** set on the connection. Query execution stops responding and doesn't throw an exception if the TCP connection to the server is silently dropped. This property is only applicable if 'queryTimeout' is also set on the connection. <br/><br/>The driver waits the total amount of **cancelQueryTimeout** + **queryTimeout** seconds, to drop the connection and close the channel. <br/><br/>The default value for this property is -1 and behavior is to wait indefinitely. |
-| `clientCertificate`<br/><br/>`String`<br/><br/>`null` | (Version 8.4+) Specifies the location of the certificate to be used for client certificate authentication. The JDBC driver supports PFX, PEM, DER, and CER file extensions. <br/><br/>For details, see [Client Certificate Authentication for Loopback Scenarios](client-certification-authentication-for-loopback-scenarios.md). |
-| `clientKey` <br/><br/>`String`<br/><br/>`null` | (Version 8.4+) Specifies the location of the private key for PEM, DER, and CER certificates specified by the clientCertificate attribute. <br/><br/>For details, see [Client Certificate Authentication for Loopback Scenarios](client-certification-authentication-for-loopback-scenarios.md). |
-| `clientKeyPassword` <br/><br/>`String`<br/><br/>`null` | (Version 8.4+) Specifies the optional password string for accessing the clientKey file's private key. <br/><br/>For details, see [Client Certificate Authentication for Loopback Scenarios](client-certification-authentication-for-loopback-scenarios.md). |
-| `columnEncryptionSetting`<br/><br/>`String`<br/>["`Enabled`" &#124; "`Disabled`"]<br/><br/>`Disabled` | (Version 6.0+) Set to "Enabled" to use the Always Encrypted (AE) feature. When AE is enabled, the JDBC driver transparently encrypts and decrypts sensitive data stored in encrypted database columns on the server.<br/><br/> For more information about Always Encrypted, see [Using Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md).<br/><br/> **Note:**  Always Encrypted is available with SQL Server 2016 or later and Azure SQL Database. |
-| `connectRetryCount`<br/><br/>`int`<br/>`[0..255]`<br/><br/>`1` | (Version 9.4+) The number of reconnection attempts if there's a connection failure. |
-| `connectRetryInterval`<br/><br/>`int`<br/>`[1..60]`<br/><br/>`10` | (Version 9.4+) The number of seconds between each connection retry attempt. |
-| `databaseName`,<br/>`database`<br/><br/>`String`<br/>[`<=128 char`]<br/><br/>`null` | The name of the database to connect to. <br/><br/>If not stated, a connection is made to the default database. |
-| `datetimeParameterType`<br/><br/>`String`<br/>["`datetime`" &#124; "`datetime2`" &#124; "`datetimeoffset`"]<br/><br/>`datetime2` | (Version 12.2+) The SQL data type to use for Java date/timestamp parameters.<br/><br/>When one is connecting to SQL Server 2016 or higher, and interacting with legacy "datetime" values, clients can benefit from setting the property to "datetime". This setting mitigates server-side conversion issues between "datetime" and "datetime2" values. For more information, see [Addressing datetime to datetime2 conversion behavior change starting from SQL Server 2016](https://github.com/microsoft/mssql-jdbc/wiki/Addressing-datetime-to-datetime2-conversion-behavior-change-starting-from-SQL-Server-2016) |
-| `delayLoadingLobs`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`true` | Flag to indicate whether to stream or not stream all the LOB objects being retrieved from the ResultSet. Setting this property to "false" loads the entire LOB object into memory without streaming. |
-| `domainName`,<br/>`domain`<br/><br/>`String`<br/>`null` | (Version 7.4+) The Windows domain to authenticate to when using NTLM authentication. |
-| `disableStatementPooling`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`true` | Flag indicates if statement pooling should be used. |
-| `enablePrepareOnFirst...`<br/>`PreparedStatementCall`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | Set to "true" to enable prepared statement handle creation by calling `sp_prepexec` with the first execution of a prepared statement. <br/><br/>Set to "false" to change the first execution of a prepared statement to call `sp_executesql` and not prepare a statement. If a second execution happens, it calls `sp_prepexec` to set up a prepared statement handle. |
-| `enclaveAttestationUrl`<br/><br/>`String`<br/><br/>`null` | (Version 8.2+) This optional property indicates the attestation service endpoint URL to use for Always Encrypted with secure enclaves.<br/><br/>For more information about Always Encrypted with secure enclaves, see [Always Encrypted with secure enclaves](using-always-encrypted-with-secure-enclaves-with-the-jdbc-driver.md). |
-| `enclaveAttestationProtocol`<br/><br/>`String`<br/><br/>`null` | (Version 8.2+) This optional property indicates the attestation protocol to use for Always Encrypted with secure enclaves. Currently, the only supported values for this field are **HGS**, **AAS**, and **NONE** (**NONE** is only supported in version 11.2+). <br/><br/>For more information about Always Encrypted with secure enclaves, see [Always Encrypted with secure enclaves](using-always-encrypted-with-secure-enclaves-with-the-jdbc-driver.md). |
-| `encrypt`<br/><br/>`String`<br/><br/>`null` | Set to "true" to specify that the SQL Database Engine uses TLS encryption for all the data sent between the client and the server if the server has a certificate installed. The default value is "true" in version 10.2 and later and "false" in 9.4 and earlier.<br/><br/> In version 6.0 and up, there's a new connection setting 'authentication' that uses TLS encryption by default. <br/><br/>For more information about this property, see the 'authentication' property.<br/><br/> In version 11.2.0 and up, **encrypt** was changed from **boolean** to **string**, allowing for TDS 8.0 support when the property is set to **strict**. <br/><br/> The default change in version 10.2 is a breaking change. If you're upgrading from 9.4 or earlier and your server doesn't have a valid TLS certificate, set **trustServerCertificate** to **true** or provide a valid certificate. |
-| `failoverPartner`<br/><br/>`String`<br/><br/>`null` | The name of the failover server used in a database mirroring configuration. This property is used for an initial connection failure to the principal server. After you make the initial connection, this property is ignored. Must be used with the databaseName property.<br/><br/> **Note:** The driver doesn't support the server instance port number for the failover partner instance as part of the failoverPartner property in the connection string. However, the driver does support specifying the serverName, instanceName, and portNumber properties of the principal server instance, and failoverPartner property of the failover partner instance, in the same connection string.<br/><br/> If you specify a Virtual Network Name in the **Server** connection property, you can't use database mirroring. For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md) |
-| `fips`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>"`false`" | For FIPS enabled Java Virtual Machine (JVM) this property should be **true**. |
-| `fipsProvider`<br/><br/>`String`<br/><br/>`null` | FIPS provider configured in JVM. For example, BCFIPS or SunPKCS11-NSS. Removed in version 6.4.0. For more information, see [GitHub issue 460](https://github.com/Microsoft/mssql-jdbc/pull/460). |
-| `gsscredential`<br/><br/>`org.ietf.jgss.GSSCredential`<br/><br/>`null` | (Version 6.2+) User credentials to be used for Kerberos Constrained Delegation can be passed in this property. <br/><br/>This setting should be used with **integratedSecurity** as **true** and **JavaKerberos** as **authenticationScheme**. |
-| `hostNameInCertificate`<br/><br/>`String`<br/><br/>`null` | The host name to be used to validate the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] TLS/SSL certificate.<br/><br/> The **hostNameInCertificate** option can be used to specify the host name in situations where the name, or names, used in the certificate doesn't match the name passed in to the **serverName** property. If there's a match however, the **hostNameInCertificate** option shouldn't be used. <br/><br/> In situations where the **hostNameInCertificate** property is unspecified or set to null, the [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)] uses the **serverName** property value on the connection URL as the host name to validate the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] TLS/SSL certificate.<br/><br/> **Note:** As the prior paragraph describes, it isn't recommended to set the **hostNameInCertificate** option unless you can confirm the name, or names, in the certificate don't match those names passed in the **serverName** option. <br/><br/> **Note:**  This property is used in combination with the **encrypt**/**authentication** properties and the **trustServerCertificate** property. This property affects the certificate validation, if the connection uses TLS encryption and the **trustServerCertificate** is set to "false". Make sure the value passed to **hostNameInCertificate** matches the Common Name (CN) or DNS name in the Subject Alternate Name (SAN) in the server certificate for a TLS connection to succeed. For more information about encryption support, see [Understanding encryption support](understanding-ssl-support.md). |
-| `instanceName`<br/><br/>`String`<br/>`[<=128 char]`<br/><br/>`null` | The database instance name to connect to. When it isn't specified, a connection is made to the default instance. For the case where both the instanceName and port are specified, see the notes for port.<br/><br/> If you specify a Virtual Network Name in the **Server** connection property, you can't use the **instanceName** connection property. For more information about disaster recovery, see [JDBC Driver Support for High Availability, Disaster Recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md). |
-| `integratedSecurity`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | Set to "true" to indicate that Windows credentials are used by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] on Windows operating systems. If "true", the JDBC driver searches the local computer credential cache for credentials that were provided when a user signed in to the computer or network.<br/><br/> Set to "true" (with **authenticationscheme=JavaKerberos**), to indicate that Kerberos credentials are used by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For more information about Kerberos authentication, see [Using Kerberos integrated authentication to connect to SQL Server](using-kerberos-integrated-authentication-to-connect-to-sql-server.md). <br/><br/> Set to "true" (with **authenticationscheme=NTLM**), to indicate that NTLM credentials are used by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. <br/><br/> If "false", the username and password must be supplied. |
-| `ipaddresspreference`<br/><br/>`String`<br/>`[<=128 char]`<br/><br/>`IPv4First` | The IP preference used by the client application.<br/><br/> With **IPV4First**, the driver traverses IPv4 addresses first. If no IPv4 addresses can be connected to successfully, the driver continues and tries IPv6 addresses, if there are any.<br/><br/> With **IPV6First**, the driver traverses IPv6 addresses first. If no IPv6 addresses can be connected to successfully, the driver continues and tries IPv4 addresses, if there are any.<br/><br/> With **UsePlatformDefault**, the driver traverses all IP addresses in their initial orders from DNS resolution. |
-| `jaasConfigurationName`<br/><br/>`String`<br/><br/>`SQLJDBCDriver` | (Version 6.2+) Each connection to SQL Server can use its own JAAS Login Configuration name to establish a Kerberos connection. The name of the configuration entry can be passed through this property. This property is intended for use when [creating a Kerberos configuration file](using-kerberos-integrated-authentication-to-connect-to-sql-server.md#creating-a-kerberos-configuration-file). By default, the driver looks for the name `SQLJDBCDriver`.<br/><br/> If an external configuration isn't found, the driver sets `useDefaultCcache = true` for IBM JVMs, and `useTicketCache = true` for other JVMs. |
-| `keyStoreAuthentication`<br/><br/>`String`<br/><br/>`null` | (Version 6.0+) This property identifies which key store to use with Always Encrypted and determines an authentication mechanism used to authenticate to the key store. The driver supports setting up of the Java Key Store seamlessly when you set "**keyStoreAuthentication=JavaKeyStorePassword**". To use this property, you also must set the **keyStoreLocation** and **keyStoreSecret** properties for the Java Key Store. <br/><br/>For more information about Always Encrypted, see [Using Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md). <br/><br/> Beginning with Microsoft JDBC Driver 8.4, you can set "**keyStoreAuthentication=KeyVaultManagedIdentity**" or "**keyStoreAuthentication=KeyVaultClientSecret**" to authenticate to Azure Key Vault using Managed Identities. <br/><br/> For more information about Always Encrypted, see [Using Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md). |
-| `keyStoreLocation`<br/><br/>`String`<br/><br/>`null` | (Version 6.0+) When **keyStoreAuthentication=JavaKeyStorePassword**, the **keyStoreLocation** property identifies the path to the Java keystore file that stores the Column Master Key to be used with Always Encrypted data. The path must include the keystore filename.<br/><br/>For more information about Always Encrypted, see [Using Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md). |
-| `keyStorePrincipalId`<br/><br/>`String`<br/><br/>`null` | (Version 8.4+) When **keyStoreAuthentication=KeyVaultManagedIdentity**, the **keyStorePrincipalId** property specifies a valid Microsoft Entra application client ID.  <br/><br/>For more information about Always Encrypted, see [Using Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md). |
-| `keyStoreSecret`<br/><br/>`String`<br/><br/>`null` | (Version 6.0+) When **keyStoreAuthentication=JavaKeyStorePassword**, the **keyStoreSecret** property identifies the password to use for the keystore and the key. When one is using the Java Key Store, the keystore and the key password must be the same.<br/><br/>For more information about Always Encrypted, see [Using Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md). |
-| `lastUpdateCount`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`true` | A "true" value only returns the last update count from a SQL statement that is passed to the server. As well, it's used on only single SELECT, INSERT, or DELETE statements to ignore other update counts that are server triggers can cause. Setting this property to "false" causes all update counts to be returned, including this update counts returned by server triggers.<br/><br/> **Note:**  This property only applies when it's used with the [executeUpdate](reference/executeupdate-method-sqlserverstatement.md) methods. All other execute methods return all results and update counts. This property only affects update counts returned by server triggers. It doesn't affect result sets or errors that result as part of trigger execution. |
-| `lockTimeout`<br/><br/>`int`<br/><br/>`-1` | The number of milliseconds to wait before the database reports a lock timeout. The default behavior is to wait indefinitely. If the user hasn't specified a value for this property, this value is the default for all statements on the connection.<br/><br/>Alternatively, **Statement.setQueryTimeout()** can be used to set the query timeout for specific statements. The value can be 0, which specifies no wait. |
-| `loginTimeout`<br/><br/>`int`<br/>`[0..65535]`<br/><br/>`30 (version 11.2 and up)`<br/>`15 (version 10.2 and below)` | The number of seconds the driver should wait before timing out a failed connection. A zero value indicates that the timeout is the default system timeout. This value is either 30 seconds (the default in version 11.2 and above) or 15 seconds (the default in version 10.2 and below). A nonzero value is the number of seconds the driver should wait before timing out a failed connection.<br/><br/> If you specify a Virtual Network Name in the **Server** connection property, you should specify a timeout value of three minutes or more to allow sufficient time for a failover connection to succeed. For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md). |
-| `maxResultBuffer`<br/><br/>`String`<br/><br/>`null` | (Version 9.2+) **maxResultBuffer** can be used to set the maximum bytes to read when reading a result set. If not specified, then the entire result set is read. Size can be specified in two styles:<br>1. as size of bytes (for example, `100`, `150M`, `300K`, `400G`)<br>2. as a percent of maximum heap memory (for example, `10p`, `15pct`, `20percent`).|
-| `msiClientId`<br/><br/>`String`<br/><br/>`null` | (Deprecated) (Version 7.2+) The Client ID of the Managed Identity (MSI) used to acquire an **accessToken** to establish a connection with the **ActiveDirectoryManagedIdentity** or **ActiveDirectoryMSI** authentication mode.|
-| `multiSubnetFailover`<br/><br/>`Boolean`<br/><br/>`false` | Always specify **multiSubnetFailover=true** to connect to the availability group listener of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] availability group or an [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Failover Cluster Instance. **multiSubnetFailover=true** configures the driver to provide faster detection of and connection to the (currently) active server. Possible values are true and false. For more information about disaster recovery, see [JDBC Driver Support for High Availability, Disaster Recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md).<br/><br/> You can programmatically access the **multiSubnetFailover** connection property with [getPropertyInfo](reference/getpropertyinfo-method-sqlserverdriver.md), [getMultiSubnetFailover](reference/getmultisubnetfailover-method-sqlserverdatasource.md), and [setMultiSubnetFailover](reference/setmultisubnetfailover-method-sqlserverdatasource.md).<br/><br/> **Note:**  Beginning with Microsoft JDBC Driver 6.0 for SQL Server, it's no longer required to set **multiSubnetFailover** to "true" to connect to an availability group listener. A new property, **transparentNetworkIPResolution**, which is enabled by default, provides the detection of and connection to the (currently) active server. |
-| `packetSize`<br/><br/>`int`<br/>[`-1` &#124; `0` &#124; `512..32767`]<br/><br/>`8000` | The network packet size used to communicate with the server, specified in bytes. A value of -1 indicates to use the server's default packet size. A value of 0 indicates to use the maximum value of 32767. If this property is set to a value outside the acceptable range, an exception occurs.<br/><br/> **Important:**  Using the packetSize property when the encryption is enabled (encrypt=true) isn't recommended. Otherwise, the driver might raise a connection error. For more information about this property, see the [setPacketSize](reference/setpacketsize-method-sqlserverdatasource.md) method of the [SQLServerDataSource](reference/sqlserverdatasource-class.md) class. |
-| `password`<br/><br/>`String`<br/>`[<=128 char]`<br/><br/>`null` | The database password, if connection with SQL user and password.<br/>For Kerberos connection with principal name and password, this property is set to the Kerberos Principal password. <br/><br/>(Version 10.2+) When **authentication=ActiveDirectoryServicePrincipal**, the **password** property identifies the password to use for the Active Directory principal.|
-| `portNumber`,<br/>`port`<br/><br/>`int`<br/>`[0..65535]`<br/><br/>`1433` | The port where the server is listening. If the port number is specified in the connection string, no request to SQLbrowser is made. When the port and instanceName are both specified, the connection is made to the specified port. However, the **instanceName** is validated and an error is thrown if it doesn't match the port.<br/><br/> **Important:** We recommend that the port number is always specified, as it's more secure than using SQLbrowser. |
-| `prepareMethod`<br/><br/>`String`<br/>["`prepexec`" &#124; "`prepare`" &#124; "`scopeTempTablesToConnection`" &#124; "`none`"]<br/><br/>`prepexec` | (Version 11.2.0+) Specifies the underlying prepare method to be used by the driver with prepared statements.<br/><br/> Set to **prepare** to use `sp_prepare` as the prepare method. Setting `prepareMethod` to this value results in a separate, initial trip to the database to prepare the statement without any initial values for the database to consider in the execution plan. Set to **prepexec** to use `sp_prepexec` as the prepare method. This method combines the prepare action with the first execute, reducing round trips. It also provides the database with initial parameter values that the database can consider in the execution plan. <br/><br/> (Version 13.4.0+) Set to **scopeTempTablesToConnection** to scope temporary tables created in prepared statements to the connection by using literal parameter substitution instead of server-side prepared handles. Set to **none** to enforce literal parameter substitution with SQL batch execution, bypassing server-side prepared statement handles (`sp_prepexec` / `sp_prepare`). <br/><br/> **Limitations and disclaimers for scopeTempTablesToConnection and none:**<br/>These `prepareMethod` options are intended for compatibility and migration scenarios, not for general performance use.<br/>&bull; &nbsp; No server-side prepared statements; SQL is always executed as a batch.<br/>&bull; &nbsp; Requires `FORCED_PARAMETERIZATION` for effective plan reuse.<br/>&bull; &nbsp; Parameters are inlined as literals rather than bound types.<br/>&bull; &nbsp; Numeric precision and scale might differ from server-side parameter binding.<br/>&bull; &nbsp; Date and time values are formatted as strings by the driver.<br/>&bull; &nbsp; Large string parameters increase SQL text size and memory usage.<br/>&bull; &nbsp; BLOB and CLOB parameters can cause high memory usage or out-of-memory conditions.<br/>&bull; &nbsp; SQL Server infers parameter data types at SQL parse time.<br/>&bull; &nbsp; Query plans might vary due to differences in literal values.<br/>&bull; &nbsp; Errors are detected at execution time rather than at bind time.<br/>&bull; &nbsp; Executed SQL includes literal values and is visible in server traces and logs. |
-| `queryTimeout`<br/><br/>`int`<br/><br/>`-1` | The number of seconds to wait before a timeout happens on a query. The default value is -1, which means infinite timeout. Set this value to 0 also implies to wait indefinitely. |
-| `realm`<br/><br/>`String`<br/><br/>`null` | (Version 9.4+) The realm for Kerberos authentication. Set this value to override the Kerberos authentication realm the driver autodetects from the server's realm. |
-| `replication`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 9.4+) This setting tells the server if the connection is used for replication. When enabled, triggers with the `NOT FOR REPLICATION` option don't fire on the connection. |
-| `responseBuffering`<br/><br/>`String`<br/>["`full`" &#124; "`adaptive`"]<br/><br/>`adaptive` | If this property is set to "adaptive", the minimum possible data is buffered when necessary. The default mode is "adaptive."<br/><br/> If this property is set to "full", the entire result set is read from the server when a statement is executed.<br/><br/> **Note:** After JDBC driver version 1.2, the default buffering behavior is "adaptive." If you want to keep the version 1.2 default behavior in your application, set the responseBuffering property to "full" either in the connection properties, or use the [setResponseBuffering](reference/setresponsebuffering-method-sqlserverstatement.md) method of the [SQLServerStatement](reference/sqlserverstatement-class.md) object. |
-| `selectMethod`<br/><br/>`String`<br/>["`direct`" &#124; "`cursor`"]<br/><br/>`direct` | If this property is set to "cursor," a database cursor is created for each query created on the connection for **TYPE_FORWARD_ONLY** and **CONCUR_READ_ONLY** cursors. This property is typically required only if the application generates large result sets that can't be fully contained in client memory. If this property is set to "cursor," only a limited number of result set rows are kept in client memory. <br/><br/>The default behavior is that all result set rows are kept in client memory. This behavior provides the fastest performance when the application is processing all rows. |
-| `sendStringParameters...`<br/>`AsUnicode`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`true` | If the **sendStringParametersAsUnicode** property is set to "true", String parameters are sent to the server in Unicode format.<br/><br/> If the **sendStringParametersAsUnicode** property is set to "false", String parameters are sent to the server in non-Unicode format such as ASCII/MBCS instead of Unicode.<br/><br/> The default value for the **sendStringParametersAsUnicode** property is "true".<br/><br/> **Note:** The **sendStringParametersAsUnicode** property is only checked to send a parameter value with **CHAR**, **VARCHAR**, or **LONGVARCHAR** JDBC types. The new JDBC 4.0 national character methods include methods such as setNString, setNCharacterStream, and setNClob of the [SQLServerPreparedStatement](reference/sqlserverpreparedstatement-class.md) and [SQLServerCallableStatement](reference/sqlservercallablestatement-class.md) classes. These methods always send their parameter values to the server in Unicode regardless of the setting of this property.<br/><br/> For optimal performance with the **CHAR**, **VARCHAR**, and **LONGVARCHAR** JDBC data types, an application should set the **sendStringParametersAsUnicode** property to "false" and use the setString, setCharacterStream, and setClob non-national character methods of the [SQLServerPreparedStatement](reference/sqlserverpreparedstatement-class.md) and [SQLServerCallableStatement](reference/sqlservercallablestatement-class.md) classes.<br/><br/> When the application sets the **sendStringParametersAsUnicode** property to "false" and uses a non-national character method to access Unicode data types on the server side (such as **nchar**, **nvarchar** and **ntext**), some data might be lost if the database collation doesn't support the characters in the String parameters passed by the non-national character method.<br/><br/> An application should use the setNString, setNCharacterStream, and setNClob national character methods of the [SQLServerPreparedStatement](reference/sqlserverpreparedstatement-class.md) and [SQLServerCallableStatement](reference/sqlservercallablestatement-class.md) classes for the **NCHAR**, **NVARCHAR**, and **LONGNVARCHAR** JDBC data types.<br/><br/>  Changing this value can affect sorting of results from the database. The sorting differences are due to different sorting rules for Unicode versus non-Unicode characters. |
-| `sendTemporalDataTypes...`<br/>`AsStringForBulkCopy`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`true` | (Version 8.4+) This connection property, when set to "false", sends **DATE**, **DATETIME**, **DATIMETIME2**, **DATETIMEOFFSET**, **SMALLDATETIME**, and **TIME** datatypes as their respective types instead of sending them as String.<br/><br/>With this connection property set to "false", the driver accepts the default string literal format of each temporal datatype, for example:<br/><br/>DATE: `YYYY-MM-DD`<br/>DATETIME: `YYYY-MM-DD hh:mm:ss[.nnn]`<br/>DATETIME2: `YYYY-MM-DD hh:mm:ss[.nnnnnnn]`<br/>DATETIMEOFFSET: `YYYY-MM-DD hh:mm:ss[.nnnnnnn] [{+/-}hh:mm]`<br/>SMALLDATETIME: `YYYY-MM-DD hh:mm:ss`<br/>TIME: `hh:mm:ss[.nnnnnnn]`<br/> |
-| `sendTimeAsDatetime`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`true` | This property was added in SQL Server JDBC Driver 3.0.<br/><br/> Set to "true" to send java.sql.Time values to the server as [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] **datetime** values. <br/>Set to "false" to send java.sql.Time values to the server as [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] **time** values.<br/><br/> The default value for this property is currently "true" and might change in a future release.<br/><br/> For more information about how the [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)] configures java.sql.Time values before it sends them to the server, see [Configuring How java.sql.Time Values are Sent to the Server](configuring-how-java-sql-time-values-are-sent-to-the-server.md). |
-| `serverCertificate`,<br/>`server`<br/><br/>`String`<br/><br/>`null` | (Version 11.2.0+) The path to the server certificate file. Used for validation when using **encrypt** set to **strict**. The driver supports certificate files using the PEM file format. |
-| `serverName`,<br/>`server`<br/><br/>`String`<br/><br/>`null` | The computer running [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] or an Azure SQL database.<br/><br/> You can also specify the Virtual Network Name of an availability group. For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md). |
-| `serverNameAsACE`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 6.0+) Set to "true" to indicate that the driver should translate the Unicode server name to ASCII compatible encoding (Punycode) for the connection. If this setting is false, the driver uses the server name as provided to connect.<br/><br/> For more information about international features, see [International features of the JDBC driver](international-features-of-the-jdbc-driver.md). |
-| `serverPreparedStatement...`<br/>`DiscardThreshold`<br/><br/>`Integer`<br/><br/>`10` | (Version 6.2+) This property can be used to control how many outstanding prepared statement discard actions (`sp_unprepare`) can be outstanding per connection before a call to clean up the outstanding handles on the server is executed. <br/><br/> If this property is set to `<= 1`, unprepare actions are executed immediately on prepared statement close. If the property is set to `> 1`, these calls are batched together to avoid overhead of calling `sp_unprepare` too often. |
-| `serverSpn`<br/><br/>`String`<br/><br/>`null` | (Version 4.2+) This optional property can be used to specify the Service Principal Name (SPN) for a Java Kerberos connection. It's used with **authenticationScheme**.<br/><br/> To specify the SPN, it can be in the form of: "MSSQLSvc/fqdn:port@REALM" where fqdn is the fully qualified domain name, port is the port number, and REALM is the Kerberos realm of the SQL Server in upper-case letters.<br/><br/> Note: the @REALM is optional if the default realm of the client (as specified in the Kerberos configuration) is the same as the Kerberos realm for the SQL Server.<br/><br/> For more information about using **serverSpn** with Java Kerberos, see [Using Kerberos integrated authentication to connect to SQL Server](using-kerberos-integrated-authentication-to-connect-to-sql-server.md). |
-| `socketFactoryClass`<br/><br/>`String`<br/><br/>`null` | (Version 8.4+) Specifies the class name for a custom socket factory to be used instead of the default socket factory. |
-| `socketTimeout`<br/><br/>`int`<br/><br/>`0` | The number of milliseconds to wait before a timeout is occurred on a socket read or accept. The default value is 0, which means infinite timeout. |
-| `statementPooling...`<br/>`CacheSize`<br/><br/>`int`<br/><br/>`0` | (Version 6.4+) This property can be used to enable prepared statement handle caching in the driver. <br/><br/>This property defines the size of the cache for statement pooling. <br/><br/>This property can only be used with the **disableStatementPooling** connection property, which should be set to "false". Setting **disableStatementPooling** to "true" or **statementPoolingCacheSize** to 0 disables prepared statement handle caching.|
-| `sslProtocol`<br/><br/>`String`<br/><br/>`TLS` | (Version 6.4+) This property can be used to specify the TLS protocol to be considered during secure connection. <br/>Possible values are: **TLS**, **TLSv1**, **TLSv1.1**, and **TLSv1.2**. <br/><br/>For more information about the Secure Sockets Layer protocol, see [SSLProtocol](https://github.com/Microsoft/mssql-jdbc/wiki/SSLProtocol). |
-| `transparentNetwork...`<br/>`IPResolution`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`true` | (Version 6.0+) This property provides faster detection of and connection to the (currently) active server. Possible values are "true" and "false" where "true" is the default value.<br/><br/> Before Microsoft JDBC Driver 6.0 for SQL Server, an application had to set the connection string to include "multiSubnetFailover=true" to indicate that it was connecting to an Always On Availability Group. Without setting the **multiSubnetFailover** connection keyword to "true", an application might experience a timeout while connecting to an Always On Availability Group. With version 6.0 and up, an application isn't required to set multiSubnetFailover to true anymore. <br/><br/>**Note:** In the case when federated authentication is used, or if multisubnetfailover is specified, transparentNetworkIPResolution is disabled by default so one must explicitly set **transparentNetworkIPResolution** to "true" to enable this feature. <br/><br/>**Note:** When transparentNetworkIPResolution=true, the first connection attempt uses 500 ms as the timeout. Any later attempts use the same timeout logic as used by the multiSubnetFailover property. |
-| `trustManagerClass`<br/><br/>`String`<br/><br/>`null` | (Version 6.4+) The fully qualified class name of a custom `javax.net.ssl.TrustManager` implementation. |
-| `trustManager...`<br/>`ConstructorArg`<br/><br/>`String`<br/><br/>`null` | (Version 6.4+) An optional argument to pass to the constructor of the TrustManager. If the `trustManagerClass` property is specified and an encrypted connection is requested, the custom TrustManager is used instead of the default system JVM keystore-based TrustManager. |
-| `trustServerCertificate`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | Set to "true" to specify that the driver doesn't validate the server TLS/SSL certificate.<br/><br/> If "true", the server TLS/SSL certificate is automatically trusted when the communication layer is encrypted using TLS.<br/><br/> If "false", the driver validates the server TLS/SSL certificate. If the server certificate validation fails, the driver raises an error and closes the connection. The default value is "false". Make sure the value passed to **serverName** exactly matches the Common Name (CN) or DNS name in the Subject Alternate Name in the server certificate for a TLS/SSL connection to succeed. For more information about encryption support, see [Understanding encryption support](understanding-ssl-support.md).<br/><br/> **Note:** This property is used in combination with the **encrypt**/**authentication** properties. This property only affects server TLS/SSL certificate validation if the connection uses TLS encryption. |
-| `trustStore`<br/><br/>`String`<br/><br/>`null` | The path (including filename) to the certificate trustStore file. The trustStore file contains the list of certificates that the client trusts.<br/><br/> When this property is unspecified or set to null, the driver relies on the trust manager factory's lookup rules to determine which certificate store to use.<br/><br/> **The default SunX509 TrustManagerFactory tries to locate the trusted material in the following search order:**<br/><br/> A file specified by the "javax.net.ssl.trustStore" JVM system property.<br/><br/> `<java-home>/lib/security/jssecacerts` file.<br/><br/> `<java-home>/lib/security/cacerts` file.<br/><br/> <br/><br/> For more information about the SUNX509 TrustManager Interface, see the SUNX509 TrustManager Interface documentation on the Sun Microsystems Web site.<br/><br/> **Note:** This property only affects the certificate trustStore lookup, if the connection uses TLS encryption and the **trustServerCertificate** property is set to "false". |
-| `trustStorePassword`<br/><br/>`String`<br/><br/>`null` | The password used to check the integrity of the trustStore data.<br/><br/> If the trustStore property is set but the trustStorePassword property isn't set, the integrity of the trustStore isn't checked.<br/><br/> When both trustStore and trustStorePassword properties are unspecified, the driver uses the JVM system properties, "javax.net.ssl.trustStore" and "javax.net.ssl.trustStorePassword". If the "javax.net.ssl.trustStorePassword" system property isn't specified, the integrity of the trustStore isn't checked.<br/><br/> If the user doesn't set the trustStore property but they do set the trustStorePassword property, the JDBC driver uses the file that the "javax.net.ssl.trustStore" specifies as a trust store. Furthermore, the driver checks the integrity of the trust store by using the specified trustStorePassword. This setting is needed when the client application doesn't want to store the password in the JVM system property.<br/><br/> **Note:**  The trustStorePassword property only affects the certificate trustStore lookup, if the connection uses TLS connection and the **trustServerCertificate** property is set to "false". |
-| `trustStoreType`<br/><br/>`String`<br/><br/>`JKS` | Set this property to specify trust store type to be used for FIPS mode. <br/><br/>Possible values are either **PKCS12** or type defined by FIPS provider. |
-| `useBulkCopyFor...`<br/>`BatchInsert`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 9.2+) This connection property can be enabled to transparently use the Bulk Copy API when doing batch insert operations using `java.sql.PreparedStatement`. This feature potentially provides higher performance when enabled. <br/><br/>This feature is disabled by default. Set this property to "true" to enable this feature. <br/></br> **Important Note:** This feature only supports fully parameterized INSERT queries. If the INSERT queries are combined with other SQL queries, or contain data in values, execution falls back to the basic batch insert operation. <br/><br/> For more information about how to use this property, see [Using bulk copy API for batch insert operation](use-bulk-copy-api-batch-insert-operation.md)|
-| `useDefaultGSSCredential`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 12.6+) Flag to indicate whether the driver should create the GSSCredential on behalf of the user for using Native GSS-API for Kerberos authentication. |
-| `bulkCopyForBatchInsertBatchSize`<br/><br/>`int`<br/><br/>`0` | (Version 12.10+) When using useBulkCopyForBatchInsert=true, this property specifies the batch size for bulk copy operations created from batch insert operations. For more information about the effects of this setting, see the `BatchSize` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions). |
-| `bulkCopyForBatchInsertCheckConstraints`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 12.10+) When using useBulkCopyForBatchInsert=true, setting this option to true enables check constraints while inserting data. Setting this option to false disables check constraints. For more information about the effects of this setting, see the `CheckConstraints` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions). |
-| `bulkCopyForBatchInsertFireTriggers`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 12.10+) When using useBulkCopyForBatchInsert=true, setting this option to true enables the firing of insert triggers while inserting rows into the database. Setting this option to false disables insert triggers. For more information about the effects of this setting, see the `FireTriggers` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions). |
-| `bulkCopyForBatchInsertKeepIdentity`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` |(Version 12.10+) When using useBulkCopyForBatchInsert=true, setting this option to true preserves source identity values while inserting data. Setting the option to false means identity values can be assigned by the destination. For more information about the effects of this setting, see the `KeepIdentity` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions). |
-| `bulkCopyForBatchInsertKeepNulls`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 12.10+) When using useBulkCopyForBatchInsert=true, setting this option to true preserves null values in the destination table regardless of default value settings. Setting this option to false allows destination defaults to replace null values. For more information about the effects of this setting, see the `KeepNulls` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions). |
-| `bulkCopyForBatchInsertTableLock`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 12.10+) When using useBulkCopyForBatchInsert=true, setting this option to true obtains a bulk update lock during the bulk copy operation. Setting this option to false uses row locks. For more information about the effects of this setting, see the `TableLock` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions). |
-| `bulkCopyForBatchInsertAllowEncryptedValueModifications`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 12.10+) When using useBulkCopyForBatchInsert=true, setting this option to true enables bulk copying of encrypted data between tables or databases, without decrypting the data. For more information and warnings about using this property, see the `allowEncryptedValueModifications` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions). |
-| `useDefaultJaasConfig`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | (Version 12.6+) When the application exists alongside libraries that configure JAAS at the system level, setting this property to true allows the driver to use that same configuration to perform Kerberos authentication. |
-| `useFmtOnly`<br /><br />`boolean`<br />["`true`" &#124; "`false`"]<br /><br />`false` | (Version 7.4+) Provides an alternative way to query Parameter Metadata from the server. Set this property to "true" to specify that the driver should use `SET FMTONLY` logic when querying Parameter Metadata. This feature is off by default, and it isn't recommended to use this property as `SET FMTONLY` is marked for deprecation. **useFmtOnly** is made available to use only as a workaround for known issues and limitations in [`sp_describe_undeclared_parameters`](../../relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql.md).<br/><br/> This feature currently only supports single `SELECT/INSERT/UPDATE/DELETE` queries. Attempting to use this feature with unsupported/multiple queries causes the driver to attempt to parse the query, but will most likely result in an exception.<br/><br/> For more information about this property, see [Retrieving ParameterMetaData via useFmtOnly](using-usefmtonly.md). |
-| `userName`,<br/>`user`<br/><br/>`String`<br/>`[<=128 char]`<br/><br/>`null` | The database user, if connection with SQL user and password.<br/><br/>For Kerberos connection with principal name and password, this property is set to Kerberos Principal name.<br/><br/>(Version 10.2+) When **authentication=ActiveDirectoryServicePrincipal**, the **userName** property specifies a valid Microsoft Entra secure client ID.  |
-| `workstationID`<br/><br/>`String`<br/>`[<=128 char]`<br/><br/>`<empty string>` | The workstation ID. Used to identify the specific workstation in various profiling and logging tools. <br/><br/>If none is specified, the `<empty string>` is used. |
-| `xopenStates`<br/><br/>`boolean`<br/>["`true`" &#124; "`false`"]<br/><br/>`false` | Set to "true" to specify that the driver returns XOPEN-compliant state codes in exceptions. <br/><br/>The default is to return SQL 99 state codes. |
-| `vectorTypeSupport`<br/><br/>`String`<br/>["`v2`" &#124; "`v1`" &#124; "`off`"]<br/><br/>`v1` | (Version 13.2+) Set to "off" to specify that server sends vector types as string data in JSON format and "v1" to specify that server sends vector types of FLOAT32 as vector data. The default value is `v1`. <br/><br/>(Version 13.4+) Set to **v2** to enable native vector type support for both FLOAT32 and FLOAT16 vectors. FLOAT16 vectors use IEEE-754 half-precision serialization on the wire and are exposed as `Float[]` arrays in Java.<br/><br/>For more information, see [Use vector data type with the JDBC driver](use-vector-data-type.md). |
-| `QUOTED_IDENTIFIER`<br/><br/>`string`<br/>["`ON`" &#124; "`OFF`"]<br/><br/>`ON` | (Version 13.2+) When set to "OFF", the driver sets the database session variable QUOTED_IDENTIFIER to OFF when establishing the connection. The result is the database treats double quotation marks as string delimiters for character literals, and identifiers can't be enclosed in double quotes. For more information, see [SET QUOTED_IDENTIFIER (Transact-SQL)](../../t-sql/statements/set-quoted-identifier-transact-sql.md).<br/><br/>The default is "ON". |
-| `CONCAT_NULL_YIELDS_NULL`<br/><br/>`string`<br/>["`ON`" &#124; "`OFF`"]<br/><br/>`ON` | (Version 13.2+) When set to "OFF", the driver sets the database session variable CONCAT_NULL_YIELDS_NULL to OFF when establishing the connection. The result is that concatenating a null value with a string yields the string itself (the null value is treated as an empty string). For more information, see [SET CONCAT_NULL_YIELDS_NULL (Transact-SQL)](../../t-sql/statements/set-concat-null-yields-null-transact-sql.md).<br/><br/>The default is "ON". |
+### accessToken
 
-> [!NOTE]
-> The [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)] takes the server default values for connection properties except for ANSI_DEFAULTS and IMPLICIT_TRANSACTIONS. The [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)] automatically sets ANSI_DEFAULTS to ON and IMPLICIT_TRANSACTIONS to OFF.
+- **Type**: `String`
+- **Default**: `null`
 
-> [!IMPORTANT]
-> If authentication is set to ActiveDirectoryPassword [DEPRECATED], the following library needs to be included in the classpath: [microsoft-authentication-library-for-java](https://github.com/AzureAD/microsoft-authentication-library-for-java). It can be found on [Maven Repository](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j). The simplest way to download the library and its dependencies is by using Maven:
+(Version 6.0+) Use this property to connect to a database using an access token. You can't set `accessToken` by using the connection URL.
 
->
-> 1. Install Maven on your system
-> 2. Go to the [GitHub page](https://github.com/Microsoft/mssql-jdbc) of the driver
-> 3. Download the pom.xml file
-> 4. Run the following Maven command to download the library and its dependencies: `mvn dependency:copy-dependencies`
+### accessTokenCallbackClass
 
-## See also
+- **Type**: `String`
+- **Default**: `null`
 
-[Connecting to SQL Server with the JDBC driver](connecting-to-sql-server-with-the-jdbc-driver.md)  
-[FIPS mode](fips-mode.md)
+(Version 12.4+) The name of the callback-implementing class to use with the access token callback.
+
+### applicationIntent
+
+- **Type**: `String`
+- **Default**: `ReadWrite`
+
+(Version 6.0+) Declares the application workload type to connect to a server.
+
+Possible values are `ReadOnly` and `ReadWrite`.
+
+For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md).
+
+### applicationName
+
+- **Type**: `String` [`<=128 char`]
+- **Default**: `null`
+
+The application name, or "Microsoft JDBC Driver for SQL Server" if you don't provide a name.
+
+Use this name to identify the specific application in various [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] profiling and logging tools.
+
+### authentication
+
+- **Type**: `String`
+- **Default**: `NotSpecified`
+
+(Version 6.0+) This optional property indicates which authentication method to use for connection.
+
+Possible values are `ActiveDirectoryIntegrated`, `ActiveDirectoryManagedIdentity` (version 12.2+), `ActiveDirectoryMSI` (version 7.2+), `ActiveDirectoryInteractive` (version 9.2+), `ActiveDirectoryServicePrincipal` (version 9.2+), `ActiveDirectoryPassword [DEPRECATED]`, `SqlPassword`, and the default `NotSpecified`.
+
+Use `ActiveDirectoryIntegrated` (version 6.0+) to connect to SQL using integrated Windows authentication.
+
+Use `ActiveDirectoryManagedIdentity` (version 12.2+) or `ActiveDirectoryMSI` (version 7.2+) to connect to SQL from inside an Azure Resource. For example, an Azure Virtual Machine, App Service, or Function App using managed identity authentication.
+
+The two types of managed identities supported by the driver when using `ActiveDirectoryManagedIdentity` or `ActiveDirectoryMSI` authentication mode are:
+
+- *System-Assigned Managed Identity*: Used to acquire `accessToken` by default.
+
+- *User-Assigned Managed Identity*: Used to acquire `accessToken` if the Client ID of a managed identity is specified with the `msiClientId` connection property.
+
+Use `ActiveDirectoryInteractive` to connect to a database using an interactive authentication flow.
+
+Use `ActiveDirectoryServicePrincipal` (version 9.2+) to connect to a database using the client ID and secret of a service principal identity. Specify client ID in the `userName` property and secret in the `password` property (10.2+).
+
+Use `ActiveDirectoryServicePrincipalCertificate` (version 12.4+) to connect to a database using the client ID and certificate of a service principal identity. Specify client ID in the `userName` property and path to the certificate in the `clientCertificate` property.
+
+For more options, see [Connect using ActiveDirectoryServicePrincipalCertificate authentication mode](connecting-using-azure-active-directory-authentication.md#connect-using-activedirectoryserviceprincipalcertificate-authentication-mode).
+
+Use `ActiveDirectoryPassword [DEPRECATED]` to connect to SQL using a Microsoft Entra principal name and password.
+
+ActiveDirectoryPassword is deprecated.
+
+For more information, see [Connect using ActiveDirectoryPassword authentication mode](connecting-using-azure-active-directory-authentication.md#connect-using-activedirectorypassword-authentication-mode).
+
+Use `SqlPassword` to connect to SQL using `userName`/`user` and `password` properties.
+
+Use `NotSpecified` if none of these authentication methods are needed.
+
+> [!IMPORTANT]  
+> If authentication is set to ActiveDirectoryIntegrated, the following two libraries must be installed: `mssql-jdbc_auth-<version>-<arch>.dll` (available in the JDBC driver package) and Microsoft Authentication Library for SQL Server (`ADAL.DLL`). Microsoft Authentication Library can be installed from [Download ODBC Driver for SQL Server](../odbc/download-odbc-driver-for-sql-server.md) or [Download Microsoft OLE DB Driver for SQL Server](../oledb/download-oledb-driver-for-sql-server.md). The JDBC driver only supports version **1.0.2028.318 and higher** for ADAL.DLL.
+
+When you set the authentication property to any value other than `NotSpecified`, the driver uses Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL), encryption by default.
+
+For information on how to configure Microsoft Entra authentication, see [Microsoft Entra authentication for Azure SQL](/azure/azure-sql/database/authentication-aad-overview).
+
+### authenticationScheme
+
+- **Type**: `String`
+- **Default**: `NativeAuthentication`
+
+Indicates which kind of integrated security you want your application to use.
+
+Possible values are `JavaKerberos`, `NTLM` (version 7.4+), and the default `NativeAuthentication`.
+
+`NativeAuthentication` causes the driver to load `mssql-jdbc_auth-<version>-<arch>.dll` (for example, `mssql-jdbc_auth-8.2.2.x64.dll`) on Windows, which is used to obtain integrated authentication information.
+
+(The native authentication library loaded is named `sqljdbc_auth.dll` when using driver versions 6.0 through 7.4.)
+
+When using `authenticationScheme=JavaKerberos`, you must specify the fully qualified domain name (FQDN) in the `serverName` or `serverSpn` property. Otherwise, an error occurs (Server not found in Kerberos database).
+
+For more information about using `authenticationScheme=JavaKerberos`, see [Using Kerberos integrated authentication to connect to SQL Server](using-kerberos-integrated-authentication-to-connect-to-sql-server.md).
+
+When using `authenticationScheme=NTLM`, you must specify the Windows domain by using the `domain` or `domainName` property, the Windows credentials in the `user` or `userName` property, and the `password` property. Otherwise, an error occurs (connection properties must be specified).
+
+### bulkCopyForBatchInsertAllowEncryptedValueModifications
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.10+) When you set `useBulkCopyForBatchInsert` to `true`, set this option to `true` to enable bulk copying of encrypted data between tables or databases, without decrypting the data.
+
+For more information and warnings about using this property, see the `allowEncryptedValueModifications` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions).
+
+### bulkCopyForBatchInsertBatchSize
+
+- **Type**: `int`
+- **Default**: `0`
+
+(Version 12.10+) When you set `useBulkCopyForBatchInsert` to `true`, this property specifies the batch size for bulk copy operations that the driver creates from batch insert operations.
+
+For more information about the effects of this setting, see the `BatchSize` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions).
+
+### bulkCopyForBatchInsertCheckConstraints
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.10+) When you use `useBulkCopyForBatchInsert=true`, set this option to `true` to enable check constraints while inserting data. Set this option to `false` to disable check constraints.
+
+For more information about the effects of this setting, see the `CheckConstraints` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions).
+
+### bulkCopyForBatchInsertFireTriggers
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.10+) When you use `useBulkCopyForBatchInsert=true`, set this option to `true` to enable the firing of insert triggers while inserting rows into the database. Set this option to `false` to disable insert triggers.
+
+For more information about the effects of this setting, see the `FireTriggers` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions).
+
+### bulkCopyForBatchInsertKeepIdentity
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.10+) When you use `useBulkCopyForBatchInsert=true`, set this option to `true` to preserve source identity values while inserting data. Set the option to `false` to assign identity values by the destination.
+
+For more information about the effects of this setting, see the `KeepIdentity` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions).
+
+### bulkCopyForBatchInsertKeepNulls
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.10+) When you use `useBulkCopyForBatchInsert=true`, set this option to `true` to preserve null values in the destination table regardless of default value settings. Set this option to `false` to allow destination defaults to replace null values.
+
+For more information about the effects of this setting, see the `KeepNulls` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions).
+
+### bulkCopyForBatchInsertTableLock
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.10+) When you set `useBulkCopyForBatchInsert` to `true`, set this option to `true` to get a bulk update lock during the bulk copy operation. Set this option to `false` to use row locks.
+
+For more information about the effects of this setting, see the `TableLock` option in [SQLServerBulkCopyOptions](using-bulk-copy-with-the-jdbc-driver.md#sqlserverbulkcopyoptions).
+
+### cacheBulkCopyMetadata
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.8+) When using `useBulkCopyForBatchInsert=true`, this property tells the driver whether it should cache destination column metadata at the connection level. If set to `true`, make sure the destination doesn't change between bulk inserts, as the driver doesn't have a way of handling this change.
+
+### calcBigDecimalPrecision
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.6+) Flag to indicate whether the driver should calculate precision for BigDecimal inputs, as opposed to using the maximum allowed value for precision (38).
+
+### cancelQueryTimeout
+
+- **Type**: `int`
+- **Default**: `-1`
+
+(Version 6.4+) Use this property to cancel a `queryTimeout` set on the connection. Query execution stops responding and doesn't throw an exception if the TCP connection to the server is silently dropped. This property is only applicable if `queryTimeout` is also set on the connection.
+
+The driver waits the total amount of `cancelQueryTimeout` + `queryTimeout` seconds, to drop the connection and close the channel.
+
+The default value for this property is -1 and behavior is to wait indefinitely.
+
+### clientCertificate
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 8.4+) Specifies the location of the certificate to use for client certificate authentication. The JDBC driver supports PFX, PEM, DER, and CER file extensions.
+
+For details, see [Client Certificate Authentication for Loopback Scenarios](client-certification-authentication-for-loopback-scenarios.md).
+
+### clientKey
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 8.4+) Specifies the location of the private key for PEM, DER, and CER certificates specified by the `clientCertificate` attribute.
+
+For details, see [Client Certificate Authentication for Loopback Scenarios](client-certification-authentication-for-loopback-scenarios.md).
+
+### clientKeyPassword
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 8.4+) Specifies the optional password string for accessing the `clientKey` file's private key.
+
+For details, see [Client Certificate Authentication for Loopback Scenarios](client-certification-authentication-for-loopback-scenarios.md).
+
+### columnEncryptionSetting
+
+- **Type**: `String` [`Enabled` | `Disabled`]
+- **Default**: `Disabled`
+
+(Version 6.0+) Set to `Enabled` to use the Always Encrypted (AE) feature. When AE is enabled, the JDBC driver transparently encrypts and decrypts sensitive data stored in encrypted database columns on the server.
+
+For more information about Always Encrypted, see [Use Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md).
+
+> [!NOTE]  
+> Always Encrypted is available with SQL Server 2016 or later and Azure SQL Database.
+
+### concatNullYieldsNull
+
+- **Type**: `String` [`ON` | `OFF`]
+- **Default**: `ON`
+
+(Version 13.2+) When you set this option to `OFF`, the driver sets the database session variable `CONCAT_NULL_YIELDS_NULL` to `OFF` when it establishes the connection. The result is that concatenating a null value with a string yields the string itself (the null value is treated as an empty string).
+
+For more information, see [SET CONCAT_NULL_YIELDS_NULL](../../t-sql/statements/set-concat-null-yields-null-transact-sql.md).
+
+### connectRetryCount
+
+- **Type**: `int` [`0..255`]
+- **Default**: `1`
+
+(Version 9.4+) The number of reconnection attempts if there's a connection failure.
+
+### connectRetryInterval
+
+- **Type**: `int` [`1..60`]
+- **Default**: `10`
+
+(Version 9.4+) The number of seconds between each connection retry attempt.
+
+### databaseName, database
+
+- **Type**: `String` [`<=128 char`]
+- **Default**: `null`
+
+The name of the database to connect to.
+
+If you don't specify a database name, the connection uses the default database.
+
+### datetimeParameterType
+
+- **Type**: `String` [`datetime` | `datetime2` | `datetimeoffset`]
+- **Default**: `datetime2`
+
+(Version 12.2+) The SQL data type to use for Java date and timestamp parameters.
+
+When you connect to SQL Server 2016 or later versions and interact with legacy `datetime` values, set this property to `datetime`. This setting mitigates server-side conversion problems between `datetime` and `datetime2` values.
+
+For more information, see [Addressing datetime to datetime2 conversion behavior change starting from SQL Server 2016](https://github.com/microsoft/mssql-jdbc/wiki/Addressing-datetime-to-datetime2-conversion-behavior-change-starting-from-SQL-Server-2016).
+
+### delayLoadingLobs
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `true`
+
+Flag to indicate whether to stream all the LOB objects retrieved from the ResultSet. Setting this property to `false` loads the entire LOB object into memory without streaming.
+
+### disableStatementPooling
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `true`
+
+Flag that indicates if statement pooling should be used.
+
+### domainName, domain
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 7.4+) The Windows domain to authenticate to when using `NTLM` authentication.
+
+### enablePrepareOnFirstPreparedStatementCall
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+Set to `true` to enable prepared statement handle creation by calling `sp_prepexec` with the first execution of a prepared statement.
+
+Set to `false` to change the first execution of a prepared statement to call `sp_executesql` and not prepare a statement. If a second execution happens, it calls `sp_prepexec` to set up a prepared statement handle.
+
+### enclaveAttestationProtocol
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 8.2+) This optional property indicates the attestation protocol to use for Always Encrypted with secure enclaves. Currently, the only supported values for this field are `HGS`, `AAS`, and `NONE` (`NONE` is only supported in version 11.2+).
+
+For more information about Always Encrypted with secure enclaves, see [Using Always Encrypted with secure enclaves with the JDBC driver](using-always-encrypted-with-secure-enclaves-with-the-jdbc-driver.md).
+
+### enclaveAttestationUrl
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 8.2+) This optional property indicates the attestation service endpoint URL to use for Always Encrypted with secure enclaves.
+
+For more information about Always Encrypted with secure enclaves, see [Using Always Encrypted with secure enclaves with the JDBC driver](using-always-encrypted-with-secure-enclaves-with-the-jdbc-driver.md).
+
+### encrypt
+
+- **Type**: `String`
+- **Default**: `null`
+
+Set to `true` to specify that the SQL Database Engine uses TLS encryption for all the data sent between the client and the server if the server has a certificate installed. The default value is `true` in version 10.2 and later and `false` in 9.4 and earlier.
+
+In version 6.0 and up, there's a new connection setting `authentication` that uses TLS encryption by default.
+
+For more information about this property, see the `authentication` property.
+
+In version 11.2.0 and up, `encrypt` was changed from `Boolean` to `string`, allowing for TDS 8.0 support when the property is set to `strict`.
+
+The default change in version 10.2 is a breaking change. If you're upgrading from 9.4 or earlier and your server doesn't have a valid TLS certificate, set `trustServerCertificate` to `true` or provide a valid certificate.
+
+### failoverPartner
+
+- **Type**: `String`
+- **Default**: `null`
+
+The name of the failover server used in a database mirroring configuration. This property is used for an initial connection failure to the principal server. After you make the initial connection, this property is ignored. Must be used with the `databaseName` property.
+
+> [!NOTE]  
+> The driver doesn't support the server instance port number for the failover partner instance as part of the `failoverPartner` property in the connection string. However, the driver does support specifying the `serverName`, `instanceName`, and `portNumber` properties of the principal server instance, and `failoverPartner` property of the failover partner instance, in the same connection string.
+
+If you specify a Virtual Network Name in the `Server` connection property, you can't use database mirroring.
+
+For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md).
+
+### fips
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+Set this property to `true` for FIPS-enabled Java Virtual Machine (JVM).
+
+### fipsProvider
+
+- **Type**: `String`
+- **Default**: `null`
+
+FIPS provider configured in JVM, such as BCFIPS or SunPKCS11-NSS. Removed in version 6.4.0.
+
+For more information, see [GitHub issue 460](https://github.com/Microsoft/mssql-jdbc/pull/460).
+
+### gsscredential
+
+- **Type**: `org.ietf.jgss.GSSCredential`
+- **Default**: `null`
+
+(Version 6.2+) Pass user credentials for Kerberos Constrained Delegation in this property.
+
+Use this setting with `integratedSecurity` as `true` and `JavaKerberos` as `authenticationScheme`.
+
+### hostNameInCertificate
+
+- **Type**: `String`
+- **Default**: `null`
+
+The host name to use to validate the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] TLS/SSL certificate.
+
+The `hostNameInCertificate` option can be used to specify the host name in situations where the name, or names, used in the certificate doesn't match the name passed in to the `serverName` property. If there's a match however, the `hostNameInCertificate` option shouldn't be used.
+
+In situations where the `hostNameInCertificate` property is unspecified or set to null, the [!INCLUDE [jdbcNoVersion](../../includes/jdbcnoversion_md.md)] uses the `serverName` property value on the connection URL as the host name to validate the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] TLS/SSL certificate.
+
+> [!NOTE]  
+> As the prior paragraph describes, don't set the `hostNameInCertificate` option unless you confirm the name or names in the certificate don't match the names you pass in the `serverName` option.
+
+Use this property in combination with the `encrypt` and `authentication` properties, and the `trustServerCertificate` property. This property affects the certificate validation if the connection uses TLS encryption and the `trustServerCertificate` is set to `false`. Make sure the value you pass to `hostNameInCertificate` matches the Common Name (CN) or DNS name in the Subject Alternate Name (SAN) in the server certificate for a TLS connection to succeed.
+
+For more information about encryption support, see [Understanding encryption support](understanding-ssl-support.md).
+
+### instanceName
+
+- **Type**: `String` [`<=128 char`]
+- **Default**: `null`
+
+The database instance name to connect to. When you don't specify this property, you connect to the default instance. For the case where you specify both the `instanceName` and port, see the notes for port.
+
+If you specify a Virtual Network Name in the `Server` connection property, you can't use the `instanceName` connection property.
+
+For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md).
+
+### integratedSecurity
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+Set to `true` to indicate that Windows credentials are used by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on Windows operating systems. If `true`, the JDBC driver searches the local computer credential cache for credentials that were provided when a user signed in to the computer or network.
+
+Set to `true` (with `authenticationscheme=JavaKerberos`), to indicate that Kerberos credentials are used by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+
+For more information about Kerberos authentication, see [Using Kerberos integrated authentication to connect to SQL Server](using-kerberos-integrated-authentication-to-connect-to-sql-server.md).
+
+Set to `true` (with `authenticationscheme=NTLM`), to indicate that NTLM credentials are used by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+
+If `false`, the username and password must be supplied.
+
+### ipaddresspreference
+
+- **Type**: `String` [`<=128 char`]
+- **Default**: `IPv4First`
+
+The IP preference used by the client application.
+
+With `IPV4First`, the driver traverses IPv4 addresses first. If no IPv4 addresses can be connected to successfully, the driver continues and tries IPv6 addresses, if there are any.
+
+With `IPV6First`, the driver traverses IPv6 addresses first. If no IPv6 addresses can be connected to successfully, the driver continues and tries IPv4 addresses, if there are any.
+
+With `UsePlatformDefault`, the driver traverses all IP addresses in their initial orders from DNS resolution.
+
+### jaasConfigurationName
+
+- **Type**: `String`
+- **Default**: `SQLJDBCDriver`
+
+(Version 6.2+) Each connection to SQL Server can use its own JAAS Login Configuration name to establish a Kerberos connection. You can pass the name of the configuration entry through this property. Use this property when [creating a Kerberos configuration file](using-kerberos-integrated-authentication-to-connect-to-sql-server.md#creating-a-kerberos-configuration-file). By default, the driver looks for the name `SQLJDBCDriver`.
+
+If the driver doesn't find an external configuration, it sets `useDefaultCcache=true` for IBM JVMs, and `useTicketCache=true` for other JVMs.
+
+### keyStoreAuthentication
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 6.0+) This property identifies which key store to use with Always Encrypted and determines an authentication mechanism used to authenticate to the key store. The driver supports setting up the Java Key Store seamlessly when you set `keyStoreAuthentication=JavaKeyStorePassword`. To use this property, you also must set the `keyStoreLocation` and `keyStoreSecret` properties for the Java Key Store.
+
+Beginning with Microsoft JDBC Driver 8.4, you can set `keyStoreAuthentication=KeyVaultManagedIdentity` or `keyStoreAuthentication=KeyVaultClientSecret` to authenticate to Azure Key Vault using Managed Identities.
+
+For more information about Always Encrypted, see [Use Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md).
+
+### keyStoreLocation
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 6.0+) When `keyStoreAuthentication=JavaKeyStorePassword`, the `keyStoreLocation` property identifies the path to the Java keystore file that stores the Column Master Key to use with Always Encrypted data. The path must include the keystore filename.
+
+For more information about Always Encrypted, see [Use Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md).
+
+### keyStorePrincipalId
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 8.4+) When `keyStoreAuthentication=KeyVaultManagedIdentity`, the `keyStorePrincipalId` property specifies a valid Microsoft Entra application client ID.
+
+For more information about Always Encrypted, see [Use Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md).
+
+### keyStoreSecret
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 6.0+) When `keyStoreAuthentication=JavaKeyStorePassword`, the `keyStoreSecret` property identifies the password to use for the keystore and the key. When you use the Java Key Store, the keystore and the key password must be the same.
+
+For more information about Always Encrypted, see [Use Always Encrypted with the JDBC driver](using-always-encrypted-with-the-jdbc-driver.md).
+
+### lastUpdateCount
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `true`
+
+A `true` value returns only the last update count from a SQL statement that you pass to the server. Use this value with only single `SELECT`, `INSERT`, or `DELETE` statements to ignore other update counts that server triggers can cause. Set this property to `false` to return all update counts, including those that server triggers return.
+
+> [!NOTE]  
+> This property only applies when you use it with the [executeUpdate](reference/executeupdate-method-sqlserverstatement.md) methods. All other execute methods return all results and update counts. This property only affects update counts that server triggers return. It doesn't affect result sets or errors that result as part of trigger execution.
+
+### lockTimeout
+
+- **Type**: `int`
+- **Default**: `-1`
+
+The number of milliseconds to wait before the database reports a lock timeout. The default behavior is to wait indefinitely. If you don't specify a value for this property, this value is the default for all statements on the connection.
+
+Alternatively, use `Statement.setQueryTimeout()` to set the query timeout for specific statements. The value can be 0, which specifies no wait.
+
+### loginTimeout
+
+- **Type**: `int` [`0..65535`]
+- **Default**: `30` (version 11.2 and later), or `15` (version 10.2 and earlier)
+
+The number of seconds the driver should wait before timing out a failed connection. A zero value indicates that the timeout is the default system timeout. This value is either 30 seconds (the default in version 11.2 and later) or 15 seconds (the default in version 10.2 and earlier). A nonzero value is the number of seconds the driver should wait before timing out a failed connection.
+
+If you specify a Virtual Network Name in the `Server` connection property, specify a timeout value of three minutes or more to allow sufficient time for a failover connection to succeed.
+
+For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md).
+
+### maxResultBuffer
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 9.2+) Use `maxResultBuffer` to set the maximum number of bytes to read when reading a result set. If you don't specify this value, the driver reads the entire result set. You can specify the size in two styles:
+
+- As a size in bytes (for example, `100`, `150M`, `300K`, `400G`).
+- As a percentage of maximum heap memory (for example, `10p`, `15pct`, `20percent`).
+
+### msiClientId
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Deprecated) (Version 7.2+) The Client ID of the Managed Identity (MSI) used to acquire an `accessToken` to establish a connection using the `ActiveDirectoryManagedIdentity` or `ActiveDirectoryMSI` authentication mode.
+
+### multiSubnetFailover
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+Always specify `multiSubnetFailover=true` to connect to the availability group listener of a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] availability group or an [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Failover Cluster Instance. `multiSubnetFailover=true` configures the driver to provide faster detection of and connection to the active server.
+
+Possible values are `true` and `false`.
+
+For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md).
+
+You can programmatically access the `multiSubnetFailover` connection property using [getPropertyInfo](reference/getpropertyinfo-method-sqlserverdriver.md), [getMultiSubnetFailover](reference/getmultisubnetfailover-method-sqlserverdatasource.md), and [setMultiSubnetFailover](reference/setmultisubnetfailover-method-sqlserverdatasource.md).
+
+> [!NOTE]  
+> Beginning with Microsoft JDBC Driver 6.0 for SQL Server, you no longer need to set `multiSubnetFailover` to `true` to connect to an availability group listener. A new property, `transparentNetworkIPResolution`, which is enabled by default, provides the detection of and connection to the active server.
+
+### packetSize
+
+- **Type**: `int` [`-1` | `0` | `512..32767`]
+- **Default**: `8000`
+
+The network packet size used to communicate with the server, specified in bytes. A value of -1 indicates to use the server's default packet size. A value of 0 indicates to use the maximum value of 32767. If you set this property to a value outside the acceptable range, an exception occurs.
+
+> [!IMPORTANT]  
+> Don't use the `packetSize` property when encryption is enabled (`encrypt=true`). Otherwise, the driver might raise a connection error.
+
+For more information about this property, see the [setPacketSize](reference/setpacketsize-method-sqlserverdatasource.md) method of the [SQLServerDataSource](reference/sqlserverdatasource-class.md) class.
+
+### password
+
+- **Type**: `String` [`<=128 char`]
+- **Default**: `null`
+
+The database password, if you connect with a SQL user and password.
+
+For Kerberos connection with principal name and password, set this property to the Kerberos Principal password.
+
+(Version 10.2+) When `authentication=ActiveDirectoryServicePrincipal`, the `password` property identifies the password to use for the Active Directory principal.
+
+### portNumber, port
+
+- **Type**: `int` [`0..65535`]
+- **Default**: `1433`
+
+The port where the server is listening. If you specify the port number in the connection string, no request to SQLbrowser is made. When you specify both the port and `instanceName`, the connection is made to the specified port. However, the `instanceName` is validated and an error is thrown if it doesn't match the port.
+
+> [!IMPORTANT]  
+> Always specify the port number, as it's more secure than using SQLbrowser.
+
+### prepareMethod
+
+- **Type**: `String` [`prepexec` | `prepare` | `scopeTempTablesToConnection` | `none`]
+- **Default**: `prepexec`
+
+(Version 11.2.0+) Specifies the underlying prepare method that the driver uses with prepared statements.
+
+Set to `prepare` to use `sp_prepare` as the prepare method. Setting `prepareMethod` to this value results in a separate, initial trip to the database to prepare the statement without any initial values for the database to consider in the execution plan. Set to `prepexec` to use `sp_prepexec` as the prepare method. This method combines the prepare action with the first execute, reducing round trips. It also provides the database with initial parameter values that the database can consider in the execution plan.
+
+(Version 13.4.0+) Set to `scopeTempTablesToConnection` to scope temporary tables created in prepared statements to the connection by using literal parameter substitution instead of server-side prepared handles. Set to `none` to enforce literal parameter substitution with SQL batch execution, bypassing server-side prepared statement handles (`sp_prepexec` / `sp_prepare`).
+
+**Limitations and disclaimers for `scopeTempTablesToConnection` and `none`**:
+
+These `prepareMethod` options are intended for compatibility and migration scenarios, not for general performance use.
+
+- No server-side prepared statements; SQL is always executed as a batch.
+- Requires `FORCED_PARAMETERIZATION` for effective plan reuse.
+- Parameters are inlined as literals rather than bound types.
+- Numeric precision and scale might differ from server-side parameter binding.
+- Date and time values are formatted as strings by the driver.
+- Large string parameters increase SQL text size and memory usage.
+- BLOB and CLOB parameters can cause high memory usage or out-of-memory conditions.
+- SQL Server infers parameter data types at SQL parse time.
+- Query plans might vary due to differences in literal values.
+- Errors are detected at execution time rather than at bind time.
+- Executed SQL includes literal values and is visible in server traces and logs.
+
+### queryTimeout
+
+- **Type**: `int`
+- **Default**: `-1`
+
+The number of seconds to wait before a timeout happens on a query. The default value is -1, which means infinite timeout. Set this value to 0 also implies to wait indefinitely.
+
+### quotedIdentifier
+
+- **Type**: `String` [`ON` | `OFF`]
+- **Default**: `ON`
+
+(Version 13.2+) When you set this option to `OFF`, the driver sets the database session variable `QUOTED_IDENTIFIER` to `OFF` when it establishes the connection. The database treats double quotation marks as string delimiters for character literals, and you can't enclose identifiers in double quotes.
+
+For more information, see [SET QUOTED_IDENTIFIER](../../t-sql/statements/set-quoted-identifier-transact-sql.md).
+
+### realm
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 9.4+) The realm for Kerberos authentication. Set this value to override the Kerberos authentication realm the driver autodetects from the server's realm.
+
+### replication
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 9.4+) This setting tells the server if the connection is used for replication. When enabled, triggers with the `NOT FOR REPLICATION` option don't fire on the connection.
+
+### responseBuffering
+
+- **Type**: `String` [`full` | `adaptive`]
+- **Default**: `adaptive`
+
+If you set this property to `adaptive`, the driver buffers the minimum amount of data when necessary. The default mode is `adaptive`.
+
+If you set this property to `full`, the driver reads the entire result set from the server when it executes a statement.
+
+> [!NOTE]  
+> Starting with JDBC driver version 1.2, the default buffering behavior is `adaptive`. To use the version 1.2 default behavior in your application, set the `responseBuffering` property to `full` either in the connection properties or with the [setResponseBuffering](reference/setresponsebuffering-method-sqlserverstatement.md) method of the [SQLServerStatement Class](reference/sqlserverstatement-class.md) object.
+
+### selectMethod
+
+- **Type**: `String` [`direct` | `cursor`]
+- **Default**: `direct`
+
+If you set this property to `cursor`, the driver creates a database cursor for each query it creates on the connection for `TYPE_FORWARD_ONLY` and `CONCUR_READ_ONLY` cursors. Typically, you only need this property if your application generates large result sets that can't fit entirely in client memory. If you set this property to `cursor`, the driver keeps only a limited number of result set rows in client memory.
+
+By default, the driver keeps all result set rows in client memory. This default behavior provides the fastest performance when the application processes all rows.
+
+### sendStringParametersAsUnicode
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `true`
+
+If you set the `sendStringParametersAsUnicode` property to `true`, the driver sends string parameters to the server in Unicode format.
+
+If you set the `sendStringParametersAsUnicode` property to `false`, the driver sends string parameters to the server in non-Unicode formats such as ASCII or MBCS instead of Unicode.
+
+The default value for the `sendStringParametersAsUnicode` property is `true`.
+
+> [!NOTE]  
+> The driver checks the `sendStringParametersAsUnicode` property only when sending a parameter value with `CHAR`, `VARCHAR`, or `LONGVARCHAR` JDBC types. The new JDBC 4.0 national character methods include methods such as `setNString`, `setNCharacterStream`, and `setNClob` of the [SQLServerPreparedStatement Class](reference/sqlserverpreparedstatement-class.md) and [SQLServerCallableStatement Class](reference/sqlservercallablestatement-class.md) classes. These methods always send their parameter values to the server in Unicode regardless of the setting of this property.
+
+For optimal performance with the `CHAR`, `VARCHAR`, and `LONGVARCHAR` JDBC data types, an application should set the `sendStringParametersAsUnicode` property to `false` and use the `setString`, `setCharacterStream`, and `setClob` non-national character methods of the [SQLServerPreparedStatement Class](reference/sqlserverpreparedstatement-class.md) and [SQLServerCallableStatement Class](reference/sqlservercallablestatement-class.md) classes.
+
+When the application sets the `sendStringParametersAsUnicode` property to `false` and uses a non-national character method to access Unicode data types on the server side (such as `nchar`, `nvarchar`, and `ntext`), some data might be lost if the database collation doesn't support the characters in the `String` parameters passed by the non-national character method.
+
+An application should use the `setNString`, `setNCharacterStream`, and `setNClob` national character methods of the [SQLServerPreparedStatement Class](reference/sqlserverpreparedstatement-class.md) and [SQLServerCallableStatement Class](reference/sqlservercallablestatement-class.md) classes for the `NCHAR`, `NVARCHAR`, and `LONGNVARCHAR` JDBC data types.
+
+Changing this value can affect sorting of results from the database. The sorting differences are due to different sorting rules for Unicode versus non-Unicode characters.
+
+### sendTemporalDataTypesAsStringForBulkCopy
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `true`
+
+(Version 8.4+) When you set this connection property to `false`, the driver sends `DATE`, `DATETIME`, `DATETIME2`, `DATETIMEOFFSET`, `SMALLDATETIME`, and `TIME` datatypes as their respective types instead of sending them as `String`.
+
+When you set this connection property to `false`, the driver accepts the default string literal format of each temporal data type, for example:
+
+- `DATE`: `YYYY-MM-DD`
+- `DATETIME`: `YYYY-MM-DD hh:mm:ss[.nnn]`
+- `DATETIME2`: `YYYY-MM-DD hh:mm:ss[.nnnnnnn]`
+- `DATETIMEOFFSET`: `YYYY-MM-DD hh:mm:ss[.nnnnnnn] [{+/-}hh:mm]`
+- `SMALLDATETIME`: `YYYY-MM-DD hh:mm:ss`
+- `TIME`: `hh:mm:ss[.nnnnnnn]`
+
+### sendTimeAsDatetime
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `true`
+
+This property was added in SQL Server JDBC Driver 3.0.
+
+- Set to `true` to send java.sql.Time values to the server as [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] `datetime` values.
+
+- Set to `false` to send java.sql.Time values to the server as [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] `time` values.
+
+The default value for this property is currently `true` and might change in a future release.
+
+For more information about how the [!INCLUDE [jdbcNoVersion](../../includes/jdbcnoversion_md.md)] configures java.sql.Time values before it sends them to the server, see [Configuring how java.sql.Time values are sent](configuring-how-java-sql-time-values-are-sent-to-the-server.md).
+
+### serverCertificate, server
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 11.2.0+) The path to the server certificate file. The driver uses this certificate for validation when you set `encrypt` to `strict`. The driver supports certificate files that use the PEM file format.
+
+### serverName, server
+
+- **Type**: `String`
+- **Default**: `null`
+
+The computer running [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or an Azure SQL database.
+
+You can also specify the Virtual Network Name of an availability group.
+
+For more information about disaster recovery, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md).
+
+### serverNameAsACE
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 6.0+) Set to `true` to indicate that the driver should translate the Unicode server name to ASCII compatible encoding (Punycode) for the connection. If this setting is `false`, the driver uses the server name as provided to connect.
+
+For more information about international features, see [International features of the JDBC driver](international-features-of-the-jdbc-driver.md).
+
+### serverPreparedStatementDiscardThreshold
+
+- **Type**: `int`
+- **Default**: `10`
+
+(Version 6.2+) Use this property to control how many outstanding prepared statement discard actions (`sp_unprepare`) can be outstanding per connection before the driver cleans up the outstanding handles on the server.
+
+If you set this property to `<= 1`, the driver immediately executes unprepare actions on prepared statement close. If you set the property to `> 1`, the driver batches these calls together to avoid the overhead of calling `sp_unprepare` too often.
+
+### serverSpn
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 4.2+) Use this optional property to specify the Service Principal Name (SPN) for a Java Kerberos connection. Use it with `authenticationScheme`.
+
+To specify the SPN, use the form: `MSSQLSvc/fqdn:port@REALM` where fqdn is the fully qualified domain name, port is the port number, and REALM is the Kerberos realm of the SQL Server in uppercase letters.
+
+> [!NOTE]  
+> The `@REALM` is optional if the default realm of the client (as specified in the Kerberos configuration) is the same as the Kerberos realm for the SQL Server.
+
+For more information about using `serverSpn` with Java Kerberos, see [Using Kerberos integrated authentication to connect to SQL Server](using-kerberos-integrated-authentication-to-connect-to-sql-server.md).
+
+### socketFactoryClass
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 8.4+) Specifies the class name for a custom socket factory to use instead of the default socket factory.
+
+### socketTimeout
+
+- **Type**: `int`
+- **Default**: `0`
+
+The number of milliseconds to wait before a timeout occurs on a socket read or accept. The default value is 0, which means infinite timeout.
+
+### statementPoolingCacheSize
+
+- **Type**: `int`
+- **Default**: `0`
+
+(Version 6.4+) Use this property to enable prepared statement handle caching in the driver.
+
+This property defines the size of the cache for statement pooling.
+
+Use this property only with the `disableStatementPooling` connection property, which you should set to `false`. Setting `disableStatementPooling` to `true` or `statementPoolingCacheSize` to 0 disables prepared statement handle caching.
+
+### sslProtocol
+
+- **Type**: `String`
+- **Default**: `TLS`
+
+(Version 6.4+) Use this property to specify the TLS protocol to consider during secure connection.
+
+Possible values are: `TLS`, `TLSv1`, `TLSv1.1`, and `TLSv1.2`.
+
+For more information about the Secure Sockets Layer protocol, see [SSLProtocol](https://github.com/Microsoft/mssql-jdbc/wiki/SSLProtocol).
+
+### transparentNetworkIPResolution
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `true`
+
+(Version 6.0+) This property provides faster detection of and connection to the active server. Set it to `true` or `false`. The default value is `true`.
+
+Before Microsoft JDBC Driver 6.0 for SQL Server, an application had to set the connection string to include `multiSubnetFailover=true` to indicate that it was connecting to an Always On Availability Group. Without setting the `multiSubnetFailover` connection keyword to `true`, an application might experience a timeout while connecting to an Always On Availability Group. Starting with version 6.0, an application isn't required to set `multiSubnetFailover` to `true` anymore.
+
+> [!NOTE]  
+> When you use federated authentication or specify `multisubnetfailover`, the driver disables `transparentNetworkIPResolution` by default. To enable this feature, explicitly set `transparentNetworkIPResolution` to `true`.
+
+When `transparentNetworkIPResolution=true`, the first connection attempt uses 500 ms as the timeout. Any later attempts use the same timeout logic as used by the `multiSubnetFailover` property.
+
+### trustManagerClass
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 6.4+) The fully qualified class name of a custom `javax.net.ssl.TrustManager` implementation.
+
+### trustManagerConstructorArg
+
+- **Type**: `String`
+- **Default**: `null`
+
+(Version 6.4+) An optional argument to pass to the constructor of the TrustManager. If you specify the `trustManagerClass` property and request an encrypted connection, the driver uses the custom TrustManager instead of the default system JVM keystore-based TrustManager.
+
+### trustServerCertificate
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+Set to `true` to specify that the driver doesn't validate the server TLS/SSL certificate.
+
+- If `true`, the server TLS/SSL certificate is automatically trusted when the communication layer is encrypted using TLS.
+
+- If `false`, the driver validates the server TLS/SSL certificate. If the server certificate validation fails, the driver raises an error and closes the connection. The default value is `false`. Make sure the value passed to `serverName` exactly matches the Common Name (CN) or DNS name in the Subject Alternate Name in the server certificate for a TLS/SSL connection to succeed.
+
+For more information about encryption support, see [Understanding encryption support](understanding-ssl-support.md).
+
+> [!NOTE]  
+> Use this property with the `encrypt` and `authentication` properties. This property only affects server TLS/SSL certificate validation if the connection uses TLS encryption.
+
+### trustStore
+
+- **Type**: `String`
+- **Default**: `null`
+
+The path (including filename) to the certificate `trustStore` file. The `trustStore` file contains the list of certificates that the client trusts.
+
+When you don't specify this property or set it to null, the driver uses the trust manager factory's lookup rules to decide which certificate store to use.
+
+**The default SunX509 TrustManagerFactory tries to find the trusted material in the following search order**:
+
+1. A file specified by the `javax.net.ssl.trustStore` JVM system property.
+1. `<java-home>/lib/security/jssecacerts` file.
+1. `<java-home>/lib/security/cacerts` file.
+
+For more information about the SUNX509 TrustManager Interface, see the SUNX509 TrustManager Interface documentation on the Sun Microsystems Web site.
+
+> [!NOTE]  
+> This property only affects the certificate `trustStore` lookup if the connection uses TLS encryption and the `trustServerCertificate` property is set to `false`.
+
+### trustStorePassword
+
+- **Type**: `String`
+- **Default**: `null`
+
+The password used to check the integrity of the `trustStore` data.
+
+If you set the `trustStore` property but don't set the `trustStorePassword` property, the driver doesn't check the integrity of the `trustStore`.
+
+When you don't specify the `trustStore` and `trustStorePassword` properties, the driver uses the JVM system properties, `javax.net.ssl.trustStore` and `javax.net.ssl.trustStorePassword`. If you don't specify the `javax.net.ssl.trustStorePassword` system property, the driver doesn't check the integrity of the `trustStore`.
+
+If you don't set the `trustStore` property but set the `trustStorePassword` property, the JDBC driver uses the file that the `javax.net.ssl.trustStore` specifies as a trust store. The driver checks the integrity of the trust store by using the specified `trustStorePassword`. This setting is needed when the client application doesn't want to store the password in the JVM system property.
+
+> [!NOTE]  
+> The `trustStorePassword` property only affects the certificate `trustStore` lookup, if the connection uses TLS connection and the `trustServerCertificate` property is set to `false`.
+
+### trustStoreType
+
+- **Type**: `String`
+- **Default**: `JKS`
+
+Set this property to specify trust store type to be used for FIPS mode.
+
+Possible values are either `PKCS12` or type defined by FIPS provider.
+
+### useBulkCopyForBatchInsert
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 9.2+) When you enable this connection property, the driver transparently uses the Bulk Copy API for batch insert operations that use `java.sql.PreparedStatement`. This feature can provide better performance.
+
+This feature is disabled by default. Set this property to `true` to enable it.
+
+> [!IMPORTANT]  
+> This feature only supports fully parameterized `INSERT` queries. If you combine the `INSERT` queries with other SQL queries, or if the queries contain data in values, execution falls back to the basic batch insert operation.
+
+For more information about how to use this property, see [Using bulk copy API for batch insert operation](use-bulk-copy-api-batch-insert-operation.md).
+
+### useDefaultGSSCredential
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.6+) Flag to indicate whether the driver should create the GSSCredential on behalf of the user for using Native GSS-API for Kerberos authentication.
+
+### useDefaultJaasConfig
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 12.6+) When the application exists alongside libraries that configure JAAS at the system level, set this property to `true` to allow the driver to use that same configuration to perform Kerberos authentication.
+
+### useFmtOnly
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+(Version 7.4+) Provides an alternative way to query Parameter Metadata from the server. Set this property to `true` to specify that the driver should use `SET FMTONLY` logic when querying Parameter Metadata. This feature is off by default, and it isn't recommended to use this property as `SET FMTONLY` is marked for deprecation. `useFmtOnly` is made available to use only as a workaround for known issues and limitations in [sp_describe_undeclared_parameters](../../relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql.md).
+
+This feature currently only supports single `SELECT/INSERT/UPDATE/DELETE` queries. Attempting to use this feature with unsupported/multiple queries causes the driver to attempt to parse the query, but most likely results in an exception.
+
+For more information about this property, see [Retrieving ParameterMetaData via `useFmtOnly`](using-usefmtonly.md).
+
+### userName, user
+
+- **Type**: `String` [`<=128 char`]
+- **Default**: `null`
+
+The database user, if you connect by using a SQL user and password.
+
+For Kerberos connection by using principal name and password, set this property to the Kerberos Principal name.
+
+(Version 10.2+) When `authentication=ActiveDirectoryServicePrincipal`, the `userName` property specifies a valid Microsoft Entra secure client ID.
+
+### vectorTypeSupport
+
+- **Type**: `String` [`v2` | `v1` | `off`]
+- **Default**: `v1`
+
+(Version 13.2+) Set to `off` to specify that server sends vector types as string data in JSON format and `v1` to specify that server sends vector types of `FLOAT32` as vector data. The default value is `v1`.
+
+(Version 13.4+) Set to `v2` to enable native vector type support for both `FLOAT32` and `FLOAT16` vectors. `FLOAT16` vectors use IEEE-754 half-precision serialization on the wire and are exposed as `Float[]` arrays in Java.
+
+For more information, see [Use vector data type with the JDBC driver](use-vector-data-type.md).
+
+### workstationID
+
+- **Type**: `String` [`<=128 char`]
+- **Default**: `<empty string>`
+
+The workstation ID. Use this ID to identify the specific workstation in various profiling and logging tools.
+
+If you don't specify a value, the default is `<empty string>`.
+
+### xopenStates
+
+- **Type**: `Boolean` [`true` | `false`]
+- **Default**: `false`
+
+Set to `true` to specify that the driver returns XOPEN-compliant state codes in exceptions.
+
+The default is to return SQL 99 state codes.
+
+## Related content
+
+- [Connecting to SQL Server with the JDBC driver](connecting-to-sql-server-with-the-jdbc-driver.md)
+- [FIPS mode](fips-mode.md)
