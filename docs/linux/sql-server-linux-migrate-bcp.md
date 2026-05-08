@@ -16,7 +16,7 @@ ms.custom:
 
 This article shows how to use the [bcp utility](../tools/bcp-utility.md) to bulk copy data between an instance of SQL Server on Linux and a data file in a user-specified format.
 
-You can use **bcp** to import large numbers of rows into SQL Server tables or to export data from SQL Server tables into data files. Except when used with the queryout option, **bcp** requires no knowledge of Transact-SQL. The **bcp** command-line utility works with Microsoft SQL Server running on-premises or in the cloud, on Linux, Windows or Docker and Azure SQL Database and Azure Synapse Analytics.
+You can use **`bcp`** to import large numbers of rows into SQL Server tables or to export data from SQL Server tables into data files. Except when used with the queryout option, **`bcp`** requires no knowledge of Transact-SQL. The **`bcp`** command-line utility works with Microsoft SQL Server running on-premises or in the cloud, on Linux, Windows or Docker and Azure SQL Database and Azure Synapse Analytics.
 
 This article shows you how to:
 
@@ -25,7 +25,7 @@ This article shows you how to:
 
 ## Install the SQL Server command-line tools
 
-**bcp** is part of the SQL Server command-line tools, which aren't installed automatically with SQL Server on Linux. If you haven't already installed the SQL Server command-line tools on your Linux machine, you must install them. For more information on how to install the tools, select your Linux distribution from the following list:
+**`bcp`** is part of the SQL Server command-line tools, which aren't installed automatically with SQL Server on Linux. If you haven't already installed the SQL Server command-line tools on your Linux machine, you must install them. For more information on how to install the tools, select your Linux distribution from the following list:
 
 - [Red Hat Enterprise Linux (RHEL)](sql-server-linux-setup-tools.md#RHEL)
 - [Ubuntu](sql-server-linux-setup-tools.md#ubuntu)
@@ -33,15 +33,15 @@ This article shows you how to:
 
 ## Import data with bcp
 
-In this tutorial, you create a sample database and table on the local SQL Server instance (`localhost`) and then use **bcp** to load into the sample table from a text file on disk.
+In this tutorial, you create a sample database and table on the local SQL Server instance (`localhost`) and then use **`bcp`** to load into the sample table from a text file on disk.
 
 ### Create a sample database and table
 
-Let's start by creating a sample database with a simple table that is used in the rest of this tutorial.
+Start by creating a sample database with a simple table that is used in the rest of this tutorial.
 
 1. On your Linux box, open a command terminal.
 
-1. Copy and paste the following commands into the terminal window. These commands use the **sqlcmd** command-line utility to create a sample database (`BcpSampleDB`) and a table (`TestEmployees`) on the local SQL Server instance (`localhost`). Remember to replace the `username` and `<password>` as necessary before running the commands.
+1. Copy and paste the following commands into the terminal window. These commands use the **`sqlcmd`** command-line utility to create a sample database (`BcpSampleDB`) and a table (`TestEmployees`) on the local SQL Server instance (`localhost`). Remember to replace the `username` and `<password>` as necessary before running the commands.
 
 [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
@@ -85,13 +85,13 @@ This should display the following in your terminal window:
 
 ### Import data from the source data file
 
-Copy and paste the following commands into the terminal window. This command uses **bcp** to connect to the local SQL Server instance (`localhost`) and import the data from the data file (`~/test_data.txt`) into the table (`TestEmployees`) in the database (`BcpSampleDB`). Remember to replace the username and `<password>` as necessary before running the commands.
+Copy and paste the following commands into the terminal window. This command uses **`bcp`** to connect to the local SQL Server instance (`localhost`) and import the data from the data file (`~/test_data.txt`) into the table (`TestEmployees`) in the database (`BcpSampleDB`). Remember to replace the username and `<password>` as necessary before running the commands.
 
 ```bash
 bcp TestEmployees in ~/test_data.txt -S localhost -U sa -P <password> -d BcpSampleDB -c -t  ','
 ```
 
-Here's a brief overview of the command-line parameters we used with **bcp** in this example:
+Here's a brief overview of the command-line parameters we used with **`bcp`** in this example:
 
 - `-S`: specifies the instance of SQL Server to which to connect
 - `-U`: specifies the login ID used to connect to SQL Server
@@ -121,9 +121,9 @@ Id          Name                Location
 
 ## Export data with bcp
 
-In this tutorial, you use **bcp** to export data from the sample table we created earlier to a new data file.
+In this tutorial, you use **`bcp`** to export data from the sample table we created earlier to a new data file.
 
-Copy and paste the following commands into the terminal window. These commands use the **bcp** command-line utility to export data from the table `TestEmployees` in the database `BcpSampleDB` to a new data file called `~/test_export.txt`. Remember to replace the username and `<password>` as necessary before running the command.
+Copy and paste the following commands into the terminal window. These commands use the **`bcp`** command-line utility to export data from the table `TestEmployees` in the database `BcpSampleDB` to a new data file called `~/test_export.txt`. Remember to replace the username and `<password>` as necessary before running the command.
 
 ```bash
 bcp TestEmployees out ~/test_export.txt -S localhost -U sa -P <password> -d BcpSampleDB -c -t ','

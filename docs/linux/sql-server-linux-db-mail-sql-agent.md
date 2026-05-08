@@ -97,9 +97,9 @@ GO
 
 ## 7. Set Database Mail profile using mssql-conf or environment variable
 
-You can use the **mssql-conf** utility, or environment variables, to register your Database Mail profile. In this case, let's call our profile `default`.
+You can use the **`mssql-conf`** utility, or environment variables, to register your Database Mail profile. In this case, let's call our profile `default`.
 
-- Set via **mssql-conf**:
+- Set via **`mssql-conf`**:
 
   ```bash
   sudo /opt/mssql/bin/mssql-conf set sqlagent.databasemailprofile default

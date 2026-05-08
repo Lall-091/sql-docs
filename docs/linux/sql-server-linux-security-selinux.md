@@ -155,7 +155,7 @@ The following example demonstrates changing the database location when [!INCLUDE
 
    The command `semanage fcontext` manages the SELinux file context mapping. The `-a` parameter adds a new file context rule, and the `-t` parameter defines the SELinux type to apply, which in this case is `mssql_db_t` for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database files. Finally, the command specifies the path pattern, which is `/opt/mydb` in this example, and includes all the files and subdirectories within it.
 
-1. Set the default database location using **mssql-conf**, and run the setup.
+1. Set the default database location using **`mssql-conf`**, and run the setup.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set filelocation.defaultdatadir /opt/mydb/data

@@ -19,7 +19,7 @@ There are several ways to manage [!INCLUDE [ssnoversion-md](../includes/ssnovers
 
 ## mssql-conf
 
-The **mssql-conf** tool configures [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. For more information, see [Configure SQL Server on Linux with the mssql-conf tool](sql-server-linux-configure-mssql-conf.md).
+The **`mssql-conf`** tool configures [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. For more information, see [Configure SQL Server on Linux with the mssql-conf tool](sql-server-linux-configure-mssql-conf.md).
 
 ## Transact-SQL
 

@@ -345,7 +345,7 @@ For more information on iSCSI initiator for the supported distributions, see the
 
    1. Type `exit` to no longer be the superuser.
 
-   1. To test, create a database in that folder. The following script creates a database, switches context to it, verifies the files exist at the OS level, and then deletes the temporary location. You can use SSMS or **sqlcmd** to run this script.
+   1. To test, create a database in that folder. The following script creates a database, switches context to it, verifies the files exist at the OS level, and then deletes the temporary location. You can use SSMS or **`sqlcmd`** to run this script.
 
       ```sql
       DROP DATABASE TestDB;

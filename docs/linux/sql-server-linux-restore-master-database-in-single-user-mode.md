@@ -60,7 +60,7 @@ When you start an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md
    /opt/mssql/bin/sqlservr -m"SQLCMD"
    ```
 
-   In the previous example, `-m"SQLCMD"` limits connections to a single connection and that connection must identify itself as the **sqlcmd** client program. Use this option when you're starting [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single-user mode to restore a `master` database.
+   In the previous example, `-m"SQLCMD"` limits connections to a single connection and that connection must identify itself as the **`sqlcmd`** client program. Use this option when you're starting [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single-user mode to restore a `master` database.
 
 1. When SQL Server starts up, it generates several log entries. You can confirm that it's running in single-user mode by looking for the following lines in the output:
 
@@ -75,7 +75,7 @@ When you start an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md
 
 ## Connect to the SQL Server instance
 
-1. Use **sqlcmd** to connect to the SQL Server instance. After finishing the steps described in the [Start SQL Server in single-user mode](#start-sql-server-in-single-user-mode) section, you can see that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is running in *interactive* mode. Thus, you need to open a new terminal session to launch **sqlcmd** as follows.
+1. Use **`sqlcmd`** to connect to the SQL Server instance. After finishing the steps described in the [Start SQL Server in single-user mode](#start-sql-server-in-single-user-mode) section, you can see that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is running in *interactive* mode. Thus, you need to open a new terminal session to launch **`sqlcmd`** as follows.
 
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S <ServerName> -U sa -P <password>
@@ -85,10 +85,10 @@ When you start an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md
 
 ## Restore the `master` database
 
-1. Run the following commands inside **sqlcmd**. Remember that **sqlcmd** expects `GO` at the end of the script to execute it.
+1. Run the following commands inside **`sqlcmd`**. Remember that **`sqlcmd`** expects `GO` at the end of the script to execute it.
 
    ```sql
-   USE [master];
+   USE master;
    GO
 
    RESTORE DATABASE [master] FROM DISK = N'/var/opt/mssql/data/master.bak'

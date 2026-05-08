@@ -24,7 +24,7 @@ You enable distributed transactions on [!INCLUDE [ssnoversion-md](../includes/ss
 
 A process requires super user privileges to bind to well-known ports (port numbers less than 1024) on Linux. To avoid starting [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] with root privileges for the RPC endpoint mapper process, system administrators must use **iptables** to create Network Address Translation to route traffic on port 135 to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance's RPC endpoint-mapping process.
 
-MSDTC uses two configuration parameters for the **mssql-conf** utility:
+MSDTC uses two configuration parameters for the **`mssql-conf`** utility:
 
 | mssql-conf setting | Description |
 | --- | --- |
@@ -49,7 +49,7 @@ For more information, see [Understanding XA Transactions](../connect/jdbc/unders
 
 Complete the following three steps to configure MSDTC communication and functionality for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
-- Use **mssql-conf** to configure `network.rpcport` and `distributedtransaction.servertcpport`.
+- Use **`mssql-conf`** to configure `network.rpcport` and `distributedtransaction.servertcpport`.
 - Configure the firewall to allow communication on `distributedtransaction.servertcpport` and port 135.
 - Configure Linux server routing so that RPC communication on port 135 is redirected to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance's `network.rpcport`.
 
@@ -57,9 +57,9 @@ The following sections provide detailed instructions for each step.
 
 ## Configure RPC and MSDTC ports
 
-Use **mssql-conf** to configure `network.rpcport` and `distributedtransaction.servertcpport`. This step applies to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and is common across all supported distributions.
+Use **`mssql-conf`** to configure `network.rpcport` and `distributedtransaction.servertcpport`. This step applies to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and is common across all supported distributions.
 
-1. Use **mssql-conf** to set the `network.rpcport` value. The following example sets it to 13500.
+1. Use **`mssql-conf`** to set the `network.rpcport` value. The following example sets it to 13500.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set network.rpcport 13500
@@ -192,7 +192,7 @@ However, after a restart, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.
 
 ## Configure authentication on RPC communication for MSDTC
 
-MSDTC for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux doesn't use authentication on RPC communication by default. However, when the host machine is joined to an Active Directory domain, you can configure MSDTC to use authenticated RPC communication by using the following **mssql-conf** settings:
+MSDTC for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux doesn't use authentication on RPC communication by default. However, when the host machine is joined to an Active Directory domain, you can configure MSDTC to use authenticated RPC communication by using the following **`mssql-conf`** settings:
 
 | Setting | Description |
 | --- | --- |

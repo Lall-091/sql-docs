@@ -68,7 +68,7 @@ Use the following steps to create a sample database named `SampleDB`. This datab
 
 1. On your Linux machine, open a bash terminal session.
 
-1. Use **sqlcmd** to run a Transact-SQL `CREATE DATABASE` command.
+1. Use **`sqlcmd`** to run a Transact-SQL `CREATE DATABASE` command.
 
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -Q 'CREATE DATABASE SampleDB'
