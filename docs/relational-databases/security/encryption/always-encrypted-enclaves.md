@@ -35,9 +35,6 @@ When parsing a Transact-SQL statement submitted by an application, the [!INCLUDE
 
 During statement processing, both the data and the column encryption keys aren't exposed in plaintext in the [!INCLUDE [ssde-md](../../../includes/ssde-md.md)] outside of the secure enclave.
 
-> [!NOTE]  
-> [Always Encrypted with secure enclaves](always-encrypted-enclaves.md) is not available on Azure SQL Managed Instance.
-
 ## Supported client drivers
 
 To use Always Encrypted with secure enclaves, an application must use a client driver that supports the feature. Configure the application and the client driver to enable enclave computations and enclave attestation (see the [Secure enclave attestation](#secure-enclave-attestation) section below). For details, including the list of supported client drivers, see [Develop applications using Always Encrypted](always-encrypted-client-development.md).
