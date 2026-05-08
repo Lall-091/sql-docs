@@ -1,9 +1,9 @@
 ---
-title: "&amp;= (Bitwise AND assignment) (Transact-SQL)"
+title: "&amp;= (Bitwise AND Assignment) (Transact-SQL)"
 description: Performs a bitwise logical AND operation between two integer values, and sets a value to the result of the operation.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 04/25/2024
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -26,7 +26,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-Performs a bitwise logical AND operation between two integer values, and sets a value to the result of the operation.
+Performs a bitwise logical `AND` operation between two integer values, and sets a value to the result of the operation.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -44,7 +44,7 @@ Any valid [expression](expressions-transact-sql.md) of any one of the data types
 
 ## Return types
 
-Returns the data type of the argument with the higher precedence. For more information, see [Data type precedence (Transact-SQL)](../data-types/data-type-precedence-transact-sql.md).
+Returns the data type of the argument with the higher precedence. For more information, see [Data type precedence](../data-types/data-type-precedence-transact-sql.md).
 
 ## Remarks
 
@@ -52,25 +52,27 @@ The `&=` operator is shorthand for using the `=` and `&` operators. The followin
 
 ```sql
 -- &= operator
-DECLARE @bitwise INT = 1;
+DECLARE @bitwise AS INT = 1;
 SET @bitwise &= 1;
+
 SELECT @bitwise;
 GO
 
 -- = and & operators
-DECLARE @bitwise INT = 1;
+DECLARE @bitwise AS INT = 1;
 SET @bitwise = @bitwise & 1;
+
 SELECT @bitwise;
 GO
 ```
 
 Both examples return a result of `1`.
 
-For more information, see [&amp; (Bitwise AND) (Transact-SQL)](bitwise-and-transact-sql.md).
+For more information, see [&amp; (Bitwise AND)](bitwise-and-transact-sql.md).
 
 ## Related content
 
-- [Compound Operators (Transact-SQL)](compound-operators-transact-sql.md)
+- [Compound operators (Transact-SQL)](compound-operators-transact-sql.md)
 - [Expressions (Transact-SQL)](expressions-transact-sql.md)
 - [Operators (Transact-SQL)](operators-transact-sql.md)
 - [Bitwise operators (Transact-SQL)](bitwise-operators-transact-sql.md)
