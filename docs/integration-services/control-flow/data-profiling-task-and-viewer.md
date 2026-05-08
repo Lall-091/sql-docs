@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Data Profiling task [Integration Services], about data profiling"
   - "data profiling"

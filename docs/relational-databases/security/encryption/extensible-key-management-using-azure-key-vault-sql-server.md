@@ -7,7 +7,7 @@ ms.reviewer: vanto, randolphwest
 ms.date: 10/06/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sfi-image-nochange
 helpviewer_keywords:

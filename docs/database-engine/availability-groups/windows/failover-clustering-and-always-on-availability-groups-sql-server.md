@@ -7,7 +7,7 @@ ms.date: 08/21/2025
 ms.update-cycle: 1825-days
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "clustering [SQL Server]"
   - "Availability Groups [SQL Server], WSFC clusters"

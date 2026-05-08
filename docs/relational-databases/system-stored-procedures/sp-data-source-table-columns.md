@@ -1,12 +1,12 @@
 ---
-title: sp_data_source_table_columns
-description: sp_data_source_table_columns returns list of columns in external data source table.
+title: "sys.sp_data_source_table_columns (Transact-SQL)"
+description: sp_data_source_table_columns returns a list of columns in external data source table.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/23/2025
+ms.date: 01/28/2026
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: conceptual
+ms.topic: reference
 f1_keywords:
   - "sp_data_source_table_columns_TSQL"
   - "sys.sp_data_source_table_columns_TSQL"
@@ -17,11 +17,11 @@ helpviewer_keywords:
 dev_langs:
   - TSQL
 ---
-# sp_data_source_table_columns (Transact-SQL)
+# sys.sp_data_source_table_columns (Transact-SQL)
 
 [!INCLUDE [sqlserver2019](../../includes/applies-to-version/sqlserver2019.md)]
 
-Returns list of columns in external data source table.
+Returns a list of columns in external data source table.
 
 > [!NOTE]  
 > This procedure is introduced in [SQL 2019 CU5](../../big-data-cluster/release-notes-cumulative-updates-history.md#cu5).
@@ -31,21 +31,31 @@ Returns list of columns in external data source table.
 ## Syntax
 
 ```syntaxsql
-sp_data_source_table_columns
-         [ @data_source = ] 'data_source'
-       , [ @table_location = ] 'table_location'
+sys.sp_data_source_table_columns
+    [ @data_source = ] N'data_source'
+    , [ @table_location = ] N'table_location'
+    [ , [ @column_name = ] N'column_name' ]
+    [ , [ @search_options = ] N'search_options' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @data_source = ] '*data_source*'
+#### [ @data_source = ] N'*data_source*'
 
-The name of the external data source to get the metadata from. Type is `sysname`.
+The name of the external data source to get the metadata from. *@data_source* is **sysname**, with no default.
 
-#### [ @table_location = ] '*table_location*'
+#### [ @table_location = ] N'*table_location*'
 
-The table location string that identifies the table. `table_location` type is `nvarchar(max)`.
+The table location string that identifies the table. *@table_location* is **nvarchar(max)**, with no default.
+
+#### [ @column_name = ] N'*column_name*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @search_options = ] N'*search_options*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Result set
 
@@ -69,7 +79,7 @@ Requires `ALTER ANY EXTERNAL DATA SOURCE` permission.
 
 ## Remarks
 
-The SQL Server instance must have the [PolyBase](../polybase/polybase-guide.md) feature installed.
+The SQL Server instance must have the [PolyBase](../polybase/overview.md) feature installed.
 
 This stored procedure supports connectors for:
 
@@ -83,7 +93,7 @@ The stored procedure doesn't support generic ODBC data source or Hadoop connecto
 
 The notion of empty vs. non-empty relates to the behavior of the ODBC driver and the [SQLTables](../native-client-odbc-api/sqltables.md) function. Non-empty indicates an object contains tables, not rows. For example, an empty schema contains no tables in SQL Server. An empty database contains with no tables inside Teradata. The results are a SQL Server representation of the backend schema as interpreted by the PolyBase connector for the backend. The distinction here is that instead of merely passing along the results of the ODBC call to the backend, the results are based on the outcome of the PolyBase type-mapping code.
 
-Use [sp_data_source_objects](sp-data-source-objects.md) and `sp_data_source_table_columns` to discover external objects. These system stored procedures return the schema of tables that are available to be virtualized. Azure Data Studio uses these two stored procedures to support [data virtualization](/azure-data-studio/extensions/data-virtualization-extension). Use `sp_data_source_table_columns` to discover external table schemas represented in SQL Server data types.
+Use [sp_data_source_objects](sp-data-source-objects.md) and `sp_data_source_table_columns` to discover external objects. These system stored procedures return the schema of tables that are available to be virtualized. Use `sp_data_source_table_columns` to discover external table schemas represented in SQL Server data types.
 
 Due to differences between collations in Hadoop source data and supported collations in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], the recommended data type lengths for varchar data type columns in external tables might be much larger than expected. This is by design.
 
@@ -104,7 +114,7 @@ EXECUTE sp_data_source_table_columns
 
 ## Related content
 
-- [Data virtualization with PolyBase in SQL Server](../polybase/polybase-guide.md)
+- [Data virtualization with PolyBase in SQL Server](../polybase/overview.md)
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
 - [CREATE EXTERNAL TABLE AS SELECT (CETAS) (Transact-SQL)](../../t-sql/statements/create-external-table-as-select-transact-sql.md)
 - [CREATE EXTERNAL TABLE (Transact-SQL)](../../t-sql/statements/create-external-table-transact-sql.md)

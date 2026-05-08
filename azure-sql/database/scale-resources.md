@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, urmilano
 ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
@@ -72,6 +72,12 @@ Scaling resources is the easiest and the most effective way to improve performan
 
 - [Read scale-out](read-scale-out.md) is an available feature where you are getting one read-only replica of your data where you can execute demanding read-only queries such as reports. A read-only replica will handle your read-only workload without affecting resource usage on your primary database.
 - [Database sharding](elastic-scale-introduction.md) is a set of techniques that enables you to split your data into several databases and scale them independently.
+
+## Scaling operations for geo-replicas
+
+When your Azure SQL resource has a geo-replica, consider the following guidance for your scaling operations:
+- Azure SQL Database: [Active geo-replication](active-geo-replication-overview.md#scale-primary-database), [failover groups](failover-group-configure-sql-db.md#upgrading-or-downgrading-primary-database)
+- Azure SQL Managed Instance: [Failover groups](../managed-instance/failover-group-configure-sql-mi.md#scaling-instances)
 
 ## Related content
 

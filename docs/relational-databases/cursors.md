@@ -5,7 +5,7 @@ author: rwestMSFT
 ms.author: randolphwest
 ms.date: 12/07/2023
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

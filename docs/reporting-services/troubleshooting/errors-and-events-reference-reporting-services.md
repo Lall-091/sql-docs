@@ -4,7 +4,7 @@ description: View the ID, type, category, source, and description for different 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting
-ms.topic: conceptual
+ms.topic: error-reference
 ms.custom:
   - updatefrequency5
 ---

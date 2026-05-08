@@ -57,7 +57,6 @@ Max Connections
   
 ## See Also  
  [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)   
- [Configuration Functions](../../t-sql/functions/configuration-functions-transact-sql.md)   
  [Configure the user connections Server Configuration Option](../../database-engine/configure-windows/configure-the-user-connections-server-configuration-option.md)  
   
   

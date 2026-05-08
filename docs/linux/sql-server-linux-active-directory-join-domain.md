@@ -4,8 +4,8 @@ titleSuffix: SQL Server
 description: This article provides guidance joining a SQL Server Linux host machine to an Active Directory domain. You can use a built-in SSSD package or use third-party Active Directory providers.
 author: amitkh-msft
 ms.author: amitkh
-ms.reviewer: vanto, randolphwest
-ms.date: 07/03/2025
+ms.reviewer: randolphwest
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -28,6 +28,9 @@ This guide includes steps to check your Active Directory configuration. However,
 Before you configure Active Directory authentication, you need to set up an Active Directory domain controller, Windows, on your network. Then join your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux host to an Active Directory domain.
 
 The sample steps described in this article are for guidance only and refer to Ubuntu 16.04, Red Hat Enterprise Linux (RHEL) 7.x, and SUSE Linux Enterprise Server (SLES) 12 operating systems. Actual steps might slightly differ in your environment depending on how your overall environment is configured and operating system version. For example, Ubuntu 18.04 uses **netplan** while Red Hat Enterprise Linux (RHEL) 8.x uses **nmcli** among other tools to manage and configure network. You should engage your system and domain administrators for your environment for specific tooling, configuration, customization, and any required troubleshooting.
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 ### Reverse DNS (rDNS)
 
@@ -82,7 +85,7 @@ nameserver 10.0.0.4
    sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0
    ```
 
-   The contents should look similar to the following example:
+   The output looks similar to the following example:
 
    ```ini
    PEERDNS=no
@@ -102,7 +105,7 @@ nameserver 10.0.0.4
    sudo vi /etc/resolv.conf
    ```
 
-   The contents should look similar to the following example:
+   The output looks similar to the following example:
 
    ```output
    search contoso.com com
@@ -115,7 +118,7 @@ nameserver 10.0.0.4
    sudo vi /etc/hosts
    ```
 
-   The contents should look similar to the following example:
+   The output looks similar to the following example:
 
    ```output
    <IP address> DC1.CONTOSO.COM CONTOSO.COM CONTOSO
@@ -131,7 +134,7 @@ nameserver 10.0.0.4
    sudo vi /etc/sysconfig/network/config
    ```
 
-   The contents should look similar to the following example:
+   The output looks similar to the following example:
 
    ```ini
    NETCONFIG_DNS_STATIC_SEARCHLIST=""
@@ -150,7 +153,7 @@ nameserver 10.0.0.4
    sudo vi /etc/resolv.conf
    ```
 
-   The contents should look similar to the following example:
+   The output looks similar to the following example:
 
    ```output
    search contoso.com com
@@ -167,7 +170,7 @@ nameserver 10.0.0.4
    sudo vi /etc/netplan/******.yaml
    ```
 
-   The contents should look similar to the following example:
+   The output looks similar to the following example:
 
    ```yml
    network:
@@ -197,7 +200,7 @@ nameserver 10.0.0.4
    /etc/resolv.conf
    ```
 
-   The contents should look similar to the following example:
+   The output looks similar to the following example:
 
    ```output
    search contoso.com com
@@ -212,7 +215,7 @@ nameserver 10.0.0.4
    sudo vi /etc/network/interfaces
    ```
 
-   The contents should look similar to the following example:
+   The output looks similar to the following example:
 
    ```output
    # The primary network interface
@@ -237,7 +240,7 @@ nameserver 10.0.0.4
    sudo vi /etc/resolv.conf
    ```
 
-   The contents should look similar to the following example:
+   The output looks similar to the following example:
 
    ```output
    search contoso.com com
@@ -380,7 +383,7 @@ Verify that your `/etc/krb5.conf` is configured correctly. For most third-party 
 sudo vi /etc/krb5.conf
 ```
 
-The contents should look similar to the following example:
+The output looks similar to the following example:
 
 ```ini
 [libdefaults]

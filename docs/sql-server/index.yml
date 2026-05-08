@@ -8,41 +8,46 @@ metadata:
   ms.topic: landing-page
   author: MashaMSFT
   ms.author: mathoma
-  ms.reviewer: randolphwest
-  ms.date: 11/18/2025
+  ms.reviewer: randolphwest, wiassaf
+  ms.date: 04/02/2026
   ms.custom: build-2025
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | tutorial | overview | quickstart | reference | sample | tutorial | video | whats-new
+
 
 landingContent:
   - title: SQL Server
     linkLists:
       - linkListType: whats-new
         links:
-          - text: SQL Server 2025
+          - text: What's New in SQL Server 2025?
             url: what-s-new-in-sql-server-2025.md
-          - text: SQL Server enabled by Azure Arc
-            url: azure-arc/overview.md
-          - text: SQL Server on Linux
-            url: ../linux/sql-server-linux-overview.md
-          - text: SQL database in Microsoft Fabric
-            url: /fabric/database/sql/overview
-      - linkListType: download
+          - text: What's New in Azure SQL Database?
+            url: /azure/azure-sql/database/doc-changes-updates-release-notes-whats-new
+          - text: What's New in Azure SQL Managed Instance?
+            url: /azure/azure-sql/managed-instance/doc-changes-updates-release-notes-whats-new
+          - text: What's New in SQL Server on Azure VMs?
+            url: /azure/azure-sql/virtual-machines/windows/doc-changes-updates-release-notes-whats-new
+      - linkListType: get-started
         links:
-          - text: SQL Server
-            url: https://www.microsoft.com/sql-server/sql-server-downloads
-          - text: SQL Server Management Studio (SSMS)
-            url: /ssms/install/install
+          - text: Try Azure SQL Database for free
+            url: /azure/azure-sql/database/free-offer?view=azuresql-db&preserve-view=true
+          - text: Try Azure SQL Managed Instance for free
+            url: /azure/azure-sql/managed-instance/free-offer?view=azuresql-mi&preserve-view=true
+          - text: Free SQL tools
+            url: ../tools/overview-sql-tools.md
       - linkListType: quickstart
         links:
           - text: What is SQL Server?
             url: what-is-sql-server.md
+          - text: The Microsoft SQL Database Engine
+            url: ../database-engine/sql-database-engine.md
           - text: Connect to the Database Engine
             url: connect-to-database-engine.md
           - text: Connect and query with SSMS
             url: /ssms/quickstarts/ssms-connect-query-sql-server
+
       - linkListType: get-started
         links:
-          - text: Install SQL Server
-            url: ../database-engine/install-windows/install-sql-server.md
           - text: Migrate to SQL Server
             url: migrate/index.yml
           - text: Secure SQL Server
@@ -55,7 +60,22 @@ landingContent:
             url: ../database-engine/sql-server-business-continuity-dr.md
           - text: Educational SQL resources
             url: ../sql-server/educational-sql-resources.yml
-
+      - linkListType: download
+        links:
+          - text: SQL Server
+            url: https://www.microsoft.com/sql-server/sql-server-downloads
+          - text: SQL Server Management Studio (SSMS)
+            url: /ssms/install/install
+      - linkListType: deploy
+        links:
+          - text: Install SQL Server
+            url: ../database-engine/install-windows/install-sql-server.md
+          - text: SQL Server enabled by Azure Arc
+            url: azure-arc/overview.md
+          - text: SQL Server on Linux
+            url: ../linux/sql-server-linux-overview.md
+          - text: SQL database in Microsoft Fabric
+            url: /fabric/database/sql/overview
   - title: Azure SQL & Microsoft Fabric
     linkLists:
       - linkListType: overview
@@ -89,6 +109,12 @@ landingContent:
             url: /azure/azure-sql/copilot/copilot-azure-sql-overview
           - text: SQL Server Machine Learning (R & Python)
             url: ../machine-learning/index.yml
+          - text: Connect to REST API endpoints for a SQL database
+            url:  /azure/data-api-builder/concept/rest/overview
+          - text: Connect to GraphQL endpoints for a SQL database
+            url:  /azure/data-api-builder/concept/graphql/overview
+          - text: SQL MCP Server
+            url:  /azure/data-api-builder/mcp/overview
 
   - title: Business Intelligence & Machine Learning
     linkLists:
@@ -105,7 +131,7 @@ landingContent:
           - text: Azure Data Factory
             url: /azure/data-factory/
           - text: Data virtualization with PolyBase
-            url: ../relational-databases/polybase/polybase-guide.md
+            url: ../relational-databases/polybase/overview.md
 
   - title: Database design
     linkLists:
@@ -133,7 +159,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: Data virtualization and PolyBase
-            url: ../relational-databases/polybase/polybase-guide.md
+            url: ../relational-databases/polybase/overview.md
           - text: Joins
             url: ../relational-databases/performance/joins.md
           - text: Full-text search

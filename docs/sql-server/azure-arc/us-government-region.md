@@ -5,7 +5,7 @@ author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mikeray
 ms.date: 08/15/2025
-ms.topic: conceptual #Don't change
+ms.topic: feature-availability
 #customer intent:Understand the features, limitations, and onboarding process for using SQL Server enabled by Azure Arc in US Government regions, specifically to manage their SQL Server resources securely and compliantly within the Azure Government portal.
 
 ---
@@ -50,13 +50,10 @@ Currently, in the US Government Virginia region, SQL Server registration provide
   - View the properties for each server. For example, you can view the version, edition, and database for each instance.
 - [Subscribe to Extended Security Updates in a production environment](extended-security-updates.md#subscribe-to-extended-security-updates-in-a-production-environment).
 - [Manage licensing and billing of SQL Server enabled by Azure Arc](manage-license-billing.md).
-- License virtual cores. 
+- License virtual cores.
+- [Failover cluster instances support](support-for-fci.md) - onboard and manage SQL Server failover cluster instances. 
 
 [All other features](overview.md#feature-differentiation) aren't currently available.
-
-## Limitations
-
-- Onboarding failover cluster instances isn't currently supported.
 
 ## Related content
 

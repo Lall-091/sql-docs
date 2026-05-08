@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "SINGLE_NCLOB option"
   - "bulk rowset providers [SQL Server]"

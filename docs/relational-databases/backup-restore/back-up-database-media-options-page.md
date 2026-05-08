@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/08/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "swb.backupdatabase.mediaoptions.f1"
   - "sql13.swb.backupdatabase.mediaoptions.f1"

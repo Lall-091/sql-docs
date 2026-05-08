@@ -3,7 +3,7 @@ title: "Use Character Format to Import & Export Data"
 description: Character format uses character data format for all columns. This is useful working with other programs or copying to an instance from another database vendor.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/27/2025
+ms.date: 02/10/2026
 ms.service: sql
 ms.subservice: data-movement
 ms.topic: concept-article
@@ -42,10 +42,12 @@ When using character format, consider:
 
 - The [bcp utility](../../tools/bcp-utility.md) exports [money](../../t-sql/data-types/money-and-smallmoney-transact-sql.md) values as character-format data files with four digits after the decimal point and without any digit-grouping symbols such as comma separators. For example, a [money](../../t-sql/data-types/money-and-smallmoney-transact-sql.md) column that contains the value `1,234,567.123456` is bulk exported to a data file as the character string `1234567.1235`.
 
+- Vector type columns don't support conversion to or from character format. Hence bulk import or export of **vector** columns in character format isn't supported.
+
 ## Command options for character format
 
 You can import character format data into a table using [bcp](../../tools/bcp-utility.md), [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md), or [OPENROWSET (BULK)](../../t-sql/functions/openrowset-bulk-transact-sql.md). For a [bcp](../../tools/bcp-utility.md) command or [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md) statement, you can specify the data format in the statement. For an [OPENROWSET (BULK)](../../t-sql/functions/openrowset-bulk-transact-sql.md) statement, you must specify the data format in a format file.
-  
+
 Character format is supported by the following command options:
 
 | Command | Option | Description |
@@ -107,7 +109,7 @@ Notepad D:\BCP\myChar.fmt
 
 > [!IMPORTANT]  
 > Ensure your non-XML format file ends with a carriage return\line feed. Otherwise you might receive the following error message:
->  
+>
 > `SQLState = S1000, NativeError = 0`  
 > `Error = [Microsoft][ODBC Driver 13 for SQL Server]I/O error while reading BCP format file`
 
@@ -216,7 +218,7 @@ To use data formats for bulk import or bulk export:
 
 ## Related content
 
-- [bcp Utility](../../tools/bcp-utility.md)
+- [bcp utility](../../tools/bcp-utility.md)
 - [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md)
 - [OPENROWSET (Transact-SQL)](../../t-sql/functions/openrowset-transact-sql.md)
 - [Data types (Transact-SQL)](../../t-sql/data-types/data-types-transact-sql.md)

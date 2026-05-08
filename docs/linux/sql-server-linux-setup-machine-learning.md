@@ -390,28 +390,28 @@ Follow the [Offline installation](sql-server-linux-setup.md#offline) instruction
 
 ### Download site
 
-Download packages from [https://packages.microsoft.com/](https://packages.microsoft.com/). All of the `mlservices` packages for Python and R are colocated with database engine package. Base version for the `mlservices` packages is 9.4.6. Recall that the microsoft-r-open packages are in a [different repository](#mro).
+Download packages from <https://packages.microsoft.com/>. All of the `mlservices` packages for Python and R are colocated with database engine package. Base version for the `mlservices` packages is 9.4.6. Recall that the microsoft-r-open packages are in a [different repository](#mro).
 
 ### RHEL/8 paths
 
 | Package | Download location |
 | --- | --- |
-| `mssql`/`mlservices` packages | [https://packages.microsoft.com/rhel/8/mssql-server-2019/](https://packages.microsoft.com/rhel/8/mssql-server-2019/) |
-| `microsoft-r-open` packages | [https://packages.microsoft.com/rhel/8/prod/](https://packages.microsoft.com/rhel/8/prod/) |
+| `mssql`/`mlservices` packages | <https://packages.microsoft.com/rhel/8/mssql-server-2019/> |
+| `microsoft-r-open` packages | <https://packages.microsoft.com/rhel/8/prod/> |
 
 ### Ubuntu/20.04 paths
 
 | Package | Download location |
 | --- | --- |
-| `mssql`/`mlservices` packages | [https://packages.microsoft.com/ubuntu/20.04/mssql-server-2019/pool/main/m/](https://packages.microsoft.com/ubuntu/20.04/mssql-server-2019/pool/main/m/) |
-| `microsoft-r-open` packages | [https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/](https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/) |
+| `mssql`/`mlservices` packages | <https://packages.microsoft.com/ubuntu/20.04/mssql-server-2019/pool/main/m/> |
+| `microsoft-r-open` packages | <https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/> |
 
 ### SLES/12 paths
 
 | Package | Download location |
 | --- | --- |
-| `mssql`/`mlservices` packages | [https://packages.microsoft.com/sles/12/mssql-server-2019/](https://packages.microsoft.com/sles/12/mssql-server-2019/) |
-| `microsoft-r-open` packages | [https://packages.microsoft.com/sles/12/prod/](https://packages.microsoft.com/sles/12/prod/) |
+| `mssql`/`mlservices` packages | <https://packages.microsoft.com/sles/12/mssql-server-2019/> |
+| `microsoft-r-open` packages | <https://packages.microsoft.com/sles/12/prod/> |
 
 Select extensions you want to use and download the packages necessary for a specific language. The filenames include platform information in the suffix.
 

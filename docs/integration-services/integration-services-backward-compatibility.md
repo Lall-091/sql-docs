@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "02/28/2024"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: release-notes
 helpviewer_keywords:
   - "compatibility [Integration Services]"
   - "Data Transformation Services, support for"

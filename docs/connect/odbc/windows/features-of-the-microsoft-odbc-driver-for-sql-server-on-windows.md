@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 01/31/2023
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Features of the Microsoft ODBC Driver for SQL Server on Windows
 

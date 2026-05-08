@@ -39,7 +39,7 @@ Automatic registration offers limited functionality of the extension, such as li
 
 To enable automatic registration of your SQL Server VM with the extension, you'll need:
 
-- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - The client credentials used to register the virtual machines to exist in any of the following Azure roles: **Virtual Machine contributor**, **Contributor**, or **Owner**.
 
 Once automatic registration is enabled, SQL Server VMs are registered according to these conditions:

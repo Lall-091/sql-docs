@@ -5,7 +5,7 @@ description: Use the update policy setting in Azure SQL Managed Instance to cont
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 11/18/2025
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: how-to
@@ -32,7 +32,7 @@ Azure SQL Managed Instance offers the following three update policies:
 ## SQL Server 2025 update policy
 
 > [!NOTE]
-> The **SQL Server 2025** update policy is currently in preview. Changing the update policy from **SQL Server 2025** to **Always-up-to-date** is currently and temporarily disabled.
+> Changing the update policy from **SQL Server 2025** to **Always-up-to-date** is currently and temporarily disabled.
 
 The **SQL Server 2025** update policy aligns your database format with [!INCLUDE [sssql25-md](../../docs/includes/sssql25-md.md)].
 
@@ -75,9 +75,9 @@ The following table lists all the features that are only available to instances 
 
 | Update policy | Features |
 |---------|---------|
-| *Always-up-to-date* update policy | - There are currently no separate features that are only available to instances with the *Always-up-to-date* update policy. <br /> - All features available with the *SQL Server 2025* update policy are also available to instances with the *Always-up-to-date* update policy, other than the ability to restore databases, or configure a link with bidirectional failover, to [!INCLUDE [sssql25-md](../../docs/includes/sssql25-md.md)].   |
-| *SQL Server 2025* update policy | - [Restore database to SQL Server 2025](restore-database-to-sql-server.md)<br /> - [Link with bidirectional failover and disaster recovery with SQL Server 2025](managed-instance-link-disaster-recovery.md) <br />- [JSON data type](/sql/t-sql/data-types/json-data-type)<br /> - [JSON_ARRAYAGG](/sql/t-sql/functions/json-arrayagg-transact-sql) and [JSON_OBJECTAGG](/sql/t-sql/functions/json-objectagg-transact-sql) aggregate functions <br /> - [Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) <br /> - [Azure SQL Managed Instance Mirroring in Fabric](/fabric/database/mirrored-database/azure-sql-managed-instance) <br /> - [Vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true) <br /> - [Vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) <br /> - [Fuzzy string matching](/sql/relational-databases/fuzzy-string-match/overview)  <br /> - [DATEADD (Transact-SQL)](/sql/t-sql/functions/dateadd-transact-sql).  <br /> - [UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql) <br /> - [Regular expression functions](/sql/relational-databases/regular-expressions/overview) <br /> - [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql) <br /> - [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql) <br /> - [Degree of parallelism (DOP) feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqlmi-current&preserve-view=true) <br /> - [Optimized locking](/sql/relational-databases/performance/optimized-locking?view=azuresqlmi-current&preserve-view=true) |
-| *SQL Server 2022* update policy | - [Restore database to SQL Server 2022](restore-database-to-sql-server.md)  <br /> - [Link with bidirectional failover and disaster recovery with SQL Server 2022](managed-instance-link-disaster-recovery.md) |
+| *Always-up-to-date* update policy | - [Automatic index compaction](/sql/relational-databases/indexes/automatic-index-compaction)<br />- [Query Store for secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas)<br />- All features available with the *SQL Server 2025* update policy are also available to instances with the *Always-up-to-date* update policy, other than the ability to restore databases to, or configure a link with bidirectional failover with, [!INCLUDE [sssql25-md](../../docs/includes/sssql25-md.md)]. |
+| *SQL Server 2025* update policy | - [Azure SQL Managed Instance Mirroring in Fabric](/fabric/database/mirrored-database/azure-sql-managed-instance) <br /> - [Change event streaming (Preview)](/sql/relational-databases/track-changes/change-event-streaming/overview) <br /> - [DATEADD (Transact-SQL)](/sql/t-sql/functions/dateadd-transact-sql) <br /> - [Degree of parallelism (DOP) feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqlmi-current&preserve-view=true) <br /> - [Fuzzy string matching](/sql/relational-databases/fuzzy-string-match/overview) <br /> - [Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) <br /> - [JSON data type](/sql/t-sql/data-types/json-data-type) <br /> - [JSON_ARRAYAGG](/sql/t-sql/functions/json-arrayagg-transact-sql) and [JSON_OBJECTAGG](/sql/t-sql/functions/json-objectagg-transact-sql) aggregate functions <br /> - [Link with bidirectional failover and disaster recovery with SQL Server 2025](managed-instance-link-disaster-recovery.md) <br /> - [Optimized locking](/sql/relational-databases/performance/optimized-locking?view=azuresqlmi-current&preserve-view=true) <br /> - [Regular expression functions](/sql/relational-databases/regular-expressions/overview) <br /> - [Restore database to SQL Server 2025](restore-database-to-sql-server.md) <br /> - [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql) <br /> - [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql) <br /> - [UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql) <br /> - [Vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) <br /> - [Vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true) |
+| *SQL Server 2022* update policy | - [Link with bidirectional failover and disaster recovery with SQL Server 2022](managed-instance-link-disaster-recovery.md) <br /> - [Restore database to SQL Server 2022](restore-database-to-sql-server.md)  |
 
 The following features are affected by the configured update policy: 
 
@@ -117,7 +117,7 @@ To change the update policy for an existing instance in the Azure portal, follow
 1. Select **Maintenance and updates** under **Settings**. 
 1. Select the bubble to enable the **Always up-to-date** update policy: 
 
-   :::image type="content" source="media/update-policy/update-policy-existing-instance.md.png" alt-text="Screenshot of the SQL Managed Instance page in the Azure portal, with update policy selected.":::
+   :::image type="content" source="media/update-policy/update-policy-existing-instance.png" alt-text="Screenshot of the SQL Managed Instance page in the Azure portal, with update policy selected.":::
 
 1. Select **Yes** on the **Confirm update policy change** popup to save your changes. Once the **Always-up-to-date** update policy is enabled, the **SQL Server 2022** update policy is no longer available.
 
@@ -157,16 +157,13 @@ Although the **SQL Server 2022** update policy is enabled by default, you can ch
 
 ### [Azure portal](#tab/azure-portal)
 
-To create a new SQL managed instance with the **Always-up-to-date** policy in the Azure portal, follow these steps: 
+To create a new SQL managed instance with the **SQL Server 2025** or **Always-up-to-date** policy in the Azure portal, follow these steps: 
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Managed Instance**, select **Show options**.
-1. In the **Azure SQL Managed Instance options** window, select **Create SQL Managed Instance**.
+[!INCLUDE [create-sql-managed-instance](../includes/sql-managed-instance/create-sql-managed-instance.md)]
 
-   :::image type="content" source="media/update-policy/show-options-create-sql-managed-instance.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="media/update-policy/show-options-create-sql-managed-instance.png":::
-
-1. On the **Create Azure SQL Managed Instance** page, fill out details for your instance. For complete steps to create a new SQL managed instance, see [Quickstart: Create Azure SQL Managed Instance](instance-create-quickstart.md).
-1. On the **Additional settings** tab, under **SQL engine updates**, choose the **Always-up-to-date** policy: 
+On the **Create Azure SQL Managed Instance** page, follow these steps: 
+1. Fill out details for your instance. For complete steps to create a new SQL managed instance, see [Quickstart: Create Azure SQL Managed Instance](instance-create-quickstart.md).
+1. On the **Additional settings** tab, under **SQL engine updates**, choose the policy you want your SQL managed instance to use, such as the **SQL Server 2025** or **Always-up-to-date** policy: 
 
    :::image type="content" source="media/update-policy/update-policy-new-instance.png" alt-text="Screenshot of the Create Azure SQL Managed Instance page of the Azure portal with update policy selected.":::
 

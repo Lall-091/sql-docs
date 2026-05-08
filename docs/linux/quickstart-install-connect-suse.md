@@ -20,7 +20,7 @@ monikerRange: "<=sql-server-linux-ver16 || <=sql-server-ver16"
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
 
-In this quickstart, you install [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on SUSE Linux Enterprise Server (SLES) v12. Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on SUSE Linux Enterprise Server (SLES) v12. Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 For more information on supported platforms, see [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md).
 
@@ -28,7 +28,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2019+ on Linux-->
 ::: moniker range=">=sql-server-linux-ver15 || >=sql-server-ver15"
 
-In this quickstart, you install [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on SUSE Linux Enterprise Server (SLES) 15. Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on SUSE Linux Enterprise Server (SLES) 15. Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 For more information on supported platforms, see [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md).
 
@@ -36,7 +36,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2022 on Linux-->
 ::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
-In this quickstart, you install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on SUSE Linux Enterprise Server (SLES) 15. Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on SUSE Linux Enterprise Server (SLES) 15. Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 For more information on supported platforms, see [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md).
 
@@ -70,14 +70,14 @@ You must have a SLES 15 (SP6) machine with **at least 2 GB** of memory. The file
 
 ::: moniker-end
 
-To install SUSE Linux Enterprise Server on your own machine, go to [https://www.suse.com/products/server](https://www.suse.com/products/server). You can also use ready-made SUSE images from Azure Marketplace. For how to use these images in Azure, check out [Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm) and use `--image SLES` in the call to `az vm create`.
+To install SUSE Linux Enterprise Server on your own machine, visit [SUSE Linux Enterprise Server](https://www.suse.com/products/server). You can also use ready-made SUSE images from Azure Marketplace. For how to use these images in Azure, check out [Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm) and use `--image SLES` in the call to `az vm create`.
 
-For more information about support periods for SUSE versions, see [https://www.suse.com/lifecycle](https://www.suse.com/lifecycle).
+For more information about support periods for SUSE versions, see [Product Support Lifecycle](https://www.suse.com/lifecycle).
 
 If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must first remove the old repository before following these steps. For more information, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
 
 > [!NOTE]  
-> At this time, the [Windows Subsystem for Linux](/windows/wsl/about) for Windows 10 or Windows 11 isn't supported as an installation target.
+> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows Subsystem for Linux (WSL) is supported for development purposes only. For instructions on installing SQL Server on WSL, see [Quickstart: Install SQL Server and create a database on Windows Subsystem for Linux (WSL 2)](quickstart-install-connect-wsl-2.md).
 
 For other system requirements, see [System requirements for SQL Server on Linux](sql-server-linux-setup.md#system).
 
@@ -97,7 +97,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on SLES,
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true#install), or [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true#install) version of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2019](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true#install), or [SQL Server 2022](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true#install) version of this article.
 
 1. Refresh your repositories.
 
@@ -153,7 +153,7 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is run
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true#install), or [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true#install) version of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true#install), or [SQL Server 2022](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true#install) version of this article.
 
 1. Refresh your repositories.
 
@@ -208,7 +208,7 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is run
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true#install), or [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true#install) version of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true#install), or [SQL Server 2019](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true#install) version of this article.
 
 1. Refresh your repositories.
 

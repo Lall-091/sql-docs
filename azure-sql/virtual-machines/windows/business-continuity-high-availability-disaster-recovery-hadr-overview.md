@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 09/17/2025
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
-ms.topic: conceptual
+ms.topic: concept-article
 tags: azure-service-management
 ---
 # Business continuity and HADR for SQL Server on Azure VMs

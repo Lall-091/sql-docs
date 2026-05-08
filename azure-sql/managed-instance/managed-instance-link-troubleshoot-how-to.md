@@ -54,10 +54,9 @@ To check the link state in SSMS, follow these steps:
 
    :::image type="content" source="media/managed-instance-link-troubleshoot-how-to/link-properties.png" alt-text="Screenshot of the link properties window in SSMS. ":::
 
-
 ### [Transact-SQL (T-SQL)](#tab/tsql)
 
-Use T-SQL to determine the state of the link during the seeding phase, or after data synchronization begins. 
+Use T-SQL to determine the state of the link during the seeding phase, or after data synchronization begins. The [sys.dm_hadr_physical_seeding_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-hadr-physical-seeding-stats) DMV can be used to track the initial seeding status. The `estimate_time_complete_utc` column is based on the current `transfer_rate_bytes_per_second` and uncompressed remaining data size (when `is_compression_enabled` = 0). For Managed Instance link, data compression is used, so `estimate_time_complete_utc` is expected to be an overestimate.
 
 Use the following T-SQL query to determine the status of the link during the seeding phase on the SQL Server or SQL Managed Instance that hosts the database seeded through the link: 
 
@@ -137,7 +136,7 @@ dagName = "<DAGName>" # distributed availability group name
 rgName = "<RGName>" # the resource group for the linked SQL Managed Instance  
 
 # Print link state details 
-az sql mi link show –-resource-group $rgName –-instance-name $managedInstanceName –-name $dagName  
+az sql mi link show --resource-group $rgName --instance-name $managedInstanceName --name $dagName  
 ```
 
 ---
@@ -151,12 +150,17 @@ Some possible *replicaState* values are:
 
 For a complete list of link state properties, review the [Distributed Availability Groups - GET](/rest/api/sql/distributed-availability-groups/get?view=rest-sql-2024-05-01-preview&tabs=HTTP&preserve-view=true#definitions) REST API command. 
 
+## Planned failover times out
 
-## Errors with the link
+If the secondary replica is unable to keep up with the changes on the primary replica and lags behind, planned failover can time out and fail with an error. 
 
-There are two distinct categories of errors you can encounter when using the link - errors when you try to initialize the link, and errors when you try to create the link. 
+To resolve this issue, follow these steps: 
+1. [Check replication lag](managed-instance-link-best-practices.md#monitor-replication-lag) between the two instances.
+1. If replication lag is high, wait for the secondary replica to catch up with the primary replica. You might need to perform additional troubleshooting steps if the lag persists, such as pausing workloads on the primary replica, improving link network throughput between the two instances, or increasing resource capacity on the secondary replica.
+   - The easiest way to stop workloads on a SQL Server primary replica is to cut application connections to the instance. 
+1. Once the secondary replica has caught up with the primary replica, try planned failover again.
 
-### Errors initializing a link sql-server-2016-database-engine-events-and-errors-1000-1999
+## Errors initializing a link 
 
 The following error can occur when initializing a link (Link state: `LinkInitError`): 
 
@@ -165,21 +169,145 @@ The following error can occur when initializing a link (Link state: `LinkInitErr
 - [Error 41974](/sql/relational-databases/errors-events/mssqlserver-41974-database-engine-error): Link can't be established because [endpoint certificate from SQL Managed Instance](managed-instance-link-configure-how-to-scripts.md#get-the-certificate-public-key-from-sql-managed-instance-and-import-it-to-sql-server) wasn't imported into SQL Server correctly.
 - [Error 41976](/sql/relational-databases/errors-events/mssqlserver-41976-database-engine-error): The availability group isn't responding. Check names and configuration parameters and try again.
 - [Error 41986](/sql/relational-databases/errors-events/mssqlserver-41986-database-engine-error): Link can't be established because the connection failed or the secondary replica isn't responsive. Check names, configuration parameters, and [network connectivity](#test-network-connectivity) and then try again.
-- [Error 47521](/sql/relational-databases/errors-events/mssqlserver-47521-database-engine-error): Link can't be established because the secondary server didn't receive the request. Make sure the availability group and databases are healthy on the primary server and try again. 
+- [Error 47521](/sql/relational-databases/errors-events/mssqlserver-47521-database-engine-error): Link can't be established because the secondary server didn't receive the request. Make sure the availability group and databases are healthy on the primary server and try again.
 
-### Errors creating a link
+## Errors creating a link
 
-The following errors can occur when creating a link (Link state: `LinkCreationError`): 
+The following errors can occur when creating a link (Link state: `LinkCreationError`):
 
 - [Error 41977](/sql/relational-databases/errors-events/mssqlserver-41977-database-engine-error): The target database isn't responsive. Check link parameters and try again.
 - **Premature log truncation**: If the transaction log is truncated before the initial seeding finishes, you are likely to see one of the following errors: 
-   - [Error 1408](/sql/relational-databases/errors-events/database-engine-events-and-errors-1000-to-1999): The remote copy of database "%.*ls" is not recovered far enough to enable database mirroring or to join it to the availability group. 
-   - [Error 1412](/sql/relational-databases/errors-events/database-engine-events-and-errors-1000-to-1999): The remote copy of database "%.*ls" has not been rolled forward to a point in time that is encompassed in the local copy of the database log.
+   - [Error 1408](/sql/relational-databases/errors-events/database-engine-events-and-errors-1000-to-1999): Replication to remote database has failed and cannot be recovered due to a missing log file overlap between the primary and secondary replica. Delete the existing link and create a new link to restart the replication.
+   - [Error 1412](/sql/relational-databases/errors-events/database-engine-events-and-errors-1000-to-1999): Replication to remote database has failed and cannot be recovered due to a log file size mismatch with the primary replica. Delete the existing link and create a new link to restart the replication.
+   
+### Error 1412
 
-   To resolve this issue, you must [drop](managed-instance-link-configure-how-to-ssms.md#drop-a-link) and recreate the link.   
-   To avoid this issue, pause transaction log backups on SQL Server for database being replicated during the initial seeding phase.
+When you first create a [link](managed-instance-link-feature-overview.md), the first part of the process seeds a full backup of the database from the primary replica to the secondary replica. After seeding of the full backup completes, the link starts to replicate data by applying differential data from the primary replica to the secondary replica. This process continues indefinitely until a failover command is issued, or the link is removed.
 
+If a transaction log backup occurs on the primary replica during initial seeding of the full backup, the transaction log truncates. Link creation fails with error 1412 since the data in the transaction log necessary for initial seeding is no longer available. If you see error 1412 in the SQL Server error log on Azure SQL Managed Instance, then you must [drop](managed-instance-link-configure-how-to-ssms.md#drop-a-link) and recreate the link.
 
+To preemptively avoid this issue, pause transaction log backups during the initial seeding phase. 
+
+If transaction log backups are necessary during the initial seeding phase, especially for very large databases, you can choose to [manually prevent log truncation](#manual-prevention-of-log-truncation) or automate the process with a T-SQL script to auto-pause log backups in critical phases, and when it's safe.
+
+#### Manual prevention of log truncation
+
+The steps in this section demonstrate how to open a transaction against a dummy table to prevent log truncation during the initial seeding phase. This process requires manual monitoring of the seeding progress, and careful timing to ensure that log truncation is prevented until seeding completes.
+
+1. Monitor seeding progress. You can use the following T-SQL query to monitor the progress of initial seeding:
+
+   ```sql
+   SELECT * FROM sys.dm_exec_requests WHERE database_id = @dbId AND command = 'VDI_CLIENT_WORKER'
+   ```
+
+1. When seeding nears 90% completion, issue a `BEGIN TRAN` command on a dummy table without a commit keep a transaction open and prevent log truncation. 
+1. Carefully monitor transaction log disk space to ensure it doesn't exceed storage capacity while the transaction is open.
+1. Once seeding reaches 100%, complete the transaction with `COMMIT TRAN`.
+
+For example, any time before initial seeding reaches 90%, run the following command to create a dummy table for the purpose of avoiding error 1412:
+
+```sql
+-- Create table
+CREATE TABLE Prevent1412
+(
+    Id        INT,
+    CreatedAt DATETIME
+);
+
+```
+
+Then, when seeding nears completion, run the following command to prevent log truncation:
+
+```sql
+BEGIN TRAN;
+
+INSERT INTO Prevent1412 (Id, CreatedAt)
+VALUES (1, GETDATE());
+```
+
+> [!CAUTION]
+> After the transaction begins, the transaction log no longer truncates, so carefully monitor transaction log disk space to ensure it doesn't exceed storage capacity while the transaction is open.
+
+Once seeding completes, you can commit the transaction to truncate the log: 
+
+```sql
+COMMIT TRAN;
+```
+
+After migration completes, you can drop the dummy table: 
+
+```sql
+DROP TABLE Prevent1412;
+```
+
+#### Automate auto-pause log backups
+
+Alternatively, you can automate the process to auto-pause log backups in critical phases when it's safe with a T-SQL script. 
+
+The following script can be executed before the migration begins: 
+
+```sql
+-- Get last backup date
+SELECT TOP 1 @lastBackupTime = b.backup_finish_date
+FROM master.sys.sysdatabases d 
+LEFT OUTER JOIN msdb..backupSET b
+ON b.database_name = d.name
+AND b.type = 'L'
+WHERE d.name = @dbName
+ORDER BY backup_finish_date DESC
+SELECT @diffInMins = DATEDIFF(minute, @lastBackupTime, CURRENT_TIMESTAMP);
+
+-- Get database id and group database id
+SELECT @agDbId = group_database_id, @dbId = database_id FROM sys.databases WHERE name = @dbName
+
+-- If there is no group database id, no need for checks
+IF (@agDbId IS NOT NULL)
+BEGIN
+              -- Get last seeding start time and check if backup (VDI client) is actually running
+              SELECT TOP 1 @seedingStartTime = start_time, @state = current_state, @agDbId = ag_db_id FROM sys.dm_hadr_automatic_seeding ORDER BY start_time DESC
+
+              IF (@state = 'PENDING' OR @state = 'CHECK_IF_SEEDING_NEEDED' OR @state = 'LIMIT_CONCURRENT_BACKUPS')
+                             SET @seedingStarting = 1
+              ELSE
+                             SET @seedingStarting = 0
+              
+              SELECT @backupWorkers = COUNT(*) FROM sys.dm_exec_requests WHERE database_id = @dbId AND command = 'VDI_CLIENT_WORKER'
+
+              -- Check if seeding is done by looking at remote replica state and health
+              SELECT TOP 1 @db_state = synchronization_state_desc, @db_health = synchronization_health_desc FROM sys.dm_hadr_database_replica_states WHERE database_id = @dbId AND is_local = 0
+
+              IF (@db_state = N'SYNCHRONIZING' AND @db_health = N'HEALTHY')
+              SET @seedingDone = 1
+              ELSE
+              SET @seedingDone = 0
+END
+
+-- If X minutes has passed since last log backup, do it, we don't want to wait anymore
+IF (@alreadyFailed = 1 or @diffInMins > {set_minutes})
+BEGIN
+              {do_log_backup}
+              SET @alreadyFailed = 1
+              CONTINUE;
+END
+
+-- If seeding has started and finished take log backups
+IF ((@agDbId IS NOT NULL) AND (@seedingStartTime IS NOT NULL) AND (@startTime < @seedingStartTime) AND (@seedingDone = 1))
+BEGIN
+              {do_log_backup}
+              SET @alreadyFailed = 1
+              CONTINUE;
+END
+
+-- If database is not in ag or
+-- If seeding has not started or
+-- If seeding is ongoing 
+-- Take log backups
+IF ((@agDbId IS NULL) OR (@seedingStartTime IS NULL) OR (@startTime > @seedingStartTime) OR (@seedingStarting = 1) or (@backupWorkers > 0))
+BEGIN
+              {do_log_backup}
+              CONTINUE;
+END
+```
 
 
 ## Inconsistent state after forced failover
@@ -235,10 +363,15 @@ GO
 
 It's possible for the certificate used for the link to expire. If the certificate expires, the link fails. To resolve this issue, [rotate the certificate](managed-instance-link-best-practices.md#rotate-certificate). 
 
+## Known issues after migrating to SQL Managed Instance
+
+Consider the following known issues after migrating to Azure SQL Managed Instance:
+
+[!INCLUDE [known-issues-after-migration](../includes/sql-managed-instance/known-issues-after-migration.md)]
+
 ## Test network connectivity
 
 [!INCLUDE [azure-sql-managed-instance-link-check-network](../includes/sql-managed-instance/azure-sql-managed-instance-link-check-network.md)]
-
 
 ## Related content
 

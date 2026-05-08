@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "minimal logging [SQL Server]"
   - "logged bulk copy [SQL Server]"

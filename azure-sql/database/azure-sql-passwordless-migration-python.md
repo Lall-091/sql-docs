@@ -3,8 +3,8 @@ title: Migrate a Python Application to Use Passwordless Connections
 description: Learn how to migrate a Python application to use passwordless connections with Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: rotabor, mathoma
-ms.date: 06/13/2025
+ms.reviewer: dlevy, rotabor, mathoma
+ms.date: 01/29/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -22,6 +22,8 @@ ms.custom:
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Application requests to Azure SQL Database must be authenticated. Although there are multiple options for authenticating to Azure SQL Database, you should prioritize passwordless connections in your applications when possible. Traditional authentication methods that use passwords or secret keys create security risks and complications. Visit the [passwordless connections for Azure services](/azure/developer/intro/passwordless-overview) hub to learn more about the advantages of moving to passwordless connections. The following tutorial explains how to migrate an existing Python application to connect to Azure SQL Database to use passwordless connections instead of a username and password solution.
+
+The [mssql-python](/sql/connect/python/mssql-python/python-sql-driver-mssql-python) driver provides built-in support for Microsoft Entra authentication, making passwordless connections straightforward with minimal code changes.
 
 ## Configure the Azure SQL Database
 
@@ -43,39 +45,38 @@ Create a user in Azure SQL Database. The user should correspond to the Azure acc
 
 ### Update the local connection configuration
 
-Existing application code that connects to Azure SQL Database using the [Python SQL Driver - pyodbc](/sql/connect/python/pyodbc/python-sql-driver-pyodbc) continues to work with passwordless connections with minor changes. For example, the following code works with both SQL authentication and passwordless connections when running locally and when deployed to Azure App Service.
+Migrating to passwordless connections with [mssql-python](/sql/connect/python/mssql-python/python-sql-driver-mssql-python) requires only a connection string change. The driver has built-in support for Microsoft Entra authentication modes, eliminating the need for manual token handling.
 
 ```python
-import os
-import pyodbc, struct
-from azure.identity import DefaultAzureCredential
+from os import getenv
+from dotenv import load_dotenv
+from mssql_python import connect
 
-connection_string = os.environ["AZURE_SQL_CONNECTIONSTRING"]
+load_dotenv()
+
+connection_string = getenv("AZURE_SQL_CONNECTIONSTRING")
 
 def get_all():
-    with get_conn() as conn:
+    with connect(connection_string) as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM Persons")
         # Do something with the data
     return
-
-def get_conn():
-    credential = DefaultAzureCredential(exclude_interactive_browser_credential=False)
-    token_bytes = credential.get_token("https://database.windows.net/.default").token.encode("UTF-16-LE")
-    token_struct = struct.pack(f'<I{len(token_bytes)}s', len(token_bytes), token_bytes)
-    SQL_COPT_SS_ACCESS_TOKEN = 1256  # This connection option is defined by microsoft in msodbcsql.h
-    conn = pyodbc.connect(connection_string, attrs_before={SQL_COPT_SS_ACCESS_TOKEN: token_struct})
-    return conn
 ```
 
-> [!TIP]
-> In this example code, the App Service environment variable `WEBSITE_HOSTNAME` is used to determine what environment the code is running in. For other deployment scenarios, you can use other environment variables to determine the environment. 
+To update the referenced connection string (`AZURE_SQL_CONNECTIONSTRING`) for local development, create a `.env` file in your project folder with the passwordless connection string format using `ActiveDirectoryDefault` authentication:
 
-To update the referenced connection string (`AZURE_SQL_CONNECTIONSTRING`) for local development, use the passwordless connection string format:
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;Authentication=ActiveDirectoryDefault
+```
 
-```
-Driver={ODBC Driver 18 for SQL Server};Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30
-```
+`ActiveDirectoryDefault` automatically discovers credentials from multiple sources (Azure CLI, environment variables, Visual Studio, etc.) without requiring interactive login. This approach is convenient for development but adds latency because it tries each credential source in sequence.
+
+> [!IMPORTANT]
+> `ActiveDirectoryDefault` is intended for local development only. It tries multiple authentication methods in sequence, which adds latency and can cause unexpected behavior in production. For production applications, use the specific authentication method for your scenario:
+> - **Azure App Service/Functions**: Use `ActiveDirectoryMSI` (managed identity)
+> - **Interactive user login**: Use `ActiveDirectoryInteractive`
+> - **Service principal**: Use `ActiveDirectoryServicePrincipal`
 
 ### Test the app
 
@@ -104,7 +105,8 @@ Complete the following steps in the Azure portal to associate the user-assigned 
 - Azure Container Apps
 - Azure virtual machines
 - Azure Kubernetes Service
-- Navigate to the overview page of your web app.
+
+1. Navigate to the overview page of your web app.
 
 1. Select **Identity** from the left navigation.
 
@@ -132,12 +134,12 @@ Complete the following steps in the Azure portal to associate the user-assigned 
 
 ### Update the connection string
 
-Update your Azure app configuration to use the passwordless connection string format. The format should be the same used in your local environment. 
+Update your Azure app configuration to use the passwordless connection string format with `ActiveDirectoryMSI` authentication for managed identity.
 
 Connection strings can be stored as environment variables in your app hosting environment. The following instructions focus on App Service, but other Azure hosting services provide similar configurations.
 
 ```connectionstring
-Driver={ODBC Driver 18 for SQL Server};Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30
+Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;Authentication=ActiveDirectoryMSI
 ```
 
 `<database-server-name>` is the name of your Azure SQL Database server and `<database-name>` is the name of your Azure SQL Database.
@@ -149,9 +151,13 @@ To use the user-assigned managed identity, create an `AZURE_CLIENT_ID` environme
 Save your changes and restart the application if it doesn't do so automatically.
 
 > [!NOTE]
-> The example connection code shown in this migration guide uses the [DefaultAzureCredential](/python/api/azure-identity/azure.identity.defaultazurecredential) class when deployed. Specifically, it uses the DefaultAzureCredential without passing the user-assigned managed identity client ID to the constructor. In this scenario, the fallback is to check for the AZURE_CLIENT_ID environment variable. If the AZURE_CLIENT_ID environment variable doesn't exist, a system-assigned managed identity will be used if configured.
+> When using a user-assigned managed identity, include the client ID in the connection string using the `User Id` parameter:
 >
-> If you pass the managed identity client ID in the DefaultAzureCredential constructor, the connection code can still be used locally and deployed because the authentication process falls back to interactive authentication in the local scenario. For more information, see the [Azure Identity client library for Python](/python/api/overview/azure/identity-readme#defaultazurecredential).
+> ```connectionstring
+> Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;Authentication=ActiveDirectoryMSI;User Id=<managed-identity-client-id>
+> ```
+>
+> If you omit the `User Id` parameter, the driver uses the system-assigned managed identity if one is configured.
 
 ### Test the application
 
@@ -159,6 +165,7 @@ Test your app to make sure everything is still working. It can take a few minute
 
 ## Related content
 
+- [mssql-python driver documentation](/sql/connect/python/mssql-python/python-sql-driver-mssql-python)
 - [Passwordless overview](/azure/developer/intro/passwordless-overview)
 - [Managed identity best practices](/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations)
 - [Tutorial: Secure a database in Azure SQL Database](/azure/azure-sql/database/secure-database-tutorial)

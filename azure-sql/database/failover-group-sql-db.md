@@ -1,10 +1,10 @@
 ---
-title: Failover groups overview & best practices
+title: Failover Groups Overview & Best Practices
 description: Failover groups let you manage geo-replication and automatic / coordinated failover of a group of databases on a server for both single and pooled database in Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: rsetlem, mathoma
-ms.date: 01/24/2025
+ms.reviewer: rsetlem, mathoma, mahyon, randolphwest
+ms.date: 01/29/2026
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: best-practice
@@ -90,10 +90,7 @@ There is some overlap of content in the following articles, be sure to make chan
 
 - **Failover group read-only listener**
 
-  A DNS CNAME record that points to the current secondary. It's created automatically when the failover group is created and allows the read-only SQL workload to transparently connect to the secondary when the secondary changes after failover. When the failover group is created on a server, the DNS CNAME record for the listener URL is formed as `<fog-name>.secondary.database.windows.net`. By default, failover of the read-only listener is disabled as it ensures the performance of the primary isn't affected when the secondary is offline. However, it also means the read-only sessions won't be able to connect until the secondary is recovered. If you can't tolerate downtime for the read-only sessions and can use the primary for both read-only and read-write traffic at the expense of the potential performance degradation of the primary, you can enable failover for the read-only listener by configuring the `AllowReadOnlyFailoverToPrimary` property. In that case, the read-only traffic is automatically redirected to the primary if the secondary isn't available.
-
-  > [!NOTE]
-  > The `AllowReadOnlyFailoverToPrimary` property only has effect if Microsoft managed failover policy is enabled and a forced failover has been triggered. In that case, if the property is set to True, the new primary will serve both read-write and read-only sessions.
+  A DNS CNAME record that points to the current secondary. It's created automatically when the failover group is created and allows the read-only SQL workload to transparently connect to the secondary when the secondary changes after failover. When the failover group is created on a server, the DNS CNAME record for the listener URL is formed as `<fog-name>.secondary.database.windows.net`. By default, failover of the read-only listener is disabled as it ensures the performance of the primary isn't affected when the secondary is offline. However, it also means the read-only sessions won't be able to connect until the secondary is recovered. 
 
 - **Multiple failover groups**
 
@@ -163,7 +160,7 @@ A typical Azure application uses multiple Azure services and consists of multipl
 If an outage occurs in the primary region, recent transactions might not have been replicated to the geo-secondary and there might be data loss if a forced failover is performed.
 
 > [!IMPORTANT]
-> Elastic pools with 800 or fewer DTUs or 8 or fewer vCores, and more than 250 databases can encounter issues including longer planned geo-failovers and degraded performance. These issues are more likely to occur for write intensive workloads when geo-replicas are widely separated by geography, or when multiple secondary geo-replicas are used for each database. A symptom of these issues is an increase in geo-replication lag over time, potentially leading to a more extensive data loss in an outage. This lag can be monitored using [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database). If these issues occur, then mitigation includes scaling up the pool to have more DTUs or vCores, or reducing the number of geo-replicated databases in the pool.
+> Elastic pools with 800 or fewer DTUs or 8 or fewer vCores, and more than 250 databases can encounter issues including longer planned geo-failovers and degraded performance. These issues are more likely to occur for write intensive workloads when geo-replicas are widely separated by geography, or when multiple secondary geo-replicas are used for each database. A symptom of these issues is an increase in geo-replication lag over time, potentially leading to a more extensive data loss in an outage. This lag can be monitored using [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database). If these issues occur, then mitigation includes scaling up the pool to have more DTUs or vCores, or reducing the number of geo-replicated databases in the pool. For detailed troubleshooting guidance on redo lag issues, see [Troubleshoot geo-replication redo lag](troubleshoot-geo-replication-redo.md).
 
 
 <a id="failback"></a>
@@ -171,6 +168,20 @@ If an outage occurs in the primary region, recent transactions might not have be
 ## Failback
 
 When failover groups are configured with a Microsoft-managed failover policy, then forced failover to the geo-secondary server is initiated during a disaster scenario as per the defined grace period. Failback to the old primary must be initiated manually. 
+
+## Multiple secondaries
+
+> [!IMPORTANT]  
+> Multiple secondaries for failover groups is a preview feature that is not recommended for production workloads.
+
+Each failover group can support multiple secondary servers in the same or different regions. This configuration provides additional options for disaster recovery and enables read-only workloads to be distributed across multiple regions. When configuring multiple secondaries, consider the following:
+
+- Up to four secondary servers can be specified for each failover group.
+- Each secondary server can be in the same or a different region from the primary server and from each other.
+- Each secondary server maintains its own geo-replication link with the primary server.
+- Failover can be initiated to any of the secondary servers.
+- The read-only listener can be configured to only one of the secondary servers and must be to a secondary in a different region in order to properly serve read-only workloads.
+- Chaining (creating a geo-replica of a geo-replica) is not supported with this configuration.
 
 ## Permissions and limitations
 
@@ -210,3 +221,4 @@ In a scenario where high availability is enabled on the primary database, and th
 - To learn about Azure SQL Database automated backups, see [SQL Database automated backups](automated-backups-overview.md).
 - To learn about using automated backups for recovery, see [Restore a database from the service-initiated backups](recovery-using-backups.md).
 - To learn about authentication requirements for a new primary server and database, see [SQL Database security after disaster recovery](active-geo-replication-security-configure.md).
+- For troubleshooting geo-replication issues, see [Troubleshoot geo-replication redo lag](troubleshoot-geo-replication-redo.md).

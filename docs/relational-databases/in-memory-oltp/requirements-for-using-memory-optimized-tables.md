@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/05/2023
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: checklist
 ---
 # Requirements for using memory-optimized tables
 

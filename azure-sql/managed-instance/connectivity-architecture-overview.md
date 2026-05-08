@@ -5,10 +5,10 @@ description: Learn about Azure SQL Managed Instance communication and connectivi
 author: zoran-rilak-msft
 ms.author: zoranrilak
 ms.reviewer: mathoma, bonova
-ms.date: 10/22/2025
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - fasttrack-edit
   - build-2023
@@ -65,7 +65,7 @@ The VNet-local endpoint supports [Proxy and redirect connection types](connectio
 When connecting to the VNet-local endpoint, always use its domain name and allow inbound traffic on the required ports across the entire subnet range, as the underlying IP address can occasionally change.
 
 To find the *VNet-local endpoint domain name* for an instance: 
-* [Azure portal](https://portal.azure.com/#view/HubsExtension/ServiceMenuBlade/~/SingleInstance/extension/SqlAzureExtension/menuId/AzureSqlHub/itemId/SingleInstance): On the **Overview** pane, in the **Essentials** section, the **Host** value shows the *VNet-local endpoint domain name*. 
+* [Azure portal](https://portal.azure.com/#view/HubsExtension/ServiceMenuBlade/~/SingleInstance/extension/SqlAzureExtension/menuId/AzureSqlHub/itemId/SingleInstance): On the **Overview** pane after you select your SQL managed instance, in the **Essentials** section, the **Host** value shows the *VNet-local endpoint domain name*. 
 * [PowerShell](/powershell/module/az.sql/get-azsqlinstance): `Get-AzSqlInstance -ResourceGroupName <resource-group> -Name <mi-name>` shows the *VNet-local endpoint domain name* as the `fullyQualifiedDomainName` property.
 * [Azure CLI](/cli/azure/sql/mi#az-sql-mi-show): `az sql mi show -g <resource-group> -n <mi-name>` shows the *VNet-local endpoint domain name* as the `fullyQualifiedDomainName` property.
 
@@ -149,7 +149,7 @@ For more information about the connectivity architecture and management traffic,
 
 The following constraints on virtual network features and traffic are in effect:
 
-- **Private subnets**: Deploying SQL managed instances in private subnets (where [default outbound access](/azure/virtual-network/ip-services/default-outbound-access) is disabled) is currently not supported.
+- **Private subnets**: SQL managed instances can operate in private subnets. However, deployments to private subnets are expected to fail in the following regions: **Qatar Central**, **Israel Central**, **Israel Northwest**, **UAE Central**, and **UAE North**. To deploy a SQL managed instance in one of these regions, enable default outbound access for the subnet, deploy the instance, and then change the subnet to back to private (disable default outbound access). For information on how to configure private subnets, see [Default outbound access in Azure](/azure/virtual-network/ip-services/default-outbound-access).
 - **VNet encryption**: Deploying and operating SQL managed instances in virtual networks where [Azure Virtual Network encryption](/azure/virtual-network/virtual-network-encryption-overview) is enabled is currently not supported.
 - **Database mail to external SMTP relays on port 25**: Sending [database mail](/sql/relational-databases/database-mail/configure-database-mail) via port 25 to external email services is only available to certain subscription types in Microsoft Azure. Instances on other subscription types should use a different port (for example, 587) to contact external SMTP relays. Otherwise, instances might fail to deliver database mail. For more information, see [Troubleshoot outbound SMTP connectivity problems in Azure](/azure/virtual-network/troubleshoot-outbound-smtp-connectivity).
 - **Microsoft peering**: Enabling [Microsoft peering](/azure/expressroute/expressroute-faqs#microsoft-peering) on ExpressRoute circuits that are peered directly or transitively with a virtual network in which SQL Managed Instance resides affects traffic flow between SQL Managed Instance components inside the virtual network and services it depends on. Availability issues result. SQL Managed Instance deployments to a virtual network that already has Microsoft peering enabled are expected to fail.

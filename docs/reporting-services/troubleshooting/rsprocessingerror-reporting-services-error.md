@@ -4,7 +4,7 @@ description: "In this error reference page, learn about event ID 'rsProcessingEr
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting
-ms.topic: conceptual
+ms.topic: error-reference
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

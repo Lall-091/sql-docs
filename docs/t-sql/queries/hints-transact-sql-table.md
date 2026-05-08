@@ -4,7 +4,7 @@ description: Table hints override the default behavior of the query optimizer du
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 01/14/2025
+ms.date: 03/12/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -21,6 +21,7 @@ helpviewer_keywords:
   - "READUNCOMMITTED table hint"
   - "hints [SQL Server], tables"
   - "READCOMMITTEDLOCK table hint"
+  - "FORCE_ANN_ONLY table hint"
   - "FORCESCAN table hint"
   - "ROWLOCK table hint"
   - "XLOCK table hint"
@@ -65,6 +66,7 @@ WITH  ( <table_hint> [ [ , ] ...n ] )
 <table_hint> ::=
 { NOEXPAND
   | INDEX ( <index_value> [ , ...n ] ) | INDEX = ( <index_value> )
+  | FORCE_ANN_ONLY
   | FORCESEEK [ ( <index_value> ( <index_column_name> [ , ... ] ) ) ]
   | FORCESCAN
   | HOLDLOCK
@@ -111,6 +113,8 @@ WITH  ( <table_hint> [ [ , ] ...n ] )
 ```
 
 ## Arguments
+
+<a id="with-table-hint"></a>
 
 #### WITH ( *<table_hint>* ) [ [ , ] ...*n* ]
 
@@ -222,6 +226,32 @@ When `FORCESEEK` is specified with index parameters, the following guidelines an
 > [!CAUTION]  
 > Specifying `FORCESEEK` with parameters limits the number of plans that can be considered by the optimizer more than when specifying `FORCESEEK` without parameters. This might cause a `Plan cannot be generated` error to occur in more cases.
 
+#### FORCE_ANN_ONLY
+
+**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)], and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
+
+Forces the query optimizer to use only the approximate nearest neighbor (ANN) index for vector search operations with the `VECTOR_SEARCH` function. This hint overrides the optimizer's automatic strategy selection and ensures the query uses the DiskANN vector index.
+
+The `FORCE_ANN_ONLY` hint is specified on the `VECTOR_SEARCH` table-valued function:
+
+```sql
+FROM VECTOR_SEARCH(
+    TABLE      = table_name,
+    COLUMN     = column_name,
+    SIMILAR_TO = vector_value,
+    METRIC     = 'metric_name'
+) AS alias WITH (FORCE_ANN_ONLY)
+```
+
+**Requirements:**
+
+- A vector index must exist on the target column
+- The query must use `SELECT TOP (N) WITH APPROXIMATE` syntax
+
+If either requirement is missing, the query fails because it cannot use the approximate nearest neighbor strategy that the hint forces.
+
+For more information and examples, see [VECTOR_SEARCH (Transact-SQL)](../functions/vector-search-transact-sql.md#table-hints-for-vector-search).
+
 #### FORCESCAN
 
 **Applies to**: [!INCLUDE [sql2008r2-md](../../includes/sql2008r2-md.md)] Service Pack 1 and later versions
@@ -294,7 +324,7 @@ Specifies that the [!INCLUDE [ssDE](../../includes/ssde-md.md)] not read rows th
 
 `READPAST` can be specified for any table referenced in an `UPDATE` or `DELETE` statement, and any table referenced in a `FROM` clause. When specified in an `UPDATE` statement, `READPAST` is applied only when reading data to identify which records to update, regardless of where in the statement it's specified. `READPAST` can't be specified for tables in the `INTO` clause of an `INSERT` statement. Update or delete operations that use `READPAST` might block when reading foreign keys or indexed views, or when modifying secondary indexes.
 
-`READPAST` can only be specified in transactions operating at the `READ COMMITTED` or `REPEATABLE READ` isolation levels. When specified in transactions operating at the `SNAPSHOT` isolation level, `READPAST` must be combined with other table hints that require locks, such as `UPDLOCK` and `HOLDLOCK`.
+`READPAST` can only be specified in transactions operating at the `READ COMMITTED` or `REPEATABLE READ` isolation levels.
 
 The `READPAST` table hint can't be specified when the `READ_COMMITTED_SNAPSHOT` database option is set to `ON` and either of the following conditions is true:
 

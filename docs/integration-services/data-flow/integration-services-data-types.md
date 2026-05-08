@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "modifying data types"
   - "data types [Integration Services], listed"

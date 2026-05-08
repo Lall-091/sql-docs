@@ -4,7 +4,7 @@ description: Learn how to change the order of paginated report parameters when y
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

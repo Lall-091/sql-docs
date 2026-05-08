@@ -95,4 +95,4 @@ The following Transact-SQL commands are used in this section:
 
 For more tutorials on creating external data sources and external tables to a variety of data sources, see [PolyBase Transact-SQL reference](polybase-t-sql-objects.md).
 
-To learn more about PolyBase, see [Overview of SQL Server PolyBase](polybase-guide.md).
+To learn more about PolyBase, see [Overview of SQL Server PolyBase](overview.md).

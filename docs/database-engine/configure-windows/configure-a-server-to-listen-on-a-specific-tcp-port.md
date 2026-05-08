@@ -29,7 +29,7 @@ This article describes how to configure an instance of the [!INCLUDE [ssDEnovers
 For more information about the default Windows Firewall settings, and a description of the TCP ports that affect the [!INCLUDE [ssde-md](../../includes/ssde-md.md)], Analysis Services, Reporting Services, and Integration Services, see [Configure the Windows Firewall to allow SQL Server access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md).
 
 > [!TIP]  
-> When selecting a port number, consult [https://www.iana.org/assignments/port-numbers](https://www.iana.org/assignments/port-numbers) for a list of port numbers that are assigned to specific applications. Select an unassigned port number. For more information, see [The default dynamic port range for TCP/IP has changed since Windows Vista and in Windows Server 2008](/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang).
+> When selecting a port number, consult the [Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/port-numbers) for a list of port numbers that are assigned to specific applications. Select an unassigned port number. For more information, see [The default dynamic port range for TCP/IP has changed since Windows Vista and in Windows Server 2008](/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang).
 
 ## Remarks
 

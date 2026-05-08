@@ -4,7 +4,7 @@ description: Learn how to download, install, or find the sqlcmd utility preinsta
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: randolphwest
-ms.date: 12/16/2025
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: install-set-up-deploy
@@ -167,7 +167,7 @@ Download the command line utilities for Windows, using the following table.
 | --- | --- |
 | Microsoft Command Line Utilities 15 for SQL Server | [x64](https://go.microsoft.com/fwlink/?linkid=2230791)&emsp;[x86](https://go.microsoft.com/fwlink/?linkid=2231320) |
 
-The command line tools are General Availability (GA), however they are also released with the installer package for [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] and later versions.
+The command line tools are General Availability (GA), however they're also released with the installer package for [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] and later versions.
 
 #### Version information
 
@@ -193,7 +193,7 @@ See [Install the sqlcmd and bcp SQL Server command-line tools on Linux](../../li
 
 ### [Linux](#tab/linux)
 
-See [Install the sqlcmd and bcp SQL Server command-line tools on Linux](../../linux/sql-server-linux-setup-tools.md) for instructions to install **sqlcmd** on macOS.
+See [Install the sqlcmd and bcp SQL Server command-line tools on Linux](../../linux/sql-server-linux-setup-tools.md) for instructions to install **sqlcmd** on Linux.
 
 ---
 

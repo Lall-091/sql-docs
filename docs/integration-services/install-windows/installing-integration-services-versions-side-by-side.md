@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 helpviewer_keywords:
   - "interoperability and coexistence [Integration Services]"

@@ -4,7 +4,7 @@ description: The AI_GENERATE_EMBEDDINGS function creates vector arrays for data.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 12/04/2025
+ms.date: 01/06/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,13 +18,16 @@ helpviewer_keywords:
   - "ai_generate_embeddings"
 dev_langs:
   - TSQL
-monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17 || =fabric-sqldb"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # AI_GENERATE_EMBEDDINGS (Transact-SQL)
 
-[!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 `AI_GENERATE_EMBEDDINGS` is a built-in function that creates embeddings (vector arrays) using a precreated AI model definition stored in the database.
+
+> [!NOTE]  
+> `AI_GENERATE_EMBEDDINGS` is available in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] with the **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 ## Syntax
 
@@ -98,7 +101,13 @@ You must meet the following prerequisites to use `AI_GENERATE_EMBEDDINGS`:
 
 The parameter `optional_json_request_body_parameters` in `AI_GENERATE_EMBEDDINGS` is used when an endpoint parameter needs to be added to the body of the embeddings request message. Adding an optional parameter overrides the value at runtime if that parameter is defined in the model definition.
 
-For example, if the [external model](../statements/create-external-model-transact-sql.md) contains the parameter for `dimensions` set to 1536, by passing that parameter in the `optional_json_request_body_parameters` at runtime with a new value as seen here: `json_object("dimensions":755)`, the `dimensions` parameter on the model is overridden.
+For example, if the [external model](../statements/create-external-model-transact-sql.md) contains the parameter for `dimensions` set to 1536, by passing that parameter in the `optional_json_request_body_parameters` at runtime with a new value.
+
+In the following example, the `dimensions` parameter on the model is overridden:
+
+```sql
+json_object("dimensions":755)
+```
 
 The value passed into `optional_json_request_body_parameters` must be valid JSON.
 
@@ -154,8 +163,9 @@ FROM myTable AS t;
 The following example shows how to use the `AI_GENERATE_EMBEDDINGS` function with a select statement and passing optional parameters to the endpoint, which returns vector array results.
 
 ```sql
+DECLARE @params JSON = N'{"dimensions":768}'
 SELECT id,
-       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS TRY_CONVERT (JSON, N'{"dimensions":768}'))
+       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS @params)
 FROM myTable;
 ```
 
@@ -169,8 +179,9 @@ To specify the number of retries, add the following JSON to the `PARAMETERS` opt
 > If a `retry_count` value is specified in the `AI_GENERATE_EMBEDDINGS` query, it overrides the `retry_count` (if defined) in the external model's configuration.
 
 ```sql
+DECLARE @params JSON = N'{"sql_rest_options":{"retry_count":10}} '
 SELECT id,
-       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS TRY_CONVERT (JSON, N'{"retry_count":10}'))
+       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS @params)
 FROM myTable;
 ```
 

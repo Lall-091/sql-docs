@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: sample
 ---
 # Creating a Memory-Optimized Table and a Natively Compiled Stored Procedure
 

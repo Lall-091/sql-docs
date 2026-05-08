@@ -5,7 +5,7 @@ description: SQL Server migration in Azure Arc to Azure SQL Managed Instance in 
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 12/12/2025
+ms.date: 04/16/2026
 ms.topic: how-to
 ---
 
@@ -36,7 +36,7 @@ First, you choose an appropriate SQL Managed Instance target and prepare your en
 
 Database migration is available by default for all SQL Server instances enabled by Azure Arc, starting with [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)].
 
-The **Database Migration** pane also has a useful summary of the migration status for your instance, such as the number of total databases, the recommended target, the number of completed migrations, and the number of ongoing migrations: 
+The **Database Migration** pane also has a useful summary of the migration status for your instance, such as the number of total databases, the recommended target, the number of completed migrations, and the number of ongoing migrations:
 
 :::image type="content" source="media/migrate-to-azure-sql-managed-instance/database-migration-summary.png" alt-text="Screenshot of the summary on the Database Migration pane in the Azure portal." lightbox="media/migrate-to-azure-sql-managed-instance/database-migration-summary.png":::
 
@@ -55,6 +55,7 @@ The following table summarizes the two methods built into the migration process:
 | **Description** | Most performant method with near real-time replication. Provides a read-only (R/O) database on the target, so you can query your data in near-real time during the migration to offload R/O workloads on the secondary, or check data during the migration. Best possible minimum downtime migration. | Most compatible migration method. Upload backups to an intermediary Azure blob storage account that the LRS service automatically restores to SQL Managed Instance continuously. No R/O database replica is available on the target. |
 | **Supported versions** | SQL Server 2016 and later on Windows Server 2016 and later | SQL Server 2012 and later on Windows Server 2012 and later |
 | **Supported editions** | Enterprise, Standard, and Developer editions | All editions |
+| **Simultaneous migration** | Yes, up to 10 databases with Azure Extension for SQL Server version `1.1.3348.364` or later. 1 database with earlier versions. | Unlimited |
 | **Recommended for** | Business-critical workloads that require minimum downtime during migration and access to a read-only database on the target, with a destination target of either a General Purpose or Business Critical SQL Managed Instance. | General purpose workloads where some planned downtime is acceptable and destination target of a General Purpose SQL Managed Instance. Not recommended for Business Critical SQL managed instance targets. |
 
 For an in-depth comparison of the two migration methods, see [Compare Managed Instance link with LRS for migration](/azure/azure-sql/managed-instance/log-replay-service-compare-mi-link).
@@ -80,9 +81,9 @@ Select the **Copilot** icon on the **Database migration** pane to open the Copil
 To use SQL Server migration in Azure Arc, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, you can [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
+- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the [latest version](release-notes.md) of the Azure extension for SQL Server. To upgrade your extension, see [Upgrade the extension](connect.md#upgrade-the-extension).
 
-Before you start the migration process, make sure that you've prepared your environment for your [chosen migration method](#integrated-migration-methods): 
+Before you start the migration process, make sure that you've prepared your environment for your [chosen migration method](#integrated-migration-methods):
 - Prepare for [Managed Instance link migration](migration-sql-mi-prepare-link.md).
 - Prepare for [LRS migration](migration-sql-mi-prepare-log-replay-service.md).
 
@@ -103,7 +104,7 @@ The following screenshot shows the tiles on the **Database migration** pane for 
 
 To assess the source instance, follow these steps:
 
-1. Go to your [SQL Server instance](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/sqlServerInstances) in the Azure portal.
+1. Go to your [SQL Server instance](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/SqlServerInstance) in the Azure portal.
 1. Under **Migration**, select **Database migration** to open the **Database migration** pane. Under **Assess source instance**, select **View report** to open the **Assessments** pane.
 
    :::image type="content" source="media/migrate-to-azure-sql-managed-instance/database-migration-pane.png" alt-text="Screenshot that shows the Database migration pane for the SQL Server instance in the Azure portal, with View report highlighted.":::
@@ -111,7 +112,7 @@ To assess the source instance, follow these steps:
 1. On the **Assessments** pane:
 
    - Use **Run assessment** to start a new assessment if one wasn't run recently.
-   - Use **View assessment details** in the **Azure SQL MI Recommended Target** box to learn more about your assessment results, including the readiness of your SQL Server instance to migrate to SQL Managed Instance. You also learn about the recommended service tier and configuration for your target instance.
+   - Use **View assessment details** in the **Azure SQL MI** tile to learn more about your assessment results, including the readiness of your SQL Server instance to migrate to SQL Managed Instance. You also learn about the recommended service tier and configuration for your target instance.
 
 ### Select target
 
@@ -136,9 +137,15 @@ After you assess your SQL Server instance, select a SQL Managed Instance target.
 
 After your target is ready, start the migration process.
 
+> [!NOTE]
+> If newly added databases aren't visible in the Azure portal, you might need to [restart the Arc agent](migrate-to-azure-sql-managed-instance-troubleshoot.md#new-databases-unavailable-in-the-azure-portal).
+
 #### [MI link migration](#tab/mi-link)
 
-Once you've prepared your environment for [Managed Instance link migration](migration-sql-mi-prepare-link.md), you can migrate your SQL Server databases to Azure SQL Managed Instance. 
+Once you've prepared your environment for [Managed Instance link migration](migration-sql-mi-prepare-link.md), you can migrate your SQL Server databases to Azure SQL Managed Instance.
+
+> [!NOTE]  
+> Creating each link can take up to 10 minutes. Use the [Activity log](migrate-to-azure-sql-managed-instance-troubleshoot.md#view-azure-activity-log-for-migration-issues) to track background changes during the link creation process.
 
 Follow these steps to migrate your SQL Server databases to SQL Managed Instance by using the Managed Instance link:
 
@@ -151,6 +158,8 @@ Follow these steps to migrate your SQL Server databases to SQL Managed Instance 
 
    :::image type="content" source="media/migrate-to-azure-sql-managed-instance/select-source-database-link.png" alt-text="Screenshot of the select source databases page when you migrate your database with LRS in the Azure portal." lightbox="media/migrate-to-azure-sql-managed-instance/select-source-database-link.png":::
 
+   The Azure Extension for SQL Server version `1.1.3348.364` or later supports selecting up to 10 databases to migrate simultaneously. If your extension version is earlier, you can only select, and migrate, one database at a time.
+
 1. On the **Settings** tab, provide the name of the MI link. The name of the availability group is autogenerated - customize it, only if you need to. You can also use **Test connection** to test the connection to the source SQL Server instance, though be aware that [false positives](migration-sql-mi-prepare-link.md#test-network-connectivity) can occur in some network configurations. Use **Next: Review + create** to proceed to the next page:
 
    :::image type="content" source="media/migrate-to-azure-sql-managed-instance/mi-link-settings.png" alt-text="Screenshot of link parameters on the settings page of a new data migration in the Azure portal.":::
@@ -161,6 +170,18 @@ Follow these steps to migrate your SQL Server databases to SQL Managed Instance 
 
 > [!NOTE]  
 > When you start the migration process by using the Managed Instance link migration method, the system grants [just-in-time permissions](configure-windows-accounts-agent.md#create-managed-instance-link-migration) for the entire workflow until creating the distributed availability group completes, at which point just-in-time permissions are removed.
+
+### Monitor replication lag before cutover
+
+After you start your migration, you can monitor for replication lag between the primary and secondary replicas. A large discrepancy indicates that the secondary replica is having trouble keeping up with the primary replica, which is typically caused by slow network throughput in the link between the two instances, mismatched resource allocation between the two replicas, or by an excessively high workload on the primary replica.
+
+Monitoring replication lag is especially important when cutting over to the target SQL Managed Instance. Cutting over performs a planned failover which requires the secondary replica to be fully synchronized with the primary replica before the failover execute. If replication lag is high, the failover might take longer to complete, and in some cases, it might even fail.
+
+On the **Database migration** pane, select **Monitor migrations** and then check the **Lag** column. Two dashes indicates there is no lag, while a time value indicates the amount of lag.
+
+If replication lag is high, wait for the secondary replica to catch up with the primary replica before cutting over. You might need to perform additional troubleshooting steps if the lag persists, such as pausing workloads on the primary replica, improving link network throughput between the two instances, or increasing resource capacity on the secondary replica. The easiest way to stop workloads on a SQL Server primary replica is to cut application connections to the instance.
+
+You can also use a T-SQL script to monitor replication lag. For more information, see [Monitoring replication lag](/azure/azure-sql/managed-instance/managed-instance-link-best-practices#monitor-replication-lag).
 
 #### [LRS migration](#tab/lrs)
 
@@ -212,7 +233,7 @@ Select a database and then use **Cutover** to open the **Cutover** pane and see 
 
 ## Reverse a migration
 
-Reverse migration back to SQL Server from Azure SQL Managed Instance might be supported depending on the [update policy](/azure/azure-sql/managed-instance/update-policy) of your SQL managed instance. For example: 
+Reverse migration back to SQL Server from Azure SQL Managed Instance might be supported depending on the [update policy](/azure/azure-sql/managed-instance/update-policy) of your SQL managed instance. For example:
 - [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy): Databases from instances configured with the **SQL Server 2022** update policy can be restored back to SQL Server 2022 instances.
 - [SQL Server 2025 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2025-update-policy): Databases from instances configured with the **SQL Server 2025** update policy can be restored back to SQL Server 2025 instances.
 - [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy): Databases from instances configured with the **Always-up-to-date** update policy can't be restored back to SQL Server.
@@ -220,7 +241,6 @@ Reverse migration back to SQL Server from Azure SQL Managed Instance might be su
 If your source SQL Server version is earlier than SQL Server 2022, reverse migration isn't possible. When your database is migrated to SQL Managed Instance, it undergoes an internal upgrade to a newer database version that isn't compatible with earlier SQL Server versions. Reverse migration database compatibility is only available when SQL Managed instance is configured with the corresponding update policy.
 
 Reverse migration isn't available through the SQL Server migration in Azure Arc experience. You can manually reverse a migration through other tools such as [native backup and restore](/azure/azure-sql/managed-instance/restore-database-to-sql-server), or [manually configuring a link in SSMS](/azure/azure-sql/managed-instance/managed-instance-link-configure-how-to-ssms).
-
 
 ## Limitations
 

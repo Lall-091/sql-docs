@@ -5,7 +5,7 @@ author: MashaMSFT
 ms.author: mathoma
 ms.date: 11/27/2018
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # SQL Trace

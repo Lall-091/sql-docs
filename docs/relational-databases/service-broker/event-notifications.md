@@ -6,7 +6,7 @@ ms.author: "mathoma"
 ms.reviewer: randolphwest
 ms.date: 08/29/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "event notifications, about"
   - "events [SQL Server], notifications"

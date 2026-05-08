@@ -163,5 +163,4 @@ Yes_in_Japanese_Hiragana
 - [ASCII (Transact-SQL)](ascii-transact-sql.md)
 - [CHAR (Transact-SQL)](char-transact-sql.md)
 - [NCHAR (Transact-SQL)](nchar-transact-sql.md)
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 - [Collation and Unicode support](../../relational-databases/collations/collation-and-unicode-support.md)

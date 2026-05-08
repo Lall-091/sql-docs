@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "08/08/2017"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ---
 # Step 2: Create a SQL database for Node.js development
 

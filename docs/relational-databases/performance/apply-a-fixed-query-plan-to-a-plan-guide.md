@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Apply a Fixed Query Plan to a Plan Guide
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]

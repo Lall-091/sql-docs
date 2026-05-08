@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "01/25/2021"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.databaseproperties.querystore.f1"
 ---

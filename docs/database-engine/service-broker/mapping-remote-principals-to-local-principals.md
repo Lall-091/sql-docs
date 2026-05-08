@@ -7,7 +7,7 @@ ms.reviewer: mikeray, maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Map remote principals to local principals

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/19/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Backup encryption
 

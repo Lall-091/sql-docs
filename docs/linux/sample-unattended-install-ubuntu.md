@@ -4,7 +4,7 @@ titleSuffix: SQL Server
 description: Learn to use a sample bash script to install SQL Server on Ubuntu Server without interactive input.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -170,13 +170,13 @@ To run the script:
 
 1. Customize `MSSQL_SA_PASSWORD`, `MSSQL_PID`, and any of the other variables you'd like to change.
 
-1. Mark the script as executable
+1. Mark the script as executable:
 
    ```bash
    chmod +x install_sql.sh
    ```
 
-1. Run the script
+1. Run the script:
 
    ```bash
    ./install_sql.sh

@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "02/28/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "updating data"
   - "streaming data"

@@ -7,7 +7,7 @@ ms.author: wiassaf
 ms.reviewer: hudequei, mikeray
 ms.date: 06/17/2025
 ms.service: azure-sql-database
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Data virtualization with Azure SQL Database (Preview)

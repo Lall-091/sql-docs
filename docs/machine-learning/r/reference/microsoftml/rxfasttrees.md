@@ -277,7 +277,7 @@ Microsoft Corporation [`Microsoft Technical Support`](https://go.microsoft.com/f
 
  ## References
 
-[`Wikipedia: Gradient boosting (Gradient tree boosting)`](https://en.wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting)
+[`Wikipedia: Gradient boosting (Gradient tree boosting)`](https://wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting)
 
 
 [`Greedy function approximation: A gradient boosting machine.`](http://projecteuclid.org/DPubS?service=UI&version=1.0&verb=Display&handle=euclid.aos/1013203451)

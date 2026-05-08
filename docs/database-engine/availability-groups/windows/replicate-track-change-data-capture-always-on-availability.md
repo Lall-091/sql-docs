@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/03/2025
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "change tracking [SQL Server], AlwaysOn Availability Groups"
   - "change tracking [SQL Server], Always On Availability Groups"

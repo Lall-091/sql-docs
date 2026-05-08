@@ -1,12 +1,10 @@
 ---
 title: "SharePoint site settings for the Report Viewer web part - SSRS"
 description: Learn about how to configure SharePoint site settings in the Report Viewer web part in SQL Server Reporting Server.
-author: "jt000"
-ms.author: "jasontre"
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

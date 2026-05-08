@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Python SQL Driver - mssql-python Connect to a SQL database from a Jupyter Notebook in Visual Studio Code"
+title: "Quickstart: Python SQL Driver - mssql-python Connect to a SQL Database from a Jupyter Notebook in Visual Studio Code"
 description: This quickstart describes connect to your SQL database from a Jupyter Notebook in Visual Studio Code.
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2025
+ms.date: 12/29/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -19,15 +19,15 @@ In this quickstart, you use Jupyter Notebook in Visual Studio Code to quickly de
 
 The `mssql-python` driver doesn't require any external dependencies on Windows machines. The driver installs everything that it needs with a single `pip` install, allowing you to use the latest version of the driver for new scripts without breaking other scripts that you don't have time to upgrade and test.
 
-[mssql-python documentation](https://github.com/microsoft/mssql-python/wiki) | [mssql-python source code](https://github.com/microsoft/mssql-python/wiki) | [Package (PyPi)](https://pypi.org/project/mssql-python/) | [Visual Studio Code](https://code.visualstudio.com/download)
+[mssql-python documentation](https://github.com/microsoft/mssql-python/wiki) | [mssql-python source code](https://github.com/microsoft/mssql-python) | [Package (PyPI)](https://pypi.org/project/mssql-python/) | [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## Prerequisites
 
 - Python 3
 
-  - If you don't already have Python, install the **Python runtime** and **Python Package Index (PyPI) package manager** from [python.org](https://www.python.org/downloads/).
+  - If you don't already have Python, install the **Python runtime** and **pip package manager** from [python.org](https://www.python.org/downloads/).
 
-  - Prefer to not use your own environment? Open as a devcontainer using [GitHub Codespaces](https://github.com/features/codespaces).
+  - Don't want to use your own environment? Open as a devcontainer using [GitHub Codespaces](https://github.com/features/codespaces).
 
     [:::image type="icon" source="https://github.com/codespaces/badge.svg":::](https://codespaces.new/github/codespaces-blank?quickstart=1)
 
@@ -37,11 +37,9 @@ The `mssql-python` driver doesn't require any external dependencies on Windows m
 
   - [Jupyter Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
 
-  - [(Optional) Azure Repos](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-repos)
+- [Azure Command-Line Interface (CLI)](/cli/azure/install-azure-cli) for passwordless authentication on macOS and Linux.
 
-- [(Optional) Azure Command-Line Interface (CLI)](/cli/azure/install-azure-cli)
-
-- If you don't already have `uv`, install `uv` by following the instructions from [https://docs.astral.sh/uv/getting-started/installation/](https://docs.astral.sh/uv/getting-started/installation/).
+- If you don't already have `uv`, follow the [installation instructions](https://docs.astral.sh/uv/getting-started/installation/).
 
 - A database on SQL Server, Azure SQL Database, or SQL database in Fabric with the [!INCLUDE [sssampledbobject-md](../../../includes/sssampledbobject-md.md)] sample schema and a valid connection string.
 
@@ -184,7 +182,7 @@ code .
 1. Within the `.env` file, add an entry for your connection string named `SQL_CONNECTION_STRING`. Replace the example here with your actual connection string value.
 
    ```text
-   SQL_CONNECTION_STRING="Server=<server_name>;Database={<database_name>};Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryInteractive"
+   SQL_CONNECTION_STRING="Server=<server_name>;Database=<database_name>;Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryInteractive"
    ```
 
    > [!TIP]  
@@ -244,8 +242,8 @@ code .
    pc.Name as ProductCategory,
    SUM(sod.OrderQty * sod.UnitPrice) as Spend
    from SalesLT.SalesOrderDetail sod
-   inner join SalesLt.SalesOrderHeader soh on sod.salesorderid = soh.salesorderid
-   inner join SalesLt.Product p on sod.productid = p.productid
+   inner join SalesLT.SalesOrderHeader soh on sod.salesorderid = soh.salesorderid
+   inner join SalesLT.Product p on sod.productid = p.productid
    inner join SalesLT.ProductCategory pc on p.ProductCategoryID = pc.ProductCategoryID
    GROUP BY pc.Name
    ORDER BY Spend;
@@ -290,7 +288,7 @@ code .
    ```
 
    > [!TIP]  
-   > To use Microsoft Entra Authentication in macOS, you must be signed in via either the [Azure Repos](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-repos) extension in Visual Studio Code, or by running `az login` via the [Azure Command-Line Interface (CLI)](/cli/azure/install-azure-cli).
+   > On macOS, both `ActiveDirectoryInteractive` and `ActiveDirectoryDefault` work for Microsoft Entra authentication. `ActiveDirectoryInteractive` prompts you to sign in every time you run the script. To avoid repeated sign-in prompts, log in once via the [Azure CLI](/cli/azure/install-azure-cli) by running `az login`, then use `ActiveDirectoryDefault`, which reuses the cached credential.
 
 1. Use the **Run All** button at the top of the notebook to run the notebook.
 

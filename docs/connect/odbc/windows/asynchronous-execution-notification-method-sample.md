@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 09/01/2020
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: sample
 ---
 # Asynchronous Execution (Notification Method) Sample
 [!INCLUDE[Driver_ODBC_Download](../../../includes/driver_odbc_download.md)]

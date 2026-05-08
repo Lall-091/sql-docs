@@ -5,7 +5,7 @@ description: Learn about the different migration strategies when you want to mig
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma
-ms.date: 09/17/2025
+ms.date: 02/19/2026
 ms.service: azure-vm-sql-server
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -39,8 +39,6 @@ Azure Virtual Machines run in many different regions of Azure and also offer var
 
 When determining the correct size of VM and Storage for your SQL Server workload, refer to the [Performance Guidelines for SQL Server on Azure Virtual Machines.](/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist#vm-size).
 
-You can use the [Azure SQL migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension) to get right-sized SQL Server on Azure Virtual Machines recommendation. The extension collects performance data from your source SQL Server instance to provide right-sized Azure recommendation that meets your workload's performance needs with minimal cost. To learn more, see [Get Azure recommendations to migrate your SQL Server database](/azure/dms/ads-sku-recommend).
-
 To determine the VM size and storage requirements for all your workloads in your data estate, you should size them through a Performance-Based [Azure Migrate Assessment](/azure/migrate/concepts-assessment-calculation#types-of-assessments). If this isn't an available option, see the following article on creating your own [baseline for performance](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
 Consideration should also be made on the correct installation and configuration of SQL Server on a VM. You should use the [Azure SQL virtual machine image gallery](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal), as this allows you to create a SQL Server VM with the right version, edition, and operating system. This option also registers the Azure VM with the SQL Server [resource provider](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) automatically, enabling features such as Automated Backups and Automated Patching.
@@ -64,7 +62,7 @@ The following table describes differences in the two migration strategies:
 | Migration strategy | Description | When to use |
 | --- | --- | --- |
 | **Lift and shift** | Use the lift and shift migration strategy to move the entire physical or virtual SQL Server from its current location onto an instance of SQL Server on Azure VM without any changes to the operating system, or SQL Server version. To complete a lift and shift migration, see [Azure Migrate](/azure/migrate/migrate-services-overview).<br /><br />The source server remains online and services requests while the source and destination server synchronize data allowing for an almost seamless migration. | Use for single to large-scale migrations, applicable to scenarios such as data center exit.<br /><br />Minimal to no code changes required to user SQL databases or applications, allowing for faster overall migrations.<br /><br />No extra steps required for migrating the Business Intelligence services such as [SSIS](/sql/integration-services/sql-server-integration-services), [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports), and [SSAS](/analysis-services/analysis-services-overview). |
-| **Migrate** | Use a migration strategy when you want to upgrade the target SQL Server and/or operating system version.<br /><br />Select an Azure VM from Azure Marketplace or a prepared SQL Server image that matches the source SQL Server version.<br /><br />Use the [Azure SQL migration extension for Azure Data Studio](/azure/dms/migration-using-azure-data-studio) to assess, get recommendations for right-sized Azure configuration (VM series, compute, and storage) and migrate SQL Server databases to SQL Server on Azure virtual machines with minimal downtime. | Use when there's a requirement or desire to migrate to SQL Server on Azure Virtual Machines, or if there's a requirement to upgrade legacy SQL Server and/or OS versions that are no longer in support.<br /><br />Might require some application or user database changes to support the SQL Server upgrade.<br /><br />There might be other considerations for migrating [Business Intelligence](#business-intelligence) services if in the scope of migration. |
+| **Migrate** | Use a migration strategy when you want to upgrade the target SQL Server and/or operating system version.<br /><br />Select an Azure VM from Azure Marketplace or a prepared SQL Server image that matches the source SQL Server version. | Use when there's a requirement or desire to migrate to SQL Server on Azure Virtual Machines, or if there's a requirement to upgrade legacy SQL Server and/or OS versions that are no longer in support.<br /><br />Might require some application or user database changes to support the SQL Server upgrade.<br /><br />There might be other considerations for migrating [Business Intelligence](#business-intelligence) services if in the scope of migration. |
 
 ## Lift and shift
 
@@ -95,7 +93,6 @@ The following table details all available methods to migrate your SQL Server dat
 | **[Log shipping](guide.md#migrate)** | SQL Server 2012 SP4 (Windows Only) | SQL Server 2012 SP4 (Windows Only) | [Azure VM storage limit](/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits) | Log shipping replicates transactional log files from on-premises on to an instance of SQL Server on an Azure VM.<br /><br />This provides minimal downtime during failover and has less configuration overhead than setting up an Always On availability group.<br /><br />**Automation & scripting**: [T-SQL](/sql/database-engine/log-shipping/log-shipping-tables-and-stored-procedures) |
 | **[Convert on-premises machine to Hyper-V VHDs, upload to Azure Blob storage, and then deploy a new virtual machine using uploaded VHD](guide.md#convert-vm)** | SQL Server 2012 or greater | SQL Server 2012 or greater | [Azure VM storage limit](/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits) | Use when [bringing your own SQL Server license](/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview), when migrating a database that runs on an older version of SQL Server, or when migrating system and user databases together as part of the migration of database dependent on other user databases and/or system databases. |
 | **[Ship hard drive using Windows Import/Export Service](guide.md#ship-a-hard-drive)** | SQL Server 2012 or greater | SQL Server 2012 or greater | [Azure VM storage limit](/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits) | Use the [Windows Import/Export Service](/azure/import-export/storage-import-export-service) when manual copy method is too slow, such as with very large databases |
-| **[Azure SQL migration extension for Azure Data Studio](/azure/dms/migration-using-azure-data-studio)** | SQL Server 2008 | SQL Server 2012 | [Azure VM storage limit](/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits) | This is an easy to use wizard based extension in Azure Data Studio for migrating SQL Server databases to SQL Server on Azure virtual machines. Use compression to minimize backup size for transfer. The Azure SQL migration extension for Azure Data Studio provides assessment, Azure recommendations, and migration capabilities in a simple user interface and supports minimal downtime migrations. |
 
 For large data transfers with limited to no network options, see [Data transfer for large datasets with low or no network bandwidth](/azure/storage/common/storage-solution-large-dataset-low-network).
 
@@ -110,7 +107,7 @@ The following list provides key points to consider when reviewing migration meth
 
 - If migrating from SQL Server 2014 or higher, consider [encrypting the backups](/sql/relational-databases/backup-restore/backup-encryption) to protect data during network transfer.
 
-- To minimize downtime during database migration, use the Azure SQL migration extension in Azure Data Studio or Always On availability group option.
+- To minimize downtime during database migration, use Always On availability groups.
 
 - For limited to no network options, use offline migration methods such as backup and restore, or [disk transfer services](/azure/storage/common/storage-solution-large-dataset-low-network) available in Azure.
 
@@ -175,7 +172,7 @@ For more assistance, see the following resources that were developed for real wo
 | [Data workload assessment model and tool](https://www.microsoft.com/download/details.aspx?id=103130) | This tool provides suggested "best fit" target platforms, cloud readiness, and application/database remediation level for a given workload. It offers simple, one-select calculation and report generation that helps to accelerate large estate assessments by providing and automated and uniform target platform decision process. |
 | [Perfmon data collection automation using Logman](https://www.microsoft.com/download/details.aspx?id=103114) | A tool that collects Perform data to understand baseline performance that helps the migration target recommendation. This tool that uses logman.exe to create the command that creates, starts, stops, and deletes performance counters set on a remote SQL Server. |
 | [Multiple-SQL-VM-VNet-ILB](https://www.microsoft.com/download/details.aspx?id=103104) | This whitepaper outlines the steps to set up multiple Azure virtual machines in a SQL Server Always On Availability Group configuration. |
-| [Azure virtual machines supporting Ultra SSD per Region](https://www.microsoft.com/download/details.aspx?id=103105) | These PowerShell scripts provide a programmatic option to retrieve the list of regions that support Azure virtual machines supporting Ultra SSDs. |
+| [Azure virtual machines supporting Ultra Disk per Region](https://www.microsoft.com/download/details.aspx?id=103105) | These PowerShell scripts provide a programmatic option to retrieve the list of regions that support Azure virtual machines supporting Ultra Disks. |
 
 The Data SQL Engineering team developed these resources. This team's core charter is to unblock and accelerate complex modernization for data platform migration projects to Microsoft's Azure data platform.
 

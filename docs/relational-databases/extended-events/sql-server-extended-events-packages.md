@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, dfurman
 ms.date: 09/12/2024
 ms.service: sql
 ms.subservice: xevents
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

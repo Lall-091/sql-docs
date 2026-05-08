@@ -7,7 +7,7 @@ ms.reviewer: v-kaywon
 ms.date: "09/26/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Writing secure dynamic SQL in SQL Server
 

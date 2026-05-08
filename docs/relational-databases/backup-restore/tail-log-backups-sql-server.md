@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/28/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "backing up [SQL Server], tail of log"
   - "transaction log backups [SQL Server], tail-log backups"

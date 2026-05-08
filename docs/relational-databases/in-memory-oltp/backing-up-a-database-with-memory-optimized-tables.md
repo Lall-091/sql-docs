@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/20/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Backing Up a Database with Memory-Optimized Tables
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

@@ -4,15 +4,15 @@ titleSuffix: SQL Server Machine Learning Services
 description: "Learn how to install SQL Server Machine Learning Services (Python and R) on Docker."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
-monikerRange: "=sql-server-ver15 || =sql-server-linux-ver15"
 ms.custom:
   - intro-installation
   - linux-related-content
   - sfi-ropc-blocked
+monikerRange: "=sql-server-ver15 || =sql-server-linux-ver15"
 ---
 # Install SQL Server Machine Learning Services (Python and R) on Docker
 
@@ -66,8 +66,6 @@ Complete the following steps to build the docker image:
    ```bash
    docker run -d -e MSSQL_PID=Developer -e ACCEPT_EULA=Y -e ACCEPT_EULA_ML=Y -e MSSQL_SA_PASSWORD=<password> -v <directory on the host OS>:/var/opt/mssql -p 1433:1433 mssql-server-mlservices
    ```
-
-   [!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
 
    > [!NOTE]  
    > Any of the [supported values](sql-server-linux-configure-environment-variables.md#sql-server-editions) can be used for `MSSQL_PID`. If you use a paid edition, ensure that you have purchased a license. Replace `<password>` with your actual password. Volume mounting using `-v` is optional. Replace `<directory on the host OS>` with an actual directory where you want to mount the database data and log files.

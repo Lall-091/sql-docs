@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "08/10/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Converting Data Types
 [!INCLUDE[Driver_PHP_Download](../../includes/driver_php_download.md)]

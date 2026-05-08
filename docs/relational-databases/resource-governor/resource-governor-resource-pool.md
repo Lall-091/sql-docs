@@ -7,7 +7,7 @@ ms.reviewer: jopilov, dfurman
 ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Resource Governor, resource pool"
   - "resource pool [SQL Server], overview"

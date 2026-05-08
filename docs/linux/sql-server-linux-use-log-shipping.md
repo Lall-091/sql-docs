@@ -3,7 +3,7 @@ title: Configure Log Shipping for SQL Server on Linux
 description: This tutorial shows a basic example of how to replicate a SQL Server instance on Linux to a secondary instance using log shipping.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -18,7 +18,7 @@ ms.custom:
 
 Log shipping is a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] high availability (HA) configuration where a database from a primary server is replicated onto one or more secondary servers. Log shipping allows backup files from the source database to restore onto the secondary server. The primary server creates transaction log backups periodically, and the secondary servers restore them, updating the secondary copy of the database.
 
-:::image type="content" source="media/sql-server-linux-use-log-shipping/log-shipping.png" alt-text="Diagram showing the log shipping workflow.":::
+:::image type="content" source="media/sql-server-linux-use-log-shipping/log-shipping.png" alt-text="Diagram of the log shipping workflow from primary server backup to secondary server restore.":::
 
 As described in the previous diagram, a log shipping session involves the following steps:
 
@@ -107,7 +107,7 @@ As described in the previous diagram, a log shipping session involves the follow
    password=<password>
    ```
 
-1. Run the following commands to create an empty directory for mounting and set permission and ownership correctly
+1. Run the following commands to create an empty directory for mounting and set permission and ownership correctly:
 
    ```bash
    mkdir /var/opt/mssql/tlogs

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "queries [SQL Server], time to execute"
   - "query governor cost limit option [SQL Server]"

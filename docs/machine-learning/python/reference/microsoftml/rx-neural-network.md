@@ -357,7 +357,7 @@ memory.
 
 ## References
 
-[Wikipedia: Artificial neural network](https://en.wikipedia.org/wiki/Artificial_neural_network)
+[Wikipedia: Artificial neural network](https://wikipedia.org/wiki/Artificial_neural_network)
 
 
 ## Binary classification example

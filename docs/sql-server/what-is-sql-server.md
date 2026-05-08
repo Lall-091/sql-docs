@@ -3,7 +3,7 @@ title: What Is SQL Server?
 description: An overview of the relational database engine and components of SQL Server
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/08/2025
+ms.date: 03/09/2026
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: overview
@@ -17,16 +17,23 @@ ms.custom:
 
 [!INCLUDE [msconame-md](../includes/msconame-md.md)] [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is a relational database management system (RDBMS). Applications and tools connect to a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] *instance* or *database*, and communicate using [Transact-SQL](../t-sql/language-reference.md) (T-SQL).
 
+[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is one of many products and platforms that runs the [Microsoft SQL Database Engine](../database-engine/sql-database-engine.md).
+
 ## Deployment options
 
-You can install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows or [Linux](../linux/sql-server-linux-overview.md), deploy it in [a Linux container](../linux/sql-server-linux-overview.md#container-images), or deploy it on an [Azure Virtual Machine](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview) or other virtual machine platform. You previously might have referred to this as the *boxed product*.
+You can install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows or [Linux](../linux/sql-server-linux-overview.md), deploy it in [a Linux container](../linux/sql-server-linux-overview.md#container-images), or deploy it on [Azure Virtual Machines](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview) or other virtual machine platform. You previously might have referred to this as the *boxed product*.
 
 Supported versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] depend on your license agreement, but for the purposes of this documentation, we mean [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] and later versions. Documentation for [!INCLUDE [sssql14-md](../includes/sssql14-md.md)] and previous versions is available at [Previous versions of SQL Server documentation](previous-versions-sql-server.md). To find out which versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] are currently supported, see [SQL Server end of support options](end-of-support/sql-server-end-of-support-overview.md).
 
 The underlying [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)] is also used by the following products and services:
 
 - [[!INCLUDE [ssazure-sqldb](../includes/ssazure-sqldb.md)]](/azure/azure-sql/database/sql-database-paas-overview)
+- [[!INCLUDE [fabric-sqldb](../includes/fabric-sqldb.md)]](/fabric/database/sql/overview)
 - [[!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)]](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview)
+- [[!INCLUDE [fabric-dw-full](../includes/fabric-dw-full.md)]](/fabric/data-warehouse/data-warehousing) and the [!INCLUDE [fabric-se](../includes/fabric-se.md)]
+
+Older products:
+
 - [Microsoft Analytics Platform System](../analytics-platform-system/home-analytics-platform-system-aps-pdw.md) (PDW)
 - [[!INCLUDE [ssazuresynapse-md](../includes/ssazuresynapse-md.md)]](/azure/synapse-analytics/overview-what-is)
 - [[!INCLUDE [ssazurede-md](../includes/ssazurede-md.md)]](/azure/azure-sql-edge/overview)
@@ -60,11 +67,11 @@ This table provides links to fundamental concepts in [!INCLUDE [ssnoversion-md](
 | **Database compatibility levels** | - [Compatibility certification](../database-engine/install-windows/compatibility-certification.md)<br />- [View or change the compatibility level of a database](../relational-databases/databases/view-or-change-the-compatibility-level-of-a-database.md)<br />- [ALTER DATABASE (Transact-SQL) compatibility level](../t-sql/statements/alter-database-transact-sql-compatibility-level.md) |
 | **Tables** and **views** | - [Tables](../relational-databases/tables/tables.md)<br />- [Views](../relational-databases/views/views.md) |
 | **Functions** and **stored procedures** | - [What are the SQL database functions?](../t-sql/functions/functions.md)<br />- [Stored procedures (Database Engine)](../relational-databases/stored-procedures/stored-procedures-database-engine.md) |
-| **Indexes** | - [Indexes](../relational-databases/indexes/indexes.md)<br />- [SQL Server and Azure SQL index architecture and design guide](../relational-databases/sql-server-index-design-guide.md) |
+| **Indexes** | - [Indexes](../relational-databases/indexes/indexes.md)<br />- [Index architecture and design guide](../relational-databases/sql-server-index-design-guide.md) |
 | Configure **cost threshold for parallelism**<br />and **maximum degree of parallelism** | - [Server configuration: cost threshold for parallelism](../database-engine/configure-windows/configure-the-cost-threshold-for-parallelism-server-configuration-option.md)<br />- [Server configuration: max degree of parallelism](../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md) |
 | **Memory management** | - [Server memory configuration options](../database-engine/configure-windows/server-memory-server-configuration-options.md)<br />- [Memory management architecture guide](../relational-databases/memory-management-architecture-guide.md) |
 | **Checkpoints**, **startup**, and **crash recovery** | - [Database checkpoints](../relational-databases/logs/database-checkpoints-sql-server.md)<br />- [Accelerated database recovery](../relational-databases/accelerated-database-recovery-concepts.md) |
-| **Back up** and **restore** databases | - [Back Up and Restore of SQL Server Databases](../relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases.md)<br />- [Transaction log backups](../relational-databases/backup-restore/transaction-log-backups-sql-server.md) |
+| **Back up** and **restore** databases | - [Back up and restore of SQL Server databases](../relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases.md)<br />- [Transaction log backups](../relational-databases/backup-restore/transaction-log-backups-sql-server.md) |
 | **Manage SQL Server services** | - [Manage the Database Engine services](../database-engine/configure-windows/manage-the-database-engine-services.md)<br />- [SQL Server Configuration Manager](../relational-databases/sql-server-configuration-manager.md)<br />- [Start, stop, pause, resume, and restart SQL Server services](../database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services.md)<br />- [Add Features to an Instance of SQL Server (Setup)](../database-engine/install-windows/add-features-to-an-instance-of-sql-server-setup.md) |
 | **Database console commands** (DBCC) | - [DBCC](../t-sql/database-console-commands/dbcc-transact-sql.md)<br />- [DBCC HELP](../t-sql/database-console-commands/dbcc-help-transact-sql.md)<br />- [DBCC CHECKDB](../t-sql/database-console-commands/dbcc-checkdb-transact-sql.md) |
 | **High availability** (HA) and **disaster recovery** (DR) | - [Business continuity and database recovery](../database-engine/sql-server-business-continuity-dr.md)<br />- [About log shipping](../database-engine/log-shipping/about-log-shipping-sql-server.md)<br />- [Failover Clustering and Always On Availability Groups](../database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server.md)<br />- [What is an Always On availability group?](../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md) |
@@ -73,8 +80,8 @@ This table provides links to fundamental concepts in [!INCLUDE [ssnoversion-md](
 ## Connect to SQL Server
 
 - [Connect to the Database Engine](connect-to-database-engine.md)
-- [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
-- [What is Azure Data Studio?](/azure-data-studio/what-is-azure-data-studio)
+- [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)
+- [MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)
 
 ## Azure integration
 

@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "08/09/2017"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Policy-Based Management, storage"
 ---

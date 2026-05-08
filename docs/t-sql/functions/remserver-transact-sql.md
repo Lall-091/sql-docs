@@ -63,8 +63,8 @@ EXEC SEATTLE1...usp_CheckServer;
 LONDON2  
 ```  
   
-## See Also  
- [Configuration Functions &#40;Transact-SQL&#41;](../../t-sql/functions/configuration-functions-transact-sql.md)   
- [Remote Servers](../../database-engine/configure-windows/remote-servers.md)  
+## Related content
+ 
+- [Remote Servers](../../database-engine/configure-windows/remote-servers.md)  
   
   

@@ -4,7 +4,7 @@ description: "Compare shared and embedded data sources - Report Builder & Report
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

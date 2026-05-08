@@ -40,6 +40,22 @@ groups:
   - id: sq1-visual-studio-sdk
     title: Visual Studio, SDK-style (preview)
   - id: sq1-visual-studio-code
-    title: Visual Studio Code/Azure Data Studio
+    title: Visual Studio Code
+  - id: sq1-sql-server-management-studio
+    title: SQL Server Management Studio
   - id: sq1-command-line
     title: Command-line interface
+- id: ssma-source-db
+  title: SSMA source database
+  prompt: Choose your source database
+  pivots:
+  - id: ssma-access
+    title: Access
+  - id: ssma-db2
+    title: Db2
+  - id: ssma-mysql
+    title: MySQL
+  - id: ssma-oracle
+    title: Oracle
+  - id: ssma-sybase
+    title: SAP ASE (Sybase)

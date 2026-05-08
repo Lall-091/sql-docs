@@ -7,7 +7,7 @@ ms.reviewer: vanto, mathoma
 ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2023
   - references-regions

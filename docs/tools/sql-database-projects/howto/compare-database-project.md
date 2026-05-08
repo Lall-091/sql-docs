@@ -1,19 +1,19 @@
 ---
 title: Compare a Database and a Project
-description: "Compare a project and a database and with different approaches."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+description: Compare a project and a database and with different approaches.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
 ms.collection:
   - data-tools
-zone_pivot_groups: sq1-sql-projects-tools
 ms.custom:
   - ignite-2024
   - sfi-ropc-nochange
+zone_pivot_groups: sq1-sql-projects-tools
 ---
 
 # Compare a database and a project
@@ -36,26 +36,32 @@ This article reviews methods for comparing a database and a SQL project using di
 ::: zone pivot="sq1-visual-studio"
 
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools (SSDT) installed in Visual Studio 2022](../../../ssdt/download-sql-server-data-tools-ssdt.md)
+- [SQL Server Data Tools (SSDT) installed in Visual Studio](../../../ssdt/download-sql-server-data-tools-ssdt.md)
 
 ::: zone-end
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-Graphical schema comparison isn't yet available in the SDK-style SQL projects preview in Visual Studio.  Use Azure Data Studio or Visual Studio to compare schemas.
+Graphical schema comparison isn't yet available in the SDK-style SQL projects preview in Visual Studio. Use Visual Studio Code or Visual Studio to compare schemas.
 
 ::: zone-end
 
 ::: zone pivot="sq1-visual-studio-code"
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [SQL Database Projects extension for Azure Data Studio](/azure-data-studio/extensions/sql-database-project-extension)
+- [SQL Database Projects extension](../../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+[!INCLUDE [schema-compare-where-found](../includes/schema-compare-where-found.md)]
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
-[!INCLUDE [schema-compare-command-line](../includes/schema-compare-command-line.md)]
+[!INCLUDE [schema-compare-where-found](../includes/schema-compare-where-found.md)]
 
 ::: zone-end
 
@@ -127,7 +133,7 @@ An advantage of the deploy report XML operation is that it can be used to automa
 
 ## Import changes from a database
 
-As mentioned in the [schema compare section](#schema-compare-visualize-differences), schema compare can be used to apply changes from a database into a SQL project file set. Applying changes to a SQL project is a common scenario when you have a database that is actively developed in directly and a SQL project is used to manage the database objects in source control. Manually completing this operation through Visual Studio or Azure Data Studio can be time-consuming, especially when the database has many objects or sporadic changes. In this section, we review how to automate the extract of object definitions from a database into a SQL project file set.
+As mentioned in the [schema compare section](#schema-compare-visualize-differences), schema compare can be used to apply changes from a database into a SQL project file set. Applying changes to a SQL project is a common scenario when you have a database that is actively developed in directly and a SQL project is used to manage the database objects in source control. Manually completing this operation through Visual Studio or Visual Studio Code can be time-consuming, especially when the database has many objects or sporadic changes. In this section, we review how to automate the extract of object definitions from a database into a SQL project file set.
 
 ### Prerequisites
 

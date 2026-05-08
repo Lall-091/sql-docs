@@ -4,7 +4,7 @@ description: SERVERPROPERTY returns property information about the server instan
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest, amitkh-msft
-ms.date: 11/18/2025
+ms.date: 01/08/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -66,7 +66,7 @@ An expression that contains the property information to be returned for the serv
 | `HadrManagerStatus` | Indicates whether the [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] manager has started.<br /><br />0 = Not started, pending communication.<br />1 = Started and running.<br />2 = Not started and failed.<br />NULL = Input isn't valid, an error, or not applicable.<br /><br />Base data type: **int** |
 | `InstanceDefaultBackupPath` | Name of the default path to the instance backup files.<br /><br />**Applies to**: [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions.<br /><br />Base data type: **nvarchar(128)** |
 | `InstanceDefaultDataPath` | Name of the default path to the instance data files.<br /><br />**Applies to**: [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].<br /><br />Base data type: **nvarchar(128)** |
-| `InstanceDefaultLogPath` | Name of the default path to the instance log files.<br /><br />**Applies to**: [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].<br /><br />Base data type: **nvarchar(128)** |
+| `InstanceDefaultLogPath` | Name of the default path to the instance transaction log files.<br /><br />**Applies to**: [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].<br /><br />Base data type: **nvarchar(128)** |
 | `InstanceName` | Name of the instance to which the user is connected.<br /><br />Returns `NULL` if the instance name is the default instance, if the input isn't valid, or error.<br /><br />NULL = Input isn't valid, an error, or not applicable.<br /><br />Base data type: **nvarchar(128)** |
 | `IsAdvancedAnalyticsInstalled` | Returns 1 if the Advanced Analytics feature was installed during setup; 0 if Advanced Analytics wasn't installed.<br /><br />Base data type: **int** |
 | `IsBigDataCluster` | Introduced in [!INCLUDE [ssSQL2019](../../includes/sssql19-md.md)] beginning with CU 4.<br /><br />Returns 1 if the instance is [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Big Data Cluster; 0 if not.<br /><br />Base data type: **int** |
@@ -117,7 +117,7 @@ The following table lists possible values for `EditionID` and `Edition`.
 | `610778273` | Enterprise Evaluation |
 | `284895786` | Business Intelligence |
 | `-2117995310` | Developer <sup>1</sup>, or Developer Enterprise <sup>2</sup> |
-| `-2509700633` | Developer Standard <sup>2</sup> |
+| `-1785266663` | Developer Standard <sup>2</sup> |
 | `-1592396055` | Express |
 | `-133711905` | Express with Advanced Services |
 | `-1534726760` | Standard |
@@ -128,8 +128,8 @@ The following table lists possible values for `EditionID` and `Edition`.
 
 <sup>1</sup> **Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions.  
 <sup>2</sup> **Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.  
-<sup>3</sup> Indicates the development only edition for Azure SQL Edge.  
-<sup>4</sup> Indicates the paid edition for Azure SQL Edge.
+<sup>3</sup> **Applies to**: Azure SQL Edge (development edition).  
+<sup>4</sup> **Applies to**: Azure SQL Edge (paid edition).
 
 ## Return types
 

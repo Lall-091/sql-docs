@@ -207,7 +207,7 @@ In an inline table-valued function, only a single select statement is allowed.
 - The following built-in functions are not supported in a scalar-valued function body:
   - [NEWID()](../functions/newid-transact-sql.md)
   - [RAND()](../functions/rand-transact-sql.md)
-  - [Configuration Functions](../functions/configuration-functions-transact-sql.md)
+  - [Configuration Functions](../functions/functions.md#configuration-functions)
   - [DATABASEPROPERTYEX](../functions/databasepropertyex-transact-sql.md) 
   - [OBJECTPROPERTYEX](../functions/objectpropertyex-transact-sql.md)
   - [SERVERPROPERTY](../functions/serverproperty-transact-sql.md) 

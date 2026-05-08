@@ -25,6 +25,9 @@ ms.custom:
 
 With Azure SQL Database, you can set a [long-term backup retention](long-term-retention-overview.md) (LTR) policy to automatically retain backups in separate Azure Blob storage containers for up to 10 years. You can then recover a database using these backups using the Azure portal, Azure CLI, or PowerShell.
 
+> [!IMPORTANT]
+> Some older APIs used for long-term retention (LTR) backup operations are deprecated and no longer supported. Avoid using legacy PowerShell cmdlets such as `Copy-AzSqlDatabaseLongTermRetentionBackup`. Use the supported restore methods described in this article instead.
+
 ## Prerequisites
 
 <a id="permissions"></a>
@@ -291,6 +294,9 @@ $ltrBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $server.Locatio
 ```
 
 ### Restore from LTR backups
+
+> [!WARNING]
+> The `Copy-AzSqlDatabaseLongTermRetentionBackup` cmdlet uses a deprecated API and is not supported. Do not use this cmdlet. Use the supported restore methods documented in this article.
 
 This example shows how to restore from an LTR backup. Note, this interface did not change but the resource ID parameter now requires the LTR backup resource ID.
 

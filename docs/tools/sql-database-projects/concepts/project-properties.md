@@ -83,6 +83,7 @@ Some project properties are associated with database options that apply to only 
 
 | Property | `DATABASE SET` option | UI label | SQL project default value | Allowed values |
 |---|---|---|---|---|
+| AcceleratedDatabaseRecovery | `ACCELERATED_DATABASE_RECOVERY` | Database settings, Operational, Accelerated database recovery | False | {True&#124;False}<sup>5</sup> |
 | AllowSnapshotIsolation | `ALLOW_SNAPSHOT_ISOLATION` | Database settings, Operational, Allow snapshot isolation | False | {True&#124;False} |
 | AnsiNulls| `ANSI_NULLS` | Database settings, SET ANSI_NULLS | True | {True&#124;False} |
 | AnsiPadding | `ANSI_PADDING` | Database settings, SET ANSI_PADDING | True | {True&#124;False} |
@@ -137,6 +138,7 @@ Some project properties are associated with database options that apply to only 
 | ModelCollation | | Project settings, Collation | 1033,CI | {integer [language id](../../../relational-databases/system-compatibility-views/sys-syslanguages-transact-sql.md)}, {CI&#124;CS} |
 | NonTransactedFileStreamAccess | `NON_TRANSACTED_ACCESS` | Database settings, FILESTREAM non-transacted access | OFF | {OFF&#124;READ_ONLY&#124;FULL} |
 | NumericRoundAbort | `NUMERIC_ROUNDABORT` | Database settings, SET NUMERIC_ROUNDABORT | False | {True&#124;False} |
+| OptimizedLocking | `OPTIMIZED_LOCKING` | Database settings, Operational, Optimized locking | False | {True&#124;False}<sup>5</sup> |
 | OutputPath | | Build settings, Output path | `bin\Debug` and `bin\Release` | {string} |
 | PageVerify | `PAGE_VERIFY` | Database settings, Operational, Page verify | NONE | {NONE&#124;TORN_PAGE_DETECTION&#124;CHECKSUM} |
 | Parameterization | `PARAMETERIZATION` | Database settings, Parameterization | SIMPLE | {SIMPLE&#124;FORCED} |
@@ -165,6 +167,7 @@ Some project properties are associated with database options that apply to only 
 1. [Database scoped configuration](../../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md) options.
 1. AUTO is set with the 0 value.
 1. Applies as a `CREATE DATABASE` [option](../../../t-sql/statements/create-database-transact-sql.md) only.
+1. Not applicable to Azure SQL Database, where the option is always enabled.
 
 ## Related content
 

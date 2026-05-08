@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "12/13/2019"
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # FILESTREAM, functions, stored procedures, and views
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

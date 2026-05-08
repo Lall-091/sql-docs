@@ -4,7 +4,7 @@ description: Reporting Services allows you to interact with a paginated report a
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

@@ -20,7 +20,7 @@ monikerRange: "=azuresqldb-mi-current||>=sql-server-2016"
   
 ### To specify the history retention period  
   
-1.  On the **General** page of the **Distributor Properties - \<Distributor>** dialog box, click the properties button (**…**) for the distribution database.  
+1.  On the **General** page of the **Distributor Properties - \<Distributor>** dialog box, click the properties button (**...**) for the distribution database.  
   
 2.  Enter a value in the **Store replication performance history at least** box.  
   

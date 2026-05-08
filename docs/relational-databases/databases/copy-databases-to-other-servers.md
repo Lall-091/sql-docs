@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/19/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "servers [SQL Server], copying databases between"
   - "bulk exporting [SQL Server], between servers"

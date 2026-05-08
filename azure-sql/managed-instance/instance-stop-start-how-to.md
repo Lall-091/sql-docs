@@ -129,7 +129,7 @@ If you want to stop or start an instance by using PowerShell or the Azure CLI, y
 
 Alternatively to configuring your command line tools, you can also use the Azure Cloud Shell. A free interactive shell you can use to run the steps in this article. It has common preinstalled Azure tools and is configured to use with your account. [!INCLUDE [quickstarts-free-trial-note](../includes/quickstarts-free-trial-note.md)]
 
-To open the Cloud Shell, select **Try it** from the upper right corner of a code block. You can also launch Cloud Shell in a separate browser tab by going to [https://shell.azure.com](https://shell.azure.com).
+To open the Cloud Shell, select **Try it** from the upper right corner of a code block. You can also launch Cloud Shell in a separate browser tab by going to <https://shell.azure.com>.
 
 ### [PowerShell](#tab/azure-powershell-prep)
 

@@ -1,0 +1,91 @@
+name: Check for preview branch to prevent accidental merge
+
+permissions:
+  pull-requests: write
+  statuses: write
+  checks: write
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    # Monitor all target branches since preview branches cannot merge to ANY branch
+
+jobs:
+  preview-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Post workflow information
+        run: |
+          {
+            echo "## Preview branch merge protection"
+            echo ""
+            echo "This check guards against accidental merges from \`release-preview\` branches."
+            echo "For details, see the [Preview branch merge protection](https://dev.azure.com/msft-skilling/Content/_wiki/wikis/Database%20Docs/4593/Preview-branch-merge-protection) wiki article."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Check merge restrictions for release-preview branch
+        if: contains(github.head_ref, 'release-preview')
+        shell: bash
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          BASE_REF: ${{ github.base_ref }}
+          PR_NUMBER: ${{ github.event.number }}
+        run: |
+          echo "Release-preview branch detected: $HEAD_REF"
+          echo "Checking merge restrictions for PR #$PR_NUMBER"
+          echo "Head reference: $HEAD_REF"
+          echo "Base reference: $BASE_REF"
+          
+          # Function to create step summary and exit
+          create_summary_and_exit() {
+            local title="$1"
+            local message="$2"
+            local restriction="$3"
+            
+            echo "❌ MERGE BLOCKED: $message"
+            echo ""
+            echo "This pull request is attempting to merge from '$HEAD_REF' to '$BASE_REF', which is not permitted."
+            echo ""
+            echo "IMPORTANT: $restriction"
+            echo ""
+            
+            # Create GitHub step summary
+            {
+              echo "# 🚫 Merge Blocked - $title"
+              echo ""
+              echo "$message"
+              echo ""
+              echo "## Restriction Details"
+              echo "- **Head branch:** $HEAD_REF"
+              echo "- **Target branch:** $BASE_REF"
+              echo "- **Restriction:** $restriction"
+              echo ""
+              echo "For details, see the [Preview branch merge protection](https://dev.azure.com/msft-skilling/Content/_wiki/wikis/Database%20Docs/4593/Preview-branch-merge-protection) wiki article."
+            } >> "$GITHUB_STEP_SUMMARY"
+            
+            exit 1
+          }
+          
+          # Check blocking conditions using simple bash logic
+          if [ "$BASE_REF" = "main" ]; then
+            create_summary_and_exit \
+              "Release-Preview to Main" \
+              "Release-preview branches cannot merge to main" \
+              "Release-preview branches cannot merge directly to main. Create a new branch from main, squash the changes to one commit, and create a new pull request from the new branch."
+          
+          elif [[ "$BASE_REF" =~ ^release-[a-zA-Z0-9._-]+$ && "$BASE_REF" != *release-preview* ]]; then
+            create_summary_and_exit \
+              "Release-Preview to Release" \
+              "Release-preview branches cannot merge to non-preview release branches" \
+              "Release-preview branches can only merge to other release-preview branches"
+          
+          elif [[ "$HEAD_REF" != *"$BASE_REF"* ]]; then
+            create_summary_and_exit \
+              "Name Mismatch" \
+              "Release-preview branch name doesn't contain target branch name" \
+              "Release-preview branch name must contain target branch name"
+          
+          else
+            echo "✅ Merge allowed: Head branch '$HEAD_REF' contains base branch name '$BASE_REF'"
+          fi

@@ -4,7 +4,7 @@ description: Learn to create a three-node cluster on Red Hat, SUSE, or Ubuntu, a
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh-msft
-ms.date: 11/24/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -41,7 +41,7 @@ The steps to create an availability group on Linux servers for high availability
 
 1. [Configure SQL Server on the cluster nodes](sql-server-linux-setup.md).
 
-1. [Create the availability group](sql-server-linux-availability-group-configure-ha.md).
+1. [Create the availability group](high-availability/availability-groups-configure.md).
 
 1. Configure a cluster resource manager, like Pacemaker. These instructions are in this article.
 
@@ -189,8 +189,26 @@ For information on Pacemaker cluster properties, see [Pacemaker Clusters Propert
 
 ### Create availability group resource
 
-To create the availability group resource, use `pcs resource create` command and set the resource properties. The following command creates a `ocf:mssql:ag` master/subordinate type resource for availability group with name `ag1`. Run the following command on one node.
+After you create an AG in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must create the corresponding resources in Pacemaker when you specify a cluster type of External. An AG needs two resources: the availability group resource, and an IP address resource. Configuring the IP address resource is optional if you aren't using a listener. However, it's recommended when you need listener features.
 
+#### Pacemaker HA agent v2 (preview)
+
+In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] with Cumulative Update (CU) 3 and later versions, a new Pacemaker HA agent v2 is available in the `mssql-server-ha` package.
+
+Pacemaker HA agent v2 introduces reliability and performance improvements over the previous agent, including:
+
+- Improved failover performance to reduce both planned and unplanned failover times.
+
+- Support for flexible automatic failover policies, including configuration of [health-check timeout](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#HCtimeout) and [failure-condition level](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#failure-condition-level).
+
+- Support for TLS 1.3 for communication between the Pacemaker cluster and SQL Server.
+
+Pacemaker HA agent v2 is currently in preview. The existing Pacemaker HA agent (v1) remains fully supported for production deployments.
+
+[!INCLUDE [ss-linux-cluster-required-synchronized-secondaries-default](includes/cluster-required-synchronized-secondaries-default.md)]
+
+Create the AG resource in Pacemaker using the existing Pacemaker HA agent (v1):
+ 
 #### RHEL 7
 
 Use the following `create` command:
@@ -207,7 +225,21 @@ Use the following `create` command:
 sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=60s promotable notify=true
 ```
 
-[!INCLUDE [ss-linux-cluster-required-synchronized-secondaries-default](includes/cluster-required-synchronized-secondaries-default.md)]
+To use Pacemaker HA agent v2, create the AG resource using the `agv2` resource agent:
+
+   ```bash
+   sudo pcs resource create <NameForAGResource> ocf:mssql:agv2 ag_name=<AGName> meta failure-timeout=30s promotable notify=true
+   ```
+
+   New deployments on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] can evaluate Pacemaker HA agent v2. Existing production deployments should upgrade when appropriate.
+
+   When upgrading to or deploying Pacemaker HA agent v2, create the new AG resource using the `agv2` agent instead of the previous `ag` agent. If you already configured an existing AG resource, remove it and create a new resource using `agv2`:
+
+   ```bash
+   sudo pcs resource delete <NameForAGResource>
+   ```
+
+   This operation temporarily stops AG synchronization while the resource is being recreated. Deleting and recreating the Pacemaker AG resource doesn't delete the AG. After the resource is recreated, Pacemaker resumes management and AG synchronization automatically.
 
 <a id="createIP"></a>
 
@@ -298,6 +330,9 @@ The clustering layer is based on SUSE [High Availability Extension (HAE)](https:
 
 For more information on cluster configuration, resource agent options, management, best practices, and recommendations, see [SUSE Linux Enterprise High Availability Extension](https://documentation.suse.com/sle-ha/12-SP5/).
 
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
 ### Roadmap
 
 The procedure for creating an availability group for high availability differs between Linux servers and a Windows Server failover cluster. The following list describes the high-level steps:
@@ -356,7 +391,7 @@ The first step is to configure the operating system on the cluster nodes. For th
 
 ### Configure an availability group
 
-On Linux servers, configure the availability group and then configure the cluster resources. To configure the availability group, see [Configure SQL Server availability group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md)
+On Linux servers, configure the availability group and then configure the cluster resources. To configure the availability group, see [Configure SQL Server availability group for high availability on Linux](high-availability/availability-groups-configure.md)
 
 ### Install and configure Pacemaker on each cluster node
 
@@ -447,7 +482,7 @@ If you have configured the existing cluster nodes with the `YaST` cluster module
    sudo crm status
    ```
 
-   You see output similar to the following example.
+   The output looks similar to the following example:
 
    ```output
    3 nodes configured
@@ -629,7 +664,7 @@ The steps to create an availability group on Linux servers for high availability
 
 1. [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md).
 
-1. [Configure SQL Server availability group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md).
+1. [Configure SQL Server availability group for high availability on Linux](high-availability/availability-groups-configure.md).
 
 1. Configure a cluster resource manager, like Pacemaker. These instructions are in this article.
 
@@ -701,7 +736,7 @@ The steps to create an availability group on Linux servers for high availability
    sudo vim /etc/corosync/corosync.conf
    ```
 
-   The `corosync.conf` file should look similar to the following example:
+   The `corosync.conf` file looks similar to the following example:
 
    ```text
    totem {
@@ -761,7 +796,7 @@ The steps to create an availability group on Linux servers for high availability
    Confirm the status of cluster and verify the configuration:
 
    ```bash
-   sudo crm status
+   sudo pcs status
    ```
 
 [!INCLUDE [Considerations for multiple NICs](includes/availability-group-multiple-network-interfaces.md)]
@@ -779,7 +814,7 @@ For more information, see [Pacemaker Clusters from Scratch](https://clusterlabs.
 Because the node level fencing configuration depends heavily on your environment, we disable it for this tutorial (it can be configured at a later time). Run the following script on the primary node:
 
 ```bash
-sudo crm configure property stonith-enabled=false
+sudo pcs property set stonith-enabled=false
 ```
 
 In this example, disabling fencing is just for testing purposes. If you plan to use Pacemaker in a production environment, you should plan a fencing implementation depending on your environment and keep it enabled. Contact the operating system vendor for information about fencing agents for any specific distribution.
@@ -791,7 +826,7 @@ The `cluster-recheck-interval` property indicates the polling interval at which 
 To update the property value to `2 minutes` run:
 
 ```bash
-sudo crm configure property cluster-recheck-interval=2min
+sudo pcs property set cluster-recheck-interval=2min
 ```
 
 If you already have an availability group resource managed by a Pacemaker cluster, Pacemaker package 1.1.18-11.el7 introduced a behavior change for the `start-failure-is-fatal` cluster setting when its value is `false`. This change affects the failover workflow. If a primary replica experiences an outage, the cluster is expected to fail over to one of the available secondary replicas. Instead, users notice that the cluster keeps trying to start the failed primary replica. If that primary never comes online (because of a permanent outage), the cluster never fails over to another available secondary replica. Because of this change, a previously recommended configuration to set `start-failure-is-fatal` is no longer valid, and the setting needs to be reverted back to its default value of `true`.
@@ -801,13 +836,13 @@ Additionally, the AG resource needs to be updated to include the `failure-timeou
 To update the property value to `true` run:
 
 ```bash
-sudo crm configure property start-failure-is-fatal=true
+sudo pcs property set start-failure-is-fatal=true
 ```
 
 Update your existing AG resource property `failure-timeout` to `60s` run (replace `ag1` with the name of your availability group resource):
 
 ```bash
-sudo crm configure meta failure-timeout=60s
+sudo pcs resource meta ag_cluster failure-timeout=60s
 ```
 
 ### Install SQL Server resource agent for integration with Pacemaker
@@ -824,32 +859,48 @@ sudo apt-get install mssql-server-ha
 
 ### Create availability group resource
 
-To create the availability group resource, use the `sudo crm configure` command to set the resource properties. The following example creates a primary/replica type resource `ocf:mssql:ag` for an availability group with name `ag1`.
+After you create an AG in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must create the corresponding resources in Pacemaker when you specify a cluster type of External. An AG needs two resources: the availability group resource, and an IP address resource. Configuring the IP address resource is optional if you aren't using a listener. However, it's recommended when you need listener features.
 
-```console
-~$ sudo crm
+The AG resource you create is a type of resource called a *clone*. The AG resource has copies on each node, and one controlling resource called the *master*. The *master* is associated with the server hosting the primary replica. The other resources host secondary replicas (regular or configuration-only) and can be promoted to *master* in a failover.
 
-configure
+#### Pacemaker HA agent v2 (preview)
 
-primitive ag1_cluster \
-ocf:mssql:ag \
-params ag_name="ag1" \
-meta failure-timeout=60s \
-op start timeout=60s \
-op stop timeout=60s \
-op promote timeout=60s \
-op demote timeout=10s \
-op monitor timeout=60s interval=10s \
-op monitor timeout=60s on-fail=demote interval=11s role="Master" \
-op monitor timeout=60s interval=12s role="Slave" \
-op notify timeout=60s
-ms ms-ag1 ag1_cluster \
-meta master-max="1" master-node-max="1" clone-max="3" \
-clone-node-max="1" notify="true"
+In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] with Cumulative Update (CU) 3 and later versions, a new Pacemaker HA agent v2 (`mssql-server-ha`) is available.
 
-commit
-```
+Pacemaker HA agent v2 introduces reliability and performance improvements over the previous agent, including:
 
+- Improved failover performance to reduce both planned and unplanned failover times.
+
+- Support for flexible automatic failover policies, including configuration of [health-check timeout](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#HCtimeout) and [failure-condition level](../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#failure-condition-level).
+
+- Support for TLS 1.3 for communication between the Pacemaker cluster and SQL Server.
+
+Pacemaker HA agent v2 is currently in preview. The existing Pacemaker HA agent (v1) remains fully supported for production deployments.
+
+1. Create the AG resource in Pacemaker using the existing Pacemaker HA agent (v1):
+
+   ```bash
+   sudo pcs resource create <NameForAGResource> ocf:mssql:ag ag_name=<AGName> meta failure-timeout=30s promotable notify=true
+   ```
+
+   In this example, `NameForAGResource` is the unique name you give to this cluster resource for the AG, and `AGName` is the name of the AG that you created.
+
+   To use Pacemaker HA agent v2, create the AG resource using the `agv2` resource agent:
+
+   ```bash
+   sudo pcs resource create <NameForAGResource> ocf:mssql:agv2 ag_name=<AGName> meta failure-timeout=30s promotable notify=true
+   ```
+
+   New deployments on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] can evaluate Pacemaker HA agent v2. Existing production deployments should upgrade when appropriate.
+
+   When upgrading to or deploying Pacemaker HA agent v2, create the new AG resource using the `agv2` agent instead of the previous `ag` agent. If you already configured an existing AG resource, remove it and create a new resource using `agv2`:
+
+   ```bash
+   sudo pcs resource delete <NameForAGResource>
+   ```
+
+   This operation temporarily stops AG synchronization while the resource is being recreated. Deleting and recreating the Pacemaker AG resource doesn't delete the AG. After the resource is recreated, Pacemaker resumes management and AG synchronization automatically.
+   
 [!INCLUDE [required-synchronized-secondaries-default](includes/cluster-required-synchronized-secondaries-default.md)]
 
 ### Create virtual IP resource
@@ -857,9 +908,7 @@ commit
 To create the virtual IP address resource, run the following command on one node. Use an available static IP address from the network. Before you run the script, replace the values between `< ... >` with a valid IP address.
 
 ```bash
-sudo crm configure primitive virtualip \
-ocf:heartbeat:IPaddr2 \
-params ip=10.128.16.240
+sudo pcs resource create virtualip ocf:heartbeat:IPaddr2 ip=10.128.16.240
 ```
 
 There's no virtual server name equivalent in Pacemaker. To use a connection string that points to a string server name and not use the IP address, register the IP resource address and desired virtual server name in DNS. For DR configurations, register the desired virtual server name and IP address with the DNS servers on both primary and DR site.
@@ -871,9 +920,14 @@ Almost every decision in a Pacemaker cluster, like choosing where a resource sho
 Use constraints to configure the decisions of the cluster. Constraints have a score. If a constraint has a score lower than INFINITY, it's only a recommendation. A score of INFINITY means it's mandatory.
 
 To ensure that primary replica and the virtual ip resource are on the same host, define a colocation constraint with a score of INFINITY. To add the colocation constraint, run the following command on one node.
+#### Ubuntu 20.04
 
 ```bash
-sudo crm configure colocation ag-with-listener INFINITY: virtualip-group ms-ag1:Master
+sudo pcs constraint colocation add virtualip with master AGResource INFINITY
+```
+#### Ubuntu 22.04 and later versions
+```bash
+sudo pcs constraint colocation add virtualip with promoted <NameForAGResource> INFINITY
 ```
 
 ### Add ordering constraint
@@ -896,8 +950,15 @@ To prevent the IP address from temporarily pointing to the node with the pre-fai
 
 To add an ordering constraint, run the following command on one node:
 
+#### Ubuntu 20.04
+
 ```bash
 sudo crm configure order ag-before-listener Mandatory: ms-ag1:promote virtualip-group:start
+```
+#### Ubuntu 22.04 and later versions
+
+```bash
+sudo pcs constraint order promote <NameForAGResource> then start virtualip kind=Mandatory
 ```
 
 After you configure the cluster and add the availability group as a cluster resource, you can't use Transact-SQL to fail over the availability group resources. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] cluster resources on Linux aren't coupled as tightly with the operating system as they are on a Windows Server Failover Cluster (WSFC). The [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service isn't aware of the presence of the cluster. All orchestration is done through the cluster management tools.

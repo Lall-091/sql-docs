@@ -7,7 +7,7 @@ ms.reviewer: vanto, mikeray
 ms.date: 09/17/2024
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.ssis.importprojectwizard.f1"
 helpviewer_keywords:

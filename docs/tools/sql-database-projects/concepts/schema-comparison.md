@@ -1,10 +1,10 @@
 ---
 title: Schema Comparison Overview
 description: Visualize the difference in database models with schema compare.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest, tsiddique
-ms.date: 10/10/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, tsiddique
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: overview
@@ -46,7 +46,7 @@ The differences between source and target appear in a grid for easy review. Comp
 - SQL database project
 - `.dacpac` file
 
-In schema compare, you can drill into and review each difference in the results grid or in script form where details of the changes are available at a per-line level. You can also selectively exclude specific differences before updating the target. The schema compare tooling is available in Visual Studio, Azure Data Studio, and the command line.
+In schema compare, you can drill into and review each difference in the results grid or in script form where details of the changes are available at a per-line level. You can also selectively exclude specific differences before updating the target. The schema compare tooling is available in Visual Studio, Visual Studio Code, and the command line.
 
 ### Schema comparison options
 
@@ -68,7 +68,7 @@ The comparison definition for schema compare can be saved as an `.scmp` file, kn
 - comparison options
 - excluded object types
 
-An `.scmp` file can be opened in Visual Studio or Azure Data Studio to easily run the same comparison again later or to share the comparison with others.
+An `.scmp` file can be opened in Visual Studio to easily run the same comparison again later or to share the comparison with others.
 
 ## Launch and use schema compare
 
@@ -189,7 +189,7 @@ More in-depth information about schema comparison in Visual Studio Code is avail
 
    When the comparison is complete, the structural differences between the project and the database appear in the **Results** pane in the upper part of the window. By default, the comparison results group all the differences are grouped by action (such as Delete, Change, or Add). The **Results** pane displays a row for each database object that differs between the database definitions. Each row identifies the object in the source or target schema (or both) and the action that would be taken on the target schema to make the target object the same as the source object. If an object has been refactored and either renamed or moved to a new schema, the source and target names are different, and the source name appears in bold font to highlight the difference.
 
-   :::image type="content" source="media/schema-comparison/vs-code-schema-compare.png" alt-text="Screenshot of Schema comparison interface in Azure Data Studio comparing a database against a project." lightbox="media/schema-comparison/vs-code-schema-compare.png":::
+   :::image type="content" source="media/schema-comparison/vs-code-schema-compare.png" alt-text="Screenshot of Schema comparison interface in Visual Studio Code comparing a database against a project." lightbox="media/schema-comparison/vs-code-schema-compare.png":::
 
 5. By default all differences are included in the scope of the Update Target action. You can exclude differences that you don't want to synchronize. To do so, uncheck the **Action** column in the center of each row. When schema compare is used to update the target database, this row isn't considered for any pending changes.
 
@@ -201,9 +201,15 @@ To update the schema of the target, you have two options. You can update the tar
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+[!INCLUDE [schema-compare-where-found](../includes/schema-compare-where-found.md)]
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
-[!INCLUDE [schema-compare-command-line](../includes/schema-compare-command-line.md)]
+[!INCLUDE [schema-compare-where-found](../includes/schema-compare-where-found.md)]
 
 ::: zone-end
 

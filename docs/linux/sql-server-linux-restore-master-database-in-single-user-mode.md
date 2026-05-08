@@ -3,7 +3,7 @@ title: Restore master Database on SQL Server in Single-User Mode on Linux
 description: "Learn how to restore the master database using single-user mode in SQL Server on Linux."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -60,7 +60,7 @@ When you start an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md
    /opt/mssql/bin/sqlservr -m"SQLCMD"
    ```
 
-   In the previous example, `-m"SQLCMD"` limits connections to a single connection and that connection must identify itself as the **sqlcmd** client program. Use this option when you're starting [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single-user mode to restore a `master` database.
+   In the previous example, `-m"SQLCMD"` limits connections to a single connection and that connection must identify itself as the **`sqlcmd`** client program. Use this option when you're starting [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single-user mode to restore a `master` database.
 
 1. When SQL Server starts up, it generates several log entries. You can confirm that it's running in single-user mode by looking for the following lines in the output:
 
@@ -75,7 +75,7 @@ When you start an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md
 
 ## Connect to the SQL Server instance
 
-1. Use **sqlcmd** to connect to the SQL Server instance. After finishing the steps described in the [Start SQL Server in single-user mode](#start-sql-server-in-single-user-mode) section, you can see that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is running in *interactive* mode. Thus, you need to open a new terminal session to launch **sqlcmd** as follows.
+1. Use **`sqlcmd`** to connect to the SQL Server instance. After finishing the steps described in the [Start SQL Server in single-user mode](#start-sql-server-in-single-user-mode) section, you can see that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is running in *interactive* mode. Thus, you need to open a new terminal session to launch **`sqlcmd`** as follows.
 
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S <ServerName> -U sa -P <password>
@@ -85,10 +85,10 @@ When you start an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md
 
 ## Restore the `master` database
 
-1. Run the following commands inside **sqlcmd**. Remember that **sqlcmd** expects `GO` at the end of the script to execute it.
+1. Run the following commands inside **`sqlcmd`**. Remember that **`sqlcmd`** expects `GO` at the end of the script to execute it.
 
    ```sql
-   USE [master];
+   USE master;
    GO
 
    RESTORE DATABASE [master] FROM DISK = N'/var/opt/mssql/data/master.bak'
@@ -101,7 +101,7 @@ When you start an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md
 
    In the previous example, the path to the `master` database backup file is `/var/opt/mssql/data/master.bak`. You must replace this value with the correct path to your `master` database backup file.
 
-1. You should see output similar to the following example, if the restore is successful.
+1. The output looks similar to the following example, if the restore is successful.
 
    ```output
    Processed 456 pages for database 'master', file 'master' on file 1.

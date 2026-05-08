@@ -4,7 +4,7 @@ description: CREATE EXTERNAL DATA SOURCE creates an external data source used to
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, hudequei, wiassaf, jovanpop
-ms.date: 11/18/2025
+ms.date: 03/17/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -78,11 +78,11 @@ This article provides the syntax, arguments, remarks, permissions, and examples 
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).
 > To view the features of [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver15&preserve-view=true#syntax).
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver16&preserve-view=true#syntax).
 
@@ -302,7 +302,7 @@ WITH (
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 ::: moniker-end
@@ -310,7 +310,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 ::: moniker range="=sql-server-linux-2017"
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server on Linux. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of SQL Server on Linux. Use the version selector dropdown list to choose the appropriate version.  
 > To view the features of [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-linux-ver15&preserve-view=true#syntax).
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-linux-ver16&preserve-view=true#syntax).
 
@@ -319,7 +319,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 ::: moniker range="=sql-server-2017"
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).    
 > To view the features of [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver15&preserve-view=true#syntax).
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver16&preserve-view=true#syntax).
 
@@ -603,14 +603,14 @@ To see this example in use, see [BULK INSERT](bulk-insert-transact-sql.md#f-impo
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 ::: moniker-end
 ::: moniker range="=sql-server-linux-ver15"
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).    
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-linux-ver16&preserve-view=true#syntax).
 
 ::: moniker-end
@@ -618,7 +618,7 @@ Creates an external data source for PolyBase queries. External data sources are 
 ::: moniker range="=sql-server-ver15"
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version.  
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).    
 > To view the features of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], visit [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md?view=sql-server-ver16&preserve-view=true#syntax).
 
 ::: moniker-end
@@ -700,7 +700,7 @@ The `key_value_pair` is the keyword and the value for a specific connection opti
 
 Possible key value pairs are specific to the provider for the external data source vendor. For more information for each provider, see [CREATE EXTERNAL DATA SOURCE (Transact-SQL) CONNECTION_OPTIONS](create-external-data-source-connection-options.md).
 
-[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Cumulative Update 19 and later versions introduces additional keywords to support Oracle TNS files:
+[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Cumulative Update 19 and later versions introduce additional keywords to support Oracle TNS files:
 
 - The keyword `TNSNamesFile` specifies the filepath to the `tnsnames.ora` file located on the Oracle server.
 - The keyword `ServerName` specifies the alias used inside the `tnsnames.ora` that will be used to replace the host name and the port.
@@ -1153,11 +1153,11 @@ WITH (
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version. This content applies to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions.
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).   This content applies to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions.
 
 <a id="syntax"></a>
 
@@ -1725,13 +1725,13 @@ WITH (
 
 Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - Bulk load operations using `BULK INSERT` or `OPENROWSET`
 
 Supports Managed Identity connections for instances enabled by Azure Arc. For details, review [Connect to Azure Storage with managed identity from PolyBase](../../relational-databases/polybase/managed-identity.md).
 
 > [!NOTE]  
-> This syntax varies in different versions of SQL Server. Use the version selector dropdown list to choose the appropriate version. This content applies to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
+> The syntax of `CREATE EXTERNAL DATA SOURCE` varies in different versions of the [SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).   This content applies to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
 
 <a id="syntax"></a>
 
@@ -2278,7 +2278,7 @@ WITH IDENTITY = '<username>',
      SECRET = '<password>';
 ```
 
-The target server name is `WINSQL2022`, port `58137`, and it's a default instance. By specifying `Encrypt=Strict`, the connection uses TDS 8.0, and the server certificate is always verified. in this example, the `HostnameinCertificate` used is `WINSQL2022`:
+The target server name is `WINSQL2022`, port `58137`, and it's a default instance. By specifying `Encrypt=Strict`, the connection uses TDS 8.0, and the server certificate is always verified. In this example, the `HostnameinCertificate` used is `WINSQL2022`:
 
 ```sql
 CREATE EXTERNAL DATA SOURCE SQLServerInstance2
@@ -2447,6 +2447,10 @@ Specifies the type of the external data source being configured. This parameter 
 
 - Use `RDBMS` for cross-database queries using elastic query from SQL Database.
 - Use `SHARD_MAP_MANAGER` when creating an external data source when connecting to a sharded SQL Database.
+
+> [!IMPORTANT]
+> Elastic query in shard map manager mode (horizontal partitioning), using `EXTERNAL DATA SOURCE` type `SHARD_MAP_MANAGER`, is reaching end of support on March 31, 2027. After this date, existing workloads will continue to function but will no longer receive support, and creation of new external data sources of type `SHARD_MAP_MANAGER` will no longer be possible. For migration options, see [Migration guide from elastic query shard map manager mode](/azure/azure-sql/database/elastic-query-horizontal-partitioning-migration).
+
 - Use `BLOB_STORAGE` is for use with the `https` prefix only. For `abd` and `adls` prefixes, don't provide `TYPE`.
 
 > [!IMPORTANT]  
@@ -2480,6 +2484,9 @@ Takes a shared lock on the `EXTERNAL DATA SOURCE` object.
 ## Examples
 
 ### A. Create a shard map manager external data source
+
+> [!IMPORTANT]
+> Elastic query in shard map manager mode (horizontal partitioning), using `EXTERNAL DATA SOURCE` type `SHARD_MAP_MANAGER`, is reaching end of support on March 31, 2027. After this date, existing workloads will continue to function but will no longer receive support, and creation of new external data sources of type `SHARD_MAP_MANAGER` will no longer be possible. For migration options, see [Migration guide from elastic query shard map manager mode](/azure/azure-sql/database/elastic-query-horizontal-partitioning-migration).
 
 To create an external data source to reference a `SHARD_MAP_MANAGER`, specify the SQL Database server name that hosts the shard map manager in SQL Database or a SQL Server database on a virtual machine.
 
@@ -2636,6 +2643,8 @@ WITH (
 ## Overview: Azure Synapse Analytics
 
 **Applies to**: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
 
 Creates an external data source for data virtualization. External data sources are used to establish connectivity and support the primary use case of data virtualization and data loading from external data sources. For more information, see [Use external tables with Synapse SQL](/azure/synapse-analytics/sql/develop-tables-external-tables).
 
@@ -2920,7 +2929,7 @@ WITH (
 
 **Applies to**: [!INCLUDE [ssazurepdw_md](../../includes/ssazurepdw_md.md)]
 
-Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support the following use case: Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md).
+Creates an external data source for PolyBase queries. External data sources are used to establish connectivity and support the following use case: Data virtualization and data load using [PolyBase in SQL Server](../../relational-databases/polybase/overview.md).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -3571,7 +3580,7 @@ This example involves connecting an external data source named `MyLakeHouse` to 
 
 To create a Fabric Lakehouse data source, you need to provide workspace ID, tenant, and lakehouse ID. To find the ABFSS file location of a lakehouse, go to the Fabric portal. Navigate to your Lakehouse, navigate to the desired folder location, select `...`, **Properties**. Copy the **ABFS path**, which looks something like this: `abfss://<WorkSpaceID>@<Tenant>.dfs.fabric.microsoft.com/<LakehouseID>/Files/Contoso`.
 
-Because Fabric SQL database only supports Entra ID Passthrough authentication, no database scoped credential needs to be provided, the connection will always use the user's login credentials to access the location.  
+Because Fabric SQL database only supports Microsoft Entra ID Passthrough authentication, no database scoped credential needs to be provided, the connection will always use the user's login credentials to access the location.  
 
 ```sql
 CREATE EXTERNAL DATA SOURCE MyLakeHouse 

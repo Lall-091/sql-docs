@@ -233,7 +233,7 @@ For information about some functions that you can use to work with data in `SELE
 
 :::row:::
     :::column:::
-        [String Functions](functions/string-functions-transact-sql.md)
+        [Functions](functions/functions.md)
     :::column-end:::
     :::column:::
         [Date and time data types and functions](functions/date-and-time-data-types-and-functions-transact-sql.md)

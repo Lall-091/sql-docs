@@ -1,10 +1,10 @@
 ---
 title: Analyze T-SQL Code to Find Defects
-description: "How to detect antipatterns and defects with code analysis."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+description: How to detect antipatterns and defects with code analysis.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -51,6 +51,16 @@ From the text editor, add an element `<RunSqlCodeAnalysis>True</RunSqlCodeAnalys
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+To enable SQL code analysis in SQL Server Management Studio, right-click the project in **Solution Explorer** and select **Properties**. In the **Code Analysis** tab of the properties window, change the dropdown list option for **Enable Code Analysis on Build** to **Yes**.
+
+:::image type="content" source="media/analyze-t-sql-code-to-find-defects/ssms-enable-code-analysis.png" alt-text="Screenshot of the Code Analysis tab in the project properties window with Enable Code Analysis on Build set to Yes.":::
+
+Save the project properties window and return to solution explorer.
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
 To enable SQL code analysis in a SQL project, edit the `.sqlproj` file directly. Open the `.sqlproj` file and add an element `<RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>` to the first `<PropertyGroup>` block to enable code analysis.
@@ -84,6 +94,16 @@ The T-SQL code in your database project is analyzed during build. Errors and war
 To analyze the code in a database project with code analysis enabled on build, right-click the project in the **Database Projects** view and select **Build**.
 
 The **output** window displays the results of the overall build process and any errors or warnings from code analysis. The files specified in each warning or error are interactive links that navigate to the line of code that caused the warning.
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+To analyze the code in a database project with code analysis enabled on build, right-click the project in **Solution Explorer** and select **Build**.
+
+The **output** window displays the results of the overall build process.
+
+The T-SQL code in your database project is analyzed during build. Errors and warnings from code analysis appear in the **Error List**. If the **Error List** doesn't appear, open the View menu, and select **Error List**. You can double-click a warning to navigate to the line of code that caused the warning.
 
 ::: zone-end
 
@@ -151,6 +171,14 @@ Add or modify the element for `SqlCodeAnalysisRules` in the first `<PropertyGrou
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+To enable or disable SQL code analysis in SQL Server Management Studio (SSMS), right-click the project in **Solution Explorer** and select **Properties**. In the **Code Analysis** tab of the properties window, select the desired code analysis settings.
+
+To disable a specific rule or to change the severity of a rule, select the corresponding option from the dropdown list for that rule from the rule list.
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
 To disable or enable a specific rule in a SQL project, edit the `.sqlproj` file directly. Open the `.sqlproj` file and add or modify the element for `SqlCodeAnalysisRules` in the first `<PropertyGroup>` block to specify the rules to enable or disable. The following sample configuration disables two rules (SR0007 and SR0006) and switches SR0008 to result in a build error. The rest of the rules are enabled by default.
@@ -204,6 +232,25 @@ The code analysis result for that rule and `.sql` file is suppressed and no long
 ::: zone pivot="sq1-visual-studio-code"
 
 To suppress a code analysis error or warning for a specific `.sql` file in the SQL Database Projects extension, add a `StaticCodeAnalysis.SuppressMessages.xml` file to the project. In the file, specify the rule ID and the file to suppress the warning for.
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<StaticCodeAnalysis version="2" xmlns="urn:Microsoft.Data.Tools.Schema.StaticCodeAnalysis">
+  <SuppressedFile FilePath="Views/SelectStarView.sql">
+    <SuppressedRule Category="Microsoft.Rules.Data" RuleId="SR0001" />
+  </SuppressedFile>
+</StaticCodeAnalysis>
+```
+
+If the file doesn't exist, create it in the root of the project. If the file already exists, suppress an additional warning to the existing `StaticCodeAnalysis.SuppressMessages.xml` file by creating a new `<SuppressedFile><SuppressedRule /></SuppressedFile>` element.
+
+The code analysis result for that rule and `.sql` file is suppressed and no longer appears in the build output.
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+To suppress a code analysis error or warning for a specific `.sql` file in a SQL project, add a `StaticCodeAnalysis.SuppressMessages.xml` file to the project. In the file, specify the rule ID and the file to suppress the warning for.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>

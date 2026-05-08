@@ -32,19 +32,19 @@ After August 31, 2025, TLS 1.0 and 1.1 will no longer be supported, and connecti
 
 - To verify the minimum TLS version configured for your Azure Database for MySQL Server, check the value of the `tls_version` server parameter using the MySQL command-line interface to understand what protocols are configured.
 
-#### Why was my service flagged if I’ve already configured TLS 1.2?
+#### Why was my service flagged if I've already configured TLS 1.2?
 
 Services might be incorrectly flagged due to:
 
 - Intermittent fallback to older TLS versions by legacy clients.
-- Misconfigured client libraries or connection strings that don’t enforce TLS 1.2.
+- Misconfigured client libraries or connection strings that don't enforce TLS 1.2.
 - Telemetry lag or false positives in detection logic.
 
 #### What should I do if I received a retirement notice in error?
 
 If your server or database is already configured with minimum TLS 1.2, or configured with no minimum TLS (the default setting in SQL Database and SQL Managed Instance `minimalTLSVersion` that maps to `0`) and connecting with 1.2, no action is required.
 
-#### What happens if my application or client library doesn’t support TLS 1.2?
+#### What happens if my application or client library doesn't support TLS 1.2?
 
 Connections will fail once TLS 1.0/1.1 are disabled. You must upgrade your client libraries, drivers, or frameworks to versions that support TLS 1.2.
 

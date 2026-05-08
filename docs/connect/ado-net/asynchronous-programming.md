@@ -6,7 +6,7 @@ ms.author: cmalhotra
 ms.date: 08/19/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Asynchronous programming
 

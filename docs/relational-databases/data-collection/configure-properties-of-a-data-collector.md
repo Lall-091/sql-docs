@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/28/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.dc.datacollectionprop.general.f1"
   - "sql13.swb.dc.datacollectionprop.advanced.f1"

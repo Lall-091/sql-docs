@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "02/29/2012"
 ms.service: sql
 ms.subservice: data-quality-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dqs.clienthome.f1"
 ms.custom:

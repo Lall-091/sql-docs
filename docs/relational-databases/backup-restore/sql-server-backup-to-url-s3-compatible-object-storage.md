@@ -7,12 +7,12 @@ ms.reviewer: hudequei
 ms.date: 04/18/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-ver16||>=sql-server-linux-ver16"
 ---
 # SQL Server back up to URL for S3-compatible object storage
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022 and later](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article introduces the concepts, requirements, and components necessary to [use S3-compatible object storage as a backup destination](sql-server-backup-and-restore-with-s3-compatible-object-storage.md). The backup and restore functionality is conceptually similar to working with [SQL Server backup to URL for Azure Blob Storage](sql-server-backup-to-url.md) as a backup device type.
 

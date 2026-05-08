@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 09/27/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.restoredb.general.f1"
 ---

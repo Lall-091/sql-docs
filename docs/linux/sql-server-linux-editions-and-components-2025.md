@@ -4,8 +4,8 @@ titleSuffix: SQL Server 2025 on Linux
 description: This article describes editions, features, and components supported by the various editions of SQL Server 2025 on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: amitkh, vanto
-ms.date: 11/27/2025
+ms.reviewer: amitkh, atsingh
+ms.date: 01/08/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: concept-article
@@ -51,7 +51,7 @@ For a list of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] feature
 
 ## SQL Server editions
 
-[!INCLUDE [sql-server-editions](../includes/paragraph-content/sql-server-editions-2.md)]
+[!INCLUDE [sql-server-editions](../includes/paragraph-content/sql-server-editions-linux.md)]
 
 ## Use SQL Server with client/server applications
 
@@ -89,6 +89,18 @@ The Developer editions continue to support only one client for [SQL Server Distr
 <sup>1</sup> Enterprise edition with Server + Client Access License (CAL) based licensing (not available for new agreements) is limited to a maximum of 20 cores per SQL Server instance. There are no limits under the Core-based Server Licensing model. For more information, see [Compute capacity limits by edition of SQL Server](../sql-server/compute-capacity-limits-by-edition-of-sql-server.md).
 
 <a id="rdbms-high-availability"></a>
+
+## Azure connected services
+
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Azure extension for SQL Server | Yes | Yes | No |
+| Link feature for SQL Managed Instance <sup>1</sup> | Yes | Yes | No |
+| Failover servers for disaster recovery in Azure | Yes | Yes | No |
+| Microsoft Entra integration | Yes | Yes | Yes |
+| Pay-as-you-go billing | Yes | Yes | No |
+
+<sup>1</sup> These features are governed by their respective [Lifecycle Policies](/lifecycle/products/sql-server-2025).
 
 ## High availability
 
@@ -135,6 +147,7 @@ The Developer editions continue to support only one client for [SQL Server Distr
 | I/O resource governance | Yes | No | No |
 | Delayed durability | Yes | Yes | Yes |
 | Bulk insert improvements | Yes | Yes | Yes |
+| `tempdb` database files on **tmpfs** filesystem | Yes | Yes | Yes |
 
 <sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale limits](#scale-limits) section. The max degree of parallelism is limited. The degree of process parallelism (DOP) for an index build is limited to 2 DOP for the Standard edition and 1 DOP for Express edition. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
 
@@ -142,10 +155,26 @@ The Developer editions continue to support only one client for [SQL Server Distr
 
 | Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
+| Approximate count distinct | Yes | Yes | Yes |
+| Approximate percentile | Yes | Yes | Yes |
 | Automatic tuning | Yes | No | No |
+| Batch mode on row store <sup>1</sup> | Yes | No | No |
 | Batch mode adaptive joins | Yes | No | No |
 | Batch mode memory grant feedback | Yes | No | No |
+| Cardinality estimate feedback | Yes | No | No |
+| Cardinality estimation feedback for expressions | Yes | No | No |
+| Degree of parallelism feedback | Yes | No | No |
 | Interleaved execution for multi-statement table valued functions | Yes | Yes | Yes |
+| Memory grant feedback persistence and percentile | Yes | No | No |
+| Optimized plan forcing | Yes | Yes | Yes |
+| Optional parameter plan optimization | Yes | Yes | Yes |
+| Optimized `sp_executesql` | Yes | Yes | Yes |
+| Parameter sensitive plan optimization | Yes | Yes | Yes |
+| Row mode memory grant feedback | Yes | No | No |
+| Scalar UDF inlining | Yes | Yes | Yes |
+| Table variable deferred compilation | Yes | Yes | Yes |
+
+<sup>1</sup> Batch mode on rowstore only supports disk-based heaps and [B+ tree indexes](../relational-databases/sql-server-index-design-guide.md#index-basics). It doesn't support In-Memory OLTP tables, XML columns, or sparse column sets. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to `2` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition, and `1` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express edition.
 
 ## Security
 
@@ -228,6 +257,20 @@ The Developer editions continue to support only one client for [SQL Server Distr
 
 <sup>5</sup> Using SQL Server authentication for SQL Server linked servers as target and source only.
 
+## AI features
+
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Native vector data type | Yes | Yes | Yes |
+| DiskANN-based vector indexing <sup>1</sup> | Yes | Yes | Yes |
+| External models support | Yes | Yes | Yes |
+| Local ONNX models support <sup>1</sup> | Yes | Yes | Yes |
+| Embedding generation support | Yes | Yes | Yes |
+| Chunking support | Yes | Yes | Yes |
+
+<sup>1</sup> Requires [PREVIEW_FEATURES database scoped configuration](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features).
+
+
 ## Integration Services
 
 For info about the Integration Services (SSIS) features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [Integration Services features supported by the editions of SQL Server](../integration-services/integration-services-features-supported-by-the-editions-of-sql-server.md).
@@ -241,7 +284,7 @@ For info about the Integration Services (SSIS) features supported by the edition
 | Advanced spatial libraries | Yes | Yes | Yes |
 | Import/export of industry-standard spatial data formats | Yes | Yes | Yes |
 
-## Configure memory limits with control group (cgroup) v2
+## Control group (cgroup) v2 support
 
 [!INCLUDE [cgroup-support](includes/cgroup-support.md)]
 
@@ -265,7 +308,7 @@ The following features and services aren't available for [!INCLUDE [sssql25](../
 | **High Availability** | Database mirroring | This feature is [deprecated](../database-engine/database-mirroring/database-mirroring-sql-server.md). Use Always On availability groups instead. |
 | **Security** | Extensible Key Management (EKM) | Extensible Key Management using Azure Key Vault is available for SQL Server on Linux environments, starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 12. Follow the instructions from [Step 5: Configure SQL Server](../relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault.md#step-5-configure-sql-server) onward. |
 | | Windows integrated authentication for linked servers | |
-| | Windows integrated authentication for availability group (AG) endpoints | Create and use certificate based endpoint authentication for availability groups. For more information, see [Configure SQL Server availability group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md). |
+| | Windows integrated authentication for availability group (AG) endpoints | Create and use certificate based endpoint authentication for availability groups. For more information, see [Configure SQL Server availability group for high availability on Linux](high-availability/availability-groups-configure.md). |
 | | Always Encrypted with secure enclaves | |
 | | SQL Server on Linux deployments aren't FIPS compliant | |
 | **Services** | SQL Server Browser | The SQL Server Browser service isn't required on Linux because only a single default instance is supported per host. Unlike on Windows, there are no named instances to resolve, and the port is explicitly configured during setup. |
@@ -274,7 +317,7 @@ The following features and services aren't available for [!INCLUDE [sssql25](../
 | | Reporting Services | [Configure Power BI Report Server catalog databases for SQL Server on Linux](sql-server-linux-configure-power-bi-report-server-catalog.md). Run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Reporting Services (SSRS) on Windows, and host the catalog databases for SSRS on [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux deployments. |
 
 > [!NOTE]  
-> The latest [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] features that depend on Azure Arc agent, including Microsoft Entra Authentication (previously known as Azure Active Directory authentication), Microsoft Purview, Pay-as-you-go (PAYG) for SQL Server, and Defender integration, are currently not supported for SQL Server deployed in containers. [!INCLUDE [ssazurearc-md](../includes/ssazurearc.md)] [doesn't support SQL Server running in containers](../sql-server/azure-arc/overview.md#unsupported-configurations).
+> The latest [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] features that depend on Azure Arc agent, including Microsoft Entra Authentication (previously known as Azure Active Directory authentication), Microsoft Purview, Pay-as-you-go for SQL Server, and Defender integration, are currently not supported for SQL Server deployed in containers. [!INCLUDE [ssazurearc-md](../includes/ssazurearc.md)] [doesn't support SQL Server running in containers](../sql-server/azure-arc/overview.md#unsupported-configurations).
 
 [!INCLUDE [editions-supported-features-windows](../includes/editions-supported-features-windows.md)]
 

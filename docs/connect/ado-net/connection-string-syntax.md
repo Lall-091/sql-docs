@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 04/19/2023
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Connection string syntax
 

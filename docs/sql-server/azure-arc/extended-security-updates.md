@@ -4,7 +4,8 @@ description: Learn how to manage licensing and billing of Extended Security Upda
 author: MikeRayMSFT
 ms.author: sashan
 ms.reviewer: randolphwest, maghan
-ms.date: 11/18/2025
+ms.date: 01/28/2026
+ai-usage: ai-assisted
 ms.topic: how-to
 ms.custom:
   - references_regions
@@ -15,9 +16,11 @@ ms.custom:
 
 [!INCLUDE [sql-migration-end-of-support](../../includes/applies-to-version/sql-migration-end-of-support.md)]
 
+This article explains how to manage a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] subscription to Extended Security Updates enabled by Azure Arc. For more information about the program, see [What are Extended Security Updates for SQL Server?](../end-of-support/sql-server-extended-security-updates.md)
+
 After [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] reaches the end of its support lifecycle, you can sign up for an Extended Security Update (ESU) subscription for your servers and remain protected for up to three years. When you upgrade to a newer version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], you can terminate your ESU subscription and stop paying for it. When you [migrate to Azure SQL](/azure/azure-sql/migration-guides/), the ESU charges automatically stop but you continue to have access to the security updates.
 
-This article explains how to manage a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] subscription to Extended Security Updates enabled by Azure Arc. For more information about the program, see [What are Extended Security Updates for SQL Server?](../end-of-support/sql-server-extended-security-updates.md).
+[!INCLUDE [2016-esu](../../includes/2016-esu.md)]
 
 ## Subscribe to Extended Security Updates in a production environment
 
@@ -105,14 +108,14 @@ The option of subscribing to SQL Server ESUs by physical cores with unlimited vi
 - Your infrastructure and the selected payment method support the unlimited virtualization benefit for ESU.
 - Subscribing to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESUs by v-cores is more expensive than subscribing by the p-cores of the host.
 
-To use the unlimited virtualization benefit, you need to create a *SQLServerEsuLicense* resource that represents one or more physical hosts. The covered SQL Server instances must be connected to Azure Arc and configured to use the p-core ESU license. For details about managing *SQLServerEsuLicense* resources, see [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license).
+To use the unlimited virtualization benefit, you need to create a *SqlServerEsuLicenses* resource that represents one or more physical hosts. The covered SQL Server instances must be connected to Azure Arc and configured to use the p-core ESU license. For details about managing *SqlServerEsuLicenses* resources, see [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license).
 
 > [!CAUTION]  
-> The unlimited virtualization benefit isn't available to VMs running on infrastructure from any of the [listed providers](https://aka.ms/listedproviders). These VMs can be licensed only by v-cores. If you create a *SqlServerEsuLicense* resource with the intent of licensing these VMs by using unlimited virtualization, you'll be charged for the consumption of v-cores based on the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] configuration of the host. Any existing p-core licenses don't apply to offset such charges.
+> The unlimited virtualization benefit isn't available to VMs running on infrastructure from any of the [listed providers](https://aka.ms/listedproviders). These VMs can be licensed only by v-cores. If you create a *SqlServerEsuLicenses* resource with the intent of licensing these VMs by using unlimited virtualization, you'll be charged for the consumption of v-cores based on the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] configuration of the host. Any existing p-core licenses don't apply to offset such charges.
 
 For more information about licensing by physical cores with unlimited virtualization, see the section "Licensing for maximum virtualization" in the [SQL Server licensing guide (download link)](https://download.microsoft.com/download/e/2/9/e29a9331-965d-4faa-bd2e-7c1db7cd8348/SQL_Server_2019_Licensing_guide.pdf).
 
-A single *SqlServerEsuLicense* resource can cover multiple virtual machines connected to Azure Arc. It includes several properties that define how the license is applied and billed.
+A single *SqlServerEsuLicenses* resource can cover multiple virtual machines connected to Azure Arc. It includes several properties that define how the license is applied and billed.
 
 ### License details
 
@@ -192,7 +195,9 @@ For information, see:
 
 The ESU subscription enabled on a connected server with passive SQL Server instances doesn't incur the ESU charges. This way you can guarantee that future ESUs will be applied to that server. To qualify, all SQL Server instances on this server must meet the passivity criteria defined in [Manage passive license for high availability and disaster recovery](manage-license-billing.md#free-dr).
 
-[!INCLUDE [billing-after-failover](includes/billing-after-failover.md)]
+### ESU billing after failover
+
+During the failovers, the extension is aware of the transition and automatically switches the ESU billing to the active replica without new bill-back charges.
 
 <a id="server-cal"></a>
 
@@ -240,11 +245,15 @@ To properly manage this transition, use the following sequence of best practices
 
 <a id="vl-sku-transition"></a>
 
-## Manage the transition from an ESU license purchased through Volume Licensing to an ESU subscription
+## Transition from a Volume Licensing ESU license to an ESU subscription
 
-When you enable an ESU subscription, bill-back charges start from the beginning of the current ESU year. You must have purchased the previous years to proceed. In that scenario, the transition happens automatically.
+When you enable an ESU subscription, Azure billing begins at the start of the current ESU year. To transition without additional action, you must already have ESU coverage for all prior ESU years through Volume Licensing. When this condition is met, the transition occurs automatically.
 
-If you want to enable an ESU subscription during an ESU year for which you have already purchased an ESU license through Volume Licensing, you must take additional steps to ensure that the bill-back is adjusted accordingly. Before activating the ESU subscription in this case, open a support ticket using the subcategory `Issues with SQL Server Extended Security Updates`.
+If you do not have ESU coverage for previous years through Volume Licensing, you must obtain it to remain compliant. If instead you want to pay for prior ESU years through Azure billing, additional configuration is required.
+
+For guidance on enabling Azure-based billing for prior ESU years, contact your Microsoft account team or open a support request using the following path:
+
+**Azure → SQL Server enabled by Azure Arc → Licensing, Billing, or Disconnected Registration Issues → SQL Server (ESU versions only)**
 
 <a id="esu-usage-metering"></a>
 
@@ -258,7 +267,7 @@ The usage of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESU 
 
 - If multiple instances of SQL Server or SQL Server associated services are installed with the same version that is eligible for ESU, only one ESU subscription usage is reported per OSE. The reported usage is associated with the instance that has the highest edition.
 
-- If two or more instances of SQL Server or SQL Server associated services are installed with different versions that are eligible for ESU, each eligible version will report ESU usage separately based the instance of that version with the highest edition. This reflects the differences in ESU prices and bill-back periods for different versions.
+- If two or more instances of SQL Server or SQL Server associated services are installed with different versions that are eligible for ESU, each eligible version will report ESU usage separately based on the instance of that version with the highest edition. This reflects the differences in ESU prices and bill-back periods for different versions.
 
 The following table shows the ESU subscription meters (also called *SKUs*) that are used for metering and billing for a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESU subscription on a single OSE:
 
@@ -321,7 +330,19 @@ If the Arc enabled machine goes offline and reconnects to Azure in a different s
 
 ESU subscriptions are pinned to a specific Azure location. If the Arc enabled machine with an active ESU subscription is moved to a different Azure location, the subscription is terminated. To resume ESU coverage, you must activate a new ESU subscription and pay all the associated bill-back charges.
 
-[!IMPORTANT]
+#### Scenarios that may result in VMID changes
+
+Certain operational scenarios can result in a Virtual Machine ID change, which causes the system to treat the machine as a new resource and trigger bill-back charges. These scenarios include:
+
+- **Renaming an on-premises Windows machine**: When you [rename an Azure Arc-enabled server resource](/azure/azure-arc/servers/manage-agent?tabs=windows#rename-an-azure-arc-enabled-server-resource), the VMID may change.
+
+- **Moving a private link scope**: When moving a private link scope in Azure Arc, the agent may disconnect and require reconnection. If the agent is disconnected and re-onboarded, a new VMID is generated.
+
+- **Certificate expiration after extended disconnection**: If the Azure Connected Machine agent remains offline for more than 45 days, the server certificate expires. To recover, you must fully re-onboard the machine to Azure. If the new resource URI matches the original, the ESU subscription isn't terminated. The bill-back charge is based on the time elapsed since the machine last connected to Azure Arc and reported usage. If the new resource URI differs from the original, a new ESU subscription is created, and a full bill-back charge is generated. For more information about the server certificate lifecycle, review [Agent Status](/azure/azure-arc/servers/overview#agent-status).
+
+To avoid unexpected charges, monitor your Azure Arc-enabled machines for connectivity issues and address them promptly before certificates expire.
+
+> [!IMPORTANT]
 > The bill-back charge for the disconnected time is recorded within the first hour after the connectivity is restored, and is associated with the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance that is eligible for ESU coverage. The amount of the charge reflects the time since the previous heartbeat was registered.
 
 ## Related content
@@ -334,3 +355,4 @@ ESU subscriptions are pinned to a specific Azure location. If the Arc enabled ma
 - [Extended Security Updates: Frequently asked questions](../end-of-support/extended-security-updates-frequently-asked-questions.md)
 - [Prerequisites - SQL Server enabled by Azure Arc](prerequisites.md)
 - [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license)
+- [Microsoft.AzureArcData tag support](/azure/azure-resource-manager/management/tag-support#microsoftazurearcdata)

@@ -7,7 +7,7 @@ ms.reviewer:
 ms.date: 10/14/2022
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "studio environments [Integration Services]"
   - "tools [Integration Services], Business Intelligence Development Studio"

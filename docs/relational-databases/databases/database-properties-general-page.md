@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.databaseproperties.general.f1"
   - "sql13.swb.databaseproperties.segments.f1"

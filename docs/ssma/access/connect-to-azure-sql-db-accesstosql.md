@@ -1,60 +1,63 @@
 ---
-title: "Connect To Azure SQL Database (AccessToSQL)"
-description: "Connect To Azure SQL Database (AccessToSQL)"
+title: "Connect to Azure SQL (GUI) (AccessToSQL)"
+description: "Connect To Azure SQL (AccessToSQL)"
 author: nilabjaball
 ms.author: niball
-ms.date: "01/19/2017"
+ms.reviewer: randolphwest
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: how-to
 ms.collection:
   - sql-migration-content
 helpviewer_keywords:
-  - "Connect to SQL Azure dialog box"
+  - "Connect to Azure SQL dialog box"
 ---
-# Connect To Azure SQL Database (AccessToSQL)
-Use the Connect to SQL Azure dialog box to connect to the database in Azure SQL Database that you want to migrate.  
-  
-To access this dialog box, on the **File** menu, select **Connect to SQL Azure**. If you have previously connected, the command is **Reconnect to SQL Azure.**  
-  
-## Options  
-**Server Name**  
-  
-Select or enter the Server Name for connecting to SQL Azure.  
-  
-**Database**  
-  
-Select, enter or **Browse** the Database name.  
-  
+# Connect to Azure SQL (GUI) (AccessToSQL)
+
+Use the **Connect to Azure SQL** dialog box to connect to the database in Azure SQL Database that you want to migrate.
+
+To access this dialog box, on the **File** menu, select **Connect to Azure SQL**. If you previously connected, use **Reconnect to Azure SQL**.
+
+## Options
+
+#### Server Name
+
+Select or enter the server name for connecting to Azure SQL.
+
+#### Database
+
+Select, enter, or **Browse** the database name.
+
 > [!IMPORTANT]  
-> SSMA for Access does not support connection to master database in SQL Azure.  
-  
-**User name**  
-  
-Enter the user name that SSMA will use to connect to Azure SQL Database  
-  
-**Password**  
-  
-Enter the password for the user name.  
-  
-**Encrypt**  
-  
-SSMA recommends encrypted connection to SQL Azure.  
-  
-## Create database  
-To create a new database, follow the following steps  
-  
-1.  click on browse button that is present in the Connect to SQL Azure dialog box  
-  
-2.  If there are no databases, two menu items appear  
-  
-    1.  **(no databases found)** which is disabled and grayed out all the time  
-  
-    2.  **Create new database** which is always enabled, enabling the user to create a new database. Upon clicking this menu item, create database dialog box is present with database name and size.  
-  
-3.  At the time of database creation, these two parameters is given as input.  
-  
-    1.  **Database Name:** Enter the Database name.  
-  
-    2.  **Database Size   :** Select the Database size that you need to create in SQL Azure account.  
-  
+> SSMA for Access doesn't support connection to the `master` database in Azure SQL.
+
+#### User name
+
+Enter the user name that SSMA uses to connect to Azure SQL Database.
+
+#### Password
+
+Enter the password for the user name.
+
+#### Encrypt
+
+SSMA recommends an encrypted connection to Azure SQL.
+
+## Create database
+
+To create a new database, follow these steps:
+
+1. Select the **Browse** button in the **Connect to Azure SQL** dialog box.
+
+1. If there are no databases, two menu items appear:
+
+   - **(no databases found)**, which is always disabled and grayed out.
+
+   - **Create new database**, which is always enabled. Select this option to create a new database. When you select this menu item, the **Create Database** dialog box appears with fields for the database name and size.
+
+1. Enter the following parameters when creating the database:
+
+   - **Database Name**: Enter the database name.
+
+   - **Database Size**: Select the database size that you need to create in your Azure SQL account.

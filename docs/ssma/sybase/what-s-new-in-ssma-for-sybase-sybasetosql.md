@@ -1,10 +1,10 @@
 ---
 title: "What's New in SSMA for SAP ASE (SybaseToSQL)"
-description: Find out about changes to SQL Server Migration Assistant (SSMA) for Sybase (SybaseToSQL) for each release.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 11/12/2025
+description: Find out about changes to SQL Server Migration Assistant (SSMA) for SAP ASE for each release.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball, subasak
+ms.date: 02/04/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -15,9 +15,21 @@ ms.custom:
 ---
 # What's new in SSMA for SAP ASE (SybaseToSQL)
 
-This article lists SQL Server Migration Assistant (SSMA) for SAP ASE (formerly SSMA for Sybase) changes in each release.
+This article lists SQL Server Migration Assistant (SSMA) for SAP Adaptive Server Enterprise (formerly Sybase ASE) changes in each release.
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
+
+## SSMA v10.5
+
+The v10.5 release of SSMA for SAP ASE contains the following changes:
+
+- AI-assisted code conversion with Microsoft Copilot in SSMA for SAP ASE (Preview).
+
+- Added managed endpoint support for SQL Code Conversion Copilot in SSMA for SAP ASE (Preview).
+
+- Resolved incorrect flagging of comments as errors.
+
+- Important security, compliance, UX, and accessibility fixes.
 
 ## SSMA v10.4
 
@@ -308,7 +320,7 @@ The v7.6 release of SSMA for SAP ASE contains the following changes:
 
 ## SSMA v7.5
 
-The v7.5 release of SSMA for SAP ASE (formerly SSMA for Sybase) contains the following changes:
+The v7.5 release of SSMA for SAP ASE contains the following changes:
 
 - Several improvements to ensure greater accessibility for people with disabilities.
 - Support for `CREATE OR REPLACE` syntax.

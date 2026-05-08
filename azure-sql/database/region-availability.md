@@ -3,8 +3,8 @@ title: Feature Availability by Region
 description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: rsetlem, peskount, rokhot
-ms.date: 10/31/2025
+ms.reviewer: rsetlem, peskount, rokhot, shrtiwar
+ms.date: 04/02/2026
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
@@ -99,39 +99,35 @@ Standard-series (Gen5) hardware is available in [all public regions worldwide wh
 
 ---
 
-### Fsv2-series availability
+US Gov Arizona supports **Hyperscale premium-series** up to 80 vCores.
 
-Fsv2-series is available in the following regions:
+US Gov Texas and US Gov Virginia support **Hyperscale premium-series** up to 128 vCores.
+
+160 vCore and 192 vCore hardware for **Hyperscale premium-series** for single databases and elastic pools are a preview feature in the following regions:
 
 #### [Americas](#tab/americas)
 
-- Brazil South
+- Australia East
 - Canada Central
-- US East
-- US West 2
+- East US 2
+- South Central US
+- West US 2
 
 #### [Asia Pacific](#tab/asia)
 
-- East Asia
 - Southeast Asia
-- Australia Central
-- Australia Central 2
-- Australia East
-- Australia Southeast
-- Central India
-- Korea Central
-- Korea South
 
 #### [Europe, the Middle East, and Africa](#tab/emea)
 
-- Europe North
-- Europe West 
-- France Central
-- South Africa North
+- North Europe
 - UK South
-- UK West
+- West Europe
 
 ---
+
+### Fsv2-series availability
+
+Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
 
 ### DC-series availability
 
@@ -171,7 +167,7 @@ The following table is for databases that are not [zone-redundant](high-availabi
 
 | Azure Region | Hyperscale premium-series and premium-series memory optimized | Hyperscale standard-series | All other Azure SQL Database purchasing models and tiers |
 |:---|:---|:---|:---|
-| Brazil South | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
+| Brazil South | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Brazil Southeast | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Canada Central | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Canada East | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
@@ -214,7 +210,7 @@ The following table is for databases that are not [zone-redundant](high-availabi
 | South Africa North | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Sweden Central | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Switzerland North | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
-| UAE North | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
+| UAE North | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | UK South | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | UK West | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 
@@ -230,7 +226,7 @@ The following table is for [zone-redundant](high-availability-sla-local-zone-red
 
 | Azure Region | Hyperscale premium-series and premium-series memory optimized | Hyperscale standard-series | All other Azure SQL Database purchasing models and tiers in an [Azure Availability Zone](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) |
 |:---|:---|:---|:---|
-| Brazil South | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
+| Brazil South | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Canada Central | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Central US | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | East US 1 | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
@@ -246,7 +242,7 @@ The following table is for [zone-redundant](high-availability-sla-local-zone-red
 | Southeast Asia | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Australia East | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Central India | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
-| Japan East | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
+| Japan East | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 
 #### [Europe, the Middle East, and Africa](#tab/emea)
 
@@ -257,6 +253,7 @@ The following table is for [zone-redundant](high-availability-sla-local-zone-red
 | France Central | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Germany West Central | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Sweden Central | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
+| UAE North | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | UK South | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 
 ---
@@ -348,6 +345,14 @@ Currently, all regions with serverless support 40 vCores and provide [availabili
 | UK West | [!INCLUDE [yes](../includes/yes.md)]  |  |
 
 ---
+
+## Vector search
+
+[Vector search](/sql/t-sql/functions/vector-search-transact-sql?view=azuresqldb-current&preserve-view=true) enables approximate nearest neighbor search using DiskANN vector indexes in Azure SQL Database and SQL database in Microsoft Fabric.
+
+[!INCLUDE [vector-search](../includes/regional-support/vector-search.md)]
+
+- For regional availability in SQL database in Fabric, see [Fabric region availability](/fabric/admin/region-availability).
 
 ## Database watcher availability
 

@@ -4,7 +4,7 @@ description: Learn how to enable the Report Server HTTP log after you install Re
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

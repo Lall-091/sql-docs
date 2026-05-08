@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/27/2023
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
 # Hardware considerations for In-Memory OLTP in SQL Server

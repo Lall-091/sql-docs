@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "12/17/2016"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: intro-migration
 monikerRange: "=sql-server-2016"
 ---

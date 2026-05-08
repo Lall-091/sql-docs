@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: partner-tools
 ---
 # SQL Server managing partners
 

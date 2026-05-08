@@ -4,7 +4,8 @@ description: Enable transparent data encryption in SQL Server to protect a datab
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 09/07/2025
+ms.date: 01/20/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -24,24 +25,24 @@ TDE encrypts the storage of an entire database by using a symmetric key called t
 
 ## Limitations
 
-You must be a high privileged user (such as a system administrator) to create a database encryption key and encrypt a database. The EKM module must be able to authenticate that user.
+You must be a high privileged user (such as a system administrator) to create a database encryption key and encrypt a database. The EKM module must be able to authenticate you.
 
-At startup, the [!INCLUDE [ssDE](../../../includes/ssde-md.md)] must open the database. You should create a credential that will be authenticated by the EKM, and add it to a login that is based on an asymmetric key. Users can't sign in using that login, but the [!INCLUDE [ssDE](../../../includes/ssde-md.md)] can authenticate itself with the EKM device.
+At startup, the [!INCLUDE [ssDE](../../../includes/ssde-md.md)] must open the database. Create a credential that the EKM authenticates, and add it to a login based on an asymmetric key. Users can't sign in using that login, but the [!INCLUDE [ssDE](../../../includes/ssde-md.md)] can authenticate itself with the EKM device.
 
-If the asymmetric key stored in the EKM module is lost, the database can't be opened by [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. If the EKM provider lets you back up the asymmetric key, you should create a backup and store it in a secure location.
+If you lose the asymmetric key stored in the EKM module, [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] can't open the database. If your EKM provider lets you back up the asymmetric key, create a backup and store it in a secure location.
 
-The options and parameters required by your EKM provider can differ from what is provided in the following code example. For more information, see your EKM provider.
+The options and parameters required by your EKM provider might differ from what's provided in the following code example. For more information, see your EKM provider.
 
 ## Permissions
 
-This article uses the following permissions:
+You need the following permissions:
 
-- To change a configuration option and run the `RECONFIGURE` statement, you must be granted the `ALTER SETTINGS` server-level permission. The `ALTER SETTINGS` permission is implicitly held by the **sysadmin** and **serveradmin** fixed server roles.
+- To change a configuration option and run the `RECONFIGURE` statement, you need the `ALTER SETTINGS` server-level permission. The **sysadmin** and **serveradmin** fixed server roles implicitly hold the `ALTER SETTINGS` permission.
 
-- Requires `ALTER ANY CREDENTIAL` permission.
-- Requires `ALTER ANY LOGIN` permission.
-- Requires `CREATE ASYMMETRIC KEY` permission.
-- Requires `CONTROL` permission on the database to encrypt the database.
+- `ALTER ANY CREDENTIAL` permission.
+- `ALTER ANY LOGIN` permission.
+- `CREATE ASYMMETRIC KEY` permission.
+- `CONTROL` permission on the database to encrypt the database.
 
 <a id="TsqlProcedure"></a>
 
@@ -97,7 +98,7 @@ This article uses the following permissions:
 
    CREATE ASYMMETRIC KEY ekm_login_key
         FROM PROVIDER [EKM_Prov]
-            WITH ALGORITHM = RSA_512,
+            WITH ALGORITHM = RSA_2048,
             PROVIDER_KEY_NAME = 'SQL_Server_Key';
    GO
 

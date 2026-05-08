@@ -1,18 +1,18 @@
 ---
-title: "Custom roles for SQL Server to Azure SQL Database migrations in Azure Data Studio"
+title: "Custom Roles for SQL Server to Azure SQL Database Migrations"
 titleSuffix: Azure Database Migration Service
-description: Learn how to use custom roles for SQL Server to Azure SQL Database migrations in Azure Data Studio.
-author: abhims14
-ms.author: abhishekum
-ms.reviewer: randolphwest
-ms.date: 06/11/2025
+description: Learn how to use custom roles for SQL Server to Azure SQL Database migrations.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: abhishekum
+ms.date: 02/19/2026
 ms.service: azure-database-migration-service
-ms.topic: conceptual
+ms.topic: how-to
 ms.collection:
   - sql-migration-content
 ---
 
-# Custom roles for SQL Server to Azure SQL Database migrations in Azure Data Studio
+# Custom roles for SQL Server to Azure SQL Database migrations
 
 This article explains how to set up a custom role in Azure for SQL Server database migrations. The custom role is configured with only the permissions required to initiate and execute migrations using an instance of Azure Database Migration Service, targeting Azure SQL Database. To provision a new instance of Azure Database Migration Service, the user must be assigned either the **Owner** or **Contributor** role at the subscription level.
 

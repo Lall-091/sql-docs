@@ -4,7 +4,7 @@ description: Learn how to manage a running process, such as a user job or a syst
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

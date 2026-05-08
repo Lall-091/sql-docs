@@ -259,10 +259,8 @@ The viewer control is designed for modern browsers. The control might not work a
 
 Here are links to articles on the NuGet.org site about the WebForm and WinForm versions of the Report Viewer control:
 
-- Microsoft.ReportingServices.ReportViewerControl.WebForms
-[https://www.nuget.org/packages/Microsoft.ReportingServices.ReportViewerControl.WebForms/](https://www.nuget.org/packages/Microsoft.ReportingServices.ReportViewerControl.WebForms/)
-- Microsoft.ReportingServices.ReportViewerControl.Winforms
-[https://www.nuget.org/packages/Microsoft.ReportingServices.ReportViewerControl.WinForms/](https://www.nuget.org/packages/Microsoft.ReportingServices.ReportViewerControl.WinForms/)
+- [Microsoft.ReportingServices.ReportViewerControl.WebForms](https://www.nuget.org/packages/Microsoft.ReportingServices.ReportViewerControl.WebForms/)
+- [Microsoft.ReportingServices.ReportViewerControl.WinForms](https://www.nuget.org/packages/Microsoft.ReportingServices.ReportViewerControl.WinForms/)
 
 ## Forum feedback
 

@@ -4,7 +4,7 @@ description: Create, modify & delete Reporting Services shared schedules. For na
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

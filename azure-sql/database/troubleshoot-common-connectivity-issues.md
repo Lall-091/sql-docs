@@ -4,7 +4,7 @@ description: Learn how to troubleshoot, diagnose, and prevent a SQL connection e
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sureshka, davidengel, mathoma, vanto
-ms.date: 12/04/2025
+ms.date: 03/24/2026
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: troubleshooting
@@ -46,7 +46,7 @@ After a delay of several seconds, retry the connection.
 
 - **A transient error occurs during a query command**
 
-Do not immediately retry the command. Instead, after a delay, freshly establish the connection. Then retry the command.
+Don't immediately retry the command. Instead, after a delay, freshly establish the connection. Then retry the command.
 
 <a id="j-retry-logic-transient-faults"></a>
 
@@ -59,7 +59,7 @@ Client programs that occasionally encounter a transient error are more robust wh
 ### Principles for retry
 
 - If the error is transient, retry to open a connection.
-- Do not directly retry a `SELECT` statement that failed with a transient error. Instead, establish a fresh connection, and then retry the `SELECT`.
+- Don't directly retry a `SELECT` statement that failed with a transient error. Instead, establish a fresh connection, and then retry the `SELECT`.
 - When an `UPDATE` statement fails with a transient error, establish a fresh connection before you retry the `UPDATE`. The retry logic must ensure that either the entire database transaction finished or that the entire transaction is rolled back.
 
 ### Other considerations for retry
@@ -127,7 +127,10 @@ To make this test practical, your program recognizes a runtime parameter that ca
 
 ## .NET SqlConnection parameters for connection retry
 
-If your client program connects to your database in Azure SQL Database by using the .NET Framework class **System.Data.SqlClient.SqlConnection**, use .NET 4.6.1 or a later version (or .NET Core) so that you can use its connection retry feature. For more information about this feature, see [SqlConnection.ConnectionString Property](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
+If your client program connects to your database in Azure SQL Database by using the .NET class **Microsoft.Data.SqlClient.SqlConnection** or **System.Data.SqlClient.SqlConnection**, you can use connection retry features. For `System.Data.SqlClient`, use .NET Framework 4.6.1 or a later version (or .NET Core). For more information about this feature, see [SqlConnection.ConnectionString Property](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
+
+> [!NOTE]
+> `Microsoft.Data.SqlClient` is the recommended ADO.NET data provider for new application development. In addition to connection retry, it supports [configurable retry logic](/sql/connect/ado-net/configurable-retry-logic) for both connection and command retries. For more information, see [Introduction to the Microsoft.Data.SqlClient namespace](/sql/connect/ado-net/introduction-microsoft-data-sqlclient-namespace).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -206,11 +209,11 @@ The **ConnectRetryCount** and **ConnectRetryInterval** parameters let your **Sql
 - SqlConnection.Open method call
 - SqlCommand.Execute* method calls
 
-There is a subtlety. If a transient error occurs while your *query* is being executed, your **SqlConnection** object doesn't retry the connect operation. It certainly doesn't retry your query. However, **SqlConnection** very quickly checks the connection before sending your query for execution. If the quick check detects a connection problem, **SqlConnection** retries the connect operation. If the retry succeeds, your query is sent for execution.
+There's a subtlety. If a transient error occurs while your *query* is being executed, your **SqlConnection** object doesn't retry the connect operation. It certainly doesn't retry your query. However, **SqlConnection** very quickly checks the connection before sending your query for execution. If the quick check detects a connection problem, **SqlConnection** retries the connect operation. If the retry succeeds, your query is sent for execution.
 
 ### Should ConnectRetryCount be combined with application retry logic
 
-Suppose your application has robust custom retry logic. It might retry the connect operation four times. If you add **ConnectRetryInterval** and **ConnectRetryCount** =3 to your connection string, you will increase the retry count to 4 * 3 = 12 retries. You might not intend such a high number of retries.
+Suppose your application has robust custom retry logic. It might retry the connect operation four times. If you add **ConnectRetryInterval** and **ConnectRetryCount** =3 to your connection string, you increase the retry count to 4 * 3 = 12 retries. You might not intend such a high number of retries.
 
 <a id="a-connection-connection-string"></a>
 
@@ -255,7 +258,7 @@ For background information about configuration of ports and IP addresses in your
 
 ### Connection: ADO.NET 4.6.2 or later
 
-If your program uses ADO.NET classes like **System.Data.SqlClient.SqlConnection** to connect to SQL Database, we recommend that you use .NET Framework version 4.6.2 or later.
+If your program uses ADO.NET classes like **System.Data.SqlClient.SqlConnection** to connect to SQL Database, we recommend that you use .NET Framework version 4.6.2 or later. For new applications, consider using [`Microsoft.Data.SqlClient`](/sql/connect/ado-net/introduction-microsoft-data-sqlclient-namespace), which provides the same connectivity with enhanced features.
 
 <a id="starting-with-adonet-462"></a>
 
@@ -270,7 +273,7 @@ If your program uses ADO.NET classes like **System.Data.SqlClient.SqlConnection*
 - For SQL Database, reliability is improved when you open a connection by using the **SqlConnection.Open** method. The **Open** method now incorporates best-effort retry mechanisms in response to transient faults for certain errors within the connection timeout period.
 - Connection pooling is supported, which includes an efficient verification that the connection object it gives your program is functioning.
 
-When you use a connection object from a connection pool, we recommend that your program temporarily closes the connection when it's not immediately in use. It's not expensive to reopen a connection, but it is to create a new connection.
+When you use a connection object from a connection pool, we recommend that your program temporarily closes the connection when it's not immediately in use. It's not expensive to reopen a connection, but it's to create a new connection.
 
 If you use ADO.NET 4.0 or earlier, we recommend that you upgrade to the latest ADO.NET. As of August 2018, you can [download ADO.NET 4.6.2](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-7-2).
 

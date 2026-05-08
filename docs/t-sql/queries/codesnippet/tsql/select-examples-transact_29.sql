@@ -1,4 +1,4 @@
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 IF OBJECT_ID('dbo.EmployeeOne', 'U') IS NOT NULL

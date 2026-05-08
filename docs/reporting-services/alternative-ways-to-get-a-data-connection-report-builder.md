@@ -4,7 +4,7 @@ description: Learn details about alternative ways to connect to an external data
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

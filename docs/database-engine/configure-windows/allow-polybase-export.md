@@ -7,7 +7,7 @@ ms.reviewer: hudequei, randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Server configuration: allow polybase export
@@ -18,7 +18,7 @@ The `allow polybase export` server configuration option allows the export of dat
 
 - In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, the [CREATE EXTERNAL TABLE AS SELECT](../../t-sql/statements/create-external-table-as-select-transact-sql.md) (CETAS) statement requires that you enable `allow polybase export` using `sp_configure`. This setting allows for data to be exported to a CSV or Parquet file. For examples, see [Use CREATE EXTERNAL TABLE AS SELECT exporting data as parquet](../../t-sql/statements/create-external-table-as-select-transact-sql.md#d-use-create-external-table-as-select-exporting-data-as-parquet).
 
-- In [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and earlier versions, enabling `allow polybase export` allows Hadoop to export data out of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] to an external table. For more information, see [PolyBase connectors](../../relational-databases/polybase/polybase-guide.md#polybase-connectors) and [Export data](../../relational-databases/polybase/polybase-queries.md#export-data).
+- In [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and earlier versions, enabling `allow polybase export` allows Hadoop to export data out of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] to an external table. For more information, see [PolyBase connectors](../../relational-databases/polybase/overview.md#polybase-connectors) and [Export data](../../relational-databases/polybase/polybase-queries.md#export-data).
 
 The possible values are described in the following table:
 
@@ -50,5 +50,5 @@ GO
 ## Related content
 
 - [Exporting data](../../relational-databases/polybase/polybase-configure-hadoop.md#exporting-data)
-- [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
+- [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/overview.md)
 - [CREATE EXTERNAL TABLE AS SELECT (CETAS) (Transact-SQL)](../../t-sql/statements/create-external-table-as-select-transact-sql.md)

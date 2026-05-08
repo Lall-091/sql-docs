@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 08/16/2024
 ms.service: azure-sql-database
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - fasttrack-edit
   - sqldbrb=1

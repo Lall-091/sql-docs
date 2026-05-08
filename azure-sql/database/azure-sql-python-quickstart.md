@@ -1,10 +1,10 @@
 ---
-title: Connect to and Query Azure SQL Database Using Python and the Pyodbc Library
-description: Learn how to connect to a database in Azure SQL Database and query data using Python and the pyodbc library.
+title: Connect to and Query Azure SQL Database Using Python and the mssql-python Driver
+description: Learn how to connect to a database in Azure SQL Database and query data using Python and the mssql-python driver.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: rotabor, mathoma
-ms.date: 08/07/2025
+ms.reviewer: rotabor, mathoma, dlevy
+ms.date: 01/29/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: quickstart
@@ -16,19 +16,19 @@ content_well_notification:
 monikerRange: "=azuresql || =azuresql-db"
 ---
 
-# Connect to and query Azure SQL Database using Python and the pyodbc driver
+# Connect to and query Azure SQL Database using Python and the mssql-python driver
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-This quickstart describes how to connect an application to a database in Azure SQL Database and perform queries using Python and the [Python SQL Driver - pyodbc](/sql/connect/python/pyodbc/python-sql-driver-pyodbc). This quickstart follows the recommended passwordless approach to connect to the database. You can learn more about passwordless connections on the [passwordless hub](/azure/developer/intro/passwordless-overview).
+This quickstart describes how to connect an application to a database in Azure SQL Database and perform queries using Python and the [mssql-python driver](/sql/connect/python/mssql-python/python-sql-driver-mssql-python). The mssql-python driver has built-in support for Microsoft Entra authentication, making passwordless connections simple. You can learn more about passwordless connections on the [passwordless hub](/azure/developer/intro/passwordless-overview).
 
 ## Prerequisites
 
-- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccountpython/).
-- An Azure SQL database configured with Microsoft Entra authentication. You can create one using the [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md).
-- The latest version of the [Azure CLI](/cli/azure/get-started-with-azure-cli).
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+- An Azure SQL database configured with Microsoft Entra authentication. You can create one using the [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md). Alternatively, you can use a [SQL database in Microsoft Fabric](/fabric/database/sql/create).
 - Visual Studio Code with the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
-- Python 3.8 or later. If you're using a Linux client machine, see [Install the ODBC driver](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development?tabs=linux#install-the-odbc-driver).
+- Python 3.10 or later.
+- The [Azure CLI](/cli/azure/install-azure-cli) for passwordless authentication (works on Windows, macOS, and Linux).
 
 ## Configure the database
 
@@ -38,7 +38,7 @@ This quickstart describes how to connect an application to a database in Azure S
 
 Create a new Python project using Visual Studio Code.
 
-1. Open Visual Studio Code and create a new folder for your project and change directory into it.
+1. Open Visual Studio Code, create a new folder for your project, and change to that directory.
 
     ```Cmd
     mkdir python-sql-azure
@@ -65,20 +65,21 @@ Create a new Python project using Visual Studio Code.
 
 1. Create a new Python file called `app.py`.
 
-## Install the pyodbc driver
+## Install the mssql-python driver
 
-To connect to Azure SQL Database using Python, install the `pyodbc` driver. This package acts as a data provider for connecting to databases, executing commands, and retrieving results. In this quickstart, you also install `flask`, `uvicorn`, and `pydantic` packages to create and run an API.
+To connect to Azure SQL Database using Python, install the `mssql-python` driver. This driver has built-in support for Microsoft Entra authentication, eliminating the need for manual token handling. In this quickstart, you also install `fastapi`, `uvicorn`, and `pydantic` packages to create and run an API.
 
-For details and specific instructions for installing the `pyodbc` driver on all operating systems, see [Configure development environment for pyodbc Python development](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development).
+> [!NOTE]
+> On macOS and Linux, system dependencies are required before installing `mssql-python`. See [Install the mssql-python package](/sql/connect/python/mssql-python/python-sql-driver-mssql-python-quickstart#install-the-mssql-python-package) for platform-specific instructions.
 
 1. Create a *requirements.txt* file with the following lines:
 
     ```
-    pyodbc
+    mssql-python
     fastapi
     uvicorn[standard]
     pydantic
-    azure-identity
+    python-dotenv
     ```
 
 1. Install the requirements.
@@ -89,30 +90,82 @@ For details and specific instructions for installing the `pyodbc` driver on all 
 
 ## Configure the local connection string
 
-For local development and connecting to Azure SQL Database, add the following `AZURE_SQL_CONNECTIONSTRING` environment variable. Replace the `<database-server-name>` and `<database-name>` placeholders with your own values. Example environment variables are shown for the Bash shell.
+For local development, create a `.env` file in your project folder to store your connection string. This keeps credentials out of your code and source control.
 
-Interactive authentication provides a passwordless option when you're running locally. This option is recommended because you don't have to store or manage authentication secrets on your local system.
+1. In the project folder, create a new file named `.env`.
+
+1. Add the `AZURE_SQL_CONNECTIONSTRING` variable with your connection string. Replace the `<database-server-name>` and `<database-name>` placeholders with your own values.
+
+The mssql-python driver has built-in support for Microsoft Entra authentication. Use the `Authentication` parameter to specify the authentication method.
+
+## [ActiveDirectoryDefault (Recommended)](#tab/sql-default)
+
+`ActiveDirectoryDefault` automatically discovers credentials from multiple sources without requiring interactive sign-in. This is the **recommended option for local development**.
+
+For the most reliable local development experience, sign in with Azure CLI first:
+
+```bash
+az login
+```
+
+Then use this connection string format in your `.env` file:
+
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryDefault;Encrypt=yes;TrustServerCertificate=no;
+```
+
+`ActiveDirectoryDefault` evaluates credentials in the following order:
+1. **Environment variables** (for service principal credentials)
+1. **Managed identity** (when running on Azure)
+1. **Azure CLI** (from `az login`)
+1. **Visual Studio** (Windows only)
+1. **Azure PowerShell** (from `Connect-AzAccount`)
+
+> [!TIP]
+> For production applications, use the specific authentication method for your scenario to avoid credential discovery latency:
+> - **Azure App Service/Functions**: Use `ActiveDirectoryMSI` (managed identity)
+> - **Interactive user login**: Use `ActiveDirectoryInteractive`
+> - **Service principal**: Use `ActiveDirectoryServicePrincipal`
 
 ## [Interactive Authentication](#tab/sql-inter)
 
-In Windows, Microsoft Entra Interactive Authentication can use Microsoft Entra multifactor authentication technology to set up connection. In this mode, by providing the sign in ID, an Azure Authentication dialog is triggered and allows the user to input the password to complete the connection.
+Microsoft Entra Interactive Authentication uses multifactor authentication technology to set up a connection. In this mode, an Azure Authentication dialog appears and lets you enter your credentials to complete the connection.
 
-```Bash
-export AZURE_SQL_CONNECTIONSTRING='Driver={ODBC Driver 18 for SQL Server};Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30'
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryInteractive;Encrypt=yes;TrustServerCertificate=no;
 ```
 
-For more information, see [Using Microsoft Entra ID with the ODBC Driver](/sql/connect/odbc/using-azure-active-directory). If you use this option, look for the window that prompts you for credentials.
+> [!NOTE]
+> On macOS, both `ActiveDirectoryInteractive` and `ActiveDirectoryDefault` work for Microsoft Entra authentication. `ActiveDirectoryInteractive` prompts you to sign in every time you run the script. To avoid repeated sign-in prompts, sign in once via the [Azure CLI](/cli/azure/install-azure-cli) by running `az login`, then use `ActiveDirectoryDefault`, which reuses the cached credential.
 
 ## [SQL Authentication](#tab/sql-auth)
 
-You can directly authenticate to a SQL Server instance using a username and password.
+You can authenticate directly to a SQL Server instance using a username and password.
 
-```Bash
-export AZURE_SQL_CONNECTIONSTRING='Driver={ODBC Driver 18 for SQL Server};Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;UID=<user-name>;PWD=<user-password>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30'
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<database-server-name>.database.windows.net;Database=<database-name>;UID=<user-name>;PWD=<user-password>;Encrypt=yes;TrustServerCertificate=no;
 ```
 
 > [!WARNING]
-> Use caution when managing connection strings that contain secrets such as usernames, passwords, or access keys. These secrets shouldn't be committed to source control or placed in unsecure locations where they might be accessed by unintended users. During local development, on a real app, you'll generally connect to a local database that doesn't require storing secrets or connecting directly to Azure.
+> Use caution when managing connection strings that contain secrets such as usernames, passwords, or access keys. These secrets shouldn't be committed to source control or placed in unsecure locations where they might be accessed by unintended users. Add `.env` to your `.gitignore` file to prevent accidentally committing secrets.
+
+## [Fabric SQL Database](#tab/sql-fabric)
+
+To connect to a [SQL database in Microsoft Fabric](/fabric/database/sql/overview), use the same authentication methods. The server name follows the Fabric format.
+
+On **Windows domain-joined machines**, use `ActiveDirectoryIntegrated` for seamless authentication with no extra steps:
+
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<workspace-guid>.database.fabric.microsoft.com,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryIntegrated;
+```
+
+On **macOS, Linux, or non-domain Windows**, use `ActiveDirectoryDefault` after signing in with Azure CLI (`az login`):
+
+```text
+AZURE_SQL_CONNECTIONSTRING=Server=<workspace-guid>.database.fabric.microsoft.com,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryDefault;
+```
+
+You can find your Fabric SQL database connection string in the Fabric portal under your database's settings.
 
 ---
 
@@ -120,15 +173,13 @@ You can get the details to create your connection string from the Azure portal:
 
 1. Go to the Azure SQL Server, select the **SQL databases** page to find your database name, and select the database.
 
-1. On the database, go to the **Connection strings** page to get connection string information. Look under the **ODBC** tab.
-
-> [!NOTE]
-> If you've installed [Azure Arc](/azure/azure-arc/overview) and associated it with your Azure subscription, you can also use the managed identity approach shown for the app deployed to App Service.
+1. On the database, go to the **Overview** page to get the server name.
 
 ## Add code to connect to Azure SQL Database
 
 In the project folder, create an *app.py* file and add the sample code. This code creates an API that:
 
+- Loads configuration from a `.env` file using `python-dotenv`.
 - Retrieves an Azure SQL Database connection string from an environment variable.
 - Creates a `Persons` table in the database during startup (for testing scenarios only).
 - Defines a function to retrieve all `Person` records from the database.
@@ -136,19 +187,20 @@ In the project folder, create an *app.py* file and add the sample code. This cod
 - Defines a function to add new `Person` records to the database.
 
 ```python
-import os
-import pyodbc, struct
-from azure import identity
-
+from os import getenv
 from typing import Union
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
+from mssql_python import connect
+
+load_dotenv()
 
 class Person(BaseModel):
     first_name: str
     last_name: Union[str, None] = None
 
-connection_string = os.environ["AZURE_SQL_CONNECTIONSTRING"]
+connection_string = getenv("AZURE_SQL_CONNECTIONSTRING")
 
 app = FastAPI()
 
@@ -161,6 +213,7 @@ def root():
 
         # Table should be created ahead of time in production app.
         cursor.execute("""
+            IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Persons')
             CREATE TABLE Persons (
                 ID int NOT NULL PRIMARY KEY IDENTITY,
                 FirstName varchar(255),
@@ -169,8 +222,9 @@ def root():
         """)
 
         conn.commit()
+        conn.close()
     except Exception as e:
-        # Table may already exist
+        # Table might already exist
         print(e)
     return "Person API"
 
@@ -190,7 +244,7 @@ def get_persons():
 def get_person(person_id: int):
     with get_conn() as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM Persons WHERE ID = ?", person_id)
+        cursor.execute("SELECT * FROM Persons WHERE ID = ?", (person_id,))
 
         row = cursor.fetchone()
         return f"{row.ID}, {row.FirstName}, {row.LastName}"
@@ -199,17 +253,16 @@ def get_person(person_id: int):
 def create_person(item: Person):
     with get_conn() as conn:
         cursor = conn.cursor()
-        cursor.execute(f"INSERT INTO Persons (FirstName, LastName) VALUES (?, ?)", item.first_name, item.last_name)
+        cursor.execute("INSERT INTO Persons (FirstName, LastName) VALUES (?, ?)",
+                       (item.first_name, item.last_name))
         conn.commit()
 
     return item
 
 def get_conn():
-    credential = identity.DefaultAzureCredential(exclude_interactive_browser_credential=False)
-    token_bytes = credential.get_token("https://database.windows.net/.default").token.encode("UTF-16-LE")
-    token_struct = struct.pack(f'<I{len(token_bytes)}s', len(token_bytes), token_bytes)
-    SQL_COPT_SS_ACCESS_TOKEN = 1256  # This connection option is defined by microsoft in msodbcsql.h
-    conn = pyodbc.connect(connection_string, attrs_before={SQL_COPT_SS_ACCESS_TOKEN: token_struct})
+    """Connect using mssql-python with built-in Microsoft Entra authentication."""
+    conn = connect(connection_string)
+    conn.setautocommit(True)
     return conn
 ```
 
@@ -226,9 +279,9 @@ The app is ready to be tested locally.
     uvicorn app:app --reload
     ```
 
-1. On the Swagger UI page for the app [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs), expand the POST method and select **Try it out**.
+1. On the Swagger UI page for the app `http://127.0.0.1:8000/docs`, expand the POST method and select **Try it out**.
 
-    You can also use try `/redoc` to see another form of generated documentation for the API.
+    You can also try `/redoc` to see another form of generated documentation for the API.
 
 1. Modify the sample JSON to include values for the first and last name. Select **Execute** to add a new record to the database. The API returns a successful response.
 
@@ -269,7 +322,7 @@ The app is ready to be deployed to Azure.
         --name <web-app-name>
     ```
 
-   In this quickstart, a system-assigned managed identity is used for demonstration. A user-assigned managed identity is more efficient in a broader range of scenarios. For more information, see [Managed identity best practice recommendations](/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations). For an example of using a user-assigned managed identity with pyodbc, see [Migrate a Python application to use passwordless connections with Azure SQL Database](azure-sql-passwordless-migration-python.md).
+   In this quickstart, a system-assigned managed identity is used for demonstration purposes. A user-assigned managed identity is more efficient in a broader range of scenarios. For more information, see [Managed identity best practice recommendations](/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations). For an example of using a user-assigned managed identity with mssql-python, see [Migrate a Python application to use passwordless connections with Azure SQL Database](azure-sql-passwordless-migration-python.md).
 
 ## Connect the App Service to Azure SQL Database
 
@@ -301,12 +354,12 @@ To run these commands you can use any tool or IDE that can connect to Azure SQL 
     For the deployed app, the connection string should resemble:
 
     ```
-    Driver={ODBC Driver 18 for SQL Server};Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30
+    Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryMSI;Encrypt=yes;TrustServerCertificate=no;
     ```
 
     Fill in the `<database-server-name>` and `<database-name>` with your values.
 
-    The passwordless connection string doesn't contain a user name or password. Instead, when the app runs in Azure, the code uses `DefaultAzureCredential` from the [Azure Identity library](/python/api/overview/azure/Identity-readme) to get a token to use with `pyodbc`.
+    The passwordless connection string doesn't contain a user name or password. Instead, when the app runs in Azure, the mssql-python driver uses the `ActiveDirectoryMSI` authentication mode to automatically authenticate using the App Service's managed identity.
 
 ## Test the deployed application
 
@@ -322,6 +375,7 @@ Congratulations! Your application is now connected to Azure SQL Database in both
 
 ## Related content
 
+- [mssql-python driver documentation](https://github.com/microsoft/mssql-python/wiki)
 - [Migrate a Python application to use passwordless connections with Azure SQL Database](azure-sql-passwordless-migration-python.md)
 - [Passwordless connections for Azure services](/azure/developer/intro/passwordless-overview)
 - [Managed identity best practice recommendations](/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations)

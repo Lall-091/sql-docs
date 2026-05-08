@@ -4,7 +4,7 @@ description: Identify visual design methods for better data display in Report Bu
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - updatefrequency5
 ---
@@ -155,6 +155,6 @@ ms.custom:
   
 ## Related content
 
-- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Reporting Services Tutorials &#40;SSRS&#41;](../../reporting-services/reporting-services-tutorials-ssrs.md)
 - [Report Builder Tutorials](../../reporting-services/report-builder-tutorials.md)

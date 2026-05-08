@@ -8,11 +8,11 @@ ms.date: 07/11/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
-monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
 ms.custom:
   - linux-related-content
   - sfi-image-nochange
   - sfi-ropc-blocked
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
 ---
 
 # Tutorial: Configure Active Directory authentication with SQL Server on Linux containers
@@ -27,9 +27,9 @@ This tutorial explains how to configure [!INCLUDE [ssnoversion-md](../includes/s
 This tutorial consists of the following tasks:
 
 > [!div class="checklist"]
-> - Install **adutil**
+> - Install **`adutil`**
 > - Join Linux host to Active Directory domain
-> - Create an Active Directory user for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and set the Service Principal Name (SPN) using the **adutil** tool
+> - Create an Active Directory user for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and set the Service Principal Name (SPN) using the **`adutil`** tool
 > - Create the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service keytab file
 > - Create the `mssql.conf` and `krb5.conf` files to be used by the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container
 > - Mount the config files and deploy the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container
@@ -41,7 +41,7 @@ This tutorial consists of the following tasks:
 The following are required before configuring Active Directory authentication:
 
 - Have an Active Directory Domain Controller (Windows) in your network.
-- Install **adutil** on a Linux host machine, which is joined to a domain. Follow the [Install adutil](#install-adutil) section for details.
+- Install **`adutil`** on a Linux host machine, which is joined to a domain. Follow the [Install adutil](#install-adutil) section for details.
 
 ## Container deployment and preparation
 
@@ -60,13 +60,13 @@ For this tutorial, we're using an environment in Azure with three virtual machin
 
 ## Install adutil
 
-To install **adutil**, follow the steps in [Introduction to adutil - Active Directory utility](sql-server-linux-ad-auth-adutil-introduction.md), on a host machine that is joined to the domain.
+To install **`adutil`**, follow the steps in [Introduction to adutil - Active Directory utility](sql-server-linux-ad-auth-adutil-introduction.md), on a host machine that is joined to the domain.
 
 ## Create Active Directory user, SPNs, and SQL Server service keytab
 
 If you don't want the container host to be part of the domain, and didn't follow the steps to join the machine to the domain, you should follow these steps on another Linux machine that is already part of the Active Directory domain:
 
-1. Create an Active Directory user for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and set the SPN using **adutil**.
+1. Create an Active Directory user for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and set the SPN using **`adutil`**.
 
 1. Create and configure the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service keytab file.
 
@@ -76,7 +76,7 @@ Copy the `mssql.keytab` file that was created to the host machine that will run 
 
 Enabling Active Directory authentication on [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux containers requires the following steps to be run on a Linux machine that is part of the Active Directory domain.
 
-1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the `kinit` command. Use a privileged account for the `kinit` command. The account needs to have permission to connect to the domain, and also should be able to create accounts and SPNs in the domain.
+1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the **`kinit`** command. Use a privileged account for the **`kinit`** command. The account needs to have permission to connect to the domain, and also should be able to create accounts and SPNs in the domain.
 
    In this example script, a privileged user called `privilegeduser@CONTOSO.COM` has already been created on the domain controller.
 
@@ -84,7 +84,7 @@ Enabling Active Directory authentication on [!INCLUDE [ssnoversion-md](../includ
    kinit privilegeduser@CONTOSO.COM
    ```
 
-1. Using **adutil**, create the new user that will be used as the privileged Active Directory account by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Replace `<password>` with a valid password.
+1. Using **`adutil`**, create the new user that will be used as the privileged Active Directory account by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Replace `<password>` with a valid password.
 
    ```bash
    adutil user create --name sqluser --distname CN=sqluser,CN=Users,DC=CONTOSO,DC=COM --password '<password>'
@@ -110,7 +110,7 @@ Enabling Active Directory authentication on [!INCLUDE [ssnoversion-md](../includ
    adutil spn addauto -n sqluser -s MSSQLSvc -H sql1.contoso.com -p 5433
    ```
 
-   - `addauto` will create the SPNs automatically, provided sufficient privileges are present for the **kinit** account.
+   - `addauto` will create the SPNs automatically, provided sufficient privileges are present for the **`kinit`** account.
    - `-n`: Name of the account the SPNs will be assigned to.
    - `-s`: The service name to use for generating SPNs. In this case, it's for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service, and hence the service name is MSSQLSvc.
    - `-H`: The hostname to use for generating SPNs. If not specified, the local host's FQDN will be used. Provide the FQDN for the container name as well. In this case, the container name is `sql1` and the FQDN is `sql1.contoso.com`.
@@ -135,7 +135,7 @@ adutil keytab createauto -k /container/sql1/secrets/mssql.keytab -p 5433 -H sql1
 
 When given a choice to choose the encryption types, you can choose more than one. For this example, we chose `aes256-cts-hmac-sha1-96` and `arcfour-hmac`. Ensure you choose an encryption type supported by the host and domain.
 
-If you'd like to non-interactively choose the encryption type, you can specify your choice of encryption type with the -e argument in the above command. For additional help on the **adutil** commands, run the following command.
+If you'd like to non-interactively choose the encryption type, you can specify your choice of encryption type with the -e argument in the above command. For additional help on the **`adutil`** commands, run the following command.
 
 ```bash
 adutil keytab createauto --help
@@ -153,7 +153,7 @@ adutil keytab create -k /container/sql1/secrets/mssql.keytab -p sqluser --passwo
 - `-k`: Path where you would like the `mssql.keytab` file to be created. In the previous example, the directory `/container/sql1/secrets` should already exist on the host.
 - `-p`: Principal to add to the keytab.
 
-The **adutil** keytab create/autocreate doesn't overwrite the previous files; it appends to the file if already present.
+The **`adutil`** keytab create/autocreate doesn't overwrite the previous files; it appends to the file if already present.
 
 Ensure the keytab created has the right permissions set when deploying the container.
 
@@ -265,7 +265,7 @@ FROM sys.server_principals;
 
 Sign in to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] with Windows credentials using the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] name and port number (name could be the container name or the host name). For our example, the server name would be `sql1.contoso.com,5433`.
 
-The following command shows how to connect to your container with **sqlcmd**.
+The following command shows how to connect to your container with **`sqlcmd`**.
 
 ```bash
 sqlcmd -E -S 'sql1.contoso.com,5433'

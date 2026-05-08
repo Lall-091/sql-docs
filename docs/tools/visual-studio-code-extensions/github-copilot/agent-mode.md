@@ -5,7 +5,7 @@ description: Learn how to use GitHub Copilot Agent Mode with the MSSQL extension
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -19,16 +19,20 @@ ai-usage: ai-assisted
 
 # Quickstart: Use GitHub Copilot Agent Mode
 
-GitHub Copilot Agent Mode brings a contextual, action-driven chat experience into the MSSQL extension for Visual Studio Code. With Agent Mode, GitHub Copilot can go beyond suggesting code—it can securely execute real database tasks using natural language prompts or built-in tools. You can list all your connections, connect to specific server/databases, and explore schemas without leaving your editor.
+Agent Mode allows GitHub Copilot to use the tools available in the MSSQL extension for Visual Studio Code. When the extension is installed and active, Copilot can list SQL Server connections, connect to a server and database, and retrieve database metadata.
+
+All actions use the same connection context and credentials as the MSSQL extension. Agent Mode doesn't introduce additional authentication or permission changes.
 
 > [!TIP]  
-> You don't need to mention a participant like `@mssql` to use SQL tools in Agent Mode. Once the MSSQL extension is active, its tools are automatically available in the Agent Mode interface. For more information, see [Agent Mode Tools](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
+> You don't need to reference the MSSQL extension (`@mssql`) explicitly when using Agent Mode. If the extension is active, its tools are available automatically. For more information, see [Agent Mode Tools](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
 
-These actions are powered by tools contributed by the MSSQL extension and surfaced directly within GitHub Copilot's Agent Mode. For more information on how Agent Mode works, see the [Visual Studio Code documentation on Agent Mode](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
+For details about how Agent Mode selects and executes tools, see the [Visual Studio Code documentation on Agent Mode](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
 
 ## What is Agent Mode?
 
-Agent Mode enables GitHub Copilot to go beyond suggesting code. It can now perform secure, confirmed actions inside your SQL development environment, using either chat variables like `#mssql_connect`, or natural phrases like:
+Agent Mode lets GitHub Copilot perform SQL-related actions using the MSSQL extension, and user confirmation is required before execution.
+
+You can invoke these actions by using chat variables such as `#mssql_connect`, or by issuing equivalent natural-language requests, for example:
 
 ```copilot-prompt
 Connect to my Library database using my LocalDev profile
@@ -55,8 +59,8 @@ GitHub Copilot handles tool selection automatically.
 
 | Tool name | Description |
 | --- | --- |
-| `connect` | Establishes a database connection using a saved connection profile or a specified server/database pair. |
-| `disconnect` | Terminates the current active connection session. |
+| `connect` | Connects to a database by using a saved connection profile or a specified server and database. |
+| `disconnect` | Ends the current active connection session. |
 | `change_database` | Changes the database for an existing connection session. |
 | `get_connection_details` | Gets connection details for a specific MSSQL connection. |
 | `list_servers` | Lists all saved SQL Server connection profiles in your environment. |
@@ -64,7 +68,7 @@ GitHub Copilot handles tool selection automatically.
 
 #### Examples
 
-The following phrases can be used to interact with GitHub Copilot.
+Use the following phrases to interact with GitHub Copilot.
 
 ```copilot-prompt
 - Connect to my LocalDev environment
@@ -80,15 +84,15 @@ The following phrases can be used to interact with GitHub Copilot.
 
 #### How connection logic works
 
-GitHub Copilot Agent Mode supports flexible ways to connect to your SQL database, either by referencing saved profiles or by specifying a server and database directly. Here's how the connection logic works:
+GitHub Copilot Agent Mode supports flexible ways to connect to your SQL database, either by referencing saved profiles or by specifying a server and database directly. Here's how the connection logic works.
 
-When you connect via saved profile:
+When you connect with a saved profile:
 
-1. A user can connect by referencing the name of a saved connection profile.
+1. You connect by referencing the name of a saved connection profile.
 1. GitHub Copilot uses the `mssql_list_servers` tool to verify the profile exists.
 1. The `mssql_connect` tool then uses the saved `profileId` and its parameters to establish the connection.
 
-When you connect via server/database specification:
+When you connect by specifying a server and database:
 
 - If a saved profile matches both the specified server and database:
 
@@ -105,7 +109,7 @@ When you connect via server/database specification:
 
   - GitHub Copilot reports an error.
 
-This flexible matching system allows GitHub Copilot to handle a range of connection scenarios, minimizing user effort while ensuring secure, confirmable actions.
+This flexible matching system allows GitHub Copilot to handle a range of connection scenarios. It minimizes user effort while ensuring secure, confirmable actions.
 
 ### Schema exploration
 
@@ -119,7 +123,7 @@ This flexible matching system allows GitHub Copilot to handle a range of connect
 
 #### Examples
 
-The following phrases can be used to interact with GitHub Copilot.
+Use the following phrases to interact with GitHub Copilot.
 
 ```copilot-prompt
 - Show me the schema for this database
@@ -135,11 +139,11 @@ The following phrases can be used to interact with GitHub Copilot.
 
 | Tool name | Description |
 | --- | --- |
-| `run_query` | Executes a SQL query against the connected database. |
+| `run_query` | Runs a SQL query against the connected database. |
 
 #### Examples
 
-The following phrases can be used to interact with GitHub Copilot.
+Use the following phrases to interact with GitHub Copilot.
 
 ```copilot-prompt
 - Give me the top five posts published this week
@@ -153,15 +157,15 @@ The following phrases can be used to interact with GitHub Copilot.
 
 ## How tools are managed in Agent Mode
 
-GitHub Copilot can invoke MSSQL-specific tools and other extension-contributed tools while processing your request. These tools are visible in the Agent Mode interface under the Tools menu, where you can enable or disable specific tools.
+GitHub Copilot can use MSSQL-specific tools and other extension-contributed tools while it processes your request. You can see these tools in the Agent Mode interface under the **Tools** menu, where you can also turn specific tools on or off.
 
-When a tool is invoked—especially if it interacts with your machine or database—GitHub Copilot prompts for confirmation to ensure secure execution. You can allow the tool for just the current session, the workspace, or approve it permanently.
+When you invoke a tool, especially if it interacts with your machine or database, GitHub Copilot asks for confirmation to ensure secure execution. You can allow the tool for just the current session, the workspace, or permanently.
 
-For more on tool visibility and approvals, visit [Manage tool approvals](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
+For more information about tool visibility and approvals, see [Manage tool approvals](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
 
 ### Agent Mode confirmation workflow
 
-When GitHub Copilot selects a tool, it prompts you with a confirmation dialog showing details about the requested action. You must explicitly approve the request before it can execute any commands that interact with your machine or database:
+When GitHub Copilot selects a tool, it prompts you with a confirmation dialog that shows details about the requested action. You must explicitly approve the request before it can execute any commands that interact with your machine or database:
 
 - **Allow in this session**
 - **Allow in this workspace**

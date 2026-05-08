@@ -1,10 +1,10 @@
 ---
-title: "Extract a DACPAC from a Database"
-description: "Extract a DACPAC from a database."
+title: Extract a DACPAC from a Database
+description: Extract a DACPAC from a database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: drskwier, randolphwest, maghan
-ms.date: 03/11/2025
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -37,6 +37,7 @@ Options for extracting a `.dacpac` include:
 1. the **Extract Data-tier Application** wizard in SQL Server Management Studio (SSMS)
 1. SQL Server Data Tools
 1. SqlPackage command-line utility
+1. MSSQL extension for Visual Studio Code
 
 ## Permissions
 
@@ -123,6 +124,19 @@ Use this page to monitor the progress of the wizard as it extracts the data-tier
 
 **Finish** - Select to close the wizard after processing has completed, or if an error occurs.
 
+## [MSSQL extension for VS Code](#tab/mssql-extension)
+
+The MSSQL extension for Visual Studio Code provides a visual interface to extract a `.dacpac` from a connected database.
+
+1. In the **Object Explorer**, right-click the **Databases** node or a specific database, and select **Data-tier Application**.
+1. Select **Extract DACPAC** from the available options.
+1. Specify the target file path and name for the `.dacpac` file.
+1. Review the extraction settings and select **Extract** to create the `.dacpac` file.
+
+The extraction process captures the database schema, including tables, stored procedures, views, and other objects, into a portable `.dacpac` file.
+
+For more information about the full Data-tier Application experience in the MSSQL extension, including deploy, import, and export operations, see [Data-tier Application (DACPAC and BACPAC) import and export](../../../visual-studio-code-extensions/mssql/mssql-data-tier-application.md).
+
 ## [SQL Server Data Tools](#tab/sql-server-data-tools)
 
 You can extract a .dacpac from a database connected in SQL Server object explorer. Extract creates a database snapshot file (.dacpac) from a live SQL Server or Azure SQL Database that might contain data from user tables, in addition to the database schema.
@@ -146,4 +160,5 @@ For more information about the parameters and properties, see [SqlPackage extrac
 ## Related content
 
 - [Data-tier applications (DAC) overview](overview.md)
+- [Data-tier Application (DACPAC and BACPAC) import and export](../../../visual-studio-code-extensions/mssql/mssql-data-tier-application.md)
 - [SqlPackage in development pipelines](../../../sqlpackage/sqlpackage-pipelines.md)

@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.reviewer: randolphwest
 ms.date: 08/27/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Capture logon trigger event data

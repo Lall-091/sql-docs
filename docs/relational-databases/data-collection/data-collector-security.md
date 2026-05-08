@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/28/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "data collection [SQL Server]"
   - "security [data collector]"

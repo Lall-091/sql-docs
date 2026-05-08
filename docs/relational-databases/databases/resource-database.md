@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: "03/14/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "system objects [SQL Server]"
   - "read-only databases"

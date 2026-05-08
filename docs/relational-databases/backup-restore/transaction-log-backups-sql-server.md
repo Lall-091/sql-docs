@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/08/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "backing up [SQL Server], transaction logs"
   - "transaction log backups [SQL Server], creating"

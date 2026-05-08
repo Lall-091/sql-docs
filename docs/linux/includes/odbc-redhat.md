@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/16/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.topic: include
 ms.custom:
@@ -13,7 +13,7 @@ Use the following steps to install the **mssql-tools18** on Red Hat Enterprise L
 
 1. Download the Microsoft Red Hat repository configuration file.
 
-   - For Red Hat 10 (in preview), use the following command to download the Microsoft Red Hat repository configuration file from the RHEL 9 repo. The same versions of tools also work for RHEL 10.
+   - For Red Hat 10, use the following command to download the Microsoft Red Hat repository configuration file from the RHEL 9 repo. The same versions of tools also work for RHEL 10.
 
      ```bash
      curl https://packages.microsoft.com/config/rhel/9/prod.repo | sudo tee /etc/yum.repos.d/mssql-release.repo
@@ -56,16 +56,16 @@ Use the following steps to install the **mssql-tools18** on Red Hat Enterprise L
    sudo yum update mssql-tools18
    ```
 
-1. **Optional**: Add `/opt/mssql-tools18/bin/` to your `PATH` environment variable in a bash shell.
+1. **Optional**: Add `/opt/mssql-tools18/bin/` to your `PATH` environment variable in a Bash shell.
 
-   To make **sqlcmd** and **bcp** accessible from the bash shell for login sessions, modify your `PATH` in the `~/.bash_profile` file with the following command:
+   To make **`sqlcmd`** and **`bcp`** accessible from the Bash shell for login sessions, modify your `PATH` in the `~/.bash_profile` file with the following command:
 
    ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bash_profile
    source ~/.bash_profile
    ```
 
-   To make **sqlcmd** and **bcp** accessible from the bash shell for interactive/non-login sessions, modify the `PATH` in the `~/.bashrc` file with the following command:
+   To make **`sqlcmd`** and **`bcp`** accessible from the Bash shell for interactive and non-login sessions, modify the `PATH` in the `~/.bashrc` file with the following command:
 
    ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc

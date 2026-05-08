@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 03/27/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "Shrink Database Task"
   - "Shrink Database(s) Task"

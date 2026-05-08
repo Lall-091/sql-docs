@@ -1,4 +1,4 @@
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT DISTINCT Name
@@ -12,7 +12,7 @@ WHERE EXISTS (
 GO
 
 -- OR
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT DISTINCT Name

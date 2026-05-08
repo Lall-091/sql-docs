@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "03/26/2018"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: sample
 ---
 # Code Samples for the Microsoft Drivers for PHP for SQL Server
 [!INCLUDE[Driver_PHP_Download](../../includes/driver_php_download.md)]

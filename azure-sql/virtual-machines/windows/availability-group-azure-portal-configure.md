@@ -4,7 +4,7 @@ description: "Use the Azure portal to create SQL Server VMs in multiple subnets,
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mathoma, randolphwest
-ms.date: 09/22/2025
+ms.date: 03/18/2026
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: how-to
@@ -41,7 +41,7 @@ Although this article uses the Azure portal to configure the availability group 
 
 To configure an Always On availability group by using the Azure portal, you must have the following prerequisites:
 
-- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount)
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 
 - A resource group
 
@@ -72,15 +72,17 @@ The first option is to search [Azure Marketplace](https://portal.azure.com/#view
 
 Select **Create** on the tile to continue.
 
-The second option is to go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+Alternatively, follow these steps to start the availability group deployment from the Azure SQL hub:
 
-1. In the pane for **SQL Server on Azure Virtual Machines**, select **Show options**.
+1. Go to the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. Under **SQL Server** select **SQL Server on Azure VMs** to open the **SQL Server on Azure VMs** page.
+1. On the **SQL Server on Azure VMs** page, select **+ Create** to open the **SQL Server on Azure Virtual Machines** page.
 
-   :::image type="content" source="media/availability-group-azure-portal-configure/show-options-high-availability-create-virtual-machine.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="media/availability-group-azure-portal-configure/show-options-high-availability-create-virtual-machine.png":::
+   :::image type="content" source="../../includes/sql-virtual-machines/media/create-sql-virtual-machine/create-sql-virtual-machine.png" alt-text="Screenshot of the SQL Server on Azure VMs page from the Azure SQL hub page in the Azure portal, showing the +Create button.":::
 
-1. Under **SQL virtual machines**, select the **High availability** checkbox.
-1. In the **Select an image offer** box, choose a SQL Server image (such as **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025**).
-1. Select **Create virtual machine**.
+1. On the **SQL Server on Azure Virtual Machines** page, select an image offer from the drop-down list, and then select the box next to **High availability** to enable availability group configuration. Use **Create virtual machine** to open the **Create Always On availability group for SQL Server on Azure Virtual Machines** page.
+
+    :::image type="content" source="./media/availability-group-azure-portal-configure/show-options-high-availability-create-virtual-machine.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="./media/availability-group-azure-portal-configure/show-options-high-availability-create-virtual-machine.png":::
 
 ## Choose basic settings
 

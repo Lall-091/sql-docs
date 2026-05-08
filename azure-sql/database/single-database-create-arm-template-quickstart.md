@@ -4,7 +4,7 @@ description: Create a single database in Azure SQL Database using an Azure Resou
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 09/17/2024
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -28,7 +28,7 @@ If your environment meets the prerequisites and you're familiar with using ARM t
 
 ## Prerequisites
 
-If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ### Permissions
 
@@ -68,6 +68,8 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ## Validate the deployment
 

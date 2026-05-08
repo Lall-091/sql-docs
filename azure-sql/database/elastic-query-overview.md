@@ -4,7 +4,7 @@ description: Elastic query enables you to run a Transact-SQL query that spans mu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: drskwier, bgavrilovic, mathoma, randolphwest
-ms.date: 01/30/2025
+ms.date: 03/17/2026
 ms.service: azure-sql-database
 ms.subservice: scale-out
 ms.topic: overview
@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-The elastic query feature (in preview) enables you to run a Transact-SQL (T-SQL) query that spans multiple databases in Azure SQL Database. It allows you to perform cross-database queries to access remote tables, and to connect Microsoft and third-party tools (Excel, Power BI, Tableau, etc.) to query across data tiers with multiple databases. Using this feature, you can scale out queries to large data tiers and visualize the results in business intelligence (BI) reports.
+The elastic query feature (in preview) enables you to run a Transact-SQL (T-SQL) query that spans multiple databases in Azure SQL Database. It allows you to perform cross-database queries to access remote tables, and to connect Microsoft and non-Microsoft tools (Excel, Power BI, Tableau, etc.) to query across data tiers with multiple databases. Using this feature, you can scale out queries to large data tiers and visualize the results in business intelligence (BI) reports.
 
 ## Why use elastic queries
 
@@ -92,6 +92,8 @@ The following steps configure elastic database queries for vertical partitioning
 After running the DDL statements, you can access the remote table `mytable` as though it were a local table. Azure SQL Database automatically opens a connection to the remote database, processes your request on the remote database, and returns the results.
 
 ## Horizontal partitioning - sharding
+
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
 
 Using elastic query to perform reporting tasks over a sharded, that is, horizontally partitioned, data tier requires an [elastic database shard map](elastic-scale-shard-map-management.md) to represent the databases of the data tier. Typically, only a single shard map is used in this scenario and a dedicated database with elastic query capabilities (head node) serves as the entry point for reporting queries. Only this dedicated database needs access to the shard map. Figure 4 illustrates this topology and its configuration with the elastic query database and shard map. For more information about the elastic database client library and creating shard maps, see [Shard map management](elastic-scale-shard-map-management.md).
 

@@ -4,11 +4,11 @@ description: Learn about the main tools of the Database Engine and how to connec
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: maghan, vanto, randolphwest
-ms.date: 08/21/2025
-ms.update-cycle: 365-days
+ms.date: 01/28/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart
+ms.update-cycle: 365-days
 ms.custom:
   - intro-quickstart
   - sfi-image-nochange
@@ -18,9 +18,9 @@ ms.custom:
 
 [!INCLUDE [sqlserver](../includes/applies-to-version/sqlserver.md)]
 
-When you install the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)], the tools that are installed depend upon the edition and your setup choices. This lesson describes the principal tools, demonstrating how to connect to the Database Engine and perform an essential function (authorizing more users).
+When you install the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)], the tools that are installed depend upon the edition and your setup choices. This lesson describes the principal tools, and demonstrates how to connect to the Database Engine and perform an essential function (authorizing more users).
 
-In this lesson, learn the following: 
+In this lesson, learn the following:
 
 - [Tools to get started](#tools)
 - [Connecting with Management Studio](#connect)
@@ -39,11 +39,8 @@ The following table describes some of the more common tools.
 | Tool | Type | Operating system |
 | --- | --- | --- |
 | **[SSMS](/ssms/install/install)** | GUI | Windows |
-| **[Azure Data Studio](/azure-data-studio/what-is-azure-data-studio)** | GUI | Windows, macOS, Linux |
 | **[bcp](../tools/bcp-utility.md)** | CLI | Windows, macOS, Linux |
 | **[sqlcmd](../tools/sqlcmd/sqlcmd-utility.md)** | CLI | Windows, macOS, Linux |
-
-This article focuses on connecting via SSMS. If you're interested in connecting via Azure Data Studio, see [Quickstart: Use Azure Data Studio to connect and query SQL Server](/azure-data-studio/quickstart-sql-server).
 
 ### Sample database
 
@@ -71,21 +68,21 @@ It's easy to connect to the [!INCLUDE [ssDE](../includes/ssde-md.md)] from tools
 
 1. If Registered Servers isn't displayed, on the **View** menu, select **Registered Servers**.
 
-1. With **Database Engine** selected on the Registered Servers toolbar, expand **Database Engine**, right-click **Local Server Groups**, point to **Tasks**, and then select **Register Local Servers**. Expand **Local Server Groups** to see all the instances of the [!INCLUDE [ssDE](../includes/ssde-md.md)] installed on the computer. The default instance is unnamed and is shown as the computer name. A named instance displays as the computer name followed by a backward slash (\\) and then the instance's name. For [!INCLUDE [ssExpress](../includes/ssexpress-md.md)], the instance is named *<computer_name>*\sqlexpress unless the name was changed during setup.
+1. From the **Registered Servers** toolbar, go to **Database Engine**, and right-click **Local Server Groups**. Go to **Tasks** > **Register Local Servers**, and expand **Local Server Groups** to see all the instances of the [!INCLUDE [ssDE](../includes/ssde-md.md)] installed on the computer. The default instance is unnamed and is shown as the computer name. A named instance displays as the computer name followed by a backward slash (`\`) and then the instance's name. For [!INCLUDE [ssExpress](../includes/ssexpress-md.md)], the instance is named *<computer_name>*\sqlexpress unless the name was changed during setup.
 
 #### Verify that the Database Engine is running
 
 - In Registered Servers, if the name of your instance of SQL Server has a green dot with a white arrow next to the name, the [!INCLUDE [ssDE](../includes/ssde-md.md)] is running and no further action is necessary.
 
-- If the name of your instance of SQL Server has a red dot with a white square next to the name, the [!INCLUDE [ssDE](../includes/ssde-md.md)] is stopped. Right-click the name of the [!INCLUDE [ssDE](../includes/ssde-md.md)], select **Service Control**, and then select **Start**. After a confirmation dialog box, the [!INCLUDE [ssDE](../includes/ssde-md.md)] should start, and the circle should turn green with a white arrow.
+- If the name of your instance of SQL Server has a red dot with a white square next to the name, the [!INCLUDE [ssDE](../includes/ssde-md.md)] is stopped. Right-click the name of the [!INCLUDE [ssDE](../includes/ssde-md.md)], select **Service Control**, and then select **Start**. After a confirmation dialog box, the [!INCLUDE [ssDE](../includes/ssde-md.md)] starts, and the circle turns green with a white arrow.
 
 #### Connect to the Database Engine
 
-At least one administrator account was selected when [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)] was installed. Perform the following steps while signed in to Windows as an administrator.
+Select at least one administrator account when you install [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)]. Perform the following steps while signed in to Windows as an administrator.
 
 1. In [!INCLUDE [ssManStudio](../includes/ssmanstudio-md.md)], on the **File** menu, select **Connect Object Explorer**.
 
-   The **Connect to Server** dialog opens. The **Server type** box displays the type of component that was last used.
+   The **Connect to Server** dialog opens. The **Server type** box displays the type of component that you last used.
 
 1. Select **Database Engine**.
 
@@ -98,15 +95,15 @@ At least one administrator account was selected when [!INCLUDE [ssNoVersion_md](
 1. Select **Connect**.
 
 > [!NOTE]  
-> This article is written with the assumption that you're new to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and have no problems connecting. For detailed troubleshooting steps, see [Troubleshoot connecting to the SQL Server Database Engine](/troubleshoot/sql/connect/network-related-or-instance-specific-error-occurred-while-establishing-connection).
+> This article assumes that you're new to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and have no problems connecting. For detailed troubleshooting steps, see [Troubleshoot connecting to the SQL Server Database Engine](/troubleshoot/sql/connect/network-related-or-instance-specific-error-occurred-while-establishing-connection).
 
 <a id="additional"></a>
 
 ## Authorize extra connections
 
-Now that you're connected to SQL Server as an administrator, one of your first tasks is authorizing other users to connect. You authorize users by creating a login and authorizing that login to access a database as a user. You can create logins by using Windows Authentication, SQL Server authentication, or Microsoft Entra authentication. Windows Authentication logins use credentials from Windows. SQL Server authentication logins store the authentication information in SQL Server and are independent of your Windows credentials. Logins from Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) use credentials from cloud-based identities. For more information about this method, see [Microsoft Entra authentication for SQL Server](security/authentication-access/azure-ad-authentication-sql-server-overview.md)
+Now that you're connected to SQL Server as an administrator, you can authorize other users to connect. Create a login, and authorize that login to access a database as a user. You create logins using Windows Authentication, SQL Server authentication, or Microsoft Entra authentication. Windows Authentication logins use credentials from Windows. SQL Server authentication logins store the authentication information in SQL Server and are independent of your Windows credentials. Logins from Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) use credentials from cloud-based identities. For more information about this method, see [Microsoft Entra authentication for SQL Server](security/authentication-access/azure-ad-authentication-sql-server-overview.md).
 
-Use Windows Authentication, or Microsoft Entra authentication whenever possible.
+Use Windows Authentication or Microsoft Entra authentication whenever possible.
 
 > [!TIP]  
 > Most organizations have domain users and use Windows Authentication. You can experiment by creating additional local users on your computer. Your computer authenticates local users, so the domain is the computer name. For example, if your computer is named `MyComputer` and you create a user named `Test`, the Windows description of the user is `Mycomputer\Test`.
@@ -123,7 +120,7 @@ Use Windows Authentication, or Microsoft Entra authentication whenever possible.
 
 1. On the **Server Roles** page, if the new login is to be an administrator, select **sysadmin**. Otherwise, leave this blank.
 
-1. On the **User Mapping** page, select **Map** for the [!INCLUDE [ssSampleDBobject](../includes/sssampledbobject-md.md)] database if it's available. Otherwise, select `master`. The **User** box is populated with the login. When the dialog is closed, the user is created in the database.
+1. On the **User Mapping** page, select **Map** for the [!INCLUDE [ssSampleDBobject](../includes/sssampledbobject-md.md)] database if it's available. Otherwise, select `master`. The **User** box is populated with the login. When you close the dialog, the user is created in the database.
 
 1. In the **Default Schema** box, enter **dbo** to map the login to the database owner schema.
 
@@ -137,7 +134,6 @@ Use Windows Authentication, or Microsoft Entra authentication whenever possible.
 - [Connect to the Database Engine](../sql-server/connect-to-database-engine.md)
 - [Troubleshoot connecting to the SQL Server Database Engine](/troubleshoot/sql/connect/network-related-or-instance-specific-error-occurred-while-establishing-connection)
 - [Quickstart: Connect and query an Azure SQL Database or an Azure SQL Managed Instance by using SSMS](/ssms/quickstarts/ssms-connect-query-azure-sql)
-- [Quickstart: Use Azure Data Studio to connect and query SQL Server](/azure-data-studio/quickstart-sql-server)
 
 ## Next step
 

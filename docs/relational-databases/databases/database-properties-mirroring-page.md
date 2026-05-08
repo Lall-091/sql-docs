@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "08/25/2016"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.databaseproperties.mirroring.f1"
 ---

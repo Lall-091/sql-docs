@@ -8,7 +8,7 @@ ms.reviewer: mathoma, zoranrilak
 ms.date: 08/27/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2023
   - ignite-2024

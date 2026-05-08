@@ -4,7 +4,7 @@ description: The CREATE INDEX statement creates a relational index on a table or
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf, dfurman
-ms.date: 09/26/2025
+ms.date: 02/05/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -885,9 +885,9 @@ Resumable index create operations have the following limitations:
 - After a resumable online index create operation is paused, the initial value of `MAXDOP` can't be changed.
 - The `SORT_IN_TEMPDB = ON` option isn't supported for resumable index operations.
 - The DDL command with `RESUMABLE = ON` can't be executed inside an explicit transaction.
-- You cannot create a resumable index that contains:
-  - Computed or `timestamp` (`rowversion`) column(s) as key columns.
-  - LOB column as an included column.
+- You cannot create an index using a resumable index operation if the index contains:
+  - A computed or `timestamp` (`rowversion`) column as a key column.
+  - A computed or LOB column as an included column.
 - Resumable index operations aren't supported for:
   - The `ALTER INDEX REBUILD ALL` command
   - The `ALTER TABLE REBUILD` command

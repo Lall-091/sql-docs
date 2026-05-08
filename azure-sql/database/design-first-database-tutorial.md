@@ -3,8 +3,8 @@ title: "Tutorial: Design Your First Relational Database Using SSMS"
 description: Learn to design your first relational database in Azure SQL Database using SQL Server Management Studio.
 author: dzsquared
 ms.author: drskwier
-ms.reviewer: wiassaf, mathoma, v-masebo
-ms.date: 08/25/2025
+ms.reviewer: wiassaf, mathoma, v-masebo, randolphwest
+ms.date: 03/10/2026
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: tutorial
@@ -18,20 +18,19 @@ ms.custom:
 Azure SQL Database is a relational database-as-a-service (DBaaS) in the Microsoft Azure. In this tutorial, you learn how to:
 
 > [!div class="checklist"]
->
 > - Connect to the database
 > - Create tables with T-SQL commands
 > - Bulk load data with BCP
 > - Query data with T-SQL commands
 
-> [!NOTE]
+> [!NOTE]  
 > For the purpose of this tutorial, we are using Azure SQL Database. You could also use a pooled database in an elastic pool or a SQL Managed Instance. For connectivity to a SQL Managed Instance, see these SQL Managed Instance quickstarts: [Quickstart: Configure an Azure VM to connect to Azure SQL Managed Instance](../managed-instance/connect-vm-instance-configure.md) and [Quickstart: Configure a point-to-site connection to Azure SQL Managed Instance from on-premises](../managed-instance/point-to-site-p2s-configure.md).
 
 ## Prerequisites
 
 - Use [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (latest version) or the [Azure portal query editor for Azure SQL Database](query-editor.md).
 - [BCP and SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433) (latest version).
-- If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount) before you begin.
+- If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md). Look for the option to use your offer to [Deploy Azure SQL Database for free](free-offer.md).
 
 ## Sign in to the Azure portal
@@ -42,20 +41,20 @@ Sign in to the [Azure portal](https://portal.azure.com/).
 
 Azure SQL Database creates an IP firewall at the server-level. This firewall prevents external applications and tools from connecting to the server and any databases on the server unless a firewall rule allows their IP through the firewall. To enable external connectivity to your database, you must first add an IP firewall rule for your IP address (or IP address range). Follow these steps to create a [server-level IP firewall rule](firewall-configure.md).
 
-> [!IMPORTANT]
-> Azure SQL Database communicates over port 1433. If you are trying to connect to this service from within a corporate network, outbound traffic over port 1433 might not be allowed by your network's firewall. If so, you cannot connect to your database unless your administrator opens port 1433.
+> [!IMPORTANT]  
+> Azure SQL Database communicates over port 1433. If you're trying to connect to this service from within a corporate network, outbound traffic over port 1433 might not be allowed by your network's firewall. If so, you can't connect to your database unless your administrator opens port 1433.
 
-1. After the deployment completes, select **SQL databases** from the Azure portal menu or search for and select *SQL databases* from any page.  
-
+1. After the deployment completes, go to your new resource, or visit the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
 1. Select *yourDatabase* on the **SQL databases** page. The overview page for your database opens, showing you the fully qualified **Server name** (such as `contosodatabaseserver01.database.windows.net`) and provides options for further configuration.
 
-   :::image type="content" source="./media/design-first-database-tutorial/server-name.png" alt-text="Screenshot of the Azure portal, database overview page with the server name highlighted.":::
+   :::image type="content" source="media/design-first-database-tutorial/server-name.png" alt-text="Screenshot of the Azure portal, database overview page with the server name highlighted." lightbox="media/design-first-database-tutorial/server-name.png":::
 
 1. Copy this fully qualified server name for use to connect to your server and databases from SQL Server Management Studio.
 
-1. Select **Networking** under **Settings**. Choose the **Public Access** tab, and then select **Selected networks** under **Public network access** to display the **Firewall rules** section. 
+1. Select **Networking** under **Settings**. Choose the **Public Access** tab, and then select **Selected networks** under **Public network access** to display the **Firewall rules** section.
 
-   :::image type="content" source="./media/design-first-database-tutorial/server-firewall-rule.png" alt-text="Screenshot of the Azure portal, networking page, showing where to set the server-level IP firewall rule.":::
+   :::image type="content" source="media/design-first-database-tutorial/server-firewall-rule.png" alt-text="Screenshot of the Azure portal, networking page, showing where to set the server-level IP firewall rule." lightbox="media/design-first-database-tutorial/server-firewall-rule.png":::
 
 1. Select **Add your client IPv4** on the toolbar to add your current IP address to a new IP firewall rule. An IP firewall rule can open port 1433 for a single IP address or a range of IP addresses.
 
@@ -65,7 +64,7 @@ Azure SQL Database creates an IP firewall at the server-level. This firewall pre
 
 Your IP address can now pass through the IP firewall. You can now connect to your database using SQL Server Management Studio or another tool of your choice. Be sure to use the server admin account you created previously.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > By default, access through the SQL Database IP firewall is enabled for all Azure services. Select `OFF` on this page to disable for all Azure services.
 
 ## Connect to the database
@@ -79,48 +78,48 @@ Use [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) 
 1. Open SQL Server Management Studio.
 1. In the **Connect to Server** dialog box, enter the following information. Leave other options as default.
 
-   | Setting       | Suggested value | Description |
-   | ------------ | ------------------ | ------------------------------------------------- |
+   | Setting | Suggested value | Description |
+   | --- | --- | --- |
    | **Server type** | Database engine | This value is required. |
    | **Server name** | The fully qualified Azure SQL Database logical server name | For example, `your_logical_azure_sql_server.database.windows.net`. |
    | **Authentication** | SQL Server Authentication | Use SQL Server Authentication to enter a user name and password. |
-   | | Microsoft Entra authentication | To connect using Microsoft Entra ID, if you're the Microsoft Entra server admin, choose **Microsoft Entra MFA**. For more information, see [Configure and manage Microsoft Entra authentication with Azure SQL](authentication-aad-configure.md).|
+   | | Microsoft Entra authentication | To connect using Microsoft Entra ID, if you're the Microsoft Entra server admin, choose **Microsoft Entra MFA**. For more information, see [Configure and manage Microsoft Entra authentication with Azure SQL](authentication-aad-configure.md). |
    | **Login** | The server admin account | If using SQL Server Authentication, the account that you specified when you created the server. |
    | **Password** | The password for your server admin account | If using SQL Server Authentication, the password that you specified when you created the server. |
 
-   :::image type="content" source="media\design-first-database-tutorial\connect.png" alt-text="Screenshot of the Connect to Server dialog box in SQL Server Management Studio (SSMS).":::
+   :::image type="content" source="media/design-first-database-tutorial/connect.png" alt-text="Screenshot of the Connect to Server dialog box in SQL Server Management Studio (SSMS).":::
 
 1. Select **Options** in the **Connect to server** dialog box. In the **Connect to database** section, enter *yourDatabase* to connect to this database.
 
-    :::image type="content" source="media\design-first-database-tutorial\options-connect-to-db.png" alt-text="Screenshot of the options tab of the connect to server dialog box in SQL Server Management Studio (SSMS).":::
+   :::image type="content" source="media/design-first-database-tutorial/options-connect-to-db.png" alt-text="Screenshot of the options tab of the connect to server dialog box in SQL Server Management Studio (SSMS).":::
 
 1. Select **Connect**. The **Object Explorer** window opens in SSMS.
 
 1. In **Object Explorer**, expand **Databases** and then expand *yourDatabase* to view the objects in the sample database.
 
-   :::image type="content" source="media\design-first-database-tutorial\connected.png" alt-text="Screenshot of SQL Server Management Studio (SSMS) showing database objects in object explorer.":::
+   :::image type="content" source="media/design-first-database-tutorial/connected.png" alt-text="Screenshot of SQL Server Management Studio (SSMS) showing database objects in object explorer.":::
 
 1. In **Object Explorer**, right-click *yourDatabase* and select **New Query**. A blank query window opens that is connected to your database.
 
 ## [Azure portal Query editor](#tab/queryeditor)
 
-Use the [Azure portal Query editor for Azure SQL Database](query-editor.md) to connect to your Azure SQL database.
+Use the [Azure portal query editor for Azure SQL Database](query-editor.md) to connect to your Azure SQL database.
 
-1. Navigate to your SQL database in the Azure portal. For example, visit [your Azure SQL hub page](https://aka.ms/azuresqlhub), and select your Azure SQL Database.
-
+1. Navigate to your SQL database in the Azure portal. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
 1. On your SQL database **Overview** page in the [Azure portal](https://portal.azure.com), select **Query editor (preview)** from the resource menu.
 
-   :::image type="content" source="media\design-first-database-tutorial\find-query-editor.png" alt-text="Screenshot that shows selecting query editor.":::
+   :::image type="content" source="media/design-first-database-tutorial/find-query-editor.png" alt-text="Screenshot that shows selecting query editor.":::
 
 1. On the sign-in screen under **Welcome to SQL Database Query Editor**, provide credentials to connect to the database. You can connect using SQL or Microsoft Entra authentication.
 
    - To connect with SQL authentication, under **SQL server authentication**, enter a **Login** and **Password** for a user that has access to the database, and then select **OK**. You can always use the login and password for the server admin.
 
-     :::image type="content" source="media\design-first-database-tutorial\login-menu.png" alt-text="Screenshot from the Azure portal showing sign-in with SQL authentication." lightbox="media\design-first-database-tutorial\login-menu.png":::
+     :::image type="content" source="media/design-first-database-tutorial/login-menu.png" alt-text="Screenshot from the Azure portal showing sign-in with SQL authentication." lightbox="media/design-first-database-tutorial/login-menu.png":::
 
    - To connect using Microsoft Entra ID, if you're the Microsoft Entra server admin, select **Continue as \<your user or group ID>**. If sign-in is unsuccessful, try refreshing the page.
 
-     :::image type="content" source="media\design-first-database-tutorial\query-editor-entra-login.png" alt-text="Screenshot from the Azure portal showing sign-in with Microsoft Entra authentication." lightbox="media\design-first-database-tutorial\query-editor-entra-login.png":::
+     :::image type="content" source="media/design-first-database-tutorial/query-editor-entra-login.png" alt-text="Screenshot from the Azure portal showing sign-in with Microsoft Entra authentication." lightbox="media/design-first-database-tutorial/query-editor-entra-login.png":::
 
 1. A new query window opens, ready to accept T-SQL commands. In the object explorer, you can expand folders for **Tables**, **Views**, and **Stored procedures**.
 
@@ -137,10 +136,10 @@ Create four tables that model a student management system for universities using
 
 The following diagram shows how these tables are related to each other. Some of these tables reference columns in other tables. For example, the `Student` table references the `PersonId` column of the `Person` table. Study the diagram to understand how the tables in this tutorial are related to one another. For an in-depth look at how to create effective normalized database tables, see [Designing a Normalized Database](/previous-versions/tn-archive/cc505842(v=technet.10)). For information about choosing data types, see [Data types](/sql/t-sql/data-types/data-types-transact-sql?view=azuresqldb-current&preserve-view=true). By default, tables are created in the default `dbo` schema, meaning the two-part name of a table will be `dbo.Person`, for example.
 
-> [!NOTE]
+> [!NOTE]  
 > You can also use the [table designer in SQL Server Management Studio](/sql/ssms/visual-db-tools/design-database-diagrams-visual-database-tools) to create and design your tables.
 
-:::image type="content" source="media\design-first-database-tutorial\tutorial-database-tables.png" alt-text="Screenshot of the table designer in SQL Server Management Studio (SSMS) showing the table relationships.":::
+:::image type="content" source="media/design-first-database-tutorial/tutorial-database-tables.png" alt-text="Screenshot of the table designer in SQL Server Management Studio (SSMS) showing the table relationships.":::
 
 1. In the query window, execute the following T-SQL query to create four tables in your database:
 
@@ -149,43 +148,41 @@ The following diagram shows how these tables are related to each other. Some of 
    CREATE TABLE Person
    (
        PersonId INT IDENTITY PRIMARY KEY,
-       FirstName NVARCHAR(128) NOT NULL,
-       MiddelInitial NVARCHAR(10),
-       LastName NVARCHAR(128) NOT NULL,
+       FirstName NVARCHAR (128) NOT NULL,
+       MiddleInitial NVARCHAR (10),
+       LastName NVARCHAR (128) NOT NULL,
        DateOfBirth DATE NOT NULL
-   )
+   );
 
    -- Create Student table
    CREATE TABLE Student
    (
        StudentId INT IDENTITY PRIMARY KEY,
-       PersonId INT REFERENCES Person (PersonId),
-       Email NVARCHAR(256)
-   )
+       PersonId INT FOREIGN KEY REFERENCES Person (PersonId),
+       Email NVARCHAR (256)
+   );
 
    -- Create Course table
    CREATE TABLE Course
    (
        CourseId INT IDENTITY PRIMARY KEY,
-       Name NVARCHAR(50) NOT NULL,
-       Teacher NVARCHAR(256) NOT NULL
-   )
+       Name NVARCHAR (50) NOT NULL,
+       Teacher NVARCHAR (256) NOT NULL
+   );
 
    -- Create Credit table
    CREATE TABLE Credit
    (
-       StudentId INT REFERENCES Student (StudentId),
-       CourseId INT REFERENCES Course (CourseId),
-       Grade DECIMAL(5,2) CHECK (Grade <= 100.00),
+       StudentId INT FOREIGN KEY REFERENCES Student (StudentId),
+       CourseId INT FOREIGN KEY REFERENCES Course (CourseId),
+       Grade DECIMAL (5, 2) CHECK (Grade <= 100.00),
        Attempt TINYINT,
-       CONSTRAINT [UQ_studentgrades] UNIQUE CLUSTERED
-       (
-           StudentId, CourseId, Grade, Attempt
-       )
-   )
+       CONSTRAINT [UQ_studentgrades]
+           UNIQUE CLUSTERED (StudentId, CourseId, Grade, Attempt)
+   );
    ```
 
-   :::image type="content" source="media\design-first-database-tutorial\create-tables.png" alt-text="Screenshot from SSMS showing the create tables script has been successfully executed." lightbox="media\design-first-database-tutorial\create-tables.png":::
+   :::image type="content" source="media/design-first-database-tutorial/create-tables.png" alt-text="Screenshot from SSMS showing the create tables script has been successfully executed." lightbox="media/design-first-database-tutorial/create-tables.png":::
 
 1. Expand the **Tables** node under *yourDatabase* in the **Object Explorer** to see the four new tables you created.
 
@@ -204,7 +201,7 @@ The following diagram shows how these tables are related to each other. Some of 
 
 1. Execute the following `bcp` commands to insert sample data into the tables replacing the values for *server*, *database*, *user*, and *password* with the values for your environment.
 
-   ```cmd
+   ```console
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
    bcp Person in SamplePersonData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
    bcp Student in SampleStudentData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
@@ -221,29 +218,40 @@ This first query joins all four tables to find the students taught by 'Dominick 
 
    ```sql
    -- Find the students taught by Dominick Pope who have a grade higher than 75%
-   SELECT  person.FirstName, person.LastName, course.Name, credit.Grade
-   FROM  Person AS person
-       INNER JOIN Student AS student ON person.PersonId = student.PersonId
-       INNER JOIN Credit AS credit ON student.StudentId = credit.StudentId
-       INNER JOIN Course AS course ON credit.CourseId = course.courseId
+   SELECT person.FirstName,
+          person.LastName,
+          course.Name,
+          credit.Grade
+   FROM Person AS person
+        INNER JOIN Student AS student
+            ON person.PersonId = student.PersonId
+        INNER JOIN Credit AS credit
+            ON student.StudentId = credit.StudentId
+        INNER JOIN Course AS course
+            ON credit.CourseId = course.courseId
    WHERE course.Teacher = 'Dominick Pope'
-       AND Grade > 75;
+         AND Grade > 75;
    ```
 
 This query joins all four tables and finds the courses in which 'Noe Coleman' has ever enrolled. In a query window, execute the following T-SQL query:
 
    ```sql
    -- Find all the courses in which Noe Coleman has ever enrolled
-   SELECT  course.Name, course.Teacher, credit.Grade
-   FROM  Course AS course
-       INNER JOIN Credit AS credit ON credit.CourseId = course.CourseId
-       INNER JOIN Student AS student ON student.StudentId = credit.StudentId
-       INNER JOIN Person AS person ON person.PersonId = student.PersonId
+   SELECT course.Name,
+          course.Teacher,
+          credit.Grade
+   FROM Course AS course
+        INNER JOIN Credit AS credit
+            ON credit.CourseId = course.CourseId
+        INNER JOIN Student AS student
+            ON student.StudentId = credit.StudentId
+        INNER JOIN Person AS person
+            ON person.PersonId = student.PersonId
    WHERE person.FirstName = 'Noe'
-       AND person.LastName = 'Coleman';
+         AND person.LastName = 'Coleman';
    ```
 
-> [!TIP]
+> [!TIP]  
 > To learn more about writing SQL queries, visit [Tutorial: Write Transact-SQL statements](/sql/t-sql/tutorial-writing-transact-sql-statements).
 
 ## Next step
@@ -257,6 +265,4 @@ This query joins all four tables and finds the courses in which 'Noe Coleman' ha
 - [What's new in Azure SQL Database?](doc-changes-updates-release-notes-whats-new.md)
 - [Configure and manage content reference - Azure SQL Database](how-to-content-reference-guide.md)
 - [Plan and manage costs for Azure SQL Database](cost-management.md)
-
-> [!TIP]
-> **Ready to start developing an .NET application?** This free Learn module shows you how to [Develop and configure an ASP.NET application that queries an Azure SQL Database](/training/modules/develop-app-that-queries-azure-sql/), including the creation of a simple database.
+- [Develop and configure an ASP.NET application that queries an Azure SQL Database](/training/modules/develop-app-that-queries-azure-sql/)

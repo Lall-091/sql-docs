@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "11/16/2016"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dts.designer.toolboxfavorites.F1"
   - "sql13.dts.designer.toolbox.F1"

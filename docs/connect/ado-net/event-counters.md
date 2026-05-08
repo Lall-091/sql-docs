@@ -7,7 +7,7 @@ ms.reviewer: v-deshtehari
 ms.date: "05/31/2021"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 dev_langs:
   - "csharp"
 ---

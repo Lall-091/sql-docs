@@ -69,11 +69,6 @@ EXECUTE sp_execute_external_script
 
 For more information about the variable `sys.path` and how it's used to set the interpreter's search path for modules, see [The Module Search Path](https://docs.python.org/2/tutorial/modules.html#the-module-search-path).
 
-::: moniker range=">=sql-server-ver15||>=sql-server-linux-ver15||=azuresqldb-mi-current"
-> [!NOTE]
-> Don't try to install Python packages directly in the SQL package library using **pip** or similar methods. Instead, use **sqlmlutils** to install packages in a SQL instance. For more information, see [Install Python packages with sqlmlutils](install-additional-python-packages-on-sql-server.md).
-::: moniker-end
-
 ## Default Microsoft Python packages
 
 The following Microsoft Python packages are installed with SQL Server Machine Learning Services when you select the Python feature during setup.
@@ -155,7 +150,4 @@ print(sys.version)
 
 ::: moniker range="=sql-server-2017"
 + [Install packages with Python tools](install-python-packages-standard-tools.md)
-::: moniker-end
-::: moniker range=">=sql-server-ver15||>=sql-server-linux-ver15||=azuresqldb-mi-current"
-+ [Install new Python packages with sqlmlutils](install-additional-python-packages-on-sql-server.md)
 ::: moniker-end

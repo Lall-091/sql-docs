@@ -105,33 +105,33 @@
     - name: Overview
       href: user-interface-reference-oracletosql.md
     - name: Advanced object selection
-      href: advanced-object-selection-oracletosql.md
+      href: ../shared/advanced-object-selection.md
     - name: Assessment report
-      href: assessment-report-oracletosql.md
+      href: ../shared/assessment-report.md
     - name: Connect To Oracle
       href: connect-to-oracle-oracletosql.md
     - name: Connect to SQL Server
-      href: connect-to-sql-server-oracletosql.md
+      href: ../shared/connect-to-sql-server.md
     - name: Data migration report
-      href: data-migration-report-oracletosql.md
+      href: ../shared/data-migration-report.md
     - name: Data migration settings
-      href: data-migration-settings-oracletosql.md
+      href: ../shared/data-migration-settings.md
     - name: Edit type mapping
-      href: edit-type-mapping-oracletosql.md
+      href: ../shared/edit-type-mapping.md
     - name: Global settings
       items:
       - name: Tester
         href: global-settings-tester-oracletosql.md
       - name: Editor
-        href: global-settings-editor-oracletosql.md
+        href: ../shared/global-settings-editor.md
       - name: Logging
-        href: global-settings-logging-oracletosql.md
+        href: ../shared/global-settings-logging.md
       - name: Dialogs
-        href: global-settings-dialogs-oracletosql.md
+        href: ../shared/global-settings-dialogs.md
       - name: Output window
-        href: global-settings-output-window-oracletosql.md
+        href: ../shared/global-settings-output-window.md
     - name: New project
-      href: new-project-oracletosql.md
+      href: ../shared/new-project.md
     - name: Project settings
       items:
       - name: Conversion
@@ -139,20 +139,20 @@
       - name: Loading system objects
         href: project-settings-loading-system-objects-oracletosql.md
       - name: Synchronization
-        href: project-settings-synchronization-oracletosql.md
+        href: ../shared/project-settings-synchronization.md
       - name: GUI
-        href: project-settings-gui-oracletosql.md
+        href: ../shared/project-settings-gui.md
       - name: Type-mapping
         href: project-settings-type-mapping-oracletosql.md
       - name: Migration
         href: project-settings-migration-oracletosql.md
     - name: Refresh from database
-      href: refresh-from-database-oracletosql.md
+      href: ../shared/refresh-from-database.md
     - name: Save metadata
-      href: save-metadata-oracletosql.md
+      href: ../shared/save-metadata.md
   - name: Emulating Oracle package variables
     href: emulate-package-variables.md
   - name: Emulating records and collections via CLR UDT
     href: emulate-records-collections-via-clr.md
   - name: Menu commands & other shortcut keys
-    href: menu-commands-and-other-shortcut-keys-oracle-to-sql.md
+    href: ../shared/menu-commands-and-other-shortcut-keys.md

@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, vanto
 ms.date: 01/24/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # DNS alias for Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

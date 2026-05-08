@@ -4,7 +4,7 @@ description: SQL query and management tools for SQL Server, Azure SQL (Azure SQL
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: erinstellato, iqrashaikh, mbarickman, drskwier, roblescarlos
-ms.date: 10/28/2025
+ms.date: 03/09/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: overview
@@ -24,46 +24,9 @@ To manage your database, you need a tool. Whether your databases run in the clou
 
 ## Free tools for your business case
 
-[!INCLUDE [msconame-md](../includes/msconame-md.md)] provides the following free tools and extensions to work with our [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)] products, based on your business role and function.
+[!INCLUDE [msconame-md](../includes/msconame-md.md)] provides the following free tools and extensions to work with our [[!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)]](../database-engine/sql-database-engine.md) products, based on your business role and function.
 
-### [Database administrator (DBA)](#tab/dba)
-
-The **database administrator (DBA)** manages backup and restore, performance tuning, security, and high availability.
-
-Recommended tools:
-
-- **[SQL Server Management Studio (SSMS)](#ssms)**: Full-featured management with a graphical user interface
-- **[sqlcmd](#sqlcmd)**: Lightweight command-line interface (CLI) for deployment and automation
-- **[MSSQL extension for Visual Studio Code](#mssql)**: Lightweight tasks and scripting
-- **[SQL Server Migration Assistant (SSMA)](#ssma)** Migrate to SQL Server and Azure SQL from Microsoft Access, Db2, MySQL, Oracle, and Sybase
-
-### [Developer](#tab/dev)
-
-The **database/application developer** writes Transact-SQL queries, debugs stored procedures, and integrates data access in applications.
-
-Recommended tools:
-
-- **[MSSQL extension for Visual Studio Code](#mssql)**: Connect, manage database schemas, and run queries directly in Visual Studio Code
-- **[SQL Server Management Studio (SSMS)](#ssms)**: Create objects, run queries, and perform lightweight tasks
-- **[SQL Server Data Tools (SSDT)](#ssdt)** for Visual Studio: Schema and project-based development
-- **[.NET libraries](/azure/azure-sql/database/connect-query-dotnet-core)**: Programmatic access using libraries such as `Microsoft.Data.SqlClient`
-
-### [Data analyst](#tab/analyst)
-
-The **data analyst** runs queries, and generates reports.
-
-- **[SQL Server Management Studio (SSMS)](#ssms)**: Run queries and perform lightweight tasks
-- **[sqlcmd](#sqlcmd)**: Lightweight CLI for automation
-- **[MSSQL extension for Visual Studio Code](#mssql)**: Lightweight tasks and scripting
-
-### [Data engineer](#tab/engineer)
-
-The **data engineer** manages extract-transform-load (ETL) or extract-load-transform (ELT) pipelines, bulk data imports, and data flows.
-
-- **[bcp](#bcp)**: Bulk copy data
-- **[SqlPackage](#sqlpackage)**: Deploy DACPACs
-
----
+[!INCLUDE [tools](../includes/tools.md)]
 
 ## Description and use case examples
 
@@ -71,10 +34,11 @@ The following table lists available tools and extensions.
 
 | Tool | Description | Operating system | Feedback |
 | --- | --- | --- | --- |
-| **Graphical&nbsp;tools** | | | |
-| <a id="ssms"></a> **[SQL Server Management Studio (SSMS)](/ssms/install/install)** | Manage SQL Server and Azure SQL databases with full GUI support. Access, configure, manage, administer, and develop all components of the SQL Database Engine on-premises and the cloud, including Azure Synapse Analytics and SQL database for Microsoft Fabric. SSMS is a comprehensive application that combines a broad group of graphical tools and a rich script editor to provide access to SQL for database administrators and developers of all skill levels. | Windows only | [Feedback](https://aka.ms/ssms-feedback) |
+| **Graphical&nbsp;tools** | | | 
+| <a id="ssms"></a> **[SQL Server Management Studio (SSMS)](/ssms/install/install)** | Manage SQL Server and Azure SQL databases with full GUI support. Access, configure, manage, administer, and develop all components of the [SQL Database Engine](../database-engine/sql-database-engine.md) on-premises and the cloud, including Azure Synapse Analytics and SQL database for Microsoft Fabric. SSMS is a comprehensive application that combines a broad group of graphical tools and a rich script editor to provide access to SQL for database administrators and developers of all skill levels. | Windows only | [Feedback](https://aka.ms/ssms-feedback) |
 | <a id="ssdt"></a> **[SQL Server Data Tools (SSDT)](../ssdt/download-sql-server-data-tools-ssdt.md)** | A modern development tool for building SQL Server relational databases, Azure SQL databases, Analysis Services (AS) data models, Integration Services (IS) packages, and Reporting Services (RS) reports. With SQL Server Data tools (SSDT), you can design and deploy any SQL Server content type with the same ease as you would develop an application in **[Visual Studio](https://visualstudio.microsoft.com/downloads/)**. | Windows only | [Feedback](https://aka.ms/vs-feedback) |
 | <a id="mssql"></a> **[MSSQL extension for Visual Studio Code](visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)** | The official SQL Server extension that supports connections to SQL Server and Azure SQL, and a rich editing experience for Transact-SQL (T-SQL). Write T-SQL scripts in a lightweight editor. | Windows, macOS, Linux | [Feedback](https://github.com/microsoft/vscode-mssql) |
+| <a id="projects"></a> **[SQL Database Projects extension for Visual Studio Code](visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)** | Manage and develop databases as projects in source control in Visual Studio Code. The SQL Database Projects extension uses the [DacFx (Data-Tier Application Framework) package](/sql/tools/sqlpackage/sqlpackage) to build and publish database projects, compare schemas, script changes, and extract or deploy `.dacpac` files. | Windows, macOS, Linux | [Feedback](https://github.com/microsoft/vscode-mssql) |
 | <a id="ads"></a> **[Azure Data Studio](/azure-data-studio/download-azure-data-studio)** | **Azure Data Studio is retiring on February 28, 2026.** | Windows, macOS, Linux | |
 | **Command-line&nbsp;utilities** | | | |
 | <a id="bcp"></a> **[bcp utility](bcp-utility.md)** | The **b**ulk **c**opy **p**rogram utility (**bcp**) bulk copies data between an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and a data file in a user-specified format. | Windows, macOS, Linux | |
@@ -107,7 +71,7 @@ These tools are available for Windows only.
 - [Feedback: sql-action GitHub action](https://github.com/azure/sql-action)
 - [Roadmap: MSSQL extension in Visual Studio Code](https://github.com/microsoft/vscode-mssql/wiki/roadmap)
 - [Roadmap: SQL Server Management Studio](/ssms/roadmap)
-- [What's happening to Azure Data Studio?](/azure-data-studio/whats-happening-azure-data-studio)
+- [What's happening with Azure Data Studio](whats-happening-azure-data-studio.md)
 
 ## Additional tools
 

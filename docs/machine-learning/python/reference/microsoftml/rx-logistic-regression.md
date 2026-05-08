@@ -371,10 +371,10 @@ when `train_threads > 1` (multi-threading).
 
 ## References
 
-[Wikipedia: L-BFGS](https://en.wikipedia.org/wiki/L-BFGS)
+[Wikipedia: L-BFGS](https://wikipedia.org/wiki/L-BFGS)
 
 [Wikipedia: Logistic
-regression](https://en.wikipedia.org/wiki/Logistic_regression)
+regression](https://wikipedia.org/wiki/Logistic_regression)
 
 [Scalable
 Training of L1-Regularized Log-Linear Models](https://research.microsoft.com/apps/pubs/default.aspx?id=78900)

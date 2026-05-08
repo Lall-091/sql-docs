@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: "03/16/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sfi-ropc-nochange
   - ignite-2025

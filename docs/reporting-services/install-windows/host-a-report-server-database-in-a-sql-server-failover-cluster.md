@@ -4,7 +4,7 @@ description: "Host a report server database in a SQL Server failover cluster"
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

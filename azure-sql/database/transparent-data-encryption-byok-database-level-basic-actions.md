@@ -5,7 +5,7 @@ description: A how-to guide on creating, updating, and utilizing database level 
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 09/18/2025
+ms.date: 03/10/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -89,10 +89,10 @@ The following are examples for creating a database on Azure SQL Database with a 
 # [Portal](#tab/azure-portal)
 
 1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/transparent-data-encryption-byok-database-level-basic-actions/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/transparent-data-encryption-byok-database-level-basic-actions/show-options-create-sql-database.png":::
+   :::image type="content" source="media/transparent-data-encryption-byok-database-level-basic-actions/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/transparent-data-encryption-byok-database-level-basic-actions/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**, **Resource group**, and **Server** for your database. Then, use a unique name for your **Database name**. If you haven't created a logical server for Azure SQL Database, see [Create server configured with TDE with cross-tenant customer-managed key (CMK)](transparent-data-encryption-byok-create-server-cross-tenant.md#create-server-configured-with-tde-with-cross-tenant-customer-managed-key-cmk) for reference.
 
@@ -261,15 +261,20 @@ This following are examples of updating an existing database on Azure SQL Databa
 
 # [Portal](#tab/azure-portal)
 
-1. In the [Azure portal](https://portal.azure.com), navigate to the **SQL database** resource that you want to update with a database level customer-managed key.
-
-1. Under **Security**, select **Identity**. Add a **User assigned managed identity** for this database, and then select **Save**
-
-1. Now go to the **Data Encryption** menu under **Security** for your database. Select **Database level customer managed key (CMK)**. The **Database Identity** for the database should already be **Enabled** as you have configured the identity in the last step.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **SQL database** resource that you want to update with a database level customer-managed key.
+1. In the resource menu, under **Security**, select **Identity**. 
+1. Under **User assigned managed identity**, select **Add**. 
+1. In the **Select user assigned managed identity** pane, select the approrpriate managed identity.
+1. Select **Add**. 
+1. Select **Save**.
+1. In the resource menu, under **Security**, select **Data Encryption**. 
+1. For **Transparent data encryption**, select the button for **Database level customer managed key (CMK)**. The **Database Identity** for the database should already be **Enabled** as you have configured the identity in the last step.
 
 1. Select **Change key**. Select the desired **Subscription**, **Key vault**, **Key**, and **Version** for the customer-managed key to be used for TDE. Select the **Select** button. After you have selected a key, you can also add additional database keys as needed using the [Azure Key vault URI (object identifier)](/azure/key-vault/general/about-keys-secrets-certificates) in the **Data Encryption** menu.
 
-   Select the **Auto-rotate key** checkbox if you want to enable [automatic key rotation](transparent-data-encryption-byok-key-rotation.md#automatic-key-rotation) on the database level.
+1. Select the **Auto-rotate key** checkbox if you want to enable [automatic key rotation](transparent-data-encryption-byok-key-rotation.md#automatic-key-rotation) on the database level.
 
    :::image type="content" source="media/transparent-data-encryption-byok-database-level-basic-actions/configure-transparent-data-encryption-existing-database.png" alt-text="Screenshot of the Azure portal transparent data encryption menu when updating an existing database.":::
 

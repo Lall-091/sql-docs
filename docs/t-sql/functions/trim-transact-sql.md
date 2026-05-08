@@ -23,6 +23,12 @@ monikerRange: "=azure-sqldw-latest || =azuresqldb-current || >=sql-server-2017 |
 
 [!INCLUDE [sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
+::: moniker range="=azure-sqldw-latest"
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
+::: moniker-end
+
 Removes the space character `char(32)` or other specified characters from the start and end of a string.
 
 Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], optionally removes the space character `char(32)` or other specified characters from the start, end, or both sides of a string.
@@ -183,5 +189,4 @@ abc
 - [RTRIM (Transact-SQL)](rtrim-transact-sql.md)
 - [STRING_SPLIT (Transact-SQL)](string-split-transact-sql.md)
 - [SUBSTRING (Transact-SQL)](substring-transact-sql.md)
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 

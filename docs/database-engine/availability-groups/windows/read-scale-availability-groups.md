@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/17/2023
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Use read-scale with Always On availability groups
 

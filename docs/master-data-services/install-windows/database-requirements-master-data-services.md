@@ -1,13 +1,13 @@
 ---
 title: Database Requirements
 description: Use Master Data Services Configuration Manager to create and configure the Master Data Services database, which stores all master data.
-author: CordeliaGrey
-ms.author: jiwang6
+author: meetdeepak
+ms.author: dkhare
 ms.reviewer: mikeray
-ms.date: 09/08/2025
+ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: checklist
 ms.custom:
   - build-2025
 ---

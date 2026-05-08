@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "12/13/2019"
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "FileTables [SQL Server], database objects"
 ---

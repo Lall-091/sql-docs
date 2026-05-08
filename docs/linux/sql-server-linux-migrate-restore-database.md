@@ -3,8 +3,7 @@ title: Migrate SQL Server Database from Windows to Linux
 description: This tutorial shows how to take a SQL Server database backup on Windows and restore it to a Linux machine running SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: upgrade-and-migration-article
@@ -21,8 +20,8 @@ SQL Server's backup and restore feature is the recommended way to migrate a data
 
 > [!div class="checklist"]
 > - Create a backup file on Windows with SSMS
-> - Install a bash shell on Windows
-> - Move the backup file to Linux from the bash shell
+> - Install a Bash shell on Windows
+> - Move the backup file to Linux from the Bash shell
 > - Restore the backup file on Linux with Transact-SQL
 > - Run a query to verify the migration
 
@@ -39,6 +38,9 @@ The following prerequisites are required to complete this tutorial:
 
 - On a Linux machine:
   - [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] ([Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md), [SUSE Linux Enterprise Server](quickstart-install-connect-suse.md), or [Ubuntu](quickstart-install-connect-ubuntu.md)) with command-line tools.
+
+  > [!NOTE]  
+  > Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 ## Create a backup on Windows
 
@@ -67,14 +69,14 @@ BACKUP DATABASE [YourDB]
 GO
 ```
 
-## Install a bash shell on Windows
+## Install a Bash shell on Windows
 
-To restore the database, you must first transfer the backup file from the Windows machine to the target Linux machine. In this tutorial, we move the file to Linux from a bash shell (terminal window) running on Windows.
+To restore the database, you must first transfer the backup file from the Windows machine to the target Linux machine. In this tutorial, we move the file to Linux from a Bash shell (terminal window) running on Windows.
 
-1. Install a bash shell on your Windows machine that supports the **scp** (secure copy) and **ssh** (remote sign in) commands. Two examples include:
+1. Install a Bash shell on your Windows machine that supports the **scp** (secure copy) and **ssh** (remote sign in) commands. Two examples include:
 
-   - The [Windows Subsystem for Linux](/windows/wsl/about) (Windows 10)
-   - The Git bash shell ([https://git-scm.com/downloads](https://git-scm.com/downloads))
+   - The [Windows Subsystem for Linux](/windows/wsl/about)
+   - The [Git Bash shell](https://git-scm.com/install/windows)
 
 1. Open a bash session on Windows.
 
@@ -148,9 +150,9 @@ At this point, the backup file is on your Linux server in your user's home direc
 
 To restore the database backup, you can use the `RESTORE DATABASE` Transact-SQL (TQL) command.
 
-The following steps use the **sqlcmd** tool. If you haven't installed [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] tools, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md).
+The following steps use the **`sqlcmd`** tool. If you haven't installed [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] tools, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md).
 
-1. In the same terminal, launch **sqlcmd**. The following example connects to the local [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance with the `sa` account. Enter the password when prompted, or specify the password by adding the `-P` parameter.
+1. In the same terminal, launch **`sqlcmd`**. The following example connects to the local [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance with the `sa` account. Enter the password when prompted, or specify the password by adding the `-P` parameter.
 
    ```bash
    sqlcmd -S localhost -U sa
@@ -224,7 +226,7 @@ The following steps use the **sqlcmd** tool. If you haven't installed [!INCLUDE 
    GO
    ```
 
-1. When you're done using **sqlcmd**, type `exit`.
+1. When you're done using **`sqlcmd`**, type `exit`.
 
 1. When you're done working in the remote **ssh** session, type `exit` again.
 
@@ -238,7 +240,7 @@ In this tutorial, you learned how to back up a database on Windows and move it t
 > - Use **scp** to move backup files from Windows to Linux
 > - Use **ssh** to remotely connect to your Linux machine
 > - Relocate the backup file to prepare for restore
-> - Use **sqlcmd** to run Transact-SQL commands
+> - Use **`sqlcmd`** to run Transact-SQL commands
 > - Restore the database backup with the `RESTORE DATABASE` command
 > - Run the query to verify the migration
 

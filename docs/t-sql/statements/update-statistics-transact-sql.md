@@ -148,7 +148,7 @@ Update each statistic using its most recent sample rate.
 
 Using `RESAMPLE` can result in a full-table scan. For example, statistics for indexes use a full-table scan for their sample rate. When none of the sample options (`SAMPLE`, `FULLSCAN`, `RESAMPLE`) are specified, the query optimizer samples the data and computes the sample size by default.
 
-In [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], `RESAMPLE` isn't supported.
+In [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], `RESAMPLE` isn't supported.
 
 #### PERSIST_SAMPLE_PERCENT = { ON | OFF }
 

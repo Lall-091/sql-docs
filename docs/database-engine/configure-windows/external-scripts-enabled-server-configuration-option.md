@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: machine-learning-services
-ms.topic: reference
+ms.topic: how-to
 f1_keywords:
   - "external scripts enabled"
   - "external_scripts_enabled_TSQL"

@@ -1,9 +1,9 @@
 ---
 title: APPROX_PERCENTILE_DISC (Transact-SQL)
 description: A function that returns the value from the set of values in a group based on the provided percentile and sort specification.
-author: blakhani-msft
-ms.author: blakhani
-ms.reviewer: maghan
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: randolphwest
 ms.date: 12/06/2023
 ms.service: sql
 ms.subservice: t-sql

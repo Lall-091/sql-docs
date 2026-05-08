@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "simultaneous connections [SQL Server]"
   - "user connections option [SQL Server]"
@@ -42,18 +42,6 @@ Execute permissions on `sp_configure` with no parameters or with only the first 
 ## Use SQL Server Management Studio
 
 1. In Object Explorer, right-click a server and select **Properties**.
-
-1. Select the **Connections** node.
-
-1. Under **Connections**, in the **Max number of concurrent connections** box, type or select a value from `0` through `32767` to set the maximum number of users that are allowed to connect simultaneously to the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
-
-1. Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
-
-<a id="SSMSProcedure"></a>
-
-## Use Azure Data Studio
-
-1. In the Connections pane under servers, right-click a server and Select **Properties**.
 
 1. Select the **Connections** node.
 

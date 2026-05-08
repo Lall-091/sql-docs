@@ -6,7 +6,7 @@ ms.author: roblescarlos
 ms.reviewer: mathoma
 ms.date: 08/21/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "change data"
   - "change data capture, query function scenarios"

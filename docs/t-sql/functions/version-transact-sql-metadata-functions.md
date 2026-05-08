@@ -1,6 +1,6 @@
 ---
 title: "VERSION (Transact-SQL)"
-description: "Version - Transact SQL Metadata functions"
+description: "Version - Transact-SQL Metadata functions"
 author: MikeRayMSFT
 ms.author: mikeray
 ms.date: "06/10/2016"
@@ -11,7 +11,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">= aps-pdw-2016 || = azure-sqldw-latest"
 ---
-# Version - Transact SQL Metadata functions
+# Version - Transact-SQL Metadata functions
 [!INCLUDE[applies-to-version/asa-pdw](../../includes/applies-to-version/asa-pdw.md)]
 
  Returns the version of [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] or [!INCLUDE[ssPDW_md](../../includes/sspdw-md.md)] running on the appliance.  

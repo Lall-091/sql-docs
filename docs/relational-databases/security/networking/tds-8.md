@@ -4,10 +4,10 @@ description: This article discusses TDS 8.0, the application layer protocol used
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest, jaferebe, jopilov
-ms.date: 11/21/2025
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 ai-usage: ai-assisted
@@ -50,7 +50,7 @@ TCP handshake :arrow_right: TLS handshake :arrow_right: TDS prelogin (encrypted)
 
 You can enable both TLS 1.2 and TLS 1.3 versions at the OS level, which allows client connections to SQL Server to use multiple TDS protocol versions (TDS 7.x and 8.0). Depending on the OS version, TLS 1.2 and TLS 1.3 might be enabled by default. 
 
-Only TDS 7.x supports non-encrypted (optional) communication, TDS 8.0 doesn’t support this. TDS 7.x supports encryption using TLS up to version 1.2. TDS 8.0 requires encryption – everything is always encrypted with TDS 8.0 (Encrypt=Strict). TDS 8.0 has no minimum TLS version requirement and supports TLS 1.3.
+Only TDS 7.x supports non-encrypted (optional) communication, TDS 8.0 doesn't support this. TDS 7.x supports encryption using TLS up to version 1.2. TDS 8.0 requires encryption – everything is always encrypted with TDS 8.0 (Encrypt=Strict). TDS 8.0 has no minimum TLS version requirement and supports TLS 1.3.
 TLS 1.3 support is dependent on the operating system version. The following table summarizes various scenarios with the encryption options and the corresponding TLS and TDS versions.
 
 
@@ -82,7 +82,7 @@ For more information on how clients use different TDS versions, see the keywords
 - [SQL VSS Writer](../../../database-engine/configure-windows/sql-writer-service.md)
 - [SQL CEIP service](../../../sql-server/usage-and-diagnostic-data-configuration-for-sql-server.md)
 - [Database Mail](../../database-mail/database-mail.md)
-- [Polybase](../../polybase/polybase-guide.md#sql-server-2025-polybase-enhancements)
+- [Polybase](../../polybase/overview.md#sql-server-2025-polybase-enhancements)
 - [Always On availability groups](connect-with-strict-encryption.md#connect-to-an-always-on-availability-group)
 - [Always On failover cluster instance (FCI)](connect-with-strict-encryption.md#connect-to-a-failover-cluster-instance)
 - [Linked servers](../../linked-servers/linked-servers-database-engine.md#sql-server-2025-and-msoledbsql-version-19)<sup>1</sup>
@@ -102,7 +102,7 @@ To use TDS 8.0, [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] added `
 - [Microsoft OLE DB Driver for SQL Server](../../../connect/oledb/download-oledb-driver-for-sql-server.md) version 19.2.0 or higher
 - [Microsoft JDBC Driver for SQL Server](../../../connect/jdbc/microsoft-jdbc-driver-for-sql-server.md) version 11.2.0 or higher
 - [Microsoft Drivers for PHP for SQL Server](../../../connect/php/microsoft-php-driver-for-sql-server.md) version 5.10 or higher
-- [Python SQL Driver - pyodbc](../../../connect/python/pyodbc/python-sql-driver-pyodbc.md)
+- [Python SQL Driver - mssql-python](../../../connect/python/mssql-python/python-sql-driver-mssql-python.md)
 
 In order to prevent a man-in-the-middle attack with `strict` connection encryption, users can't set the `TrustServerCertificate` option to `true` and allow any certificate the server provided. Instead, users would use the `HostNameInCertificate` option to specify the certificate `ServerName` that should be trusted. The certificate supplied by the server would need to pass the certificate validation. For more information on certificate validation, see [Certificate requirements for SQL Server](../../../database-engine/configure-windows/certificate-requirements.md)
 
@@ -119,4 +119,3 @@ The following options are added to connection strings to encrypt communication:
 ## Related content
 
 - [Connect to SQL Server with strict encryption](connect-with-strict-encryption.md)
-

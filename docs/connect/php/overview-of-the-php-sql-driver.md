@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "03/27/2018"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: overview
 ---
 # Overview of the Microsoft Drivers for PHP for SQL Server
 

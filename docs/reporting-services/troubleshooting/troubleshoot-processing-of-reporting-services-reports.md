@@ -4,7 +4,7 @@ description: In this article, troubleshoot issues occurring when the report proc
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ms.custom:
   - updatefrequency5
 ---

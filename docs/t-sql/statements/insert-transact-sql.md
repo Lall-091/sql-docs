@@ -38,7 +38,13 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 Adds one or more rows to a table or a view in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For examples, see [Examples](#InsertExamples).  
   
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
-  
+
+::: moniker range="=azure-sqldw-latest"
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
+::: moniker-end
+
 ## Syntax  
   
 Syntax for SQL Server and Azure SQL Database and Fabric SQL database
@@ -321,9 +327,9 @@ Minimal logging for this statement has the following requirements:
   
 Rows that are inserted into a heap as the result of an insert action in a MERGE statement may also be minimally logged.  
   
-Unlike the `BULK INSERT` statement, which holds a less restrictive Bulk Update (BU) lock, `INSERT INTO … SELECT` with the `TABLOCK` hint holds an exclusive (X) lock on the table. This means that you cannot insert rows using multiple insert operations executing simultaneously. 
+Unlike the `BULK INSERT` statement, which holds a less restrictive Bulk Update (BU) lock, `INSERT INTO ... SELECT` with the `TABLOCK` hint holds an exclusive (X) lock on the table. This means that you cannot insert rows using multiple insert operations executing simultaneously. 
 
-However, starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)] and database compatibility level 130, a single `INSERT INTO … SELECT` statement can be executed in parallel when inserting into heaps or clustered columnstore indexes (CCI). Parallel inserts are possible when using the `TABLOCK` hint.  
+However, starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)] and database compatibility level 130, a single `INSERT INTO ... SELECT` statement can be executed in parallel when inserting into heaps or clustered columnstore indexes (CCI). Parallel inserts are possible when using the `TABLOCK` hint.  
 
 Parallelism for the statement above has the following requirements, which are similar to the requirements for minimal logging:  
 -   The target table is an empty or non-empty heap.  
@@ -335,7 +341,7 @@ For scenarios where requirements for minimal logging and parallel insert are met
 
 ::: moniker range="=fabric"
 
-For more information on using INSERT on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql).
+For more information on using INSERT on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], see [Ingest data into your Warehouse using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql).
 
 ::: moniker-end
 
@@ -796,7 +802,7 @@ GO
 ```  
   
 #### P. Inserting into an external table created using PolyBase  
- Export data from SQL Server to Hadoop or Azure Storage. First, create an external table that points to the destination file or directory. Then, use INSERT INTO to export data from a local SQL Server table to an external data source. The INSERT INTO statement creates the destination file or directory if it does not exist and the results of the SELECT statement are exported to the specified location in the specified file format.  For more information, see [Get started with PolyBase](../../relational-databases/polybase/polybase-guide.md).  
+ Export data from SQL Server to Hadoop or Azure Storage. First, create an external table that points to the destination file or directory. Then, use INSERT INTO to export data from a local SQL Server table to an external data source. The INSERT INTO statement creates the destination file or directory if it does not exist and the results of the SELECT statement are exported to the specified location in the specified file format.  For more information, see [Get started with PolyBase](../../relational-databases/polybase/overview.md).  
   
 **Applies to**: [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)].  
   

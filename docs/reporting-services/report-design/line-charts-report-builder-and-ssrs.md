@@ -4,7 +4,7 @@ description: Use line charts in a paginated report to represent large amounts of
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

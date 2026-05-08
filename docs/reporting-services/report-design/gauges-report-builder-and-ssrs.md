@@ -4,7 +4,7 @@ description: Display key performance indicators in a paginated report to illustr
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 f1_keywords:

@@ -22,7 +22,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
   
 ## Create the Azure Blob Storage container
 
-The process requires an Azure account. If you already have an account, go to the next step. Otherwise, you can get started with a [free trial](https://azure.microsoft.com/pricing/free-trial/) or explore [purchase options](https://azure.microsoft.com/pricing/purchase-options/).
+The process requires an Azure account. If you already have an account, go to the next step. Otherwise, you can get started with a [free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) or explore [purchase options](https://azure.microsoft.com/pricing/purchase-options/).
 
 For more information about storage accounts, see [About Azure Storage Accounts](/azure/storage/common/storage-account-create). 
 

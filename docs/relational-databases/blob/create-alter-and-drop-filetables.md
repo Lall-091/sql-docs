@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "FileTables [SQL Server], altering"
   - "FileTables [SQL Server], dropping"

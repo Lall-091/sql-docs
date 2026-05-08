@@ -4,7 +4,7 @@ description: This tutorial walks you through creating Microsoft Entra users with
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma
-ms.date: 09/18/2025
+ms.date: 04/10/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: tutorial
@@ -19,11 +19,11 @@ ms.custom:
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-This article explains how to configure a service principal so it can create Microsoft Entra users in Azure SQL Database. This capability enables programmatic configuration of access management to Azure SQL resources for users and applications in your Microsoft Entra tenant.
+This article explains how to configure a service principal so it can create Microsoft Entra users in Azure SQL Database. This capability lets you programmatically manage access to Azure SQL resources for users and applications in your Microsoft Entra tenant.
 
 [!INCLUDE [entra-id](../includes/entra-id.md)]
 
-For more information on Microsoft Entra authentication for Azure SQL, see the article [Use Microsoft Entra authentication](authentication-aad-overview.md).
+For more information on Microsoft Entra authentication for Azure SQL, see [Use Microsoft Entra authentication](authentication-aad-overview.md).
 
 In this tutorial, you learn how to:
 
@@ -36,7 +36,7 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-- An existing [Azure SQL Database](single-database-create-quickstart.md) deployment. We assume you have a working SQL Database for this tutorial.
+- An existing [Azure SQL Database](single-database-create-quickstart.md) deployment. This tutorial assumes you have a working SQL Database.
 - Microsoft Entra `Privileged Role Administrator` permissions in the tenant where your SQL database resides.
 - The latest version of the [Az.Sql](https://www.powershellgallery.com/packages/Az.Sql/) PowerShell module.
 - The latest version of the [Microsoft.Graph](https://www.powershellgallery.com/packages/Microsoft.Graph) PowerShell module.
@@ -70,13 +70,16 @@ In this tutorial, you learn how to:
    $xyz.identity
    ```
 
-   Your output should show you `PrincipalId`, `Type`, and `TenantId`. The identity assigned is the `PrincipalId`.
+   Your output shows `PrincipalId`, `Type`, and `TenantId`. The identity assigned is the `PrincipalId`.
 
 1. You can also check the identity by going to the [Azure portal](https://portal.azure.com).
 
    - In the **Microsoft Entra ID** resource, go to **Enterprise applications**. Type in the name of your logical server. The **Object ID** that appears on the resource is the ID of the primary server identity.
 
    :::image type="content" source="media/authentication-aad-service-principals-tutorial/enterprise-applications-object-id.png" alt-text="Screenshot shows where to find the Object ID for an enterprise application.":::
+
+> [!TIP]
+> As an alternative to a system-assigned managed identity, you can use a **user-assigned managed identity**. A user-assigned managed identity can be shared across multiple logical servers, which reduces the number of identities to manage and simplifies role assignments. For more information, see [User-assigned managed identity in Microsoft Entra ID for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md).
 
 ## Add server identity to Directory Readers role
 
@@ -190,7 +193,7 @@ Connect to your SQL Database using a Microsoft Entra identity that has permissio
    GO
    ```
 
-1. In order to create other Microsoft Entra users, at minimum, the `ALTER ANY USER` SQL permission is required. This permission is also inherited through membership in `db_owner`, and through assignment as the Microsoft Entra admin. The following examples demonstrate three different options to assign permissions to *DBOwnerApp* that allow it to create other Microsoft Entra users in the database.
+1. To create other Microsoft Entra users, at minimum, the `ALTER ANY USER` SQL permission is required. This permission is also inherited through membership in `db_owner`, and through assignment as the Microsoft Entra admin. The following examples demonstrate three different options to assign permissions to *DBOwnerApp* that allow it to create other Microsoft Entra users in the database.
 
    You can add *DBOwnerApp* to the `db_owner` role with [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql):
 
@@ -206,7 +209,7 @@ Connect to your SQL Database using a Microsoft Entra identity that has permissio
    GO
    ```
 
-   You can set the *DBOwnerApp* as the Microsoft Entra admin. This can be done using the Azure portal, PowerShell, or Azure CLI commands. For more information, see [Set Microsoft Entra admin](authentication-aad-configure.md#azure-sql-database-and-azure-synapse-analytics).
+   You can set the *DBOwnerApp* as the Microsoft Entra admin. Use the Azure portal, PowerShell, or Azure CLI commands. For more information, see [Set Microsoft Entra admin](authentication-aad-configure.md#azure-sql-database-and-azure-synapse-analytics).
 
 <a id="create-an-azure-ad-user-in-sql-database-using-an-azure-ad-service-principal"></a>
 
@@ -219,6 +222,9 @@ Connect to your SQL Database using a Microsoft Entra identity that has permissio
    - Replace `<ClientSecret>` with your client secret created earlier.
    - Replace `<ServerName>` with your logical server name. If your server name is `myserver.database.windows.net`, replace `<ServerName>` with `myserver`.
    - Replace `<database name>` with your SQL Database name.
+
+   > [!NOTE]
+   > The following script requires the **Microsoft.Data.SqlClient** assembly. Install it from the [NuGet package](https://www.nuget.org/packages/Microsoft.Data.SqlClient) and load the DLL with `Add-Type -Path "path\to\Microsoft.Data.SqlClient.dll"` before running the script.
 
    ```powershell
    # PowerShell script for creating a new SQL user called myapp using application DBOwnerApp with secret
@@ -242,7 +248,7 @@ Connect to your SQL Database using a Microsoft Entra identity that has permissio
    $DatabaseName = "<database name>"   # Azure SQL database name
 
    Write-Host "Create SQL connection string"
-   $conn = New-Object System.Data.SqlClient.SQLConnection
+   $conn = New-Object Microsoft.Data.SqlClient.SqlConnection
    $conn.ConnectionString = "Data Source=$SQLServerName.database.windows.net;Initial Catalog=$DatabaseName;Connect Timeout=30"
    $conn.AccessToken = $Tok
 
@@ -252,14 +258,14 @@ Connect to your SQL Database using a Microsoft Entra identity that has permissio
    Write-host " "
    Write-host "SQL DDL command"
    $ddlstmt
-   $command = New-Object -TypeName System.Data.SqlClient.SqlCommand($ddlstmt, $conn)
+   $command = New-Object -TypeName Microsoft.Data.SqlClient.SqlCommand($ddlstmt, $conn)
 
    Write-host "results"
    $command.ExecuteNonQuery()
    $conn.Close()
    ```
 
-   Alternatively, you can use the following code: [Microsoft Entra service principal authentication to Azure SQL Database](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467). Modify the script to execute the DDL statement `CREATE USER [myapp] FROM EXTERNAL PROVIDER`. The same script can be used to create a Microsoft Entra user or group in your database.
+   Alternatively, you can use the following code: [Microsoft Entra service principal authentication to Azure SQL Database](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467). Modify the script to execute the DDL statement `CREATE USER [myapp] FROM EXTERNAL PROVIDER`. Use the same script to create a Microsoft Entra user or group in your database.
 
 1. Check if the user *myapp* exists in the database by executing the following command:
 

@@ -4,7 +4,8 @@ description: Learn how to manage configuration options for SQL Server enabled by
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 07/03/2025
+ms.date: 04/01/2026
+ai-usage: ai-assisted
 ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
@@ -87,6 +88,9 @@ There are two ways to configure the SQL Server host in the Azure portal:
 
 Choose one of the license types. For descriptions, see [License types](manage-license-billing.md#license-types).
 
+> [!NOTE]
+> On Linux, certain configuration features aren't available, including passive instance detection and connected user verification. When you configure PAYG billing on Linux, all instances are billed as active regardless of their HA/DR role. For details, see [Manage licensing and billing](manage-license-billing.md).
+
 <a id="use-physical-core-license"></a>
 
 #### Use a physical core license
@@ -99,6 +103,8 @@ Select the **Use physical core license** checkbox if you're configuring a virtua
 <a id="subscribe-esu"></a>
 
 #### Subscribe to Extended Security Updates
+
+[!INCLUDE [2016-esu](../../includes/2016-esu.md)]
 
 You can subscribe to Extended Security Updates (ESUs) for the individual host. To qualify for an ESU subscription, the host must have **License type** set to **Pay-as-you-go** or **License with Software Assurance**. This option allows you to subscribe by using vCPUs (v-cores) when the host is a virtual machine, or by using physical cores when the host is a physical server that runs without using virtual machines.
 
@@ -301,7 +307,7 @@ For more examples of Azure Resource Graph queries, see [Starter Resource Graph q
 
 #### List Azure Arc-enabled SQL Server instances subscribed to ESUs
 
-The following example shows how you can view all eligible [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] or [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] instances and their ESU subscription status:
+The following example shows how you can view all eligible [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] instances and their ESU subscription status:
 
 ```kusto
 resources
@@ -309,7 +315,7 @@ resources
 | extend Version = properties.version
 | extend Edition = properties.edition
 | extend containerId = tolower(tostring (properties.containerResourceId))
-| where Version in ("SQL Server 2012", "SQL Server 2014")
+| where Version in ("SQL Server 2014")
 | where Edition in ("Enterprise", "Standard")
 | where isnotempty(containerId)
 | project containerId, SQL_instance = name, Version, Edition
@@ -574,7 +580,7 @@ resources
 
 ## Manage the unlimited virtualization benefit for a SQL Server ESU subscription
 
-To enable unlimited virtualization for an ESU subscription, SQL Server enabled by Azure Arc supports a special resource type: *SQLServerEsuLicense*. You can use this resource to enable an ESU subscription for a set of physical hosts with an unlimited number of virtual machines running the out-of-support SQL Server instances. For details about the licensing model, see [Subscribe to SQL Server ESUs by using physical cores with unlimited virtualization](extended-security-updates.md#unlimited-virtualization).
+To enable unlimited virtualization for an ESU subscription, SQL Server enabled by Azure Arc supports a special resource type: *SqlServerEsuLicenses*. You can use this resource to enable an ESU subscription for a set of physical hosts with an unlimited number of virtual machines running the out-of-support SQL Server instances. For details about the licensing model, see [Subscribe to SQL Server ESUs by using physical cores with unlimited virtualization](extended-security-updates.md#unlimited-virtualization).
 
 ### Prerequisites
 

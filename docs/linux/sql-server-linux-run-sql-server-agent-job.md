@@ -3,7 +3,7 @@ title: Create and Run Jobs for SQL Server on Linux
 description: Learn how to create a SQL Server Agent job on Linux using both Transact-SQL and SQL Server Management Studio (SSMS).
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -31,9 +31,12 @@ The following prerequisites are required to complete this tutorial:
 
 - Linux machine with the following prerequisites:
 
-  - [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
+  - [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md)
   - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
   - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md) with command-line tools.
+
+  > [!NOTE]  
+  > Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 The following prerequisites are optional:
 
@@ -65,7 +68,7 @@ Use the following steps to create a sample database named `SampleDB`. This datab
 
 1. On your Linux machine, open a bash terminal session.
 
-1. Use **sqlcmd** to run a Transact-SQL `CREATE DATABASE` command.
+1. Use **`sqlcmd`** to run a Transact-SQL `CREATE DATABASE` command.
 
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -Q 'CREATE DATABASE SampleDB'
@@ -173,9 +176,9 @@ You can also create and manage jobs remotely using SQL Server Management Studio 
 
 1. Specify what subsystem you want to use and what the job step should do.
 
-   :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-4.png" alt-text="Screenshot showing job subsystem." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-4.png":::
+   :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-4.png" alt-text="Screenshot of the New Job dialog box in SSMS, showing the Steps page with the New button highlighted to create a job step." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-4.png":::
 
-   :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-5.png" alt-text="Screenshot showing job step action." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-5.png":::
+   :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-5.png" alt-text="Screenshot of the New Job Step dialog box showing a T-SQL BACKUP DATABASE command for SampleDB with the OK button highlighted." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-5.png":::
 
 1. Create a new job schedule.
 

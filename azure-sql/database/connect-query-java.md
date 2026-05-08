@@ -1,10 +1,10 @@
 ---
 title: Use Java and JDBC with Azure SQL Database
 description: Learn how to use Java and JDBC with an Azure SQL Database.
-author: jdubois
-ms.author: judubois
+author: WilliamDAssafMSFT
+ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 06/13/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: quickstart
@@ -20,13 +20,13 @@ monikerRange: "=azuresql || =azuresql-db"
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-This article demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure SQL Database](/azure/sql-database/).
+This article demonstrates creating a sample application that uses Java and [JDBC](https://wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure SQL Database](/azure/sql-database/).
 
 JDBC is the standard Java API to connect to traditional relational databases.
 
 ## Prerequisites
 
-- An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Azure Cloud Shell](/azure/cloud-shell/quickstart) or [Azure CLI](/cli/azure/install-azure-cli). We recommend Azure Cloud Shell so you'll be logged in automatically and have access to all the tools you'll need.
 - A supported [Java Development Kit](/azure/developer/java/fundamentals/java-support-on-azure), version 8 (included in Azure Cloud Shell).
 - The [Apache Maven](https://maven.apache.org/) build tool.
@@ -81,7 +81,9 @@ az sql server create \
     | jq
 ```
 
-This command creates the logical server for your database. 
+This command creates the logical server for your database.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)] 
 
 ### Configure a firewall rule for your server
 

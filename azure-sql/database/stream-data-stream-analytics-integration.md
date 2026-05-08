@@ -35,7 +35,7 @@ In the Azure portal, you can select an events source (Event Hub/IoT Hub), view i
 
 To complete the steps in this article, you need the following resources:
 
-- An Azure subscription. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An Azure subscription. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A database in Azure SQL Database. For details, see [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md).
 - A firewall rule allowing your computer to connect to the server. For details, see [Quickstart: Create a server-level firewall rule in Azure portal](firewall-create-server-level-portal-quickstart.md).
 

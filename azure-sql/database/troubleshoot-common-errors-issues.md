@@ -5,7 +5,8 @@ description: Provides steps to troubleshoot connection issues and resolve other 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sureshka, mathoma, vanto
-ms.date: 06/16/2025
+ms.date: 04/28/2026
+ai-usage: ai-assisted
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: troubleshooting
@@ -39,6 +40,110 @@ As always, apply best practices and design guidelines during the [application de
 1. As a best practice, [cloud-connected applications must use retry logic](#implementing-retry-logic).
 
 If these steps don't resolve your problem, try to collect more data and then contact support. If your application is a cloud service, enable logging. This step returns a UTC time stamp of the failure. For more information about how to enable logging, see [Enable diagnostics logging for apps in Azure App Service](/azure/app-service/troubleshoot-diagnostic-logs). Additionally, SQL Database returns the tracing ID. [Microsoft Customer Support Services](https://azure.microsoft.com/support/options/) can use this information.
+
+## Connectivity failures caused by custom DNS or hosts file overrides
+
+If your application has persistent login failures (errors 18456, 40532, or 40615) that are isolated to specific client networks while the Azure SQL service is healthy, the cause might be a custom DNS configuration that pins the server FQDN to an outdated Azure SQL gateway IP.
+
+### Why this happens
+
+Azure SQL Database uses a fleet of regional gateways. Azure periodically retires and replaces gateways as part of normal operations, including hardware refresh, scaling, and health-driven migration. The Azure-authoritative DNS for `<server>.database.windows.net` updates automatically to reflect the current active gateways.
+
+When your environment overrides this DNS resolution (through a hosts file entry, a static CNAME record, or a private DNS zone that maps the server FQDN to a specific IP), the client is pinned to that IP. If the gateway at that IP is later retired or reassigned, connections go to the wrong endpoint. The Azure SQL gateway validates the incoming FQDN against the target server, and a mismatch causes login failures.
+
+> [!IMPORTANT]
+> Login attempts that go directly to an IP address (or to a stale IP through a DNS override) fail by design. The Azure SQL gateway requires the correct FQDN to route connections to the intended server.
+
+### Detect a DNS override
+
+Run the following checks from the affected client.
+
+1. Check the local hosts file for overrides:
+
+   ```cmd
+   :: Windows
+   type C:\Windows\System32\drivers\etc\hosts | findstr /i "database.windows.net"
+   ```
+
+   ```bash
+   # Linux or macOS
+   grep -i "database.windows.net" /etc/hosts
+   ```
+
+1. Compare client DNS resolution with Azure-authoritative DNS:
+
+   ```cmd
+   :: Client or recursive resolver
+   nslookup <server>.database.windows.net
+
+   :: Authoritative public DNS
+   nslookup <server>.database.windows.net 208.67.222.222
+   ```
+
+   ```powershell
+   # PowerShell
+   Resolve-DnsName -Name "<server>.database.windows.net" -DnsOnly
+   ```
+
+   If the client resolver returns a different IP than the authoritative DNS, a DNS override is active.
+
+1. Check for CNAME or private DNS zone overrides:
+
+   ```cmd
+   nslookup -type=CNAME <server>.database.windows.net
+   ```
+
+   ```azurecli
+   az network private-dns record-set list \
+     --resource-group <ResourceGroup> \
+     --zone-name database.windows.net \
+     --output table
+   ```
+
+### Fix the override
+
+1. Remove the override. Delete the hosts file entry, remove the static CNAME record, or delete the private DNS zone record that pins the server FQDN to a specific IP.
+1. Flush DNS caches on the client and any intermediate resolvers:
+
+   ```cmd
+   :: Windows
+   ipconfig /flushdns
+   ```
+
+   ```bash
+   # Linux (systemd-resolved)
+   sudo systemd-resolve --flush-caches
+
+   # macOS
+   sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+   ```
+
+1. Validate that DNS now resolves to the current Azure gateway:
+
+   ```cmd
+   nslookup <server>.database.windows.net
+   ```
+
+   Confirm the returned IP falls within the published gateway IP ranges for your server's region. For the list, see the **Gateway IP addresses** section in [Connectivity architecture](connectivity-architecture.md#gateway-ip-addresses).
+
+1. Re-test connectivity by using the [Azure SQL Connectivity Checker](https://github.com/Azure/SQL-Connectivity-Checker) or [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms).
+
+### Prevent this issue
+
+- Never pin Azure SQL server FQDNs to specific IP addresses in hosts files, static CNAME records, or private DNS zones. Azure SQL gateways are dynamic and change over time.
+- If you use firewall allow-lists based on gateway IPs, allow all gateway IP ranges for your region rather than individual IPs. Where possible, use the `Sql.<region>` service tag.
+- For private connectivity, use [Azure Private Link or private endpoints](private-endpoint-overview.md) instead of DNS overrides. Private endpoints provide stable private IPs within your virtual network and route directly to the gateway.
+- Subscribe to Service Health alerts for Azure SQL Database to receive notifications about gateway migrations in your region.
+
+### Quick reference
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| Login failures (18456, 40532, 40615) isolated to specific client networks while service health is normal | A hosts file or static CNAME pins the FQDN to a retired or wrong gateway IP | Remove the override, flush DNS, verify resolution, and re-test. |
+| `nslookup` returns an IP that isn't in the published gateway ranges for the region | A DNS override (hosts file, CNAME, or private DNS zone) is active | Remove the override entry and flush DNS caches. |
+| Connections work from some networks but fail from others | Only the network with the override is pinned to the stale IP | Compare DNS resolution on failing and working networks, and remove the override on the failing network. |
+| Connection fails after an Azure gateway migration notification | A static DNS mapping still points to the decommissioned gateway | Remove the static mapping and allow all gateway IP ranges for the region. |
+| `Cannot open server` or `server not found` after no configuration changes | Gateway rotation retired the IP that was hardcoded in DNS | Remove the DNS override and use dynamic Azure-authoritative resolution. |
 
 <a id="implementing-retry-logic"></a>
 
@@ -190,6 +295,89 @@ For more information, see [Authorize database access](logins-create-manage.md).
 These exceptions can occur either because of connection or query issues. To confirm that connectivity issues have caused this error, see [Confirm whether an error is caused by a connectivity issue](#confirm-whether-an-error-is-caused-by-a-connectivity-issue).
 
 Connection timeouts occur because the application can't connect to the server. To resolve this issue, try the steps (in the order presented) in the [Steps to fix common connection issues](#steps-to-fix-common-connection-issues) section.
+
+## Troubleshoot Private Endpoint connectivity failures
+
+Connections to Azure SQL Database through a private endpoint can fail with connection timeouts or pre-login handshake errors. Work through the following steps in order. Each step resolves a distinct failure mode.
+
+### Step 1: Verify the private endpoint and DNS resolution
+
+Confirm the private endpoint is provisioned and that DNS resolves to the private IP.
+
+| Check | How |
+| --- | --- |
+| Private endpoint connection state is **Approved** | In the Azure portal, go to your SQL server, then **Networking** > **Private access**. |
+| Private IP is allocated | Open the private endpoint resource and note the IP on the **Overview** page (for example, `10.0.1.4`). |
+| DNS resolves to the private IP | Run `nslookup <server>.database.windows.net`. The result must follow the CNAME chain to `<server>.privatelink.database.windows.net` and resolve to the private IP. If you see the public IP instead, check the `privatelink.database.windows.net` private DNS zone or your conditional-forwarding rules. |
+
+### Step 2: Add a server-level firewall rule for your egress IP
+
+Even with a private endpoint, Azure SQL Database still enforces server-level IP firewall rules against the source IP that the gateway sees.
+
+1. Identify your egress IP. For on-premises traffic routed through a VPN gateway or ExpressRoute, the egress IP is typically the gateway or NAT private IP inside the virtual network. From within Azure, it's the VM's private IP or a load-balancer frontend IP.
+1. Add a server-level firewall rule for that IP or subnet:
+
+   ```sql
+   EXECUTE sp_set_firewall_rule
+       @name = N'AllowPrivateEndpointSubnet',
+       @start_ip_address = '10.0.1.0',
+       @end_ip_address = '10.0.1.255';
+   ```
+
+> [!NOTE]
+> The **Allow Azure services and resources to access this server** toggle doesn't cover traffic that arrives from your own virtual network through a private endpoint. You must add an explicit rule.
+
+### Step 3: Open the correct ports on edge or on-premises firewalls
+
+Required ports depend on the connection policy:
+
+| Connection policy | Ports to allow | Notes |
+| --- | --- | --- |
+| **Redirect** (default inside Azure) | `1433`-`65535` (inbound to private endpoint VNet and outbound from client VNet) | After the initial handshake on `1433`, the client is redirected to a port in the higher range. If the higher ports are blocked, the handshake succeeds and then times out on the redirect. |
+| **Proxy** (default outside Azure) | `1433` only | All traffic flows through the gateway on port `1433`. Firewall rules are simpler, but latency is higher. |
+| **Default** | Follows the rules above | Inside Azure, the connection policy is **Redirect**. Outside Azure, it's **Proxy**. |
+
+If a connection succeeds from inside the virtual network but fails from on-premises, the on-premises firewall is likely blocking the higher ports of the `1433`-`65535` range. Either open that port range, or change the server's connection policy to **Proxy**. For more information, see [Use Redirect connection policy with private endpoints](private-endpoint-overview.md#use-redirect-connection-policy-with-private-endpoints).
+
+### Step 4: Verify symmetric routing for UDR, NVA, and NAT scenarios
+
+If traffic to the SQL private endpoint passes through a network virtual appliance (NVA), Azure Firewall, or NAT gateway, return traffic must follow the same path. Asymmetric routing causes TCP resets or silent drops.
+
+Key facts:
+
+- Azure creates a `/32` system route for every private endpoint IP (for example, `10.0.1.4/32` with the next hop type `InterfaceEndpoints`). A user-defined route (UDR) can only override this system route with an equal or more specific prefix (another `/32`).
+- If you route outbound traffic to an NVA, the NVA must apply source network address translation (SNAT) so that return packets come back to the NVA instead of going directly to the client. Without SNAT, the return path is asymmetric.
+- Private endpoint network policies (NSG and UDR support on the private endpoint subnet) are disabled by default. To apply NSG or UDR rules to private endpoint traffic, enable network policies on the subnet:
+
+  ```azurecli
+  az network vnet subnet update \
+    --name <SubnetName> \
+    --vnet-name <VNetName> \
+    --resource-group <ResourceGroup> \
+    --private-endpoint-network-policies Enabled
+  ```
+
+If a connection works without an NVA but times out when routed through one, the `/32` system route is sending return traffic directly to the client and bypassing the NVA state table. Add a `/32` UDR for the private endpoint IP that points to the NVA, and enable SNAT on the NVA.
+
+### Step 5: Use Network Watcher to confirm end-to-end connectivity
+
+If the previous steps look correct but connections still fail, use [Azure Network Watcher](/azure/network-watcher/) to isolate the failure:
+
+| Tool | What it tells you |
+| --- | --- |
+| Connection troubleshoot | Tests TCP connectivity from a VM to `<server>.database.windows.net:1433` and reports where the connection fails (NSG, route, or DNS). |
+| Next hop | Shows which route table entry a packet to the private endpoint IP follows. Confirms whether the `/32` system route or your UDR is in effect. |
+| Effective routes | Displays the merged route table for the VM NIC, including the system routes for private endpoints (next hop type `InterfaceEndpoints`). |
+
+### Quick reference
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| `nslookup` returns the public IP | DNS zone or conditional forwarding is misconfigured | Create or link the `privatelink.database.windows.net` private DNS zone, and verify your conditional forwarder. |
+| `Cannot open server` "not found or not accessible" | A server-level firewall rule is missing for the egress IP | Add a firewall rule for the source IP with `sp_set_firewall_rule` or in the portal. |
+| Handshake succeeds, then times out | Redirect higher ports (above `1433`, up to `65535`) are blocked by an on-premises firewall | Open the full `1433`-`65535` range, or switch the connection policy to **Proxy**. |
+| Connection works without an NVA but times out with one | Asymmetric routing. The NVA isn't using SNAT, or a `/32` UDR override is missing | Add a `/32` UDR pointing to the NVA, enable SNAT on the NVA, and enable private endpoint network policies. |
+| Intermittent TCP resets | An NSG on the private endpoint subnet blocks return traffic, or private endpoint network policies aren't enabled | Enable private endpoint network policies and review NSG rules. |
 
 ## Network connection termination errors
 

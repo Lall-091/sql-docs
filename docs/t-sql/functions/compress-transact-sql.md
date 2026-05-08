@@ -109,6 +109,5 @@ WHERE datemodified < @startOfYear;
 
 ## Related content
 
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 - [DECOMPRESS (Transact-SQL)](decompress-transact-sql.md)
 

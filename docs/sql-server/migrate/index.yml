@@ -2,16 +2,16 @@
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
 
 title: SQL Server migration documentation
-summary: Technical documentation to help you migrate to SQL Server on-premises and in the cloud.  
+summary: Technical documentation to help you migrate to SQL Server on-premises and in the cloud.
 
 metadata:
-  title: SQL Server migration documentation 
-  description: Choose the SQL Server migration path you're interested in. 
+  title: SQL Server migration documentation
+  description: Choose the SQL Server migration path you're interested in.
   ms.service: sql
   ms.topic: landing-page
   author: rwestMSFT
   ms.author: randolphwest
-  ms.date: 01/15/2024
+  ms.date: 04/27/2026
   ms.reviewer: rajpo, randolphwest
 
 landingContent:
@@ -21,12 +21,37 @@ landingContent:
       links:
       - text: SQL Server migration component in SQL Server Management Studio
         url: /ssms/migrate-sql-server-component
+      - text: Upgrade to the latest version of SQL Server
+        url: guides/sql-server-to-sql-server-upgrade-guide.md
 
-  - title: Non-SQL to SQL & Azure
+  - title: SQL Server to Azure SQL
     linkLists:
     - linkListType: overview
       links:
-      - text: SQL Server Migration Assistant (SSMA) 
+      - text: SQL Server migration in Azure Arc
+        url: /sql/sql-server/azure-arc/migration-overview
+      - text: Azure Database Migration Guides
+        url: /data-migration/
+      - text: Migrating SQL Server Workloads FAQ
+        url: /azure/azure-sql/migration-guides/modernization
+    - linkListType: how-to-guide
+      links:
+      - text: Migrate to Azure SQL Managed Instance
+        url: /data-migration/sql-server/managed-instance/overview
+      - text: Migrate to SQL Server on Azure VMs
+        url: /data-migration/sql-server/virtual-machines/overview
+      - text: Migrate to Azure SQL Database
+        url: /data-migration/sql-server/database/overview
+    - linkListType: deploy
+      links:
+      - text: Azure Database Migration Service
+        url: /data-migration/sql-server/database/database-migration-service
+
+  - title: Non-SQL to SQL Server
+    linkLists:
+    - linkListType: overview
+      links:
+      - text: SQL Server Migration Assistant (SSMA)
         url: ../../ssma/sql-server-migration-assistant.md
     - linkListType: get-started
       links:
@@ -36,64 +61,37 @@ landingContent:
         url: ../../ssma/access/sql-server-migration-assistant-for-access-accesstosql.md
       - text: From DB2
         url: ../../ssma/db2/migrating-db2-data-into-sql-server-db2tosql.md
-      - text: From mySQL
+      - text: From MySQL
         url: ../../ssma/mysql/sql-server-migration-assistant-for-mysql-mysqltosql.md
       - text: From Sybase
         url: ../../ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql.md
-
-  - title: SQL Server to Azure SQL
-    linkLists:
-    - linkListType: overview
-      links:
-      - text: Migrating SQL Server Workloads FAQ
-        url: /azure/azure-sql/migration-guides/modernization
-      - text: Azure SQL Database
-        url: /azure/sql-database/sql-database-technical-overview
-      - text: Azure SQL Server virtual machine
-        url: /azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview
-    - linkListType: deploy
-      links:        
-      - text: Database Migration Service (DMS)
-        url: /azure/dms/
-    - linkListType: concept
-      links:
-      - text: Broader migration process
-        url: /azure/cloud-adoption-framework/migrate/expanded-scope/sql-migration
 
   - title: Resources
     linkLists:
     - linkListType: overview
       links:
-      - text: SQL Server Migration Center
-        url: https://azure.microsoft.com/migration/sql-server/
       - text: Database migration guide
         url: /data-migration/
-      - text: Azure Migration Service
-        url: https://azure.microsoft.com/services/azure-migrate/
+      - text: Azure Migrate
+        url: /azure/migrate/how-to-create-azure-sql-assessment
+      - text: Compare SQL data migration tools
+        url: /sql/sql-server/migrate/dma-azure-migrate-compare-migration-tools
       - text: Data migration blog
         url: https://techcommunity.microsoft.com/t5/Microsoft-Data-Migration/bg-p/MicrosoftDataMigration
-      - text: Modernizing SQL Server (SQL Pass)
-        url: https://www.youtube.com/watch?v=5RPkuQHcxxs
     - linkListType: download
       links:
       - text: Microsoft Assessment and Planning (MAP) toolkit
         url: https://www.microsoft.com/download/details.aspx?id=7826
 
-  - title: End of support 
+  - title: End of support
     linkLists:
     - linkListType: overview
       links:
       - text: End of support options
         url: ../end-of-support/sql-server-end-of-support-overview.md
-      - text: SQL Server 2012
-        url: /azure/azure-sql/virtual-machines/windows/sql-server-extend-end-of-support
-      - text: Extended Support Updates (ESUs) 
+      - text: Extended Support Updates (ESUs)
         url: ../end-of-support/sql-server-extended-security-updates.md
       - text: ESU frequently asked questions
         url: ../end-of-support/extended-security-updates-frequently-asked-questions.md
       - text: Free ESUs with Azure VM
         url: /azure/azure-sql/virtual-machines/windows/sql-server-extend-end-of-support
-    - linkListType: download
-      links: 
-      - text: Extended security updates datasheet PDF
-        url: http://download.microsoft.com/download/A/3/F/A3F0908A-0FD8-494C-82BC-E75F313F3FAD/Extended_Security_Updates_for_Windows_Server_2008_and_SQL_Server_2008_End_of_Service.pdf

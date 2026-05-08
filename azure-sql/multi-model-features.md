@@ -3,11 +3,11 @@ title: Multi-model capabilities
 description: Microsoft Azure SQL enables you to work with multiple data models in the same database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: mathoma, urmilano, damauri
-ms.date: 11/06/2024
+ms.reviewer: mathoma, urmilano
+ms.date: 03/09/2026
 ms.service: azure-sql
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=2
   - ignite-2024
@@ -113,7 +113,7 @@ Spatial features in Azure SQL enable you to store geometrical and geographical d
 
 ## Key-value pairs
 
-Azure SQL products don't have specialized types or structures that support key-value pairs, because key-value structures can be natively represented as standard relational tables:
+Azure SQL products don't have specialized types or structures that support key-value pairs, because [key-value structures can be natively represented](https://devblogs.microsoft.com/azure-sql/azure-sql-database-as-a-key-value-store/) as standard relational tables:
 
 ```sql
 CREATE TABLE Collection (
@@ -129,6 +129,20 @@ You can customize this key-value structure to fit your needs without any constra
 
 For an example of how a relational model can be effectively used as a key-value pair solution in practice, see [How bwin is using SQL Server 2016 In-Memory OLTP to achieve unprecedented performance and scale](/archive/blogs/sqlcat/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale). In this case study, bwin used a relational model for its ASP.NET caching solution to achieve 1.2 million batches per second.
 
+## Vector
+
+Azure SQL products support the **vector** data type and vector functions underlying [modern AI applications](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications). The SQL Database Engine can store and query both structured and unstructured data, and perform vector search on that data. Vector search enables approximate nearest neighbor search using [vectors and vector indexes](/sql/sql-server/ai/vectors). 
+
+Vectors are ordered arrays of numbers (typically floating point values) that represent information about some data. For example, an image can be represented as a vector of pixel values, or a string of text can be represented as a vector of ASCII values. The process to turn data into a vector is called vectorization. The **[vector](/sql/t-sql/data-types/vector-data-type)** data type in SQL Server can store these arrays of numbers efficiently.
+
+*Embeddings* are vectors that represent important features of data. Embeddings are often learned by using a deep learning model, and machine learning and AI models utilize them as features. Embeddings can also capture semantic similarity between concepts. For example, in generating an embedding for the words `person` and `human`, we expect their embeddings (vector representation) to be similar in value since the words are also semantically similar. Once embeddings are generated, they can be stored in a SQL Server database. This allows you to store the embeddings alongside the data they represent, and to perform vector search queries to find similar data points.
+
+Azure OpenAI features models to create embeddings from text data. The service breaks text out into tokens and generates embeddings using models pretrained by OpenAI. To learn more, see [Creating embeddings with Azure OpenAI](/azure/ai-services/openai/concepts/understand-embeddings).
+
+For more information, see:
+- [Vector functions](/sql/t-sql/functions/vector-functions-transact-sql)
+- [Azure SQL Database Vector Search Samples on GitHub](https://github.com/Azure-Samples/azure-sql-db-vector-search)
+
 ## Next steps
 
 Multi-model capabilities are core SQL Server database engine features that are shared among Azure SQL products. To learn more about these features, see these articles:
@@ -138,3 +152,4 @@ Multi-model capabilities are core SQL Server database engine features that are s
 - [Spatial data in SQL Server](/sql/relational-databases/spatial/spatial-data-sql-server)
 - [XML data in SQL Server](/sql/relational-databases/xml/xml-data-sql-server)
 - [Key-value store performance in Azure SQL Database](https://devblogs.microsoft.com/azure-sql/azure-sql-database-as-a-key-value-store/)
+- [Vectors and vector indexes](/sql/sql-server/ai/vectors)

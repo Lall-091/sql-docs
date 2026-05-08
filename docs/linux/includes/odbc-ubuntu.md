@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/12/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.topic: include
 ms.custom:
@@ -11,7 +11,7 @@ ms.custom:
 
 Use the following steps to install the **mssql-tools18** on Ubuntu.
 
-- Ubuntu 24.04 is supported in preview starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+- Ubuntu 24.04 is supported starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] CU 1.
 - Ubuntu 22.04 is supported starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 10.
 - Ubuntu 20.04 is supported starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 10.
 - Ubuntu 18.04 is supported starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 3.
@@ -27,7 +27,7 @@ Use the following steps to install the **mssql-tools18** on Ubuntu.
 1. Import the public repository GPG keys.
 
    ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+   curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc
    ```
 
 1. Register the Microsoft Ubuntu repository.
@@ -53,7 +53,7 @@ Use the following steps to install the **mssql-tools18** on Ubuntu.
 1. Import the public repository GPG keys.
 
    ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+   curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc
    ```
 
 1. Register the Microsoft Ubuntu repository.
@@ -79,7 +79,7 @@ Use the following steps to install the **mssql-tools18** on Ubuntu.
 1. Import the public repository GPG keys.
 
    ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+   curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc
    ```
 
 1. Register the Microsoft Ubuntu repository.
@@ -94,9 +94,9 @@ Use the following steps to install the **mssql-tools18** on Ubuntu.
    exit
    ```
 
-### [Ubuntu 24.04 (in preview)](#tab/odbc-ubuntu-2404)
+### [Ubuntu 24.04](#tab/odbc-ubuntu-2404)
 
-Use the following steps to install the **mssql-tools18** for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Ubuntu 24.04 in preview.
+Use the following steps to install the **mssql-tools18** for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Ubuntu 24.04.
 
 1. Enter superuser mode.
 
@@ -138,18 +138,18 @@ Use the following steps to install the **mssql-tools18** for [!INCLUDE [sssql25-
    sudo apt-get install mssql-tools18
    ```
 
-1. **Optional**: Add `/opt/mssql-tools18/bin/` to your `PATH` environment variable in a bash shell.
+1. **Optional**: Add `/opt/mssql-tools18/bin/` to your `PATH` environment variable in a Bash shell.
 
-   To make **sqlcmd** and **bcp** accessible from the bash shell for login sessions, modify your `PATH` in the `~/.bash_profile` file with the following command:
+   To make **`sqlcmd`** and **`bcp`** accessible from the Bash shell for login sessions, modify your `PATH` in the `~/.bash_profile` file with the following command:
 
-   ```php
+   ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bash_profile
    source ~/.bash_profile
    ```
 
-   To make **sqlcmd** and **bcp** accessible from the bash shell for interactive/non-login sessions, modify the `PATH` in the `~/.bashrc` file with the following command:
+   To make **`sqlcmd`** and **`bcp`** accessible from the Bash shell for interactive and non-login sessions, modify the `PATH` in the `~/.bashrc` file with the following command:
 
-   ```php
+   ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
    source ~/.bashrc
    ```

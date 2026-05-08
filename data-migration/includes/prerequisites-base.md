@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/10/2025
+ms.date: 02/19/2026
 ms.service: azure-database-migration-service
 ms.topic: include
 ---
@@ -48,6 +48,6 @@ ms.topic: include
 
 - If you use a self-hosted integration runtime, make sure that the computer on which the runtime is installed can connect to the source SQL Server instance and the network file share where backup files are located.
 
-- Enable outbound port 445 to allow access to the network file share. For more information, see [recommendations for using a self-hosted integration runtime](/azure/dms/migration-using-azure-data-studio#recommendations-for-using-a-self-hosted-integration-runtime-for-database-migrations).
+- Enable outbound port 445 to allow access to the network file share. For more information, see [Self-hosted integration runtime for database migrations](../sql-server/self-hosted-integration-runtime.md).
 
 - If you're using Azure DMS for the first time, make sure that the `Microsoft.DataMigration` [resource provider is registered in your subscription](/azure/dms/quickstart-create-data-migration-service-portal#register-the-resource-provider).

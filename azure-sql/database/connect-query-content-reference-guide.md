@@ -94,7 +94,7 @@ The following table lists connectivity libraries or *drivers* that client applic
 | **Java** | Windows, Linux, macOS | [Microsoft JDBC driver for SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [Download](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |
 | **Node.js** | Windows, Linux, macOS | [Node.js driver for SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server/) | [Install](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |
 | **PHP** | Windows, Linux, macOS | [Microsoft Drivers for PHP for SQL Server](/sql/connect/php/microsoft-php-driver-for-sql-server) | [Download](/sql/connect/php/download-drivers-php-sql-server) |
-| **Python** | Windows, Linux, macOS | [Python SQL driver](/sql/connect/python/python-driver-for-sql-server/) | Install choices:<br />- [pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/)<br />- [pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |
+| **Python** | Windows, Linux, macOS | [mssql-python](/sql/connect/python/mssql-python/python-sql-driver-mssql-python) | [Install](/sql/connect/python/mssql-python/python-sql-driver-mssql-python-quickstart#install-the-mssql-python-package) |
 | **Ruby** | Windows, Linux, macOS | [Ruby driver for SQL Server](/sql/connect/ruby/ruby-driver-for-sql-server/) | [Install](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) |
 
 ### Data-access frameworks

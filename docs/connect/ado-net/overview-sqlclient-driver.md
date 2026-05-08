@@ -7,7 +7,7 @@ ms.reviewer: v-kaywon
 ms.date: 06/15/2019
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: overview
 ---
 # Overview of the SqlClient driver
 

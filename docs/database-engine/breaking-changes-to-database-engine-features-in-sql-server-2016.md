@@ -8,7 +8,7 @@ ms.reviewer: randolphwest
 ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: release-notes
 helpviewer_keywords:
   - "Database Engine [SQL Server], what's new"
   - "breaking changes [SQL Server]"

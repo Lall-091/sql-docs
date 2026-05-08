@@ -1,4 +1,4 @@
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT pp.FirstName,
@@ -11,7 +11,7 @@ WHERE LastName = 'Johnson';
 GO
 
 -- Force a table scan by using INDEX = 0.
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT pp.LastName,

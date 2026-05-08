@@ -3,8 +3,8 @@ title: "Quickstart: Create Azure SQL Managed Instance"
 description: Create Azure SQL Managed Instance by using the Azure portal, PowerShell, and the Azure CLI.
 author: vladai78
 ms.author: vladiv
-ms.reviewer: mathoma
-ms.date: 10/25/2025
+ms.reviewer: mathoma, randolphwest
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -25,7 +25,7 @@ This quickstart teaches you to create a deployment of [Azure SQL Managed Instanc
 
 To create a SQL managed instance, you need the following prerequisites:
 
-- An Azure subscription. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount)
+- An Azure subscription. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 - In the general case, your user needs to have the role [SQL Managed Instance Contributor](/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) assigned at subscription scope.
 - If provisioning in a subnet that is already delegated to Azure SQL Managed Instance, your user only needs the Microsoft.Sql/managedInstances/write permission assigned at subscription scope.
 - The latest version of the [Az.SQL](https://www.powershellgallery.com/packages/Az.Sql) PowerShell module or the latest version of the [Azure CLI](/cli/azure/install-azure-cli-windows). 
@@ -53,16 +53,11 @@ To create your instance in the Azure portal, you'll first need to sign into the 
 
 To create your instance, follow these steps: 
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Managed Instance**, select **Show options**.
-1. In the **Azure SQL Managed Instance options** window, select **Create SQL Managed Instance**.
-
-   :::image type="content" source="media/instance-create-quickstart/show-options-create-sql-managed-instance.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="media/instance-create-quickstart/show-options-create-sql-managed-instance.png":::
+[!INCLUDE [create-sql-managed-instance](../includes/sql-managed-instance/create-sql-managed-instance.md)]
 
 ### Basics tab
 
-Fill out mandatory information required on the **Basics** tab, which is the minimum requirement to provision a SQL Managed Instance. 
+Fill out mandatory information required on the **Basics** tab, which is the minimum requirement to provision a SQL managed instance. 
 
 The following table provides details for the required information on the **Basics** tab: 
 
@@ -149,9 +144,7 @@ On the **Review + create** tab, review your choices, and then select **Create** 
 
 1. Select **Deployment in progress** in the notification to open the SQL Managed Instance window and further monitor the deployment progress. 
 
-Once deployment completes, navigate to your resource group to view your SQL managed instance: 
-
-   :::image type="content" source="./media/instance-create-quickstart/azure-sql-managed-instance-resources.png" alt-text="Screenshot of the SQL Managed Instance resources in the Azure portal.":::
+Once deployment completes, navigate to your [resource group](https://portal.azure.com/#servicemenu/Microsoft_Azure_Resources/ResourceManager/resourcegroups) to view your SQL managed instance. 
 
 > [!TIP]
 > If you closed your web browser or moved away from the deployment progress screen, you can [monitor the provisioning operation](management-operations-monitor.md#monitor-operations) via the **Overview** page for your SQL managed instance in the Azure portal, PowerShell, or the Azure CLI. 
@@ -258,16 +251,13 @@ To connect to SQL Managed Instance, follow these steps to retrieve the host name
 > [!div class="nextstepaction"]
 > [Connect your application to Azure SQL Managed Instance](connect-application-instance.md)
 
-
 ## Related content
 
 To restore an existing SQL Server database from on-premises to SQL Managed Instance: 
 
-- [Azure Database Migration Service](/azure/dms/tutorial-sql-server-managed-instance-online-ads)
+- [SQL Server migration experience in Azure Arc](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance)
 - [Quickstart: Restore a database to Azure SQL Managed Instance with SSMS](restore-sample-database-quickstart.md)
-
 - [Quickstart: Configure an Azure VM to connect to Azure SQL Managed Instance](connect-vm-instance-configure.md)
 - [Migration overview: SQL Server to SQL Managed Instance](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)
 - [Quickstart: Configure a point-to-site connection to Azure SQL Managed Instance from on-premises](point-to-site-p2s-configure.md)
 - [Monitor Azure SQL workloads with database watcher (preview)](../database-watcher-overview.md)
-

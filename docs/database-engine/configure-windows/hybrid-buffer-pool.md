@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Hybrid buffer pool
 

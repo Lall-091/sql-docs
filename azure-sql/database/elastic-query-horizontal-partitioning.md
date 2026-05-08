@@ -1,10 +1,10 @@
 ---
 title: Reporting Across Scaled-Out Cloud Databases
-description: how to set up elastic queries over horizontal partitions
+description: How to set up elastic queries over horizontal partitions.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: bgavrilovic, mathoma
-ms.date: 06/13/2025
+ms.date: 03/17/2026
 ms.service: azure-sql-database
 ms.subservice: scale-out
 ms.topic: how-to
@@ -13,8 +13,9 @@ ms.custom:
 monikerRange: "=azuresql || =azuresql-db"
 ---
 # Reporting across scaled-out cloud databases (preview)
-
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
 
 Sharded databases distribute rows across a scaled out data tier. The schema is identical on all participating databases, also known as horizontal partitioning. Using an elastic query, you can create reports that span all databases in a sharded database.
 

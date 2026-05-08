@@ -4,7 +4,7 @@ description: Learn about feature availability by region for Azure SQL Managed In
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: 
-ms.date: 05/05/2025
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.topic: concept-article
 ms.custom:
@@ -65,6 +65,7 @@ Supports for the memory-optimized premium-series hardware and the premium-series
 - China North 3
 - India Central
 - Japan East
+- Japan West
 
 <sup>1</sup> The creation of new instances and modification of existing instances may be temporarily disabled due to limited hardware capacity in this region. To proceed with these actions, please select a different hardware generation. 
 
@@ -83,31 +84,6 @@ Supports for the memory-optimized premium-series hardware and the premium-series
 
 ---
 
-## Free offer
-
-The [free offer](free-offer.md) is available in the following regions:
-
-#### [Americas](#tab/americas)
-
-- East US
-- East US 2
-- South Central US
-- West US 2
-- West US 3
-
-#### [Asia Pacific](#tab/asia)
-
-- Southeast Asia
-- Australia East
-
-#### [Europe, the Middle East, and Africa](#tab/emea)
-
-- North Europe
-- West Europe
-- Sweden Central
-- UK South
-
----
 
 ## Service endpoint policy
 
@@ -123,51 +99,65 @@ The [free offer](free-offer.md) is available in the following regions:
 
 Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Instance other than the default is available in all regions.
 
-## Zone redundancy 
+## Zone redundancy
 
-[Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) is available in the following regions: 
+[Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) is supported in the following regions: 
 
-#### [Americas](#tab/americas)
+#### [Americas](#tab/americas1)
 
 - Brazil South
 - Canada Central
-- Mexico Central
-- Spain Central
+- Central US
+- Chile Central
 - East US
 - East US 2
-- Central US
+- Mexico Central
+- North Central US
+- South Central US
 - West US 2 
 - West US 3
 
-#### [Asia Pacific](#tab/asia)
+#### [Asia Pacific](#tab/asia1)
 
-- East Asia
-- Southeast Asia
 - Australia East
-- Central India
-- Korea Central
+- Australia Southeast
+- East Asia
+- India Central
+- Indonesia Central
 - Japan East
 - Japan West
+- Korea Central
+- Malaysia West
+- New Zealand North
+- Southeast Asia
 
-#### [Europe, the Middle East, and Africa](#tab/emea)
+#### [Europe, the Middle East, and Africa](#tab/emea1)
 
-- North Europe
-- West Europe
 - France Central
 - Germany West Central
-- Italy North
 - Israel Central
-- New Zealand North
+- Italy North
+- North Europe
 - Norway East
 - Poland Central
 - Qatar Central
 - South Africa North
-- Switzerland North
+- Spain Central
 - Sweden Central
+- Switzerland North
 - UAE North
 - UK South
+- West Europe
+
+#### [Azure Government](#tab/azgov1)
+
+- USGov Arizona
+- USGov Virginia
 
 ---
+
+> [!NOTE]
+> Zone redundant deployments to create a new instance or modify an existing instance in a supported region might be temporarily disabled due to limited hardware capacity. Consider using an alternative hardware generation or an alternative Azure region which satisfies your data residency requirements.
 
 ## Database watcher
 

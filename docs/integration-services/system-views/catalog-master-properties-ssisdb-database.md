@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "12/16/2016"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # catalog.master_properties (SSISDB Database)
 

@@ -60,7 +60,7 @@ This tutorial demonstrates how to move and restore a [!INCLUDE [ssnoversion-md](
 
 This section provides deployment options for your environment.
 
-**sqlcmd** doesn't currently support the `MSSQL_PID` parameter when creating containers. If you use the **sqlcmd** instructions in this tutorial, you create a container with the Developer edition of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Use the command line interface (CLI) instructions to create a container using the license of your choice. For more information, see [Deploy and connect to SQL Server Linux containers](sql-server-linux-docker-container-deployment.md).
+**`sqlcmd`** doesn't currently support the `MSSQL_PID` parameter when creating containers. If you use the **`sqlcmd`** instructions in this tutorial, you create a container with the Developer edition of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Use the command line interface (CLI) instructions to create a container using the license of your choice. For more information, see [Deploy and connect to SQL Server Linux containers](sql-server-linux-docker-container-deployment.md).
 
 ## [CLI](#tab/cli)
 
@@ -272,12 +272,12 @@ This tutorial uses the [Wide World Importers sample databases for Microsoft SQL]
 
 ### Restore the database
 
-The backup file is now located inside the container. Before restoring the backup, it's important to know the logical file names and file types inside the backup. The following Transact-SQL commands inspect the backup and perform the restore using **sqlcmd** in the container.
+The backup file is now located inside the container. Before restoring the backup, it's important to know the logical file names and file types inside the backup. The following Transact-SQL commands inspect the backup and perform the restore using **`sqlcmd`** in the container.
 
 > [!TIP]  
-> This tutorial uses **sqlcmd** inside the container, because the container comes with this tool preinstalled. However, you can also run Transact-SQL statements with other client tools outside of the container, such as [SQL Server extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md) or [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md). To connect, use the host port that was mapped to port 1433 in the container. In this example, the host and port are `localhost,1401` on the host machine, and `Host_IP_Address,1401` remotely.
+> This tutorial uses **`sqlcmd`** inside the container, because the container comes with this tool preinstalled. However, you can also run Transact-SQL statements with other client tools outside of the container, such as [SQL Server extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md) or [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md). To connect, use the host port that was mapped to port 1433 in the container. In this example, the host and port are `localhost,1401` on the host machine, and `Host_IP_Address,1401` remotely.
 
-1. Run **sqlcmd** inside the container to list out logical file names and paths inside the backup. This is done with the `RESTORE FILELISTONLY` Transact-SQL statement.
+1. Run **`sqlcmd`** inside the container to list out logical file names and paths inside the backup. This is done with the `RESTORE FILELISTONLY` Transact-SQL statement.
 
    ```bash
    sudo docker exec -it sql1 /opt/mssql-tools18/bin/sqlcmd -S localhost \
@@ -578,7 +578,7 @@ In addition to taking database backups for protecting your data, you can also us
 
 ### Create a container and restore a database
 
-You can use a single command in **sqlcmd** (Go) to create a new container, and restore a database to that container to create a new local copy of a database, for development or testing. For more information, see [Create and query a SQL Server container](../tools/sqlcmd/sqlcmd-use-utility.md#create-and-query-a-sql-server-container).
+You can use a single command in **`sqlcmd`** (Go) to create a new container, and restore a database to that container to create a new local copy of a database, for development or testing. For more information, see [Create and query a SQL Server container](../tools/sqlcmd/sqlcmd-use-utility.md#create-and-query-a-sql-server-container).
 
 [!INCLUDE [sqlcmd-create-container](../includes/paragraph-content/sqlcmd-create-container.md)]
 
@@ -659,7 +659,7 @@ After you restore your database into a container, you might also want to regular
 
 Now that the backup is copied off the container, it can be cleaned up. The following steps completely remove the `sql1` container.
 
-1. Remove the container. **sqlcmd** has built-in safeguards to prevent deleting a container that is in use. The way it determines if a container is still in use is whether it has any user databases. For production scenarios, you should delete user databases individually after verifying they're no long in use. For development/testing, you can use the `--force` parameter to delete the container without deleting the user database.
+1. Remove the container. **`sqlcmd`** has built-in safeguards to prevent deleting a container that is in use. The way it determines if a container is still in use is whether it has any user databases. For production scenarios, you should delete user databases individually after verifying they're no long in use. For development/testing, you can use the `--force` parameter to delete the container without deleting the user database.
 
    ```bash
    sqlcmd delete --force
@@ -697,7 +697,7 @@ In this tutorial, you learned how to back up a database on Windows and move it t
 > [!div class="checklist"]
 > - Create [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux container images.
 > - Copy [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database backups into a container.
-> - Run Transact-SQL statements with **sqlcmd**.
+> - Run Transact-SQL statements with **`sqlcmd`**.
 > - Create and extract backup files from a container.
 > - Use data volume containers to persist [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] production data.
 

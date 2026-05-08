@@ -5,7 +5,7 @@ description: Learn about the currently known issues with Azure SQL Managed Insta
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 11/26/2025
+ms.date: 05/01/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: troubleshooting-known-issue
@@ -22,60 +22,67 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 
 | Issue | Date discovered | Status | Date resolved |
 | --- | --- | --- | --- |
+| [Linked server queries that use MSDASQL fail with error 7416](#linked-server-queries-that-use-msdasql-fail-with-error-7416) | April 2026 | Has workaround | |
+| [Restore operation failures after migrating to SQL Managed Instance](#restore-operation-failures-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
+| [Unable to use Service Broker after migrating to SQL Managed Instance](#unable-to-use-service-broker-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
+| [Unable to use accelerated database recovery after migrating to SQL Managed Instance](#unable-to-use-accelerated-database-recovery-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
+| [Misleading error message when connecting to a read replica using invalid credentials](#misleading-error-message-when-connecting-to-a-read-replica-using-invalid-credentials) | February 2026 |No resolution| |
 | [Modifying backup retention period for the free offer](#modifying-backup-retention-period-for-the-free-offer) | June 2025 | Has workaround | |
+| [Error 1412 when creating a Managed Instance link](#error-1412-when-creating-a-managed-instance-link) | May 2025 | Has workaround | |
 | [Login to read-secondary failed due to long wait on "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING"](#login-to-read-secondary-failed-due-to-long-wait-on-hadr_database_wait_for_transition_to_versioning) | April 2025 | Has workaround | |
-| [Interim guidance on 2024 time zone updates for Paraguay](#interim-guidance-on-2024-time-zone-updates-for-paraguay) | March 2025 | Has workaround | |
+| [Interim guidance on 2024 time zone updates for Paraguay](#interim-guidance-on-2024-time-zone-updates-for-paraguay) | March 2025 | Resolved | February 2026 |
 | [Error 8992 when running DBCC CHECKDB on a SQL Server database that originated from SQL Managed Instance](#error-8992-when-running-dbcc-checkdb-on-a-sql-server-database-that-originated-from-sql-managed-instance) | March 2025 | Has workaround | |
 | [Differential backups aren't taken when an instance is linked to SQL Server](#differential-backups-arent-taken-when-an-instance-is-linked-to-sql-server) | Sept 2024 | By design | |
-| [List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name](#list-of-long-term-backups-in-azure-portal-shows-backup-files-for-active-and-deleted-databases-with-the-same-name) | Mar 2024 | Has Workaround | |
+| [List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name](#list-of-long-term-backups-in-azure-portal-shows-backup-files-for-active-and-deleted-databases-with-the-same-name) | Mar 2024 | Has workaround | |
 | [Temporary instance inaccessibility using the failover group listener during scaling operation](#temporary-instance-inaccessibility-using-the-failover-group-listener-during-scaling-operation) | Jan 2024 | Resolved | April 2025 |
-| [The event_file target of the system_health event session is not accessible](#the-event_file-target-of-the-system_health-event-session-is-not-accessible) | Dec 2023 | Partially resolved | May 2025 |
-| [Procedure sp_send_dbmail might fail when @query parameter is used on Nov22FW enabled managed instances](#procedure-sp_send_dbmail-may-fail-when-query-parameter-is-used-on-nov22fw-enabled-managed-instances) | Dec 2023 | Has Workaround | |
+| [The event_file target of the system_health event session is not accessible](#the-event_file-target-of-the-system_health-event-session-is-not-accessible) | Dec 2023 | Resolved | March 2026 |
+| [Procedure sp_send_dbmail might fail when @query parameter is used](#procedure-sp_send_dbmail-might-fail-when-query-parameter-is-used) | Dec 2023 | Has workaround | |
 | [Increased number of system logins used for transactional replication](#increased-number-of-system-logins-used-for-transactional-replication) | Dec 2022 | No resolution | |
 | [msdb table for manual backups doesn't preserve the username](#msdb-table-for-manual-backups-doesnt-preserve-the-username) | Nov 2022 | Resolved | Aug 2023 |
-| [When using SQL Server authentication, usernames with '@' aren't supported](#when-using-sql-server-authentication-usernames-with--arent-supported) | Oct 2021 | Resolved | Feb 2022 |
+| [When you use SQL Server authentication, usernames with '@' aren't supported](#when-you-use-sql-server-authentication-usernames-with-at-sign-arent-supported) | Oct 2021 | Resolved | Feb 2022 |
 | [Misleading error message on Azure portal suggesting recreation of the Service Principal](#misleading-error-message-on-azure-portal-suggesting-recreation-of-the-service-principal) | Sep 2021 | | Oct 2021 |
 | [Changing the connection type doesn't affect connections through the failover group endpoint](#changing-the-connection-type-doesnt-affect-connections-through-the-failover-group-endpoint) | Jan 2021 | Resolved | Nov 2025 |
-| [Distributed transactions can be executed after removing SQL managed instance from Server Trust Group](#distributed-transactions-can-be-executed-after-removing-sql-managed-instance-from-server-trust-group) | Oct 2020 | Has Workaround | |
-| [Can't create SQL Managed Instance with the same name as logical server previously deleted](#cant-create-sql-managed-instance-with-the-same-name-as-logical-server-previously-deleted) | Aug 2020 | Has Workaround | |
-| [Service Principal can't access Microsoft Entra ID and AKV](#service-principal-cant-access-azure-ad-and-akv) | Aug 2020 | Has Workaround | |
+| [Distributed transactions can be executed after removing SQL managed instance from Server Trust Group](#distributed-transactions-can-be-executed-after-removing-sql-managed-instance-from-server-trust-group) | Oct 2020 | Has workaround | |
+| [Can't create SQL Managed Instance with the same name as logical server previously deleted](#cant-create-sql-managed-instance-with-the-same-name-as-logical-server-previously-deleted) | Aug 2020 | Has workaround | |
+| [Service Principal can't access Microsoft Entra ID and AKV](#service-principal-cant-access-azure-ad-and-akv) | Aug 2020 | Has workaround | |
 | [Restoring manual backup without CHECKSUM might fail](#restoring-manual-backup-without-checksum-might-fail) | May 2020 | Resolved | June 2020 |
 | [Permissions on resource group not applied to SQL Managed Instance](#permissions-on-resource-group-not-applied-to-sql-managed-instance) | Feb 2020 | Resolved | Nov 2020 |
 | [Microsoft Entra logins and users aren't supported in SSDT](#azure-ad-logins-and-users-arent-supported-in-ssdt) | Nov 2019 | No Workaround | |
 | [Wrong error returned while trying to remove a file that isn't empty](#wrong-error-returned-while-trying-to-remove-a-file-that-isnt-empty) | Oct 2019 | Resolved | August 2020 |
-| [Change service tier and create instance operations are blocked by ongoing database restore](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore) | Sep 2019 | Has Workaround | |
-| [Resource Governor on a readable secondary replica needs might need to be reconfigured after failover](#resource-governor-on-a-readable-secondary-replica-needs-to-be-reconfigured-after-its-failover) | Sep 2019 | Has Workaround | |
-| [Cross-database Service Broker dialogs must be reinitialized after service tier upgrade](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade) | Aug 2019 | Has Workaround | |
+| [Change service tier and create instance operations are blocked by ongoing database restore](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore) | Sep 2019 | Has workaround | |
+| [Resource Governor on a readable secondary replica needs reconfiguration after failover](#resource-governor-on-a-readable-secondary-replica-needs-reconfiguration-after-failover) | Sep 2019 | Has workaround | |
+| [Cross-database Service Broker dialogs need reinitialization after service tier upgrade](#cross-database-service-broker-dialogs-need-reinitialization-after-service-tier-upgrade) | Aug 2019 | Resolved | January 2020 |
 | [Impersonation of Microsoft Entra login types isn't supported](#impersonation-of-azure-ad-login-types-isnt-supported) | Jul 2019 | No Workaround | |
 | [Transactional replication must be reconfigured after geo-failover](#transactional-replication-must-be-reconfigured-after-geo-failover) | Mar 2019 | No Workaround | |
-| [Exceeding storage space with small database files](#exceeding-storage-space-with-small-database-files) | | Has Workaround | |
-| [GUID values shown instead of database names](#guid-values-shown-instead-of-database-names) | | Has Workaround | |
+| [Exceeding storage space with small database files](#exceeding-storage-space-with-small-database-files) | | Has workaround | |
+| [GUID values shown instead of database names](#guid-values-shown-instead-of-database-names) | | Has workaround | |
 | [Error logs aren't persisted](#error-logs-arent-persisted) | | No Workaround | |
-| [CLR modules and linked servers sometimes can't reference a local IP address](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address) | | Has Workaround | |
+| [CLR modules and linked servers sometimes can't reference a local IP address](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address) | | Has workaround | |
 | Database consistency not verified using `DBCC CHECKDB` after restore database from Azure Blob Storage. | | Resolved | Nov 2019 |
-| Point-in-time database restore from Business Critical tier to General Purpose tier will not succeed if source database contains in-memory OLTP objects. | | Resolved | Oct 2019 |
+| Point-in-time database restore from Business Critical tier to General Purpose tier doesn't succeed if source database contains in-memory OLTP objects. | | Resolved | Oct 2019 |
 | Database mail feature with external (non-Azure) mail servers using secure connection | | Resolved | Oct 2019 |
 | Contained databases not supported in SQL Managed Instance | | Resolved | Aug 2019 |
 
 ## Has workaround
 
+### Linked server queries that use MSDASQL fail with error 7416
+
+[!INCLUDE [msdasql-linked-server-7416](../../docs/includes/msdasql-linked-server-7416.md)]
+
+[!INCLUDE [known-issues-after-migration](../includes/sql-managed-instance/known-issues-after-migration.md)]
+
 ### Modifying backup retention period for the free offer
 
-You can only modify the backup retention policy of your databases in the free SQL managed instance by using [REST API](/rest/api/sql/managed-backup-short-term-retention-policies), [PowerShell](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) and [Azure CLI](/cli/azure/sql/midb/short-term-retention-policy) commands. It's not possible to modify the backup retention policy through the [Azure portal](https://portal.azure.com).
+You can only modify the backup retention policy of your databases in the free SQL managed instance by using [REST API](/rest/api/sql/managed-backup-short-term-retention-policies), [PowerShell](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy), and [Azure CLI](/cli/azure/sql/midb/short-term-retention-policy) commands. You can't modify the backup retention policy through the [Azure portal](https://portal.azure.com).
 
 ### Login to read-secondary failed due to long wait on "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING"
 
 You might see this error as an exception for the **Microsoft OLE DB Driver 19 for SQL Server** driver when you try to connect to a read-only secondary replica of a [failover group](failover-group-sql-mi.md), or a database replicated through the [Managed Instance link](managed-instance-link-feature-overview.md).
 
-This error occurs when the secondary replica isn't available for logins because row versions are missing for transactions that were in-flight when a secondary replica was restarted, or recycled, either for maintenance, or due to a failover. When an instance is restarted, or fails over, the versioning data stored in `tempdb` gets cleared so secondary read queries are aborted if there are long-running active transactions that were started before the failover or restart.
+This error occurs when the secondary replica isn't available for logins because row versions are missing for transactions that were in-flight when a secondary replica restarted or recycled, whether for maintenance or due to a failover. When an instance restarts or fails over, the versioning data stored in `tempdb` is cleared. Secondary read queries are aborted if there are long-running active transactions that started before the failover or restart.
 
-To resolve this issue roll back, or commit, active transactions on the primary replica. To avoid this error, minimize long-running write transactions on the primary replica.
+To resolve this issue, roll back or commit active transactions on the primary replica. To avoid this error, minimize long-running write transactions on the primary replica.
 
-### Interim guidance on 2024 time zone updates for Paraguay
-
-On October 14, 2024, the Paraguayan government announced a permanent change to the country's time zone policy. Paraguay remains on Daylight Saving Time (DST) year-round, effectively adopting UTC-3 as its standard time. As a result, clocks don't advance by 60 minutes at 12:00 a.m. on March 23, 2025, as previously scheduled. This change affects the Paraguay Standard Time time-zone. Microsoft has released related [Windows updates in February and March 2025](https://techcommunity.microsoft.com/blog/dstblog/paraguay-2025-time-zone-update-now-available/4386720). Azure SQL Managed Instance currently doesn't reflect this update. Instances using affected time zone don't reflect the changes until Azure SQL Managed Instance service absorbs the update on the OS level.
-
-**Workaround**: If you need to alter affected time zones for your managed instances, be aware of the [limitations](timezones-overview.md#limitations) and follow the guidance from the documentation.
 
 ### Error 8992 when running DBCC CHECKDB on a SQL Server database that originated from SQL Managed Instance
 
@@ -91,6 +98,14 @@ To work around the issue, first drop the index, or the table with the index, fro
 > [!CAUTION]  
 > If you create a partitioned index on a table after dropping an index as described in this scenario, the table becomes inaccessible.
 
+### Error 1412 when creating a Managed Instance link
+
+When you first create a [link](managed-instance-link-feature-overview.md), the first part of the process seeds a full backup of the database from the primary replica to the secondary replica. After seeding of the full backup completes, the link starts to replicate data by applying the differential data from the primary replica to the secondary replica. This process continues indefinitely until a failover command is issued, or the link is removed.
+
+If a transaction log backup occurs on the primary replica during initial seeding of the full backup, the transaction log truncates. Creating the link fails with error 1412 since the data in the transaction log necessary for initial seeding is no longer available.
+
+If you see error 1412 in the SQL Server error log on Azure SQL Managed Instance, then you must [drop](managed-instance-link-configure-how-to-ssms.md#drop-a-link) and recreate the link. To preemptively avoid this issue, pause transaction log backups during the initial seeding phase. If transaction log backups are necessary during the initial seeding phase, then begin an open transaction to prevent log truncation. For more information, review [Error 1412 when creating a Managed Instance link](managed-instance-link-troubleshoot-how-to.md#error-1412) in the troubleshooting guide for the link feature.
+
 ### List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name
 
 Long-term backups can be listed and managed on Azure portal page for an Azure SQL Managed Instance on the *Backups* tab. The page lists active or deleted databases, basic information about their long-term backups, and link for managing backups. When you select the *Manage* link, a new side pane opens with list of backups. Due to an issue with the filtering logic, the list shows backups for both active database and deleted databases with the same name. This requires a special attention when selecting backups for deletion, to avoid deleting backups for a wrong database.
@@ -99,15 +114,15 @@ Long-term backups can be listed and managed on Azure portal page for an Azure SQ
 
 <a id="procedure-sp_send_dbmail-may-fail-when-query-parameter-is-used-on-nov22fw-enabled-managed-instances"></a>
 
-### Procedure sp_send_dbmail might fail when @query parameter
+### Procedure sp_send_dbmail might fail when *@query* parameter is used
 
-Procedure `sp_send_dbmail` might fail when `@query` parameter is used. Failures happen when the stored procedure is executed under sysadmin account.
+The `sp_send_dbmail` stored procedure might fail when the `@query` parameter is used. Failures happen when the stored procedure is executed under a **sysadmin** account.
 
-This problem is caused by a known bug related to how `sp_send_dbmail` is using impersonation.
+This problem is caused by a known bug related to how `sp_send_dbmail` uses impersonation.
 
-**Workaround**: Make sure you call `sp_send_dbmail` under appropriate custom account you've created, and not under sysadmin account.
+**Workaround**: Make sure you call `sp_send_dbmail` under an appropriate custom account you create, and not under a **sysadmin** account.
 
-Here's an example of how you can create a dedicated account and modify existing objects that are sending email via `sp_send_dbmail`.
+Here's an example of how you can create a dedicated account and modify existing objects that send email via `sp_send_dbmail`.
 
 ```sql
 USE [msdb];
@@ -142,67 +157,70 @@ EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
 GO
 ```
 
-
 <a id="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>
 
 ### Distributed transactions can be executed after removing SQL managed instance from Server Trust Group
 
-[Server Trust Groups](server-trust-group-overview.md) are used to establish trust between managed instances that is prerequisite for executing [distributed transactions](../database/elastic-transactions-overview.md). After removing the SQL managed instance from Server Trust Group or deleting the group, you still might be able to execute distributed transactions. There's a workaround you can apply to be sure that distributed transactions are disabled and that is [user-initiated manual failover](user-initiated-failover.md) on the SQL managed instance.
+[Server Trust Groups](server-trust-group-overview.md) are used to establish trust between managed instances that is prerequisite for executing [distributed transactions](../database/elastic-transactions-overview.md). After removing the SQL managed instance from Server Trust Group or deleting the group, you might still be able to execute distributed transactions. To make sure that distributed transactions are disabled, perform a [user-initiated manual failover](user-initiated-failover.md) on the SQL managed instance.
 
 ### Can't create SQL Managed Instance with the same name as logical server previously deleted
 
-A DNS record of `<name>.database.windows.com` is created when you create a [logical server in Azure](../database/logical-servers.md) for Azure SQL Database, and when you create a SQL Managed Instance. The DNS record must be unique. As such, if you create a logical server for SQL Database and then delete it, there's a threshold period of seven days before the name is released from the records. In that period, a SQL Managed Instance can't be created with the same name as the deleted logical server. As a workaround, use a different name for the SQL Managed Instance, or create a support ticket to release the logical server name.
+When you create a [logical server in Azure](../database/logical-servers.md) for Azure SQL Database or a SQL Managed Instance, the system creates a DNS record for `<name>.database.windows.com`. This DNS record must be unique. If you create a logical server for SQL Database and then delete it, the name remains reserved for seven days. During this period, you can't create a SQL Managed Instance with the same name as the deleted logical server. As a workaround, use a different name for the SQL Managed Instance, or create a support ticket to release the logical server name.
 
 <a id="service-principal-cant-access-azure-ad-and-akv"></a>
 
 ### Service Principal can't access Microsoft Entra ID and AKV
 
-In some circumstances, there might exist an issue with Service Principal used to access Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) and Azure Key Vault (AKV) services. As a result, this issue impacts usage of Microsoft Entra authentication and transparent data encryption (TDE) with SQL Managed Instance. This might be experienced as an intermittent connectivity issue, or not being able to run statements such are `CREATE LOGIN/USER FROM EXTERNAL PROVIDER` or `EXECUTE AS LOGIN/USER`. Setting up TDE with customer-managed key on a new Azure SQL Managed Instance might also not work in some circumstances.
+In some circumstances, an issue exists with the Service Principal used to access Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) and Azure Key Vault (AKV) services. As a result, this issue impacts usage of Microsoft Entra authentication and transparent data encryption (TDE) with SQL Managed Instance. You might experience this problem as an intermittent connectivity issue, or not being able to run statements such are `CREATE LOGIN/USER FROM EXTERNAL PROVIDER` or `EXECUTE AS LOGIN/USER`. Setting up TDE with customer-managed key on a new Azure SQL Managed Instance might also not work in some circumstances.
 
-**Workaround**: To prevent this issue from occurring on your SQL Managed Instance, before executing any update commands, or in case you have already experienced this issue after update commands, go to the **Overview page** of your SQL managed instance in the Azure portal. Under **Settings**, select **Microsoft Entra ID** to access the SQL Managed Instance [Microsoft Entra ID admin page](../database/authentication-aad-configure.md#azure-sql-managed-instance). Verify if you can see the error message:
+**Workaround**: To prevent this issue from occurring on your SQL Managed Instance, before executing any update commands, or in case you already experienced this issue after update commands, go to the **Overview page** of your SQL managed instance in the Azure portal. Under **Settings**, select **Microsoft Entra ID** to access the SQL Managed Instance [Microsoft Entra ID admin page](../database/authentication-aad-configure.md#azure-sql-managed-instance). Look for the following error message:
 
-`Managed Instance needs a Service Principal to access Microsoft Entra ID. Click here to create a Service Principal`.
+```output
+Managed Instance needs a Service Principal to access Microsoft Entra ID. Click here to create a Service Principal.
+```
 
-In case you've encountered this error message, select it, and follow the step-by-step instructions provided until this error has been resolved.
+If you encounter this error message, select it, and follow the step-by-step instructions provided until this error is resolved.
 
 ### Wrong error returned while trying to remove a file that isn't empty
 
-SQL Server and SQL Managed Instance [don't allow a user to drop a file that isn't empty](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). If you try to remove a nonempty data file using an `ALTER DATABASE REMOVE FILE` statement, the error `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` isn't immediately returned. SQL Managed Instance will keep trying to drop the file, and the operation will fail after 30 minutes with `Internal server error`.
+SQL Server and SQL Managed Instance [don't allow a user to drop a file that isn't empty](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). If you try to remove a nonempty data file by using an `ALTER DATABASE REMOVE FILE` statement, the error:
+
+```output
+Msg 5042 - The file '<file_name>' cannot be removed because it is not empty` isn't immediately returned. SQL Managed Instance keeps trying to drop the file, and the operation fails after 30 minutes with `Internal server error.
+```
 
 ### Change service tier and create instance operations are blocked by ongoing database restore
 
-An ongoing `RESTORE` statement, a Data Migration Service migration process, and built-in point-in-time restore, block updating a service tier or resize of the existing instance and creating new instances until the restore process finishes.
+An ongoing `RESTORE` statement, a Data Migration Service migration process, and built-in point-in-time restore can block updates to a service tier, or resizing the existing instance and creating new instances, until the restore process finishes.
 
 The restore process blocks these operations on the managed instances and instance pools in the same subnet where the restore process is running. The instances in instance pools aren't affected. Create or change service tier operations don't fail or time out. They proceed once the restore process is completed or canceled.
 
 **Workaround**: Wait until the restore process finishes, or cancel the restore process if the creation or update-service-tier operation has higher priority.
 
-### Resource Governor on a readable secondary replica needs to be reconfigured after its failover
+<a id="resource-governor-on-a-readable-secondary-replica-needs-to-be-reconfigured-after-its-failover"></a>
+
+### Resource Governor on a readable secondary replica needs reconfiguration after failover
 
 The [Resource governor](/sql/relational-databases/resource-governor/resource-governor) feature that enables you to limit the resources assigned to the user workload might incorrectly classify some user workloads after failover or a user-initiated change of service tier (for example, the change of max vCore or max instance storage size).
 
 **Workaround**: Run `ALTER RESOURCE GOVERNOR RECONFIGURE` periodically or as part of a SQL Agent job that executes the SQL task when the readable secondary replica starts if you're using [Resource governor](/sql/relational-databases/resource-governor/resource-governor).
 
-### Cross-database Service Broker dialogs must be reinitialized after service tier upgrade
-
-Cross-database Service Broker dialogs stop delivering the messages to the services in other databases after change service tier operation. The messages *aren't lost*, and they can be found in the sender queue. Any change of vCores or instance storage size in SQL Managed Instance causes a `service_broke_guid` value in [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) view to be changed for all databases. Any `DIALOG` created using a [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) statement that references Service Brokers in other database stops delivering messages to the target service.
-
-**Workaround**: Stop any activity that uses cross-database Service Broker dialog conversations before updating a service tier, and reinitialize them afterward. If there are remaining messages that are undelivered after a service tier change, read the messages from the source queue and resend them to the target queue.
+<a id="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>
 
 ### Exceeding storage space with small database files
 
-`CREATE DATABASE`, `ALTER DATABASE ADD FILE`, and `RESTORE DATABASE` statements might fail because the instance can reach the Azure Storage limit on the General Purpose service tier, but not the [Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md) or Business Critical service tier.
+`CREATE DATABASE`, `ALTER DATABASE ADD FILE`, and `RESTORE DATABASE` statements might fail because the instance reaches the Azure Storage limit on the General Purpose service tier, but not the [Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md) or Business Critical service tier.
 
-Each General Purpose instance of SQL Managed Instance has up to 35 TB of storage reserved for Azure Premium Disk space. Each database file is placed on a separate physical disk. Disk sizes can be 128 GB, 256 GB, 512 GB, 1 TB, or 4 TB. Unused space on the disk isn't charged, but the total sum of Azure Premium Disk sizes can't exceed 35 TB. In some cases, a SQL managed instance that doesn't need 8 TB in total might exceed the 35 TB Azure limit on storage size due to internal fragmentation.
+Each General Purpose instance of SQL Managed Instance has up to 35 TB of storage reserved for Azure Premium Disk space. Each database file is placed on a separate physical disk. Disk sizes can be 128 GB, 256 GB, 512 GB, 1 TB, or 4 TB. You aren't charged for unused space on the disk, but the total sum of Azure Premium Disk sizes can't exceed 35 TB. In some cases, a SQL managed instance that doesn't need 8 TB in total might exceed the 35 TB Azure limit on storage size due to internal fragmentation.
 
 For example, a General Purpose instance of SQL Managed Instance might have one large file that's 1.2 TB in size placed on a 4-TB disk. It also might have 248 files that are 1 GB each and that are placed on separate 128-GB disks. In this example:
 
 - The total allocated disk storage size is 1 x 4 TB + 248 x 128 GB = 35 TB.
 - The total reserved space for databases on the instance is 1 x 1.2 TB + 248 x 1 GB = 1.4 TB.
 
-This example illustrates that under certain circumstances, due to a specific distribution of files, an instance of SQL Managed Instance might reach the 35-TB limit that's reserved for an attached Azure Premium Disk, when you might not expect it to.
+This example illustrates that under certain circumstances, due to a specific distribution of files, an instance of SQL Managed Instance might reach the 35-TB limit that's reserved for an attached Azure Premium Disk, when you might not expect it.
 
-In this example, existing databases continue to work and can grow without any problem as long as new files aren't added. New databases can't be created or restored because there isn't enough space for new disk drives, even if the total size of all databases doesn't reach the instance size limit. The error that's returned in that case isn't clear.
+In this example, existing databases continue to work and can grow without any problem as long as new files aren't added. You can't create or restore new databases because there isn't enough space for new disk drives, even if the total size of all databases doesn't reach the instance size limit. The error that's returned isn't clear.
 
 You can [identify the number of remaining files](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) by using system views. If you reach this limit, try to [empty and delete some of the smaller files by using the DBCC SHRINKFILE statement](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql?view=azuresqlmi-current&preserve-view=true#d-emptying-a-file) or switch to the [Business Critical tier, which doesn't have this limit](resource-limits.md#service-tier-characteristics).
 
@@ -225,13 +243,17 @@ CLR modules in SQL Managed Instance and linked servers or distributed queries th
 
 ## No resolution
 
+### Misleading error message when connecting to a read replica using invalid credentials
+
+When you attempt to connect to a Business Critical tier instance's read-secondary replica by using `ApplicationIntent=ReadOnly` and invalid credentials, the instance reports an error indicating that the `master` database is read-only. The instance doesn't correctly report that the credentials are invalid.
+
 ### Differential backups aren't taken when an instance is linked to SQL Server
 
 When you configure a [link](managed-instance-link-feature-overview.md) between SQL Server and Azure SQL Managed Instance, automated full and transaction log backups are taken on the SQL managed instance, whether or not it's in the primary role. However, differential backups aren't currently taken, when can lead to longer than expected restore times.
 
 ### Increased number of system logins used for transactional replication
 
-Azure SQL Managed Instance service is creating system login for purposes of transactional replication. This login can be found in SSMS (in **Object explorer**, under **Security**, **Logins**) or in system view `sys.syslogins`. Login name format looks like `'DBxCy\WF-abcde01234QWERT'`, and the login has public server role. Under certain conditions, this login is recreated, and due to a fault in the system previous login isn't deleted. This can lead to increased number of logins. These logins don't represent a security threat. They can be safely ignored. These logins shouldn't be deleted because at least one of them is being used for transactional replication.
+Azure SQL Managed Instance service creates a system login for purposes of transactional replication. You can find this login in SSMS (in **Object Explorer** > **Security** > **Logins**) or in the `sys.syslogins` system view. The login name format looks like `DBxCy\WF-abcde01234QWERT`, and the login has the **public** server role. Under certain conditions, this login is recreated, and due to an internal issue, the previous login isn't deleted. This fault can lead to an increase in the number of logins. These logins don't represent a security threat, and you can safely ignore them. Don't delete these logins, because at least one of them is being used for transactional replication.
 
 <a id="azure-ad-logins-and-users-arent-supported-in-ssdt"></a>
 
@@ -243,20 +265,34 @@ SQL Server Data Tools don't fully support Microsoft Entra logins and users.
 
 ### Impersonation of Microsoft Entra login types isn't supported
 
-Impersonation using `EXECUTE AS USER` or `EXECUTE AS LOGIN` of the following Microsoft Entra principals isn't supported:
+Impersonation using `EXECUTE AS USER` or `EXECUTE AS LOGIN` isn't supported for the following Microsoft Entra principals:
 
-- Aliased Microsoft Entra users. The following error is returned in this case: `15517`.
-- Microsoft Entra logins and users based on Microsoft Entra applications or service principals. The following errors are returned in this case: `15517` and `15406`.
+- Aliased Microsoft Entra users. In this case, the operation returns error `15517`.
+- Microsoft Entra logins and users based on Microsoft Entra applications or service principals. In this case, the operation returns errors `15517` and `15406`.
 
 ### Transactional replication must be reconfigured after geo-failover
 
-If transactional replication is enabled on a database in a failover group, the SQL Managed Instance administrator must clean up all publications on the old primary and reconfigure them on the new primary after a failover to another region occurs. For more information, see [Replication](transact-sql-tsql-differences-sql-server.md#replication).
+If you enable transactional replication on a database in a failover group, the SQL Managed Instance administrator must clean up all publications on the old primary and reconfigure them on the new primary after a failover to another region occurs. For more information, see [Replication](transact-sql-tsql-differences-sql-server.md#replication).
 
 ### Error logs aren't persisted
 
-Error logs that are available in SQL Managed Instance aren't persisted, and their size isn't included in the maximum storage limit. Error logs might be automatically erased if failover occurs. There might be gaps in the error log history because SQL Managed Instance was moved several times on several virtual machines.
+Error logs that are available in SQL Managed Instance aren't persisted, and their size isn't included in the maximum storage limit. Error logs might be automatically erased if failover occurs. Gaps might exist in the error log history because SQL Managed Instance was moved several times on several virtual machines.
 
 ## Resolved
+
+### The event_file target of the system_health event session is not accessible
+
+**(Resolved in March 2026)** When you attempted to read the contents of the `event_file` target of the `system_health` event session, you would get error 40538, "A valid URL beginning with 'https://' is required as value for any filepath specified."
+
+This issue occurred in SQL Server Management Studio (SSMS), or when reading the session data using the [sys.fn_xe_file_target_read_file](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql) function. The issue is resolved in both cases.
+
+This change in behavior was an unintended consequence of a required security fix. Customers could work around this issue by creating their own equivalent of the `system_health` session with an `event_file` target in Azure blob storage. For more information, including a T-SQL script to create the `system_health` session that can be modified to create your own equivalent of `system_health`, see [Use the system_health session](/sql/relational-databases/extended-events/use-the-system-health-session).
+
+### Interim guidance on 2024 time zone updates for Paraguay
+
+**(Resolved in February 2026)**
+
+On October 14, 2024, the Paraguayan government announced a permanent change to the time zone policy. Paraguay now remains on Daylight Saving Time (DST) year-round, effectively adopting UTC-3 as its standard time. As a result, clocks did not advance by 60 minutes at 12:00 a.m. on March 23, 2025, as previously scheduled. This change affects the Paraguay Standard time zone. Microsoft has released related [Windows updates in February and March 2025](https://techcommunity.microsoft.com/blog/dstblog/paraguay-2025-time-zone-update-now-available/4386720). SQL managed instances using the affected time zone reflect this change, and align to the new UTC-3 offset.
 
 ### Changing the connection type doesn't affect connections through the failover group endpoint
 
@@ -270,7 +306,7 @@ If an instance participates in a [failover group](failover-group-sql-mi.md), cha
 
 Scaling SQL managed instance sometimes requires moving the instance to a different virtual cluster, along with the associated service-maintained DNS records. If the SQL managed instance participates in a failover group, the DNS record corresponding to its associated failover group listener (read-write listener, if the instance is the current geo-primary read-only listener, if the instance is the current geo-secondary) is moved to the new virtual cluster.
 
-In the current scaling operation design, the listener DNS records are removed from the originating virtual cluster before the SQL managed instance itself is fully migrated to the new virtual cluster, which in some situations can lead to prolonged time during which the instance's IP address can't be resolved using the listener. During this time, a SQL client attempting to access the instance being scaled using the listener endpoint can expect login failures with the following error message:
+In the current scaling operation design, the listener DNS records are removed from the originating virtual cluster before it fully migrates the SQL managed instance to the new virtual cluster. In some situations, this design leads to prolonged time during which the instance's IP address can't be resolved by using the listener. During this time, a SQL client attempting to access the instance being scaled by using the listener endpoint can expect login failures with the following error message:
 
 ```output
 Error 40532: Cannot open server "xxx.xxx.xxx.xxx" requested by the login. The login failed. (Microsoft SQL Server, Error: 40532).
@@ -282,23 +318,24 @@ The issue will be addressed through scaling operation redesign.
 
 ### Table for manual backups in msdb doesn't preserve the username
 
-**(Resolved in August 2023)** We recently introduced support for auto backups in `msdb`, but the table doesn't currently contain username information.
+**(Resolved in August 2023)** The recently introduced support for auto backups in `msdb` doesn't currently contain username information.
 
-<a id="querying-external-table-fails-with-not-supported-error-message"></a>
+<a id="when-you-use-sql-server-authentication-usernames-with-at-sign-arent-supported"></a>
+<a id="when-using-sql-server-authentication-usernames-with--arent-supported"></a>
 
-### When using SQL Server authentication, usernames with '@' aren't supported
+### When you use SQL Server authentication, usernames with '@' aren't supported
 
-Usernames that contain the '@' symbol in the middle (for example, `'abc@xy'`) aren't able to sign in using SQL Server authentication.
+Usernames that contain the `@` symbol in the middle (for example, `abc@xy`) can't sign in using SQL Server authentication.
 
 ### Restoring manual backup without CHECKSUM might fail
 
-**(Resolved in June 2020)** In certain circumstances manual backup of databases that was made on a SQL managed instance without CHECKSUM might fail to be restored. In such cases, retry restoring the backup until you're successful.
+**(Resolved in June 2020)** In certain circumstances, restoring manual backup of databases that you made on a SQL managed instance without `CHECKSUM` might fail. In such cases, retry restoring the backup until you're successful.
 
-**Workaround:** Take manual backups of databases on SQL managed instances with CHECKSUM enabled.
+**Workaround**: Take manual backups of databases on SQL managed instances with `CHECKSUM` enabled.
 
 ### Permissions on resource group not applied to SQL Managed Instance
 
-When the SQL Managed Instance Contributor Azure role is applied to a resource group (RG), it's not applied to SQL Managed Instance and has no effect.
+When you apply the SQL Managed Instance Contributor Azure role to a resource group (RG), it doesn't apply to SQL Managed Instance and has no effect.
 
 **Workaround**: Set up a SQL Managed Instance Contributor role for users at the subscription level.
 
@@ -308,23 +345,33 @@ When the SQL Managed Instance Contributor Azure role is applied to a resource gr
 
 The **Active Directory admin** page of Azure portal for Azure SQL Managed Instance might show the following error message, even though Service Principal already exists:
 
-`Managed Instance needs a Service Principal to access Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)). Click here to create a Service Principal`
+```output
+Managed Instance needs a Service Principal to access Microsoft Entra ID. Click here to create a Service Principal.
+```
 
 You can neglect this error message if Service Principal for the SQL managed instance already exists, and/or Microsoft Entra authentication on the SQL managed instance works.
 
 To check whether Service Principal exists, navigate to the **Enterprise applications** page on the Azure portal, choose **Managed Identities** from the **Application type** dropdown list, select **Apply**, and type the name of the SQL managed instance in the search box. If the instance name shows up in the result list, Service Principal already exists and no further actions are needed.
 
-If you already followed the instructions from the error message and selected the link from the error message, Service Principal of the SQL managed instance has been recreated. In that case, assign Microsoft Entra ID read permissions to the newly created Service Principal in order for Microsoft Entra authentication to work properly. This can be done via Azure PowerShell by following [instructions](../database/authentication-aad-configure.md?tabs=azure-powershell#assign-microsoft-graph-permissions).
+If you already followed the instructions from the error message and selected the link, the Service Principal of the SQL managed instance is recreated. In that case, assign Microsoft Entra ID read permissions to the newly created Service Principal in order for Microsoft Entra authentication to work properly. You can also run this step with Azure PowerShell by following the [instructions](../database/authentication-aad-configure.md?tabs=azure-powershell#assign-microsoft-graph-permissions).
 
-### The event_file target of the system_health event session is not accessible
+<a id="the-event_file-target-of-the-system_health-event-session-is-not-accessible"></a>
 
-**(Partially resolved in May 2025)** When you attempt to read the contents of the `event_file` target of the `system_health` event session, you get error 40538, "A valid URL beginning with 'https://' is required as value for any filepath specified."
+### The event_file target of the system_health event session isn't accessible
+
+**(Partially resolved in May 2025)** When you attempt to read the contents of the `event_file` target of the `system_health` event session, you get error 40538, "A valid URL beginning with `https://` is required as value for any filepath specified."
 
 Originally, this issue occurred in SQL Server Management Studio (SSMS), or when reading the session data using the [sys.fn_xe_file_target_read_file](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql) function.
 
-In May 2025 this issue was resolved for reading session data from SSMS. The issue is not resolved when reading event data using the `sys.fn_xe_file_target_read_file` function.
+In May 2025, this issue was resolved for reading session data from SSMS. The issue isn't resolved when reading event data by using the `sys.fn_xe_file_target_read_file` function.
 
-This change in behavior is an unintended consequence of a required security fix. Customers can work around this issue by creating their own equivalent of the `system_health` session with an `event_file` target in Azure Blob Storage. For more information, including a T-SQL script to create the `system_health` session that can be modified to create your own equivalent of `system_health`, see [Use the system_health session](/sql/relational-databases/extended-events/use-the-system-health-session).
+This change in behavior is an unintended consequence of a required security fix. You can work around this issue by creating your own equivalent of the `system_health` session with an `event_file` target in Azure Blob Storage. For more information, including a T-SQL script to create the `system_health` session that can be modified to create your own equivalent of `system_health`, see [Use the system_health session](/sql/relational-databases/extended-events/use-the-system-health-session).
+
+### Cross-database Service Broker dialogs need reinitialization after service tier upgrade
+
+**(Resolved in January 2020)** Cross-database Service Broker dialogs stop delivering the messages to the services in other databases after change service tier operation. The messages *aren't lost*, and they can be found in the sender queue. Any change of vCores or instance storage size in SQL Managed Instance causes a `service_broke_guid` value in [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) view to change for all databases. Any `DIALOG` created using a [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) statement that references Service Brokers in other databases stops delivering messages to the target service.
+
+**Workaround**: Stop any activity that uses cross-database Service Broker dialog conversations before updating a service tier, and reinitialize them afterward. If undelivered messages remain after a service tier change, read the messages from the source queue and resend them to the target queue.
 
 ## Contribute to content
 

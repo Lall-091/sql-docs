@@ -1,10 +1,10 @@
 ---
 title: Database References Overview
 description: Extend a SQL project with references to additional database components.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 10/10/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -144,7 +144,7 @@ FROM [$(WWIServer)].[$(WorldWideImporters)].[Purchasing].[Suppliers]
 
 To add a database reference to a SQL project in the SQL Database Projects extension, right-click the **Database References** node under the project in the **Database Projects** view and select **Add Database Reference**.
 
-:::image type="content" source="media/database-references/ads-add-reference.png" alt-text="Screenshot of Azure Data Studio add reference dialog.":::
+:::image type="content" source="media/database-references/ads-add-reference.png" alt-text="Screenshot of Visual Studio Code add reference dialog.":::
 
 The available reference types are:
 
@@ -160,6 +160,33 @@ The extension also prompts to select from the following reference locations:
 - different database, different server
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+To add a project reference to a SQL project, add an `<ItemGroup>` item to the `.sqlproj` file with an appropriate reference item for each database reference. For example, the following project reference is added to a SQL project to reference the `WorldWideImporters` project in a different database on a different server:
+
+```xml
+  <ItemGroup>
+    <ProjectReference Include="..\Contoso\WorldWideImporters.sqlproj">
+      <Name>WorldWideImporters</Name>
+      <Project>{d703fc7a-bc47-4aef-9dc5-cf01094ddb37}</Project>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <ServerSqlCmdVariable>WWIServer</ServerSqlCmdVariable>
+      <DatabaseSqlCmdVariable>WorldWideImporters</DatabaseSqlCmdVariable>
+    </ProjectReference>
+  </ItemGroup>
+```
+
+The project reference is used in a sample view definition in the SQL project:
+
+```sql
+CREATE VIEW dbo.WorldWide_Products
+AS
+SELECT ProductID, ProductName, SupplierID
+FROM [$(WWIServer)].[$(WorldWideImporters)].[Purchasing].[Suppliers]
+```
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 

@@ -923,6 +923,8 @@
             href: ../connect/jdbc/reference/preparestatement-method-java-lang-string.md
           - name: prepareStatement Method (java.lang.String, int)
             href: ../connect/jdbc/reference/preparestatement-method-java-lang-string-int.md
+          - name: prepareStatement Method (java.lang.String, int[])
+            href: ../connect/jdbc/reference/preparestatement-method-java-lang-string-int-array.md
           - name: prepareStatement Method (java.lang.String, int, int)
             href: ../connect/jdbc/reference/preparestatement-method-java-lang-string-int-int.md
           - name: prepareStatement Method (java.lang.String, int, int, int)
@@ -2714,6 +2716,10 @@
       href: ../connect/jdbc/sparse-columns.md
     - name: Prepared statement metadata caching
       href: ../connect/jdbc/prepared-statement-metadata-caching-for-the-jdbc-driver.md
+    - name: Prepared statement parameter performance
+      href: ../connect/jdbc/prepared-statement-parameter-performance.md
+    - name: Performance logger and callback
+      href: ../connect/jdbc/performance-logger-callback.md
   - name: Diagnosing problems
     href: ../connect/jdbc/diagnosing-problems-with-the-jdbc-driver.md
     items:
@@ -2776,7 +2782,7 @@
     - name: JDBC 4.3 compliance
       href: ../connect/jdbc/jdbc-4-3-compliance-for-the-jdbc-driver.md
   - name: Programming guide
-    href: ../connect/jdbc/programming-guide-for-jdbc-sql-driver.md
+    href: ../connect/jdbc/connecting-to-sql-server-with-the-jdbc-driver.md
     items:
     - name: Connecting to SQL
       href: ../connect/jdbc/connecting-to-sql-server-with-the-jdbc-driver.md
@@ -3034,6 +3040,8 @@
       href: ../connect/odbc/using-transparent-network-ip-resolution.md
     - name: Data Classification
       href: ../connect/odbc/data-classification.md
+    - name: Vector data type
+      href: ../connect/odbc/vector-data-type.md
     - name: Using XA Transactions
       href: ../connect/odbc/use-xa-with-dtc.md
     - name: Bug Fixes
@@ -3053,17 +3061,14 @@
         - name: Sample ODBC Program
           href: ../odbc/reference/sample-odbc-program.md
         - name: Introduction to ODBC
-          href: ../odbc/reference/introduction-to-odbc.md
+          href: ../odbc/reference/odbc-overview.md
           items:
-          - name: ODBC Overview
-            href: ../odbc/reference/odbc-overview.md
-            items:
-            - name: Why Was ODBC Created?
-              href: ../odbc/reference/why-was-odbc-created.md
-            - name: What Is ODBC?
-              href: ../odbc/reference/what-is-odbc.md
-            - name: ODBC and the Standard CLI
-              href: ../odbc/reference/odbc-and-the-standard-cli.md
+          - name: Why Was ODBC Created?
+            href: ../odbc/reference/why-was-odbc-created.md
+          - name: What Is ODBC?
+            href: ../odbc/reference/what-is-odbc.md
+          - name: ODBC and the Standard CLI
+            href: ../odbc/reference/odbc-and-the-standard-cli.md
           - name: Introduction to SQL and ODBC
             href: ../odbc/reference/introduction-to-sql-and-odbc.md
             items:
@@ -5915,6 +5920,8 @@
       href: ../connect/python/mssql-python/python-sql-driver-mssql-python-repeatable-deployments-quickstart.md
     - name: 'Quickstart: Rapid prototyping with the Python driver for SQL Server'
       href: ../connect/python/mssql-python/python-sql-driver-mssql-python-rapid-prototyping-quickstart.md
+    - name: 'Quickstart: Bulk copy with the Python driver for SQL Server'
+      href: ../connect/python/mssql-python/python-sql-driver-mssql-python-bulk-copy-quickstart.md
 - name: Ruby
   items:
   - name: Ruby Driver for SQL Server

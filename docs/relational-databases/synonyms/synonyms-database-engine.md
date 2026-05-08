@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "conceptual"
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

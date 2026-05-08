@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 12/13/2022
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "PolyBase, import and export"
   - "Hadoop, import with PolyBase"
@@ -21,10 +21,10 @@ monikerRange: ">= sql-server-2016"
 
 [!INCLUDE [SQL Server Windows Only - ASDBMI](../../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
-This article provides examples of queries using the [PolyBase](../../relational-databases/polybase/polybase-guide.md) feature of SQL Server (starting with 2016). Before using these examples, you must first install and configure PolyBase. For more information, see the [PolyBase overview](polybase-guide.md).
+This article provides examples of queries using the [PolyBase](../../relational-databases/polybase/overview.md) feature of SQL Server (starting with 2016). Before using these examples, you must first install and configure PolyBase. For more information, see the [PolyBase overview](overview.md).
 
 > [!IMPORTANT]  
-> In [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)], PolyBase external sources to Hadoop are not supported. For more information, see [PolyBase connectors](polybase-guide.md#polybase-connectors).
+> In [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)], PolyBase external sources to Hadoop are not supported. For more information, see [PolyBase connectors](overview.md#polybase-connectors).
 
 Run Transact-SQL statements against external tables or use BI tools to query external tables.
 

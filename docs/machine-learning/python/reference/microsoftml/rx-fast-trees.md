@@ -352,7 +352,7 @@ memory.
 
 ## References
 
-[Wikipedia: Gradient boosting (Gradient tree boosting)](https://en.wikipedia.org/wiki/Gradient_boosting)
+[Wikipedia: Gradient boosting (Gradient tree boosting)](https://wikipedia.org/wiki/Gradient_boosting)
 
 [Greedy function approximation: A gradient boosting machine.](http://projecteuclid.org/DPubS?service=UI&version=1.0&verb=Display&handle=euclid.aos/1013203451)
 

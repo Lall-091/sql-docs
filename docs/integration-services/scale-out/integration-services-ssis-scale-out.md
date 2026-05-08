@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "12/13/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: overview
 ms.custom: performance
 ---
 # Integration Services (SSIS) Scale Out

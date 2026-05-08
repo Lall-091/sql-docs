@@ -4,8 +4,9 @@ description: This article explains how to manage SQL Server licensing options. I
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, maghan, mathoma
-ms.date: 11/18/2025
-ms.topic: conceptual
+ms.date: 04/01/2026
+ai-usage: ai-assisted
+ms.topic: how-to
 ms.custom:
   - ignite-2025
 ---
@@ -92,14 +93,25 @@ The following license types are supported when you're licensing v-cores:
 #### Important considerations
 
 - The pay-as-you-go subscription requires the hosting machine to maintain connectivity with Azure. Hourly charges apply only when SQL Server is running on the machine during any part of an hour and the machine is online.
-   
+
    Built-in resilience tolerates intermittent connectivity disruptions for up to 30 consecutive days without affecting billing accuracy. This means that as long as connectivity is not interrupted for more than 30 days, your billing remains correct—even if there are short, intermittent disconnections. If the machine stays disconnected for more than 30 days, the pay-as-you-go subscription expires, and you're no longer authorized to use the software.
 
 - If you're using an Azure subscription managed by a Cloud Service Provider (CSP), enabling pay-as-you-go requires that you or the CSP consents to recurrent billing. For details, review [Manage recurrent billing for SQL Server enabled by Azure Arc with pay-as-you-go license](manage-pay-as-you-go-transition.md).
 
+> [!IMPORTANT]
+> **Pay-as-you-go on Linux**: The following PAYG limitations apply to SQL Server on Linux:
+>
+> - **Passive instance detection**: Automatic detection of passive replicas in availability groups or failover cluster instances isn't available. All instances are billed as active.
+> - **Core visibility**: Core count is based on the operating system environment. Database Engine-level core verification isn't available.
+> - **Connected user detection**: Verification of active user connections on readable secondary replicas isn't available.
+>
+> These limitations don't affect license compliance or the ability to use PAYG billing on Linux. However, you should account for the billing differences when planning PAYG deployments on Linux. For more information about feature availability by operating system, see [Feature availability by operating system](overview.md#feature-availability-by-operating-system).
+
 - By selecting a license with Software Assurance, you attest that you have Enterprise or Standard licenses with active Software Assurance or an active SQL Server subscription license, and that the device is in compliance with the [Product Terms outsourcing restrictions](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/allprograms#:~:text=When%20using%20SQL%20Server%20enabled%20by%20Azure%20Arc%20with%20a,%2C%20regardless%20of%20whether%20those%20Servers%20are%20dedicated%20to%20Customer).
 
 - For SQL Server Enterprise, Standard, or Web edition instances of SQL Server licensed from cloud service providers or hosting service providers using the Service Provider Licensing Agreement (SPLA), use `license only` for the license type. Web edition isn't available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
+
+- [Microsoft.AzureArcData tag support](/azure/azure-resource-manager/management/tag-support#microsoftazurearcdata) explains what types of tags are currently supported for Arc data resources.
 
 #### Available benefits
 
@@ -238,6 +250,43 @@ If there are multiple SQL Server instances on the OSE, all instances and replica
 > [!NOTE]  
 > You can query DMVs or issue `DATABASE BACKUP` commands as long as your connections are limited to `master`, `msdb`, `tempdb`, or `model` databases. These operations will not disqualify your passive instances.
 
+#### Detailed passive replica eligibility criteria for disaster recovery
+
+A SQL Server instance is eligible for disaster recovery licensing if it satisfies the following availability group and connection requirements.
+
+**Always On role eligibility**
+
+The following table shows which Always On roles can qualify for passive disaster recovery licensing:
+
+| Always On role | Description | Passive DR license eligible? |
+|---------------|-------------|------------------------|
+| AvailabilityGroupReplica | Instance is part of an availability group | Depends on replica role and connections |
+| FailoverClusterInstance | Active FCI instance | No |
+| FailoverClusterNode | Passive FCI node | Yes (if service isn't running) |
+| None | Standalone instance | No |
+
+**Replica role requirements**
+
+For an availability group replica to qualify for passive disaster recovery licensing, it must meet the requirements shown in the following table:
+
+| Role | Readable secondary? | Active user connections? | Passive DR eligible? |
+|------|---------------------|--------------------------|----------------|
+| Secondary | No (non-readable) | N/A | Yes |
+| Secondary | Yes (readable) | No connections | Yes |
+| Secondary | Yes (readable) | Has connections | No |
+| Primary (standalone AG) | N/A | N/A | No |
+| Primary (in DAG, primary AG) | N/A | N/A | No |
+| Forwarder (primary in secondary AG of DAG) | No (not in use) | N/A | Yes |
+| Forwarder | Yes (readable) | Has connections | No |
+
+**Summary of passive disaster recovery licensing criteria for availability group replicas**
+
+- Non-readable secondary replicas always qualify for passive disaster recovery licensing.
+- Readable secondary replicas qualify only when they have no active user connections.
+- Forwarders in distributed availability groups qualify when they aren't readable or aren't in use.
+- Primary replicas never qualify for passive disaster recovery licensing because they actively serve the workload.
+- No active or sleeping user sessions connected to user databases (`sys.dm_exec_sessions WHERE is_user_process = 1`).
+
 ### Qualify as passive node of failover clustered instance (FCI)
 
 - No instances of the SQL Server service — whether as standalone or as an active node of an FCI — can be in a running state on the node, unless those instances qualify as free passive replicas of availability groups (AGs).
@@ -252,10 +301,13 @@ The current passive instance detection logic has the following limitations:
 - Passive instances for other disaster recovery technologies like log shipping or mirroring aren't automatically detected at this time.
 - The detection logic doesn't support free disaster recovery testing.
 - The detection logic doesn't support monitoring connections like database consistency checks, backups, or monitoring resource usage data.
+- On Linux, passive instance detection isn't available. All SQL Server instances on Linux are billed as active, regardless of their HA/DR role.
 
 If you're unable to work within these limitations, you can use volume licensing instead of `PAYG`. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
-[!INCLUDE [billing-after-failover](includes/billing-after-failover.md)]
+### Billing after failover
+
+During failovers, the extension detects the role transition and automatically switches billing to the active replica without duplicate charges.
 
 <a id="server-cal"></a>
 
@@ -307,7 +359,7 @@ For more information, see [SQL Server Licensing Resources and Documents](https:/
 
 The following table shows the meter product tiers (also called *SKUs*) that are used for metering and billing for SQL Server software installed on a single OSE:
 
-| Installed edition | Projected edition | License type | Failover replica | Use p-core license | Meter SKU |
+| Installed edition | Projected edition | Host license type | Failover replica | Use p-core license | Meter SKU |
 | --- | --- | --- | --- | --- | --- |
 | Enterprise Core | Enterprise | `PAYG` | No | No | `Ent edition - PAYG` |
 | Enterprise Core | Enterprise | `PAYG` | No | Yes | `Ent edition - Virtual license` <sup>2</sup> |
@@ -329,14 +381,17 @@ The following table shows the meter product tiers (also called *SKUs*) that are 
 | Standard | Standard | `PAYG` or `Paid` | Yes | Yes or no | `Std edition - DR replica` |
 | Evaluation | Evaluation | Any | Yes or no | Not applicable | `Eval edition` |
 | Developer | Developer | Any | Yes or no | Not applicable | `Dev edition` |
-| Web <sup>3</sup> | Web | Any | Not applicable | Not applicable | `Web edition` |
+| Web <sup>3</sup> | Web | `PAYG` or `Paid` | Not applicable | Not applicable | `Web edition - PAYG` |
+| Web <sup>4</sup> | Web | `LicenseOnly` | Not applicable | Not applicable | `Web edition - License only` |
 | Express | Express | Any | Not applicable | Not applicable | `Express edition` |
 
 <sup>1</sup> Installation of the Enterprise edition indicates use of the Server+CAL licensing model.
 
 <sup>2</sup> This meter reflects the software usage covered by the p-core license and the unlimited virtualization benefit. For the SQL Server instance to be covered, it must be installed on a virtual machine.
 
-<sup>3</sup> Web edition isn't available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
+<sup>3</sup> Web edition isn't available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions. It's only available through hosting provider programs, and only up to SQL Server 2022.
+
+<sup>4</sup> This configuration applies when Web edition is licensed through a hosting provider, but the SQL Server instance is connected to Azure Arc and uses a limited set of Azure features. See [Feature availability by license type](overview.md#feature-availability-depending-on-license-type).
 
 The following table shows the meter SKUs that are used for metering and billing for SQL Server software covered by a physical core license with unlimited virtualization:
 
@@ -352,3 +407,4 @@ The following table shows the meter SKUs that are used for metering and billing 
 - [SQL Server 2022 pricing and licensing](https://www.microsoft.com/sql-server/sql-server-2022-pricing)
 - [Configure SQL Server enabled by Azure Arc](manage-configuration.md)
 - [Frequently asked questions](faq.yml#recurring-pay-as-you-go-billing)
+- [Microsoft.AzureArcData tag support](/azure/azure-resource-manager/management/tag-support#microsoftazurearcdata)

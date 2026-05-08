@@ -27,7 +27,7 @@ To complete this tutorial, you must be familiar with [!INCLUDE [ssNoVersion](../
 
 To use this tutorial, you need an Azure storage account, SQL Server Management Studio (SSMS), access to an instance of SQL Server on-premises, access to an Azure virtual machine (VM) running an instance of [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] or later version, and an [!INCLUDE [sssampledbobject-md](../includes/sssampledbobject-md.md)] database. Additionally, the account used to issue the `BACKUP` and `RESTORE` commands should be in the **db_backupoperator** database role with **alter any credential** permissions.
 
-- Get a free [Azure Account](https://azure.microsoft.com/offers/ms-azr-0044p/).
+- Get a free [Azure Account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - Create an [Azure storage account](/azure/storage/common/storage-quickstart-create-account?tabs=portal).
 - Install [SQL Server 2017 Developer Edition](https://www.microsoft.com/sql-server/sql-server-downloads).
 - Provision an [Azure VM running SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/).
@@ -112,7 +112,7 @@ To create a policy on the container and generate a Shared Access Signature (SAS)
    $container = Get-AzStorageContainer -Context $storageContext -Name $containerName
    $cbc = $container.CloudBlobContainer
 
-   # Outputs the Transact SQL to the clipboard and to the screen to create the credential using the Shared Access Signature
+   # Outputs the Transact-SQL to the clipboard and to the screen to create the credential using the Shared Access Signature
    Write-Host 'Credential T-SQL'
    $tSql = "CREATE CREDENTIAL [{0}] WITH IDENTITY='SHARED ACCESS SIGNATURE', SECRET='{1}'" -f $cbc.Uri, $sas
    Set-Clipboard -Value $tSql

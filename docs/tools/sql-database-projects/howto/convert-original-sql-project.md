@@ -1,10 +1,10 @@
 ---
 title: Convert an Original SQL Project
-description: "Create an SDK-style SQL project from an existing project."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 09/25/2025
+description: Create an SDK-style SQL project from an existing project.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -39,7 +39,6 @@ SDK-style projects aren't supported in SQL Server Data Tools (SSDT) in Visual St
 
 - the command line
 - the SQL Database Projects extension in Visual Studio Code
-- the SQL Database Projects extension in Azure Data Studio
 - the SQL Server Data Tools, SDK-style (preview) in Visual Studio 2022
 
 > [!NOTE]  
@@ -50,7 +49,7 @@ SDK-style projects aren't supported in SQL Server Data Tools (SSDT) in Visual St
 ::: zone pivot="sq1-visual-studio"
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
+- [Visual Studio Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
 - [Install SQL Server Data Tools (SSDT) for Visual Studio](../../../ssdt/download-sql-server-data-tools-ssdt.md)
 
 ::: zone-end
@@ -59,17 +58,25 @@ SDK-style projects aren't supported in SQL Server Data Tools (SSDT) in Visual St
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools, SDK-style (preview) installed in Visual Studio 2022](../../../ssdt/sql-server-data-tools-sdk-style.md)
+- [SQL Server Data Tools, SDK-style (preview)](../../../ssdt/sql-server-data-tools-sdk-style.md)
 
 ::: zone-end
 
 ::: zone pivot="sq1-visual-studio-code"
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [VS Code](https://code.visualstudio.com/Download)
-- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
+- [Visual Studio Code](https://code.visualstudio.com/Download)
+- [SQL Database Projects extension](../../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- [SQL Server Management Studio (SSMS)](/ssms/install/install)
+- [Database DevOps workload installed in SSMS](/ssms/install/modify)
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 
@@ -87,7 +94,7 @@ In file explorer, create a copy of the `.sqlproj` file for the project you want 
 
 ::: zone pivot="sq1-visual-studio"
 
-Open the project in Visual Studio 2022. The `.sqlproj` file is still in the original format, so you open it in the original SQL Server Data Tools.
+Open the project in Visual Studio. The `.sqlproj` file is still in the original format, so you open it in the original SQL Server Data Tools.
 
 Build the project in Visual Studio by right-clicking on the database node in **Solution Explorer** and selecting **Build**.
 
@@ -95,7 +102,7 @@ Build the project in Visual Studio by right-clicking on the database node in **S
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-To build a `.dacpac` file from the original project, you must use the original SQL Server Data Tools (SSDT) in Visual Studio. Open the project file in Visual Studio 2022 with the original SQL Server Data Tools installed.
+To build a `.dacpac` file from the original project, you must use the original SQL Server Data Tools (SSDT) in Visual Studio. Open the project file in Visual Studio with the original SQL Server Data Tools installed.
 
 Build the project in Visual Studio by right-clicking on the database node in **Solution Explorer** and selecting **Build**.
 
@@ -103,7 +110,15 @@ Build the project in Visual Studio by right-clicking on the database node in **S
 
 ::: zone pivot="sq1-visual-studio-code"
 
-Open the project folder in VS Code or Azure Data Studio. In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Build**.
+Open the project folder in Visual Studio Code. In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Build**.
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+To build a `.dacpac` file from the original project, you must use the original SQL Server Data Tools (SSDT) in Visual Studio. Open the project file in Visual Studio with the original SQL Server Data Tools installed.
+
+Build the project in Visual Studio by right-clicking on the database node in **Solution Explorer** and selecting **Build**.
 
 ::: zone-end
 
@@ -225,11 +240,11 @@ The [project properties](../concepts/project-properties.md) reference lists the 
 
 ## Step 4: Solution files
 
-Your project file might be referenced in a solution file (`.sln`). If you have a solution file, you should update it to reference the new SDK-style project file. If you do not have a solution file, you can skip this section and proceed to Step 5.
+Your project file might be referenced in a solution file (`.sln`). If you have a solution file, you should update it to reference the new SDK-style project file. If you don't have a solution file, you can skip this section and proceed to Step 5.
 
 ### Option 1: Create a new solution file
 
-For a solution file that only contains the SQL project, it is more straightforward to remove the solution file and create a new solution file with the SDK-style project.
+For a solution file that only contains the SQL project, it's more straightforward to remove the solution file and create a new solution file with the SDK-style project.
 
 ```bash
 dotnet new sln --name MySolution
@@ -245,7 +260,7 @@ Project("{PROJECT_TYPE_GUID}") = "MyDatabaseProject", "MyDatabaseProject\MyDatab
 EndProject
 ```
 
-The `PROJECT_TYPE_GUID` value for a Microsoft.Build.Sql project is `42EA0DBD-9CF1-443E-919E-BE9C484E4577`, and the `PROJECT_GUID` is a unique identifier for the project found in the project file `<ProjectGuid>` element. If you have a solution file with your project, the `PROJECT_GUID` value is not required to be changed and can remain the same as in the original project file. The `PROJECT_TYPE_GUID` value is required to be changed to the Microsoft.Build.Sql project type GUID.
+The `PROJECT_TYPE_GUID` value for a Microsoft.Build.Sql project is `42EA0DBD-9CF1-443E-919E-BE9C484E4577`, and the `PROJECT_GUID` is a unique identifier for the project found in the project file `<ProjectGuid>` element. If you have a solution file with your project, the `PROJECT_GUID` value isn't required to be changed and can remain the same as in the original project file. The `PROJECT_TYPE_GUID` value is required to be changed to the Microsoft.Build.Sql project type GUID.
 
 ## Step 5: Build a `.dacpac` file from the modified project for comparison
 
@@ -255,8 +270,8 @@ The SQL project is no longer compatible with Visual Studio 2022. To build or edi
 
 - the command line
 - the SQL Database Projects extension in Visual Studio Code
-- the SQL Database Projects extension in Azure Data Studio
 - the SQL Server Data Tools, SDK-style (preview) in Visual Studio 2022
+- SQL Server Management Studio (SSMS) with the Database DevOps workload (preview)
 
 ::: zone-end
 
@@ -268,7 +283,13 @@ The project file is now in the SDK-style format, but to open it in Visual Studio
 
 ::: zone pivot="sq1-visual-studio-code"
 
-Open the project folder in VS Code or Azure Data Studio. In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Build**.
+Open the project folder in Visual Studio Code. In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Build**.
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+Open the project file in SQL Server Management Studio (SSMS) with the Database DevOps workload (preview) installed. In the Object Explorer, right-click on the database project and select **Build**.
 
 ::: zone-end
 
@@ -303,7 +324,7 @@ The syntax for DacpacVerify is to specify the filepath to two `.dacpac` files as
 DacpacVerify original_project.dacpac modified_project.dacpac
 ```
 
-You can use the schema compare tool in Visual Studio or Azure Data Studio to compare objects in the `.dacpac` files.
+You can use the schema compare tool to compare objects in the `.dacpac` files.
 
 ::: zone pivot="sq1-visual-studio"
 
@@ -313,23 +334,27 @@ Launch Visual Studio without a project loaded. Go to **Tools** > **SQL Server** 
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-Graphical schema comparison isn't yet available in the SDK-style SQL projects preview in Visual Studio. Use Azure Data Studio to compare schemas.
+Graphical schema comparison isn't yet available in the SDK-style SQL projects preview in Visual Studio. Use Visual Studio Code to compare schemas.
 
 ::: zone-end
 
 ::: zone pivot="sq1-visual-studio-code"
 
-Schema comparison isn't available in Visual Studio Code. Use Azure Data Studio or Visual Studio to compare schemas.
-
-In Azure Data Studio, install the **SQL Server Schema Compare** extension if it isn't already installed. Launch a new schema comparison from the command palette by opening the command palette with `Ctrl/Cmd+Shift+P` and typing `Schema Compare`.
+In Visual Studio Code, install the **SQL Server Schema Compare** extension if it isn't already installed. Launch a new schema comparison from the command palette by opening the command palette with `Ctrl/Cmd+Shift+P` and typing `Schema Compare`.
 
 Select the original `.dacpac` file as the source and the modified `.dacpac` file as the target.
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+Graphical schema comparison isn't available in SQL Server Management Studio. Use Visual Studio Code or Visual Studio to compare schemas.
+
+::: zone-end
+
 ::: zone pivot="sq1-command-line"
 
-Graphical schema comparison is available in Visual Studio and Azure Data Studio.
+Graphical schema comparison is available in Visual Studio and Visual Studio Code.
 
 ::: zone-end
 

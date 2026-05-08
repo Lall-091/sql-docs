@@ -20,6 +20,11 @@ sections:
   - name: Ignored
     questions:
       - question: |
+          Is elastic queries in shard map manager mode supported?
+        answer: |
+          Elastic query in shard map manager mode (horizontal partitioning), using `EXTERNAL DATA SOURCE` type `SHARD_MAP_MANAGER`, is reaching end of support on March 31, 2027. After this date, existing workloads will continue to function but will no longer receive support, and creation of new external data sources of type `SHARD_MAP_MANAGER` will no longer be possible. For migration options, see [Migration guide from elastic query shard map manager mode](elastic-query-horizontal-partitioning-migration.md).
+
+      - question: |
           If I have a single-tenant per shard and no sharding key, how do I populate the sharding key for the schema info?
         answer: |
           The schema info object is only used to split merge scenarios. If an application is inherently single-tenant, then it does not require the Split Merge tool and thus there is no need to populate the schema info object.

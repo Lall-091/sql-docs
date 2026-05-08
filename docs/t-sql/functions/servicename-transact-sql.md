@@ -53,7 +53,7 @@ MSSQLSERVER
 ```  
   
 ## See Also  
- [Configuration Functions &#40;Transact-SQL&#41;](../../t-sql/functions/configuration-functions-transact-sql.md)   
+
  [Manage the Database Engine Services](../../database-engine/configure-windows/manage-the-database-engine-services.md)  
   
   

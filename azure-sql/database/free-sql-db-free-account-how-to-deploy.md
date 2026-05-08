@@ -18,7 +18,7 @@ ms.custom:
 
 Azure SQL Database is an intelligent, scalable, relational database service built for the cloud. SQL Database is a fully managed platform as a service (PaaS) database engine that handles most database management functions such as upgrading, patching, backups, and monitoring without user involvement.
 
-This offer is still active for existing resources for 12 months after provisioning, providing a S0 database with 10 database transaction units and 250-GB storage for an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+This offer is still active for existing resources for 12 months after provisioning, providing a S0 database with 10 database transaction units and 250-GB storage for an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 > [!IMPORTANT]  
 > This free offer has been replaced by the Azure SQL Database free offer, see [Deploy Azure SQL Database for free](free-offer.md). Starting in September 2023, you can try Azure SQL Database free of charge and get 100,000 vCore seconds of compute every month, for the life of your subscription. This free offer provides a General Purpose database for the lifetime of your subscription.
@@ -49,7 +49,7 @@ The following table describes the values on the track usage page:
 
 - With an Azure free account, you also get $200 in credit to use in 30 days. During this time, any usage of the service beyond the free monthly amount is deducted from this credit.
 - At the end of your first 30 days or after you spend your $200 credit (whichever comes first), you'll only pay for what you use beyond the free monthly amount of services. To keep getting free services after 30 days, move to pay-as-you-go pricing. If you don't move to pay as you go, you can't purchase Azure services beyond your $200 credit and eventually your account and services are disabled.
-- For more information, see [Azure free account FAQ](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccountfree-account-faq/).
+- For more information, see [Azure free account FAQ](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ## Clean up resources
 

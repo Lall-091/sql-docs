@@ -1,10 +1,10 @@
 ---
-title: "Create a database snapshot (Transact-SQL)"
+title: "Create a Database Snapshot (Transact-SQL)"
 description: "Find out how to create a SQL Server database snapshot by using Transact-SQL. Learn about prerequisites and best practices for creating snapshots."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 10/02/2023
+ms.date: 01/26/2026
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -32,7 +32,7 @@ The source database, which can use any recovery model, must meet the following p
 - Prior to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], the source database couldn't contain a `MEMORY_OPTIMIZED_DATA` filegroup. Support for in-memory database snapshots was added in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)].
 
 > [!IMPORTANT]  
-> For information about other significant considerations, see [Database Snapshots (SQL Server)](database-snapshots-sql-server.md).
+> For information about other significant considerations, see [Database snapshots (SQL Server)](database-snapshots-sql-server.md).
 
 ## Recommendations
 
@@ -42,7 +42,9 @@ This section discusses the following best practices:
 - [Best practice: limiting the number of database snapshots](#limiting-number)
 - [Best practice: client connections to a database snapshot](#client-connections)
 
-#### <a id="naming"></a> Best practice: naming database snapshots
+<a id="naming"></a>
+
+#### Best practice: naming database snapshots
 
 Before creating snapshots, it's important to consider how to name them. Each database snapshot requires a unique database name. For administrative ease, the name of a snapshot can incorporate information that identifies the database, such as:
 
@@ -68,16 +70,20 @@ AdventureWorks_snapshot_noon
 AdventureWorks_snapshot_evening
 ```
 
-#### <a id="limiting-number"></a> Best practice: limiting the number of database snapshots
+<a id="limiting-number"></a>
 
-Creating a series of snapshots over time captures sequential snapshots of the source database. Each snapshot persists until it's explicitly dropped. Because each snapshot will continue to grow as original pages are updated, you may want to conserve disk space by deleting an older snapshot after creating a new snapshot.
+#### Best practice: limiting the number of database snapshots
+
+Creating a series of snapshots over time captures sequential snapshots of the source database. Each snapshot persists until it's explicitly dropped. Because each snapshot will continue to grow as original pages are updated, you might want to conserve disk space by deleting an older snapshot after creating a new snapshot.
 
 > [!NOTE]  
 > To revert to a database snapshot, you need to delete any other snapshots from that database.
 
-#### <a id="client-connections"></a> Best practice: client connections to a database snapshot
+<a id="client-connections"></a>
 
-To use a database snapshot, clients need to know where to find it. Users can read from one database snapshot while another is being created or deleted. However, when you substitute a new snapshot for an existing one, you need to redirect clients to the new snapshot. Users can manually connect to a database snapshot with [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or Azure Data Studio. However, to support a production environment, you should create a programmatic solution that transparently directs report-writing clients to the latest database snapshot of the database.
+#### Best practice: client connections to a database snapshot
+
+To use a database snapshot, clients need to know where to find it. Users can read from one database snapshot while another is being created or deleted. However, when you substitute a new snapshot for an existing one, you need to redirect clients to the new snapshot. Users can manually connect to a database snapshot with [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]. However, to support a production environment, you should create a programmatic solution that transparently directs report-writing clients to the latest database snapshot of the database.
 
 ## Permissions
 
@@ -85,7 +91,7 @@ Any user who can create a database can create a database snapshot; however, to c
 
 ## Create a database snapshot using Transact-SQL
 
-1. Based on the current size of the source database, ensure that you have sufficient disk space to hold the database snapshot. The maximum size of a database snapshot is the size of the source database at snapshot creation. For more information, see [View the Size of the Sparse File of a Database Snapshot (Transact-SQL)](view-the-size-of-the-sparse-file-of-a-database-snapshot-transact-sql.md).
+1. Based on the current size of the source database, ensure that you have sufficient disk space to hold the database snapshot. The maximum size of a database snapshot is the size of the source database at snapshot creation. For more information, see [View the Size of the Sparse File of a Database Snapshot](view-the-size-of-the-sparse-file-of-a-database-snapshot-transact-sql.md).
 
 1. Issue a `CREATE DATABASE` statement on the files using the `AS SNAPSHOT OF` clause. Creating a snapshot requires specifying the logical name of every database file of the source database. The syntax is as follows:
 

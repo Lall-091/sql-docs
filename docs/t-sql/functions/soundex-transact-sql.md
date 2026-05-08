@@ -127,6 +127,5 @@ GO
 ## Related content
 
 - [DIFFERENCE (Transact-SQL)](difference-transact-sql.md)
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 - [ALTER DATABASE (Transact-SQL) compatibility level](../statements/alter-database-transact-sql-compatibility-level.md)
 

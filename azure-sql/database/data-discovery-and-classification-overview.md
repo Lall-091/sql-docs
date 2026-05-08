@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 03/26/2024
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 tags: azure-synapse
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
 ms.custom:

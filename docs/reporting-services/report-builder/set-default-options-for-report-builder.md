@@ -4,7 +4,7 @@ description: This article describes useful defaults that you can set in Report B
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 f1_keywords:

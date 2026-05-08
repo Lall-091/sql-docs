@@ -8,7 +8,7 @@ ms.reviewer: mikeray
 ms.date: 06/20/2022
 ms.service: sql
 ms.subservice: distributed-replay
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017"

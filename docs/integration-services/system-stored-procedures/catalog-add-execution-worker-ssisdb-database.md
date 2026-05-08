@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "12/16/2016"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">= sql-server-2017"
 ---
 # catalog.add_execution_worker (SSISDB Database)

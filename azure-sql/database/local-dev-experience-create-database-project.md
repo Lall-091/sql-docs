@@ -3,8 +3,8 @@ title: Create a Project for a Local Development Environment
 description: Learn how to create a database project as part of the local development experience for Azure SQL Database.
 author: croblesm
 ms.author: roblescarlos
-ms.reviewer: mathoma, wiassaf
-ms.date: 06/13/2025
+ms.reviewer: mathoma, wiassaf, randolphwest
+ms.date: 01/26/2026
 ms.service: azure-sql-database
 ms.topic: how-to
 ms.custom:
@@ -16,7 +16,7 @@ monikerRange: "=azuresql || =azuresql-db"
 
 # Create a project for a local Azure SQL Database development environment
 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+[!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 The Azure SQL Database [local development experience](local-dev-experience-overview.md) empowers application developers and database professionals to design, edit, build/validate, publish, and run database schemas for databases directly on their workstation using an Azure SQL Database containerized environment. As part of this workflow, you'll create a SQL Database Project. The SQL Database Project extension allows you to create a new blank project, create a new project from a database, and open previously created projects.
 
@@ -38,19 +38,12 @@ Finally, select a target structure of the extraction. The new project opens and 
 
 ## Open an existing project
 
-In the **Database Projects** view, select **Open Project** and open an existing `.sqlproj` file from the file picker that appears. Existing projects can originate from Azure Data Studio, Visual Studio Code, or [Visual Studio SQL Server Data Tools](/sql/ssdt/sql-server-data-tools).
+In the **Database Projects** view, select **Open Project** and open an existing `.sqlproj` file from the file picker that appears. Existing projects can originate from Visual Studio Code or [SQL Server Data Tools](/sql/ssdt/sql-server-data-tools).
 
 The existing project opens and its contents are visible in the **Database Projects** view for editing.
 
-## Next step
-
-> [!div class="nextstepaction"]
-> [Build and Publish a project](/azure-data-studio/extensions/sql-database-project-extension-build)
-
 ## Related content
 
-Learn more about the local development experience for Azure SQL Database:
-
 - [What is the local development experience for Azure SQL Database?](local-dev-experience-overview.md)
-- [Azure SQL Database dev container template](local-dev-experience-dev-containers.md)
+- [What are Dev Container Templates for Azure SQL Database?](local-dev-experience-dev-containers.md)
 - [Quickstart: Set up a development environment with Dev Container Templates for Azure SQL Database](local-dev-experience-dev-containers-quickstart.md)

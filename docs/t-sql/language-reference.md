@@ -4,7 +4,7 @@ description: This article gives the basics about how to find and use Transact-SQ
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 12/27/2024
+ms.date: 01/26/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -33,6 +33,7 @@ For detailed technical documents about how certain standards are implemented in 
 Some of the Microsoft tools that issue T-SQL commands are:
 
 - [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)
+- [MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)
 - [SQL Server Data Tools (SSDT)](../ssdt/download-sql-server-data-tools-ssdt.md)
 - [sqlcmd](../tools/sqlcmd/sqlcmd-utility.md)
 

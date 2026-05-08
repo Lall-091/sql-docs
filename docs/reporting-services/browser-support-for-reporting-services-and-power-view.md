@@ -4,7 +4,7 @@ description: Learn about what browser versions are supported for managing and vi
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

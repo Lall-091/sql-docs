@@ -1,4 +1,4 @@
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 IF OBJECT_ID('dbo.ProductResults', 'U') IS NOT NULL
@@ -16,7 +16,7 @@ FROM Production.ProductModel
 WHERE ProductModelID IN (3, 4);
 GO
 
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT ProductModelID, Name

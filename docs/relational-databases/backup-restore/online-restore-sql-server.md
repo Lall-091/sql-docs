@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "online restores [SQL Server]"
   - "online restores [SQL Server], about online restores"

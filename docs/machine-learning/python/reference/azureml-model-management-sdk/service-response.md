@@ -73,9 +73,8 @@ default is `True`.
 ### encoding
 
 The encoding scheme to be used. The default is to apply
-no encoding. For a list of all encoding schemes please visit
-*Standard Encodings:*
-[https://docs.python.org/3/library/codecs.html#standard-encodings](https://docs.python.org/3/library/codecs.html#standard-encodings)
+no encoding. For a list of all encoding schemes, visit
+[Standard Encodings](https://docs.python.org/3/library/codecs.html#standard-encodings).
 
 
 ### Returns

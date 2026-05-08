@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 03/30/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "upgrading databases"
   - "databases [SQL Server], detaching"

@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "08/08/2017"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Step 2: Create a SQL database for Ruby development
 

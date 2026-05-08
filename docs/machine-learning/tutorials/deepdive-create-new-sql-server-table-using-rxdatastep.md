@@ -24,7 +24,7 @@ In this tutorial, you'll learn how to move data between in-memory data frames, t
 
 In the first half of this tutorial series, you used the **RxTextData** function to import data into R from a text file, and then used the **RxDataStep** function to move the data into [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 
-This tutorial takes a different approach, and uses data from a file saved in the [XDF format](https://en.wikipedia.org/wiki/Extensible_Data_Format). After doing some lightweight transformations on the data using the XDF file, you save the transformed data into a new [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] table.
+This tutorial takes a different approach, and uses data from a file saved in the [XDF format](https://wikipedia.org/wiki/Extensible_Data_Format). After doing some lightweight transformations on the data using the XDF file, you save the transformed data into a new [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] table.
 
 **What is XDF?**
 

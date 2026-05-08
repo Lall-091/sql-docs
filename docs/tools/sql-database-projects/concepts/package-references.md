@@ -1,10 +1,10 @@
 ---
 title: SQL Projects Package References
 description: Reference database objects with package references.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 10/10/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -12,7 +12,6 @@ ms.collection:
   - data-tools
 ms.custom:
   - ignite-2024
-zone_pivot_groups: sq1-sql-projects-tools
 ---
 
 # SQL projects package references
@@ -66,7 +65,8 @@ The following example includes a package reference to the `Contoso.AdventureWork
 In this example, the AdventureWorks `.dacpac` file is published as a package `Contoso.AdventureWorks` version `1.1.0` to a NuGet feed. The `<DatabaseSqlCmdVariable>` element specifies the name of the database on the same server where the objects in the package are located and would be used to indicate this reference in three-part naming. The [SQLCMD variable](sqlcmd-variables.md) `AdventureDB` is used to set the database name at deployment time and is used in the project similarly to this example query:
 
 ```sql
-SELECT * FROM [$(AdventureDB)].dbo.Customers;
+SELECT *
+FROM [$(AdventureDB)].dbo.Customers;
 ```
 
 The `<DacpacName>` element specifies the name of the `.dacpac` file for the package reference, without the file extension or path. The `<DacpacName>` element is optional and is only required when the name of the `.dacpac` file is different from the name of the package.
@@ -91,6 +91,7 @@ The available system database packages are:
 - [SQL Server `msdb` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.Msdb)
 - [Azure SQL Database `master` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.Azure.Master)
 - [SQL database in Fabric system objects](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.DbFabric)
+- [Data warehouse in Fabric `master` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.FabricDw)
 - [Azure Synapse Analytics `master` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.Synapse.Master)
 - [Azure Synapse Analytics serverless pools `master` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.SynapseServerless.Master)
 

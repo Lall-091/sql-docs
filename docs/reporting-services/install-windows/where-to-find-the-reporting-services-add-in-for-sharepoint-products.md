@@ -4,7 +4,7 @@ description: "The SQL Server Reporting Services add-in for SharePoint Products a
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

@@ -35,7 +35,7 @@ This guide uses the agent-based migration approach of Azure Migrate, which treat
 
 Before you begin this tutorial, you should complete the following prerequisites:
 
-1. An Azure subscription. Create a [free account](https://azure.microsoft.com/pricing/free-trial/), if necessary.
+1. An Azure subscription. Create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn), if necessary.
 1. Install the [Azure PowerShell `Az` module](/powershell/azure/install-az-ps).
 1. Download the [PowerShell samples scripts](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/SQL%20Migration) from the GitHub repository.
 
@@ -253,7 +253,7 @@ To replicate machines, follow these steps:
 
    :::image type="content" source="media/availability-group-migrate/compute-settings.png" alt-text="Screenshot of the compute settings." lightbox="media/availability-group-migrate/compute-settings.png":::
 
-1. In **Disks**, specify whether the VM disks should be replicated to Azure, and select the disk type (standard SSD/HDD or premium managed disks) in Azure. Then select **Next**.
+1. In **Disks**, specify whether the VM disks should be replicated to Azure, and select the disk type (Standard SSD/HDD or premium managed disks) in Azure. Then select **Next**.
 
    :::image type="content" source="media/availability-group-migrate/disks.png" alt-text="Screenshot of the disk settings." lightbox="media/availability-group-migrate/disks.png":::
 

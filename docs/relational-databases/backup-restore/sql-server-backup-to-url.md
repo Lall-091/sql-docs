@@ -1,13 +1,13 @@
 ---
 title: SQL Server Backup to URL for Azure Blob Storage
 description: Learn about the concepts, requirements, and components necessary for SQL Server to use the Azure Blob Storage as a backup destination.
-author: dplessMSFT
-ms.author: dpless
-ms.reviewer: mathoma, wiassaf, hudequei, randolphwest
-ms.date: 11/18/2025
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: wiassaf, hudequei, randolphwest, dpless, dinethi
+ms.date: 02/09/2026
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - devx-track-azurepowershell
   - ignite-2025
@@ -113,6 +113,8 @@ For information on other examples where credentials are used, see [Create a SQL 
 
 Typically, SQL Server backups are created in two steps. Initially, the `.bak` backup file is created with zeroes, and then the file is updated with data. Since file modification on immutable storage isn't allowed once the file is written and committed, the backup process now skips the initial step to create the backup file with zeroes. Instead, the entire backup is created in one step when written to block blobs.
 
+Azure storage provides two types of immutability, container level and version level. Currently, only container level immutable storage is supported.
+
 To use immutable storage with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] backup to URL, follow these steps:
 
 1. Configure [immutability for your Azure storage container](/azure/storage/blobs/immutable-policy-configure-container-scope).
@@ -140,11 +142,13 @@ The following are security considerations and requirements when backing up to or
 
 ## Limitations of backup/restore to Azure Blob Storage
 
-- SQL Server limits the maximum backup size supported using a page blob to 1 TB. The maximum backup size supported using block blobs is limited to approximately 200 GB (50,000 blocks * 4 MB `MAXTRANSFERSIZE`). Block blobs support striping to support substantially larger backup sizes - the limit is a maximum of 64 URLs, which results in the following formula: `64 stripes * 50,000 blocks * 4MB maxtransfersize = 12.8 TB`.
+- SQL Server limits the maximum backup size supported using a page blob to 1 TB. The maximum backup size supported using block blobs is limited to approximately 195.3 GB (50,000 blocks * 4 MB `MAXTRANSFERSIZE`). Block blobs support striping to support substantially larger backup sizes - the limit is a maximum of 64 URLs, which results in the following formula: `64 stripes * 50,000 blocks * 4MB maxtransfersize = 12.8 TB`.
 
   > [!IMPORTANT]  
-  > Although the maximum backup size supported by a single block blob is 200 GB, it's possible for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to write in smaller block sizes, which can lead [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to reach the 50,000 block limit before the entire backup is transferred. Stripe backups (even if they're smaller than 200 GB) to avoid the block limit, especially when if you use differential or uncompressed backups.
+  > Although the maximum backup size supported by a single block blob is approximately 195.3 GB, it's possible for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to write in smaller block sizes, which can lead [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to reach the 50,000 block limit before the entire backup is transferred. Stripe backups (even if they're smaller than 200 GB) to avoid the block limit, especially when if you use differential or uncompressed backups.
 
+- Transaction log backups ignore the user-specified `MAXTRANSFERSIZE` when backing up to multiple backup files. Instead, 64KB is used if more than one file is specified, regardless of the `MAXTRANSFERSIZE` value in the backup command. Therefore, the maximum size of a transaction log backup to URL is approximately 195.3GB (50,000 blocks * 4 MB `MAXTRANSFERSIZE` * 1 file OR 50,000 blocks * 64 KB * 64 files). Compression can allow for a larger transaction log to be backed up, but compression ratios will vary.
+  
 - You can issue backup or restore statements by using Transact-SQL, SMO, PowerShell cmdlets, or the SQL Server Management Studio Backup or Restore wizard.
 
 - When backing up to an Azure Storage account, SQL Server only supports authentication with Shared Access Signature (SAS) tokens or storage account keys. All other authentication methods, including authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), aren't supported.
@@ -167,8 +171,9 @@ The following are security considerations and requirements when backing up to or
   - The [proxycfg.exe](/windows/win32/winhttp/proxycfg-exe--a-proxy-configuration-tool) utility on Windows XP or Windows Server 2003 and earlier.
   - The [netsh.exe](/windows/win32/winsock/netsh-exe) utility on Windows Vista and Windows Server 2008 or later.
 
-- [Immutable storage for Azure Blob Storage](/azure/storage/blobs/storage-blob-immutable-storage) isn't supported. Set the **Immutable Storage** policy to false.
-
+- [Immutable storage for Azure Blob Storage](/azure/storage/blobs/storage-blob-immutable-storage) isn't supported prior to SQL Server 2025. Set the **Immutable Storage** policy to false.
+- For support in SQL Server 2025 and later versions, see [Azure immutable storage support](#azure-immutable-storage-support).
+   - Azure storage provides two types of immutability, container level and version level. Currently, only container level immutable storage is supported.
 - Backup to URL isn't supported to [premium storage](/azure/storage/blobs/storage-blob-block-blob-premium).
 
 ## Supported arguments and statements in Azure Blob Storage
@@ -399,7 +404,7 @@ $policy = New-AzStorageContainerStoredAccessPolicy -Container $containerName -Po
 $sas = New-AzStorageContainerSASToken -Policy $policyName -Context $storageContext -Container $containerName
 Write-Host 'Shared Access Signature= '$($sas.TrimStart('?'))''
 
-# Outputs the Transact SQL to the clipboard and to the screen to create the credential using the Shared Access Signature
+# Outputs the Transact-SQL to the clipboard and to the screen to create the credential using the Shared Access Signature
 Write-Host 'Credential T-SQL'
 $tSql = "CREATE CREDENTIAL [{0}] WITH IDENTITY='Shared Access Signature', SECRET='{1}'" -f $cbc.Uri, $sas.TrimStart('?')
 $tSql | clip

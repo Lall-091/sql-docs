@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "05/09/2024"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # CDC Flow Components
 

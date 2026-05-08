@@ -17,7 +17,7 @@ ms.custom:
 
 This article explains how to create a SQL Server Always On Availability Group (AG) on Linux *without* a cluster manager. This architecture provides read-scale only. It *doesn't* provide high availability.
 
-There are two types of architectures for availability groups. An architecture for *high availability* uses a *cluster manager* to provide improved business continuity. To create the high-availability architecture, see [Configure SQL Server Always On Availability Group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md).
+There are two types of architectures for availability groups. An architecture for *high availability* uses a *cluster manager* to provide improved business continuity. To create the high-availability architecture, see [Configure SQL Server Always On Availability Group for high availability on Linux](high-availability/availability-groups-configure.md).
 
 An availability group with `CLUSTER_TYPE = NONE` can include replicas hosted on different operating system platforms. It can't support high availability.
 
@@ -63,7 +63,7 @@ ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
 
 [!INCLUDE [Create post](includes/cluster-availability-group-create-post.md)]
 
-This AG isn't a high-availability configuration. If you need high availability, follow the instructions at [Configure SQL Server Always On Availability Group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md). Specifically, create the AG with `CLUSTER_TYPE=WSFC` (in Windows) or `CLUSTER_TYPE=EXTERNAL` (in Linux). You can then integrate with a cluster manager, by using either Windows Server failover clustering on Windows, or Pacemaker on Linux.
+This AG isn't a high-availability configuration. If you need high availability, follow the instructions at [Configure SQL Server Always On Availability Group for high availability on Linux](high-availability/availability-groups-configure.md). Specifically, create the AG with `CLUSTER_TYPE=WSFC` (in Windows) or `CLUSTER_TYPE=EXTERNAL` (in Linux). You can then integrate with a cluster manager, by using either Windows Server failover clustering on Windows, or Pacemaker on Linux.
 
 ## Connect to read-only secondary replicas
 

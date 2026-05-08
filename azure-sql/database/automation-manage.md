@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, mathoma
 ms.date: 01/16/2024
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - ignite-2024

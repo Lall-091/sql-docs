@@ -4,7 +4,7 @@ description: Learn about performance counters for the MSRS 2016 Web Service and 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

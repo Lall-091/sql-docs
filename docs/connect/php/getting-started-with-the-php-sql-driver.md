@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "03/26/2018"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: get-started
 ms.custom: intro-get-started
 ---
 # Getting Started with the Microsoft Drivers for PHP for SQL Server

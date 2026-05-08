@@ -7,7 +7,7 @@ ms.author: randolphwest
 ms.reviewer: wiassaf
 ms.date: 11/18/2025
 ms.service: azure-sql-database
-ms.topic: conceptual
+ms.topic: reference
 ms.custom:
   - ignite-2025
 f1_keywords:

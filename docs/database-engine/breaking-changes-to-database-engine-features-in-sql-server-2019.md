@@ -8,7 +8,7 @@ ms.reviewer: randolphwest
 ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: release-notes
 helpviewer_keywords:
   - "breaking changes 2017 [SQL Server]"
 monikerRange: ">=sql-server-2017 || >=sql-server-linux-2017"

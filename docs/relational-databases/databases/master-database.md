@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: "01/28/2019"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "master database [SQL Server], about"
   - "master database [SQL Server]"

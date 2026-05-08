@@ -1,12 +1,13 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/26/2024
+ms.date: 02/19/2026
 ms.service: azure-database-migration-service
 ms.topic: include
 ms.collection:
   - sql-migration-content
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
 ---
 
 **Step 1:** In the [Azure portal](https://portal.azure.com/#browse/Microsoft.DataMigration%2Fservices), navigate to the **Azure Database Migration Service** page. Create a new instance of Azure Database Migration Service, or reuse an existing instance that you created earlier.
@@ -37,7 +38,7 @@ To create a new instance of Database Migration Service:
 
 1. If the self-hosted integration runtime (SHIR) is required, on the overview page of your Database Migration Service and under Settings, select **Integration runtime**, and complete the following steps:
 
-   1. Select **Configure integration runtime** and choose the **[Download and install integration runtime](https://aka.ms/sql-migration-shir-download)** link to open the download link in a web browser. Download the integration runtime, and then install it on a computer that meets the prerequisites for connecting to the source SQL Server instance. For more information, see [SHIR recommendations](/azure/dms/migration-using-azure-data-studio?tabs=azure-sql-mi#recommendations-for-using-a-self-hosted-integration-runtime-for-database-migrations).
+   1. Select **Configure integration runtime** and choose the **[Download and install integration runtime](https://aka.ms/sql-migration-shir-download)** link to open the download link in a web browser. Download the integration runtime, and then install it on a computer that meets the prerequisites for connecting to the source SQL Server instance. For more information, see [Self-hosted integration runtime for database migrations](../sql-server/self-hosted-integration-runtime.md).
 
       :::image type="content" source="media/create-database-migration-service-instance/dms-portal-shir-configure.png" alt-text="Screenshot that shows the Download and install integration runtime link." lightbox="media/create-database-migration-service-instance/dms-portal-shir-configure.png":::
 

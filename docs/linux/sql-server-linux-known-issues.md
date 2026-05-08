@@ -4,7 +4,7 @@ description: This article contains the known issues for SQL Server running on Li
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 11/18/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting-known-issue
@@ -25,7 +25,7 @@ The following table lists the most common issues with [!INCLUDE [ssnoversion-md]
 | The length of the hostname where [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is installed needs to be 15 characters or less. | Change the name in `/etc/hostname` to a value 15 characters long or less. |
 | Manually setting the system time backward in time causes [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] to stop updating the internal system time within the [!INCLUDE [ssde-md](../includes/ssde-md.md)]. | Restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. |
 | Only single instance installations are supported. | If you want to have more than one instance on a given host, consider using [virtual machines](/azure/azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview) or [Linux containers](sql-server-linux-docker-container-deployment.md). |
-| [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Configuration Manager can't connect to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux. | None. |
+| [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Configuration Manager can't connect to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux. | Configuration Manager isn't supported on Linux. Use **mssql-conf** to manage [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux instead. |
 | The default language of the `sa` account is English. | Change the language of the `sa` account with the `ALTER LOGIN` statement. |
 | The OLE DB provider logs the following warning:<br /><br />`Failed to verify the Authenticode signature of 'C:\binn\msoledbsql.dll'. Signature verification of SQL Server DLLs will be skipped. Genuine copies of SQL Server are signed. Failure to verify the Authenticode signature might indicate that this isn't an authentic release of SQL Server. Install a genuine copy of SQL Server or contact customer support.` | No action is required. The OLE DB provider is signed using SHA256. The [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)] doesn't validate the signed .dll correctly. |
 | The Reset password command using **mssql-conf** throws the following error:<br /><br />`Unable to set the system administrator password. Please consult the ERRORLOG in /path for more information.` | The error message is a false negative. The password reset was successful, and you can continue using the new password.<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] container images only. |
@@ -92,7 +92,7 @@ To work around this issue, do one of the following options:
 Although TLS 1.3 is supported on [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] for Windows, you must use TLS 1.2 on Linux.
 
 > [!NOTE]  
-> TLS 1.3 is supported for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Ubuntu 22.04, Ubuntu 24.04 (in preview), and RHEL 9. TLS 1.3 is enabled by default.
+> TLS 1.3 is supported for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Ubuntu 22.04, Ubuntu 24.04, RHEL 9, and RHEL 10. TLS 1.3 is enabled by default.
 
 ### Network File System (NFS)
 
@@ -144,7 +144,7 @@ The following features aren't supported in this release when you run SSIS packag
 - Hadoop and HDFS support
 - Microsoft Connector for SAP BW
 
-For a list of built-in SSIS components that aren't currently supported, or that are supported with limitations, see [Limitations and known issues for SSIS on Linux](sql-server-linux-ssis-known-issues.md#components).
+For a list of built-in SSIS components that aren't currently supported, or that are supported with limitations, see [Feature support and considerations for SQL Server Integration Services (SSIS) on Linux](sql-server-linux-ssis-known-issues.md).
 
 For more info about SSIS on Linux, see the following articles:
 
@@ -178,7 +178,7 @@ For [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] packages for RHEL 9 and U
 
 #### [RHEL 9](#tab/rhel9)
 
-1. As a prerequisite, `cgroup-v1` needs to be enabled as per [Using cgroupfs to manually manage cgroups Red Hat Enterprise Linux 9](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html/managing_monitoring_and_updating_the_kernel/assembly_using-cgroupfs-to-manually-manage-cgroups_managing-monitoring-and-updating-the-kernel#proc_mounting-cgroups-v1_assembly_using-cgroupfs-to-manually-manage-cgroups) from Red Hat.
+1. As a prerequisite, `cgroup-v1` needs to be enabled as per [Using cgroupfs to manually manage cgroups Red Hat Enterprise Linux 9](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html-single/managing_monitoring_and_updating_the_kernel/index#assembly_using-cgroupfs-to-manually-manage-cgroups_managing-monitoring-and-updating-the-kernel) from Red Hat.
 
 1. Then follow instructions to [install SQL Machine Learning Services](sql-server-linux-setup-machine-learning-sql-2022.md#install-runtimes-and-packages) as documented.
 

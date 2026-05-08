@@ -1,10 +1,10 @@
 ---
 title: Single database vCore resource limits
 description: This page describes common vCore resource limits for a single database in Azure SQL Database.
-author: dimitri-furman
-ms.author: dfurman
-ms.reviewer: wiassaf, mathoma
-ms.date: 12/12/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: dfurman, mathoma
+ms.date: 03/09/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: reference
@@ -77,7 +77,7 @@ The following table covers these SLOs: `GP_S_Gen5_1`, `GP_S_Gen5_2`, `GP_S_Gen5_
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 512 | 1024 | 1024 | 1024 | 2048 |
 | Max log size (GB) <sup>2</sup> | 154 | 307 | 307 | 307 | 614 |
-| Tempdb max data size (GB) | 32 | 64 | 128 | 192 | 256 |
+| `tempdb` max data size (GB) | 32 | 64 | 128 | 192 | 256 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>5</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>5</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -117,7 +117,7 @@ The following table covers these SLOs: `GP_S_Gen5_10`, `GP_S_Gen5_12`, `GP_S_Gen
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 2048 | 3072 | 3072 | 3072 | 3072 |
 | Max log size (GB) <sup>1</sup> | 614 | 922 | 922 | 922 | 922 |
-| Tempdb max data size (GB) | 320 | 384 | 448 | 512 | 576 |
+| `tempdb` max data size (GB) | 320 | 384 | 448 | 512 | 576 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>4</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>4</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -155,7 +155,7 @@ The following table covers these SLOs: `GP_S_Gen5_20`, `GP_S_Gen5_24`, `GP_S_Gen
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 3072 | 4096 | 4096 | 4096 | 4096 |
 | Max log size (GB) <sup>1</sup> | 922 | 1024 | 1024 | 1024 | 1024 |
-| Tempdb max data size (GB) | 640 | 768 | 1024 | 1280 | 2560 |
+| `tempdb` max data size (GB) | 640 | 768 | 1024 | 1280 | 2560 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>5</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>5</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -198,7 +198,7 @@ The following table covers these SLOs: `HS_S_Gen5_2`, `HS_S_Gen5_4`, `HS_S_Gen5_
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 | 384 | 448 |
+| `tempdb` max data size (GB) | 64 | 128 | 192 | 256 | 320 | 384 | 448 |
 | Storage type | Multi-tiered <sup>1</sup>| Multi-tiered <sup>1</sup>| Multi-tiered <sup>1</sup>| Multi-tiered <sup>1</sup>| Multi-tiered <sup>1</sup>| Multi-tiered <sup>1</sup>| Multi-tiered <sup>1</sup>|
 | Max local SSD IOPS <sup>2</sup> | 8000 | 16000 | 24000 | 32000 | 40000 | 48000 | 56000 |
 | Max log rate (MiB/s) | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
@@ -233,7 +233,7 @@ The following table covers these SLOs: `HS_S_Gen5_16`, `HS_S_Gen5_18`, `HS_S_Gen
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 512 | 576 | 640 | 768 | 1024 | 1280 | 2560 |
+| `tempdb` max data size (GB) | 512 | 576 | 640 | 768 | 1024 | 1280 | 2560 |
 | Storage type | Multi-tiered <sup>1</sup> | Multi-tiered <sup>1</sup> | Multi-tiered <sup>1</sup> | Multi-tiered <sup>1</sup> | Multi-tiered <sup>1</sup> | Multi-tiered <sup>1</sup> | Multi-tiered <sup>1</sup> |
 | Max local SSD IOPS <sup>2</sup> | 64000 | 72000 | 80000 | 96000 | 128000 | 160000 | 204800 |
 | Max log rate (MiB/s) | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
@@ -310,7 +310,7 @@ The following table covers these SLOs: `HS_Gen5_16`, `HS_Gen5_18`, `HS_Gen5_20`,
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 512 | 576 | 640 | 768 | 1024 | 1280 | 2560 |
+| `tempdb` max data size (GB) | 512 | 576 | 640 | 768 | 1024 | 1280 | 2560 |
 | Max local SSD IOPS <sup>1</sup> | 64,000 | 72,000 | 80,000 | 96,000 | 128,000 | 160,000 | 204,800 |
 | Max log rate (MiB/s) | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -350,7 +350,7 @@ The following table covers these SLOs: `HS_DC_2`, `HS_DC_4`, `HS_DC_6`, `HS_DC_8
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 | 384 |
+| `tempdb` max data size (GB) | 64 | 128 | 192 | 256 | 320 | 384 |
 | Max local SSD IOPS <sup>1</sup> | 14,000 | 28,000 | 42,000 | 44,800 | 64,000 | 76,800 |
 | Max log rate (MiB/s) | 100 | 100 | 100 | 100 | 100 | 100 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -388,7 +388,7 @@ The following table covers these SLOs: `HS_DC_14`, `HS_DC_16`, `HS_DC_18`, `HS_D
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 448 | 512 | 576 | 640 | 1024 | 1280 | 
+| `tempdb` max data size (GB) | 448 | 512 | 576 | 640 | 1024 | 1280 | 
 | Max local SSD IOPS <sup>1</sup> | 89,600 | 102,400 | 115,200 | 128,000 | 204,800 | 256,000 |
 | Max log rate (MiB/s) | 100 | 100 | 100 | 100 | 100 | 100 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -430,7 +430,7 @@ The following table covers these SLOs: `HS_PRMS_2`, `HS_PRMS_4`, `HS_PRMS_6`, `H
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 |
+| `tempdb` max data size (GB) | 64 | 128 | 192 | 256 | 320 |
 | Max local SSD IOPS <sup>1</sup> | 8,500 | 17,000 | 25,500 | 34,000 | 42,500 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -468,7 +468,7 @@ The following table covers these SLOs: `HS_PRMS_12`, `HS_PRMS_14`, `HS_PRMS_16`,
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 384 | 448 | 512 | 576 | 640 |
+| `tempdb` max data size (GB) | 384 | 448 | 512 | 576 | 640 |
 | Max local SSD IOPS <sup>1</sup> | 51,000 | 59,500 | 68,000 | 76,500 | 85,000 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -496,31 +496,31 @@ The following table covers these SLOs: `HS_PRMS_12`, `HS_PRMS_14`, `HS_PRMS_16`,
 
 Compute sizes (service level objectives, or SLOs) for Hyperscale premium-series databases follow the naming convention `HS_PRMS_` followed by the number of vCores. 
 
-The following table covers these SLOs: `HS_PRMS_24`, `HS_PRMS_32`, `HS_PRMS_40`, `HS_PRMS_64`, `HS_PRMS_80`, and `HS_PRMS_128`:
+The following table covers these SLOs: `HS_PRMS_24`, `HS_PRMS_32`, `HS_PRMS_40`, `HS_PRMS_64`, `HS_PRMS_80`, `HS_PRMS_128`, `HS_PRMS_160`, and `HS_PRMS_192`:
 
-| vCores | 24 | 32 | 40 | 64 | 80 | 128 |
-|:-|-:|-:|-:|-:|-:|-:|
-| Hardware | Premium-series | Premium-series | Premium-series | Premium-series | Premium-series | Premium-series |
-| Memory (GB) | 124.6 | 166.1 | 207.6 | 332.2 | 415.2 | 625 |
-| Columnstore support | Yes | Yes | Yes | Yes | Yes | Yes |
-| In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
-| Max data size (TB) | 128 | 128 | 128 | 128 | 128 | 128 |
-| Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 768 | 1,024 | 1,280 | 2,048 | 2,560 | 4,096 |
-| Max local SSD IOPS <sup>1</sup> | 102,000 | 136,000 | 170,000 | 272,000 | 340,000 | 544,000 |
-| Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 |
-| Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
-| Remote read IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |
-| Write IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |
-| Storage type | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> |
-| Max concurrent workers | 2,400 | 3,200 | 4,000 | 6,400 | 8,000 | 12,800 |
-| Max concurrent logins | 2,400 | 3,200 | 4,000 | 6,400 | 8,000 | 12,800 |
-| Max concurrent external connections <sup>4</sup> | 150 | 150 | 150 | 150 | 150 | 150 |
-| Max concurrent sessions | 30,000 | 30,000 | 30,000 | 30,000 | 30,000 | 30,000 |
-| Secondary replicas | 0-4 | 0-4 | 0-4 | 0-4 | 0-4 | 0-4 |
-| Multi-AZ | N/A | N/A | N/A | N/A | N/A | N/A |
-| Read Scale-out | Yes | Yes | Yes | Yes | Yes | Yes |
-| Backup storage retention | 7 days | 7 days | 7 days | 7 days | 7 days | 7 days |
+| vCores | 24 | 32 | 40 | 64 | 80 | 128 | 160<sup>5</sup> | 192<sup>5</sup> |
+|:-|-:|-:|-:|-:|-:|-:|-:|-:|
+| Hardware | Premium-series | Premium-series | Premium-series | Premium-series | Premium-series | Premium-series | Premium-series | Premium-series |
+| Memory (GB) | 124.6 | 166.1 | 207.6 | 332.2 | 415.2 | 625 | 830.4 | 843.7 |
+| Columnstore support | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| Max data size (TB) | 128 | 128 | 128 | 128 | 128 | 128 | 128 | 128 |
+| Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
+| `tempdb` max data size (GB) | 768 | 1,024 | 1,280 | 2,048 | 2,560 | 4,096 | 4,096 | 4,096 |
+| Max local SSD IOPS <sup>1</sup> | 102,000 | 136,000 | 170,000 | 272,000 | 340,000 | 544,000 | 680,000 | 816,000 |
+| Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 150 |
+| Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
+| Remote read IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |
+| Write IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |
+| Storage type | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> | Multi-tiered <sup>3</sup> |
+| Max concurrent workers | 2,400 | 3,200 | 4,000 | 6,400 | 8,000 | 12,800 | 16,000 | 16,800 |
+| Max concurrent logins | 2,400 | 3,200 | 4,000 | 6,400 | 8,000 | 12,800 | 16,000 | 19,200 |
+| Max concurrent external connections <sup>4</sup> | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 
+| Max concurrent sessions | 30,000 | 30,000 | 30,000 | 30,000 | 30,000 | 30,000 | 30,000 | 30,000 |
+| Secondary replicas | 0-4 | 0-4 | 0-4 | 0-4 | 0-4 | 0-4 | 0-4 | 0-4 |
+| Multi-AZ | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| Read Scale-out | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Backup storage retention | 7 days | 7 days | 7 days | 7 days | 7 days | 7 days | 7 days | 7 days |
 
 <sup>1</sup> Besides local SSD IO, workloads use remote [page server](hyperscale-architecture.md#page-server) IO. Actual IOPS are workload-dependent. For details, see [Data IO Governance](resource-limits-logical-server.md#resource-governance), and [Data IO in resource utilization statistics](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
@@ -530,6 +530,8 @@ The following table covers these SLOs: `HS_PRMS_24`, `HS_PRMS_32`, `HS_PRMS_40`,
 
 <sup>4</sup> For more information on what counts as an external connection, see [External Connections](resource-limits-logical-server.md#external-connections).
  
+<sup>5</sup> Currently, the 160 and 192 vCore options are a preview feature.
+
 ## Hyperscale - provisioned compute - premium-series memory optimized
 
 ### Hyperscale premium-series memory optimized (part 1 of 3)
@@ -546,7 +548,7 @@ The following table covers these SLOs: `HS_MOPRMS_2`, `HS_MOPRMS_4`, `HS_MOPRMS_
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 |
+| `tempdb` max data size (GB) | 64 | 128 | 192 | 256 | 320 |
 | Max local SSD IOPS <sup>1</sup> | 11,000 | 22,000 | 33,000 | 44,000 | 55,000 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -584,7 +586,7 @@ The following table covers these SLOs: `HS_MOPRMS_12`, `HS_MOPRMS_14`, `HS_MOPRM
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 384 | 448 | 512 | 576 | 640 |
+| `tempdb` max data size (GB) | 384 | 448 | 512 | 576 | 640 |
 | Max local SSD IOPS <sup>1</sup> | 66,000 | 77,000 | 88,000 | 99,000 | 111,000 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -622,7 +624,7 @@ The following table covers these SLOs: `HS_MOPRMS_24`, `HS_MOPRMS_32`, `HS_MOPRM
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
-| Tempdb max data size (GB) | 768 | 1,024 | 1,280 | 2,048 | 2,560 |
+| `tempdb` max data size (GB) | 768 | 1,024 | 1,280 | 2,048 | 2,560 |
 | Max local SSD IOPS <sup>1</sup> | 132,000 | 176,000 | 222,000 | 352,000 | 440,000 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -662,7 +664,7 @@ The following table covers these SLOs: `GP_Gen5_2`, `GP_Gen5_4`, `GP_Gen5_6`, `G
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 1024 | 1024 | 1536 | 2048 | 2048 |
 | Max log size (GB) <sup>1</sup> | 307 | 307 | 461 | 461 | 461 |
-| Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 |
+| `tempdb` max data size (GB) | 64 | 128 | 192 | 256 | 320 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>4</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>4</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -699,7 +701,7 @@ The following table covers these SLOs: `GP_Gen5_12`, `GP_Gen5_14`, `GP_Gen5_16`,
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 3072 | 3072 | 3072 | 3072 | 3072 |
 | Max log size (GB) <sup>1</sup> | 922 | 922 | 922 | 922 | 922 |
-| Tempdb max data size (GB) | 384 | 384 | 512 | 576 | 640 |
+| `tempdb` max data size (GB) | 384 | 384 | 512 | 576 | 640 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>4</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>4</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -736,7 +738,7 @@ The following table covers these SLOs: `GP_Gen5_24`, `GP_Gen5_32`, `GP_Gen5_40`,
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 4096 | 4096 | 4096 | 4096 | 4096 |
 | Max log size (GB) <sup>1</sup> | 1024 | 1024 | 1024 | 1024 | 1024 |
-| Tempdb max data size (GB) | 768 | 1024 | 1280 | 2560 | 2560 |
+| `tempdb` max data size (GB) | 768 | 1024 | 1280 | 2560 | 2560 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>4</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>4</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -762,7 +764,7 @@ The following table covers these SLOs: `GP_Gen5_24`, `GP_Gen5_32`, `GP_Gen5_40`,
 ## General Purpose - provisioned compute - Fsv2-series
 
 > [!NOTE]
-> Fsv2-series hardware will be retired October 1, 2026.
+> Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
 
 ### General Purpose Fsv2-series hardware (part 1 of 2)
 
@@ -778,7 +780,7 @@ The following table covers these SLOs: `GP_Fsv2_8`, `GP_Fsv2_10`, `GP_Fsv2_12`, 
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 1024 | 1024 | 1024 | 1024 | 1536 |
 | Max log size (GB) <sup>1</sup> | 336 | 336 | 336 | 336 | 512 |
-| Tempdb max data size (GB) | 37 | 46 | 56 | 65 | 74 |
+| `tempdb` max data size (GB) | 37 | 46 | 56 | 65 | 74 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>4</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>4</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -804,7 +806,7 @@ The following table covers these SLOs: `GP_Fsv2_8`, `GP_Fsv2_10`, `GP_Fsv2_12`, 
 ### General Purpose Fsv2-series hardware (part 2 of 2)
 
 > [!NOTE]
-> Fsv2-series hardware will be retired October 1, 2026.
+> Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
 
 Compute sizes (service level objectives, or SLOs) for General Purpose Fsv2-series databases follow the naming convention `GP_Fsv2_` followed by the number of vCores. 
 
@@ -818,7 +820,7 @@ The following table covers these SLOs: `GP_Fsv2_18`, `GP_Fsv2_20`, `GP_Fsv2_24`,
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 1536 | 1536 | 1536 | 3072 | 3072 | 4096 |
 | Max log size (GB) <sup>1</sup> | 512 | 512 | 512 | 1024 | 1024 | 1024 |
-| Tempdb max data size (GB) | 83 | 93 | 111 | 148 | 167 | 333 |
+| `tempdb` max data size (GB) | 83 | 93 | 111 | 148 | 167 | 333 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>4</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>4</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -856,7 +858,7 @@ The following table covers these SLOs: `GP_DC_2`, `GP_DC_4`, `GP_DC_6`, `GP_DC_8
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 1024 | 1536 | 3072 | 3072 | 3072 | 3072 |
 | Max log size (GB) <sup>1</sup> | 307 | 461 | 922 | 922 | 922 | 922 |
-| Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 | 384 |
+| `tempdb` max data size (GB) | 64 | 128 | 192 | 256 | 320 | 384 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>5</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>5</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -895,7 +897,7 @@ The following table covers these SLOs: `GP_DC_14`, `GP_DC_16`, `GP_DC_18`, `GP_D
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size (GB) | 1024 | 1536 | 3072 | 3072 | 3072 | 3072 |
 | Max log size (GB) <sup>1</sup> | 922 | 922 | 922 | 922 | 1024 | 1024 |
-| Tempdb max data size (GB) | 384 | 512 | 576 | 640 | 768 | 1024 |
+| `tempdb` max data size (GB) | 384 | 512 | 576 | 640 | 768 | 1024 |
 | Storage type | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD | Remote SSD |
 | Read IO latency <sup>5</sup> | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms | 5-10 ms |
 | Write IO latency <sup>5</sup> | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms | 5-7 ms |
@@ -936,7 +938,7 @@ The following table covers these SLOs: `BC_Gen5_2`, `BC_Gen5_4`, `BC_Gen5_6`, `B
 | In-memory OLTP storage (GB) | 1.57 | 3.14 | 4.71 | 6.28 | 8.65 |
 | Max data size (GB) | 1024 | 1024 | 1536 | 2048 | 2048 |
 | Max log size (GB) <sup>1</sup> | 307 | 307 | 461 | 461 | 461 |
-| Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 |
+| `tempdb` max data size (GB) | 64 | 128 | 192 | 256 | 320 |
 | [Max local storage size](resource-limits-logical-server.md#storage-space-governance) (GB) | 4829 | 4829 | 4829 | 4829 | 4829 |
 | Storage type | Local SSD | Local SSD | Local SSD | Local SSD | Local SSD |
 | Read IO latency <sup>4</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -974,7 +976,7 @@ The following table covers these SLOs: `BC_Gen5_12`, `BC_Gen5_14`, `BC_Gen5_16`,
 | In-memory OLTP storage (GB) | 11.02 | 13.39 | 15.77 | 18.14 | 20.51 |
 | Max data size (GB) | 3072 | 3072 | 3072 | 3072 | 3072 |
 | Max log size (GB) <sup>1</sup> | 922 | 922 | 922 | 922 | 922 |
-| Tempdb max data size (GB) | 384 | 448 | 512 | 576 | 640 |
+| `tempdb` max data size (GB) | 384 | 448 | 512 | 576 | 640 |
 | [Max local storage size](resource-limits-logical-server.md#storage-space-governance) (GB) | 4829 | 4829 | 4829 | 4829 | 4829 |
 | Storage type | Local SSD | Local SSD | Local SSD | Local SSD | Local SSD |
 | Read IO latency <sup>4</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -1012,7 +1014,7 @@ The following table covers these SLOs: `BC_Gen5_24`, `BC_Gen5_32`, `BC_Gen5_40`,
 | In-memory OLTP storage (GB) | 25.25 | 37.94 | 52.23 | 131.64 | 227.02 |
 | Max data size (GB) | 4096 | 4096 | 4096 | 4096 | 4096 |
 | Max log size (GB) <sup>1</sup> | 1024 | 1024 | 1024 | 1024 | 1024 |
-| Tempdb max data size (GB) | 768 | 1024 | 1280 | 2560 | 2560 |
+| `tempdb` max data size (GB) | 768 | 1024 | 1280 | 2560 | 2560 |
 | [Max local storage size](resource-limits-logical-server.md#storage-space-governance) (GB) | 4829 | 4829 | 4829 | 4829 | 4829 |
 | Storage type | Local SSD | Local SSD | Local SSD | Local SSD | Local SSD |
 | Read IO latency <sup>4</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -1052,7 +1054,7 @@ The following table covers these SLOs: `BC_DC_2`, `BC_DC_4`, `BC_DC_6`, `BC_DC_8
 | In-memory OLTP storage (GB) | 1.7 | 3.7 | 5.9 | 8.2 | 10.65 | 13.13 |
 | Max data size (GB) | 768 | 768 | 768 | 768 | 2048 | 3072 |
 | Max log size (GB) <sup>1</sup> | 230 | 230 | 230 | 230 | 461 | 922 |
-| Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 | 384 |
+| `tempdb` max data size (GB) | 64 | 128 | 192 | 256 | 320 | 384 |
 | [Max local storage size](resource-limits-logical-server.md#storage-space-governance) (GB) | 1406 | 1406 | 1406 | 1406 | 4829 | 4829 |
 | Storage type | Local SSD | Local SSD | Local SSD | Local SSD | Local SSD | Local SSD |
 | Read IO latency <sup>5</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
@@ -1092,7 +1094,7 @@ The following table covers these SLOs: `BC_DC_14`, `BC_DC_16`, `BC_DC_18`, `BC_D
 | In-memory OLTP storage (GB) | 15.61 | 18.09 | 20.57 | 23.05 | 37.93 | 47.86 |
 | Max data size (GB) | 3072 | 3072 | 3072 | 3072 | 4096 | 4096 |
 | Max log size (GB) <sup>1</sup> | 922 | 922 | 922 | 922 | 1024 | 1024 |
-| Tempdb max data size (GB) | 448 | 512 | 576 | 640 | 768 | 1024 |
+| `tempdb` max data size (GB) | 448 | 512 | 576 | 640 | 768 | 1024 |
 | [Max local storage size](resource-limits-logical-server.md#storage-space-governance) (GB) | 4829 | 4829 | 4829 | 4829 | 4829 | 4829 |
 | Storage type | Local SSD | Local SSD | Local SSD | Local SSD | Local SSD | Local SSD |
 | Read IO latency <sup>5</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |

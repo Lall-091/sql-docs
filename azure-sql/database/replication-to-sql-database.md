@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 05/08/2025
 ms.service: azure-sql-database
 ms.subservice: replication
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - ignite-2024
@@ -42,9 +42,7 @@ To use all the features of Azure SQL Database, you must be using the latest vers
 
 Publishing to any **Azure SQL Database** from a SQL Server database is supported by the following versions of SQL Server:
 
-- SQL Server 2016 and greater
-- SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) or [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
-- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) or [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+- SQL Server 2016 and later versions
 
 Publishing to **Fabric SQL database** from a SQL Server database is supported by the following versions of SQL Server:
 

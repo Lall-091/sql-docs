@@ -584,7 +584,7 @@ You can use the following applications to connect to the SQL Server instance.
 
 ### Connect with sqlcmd
 
-To connect with `sqlcmd`, run the following command.
+To connect with **`sqlcmd`**, run the following command.
 
 ```console
 sqlcmd -S <External IP address> -U sa -P "<password>"

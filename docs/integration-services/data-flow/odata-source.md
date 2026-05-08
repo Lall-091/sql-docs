@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "09/17/2018"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.DTS.DESIGNER.ODATASOURCE.F1"
   - "sql13.dts.designer.odatasource.connection.f1"

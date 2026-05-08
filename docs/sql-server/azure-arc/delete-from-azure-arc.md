@@ -100,6 +100,8 @@ If your instance (*SQL Server - Azure Arc* resource) has dependent Azure resourc
 
 To disconnect all the Azure Arc-enabled SQL Server instances in a larger scope (such as a resource group, a subscription, or multiple subscriptions) with a single command, use the [script to uninstall Azure Extension for SQL Server](https://github.com/microsoft/sql-server-samples/tree/master/samples/manage/azure-arc-enabled-sql-server/uninstall-azure-extension-for-sql-server). The script is as an open-source SQL Server sample and includes step-by-step instructions.
 
+[!INCLUDE [resource-caching-after-deletion](includes/resource-caching-after-deletion.md)]
+
 ## Residual files and accounts
 
 After you uninstall Azure Extension for SQL Server, some files and database objects stay.

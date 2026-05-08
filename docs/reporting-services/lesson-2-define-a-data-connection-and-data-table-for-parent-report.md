@@ -4,7 +4,7 @@ description: "Learn how to create a data connection and a data table for the par
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: tutorial
 ms.custom:
   - updatefrequency5
   - sfi-ropc-nochange

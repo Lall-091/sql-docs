@@ -115,5 +115,4 @@ FNameLength  FirstName  LastName
 - [LEFT (Transact-SQL)](left-transact-sql.md)
 - [RIGHT (Transact-SQL)](right-transact-sql.md)
 - [Data types (Transact-SQL)](../data-types/data-types-transact-sql.md)
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 

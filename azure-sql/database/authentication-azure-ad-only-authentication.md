@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 09/12/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - devx-track-azurecli
   - devx-track-azurepowershell

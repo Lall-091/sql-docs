@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "08/26/2016"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sfi-ropc-nochange
 ---
 # dtexec Utility

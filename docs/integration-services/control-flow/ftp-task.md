@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dts.designer.ftptask.f1"
   - "sql13.dts.designer.ftptask.general.f1"

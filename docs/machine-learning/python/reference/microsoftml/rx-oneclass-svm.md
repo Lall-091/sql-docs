@@ -291,7 +291,7 @@ This algorithm is single-threaded and will always attempt to load the entire dat
 
 ## References
 
-[Wikipedia: Anomaly detection](https://en.wikipedia.org/wiki/Anomaly_detection)
+[Wikipedia: Anomaly detection](https://wikipedia.org/wiki/Anomaly_detection)
 
 [Microsoft Azure Machine Learning Studio (classic): One-Class Support Vector Machine](/azure/machine-learning/studio-module-reference/one-class-support-vector-machine)
 

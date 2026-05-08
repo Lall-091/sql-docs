@@ -31,7 +31,7 @@ To connect a [logical SQL server](logical-servers.md), a client such as SQL Serv
 
 If you want to run the demo PowerShell script given in this article, the following prerequisites apply:
 
-- An Azure subscription and account, for free trial, see [Azure trials](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount)
+- An Azure subscription and account, for free trial, see [Azure trials](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 - Two Azure SQL logical servers
 - Install the [Azure PowerShell module](/powershell/azure/install-az-ps) or the [Azure CLI](/cli/azure/install-azure-cli).
 

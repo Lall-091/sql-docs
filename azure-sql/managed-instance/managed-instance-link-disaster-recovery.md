@@ -41,7 +41,7 @@ With SQL Server 2016, 2017 and 2019, the primary is always SQL Server and failov
 
 To use the link with Azure SQL Managed Instance for disaster recovery, you need the following prerequisites: 
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites) with the required service update installed.
 - Azure SQL Managed Instance. [Get started](instance-create-quickstart.md) if you don't have an instance. 
 - A configured [Managed Instance link](managed-instance-link-configure-how-to-ssms.md) between SQL Server and Azure SQL Managed Instance. 

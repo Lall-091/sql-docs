@@ -16,6 +16,8 @@ monikerRange: "=azuresql || =azuresql-db"
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 You can create reports from multiple databases from a single connection point using an [elastic query](elastic-query-overview.md). The databases must be horizontally partitioned (also known as "sharded").
 
 If you have an existing database, see [Migrate existing databases to scale out](elastic-convert-to-use-elastic-tools.md).

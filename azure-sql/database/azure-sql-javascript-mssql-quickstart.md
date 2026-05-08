@@ -33,7 +33,7 @@ You can learn more about passwordless connections on the [passwordless hub](/azu
 
 ## Prerequisites
 
-* An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccountnodejs/)
+* An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 * A database in Azure SQL Database configured for authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)). You can create one using the [Create database quickstart](./single-database-create-quickstart.md).
 * Bash-enabled shell
 * [Node.js LTS](https://nodejs.org/)

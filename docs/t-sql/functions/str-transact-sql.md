@@ -1,9 +1,9 @@
 ---
 title: "STR (Transact-SQL)"
-description: "STR (Transact-SQL)"
+description: "The STR Transact-SQL function returns character data converted from numeric data."
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: "03/16/2017"
+ms.date: 02/09/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -35,14 +35,15 @@ STR ( float_expression [ , length [ , decimal ] ] )
 ```  
   
 ## Arguments
- *float_expression*  
- Is an expression of approximate numeric (**float**) data type with a decimal point.  
+
+#### *float_expression*  
+ An expression of approximate numeric (**float**) data type with a decimal point.  
   
- *length*  
- Is the total length. This includes decimal point, sign, digits, and spaces. The default is 10.  
+#### *length*  
+ The total length, including the decimal point, sign, digits, and spaces. The default is 10.
   
- *decimal*  
- Is the number of places to the right of the decimal point. *decimal* must be less than or equal to 16. If *decimal* is more than 16 then the result is truncated to sixteen places to the right of the decimal point.  
+#### *decimal*  
+ The number of places to the right of the decimal point. *decimal* must be less than or equal to 16. If *decimal* is more than 16, the result is truncated to 16 places to the right of the decimal point.  
   
 ## Return Types  
  **varchar**  
@@ -102,11 +103,11 @@ GO
 (1 row(s) affected)  
 ```  
   
-## See Also  
- [CAST and CONVERT &#40;Transact-SQL&#41;](../../t-sql/functions/cast-and-convert-transact-sql.md)  
- [FORMAT &#40;Transact-SQL&#41;](../../t-sql/functions/format-transact-sql.md)  
- [String Functions &#40;Transact-SQL&#41;](../../t-sql/functions/string-functions-transact-sql.md)  
-  
+## Related content
+
+- [CAST and CONVERT &#40;Transact-SQL&#41;](../../t-sql/functions/cast-and-convert-transact-sql.md)  
+- [FORMAT &#40;Transact-SQL&#41;](../../t-sql/functions/format-transact-sql.md)  
+   
   
 
 

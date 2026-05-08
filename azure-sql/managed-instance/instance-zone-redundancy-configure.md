@@ -4,7 +4,7 @@ description: Configure zone redundancy for your Azure SQL Managed Instance by us
 author: Stralle
 ms.author: strrodic
 ms.reviewer: urmilano, mathoma, randolphwest
-ms.date: 09/11/2025
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
 ms.topic: how-to
@@ -37,13 +37,11 @@ You can create a new zone-redundant instance by using the Azure portal, PowerShe
 
 To configure a new zone-redundant SQL managed instance in the Azure portal, follow these steps:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Managed Instance**, select **Show options**.
-1. In the **Azure SQL Managed Instance options** window, select **Create Azure SQL Managed Instance**.
+[!INCLUDE [create-sql-managed-instance](../includes/sql-managed-instance/create-sql-managed-instance.md)]
 
-   :::image type="content" source="media/instance-zone-redundancy-configure/show-options-create-sql-managed-instance.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button under Azure SQL Managed Instance and the Create Instance pool button." lightbox="media/instance-zone-redundancy-configure/show-options-create-sql-managed-instance.png":::
+On the **Create Azure SQL Managed Instance** page, follow these steps: 
 
-1. On the **Basics** tab of the **Create Azure SQL Managed Instance** page, select **Configure Managed Instance** under **Compute + storage** to open the **Compute + storage** page.
+1. On the **Basics** tab, select **Configure Managed Instance** under **Compute + storage** to open the **Compute + storage** page.
 1. On the **Compute + storage page**:
    1. For **Backup storage redundancy** under **Backup**, choose `Zone-redundant` or `Geo-zone-redundant` backup storage. Backups have to be configured before you can enable zone redundancy.
    1. For **Zone redundancy** under **Compute Hardware**, choose **Enabled**.

@@ -4,7 +4,7 @@ description: Learn about the tools and options available to migrate your SQL Ser
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma
-ms.date: 06/16/2025
+ms.date: 02/19/2026
 ms.service: azure-sql-database
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -96,7 +96,7 @@ We recommend the following migration tools:
 | Technology | Description |
 | --- | --- |
 | [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | This Azure service helps you discover and assess your SQL data estate at scale on VMware. It provides Azure SQL deployment recommendations, target sizing, and monthly estimates. |
-| [Azure Database Migration Service](/data-migration/sql-server/database/database-migration-service?toc=%2Fazure%2Fdms%2Ftoc.json&tabs=azure-data-studio) | Azure Database Migration Service is a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms with minimal downtime. |
+| [Azure Database Migration Service](/data-migration/sql-server/database/database-migration-service) | Azure Database Migration Service is a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms with minimal downtime. |
 
 The following table lists alternative migration tools:
 
@@ -106,7 +106,7 @@ The following table lists alternative migration tools:
 | [Import Export Service/BACPAC](/azure/azure-sql/database/database-import) | [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) is a Windows file with a .bacpac extension that encapsulates a database's schema and data. You can use BACPAC to both export data from a SQL Server source and import the data into Azure SQL Database. A BACPAC file can be imported to a new SQL database through the Azure portal.<br /><br />For scale and performance with large databases sizes or a large number of databases, consider using the [SqlPackage](/azure/azure-sql/database/database-import#use-sqlpackage) command-line tool to export and import databases. |
 | [Bulk copy](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server) | The [bulk copy program (bcp) tool](/sql/tools/bcp-utility) copies data from an instance of SQL Server into a data file. Use the tool to export the data from your source and import the data file into the target SQL database.<br /><br />For high-speed bulk copy operations to move data to Azure SQL Database, you can use the [Smart Bulk Copy tool](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) to maximize transfer speed by taking advantage of parallel copy tasks. |
 | [Azure Data Factory](/azure/data-factory/connector-azure-sql-database) | The [Copy activity](/azure/data-factory/copy-activity-overview) in Azure Data Factory migrates data from source SQL Server databases to Azure SQL Database by using built-in connectors and an [integration runtime](/azure/data-factory/concepts-integration-runtime).<br /><br />Data Factory supports a wide range of [connectors](/azure/data-factory/connector-overview) to move data from SQL Server sources to Azure SQL Database. |
-| [Azure SQL migration extension for Azure Data Studio](/azure/dms/migration-using-azure-data-studio) | Powered by the [Azure Database Migration Service](/azure/dms/dms-overview), the Azure SQL migration extension for Azure Data Studio helps you to assess your database requirements to understand your migration readiness, get the right-sized SKU recommendations for Azure resources, and migrate your SQL Server database to Azure. You can migrate single databases or at scale using [PowerShell and Azure CLI](/azure/dms/migration-dms-powershell-cli). |
+| [Command line tools](/azure/dms/migration-dms-powershell-cli) | You can migrate single databases or at scale using PowerShell and Azure CLI. |
 
 ## Compare migration options
 
@@ -117,7 +117,7 @@ The following table compares the migration options that we recommend:
 | Migration option | When to use | Considerations |
 | --- | --- | --- |
 | [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | - Discovery and assess single databases or at scale from different environments. | - All pre-migration steps such as discovery, assessments, and right-sizing of on-premises resources are included for infrastructure, data, and applications. |
-| [Azure SQL migration extension for Azure Data Studio](/azure/dms/migration-using-azure-data-studio) | - Migrate single databases or at scale.<br />- Offline mode only.<br /><br />Supported sources:<br />- SQL Server (2008 onward) on-premises, or on Azure Virtual Machines<br />- SQL Server on Amazon EC2<br />- Amazon RDS for SQL Server<br />- SQL Server on Google Compute Engine | - Migrations at scale can be automated via [PowerShell or Azure CLI](/azure/dms/migration-dms-powershell-cli).<br />- Time to complete migration depends on database size and the number of objects in the database.<br />- Azure Data Studio is required when you aren't using PowerShell or Azure CLI. |
+| [Command line tools](/azure/dms/migration-dms-powershell-cli) | You can migrate single databases or at scale using PowerShell and Azure CLI in offline mode.<br /><br />Supported sources:<br />- SQL Server (2008 onward) on-premises, or on Azure Virtual Machines<br />- SQL Server on Amazon EC2<br />- Amazon RDS for SQL Server<br />- SQL Server on Google Compute Engine | - Time to complete migration depends on database size and the number of objects in the database. |
 
 The following table compares the alternative migration options:
 

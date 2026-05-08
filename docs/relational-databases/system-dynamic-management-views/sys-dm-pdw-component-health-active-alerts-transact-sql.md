@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "03/07/2017"
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: reference
 dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016"

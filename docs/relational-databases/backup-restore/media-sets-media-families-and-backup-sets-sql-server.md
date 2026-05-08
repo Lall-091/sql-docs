@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 06/09/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "media sets [SQL Server], about media sets"
   - "backup media [SQL Server], about backup media"

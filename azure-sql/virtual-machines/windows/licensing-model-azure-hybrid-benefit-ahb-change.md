@@ -43,7 +43,7 @@ The license type of SQL Server can be configured when the VM is provisioned or a
 
 Changing the licensing model of your SQL Server VM has the following requirements:
 
-- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A [SQL Server on Azure VM](create-sql-vm-portal.md) registered with the [SQL IaaS Agent Extension](sql-server-iaas-agent-extension-automate-management.md).
 - [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) is a requirement to utilize the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) license type, but pay-as-you-go customers can use the **HA/DR** license type if the VM is being used as a passive replica in a high availability/disaster recovery configuration.
 

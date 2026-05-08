@@ -1,13 +1,13 @@
 ---
 title: "Walkthrough: Set Up SSIS Scale Out"
 description: "Learn details about the setup and configuration of SQL Server Integration Services (SSIS) Scale Out Master."
-author: "HaoQian-MS"
-ms.author: "haoqian"
+author: chugugrace
+ms.author: chugu
 ms.reviewer: 
 ms.date: "12/13/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - performance
   - sfi-image-nochange

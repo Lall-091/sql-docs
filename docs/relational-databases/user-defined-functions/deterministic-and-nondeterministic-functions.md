@@ -5,7 +5,7 @@ author: rwestMSFT
 ms.author: randolphwest
 ms.date: 09/15/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -40,7 +40,7 @@ SELECT OBJECTPROPERTY(OBJECT_ID('Sales.CalculateSalesTax'), 'IsDeterministic');
 
 You can't influence the determinism of any built-in function. Each built-in function is deterministic or nondeterministic, based on how the function is implemented by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For example, specifying an `ORDER BY` clause in a query doesn't change the determinism of a function that is used in that query.
 
-All of the string built-in functions are deterministic, except for [FORMAT](../../t-sql/functions/format-transact-sql.md). For a list of these functions, see [String Functions](../../t-sql/functions/string-functions-transact-sql.md).
+All of the string built-in functions are deterministic, except for [FORMAT](../../t-sql/functions/format-transact-sql.md). 
 
 The following built-in functions from categories of built-in functions other than string functions are always deterministic.
 
@@ -142,7 +142,6 @@ Similar to invocations from a batch or stored procedure, the extended stored pro
 
 ## Related content
 
-- [Configuration Functions (Transact-SQL)](../../t-sql/functions/configuration-functions-transact-sql.md)
 - [Cursor Functions (Transact-SQL)](../../t-sql/functions/cursor-functions-transact-sql.md)
 - [Metadata Functions (Transact-SQL)](../../t-sql/functions/metadata-functions-transact-sql.md)
 - [Security Functions (Transact-SQL)](../../t-sql/functions/security-functions-transact-sql.md)

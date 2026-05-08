@@ -4,6 +4,11 @@
       "source_path": "data-migration/sql-server/virtual-machines/database-migration-service.md",
       "redirect_url": "/data-migration/sql-server/virtual-machines/database-migration-service-offline",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-migration/sql-server/managed-instance/database-migration-service.md",
+      "redirect_url": "/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance",
+      "redirect_document_id": false
     }
   ]
 }

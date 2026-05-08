@@ -98,7 +98,7 @@ For local installations, you must run Setup as an administrator. If you install 
 
    **Database Engine Services**: To use Language Extensions with SQL Server, you must install an instance of the [!INCLUDE [ssde-md](../../includes/ssde-md.md)]. You can use either a default or a named instance.
 
-   **Machine Learning Services and Language Extensions**: This option installs the Language Extensions component that support Java code execution.
+   **Machine Learning Services and Language Extensions**: This option installs the Language Extensions component that supports Java code execution.
 
    - If you want to install the default Java runtime, select both **Machine Learning Services and Language Extensions** and **Java**.
 
@@ -121,7 +121,7 @@ For local installations, you must run Setup as an administrator. If you install 
 
    **Database Engine Services**: To use Language Extensions with SQL Server, you must install an instance of the [!INCLUDE [ssde-md](../../includes/ssde-md.md)]. You can use either a default or a named instance.
 
-   **Machine Learning Services and Language Extensions**: This option installs the Language Extensions component that support Java code execution.
+   **Machine Learning Services and Language Extensions**: This option installs the Language Extensions component that supports Java code execution.
 
    :::image type="content" source="../media/windows-java/2022/sql-server-2022-machine-learning-services-feature-selection.png" alt-text="Screenshot of instance features." lightbox="../media/windows-java/2022/sql-server-2022-machine-learning-services-feature-selection.png":::
 
@@ -181,7 +181,7 @@ For local installations, you must run Setup as an administrator. If you install 
 
    1. Download the `java-lang-extension-windows-release.zip` file from [the Java language extension for SQL Server GitHub repo](https://github.com/microsoft/sql-server-language-extensions/releases). Download the latest Windows `java-lang-extension-windows.zip` file. If you haven't installed the default Java from SQL Server Setup, ensure that the JRE version matches the one that is downloaded from GitHub. If you prefer to use your own installed JRE version, you might need to compile `java-lang-extension` from GitHub source code.
 
-   1. Use [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio) to connect to your SQL Server instance and run the following T-SQL command to register the Java language extension with [CREATE EXTERNAL LANGUAGE](../../t-sql/statements/create-external-language-transact-sql.md).
+   1. Use the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) to connect to your SQL Server instance and run the following T-SQL command to register the Java language extension with [CREATE EXTERNAL LANGUAGE](../../t-sql/statements/create-external-language-transact-sql.md).
 
    1. Modify the path in this statement to reflect the location of the downloaded language extension zip file (java-lang-extension-windows-release.zip) and the location your custom Java installation (`%ProgramFiles%\Python`).
 
@@ -280,7 +280,9 @@ Check the installation status of the instance in the setup logs.
 
 Use the following steps to verify that all components used to launch external script are running.
 
-1. In SQL Server Management Studio or Azure Data Studio, open a new query window, and run the following statement:
+[!INCLUDE [connect-instance-client](../../includes/connect-instance-client.md)]
+
+1. Connect to a database client, and run the following statement:
 
    ```sql
    EXECUTE sp_configure 'external scripts enabled';
@@ -292,7 +294,7 @@ Use the following steps to verify that all components used to launch external sc
 
 ## Additional configuration
 
-If the verification step was successful, you can run Java Code from SQL Server Management Studio, Azure Data Studio, Visual Studio Code, or any other client that can send T-SQL statements to the server.
+If the verification step was successful, you can run Java code from any client that can send T-SQL statements to the server.
 
 If you got an error when running the command, review the additional configuration steps in this section. You might need to make extra appropriate configurations to the service or database.
 

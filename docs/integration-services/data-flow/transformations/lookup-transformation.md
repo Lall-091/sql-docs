@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "11/19/2023"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dts.designer.lookuptrans.f1"
   - "sql13.dts.designer.lookuptransformation.general.f1"

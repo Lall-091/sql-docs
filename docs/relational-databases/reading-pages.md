@@ -5,7 +5,7 @@ author: rwestMSFT
 ms.author: randolphwest
 ms.date: 03/31/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "pages"
 ---

@@ -4,8 +4,8 @@ titleSuffix: SQL Server
 description: This tutorial provides the configuration steps for Active Directory authentication for SQL Server on Linux.
 author: amitkh-msft
 ms.author: amitkh
-ms.reviewer: vanto, randolphwest
-ms.date: 07/03/2025
+ms.reviewer: randolphwest
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -38,9 +38,12 @@ Before you configure Active Directory Authentication, you need to:
 
 - Set up an Active Directory Domain Controller (Windows) on your network
 - Install [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]
-  - [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
+  - [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md)
   - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
   - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 <a id="join"></a>
 
@@ -53,7 +56,7 @@ Join your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux host 
 ## Create Active Directory user for SQL Server and set SPN
 
 > [!NOTE]  
-> The following steps use your [fully qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN). If you're on Azure, you must **[create a FQDN](/azure/virtual-machines/linux/portal-create-fqdn)** before you proceed.
+> The following steps use your [fully qualified domain name](https://wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN). If you're on Azure, you must **[create a FQDN](/azure/virtual-machines/linux/portal-create-fqdn)** before you proceed.
 
 1. On your domain controller, run the [New-ADUser](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617253(v=technet.10)) PowerShell command to create a new Active Directory user with a password that never expires. The following example names the account `sqlsvc`, but the account name can be anything you like. You'll be prompted to enter a new password for the account.
 
@@ -77,7 +80,7 @@ Join your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux host 
 
    > [!NOTE]  
    > If you receive an error, `Insufficient access rights`, check with your domain administrator that you have sufficient permissions to set an SPN on this account. The account that is used to register an SPN will need the `Write servicePrincipalName` permissions. For more information, see [Register a Service Principal Name for Kerberos connections](../database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections.md).
-   >  
+   >
    > If you change the TCP port in the future, you must run the **setspn** command again with the new port number. You also need to add the new SPN to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service keytab by following the steps in the next section.
 
 For more information, see [Register a Service Principal Name for Kerberos connections](../database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections.md).
@@ -145,7 +148,7 @@ Configuring Active Directory authentication for [!INCLUDE [ssnoversion-md](../in
    sudo chmod 400 /var/opt/mssql/secrets/mssql.keytab
    ```
 
-1. The following configuration option needs to be set with the **mssql-conf** tool to specify the account to be used while accessing the keytab file.
+1. The following configuration option needs to be set with the **`mssql-conf`** tool to specify the account to be used while accessing the keytab file.
 
    ```bash
    sudo mssql-conf set network.privilegedadaccount <username>
@@ -205,7 +208,7 @@ Sign in to a domain-joined Linux client using **ssh** and your domain credential
 ssh -l user@contoso.com client.contoso.com
 ```
 
-Make sure you've installed the [mssql-tools](sql-server-linux-setup-tools.md) package, then connect using **sqlcmd** without specifying any credentials:
+Make sure you've installed the [mssql-tools](sql-server-linux-setup-tools.md) package, then connect using **`sqlcmd`** without specifying any credentials:
 
 ```bash
 sqlcmd -S mssql-host.contoso.com
@@ -231,7 +234,7 @@ The following table describes recommendations for other client drivers:
 
 ## Additional configuration options
 
-If you're using third-party utilities such as [PBIS](https://www.beyondtrust.com/), [VAS](https://www.oneidentity.com/products/one-identity-safeguard-authentication-services), or [Centrify](https://delinea.com/centrify) to join the Linux host to Active Directory domain and you would like to force [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to use the OpenLDAP library directly, you can configure the `disablesssd` option with **mssql-conf** as follows:
+If you're using third-party utilities such as [PBIS](https://www.beyondtrust.com/), [VAS](https://www.oneidentity.com/products/one-identity-safeguard-authentication-services), or [Centrify](https://delinea.com/centrify) to join the Linux host to Active Directory domain and you would like to force [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to use the OpenLDAP library directly, you can configure the `disablesssd` option with **`mssql-conf`** as follows:
 
 ```bash
 sudo mssql-conf set network.disablesssd true
@@ -278,7 +281,7 @@ While it's not recommended, it's possible to use utilities, such as **realmd**, 
 
 > [!NOTE]  
 > [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] login by using an FQDN (for example, `CONTOSO.COM\Username`) isn't supported. Use the `CONTOSO\Username` format.
->  
+>
 > [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] logins from Domain Local groups aren't supported. Use Global Security Domain groups instead.
 
 ## Related content

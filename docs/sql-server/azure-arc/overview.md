@@ -4,7 +4,8 @@ description: Feature overview. Explains how you can manage instances of SQL Serv
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 06/09/2025
+ms.date: 04/28/2026
+ai-usage: ai-assisted
 ms.topic: concept-article
 ms.custom: references_regions
 ---
@@ -33,6 +34,7 @@ Azure Arc enables you to manage all of your SQL Server instances from a single p
 - View a list of every database on a SQL Server and do cross-SQL Server queries of databases to see:
   - Databases that haven't been backed up recently.
   - Databases that aren't encrypted.
+- Execute custom T-SQL scripts across onboarded instances using Azure Arc-enabled servers Run Command to gather specific information like permissions, configurations, or compliance data, then aggregate results centrally for reporting and analysis.
 
 ## Example custom dashboard
 
@@ -73,6 +75,9 @@ Microsoft Purview provides a unified data governance solution to help manage and
 
 Now, with [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)], you have the option of purchasing SQL Server using a 'pay-as-you-go' model instead of purchasing licenses. This model is a great alternative if you're looking to save costs on SQL Server instances that have variable demand for compute capacity over time. For example, when you can turn off a SQL Server at night or on weekends, or even just scale down the number of cores used during less busy times. It's also a great option if you only plan to use a SQL Server for a short period of time and then won't need it anymore. Pay-as-you-go, billed through Azure, is now available for all versions of SQL Server from 2012 to 2022.
 
+> [!NOTE]
+> On Linux, certain PAYG features aren't available, including automatic passive instance detection and connected user verification. All SQL Server instances on Linux are billed as active. For details, see [Manage licensing and billing](manage-license-billing.md).
+
 ## Extended Security Updates (ESU)
 
 Once [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] has reached the end of its support lifecycle, you can sign up for an Extended Security Update (ESU) subscription for your servers and remain protected for up to three years. When you upgrade to a newer version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], your ESU subscription is automatically canceled. When you [migrate to Azure SQL](/azure/azure-sql/migration-guides/), the ESU charges automatically stop but you continue to have access to the ESUs.
@@ -84,6 +89,8 @@ Monitor SQL Server instances from Azure portal with performance dashboards. Perf
 :::image type="content" source="media/overview/performance-dashboard.png" alt-text="Screenshot of performance dashboard for SQL Server enabled by Azure Arc." lightbox="media/overview/performance-dashboard.png":::
 
 For details, see [Monitor SQL Server enabled by Azure Arc (preview)](sql-monitoring.md).
+
+Organizations can also build custom KQL dashboards and alerts over custom tables populated through the Logs Ingestion API, such as centralized SQL permissions results, complementing the built-in performance and assessment experiences.
 
 ## Migration assessment
 
@@ -99,6 +106,19 @@ For details, see [Monitor SQL Server enabled by Azure Arc (preview)](sql-monitor
 Migration assessment is for SQL Servers located in various environments, including your data center, edge sites, or any public cloud or hosting provider. It is available for any instance of SQL Server that is enabled by Azure Arc.
 
 For details, review [Configure SQL best practices assessment - SQL Server enabled by Azure Arc](assess.md).
+
+### Custom data collection pipeline
+
+For organizations requiring custom datasets beyond the built-in telemetry, an optional data collection pipeline can be implemented. This pipeline uses an [Azure Automation Runbook](/azure/automation/automation-runbook-types) authenticated with a Microsoft Entra ID service principal to:
+
+1. Enumerate Arc-enabled SQL Server resources using Azure Resource Manager APIs
+2. Invoke [Azure Arc-enabled servers Run Command](/azure/azure-arc/servers/run-command) to execute T-SQL scripts on each host
+3. Collect and process script output
+4. Send results to Azure Monitor Log Analytics via a [Data Collection Endpoint and Data Collection Rule](/azure/azure-monitor/logs/logs-ingestion-api-overview) using the Logs Ingestion API
+
+This approach operates independently of the Azure Monitoring Agent and enables custom reporting scenarios like centralized permission auditing, compliance checks, or configuration validation.
+
+For security best practices when implementing at-scale operations, including RBAC requirements, identity management, and network security, see [Security overview | SQL Server enabled by Azure Arc](security-overview.md#at-scale-query-execution-via-arc-enabled-servers-run-command).
 
 ## Architecture
 
@@ -147,6 +167,13 @@ The following diagram illustrates the architecture of [!INCLUDE [ssazurearc](../
 
 [!INCLUDE [settings](includes/settings.md)]
 
+## Recommended system requirements
+
+To use [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)], the following minimum system requirements are recommended:
+
+- **Cores**: 2 cores minimum
+- **Memory**: 512 MB of RAM available
+
 ## Unsupported configurations
 
 [!INCLUDE [unsupported-configurations](includes/unsupported-configurations.md)]
@@ -158,11 +185,15 @@ The [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] Setup Installation Wiz
 - [Install Azure extension for SQL Server from the command line](../../database-engine/install-windows/install-sql-server-from-the-command-prompt.md#install-and-connect-to-azure)
 - [SQL Server enabled by Azure Arc deployment options](deployment-options.md)
 
-For VMware clusters, review [Support on VMware](#support-on-vmware).
+For VMware vSphere–based environments, review [Support on VMware](#support-on-vmware).
 
 ## Related content
 
 - [Learn about the prerequisites to connect your SQL Server to Azure Arc](prerequisites.md)
 - [SQL Server enabled by Azure Arc deployment options](deployment-options.md)
 - [Learn more about Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-sql-usage)
-- [Lean more about Microsoft Purview](/azure/purview/register-scan-azure-arc-enabled-sql-server)
+- [Learn more about Microsoft Purview](/azure/purview/register-scan-azure-arc-enabled-sql-server)
+- [Azure Arc-enabled servers Run Command](/azure/azure-arc/servers/run-command)
+- [Tutorial: Send data to Azure Monitor Logs with Logs ingestion API](/azure/azure-monitor/logs/tutorial-logs-ingestion-api)
+- [Azure Automation Runbooks](/azure/automation/automation-runbook-types)
+- [Security overview | SQL Server enabled by Azure Arc](security-overview.md)

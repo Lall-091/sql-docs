@@ -3,11 +3,11 @@ title: Pacemaker for Availability Groups and Failover Cluster Instances on Linux
 description: Learn about using Pacemaker for high availability options for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto, amitkh-msft
-ms.date: 07/03/2025
+ms.reviewer: amitkh-msft
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
 ---
@@ -32,7 +32,7 @@ All of the currently supported distributions ship a high availability add-on/ext
 
 This solution is in some ways similar to, but in many ways different from deploying clustered configurations using Windows. In Windows, the availability form of clustering, called a Windows Server failover cluster (WSFC), is built into the operating system, and the feature that enables the creation of a WSFC, failover clustering, is disabled by default. In Windows, AGs and FCIs are built on top of a WSFC, and share tight integration because of the specific resource DLL that is provided by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. This tightly coupled solution is possible by and large because it's all from one vendor.
 
-:::image type="content" source="media/sql-server-linux-pacemaker-basics/ha-basics.png" alt-text="Diagram of high availability basics." lightbox="media/sql-server-linux-pacemaker-basics/ha-basics.png":::
+:::image type="content" source="media/sql-server-linux-pacemaker-basics/ha-basics.png" alt-text="Diagram comparing the Linux and Windows high availability stacks. The Linux stack shows SQL Server with Pacemaker and Corosync on a Linux distribution, while the Windows stack shows SQL Server with WSFC on Windows Server. Both run on virtual machines over hypervisor and hardware layers." lightbox="media/sql-server-linux-pacemaker-basics/ha-basics.png":::
 
 On Linux, while each supported distribution has Pacemaker available, each distribution can customize and have slightly different implementations and versions. Some of the differences will be reflected in the instructions in this article. The clustering layer is open source, so even though it ships with the distributions, it isn't tightly integrated in the same way a WSFC is under Windows. This is why Microsoft provides *mssql-server-ha*, so that [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and the Pacemaker stack can provide close to, but not exactly the same, experience for AGs and FCIs as under Windows.
 
@@ -41,6 +41,9 @@ For full documentation on Pacemaker, including a more in-depth explanation of wh
 - [RHEL](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_high_availability_clusters/index)
 - [SLES](https://documentation.suse.com/sle-ha/15-SP2/html/SLE-HA-all/book-sleha-guide.html)
 - [Ubuntu](https://documentation.ubuntu.com/server/explanation/intro-to/high-availability/)
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 For more information about the whole stack, also see the official [Pacemaker documentation page](https://clusterlabs.org/projects/pacemaker/) on the ClusterLabs site.
 

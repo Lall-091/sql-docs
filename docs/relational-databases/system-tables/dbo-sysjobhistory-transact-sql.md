@@ -4,7 +4,8 @@ description: Contains information about the execution of scheduled jobs by the S
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 03/27/2024
+ms.date: 01/20/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -25,7 +26,7 @@ dev_langs:
 Contains information about the execution of scheduled jobs by the [SQL Server Agent](/ssms/agent/sql-server-agent).
 
 > [!NOTE]  
-> In most cases, the data is updated only after the job step completes, and the table typically contains no records for job steps that are currently in progress. In some cases, underlying processes *do* provide information about in progress job steps.
+> In most cases, the data updates only after the job step completes, and the table typically contains no records for job steps that are currently in progress. In some cases, underlying processes *do* provide information about in-progress job steps.
 
 This table is stored in the `msdb` database.
 
@@ -50,7 +51,9 @@ This table is stored in the `msdb` database.
 
 ## Examples
 
-The following [!INCLUDE [tsql](../../includes/tsql-md.md)] query converts the `run_date` and `run_time` columns into a **datetime** column named `LastRunStartDateTime`. The `run_duration` column is converted into an **int** column named `LastRunDurationSeconds`. These two columns are then used to calculate the `LastRunFinishDateTime`. The `run_duration` column is also converted into a more user-friendly format. You can run the script in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or Azure Data Studio.
+The following [!INCLUDE [tsql](../../includes/tsql-md.md)] query converts the `run_date` and `run_time` columns into a **datetime** column named `LastRunStartDateTime`. The `run_duration` column is converted into an **int** column named `LastRunDurationSeconds`. These two columns are then used to calculate the `LastRunFinishDateTime`. The `run_duration` column is also converted into a more user-friendly format.
+
+[!INCLUDE [connect-instance-client](../../includes/connect-instance-client.md)]
 
 ```sql
 SET NOCOUNT ON;
@@ -68,8 +71,7 @@ SELECT sj.name AS Name,
                 LEN(CAST(sh.run_duration AS VARCHAR)) - 4) AS INT) % 24 AS VARCHAR), 2)
                     + ':' + STUFF(CAST(RIGHT(CAST(sh.run_duration AS VARCHAR), 4) AS VARCHAR(6)), 3, 0, ':')
         ELSE STUFF(STUFF(RIGHT(REPLICATE('0', 6) + CAST(sh.run_duration AS VARCHAR(6)), 6), 3, 0, ':'), 6, 0, ':')
-        END AS [LastRunDuration (d.HH:MM:SS)],
-    DATEADD(SECOND, shp.LastRunDurationSeconds, shp.LastRunStartDateTime) AS LastRunFinishDateTime
+        END AS [LastRunDuration (d.HH:MM:SS)]
 FROM msdb.dbo.sysjobs sj
 INNER JOIN msdb.dbo.sysjobhistory sh ON sj.job_id = sh.job_id
 CROSS APPLY (SELECT DATETIMEFROMPARTS(sh.run_date / 10000, -- years

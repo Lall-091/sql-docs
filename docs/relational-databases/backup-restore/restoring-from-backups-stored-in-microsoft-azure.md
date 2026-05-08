@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 03/08/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Restoring From Backups Stored in Microsoft Azure
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

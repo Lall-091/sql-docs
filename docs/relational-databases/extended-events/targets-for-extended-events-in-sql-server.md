@@ -7,7 +7,7 @@ ms.reviewer: dfurman, randolphwest
 ms.date: 10/28/2025
 ms.service: sql
 ms.subservice: xevents
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
 

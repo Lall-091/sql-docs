@@ -4,7 +4,7 @@ description: Learn how to set report server system properties in SQL Server Mana
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

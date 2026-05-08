@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "non-XML format files"
   - "format files [SQL Server], non-XML format files"

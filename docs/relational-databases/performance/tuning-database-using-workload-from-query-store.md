@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/07/2022"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Database Engine Tuning Advisor, Query Store"
 ---

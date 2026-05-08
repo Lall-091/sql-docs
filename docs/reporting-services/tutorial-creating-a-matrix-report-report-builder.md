@@ -349,7 +349,7 @@ The territory name is written vertically, bottom to top. The height of the Terri
 ## Related content
 
 - [Report Builder tutorials](../reporting-services/report-builder-tutorials.md)
-- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Tables, matrices, and lists in paginated reports (Report Builder)](../reporting-services/report-design/tables-matrices-and-lists-report-builder-and-ssrs.md)
 - [Create a matrix in a paginated report (Report Builder)](../reporting-services/report-design/create-a-matrix-report-builder-and-ssrs.md)
 - [Tablix data region areas in a paginated report (Report Builder)](../reporting-services/report-design/tablix-data-region-areas-report-builder-and-ssrs.md)

@@ -39,7 +39,7 @@ The following table defines the meaning of the various columns:
 |**database_size_bytes**|**bigint**|Total size in bytes of the database being seeded.|
 |**start_time_utc**|**datetime**|Start time of the seeding operation in UTC.|
 |**end_time_utc**|**datetime**|End time of the seeding operation in UTC.|
-|**estimate_time_complete_utc**|**datetime**|Estimation of the completion time for an in-process seeding operation, in UTC.|
+|**estimate_time_complete_utc**|**datetime**|Estimation of the completion time for an in-process seeding operation, in UTC. Based on the current `transfer_rate_bytes_per_second` and uncompressed remaining data size (when `is_compression_enabled` = 0). For [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview), data compression is used, so `estimate_time_complete_utc` is expected to be an overestimate.|
 |**total_disk_io_wait_time_ms**|**bigint**|Sum of the disk IO wait time encountered, in ms.|
 |**total_network_wait_time_ms**|**bigint**|Sum of the network IO wait time encountered, in ms.|
 |**failure_code**|**int**|Failure code for the seeding operation.|

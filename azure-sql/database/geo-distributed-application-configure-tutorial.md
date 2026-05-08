@@ -26,7 +26,7 @@ Configure a database in SQL Database and client application for failover to a re
 > - Run a Java application to query a database in SQL Database
 > - Test failover
 
-If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount) before you begin.
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Prerequisites
 

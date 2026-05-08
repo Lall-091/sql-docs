@@ -16,7 +16,9 @@ ms.custom:
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-New versions of the [Elastic Database client library](elastic-database-client-library.md) are available through NuGet and the NuGet Package Manager interface in Visual Studio. Upgrades contain bug fixes and support for new capabilities of the client library.
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
+The [Elastic Database client library](elastic-database-client-library.md) is available through NuGet and the NuGet Package Manager interface in Visual Studio. Upgrades contain bug fixes and support for new capabilities of the client library.
 
 **For the latest version:** Go to [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 

@@ -4,7 +4,7 @@ description: This quickstart describes installing Python, and mssql-python then 
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2025
+ms.date: 12/29/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -19,15 +19,15 @@ In this quickstart, you connect a Python script to a database that you created a
 
 The `mssql-python` driver doesn't require any external dependencies on Windows machines. The driver installs everything that it needs with a single `pip` install, allowing you to use the latest version of the driver for new scripts without breaking other scripts that you don't have time to upgrade and test.
 
-[mssql-python documentation](https://github.com/microsoft/mssql-python/wiki) | [mssql-python source code](https://github.com/microsoft/mssql-python/wiki) | [Package (PyPi)](https://pypi.org/project/mssql-python/) | [Visual Studio Code](https://code.visualstudio.com/download)
+[mssql-python documentation](https://github.com/microsoft/mssql-python/wiki) | [mssql-python source code](https://github.com/microsoft/mssql-python) | [Package (PyPI)](https://pypi.org/project/mssql-python/) | [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## Prerequisites
 
 - Python 3
 
-  - If you don't already have Python, install the **Python runtime** and **Python Package Index (PyPI) package manager** from [python.org](https://www.python.org/downloads/).
+  - If you don't already have Python, install the **Python runtime** and **pip package manager** from [python.org](https://www.python.org/downloads/).
 
-  - Prefer to not use your own environment? Open as a devcontainer using [GitHub Codespaces](https://github.com/features/codespaces).
+  - Don't want to use your own environment? Open as a devcontainer using [GitHub Codespaces](https://github.com/features/codespaces).
 
     [:::image type="icon" source="https://github.com/codespaces/badge.svg":::](https://codespaces.new/github/codespaces-blank?quickstart=1)
 
@@ -180,7 +180,7 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
 1. Within the `.env` file, add an entry for your connection string named `SQL_CONNECTION_STRING`. Replace the example here with your actual connection string value.
 
    ```text
-   SQL_CONNECTION_STRING="Server=<server_name>;Database={<database_name>};Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryInteractive"
+   SQL_CONNECTION_STRING="Server=<server_name>;Database=<database_name>;Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryInteractive"
    ```
 
    > [!TIP]  
@@ -230,7 +230,7 @@ Use a SQL query string to execute a query and parse the results.
 1. **Save** the `app.py` file.
 
 > [!TIP]  
-> To use Microsoft Entra Authentication in macOS, you need to be logged in by running `az login` via the [Azure Command-Line Interface (CLI)](/cli/azure/install-azure-cli).
+> On macOS, both `ActiveDirectoryInteractive` and `ActiveDirectoryDefault` work for Microsoft Entra authentication. `ActiveDirectoryInteractive` prompts you to sign in every time you run the script. To avoid repeated sign-in prompts, log in once via the [Azure CLI](/cli/azure/install-azure-cli) by running `az login`, then use `ActiveDirectoryDefault`, which reuses the cached credential.
 
 1. Open a terminal and test the application.
 

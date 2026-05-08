@@ -8,7 +8,7 @@ ms.reviewer: hudequei, randolphwest, imotiwala
 ms.date: 10/31/2025
 ms.service: sql
 ms.subservice: big-data-cluster
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days
 ms.custom:
   - ignite-2025
@@ -79,38 +79,6 @@ In the **hybrid architecture** options, some components are retained on-premises
 For more information on building scalable architectures, see [Build a scalable system for massive data](/azure/architecture/data-guide/scenarios/build-scalable-database-solutions-azure-services).
 
 ## In-cloud
-
-### Azure SQL with Synapse
-
-You can replace the functionality of SQL Server Big Data Clusters by using one or more Azure SQL database options for operational data, and Microsoft Azure Synapse for your analytic workloads.
-
-Microsoft Azure Synapse is an enterprise analytics service that accelerates time to insight across data warehouses and big data systems, using distributed processing and data constructs. Azure Synapse brings together SQL technologies used in enterprise data warehousing, Spark technologies used for big data, Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, Cosmos DB, and Azure Machine Learning.
-
-Use Microsoft Azure Synapse as a replacement for [!INCLUDE [ssbigdataclusters-ver15](../includes/ssbigdataclusters-ver15.md)] when you need to:
-
-- Use both serverless and dedicated resource models. For predictable performance and cost, create dedicated SQL pools to reserve processing power for data stored in SQL tables.
-- Process unplanned or "burst" workloads, access an always-available, serverless SQL endpoint.
-- Use built-in streaming capabilities to land data from cloud data sources into SQL tables.
-- Integrate AI with SQL by using machine learning models to score data using the T-SQL PREDICT function.
-- Use ML models with SparkML algorithms and Azure Machine Learning integration for Apache Spark 2.4 supported for Linux Foundation Delta Lake.
-- Use a simplified resource model that frees you from having to worry about managing clusters.
-- Process data that requires fast Spark start-up and aggressive autoscaling.
-- Process data using.NET for Spark allowing you to reuse your C\# expertise and existing .NET code within a Spark application.
-- Work with tables defined on files in the data lake, seamlessly consumed by either Spark or Hive.
-- Use SQL with Spark to directly explore and analyze Parquet, CSV, TSV, and JSON files stored in a data lake.
-- Enable fast, scalable data loading between SQL and Spark databases.
-- Ingest data from 90+ data sources.
-- Enable "Code-Free" ETL with Data flow activities.
-- Orchestrate notebooks, Spark jobs, stored procedures, SQL scripts, and more.
-- Monitor resources, usage, and users across SQL and Spark.
-- Use Role-based access control to simplify access to analytics resources.
-- Write SQL or Spark code and integrate with enterprise CI/CD processes.
-
-The architecture of Microsoft Azure Synapse is as follows:
-
-:::image type="content" source="media/big-data-options/synapse-architecture.png" alt-text="Diagram that shows Azure Synapse architecture overview." lightbox="media/big-data-options/synapse-architecture.png":::
-
-For more information on Microsoft Azure Synapse, see [What is Azure Synapse Analytics?](/azure/synapse-analytics/overview-what-is)
 
 ### Azure SQL plus Azure Machine Learning
 

@@ -7,7 +7,7 @@ ms.reviewer: "wiassaf"
 ms.date: "11/21/2018"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Showplan results"
   - "execution plans [SQL Server]"

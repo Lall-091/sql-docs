@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/20/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: include
@@ -10,12 +10,12 @@ ms.custom:
 ---
 ## Prerequisites
 
-Before you create the availability group, you need to:
+Before you create the availability group, complete the following steps:
 
-- Set your environment so that all the servers that will host availability replicas can communicate.
+- Set up your environment so that all the servers that host availability replicas can communicate.
 - Install [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].
 
-On Linux, you must create an availability group before you add it as a cluster resource to be managed by the cluster. This document provides an example that creates the availability group.
+On Linux, you must create an availability group before you add it as a cluster resource for the cluster to manage. This article provides an example that creates the availability group.
 
 1. Update the computer name for each host.
 
@@ -24,7 +24,7 @@ On Linux, you must create an availability group before you add it as a cluster r
    - 15 characters or fewer.
    - Unique within the network.
 
-   To set the computer name, edit `/etc/hostname`. The following script lets you edit `/etc/hostname` with **vi**:
+   To set the computer name, edit `/etc/hostname`. The following example shows how to edit `/etc/hostname` with **vi**:
 
    ```bash
    sudo vi /etc/hostname
@@ -33,9 +33,9 @@ On Linux, you must create an availability group before you add it as a cluster r
 1. Configure the hosts file.
 
    > [!NOTE]  
-   > If hostnames are registered with their IP address in the DNS server, you don't need to do the following steps. Validate that all the nodes intended to be part of the availability group configuration can communicate with each other. (A ping to the hostname should reply with the corresponding IP address.) Also, make sure that the `/etc/hosts` file doesn't contain a record that maps the localhost IP address 127.0.0.1 with the hostname of the node.
+   > If the DNS server registers hostnames with their IP addresses, you don't need to complete the following steps. Validate that all the nodes intended to be part of the availability group configuration can communicate with each other. (A ping to the hostname should reply with the corresponding IP address.) Also, make sure that the `/etc/hosts` file doesn't contain a record that maps the localhost IP address 127.0.0.1 with the hostname of the node.
 
-   The hosts file on every server contains the IP addresses and names of all servers that will participate in the availability group.
+   The hosts file on every server contains the IP addresses and names of all servers that participate in the availability group.
 
    The following command returns the IP address of the current server:
 
@@ -43,7 +43,7 @@ On Linux, you must create an availability group before you add it as a cluster r
    sudo ip addr show
    ```
 
-   Update `/etc/hosts`. The following script lets you edit `/etc/hosts` with **vi**:
+   Update `/etc/hosts`. The following example shows how to edit `/etc/hosts` with **vi**:
 
    ```bash
    sudo vi /etc/hosts
@@ -63,9 +63,12 @@ On Linux, you must create an availability group before you add it as a cluster r
 
 Install [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. The following links point to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] installation instructions for various distributions:
 
-- [Quickstart: Install SQL Server and create a database on Red Hat](../quickstart-install-connect-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](../quickstart-install-connect-red-hat.md)
 - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](../quickstart-install-connect-suse.md)
 - [Quickstart: Install SQL Server and create a database on Ubuntu](../quickstart-install-connect-ubuntu.md)
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 ## Enable Always On availability groups
 
@@ -82,10 +85,7 @@ You can optionally enable Extended Events (XE) to help with root-cause diagnosis
 
 ```sql
 ALTER EVENT SESSION AlwaysOn_health ON SERVER
-WITH
-(
-        STARTUP_STATE = ON
-);
+WITH (STARTUP_STATE = ON);
 GO
 ```
 
@@ -101,19 +101,19 @@ The following Transact-SQL script creates a master key and a certificate. It the
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master-key-password>';
 
 CREATE CERTIFICATE dbm_certificate
-    WITH SUBJECT = 'dbm';
+WITH SUBJECT = 'dbm';
 
 BACKUP CERTIFICATE dbm_certificate
-    TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-    WITH PRIVATE KEY (
-        FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-        ENCRYPTION BY PASSWORD = '<private-key-password>'
+TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+WITH PRIVATE KEY (
+    FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+    ENCRYPTION BY PASSWORD = '<private-key-password>'
 );
 ```
 
-At this point, your primary [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] replica has a certificate at `/var/opt/mssql/data/dbm_certificate.cer` and a private key at `var/opt/mssql/data/dbm_certificate.pvk`. Copy these two files to the same location on all servers that will host availability replicas. Use the mssql user, or give permission to the mssql user to access these files.
+At this point, your primary [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] replica has a certificate at `/var/opt/mssql/data/dbm_certificate.cer` and a private key at `/var/opt/mssql/data/dbm_certificate.pvk`. Copy these two files to the same location on all servers that host availability replicas. Use the mssql user, or give permission to the mssql user to access these files.
 
-For example, on the source server, the following command copies the files to the target machine. Replace the `<node2>` values with the names of the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances that will host the replicas.
+For example, on the source server, the following command copies the files to the target machine. Replace the `<node2>` values with the names of the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances that host the replicas.
 
 ```bash
 cd /var/opt/mssql/data
@@ -135,10 +135,10 @@ The following Transact-SQL script creates a master key and a certificate from th
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master-key-password>';
 
 CREATE CERTIFICATE dbm_certificate
-    FROM FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-    WITH PRIVATE KEY (
-        FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-        DECRYPTION BY PASSWORD = '<private-key-password>'
+FROM FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+WITH PRIVATE KEY (
+    FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+    DECRYPTION BY PASSWORD = '<private-key-password>'
 );
 ```
 
@@ -148,25 +148,22 @@ In the previous example, replace `<private-key-password>` with the same password
 
 Database mirroring endpoints use the Transmission Control Protocol (TCP) to send and receive messages between the server instances that participate in database mirroring sessions, or host availability replicas. The database mirroring endpoint listens on a unique TCP port number.
 
-The following Transact-SQL script creates a listening endpoint named `Hadr_endpoint` for the availability group. It starts the endpoint and gives connection permission to the certificate that you created. Before you run the script, replace the values between `< ... >`. Optionally you can include an IP address `LISTENER_IP = (0.0.0.0)`. The listener IP address must be an IPv4 address. You can also use `0.0.0.0`.
+The following Transact-SQL script creates a listening endpoint named `Hadr_endpoint` for the availability group. It starts the endpoint and gives connection permission to the certificate that you created. Before you run the script, replace the values between `< ... >`. Optionally, you can include an IP address `LISTENER_IP = (0.0.0.0)`. The listener IP address must be an IPv4 address. You can also use `0.0.0.0`.
 
 Update the following Transact-SQL script for your environment on all [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
-    AS TCP
+AS TCP (LISTENER_PORT = 5022)
+FOR DATABASE_MIRRORING
 (
-            LISTENER_PORT = 5022
-)
-    FOR DATABASE_MIRRORING
-(
-            ROLE = ALL,
-            AUTHENTICATION = CERTIFICATE dbm_certificate,
-            ENCRYPTION = REQUIRED ALGORITHM AES
+    ROLE = ALL,
+    AUTHENTICATION = CERTIFICATE dbm_certificate,
+    ENCRYPTION = REQUIRED ALGORITHM AES
 );
 
 ALTER ENDPOINT [Hadr_endpoint]
-    STATE = STARTED;
+STATE = STARTED;
 ```
 
 > [!NOTE]  
@@ -174,22 +171,19 @@ ALTER ENDPOINT [Hadr_endpoint]
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
-    AS TCP
+AS TCP (LISTENER_PORT = 5022)
+FOR DATABASE_MIRRORING
 (
-            LISTENER_PORT = 5022
-)
-    FOR DATABASE_MIRRORING
-(
-            ROLE = WITNESS,
-            AUTHENTICATION = CERTIFICATE dbm_certificate,
-            ENCRYPTION = REQUIRED ALGORITHM AES
+    ROLE = WITNESS,
+    AUTHENTICATION = CERTIFICATE dbm_certificate,
+    ENCRYPTION = REQUIRED ALGORITHM AES
 );
 
 ALTER ENDPOINT [Hadr_endpoint]
-    STATE = STARTED;
+STATE = STARTED;
 ```
 
-The TCP port on the firewall must be open for the listener port.
+You must open the TCP port on the firewall for the listener port.
 
 > [!IMPORTANT]  
 > The only authentication method supported for the database mirroring endpoint is `CERTIFICATE`. The `WINDOWS` option isn't available.

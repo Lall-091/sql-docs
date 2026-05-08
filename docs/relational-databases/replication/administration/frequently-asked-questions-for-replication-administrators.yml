@@ -6,7 +6,7 @@ metadata:
   ms.service: sql
   ms.prod_service: "database-engine"
   ms.subservice: replication
-  ms.topic: conceptual
+  ms.topic: concept-article
   helpviewer_keywords: 
     - "administering replication, frequently asked questions"
     - "replication [SQL Server], administering"

@@ -4,7 +4,7 @@ description: Learn about how you can pass report parameters directly to the SQL 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

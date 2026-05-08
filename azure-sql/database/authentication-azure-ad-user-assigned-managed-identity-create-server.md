@@ -5,7 +5,7 @@ description: This article guides you through creating an Azure SQL logical serve
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: vanto, mathoma
-ms.date: 08/25/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -43,11 +43,11 @@ The following steps outline the process of creating a new Azure SQL Database log
 
 # [Portal](#tab/azure-portal)
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-server/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/authentication-azure-ad-user-assigned-managed-identity-create-server/show-options-create-sql-database.png":::
+   :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-server/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/authentication-azure-ad-user-assigned-managed-identity-create-server/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 
@@ -61,6 +61,8 @@ The following steps outline the process of creating a new Azure SQL Database log
    - **Server admin login**: Enter an admin login name, for example: `azureuser`.
    - **Password**: Enter a password that meets the password requirements, and enter it again in the **Confirm password** field.
    - **Location**: Select a location from the dropdown list
+
+   [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 1. Select **Next: Networking** at the bottom of the page.
 
@@ -342,7 +344,10 @@ To get your user-assigned managed identity **Resource ID**, search for **Managed
         },
         "AdminLogin": {
             "minLength": 1,
-            "type": "String"
+            "type": "String",
+            "metadata": {
+                "description": "Server admin login name."
+            }
         },
         "AdminLoginPassword": {
             "type": "SecureString"

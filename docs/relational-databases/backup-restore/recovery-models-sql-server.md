@@ -4,11 +4,11 @@ description: Learn about SQL Server recovery models, which control how to log tr
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/21/2025
-ms.update-cycle: 1825-days
+ms.date: 02/19/2026
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: concept-article
+ms.update-cycle: 1825-days
 helpviewer_keywords:
   - "database backups [SQL Server], recovery models"
   - "bulk-logged recovery model [SQL Server]"
@@ -32,19 +32,74 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] backup and restore operations occur within the context of the *recovery model* of the database. Recovery models are designed to control transaction log maintenance. A recovery model is a database property that controls how transactions are logged, whether the transaction log requires (and allows) backing up, and what kinds of restore operations are available.
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] backup and restore operations happen in the context of the *recovery model* of the database. Recovery models define and control transaction log maintenance. A recovery model is a database property that controls how transactions are logged, whether the transaction log requires (and allows) backing up, and what kinds of restore operations are available.
 
-There are three recovery models: *simple*, *full*, and *bulk-logged*. Typically, a database uses the full recovery model or simple recovery model. A database can be switched to another recovery model at any time.
+Three recovery models are available:
+
+- [Simple recovery model](#simple-recovery-model)
+- [Full recovery model](#full-recovery-model)
+- [Bulk-logged recovery model](#bulk-logged-recovery-model)
+
+Typically, a database uses the *full* recovery model or *simple* recovery model. You can switch a database to another recovery model at any time.
+
+> [!NOTE]  
+> [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Enterprise and Standard editions use the *full* recovery model by default, while [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Express edition uses the *simple* recovery model by default.
 
 ## Recovery model overview
 
-The following table summarizes the three recovery models.
+The following section summarizes the three recovery models.
 
-| Recovery model | Description | Work loss exposure | Recover to point in time? |
-| --- | --- | --- | --- |
-| **Simple** | No log backups.<br /><br />Automatically reclaims log space to keep space requirements low, essentially eliminating the need to manage the transaction log space. For information about database backups under the simple recovery model, see [Full database backups (SQL Server)](full-database-backups-sql-server.md).<br /><br />Operations that require transaction log backups aren't supported by the simple recovery model.<br /><br />The following features can't be used in the simple recovery model:<br /><br />- Log shipping<br />- Always On availability groups and database mirroring<br />- Media recovery without data loss<br />- Point-in-time restores | Changes since the most recent backup are unprotected. If there's a disaster, those changes must be redone. | Can recover only to the end of a backup. For more information, see [Complete database restores (simple recovery model)](complete-database-restores-simple-recovery-model.md). |
-| **Full** | Requires log backups.<br /><br />No work is lost due to a lost or damaged data file. Can recover to an arbitrary point in time (for example, before an application or user error). For information about database backups under the full recovery model, see [Full database backups (SQL Server)](full-database-backups-sql-server.md) and [Complete database restores (full recovery model)](complete-database-restores-full-recovery-model.md). | Normally none.<br /><br />If the tail of the log is damaged, changes since the most recent log backup must be redone. | Can recover to a specific point in time, assuming that your backups are complete up to that point in time. For information about using log backups to restore to the point of failure, see [Restore a SQL Server database to a point in time (full recovery model)](restore-a-sql-server-database-to-a-point-in-time-full-recovery-model.md).<br /><br />**Note:** If you have two or more full-recovery-model databases that must be logically consistent, you might have to implement special procedures to ensure the recoverability of these databases. For more information, see [Recovery of related databases that contain marked transaction](recovery-of-related-databases-that-contain-marked-transaction.md). |
-| **Bulk-logged** | Requires log backups.<br /><br />An adjunct of the full recovery model that permits high-performance bulk copy operations.<br /><br />Reduces log space usage by using minimal logging for most bulk operations. For information about operations that can be minimally logged, see [The transaction log](../logs/the-transaction-log-sql-server.md).<br /><br />Log backups might be large because the minimally logged operations are captured in the log backup. For information about database backups under the bulk-logged recovery model, see [Full database backups (SQL Server)](full-database-backups-sql-server.md) and [Complete database restores (full recovery model)](complete-database-restores-full-recovery-model.md). | If the log is damaged or if bulk-logged operations occurred since the most recent log backup, changes since that last backup must be redone. Otherwise, no work is lost. | Can recover to the end of any backup. Point-in-time recovery isn't supported. |
+### Simple recovery model
+
+The simple recovery model doesn't support transaction log backups.
+
+The [!INCLUDE [ssde-md](../../includes/ssde-md.md)] automatically reclaims log space to keep space requirements low, so you don't need to manage the transaction log space. For information about database backups under the simple recovery model, see [Full database backups (SQL Server)](full-database-backups-sql-server.md).
+
+The simple recovery model doesn't support operations that require transaction log backups.
+
+You can't use the following features with the simple recovery model:
+
+- Log shipping
+- Always On availability groups and database mirroring
+- Media recovery without data loss
+- Point-in-time restores
+
+### Full recovery model
+
+The full recovery model requires transaction log backups.
+
+> [!NOTE]  
+> In this recovery model, the transaction log continues to grow until you perform a transaction log backup.
+
+No work is lost due to a lost or damaged data file. You can recover to an arbitrary point in time (for example, before an application or user error).
+
+For information about database backups under the full recovery model, see [Full database backups (SQL Server)](full-database-backups-sql-server.md) and [Complete database restores (full recovery model)](complete-database-restores-full-recovery-model.md).
+
+### Bulk-logged recovery model
+
+The bulk-logged recovery model requires transaction log backups.
+
+> [!NOTE]  
+> In this recovery model, the transaction log continues to grow until you perform a transaction log backup.
+
+A variant of the full recovery model that permits high-performance bulk copy operations.
+
+Reduces log space usage by using minimal logging for most bulk operations. For information about operations that can be minimally logged, see [The transaction log](../logs/the-transaction-log-sql-server.md).
+
+Log backups might be large because the minimally logged operations are captured in the log backup. For information about database backups under the bulk-logged recovery model, see [Full database backups (SQL Server)](full-database-backups-sql-server.md) and [Complete database restores (full recovery model)](complete-database-restores-full-recovery-model.md).
+
+## Recovery time and recovery point objectives
+
+The following table describes the effect of each recovery model on the recovery time objective (RTO), indicated by the **Can recover to point in time** column, and the recovery point objective (RPO), indicated by the **Work loss exposure** column.
+
+| Recovery model | Work loss exposure (RPO) | Recover to point in time? (RTO) |
+| --- | --- | --- |
+| **Simple** | Changes since the most recent backup aren't protected. If there's a disaster, those changes must be redone. | Can recover only to the end of a backup. For more information, see [Complete database restores (simple recovery model)](complete-database-restores-simple-recovery-model.md). |
+| **Full** | Normally none.<br /><br />If the tail of the log is damaged, changes since the most recent log backup must be redone. | Can recover to a specific point in time, assuming that your backups are complete up to that point in time. For information about using log backups to restore to the point of failure, see [Restore a SQL Server database to a point in time (full recovery model)](restore-a-sql-server-database-to-a-point-in-time-full-recovery-model.md). |
+| **Bulk-logged** | If the log is damaged or if bulk-logged operations occurred since the most recent log backup, changes since that last backup must be redone. Otherwise, no work is lost. | Can recover to the end of any backup. Point-in-time recovery isn't supported. |
+
+> [!NOTE]  
+> If you have two or more related databases in the full recovery model that must be logically consistent, you might have to implement special procedures to ensure the recoverability of these databases. For more information, see [Recovery of related databases that contain marked transaction](recovery-of-related-databases-that-contain-marked-transaction.md).
 
 ## Related tasks
 

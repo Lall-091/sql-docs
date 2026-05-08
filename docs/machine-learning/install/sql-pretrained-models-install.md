@@ -76,7 +76,7 @@ If the models are already installed, skip ahead to the [validation step](#verify
 
 ## Download the installation script
 
-Visit [https://aka.ms/mlm4sql](https://aka.ms/mlm4sql) to download the file **Install-MLModels.ps1**. On the GitHub page, select **Download raw file**.
+Visit <https://aka.ms/mlm4sql> to download the file **Install-MLModels.ps1**. On the GitHub page, select **Download raw file**.
 
 ## Execute with elevated privileges
 

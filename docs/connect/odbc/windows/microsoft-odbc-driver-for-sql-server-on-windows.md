@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 09/19/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Microsoft ODBC Driver for SQL Server on Windows

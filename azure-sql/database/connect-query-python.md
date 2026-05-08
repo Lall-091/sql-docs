@@ -24,13 +24,13 @@ monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 
 In this quickstart, you use Python to connect to Azure SQL Database, Azure SQL Managed Instance, or Synapse SQL database and use T-SQL statements to query data.
 
-[mssql-python documentation](https://github.com/microsoft/mssql-python/wiki) | [mssql-python source code](https://github.com/microsoft/mssql-python/wiki) | [Package (PyPi)](https://pypi.org/project/mssql-python/)
+[mssql-python documentation](https://github.com/microsoft/mssql-python/wiki) | [mssql-python source code](https://github.com/microsoft/mssql-python) | [Package (PyPI)](https://pypi.org/project/mssql-python/)
 
 ## Prerequisites
 
 To complete this quickstart, you need:
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 - A database
 
@@ -107,16 +107,85 @@ You can use the PyPI command-line tool to verify that your intended packages are
 
 1. In the current directory, create a new file named `.env`.
 
-1. Within the `.env` file, add an entry for your connection string named `SQL_CONNECTION_STRING`. Replace the example here with your actual connection string value.
+1. Within the `.env` file, add an entry for your connection string named `SQL_CONNECTION_STRING`. Replace the `<database-server-name>` and `<database-name>` placeholders with your own values.
 
-   ```text
-   SQL_CONNECTION_STRING="Server=<server_name>;Database={<database_name>};Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryInteractive"
+   The mssql-python driver has built-in support for Microsoft Entra authentication. Use the `Authentication` parameter to specify the authentication method.
+
+   ### [ActiveDirectoryDefault (Recommended)](#tab/sql-default)
+
+   `ActiveDirectoryDefault` automatically discovers credentials from multiple sources without requiring interactive login. This is the **recommended option for local development** and works on Windows, macOS, and Linux.
+
+   For the most reliable local development experience, sign in with Azure CLI first:
+
+   ```bash
+   az login
    ```
 
-   > [!TIP]  
-   > The connection string used here largely depends on the type of SQL database you're connecting to. If you're connecting to an *Azure SQL Database* or a *SQL database in Fabric*, use the *ODBC* connection string from the connection strings tab. You might need to adjust the authentication type depending on your scenario. For more information on connection strings and their syntax, see [DSN and Connection String Keywords and Attributes](/sql/connect/odbc/dsn-connection-string-attribute).
+   Then use this connection string format in your `.env` file:
 
-1. In a text editor, create a new file named *sqltest.py*.
+   ```text
+   SQL_CONNECTION_STRING="Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryDefault;Encrypt=yes;TrustServerCertificate=no"
+   ```
+
+   `ActiveDirectoryDefault` evaluates credentials in the following order:
+   1. **Environment variables** (for service principal credentials)
+   1. **Managed identity** (when running on Azure)
+   1. **Azure CLI** (from `az login`)
+   1. **Visual Studio** (Windows only)
+   1. **Azure PowerShell** (from `Connect-AzAccount`)
+
+   > [!TIP]
+   > For production applications, use the specific authentication method for your scenario to avoid credential discovery latency:
+   > - **Azure App Service/Functions**: Use `ActiveDirectoryMSI` (managed identity)
+   > - **Interactive user login**: Use `ActiveDirectoryInteractive`
+   > - **Service principal**: Use `ActiveDirectoryServicePrincipal`
+
+   ### [Interactive Authentication](#tab/sql-inter)
+
+   Microsoft Entra Interactive Authentication uses multifactor authentication technology to set up a connection. In this mode, an Azure Authentication dialog appears and lets you enter your credentials to complete the connection.
+
+   ```text
+   SQL_CONNECTION_STRING="Server=<database-server-name>.database.windows.net;Database=<database-name>;Authentication=ActiveDirectoryInteractive;Encrypt=yes;TrustServerCertificate=no"
+   ```
+
+   > [!NOTE]
+   > On macOS, both `ActiveDirectoryInteractive` and `ActiveDirectoryDefault` work for Microsoft Entra authentication. `ActiveDirectoryInteractive` prompts you to sign in every time you run the script. To avoid repeated sign-in prompts, log in once via the [Azure CLI](/cli/azure/install-azure-cli) by running `az login`, then use `ActiveDirectoryDefault`, which reuses the cached credential.
+
+   ### [SQL Authentication](#tab/sql-auth)
+
+   You can authenticate directly to a SQL Server instance using a username and password.
+
+   ```text
+   SQL_CONNECTION_STRING="Server=<database-server-name>.database.windows.net;Database=<database-name>;UID=<user-name>;PWD=<user-password>;Encrypt=yes;TrustServerCertificate=no"
+   ```
+
+   > [!WARNING]
+   > Use caution when managing connection strings that contain secrets such as usernames, passwords, or access keys. These secrets shouldn't be committed to source control or placed in unsecure locations where they might be accessed by unintended users. Add `.env` to your `.gitignore` file to prevent accidentally committing secrets.
+
+   ### [Fabric SQL Database](#tab/sql-fabric)
+
+   To connect to a [SQL database in Microsoft Fabric](/fabric/database/sql/overview), use the same authentication methods. The server name follows the Fabric format.
+
+   On **Windows domain-joined machines**, use `ActiveDirectoryIntegrated` for seamless authentication with no extra steps:
+
+   ```text
+   SQL_CONNECTION_STRING="Server=<workspace-guid>.database.fabric.microsoft.com,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryIntegrated"
+   ```
+
+   On **macOS, Linux, or non-domain Windows**, use `ActiveDirectoryDefault` after signing in with Azure CLI (`az login`):
+
+   ```text
+   SQL_CONNECTION_STRING="Server=<workspace-guid>.database.fabric.microsoft.com,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryDefault"
+   ```
+
+   You can find your Fabric SQL database connection string in the Fabric portal under your database's settings.
+
+   ---
+
+   > [!TIP]  
+   > The connection string used here largely depends on the type of SQL database you're connecting to. For more information on connection strings and their syntax, see [DSN and Connection String Keywords and Attributes](/sql/connect/odbc/dsn-connection-string-attribute).
+
+3. In a text editor, create a new file named *sqltest.py*.
 
 1. Add the following code.
 

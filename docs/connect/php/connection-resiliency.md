@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 07/23/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Idle Connection Resiliency
 

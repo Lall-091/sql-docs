@@ -6,7 +6,7 @@ ms.author: maghan
 ms.reviewer: randolphwest
 ms.date: 06/23/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: reference
 ms.custom:
   - ignite-2025
 dev_langs:

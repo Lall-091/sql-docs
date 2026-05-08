@@ -5,7 +5,7 @@ description: Prepare your SQL Server instance enabled by Azure Arc for migration
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 12/12/2025
+ms.date: 04/16/2026
 ms.topic: how-to
 ---
 
@@ -27,7 +27,7 @@ With LRS, you can migrate your SQL Server databases to Azure SQL Managed Instanc
 To migrate your SQL Server databases to Azure SQL Managed Instance through the Azure portal, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
+- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the [latest version](release-notes.md) of the Azure extension for SQL Server. To upgrade your extension, see [Upgrade the extension](connect.md#upgrade-the-extension).
 
 ## Supported SQL Server versions
 
@@ -46,6 +46,9 @@ The following table lists the minimum supported SQL Server versions for LRS:
 | SQL Server 2012 (11.x)| [SQL Server 2012 RTM (11.0.2100.60)](../sql-server-2012-release-notes.md) |
 
 Reverse migration is only supported to SQL Server 2025 and SQL Server 2022 from SQL managed instances with the corresponding [update policy](/azure/azure-sql/managed-instance/update-policy). You can manually reverse a migration through other tools such as [native backup and restore](/azure/azure-sql/managed-instance/restore-database-to-sql-server), or [manually configuring a link in SSMS](/azure/azure-sql/managed-instance/managed-instance-link-configure-how-to-ssms).
+
+> [!NOTE]
+> For unsupported SQL Server instances such as earlier than SQL Server 2012, or on Linux, consider using [Log Replay Service](/azure/azure-sql/managed-instance/log-replay-service-overview) directly to migrate to Azure SQL Managed Instance.
 
 ## Permissions
 
@@ -157,6 +160,12 @@ RESTORE HEADERONLY
     FROM URL = 'https://<mystorageaccountname>.blob.core.windows.net/<containername>/full_0_0.bak';
 ```
 
+## Configure source SQL Server database
+
+Enable accelerated database recovery and Service Broker on your source SQL Server instance if you plan to use these features on the target SQL Managed Instance after migration, as these features can't be enabled after migration if they aren't already enabled on the source SQL Server instance. 
+
+[!INCLUDE [prepare-database-for-migration](../../../azure-sql/includes/sql-managed-instance/prepare-database-for-migration.md)]
+
 ## Upload backups to your Blob Storage account
 
 When your blob container is ready and you've confirmed that your SQL managed instance can access the container, you can begin uploading your backups to your Azure Blob Storage account. When all of your backups are uploaded to your storage account, you're ready to proceed with the migration.
@@ -164,6 +173,7 @@ When your blob container is ready and you've confirmed that your SQL managed ins
 To upload your backups to Azure:
 - [Take backups on a SQL Server instance](#take-backups-on-a-sql-server-instance).
 - [Copy your backups to your Blob Storage account](#copy-backups-to-your-blob-storage-account).
+- Alternatively, [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Windows Server introduces managed identity support for [backups directly to URL](backup-to-url.md). To [backup directly to URL for SQL Server 2022 and earlier](../../relational-databases/backup-restore/sql-server-backup-to-url.md), you must use a SAS token. To use a managed identity with SQL Server 2022 and earlier, copy your backups to your Blob Storage account by using [AzCopy](/azure/storage/common/storage-use-azcopy-authorize-managed-identity). The only exception is if you're migrating from SQL Server on Azure VMs, which supports backup directly to URL with managed identity authentication starting with [SQL Server 2022 CU 17](/azure/azure-sql/virtual-machines/windows/backup-restore-to-url-using-managed-identities).
 
 Consider the following best practices:
 - Take backups with `COMPRESSION` and `CHECKSUM` options to reduce the size of backup files and to prevent migrating a corrupt database.
@@ -174,7 +184,9 @@ Consider the following best practices:
 
 ### Take backups on a SQL Server instance
 
-Set databases that you want to migrate to the full recovery model to allow log backups.
+The steps in this section show you how to back up locally, but it's also possible to [back up directly to URL](../../relational-databases/backup-restore/sql-server-backup-to-url.md).
+
+Set databases that you want to migrate to the full recovery model to allow log backups. 
 
 ```sql
 -- To permit log backups, before the full database backup, modify the database to use the full recovery
@@ -258,6 +270,11 @@ Monitoring the migration through the Azure portal is available only to SQL Serve
 ## Troubleshoot common issues
 
 To troubleshoot common issues when migrating to Azure SQL Managed Instance, see [Troubleshoot migration issues](migrate-to-azure-sql-managed-instance-troubleshoot.md).
+
+## Next step
+
+> [!div class="nextstepaction"]
+> [Migrate to Azure SQL Managed Instance](migrate-to-azure-sql-managed-instance.md)
 
 ## Related content
 

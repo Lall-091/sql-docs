@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.SWB.POINTINTIMERESTORE.F1"
   - "sql13.swb.backuptimeline.f1"

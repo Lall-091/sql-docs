@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 02/03/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "errors [SQL Server Database Engine]"
   - "Database Engine [SQL Server], errors"

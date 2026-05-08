@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "09/22/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "logging activity"
 ---

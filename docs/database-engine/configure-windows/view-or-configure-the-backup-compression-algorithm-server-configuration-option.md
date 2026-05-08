@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, wiassaf, dinethi
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -16,7 +16,7 @@ helpviewer_keywords:
 
 # Server configuration: backup compression algorithm
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)] and later versions
+[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article describes how to view or configure the `backup compression algorithm` server configuration option in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] with [!INCLUDE [tsql](../../includes/tsql-md.md)].
 

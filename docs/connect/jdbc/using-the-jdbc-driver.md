@@ -3,10 +3,10 @@ title: Using the JDBC driver
 description: This section provides quick start instructions to make a simple connection to a SQL Server database using the Microsoft JDBC Driver for SQL Server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 03/17/2025
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: quickstart
 ---
 # Using the JDBC driver
 
@@ -17,6 +17,10 @@ This section provides quickstart instructions to make a simple connection to a [
 ## Choose the right JAR file
 
 The Microsoft JDBC Driver provides different Jars to be used in correspondence with your preferred Java Runtime Environment (JRE) settings, as under:
+
+The Microsoft JDBC Driver 13.4 for SQL Server provides **mssql-jdbc-13.4.0.jre8.jar** and **mssql-jdbc-13.4.0.jre11.jar** class library files.
+
+The Microsoft JDBC Driver 13.2 for SQL Server provides **mssql-jdbc-13.2.0.jre8.jar** and **mssql-jdbc-13.2.0.jre11.jar** class library files.
 
 The Microsoft JDBC Driver 12.10 for SQL Server provides **mssql-jdbc-12.10.0.jre8.jar** and **mssql-jdbc-12.10.0.jre11.jar** class library files.
 
@@ -60,6 +64,10 @@ Your choice will determine the available features. For more information about wh
 
 The Microsoft JDBC driver jars aren't part of the Java SDK and must be included in Classpath of user application.
 
+If using JDBC Driver 13.4, set the classpath to include the **mssql-jdbc-13.4.0.jre8.jar** or **mssql-jdbc-13.4.0.jre11.jar**.
+
+If using JDBC Driver 13.2, set the classpath to include the **mssql-jdbc-13.2.0.jre8.jar** or **mssql-jdbc-13.2.0.jre11.jar**.
+
 If using JDBC Driver 12.10, set the classpath to include the **mssql-jdbc-12.10.0.jre8.jar** or **mssql-jdbc-12.10.0.jre11.jar**.
 
 If using JDBC Driver 12.8, set the classpath to include the **mssql-jdbc-12.8.0.jre8.jar** or **mssql-jdbc-12.8.0.jre11.jar**.
@@ -95,6 +103,46 @@ If using JDBC Driver 6.2, set the classpath to include the **mssql-jdbc-6.2.2.jr
 If using JDBC Driver 4.1 or 4.2, set the classpath to include **sqljdbc41.jar** or **sqljdbc42.jar** file from the respective driver download.
 
 If the classpath is missing an entry for the right Jar file, an application will throw the common `Class not found` exception.  
+
+### For Microsoft JDBC Driver 13.4
+
+The **mssql-jdbc-13.4.0.jre8.jar** or **mssql-jdbc-13.4.0.jre11.jar** files are installed in the following locations:
+
+```bash
+\<installation directory>\sqljdbc_<version>\<language>\mssql-jdbc-13.4.0.jre8.jar
+
+\<installation directory>\sqljdbc_<version>\<language>\mssql-jdbc-13.4.0.jre11.jar
+```
+
+The following snippet is an example of the CLASSPATH statement that's used for a Windows application:
+
+`CLASSPATH =.;C:\Program Files\Microsoft JDBC Driver 13.4 for SQL Server\sqljdbc_13.4\enu\mssql-jdbc-13.4.0.jre11.jar`
+
+The following snippet is an example of the CLASSPATH statement that's used for a Unix/Linux application:
+
+`CLASSPATH =.:/home/usr1/mssqlserverjdbc/Driver/sqljdbc_13.4/enu/mssql-jdbc-13.4.0.jre11.jar`
+
+Make sure that the CLASSPATH statement contains only one [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)], such as either **mssql-jdbc-13.4.0.jre8.jar**, **mssql-jdbc-13.4.0.jre11.jar**.
+
+### For Microsoft JDBC Driver 13.2
+
+The **mssql-jdbc-13.2.0.jre8.jar** or **mssql-jdbc-13.2.0.jre11.jar** files are installed in the following locations:
+
+```bash
+\<installation directory>\sqljdbc_<version>\<language>\mssql-jdbc-13.2.0.jre8.jar
+
+\<installation directory>\sqljdbc_<version>\<language>\mssql-jdbc-13.2.0.jre11.jar
+```
+
+The following snippet is an example of the CLASSPATH statement that's used for a Windows application:
+
+`CLASSPATH =.;C:\Program Files\Microsoft JDBC Driver 13.2 for SQL Server\sqljdbc_13.2\enu\mssql-jdbc-13.2.0.jre11.jar`
+
+The following snippet is an example of the CLASSPATH statement that's used for a Unix/Linux application:
+
+`CLASSPATH =.:/home/usr1/mssqlserverjdbc/Driver/sqljdbc_13.2/enu/mssql-jdbc-13.2.0.jre11.jar`
+
+Make sure that the CLASSPATH statement contains only one [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)], such as either **mssql-jdbc-13.2.0.jre8.jar**, **mssql-jdbc-13.2.0.jre11.jar**.
 
 ### For Microsoft JDBC Driver 12.10
 
@@ -462,7 +510,7 @@ The following snippet is an example of the CLASSPATH statement that's used for a
 Make sure that the CLASSPATH statement contains only one [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)], such as either sqljdbc.jar, sqljdbc4.jar, sqljdbc41.jar, or sqljdbc42.jar.  
   
 > [!NOTE]  
-> On Windows systems, directory names longer than the 8.3 filename convention or folder names with spaces may cause problems with classpaths. If you suspect these types of issues, you should temporarily move the sqljdbc.jar file, sqljdbc4.jar file, or the sqljdbc41.jar file into a simple directory name such as `C:\Temp`, change the classpath, and determine whether that addresses the problem.  
+> On Windows systems, directory names longer than the 8.3 filename convention or folder names with spaces may cause problems with classpaths. If you suspect these types of problems, temporarily move the sqljdbc.jar file, sqljdbc4.jar file, or the sqljdbc41.jar file into a simple directory name such as `C:\Temp`, change the classpath, and determine whether that addresses the problem.  
   
 ### Applications that are run directly at the command prompt
 
@@ -494,17 +542,23 @@ Connection con = DriverManager.getConnection(connectionUrl);
 ```
 
 > [!WARNING]  
-> The above connection string uses `encrypt=false`, which is not recommended for production use. For more information about encrypting your database connection with JDBC, see [Connecting with encryption](connecting-with-ssl-encryption.md).
+> The above connection string uses `encrypt=false`, which isn't recommended for production use. For more information about encrypting your database connection with JDBC, see [Connecting with encryption](connecting-with-ssl-encryption.md).
 
 Starting from JDBC API 4.0, the `DriverManager.getConnection()` method is enhanced to load JDBC drivers automatically. Therefore, applications don't need to call the `Class.forName` method to register or load the driver when using driver jar libraries.  
   
-When the getConnection method of the DriverManager class is called, an appropriate driver is located from the set of registered JDBC drivers. sqljdbc4.jar, sqljdbc41.jar, or sqljdbc42.jar file includes "META-INF/services/java.sql.Driver" file, which contains the **com.microsoft.sqlserver.jdbc.SQLServerDriver** as a registered driver. The existing applications, which currently load the drivers by using the Class.forName method, will continue to work without modification.  
+When you call the getConnection method of the DriverManager class, it locates an appropriate driver from the set of registered JDBC drivers. sqljdbc4.jar, sqljdbc41.jar, or sqljdbc42.jar file includes "META-INF/services/java.sql.Driver" file, which contains the **com.microsoft.sqlserver.jdbc.SQLServerDriver** as a registered driver. The existing applications, which currently load the drivers by using the Class.forName method, continue to work without modification.  
   
 > [!NOTE]  
-> sqljdbc4.jar, sqljdbc41.jar, or sqljdbc42.jar class library cannot be used with older versions of the Java Runtime Environment (JRE). See [System requirements for the JDBC driver](../../connect/jdbc/system-requirements-for-the-jdbc-driver.md) for the list of JRE versions supported by the [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)].  
+> sqljdbc4.jar, sqljdbc41.jar, or sqljdbc42.jar class library can't be used with older versions of the Java Runtime Environment (JRE). See [System requirements for the JDBC driver](../../connect/jdbc/system-requirements-for-the-jdbc-driver.md) for the list of JRE versions supported by the [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)].  
 
 For more information about how to connect with data sources and use a connection URL, see [Building the connection URL](../../connect/jdbc/building-the-connection-url.md) and [Setting the connection properties](../../connect/jdbc/setting-the-connection-properties.md).  
-  
-## See also  
 
-[Overview of the JDBC driver](../../connect/jdbc/overview-of-the-jdbc-driver.md)  
+> [!TIP]
+> The previous example uses `DriverManager` for simplicity. For production applications, consider using the `SQLServerDataSource` class instead, which provides connection pooling and additional configurability. For more information and examples, see [Connecting and retrieving data](connecting-and-retrieving-data.md) and [Data source sample](data-source-sample.md).
+
+## Related content
+
+- [Overview of the JDBC driver](../../connect/jdbc/overview-of-the-jdbc-driver.md)
+- [Building the connection URL](../../connect/jdbc/building-the-connection-url.md)
+- [Setting the connection properties](../../connect/jdbc/setting-the-connection-properties.md)
+- [Connecting and retrieving data](connecting-and-retrieving-data.md)

@@ -409,7 +409,7 @@ To achieve the same functionality of **\.WRITE** with other character or binary 
   
  When an `INSTEAD OF` trigger is defined on UPDATE actions against a table, the trigger is running instead of the UPDATE statement. Earlier versions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] only support AFTER triggers defined on UPDATE and other data modification statements. The FROM clause can't be specified in an UPDATE statement that references, either directly or indirectly, a view with an `INSTEAD OF` trigger defined on it. For more information about INSTEAD OF triggers, see [CREATE TRIGGER &#40;Transact-SQL&#41;](../../t-sql/statements/create-trigger-transact-sql.md).  
 
- Currently, the FROM clause can't be specified in an UPDATE statement on [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]. Single-table UPDATE statements are supported.
+ Currently, the FROM clause can't be specified in an UPDATE statement on [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. Single-table UPDATE statements are supported.
 
 ## Limitations and restrictions  
  The FROM clause can't be specified in an UPDATE statement that references, either directly or indirectly, a view that has an `INSTEAD OF` trigger defined on it. For more information about `INSTEAD OF` triggers, see [CREATE TRIGGER &#40;Transact-SQL&#41;](../../t-sql/statements/create-trigger-transact-sql.md).  

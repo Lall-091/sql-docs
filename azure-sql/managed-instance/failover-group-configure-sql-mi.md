@@ -471,7 +471,9 @@ Instances in a failover group remain separate Azure resources, and no changes ma
 This section is duplicated in /managed-instance/failover-group-sql-mi.md.. Please ensure changes are made to both documents.  
 -->
 
-The configuration of your primary and secondary instance should be the same. This includes the compute size, storage size, and service tier. If you need to change the configuration of your failover group, you can do so by scaling each instance to the same configuration accordingly. 
+The configuration of your primary and secondary instance should be the same. This includes the compute size, storage size, and service tier. If you need to change the configuration of your failover group, you can do so by scaling each instance to the same configuration accordingly.
+
+Downgrading the secondary instance to a lower service tier or compute size than the primary instance can cause performance degradation after failover.
 
 To avoid problems from a lower service tier or under-resourced geo-secondary getting overloaded, or having to reseed during an upgrade or downgrade process, consider the following: 
 
@@ -484,7 +486,12 @@ To avoid problems from a lower service tier or under-resourced geo-secondary get
   - Scaling the storage size.
   - [Changing the memory allocation](resource-limits.md#flexible-memory) of your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance.
 
+When trying to scale the service tier, vCores, and storage at the same time (for example, scaling up vCores and service tier while scaling down storage), don't change all three simultaneously. Instead, use one of the following approaches:
 
+- **Option 1**: Scale the service tier first (keep storage and vCores the same), following the upgrade/downgrade order described previously. Then scale storage and vCores separately.
+- **Option 2**: Scale storage first (keep service tier and vCores the same), following the upgrade/downgrade order described previously. Then scale the service tier and vCores separately.
+
+This two-step approach prevents the secondary replica with fewer resources from becoming overloaded, which can cause reseeding during the scaling process.
 
 ## Permissions
 
@@ -524,8 +531,10 @@ When using failover groups, consider the following limitations:
     - after failover, and can delay or prevent a subsequent failover.
 - Database rename isn't supported for databases in failover group. You'll need to temporarily delete the failover group to be able to rename a database.
 - System databases aren't replicated to the secondary instance in a failover group. Therefore, scenarios that depend on objects from the system databases such as Server Logins and Agent jobs, require objects to be manually created on the secondary instances and also manually kept in sync after any changes made on primary instance. The only exception is Service master Key (SMK) for SQL Managed Instance that is replicated automatically to secondary instance during creation of failover group. Any subsequent changes of SMK on the primary instance however won't be replicated to secondary instance. To learn more, see how to [Enable scenarios dependent on objects from the system databases](#enable-scenarios-dependent-on-objects-from-the-system-databases).
-- For instances inside of a failover group, changing the service tier to, or from, the Next-gen General Purpose tier isn't supported. You must first delete the failover group before modifying either replica, and then re-create the failover group after the change takes effect.
+- When new databases are added to a failover group, planned failover is unavailable until the new database has been seeded to the secondary replica and is synchronized. Forced failover is still available during this process.
+- For scaling instances inside of a failover group, review [Scaling instances in a failover group](failover-group-configure-sql-mi.md#scaling-instances).
 - SQL managed instances in a failover group must have the same [update policy](update-policy.md), though it's possible to [change the update policy](#change-update-policy) for instances within a failover group.
+
 
 
 ## <a id="programmatically-managing-failover-groups"></a> Programmatically manage failover groups

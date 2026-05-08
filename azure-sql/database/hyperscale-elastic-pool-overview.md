@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma, randolphwest
 ms.date: 01/09/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Hyperscale elastic pools overview in Azure SQL Database
 

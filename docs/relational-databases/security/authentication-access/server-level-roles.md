@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 02/07/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.Security.NT_AUTHORITY.SYSTEM"
   - "sql13.Security.BUILTIN.administrators"

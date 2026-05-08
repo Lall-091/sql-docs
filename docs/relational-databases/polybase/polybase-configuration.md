@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 10/04/2022
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=sql-server-2016||=sql-server-2017||=sql-server-ver15||=azuresqldb-mi-current"
 ---
 
@@ -169,4 +169,4 @@ To connect to a Kerberos-secured Hadoop cluster using MIT KDC:
 For more information, see the following articles:
 
 - [Configure PolyBase to access external data in Hadoop](polybase-configure-hadoop.md)
-- [PolyBase overview](../../relational-databases/polybase/polybase-guide.md)
+- [PolyBase overview](../../relational-databases/polybase/overview.md)

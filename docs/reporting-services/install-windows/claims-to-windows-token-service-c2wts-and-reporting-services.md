@@ -4,7 +4,7 @@ description: "Claims to Windows Token Service (c2WTS) and Reporting Services"
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

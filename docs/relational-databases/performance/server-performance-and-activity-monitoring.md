@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "11/27/2018"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "activity monitoring [SQL Server]"
   - "traces [SQL Server], how-to topics"

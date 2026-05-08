@@ -6,7 +6,7 @@ ms.author: sergeyten
 ms.reviewer: randolphwest
 ms.date: 08/26/2025
 ms.service: sql
-ms.topic: concept-article
+ms.topic: how-to
 ms.custom:
   - build-2025
 helpviewer_keywords:
@@ -67,7 +67,7 @@ EXEC sp_configure 'show advanced options', 1;
 RECONFIGURE;
 GO
 
-EXEC sp_configure `max ucs send boxcars`, 1234;
+EXEC sp_configure 'max ucs send boxcars', 1234;
 RECONFIGURE;
 GO
 ```

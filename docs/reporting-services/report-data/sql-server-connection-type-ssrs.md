@@ -4,7 +4,7 @@ description: Learn about the SQL Server connection type and including data from 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

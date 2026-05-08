@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 09/09/2025
+ms.date: 01/15/2026
 ms.topic: include
 ---
 > [!NOTE]
@@ -139,7 +139,7 @@ ms.topic: include
 | 32014 | 16 | No | Database %s does not exist as log shipping secondary. |
 | 32015 | 16 | No | The primary database %s cannot have SIMPLE recovery for log shipping to work properly. |
 | 32016 | 16 | No | The specified agent_id %s or agent_type %d do not form a valid pair for log shipping monitoring processing. |
-| 32017 | 16 | No | Log shipping is supported on Enterprise, Developer and Standard editions of SQL Server. This instance has %s and is not supported. |
+| 32017 | 16 | No | Log shipping is supported on Enterprise, Enterprise Developer, Standard, and Standard Developer editions of SQL Server. The edition of this instance is %s. |
 | 32018 | 16 | No | Log shipping is not installed on this instance. |
 | 32019 | 10 | No | Log shipping alert job. |
 | 32020 | 10 | No | Log shipping alert job step. |
@@ -1035,6 +1035,7 @@ ms.topic: include
 | 35544 | 10 | No | Empty internal distributed availability group. |
 | 35545 | 10 | No | Internal distributed availability group naming inconsistency. |
 | 35546 | 10 | No | An internal distributed availability group detected with more than one associated availability database. |
+| 35547 | 10 | No | Use sys.sp_mi_dag_repair on the distributed availability group. |
 | 36001 | 16 | No | %s '%s' already exists in the database. |
 | 36002 | 16 | No | instance_id already exists in the database. |
 | 36003 | 16 | No | %s '%s' already exists for the given DAC instance. |

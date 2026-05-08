@@ -1,10 +1,10 @@
 ---
 title: What Is Microsoft Copilot in SSMA for Oracle?
-description: Learn how Copilot in SQL Server Migration Assistant (SSMA) provides intelligent, AI-powered assistance for complex or unsupported objects.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 11/12/2025
+description: Learn how Copilot in SQL Server Migration Assistant (SSMA) for Oracle provides intelligent, AI-powered assistance to convert complex or unsupported objects.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball, subasak
+ms.date: 02/02/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: overview
@@ -12,10 +12,9 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ---
+# What is Microsoft Copilot in SSMA for Oracle (OracleToSQL)?
 
-# What is Microsoft Copilot in SSMA for Oracle?
-
-Copilot in SQL Server Migration Assistant (SSMA) enhances the code conversion process from Oracle to SQL by providing intelligent, AI-powered assistance for complex or unsupported objects. When the SSMA rule engine encounters conversion challenges, such as syntax differences, proprietary Oracle features, or unsupported data types, Copilot steps in to analyze the issue, explain the root cause, and generate alternative SQL-compatible code.
+Copilot in SQL Server Migration Assistant (SSMA) enhances the code conversion process from Oracle to Transact-SQL by providing intelligent, AI-powered assistance for complex or unsupported objects. When the SSMA rule engine encounters conversion challenges, such as syntax differences, proprietary Oracle features, or unsupported data types, Copilot steps in to analyze the issue, explain the root cause, and generate alternative SQL-compatible code.
 
 Copilot in SQL Server Migration Assistant (SSMA) is generally available from SSMA version 10.4.
 
@@ -23,62 +22,60 @@ By integrating with Azure OpenAI, Copilot in SSMA for Oracle allows you to revie
 
 ## Prerequisites
 
-To use Copilot in SSMA for Oracle for code conversion, ensure you have one of the following methods configured:
+To use Copilot in SSMA for Oracle for code conversion, you can use one of the following methods:
 
 ### Option 1: Azure OpenAI resource (Bring your own key)
 
-- Azure OpenAI Endpoint URL
-- Azure OpenAI Deployment
-- Model Name
-- Azure OpenAI Key
+- Azure OpenAI Endpoint URL.
+- Azure OpenAI Deployment.
+- Model name.
+- Azure OpenAI key.
 
-If you don't have these details, follow the steps in the [How to create Azure OpenAI resource](#modify-azure-openai-settings) section.
+If you don't have these details, see the [Modify Azure OpenAI settings](#modify-azure-openai-settings) section.
 
 ### Option 2: Microsoft-managed endpoint with Microsoft Entra ID authentication (Preview)
 
 SSMA for Oracle 10.4 introduces this authentication type for Copilot in SSMA.
 
-- No manual key entry required
-- Sign in using your Microsoft Entra ID credentials
-- Authentication is handled via a browser-based login flow
+- No manual key entry required.
+- Sign in using your Microsoft Entra ID credentials.
+- Authentication is handled through a browser-based authentication flow.
 
 ## Steps to run Copilot in SSMA for Oracle
 
-Once the code conversion is done, the target objects that the SSMA rule engine couldn't convert, display warnings or errors. For those objects, you can launch **Fix with Copilot**.
+After code conversion, the tool displays warnings or errors for target objects that the SSMA rule engine can't convert. For those objects, you can select **Fix with Copilot**.
 
-If the OpenAI resource isn't registered, you're prompted with an authentication selection form. You can choose between:
+If the OpenAI resource isn't registered, the tool prompts you with an authentication selection form. You can choose between:
 
-- **Microsoft Entra ID Authentication** (new flow)
-- **Azure OpenAI Key** (existing flow)
+- **Microsoft Entra ID Authentication** (new flow).
+- **Azure OpenAI Key** (existing flow).
 
 ### Microsoft Entra ID authentication flow (Preview)
 
-1. Select **Microsoft Entra ID Authentication** and select **Next**.
+1. Select **Microsoft Entra ID Authentication**, and then select **Next**.
+1. A browser window opens and prompts you to sign in.
+1. After authentication, the Copilot interface loads, and you can review the suggested code fixes.
 
-1. A browser window opens, prompting you to sign in.
-
-1. Once authenticated, the Copilot interface loads, and you can review the suggested code fixes.
-
-1. If you select the Copilot icon again, the authentication form doesn't reappear unless you sign out, or reset the settings.
+If you select the Copilot icon again, the authentication form doesn't reappear unless you sign out or reset the settings.
 
 To sign out:
 
-- Select the profile icon in the top-right corner and select **Log out**.
+- Select the profile icon in the upper-right corner, and then select **Log out**.
 
-- Alternatively, navigate to **Tools** > **Project Settings** > **Copilot**, clear the saved credentials, and apply changes.
+Alternatively, go to **Tools** > **Project Settings** > **Copilot**, clear the saved credentials, and apply changes.
 
-### Azure OpenAI Key flow
+### Azure OpenAI key flow
 
-If you want to bring your own key, and the OpenAI resource isn't registered, you must complete the following fields:
+If you want to bring your own key and the OpenAI resource isn't registered, complete the following fields:
 
-- Azure OpenAI Endpoint URL
-- Azure OpenAI Deployment
-- Model Name
-- Azure OpenAI Key
+- Azure OpenAI Endpoint URL.
+- Azure OpenAI Deployment.
+- Model name.
+- Azure OpenAI key.
 
 :::image type="content" source="media/copilot-in-ssma-overview/validate-endpoint.png" alt-text="Screenshot of Validate endpoint dialog.":::
 
-Once the validation is successful, you can view the converted code. It takes a few minutes to generate the converted code. After the code is generated, you can review the suggested changes.
+After successful validation, you can view the converted code. It can take a few minutes to generate the converted code. After the code is generated, you can review the suggested changes.
 
 ## Code conversion interface
 
@@ -86,33 +83,33 @@ The Code Conversion window has three sections:
 
 | Section | Description |
 | --- | --- |
-| **Errors to fix** | This section shows the possible issues identified or errors to fix that SSMA rule engine couldn't convert or failed to parse the PL/SQL statement. |
-| **Explanation** | Provides root cause of conversion issues, describing the logic behind its suggestions, and offering clear, contextual insights to help you understand and validate the generated Transact-SQL code. |
-| **Code review window** | Allows you to view side-by-side differences between SSMA-generated and Copilot-converted code. It highlights changes, enabling you to evaluate improvements, understand modifications, and make informed decisions before accepting suggestions. |
+| **Errors to fix** | Shows the possible errors that the SSMA rule engine couldn't convert or failed to parse in the PL/SQL statement. |
+| **Explanation** | Provides the root cause of conversion issues, describes the logic behind the suggestions, and offers clear, contextual insights to help you understand and validate the generated Transact-SQL code. |
+| **Code review window** | Allows you to view side-by-side differences between SSMA-generated and Copilot-converted code. It highlights changes so that you can evaluate improvements, understand modifications, and make informed decisions before accepting suggestions. |
 
 :::image type="content" source="media/copilot-in-ssma-overview/compare-code.png" alt-text="Screenshot of code comparison dialog." lightbox="media/copilot-in-ssma-overview/compare-code.png":::
 
-You can retry or send additional information in the prompt if they aren't satisfied with the conversion. If the converted code is suitable, you can accept the suggestions.
+You can retry or send additional information in the prompt if you're not satisfied with the conversion. If the converted code is suitable, you can accept the suggestions.
 
 ## Manage accepted changes in the IDE
 
-Once you review and accept the Copilot-generated code, you can find the accepted changes in the SSMA IDE. Follow these steps to save and synchronize the changes with your database:
+After you review and accept the Copilot-generated code, find the accepted changes in the SSMA IDE. Follow these steps to save and synchronize the changes with your database:
 
-1. Navigate to the SSMA IDE where the accepted changes are displayed.
-1. Save the changes to ensure they're stored locally.
+1. Go to the SSMA IDE where the accepted changes are displayed.
+1. Save the changes to store them locally.
 1. Use the synchronization feature to replicate the changes to your database.
 
 ## Modify Azure OpenAI settings
 
-If you need to change the Azure OpenAI details, go to **Tools** > **Project Settings** > **Copilot** in the SSMA menu. Update the **Azure OpenAI Endpoint**, **Azure OpenAI Deployment**, **Model Name**, and **Azure OpenAI Key** as required.
+If you need to change the Azure OpenAI details, go to **Tools** > **Project Settings** > **Copilot** in the SSMA menu. Update the **Azure OpenAI Endpoint**, **Azure OpenAI Deployment**, **Model Name**, and **Azure OpenAI Key** as needed.
 
 ## Review and validation
 
-As this code is generated by AI, it's crucial to review, validate, and test the changes before accepting or saving them. Ensure that the code meets your requirements, and functions correctly in your environment.
+Because AI generates this code, you must review, validate, and test the changes before you accept or save them. Ensure that the code meets your requirements and functions correctly in your environment.
 
 ## Limitations
 
-Copilot-generated code for tables and user-defined data types can't be saved directly in SSMA. In such cases, SSMA provides a download option to save the Copilot-generated code locally.
+You can't save Copilot-generated code for tables and user-defined data types directly in SSMA. In these cases, SSMA provides a download option to save the Copilot-generated code locally.
 
 ## Related content
 

@@ -4,7 +4,7 @@ description: Learn how to resolve a full SQL Server transaction log, and how to 
 author: "MashaMSFT"
 ms.author: "mathoma"
 ms.reviewer: randolphwest
-ms.date: 09/25/2025
+ms.date: 01/26/2026
 ms.service: sql
 ms.subservice: supportability
 ms.topic: troubleshooting
@@ -25,16 +25,7 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017"
 This article applies to SQL Server instances.
 
 > [!NOTE]  
-> **This article is focused on SQL Server.** For more specific information on this error in Azure SQL platforms, see [Troubleshooting transaction log errors with Azure SQL Database](/azure/azure-sql/database/troubleshoot-transaction-log-errors-issues?view=azuresql-db&preserve-view=true) and [Troubleshooting transaction log errors with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/troubleshoot-transaction-log-errors-issues?view=azuresql-mi&preserve-view=true). Azure SQL Database and Azure SQL Managed Instance are based on the latest stable version of the Microsoft SQL Server database engine, so much of the content is similar though troubleshooting options and tools might differ.
-
-**Option 1: Run the steps directly in an executable notebook via Azure Data Studio**
-
-Before attempting to open this notebook, check that Azure Data Studio is installed on your local machine. To install, go to [Download and install Azure Data Studio](/azure-data-studio/download-azure-data-studio).
-
-> [!div class="nextstepaction"]
-> [Open Notebook in Azure Data Studio](azuredatastudio://microsoft.notebook/open?url=https://raw.githubusercontent.com/microsoft/mssql-support/master/sample-scripts/DOCs-to-Notebooks/T-Shooting_LogFull_9002.ipynb)
-
-**Option 2: Follow the steps manually**
+> **This article is focused on SQL Server**. For more specific information on this error in Azure SQL platforms, see [Troubleshooting transaction log errors with Azure SQL Database](/azure/azure-sql/database/troubleshoot-transaction-log-errors-issues?view=azuresql-db&preserve-view=true) and [Troubleshooting transaction log errors with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/troubleshoot-transaction-log-errors-issues?view=azuresql-mi&preserve-view=true). Azure SQL Database and Azure SQL Managed Instance are based on the latest stable version of the Microsoft SQL Server database engine, so much of the content is similar though troubleshooting options and tools might differ.
 
 This article discusses possible responses to a full transaction log and suggests how to avoid it in the future.
 
@@ -94,9 +85,9 @@ IF (OBJECT_id(N'tempdb..#CannotTruncateLog_Db') IS NOT NULL)
 
 --get info about transaction logs in each database.
 IF (OBJECT_id(N'tempdb..#dm_db_log_space_usage') IS NOT NULL)
-    BEGIN
-        DROP TABLE #dm_db_log_space_usage;
-    END
+BEGIN
+    DROP TABLE #dm_db_log_space_usage;
+END
 
 SELECT *
 INTO #dm_db_log_space_usage
@@ -137,48 +128,48 @@ WHILE @@FETCH_STATUS = 0
     END
 
 CLOSE log_space;
+
 DEALLOCATE log_space;
 
 --select the affected databases
-SELECT
-    sdb.name AS DbName,
-    sdb.log_reuse_wait,
-    sdb.log_reuse_wait_desc,
-    CASE
-        WHEN log_reuse_wait = 1 THEN 'No checkpoint has occurred since the last log truncation, or the head of the log has not yet moved beyond'
-        WHEN log_reuse_wait = 2 THEN 'A log backup is required before the transaction log can be truncated.'
-        WHEN log_reuse_wait = 3 THEN 'A data backup or a restore is in progress (all recovery models). Please wait or cancel backup'
-        WHEN log_reuse_wait = 4 THEN 'A long-running active transaction or a deferred transaction is keeping log from being truncated. You can attempt a log backup to free space or complete/rollback long transaction'
-        WHEN log_reuse_wait = 5 THEN 'Database mirroring is paused, or under high-performance mode, the mirror database is significantly behind the principal database. (Full recovery model only)'
-        WHEN log_reuse_wait = 6 THEN 'During transactional replication, transactions relevant to the publications are still undelivered to the distribution database. Investigate the status of agents involved in replication or Changed Data Capture (CDC). (Full recovery model only.)'
-        WHEN log_reuse_wait = 7 THEN 'A database snapshot is being created. This is a routine, and typically brief, cause of delayed log truncation.'
-        WHEN log_reuse_wait = 8 THEN 'A transaction log scan is occurring. This is a routine, and typically a brief cause of delayed log truncation.'
-        WHEN log_reuse_wait = 9 THEN 'A secondary replica of an availability group is applying transaction log records of this database to a corresponding secondary database. (Full recovery model only.)'
-        WHEN log_reuse_wait = 13 THEN 'If a database is configured to use indirect checkpoints, the oldest page on the database might be older than the checkpoint log sequence number (LSN).'
-        WHEN log_reuse_wait = 16 THEN 'An In-Memory OLTP checkpoint has not occurred since the last log truncation, or the head of the log has not yet moved beyond a VLF.'
-        ELSE 'None'
-    END AS log_reuse_wait_explanation,
-    sdb.database_id,
-    sdb.recovery_model_desc,
-    lsu.used_log_space_in_bytes / 1024. / 1024. AS Used_log_size_MB,
-    lsu.total_log_size_in_bytes / 1024. / 1024. AS Total_log_size_MB,
-    100 - lsu.used_log_space_in_percent AS Percent_Free_Space
+SELECT sdb.name AS DbName,
+       sdb.log_reuse_wait,
+       sdb.log_reuse_wait_desc,
+       CASE
+           WHEN log_reuse_wait = 1 THEN 'No checkpoint has occurred since the last log truncation, or the head of the log has not yet moved beyond'
+           WHEN log_reuse_wait = 2 THEN 'A log backup is required before the transaction log can be truncated.'
+           WHEN log_reuse_wait = 3 THEN 'A data backup or a restore is in progress (all recovery models). Please wait or cancel backup'
+           WHEN log_reuse_wait = 4 THEN 'A long-running active transaction or a deferred transaction is keeping log from being truncated. You can attempt a log backup to free space or complete/rollback long transaction'
+           WHEN log_reuse_wait = 5 THEN 'Database mirroring is paused, or under high-performance mode, the mirror database is significantly behind the principal database. (Full recovery model only)'
+           WHEN log_reuse_wait = 6 THEN 'During transactional replication, transactions relevant to the publications are still undelivered to the distribution database. Investigate the status of agents involved in replication or Changed Data Capture (CDC). (Full recovery model only.)'
+           WHEN log_reuse_wait = 7 THEN 'A database snapshot is being created. This is a routine, and typically brief, cause of delayed log truncation.'
+           WHEN log_reuse_wait = 8 THEN 'A transaction log scan is occurring. This is a routine, and typically a brief cause of delayed log truncation.'
+           WHEN log_reuse_wait = 9 THEN 'A secondary replica of an availability group is applying transaction log records of this database to a corresponding secondary database. (Full recovery model only.)'
+           WHEN log_reuse_wait = 13 THEN 'If a database is configured to use indirect checkpoints, the oldest page on the database might be older than the checkpoint log sequence number (LSN).'
+           WHEN log_reuse_wait = 16 THEN 'An In-Memory OLTP checkpoint has not occurred since the last log truncation, or the head of the log has not yet moved beyond a VLF.'
+           ELSE 'None'
+       END AS log_reuse_wait_explanation,
+       sdb.database_id,
+       sdb.recovery_model_desc,
+       lsu.used_log_space_in_bytes / 1024. / 1024. AS Used_log_size_MB,
+       lsu.total_log_size_in_bytes / 1024. / 1024. AS Total_log_size_MB,
+       100 - lsu.used_log_space_in_percent AS Percent_Free_Space
 INTO #CannotTruncateLog_Db
 FROM sys.databases AS sdb
      INNER JOIN #dm_db_log_space_usage AS lsu
          ON sdb.database_id = lsu.database_id
 WHERE log_reuse_wait > 0;
 
-SELECT * FROM #CannotTruncateLog_Db;
+SELECT *
+FROM #CannotTruncateLog_Db;
 
 DECLARE no_truncate_db CURSOR FOR
-SELECT
-    log_reuse_wait,
-    log_reuse_wait_desc,
-    DbName,
-    database_id,
-    recovery_model_desc
-FROM #CannotTruncateLog_Db;
+    SELECT log_reuse_wait,
+            log_reuse_wait_desc,
+            DbName,
+            database_id,
+            recovery_model_desc
+    FROM #CannotTruncateLog_Db;
 
 OPEN no_truncate_db;
 
@@ -235,9 +226,9 @@ WHILE @@FETCH_STATUS = 0
         ELSE IF (@log_reuse_wait = 9)
         BEGIN
             SELECT 'Always On transactions still undelivered FROM primary database ' + QUOTENAME(@dbname) + ' to Secondary replicas. Check the Health of AG nodes and if there is latency is Log block movement to Secondaries' AS Recommendation;
-            SELECT 'SELECT availability_group = CAST(ag.name AS VARCHAR(30)), primary_replica = CAST(ags.primary_replica AS VARCHAR(30)), primary_recovery_health_desc = CAST(ags.primary_recovery_health_desc AS VARCHAR(30)), synchronization_health_desc = CAST(ags.synchronization_health_desc AS VARCHAR(30)), ag.failure_condition_level, ag.health_check_timeout, automated_backup_preference_desc = CAST(ag.automated_backup_preference_desc AS VARCHAR(10)) FROM sys.availability_groups ag join sys.dm_hadr_availability_group_states ags on ag.group_id=ags.group_id' AS CheckAGHealth;
-            SELECT 'SELECT  group_name = CAST(arc.group_name AS VARCHAR(30)), replica_server_name = CAST(arc.replica_server_name AS VARCHAR(30)), node_name = CAST(arc.node_name AS VARCHAR(30)), role_desc = CAST(ars.role_desc AS VARCHAR(30)), ar.availability_mode_Desc, operational_state_desc = CAST(ars.operational_state_desc AS VARCHAR(30)), connected_state_desc = CAST(ars.connected_state_desc AS VARCHAR(30)), recovery_health_desc = CAST(ars.recovery_health_desc AS VARCHAR(30)), synchronization_health_desc = CAST(ars.synchronization_health_desc AS VARCHAR(30)), ars.last_connect_error_number, last_connect_error_description = CAST(ars.last_connect_error_description AS VARCHAR(30)), ars.last_connect_error_timestamp, primary_role_allow_connections_desc = CAST(ar.primary_role_allow_connections_desc AS VARCHAR(30)) FROM sys.dm_hadr_availability_replica_cluster_nodes arc join sys.dm_hadr_availability_replica_cluster_states arcs on arc.replica_server_name=arcs.replica_server_name join sys.dm_hadr_availability_replica_states ars on arcs.replica_id=ars.replica_id join sys.availability_replicas ar on ars.replica_id=ar.replica_id join sys.availability_groups ag on ag.group_id = arcs.group_id and ag.name = arc.group_name ORDER BY CAST(arc.group_name AS VARCHAR(30)), CAST(ars.role_desc AS VARCHAR(30))' AS CheckReplicaHealth;
-            SELECT 'SELECT database_name = CAST(drcs.database_name AS VARCHAR(30)), drs.database_id, drs.group_id, drs.replica_id, drs.is_local, drcs.is_failover_ready, drcs.is_pending_secondary_suspend, drcs.is_database_joined, drs.is_suspended, drs.is_commit_participant, suspend_reason_desc = CAST(drs.suspend_reason_desc AS VARCHAR(30)), synchronization_state_desc = CAST(drs.synchronization_state_desc AS VARCHAR(30)), synchronization_health_desc = CAST(drs.synchronization_health_desc AS VARCHAR(30)), database_state_desc = CAST(drs.database_state_desc AS VARCHAR(30)), drs.last_sent_lsn, drs.last_sent_time, drs.last_received_lsn, drs.last_received_time, drs.last_hardened_lsn, drs.last_hardened_time, drs.last_redone_lsn, drs.last_redone_time, drs.log_send_queue_size, drs.log_send_rate, drs.redo_queue_size, drs.redo_rate, drs.filestream_send_rate, drs.end_of_log_lsn, drs.last_commit_lsn, drs.last_commit_time, drs.low_water_mark_for_ghosts, drs.recovery_lsn, drs.truncation_lsn, pr.file_id, pr.error_type, pr.page_id, pr.page_status, pr.modification_time FROM sys.dm_hadr_database_replica_cluster_states drcs join sys.dm_hadr_database_replica_states drs on drcs.replica_id=drs.replica_id and drcs.group_database_id=drs.group_database_id left outer join sys.dm_hadr_auto_page_repair pr on drs.database_id=pr.database_id  order by drs.database_id' AS LogMovementHealth;
+            SELECT 'SELECT availability_group = CAST(ag.name AS VARCHAR(30)), primary_replica = CAST(ags.primary_replica AS VARCHAR(30)), primary_recovery_health_desc = CAST(ags.primary_recovery_health_desc AS VARCHAR(30)), synchronization_health_desc = CAST(ags.synchronization_health_desc AS VARCHAR(30)), ag.failure_condition_level, ag.health_check_timeout, automated_backup_preference_desc = CAST(ag.automated_backup_preference_desc AS VARCHAR(10)) FROM sys.availability_groups ag join sys.dm_hadr_availability_group_states ags on ag.group_id = ags.group_id' AS CheckAGHealth;
+            SELECT 'SELECT  group_name = CAST(arc.group_name AS VARCHAR(30)), replica_server_name = CAST(arc.replica_server_name AS VARCHAR(30)), node_name = CAST(arc.node_name AS VARCHAR(30)), role_desc = CAST(ars.role_desc AS VARCHAR(30)), ar.availability_mode_Desc, operational_state_desc = CAST(ars.operational_state_desc AS VARCHAR(30)), connected_state_desc = CAST(ars.connected_state_desc AS VARCHAR(30)), recovery_health_desc = CAST(ars.recovery_health_desc AS VARCHAR(30)), synchronization_health_desc = CAST(ars.synchronization_health_desc AS VARCHAR(30)), ars.last_connect_error_number, last_connect_error_description = CAST(ars.last_connect_error_description AS VARCHAR(30)), ars.last_connect_error_timestamp, primary_role_allow_connections_desc = CAST(ar.primary_role_allow_connections_desc AS VARCHAR(30)) FROM sys.dm_hadr_availability_replica_cluster_nodes arc join sys.dm_hadr_availability_replica_cluster_states arcs on arc.replica_server_name = arcs.replica_server_name join sys.dm_hadr_availability_replica_states ars on arcs.replica_id = ars.replica_id join sys.availability_replicas ar on ars.replica_id = ar.replica_id join sys.availability_groups ag on ag.group_id = arcs.group_id and ag.name = arc.group_name ORDER BY CAST(arc.group_name AS VARCHAR(30)), CAST(ars.role_desc AS VARCHAR(30))' AS CheckReplicaHealth;
+            SELECT 'SELECT database_name = CAST(drcs.database_name AS VARCHAR(30)), drs.database_id, drs.group_id, drs.replica_id, drs.is_local, drcs.is_failover_ready, drcs.is_pending_secondary_suspend, drcs.is_database_joined, drs.is_suspended, drs.is_commit_participant, suspend_reason_desc = CAST(drs.suspend_reason_desc AS VARCHAR(30)), synchronization_state_desc = CAST(drs.synchronization_state_desc AS VARCHAR(30)), synchronization_health_desc = CAST(drs.synchronization_health_desc AS VARCHAR(30)), database_state_desc = CAST(drs.database_state_desc AS VARCHAR(30)), drs.last_sent_lsn, drs.last_sent_time, drs.last_received_lsn, drs.last_received_time, drs.last_hardened_lsn, drs.last_hardened_time, drs.last_redone_lsn, drs.last_redone_time, drs.log_send_queue_size, drs.log_send_rate, drs.redo_queue_size, drs.redo_rate, drs.filestream_send_rate, drs.end_of_log_lsn, drs.last_commit_lsn, drs.last_commit_time, drs.low_water_mark_for_ghosts, drs.recovery_lsn, drs.truncation_lsn, pr.file_id, pr.error_type, pr.page_id, pr.page_status, pr.modification_time FROM sys.dm_hadr_database_replica_cluster_states drcs join sys.dm_hadr_database_replica_states drs on drcs.replica_id = drs.replica_id and drcs.group_database_id = drs.group_database_id left outer join sys.dm_hadr_auto_page_repair pr on drs.database_id = pr.database_id  order by drs.database_id' AS LogMovementHealth;
             SELECT 'For more information see https://learn.microsoft.com/troubleshoot/sql/availability-groups/error-9002-transaction-log-large' AS OnlineDOCResource;
         END
         ELSE IF (@log_reuse_wait IN (10, 11, 12, 14))
@@ -265,6 +256,7 @@ WHILE @@FETCH_STATUS = 0
     END
 
 CLOSE no_truncate_db;
+
 DEALLOCATE no_truncate_db;
 ```
 
@@ -287,25 +279,25 @@ A complete history of all SQL Server backup and restore operations on a server i
 
 ```sql
 SELECT bs.database_name,
-    CASE
-        WHEN bs.type = 'D' AND bs.is_copy_only = 0 THEN 'Full Database'
-        WHEN bs.type = 'D' AND bs.is_copy_only = 1 THEN 'Full Copy-Only Database'
-        WHEN bs.type = 'I' THEN 'Differential database backup'
-        WHEN bs.type = 'L' THEN 'Transaction Log'
-        WHEN bs.type = 'F' THEN 'File or filegroup'
-        WHEN bs.type = 'G' THEN 'Differential file'
-        WHEN bs.type = 'P' THEN 'Partial'
-        WHEN bs.type = 'Q' THEN 'Differential partial'
-    END + ' Backup' AS backuptype,
-    bs.recovery_model,
-    bs.Backup_Start_Date AS BackupStartDate,
-    bs.Backup_Finish_Date AS BackupFinishDate,
-    bf.physical_device_name AS LatestBackupLocation,
-    bs.backup_size / 1024. / 1024. AS backup_size_mb,
-    bs.compressed_backup_size / 1024. / 1024. AS compressed_backup_size_mb,
-    database_backup_lsn, -- For tlog and differential backups, this is the checkpoint_lsn of the FULL backup it is based on.
-    checkpoint_lsn,
-    begins_log_chain
+       CASE
+           WHEN bs.type = 'D' AND bs.is_copy_only = 0 THEN 'Full Database'
+           WHEN bs.type = 'D' AND bs.is_copy_only = 1 THEN 'Full Copy-Only Database'
+           WHEN bs.type = 'I' THEN 'Differential database backup'
+           WHEN bs.type = 'L' THEN 'Transaction Log'
+           WHEN bs.type = 'F' THEN 'File or filegroup'
+           WHEN bs.type = 'G' THEN 'Differential file'
+           WHEN bs.type = 'P' THEN 'Partial'
+           WHEN bs.type = 'Q' THEN 'Differential partial'
+       END + ' Backup' AS backuptype,
+       bs.recovery_model,
+       bs.Backup_Start_Date AS BackupStartDate,
+       bs.Backup_Finish_Date AS BackupFinishDate,
+       bf.physical_device_name AS LatestBackupLocation,
+       bs.backup_size / 1024. / 1024. AS backup_size_mb,
+       bs.compressed_backup_size / 1024. / 1024. AS compressed_backup_size_mb,
+       database_backup_lsn, -- For tlog and differential backups, this is the checkpoint_lsn of the FULL backup it is based on.
+       checkpoint_lsn,
+       begins_log_chain
 FROM msdb.dbo.backupset AS bs
      LEFT OUTER JOIN msdb.dbo.backupmediafamily AS bf
          ON bs.[media_set_id] = bf.[media_set_id]
@@ -314,22 +306,22 @@ WHERE recovery_model IN ('FULL', 'BULK-LOGGED')
 ORDER BY bs.database_name ASC, bs.Backup_Start_Date DESC;
 ```
 
-A complete history of all SQL Server backup and restore operations on a server instance is stored in the `msdb` system database. For more information on backup history, see [Backup History and Header Information (SQL Server)](../backup-restore/backup-history-and-header-information-sql-server.md).
+A complete history of all SQL Server backup and restore operations on a server instance is stored in the `msdb` system database. For more information on backup history, see [Backup History and Header Information](../backup-restore/backup-history-and-header-information-sql-server.md).
 
 #### Create a transaction log backup
 
 Example of how to back up the log:
 
 ```sql
-BACKUP LOG [dbname] TO DISK = 'some_volume:\some_folder\dbname_LOG.trn';
+BACKUP LOG [dbname]
+    TO DISK = 'some_volume:\some_folder\dbname_LOG.trn';
 ```
 
 - [Back up a transaction log](../backup-restore/back-up-a-transaction-log-sql-server.md)
-
 - <xref:Microsoft.SqlServer.Management.Smo.Backup.SqlBackup%2A> (SMO)
 
 > [!IMPORTANT]  
-> If the database is damaged, see [Tail-log backups (SQL Server)](../backup-restore/tail-log-backups-sql-server.md).
+> If the database is damaged, see [Tail-log backups](../backup-restore/tail-log-backups-sql-server.md).
 
 ### ACTIVE_TRANSACTION log_reuse_wait
 
@@ -355,18 +347,18 @@ Sometimes you just have to end the transaction; you might have to use the [KILL]
 
 No checkpoint has occurred since the last log truncation, or the head of the log hasn't yet moved beyond a virtual log file (VLF), in all recovery models.
 
-This is a routine reason for delaying log truncation. If delayed, consider executing the `CHECKPOINT` command on the database or examining the log [VLFs](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch).
+This is a routine reason for delaying log truncation. If delayed, consider executing the `CHECKPOINT` command on the database or examining the log [VLFs](../sql-server-transaction-log-architecture-and-management-guide.md#physical_arch).
 
 ```sql
 USE dbname;
 CHECKPOINT;
-
-SELECT * FROM sys.dm_db_log_info(db_id('dbname'));
+SELECT *
+FROM sys.dm_db_log_info(db_id('dbname'));
 ```
 
 ### AVAILABILITY_REPLICA log_reuse_wait
 
-When transaction changes at the primary [Always On availability group](../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md) replica aren't yet hardened on the secondary replica, the primary replica transaction log can't be truncated. This can cause the log to grow, and occurs whether the secondary replica is set for synchronous or asynchronous commit mode. For information on how to troubleshoot this type of issue see [Error 9002. The transaction log for database is full due to AVAILABILITY_REPLICA error](/troubleshoot/sql/availability-groups/error-9002-transaction-log-large).
+When transaction changes at the primary [availability group](../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md) replica aren't yet hardened on the secondary replica, the primary replica transaction log can't be truncated. This can cause the log to grow, and occurs whether the secondary replica is set for synchronous or asynchronous commit mode. For information on how to troubleshoot this type of issue see [Error 9002. The transaction log for database is full due to AVAILABILITY_REPLICA error](/troubleshoot/sql/availability-groups/error-9002-transaction-log-large).
 
 ### Replication, change tracking, or CDC
 
@@ -376,7 +368,7 @@ Use [DBCC OPENTRAN](../../t-sql/database-console-commands/dbcc-opentran-transact
 
 ### Find information on log_reuse_wait factors
 
-For more information, see [Factors that can delay log truncation](../../relational-databases/logs/the-transaction-log-sql-server.md#FactorsThatDelayTruncation).
+For more information, see [Factors that can delay log truncation](the-transaction-log-sql-server.md#FactorsThatDelayTruncation).
 
 ## 2. Resolve full disk volume
 
@@ -418,26 +410,34 @@ SELECT [name] AS LogName,
 FROM sys.master_files AS mf
 CROSS APPLY sys.dm_os_volume_stats(mf.database_id, file_id)
 WHERE mf.[type_desc] = 'LOG'
-    AND (CONVERT (BIGINT, size) * 8.0 / 1024) / (available_bytes / 1024 / 1024) * 100 > 90 --log is 90% of disk drive
+      AND (CONVERT (BIGINT, size) * 8.0 / 1024) / (available_bytes / 1024 / 1024) * 100 > 90 --log is 90% of disk drive
 ORDER BY size DESC;
 
 IF @@ROWCOUNT > 0
     BEGIN
         SET @log_reached_disk_size = 1;
+
         -- Discover if any logs have filled the volume they reside on, or are close to filling the volume.
         -- Either add a new file to a new drive, or shrink an existing file.
         -- If it cannot shrink, direct the script to recommend next steps.
-        DECLARE @db_name_filled_disk AS sysname, @log_name_filled_disk AS sysname, @go_beyond_size AS BIGINT;
-        DECLARE log_filled_disk CURSOR
-            FOR SELECT db_name(mf.database_id),
-                       name
-                FROM sys.master_files AS mf
-CROSS APPLY sys.dm_os_volume_stats(mf.database_id, file_id)
-                WHERE mf.[type_desc] = 'LOG'
-                      AND (CONVERT (BIGINT, size) * 8.0 / 1024) / (available_bytes / 1024 / 1024) * 100 > 90 --log is 90% of disk drive
-                ORDER BY size DESC;
+        DECLARE
+            @db_name_filled_disk AS sysname,
+            @log_name_filled_disk AS sysname,
+            @go_beyond_size AS BIGINT;
+
+        DECLARE log_filled_disk CURSOR FOR
+            SELECT db_name(mf.database_id),
+                    name
+            FROM sys.master_files AS mf
+            CROSS APPLY sys.dm_os_volume_stats(mf.database_id, file_id)
+            WHERE mf.[type_desc] = 'LOG'
+                    AND (CONVERT (BIGINT, size) * 8.0 / 1024) / (available_bytes / 1024 / 1024) * 100 > 90 --log is 90% of disk drive
+            ORDER BY size DESC;
+
         OPEN log_filled_disk;
+
         FETCH NEXT FROM log_filled_disk INTO @db_name_filled_disk, @log_name_filled_disk;
+
         WHILE @@FETCH_STATUS = 0
             BEGIN
                 SELECT 'Transaction log for database "' + @db_name_filled_disk + '" has nearly or completely filled disk volume it resides on!' AS Finding;
@@ -448,7 +448,9 @@ CROSS APPLY sys.dm_os_volume_stats(mf.database_id, file_id)
                 SELECT 'Can you free some disk space on this volume? If so, do this to allow for the log to continue growing when needed.' AS FreeDiskSpace;
                 FETCH NEXT FROM log_filled_disk INTO @db_name_filled_disk, @log_name_filled_disk;
             END
+
         CLOSE log_filled_disk;
+
         DEALLOCATE log_filled_disk;
     END
 ```
@@ -475,8 +477,8 @@ WHERE file_id = 2
 IF @@ROWCOUNT > 0
     BEGIN
         DECLARE @db_name_max_size AS sysname, @log_name_max_size AS sysname, @configured_max_log_boundary AS BIGINT, @auto_grow AS INT;
-        DECLARE reached_max_size CURSOR
-        FOR SELECT db_name(database_id),
+        DECLARE reached_max_size CURSOR FOR
+            SELECT db_name(database_id),
                     name,
                     CONVERT (BIGINT, SIZE) * 8 / 1024,
                     growth
@@ -505,7 +507,9 @@ IF @@ROWCOUNT > 0
             SELECT 'ALTER DATABASE ' + @db_name_max_size + ' ADD LOG FILE ( NAME = N''' + @log_name_max_size + '_new'', FILENAME = N''SOME_FOLDER_LOCATION\' + @log_name_max_size + '_NEW.LDF'', SIZE = 81920KB , FILEGROWTH = 65536KB )' AS AddNewFile;
             FETCH NEXT FROM reached_max_size INTO @db_name_max_size, @log_name_max_size, @configured_max_log_boundary, @auto_grow;
         END
+
         CLOSE reached_max_size;
+
         DEALLOCATE reached_max_size;
     END
 ELSE
@@ -518,7 +522,7 @@ If space is available on the log disk, you can increase the size of the log file
 
 If autogrow is disabled, the database is online, and sufficient space is available on the disk, consider taking the following steps:
 
-- Manually increase the file size to produce a single growth increment. These are [general recommendations](../../relational-databases/logs/manage-the-size-of-the-transaction-log-file.md#Recommendations) on log size growth and size.
+- Manually increase the file size to produce a single growth increment. These are [general recommendations](manage-the-size-of-the-transaction-log-file.md#Recommendations) on log size growth and size.
 
 - Turn on autogrow by using the `ALTER DATABASE` statement to set a nonzero growth increment for the `FILEGROWTH` option. See [Considerations for the autogrow and autoshrink settings in SQL Server](/troubleshoot/sql/admin/considerations-autogrow-autoshrink).
 

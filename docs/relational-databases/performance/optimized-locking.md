@@ -4,10 +4,10 @@ description: Learn about the optimized locking enhancement to the database engin
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, peskount, praspu, dfurman
-ms.date: 11/24/2025
+ms.date: 01/29/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sfi-image-nochange
   - ignite-2025
@@ -283,7 +283,7 @@ Lock after qualification is not used in the following scenarios:
 - When the transaction isolation level is other than `READ COMMITTED`, or when the `READ_COMMITTED_SNAPSHOT` database option is disabled.
 - When the table being modified has a columnstore index.
 - When the DML statement includes variable assignment.
-- When the DML statement has an `OUTPUT` clause.
+- When the DML statement has an `OUTPUT` clause that inserts data into a table variable or returns a result set.
 - When the DML statement uses more than one index seek or scan operator to read the rows being modified.
 - In `MERGE` statements.
 

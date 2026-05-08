@@ -4,7 +4,8 @@ description: "Introduces security architecture and implementation for SQL Server
 author: MikeRayMSFT
 ms.author: mikeray
 ms.topic: concept-article 
-ms.date: 07/26/2024
+ai-usage: ai-assisted
+ms.date: 04/01/2026
 ms.custom: sfi-image-nochange
 
 # ms.service: sql defined in docfx.json
@@ -27,13 +28,24 @@ The most significant software components for SQL Server enabled by Azure Arc are
 * Azure Connected Machine agent
 * Azure Extension for SQL Server
 
-The Azure Connected Machine agent connects servers to Azure. The Azure Extension for SQL Server sends data to Azure about SQL Server and retrieves commands from Azure through an Azure Relay communication channel to take action on a SQL Server instance. Together, the agent and the extension let you manage your instances and databases located anywhere outside of Azure. An instance of SQL Server with the agent and the extension is *enabled by Azure Arc*.
+The Azure Connected Machine agent connects servers to Azure. The Azure Extension for SQL Server sends data to Azure about SQL Server and retrieves configuration commands from Azure through an Azure Relay communication channel to take action on a SQL Server instance. The extension handles built-in management actions like inventory collection, usage reporting, and automatic backups. For custom script execution at scale, the separate Azure Arc-enabled servers Run Command feature executes scripts directly on the host machine. Together, the agent and the extension let you manage your instances and databases located anywhere outside of Azure. An instance of SQL Server with the agent and the extension is *enabled by Azure Arc*.
 
 The agent and the extension securely connect to Azure to establish communication channels with Microsoft-managed Azure services. The agent can communicate through:
 
 * A configurable HTTPS proxy server over Azure Express Route
 * Azure Private Link
 * The Internet with or without an HTTPS proxy server
+
+### At-scale query execution via Arc-enabled servers Run Command
+
+In addition to the automatic data collection capabilities of the Azure Extension for SQL Server, you can execute custom T-SQL queries at scale across Arc-enabled SQL Server instances using Azure Arc-enabled servers Run Command. This capability is achieved through the `Microsoft.HybridCompute` resource provider, not directly through the SQL Server extension.
+
+Key security considerations for at-scale operations include:
+
+* **RBAC requirements**: Users and service principals need appropriate permissions on Arc-enabled server resources to execute Run Command operations
+* **Least privilege execution**:  Run Command executes scripts as Local System (Windows) or root (Linux) on the host machine. This grants full access to the operating system and any SQL Server instances running on it. Carefully scope local account permissions and SQL Server authentication in your scripts to enforce least privilege.
+* **Audit trails**: All Run Command activities are logged in Azure Activity Logs for security auditing and compliance
+* **Network security**: Commands are transmitted securely through the existing Azure Arc communication channels
 
 For details, review the Connected Machine agent documentation:
 
@@ -160,6 +172,18 @@ For a complete list of permissions, see [Configure Windows service accounts and 
 
 [!INCLUDE [data-processing-service-permission](includes/data-processing-service-permission.md)]
 
+### Log ingestion for custom data collection
+
+When implementing custom data collection solutions that send SQL query results to Azure Monitor Logs, additional security and network prerequisites apply:
+
+* **Data Collection Endpoints (DCE)**: Requires network connectivity to `*.ingest.monitor.azure.com` endpoints
+* **Data Collection Rules (DCR)**: Control which data can be ingested and where it's stored in Log Analytics workspaces
+* **RBAC requirements**: Service principals or managed identities need appropriate permissions on:
+  * Target Log Analytics workspace
+  * Data Collection Endpoint resources
+  * Data Collection Rule resources
+* **Custom table security**: Data written to custom Log Analytics tables inherits workspace access controls and retention policies
+
 ## Feature level security aspects
 
 The different features and services have specific security configuration aspects. This section discusses security aspects of the following features:
@@ -235,9 +259,20 @@ SQL Server enabled by Azure Arc stores the certificate for Microsoft Entra ID in
 
 * [Rotate certificates](rotate-certificates.md)
 * [Microsoft Entra authentication for SQL Server](../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md).
-* [Tutorial: Set up Microsoft Entra authentication for SQL Server](entra-authentication-setup-tutorial.md)
 
-To set up Microsoft Entra ID, follow the instructions at [Tutorial: Set up Microsoft Entra authentication for SQL Server](entra-authentication-setup-tutorial.md).
+### Automation and identity for at-scale operations
+
+For automated at-scale operations that use Run Command and the Logs Ingestion API, implement these identity security best practices:
+
+* **Prefer managed identities**: Use system-assigned or user-assigned managed identities for Azure Automation Runbooks instead of service principal credentials
+* **Secure credential storage**: If using service principals, store credentials in Azure Key Vault and reference them from automation solutions
+* **Minimum role assignments**: Grant only the necessary Azure role assignments:
+  * Permissions on Arc-enabled server resources for Run Command execution
+  * Log Analytics workspace contributor or data contributor roles for log ingestion
+  * Reader permissions on Data Collection Endpoint and Data Collection Rule resources
+* **Credential rotation**: Implement regular rotation schedules for service principal secrets and certificates
+
+To set up Microsoft Entra ID, follow the instructions at [Tutorial: Set up Microsoft Entra authentication for SQL Server](microsoft-entra-authentication-with-managed-identity.md).
 
 ### Microsoft Purview
 
@@ -249,6 +284,12 @@ Key requirements to use [Purview](/purview/register-scan-azure-arc-enabled-sql-s
 * The latest [self-hosted integration runtime](https://go.microsoft.com/fwlink/?linkid=2246619). For more information, see [Create and manage a self-hosted integration runtime](/purview/manage-integration-runtimes).
 * For Azure RBAC, you need to have both Microsoft Entra ID and Azure Key Vault enabled.
 
+### Remote management and script execution
+
+Azure Arc supports remote management scenarios that include script execution on Arc-enabled servers via [Run Command](/azure/azure-arc/servers/run-command?tabs=azure-powershell). Run Command lets you securely execute scripts on connected machines without direct RDP or SSH access, using the Connected Machine agent as the control plane pathway.
+
+Scripts executed through Run Command run in a highly privileged context (**Local System** on Windows or **root** on Linux). Treat this capability as remote admin access, and tightly govern authorization to avoid unintended elevation of privilege.
+
 ## Best practices
 
 Implement the following configurations to comply with current best practices to secure instances of SQL Server enabled by Azure Arc:
@@ -258,8 +299,15 @@ Implement the following configurations to comply with current best practices to 
 * Enable [Microsoft Entra authentication](../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md).
 * Enable [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-sql-usage) and resolve the issues pointed out by Defender for SQL.
 * Don't enable SQL authentication. It's disabled by default. Review [SQL Server security best practices](../../relational-databases/security/sql-server-security-best-practices.md).
+* Restrict remote script execution using [Azure Run command with least-privileged Azure RBAC](/azure/azure-arc/servers/run-command?tabs=azure-powershell#limit-access-to-run-command-preview). Additionally, [block the Run command](/azure/azure-arc/servers/run-command?tabs=azure-powershell#block-run-commands-locally) in your Arc-enabled server, if you don't need it.
+* **Secure at-scale operations**: When using Run Command for custom script execution, use least-privilege local accounts and SQL permissions, restrict Data Collection Rule and Data Collection Endpoint access through RBAC, and enable monitoring and alerts on custom Log Analytics tables that contain SQL results. Ensure network endpoints like `*.ingest.monitor.azure.com` are accessible for data ingestion workflows.
 
 ## Related content
 
 * [Azure security fundamentals](/azure/security/fundamentals/)
 * [Security overview for Azure Arc-enabled servers](/azure/azure-arc/servers/security-overview)
+* [Azure Arc-enabled servers Run Command](/azure/azure-arc/servers/run-command)
+* [Tutorial: Send data to Azure Monitor Logs with Logs ingestion API](/azure/azure-monitor/logs/tutorial-logs-ingestion-api)
+* [Data Collection Rules in Azure Monitor](/azure/azure-monitor/essentials/data-collection-rule-overview)
+* [Azure Automation Runbooks](/azure/automation/automation-runbook-types)
+* [Overview | SQL Server enabled by Azure Arc](overview.md)

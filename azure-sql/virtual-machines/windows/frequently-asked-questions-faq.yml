@@ -344,7 +344,7 @@ sections:
       - question: |
           Can I use Premium SSD v2 with my SQL Server on Azure VMs?
         answer: |
-          Yes, for specific virtual machines in supported regions. Review [Premium SSDv2 with SQL Server on Azure VMs](storage-configuration-premium-ssd-v2.md) to learn more. If you would like to use Premium SSD v2 with a virtual machine type or region that isn't in the list, you might be able to do so by first deploying the VM, and then adding the Premium SSD v2 drives after the VM is created.
+          Yes, for specific virtual machines in supported regions. Review [Premium SSD v2 with SQL Server on Azure VMs](storage-configuration-premium-ssd-v2.md) to learn more. If you would like to use Premium SSD v2 with a virtual machine type or region that isn't in the list, you might be able to do so by first deploying the VM, and then adding the Premium SSD v2 drives after the VM is created.
 
       - question: |
           Why do I see "Not extendable" when I try to make changes to my storage in the SQL virtual machines resource? 
@@ -381,7 +381,7 @@ sections:
       - question: | 
           What permissions does the SQL Server IaaS Agent extension use? 
         answer: | 
-          October 2022 introduced the least privilege permissions model for the extension, granting minimal permissions necessary for each feature used by the extension. SQL Server VMs deployed after October 2022 via Azure Marketplace have the least privilege permissions model enabled by default. The extension uses **sysadmin** rights for SQL Server VMs that were deployed prior to October 2022, or self-installed SQL Server VMs that haven't manually enabled the least privilege model in the Azure portal. Review [SQL IaaS Agent extension permissions](sql-server-iaas-agent-extension-automate-management.md#permissions-models) to learn more. 
+          October 2022 introduced the least privilege permissions model for the extension, granting minimal permissions necessary for each feature used by the extension. SQL Server VMs deployed after October 2022 via Azure Marketplace have the least privilege permissions model enabled by default. The extension uses **sysadmin** rights for SQL Server VMs that were deployed prior to October 2022, or self-installed SQL Server VMs that haven't manually enabled the least privilege model in the Azure portal. Review [SQL IaaS Agent extension permissions](sql-server-iaas-agent-extension-automate-management.md#permission-models) to learn more. 
 
       - question: | 
           Why do I see SQL virtual machines resource in the Azure portal? Who created it? Do I get billed for this?

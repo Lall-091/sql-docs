@@ -21,7 +21,7 @@ In this article, learn to create, scale, and move databases into a [Hyperscale e
 
 To work with your Hyperscale elastic pool, you should have: 
 
-- An Azure subscription. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An Azure subscription. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A [logical server in Azure](logical-servers.md) deployed to a [resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal). The examples in this article use the name `my-example-rg` for the resource group, and `my-example-sql-svr` for the logical server. 
 - The latest version of Azure PowerShell [Az.Sql.3.11.0 or higher](https://www.powershellgallery.com/packages/Az.Sql/3.11.0) or the Azure CLI [Az version 2.40.0 or higher](/cli/azure/install-azure-cli)
 

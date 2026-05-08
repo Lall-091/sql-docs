@@ -4,7 +4,7 @@ description: Plan and create paginated reports with richly formatted text that s
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:
@@ -48,6 +48,6 @@ helpviewer_keywords:
   
 ## Related content
 
-- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Reporting Services Concepts (SSRS)](../reporting-services-concepts-ssrs.md)
 - [Report Builder Tutorials](../../reporting-services/report-builder-tutorials.md)

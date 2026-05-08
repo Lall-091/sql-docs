@@ -5,7 +5,7 @@ description: Learn how to calculate the size of the subnet where you intend to d
 author: zoran-rilak-msft
 ms.author: zoranrilak
 ms.reviewer: mathoma, bonova, srbozovi, wiassaf
-ms.date: 09/11/2025
+ms.date: 09/19/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: how-to
@@ -48,9 +48,9 @@ Use the following list of considerations when determining the size of your subne
 Use the following parameters to help form a calculation:
 
 - Azure uses five IP addresses in the subnet for its own needs.
-- Each [VM group](virtual-cluster-architecture.md#number-of-vm-groups) allocates six more addresses.
+- Each [VM group](virtual-cluster-architecture.md#number-of-vm-groups) allocates eight more addresses.
 - The number of addresses that each SQL managed instance uses, depends on the service tier.
-  - General Purpose SQL managed instance uses three addresses
+  - General Purpose SQL managed instance uses two addresses
   - Business Critical SQL managed instance uses five addresses
 - Each scaling request temporarily doubles the number of addresses allocated for the instance being scaled.
 

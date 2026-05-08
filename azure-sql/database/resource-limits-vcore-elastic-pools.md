@@ -4,7 +4,7 @@ description: This page describes some common vCore resource limits for elastic p
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma
-ms.date: 12/12/2025
+ms.date: 03/09/2026
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
 ms.topic: reference
@@ -211,7 +211,7 @@ The following table covers these SLOs: `GP_Gen5_24`, `GP_Gen5_32`, `GP_Gen5_40`,
 ## General Purpose - provisioned compute - Fsv2-series
 
 > [!NOTE]
-> Fsv2-series hardware will be retired October 1, 2026.
+> Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
 
 ### General Purpose - Fsv2-series (part 1 of 2)
 
@@ -259,7 +259,7 @@ The following table covers these SLOs: `GP_Fsv2_8`, `GP_Fsv2_10`, `GP_Fsv2_12`, 
 ### General Purpose - Fsv2-series (part 2 of 2)
 
 > [!NOTE]
-> Fsv2-series hardware will be retired October 1, 2026.
+> Fsv2-series hardware is no longer available to be created and will be retired October 1, 2026.
 
 Compute sizes (service level objectives, or SLOs) for General Purpose Fsv2-series elastic pools follow the naming convention `GP_Fsv2_` followed by the number of vCores. 
 
@@ -794,30 +794,30 @@ The following table covers these SLOs: `HS_PRMS_16`, `HS_PRMS_18`, `HS_PRMS_20`,
 
 Compute sizes (service level objectives, or SLOs) for Hyperscale premium-series elastic pools follow the naming convention `HS_PRMS_` followed by the number of max vCores.
 
-The following table covers these SLOs: `HS_PRMS_64`, `HS_PRMS_80`, `HS_PRMS_128`:
+The following table covers these SLOs: `HS_PRMS_64`, `HS_PRMS_80`, `HS_PRMS_128`, `HS_PRMS_160`, `HS_PRMS_192`:
 
-| vCores | 64 | 80 | 128 |
-|:-|-:|-:|-:|-:|-:|-:|-:|
-| Hardware | Premium-series | Premium-series | Premium-series | 
-| Max number DBs per pool <sup>1</sup> | 25 | 25 | 25 | 
-| Memory (GB) | 332.2 | 415.2 | 625 |
-| Columnstore support | Yes | Yes | Yes | 
-| In-memory OLTP storage (GB) | N/A | N/A |
-| Max data size per pool (TB) | 100 | 100 | 100 | 
-| `tempdb` max data size (GB) | 2,048 | 2,560 | 4,096 |
-| Max local SSD IOPS per pool <sup>2</sup> | 320,000 | 400,000 | 640,000 |
-| Max log rate per pool (MiB/s) | 150 | 150 | 150 | 
-| Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 
-| Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms |
-| Write IO latency <sup>3</sup> | 3-5 ms | 3-5 ms | 3-5 ms | 
-| Storage type | Multi-tiered <sup>4</sup> | Multi-tiered <sup>4</sup> | Multi-tiered <sup>4</sup> | 
-| Max concurrent workers per pool <sup>5</sup> | 6,720 | 8,400 | 13,440 |
-| Max concurrent external connections per pool <sup>6</sup> | 150 | 150 | 150 |
-| Max concurrent sessions | 30,000 | 30,000 | 30,000 | 
-| Min/max elastic pool vCore choices per database | 0, 0.25, 0.5, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 32, 40, 64 | 0, 0.25, 0.5, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 32, 40, 80 | 0, 0.25, 0.5, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 32, 40, 64, 80, 128 |
-| Secondary replicas | 0-4 | 0-4 | 0-4 | 
-| Multi-AZ | [Yes](high-availability-sla-local-zone-redundancy.md#hyperscale-service-tier-zone-redundant-availability) | [Yes](high-availability-sla-local-zone-redundancy.md#hyperscale-service-tier-zone-redundant-availability) | [Yes](high-availability-sla-local-zone-redundancy.md#hyperscale-service-tier-zone-redundant-availability) |  
-| Read Scale-out | Yes | Yes | Yes |  
+| vCores | 64 | 80 | 128 | 160<sup>7</sup> | 192<sup>7</sup> |
+|:-|-:|-:|-:|-:|-:|
+| Hardware | Premium-series | Premium-series | Premium-series | Premium-series | Premium-series | 
+| Max number DBs per pool <sup>1</sup> | 25 | 25 | 25 | 25 | 25 | 
+| Memory (GB) | 332.2 | 415.2 | 625 | 830.4 | 843.7 |
+| Columnstore support | Yes | Yes | Yes | Yes | Yes |
+| In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A |
+| Max data size per pool (TB) | 100 | 100 | 100 | 100 | 100 | 
+| `tempdb` max data size (GB) | 2,048 | 2,560 | 4,096 | 4,096 | 4,096 |
+| Max local SSD IOPS per pool <sup>2</sup> | 320,000 | 400,000 | 640,000 | 800,000 | 860,000  |
+| Max log rate per pool (MiB/s) | 150 | 150 | 150 | 150 | 150 |  
+| Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 
+| Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms |1-5 ms | 1-5 ms |
+| Write IO latency <sup>3</sup> | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 
+| Storage type | Multi-tiered <sup>4</sup> | Multi-tiered <sup>4</sup> | Multi-tiered <sup>4</sup> | Multi-tiered <sup>4</sup> | Multi-tiered <sup>4</sup> | 
+| Max concurrent workers per pool <sup>5</sup> | 6,720 | 8,400 | 13,440 | 16,800 | 20,160  |
+| Max concurrent external connections per pool <sup>6</sup> | 150 | 150 | 150 | 150 | 150 |
+| Max concurrent sessions | 30,000 | 30,000 | 30,000 | 30,000 | 30,000 | 
+| Min/max elastic pool vCore choices per database | 0, 0.25, 0.5, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 32, 40, 64 | 0, 0.25, 0.5, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 32, 40, 80 | 0, 0.25, 0.5, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 32, 40, 64, 80, 128 | 0, 0.25, 0.5, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 32, 40, 64, 80, 128, 160 | 0, 0.25, 0.5, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 32, 40, 64, 80, 128, 160, 192 |
+| Secondary replicas | 0-4 | 0-4 | 0-4 | 0-4 | 0-4 | 
+| Multi-AZ | [Yes](high-availability-sla-local-zone-redundancy.md#hyperscale-service-tier-zone-redundant-availability) | [Yes](high-availability-sla-local-zone-redundancy.md#hyperscale-service-tier-zone-redundant-availability) | [Yes](high-availability-sla-local-zone-redundancy.md#hyperscale-service-tier-zone-redundant-availability) | [Yes](high-availability-sla-local-zone-redundancy.md#hyperscale-service-tier-zone-redundant-availability) | [Yes](high-availability-sla-local-zone-redundancy.md#hyperscale-service-tier-zone-redundant-availability) |  
+| Read Scale-out | Yes | Yes | Yes | Yes | Yes |  
 
 <sup>1</sup> See [Resource management in dense elastic pools](elastic-pool-resource-management.md) for additional considerations.
 
@@ -830,6 +830,8 @@ The following table covers these SLOs: `HS_PRMS_64`, `HS_PRMS_80`, `HS_PRMS_128`
 <sup>5</sup> For the max concurrent workers for any individual database, see [Resource limits for single databases using the vCore purchasing model](resource-limits-vcore-single-databases.md). For example, if the elastic pool is using standard-series (Gen5) and the max vCore per database is set at 2, then the max concurrent workers value is 200. If max vCore per database is set to 0.5, then the max concurrent workers value is 50 since on standard-series (Gen5) there are a max of 100 concurrent workers per vCore. For other max vCore settings per database that are less 1 vCore or less, the number of max concurrent workers is similarly rescaled.
 
 <sup>6</sup> For more information on what counts as an external connection, see [External Connections](resource-limits-logical-server.md#external-connections).
+
+<sup>7</sup> Currently, the 160 and 192 vCore options are a preview feature.
 
 ## Hyperscale - premium-series memory optimized
 

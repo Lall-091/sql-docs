@@ -17,7 +17,9 @@ ms.custom:
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-The [Building scalable cloud databases](elastic-database-client-library.md) uses three different kinds  of credentials to access the [shard map manager](elastic-scale-shard-map-management.md). Depending on the need, use the credential with  the lowest level of access possible.
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
+The [Building scalable cloud databases](elastic-database-client-library.md) uses three different kinds of credentials to access the [shard map manager](elastic-scale-shard-map-management.md). Depending on the need, use the credential with  the lowest level of access possible.
 
 - **Management credentials**: for creating or manipulating a shard map manager. (See the [glossary](elastic-scale-glossary.md).)
 - **Access credentials**: to access an existing shard map manager to obtain information about shards.

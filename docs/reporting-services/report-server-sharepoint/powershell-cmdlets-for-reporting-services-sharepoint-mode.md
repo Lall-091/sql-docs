@@ -4,7 +4,7 @@ description: PowerShell cmdlets are installed to support SQL Server Reporting Se
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 monikerRange: ">=sql-server-2016 <=sql-server-2016"
@@ -87,7 +87,7 @@ When you install SQL Server 2016 Reporting Services SharePoint mode, PowerShell 
 |New-SPRSDatabase|Create new service application databases for the specified Reporting Services service application.|  
 |Get-SPRSDatabaseCreationScript|Outputs the database creation script to the screen for a Reporting Services service application. You can then run the script in SQL Server Management Studio.|  
 |Get-SPRSDatabase|Gets one or more Reporting Services service application databases. Use the command to get the ID of service application database so you can use the Set-SPRSDatabase cmdlet to modify properties, for example the `querytimeout`. See the example in this article, [Get and set Properties of the Reporting Service application database](#get-and-set-properties-of-the-reporting-service-application-database).|  
-|Get-SPRSDatabaseRightsScript|Outputs the database rights script to the screen for a Reporting Services service application. It prompts for desired user and database then returns transact SQL you can run to modify permissions. You can then run this script in SQL Server Management Studio.|  
+|Get-SPRSDatabaseRightsScript|Outputs the database rights script to the screen for a Reporting Services service application. It prompts for desired user and database then returns Transact-SQL you can run to modify permissions. You can then run this script in SQL Server Management Studio.|  
 |Get-SPRSDatabaseUpgradeScript|Outputs a database upgrade script to the screen. The script upgrades Reporting Services service application databases to the database version of the current Reporting Services installation.|  
   
 ## Reporting Services custom functionality cmdlets

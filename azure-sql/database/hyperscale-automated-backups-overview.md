@@ -5,10 +5,10 @@ description: Learn about automated backups for Hyperscale databases in Azure SQL
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dinethi, mathoma, danil, randolphwest
-ms.date: 02/03/2025
+ms.date: 01/07/2026
 ms.service: azure-sql-database
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - azure-sql-split
 monikerRange: "=azuresql || =azuresql-db"
@@ -36,7 +36,7 @@ You can restore a database to any point in time within its backup retention peri
 
 As such, restore isn't a size-of-data operation that remains the same. Restore of a Hyperscale database within the same Azure region finishes in minutes instead of hours or days, even for multi-terabyte databases.
 
-Changing the [storage redundancy](hyperscale-automated-backups-overview.md#data-and-backup-storage-redundancy) when issuing a restore can result in longer restore times as the restore is the size of data, and hence the time is proportional to the database size.
+Changing the [storage redundancy](hyperscale-automated-backups-overview.md#data-and-backup-storage-redundancy) or zone redundancy when issuing a restore can result in longer restore times as the restore is the size of data, and hence the time is proportional to the database size.
 
 Creating new databases by restoring an existing backup or copying the database, also takes advantage of compute and storage separation in Hyperscale. You can create copies for development or testing purposes, even of multi-terabyte databases, in minutes within the same region when you use the same storage type.
 
@@ -96,7 +96,11 @@ Deleted Hyperscale databases incur backup costs to support recovery to a point i
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
+> [!NOTE]
+> The data backup storage size metric only reflects billable backup storage consumed beyond the free allowance of one full database size. The data backup storage size metric only emits a value *after* backup storage consumption exceeds the free allowance.
+
 Billable backup storage for a deleted database reduces gradually over time after it's deleted. It becomes zero when backups are no longer retained, and then recovery is no longer possible. If it's a permanent deletion and you no longer need backups, you can optimize costs by reducing retention before deleting the database.
+
 
 ### Monitor backup costs
 

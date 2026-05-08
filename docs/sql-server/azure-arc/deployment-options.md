@@ -5,7 +5,7 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
 ms.date: 07/03/2025
-ms.topic: article
+ms.topic: install-set-up-deploy
 ---
 
 # Deployment options for SQL Server enabled by Azure Arc

@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "01/09/2017"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: best-practice
 helpviewer_keywords:
   - "Database Engine Tuning Advisor, columnstore index"
   - "Database Engine Tuning Advisor, columnstore and rowstore indexes"

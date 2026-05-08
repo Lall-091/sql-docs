@@ -20,6 +20,7 @@ SQL Server Integration Services (SSIS) Feature Pack for Azure is an extension th
 
 :::image type="icon" source="../includes/media/download.svg" border="false"::: **[Download SSIS Feature Pack for Azure](https://www.microsoft.com/download/details.aspx?id=104811)**
 
+- For SQL Server 2025 - [Microsoft SQL Server 2025 Integration Services Feature Pack for Azure](https://www.microsoft.com/download/details.aspx?id=108513)
 - For SQL Server 2022 - [Microsoft SQL Server 2022 Integration Services Feature Pack for Azure](https://www.microsoft.com/download/details.aspx?id=104811)
 - For SQL Server 2019 - [Microsoft SQL Server 2019 Integration Services Feature Pack for Azure](https://www.microsoft.com/download/details.aspx?id=100430)
 - For SQL Server 2017 - [Microsoft SQL Server 2017 Integration Services Feature Pack for Azure](https://www.microsoft.com/download/details.aspx?id=54798)

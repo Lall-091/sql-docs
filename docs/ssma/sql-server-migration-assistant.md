@@ -1,13 +1,13 @@
 ---
-title: "SQL Server Migration Assistant"
-description: Learn about SQL Server Migration Assistant, a tool that automates database migration to SQL Server from Microsoft Access, Db2, MySQL, Oracle, and SAP ASE.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 11/12/2025
+title: SQL Server Migration Assistant
+description: Learn about SQL Server Migration Assistant (SSMA), a tool that automates database migration to SQL Server and Azure SQL from Access, Db2, MySQL, Oracle, and SAP ASE.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: overview
 ms.collection:
   - sql-migration-content
 ---
@@ -29,16 +29,7 @@ For supported sources, review the information on the Download Center for the SSM
 
 The following target versions are supported for SSMA.
 
-- [!INCLUDE [sssql16-md](../includes/sssql16-md.md)]
-- [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on Windows and Linux
-- [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on Windows and Linux
-- [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Windows and Linux
-- [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Windows and Linux
-- [!INCLUDE [ssazure-sqldb](../includes/ssazure-sqldb.md)]
-- [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)]
-- [!INCLUDE [ssazuresynapse-md](../includes/ssazuresynapse-md.md)] <sup>1</sup>
-
-<sup>1</sup> This target is supported only by SSMA for Oracle.
+[!INCLUDE [ssma-target-versions](includes/ssma-target-versions.md)]
 
 ## Downloads
 
@@ -50,7 +41,7 @@ The following target versions are supported for SSMA.
 
 ## Get SSMA support
 
-**Help and support for Microsoft SQL Server Migration Assistant (SSMA):**
+**Help and support for Microsoft SQL Server Migration Assistant (SSMA)**:
 
 - **Product help**: To access product support, launch SSMA, and select the Help menu or press the F1 key.
 

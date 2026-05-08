@@ -4,7 +4,7 @@ description: Returns size and fragmentation information for the data and indexes
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 02/05/2025
+ms.date: 03/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -183,43 +183,45 @@ Always make sure that a valid ID is returned when you use `DB_ID` or `OBJECT_ID`
 
 ## Detect fragmentation
 
-Fragmentation occurs through the process of data modifications (`INSERT`, `UPDATE`, and `DELETE` statements) that are made against the table and, therefore, to the indexes defined on the table. Because these modifications aren't ordinarily distributed equally among the rows of the table and indexes, the fullness of each page can vary over time. For queries that scan part or all of the indexes of a table, this kind of fragmentation can cause more page reads, which hinders parallel scanning of data.
+Fragmentation occurs through the process of data modifications (`INSERT`, `UPDATE`, and `DELETE` statements) that are made against the table and, therefore, to the indexes defined on the table. Because these modifications aren't ordinarily distributed equally among the rows of the table and indexes, the fullness of each page can vary over time. For queries that scan part or all of the indexes of a table, this kind of fragmentation can cause more disk I/O operations to read the data.
 
 The fragmentation level of an index or heap is shown in the `avg_fragmentation_in_percent` column. For heaps, the value represents the extent fragmentation of the heap. For indexes, the value represents the logical fragmentation of the index. Unlike `DBCC SHOWCONTIG`, the fragmentation calculation algorithms in both cases consider storage that spans multiple files and, therefore, are accurate.
 
 ### Logical fragmentation
 
-This is the percentage of out-of-order pages in the leaf pages of an index. An out-of-order page is a page for which the next physical page allocated to the index isn't the page pointed to by the *next-page* pointer in the current leaf page.
+This is the percentage of out-of-order pages in the leaf pages of an index. An out-of-order page is a page for which the page pointed to by the *next-page* pointer in the current leaf page isn't the next physical page allocated to the index.
 
 ### Extent fragmentation
 
 This is the percentage of out-of-order extents in the leaf pages of a heap. An out-of-order extent is one for which the extent that contains the current page for a heap isn't physically the next extent after the extent that contains the previous page.
 
-The value for `avg_fragmentation_in_percent` should be as close to zero as possible for maximum performance. However, values from 0 percent through 10 percent can be acceptable. All methods of reducing fragmentation, such as rebuilding, reorganizing, or recreating, can be used to reduce these values. For more information about how to analyze the degree of fragmentation in an index, see [Optimize index maintenance to improve query performance and reduce resource consumption](../indexes/reorganize-and-rebuild-indexes.md).
+For more information about how to analyze the degree of fragmentation in an index, see [Optimize index maintenance to improve query performance and reduce resource consumption](../indexes/reorganize-and-rebuild-indexes.md).
 
 ## Reduce fragmentation in an index
 
-When an index is fragmented in a way that the fragmentation is affecting query performance, there are three choices for reducing fragmentation:
+When an index is fragmented in a way that is affecting query performance, there are three choices for reducing fragmentation:
 
 - Drop and recreate the clustered index.
 
   Recreating a clustered index redistributes the data and results in full data pages. The level of fullness can be configured by using the `FILLFACTOR` option in `CREATE INDEX`. The drawbacks in this method are that the index is offline during the drop and recreate cycle, and that the operation is atomic. If the index creation is interrupted, the index isn't recreated. For more information, see [CREATE INDEX](../../t-sql/statements/create-index-transact-sql.md).
 
-- Use `ALTER INDEX REORGANIZE`, the replacement for `DBCC INDEXDEFRAG`, to reorder the leaf level pages of the index in a logical order. Because this is an online operation, the index is available while the statement is running. The operation can also be interrupted without losing work already completed. The drawback in this method is that it doesn't do as good a job of reorganizing the data as an index rebuild operation, and it doesn't update statistics.
+- Use `ALTER INDEX REORGANIZE`, the replacement for `DBCC INDEXDEFRAG`, to reorder the leaf level pages of the index in a logical order. Because this is an online operation, the index is available while the statement is running. The operation can also be interrupted without losing work already completed. This method compacts pages and can increase page density up to the fill factor, but it doesn't move rows off already-full pages to create free space according to a lower fill factor. Compared to `ALTER INDEX REBUILD` with a lower fill factor, `ALTER INDEX REORGANIZE` might cause more page splits for some workloads over time.
 
-- Use `ALTER INDEX REBUILD`, the replacement for `DBCC DBREINDEX`, to rebuild the index online or offline. For more information, see [ALTER INDEX (Transact-SQL)](../../t-sql/statements/alter-index-transact-sql.md).
+  Unlike recreating or rebuilding an index, `ALTER INDEX REORGANIZE` doesn't update statistics.
 
-Fragmentation alone isn't a sufficient reason to reorganize or rebuild an index. The main effect of fragmentation is that it slows down page read-ahead throughput during index scans. This causes slower response times. If the query workload on a fragmented table or index doesn't involve scans, because the workload is primarily singleton lookups, removing fragmentation can have no effect.
+- Use `ALTER INDEX REBUILD`, the replacement for `DBCC DBREINDEX`, to rebuild the index. An online rebuild keeps the data accessible during the operation but isn't available in all [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] editions. For more information, see [ALTER INDEX (Transact-SQL)](../../t-sql/statements/alter-index-transact-sql.md).
+
+Fragmentation alone isn't a sufficient reason to reorganize or rebuild an index. The main effect of fragmentation is that it might reduce the effectiveness of [page read-ahead](../reading-pages.md#read-ahead) during large index scans. If the query workload on a fragmented table or index doesn't involve large scans, removing fragmentation has no effect.
 
 > [!NOTE]  
-> Running `DBCC SHRINKFILE` or `DBCC SHRINKDATABASE` can introduce fragmentation if an index is partly or completely moved during the shrink operation. Therefore, if a shrink operation must be performed, you should do it before fragmentation is removed.
+> Running `DBCC SHRINKFILE` or `DBCC SHRINKDATABASE` can introduce fragmentation if an index is partly or completely moved during the shrink operation. Therefore, if a shrink operation must be performed, you might need to reduce index fragmentation afterwards.
 
 ## Reduce fragmentation in a heap
 
 To reduce the extent fragmentation of a heap, create a clustered index on the table and then drop the index. This redistributes the data while the clustered index is created. This also makes it as optimal as possible, considering the distribution of free space available in the database. When the clustered index is then dropped to recreate the heap, the data isn't moved and remains optimally in position. For information about how to perform these operations, see [CREATE INDEX](../../t-sql/statements/create-index-transact-sql.md) and [DROP INDEX](../../t-sql/statements/drop-index-transact-sql.md).
 
 > [!CAUTION]  
-> Creating and dropping a clustered index on a table, rebuilds all nonclustered indexes on that table twice.
+> Creating and dropping a clustered index on a table rebuilds all nonclustered indexes on that table twice.
 
 ## Compact large object data
 
@@ -227,9 +229,13 @@ By default, the `ALTER INDEX REORGANIZE` statement compacts pages that contain l
 
 Reorganizing a specified clustered index compacts all LOB columns that are contained in the clustered index. Reorganizing a nonclustered index compacts all LOB columns that are nonkey (included) columns in the index. When `ALL` is specified in the statement, all indexes that are associated with the specified table or view are reorganized. Additionally, all LOB columns that are associated with the clustered index, underlying table, or nonclustered index with included columns, are compacted.
 
-## Evaluate disk space use
+## Increase page density or reduce page splits
 
-The `avg_page_space_used_in_percent` column indicates page fullness. To achieve optimal disk space use, this value should be close to 100 percent for an index that doesn't have many random inserts. However, an index that has many random inserts and has very full pages have an increased number of page splits. This causes more fragmentation. Therefore, in order to reduce page splits, the value should be less than 100 percent. Rebuilding an index with the `FILLFACTOR` option specified allows the page fullness to be changed to fit the query pattern on the index. For more information about fill factor, see [Specify Fill Factor for an Index](../indexes/specify-fill-factor-for-an-index.md). Also, `ALTER INDEX REORGANIZE` will compact an index by trying to fill pages to the `FILLFACTOR` that was last specified. This increases the value in avg_space_used_in_percent. `ALTER INDEX REORGANIZE` can't reduce page fullness. Instead, an index rebuild must be performed.
+The `avg_page_space_used_in_percent` column indicates page fullness, or page density. To reduce the usage of disk space, memory, and disk I/O, this value should be close to 100 percent. However, an index that has many inserts in the middle and has very full pages can have an increased number of page splits, which might cause concurrency problems and increase transaction log I/O.
+
+If page splits significantly affect workload performance, you might need to reduce page density below 100 percent. Rebuilding an index with the `FILLFACTOR` option specified allows the page fullness to be changed to better match this specific workload pattern. For more information about fill factor, see [Specify Fill Factor for an Index](../indexes/specify-fill-factor-for-an-index.md). 
+
+`ALTER INDEX REORGANIZE` compacts an index by trying to fill pages up to the `FILLFACTOR` value that was last specified. This increases the value in `avg_page_space_used_in_percent`. However, if a page is already filled above the `FILLFACTOR` value, `ALTER INDEX REORGANIZE` can't reduce page fullness and page splits. Instead, an index rebuild must be performed.
 
 ## Evaluate index fragments
 

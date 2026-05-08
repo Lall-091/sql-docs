@@ -1,27 +1,31 @@
 ---
 title: Connect with Excel
-titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: Learn how to connect Microsoft Excel to a database in Azure SQL Database or Azure SQL Managed Instance. Import data into Excel for reporting and data exploration.
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance & Fabric SQL database
+description: Learn how to connect Microsoft Excel to a database. Import data into Excel for reporting and data exploration.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma
-ms.date: 06/13/2025
+ms.date: 01/06/2026
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: how-to
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || = fabricsql"
 ms.custom:
   - sqldbrb=1
   - sfi-image-nochange
 ---
 
-# Connect Excel to a database in Azure SQL Database or Azure SQL Managed Instance, and create a report
+# Connect Excel to a database and create a report
 
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi-fabricsqldb](../includes/appliesto-sqldb-sqlmi-fabricsqldb.md)]
 
 You can connect Excel to a database and then import data and create tables and charts based on values in the database. In this tutorial you will set up the connection between Excel and a database table, save the file that stores data and the connection information for Excel, and then create a pivot chart from the database values.
 
-You'll need to create a database before you get started. If you don't have one, see [Create a database in Azure SQL Database](single-database-create-quickstart.md) and [Create server-level IP firewall](firewall-create-server-level-portal-quickstart.md) to get a database with sample data up and running in a few minutes.
+You'll need to create a database before you get started. If you don't have one:
+
+- You can [create a database in Azure SQL Database](single-database-create-quickstart.md) and [Create server-level IP firewall](firewall-create-server-level-portal-quickstart.md) to get a database with sample data up and running in a few minutes. Use the [Deploy Azure SQL Database for free](free-offer.md) to create a free Azure SQL Database for the life of your subscription.
+- You can also [try Azure SQL Managed Instance for free](../managed-instance/free-offer.md).
+- You can also [create a SQL database in Microsoft Fabric in the Fabric portal](/fabric/database/sql/create).
 
 In this article, you'll import sample data into Excel from that article, but you can follow similar steps with your own data.
 
@@ -34,7 +38,11 @@ You'll also need a copy of Excel. This article uses [Microsoft Excel 2016](https
 
    :::image type="content" source="media/connect-excel/excel-data-source.png" alt-text="Screenshot of the screen to Select data source: Connect Excel to SQL Database.":::
 
-1. In the **SQL Server database** dialog box, type the **Server name** you want to connect to in the form `<servername>.database.windows.net`. Optionally, enter in the name of your database. Select **OK** to open the credentials window.
+1. In the **SQL Server database** dialog box, type the **Server name** you want to connect to.
+    - In Azure SQL Database, this looks like: `<servername>.database.windows.net`. 
+    - In Azure SQL Managed Instance, this looks like: `<your-instance-name>.<unique-dns-prefix>.database.windows.net`.
+    - In SQL database in Fabric, this looks like: `<server-unique-identifier>.<tenant>.fabric.microsoft.com`.
+1. Optionally, enter in the name of your database. Select **OK** to open the credentials window.
 1. In the **SQL Server database** dialog box, select **Database** on the left side, and then enter in your **User Name** and **Password** for the server you want to connect to. Select **Connect** to open the **Navigator**.
 
    > [!TIP]
@@ -92,5 +100,4 @@ To save the connection details permanently, you can create an .odc file and make
 ## Related content
 
 - [Quickstart: Use SSMS to connect to and query Azure SQL Database or Azure SQL Managed Instance](connect-query-ssms.md)
-- [Elastic pools](elastic-pool-overview.md)
-- [create a web application that connects to Azure SQL Database on the back-end](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
+- [Create a web application that connects to Azure SQL Database on the back-end](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/20/2023
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "bulk importing [SQL Server], planning"
   - "bulk importing [SQL Server], from a CSV file"

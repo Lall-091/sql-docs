@@ -1,18 +1,19 @@
 ---
 title: Use Vector Data Type
-description: Learn about the vector data type in the JDBC driver and how it can be used to support various operations.
+description: Learn about the vector data type in the JDBC driver, including FLOAT32 and FLOAT16 subtypes, and how it can be used to support various operations.
 author: David-Engel
 ms.author: davidengel
-ms.date: 08/15/2025
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 # Use vector data type with the JDBC driver
 
 [!INCLUDE[Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]
 
-Starting with version 13.2.0, the JDBC driver supports the **vector** data type. **Vector** is also supported with features such as Table-Valued Parameters and BulkCopy, with some limitations. This page shows various use cases of the **vector** data type with the JDBC Driver. For an overview of **vector** data types, see [Vector data type](../../t-sql/data-types/vector-data-type.md).
+Starting with version 13.2.0, the JDBC driver supports the **vector** data type. Starting with version 13.4.0, the driver also supports the **vector(float16)** subtype. **Vector** is also supported with features such as Table-Valued Parameters and BulkCopy, with some limitations. This page shows various use cases of the **vector** data type with the JDBC Driver. For an overview of **vector** data types, see [Vector data type](../../t-sql/data-types/vector-data-type.md).
 
 ## Create a vector object
 
@@ -214,10 +215,32 @@ try (Statement stmt = con.createStatement();
 }
 ```
 
+## Use vector FLOAT16 data type
+
+FLOAT16 (IEEE 754 half-precision, 16-bit) vectors use 2 bytes per dimension instead of 4, halving the storage footprint and enabling up to 3,996 dimensions per vector (vs. 1,998 for FLOAT32) within the 8,000-byte TDS limit. This subtype is especially valuable for large-scale AI/ML workloads such as similarity search and embedding storage where memory efficiency matters.
+
+FLOAT16 vector support is enabled through the existing vector feature extension (FE identifier 0x0E) with a version 2 handshake: the client requests v2 via the `vectorTypeSupport` connection property, and the server acknowledges FLOAT16 capability in the feature-ack response.
+
+To use FLOAT16 vectors, follow the same patterns shown in the preceding examples and replace `FLOAT32` with `FLOAT16` and the scale value `4` with `2`. For example:
+
+- Use `Vector.VectorDimensionType.FLOAT16` instead of `Vector.VectorDimensionType.FLOAT32`.
+- Use a scale of `2` instead of `4` when constructing a vector with precision and scale.
+- Define SQL columns as `vector(3, float16)` instead of `vector(3)`.
+
+Here's an example of creating a FLOAT16 vector object:
+
+```java
+// Using dimension count and vector type
+Vector vector = new Vector(3, Vector.VectorDimensionType.FLOAT16, new Float[]{1.0f, 2.0f, 3.0f});
+
+// Using precision and scale (2 bytes = FLOAT16)
+Vector vector = new Vector(3, 2, new Float[]{1.0f, 2.0f, 3.0f});
+```
+
 ## Backward compatibility
 
 If an application isn't updated to handle the **vector** data type, the driver provides backward compatibility by allowing **vector** data types to be read as backward compatible types. This behavior is controlled with the `vectorTypeSupport` connection string property.
-Supported values are `off` (server sends **vector** types as string data in JSON format) and `v1` (server sends **vector** types of FLOAT32 as vector data). The default value is `v1`.
+Supported values are `off` (server sends **vector** types as string data in JSON format), `v1` (server sends **vector** types of FLOAT32 as vector data), and `v2` (to enable **vector** type support for FLOAT16). The default value is `v1`.
 
 ## Limitations of vector
 

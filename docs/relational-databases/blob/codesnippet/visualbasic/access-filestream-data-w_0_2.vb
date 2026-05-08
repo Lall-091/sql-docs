@@ -3,8 +3,8 @@ Imports System
 Imports System.Collections.Generic 
 Imports System.Text 
 Imports System.Data 
-Imports System.Data.SqlClient 
-Imports System.Data.SqlTypes 
+Imports Microsoft.Data.SqlClient 
+Imports Microsoft.Data.SqlTypes 
 
 Module Module1
     Public Sub Main(ByVal args As String())

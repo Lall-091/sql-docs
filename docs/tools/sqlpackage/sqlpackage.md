@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 3/2/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 ms.custom: sfi-ropc-nochange
@@ -28,6 +28,9 @@ Database portability is the ability to move a database schema and data between d
 - [Export](sqlpackage-export.md): Exports a connected SQL database - including database schema and user data - to a BACPAC file (.bacpac). 
   
 - [Import](sqlpackage-import.md): Imports the schema and table data from a BACPAC file into a new user database. 
+
+> [!IMPORTANT]
+> Protect your `.bacpac` and `.dacpac` files by securing them appropriately. The data contained in these files is compressed but not encrypted. `.bacpac` files contain the data from a database by default, and a `.dacpac` can contain data when the option is specified during extract.
 
 ## Deployments
 

@@ -4,7 +4,7 @@ description: Learn about the tools, technologies and strategies for automating r
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

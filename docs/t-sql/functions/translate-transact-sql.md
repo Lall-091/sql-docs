@@ -141,4 +141,3 @@ SELECT TRANSLATE('abcdef','abc','bcd') AS Translated,
 - [STRING_AGG &#40;Transact-SQL&#41;](../../t-sql/functions/string-agg-transact-sql.md)  
 - [STRING_ESCAPE &#40;Transact-SQL&#41;](../../t-sql/functions/string-escape-transact-sql.md)  
 - [STUFF &#40;Transact-SQL&#41;](../../t-sql/functions/stuff-transact-sql.md)  
-- [String Functions (Transact-SQL)](../../t-sql/functions/string-functions-transact-sql.md)

@@ -6,7 +6,7 @@ ms.author: "jovanpop"
 ms.reviewer: wiassaf
 ms.date: 10/25/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - fasttrack-edit
   - ignite-2025

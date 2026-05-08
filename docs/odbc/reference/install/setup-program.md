@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "08/31/2016"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 helpviewer_keywords:
   - "installing ODBC components [ODBC], setup program"
 ---

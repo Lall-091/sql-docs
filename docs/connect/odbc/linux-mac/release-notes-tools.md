@@ -3,7 +3,7 @@ title: Release notes for mssql-tools on Linux and macOS
 description: "Learn what's new and changed in released versions of the Microsoft SQL Server Tools."
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/17/2025
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
@@ -15,20 +15,32 @@ ms.topic: release-notes
 
 This article lists and describes what's new in the versioned releases of the [!INCLUDE[msCoName](../../../includes/msconame-md.md)] SQL Server Tools on Linux and macOS.
 
+## 17.11.1.1, April 2026
+
+| New item | Details |
+| :------- | :------ |
+| Debian package License | Debian package installation to honor License acceptance and complete successfully. |
+
+## 18.6.2.1, December 2025
+
+| New item | Details |
+| :------- | :------ |
+| Debian package License | Debian package installation to honor License acceptance and complete successfully. |
+
 ## 18.6.1.1, December 2025
 
 | New item | Details |
 | :------- | :------ |
 | Sqlcmd command line | Added ServerCertificate option on Sqlcmd command line. |
-| BCP command line | Added ServerCertificate and Code Page options on BCP command line. |
+| BCP command line | Added ServerCertificate and Code Page options on bulk copy program utility (BCP) command line. |
 | Azure Linux License | Changed License Acceptance Process for Azure Linux. |
 
 ## 18.4.1.1, July 2024
 
 | New item | Details |
 | :------- | :------ |
-| Sqlcmd AAD rename | Renamed Azure Active Directory to Entra ID. |
-| BCP AAD rename | Renamed Azure Active Directory to Entra ID. |
+| Sqlcmd Microsoft Entra ID rename | Updated terminology to Microsoft Entra ID (formerly Azure Active Directory). |
+| BCP Microsoft Entra ID rename | Updated terminology to Microsoft Entra ID (formerly Azure Active Directory). |
 
 ## 18.3.1.1, July 2023
 
@@ -46,9 +58,9 @@ This article lists and describes what's new in the versioned releases of the [!I
 
 | New item | Details |
 | :------- | :------ |
-| Sqlcmd Bugfix | Fixed issue where -M option required an argument. |
+| Sqlcmd Bugfix | Fixed issue where `-M` option required an argument. |
 | Sqlcmd Bugfix | Fixed issue where nohup and SIGHUP can cause it to stop responding in certain situations. |
-| Sqlcmd Bugfix | Fixed specifying input codepage with -f option. |
+| Sqlcmd Bugfix | Fixed specifying input codepage with `-f` option. |
 | Sqlcmd Bugfix | Fixed detection of current character encoding. |
 | Sqlcmd Bugfix | Fixed input file codepage option. |
 
@@ -56,7 +68,7 @@ This article lists and describes what's new in the versioned releases of the [!I
 
 | New item | Details |
 | :------- | :------ |
-| Sqlcmd Bugfix | Fixed issue where -M option required an argument. |
+| Sqlcmd Bugfix | Fixed issue where `-M` option required an argument. |
 | Sqlcmd Bugfix | Fixed issue where nohup and SIGHUP can cause it to stop responding in certain situations. |
 
 ## 18.0.1.1, February 2022
@@ -100,7 +112,7 @@ This article lists and describes what's new in the versioned releases of the [!I
 | :------------ | :------ |
 | Sqlcmd Command Line Parser Updated | Fixed bugs where unexpected behavior occurred when using certain options in different orders. |
 | Sqlcmd Error Messages Updated | Fixed various inconsistencies in how errors in sqlcmd were returned. |
-| Sqlcmd -Y Option Fixed | Fixed issue where -Y option was ineffective |
+| Sqlcmd `-Y` Option Fixed | Fixed issue where `-Y` option was ineffective |
 | Sqlcmd Column Name Truncation Fixed | Fixed issue where column names would be truncated incorrectly |
 | Sqlcmd Linux Exit Codes | Fixed issue where process exit code was missing on Linux |
 

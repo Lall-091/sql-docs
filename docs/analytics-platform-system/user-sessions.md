@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: 04/17/2018
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # User Sessions in Analytics Platform System
@@ -18,7 +18,7 @@ A login with the appropriate permissions can manage the sessions of all logins o
 - View the active and recent queries for a session.  
 - End active sessions.  
   
-These actions can be performed by using either the [Monitor the Appliance by Using the Admin Console](monitor-the-appliance-by-using-the-admin-console.md) or [System Views](tsql-system-views.md) through SQL commands, as shown below.  
+These actions can be performed by using either the [Monitor the Appliance by Using the Admin Console](monitor-the-appliance-by-using-the-admin-console.md) or system views through SQL commands.
   
 The permissions required to manage sessions by using either method are the same, and are described in [Grant Permissions to Manage Logins, Users, and Database Roles](grant-permissions.md#grant-permissions-to-manage-logins-users-and-database-roles).  
   

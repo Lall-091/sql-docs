@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 11/05/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 f1_keywords:

@@ -4,8 +4,7 @@ titleSuffix: SQL Server on Linux
 description: Configure SQL Server snapshot replication on Linux with two instances of SQL Server using Transact-SQL (T-SQL).
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -82,7 +81,7 @@ To complete this tutorial, you need:
    GO
    ```
 
-1. Create the snapshot folder for SQL Server Agents to read/write to on the distributor, create the snapshot folder and grant access to 'mssql' user
+1. Create the snapshot folder for SQL Server Agents to read/write to on the distributor, create the snapshot folder and grant access to the `mssql` user:
 
    ```bash
    sudo mkdir /var/opt/mssql/data/ReplData/

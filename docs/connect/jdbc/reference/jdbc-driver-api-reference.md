@@ -16,19 +16,15 @@ ms.topic: reference
 
 The [!INCLUDE[jdbcNoVersion](../../../includes/jdbcnoversion_md.md)] provides an API that can be used within Java programming code to connect to and interact with a [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] database.
 
-### JavaDoc.io website is primary
+### JavaDoc.io is the primary site
 
-The Microsoft JDBC API Reference documentation is hosted for your viewing on the JavaDoc.io website. JavaDoc.io is now our primary website for JDBC reference documentation. Our JDBC reference documentation on JavaDoc.io is available at the following direct link:
-
-- [https://javadoc.io/doc/com.microsoft.sqlserver/mssql-jdbc/](https://javadoc.io/doc/com.microsoft.sqlserver/mssql-jdbc/)
-
-JavaDoc.io has our JDBC reference documentation starting with version 6.0.
+Starting with version 6.0, the latest Microsoft JDBC API reference documentation is available at [JavaDoc.io](https://javadoc.io/doc/com.microsoft.sqlserver/mssql-jdbc/).
 
 #### Only legacy JDBC documentation is here on docs
 
 The JDBC API Reference documentation here on this website is no longer being updated. However, the articles here do contain the reference for JDBC driver versions 4.1 and 4.2.
 
-Documentation for JDBC driver version 6.0, and some later versions, is also here. For any version 6.0 or later, use the [JavaDoc.io website](https://javadoc.io/doc/com.microsoft.sqlserver/mssql-jdbc/).
+Documentation for JDBC driver version 6.0, and some later versions, is also here. For any version 6.0 or later, see [JavaDoc.io](https://javadoc.io/doc/com.microsoft.sqlserver/mssql-jdbc/).
 
 ### Important notes
 

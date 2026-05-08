@@ -3,10 +3,10 @@ title: "Connection Options"
 description: "This topic lists the options that are permitted in the associative array of sqlsrv_connect in the SQLSRV driver or the keywords that are permitted in the data source name the PDO_SQLSRV driver."
 author: David-Engel
 ms.author: davidengel
-ms.date: "03/02/2022"
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Connection Options
 
@@ -18,11 +18,11 @@ This topic lists the options that are permitted in the associative array (when u
 
 |Key|Value|Description|Default|  
 |-------|---------|---------------|-----------|  
-|AccessToken|String|The byte string of the Microsoft Entra access token extracted from an OAuth JSON response.<br /><br />The connection string must not contain a user ID, password, or the `Authentication` keyword. For more information, see [Connect Using Microsoft Entra authentication](azure-active-directory.md)|Not set.|
-|APP|String|Specifies the application name used in tracing.|Not set.|  
+|AccessToken|String|The byte string of the Microsoft Entra access token extracted from an OAuth JSON response.<br /><br />The connection string must not contain a user ID, password, or the `Authentication` keyword. For more information, see [Connect Using Microsoft Entra authentication](azure-active-directory.md)<br /><br />When connection pooling is enabled, the driver hashes the token content and appends it to the `APP` keyword to ensure pool-key differentiation per token identity (starting with version 5.13.1). If your application doesn't specify APP, this hash appears in the `program_name` column of `sys.dm_exec_sessions`.|Not set.|
+|APP|String|Specifies the application name used in tracing. When `AccessToken` is specified with connection pooling enabled, the driver appends an internal hash to `APP` for pool-key differentiation. Setting a value for `APP` overrides the `AccessToken` hash that appears in the `program_name` column of `sys.dm_exec_sessions`.|Not set.|  
 |ApplicationIntent|String|Declares the application workload type when connecting to a server. Possible values are **ReadOnly** and **ReadWrite**.<br /><br />For more information about [!INCLUDE[ssDriverPHP](../../includes/ssdriverphp_md.md)] support for [!INCLUDE[ssHADR](../../includes/sshadr-md.md)], see [Support for High Availability, Disaster Recovery](php-driver-for-sql-server-support-for-high-availability-disaster-recovery.md).|ReadWrite|
 |AttachDBFileName|String|Specifies which database file the server should attach.|Not set.|
-|Authentication|One of the following strings:<br /><br />**SqlPassword**<br /><br />**ActiveDirectoryPassword**<br /><br />**ActiveDirectoryMsi**<br /><br />**ActiveDirectoryServicePrincipal**|Specifies the authentication mode.<br /><br />For more information, see [Connect Using Microsoft Entra authentication](azure-active-directory.md)|Not set.|
+|Authentication|One of the following strings:<br /><br />**SqlPassword**<br /><br />**ActiveDirectoryPassword [DEPRECATED]**<br /><br />**ActiveDirectoryMsi**<br /><br />**ActiveDirectoryServicePrincipal**|Specifies the authentication mode.<br /><br />For more information, see [Connect Using Microsoft Entra authentication](azure-active-directory.md)|Not set.|
 |CharacterSet<br /><br />(not supported in the PDO_SQLSRV driver)|String|Specifies the character set used to send data to the server.<br /><br />Possible values are SQLSRV_ENC_CHAR and UTF-8. For more information, see [How to: Send and Retrieve UTF-8 Data Using Built-In UTF-8 Support](how-to-send-and-retrieve-utf-8-data-using-built-in-utf-8-support.md).|SQLSRV_ENC_CHAR|  
 |ColumnEncryption|One of the following strings:<br /><br />**Enabled**<br /><br />**Disabled**<br /><br />A string identifying the attestation protocol and URL for attesting the enclave|Specifies whether the Always Encrypted feature is enabled or not. If an attestation protocol and URL are specified, Always Encrypted with secure enclaves is enabled, provided the other requirements are met as described in [Using Always Encrypted with secure enclaves with the PHP Drivers for SQL Server](always-encrypted-secure-enclaves.md).|Disabled|  
 |ConnectionPooling|1 or **true** for connection pooling on.<br /><br />0 or **false** for connection pooling off.|Specifies whether the connection is assigned from a connection pool (1 or **true**) or not (0 or **false**).<sup>1</sup>|**true** (1)|  

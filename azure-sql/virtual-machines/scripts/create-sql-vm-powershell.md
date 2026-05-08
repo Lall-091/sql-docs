@@ -4,7 +4,7 @@ description: This article provides an end-to-end Azure PowerShell sample script 
 author: bluefooted
 ms.author: pamela
 ms.reviewer: mathoma
-ms.date: 05/29/2024
+ms.date: 01/23/2026
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
 ms.topic: sample
@@ -21,7 +21,7 @@ This PowerShell script example creates a Windows SQL Server virtual machine (VM)
 
 If you choose to install and use PowerShell locally, this tutorial requires Azure PowerShell 1.4.0 or later. If you need to upgrade, see [Install Azure PowerShell module](/powershell/azure/install-az-ps). If you're running PowerShell locally, you also need to run `Connect-AzAccount` to create a connection with Azure.
 
-## Set variables 
+## Set variables
 
 :::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/virtual-machine/create-sql-server-vm.ps1" id="SetVariables":::
 

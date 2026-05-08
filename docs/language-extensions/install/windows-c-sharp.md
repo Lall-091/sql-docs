@@ -151,7 +151,9 @@ Check the installation status of the instance in the setup logs.
 
 Use the following steps to verify that all components used to launch external script are running.
 
-1. In SQL Server Management Studio or Azure Data Studio, open a new query window, and run the following statement:
+[!INCLUDE [connect-instance-client](../../includes/connect-instance-client.md)]
+
+1. Connect to a database client, and run the following statement:
 
    ```sql
    EXECUTE sp_configure 'external scripts enabled';
@@ -163,7 +165,7 @@ Use the following steps to verify that all components used to launch external sc
 
 ## Additional configuration
 
-If the verification step was successful, you can run C# code from SQL Server Management Studio, Azure Data Studio, Visual Studio Code, or any other client that can send T-SQL statements to the server.
+If the verification step was successful, you can run C# code from any client that can send T-SQL statements to the server.
 
 If you got an error when running the command, review the additional configuration steps in this section. You might need to make extra appropriate configurations to the service or database.
 

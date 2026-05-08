@@ -7,7 +7,7 @@ ms.reviewer: vanto, randolphwest
 ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.custom:
   - sfi-image-nochange
 monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver16"

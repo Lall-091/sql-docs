@@ -7,12 +7,12 @@ ms.reviewer: david.pless, wiassaf
 ms.date: 08/18/2022
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Integrated acceleration and offloading
 
-[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] provides a framework for offloading specific SQL Server workload compute to hardware devices.
 

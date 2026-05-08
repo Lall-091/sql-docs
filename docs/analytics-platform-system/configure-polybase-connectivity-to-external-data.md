@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: 04/17/2018
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Configure PolyBase connectivity
@@ -15,7 +15,7 @@ PolyBase enables your Analytics Platform System (APS) to process Transact-SQL qu
 
 ![PolyBase logical](media/polybase/polybase-logical.png)
 
-PolyBase on APS supports reading and writing to Hadoop (HDFS) file system and Azure Blob Storage. PolyBase also has the ability to push some computation to Hadoop nodes as mapreduce jobs to optimize the overall query performance. PolyBase on APS can operate on delimited text, ORC and Parquet files. See [What is PolyBase](../relational-databases/polybase/polybase-guide.md) for a full description and its capabilities.
+PolyBase on APS supports reading and writing to Hadoop (HDFS) file system and Azure Blob Storage. PolyBase also has the ability to push some computation to Hadoop nodes as mapreduce jobs to optimize the overall query performance. PolyBase on APS can operate on delimited text, ORC and Parquet files. See [What is PolyBase](../relational-databases/polybase/overview.md) for a full description and its capabilities.
 
 > [!NOTE]
 > APS currently only supports standard general purpose v1 locally redundant (LRS) Azure Blob Storage.

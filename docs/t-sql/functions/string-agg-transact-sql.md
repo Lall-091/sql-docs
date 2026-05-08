@@ -269,5 +269,4 @@ Here's the trimmed result set.
 - [CONCAT (Transact-SQL)](concat-transact-sql.md)
 - [CONCAT_WS (Transact-SQL)](concat-ws-transact-sql.md)
 - [Aggregate Functions (Transact-SQL)](aggregate-functions-transact-sql.md)
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 

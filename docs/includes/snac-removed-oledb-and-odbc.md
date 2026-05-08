@@ -2,7 +2,7 @@
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jopilov, randolphwest
-ms.date: 07/16/2024
+ms.date: 12/29/2025
 ms.service: sql
 ms.topic: include
 ---

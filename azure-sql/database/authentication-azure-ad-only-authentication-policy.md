@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 09/05/2024
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 ---
 

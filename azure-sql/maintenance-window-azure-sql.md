@@ -8,7 +8,7 @@ ms.reviewer: mathoma, urosmil, scottkim
 ms.date: 01/11/2024
 ms.service: azure-sql
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: azure-sql-split
 monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 ---

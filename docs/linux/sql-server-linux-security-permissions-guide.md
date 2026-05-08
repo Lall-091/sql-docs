@@ -1,6 +1,6 @@
 ---
 title: Security and Permissions Guide for SQL Server on Linux
-description: Learn about the required service accounts, and file‑system permissions for SQL Server on Linux.
+description: Learn about the required service accounts, and file system permissions for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.date: 10/14/2025
@@ -23,7 +23,7 @@ Even though [!INCLUDE [sqlonlinux-md](../includes/sqlonlinux-md.md)] runs under 
 | --- | --- | --- |
 | `BUILTIN\Administrators` | **sysadmin** | Maps to the root‑level administrators of the host. Certain system objects run in the context of this account. |
 | `NT AUTHORITY\SYSTEM` | **public** | Service identifier (SID) reserved for the Windows `SYSTEM` account. Still created so that cross‑platform scripts that expect it succeed. |
-| `NT AUTHORITY\NETWORK SERVICE` | **sysadmin** (no fixed role) | Historically the default startup account for several SQL Server services on Windows. Present only for backward compatibility. Not used by the [!INCLUDE [sqlonlinux-md](../includes/sqlonlinux-md.md)] [!INCLUDE [ssde-md](../includes/ssde-md.md)] itself. |
+| `NT AUTHORITY\NETWORK SERVICE` | None (compatibility only) | Historically the default startup account for several SQL Server services on Windows. Present only for backward compatibility. Not used by the [!INCLUDE [sqlonlinux-md](../includes/sqlonlinux-md.md)] [!INCLUDE [ssde-md](../includes/ssde-md.md)] itself. |
 
 ## File and directory ownership
 
@@ -56,7 +56,7 @@ For more information on how to change user data location, log file location, or 
 
 | Purpose | Default path | Details |
 | --- | --- | --- |
-| System and user databases | `/var/opt/mssql/data` | Includes `master`, `model`, `tempdb`, and any new databases unless **mssql-conf** redirects them. For more information, see [Change the default location for system databases](sql-server-linux-configure-mssql-conf.md#masterdatabasedir). |
+| System and user databases | `/var/opt/mssql/data` | Includes `master`, `model`, `tempdb`, and any new databases unless **`mssql-conf`** redirects them. For more information, see [Change the default location for system databases](sql-server-linux-configure-mssql-conf.md#masterdatabasedir). |
 | Transaction logs (if separated) | `/var/opt/mssql/data`, or the path set via `mssql-conf set filelocation.defaultlogdir`. | Keep the same ownership if you move transaction logs. For more information, see [Change the default data or log directory location](sql-server-linux-configure-mssql-conf.md#change-the-default-data-or-log-directory-location). |
 | Backups | `/var/opt/mssql/data` | Create and set with `chown` before first backup, or when mapping a volume or directory. For more information, see [Change the default backup directory location](sql-server-linux-configure-mssql-conf.md#change-the-default-backup-directory-location). |
 | Error logs, and Extended Event (XE) logs | `/var/opt/mssql/log` | Also hosts the default system‑health XE session. For more information, see [Change the default error log file directory location](sql-server-linux-configure-mssql-conf.md#change-the-default-error-log-file-directory-location). |

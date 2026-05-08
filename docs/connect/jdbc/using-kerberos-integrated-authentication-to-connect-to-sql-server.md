@@ -7,7 +7,7 @@ ms.date: 07/31/2024
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Using Kerberos integrated authentication to connect to SQL Server

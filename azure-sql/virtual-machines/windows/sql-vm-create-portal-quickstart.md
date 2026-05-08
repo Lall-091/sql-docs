@@ -4,7 +4,7 @@ description: This tutorial shows how to create a Windows virtual machine with SQ
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: dpless
-ms.date: 09/16/2025
+ms.date: 03/18/2026
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
 ms.topic: quickstart
@@ -34,22 +34,15 @@ This quickstart steps through creating a SQL Server virtual machine (VM) in the 
 
 ## Get an Azure subscription
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 <a id="select"></a>
 
 ## Select a SQL Server VM image
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **SQL Server on Azure Virtual Machines**, select **Show options**.
+To create your SQL Server on Azure VM, follow these steps: 
 
-   :::image type="content" source="media/sql-vm-create-portal-quickstart/show-options-create-virtual-machine.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="media/sql-vm-create-portal-quickstart/show-options-create-virtual-machine.png":::
-
-1. In the **Select an image offer** box, choose a SQL Server image (such as **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025**).
-
-   For conventional SQL Server VMs, select one of the versions labeled **Free SQL Server License...** from the dropdown. For [Confidential VMs](sql-vm-create-confidential-vm-how-to.md), choose the `SQL Server 2022 Enterprise / Developer / Standard / Web on Windows Server 2022 - x64 Gen 2` image from the drop-down list.
-
-1. Select **Create virtual machine**.
+[!INCLUDE [create-sql-virtual-machine](../../includes/sql-virtual-machines/create-sql-virtual-machine.md)]
 
 <a id="configure"></a>
 

@@ -7,7 +7,7 @@ ms.reviewer: mathoma, hudequei
 ms.date: 09/30/2024
 ms.service: azure-sql-database
 ms.subservice: sql-data-sync
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - sfi-ropc-nochange

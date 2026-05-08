@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, randolphwest
 ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: article
+ms.topic: best-practice
 ms.custom:
   - sqldbrb=2
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
@@ -770,7 +770,7 @@ This section helps you find security measures to protect against certain attack 
 
 ### Security threat: Data exfiltration
 
-Data exfiltration is the unauthorized copying, transfer, or retrieval of data from a computer or server. See a definition for [data exfiltration](https://en.wikipedia.org/wiki/Data_exfiltration) on Wikipedia.
+Data exfiltration is the unauthorized copying, transfer, or retrieval of data from a computer or server. See a definition for [data exfiltration](https://wikipedia.org/wiki/Data_exfiltration) on Wikipedia.
 
 Connecting to server over a public endpoint presents a data exfiltration risk as it requires customers open their firewalls to public IPs.
 

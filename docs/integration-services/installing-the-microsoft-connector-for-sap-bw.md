@@ -7,7 +7,7 @@ ms.reviewer:
 ms.date: 02/13/2025
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - intro-installation
 ---

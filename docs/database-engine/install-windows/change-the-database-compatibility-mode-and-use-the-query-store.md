@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "query plans [SQL Server], migrating"
   - "upgrading SQL Server, migrating query plans"

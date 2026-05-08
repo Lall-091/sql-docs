@@ -4,7 +4,7 @@ description: Find information about SQL Server 2022 (16.x) limitations, known is
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 06/09/2025
+ms.date: 05/01/2026
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: release-notes
@@ -74,7 +74,7 @@ Windows Server 2022 was released with VCRuntime version 14.28.29914.
 
 ### Query Store for secondary replicas
 
-[Query Store for readable secondaries](../relational-databases/performance/query-store-for-secondary-replicas.md) a preview feature. In SQL Server 2022, Query Store for readable secondaries isn't supported for use in production environments.
+[Query Store for readable secondary replicas](../relational-databases/performance/query-store-for-secondary-replicas.md) is a preview feature in SQL Server 2022. Query Store for readable secondary replicas isn't supported for use in production environments.
 
 ### Known issues with Parameter Sensitive Plan optimization
 
@@ -109,6 +109,12 @@ In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)], setting the **Start Mode*
 ### MSOLEDBSQL19 and linked servers
 
 Currently, MSOLEDBSQL19 prevents the creation of linked servers without encryption and a trusted certificate (a self-signed certificate is insufficient). If linked servers are required, use the existing supported version of MSOLEDBSQL.
+
+### Linked server queries that use MSDASQL fail with error 7416
+
+**Applies to**: [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 24 and CU 24 GDR (Apr 2026).
+
+[!INCLUDE [msdasql-linked-server-7416](../includes/msdasql-linked-server-7416.md)]
 
 ### Transaction log growth for databases with In-Memory OLTP
 

@@ -5,7 +5,7 @@ description: Learn how to use GitHub Copilot slash commands with the MSSQL exten
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -19,7 +19,7 @@ ai-usage: ai-assisted
 
 # Quickstart: Use GitHub Copilot slash commands
 
-GitHub Copilot slash commands provide a quick, discoverable way to interact with your SQL Server databases directly from the GitHub Copilot chat in Visual Studio Code. These commands are available through the MSSQL extension's integration with GitHub Copilot, using the `@mssql` chat participant. By typing `/` in the chat input, you can see a list of supported commands that accelerate common workflows like connecting, switching databases, exploring schemas, and running queries.
+GitHub Copilot slash commands provide a quick, discoverable way to interact with your SQL Server databases directly from the GitHub Copilot chat in Visual Studio Code. You can access these commands through the MSSQL extension's integration with GitHub Copilot, using the `@mssql` chat participant. By typing `/` in the chat input, you can see a list of supported commands that accelerate common workflows like connecting, switching databases, exploring schemas, and running queries.
 
 ## What are slash commands?
 
@@ -38,10 +38,10 @@ For example, you can type:
 
 ## MSSQL slash commands reference
 
-This section provides a detailed reference for the SQL-specific slash commands available in GitHub Copilot. These commands are contributed by the MSSQL chat participant and surfaced directly in the GitHub Copilot chat interface.
+This section provides a detailed reference for the SQL-specific slash commands available in GitHub Copilot. The MSSQL chat participant provides these commands, and you use them directly in the GitHub Copilot chat interface.
 
 > [!IMPORTANT]  
-> All slash commands require an active editor connected to a database in order to work. If no connection is active, the commands won't execute.
+> All slash commands require an active editor connected to a database in order to work. If no connection is active, the commands don't execute.
 
 :::image type="content" source="media/slash-commands/slash-command-options-1.png" alt-text="Screenshot of the first set of slash command options from the MSSQL extension in GitHub Copilot chat.":::
 
@@ -60,7 +60,7 @@ These commands let you establish, switch, or inspect connections. They don't req
 
 #### Examples
 
-The following phrases can be used to interact with GitHub Copilot.
+Use the following phrases to interact with GitHub Copilot.
 
 ```copilot-prompt
 @mssql /connect
@@ -75,7 +75,7 @@ Here's how these commands look in action, to get connection details:
 
 #### How connection logic works
 
-Slash commands for connection management act as true shortcuts. Unlike Agent Mode tools that attempt to resolve connections automatically, these commands open the **MSSQL extension connection dialog** inside Visual Studio Code. The user must then interact with the dialog to select or create a connection.
+Slash commands for connection management act as true shortcuts. Unlike Agent Mode tools that attempt to resolve connections automatically, these commands open the **MSSQL extension connection dialog** inside Visual Studio Code. You must interact with the dialog to select or create a connection.
 
 When you invoke `/connect` or `/changeDatabase`:
 
@@ -90,7 +90,7 @@ When you invoke `/disconnect`:
 
 When you invoke `/getConnectionDetails`:
 
-- The MSSQL extension surfaces the current connection details in the chat, without requiring further input.
+- The MSSQL extension uses the current connection details in the chat, without requiring further input.
 
 Here's how these commands look in action, to connect, or change databases:
 
@@ -100,18 +100,18 @@ This design keeps the experience consistent with the MSSQL extension UI: the sla
 
 ### Query execution and performance
 
-These commands require follow‑up input. After selecting a command, provide the SQL statement or object you want to analyze.
+These commands require follow-up input. After selecting a command, provide the SQL statement or object you want to analyze.
 
 | Command | Description |
 | --- | --- |
-| `/runQuery` | Executes a SQL query against the connected database and shows results in chat. |
-| `/explain` | Provides a natural‑language explanation of SQL code or queries. |
+| `/runQuery` | Runs a SQL query against the connected database and shows results in chat. |
+| `/explain` | Provides a natural-language explanation of SQL code or queries. |
 | `/fix` | Detects and corrects syntax issues or missing constraints in SQL code. |
 | `/optimize` | Analyzes query performance and suggests improvements (indexing, restructuring). |
 
 #### Examples
 
-The following phrases can be used to interact with GitHub Copilot.
+Use the following phrases to interact with GitHub Copilot.
 
 ```copilot-prompt
 @mssql /runQuery SELECT TOP 10 * FROM Orders
@@ -136,7 +136,7 @@ These commands list or visualize schema objects in the connected database.
 
 | Command | Description |
 | --- | --- |
-| `/showSchema` | Displays a high‑level diagram of the database schema (tables, relationships, keys). |
+| `/showSchema` | Displays a high-level diagram of the database schema, including tables, relationships, and keys. |
 | `/showDefinition` | Shows the definition of a specific table, view, function, or procedure. |
 | `/listServers` | Lists all saved SQL Server connection profiles. |
 | `/listDatabases` | Lists all databases on the current server. |
@@ -148,7 +148,7 @@ These commands list or visualize schema objects in the connected database.
 
 #### Examples
 
-The following phrases can be used to interact with GitHub Copilot.
+Use the following phrases to interact with GitHub Copilot.
 
 ```copilot-prompt
 @mssql /showSchema
@@ -167,11 +167,11 @@ Here's how these commands look in action, to explore schemas and list objects:
 
 ## Key differences from Agent Mode
 
-- **Slash Commands**: Insert structured prompts into the chat. Some act immediately (like connection management), others require user input. They're designed for quick access and discoverability.
+- **Slash Commands**: Insert structured prompts into the chat. Some commands act immediately, like connection management, while others require user input. They're designed for quick access and discoverability.
 
-- **Agent Mode**: Uses extension‑contributed tools that execute actions directly, with confirmation dialogs for secure execution. Agent Mode supports richer, more complex workflows inside your SQL development environment.
+- **Agent Mode**: Uses extension-contributed tools that execute actions directly, with confirmation dialogs for secure execution. Agent Mode supports richer, more complex workflows inside your SQL development environment.
 
-Both approaches can be used together; slash commands speed up prompt entry, while Agent Mode executes secure, confirmable actions.
+You can use both approaches together. Slash commands speed up prompt entry, and Agent Mode executes secure, confirmable actions.
 
 ## Related content
 

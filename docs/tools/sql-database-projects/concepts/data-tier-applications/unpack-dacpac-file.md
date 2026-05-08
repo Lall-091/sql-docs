@@ -4,7 +4,7 @@ description: "Unpack a DACPAC file to review or examine the contents."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: randolphwest, maghan
-ms.date: 12/16/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -61,9 +61,9 @@ Deploying the `.dacpac` to a test instance results in the contents of the `.dacp
 > [!NOTE]  
 > One option for creating a test instance locally is with [SQL Server in Docker](../../../../linux/quickstart-install-connect-docker.md#pullandrun2022).
 
-### Deploy the DACPAC using Azure Data Studio
+### Deploy the DACPAC using Visual Studio Code
 
-1. Install the **SQL Server dacpac extension** in [Azure Data Studio](/azure-data-studio/extensions/sql-server-dacpac-extension).
+1. Install the [MSSQL extension for Visual Studio Code](../../../visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md), and follow the instructions to enable the [Data-tier Application (Preview)](../../../visual-studio-code-extensions/mssql/mssql-data-tier-application.md) experience.
 
 1. Connect to the desired instance. Right-click on the server node and select **Data-tier application wizard** from the menu.
 
@@ -79,7 +79,7 @@ Deploying the `.dacpac` to a test instance results in the contents of the `.dacp
 
 ### Other tools with DACPAC deployment capabilities
 
-Beyond Azure Data Studio and SqlPackage, many other tools can be used to deploy a `.dacpac` to a database. Some examples include:
+Beyond Visual Studio Code and SqlPackage, many other tools can be used to deploy a `.dacpac` to a database. Some examples include:
 
 - SQL Server Management Studio
 - Visual Studio: SQL Server Data Tools
@@ -119,5 +119,5 @@ namespace DacUnpack
 
 - [Data-tier applications (DAC) overview](overview.md)
 - [SqlPackage Publish parameters, properties, and SQLCMD variables](../../../sqlpackage/sqlpackage-publish.md)
-- [SQL Server dacpac extension in Azure Data Studio](/azure-data-studio/extensions/sql-server-dacpac-extension)
+- [Data-tier Application (Preview)](../../../visual-studio-code-extensions/mssql/mssql-data-tier-application.md)
 - [Install SQL Server Data Tools (SSDT) for Visual Studio](../../../../ssdt/download-sql-server-data-tools-ssdt.md)

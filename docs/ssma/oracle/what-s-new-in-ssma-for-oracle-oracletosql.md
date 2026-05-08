@@ -1,10 +1,10 @@
 ---
 title: "What's New in SSMA for Oracle (OracleToSQL)"
 description: Find out about changes to SQL Server Migration Assistant (SSMA) for Oracle (OracleToSQL) for each release.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 11/12/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball, subasak
+ms.date: 02/19/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -18,6 +18,16 @@ ms.custom:
 This article lists SQL Server Migration Assistant (SSMA) for Oracle changes in each release.
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
+
+## SSMA v10.5
+
+The v10.5 release of SSMA for Oracle contains the following changes:
+
+- Improved the quality of the Code conversion Copilot output.
+
+- Important security, compliance, UX, and accessibility fixes.
+
+- Improved reliability of Oracle PL-SQL to T-SQL converted procedures on Azure SQL MI by addressing encryption‑related connection issues in SSMA for Oracle.
 
 ## SSMA v10.4
 
@@ -48,13 +58,13 @@ The v10.2 release of SSMA for Oracle contains the following changes:
 The v10.1 release of SSMA for Oracle contains the following changes:
 
 - Detection of CHAR length in Oracle VARCHAR2 data type
-- Enhanced monitoring experience for migrations using Azure Data Migration Service (DMS)
+- Enhanced monitoring experience for migrations using Azure Database Migration Service (DMS)
 
 ## SSMA v10.0
 
 The v10.0 release of SSMA for Oracle contains the following changes:
 
-- Oracle data movement using Azure Data Migration service
+- Oracle data movement using Azure Database Migration Service
 - SKU recommendation and Workload assessment for Oracle workload
 - Support for global Microsoft Entra ID authentication
 

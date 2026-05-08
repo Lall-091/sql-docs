@@ -7,7 +7,7 @@ ms.reviewer: drskwier, matteot
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.serverproperties.processor.f1"
 ---

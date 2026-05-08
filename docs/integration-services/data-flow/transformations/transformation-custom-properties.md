@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Aggregate transformation [Integration Services]"
   - "Slowly Changing Dimension transformation"

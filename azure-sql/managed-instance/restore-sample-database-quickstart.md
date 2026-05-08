@@ -20,11 +20,9 @@ ms.custom:
 
 In this quickstart, you'll use SQL Server Management Studio (SSMS) to restore a database from Azure Blob Storage to [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md). The quickstart restores the Wide World Importers sample database from a publicly available backup file using a Shared Access Signature (SAS) key.
 
-> [!NOTE]  
->
-> - For a video tutorial, see [Azure SQL Managed Instance- restore database backup](https://www.youtube.com/embed/RxWYojo_Y3Q).
-> - For more information on migration using Azure Database Migration Service, see [Tutorial: Migrate SQL Server to an Azure SQL Managed Instance using Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance).
-> - For more information on various migration methods, see [SQL Server to Azure SQL Managed Instance guide](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).
+> [!NOTE]
+> This quickstart is to restore a database that has been manually backed up to Azure Blob Storage. If you're looking to restore from an automated backup, see [Restore a database from an automated backup](recovery-using-backups.md).
+
 
 ## Prerequisites
 
@@ -36,11 +34,9 @@ This quickstart:
   - [Enable a public endpoint](public-endpoint-configure.md) on SQL Managed Instance. This approach is recommended for this quickstart.
   - [Connect to SQL Managed Instance from an Azure VM](connect-vm-instance-configure.md).
   - [Configure a point-to-site connection to SQL Managed Instance from on-premises](point-to-site-p2s-configure.md).
+- Requires a backup file stored in Azure Blob Storage. This quickstart uses a publicly available backup file for the Wide World Importers sample database, but you can also use your own backup file stored in your Azure Blob Storage account. For information on how to create a backup file and store it in Azure Blob Storage, see [Back up SQL Server databases to Azure Blob Storage](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
-> [!NOTE]  
-> For more information on backing up and restoring a SQL Server database by using Blob Storage and a [shared access signature key](/azure/storage/common/storage-sas-overview), see [SQL Server Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
-
-## Use the Restore wizard to restore from a backup file
+## Use SSMS to restore from a backup file
 
 In SSMS, take the steps in the following sections to restore the Wide World Importers database to SQL Managed Instance by using the **Restore** wizard. The database backup file is stored in a preconfigured Blob Storage account.
 
@@ -204,3 +200,5 @@ As an alternative to the **Restore** wizard, you can use T-SQL statements to res
 - [SQL Server Backup to URL best practices and troubleshooting](/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting)
 - [Connect your application to Azure SQL Managed Instance](connect-application-instance.md)
 - [Azure SQL Database and Azure SQL Managed Instance connect and query articles](../database/connect-query-content-reference-guide.md)
+- [Tutorial: Migrate SQL Server to an Azure SQL Managed Instance using Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance).
+- [SQL Server to Azure SQL Managed Instance guide](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md).

@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "03/23/2018"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "retrieving data, UTF-8 encoded data"
   - "converting data types"

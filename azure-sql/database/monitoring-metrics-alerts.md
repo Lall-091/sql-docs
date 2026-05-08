@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 02/11/2025
 ms.service: azure-sql-database
 ms.subservice: monitoring
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: build-2024
 monikerRange: "= azuresql || = azuresql-db"
 ---

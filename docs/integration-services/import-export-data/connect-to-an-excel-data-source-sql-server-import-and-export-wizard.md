@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "04/02/2018"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: integration
 ---
 # Connect to an Excel Data Source (SQL Server Import and Export Wizard)
 

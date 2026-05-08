@@ -1,9 +1,10 @@
 ---
-title: List of bugs fixed
-description: This page contains a listing of bugs fixed in each release, starting with Microsoft ODBC Driver 17 for SQL Server.
+title: List of Bugs Fixed
+description: This page contains a listing of bugs fixed in each release of the Microsoft ODBC Driver for SQL Server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/17/2025
+ms.reviewer: randolphwest
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
@@ -12,73 +13,91 @@ helpviewer_keywords:
 ---
 # List of bugs fixed
 
-This page contains a listing of bugs fixed in each release, starting with [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+This page contains a listing of bugs fixed in each release of the [!INCLUDE [msCoName](../../includes/msconame-md.md)] ODBC Driver for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], starting with the most recent versions.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.6.1.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.11.1.1 for SQL Server
 
-- Fix TDS packet size in BID trace
+- Fix connection recovery to obtain the active primary node when a server moves.
+- Fix DATACLASSIFICATION async timeout.
+- Fix XA Recovery XIDs Calculation.
+- Fix SQL_ATTR_PARAMS_PROCESSED_PTR updates so the number of processed parameter sets is reported correctly when executing parameter arrays.
+- Fix SQL_ATTR_PARAMS_PROCESSED_PTR and row counting when SQL_PARAM_IGNORE is used in parameter arrays.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.5.1.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 18.6.2.1 for SQL Server
+
+- Fix SQL_ATTR_PARAMS_PROCESSED_PTR updates so the number of processed parameter sets is reported correctly when executing parameter arrays.
+- Fix SQL_ATTR_PARAMS_PROCESSED_PTR and row counting when SQL_PARAM_IGNORE is used in parameter arrays.
+- Fix segmentation fault when calling SQLNumResultCol in describe-only scenarios where no parameter bindings are present.
+- Fix bcp_bind to correctly handle consecutive field terminators without misinterpreting them as empty fields.
+- Fix RPM packaging rules to allow installing multiple driver versions side by side.
+- Fix XA (X/Open distributed transaction) recovery to compute transaction identifiers correctly and avoid missing recoverable transactions.
+- Fix segmentation fault on handling of NULL values in table-valued parameter (TVP) arguments.
+
+
+### Bug fixes in the Microsoft ODBC Driver 18.6.1.1 for SQL Server
+
+- Fix Tabular Data Stream (TDS) packet size handling in Built-In Diagnostics (BID) traces.
+
+### Bug fixes in the Microsoft ODBC Driver 18.5.1.1 for SQL Server
 
 - Fix connection recovery to obtain the active primary node when a server moves
 - Fix crashes under low-memory conditions
 - Fix some error messages
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.4.1.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 18.4.1.1 for SQL Server
 
 - Fix crashes when receiving invalid data from server
 - Fix sending of null data for fixed-length types using DAE
 - Fix 10-minute delay upon disconnection after timeout
 - Fix memory leak upon disconnection when an error occurs
 - Fix memory leak upon reconnection with Strict encryption
-- Fix intermittent crash when connecting with Strict encryption and TLS 1.3
+- Fix intermittent crash when connecting with Strict encryption enabled and Transport Layer Security (TLS) 1.3.
 - Fix crashes under low-memory conditions
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.3.3.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 18.3.3.1 for SQL Server
 
 - Fix crashes when receiving invalid data from server
 - Fix infinite loop when receiving invalid data from server
-- Fix App Service Containers MSI Authentication
+- Fix App Service Containers managed identity (formerly Managed Service Identity, MSI) authentication.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.10.6.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.10.6.1 for SQL Server
 
 - Fix crashes when receiving invalid data from server
 - Fix infinite loop when receiving invalid data from server
 - Fix a crash when attempting to connect under low-memory conditions
 - Fix memory leak upon reconnect
-- Fix App Service Containers MSI Authentication
+- Fix App Service Containers managed identity (formerly Managed Service Identity, MSI) authentication.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.3.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 18.3.2 for SQL Server
 
 - Fix crashes when receiving invalid data from server
 - Fix infinite loop when receiving invalid data from server
 - Fix a crash when attempting to connect under low-memory conditions
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.10.5 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.10.5 for SQL Server
 
 - Fix crashes when receiving invalid data from server
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.3.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 18.3.1 for SQL Server
 
 - Fix a bug in setting of data classification version attribute
 
+### Bug fixes in the Microsoft ODBC Driver 18.2.2 for SQL Server
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.2.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
-
-- Fix a crash when retrieving data with AutoTranslate option off
+- Fix a crash when retrieving data with Auto-Translate option off
 - Fix partial writes on Linux in presence of signals
 - Fix crashes when receiving invalid data from server
 - Fix memory leak when processing encrypted columns
 - Fix errors with long enclave queries
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.10.4.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.10.4.1 for SQL Server
 
-- Fix a crash when retrieving data with AutoTranslate option off
+- Fix a crash when retrieving data with `AutoTranslate` option off
 - Fix partial writes on Linux in presence of signals
 - Fix crashes when receiving invalid data from server
 - Fix memory leak when processing encrypted columns
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 18.2 for SQL Server
 
 - Fix VBS-NONE enclave attestation protocol
 - Fix an error when retrieving numeric column with Regional=Yes
@@ -88,18 +107,18 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fix a crash when receiving invalid data from server
 - Correct error message when Dedicated Administrative Connections (DAC) fail
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.10.3 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.10.3 for SQL Server
 
 - Correct error message when Dedicated Administrative Connections (DAC) fail
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.1.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 18.1.2 for SQL Server
 
 - Fix VBS-NONE enclave attestation protocol.
 - Fix error when retrieving numeric column with Regional=Yes.
 - Fix intermittent lack of error when server is stopped during bcp out operation.
 - Fix error when stored procedure call contains unquoted string parameter.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 18.1 for SQL Server
 
 - Fix intermittent issue with polling for first successful connection when multiple IP addresses are resolved.
 - Fix intermittent issue where the driver stops responding when using SQLBulkOperations in async mode.
@@ -107,7 +126,7 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fix missing dependency in Debian package.
 - Fix issue with idle connection resiliency when Kerberos authentication is used.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.0 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 18.0 for SQL Server
 
 - Fix UI issues where text was cut off and position of items was off.
 - Fix issue with Active Directory Interactive login where attempting to sign in after closing the window of the first failure would automatically succeed if cached credentials were available.
@@ -115,21 +134,21 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fix loss of Microsoft Entra authentication mode when reconnecting an idle connection.
 - Fix an issue with federated authentication when using PingFed.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.10.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.10.2 for SQL Server
 
 - Fix error when retrieving numeric column with Regional=Yes
 - Fix intermittent lack of error when server is stopped during bcp out operation
 - Fix error when stored procedure call contains unquoted string parameter
 - Fix a crash when receiving invalid data from server
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.10 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.10 for SQL Server
 
 - Fix intermittent issue with polling for first successful connection when multiple IP addresses are resolved.
 - Fix missing dependency in Debian package.
-- Fix for only using ADAL when required.
+- Fix for only using Microsoft Authentication Library when required.
 - Fix issue with idle connection resiliency when Kerberos auth was used.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.9 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.9 for SQL Server
 
 - Fix UI issues where text was cut off and position of items was off.
 - Fix issue with Active Directory Interactive login where attempting to sign in after closing the window of the first failure would automatically succeed if cached credentials were available.
@@ -137,20 +156,20 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fix loss of Microsoft Entra authentication mode when reconnecting an idle connection.
 - Fix an issue with federated authentication when using PingFed.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.8 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.8 for SQL Server
 
 - Fix for restrictions on connection string regarding usage of `UID` and `PWD` keywords
 - Fix for inconsistent fonts in non-English dialogs
-- Fix issue with having multiple connections with different AKV credentials
-- Fix issue with NVDA not reading connection test results in DSN configuration UI
+- Fix issue with having multiple connections using different Azure Key Vault (AKV) credentials.
+- Fix issue with NonVisual Desktop Access (NVDA) not reading connection test results in the Data Source Name (DSN) configuration UI.
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.7.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.7.2 for SQL Server
 
 - Fix issue with 404 Not Found errors when using Managed Service Identity authentication
 - Fix for intermittent Encryption Not Supported errors under high multithreaded loads
 - Fix for intermittent crash under high multithreaded loads
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.7 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.7 for SQL Server
 
 - Fix character encoding of VARIANT columns in BCP NATIVE mode
 - Fix setting of SQL_ATTR_PARAMS_PROCESSED_PTR under specific conditions
@@ -159,23 +178,23 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fix excessive memory usage on multi-processor systems
 - Fix Microsoft Entra authentication for some variants of Azure SQL
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.6 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.6 for SQL Server
 
-- Fix ADAL error when authenticating with a federated account (Windows)
+- Fix Microsoft Authentication Library error when authenticating with a federated account (Windows)
 - Fix an issue where the driver becomes unresponsive when a timeout occurs during an asynchronous notification operation
 - Fix driver reference count upon upgrade in Alpine Linux
 - Fix libc6 dependency version for Ubuntu
 - Add missing defines to Linux/Mac msodbcsql.h
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.5.2.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Alpine Linux only)
+### Bug fixes in the Microsoft ODBC Driver 17.5.2.2 for SQL Server (Alpine Linux only)
 
 - Fix a crash when using Always Encrypted with secure enclaves on Alpine Linux
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.5.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.5.2 for SQL Server
 
 - Added msodbcsql.h to Alpine Linux package
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.5 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.5 for SQL Server
 
 - Fix AKV CMK metadata hash computation on Linux/macOS
 - Fix error when loading OpenSSL 1.0.0
@@ -183,15 +202,15 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fix internal library name on macOS to include version number
 - Fix setting of null indicator when separate length and indicator bindings are used
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.4.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.4.2 for SQL Server
 
-- Fix for an issue where process ID and application name wouldn't be sent correctly to SQL Server (for sys.dm_exec_sessions analysis) (Linux)
+- Fix for an issue where process ID and application name wouldn't be sent correctly to SQL Server (for `sys.dm_exec_sessions` analysis) (Linux)
 - Removed redundant dependency on libuuid (Linux)
 - Fix for a bug with sending UTF8 data to SQL Server 2019
 - Fix for a bug where locales that end in "@euro" weren't being correctly detected (Linux)
 - Fix for XML data being returned incorrectly when fetched as an output parameter while using Always Encrypted
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.4 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.4 for SQL Server
 
 - Fix for intermittent issue when Multiple Active Results Sets (MARS) is enabled where the driver stops responding
 - Fix connection resiliency issue when async notification is enabled where the driver stops responding
@@ -203,13 +222,13 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fix importing of sql_variant columns containing more than 7,992 bytes using bcp
 - Fix sending of correct encoding to server for narrow character data
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.3 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.3 for SQL Server
 
 - Fixed TCP send notification event handle memory leak
 - Fixed redefinition issue of enum _SQL_FILESTREAM_DESIRED_ACCESS in msodbcsql.h header file
 - Fixed missing ACCESS_TOKEN and AUTHENTICATION related definition in msodbcsql.h header file for Linux
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.2 for SQL Server
 
 - Fixed an error message about Microsoft Entra authentication
 - Fixed encoding detection when locale environment variables are set differently
@@ -222,7 +241,7 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fixed a cache issue when using ADAL Authentication on Windows
 - Fixed an issue that was locking and overwriting trace logs on Windows
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17.1 for SQL Server
 
 - Fixed 1-second delay when calling SQLFreeHandle with MARS enabled and connection attribute "Encrypt=yes"
 - Fixed an error 22003 crash in SQLGetData when the size of the buffer passed in is smaller than the data being retrieved (Windows)
@@ -232,7 +251,7 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fixed a warning on macOS installer
 - Fixed sending incorrect state to SQL Server during Session Recovery attempt when Connection Resiliency and Connection Pooling both are enabled, causing the server to drop the session
 
-### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+### Bug fixes in the Microsoft ODBC Driver 17 for SQL Server
 
 - Fixed a bug where when using Kerberos authentication, bulk insert could fail with "access denied" error
 - Removed workaround for a unixODBC bug present in versions older than 2.3.1 (driver doubled the sizes of certain buffers passed to unixODBC)

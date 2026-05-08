@@ -4,7 +4,7 @@ description: In this article, diagnose and fix report design issues, which might
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ms.custom:
   - updatefrequency5
 ---

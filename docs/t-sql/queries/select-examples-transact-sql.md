@@ -1,10 +1,10 @@
 ---
-title: "SELECT examples (Transact-SQL)"
+title: "SELECT Examples (Transact-SQL)"
 description: "Examples of the SELECT Transact-SQL statement in the Database Engine."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 11/01/2023
+ms.date: 02/02/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -36,21 +36,21 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-This article provides examples of using the [SELECT](../../t-sql/queries/select-transact-sql.md) statement.
+This article provides examples of using the [SELECT](select-transact-sql.md) statement.
 
 [!INCLUDE [article-uses-adventureworks](../../includes/article-uses-adventureworks.md)]
 
 ## A. Use SELECT to retrieve rows and columns
 
-The following example shows three code examples. This first code example returns all rows (no WHERE clause is specified) and all columns (using the `*`) from the `Product` table in the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database.
+The following example shows three code examples. The first code example returns all rows (no `WHERE` clause is specified) and all columns (using the `*`) from the `Product` table in the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database.
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_1.sql":::
 
-This example returns all rows (no WHERE clause is specified), and only a subset of the columns (`Name`, `ProductNumber`, `ListPrice`) from the `Product` table in the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database. Additionally, a column heading is added.
+This example returns all rows (no `WHERE` clause is specified), and only a subset of the columns (`Name`, `ProductNumber`, `ListPrice`) from the `Product` table in the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database. Additionally, a column heading is added.
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_2.sql":::
 
-This example returns only the rows for `Product` that have a product line of `R` and that have days to manufacture that is less than `4`.
+This example returns only the rows for `Product` that have a product line of `R` and that have days to manufacture that's less than `4`.
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_3.sql":::
 
@@ -60,7 +60,7 @@ The following examples return all rows from the `Product` table. The first examp
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_4.sql":::
 
-This is the query that calculates the revenue for each product in each sales order.
+This query calculates the revenue for each product in each sales order.
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_5.sql":::
 
@@ -82,7 +82,7 @@ This second example creates the permanent table `NewProducts`.
 
 ## E. Use correlated subqueries
 
-A correlated subquery is a query that depends on the outer query for its values. This query can be executed repeatedly, one time for each row that could be selected by the outer query.
+A correlated subquery is a query that depends on the outer query for its values. This query can be executed repeatedly, one time for each row that the outer query selects.
 
 The first example shows queries that are semantically equivalent to illustrate the difference between using the `EXISTS` keyword and the `IN` keyword. Both are examples of a valid subquery that retrieves one instance of each product name for which the product model is a long sleeve logo jersey, and the `ProductModelID` numbers match between the `Product` and `ProductModel` tables.
 
@@ -94,7 +94,7 @@ The next example uses `IN` and retrieves one instance of the first name and fami
 
 The previous subquery in this statement can't be evaluated independently of the outer query. It requires a value for `Employee.EmployeeID`, but this value changes as the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] examines different rows in `Employee`.
 
-A correlated subquery can also be used in the `HAVING` clause of an outer query. This example finds the product models for which the maximum list price is more than twice the average for the model.
+You can also use a correlated subquery in the `HAVING` clause of an outer query. This example finds the product models for which the maximum list price is more than twice the average for the model.
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_11.sql":::
 
@@ -108,7 +108,7 @@ The following example finds the total of each sales order in the database.
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_13.sql":::
 
-Because of the `GROUP BY` clause, only one row containing the sum of all sales is returned for each sales order.
+Because of the `GROUP BY` clause, the query returns only one row containing the sum of all sales for each sales order.
 
 ## G. Use GROUP BY with multiple groups
 
@@ -143,14 +143,15 @@ The first example that follows shows a `HAVING` clause with an aggregate functio
 This query uses the `LIKE` clause in the `HAVING` clause.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
-SELECT SalesOrderID, CarrierTrackingNumber
+
+SELECT SalesOrderID,
+       CarrierTrackingNumber
 FROM Sales.SalesOrderDetail
 GROUP BY SalesOrderID, CarrierTrackingNumber
 HAVING CarrierTrackingNumber LIKE '4BD%'
-ORDER BY SalesOrderID ;
-GO
+ORDER BY SalesOrderID;
 ```
 
 ## L. Use HAVING and GROUP BY
@@ -169,7 +170,7 @@ To see the products with total sales greater than `$2000000.00`, use this query:
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_21.sql":::
 
-If you want to make sure there are at least 1,500 items involved in the calculations for each product, use `HAVING COUNT(*) > 1500` to eliminate the products that return totals for fewer than `1500` items sold. The query looks like this:
+If you want to make sure the calculations for each product include at least 1,500 items, use `HAVING COUNT(*) > 1500` to eliminate the products that return totals for fewer than `1500` items sold. The query looks like this:
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_22.sql":::
 
@@ -205,7 +206,7 @@ In the following example, the `INTO` clause in the second `SELECT` statement spe
 
 ## R. Use UNION of two SELECT statements with ORDER BY
 
-The order of certain parameters used with the UNION clause is important. The following example shows the incorrect and correct use of `UNION` in two `SELECT` statements in which a column is to be renamed in the output.
+The order of certain parameters used with the `UNION` clause is important. The following example shows the incorrect and correct use of `UNION` in two `SELECT` statements where you rename a column in the output.
 
 :::code language="sql" source="codesnippet/tsql/select-examples-transact_28.sql":::
 
@@ -231,4 +232,4 @@ The third example uses `ALL` with the first `UNION` and parentheses enclose the 
 - [UPDATE (Transact-SQL)](update-transact-sql.md)
 - [WHERE (Transact-SQL)](where-transact-sql.md)
 - [PathName (Transact-SQL)](../../relational-databases/system-functions/pathname-transact-sql.md)
-- [SELECT - INTO Clause (Transact-SQL)](select-into-clause-transact-sql.md)
+- [SELECT - INTO clause (Transact-SQL)](select-into-clause-transact-sql.md)

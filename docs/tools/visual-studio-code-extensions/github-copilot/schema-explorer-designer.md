@@ -2,10 +2,10 @@
 title: Schema Explorer & Designer with GitHub Copilot
 titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how GitHub Copilot can help design, understand, and evolve database schemas with context-aware suggestions in Visual Studio Code.
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: randolphwest
-ms.date: 11/18/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: roblescarlos
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -19,9 +19,12 @@ ai-usage: ai-assisted
 
 # Quickstart: Use the schema explorer and designer
 
-In this quickstart, you learn how GitHub Copilot assists developers in designing, understanding, and evolving database schemas with context-aware suggestions. Whether you're building from scratch or reverse-engineering existing tables, GitHub Copilot streamlines the process across SQL and object-relational mapping (ORM) frameworks, making schema work faster, smarter, and easier to maintain.
+In this quickstart, you learn how GitHub Copilot assists developers in designing, understanding, and evolving database schemas with context-aware suggestions. Whether you're building from scratch or reverse-engineering existing tables, GitHub Copilot streamlines the process across SQL and object-relational mapping (ORM) frameworks. It makes schema work faster, smarter, and easier to maintain.
 
 This section covers both creating new schemas from scratch and working with existing databases. You can use GitHub Copilot to generate code-first schema definitions, update objects, or reverse-engineer and explore existing databases.
+
+> [!TIP]  
+> Looking for the GitHub Copilot integration within the Schema Designer visual canvas? See [GitHub Copilot integration in Schema Designer (preview)](../mssql/mssql-schema-designer-copilot.md) for the AI-powered visual schema design experience.
 
 ## Schema creation
 
@@ -177,10 +180,11 @@ Add data annotations in an Entity Framework model to ensure fields like `Email` 
 
 ## Share your experience
 
-[!INCLUDE [feedback](../includes/feedback.md)]
+[!INCLUDE [copilot-feedback](../includes/copilot-feedback.md)]
 
 ## Related content
 
+- [GitHub Copilot integration in Schema Designer (preview)](../mssql/mssql-schema-designer-copilot.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](overview.md)
 - [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
 - [Quickstart: Generate code](code-generation.md)

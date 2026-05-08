@@ -5,7 +5,7 @@ description: Learn how to use Microsoft Entra authentication to connect to Azure
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma, maghan
-ms.date: 09/12/2025
+ms.date: 03/11/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -218,13 +218,13 @@ sqlcmd -S <database or datawarehouse name>.<server-name>.database.windows.net -U
 
 ## Connect in Azure portal Query editor (Azure SQL Database)
 
-For more information on the Azure portal Query editor for Azure SQL Database, see [Quickstart: Use the Azure portal query editor to query Azure SQL Database](connect-query-portal.md).
+For more information, see [Azure portal Query editor for Azure SQL Database](query-editor.md).
 
-1. Navigate to your SQL database in the Azure portal. For example, visit [your Azure SQL hub page](https://aka.ms/azuresqlhub), and select your Azure SQL Database.
+1. Navigate to your SQL database in the [Azure portal](https://portal.azure.com). For example, visit [your Azure SQL hub page](https://aka.ms/azuresqlhub), in the Resource menu expand **Azure SQL Database**, select **SQL databases**, then select your Azure SQL Database.
 
-1. On your SQL database **Overview** page in the [Azure portal](https://portal.azure.com), select **Query editor** from the resource menu.
+1. On your SQL database **Overview** page, on the resource menu, select **Query editor**.
 
-1. On the sign-in screen under **Welcome to SQL Database Query Editor**, select **Continue as \<your user or group ID>**.
+1. Authenticate to your database with either **Microsoft Entra authentication** or **SQL authentication**. For more information, see [Quickstart: Use the Azure portal query editor to query Azure SQL Database](connect-query-portal.md).
 
 ## Related content
 

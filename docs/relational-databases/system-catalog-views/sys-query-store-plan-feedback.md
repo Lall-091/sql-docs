@@ -35,7 +35,7 @@ Contains information about Query Store tuning via query feedback features, inclu
 | `plan_id` | **bigint** | Foreign key. Joins to [sys.query_store_plan (Transact-SQL)](../../relational-databases/system-catalog-views/sys-query-store-plan-transact-sql.md). |
 | `feature_id` | **tinyint** | ID of the feature in use. |
 | `feature_desc` | **nvarchar(60)** | 1 = CE Feedback<br />2 = Memory Grant Feedback<br />3 = DOP Feedback<br />4 = LAQ Feedback |
-| `feedback_data` | **nvarchar(max)** | For CE feedback, displays query hints in use.<br /><br />For memory grant feedback, displays JSON string containing operator-level grant values.<br />Format: `{"node_id": value}, {"node_id": value},….`<br />Example: `{"NodeId":"0","AdditionalMemoryKB":"1152"},{"NodeId":"18","AdditionalMemoryKB":"1856"}` |
+| `feedback_data` | **nvarchar(max)** | For CE feedback, displays query hints in use.<br /><br />For memory grant feedback, displays JSON string containing operator-level grant values.<br />Format: `{"node_id": value}, {"node_id": value},...`<br />Example: `{"NodeId":"0","AdditionalMemoryKB":"1152"},{"NodeId":"18","AdditionalMemoryKB":"1856"}` |
 | `state` | **int** | ID of the current feedback state. |
 | `state_desc` | **nvarchar(60)** | 0. NO_FEEDBACK<br />1. NO_RECOMMENDATION<br />2. PENDING_VALIDATION<br />3. IN_VALIDATION<br />4. VERIFICATION_REGRESSED<br />5. VERIFICATION_PASSED<br />6. ROLLEDBACK_BY_APRC<br />7. FEEDBACK_VALID<br />8. FEEDBACK_INVALID |
 | `create_time` | **datetimeoffset(7)** | When this row was created. |

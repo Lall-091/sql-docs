@@ -7,7 +7,7 @@ ms.reviewer: v-kaywon
 ms.date: "09/26/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sfi-ropc-nochange
 ---
 # Application security scenarios in SQL Server

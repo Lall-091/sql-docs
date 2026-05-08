@@ -3,7 +3,7 @@ title: "SQL Server to Azure SQL Database: Migration Guide"
 description: Follow this guide to migrate your SQL Server databases to Azure SQL Database.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/16/2025
+ms.date: 02/19/2026
 ms.service: azure-sql-database
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -27,18 +27,9 @@ After you complete the steps for the [pre-migration stage](../pre-migration.md
 
 Migrate your data using your chosen [migration method](overview.md#compare-migration-options).
 
-### Migrate using the Azure SQL migration extension for Azure Data Studio
+### Migrate using the Azure Database Migration Service
 
-To perform an offline migration using Azure Data Studio, follow the high-level steps below. For a detailed step-by-step tutorial, see [Tutorial: Migrate SQL Server to Azure SQL Database (offline)](database-migration-service.md).
-
-1. Download and install [Azure Data Studio](/azure-data-studio/download-azure-data-studio) and the [Azure SQL migration extension](/azure-data-studio/extensions/azure-sql-migration-extension).
-1. Launch the Migrate to Azure SQL Migration wizard in the extension in Azure Data Studio.
-1. Select databases for assessment and view migration readiness or issues (if any). Additionally, collect performance data and get right-sized Azure recommendation.
-1. Select your Azure account and your target Azure SQL Database from your subscription.
-1. Select the list of tables to migrate.
-1. Create a new Azure Database Migration Service using the wizard in Azure Data Studio. If you've previously created an Azure Database Migration Service using Azure Data Studio, you can reuse the same if desired.
-1. *Optional*: If your backups are on an on-premises network share, download and install [self-hosted integration runtime](https://www.microsoft.com/download/details.aspx?id=39717) on a machine that can connect to the source SQL Server, and the location containing the backup files.
-1. Start the database migration and monitor the progress in Azure Data Studio. You can also monitor the progress under the Azure Database Migration Service resource in Azure portal.
+For a detailed step-by-step tutorial, see [Tutorial: Migrate SQL Server to Azure SQL Database (offline)](database-migration-service.md).
 
 ## Data sync and cutover
 
@@ -143,7 +134,6 @@ You might encounter a wide variety of compatibility issues, depending both on th
 ## Related content
 
 - [Services and tools available for data migration scenarios](/azure/dms/dms-tools-matrix)
-- [Migrate databases with Azure SQL migration extension for Azure Data Studio](/azure/dms/dms-overview#migrate-databases-with-azure-sql-migration-extension-for-azure-data-studio)
 - [Tutorial: Migrate SQL Server to Azure SQL Database (offline)](database-migration-service.md)
 - [About Azure Migrate](/azure/migrate/migrate-services-overview)
 - [What is Azure SQL Database?](/azure/azure-sql/database/sql-database-paas-overview)

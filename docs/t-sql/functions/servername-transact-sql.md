@@ -72,7 +72,6 @@ ACCTG
 
 ## Related content
 
-- [Configuration Functions (Transact-SQL)](configuration-functions-transact-sql.md)
 - [SERVERPROPERTY (Transact-SQL)](serverproperty-transact-sql.md)
 - [sp_addserver (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-addserver-transact-sql.md)
 

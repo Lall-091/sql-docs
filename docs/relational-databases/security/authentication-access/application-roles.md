@@ -7,7 +7,7 @@ ms.reviewer: jopilov
 ms.date: 06/30/2023
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "application roles [SQL Server], about application roles"
   - "principals [SQL Server], application roles"

@@ -26,7 +26,7 @@ This article demonstrates how to use [PHP](https://www.php.net/manual/en/introdu
 
 To complete this quickstart, you need:
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A database in Azure SQL Database or Azure SQL Managed Instance. You can use one of these quickstarts to create and then configure a database:
 
   | Action | SQL Database | SQL Managed Instance | SQL Server on Azure VM |

@@ -21,6 +21,8 @@ monikerRange: ">=sql-server-2016"
 
 [!INCLUDE [ssNoversion](../../includes/ssnoversion-md.md)] supports upgrading replicated databases from previous versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]; it isn't required to stop activity at other nodes while a node is being upgraded.
 
+For peer-to-peer replication, see [Upgrade or patch Peer-to-peer replicated databases](upgrade-peer-to-peer-replicated-databases.md).
+
 ## Prerequisites
 
 Ensure that you adhere to the rules regarding which versions are supported in a topology:

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/17/2022
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dts.designer.packageconfigurationorganizer.f1"
   - "sql13.dts.configwizard.finishdtsconfiguration.f1"
@@ -586,7 +586,7 @@ ConfiguredValueType NVARCHAR(20) NOT NULL
  **Configuration file**  
  Edit the contents of a configuration file by selecting the file from the list.  
   
- **Related Topics:** [Create Package Configurations]()  
+ **Related Topics:** [Create Package Configurations](#create-package-configurations)  
   
  **Path**  
  View the path of the property to be configured.  

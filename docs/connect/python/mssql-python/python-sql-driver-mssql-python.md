@@ -4,10 +4,10 @@ description: This guide provides an overview to get started with the Microsoft P
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 12/15/2025
+ms.date: 03/14/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: get-started
 ms.custom:
   - ignite-2025
 ---
@@ -26,6 +26,7 @@ Use the `mssql-python` driver to connect to a SQL database from Python code. Thi
 - [Quickstart: Connect to a SQL database from a Jupyter Notebook](python-sql-driver-mssql-python-connect-jupyter-notebook.md)
 - [Quickstart: Repeatable deployments with the mssql-python driver for Python](python-sql-driver-mssql-python-repeatable-deployments-quickstart.md)
 - [Quickstart: Rapid prototyping with the mssql-python driver for Python](python-sql-driver-mssql-python-rapid-prototyping-quickstart.md)
+- [Quickstart: Bulk copy with the mssql-python driver for Python](python-sql-driver-mssql-python-bulk-copy-quickstart.md)
 
 ## Documentation
 

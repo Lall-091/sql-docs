@@ -7,7 +7,7 @@ ms.reviewer: "vanto"
 ms.date: 05/24/2022
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">= sql-server-ver15"
 ---
 # Enable Always Encrypted with secure enclaves for existing encrypted columns 

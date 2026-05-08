@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 09/18/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - sfi-ropc-nochange
 dev_langs:

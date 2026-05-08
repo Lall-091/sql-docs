@@ -137,5 +137,4 @@ abc.
 - [STRING_SPLIT (Transact-SQL)](string-split-transact-sql.md)
 - [SUBSTRING (Transact-SQL)](substring-transact-sql.md)
 - [Data types (Transact-SQL)](../data-types/data-types-transact-sql.md)
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 

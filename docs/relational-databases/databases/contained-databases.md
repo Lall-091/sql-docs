@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "08/24/2016"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "contained database"
   - "database_uncontained_usage event"

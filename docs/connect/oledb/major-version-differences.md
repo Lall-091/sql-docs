@@ -1,9 +1,10 @@
 ---
-title: "MSOLEDBSQL major version differences"
-description: A description of the differences between the OLE DB Driver 19 for SQL Server and the OLE DB Driver for SQL Server
+title: "MSOLEDBSQL Major Version Differences"
+description: Learn about breaking changes between OLE DB Driver 19 and version 18, including encryption defaults, property type changes, and migration steps.
 author: David-Engel
 ms.author: davidengel
-ms.date: 05/02/2025
+ms.reviewer: randolphwest
+ms.date: 01/30/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
@@ -15,26 +16,235 @@ helpviewer_keywords:
 ---
 # Major version differences
 
+This article describes breaking changes between Microsoft OLE DB Driver 19 for SQL Server and earlier versions.
+
+> [!TIP]  
+> **MSOLEDBSQL19** (Microsoft OLE DB Driver 19 for SQL Server) is the current recommended OLE DB driver. It supports TDS 8.0 and modern security features. Version 19.2.0+ also supports TLS 1.3. Use `Provider=MSOLEDBSQL19` in your connection strings.
+
+## Summary of changes
+
+| Area | Version 18 and earlier | Version 19+ |
+| --- | --- | --- |
+| Default encryption (`Encrypt`) setting | `no` (no encryption or the server can require encryption) | `Mandatory` (encryption required) |
+| `Encrypt` property type | `VT_BOOL` | `VT_BSTR` |
+| `Encrypt` valid values | `no`/`yes` | `no`/`yes`/`true`/`false`/`Optional`/`Mandatory`/`Strict` |
+| Certificate validation | Skipped when client sets `Encrypt=no` | Always evaluated when encryption occurs |
+| Driver name | `MSOLEDBSQL` | `MSOLEDBSQL19` |
+| CLSID | `MSOLEDBSQL_CLSID` (legacy) | `MSOLEDBSQL_CLSID` (updated in header) |
+
+> [!WARNING]  
+> **ActiveDirectoryPassword authentication is deprecated**. If you're migrating from version 18 to 19 and using `Authentication=ActiveDirectoryPassword`, plan to migrate to a more secure authentication method. See [Deprecated authentication methods](#deprecated-authentication-methods) for alternatives.
+
 ## Encryption property changes
 
-In the Microsoft OLE DB Driver 19 for SQL Server, there are changes to the `Encrypt` property/connection string keyword and certificate validation behavior.
+### Encrypt property type change
 
-First, the driver property `SSPROP_INIT_ENCRYPT` changes from a `VT_BOOL` to a `VT_BSTR`. The valid values of this property are `no`/`yes`/`true`/`false`/`Optional`/`Mandatory`/`Strict`. The valid values for the provider connection string keyword `Encrypt` change from `no`/`yes` to `no`/`yes`/`true`/`false`/`Optional`/`Mandatory`/`Strict`. Similarly, for the `IDataInitialize` connection string keyword `Use Encryption for Data`, the valid values change from `true`/`false` to `no`/`yes`/`true`/`false`/`Optional`/`Mandatory`/`Strict`. The `Optional` value is synonymous with the old `no`/`false` values and the `Mandatory` value is synonymous with the old `yes`/`true` values. `Strict` is a new value added in version 19.0.0 of the OLE DB Driver for SQL Server and encrypts `PRELOGIN` packets in addition to all other communication with the server. `Strict` encryption is only supported on SQL Server endpoints that support TDS 8.0, otherwise the driver fails to connect. The OLE DB Driver 19 for SQL Server continues to support all legacy keyword values for backwards compatibility.
+The driver property `SSPROP_INIT_ENCRYPT` changes from `VT_BOOL` to `VT_BSTR`.
 
-Second, the default value changes from `no`/`false` to `Mandatory`. This change means that connections are encrypted by default. Previously, the driver would encrypt connections if explicitly set by the user and/or mandated by the SQL Server when the server side property `Force Encryption` was set to `yes`. To use old default behavior, include `Encrypt=Optional;` in the provider connection string, or `Use Encryption for Data=Optional;` in the `IDataInitialize` connection string.
+| Connection string | Version 18 values | Version 19 values |
+| --- | --- | --- |
+| Provider: `Encrypt` | `no`/`yes` | `no`/`yes`/`true`/`false`/`Optional`/`Mandatory`/`Strict` |
+| IDataInitialize: `Use Encryption for Data` | `true`/`false` | `no`/`yes`/`true`/`false`/`Optional`/`Mandatory`/`Strict` |
 
-Third, the `Trust Server Certificate` option is disconnected from the `Encrypt`/`Use Encryption for Data` option. In previous versions, when `Encrypt` was `false` on the client, the `Trust Server Certificate` setting was always ignored, even if the server required encryption (the server-side `Force Encryption` setting). Starting with version 19, if either the client or the server negotiates encryption on the connection, the `Trust Server Certificate` setting is evaluated to determine whether the client validates the certificate. This behavior change causes version 19 clients that use default settings to fail to connect when the server forces encryption and uses an untrusted certificate (an insecure server configuration). Clients must change their `Trust Server Certificate` registry setting and connection option to connect to servers configured that way. For more information, see [Registry settings](features/registry-settings.md) and [Encryption and certificate validation](features/encryption-and-certificate-validation.md) 
+**Value mapping**:
+
+| Mode | Equivalent values | Behavior |
+| --- | --- | --- |
+| `Optional` | `no`, `false` | Unencrypted unless server requires it |
+| `Mandatory` (default) | `yes`, `true` | Encrypted connection required |
+| `Strict` | *(no equivalent)* | TDS 8.0 encryption; requires SQL Server 2022+ |
+
+> [!TIP]  
+> Starting with version 19.2.0, TDS 8.0 connections can use TLS 1.3 when connecting to SQL Server 2022 or later. The `ServerCertificate` property was also added in this version. For more information, see [TLS 1.3 support](../../relational-databases/security/networking/tls-1-3.md).
+
+For backward compatibility, version 19 accepts all version 18 values (`yes`/`no`) in addition to the new values (`Optional`/`Mandatory`/`Strict`).
+
+### Default encryption behavior
+
+| Version | Default | Result |
+| --- | --- | --- |
+| 18 and earlier | `no` | Connections unencrypted by default |
+| 19+ | `Mandatory` | Connections encrypted by default |
+
+To restore version 18 behavior, add one of these options to your connection string:
+
+- Provider: `Encrypt=Optional;`
+- IDataInitialize: `Use Encryption for Data=Optional;`
+
+### Certificate validation behavior
+
+| Scenario | Version 18 | Version 19+ |
+| --- | --- | --- |
+| Client sets `Encrypt=no`, server doesn't force encryption | No validation | No validation |
+| Client sets `Encrypt=no`, server forces encryption | `Trust Server Certificate` **ignored** | `Trust Server Certificate` **evaluated** |
+| Client sets `Encrypt=yes` | `Trust Server Certificate` evaluated | `Trust Server Certificate` evaluated |
+
+#### Compatibility notes
+
+Version 19 clients using default settings fail to connect when the server forces encryption and uses an untrusted certificate. Update your `Trust Server Certificate` setting or use a trusted certificate.
+
+`TrustServerCertificate` was **not removed** in version 19. The option still works. Version 18 ignored this setting when `Encrypt` was set to `no`, even when the server forced encryption. Version 19 now evaluates `TrustServerCertificate` in all encrypted scenarios.
+
+The version 19 driver, before 19.4.1, had an installer issue that could set the `TrustServerCertificate` registry option to `no` on systems that previously had v18 installed. When this problem occurred, the driver would use the more secure registry setting, which could make connection string options appear to have no effect. This issue was resolved in version 19.4.1. A fresh installation of v19 (without v18 present) always correctly defaulted the registry option to `yes`. For more information, see [Registry settings](features/registry-settings.md).
+
+Keyword format differs by interface:
+
+- Provider connection strings use no spaces: `TrustServerCertificate=yes;`
+- IDataInitialize connection strings use spaces: `Trust Server Certificate=yes;`
+
+For more information, see [Encryption and certificate validation in OLE DB](features/encryption-and-certificate-validation.md).
+
+### Registry settings for Force Protocol Encryption
+
+The **Force Protocol Encryption** registry setting uses numeric values that map to encryption modes:
+
+| Registry value | Encryption mode | Description |
+| --- | --- | --- |
+| `0` | `Optional` | Encryption only if server requires it |
+| `1` | `Mandatory` | Encryption required |
+| `2` | `Strict` | TDS 8.0 encryption |
+
+The driver uses the most secure option between the registry setting and the connection property. For registry key locations, see [Registry settings](features/registry-settings.md).
 
 ## Driver name changes
 
-The new Microsoft OLE DB Driver 19 for SQL Server supports side by side installation with the older Microsoft OLE DB Driver for SQL Server. To be able to differentiate the drivers, the name was changed to include the major version number. To use the new driver in an application, the user must specify the new driver name. The new driver name, along with the corresponding CLSID, is specified in the updated `msoledbsql.h` header that must be included in the project. Connections through the `IDBInitialize` interface require no further changes since `MSOLEDBSQL_CLSID` specifies the CLSID of the OLE DB Driver 19 for SQL Server. Connections through the `IDataInitialize` interface must replace the value of the `Provider` keyword with `MSOLEDBSQL19` to use the Microsoft OLE DB Driver 19 for SQL Server. In graphical user interfaces such as data link properties or linked server setup in SSMS, "Microsoft OLE DB Driver 19 for SQL Server" must be selected from the list of installed providers.
+Version 19 supports side-by-side installation with version 18. The driver name includes the major version number for differentiation.
 
-## See also
-[OLE DB Driver for SQL Server](oledb-driver-for-sql-server.md)  
-[Using Connection String Keywords with OLE DB Driver](applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md)  
-[Encryption and certificate validation](features/encryption-and-certificate-validation.md)  
-[Universal Data Link (UDL) Configuration](help-topics/data-link-pages.md)  
-[SQL Server Login Dialog Box (OLE DB)](help-topics/sql-server-login-dialog.md)  
-[Initialization and authorization properties (OLE DB driver)](ole-db-data-source-objects/initialization-and-authorization-properties.md)  
-[Registry settings](features/registry-settings.md)  
-  
+| Interface | Version 18 | Version 19 |
+| --- | --- | --- |
+| Provider keyword | `MSOLEDBSQL` | `MSOLEDBSQL19` |
+| CLSID constant | `MSOLEDBSQL_CLSID` | `MSOLEDBSQL_CLSID` (updated in `msoledbsql.h`) |
+| UI display name | Microsoft OLE DB Driver for SQL Server | Microsoft OLE DB Driver 19 for SQL Server |
+
+### Migration steps
+
+1. Include the updated `msoledbsql.h` header in your project.
+1. For `IDBInitialize`: No changes needed (CLSID updated in header).
+1. For `IDataInitialize`: Change `Provider=MSOLEDBSQL` to `Provider=MSOLEDBSQL19`.
+1. For UI tools (SSMS, data link properties): Select **Microsoft OLE DB Driver 19 for SQL Server**.
+
+### Connection string examples
+
+Version 18 (before):
+
+```text
+Provider=MSOLEDBSQL;Server=myserver;Database=mydb;Trusted_Connection=yes;
+```
+
+Version 19 (after):
+
+```text
+Provider=MSOLEDBSQL19;Server=myserver;Database=mydb;Trusted_Connection=yes;
+```
+
+Version 19 with explicit encryption settings:
+
+```text
+Provider=MSOLEDBSQL19;Server=myserver;Database=mydb;Encrypt=Mandatory;TrustServerCertificate=no;
+```
+
+Version 19 with Strict encryption (TDS 8.0):
+
+```text
+Provider=MSOLEDBSQL19;Server=myserver;Database=mydb;Encrypt=Strict;ServerCertificate=C:\certs\server.cer;
+```
+
+## New version 19 properties
+
+Version 19 introduces properties for enhanced certificate validation with `Strict` encryption mode.
+
+### HostNameInCertificate (v19.0.0+)
+
+Specifies the host name to validate against the server's TLS/SSL certificate. Use this property when the server name in the connection string differs from the certificate's Common Name (CN) or Subject Alternative Name (SAN).
+
+| Interface | Property |
+| --- | --- |
+| Provider keyword | `HostNameInCertificate` |
+| IDataInitialize keyword | `Host Name In Certificate` |
+| OLE DB property | `SSPROP_INIT_HOST_NAME_CERTIFICATE` |
+
+> [!NOTE]  
+> This property is ignored when `Trust Server Certificate` is enabled. When `Encrypt=Strict`, the certificate is always validated.
+
+### ServerCertificate (v19.2.0+)
+
+Specifies the path to a certificate file (PEM, DER, or CER format) for exact certificate matching. The driver compares this certificate against the server's certificate during the TLS handshake.
+
+| Interface | Property |
+| --- | --- |
+| Provider keyword | `ServerCertificate` |
+| IDataInitialize keyword | `Server Certificate` |
+| OLE DB property | `SSPROP_INIT_SERVER_CERTIFICATE` |
+
+> [!IMPORTANT]  
+> `ServerCertificate` can only be used when `Encrypt=Strict`. Attempting to use it with `Mandatory` or `Optional` encryption results in a connection error.
+
+## Deprecated authentication methods
+
+### ActiveDirectoryPassword
+
+The `ActiveDirectoryPassword` authentication method (Microsoft Entra ID Password authentication) is deprecated. This authentication is based on the [OAuth 2.0 Resource Owner Password Credentials (ROPC) grant](/entra/identity-platform/v2-oauth-ropc), which is incompatible with multifactor authentication (MFA) and poses security risks.
+
+> [!WARNING]  
+> Microsoft is moving away from this high-risk authentication flow to protect users from malicious attacks. Plan to migrate to a more secure authentication method before this option is removed. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
+
+#### Recommended alternatives
+
+| Scenario | Recommended authentication | Connection string keyword |
+| --- | --- | --- |
+| Interactive user context | Multifactor authentication | `Authentication=ActiveDirectoryInteractive` |
+| App running on Azure | Managed Identity | `Authentication=ActiveDirectoryMSI` |
+| Service/daemon without user | Service Principal | `Authentication=ActiveDirectoryServicePrincipal` |
+
+For more information, see [Use Microsoft Entra ID](features/using-azure-active-directory.md).
+
+## Troubleshooting
+
+### Connection fails with certificate validation error
+
+**Symptom**: Connection fails with a certificate validation error or untrusted certificate message.
+
+**Cause**: Version 19 defaults to `Encrypt=Mandatory`, which requires a valid server certificate. Version 18 defaulted to `Encrypt=no` (unencrypted).
+
+**Solutions**:
+
+- **Recommended**: Install a trusted certificate on the server.
+- **Development only**: Add `TrustServerCertificate=yes;` to your connection string (not recommended for production).
+- **Fallback**: Add `Encrypt=Optional;` to restore version 18 behavior (reduces security).
+
+### Connection fails with "Server Certificate can only be used with strict encryption"
+
+**Symptom**: Connection fails when you use the `ServerCertificate` property.
+
+**Cause**: The `ServerCertificate` property requires `Encrypt=Strict`.
+
+**Solution**: Either remove `ServerCertificate` from your connection string, or change to `Encrypt=Strict;`.
+
+### Application receives VT_BOOL error when setting Encrypt property
+
+**Symptom**: Setting `SSPROP_INIT_ENCRYPT` with a boolean value fails.
+
+**Cause**: Version 19 changed the property type from `VT_BOOL` to `VT_BSTR`.
+
+**Solution**: Use string values (`"Mandatory"`, `"Optional"`, `"Strict"`, `"yes"`, `"no"`) instead of boolean values.
+
+### Provider not found after upgrading
+
+**Symptom**: Application fails with "Provider not found" or similar error.
+
+**Cause**: Version 19 uses a different provider name (`MSOLEDBSQL19`).
+
+**Solutions**:
+
+- Update your connection string from `Provider=MSOLEDBSQL` to `Provider=MSOLEDBSQL19`.
+- Include the updated `msoledbsql.h` header if using `IDBInitialize` with the CLSID.
+
+## Related content
+
+- [Microsoft OLE DB Driver for SQL Server](oledb-driver-for-sql-server.md)
+- [Using connection string keywords with OLE DB Driver for SQL Server](applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md)
+- [Encryption and certificate validation in OLE DB](features/encryption-and-certificate-validation.md)
+- [Universal Data Link (UDL) configuration](help-topics/data-link-pages.md)
+- [SQL Server Login dialog box (OLE DB)](help-topics/sql-server-login-dialog.md)
+- [Initialization and authorization properties](ole-db-data-source-objects/initialization-and-authorization-properties.md)
+- [Registry settings](features/registry-settings.md)

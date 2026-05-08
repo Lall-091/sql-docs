@@ -1,4 +1,4 @@
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 IF OBJECT_ID('dbo.Gloves', 'U') IS NOT NULL
@@ -13,7 +13,7 @@ WHERE ProductModelID IN (3, 4);
 GO
 
 -- Here is the simple union.
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT ProductModelID, Name

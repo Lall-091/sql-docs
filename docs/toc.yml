@@ -9,6 +9,8 @@ items:
   items:
   - name: What is SQL Server?
     href: sql-server/what-is-sql-server.md
+  - name: The Microsoft SQL Database Engine
+    href: database-engine/sql-database-engine.md
   - name: Connect to the Database Engine
     href: sql-server/connect-to-database-engine.md
   - name: What's new?
@@ -615,7 +617,7 @@ items:
           href: database-engine/availability-groups/windows/transactions-always-on-availability-and-database-mirroring.md
           items:
           - name: Cluster DTC
-            href: database-engine/availability-groups/windows/cluster-dtc-for-sql-server-2016-availability-groups.md
+            href: database-engine/availability-groups/windows/cluster-dtc-for-sql-server-availability-groups.md
         - name: Encrypted databases
           href: database-engine/availability-groups/windows/encrypted-databases-with-always-on-availability-groups-sql-server.md
         - name: SQL Server Analysis Services (SSAS)
@@ -1002,8 +1004,8 @@ items:
         href: database-engine/log-shipping/log-shipping-and-replication-sql-server.md
       - name: Tables & Stored Procedures
         href: database-engine/log-shipping/log-shipping-tables-and-stored-procedures.md
-      - name: Upgrading Log Shipping to SQL Server 2016
-        href: database-engine/log-shipping/upgrading-log-shipping-to-sql-server-2016-transact-sql.md
+      - name: Upgrade SQL Server log shipping
+        href: database-engine/log-shipping/upgrade-sql-server-log-shipping-transact-sql.md
     - name: Reference
       items:
       - name: Transaction Log Backup Settings
@@ -1318,6 +1320,8 @@ items:
           href: relational-databases/indexes/index-disk-space-example.md
       - name: Reorganize & rebuild
         href: relational-databases/indexes/reorganize-and-rebuild-indexes.md
+      - name: Automatic index compaction (preview)
+        href: relational-databases/indexes/automatic-index-compaction.md
       - name: Specify fill factor
         href: relational-databases/indexes/specify-fill-factor-for-an-index.md
     - name: Perform online operations
@@ -1570,7 +1574,7 @@ items:
               href: database-engine/service-broker/handling-service-broker-error-messages.md
             - name: Handling Poison Messages
               href: database-engine/service-broker/handling-poison-messages.md
-            - name: 'How to: Retrieve Information from a Service Broker Error Message (Transact SQL)'
+            - name: 'How to: Retrieve Information from a Service Broker Error Message (Transact-SQL)'
               href: database-engine/service-broker/how-to-retrieve-information-from-a-service-broker-error-message-transact-sql.md
     - name: Creating Service Broker Objects
       items:
@@ -4281,7 +4285,7 @@ items:
     href: relational-databases/ghost-row-cleanup-process-guide.md
   - name: Index architecture and design
     href: relational-databases/sql-server-index-design-guide.md
-  - name: Pages and extents architecture
+  - name: Page and extent architecture
     items:
     - name: Overview
       href: relational-databases/pages-and-extents-architecture-guide.md
@@ -4457,8 +4461,10 @@ items:
       href: database-engine/install-windows/upgrade-master-data-services.md
     - name: Power Pivot for SharePoint
       href: database-engine/install-windows/upgrade-power-pivot-for-sharepoint.md
-    - name: Replicated Databases
+    - name: Replicated databases
       href: database-engine/install-windows/upgrade-replicated-databases.md
+    - name: Peer-to-peer replicated databases
+      href: database-engine/install-windows/upgrade-peer-to-peer-replicated-databases.md
     - name: SQL Server Management Tools
       href: database-engine/install-windows/upgrade-sql-server-management-tools.md
     - name: Installation Wizard (Setup)
@@ -4825,15 +4831,15 @@ items:
   - name: Migration documentation
     href: sql-server/migrate/index.yml
   - name: Compare migration tools
-    href: sql-server/migrate/dma-azure-migrate-compare-migration-tools.md
+    href: sql-server/migrate/compare-sql-migration-tools.md
   - name: SQL Server Integration Services (SSIS) >
     href: ./integration-services/sql-server-integration-services.md
   - name: Bulk Copy Utility (bcp)
-    href: tools/bcp-utility.md
+    href: tools/bcp/bcp-utility.md
   - name: Big data options on the Microsoft SQL Server platform
     href: big-data-cluster/big-data-options.md
   - name: Azure Migration Services >
-    displayName: DMS, Data Migration Service, Azure Data Migration Service
+    displayName: DMS, Data Migration Service, Azure Database Migration Service
     href: /azure/dms/dms-overview
   - name: Migration guides
     items:
@@ -7055,7 +7061,9 @@ items:
   - name: Data virtualization (PolyBase)
     items:
     - name: What is PolyBase?
-      href: relational-databases/polybase/polybase-guide.md
+      href: relational-databases/polybase/overview.md
+    - name: Data virtualization guide
+      href: relational-databases/polybase/data-virtualization-guide.md
     - name: Get started with PolyBase
       href: relational-databases/polybase/polybase-get-started.md?view=sql-server-ver16&preserve-view=true
     - name: Concepts
@@ -7163,10 +7171,12 @@ items:
     items:
     - name: Overview
       items:
-      - name: Get Started
+      - name: Get started
         href: relational-databases/search/get-started-with-full-text-search.md
       - name: Deprecated Features in SQL Server 2016
         href: relational-databases/search/deprecated-full-text-search-features-in-sql-server-2016.md
+      - name: Behavior changes to full-text search
+        href: relational-databases/search/behavior-changes-full-text-search.md
     - name: Query
       href: relational-databases/search/query-with-full-text-search.md
       items:
@@ -7214,6 +7224,8 @@ items:
         href: relational-databases/search/configure-and-manage-stopwords-and-stoplists-for-full-text-search.md
       - name: Thesaurus files
         href: relational-databases/search/configure-and-manage-thesaurus-files-for-full-text-search.md
+      - name: Filters and word breakers
+        href: relational-databases/search/full-text-index-binaries.md
     - name: Manage & Monitor
       href: relational-databases/search/manage-and-monitor-full-text-search-for-a-server-instance.md
       items:
@@ -8161,13 +8173,11 @@ items:
   items:
   - name: Overview
     href: tools/overview-sql-tools.md
-  - name: SSMS >
-    href: /ssms/ssms-21/release-notes-21
+  - name: What's happening with Azure Data Studio
+    href: tools/whats-happening-azure-data-studio.md
   - name: Command prompt utilities
     href: tools/command-prompt-utility-reference-database-engine.md
     items:
-    - name: mssql-cli
-      href: tools/mssql-cli.md
     - name: osql
       href: tools/osql-utility.md
     - name: Profiler utility
@@ -8445,9 +8455,19 @@ items:
         href: tools/configuration-manager/viewing-the-sql-server-error-log.md
       - name: Viewing the Windows Application Log
         href: tools/configuration-manager/viewing-the-windows-application-log.md
+  - name: BCP (bulk copy utility)
+    items:
+    - name: Overview
+      href: tools/bcp/bcp-utility.md
+    - name: Download and install
+      href: tools/bcp/bcp-download-install.md
+    - name: Authenticate bcp with Microsoft Entra ID
+      href: tools/bcp/bcp-authentication.md
+    - name: Use the utility
+      href: tools/bcp/bcp-use-utility.md
   - name: SQLCMD
     items:
-    - name: sqlcmd overview
+    - name: Overview
       href: tools/sqlcmd/sqlcmd-utility.md
     - name: Check installed version
       href: tools/sqlcmd/sqlcmd-installed-version.md
@@ -8679,6 +8699,8 @@ items:
       href: tools/sql-database-projects/get-started.md
     - name: SQL projects tools
       href: tools/sql-database-projects/sql-projects-tools.md
+    - name: SQL projects automation
+      href: tools/sql-database-projects/sql-projects-automation.md
     - name: Tutorials
       items:
       - name: Creating and deploying a SQL project
@@ -8705,16 +8727,22 @@ items:
         href: tools/sql-database-projects/concepts/database-references.md
       - name: Package references
         href: tools/sql-database-projects/concepts/package-references.md
+      - name: Project references
+        href: tools/sql-database-projects/concepts/project-references.md
       - name: Pre/post deployment scripts
         href: tools/sql-database-projects/concepts/pre-post-deployment-scripts.md
       - name: Schema comparison
         href: tools/sql-database-projects/concepts/schema-comparison.md
       - name: SQLCMD variables
         href: tools/sql-database-projects/concepts/sqlcmd-variables.md
+      - name: Publish profiles
+        href: tools/sql-database-projects/concepts/publish-profiles.md
       - name: System objects
         href: tools/sql-database-projects/concepts/system-objects.md
       - name: Target platform
         href: tools/sql-database-projects/concepts/target-platform.md
+      - name: XML schema collections
+        href: tools/sql-database-projects/concepts/xml-schema-collection.md
       - name: Data tier applications
         href: tools/sql-database-projects/concepts/data-tier-applications/overview.md
         items:
@@ -8757,6 +8785,8 @@ items:
       href: tools/sqlpackage/sqlpackage-download.md
     - name: Release notes
       href: tools/sqlpackage/release-notes-sqlpackage.md
+    - name: Release notes (archive)
+      href: tools/sqlpackage/release-notes-sqlpackage-archive.md
     - name: CLI reference
       href: tools/sqlpackage/cli-reference.md
     - name: SqlPackage in development pipelines
@@ -8953,26 +8983,28 @@ items:
               href: tools/visual-studio-code-extensions/github-copilot/security-analyzer.md
             - name: Use smart query builder
               href: tools/visual-studio-code-extensions/github-copilot/smart-query-builder.md
-        - name: Fabric integration
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-fabric-integration.md
-        - name: Local SQL Server container
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-local-container.md
-        - name: Schema compare
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-schema-compare.md
         - name: Schema designer
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-schema-designer.md
-        - name: Data-tier Application
-          items:
-          - name: Overview
-            href: tools/visual-studio-code-extensions/mssql/mssql-data-tier-application.md
+          href: tools/visual-studio-code-extensions/mssql/mssql-schema-designer.md
+        - name: Schema designer with GitHub Copilot
+          href: tools/visual-studio-code-extensions/mssql/mssql-schema-designer-copilot.md
+        - name: Local SQL Server container
+          href: tools/visual-studio-code-extensions/mssql/mssql-local-container.md
+        - name: Database operations
+          href: tools/visual-studio-code-extensions/mssql/mssql-database-operations.md
+        - name: Fabric integration
+          href: tools/visual-studio-code-extensions/mssql/mssql-fabric-integration.md
+        - name: Data API builder
+          href: tools/visual-studio-code-extensions/mssql/mssql-data-api-builder.md
+        - name: Query profiler
+          href: tools/visual-studio-code-extensions/mssql/mssql-query-profiler.md
+        - name: SQL Notebooks
+          href: tools/visual-studio-code-extensions/mssql/mssql-sql-notebooks.md
+        - name: Data-tier application
+          href: tools/visual-studio-code-extensions/mssql/mssql-data-tier-application.md
+        - name: Schema compare
+          href: tools/visual-studio-code-extensions/mssql/mssql-schema-compare.md
+        - name: Transition from Azure Data Studio
+          href: tools/visual-studio-code-extensions/mssql/mssql-azure-data-studio-transition.md
     - name: SQL bindings for Azure Functions
       items:
       - name: Overview
@@ -8989,10 +9021,14 @@ items:
         href: tools/visual-studio-code-extensions/sql-database-projects/getting-started-sql-database-projects-extension.md
       - name: Build from the Command Line
         href: tools/visual-studio-code-extensions/sql-database-projects/build-database-project-from-command-line.md
+      - name: Add database objects using item templates
+        href: tools/visual-studio-code-extensions/sql-database-projects/add-item-templates.md
+      - name: Publish database project
+        href: tools/visual-studio-code-extensions/sql-database-projects/publish-database-project.md
 - name: Tutorials
   items:
   - name: SQL Server
-    href: sql-server/tutorials-for-sql-server-2016.md
+    href: sql-server/tutorials-for-sql-server.md
   - name: Database Engine
     href: relational-databases/database-engine-tutorials.md
     items:
@@ -9041,7 +9077,7 @@ items:
       - name: SQL Server 2019
         href: linux/sql-server-linux-whats-new-2019.md
       - name: SQL Server 2017
-        href: linux/sql-server-linux-whats-new.md
+        href: linux/sql-server-linux-whats-new-2017.md
     - name: Editions and features
       items:
       - name: SQL Server 2025
@@ -9078,7 +9114,7 @@ items:
       href: linux/sql-server-linux-faq.yml
   - name: Getting started and deployment
     items:
-    - name: Install
+    - name: Install and upgrade
       items:
       - name: Overview
         href: linux/sql-server-linux-setup.md
@@ -9114,6 +9150,8 @@ items:
         href: linux/sql-server-linux-change-repo.md
       - name: Configure repositories (SQL Server 2025 and later)
         href: linux/sql-server-linux-change-repo-2025.md
+      - name: Upgrade SQL Server on Linux
+        href: linux/install-upgrade/upgrade-considerations.md
     - name: Quickstarts
       items:
       - name: Deploy SQL Server container cluster
@@ -9242,6 +9280,8 @@ items:
         href: linux/sql-server-linux-custom-password-policy.md
       - name: Enable Microsoft Entra manually for containers
         href: linux/authentication/container-kubernetes-microsoft-entra-deployment.md
+    - name: Configure bulk import operations
+      href: linux/sql-server-linux-bulk-operations.md
   - name: High availability and disaster recovery
     items:
     - name: Overview
@@ -9290,6 +9330,8 @@ items:
         href: linux/sql-server-linux-availability-group-overview.md
       - name: Create and configure availability groups
         href: linux/sql-server-linux-create-availability-group.md
+      - name: Configure with custom high availability logic
+        href: linux/business-continuity/high-availability/configure-custom-logic.md
       - name: Configure machine key for contained AG
         href: linux/sql-server-linux-availability-group-prepare-machine-key.md
       - name: High availability
@@ -9305,7 +9347,7 @@ items:
           - name: Pacemaker basics
             href: linux/sql-server-linux-pacemaker-basics.md
           - name: Configure an AG
-            href: linux/sql-server-linux-availability-group-configure-ha.md
+            href: linux/high-availability/availability-groups-configure.md
           - name: Configure on RHEL, SLES, and Ubuntu
             href: linux/sql-server-linux-availability-group-cluster-pacemaker.md
           - name: Configure failover
@@ -9352,7 +9394,7 @@ items:
       items:
       - name: Overview
         href: linux/sql-server-linux-migrate-ssis.md
-      - name: Limitations and known issues
+      - name: Feature support and considerations for SSIS
         href: linux/sql-server-linux-ssis-known-issues.md
       - name: Configure SSIS
         href: linux/sql-server-linux-configure-ssis.md
@@ -9512,14 +9554,20 @@ items:
         href: sql-server/azure-arc/migration-assessment.md
       - name: Migrate to Azure SQL Managed Instance
         items: 
-        - name: Overview
-          href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance.md
         - name: Prepare MI link migration 
           href: sql-server/azure-arc/migration-sql-mi-prepare-link.md
         - name: Prepare LRS migration 
           href: sql-server/azure-arc/migration-sql-mi-prepare-log-replay-service.md
+        - name: Migrate to SQL managed instance
+          href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance.md
         - name: Troubleshoot common issues 
           href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance-troubleshoot.md
+      - name: Migrate to SQL Server on Azure VMs
+        items: 
+        - name: Prepare for migration 
+          href: sql-server/azure-arc/migration-sql-vm-prepare.md
+        - name: Migrate to SQL Server VM
+          href: sql-server/azure-arc/migrate-to-sql-server-on-azure-vms.md
     - name: SQL Server enabled by Azure Arc FAQ
       href: sql-server/azure-arc/faq.yml
     - name: Data collection & reporting
@@ -9814,8 +9862,6 @@ items:
         href: big-data-cluster/runtime-for-apache-spark.md
       - name: Spark 3 upgrade guide
         href: big-data-cluster/spark-3-upgrade.md
-      - name: Submit Spark jobs in Azure Data Studio
-        href: big-data-cluster/spark-submit-job.md
       - name: Submit Spark jobs using the command line
         href: big-data-cluster/spark-submit-job-command-line.md
       - name: Submit Spark jobs in Visual Studio Code
@@ -9909,7 +9955,9 @@ items:
   - name: Blogs
     items:
     - name: SQL Server >>
-      href: https://blogs.technet.microsoft.com/dataplatforminsider/
+      href: https://www.microsoft.com/sql-server/blog/
+    - name: Azure SQL Dev Corner >>
+      href: https://devblogs.microsoft.com/azure-sql/
     - name: Database Engine >>
       href: /archive/blogs/sqlserverstorageengine/
     - name: Security >>
@@ -9936,100 +9984,6 @@ items:
       href: sql-server/partner-dev-sql-server.md
 - name: Reference
   items:
-  - name: Azure Data CLI azcli
-    items:
-    - name: Install
-      items:
-      - name: Overview
-        href: azdata/install/deploy-install-azdata.md
-      - name: On Windows
-        href: azdata/install/deploy-install-azdata-installer.md
-      - name: On macOS
-        href: azdata/install/deploy-install-azdata-macos.md
-      - name: On Linux
-        items:
-        - name: Debian or Ubuntu
-          href: azdata/install/deploy-install-azdata-linux-package.md
-        - name: Red Hat Enterprise Linux
-          href: azdata/install/deploy-install-azdata-yum.md
-        - name: SUSE Linux Enterprise Server
-          href: azdata/install/deploy-install-azdata-zypper.md
-    - name: azdata
-      href: azdata/reference/reference-azdata.md
-    - name: context
-      href: azdata/reference/reference-azdata-context.md
-    - name: extension
-      href: azdata/reference/reference-azdata-extension.md
-    - name: notebook
-      href: azdata/reference/reference-azdata-notebook.md
-    - name: postgres
-      href: azdata/reference/reference-azdata-postgres.md
-    - name: sql
-      href: azdata/reference/reference-azdata-sql.md
-    - name: Big data cluster
-      items:
-      - name: app
-        href: azdata/reference/reference-azdata-app.md
-      - name: app template
-        href: azdata/reference/reference-azdata-app-template.md
-      - name: bdc
-        href: azdata/reference/reference-azdata-bdc.md
-      - name: bdc app
-        href: azdata/reference/reference-azdata-bdc-app.md
-      - name: bdc app status
-        href: azdata/reference/reference-azdata-bdc-app-status.md
-      - name: bdc config
-        href: azdata/reference/reference-azdata-bdc-config.md
-      - name: bdc control
-        href: azdata/reference/reference-azdata-bdc-control.md
-      - name: bdc control status
-        href: azdata/reference/reference-azdata-bdc-control-status.md
-      - name: bdc debug
-        href: azdata/reference/reference-azdata-bdc-debug.md
-      - name: bdc endpoint
-        href: azdata/reference/reference-azdata-bdc-endpoint.md
-      - name: bdc gateway
-        href: azdata/reference/reference-azdata-bdc-gateway.md
-      - name: bdc gateway settings
-        href: azdata/reference/reference-azdata-bdc-gateway-settings.md
-      - name: bdc gateway status
-        href: azdata/reference/reference-azdata-bdc-gateway-status.md
-      - name: bdc hdfs
-        href: azdata/reference/reference-azdata-bdc-hdfs.md
-      - name: bdc hdfs encryption zone
-        href: azdata/reference/reference-azdata-bdc-hdfs-encryption-zone.md
-      - name: bdc hdfs key
-        href: azdata/reference/reference-azdata-bdc-hdfs-key.md
-      - name: bdc hdfs mount
-        href: azdata/reference/reference-azdata-bdc-hdfs-mount.md
-      - name: bdc hdfs settings
-        href: azdata/reference/reference-azdata-bdc-hdfs-settings.md
-      - name: bdc hdfs status
-        href: azdata/reference/reference-azdata-bdc-hdfs-status.md
-      - name: bdc rotate
-        href: azdata/reference/reference-azdata-bdc-rotate.md
-      - name: bdc settings
-        href: azdata/reference/reference-azdata-bdc-settings.md
-      - name: bdc spark
-        href: azdata/reference/reference-azdata-bdc-spark.md
-      - name: bdc spark batch
-        href: azdata/reference/reference-azdata-bdc-spark-batch.md
-      - name: bdc spark session
-        href: azdata/reference/reference-azdata-bdc-spark-session.md
-      - name: bdc spark settings
-        href: azdata/reference/reference-azdata-bdc-spark-settings.md
-      - name: bdc spark statement
-        href: azdata/reference/reference-azdata-bdc-spark-statement.md
-      - name: bdc spark status
-        href: azdata/reference/reference-azdata-bdc-spark-status.md
-      - name: bdc sql
-        href: azdata/reference/reference-azdata-bdc-sql.md
-      - name: bdc sql settings
-        href: azdata/reference/reference-azdata-bdc-sql-settings.md
-      - name: bdc sql status
-        href: azdata/reference/reference-azdata-bdc-sql-status.md
-      - name: bdc status
-        href: azdata/reference/reference-azdata-bdc-status.md
   - name: Database samples
     items:
     - name: Overview
@@ -12664,6 +12618,18 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql.md
       - name: sys.dm_workload_management_workload_groups_stats
         href: relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql.md
+    - name: Linux operating system
+      items:
+      - name: Overview
+        href: relational-databases/system-dynamic-management-views/linux-related-dynamic-management-views-and-functions-transact-sql.md
+      - name: sys.dm_os_linux_cpu_stats
+        href: relational-databases/system-dynamic-management-views/sys-dm-os-linux-cpu-stats-transact-sql.md
+      - name: sys.dm_os_linux_disk_stats
+        href: relational-databases/system-dynamic-management-views/sys-dm-os-linux-disk-stats-transact-sql.md
+      - name: sys.dm_os_linux_net_stats
+        href: relational-databases/system-dynamic-management-views/sys-dm-os-linux-net-stats-transact-sql.md
+      - name: sys.dm_os_linux_vm_stats
+        href: relational-databases/system-dynamic-management-views/sys-dm-os-linux-vm-stats-transact-sql.md
     - name: SQL Server Operating System
       href: relational-databases/system-dynamic-management-views/sql-server-operating-system-related-dynamic-management-views-transact-sql.md
       items:
@@ -13133,7 +13099,7 @@ items:
         href: relational-databases/system-stored-procedures/sp-describe-cursor-tables-transact-sql.md
       - name: sp_execute
         href: relational-databases/system-stored-procedures/sp-execute-transact-sql.md
-      - name: sp_prepare (Transact SQL)
+      - name: sp_prepare (Transact-SQL)
         href: relational-databases/system-stored-procedures/sp-prepare-transact-sql.md
       - name: sp_prepexec
         href: relational-databases/system-stored-procedures/sp-prepexec-transact-sql.md
@@ -15642,13 +15608,17 @@ items:
       - name: DBCC USEROPTIONS
         href: t-sql/database-console-commands/dbcc-useroptions-transact-sql.md
     - name: Functions
-      href: t-sql/functions/functions.md
       items:
-      - name: ODBC Scalar
+      - name: Overview
+        href: t-sql/functions/functions.md
+      - name: ODBC scalar
         href: t-sql/functions/odbc-scalar-functions-transact-sql.md
       - name: Aggregate
-        href: t-sql/functions/aggregate-functions-transact-sql.md
         items:
+        - name: Overview
+          href: t-sql/functions/aggregate-functions-transact-sql.md
+        - name: ANY_VALUE
+          href: t-sql/functions/any-value-transact-sql.md
         - name: APPROX_COUNT_DISTINCT
           href: t-sql/functions/approx-count-distinct-transact-sql.md
         - name: APPROX_PERCENTILE_CONT
@@ -15684,8 +15654,9 @@ items:
         - name: VARP
           href: t-sql/functions/varp-transact-sql.md
       - name: AI
-        href: t-sql/functions/ai-functions-transact-sql.md
         items:
+        - name: Overview
+          href: t-sql/functions/ai-functions-transact-sql.md
         - name: AI_GENERATE_EMBEDDINGS
           href: t-sql/functions/ai-generate-embeddings-transact-sql.md
         - name: AI_GENERATE_CHUNKS
@@ -15735,7 +15706,6 @@ items:
         - name: Collation - TERTIARY_WEIGHTS
           href: t-sql/functions/collation-functions-tertiary-weights-transact-sql.md
       - name: Configuration
-        href: t-sql/functions/configuration-functions-transact-sql.md
         items:
         - name: '@@DBTS'
           href: t-sql/functions/dbts-transact-sql.md
@@ -16197,7 +16167,6 @@ items:
         - name: USER_NAME
           href: t-sql/functions/user-name-transact-sql.md
       - name: String
-        href: t-sql/functions/string-functions-transact-sql.md
         items:
         - name: ASCII
           href: t-sql/functions/ascii-transact-sql.md
@@ -16521,16 +16490,20 @@ items:
             href: t-sql/language-elements/bitwise-operators-transact-sql.md
           - name: '& (Bitwise AND)'
             href: t-sql/language-elements/bitwise-and-transact-sql.md
-          - name: '&= (Bitwise & Assignment)'
+          - name: '&= (Bitwise & assignment)'
             href: t-sql/language-elements/bitwise-and-equals-transact-sql.md
           - name: '| (Bitwise OR)'
             href: t-sql/language-elements/bitwise-or-transact-sql.md
-          - name: '|= (Bitwise OR Assignment)'
+          - name: '|= (Bitwise OR assignment)'
             href: t-sql/language-elements/bitwise-or-equals-transact-sql.md
-          - name: ^ (Bitwise Exclusive OR)
+          - name: ^ (Bitwise exclusive OR)
             href: t-sql/language-elements/bitwise-exclusive-or-transact-sql.md
-          - name: ^= (Bitwise Exclusive OR Assignment)
+          - name: ^= (Bitwise exclusive OR assignment)
             href: t-sql/language-elements/bitwise-exclusive-or-equals-transact-sql.md
+          - name: << (Bitwise left shift)
+            href: t-sql/functions/left-shift-transact-sql.md
+          - name: \>\> (Bitwise right shift)
+            href: t-sql/functions/right-shift-transact-sql.md
           - name: ~ (Bitwise NOT)
             href: t-sql/language-elements/bitwise-not-transact-sql.md
         - name: Comparison
@@ -16696,25 +16669,26 @@ items:
         - name: WRITETEXT
           href: t-sql/queries/writetext-transact-sql.md
       - name: SELECT
-        href: t-sql/queries/select-transact-sql.md
         items:
-        - name: SELECT Clause
+        - name: Overview
+          href: t-sql/queries/select-transact-sql.md
+        - name: SELECT clause
           href: t-sql/queries/select-clause-transact-sql.md
-        - name: SELECT Examples
+        - name: SELECT examples
           href: t-sql/queries/select-examples-transact-sql.md
-        - name: SELECT - FOR Clause
+        - name: SELECT - FOR clause
           href: t-sql/queries/select-for-clause-transact-sql.md
         - name: SELECT - GROUP BY
           href: t-sql/queries/select-group-by-transact-sql.md
-        - name: SELECT - WINDOW Clause
+        - name: SELECT - WINDOW clause
           href: t-sql/queries/select-window-transact-sql.md
         - name: SELECT - HAVING
           href: t-sql/queries/select-having-transact-sql.md
-        - name: SELECT - INTO Clause
+        - name: SELECT - INTO clause
           href: t-sql/queries/select-into-clause-transact-sql.md
-        - name: SELECT - ORDER BY Clause
+        - name: SELECT - ORDER BY clause
           href: t-sql/queries/select-order-by-clause-transact-sql.md
-        - name: SELECT - OVER Clause
+        - name: SELECT - OVER clause
           href: t-sql/queries/select-over-clause-transact-sql.md
       - name: FROM plus JOIN, APPLY, PIVOT
         href: t-sql/queries/from-transact-sql.md

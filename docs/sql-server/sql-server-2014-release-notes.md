@@ -29,14 +29,14 @@ SQL Server 2014 SP2 contains rollups of released hotfixes for SQL Server 2014 SP
 | Dynamic Memory Object Scaling | Dynamically partition memory object based on number of nodes and cores. This enhancement eliminates the need of trace flag 8048 post SQL 2014 SP2. | [Dynamic Memory Object Scaling](/archive/blogs/sql_server_team/dynamic-memory-object-scaling) |
 | `MAXDOP` hint for `DBCC CHECK*` commands | This improvement is useful to run DBCC CHECKDB with a `MAXDOP` setting other than the `sp_configure` value. | [Query hints](../t-sql/queries/hints-transact-sql-query.md) |
 | SOS_RWLock spinlock improvement | Removes the need for spinlock for SOS_RWLock and instead uses lock-free techniques similar to in-memory OLTP. | [SOS_RWLock Redesign](/archive/blogs/psssql/sql-2016-it-just-runs-faster-sos_rwlock-redesign) |
-| Spatial Native Implementation | Significant improvement in spatial query performance. | [Spatial performance improvements in SQL Server 2012 and 2014](https://support.microsoft.com/help/3107399/spatial-performance-improvements-in-sql-server-2012-and-2014) |
+| Spatial Native Implementation | Significant improvement in spatial query performance. | |
 
 ### Supportability and diagnostics improvements in SP2
 
 | Feature | Description | For more information |
 | --- | --- | --- |
 | Always On timeout logging | Added new logging capability for Lease Timeout messages so that the current time and the expected renewal times are logged. | [Improved Always On Availability Group Lease Timeout Diagnostics](/archive/blogs/alwaysonpro/improved-alwayson-availability-group-lease-timeout-diagnostics) |
-| Always On XEvents and performance counters | New Always On XEvents and performance counters to improve diagnostics when troubleshooting latency issues with Always On. | [KB 3107172](https://support.microsoft.com/help/3107172/improve-tempdb-spill-diagnostics-by-using-extended-events-in-sql-serve) and [KB 3107400](https://support.microsoft.com/help/3107400/improved-tempdb-spill-diagnostics-in-showplan-xml-schema-in-sql-server) |
+| Always On XEvents and performance counters | New Always On XEvents and performance counters to improve diagnostics when troubleshooting latency issues with Always On. | |
 | Change tracking cleanup | A new stored procedure `sp_flush_CT_internal_table_on_demand` cleans up change tracking internal tables on demand. | [KB 3173157](https://support.microsoft.com/help/3173157/adds-a-stored-procedure-for-the-manual-cleanup-of-the-change-tracking) |
 | Database cloning | Use the new DBCC command to troubleshoot existing production databases by cloning the schema, metadata, and statistics but without the data. Cloned databases aren't meant to be used in production environments. | [Create a clone of a database that includes schema, statistics and Query Store](../t-sql/database-console-commands/dbcc-clonedatabase-transact-sql.md#a-create-a-clone-of-a-database-that-includes-schema-statistics-and-query-store) |
 | DMF additions | New DMF `sys.dm_db_incremental_stats_properties` expose information per-partition for incremental statistics. | [KB 3170114](https://support.microsoft.com/help/3170114/update-to-add-dmf-sys-dm-db-incremental-stats-properties-in-sql-server) |
@@ -46,7 +46,7 @@ SQL Server 2014 SP2 contains rollups of released hotfixes for SQL Server 2014 SP
 | Memory Grants - Handling issues | You can use diagnostic hints while running queries by capping their memory grants to prevent memory contention. | [Query hints](../t-sql/queries/hints-transact-sql-query.md) |
 | Query execution lightweight per-operator profiling | Optimizes collecting per-operator query execution statistics such as actual number of rows. | [Developers Choice: Query progress - anytime, anywhere](/archive/blogs/sql_server_team/query-progress-anytime-anywhere) |
 | Query execution diagnostics | Actual rows read are now reported in the query execution plans to help improve query performance troubleshooting. | [KB 3107397](https://support.microsoft.com/help/3107397/improved-diagnostics-for-query-execution-plans-that-involve-residual-p) |
-| Query execution diagnostics for `tempdb` spill | Hash Warning and Sort Warnings now have additional columns to track physical I/O statistics, memory used, and rows affected. | [Improve temptdb spill diagnostics](https://support.microsoft.com/help/3107172/improve-tempdb-spill-diagnostics-by-using-extended-events-in-sql-serve) |
+| Query execution diagnostics for `tempdb` spill | Hash Warning and Sort Warnings now have additional columns to track physical I/O statistics, memory used, and rows affected. | |
 | `tempdb` supportability | Use a new Errorlog message for the number of tempdb files, and tempdb data file changes, at server startup. | [KB 2963384](https://support.microsoft.com/help/2963384/fix-sql-server-crashes-when-the-log-file-of-tempdb-database-is-full-in) |
 
 In addition, note the following fixes:

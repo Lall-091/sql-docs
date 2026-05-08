@@ -1,3 +1,12 @@
+---
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: rotabor, alexwolf
+ms.date: 01/13/2026
+ms.service: azure-sql-database
+ms.topic: include
+---
+
 The following steps are required to create a passwordless connection between the App Service instance and Azure SQL Database:
 
 1) Create a managed identity for the App Service. The `Microsoft.Data.SqlClient` library included in your app will automatically discover the managed identity, just like it discovered your local Visual Studio user.

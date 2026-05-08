@@ -1,20 +1,20 @@
 ---
 title: Create and Deploy a SQL Project
-description: "Deploy a SQL project tutorial for SQL DevOps."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+description: Deploy a SQL project tutorial for SQL DevOps.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: tutorial
 ms.collection:
   - data-tools
-zone_pivot_groups: sq1-sql-projects-tools
 ms.custom:
   - ignite-2024
   - sfi-image-nochange
   - sfi-ropc-nochange
+zone_pivot_groups: sq1-sql-projects-tools
 ---
 
 # Tutorial: Create and deploy a SQL project
@@ -50,17 +50,25 @@ If you've already completed the steps to [get started with SQL database projects
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools, SDK-style (preview) installed in Visual Studio 2022](../../../ssdt/sql-server-data-tools-sdk-style.md)
+- [SQL Server Data Tools, SDK-style (preview)](../../../ssdt/sql-server-data-tools-sdk-style.md)
 
 ::: zone-end
 
 ::: zone pivot="sq1-visual-studio-code"
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [VS Code](https://code.visualstudio.com/Download)
-- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
+- [Visual Studio Code](https://code.visualstudio.com/Download)
+- [SQL Database Projects extension](../../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- [SQL Server Management Studio (SSMS)](/ssms/install/install)
+- [Database DevOps workload installed in SSMS](/ssms/install/modify)
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 
@@ -121,7 +129,7 @@ Select **Create** to create the project. The empty project is opened and visible
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, select the **New Project** button.
+In the **Database Projects** view of Visual Studio Code, select the **New Project** button.
 
 :::image type="content" source="media/create-deploy-sql-project/projects-viewlet.png" alt-text="Screenshot of New viewlet.":::
 
@@ -134,6 +142,20 @@ In the "Select a Folder" dialog that appears, select a directory for the project
 When prompted whether to create an SDK-style project, select **Yes**.
 
 Once completed, the empty project is opened and visible in the **Database Projects** view for editing.
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+Select **File**, **New**, then **Project**.
+
+In the **New Project** dialog box, select **SQL Database Project**.
+
+:::image type="content" source="media/create-deploy-sql-project/new-project-dialog-ssms.png" alt-text="Screenshot of New project dialog." lightbox="media/create-deploy-sql-project/new-project-dialog-ssms.png":::
+
+Select **Next** to proceed to the next step. Provide a project name, which doesn't need to match a database name. Verify and modify the project location as needed.
+
+Select **Create** to create the project. The empty project is opened and visible in the **Solution Explorer** for editing.
 
 ::: zone-end
 
@@ -174,11 +196,21 @@ More database objects can be added through the **Add New Item** dialog, such as 
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Add Table**. In the dialog that appears, specify the table name.
+In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Add Table**. In the dialog that appears, specify the table name.
 
 The table is opened in the text editor with the template table definition, where you can add columns, indexes, and other table properties. Save the file when you're done making the initial edits.
 
-More database objects can be added through the context menu on the project node, such as views, stored procedures, and functions. Access the dialog by right-clicking the project node in **Database Projects** view of VS Code or Azure Data Studio, then the desired object type. Files in the project can be organized into folders through the **New Folder** option under **Add**.
+More database objects can be added through the context menu on the project node, such as views, stored procedures, and functions. Access the dialog by right-clicking the project node in **Database Projects** view of Visual Studio Code, then the desired object type. Files in the project can be organized into folders through the **New Folder** option under **Add**.
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+In **Solution Explorer**, right-click the project node and select **Add**, then **New Item**. The **Add New Item** dialog appears, select **Show All Templates** and then **Table**. Specify the table name as the file name and select **Add** to create the table in the SQL project.
+
+The table is opened in the SQL Server Management Studio query editor with the template table definition, where you can add columns, indexes, and other table properties. Save the file when you're done making the initial edits.
+
+More database objects can be added through the **Add New Item** dialog, such as views, stored procedures, and functions. Access the dialog by right-clicking the project node in **Solution Explorer** and selecting **Add**, then the desired object type after **Show All Templates**. Files in the project can be organized into folders through the **New Folder** option under **Add**.
 
 ::: zone-end
 
@@ -219,9 +251,19 @@ The output window automatically opens to display the build process. If there are
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Build**.
+In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Build**.
 
 The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin/Debug/projectname.dacpac`).
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+In **Solution Explorer**, right-click the project node and select **Build**.
+
+:::image type="content" source="media/create-deploy-sql-project/ssms-solution-explorer.png" alt-text="Screenshot of Solution Explorer in SQL Server Management Studio with the Build option available.":::
+
+The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin\Debug\projectname.dacpac`).
 
 ::: zone-end
 
@@ -248,15 +290,15 @@ We will initialize our project as a Git repository and commit the project files 
 
 1. From the **Git** menu in Visual Studio, select **Create Git Repository**.
 
-    :::image type="content" source="media/create-deploy-sql-project/vs-git-menu-create-git-repository.png" alt-text="Screenshot of the Create Git Repository option from the Git menu in Visual Studio.":::
+   :::image type="content" source="media/create-deploy-sql-project/vs-git-menu-create-git-repository.png" alt-text="Screenshot of the Create Git Repository option from the Git menu in Visual Studio.":::
 
 1. In the **Create a Git repository** dialog, under the **Push to a new remote** section, choose **GitHub**.
 
 1. In the **Create a new GitHub repository** section of the **Create a Git repository** dialog, enter the name of the repo you want to create. (If you haven't yet signed in to your GitHub account, you can do so from this screen, too.)
 
-    :::image type="content" source="media/create-deploy-sql-project/vs-git-create-repo-dialog.png" alt-text="Screenshot of the Create Git Repository dialog in Visual Studio with the GitHub selection highlighted." lightbox="media/create-deploy-sql-project/vs-git-create-repo-dialog.png":::
+   :::image type="content" source="media/create-deploy-sql-project/vs-git-create-repo-dialog.png" alt-text="Screenshot of the Create Git Repository dialog in Visual Studio with the GitHub selection highlighted." lightbox="media/create-deploy-sql-project/vs-git-create-repo-dialog.png":::
 
-    Under **Initialize a local Git Repository**, you should use the **.gitignore template** option to specify any intentionally untracked files that you want Git to ignore. To learn more about .gitignore, see [Ignoring files](https://docs.github.com/get-started/getting-started-with-git/ignoring-files). And to learn more about licensing, see [Licensing a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
+   Under **Initialize a local Git Repository**, you should use the **.gitignore template** option to specify any intentionally untracked files that you want Git to ignore. To learn more about .gitignore, see [Ignoring files](https://docs.github.com/get-started/git-basics/ignoring-files). And to learn more about licensing, see [Licensing a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
 
 1. After you sign in and enter your repo info, select the **Create and Push** button to create your repo and add your app.
 
@@ -264,23 +306,49 @@ We will initialize our project as a Git repository and commit the project files 
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-In **Solution Explorer**, right-click the project node and select **Publish...**.
+1. From the **Git** menu in Visual Studio, select **Create Git Repository**.
 
-The publish dialog opens, where you establish the **target database connection**. If you don't have an existing SQL instance for deployment, LocalDB (`(localdb)\MSSQLLocalDB`) is installed with Visual Studio and can be used for testing and development.
+   :::image type="content" source="media/create-deploy-sql-project/vs-git-menu-create-git-repository.png" alt-text="Screenshot of the Create Git Repository option from the Git menu in Visual Studio.":::
 
-Specify a database name and select **Publish** to deploy the project to the target database or **Generate Script** to generate a script to review before executing.
+1. In the **Create a Git repository** dialog, under the **Push to a new remote** section, choose **GitHub**.
+
+1. In the **Create a new GitHub repository** section of the **Create a Git repository** dialog, enter the name of the repo you want to create. (If you haven't yet signed in to your GitHub account, you can do so from this screen, too.)
+
+   :::image type="content" source="media/create-deploy-sql-project/vs-git-create-repo-dialog.png" alt-text="Screenshot of the Create Git Repository dialog in Visual Studio with the GitHub selection highlighted." lightbox="media/create-deploy-sql-project/vs-git-create-repo-dialog.png":::
+
+   Under **Initialize a local Git Repository**, you should use the **.gitignore template** option to specify any intentionally untracked files that you want Git to ignore. To learn more about .gitignore, see [Ignoring files](https://docs.github.com/get-started/git-basics/ignoring-files). And to learn more about licensing, see [Licensing a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
+
+1. After you sign in and enter your repo info, select the **Create and Push** button to create your repo and add your app.
 
 ::: zone-end
 
 ::: zone pivot="sq1-visual-studio-code"
 
-You can initialize and local repository and publish it directly to GitHub from VS Code or Azure Data Studio. This action creates a new repository on your GitHub account and pushes your local code changes to the remote repository in a single step.
+You can initialize and local repository and publish it directly to GitHub from Visual Studio Code. This action creates a new repository on your GitHub account and pushes your local code changes to the remote repository in a single step.
 
-Use the **Publish to GitHub** button in the Source Control view in VS Code or Azure Data Studio. You're then prompted to specify a name and description for the repository, and as well as whether to make it public or private.
+Use the **Publish to GitHub** button in the Source Control view in Visual Studio Code. You're then prompted to specify a name and description for the repository, and as well as whether to make it public or private.
 
 :::image type="content" source="media/create-deploy-sql-project/vsc-publish-to-github.png" alt-text="Screenshot of the Create Git Repository dialog in Visual Studio with the GitHub selection highlighted." lightbox="media/create-deploy-sql-project/vsc-publish-to-github.png":::
 
 Alternatively, you can initialize a local repository and push it to GitHub following the steps provided when you create an empty [repository on GitHub](https://docs.github.com/repositories/creating-and-managing-repositories/creating-a-new-repository).
+
+::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+1. From the **Git** menu in SQL Server Management Studio, select **Create Git Repository**.
+
+   :::image type="content" source="media/create-deploy-sql-project/ssms-git-menu-create-git-repository.png" alt-text="Screenshot of the Create Git Repository option from the Git menu in SQL Server Management Studio.":::
+
+1. In the **Create a Git repository** dialog, under the **Push to a new remote** section, choose **GitHub**.
+
+1. In the **Create a new GitHub repository** section of the **Create a Git repository** dialog, enter the name of the repo you want to create. (If you haven't yet signed in to your GitHub account, you can do so from this screen, too.)
+
+   :::image type="content" source="media/create-deploy-sql-project/ssms-git-create-repo-dialog.png" alt-text="Screenshot of the Create Git Repository dialog in SQL Server Management Studio with the GitHub selection highlighted." lightbox="media/create-deploy-sql-project/ssms-git-create-repo-dialog.png":::
+
+   Under **Initialize a local Git Repository**, you should use the **.gitignore template** option to specify any intentionally untracked files that you want Git to ignore. To learn more about .gitignore, see [Ignoring files](https://docs.github.com/get-started/git-basics/ignoring-files). And to learn more about licensing, see [Licensing a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
+
+1. After you sign in and enter your repo info, select the **Create and Push** button to create your repo and add your app.
 
 ::: zone-end
 
@@ -311,33 +379,33 @@ SQL projects are backed by a .NET library and as a result the projects are built
 1. In the `.github/workflows` directory, create a new file named `sqlproj-sample.yml`.
 1. Add the following content to the `sqlproj-sample.yml` file, editing the project name to match the name and path of your project:
 
-    ```yml
-    name: sqlproj-sample
+   ```yml
+   name: sqlproj-sample
 
-    on:
-      push:
-        branches: [ "main" ]
+   on:
+     push:
+       branches: [ "main" ]
 
-    jobs:
-      build:
-        runs-on: ubuntu-latest
+   jobs:
+     build:
+       runs-on: ubuntu-latest
 
-        steps:
-        - uses: actions/checkout@v4
+       steps:
+       - uses: actions/checkout@v4
 
-        - name: Setup .NET
-          uses: actions/setup-dotnet@v4
-          with:
-            dotnet-version: 8.0.x
+       - name: Setup .NET
+         uses: actions/setup-dotnet@v4
+         with:
+           dotnet-version: 8.0.x
 
-        - name: Build
-          run: dotnet build MyDatabaseProject.sqlproj
-    ```
+       - name: Build
+         run: dotnet build MyDatabaseProject.sqlproj
+   ```
 
 1. Commit the workflow file to the repository and push the changes to the remote repository.
 1. On GitHub.com, navigate to the main page of the repository. Under your repository name, select **Actions**. In the left sidebar, select the workflow you just created. A recent run of the workflow should appear in the list of workflow runs from when you pushed the workflow file to the repository.
 
-More information on the fundamentals of creating your first GitHub actions workflow is available in the [GitHub Actions quickstart](https://docs.github.com/actions/writing-workflows/quickstart).
+More information on the fundamentals of creating your first GitHub actions workflow is available in the [GitHub Actions quickstart](https://docs.github.com/actions/get-started/quickstart).
 
 ## Step 6: Add a `.dacpac` deployment step to a continuous deployment pipeline
 
@@ -357,24 +425,24 @@ The deployment process is idempotent, meaning it can be run multiple times witho
 1. Open the `sqlproj-sample.yml` file in the `.github/workflows` directory.
 1. Add the following step to the `sqlproj-sample.yml` file after the build step:
 
-    ```yml
-    - name: Deploy
-      uses: azure/sql-action@v2
-      with:
-        connection-string: ${{ secrets.SQL_CONNECTION_STRING }}
-        action: 'publish'
-        path: 'bin/Debug/MyDatabaseProject.dacpac'
-    ```
+   ```yml
+   - name: Deploy
+     uses: azure/sql-action@v2
+     with:
+       connection-string: ${{ secrets.SQL_CONNECTION_STRING }}
+       action: 'publish'
+       path: 'bin/Debug/MyDatabaseProject.dacpac'
+   ```
 
 1. Before committing the changes, add a secret to the repository that contains the connection string to the target database. In the repository on GitHub.com, navigate to **Settings**, then **Secrets**. Select **New repository secret** and add a secret named `SQL_CONNECTION_STRING` with the value of the connection string to the target database.
 
-    :::image type="content" source="media/create-deploy-sql-project/github-repository-secret.png" alt-text="Screenshot of the GitHub repository settings with the New repository secret button highlighted." lightbox="media/create-deploy-sql-project/github-repository-secret.png":::
+   :::image type="content" source="media/create-deploy-sql-project/github-repository-secret.png" alt-text="Screenshot of the GitHub repository settings with the New repository secret button highlighted." lightbox="media/create-deploy-sql-project/github-repository-secret.png":::
 
 1. Commit the changes from `sqlproj-sample.yml` to the repository and push the changes to the remote repository.
 1. Navigate back to the workflow history on GitHub.com and select the most recent run of the workflow. The deployment step should be visible in the list of steps for the workflow run and the workflow returns a success code.
 1. Verify the deployment by connecting to the target database and checking that the objects in the project are present in the database.
 
-GitHub deployments can be further secured by establishing an environment relationship in a workflow and requiring approval before a deployment is run. More information on environment protection and protecting secrets is available in the [GitHub Actions documentation](https://docs.github.com/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions).
+GitHub deployments can be further secured by establishing an environment relationship in a workflow and requiring approval before a deployment is run. More information on environment protection and protecting secrets is available in the [GitHub Actions documentation](https://docs.github.com/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets).
 
 ## Get help
 
@@ -385,4 +453,5 @@ GitHub deployments can be further secured by establishing an environment relatio
 
 - [Compare a database and a project](../howto/compare-database-project.md)
 - [Convert an original SQL project to an SDK-style project](../howto/convert-original-sql-project.md)
+- [Publish SQL database projects from Visual Studio Code](../../visual-studio-code-extensions/sql-database-projects/publish-database-project.md)
 - [SqlPackage Publish parameters, properties, and SQLCMD variables](../../sqlpackage/sqlpackage-publish.md)

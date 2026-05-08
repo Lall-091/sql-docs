@@ -6,7 +6,7 @@ ms.author: niball
 ms.date: "1/22/2020"
 ms.service: sql
 ms.subservice: ssma
-ms.topic: "article"
+ms.topic: concept-article
 ms.collection:
   - sql-migration-content
 ms.devlang: sql

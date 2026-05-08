@@ -3,8 +3,8 @@ title: Encrypt Connections to SQL Server on Linux
 description: SQL Server on Linux uses TLS to encrypt data transmitted across a network between a client application and an instance of SQL Server.
 author: amitkh-msft
 ms.author: amitkh
-ms.reviewer: vanto, randolphwest
-ms.date: 08/14/2024
+ms.reviewer: randolphwest
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -20,7 +20,10 @@ helpviewer_keywords:
 [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux can use Transport Layer Security (TLS) to encrypt data that is transmitted across a network between a client application and an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] supports the same TLS protocols on both Windows and Linux: 1.2, 1.1, and 1.0.
 
 > [!NOTE]  
-> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], TLS 1.3 is enabled by default.
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]:
+>
+> - TLS 1.3 is enabled by default
+> - SUSE Linux Enterprise Server (SLES) isn't supported
 
 The steps to configure TLS are specific to the operating system on which [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is running.
 
@@ -134,7 +137,7 @@ systemctl restart mssql-server
 
   :::image type="content" source="media/sql-server-linux-encrypted-connections/ssms-encrypt-connection.png" alt-text="Screenshot of SQL Server Management Studio connection dialog.":::
 
-- **sqlcmd**
+- **`sqlcmd`**
 
   `sqlcmd -S <sqlhostname> -N -U sa -P '<password>'`
 
@@ -199,7 +202,7 @@ systemctl restart mssql-server
 > [!CAUTION]  
 > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-- **sqlcmd**
+- **`sqlcmd`**
 
   `sqlcmd -S <sqlhostname> -U sa -P '<password>'`
 

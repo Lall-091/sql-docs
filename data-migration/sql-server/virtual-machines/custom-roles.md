@@ -6,7 +6,7 @@ author: rwestMSFT
 ms.author: randolphwest
 ms.date: 10/13/2025
 ms.service: azure-database-migration-service
-ms.topic: conceptual
+ms.topic: how-to
 ms.collection:
   - sql-migration-content
 ---

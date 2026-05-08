@@ -4,7 +4,7 @@ description: Learn how to build and run the website application after you create
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: tutorial
 ms.custom:
   - updatefrequency5
 ---

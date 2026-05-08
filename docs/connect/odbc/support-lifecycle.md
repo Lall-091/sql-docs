@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 05/09/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Support lifecycle for Microsoft ODBC Driver for SQL Server
 

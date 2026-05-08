@@ -4,7 +4,7 @@ description: "SQL Server Reporting Services native mode uses two SQL Server rela
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---
@@ -65,6 +65,8 @@ The **Report Server Installation Options** page has only one option for SharePoi
 
 - Azure SQL Managed Instance
 
+- SQL Server 2025
+
 - SQL Server 2022
 
 - SQL Server 2019
@@ -93,7 +95,7 @@ If you create the report server database on a remote computer, configure the con
   
 ## Edition requirements for a database server 
 
- When you create a report server database, not all editions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] can be used to host the database. For more information, see [Edition requirements for the report server database](../reporting-services-features-supported-by-the-editions-of-sql-server-2016.md#edition-requirements-for-the-report-server-database) in [SQL Server Reporting Services features supported by its editions](../reporting-services-features-supported-by-the-editions-of-sql-server-2016.md).  
+ When you create a report server database, not all editions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] can be used to host the database. For more information, see [Edition requirements for the report server database](../reporting-services-features-supported-by-the-editions-of-sql-server.md#edition-requirements-for-the-report-server-database) in [SQL Server Reporting Services features supported by its editions](../reporting-services-features-supported-by-the-editions-of-sql-server.md).  
 
 ## Related content
 

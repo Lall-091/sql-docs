@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, dfurman
 ms.date: 11/25/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: article
+ms.topic: how-to
 helpviewer_keywords:
   - "ADR Preallocation Factor"
 ---

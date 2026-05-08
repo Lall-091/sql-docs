@@ -33,7 +33,7 @@ This tutorial is intended as a brief introduction to the [!INCLUDE [tsql](../inc
 
 ## Find more information
 
-To find more information about any specific statement, either search for the statement by name, or use the contents to browse the language elements listed alphabetically under [Transact-SQL reference (Database Engine)](language-reference.md). Another good strategy for finding information is to search for key words that are related to the subject matter you're interested in. For example, if you want to know how to return a part of a date (such as the month), search the index for **dates [SQL Server]**, and then select **dateparts**. This takes you to the article [DATEPART](functions/datepart-transact-sql.md). As another example, to find out how to work with strings, search for **string functions**. This takes you to the article [String Functions](functions/string-functions-transact-sql.md).
+To find more information about any specific statement, either search for the statement by name, or use the contents to browse the language elements listed alphabetically under [Transact-SQL reference (Database Engine)](language-reference.md). Another good strategy for finding information is to search for key words that are related to the subject matter you're interested in. For example, if you want to know how to return a part of a date (such as the month), search the index for **dates [SQL Server]**, and then select **dateparts**. This takes you to the article [DATEPART](functions/datepart-transact-sql.md). For more information, see [What are the SQL database functions?](functions/functions.md)
 
 ## What you'll learn
 

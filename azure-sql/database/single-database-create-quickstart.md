@@ -4,7 +4,7 @@ description: Create a single database in Azure SQL Database using the Azure port
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 08/25/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -24,7 +24,7 @@ Watch this video in the [Azure SQL Database essentials series](/shows/azure-sql-
 
 ## Prerequisites
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - Much of this article can be accomplished with the Azure portal alone. Optionally, use the latest version of [Azure PowerShell](/powershell/azure/install-az-ps) or [Azure CLI](/cli/azure/install-azure-cli-windows).
 
 ### Permissions
@@ -43,10 +43,11 @@ This quickstart creates a single database in the [serverless compute tier](serve
 
 To create a single database in the Azure portal:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/single-database-create-quickstart/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/single-database-create-quickstart/show-options-create-sql-database.png":::
+   :::image type="content" source="media/single-database-create-quickstart/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/single-database-create-quickstart/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 1. For **Resource group**, select **Create new**, enter *myResourceGroup*, and select **OK**.
@@ -58,6 +59,8 @@ To create a single database in the Azure portal:
     - **Authentication method**: Select **Use SQL authentication**.
     - **Server admin login**: Enter *azureuser*.
     - **Password**: Enter a password that meets requirements, and enter it again in the **Confirm password** field.
+
+   [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
    Select **OK**.
 
@@ -119,6 +122,8 @@ Change the location as appropriate for your environment. Replace `0.0.0.0` with 
 
 :::code language="azurecli" source="~/../azure_cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh" id="SetParameterValues":::
 
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
+
 ### Create a resource group
 
 Create a resource group with the [az group create](/cli/azure/group) command. An Azure resource group is a logical container into which Azure resources are deployed and managed. The following example creates a resource group named *myResourceGroup* in the *eastus* Azure region:
@@ -171,6 +176,8 @@ When Cloud Shell opens, verify that **PowerShell** is selected for your environm
 ### Set parameter values
 
 The following values are used in subsequent commands to create the database and required resources. Server names need to be globally unique across all of Azure so the [Get-Random](/powershell/module/microsoft.powershell.utility/get-random) cmdlet is used to create the server name.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 In the following code snippet:
 
@@ -255,8 +262,9 @@ Create a single database with the [New-AzSqlDatabase](/powershell/module/az.sql/
 
 Once your database is created, you can use the **Query editor (preview)** in the Azure portal to connect to the database and query data. For more information, see [Azure portal query editor for Azure SQL Database](query-editor.md).
 
-1. In the portal, search for and select **SQL databases**, and then select your database from the list.
-1. On the page for your database, select **Query editor (preview)** in the left menu.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**. Select your database from the list.
+1. In the resource menu, select **Query editor (preview)**.
 1. Enter your **SQL authentication** server admin login information or use **Microsoft Entra authentication**.
 
     [!INCLUDE [entra-id](../includes/entra-id.md)]

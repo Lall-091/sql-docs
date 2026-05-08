@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 04/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: reference
 ms.collection:
   - data-tools
 ms.custom: sfi-ropc-blocked
@@ -61,6 +61,13 @@ SqlPackage /Action:Extract /TargetFile:"C:\AdventureWorksLT.dacpac" /UniversalAu
 ```
 
 ```powershell
+$ClientId      = "<app-registration-client-id>"
+$ClientSecret  = "<client-secret>"
+
+# Convert the service principal client secret into a SecureString and create a PSCredential object for authentication.
+$SecureSecret = ConvertTo-SecureString $ClientSecret -AsPlainText -Force
+$Credential = New-Object System.Management.Automation.PSCredential($ClientId, $SecureSecret)
+
 # example extract to create a schema-only .dacpac file connecting using an access token associated with a service principal
 $Account = Connect-AzAccount -ServicePrincipal -Tenant $Tenant -Credential $Credential
 $AccessToken_Object = (Get-AzAccessToken -Account $Account -Resource "https://database.windows.net/")

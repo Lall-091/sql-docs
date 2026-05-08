@@ -5,7 +5,7 @@ description: Learn how to create instance pools for Azure SQL Managed Instance, 
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma, randolphwest
-ms.date: 08/25/2025
+ms.date: 03/18/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: how-to
@@ -56,10 +56,11 @@ You can create a SQL managed instance pool by using the Azure portal, PowerShell
 
 To create a SQL managed instance pool in the Azure portal, follow these steps:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **Azure SQL Managed Instance**, select **Show options**.
-1. In the **Azure SQL Managed Instance options** window, select **Create Instance Pool**.
+1. Go to the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. Under **Azure SQL Managed Instance**, select **Instance pools** to open the **Instance pools** pane.
+1. On the **Instance pools** pane, select **+ Create** to open the **Create Azure SQL Managed Instance Pool** page.
 
-   :::image type="content" source="media/instance-pools-configure/show-options-create-instance-pool.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button under Azure SQL Managed Instance and the Create Instance pool button." lightbox="media/instance-pools-configure/show-options-create-instance-pool.png":::
+   :::image type="content" source="media/instance-pools-configure/instance-pools-portal.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Create button under Azure SQL Managed Instance and the Azure SQL Managed Instance options window." lightbox="media/instance-pools-configure/instance-pools-portal.png":::
 
 1. On the **Create Azure SQL Managed Instance Pool** page:
     1. Provide project and instance details on the **Basics** tab.
@@ -143,11 +144,14 @@ Consider the following:
 
 To create a new SQL managed instance inside a pool by using the Azure portal, follow these steps:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Managed Instance**, select **Show options**.
-1. In the **Azure SQL Managed Instance options** window, select **Create SQL Managed Instance**.
+1. Go to the [Instance pools](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/InstancePool) in the Azure portal, and select the pool you want to create your instance in to open the pool's **Overview**.
+1. On the **Overview** pane, select **+ Create managed instance** to open the **Create Azure SQL Managed Instance** page.
 
-   :::image type="content" source="media/instance-pools-configure/show-options-create-sql-managed-instance.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="media/instance-pools-configure/show-options-create-sql-managed-instance.png":::
+Alternatively, you can also choose your pool when you create your SQL managed instance: 
+
+[!INCLUDE [create-sql-managed-instance](../includes/sql-managed-instance/create-sql-managed-instance.md)]
+
+On the **Create Azure SQL Managed Instance** page, follow these steps: 
 
 1. On the **Basics** tab of the **Create Azure SQL Managed Instance** page:
     1. Select the resource group that contains your existing instance pool.
@@ -158,7 +162,7 @@ To create a new SQL managed instance inside a pool by using the Azure portal, fo
 
    After you've selected an instance pool from the dropdown list, you see the compute cost for the instance change to 0 because compute is included in the cost of the pool.
 
-1. Fill out the remaining details on the **Create Azure SQL Managed Instance** page to create your instance inside the pool. For details, review [Quickstart: Create Azure SQL Managed Instance](instance-create-quickstart.md).
+1. Fill out the remaining details on the **Create Azure SQL Managed Instance** page to create your instance inside the pool. For more information, review [Quickstart: Create Azure SQL Managed Instance](instance-create-quickstart.md).
 1. Select **Review + create** to review settings for your new instance and then use **Create** to deploy your instance inside the selected pool.
 
 ### [PowerShell](#tab/powershell)
@@ -303,9 +307,9 @@ You can determine how resources are being used by resources in a pool by using t
 
 ### [Azure portal](#tab/portal)
 
-To get a list of instances inside a pool, use the Azure portal to view the **Instance pools** page. Select the pool name to view the instances inside the pool on the **Overview** page:
+To get a list of instances inside a pool, use the Azure portal to view the [Instance pools](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/InstancePool) pane. Select the pool name to view the instances inside the pool on the **Overview** page:
 
-:::image type="content" source="media/instance-pools-configure/instance-pool-usage.png" alt-text="Screenshot of the Overview page of an instance pool in the Azure portal." lightbox="media/instance-pools-configure/instance-pool-usage.png":::
+:::image type="content" source="media/instance-pools-configure/instance-pool-usage.png" alt-text="Screenshot of the Overview pane of an instance pool in the Azure portal." lightbox="media/instance-pools-configure/instance-pool-usage.png":::
 
 ### [PowerShell](#tab/powershell)
 
@@ -362,7 +366,7 @@ You can update settings for an existing instance pool by using the Azure portal,
 
 ### [Azure portal](#tab/portal)
 
-Use the **Compute + storage** pane under **Settings** of the **Instance pool** page in the Azure portal to update the license type, vCore size, and hardware type for your pool:
+Use the **Compute + storage** pane under **Settings** after selecting your instance on the [Instance pools](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/InstancePool) pane in the Azure portal to update the license type, vCore size, and hardware type for your pool:
 
 :::image type="content" source="media/instance-pools-configure/instance-compute-storage.png" alt-text="Screenshot of the Compute + storage Instance pool pane in the Azure portal." lightbox="media/instance-pools-configure/instance-compute-storage.png":::
 
@@ -469,9 +473,15 @@ az sql mi update \
 
 ## Delete an instance pool
 
-You can delete an instance pool by using PowerShell or the Azure CLI, once all instances in the pool have either been deleted, or moved out of the pool.
+You can delete an instance pool by using the Azure portal, PowerShell or the Azure CLI, once all instances in the pool have either been deleted, or moved out of the pool.
 
-### [PowerShell](#tab/powershell-1)
+### [Azure portal](#tab/portal)
+
+You can delete an instance pool in the Azure portal by going to the [Instance pools](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/InstancePool) pane, selecting the pool you want to delete, and then using the **Delete** button on the command bar.
+
+You can also delete the pool by going to the pool's **Overview** page and using the **Delete** button on the command bar.
+
+### [PowerShell](#tab/powershell)
 
 To delete an instance pool, use [Remove-AzSqlInstancePool](/powershell/module/az.sql/remove-azsqlinstancepool/).
 
@@ -486,7 +496,7 @@ $params = @{
 Remove-AzSqlInstancePool @params
 ```
 
-### [Azure CLI](#tab/azure-cli-1)
+### [Azure CLI](#tab/azure-cli)
 
 To delete an instance pool, use [az sql instance-pool delete](/cli/azure/sql/instance-pool#az-sql-instance-pool-delete).
 

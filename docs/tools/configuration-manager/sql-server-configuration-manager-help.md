@@ -1,9 +1,9 @@
 ---
-title: "SQL Server Configuration Manager Help"
+title: SQL Server Configuration Manager Help
 description: Get acquainted with SQL Server Configuration Manager. Learn how to use it to manage SQL Server services and configure network connectivity.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/15/2025
+ms.date: 03/16/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: concept-article
@@ -69,9 +69,7 @@ For more information about each of these tasks, see F1 help for each task.
 
 ## Open SQL Server Configuration Manager
 
-Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconame-md](../../includes/msconame-md.md)] Management Console program and not a stand-alone program, SQL Server Configuration Manager doesn't always appear as an application in some versions of Windows.
-
-To open SQL Server Configuration Manager, type `SQLServerManager17.msc` (for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]) from the **Start** menu. For other versions, replace `17` with the appropriate number. You can pin SQL Server Configuration Manager to the Start menu or Task Bar by right-clicking `SQLServerManager17.msc` and selecting **Open file location**. Then, right-click the file and select **Pin to Start** or **Pin to Taskbar**.
+[!INCLUDE [open-sql-server-configuration-manager](../../includes/paragraph-content/open-sql-server-configuration-manager.md)]
 
 ## Related content
 

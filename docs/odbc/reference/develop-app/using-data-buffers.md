@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "data buffers [ODBC], about data buffers"
   - "buffers [ODBC], data"

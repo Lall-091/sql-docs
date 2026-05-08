@@ -1,12 +1,12 @@
 ---
-title: "Buffer Pool Extension"
+title: Buffer Pool Extension
 description: Learn about buffer pool extension and its benefits, which include improved I/O throughput. View best practices to follow when turning on this feature.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/28/2025
+ms.date: 04/24/2026
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Buffer pool extension
 
@@ -42,7 +42,7 @@ The following terms are applicable to the buffer pool extension feature.
 
 | Term | Description |
 | --- | --- |
-| **Solid-state drive (SSD)** | Solid-state drives store data in memory (RAM) in a persistent manner. For more information, see [the Wikipedia definition](https://en.wikipedia.org/wiki/Solid-state_drive). |
+| **Solid-state drive (SSD)** | Solid-state drives store data in memory (RAM) in a persistent manner. For more information, see [the Wikipedia definition](https://wikipedia.org/wiki/Solid-state_drive). |
 | **Buffer** | In [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], a buffer is an 8-KB page in memory, the same size as a data or index page. Thus, the buffer cache is divided into 8-KB pages. A page remains in the buffer cache until the buffer manager needs the buffer area to read in more data. Data is written back to disk only if it's modified. These in-memory modified pages are known as dirty pages. A page is clean when it's equivalent to its database image on disk. Data in the buffer cache can be modified multiple times before being written back to disk. |
 | **Buffer pool** | Also called *buffer cache*. The buffer pool is a global resource shared by all databases for their cached data pages. The maximum and minimum size of the buffer pool cache is determined during startup or when the instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] is dynamically reconfigured with [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md). This size determines the maximum number of pages that can be cached in the buffer pool at any time in the running instance.<br /><br />The maximum memory that can be committed by buffer pool extension can be limited by the other applications running on the machine, in case those applications create significant memory pressure. |
 | **Checkpoint** | A checkpoint creates a known good point from which the [!INCLUDE [ssDE](../../includes/ssde-md.md)] can start applying changes contained in the transaction log during recovery after an unexpected shutdown or crash. A checkpoint writes the dirty pages and transaction log information from memory to disk and, also, records information about the transaction log. For more information, see [Database checkpoints (SQL Server)](../../relational-databases/logs/database-checkpoints-sql-server.md). |
@@ -91,11 +91,9 @@ The following XEvents are available.
 | `sqlserver.`<br />`buffer_pool_extension_pages_evicted` | Fires when a page is evicted from the buffer pool extension file. | `number_page`<br />`first_page_id`<br />`first_page_offset`<br />`initiator_numa_node_id` |
 | `sqlserver.`<br />`buffer_pool_eviction_thresholds_recalculated` | Fires when the eviction threshold is calculated. | `warm_threshold`<br />`cold_threshold`<br />`pages_bypassed_eviction`<br />`eviction_bypass_reason`<br />`eviction_bypass_reason_description` |
 
-## Related tasks
+## Related content
 
-| Task Description | Article |
-| --- | --- |
-| Enable and configure the buffer pool extension. | [ALTER SERVER CONFIGURATION](../../t-sql/statements/alter-server-configuration-transact-sql.md) |
-| Modify the buffer pool extension configuration | [ALTER SERVER CONFIGURATION](../../t-sql/statements/alter-server-configuration-transact-sql.md) |
-| View the buffer pool extension configuration | [sys.dm_os_buffer_pool_extension_configuration](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-pool-extension-configuration-transact-sql.md) |
-| Monitor the buffer pool extension | [sys.dm_os_buffer_descriptors](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-descriptors-transact-sql.md)<br /><br />[SQL Server, Buffer Manager object](../../relational-databases/performance-monitor/sql-server-buffer-manager-object.md) |
+- [ALTER SERVER CONFIGURATION (Transact-SQL)](../../t-sql/statements/alter-server-configuration-transact-sql.md)
+- [sys.dm_os_buffer_pool_extension_configuration (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-pool-extension-configuration-transact-sql.md)
+- [sys.dm_os_buffer_descriptors (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-descriptors-transact-sql.md)
+- [SQL Server, Buffer Manager object](../../relational-databases/performance-monitor/sql-server-buffer-manager-object.md)

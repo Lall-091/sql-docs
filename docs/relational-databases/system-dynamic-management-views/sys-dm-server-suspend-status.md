@@ -20,7 +20,7 @@ dev_langs:
 
 # sys.dm_server_suspend_status (Transact-SQL)
 
-[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 Returns a row for each database in a suspended state. For more information, see [Create a Transact-SQL snapshot backup](../backup-restore/create-a-transact-sql-snapshot-backup.md). Introduced in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
   

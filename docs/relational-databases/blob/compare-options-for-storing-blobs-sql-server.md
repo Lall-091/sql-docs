@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 03/04/2019
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Compare Options for Storing Blobs (SQL Server)
 

@@ -7,7 +7,7 @@ ms.reviewer: v-deshtehari
 ms.date: 03/22/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Configurable retry logic core APIs in SqlClient
 

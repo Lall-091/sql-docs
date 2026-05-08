@@ -4,7 +4,7 @@ description: Discover the flexibility of a paginated report in Report Builder wh
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

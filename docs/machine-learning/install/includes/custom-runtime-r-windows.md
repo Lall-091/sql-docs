@@ -68,7 +68,7 @@ Follow these steps to modify the **PATH** system environment variables.
 
 1. Modify the **PATH** system environment variable.
 
-    Select **PATH** and click **Edit**.
+    Select **PATH** > **Edit**.
 
     Select **New** and add the path to the `\bin\x64` folder in your R installation path. For example, `C:\Program Files\R\R-4.0.3\bin\x64`.
 
@@ -121,7 +121,7 @@ Follow these steps to restart the SQL Server Launchpad service.
 
 1. Open [SQL Server Configuration Manager](../../../relational-databases/sql-server-configuration-manager.md).
 
-1. Under **SQL Server Services**, right-click on **SQL Server Launchpad (MSSQLSERVER)** and select **Restart**. If you using a named instance, the instance name will be shown instead of **(MSSQLSERVER)**.
+1. Under **SQL Server Services**, right-click on **SQL Server Launchpad (MSSQLSERVER)** and select **Restart**. If you use a named instance, the instance name will be shown instead of **(MSSQLSERVER)**.
 
 ## Register language extension
 
@@ -131,7 +131,7 @@ Follow these steps to download and register the R language extension, which is u
 
     Alternatively, you can use the debug version (**R-lang-extension-windows-debug.zip**) in a development or test environment. The debug version provides verbose logging information to investigate any errors, and is not recommended for production environments.
 
-1. Use [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio) to connect to your SQL Server instance and run the following T-SQL command to register the R language extension with [CREATE EXTERNAL LANGUAGE](../../../t-sql/statements/create-external-language-transact-sql.md).
+1. Use the [MSSQL extension for Visual Studio Code](../../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) to connect to your SQL Server instance and run the following T-SQL command to register the R language extension with [CREATE EXTERNAL LANGUAGE](../../../t-sql/statements/create-external-language-transact-sql.md).
 
     Modify the path in this statement to reflect the location of the downloaded language extension zip file (**R-lang-extension-windows-release.zip**) and the location your R installation (`C:\\Program Files\\R\\R-4.0.3`).
 

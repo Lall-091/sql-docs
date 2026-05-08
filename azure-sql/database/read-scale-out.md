@@ -2,10 +2,10 @@
 title: Read Queries on Replicas
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL provides the ability to use the capacity of read-only replicas for read workloads, called Read Scale-Out.
-author: rajeshsetlem
-ms.author: rsetlem
-ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 06/13/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: rsetlem, mathoma, randolphwest, mikeray
+ms.date: 01/27/2026
 ms.service: azure-sql
 ms.subservice: scale-out
 ms.topic: concept-article
@@ -39,7 +39,7 @@ If your SQL connection string is configured with `ApplicationIntent=ReadOnly`, t
 For Azure SQL Database only, if you wish to ensure that the application connects to the primary replica regardless of the `ApplicationIntent` setting in the SQL connection string, you must explicitly disable read scale-out when creating the database or when altering its configuration. For example, if you upgrade your database from Standard or General Purpose tier to Premium or Business Critical and want to make sure all your connections continue to go to the primary replica, disable read scale-out. For details on how to disable it, see [Enable and disable read scale-out](#enable-and-disable-read-scale-out-for-sql-database).
 
 > [!NOTE]  
-> Query Store and SQL Profiler features are not supported on read-only replicas.
+> SQL Profiler feature is not supported on read-only replicas.
 
 ## Data consistency
 
@@ -229,12 +229,18 @@ In this fashion, creating a geo-replica can provide multiple additional read-onl
 
 ## Feature support on read-only replicas
 
-A list of the behavior of some features on read-only replicas follows:
+Query Store on secondary replicas is supported in Azure SQL Database and Azure SQL Managed Instance. For more information, see [Query Store for readable secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas).
 
 - Auditing on read-only replicas is automatically enabled. For more information about the hierarchy of the storage folders, naming conventions, and log format, see [SQL Database audit log format](audit-log-format.md).
-- [Query Performance Insight for Azure SQL Database](query-performance-insight-use.md) relies on data from the [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store), which currently doesn't track activity on the read-only replica. Query Performance Insight doesn't show queries that execute on the read-only replica.
-- Automatic tuning relies on the Query Store, as detailed in the [Automatic tuning paper](https://www.microsoft.com/research/uploads/prod/2019/02/autoindexing_azuredb.pdf). Automatic tuning only works for workloads running on the primary replica.
+- [Query Performance Insight for Azure SQL Database](query-performance-insight-use.md) relies on data from the [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=azuresqldb-current&preserve-view=true). Query Performance Insights `does not` currently support the `replica_group_id` concept which is associated with the [Query Store for readable secondaries](/sql/relational-databases/performance/query-store-for-secondary-replicas?view=azuresqldb-current&preserve-view=true) feature. Data displayed within the Query Performance Insights dashboard will aggregate all runtime and wait statistics data from all replicas.
+- The [Automatic plan correction](/sql/relational-databases/automatic-tuning/automatic-tuning?view=azuresqldb-current&preserve-view=true#automatic-plan-correction) component of the [automatic tuning](/sql/relational-databases/automatic-tuning/automatic-tuning?view=azuresqldb-current&preserve-view=true) feature is supported on read-only replicas. Each database would need to be enabled to support automatic plan correction. See [automatic plan correction for secondary replicas](/sql/relational-databases/performance/query-store-for-secondary-replicas?view=azuresqldb-current&preserve-view=true#enable-automatic-plan-correction-for-secondary-replicas) for more information.
+- [Diagnostic settings in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings) supports the streaming of Query Store [runtime statistics](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#query-store-runtime-statistics) through Azure diagnostic settings. Two columns are included to help identify the replica source of the telemetry data:
 
+    - `is_primary_b`: A Boolean value indicating whether the data originated from the primary replica (true) or a secondary replica (false)
+    - `replica_group_id`: An integer that corresponds to the replica role
+    
+    These columns are essential for disambiguating metrics and performance data when analyzing workloads across replica sets. When configuring diagnostic settings to stream Query Store runtime statistics to Log Analytics, Event Hubs, or Azure Storage, ensure your queries and dashboards account for these columns to properly segment data by replica role.
+    
 ## Related content
 
 - [Configure a license-free standby replica for Azure SQL Database](standby-replica-how-to-configure.md)

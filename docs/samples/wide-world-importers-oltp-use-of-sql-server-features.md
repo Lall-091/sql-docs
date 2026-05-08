@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "01/21/2017"
 ms.service: sql
 ms.subservice: samples
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Use of SQL Server features and capabilities
 

@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "05/23/2022"
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: overview
 ms.custom: intro-overview
 helpviewer_keywords:
   - "Availability Groups [SQL Server], listeners"

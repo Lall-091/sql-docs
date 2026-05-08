@@ -159,7 +159,6 @@ GO
 
 ## See also
 
-- [Configuration Functions (Transact-SQL)](configuration-functions-transact-sql.md)
 - [sp_configure (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)
 - [Configure the user options Server Configuration Option](../../database-engine/configure-windows/configure-the-user-options-server-configuration-option.md)
 

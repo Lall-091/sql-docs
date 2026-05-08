@@ -4,7 +4,7 @@ description: Learn about the central piece of a SQL Server Reporting Services in
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

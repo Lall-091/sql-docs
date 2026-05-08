@@ -92,7 +92,7 @@ helpviewer_keywords:
   
 -   To build custom tools that work with data quality information.  
   
- The target namespace is identified in the schema as [https://schemas.microsoft.com/sqlserver/2008/DataDebugger/](https://schemas.microsoft.com/sqlserver/2008/DataDebugger/).  
+ The target namespace is identified in the schema as `https://schemas.microsoft.com/sqlserver/2008/DataDebugger/`.
   
 ## Next Step  
  [Data Profile Viewer](../../integration-services/control-flow/data-profile-viewer.md).  

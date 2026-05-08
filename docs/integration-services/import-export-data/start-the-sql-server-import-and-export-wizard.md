@@ -29,9 +29,6 @@ You can start the wizard:
 - From the [command prompt](#command-prompt).
 - From [Visual Studio](#visual-studio).
 
-> [!TIP]  
-> Another way to import data is with the [SQL Server Import extension](../../azure-data-studio/extensions/sql-server-import-extension.md) extension in Azure Data Studio.
-
 ## Get the wizard
 
 You can run the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Import and Export Wizard directly through [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] (SSMS).

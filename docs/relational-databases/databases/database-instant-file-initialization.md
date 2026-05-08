@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/16/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "initializing files [SQL Server]"
   - "instant file initialization [SQL Server]"

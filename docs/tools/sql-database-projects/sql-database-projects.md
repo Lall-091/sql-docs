@@ -4,7 +4,7 @@ description: "This overview introduces SQL database projects, which enable datab
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 12/03/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: overview
@@ -34,7 +34,7 @@ The SQL database projects framework around your database code that adds two foun
 
 :::image type="content" source="media/sql-database-projects/sqlproj-summary.png" alt-text="Screenshot of Summary of SQL Database Projects containing pre-deployment and post-deployment scripts as well as database objects." lightbox="media/sql-database-projects/sqlproj-summary.png":::
 
-The functionality for SQL database projects is provided by the [Microsoft.SqlServer.DacFx](https://www.nuget.org/packages/Microsoft.SqlServer.DacFx/) .NET library and is surfaced in several [tools for SQL development](sql-projects-tools.md). DacFx has multiple extensibility points, such as modification of deployment steps and the ability to create custom rules for code analysis. The project SDK for SQL projects is [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql/), is [advised for new development](#original-projects-vs-sdk-style-projects) and is the format used by the SQL Database Projects extension for Azure Data Studio and VS Code. Support for SDK-style SQL projects in Visual Studio is in preview.
+The functionality for SQL database projects is provided by the [Microsoft.SqlServer.DacFx](https://www.nuget.org/packages/Microsoft.SqlServer.DacFx/) .NET library and is surfaced in several [tools for SQL development](sql-projects-tools.md). DacFx has multiple extensibility points, such as modification of deployment steps and the ability to create custom rules for code analysis. The project SDK for SQL projects is [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql/), is [advised for new development](#original-projects-vs-sdk-style-projects) and is the format used by the SQL Database Projects extension for Visual Studio Code. Support for SDK-style SQL projects in Visual Studio is in preview.
 
 ### Validation
 
@@ -42,7 +42,7 @@ When a SQL project is built, the relationships between objects are validated. Fo
 
 Additionally, a SQL project contains a property in its `.sqlproj` file called the "[target platform](concepts/target-platform.md)". This information is used during the build process to validate that the functions and T-SQL syntax exists in that version of SQL. For example, the JSON functions added in SQL Server 2022 can't be used in a SQL project set to the Sql140 (SQL Server 2017) target platform.
 
-To build a SQL project, we run dotnet build from the command line. In graphical tools that support SQL projects (Azure Data Studio, VS Code, and Visual Studio), there's a menu item to build the SQL project.
+To build a SQL project, we run dotnet build from the command line. In graphical tools that support SQL projects (Visual Studio Code and Visual Studio), there's a menu item to build the SQL project.
 
 The console output of the build process might contain errors (build failure) or warnings. Build warnings can include inconsistent casing in object names and other [customizable best practices](concepts/sql-code-analysis/sql-code-analysis.md), but don't fail the build.
 
@@ -78,7 +78,7 @@ SQL database projects are used to track the source of truth for database state, 
 
 :::image type="content" source="media/sql-database-projects/project-files.png" alt-text="Screenshot of VS Code with AdventureWorks SQL project open, displaying a table in the editor." lightbox="media/sql-database-projects/project-files.png":::
 
-SQL database projects support the SQL Server and Azure SQL family of databases, including Azure SQL Database and Azure Synapse Analytics. Whether you're developing an application or a data warehouse, SQL database projects can be used to manage the schema of your database. SQL projects can be developed from [tools](sql-projects-tools.md) in Visual Studio, VS Code, and Azure Data Studio.
+SQL database projects support the SQL Server and Azure SQL family of databases, including Azure SQL Database and Azure Synapse Analytics. Whether you're developing an application or a data warehouse, SQL database projects can be used to manage the schema of your database. SQL projects can be developed from [tools](sql-projects-tools.md) in Visual Studio, and Visual Studio Code.
 
 ## Original projects vs SDK-style projects
 
@@ -100,7 +100,7 @@ The exception to the functionality coverage is support for SQLCLR objects, which
 ## Related content
 
 - [Project-Oriented Offline Database Development](../../ssdt/project-oriented-offline-database-development.md)
-- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension)
+- [SQL Database Projects extension](../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
 - [SqlPackage](../sqlpackage/sqlpackage.md)
 - [Sample CI/CD pipelines for SQL projects](https://github.com/Azure-Samples/sql-projects-devops-samples)
 - [GitHub sql-action](https://github.com/azure/sql-action)

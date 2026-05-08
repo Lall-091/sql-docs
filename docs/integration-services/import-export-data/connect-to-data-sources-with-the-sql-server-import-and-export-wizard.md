@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "02/15/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: integration
 ms.custom: sfi-ropc-nochange
 ---
 # Connect to Data Sources with the SQL Server Import and Export Wizard

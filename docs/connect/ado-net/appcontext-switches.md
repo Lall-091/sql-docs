@@ -3,14 +3,16 @@ title: AppContext switches in SqlClient
 description: Learn about the AppContext switches available in SqlClient and how to use them to modify some default behaviors.
 author: cheenamalhotra
 ms.author: cmalhotra
-ms.date: 08/19/2025
+ms.date: 03/17/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 dev_langs:
   - "csharp"
 ms.custom: sfi-ropc-nochange
+ai-usage: ai-assisted
 ---
+
 # AppContext switches in SqlClient
 
 [!INCLUDE [dotnet-all](../../includes/products/applies-full/dotnet-all.md)]
@@ -18,6 +20,55 @@ ms.custom: sfi-ropc-nochange
 [!INCLUDE [Driver_ADONET_Download](../../includes/driver_adonet_download.md)]
 
 The AppContext class allows SqlClient to provide new functionality while continuing to support callers who depend on the previous behavior. Users can opt out of a change in behavior by setting specific AppContext switches.
+
+## Enable MultiSubnetFailover by default
+
+[!INCLUDE [dotnet-all](../../includes/products/applies-plain/dotnet-all.md)]
+
+(Available starting with version 7.0)
+
+To set `MultiSubnetFailover=true` globally without modifying individual connection strings, you can set the AppContext switch **"Switch.Microsoft.Data.SqlClient.EnableMultiSubnetFailoverByDefault"** to `true` at application startup:  
+
+```csharp
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.EnableMultiSubnetFailoverByDefault", true);
+```
+
+You can also enable this switch in your App.Config:
+
+```xml
+<runtime>
+  <AppContextSwitchOverrides value="Switch.Microsoft.Data.SqlClient.EnableMultiSubnetFailoverByDefault=true" />
+</runtime>
+```
+
+When enabled, all connections behave as if `MultiSubnetFailover=true` is set in the connection string. This switch is disabled by default.
+
+## Enable packet multiplexing for async reads
+
+[!INCLUDE [dotnet-all](../../includes/products/applies-plain/dotnet-all.md)]
+
+(Available starting with version 7.0)
+
+Packet multiplexing improves performance for large async read operations such as `ExecuteReaderAsync` with big result sets, streaming scenarios, or bulk data retrieval. This feature is controlled by two opt-in AppContext switches. Setting both switches to `false` enables the new async processing path:
+
+```csharp
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseCompatibilityAsyncBehaviour", false);
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseCompatibilityProcessSni", false);
+```
+
+By default, both switches are `true`, which preserves the existing (compatible) behavior.
+
+## Enable User Agent feature extension
+
+[!INCLUDE [dotnet-all](../../includes/products/applies-plain/dotnet-all.md)]
+
+(Available starting with version 7.0)
+
+When the AppContext switch **"Switch.Microsoft.Data.SqlClient.EnableUserAgent"** is enabled, the driver sends user agent details to the server as part of the connection. This information assists with troubleshooting and quantifying driver usage by version and operating system. This switch is disabled by default. To enable it, set the AppContext switch to `true` at application startup:  
+
+```csharp
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.EnableUserAgent", true);
+```
 
 ## Enabling decimal truncation behavior
 

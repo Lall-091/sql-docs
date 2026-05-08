@@ -37,7 +37,7 @@ Businesses today often preside over vast data estates consisting of a wide array
 | New feature or update | Details |
 | --- | --- |
 | Scalable big data solution | [Deploy scalable clusters](../big-data-cluster/deploy-get-started.md) of SQL Server, Spark, and HDFS containers running on Kubernetes.<br /><br />Read, write, and process big data from Transact-SQL or Spark.<br />Easily combine and analyze high-value relational data with high-volume big data.<br />Query external data sources.<br />Store big data in HDFS managed by SQL Server.<br />Query data from multiple external data sources through the cluster.<br />Use the data for AI, machine learning, and other analysis tasks.<br />[Deploy and run applications](../big-data-cluster/concept-application-deployment.md) in [!INCLUDE [big-data-clusters](../includes/ssbigdataclusters-nover.md)].<br />The SQL Server master instance provides high availability and disaster recovery for all databases by using Always On availability group technology.<br />|
-| Data virtualization with PolyBase | Query data from external SQL Server, Oracle, Teradata, MongoDB, and ODBC data sources with external tables, now with [Collation and Unicode support](../relational-databases/collations/collation-and-unicode-support.md). For more information, see [Data virtualization with PolyBase in SQL Server](../relational-databases/polybase/polybase-guide.md).<br /><br />[!INCLUDE [sssql19](../includes/sssql19-md.md)] Cumulative update 19 now introduces support for Oracle TNS files. Please refer to [CREATE EXTERNAL DATA SOURCE (Transact-SQL) CONNECTION_OPTIONS](../t-sql/statements/create-external-data-source-connection-options.md) for more information and samples. |
+| Data virtualization with PolyBase | Query data from external SQL Server, Oracle, Teradata, MongoDB, and ODBC data sources with external tables, now with [Collation and Unicode support](../relational-databases/collations/collation-and-unicode-support.md). For more information, see [Data virtualization with PolyBase in SQL Server](../relational-databases/polybase/overview.md).<br /><br />[!INCLUDE [sssql19](../includes/sssql19-md.md)] Cumulative update 19 now introduces support for Oracle TNS files. Please refer to [CREATE EXTERNAL DATA SOURCE (Transact-SQL) CONNECTION_OPTIONS](../t-sql/statements/create-external-data-source-connection-options.md) for more information and samples. |
 
 For more information, see [What are SQL Server [!INCLUDE [big-data-clusters](../includes/ssbigdataclusters-nover.md)]?](../big-data-cluster/big-data-cluster-overview.md).
 
@@ -89,7 +89,7 @@ Monitoring improvements unlock performance insights over any database workload, 
 | --- | --- |
 | `WAIT_ON_SYNC_STATISTICS_REFRESH` | A new wait type in `sys.dm_os_wait_stats` dynamic management view. It shows the accumulated instance-level time spent on synchronous statistics refresh operations. See [sys.dm_os_wait_stats](../relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql.md). |
 | Custom capture policy for Query Store | When this policy is enabled, additional Query Store configurations are available under a new Query Store Capture Policy setting, to fine-tune data collection in a specific server. See [ALTER DATABASE SET options](../t-sql/statements/alter-database-transact-sql-set-options.md). |
-| `LIGHTWEIGHT_QUERY_PROFILING` | A new database scoped configuration. See [`LIGHTWEIGHT_QUERY_PROFILING`](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#lqp). |
+| `LIGHTWEIGHT_QUERY_PROFILING` | A new database scoped configuration. See [LIGHTWEIGHT_QUERY_PROFILING](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#lqp). |
 | `sys.dm_exec_requests` column `command` | Shows `SELECT (STATMAN)` if a `SELECT` is waiting for a synchronous statistics update operation to finish before it continues the query execution. See [sys.dm_exec_requests](../relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql.md). |
 | `sys.dm_exec_query_plan_stats` | A new dynamic management function (DMF) that returns the equivalent of the last known actual execution plan for all queries. See [sys.dm_exec_query_plan_stats](../relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql.md). |
 | `LAST_QUERY_PLAN_STATS` | A new database-scoped configuration that enables `sys.dm_exec_query_plan_stats`. See [ALTER DATABASE SCOPED CONFIGURATION](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md). |
@@ -260,7 +260,7 @@ This release of SQL Server Reporting Services features support for Azure SQL Man
 
 ## Related content
 
-- [`SqlServer` PowerShell module](https://www.powershellgallery.com/packages/Sqlserver/22.4.5.1)
+- [SqlServer PowerShell module](https://www.powershellgallery.com/packages/Sqlserver/22.4.5.1)
 - [SQL Server PowerShell documentation](/powershell/sql-server/sql-server-powershell)
 - [SQL Server Workshops](https://aka.ms/sqlworkshops)
 - [SQL Server 2019 release notes](sql-server-2019-release-notes.md)

@@ -4,7 +4,7 @@ description: "InstallationID property (WMI MSReportServer_ConfigurationSetting)"
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: wmi-provider-library-reference
-ms.topic: conceptual
+ms.topic: ui-reference
 ms.custom:
   - intro-installation
   - updatefrequency5

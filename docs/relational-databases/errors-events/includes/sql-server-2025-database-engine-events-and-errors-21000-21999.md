@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 08/14/2025
+ms.date: 01/15/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -690,7 +690,7 @@ ms.topic: include
 | 21790 | 16 | No | Cannot publish the table '%s.%s' from the Publisher '%s'. Verify connection information and ensure that you can connect to the Publisher through a tool like SQL\*PLUS. Ensure that the replication administrative user schema has the required permissions. |
 | 21791 | 16 | No | The table '%s.%s' already appears in a transactional publication on Oracle Gateway Publisher '%s'. When using the Oracle Gateway option, a table published using transactional replication can only be included in one publication. To publish this table in more than one publication, you must reconfigure the Oracle Publisher to use the Oracle Complete option. |
 | 21792 | 16 | No | The table '%s.%s' already appears in the transactional publication '%s' on Publisher '%s'. The Oracle Gateway publishing option (the default) allows a table to be included as an article in any number of snapshot publications, but only in one transactional publication. To publish a table in more than one transactional publication, use the Oracle Complete publishing option. To change publishing options, you must drop and reconfigure the Publisher. |
-| 21793 | 16 | No | Non-SQL Server Publishers are supported only in the Enterprise and Developer editions of SQL Server. The edition of this instance is %s. |
+| 21793 | 16 | No | Non-SQL Server Publishers are supported only in the Enterprise and Enterprise Developer editions of SQL Server. The edition of this instance is %s. |
 | 21794 | 16 | No | The value specified for the @propertyname parameter is not valid. Use one of the following values: %s. |
 | 21795 | 16 | No | The value specified for property %s is not valid. Use one of the following values: %s. |
 | 21796 | 16 | No | The property "xactsetjobinterval" must be assigned a value greater than or equal to 0. |

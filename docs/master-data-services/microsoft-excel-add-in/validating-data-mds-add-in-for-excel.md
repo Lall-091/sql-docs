@@ -1,12 +1,13 @@
 ---
 title: Validating Data
-description: "Validating Data (MDS Add-in for Excel)"
-author: CordeliaGrey
-ms.author: jiwang6
-ms.date: "03/01/2017"
+description: Validating Data (MDS Add-in for Excel)
+author: meetdeepak
+ms.author: dkhare
+ms.reviewer: mikeray
+ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - microsoft-excel-add-in
   - build-2025
@@ -59,6 +60,4 @@ ms.custom:
   
 ## Related Content  
   
--   [Overview: Importing Data from Excel &#40;MDS Add-in for Excel&#41;](../../master-data-services/microsoft-excel-add-in/overview-importing-data-from-excel-mds-add-in-for-excel.md)  
-  
-  
+-   [Overview: Importing Data from Excel &#40;MDS Add-in for Excel&#41;](../../master-data-services/microsoft-excel-add-in/overview-importing-data-from-excel-mds-add-in-for-excel.md)

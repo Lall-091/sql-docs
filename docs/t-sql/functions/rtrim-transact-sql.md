@@ -1,10 +1,10 @@
 ---
 title: "RTRIM (Transact-SQL)"
-description: "RTRIM (Transact-SQL)"
+description: "The RTRIM Transact-SQL function returns a character string after truncating all trailing spaces."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 05/08/2023
+ms.date: 02/09/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -47,7 +47,7 @@ RTRIM ( character_expression )
 Syntax for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later, [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuresynapse_md](../../includes/ssazuresynapse-md.md)], and [!INCLUDE [fabric](../../includes/fabric.md)]:
 
 > [!IMPORTANT]
-> You will need your database compatibility level set to 160 to use the optional *characters* argument.
+> The database compatibility level must be set to 160 or higher to use the optional *characters* argument.
 
 ```syntaxsql
 RTRIM ( character_expression , [ characters ] )
@@ -57,11 +57,11 @@ RTRIM ( character_expression , [ characters ] )
 
 #### *character_expression*
 
-An [expression](../../t-sql/language-elements/expressions-transact-sql.md) of character or binary data. *character_expression* can be a constant, variable, or column. *character_expression* must be of a data type, except **text**, **ntext**, and **image**, that is implicitly convertible to **varchar**. Otherwise, use [CAST](../../t-sql/functions/cast-and-convert-transact-sql.md) to explicitly convert *character_expression*.
+An [expression](../language-elements/expressions-transact-sql.md) of character or binary data. *character_expression* can be a constant, variable, or column. *character_expression* must be of a data type, except **text**, **ntext**, and **image**, that is implicitly convertible to **varchar**. Otherwise, use [CAST](cast-and-convert-transact-sql.md) to explicitly convert *character_expression*.
 
 #### *characters*
 
-**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later.
+**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later.
 
 A literal, variable, or function call of any non-LOB character type (**nvarchar**, **varchar**, **nchar**, or **char**) containing characters that should be removed. **nvarchar(max)** and **varchar(max)** types aren't allowed.
 
@@ -71,7 +71,7 @@ Returns a character expression with a type of string argument where the space ch
 
 ## Remarks
 
-To enable the optional *characters* positional argument, enable database compatibility level `160` on the database(s) that you are connecting to when executing queries.
+To enable the optional *characters* positional argument, enable database compatibility level `160` on the databases that you connect to when executing queries.
 
 ## Examples
 
@@ -127,16 +127,13 @@ SELECT RTRIM('.123abc.' , 'abc.');
 ```
 ::: moniker-end
 
-## See also
+## Related content
 
-- [LEFT &#40;Transact-SQL&#41;](../../t-sql/functions/left-transact-sql.md)
+- [LEFT (Transact-SQL)](left-transact-sql.md)
 - [TRIM (Transact-SQL)](trim-transact-sql.md)
-- [LTRIM &#40;Transact-SQL&#41;](../../t-sql/functions/ltrim-transact-sql.md)
-- [RIGHT &#40;Transact-SQL&#41;](../../t-sql/functions/right-transact-sql.md)
-- [STRING_SPLIT &#40;Transact-SQL&#41;](../../t-sql/functions/string-split-transact-sql.md)
-- [SUBSTRING &#40;Transact-SQL&#41;](../../t-sql/functions/substring-transact-sql.md)
-- [TRIM &#40;Transact-SQL&#41;](../../t-sql/functions/trim-transact-sql.md)
-- [CAST and CONVERT &#40;Transact-SQL&#41;](../../t-sql/functions/cast-and-convert-transact-sql.md)
-- [Data Types &#40;Transact-SQL&#41;](../../t-sql/data-types/data-types-transact-sql.md)
-- [String Functions &#40;Transact-SQL&#41;](../../t-sql/functions/string-functions-transact-sql.md)
-
+- [LTRIM (Transact-SQL)](ltrim-transact-sql.md)
+- [RIGHT (Transact-SQL)](right-transact-sql.md)
+- [STRING_SPLIT (Transact-SQL)](string-split-transact-sql.md)
+- [SUBSTRING (Transact-SQL)](substring-transact-sql.md)
+- [CAST and CONVERT (Transact-SQL)](cast-and-convert-transact-sql.md)
+- [Data types (Transact-SQL)](../data-types/data-types-transact-sql.md)

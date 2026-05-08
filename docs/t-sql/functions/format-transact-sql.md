@@ -45,7 +45,7 @@ Expression of a supported data type to format. For a list of valid types, see th
 
 **nvarchar** format pattern.
 
-The *format* argument must contain a valid .NET Framework format string, either as a standard format string (for example, `"C"` or `"D"`), or as a pattern of custom characters for dates and numeric values (for example, `"MMMM DD, yyyy (dddd)"`). Composite formatting isn't supported.
+The *format* argument must contain a valid .NET Framework format string, either as a standard format string (for example, `"C"` or `"D"`), or as a pattern of custom characters for dates and numeric values (for example, `"MMMM dd, yyyy (dddd)"`). Composite formatting isn't supported.
 
 For a full explanation of these formatting patterns, consult the .NET Framework documentation on string formatting in general, custom date and time formats, and custom number formats. For more information, see [Formatting Types](/dotnet/standard/base-types/formatting-types).
 
@@ -274,5 +274,4 @@ SELECT FORMAT(1234567.89, 'N0') AS FormattedNumber;
 
 - [CAST and CONVERT (Transact-SQL)](cast-and-convert-transact-sql.md)
 - [STR (Transact-SQL)](str-transact-sql.md)
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 

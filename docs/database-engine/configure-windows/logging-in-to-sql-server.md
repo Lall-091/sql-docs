@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "SQL Server, logging in"
   - "services [SQL Server], logging in"

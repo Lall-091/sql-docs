@@ -8,7 +8,7 @@ ms.reviewer: randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: release-notes
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

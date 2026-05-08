@@ -5,7 +5,7 @@ author: MladjoA
 ms.author: mlandzic
 ms.date: "09/17/2021"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: overview
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

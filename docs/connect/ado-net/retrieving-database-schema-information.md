@@ -7,7 +7,7 @@ ms.reviewer: v-chmalh
 ms.date: "11/26/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Retrieving database schema information
 

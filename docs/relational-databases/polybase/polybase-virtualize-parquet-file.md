@@ -7,18 +7,18 @@ ms.reviewer: hudequei
 ms.date: 06/03/2024
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">= sql-server-ver16 || >= sql-server-linux-ver16"
 ---
 
 # Virtualize parquet file in a S3-compatible object storage with PolyBase
- [!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+ [!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] can virtualize data from parquet files. This process allows the data to stay in its original location, but can be queried from a SQL Server instance with T-SQL commands, like any other table. This feature uses PolyBase connectors, and minimizes the need for extract, transform, and load (ETL) processes.
 
 In the following example, we'll virtualize a parquet file stored on S3-compatible object storage.
 
-For more information on data virtualization, see [Introducing data virtualization with PolyBase](polybase-guide.md).
+For more information on data virtualization, see [Introducing data virtualization with PolyBase](overview.md).
 
 ## Prerequisites
 
@@ -158,5 +158,5 @@ For more information, see:
 
 ## Next steps
 
- - To learn more about PolyBase, see [Overview of SQL Server PolyBase](polybase-guide.md)
+ - To learn more about PolyBase, see [Overview of SQL Server PolyBase](overview.md)
 - [Configure PolyBase to access external data in S3-compatible object storage](polybase-configure-s3-compatible.md)

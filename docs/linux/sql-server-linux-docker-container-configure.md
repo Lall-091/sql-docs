@@ -1,9 +1,9 @@
 ---
 title: Configure and Customize SQL Server Docker Containers
 description: Understand the different ways to customize SQL Server Docker Containers and how you can configure it based on your requirements.
-author: amitkh-msft
-ms.author: amitkh
-ms.reviewer: vanto, randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh, atsingh
 ms.date: 09/05/2025
 ms.service: sql
 ms.subservice: linux
@@ -22,7 +22,7 @@ monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 This article explains how you can configure and customize [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux containers using Docker. You can persist your data, move files from and to containers, and change default settings.
 
 > [!TIP]  
-> You can use **sqlcmd** (Go) to create a new instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in a container for development purposes. For more information, see [Create and query a SQL Server container](../tools/sqlcmd/sqlcmd-use-utility.md#create-and-query-a-sql-server-container).
+> You can use **`sqlcmd`** (Go) to create a new instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in a container for development purposes. For more information, see [Create and query a SQL Server container](../tools/sqlcmd/sqlcmd-use-utility.md#create-and-query-a-sql-server-container).
 
 <a id="customcontainer"></a>
 
@@ -875,7 +875,7 @@ For example, you can set a memory limit for the instance using the following ste
    docker exec -u root -it sqlcontainer "bash"
    ```
 
-1. Use **mssql-conf** to change a setting. This example changes the `memory.memorylimitmb` setting to 2 GB (2,048 MB).
+1. Use **`mssql-conf`** to change a setting. This example changes the `memory.memorylimitmb` setting to 2 GB (2,048 MB).
 
    ```bash
    /opt/mssql/bin/mssql-conf set memory.memorylimitmb 2048
@@ -892,7 +892,7 @@ For examples of custom Docker containers, see <https://github.com/microsoft/mssq
 
 For information on how to build and run Docker containers using Dockerfiles, see the [ML Services samples](https://github.com/microsoft/mssql-docker/tree/master/linux/preview/examples/mssql-mlservices) on GitHub.
 
-## Configure memory limits with control group (cgroup) v2
+## Control group (cgroup) v2 support
 
 [!INCLUDE [cgroup-support](includes/cgroup-support.md)]
 

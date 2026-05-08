@@ -24,6 +24,8 @@ To easily scale out databases on Azure SQL Database, use a shard map manager. Th
 
 Understanding how these maps are constructed is essential to shard map management. This is done using the ShardMapManager class ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)), found in the [Building scalable cloud databases](elastic-database-client-library.md) to manage shard maps.  
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 ## Shard maps and shard mappings
 
 For each shard, you must select the type of shard map to create. The choice depends on the database architecture:
@@ -37,11 +39,11 @@ For a single-tenant model, create a **list-mapping** shard map. The single-tenan
 
 :::image type="content" source="media/elastic-scale-shard-map-management/listmapping.png" alt-text="Diagram of List mapping.":::
 
-The multi-tenant model assigns several tenants to an individual database (and you can distribute groups of tenants across multiple databases). Use this model when you expect each tenant to have small data needs. In this model, assign a range of tenants to a database using **range mapping**.
+The multitenant model assigns several tenants to an individual database (and you can distribute groups of tenants across multiple databases). Use this model when you expect each tenant to have small data needs. In this model, assign a range of tenants to a database using **range mapping**.
 
 :::image type="content" source="media/elastic-scale-shard-map-management/rangemapping.png" alt-text="Diagram of Range mapping.":::
 
-Or you can implement a multi-tenant database model using a *list mapping* to assign multiple tenants to an individual database. For example, DB1 is used to store information about tenant ID 1 and 5, and DB2 stores data for tenant 7 and tenant 10.
+Or you can implement a multitenant database model using a *list mapping* to assign multiple tenants to an individual database. For example, DB1 is used to store information about tenant ID 1 and 5, and DB2 stores data for tenant 7 and tenant 10.
 
 :::image type="content" source="media/elastic-scale-shard-map-management/multipleonsingledb.png" alt-text="Diagram of Multiple tenants on single DB.":::
 

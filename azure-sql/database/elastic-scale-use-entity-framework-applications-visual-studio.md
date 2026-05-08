@@ -17,6 +17,8 @@ ms.custom:
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 This document shows the changes in an Entity Framework application that are needed to integrate with the [Elastic Database tools](elastic-scale-introduction.md). The focus is on composing [shard map management](elastic-scale-shard-map-management.md) and [data-dependent routing](elastic-scale-data-dependent-routing.md) with the Entity Framework **Code First** approach. The [Code First - New Database](/ef/ef6/modeling/code-first/workflows/new-database) tutorial for EF serves as the running example throughout this document. The sample code accompanying this document is part of elastic database tools' set of samples in the Visual Studio Code Samples.
 
 > [!NOTE]

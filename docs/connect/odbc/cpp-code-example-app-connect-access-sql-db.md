@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 01/11/2022
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: sample
 ---
 # C / C++ ODBC example application accesses a SQL database
 

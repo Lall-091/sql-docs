@@ -56,7 +56,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 Creates a new table in the database.
 
 > [!NOTE]  
-> For reference to [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], visit [CREATE TABLE (Fabric Data Warehouse)](create-table-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
+> For reference to [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], visit [CREATE TABLE (Fabric Data Warehouse)](create-table-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
 > For reference to [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)], visit [CREATE TABLE (Azure Synapse Analytics)](create-table-azure-sql-data-warehouse.md?view=azure-sqldw-latest&preserve-view=true).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
@@ -566,7 +566,7 @@ Specifies to create an index on the table. This can be a clustered index, or a n
 
 Specifies to store the entire table in columnar format with a clustered columnstore index. This always includes all columns in the table. The data isn't sorted in alphabetical or numeric order since the rows are organized to gain columnstore compression benefits.
 
-You can specify an order for the data in a clustered columnstore index starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], in [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)], and in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
+You can specify an order for the data in a clustered columnstore index starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], in [!INCLUDE [ssazure-sqlmi-autd](../../includes/applies-to-version/ssazure-sqlmi-autd.md)], and in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
 
 #### INDEX *index_name* [ NONCLUSTERED ] COLUMNSTORE ( *column_name* [ ,... *n* ] )
 
@@ -576,7 +576,7 @@ Specifies to create a nonclustered columnstore index on the table. The underlyin
 
 The nonclustered columnstore index is stored and managed as a clustered columnstore index. It's called a nonclustered columnstore index to because the columns can be limited and it exists as a secondary index on a table.
 
-You can specify an order for the data in a nonclustered columnstore index in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and in [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)]. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
+You can specify an order for the data in a nonclustered columnstore index in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and in [!INCLUDE [ssazure-sqlmi-autd](../../includes/applies-to-version/ssazure-sqlmi-autd.md)]. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
 
 #### ON *partition_scheme_name* ( *column_name* )
 

@@ -4,7 +4,7 @@ description: Learn about the Preview view of the Reporting Services Report Desig
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 f1_keywords:

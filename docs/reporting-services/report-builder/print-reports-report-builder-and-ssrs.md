@@ -4,7 +4,7 @@ description: You can view and print a report from the web portal or an applicati
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

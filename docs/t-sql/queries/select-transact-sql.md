@@ -1,10 +1,10 @@
 ---
-title: SELECT (Transact-SQL)
+title: "SELECT (Transact-SQL)"
 description: The SELECT statement retrieves rows from the database and enables the selection of rows or columns from tables in the SQL Server Database Engine.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 10/30/2024
+ms.date: 02/02/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -27,23 +27,23 @@ dev_langs:
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # SELECT (Transact-SQL)
+
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-Retrieves rows from the database and enables the selection of one or many rows or columns from one or many tables in the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)]. The full syntax of the `SELECT` statement is complex, but the main clauses can be summarized as follows:
+Use the `SELECT` statement to retrieve rows from the database. `SELECT` lets you choose one or many rows or columns from one or many tables in the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)].
 
-[ WITH { [ [XMLNAMESPACES ,](../xml/with-xmlnamespaces.md) ] [ [*common_table_expression*](with-common-table-expression-transact-sql.md) ] } ]
+Because the full syntax `SELECT` statement is complex, detailed syntax elements and arguments are shown per clause. Refer to the [Syntax](#syntax) section for how these clauses work together.
 
-[SELECT *select_list*](select-clause-transact-sql.md) [ [INTO *new_table*](select-into-clause-transact-sql.md) ]
-
-[ [FROM *table_source*](from-transact-sql.md) ] [ [WHERE *search_condition*](where-transact-sql.md) ]
-
-[ [GROUP BY *group_by_expression*](select-group-by-transact-sql.md) ]
-
-[ [HAVING *search_condition*](select-having-transact-sql.md) ]
-
-[ [WINDOW *window_expression*](select-window-transact-sql.md) ]
-
-[ [ORDER BY *order_expression* [ ASC | DESC ]](select-order-by-clause-transact-sql.md) ]
+- [WITH XMLNAMESPACES](../xml/with-xmlnamespaces.md)
+- [WITH common_table_expression](with-common-table-expression-transact-sql.md)
+- [SELECT clause](select-clause-transact-sql.md)
+- [INTO clause](select-into-clause-transact-sql.md)
+- [FROM clause (includes JOIN, APPLY, and PIVOT)](from-transact-sql.md)
+- [WHERE clause](where-transact-sql.md)
+- [GROUP BY clause](select-group-by-transact-sql.md)
+- [HAVING clause](select-having-transact-sql.md)
+- [WINDOW clause](select-window-transact-sql.md)
+- [ORDER BY clause](select-order-by-clause-transact-sql.md)
 
 The [UNION](../language-elements/set-operators-union-transact-sql.md), [EXCEPT](../language-elements/set-operators-except-and-intersect-transact-sql.md), and [INTERSECT](../language-elements/set-operators-except-and-intersect-transact-sql.md) operators can be used between queries to combine or compare their results into one result set.
 
@@ -76,7 +76,7 @@ SELECT [ ALL | DISTINCT ]
 [ ; ]
 ```
 
-Syntax for Azure Synapse Analytics and Parallel Data Warehouse and Microsoft Fabric:
+Syntax for Azure Synapse Analytics, Analytics Platform System (PDW), and Microsoft Fabric:
 
 ```syntaxsql
 [ WITH <common_table_expression> [ , ...n ] ]
@@ -96,22 +96,6 @@ SELECT <select_criteria>
 ```
 
 ## Remarks
-
-Because of the complexity of the `SELECT` statement, detailed syntax elements and arguments are shown per clause:
-
-- [WITH XMLNAMESPACES](../xml/with-xmlnamespaces.md)
-- [HAVING](select-having-transact-sql.md)
-- [WITH common_table_expression](with-common-table-expression-transact-sql.md)
-- [UNION](../language-elements/set-operators-union-transact-sql.md)
-- [SELECT clause](select-clause-transact-sql.md)
-- [EXCEPT and INTERSECT](../language-elements/set-operators-except-and-intersect-transact-sql.md)
-- [INTO clause](select-into-clause-transact-sql.md)
-- [ORDER BY](select-order-by-clause-transact-sql.md)
-- [FROM](from-transact-sql.md)
-- [FOR clause](select-for-clause-transact-sql.md)
-- [WHERE](where-transact-sql.md)
-- [OPTION clause](option-clause-transact-sql.md)
-- [GROUP BY](select-group-by-transact-sql.md)
 
 The order of the clauses in the `SELECT` statement is significant. Any one of the optional clauses can be omitted, but when the optional clauses are used, they must appear in the appropriate order.
 

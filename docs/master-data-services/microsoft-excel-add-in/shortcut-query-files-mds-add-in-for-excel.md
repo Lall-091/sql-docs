@@ -1,12 +1,13 @@
 ---
 title: Shortcut Query Files
-description: "Shortcut Query Files (MDS Add-in for Excel)"
-author: CordeliaGrey
-ms.author: jiwang6
-ms.date: "03/01/2017"
+description: Shortcut Query Files (MDS Add-in for Excel)
+author: meetdeepak
+ms.author: dkhare
+ms.reviewer: mikeray
+ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - microsoft-excel-add-in
   - build-2025
@@ -53,6 +54,4 @@ ms.custom:
   
 -   [Master Data Services Add-in for Microsoft Excel](../../master-data-services/microsoft-excel-add-in/master-data-services-add-in-for-microsoft-excel.md)  
   
--   [Security &#40;Master Data Services&#41;](../../master-data-services/security-master-data-services.md)  
-  
-  
+-   [Security &#40;Master Data Services&#41;](../../master-data-services/security-master-data-services.md)

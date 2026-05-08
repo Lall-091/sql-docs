@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 01/29/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: sample
 ---
 # Azure Key Vault sample version 6.0.0
 

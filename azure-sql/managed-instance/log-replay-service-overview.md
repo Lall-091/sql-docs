@@ -4,7 +4,7 @@ description: Learn about Log Replay Service with Azure SQL Managed Instance.
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, randolphwest
-ms.date: 09/17/2025
+ms.date: 01/26/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: migration
 ms.topic: concept-article
@@ -30,7 +30,7 @@ To start your migration with LRS, review [Migrate databases from SQL Server by u
 
 ## When to use Log Replay Service
 
-[Azure Database Migration Service](/azure/dms/tutorial-sql-server-managed-instance-online), the [Azure SQL migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension), and LRS all use the same underlying migration technology and APIs. LRS further enables complex custom migrations and hybrid architectures between on-premises SQL Server instances and SQL Managed Instance deployments.
+[Azure Database Migration Service](/azure/dms/tutorial-sql-server-managed-instance-online) and LRS use the same underlying migration technology and APIs. LRS further enables complex custom migrations and hybrid architectures between on-premises SQL Server instances and SQL Managed Instance deployments.
 
 When you can't use Azure Database Migration Service, or the Azure SQL extension for migration, you can use LRS directly with PowerShell, Azure CLI cmdlets, or APIs to manually build and orchestrate database migrations to SQL Managed Instance.
 

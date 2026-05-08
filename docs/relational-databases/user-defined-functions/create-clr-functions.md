@@ -5,7 +5,7 @@ author: rwestMSFT
 ms.author: randolphwest
 ms.date: 12/27/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "CLR functions [SQL Server]"
   - "user-defined functions [SQL Server], CLR"

@@ -1,10 +1,10 @@
 ---
-title: SQL Server Migration Assistant (SSMA) usage and diagnostic data collection
+title: SQL Server Migration Assistant (SSMA) Usage and Diagnostic Data Collection
 description: Learn about usage and diagnostic data collection in SQL Server Migration Assistant.
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 12/03/2025
+ms.date: 12/31/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: how-to

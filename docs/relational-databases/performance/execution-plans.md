@@ -1,10 +1,10 @@
 ---
-title: "Execution plan overview"
+title: "Execution Plan Overview"
 description: Learn about execution plans or query plans, which the Query Optimizer creates for the SQL Server Database Engine to run queries.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf, vanto
-ms.date: 09/17/2024
+ms.date: 01/26/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
@@ -24,7 +24,7 @@ To be able to execute queries, the [!INCLUDE [ssDEnoversion](../../includes/ssde
 > [!TIP]  
 > For more information on query processing and query execution plans, see the sections [Optimizing SELECT statements](../query-processing-architecture-guide.md#optimizing-select-statements) and [Execution plan caching and reuse](../query-processing-architecture-guide.md#execution-plan-caching-and-reuse) of the Query processing architecture guide.
 >
-> For information on viewing execution plans in SQL Server Management Studio and Azure Data studio, see [Display and save execution plans](display-and-save-execution-plans.md).
+> For information on viewing execution plans in SQL Server Management Studio, see [Display and save execution plans](display-and-save-execution-plans.md).
 
 A query execution plan is the definition of:
 

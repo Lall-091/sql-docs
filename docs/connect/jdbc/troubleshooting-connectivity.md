@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "08/12/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ---
 # Troubleshooting connectivity
 [!INCLUDE[Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]

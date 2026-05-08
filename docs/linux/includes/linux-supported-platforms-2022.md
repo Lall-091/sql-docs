@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 05/02/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: include

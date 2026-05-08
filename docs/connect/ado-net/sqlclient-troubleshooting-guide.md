@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/24/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 dev_langs:
   - "csharp"
   - "vb"

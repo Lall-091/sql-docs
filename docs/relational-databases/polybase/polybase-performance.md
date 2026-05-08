@@ -8,7 +8,7 @@ ms.date: 10/04/2024
 ms.service: sql
 ms.subservice: polybase
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15"
 ---
 
@@ -16,7 +16,7 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15"
 
 [!INCLUDE [sqlserver2016-windows-2017-linux-and-later-asa](../../includes/applies-to-version/sqlserver2016-windows-2017-linux-and-later-asa.md)]
 
-In [PolyBase for SQL Server](polybase-guide.md), there's no hard limit to the number of files or the amount of data that can be queried. Query performance depends on the amount of data, data format, the way data is organized, and complexity of queries and joins. 
+In [PolyBase for SQL Server](overview.md), there's no hard limit to the number of files or the amount of data that can be queried. Query performance depends on the amount of data, data format, the way data is organized, and complexity of queries and joins. 
 
 This article covers important performance topics and guidance.
 
@@ -176,4 +176,4 @@ To improve query performance, you can use [!INCLUDE [ssNoVersion](../../includes
 ## Related content
 
 - [Frequently asked questions in PolyBase](polybase-faq.yml)
-- [Data virtualization with PolyBase in SQL Server](polybase-guide.md)
+- [Data virtualization with PolyBase in SQL Server](overview.md)

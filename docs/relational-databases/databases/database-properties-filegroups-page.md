@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.databaseproperties.filegroups.f1"
 ---

@@ -3,7 +3,7 @@ title: How to Reverse Migrate a Database from Hyperscale
 description: How to reverse migrate an Azure SQL Database from the Hyperscale tier to the General Purpose tier.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: dfurman, blakhani
+ms.reviewer: dfurman
 ms.date: 02/10/2025
 ms.service: azure-sql-database
 ms.topic: how-to

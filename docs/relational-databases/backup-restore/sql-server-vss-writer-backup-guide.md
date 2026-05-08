@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 04/02/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # SQL Server backup applications - Volume Shadow Copy Service (VSS) and SQL Writer
 

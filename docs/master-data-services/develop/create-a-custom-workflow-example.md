@@ -1,12 +1,13 @@
 ---
 title: Custom Workflow Example
-description: "Create a Custom Workflow - Example"
-author: CordeliaGrey
-ms.author: jiwang6
-ms.date: "03/04/2017"
+description: Create a Custom Workflow - Example
+author: meetdeepak
+ms.author: dkhare
+ms.reviewer: mikeray
+ms.date: 03/18/2026
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: "reference"
+ms.topic: reference
 ms.custom:
   - build-2025
 ---
@@ -18,8 +19,8 @@ ms.custom:
 
   In [!INCLUDE[ssMDSshort](../../includes/ssmdsshort-md.md)], when you create a custom workflow class library, you create a class that implements the Microsoft.MasterDataServices.WorkflowTypeExtender.IWorkflowTypeExtender interface. This interface includes one method, [Microsoft.MasterDataServices.WorkflowTypeExtender.IWorkflowTypeExtender.StartWorkflow*](/previous-versions/sql/sql-server-2016/hh759009(v=sql.130)) , that is called by SQL Server MDS Workflow Integration Service when a workflow starts. The [Microsoft.MasterDataServices.WorkflowTypeExtender.IWorkflowTypeExtender.StartWorkflow*](/previous-versions/sql/sql-server-2016/hh759009(v=sql.130))  method contains two parameters: *workflowType* contains the text you entered in the **Workflow type** text box in [!INCLUDE[ssMDSmdm](../../includes/ssmdsmdm-md.md)], and *dataElement* contains metadata and item data for the item that triggered the workflow business rule.  
   
-## Custom Workflow Example  
- The following code example shows how you how to implement the [Microsoft.MasterDataServices.WorkflowTypeExtender.IWorkflowTypeExtender.StartWorkflow*](/previous-versions/sql/sql-server-2016/hh759009(v=sql.130))  method to extract the Name, Code, and LastChgUserName attributes from the XML data for the element that triggered the workflow business rule, and how to call a stored procedure to insert them into another database. For an example of the item data XML and an explanation of the tags it contains, see [Custom Workflow XML Description &#40;Master Data Services&#41;](../../master-data-services/develop/create-a-custom-workflow-xml-description.md).  
+## Custom workflow example  
+ The following code example shows how to implement the [Microsoft.MasterDataServices.WorkflowTypeExtender.IWorkflowTypeExtender.StartWorkflow*](/previous-versions/sql/sql-server-2016/hh759009(v=sql.130))  method to extract the Name, Code, and LastChgUserName attributes from the XML data for the element that triggered the workflow business rule, and how to call a stored procedure to insert them into another database. For an example of the item data XML and an explanation of the tags it contains, see [Custom Workflow XML Description &#40;Master Data Services&#41;](../../master-data-services/develop/create-a-custom-workflow-xml-description.md).  
   
 ```csharp  
 using System;  
@@ -27,7 +28,7 @@ using System.Collections.Generic;
 using System.Linq;  
 using System.Text;  
 using System.IO;  
-using System.Data.SqlClient;  
+using Microsoft.Data.SqlClient;  
 using System.Xml;  
   
 using Microsoft.MasterDataServices.Core.Workflow;  
@@ -66,7 +67,6 @@ namespace MDSWorkflowTestLib
 }  
 ```  
   
-## See Also  
- [Create a Custom Workflow &#40;Master Data Services&#41;](../../master-data-services/develop/create-a-custom-workflow-master-data-services.md)  
-  
-  
+## Related content
+
+- [Create a Custom Workflow &#40;Master Data Services&#41;](../../master-data-services/develop/create-a-custom-workflow-master-data-services.md)

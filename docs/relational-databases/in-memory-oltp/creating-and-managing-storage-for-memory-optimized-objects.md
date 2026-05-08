@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Create and manage storage for memory-optimized objects

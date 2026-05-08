@@ -10,8 +10,8 @@ metadata:
   ms.topic: faq
   author: WilliamDAssafMSFT
   ms.author: wiassaf
-  ms.reviewer: dfurman, mathoma, dinethi, blakhani, adbadram
-  ms.date: 08/11/2025
+  ms.reviewer: dfurman, mathoma, dinethi, adbadram
+  ms.date: 03/02/2026
 title: Azure SQL Database Hyperscale FAQ
 summary: |
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,7 +48,7 @@ sections:
           With Hyperscale, you get:
           
           - Database size that can grow from 10 GB up to 128 TB, irrespective of the compute size.
-          - Compute vCore resources from 2 vCores up to 128 vCores.
+          - Compute vCore resources from 2 vCores up to 192 vCores.
           - Fast database backups regardless of database size (backups are based on storage snapshots).
           - Fast database restores regardless of database size (restores are from storage snapshots).
           - Higher transaction log throughput regardless of database size and the number of vCores.

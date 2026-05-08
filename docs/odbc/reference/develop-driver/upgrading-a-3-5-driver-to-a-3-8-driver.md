@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ---
 # Upgrading a 3.5 Driver to a 3.8 Driver
 This topic provides guidelines and considerations for upgrading an ODBC 3.5 driver to an ODBC 3.8 driver.  

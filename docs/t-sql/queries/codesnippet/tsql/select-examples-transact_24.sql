@@ -1,4 +1,4 @@
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT ProductID, OrderQty, SUM(LineTotal) AS Total

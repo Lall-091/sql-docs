@@ -7,7 +7,7 @@ ms.reviewer: v-kaywon
 ms.date: "07/09/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # SQL Server features and ADO.NET
 

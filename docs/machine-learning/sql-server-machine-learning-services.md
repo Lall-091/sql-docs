@@ -109,7 +109,6 @@ For more information on which packages are installed with Machine Learning Servi
 
 ::: moniker range=">=sql-server-ver15||>=sql-server-linux-ver15||=azuresqldb-mi-current"
 - [Get Python package information](package-management/python-package-information.md)
-- [Install Python packages with sqlmlutils](package-management/install-additional-python-packages-on-sql-server.md)
 - [Get R package information](package-management/r-package-information.md)
 - [Install new R packages with sqlmlutils](package-management/install-additional-r-packages-on-sql-server.md).
 ::: moniker-end

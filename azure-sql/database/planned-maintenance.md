@@ -8,7 +8,7 @@ ms.reviewer: mathoma, urosmil
 ms.date: 02/13/2025
 ms.service: azure-sql
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - build-2024

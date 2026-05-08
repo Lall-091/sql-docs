@@ -1,35 +1,36 @@
 ---
-title: Introduction to adutil - Active Directory Utility
+title: Introduction to adutil - Active Directory utility
 description: Overview of adutil, a utility for configuring and managing Active Directory domains for SQL Server on Linux and containers
-author: amitkh-msft
-ms.author: amitkh
-ms.reviewer: vanto, randolphwest
-ms.date: 07/03/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh
+ms.date: 04/13/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
 ---
 
-# Introduction to adutil - Active Directory utility
+# Introduction to `adutil` - Active Directory utility
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-The **adutil** tool is a command-line interface (CLI) utility for configuring and managing Windows Active Directory domains for SQL Server on Linux and containers, without switching between Windows and Linux machines to manage Active Directory. Make sure that you download **adutil** to a host that is already joined to an Active Directory domain.
+The **`adutil`** tool is a command-line interface (CLI) utility for configuring and managing Windows Active Directory domains for SQL Server on Linux and containers. It eliminates the need to switch between Windows and Linux machines to manage Active Directory.
 
-Support for **adutil** is limited for SQL Server use cases only.
+> [!NOTE]  
+> Support for **`adutil`** is limited to SQL Server use cases only. You can also use other utilities like **ktpass** to enable Active Directory authentication, as explained in [Tutorial: Use Active Directory authentication with SQL Server on Linux](sql-server-linux-active-directory-authentication.md).
 
-You don't need to use **adutil** to enable Active Directory authentication for SQL Server on Linux or containers. You can also use utilities like **ktpass**, as explained in [Tutorial: Use Active Directory authentication with SQL Server on Linux](sql-server-linux-active-directory-authentication.md).
+Before you get started, make sure you download **`adutil`** to a host that is already joined to an Active Directory domain.
 
-The **adutil** tool is designed as a series of commands and subcommands, with extra flags that you specify as further input. Each top level command represents a category of administrative functions. Within that category, each subcommand is an operation. This article shows you how you can download and get started with **adutil**.
+The **`adutil`** tool is designed as a series of commands and subcommands, with extra flags that you specify as further input. Each top-level command represents a category of administrative functions. Within that category, each subcommand is an operation. This article shows you how to download and get started with **`adutil`**.
 
-## Configure adutil for LDAP over Secure Sockets Layer (SSL)
+## Configure `adutil` for LDAP over Secure Sockets Layer (SSL)
 
-You should use Lightweight Directory Access Protocol over SSL (LDAPS) instead of Lightweight Directory Access Protocol (LDAP). If you want to learn more about LDAP, see [Lightweight Directory Access Protocol (LDAP)](sql-server-linux-ad-auth-understanding.md#ldap).
+You should use Lightweight Directory Access Protocol over SSL (LDAPS) instead of Lightweight Directory Access Protocol (LDAP). For more information about LDAP, see [Lightweight Directory Access Protocol (LDAP)](sql-server-linux-ad-auth-understanding.md#ldap).
 
-You can set the `useLdaps` option to `true` in the `adutil.json` configuration file, which is located at: `/var/opt/mssql/.adutil/adutil.json` when run under the `mssql` user. This JSON code sample shows how to configure the setting:
+You can set the `useLdaps` option to `true` in the `adutil.json` configuration file. When you run **`adutil`** under the `mssql` user, the configuration file is located at `/var/opt/mssql/.adutil/adutil.json`. This JSON code sample shows how to configure the setting:
 
 ```json
 {
@@ -37,21 +38,27 @@ You can set the `useLdaps` option to `true` in the `adutil.json` configuration f
 }
 ```
 
-By default, the `useLDAPS` setting is set to `false`. When configuring this setting and using **mssql-conf** to create the keytab (key table), make sure you run **mssql-conf** as the user `mssql`, which you can do by running the following command:
+By default, `useLdaps` is `false`. When you configure this setting and use **`mssql-conf`** to create the keytab (key table), make sure you run **`mssql-conf`** as the `mssql` user. Run the following command to switch to the `mssql` user:
 
 ```bash
 sudo su mssql
 ```
 
-To set up the keytab using **mssql-conf**, see [Create the SQL Server service keytab file using mssql-conf](./sql-server-linux-ad-auth-adutil-tutorial.md#create-the-sql-server-service-keytab-file-using-mssql-conf).
+To set up the keytab using **`mssql-conf`**, see [Create the SQL Server service keytab file using mssql-conf](sql-server-linux-ad-auth-adutil-tutorial.md#create-the-sql-server-service-keytab-file-using-mssql-conf).
 
-## Install adutil
+## Install `adutil`
 
-If you don't accept the end user license agreement (EULA) during the time of install, when you run the **adutil** command for the first time, you must run it with the `--accept-eula` flag (for all distributions).
+If you don't accept the end user license agreement (EULA) during installation, when you run the **`adutil`** command for the first time, you must run it with the `--accept-eula` flag (for all distributions).
 
 # [Red Hat Enterprise Linux (RHEL)](#tab/rhel)
 
 1. Download the Microsoft Red Hat repository configuration file.
+
+   **RHEL 10**
+
+   ```bash
+   sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/10/prod.repo
+   ```
 
    **RHEL 9**
 
@@ -65,13 +72,13 @@ If you don't accept the end user license agreement (EULA) during the time of ins
    sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo
    ```
 
-1. If you had a previous preview version of **adutil** installed, remove any older **adutil** packages using the following command.
+1. If you installed a previous preview version of **`adutil`**, remove any older **`adutil`** packages using the following command.
 
    ```bash
    sudo yum remove adutil-preview
    ```
 
-1. Run the following commands to install **adutil**. `ACCEPT_EULA=Y` accepts the EULA for **adutil**. The EULA is placed at the path `/usr/share/adutil/`.
+1. To install **`adutil`**, run the following command. `ACCEPT_EULA=Y` accepts the EULA for **`adutil`**. The EULA is located at `/usr/share/adutil/`.
 
    ```bash
    sudo ACCEPT_EULA=Y yum install -y adutil
@@ -79,12 +86,19 @@ If you don't accept the end user license agreement (EULA) during the time of ins
 
 # [Ubuntu](#tab/ubuntu)
 
-1. Import the public repository GPG keys and then register the Microsoft Ubuntu repository.
+1. Import the public repository GNU Privacy Guard (GPG) keys and then register the Microsoft Ubuntu repository.
+
+   **Ubuntu 24.04**
+
+   ```bash
+   curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
+   curl https://packages.microsoft.com/config/ubuntu/24.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+   ```
 
    **Ubuntu 22.04**
 
    ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+   curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
    curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
    ```
 
@@ -95,27 +109,27 @@ If you don't accept the end user license agreement (EULA) during the time of ins
    curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
    ```
 
-   **Ubuntu 18.04**
+   > [!TIP]  
+   > If you experience a key-related issue on Ubuntu 22.04 and later versions, run the following command instead:
+   >
+   > ```bash
+   > curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+   > ```
 
-   ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-   curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
-   ```
-
-1. If you had a previous preview version of **adutil** installed, remove any older **adutil** packages using the following command.
+1. If you installed a previous preview version of **`adutil`**, remove any older **`adutil`** packages using the following command.
 
    ```bash
    sudo apt-get remove adutil-preview
    ```
 
-1. Run the following command to install **adutil**. `ACCEPT_EULA=Y` accepts the EULA for **adutil**. The EULA is placed at the path `/usr/share/adutil/`.
+1. To install **`adutil`**, run the following command. `ACCEPT_EULA=Y` accepts the EULA for **`adutil`**. The EULA is located at `/usr/share/adutil/`.
 
    ```bash
    sudo apt-get update
    sudo ACCEPT_EULA=Y apt-get install -y adutil
    ```
 
-# [SLES](#tab/sles)
+# [SUSE Linux Enterprise Server](#tab/sles)
 
 1. Add the Microsoft SQL Server repository to Zypper.
 
@@ -133,13 +147,13 @@ If you don't accept the end user license agreement (EULA) during the time of ins
    sudo zypper addrepo -fc https://packages.microsoft.com/config/sles/12/prod.repo
    ```
 
-1. If you had a previous preview version of **adutil** installed, remove any older **adutil** packages using the following command.
+1. If you installed a previous preview version of **`adutil`**, remove any older **`adutil`** packages using the following command.
 
    ```bash
    sudo zypper remove adutil-preview
    ```
 
-1. Run the following command to install **adutil**. `ACCEPT_EULA=Y` accepts the EULA for **adutil**. The EULA is placed at the path `/usr/share/adutil/`.
+1. To install **`adutil`**, run the following command. `ACCEPT_EULA=Y` accepts the EULA for **`adutil`**. The EULA is located at `/usr/share/adutil/`.
 
    ```bash
    sudo zypper refresh
@@ -148,14 +162,19 @@ If you don't accept the end user license agreement (EULA) during the time of ins
 
 ---
 
-## Use adutil to manage Windows Active Directory
+## Use `adutil` to manage Windows Active Directory
 
-Make sure that you download **adutil** to a host that is already joined to an Active Directory domain. You also need to obtain or renew the Kerberos TGT (ticket-granting ticket), using the **kinit** command and a privileged domain account. The account you use must have permission to create accounts and Service Principal Names (SPNs) on the domain.
+To use **`adutil`**, you need to get or renew the Kerberos TGT (ticket-granting ticket) using the **`kinit`** command and a privileged domain account. The account you use must have permission to create accounts and Service Principal Names (SPNs) on the domain.
 
-Here are some examples of actions that you can perform using **adutil**. To see a list of top-level commands, type `adutil --help`. This command shows you the top-level commands that you can use to manage and interact with Active Directory.
+The following examples show some typical activities you can perform using **`adutil`**. To see a list of top-level commands, type `adutil --help`.
 
 ```bash
-$ adutil --help
+adutil --help
+```
+
+You see the following output:
+
+```output
 adutil - A general AD utility
   Usage:
     adutil [account|delegation|group|keytab|machine|ou|spn|user|config]
@@ -176,46 +195,23 @@ adutil - A general AD utility
        --accept-eula   Accepts the current EULA for adutil. This has no effect if the EULA has already been accepted.
 ```
 
-To seek help with the next level of commands, you can run the following help option:
+To get help with lower-level commands, use the following examples:
 
-```bash
-$ adutil spn --help
-spn - Functions for service principal name (SPN) management
-  Usage:
-    spn [add|addauto|delete|search|show]
-  Subcommands:
-    add       Adds the provided SPNs to an account
-    addauto   Automatically generate SPNs based on SPN component inputs and add them to an account
-    delete    Deletes the provided SPNs from an account
-    search    Search for an SPN by name or list all SPNs in the directory
-    show      Get the list of SPNs assigned to an account
-  Flags:
-    --version       Displays the program version string.
-    -h --help          Displays help with available flag, subcommand, and positional value parameters.
-    -d --debug         Display additional debugging information when making LDAP/Kerberos calls.
-       --accept-eula   Accepts the current EULA for adutil. This has no effect if the EULA has already been accepted.
-```
+- `spn` command:
 
-```bash
-$ adutil spn search --help
-search - Search for an SPN by name or list all SPNs in the directory
-  Usage:
-     search [name]
-  Positional Variables:
-    name   OPTIONAL: Name of the SPN to search for in the directory. * can be used as a wildcard
-  Flags:
-    --version       Displays the program version string.
-    -h --help          Displays help with available flag, subcommand, and positional value parameters.
-    -n --name          OPTIONAL: Name of the SPN to search for in the directory. * can be used as a wildcard
-    -f --filter        OPTIONAL: Filter for the search (User,Machine,Group)
-    -o --ouname        OPTIONAL: Distinguished name of OU in which SPNs should be searched. If omitted, the entire directory will be searched.
-    -d --debug         Display additional debugging information when making LDAP/Kerberos calls.
-       --accept-eula   Accepts the current EULA for adutil. This has no effect if the EULA has already been accepted.
-```
+  ```bash
+  adutil spn --help
+  ```
+
+- `spn search` command:
+
+  ```bash
+  adutil spn search --help
+  ```
 
 ## Samples
 
-Each command is documented so you can get started right away. Here are some of the typical activities that **adutil** is used for when configuring or administering Active Directory authentication for SQL Server on Linux and containers:
+Each command is documented so you can get started right away. Here are some of the typical activities that **`adutil`** is used for when configuring or administering Active Directory authentication for SQL Server on Linux and containers:
 
 - Create an account in Active Directory:
 
@@ -229,7 +225,7 @@ Each command is documented so you can get started right away. Here are some of t
   adutil spn addauto -n sqluser -s MSSQLSvc -H mymachine.contoso.com -p 1433
   ```
 
-- Create keytabs using **adutil**:
+- Create keytabs using **`adutil`**:
 
   ```bash
   adutil keytab createauto -k /var/opt/mssql/secrets/mssql.keytab -p 1433 -H mymachine.contoso.com --password '<password>' -s MSSQLSvc
@@ -238,7 +234,7 @@ Each command is documented so you can get started right away. Here are some of t
   > [!CAUTION]  
   > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-You can refer to the reference manual page of **adutil** using the command `man adutil`.
+For more information, see the **`adutil`** reference manual page by using `man adutil`.
 
 ## Related content
 

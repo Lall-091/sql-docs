@@ -3,7 +3,8 @@ title: "Best Practices for Monitoring Workloads with Query Store"
 description: Learn best practices for using SQL Server Query Store with your workload, such as using the latest SQL Server Management Studio and Query Performance Insight.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 09/03/2025
+ms.reviewer: randolphwest
+ms.date: 01/26/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: best-practice
@@ -37,7 +38,7 @@ For a quick description on how to use Query Store in troubleshooting scenarios, 
 
 ## Use Query Performance Insight in Azure SQL Database
 
-If you run Query Store in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], you can use [Query Performance Insight](/azure/sql-database/sql-database-query-performance) to analyze resource consumption over time. While you can use [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)] and [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio) to get detailed resource consumption for all your queries, such as CPU, memory, and I/O, Query Performance Insight gives you a quick and efficient way to determine their effect on overall DTU consumption for your database. For more information, see [Azure SQL Database Query Performance Insight](/azure/azure-sql/database/query-performance-insight-use).
+If you run Query Store in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], you can use [Query Performance Insight](/azure/sql-database/sql-database-query-performance) to analyze resource consumption over time. While you can use [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)] and the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) to get detailed resource consumption for all your queries, such as CPU, memory, and I/O, Query Performance Insight gives you a quick and efficient way to determine their effect on overall DTU consumption for your database. For more information, see [Query Performance Insight for Azure SQL Database](/azure/azure-sql/database/query-performance-insight-use).
 
 To [monitor performance in Fabric SQL database](/fabric/database/sql/monitor), use the [Performance dashboard](/fabric/database/sql/performance-dashboard).
 
@@ -54,7 +55,8 @@ The troubleshooting workflow with Query Store is simple, as shown in the followi
 Enable Query Store by using [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)], as described in the previous section, or execute the following [!INCLUDE [tsql](../../includes/tsql-md.md)] statement:
 
 ```sql
-ALTER DATABASE [DatabaseOne] SET QUERY_STORE = ON;
+ALTER DATABASE [DatabaseOne]
+    SET QUERY_STORE = ON;
 ```
 
 It takes some time until Query Store collects the data set that accurately represents your workload. Usually, one day is enough even for very complex workloads. However, you can start exploring the data and identify queries that need your attention immediately after you enable the feature. Go to the Query Store subfolder under the database node in Object Explorer of [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)] to open troubleshooting views for specific scenarios.
@@ -141,14 +143,15 @@ Consider the following steps to switch Query Store to read-write mode and activa
 - Clean up Query Store data by using the following statement:
 
   ```sql
-  ALTER DATABASE [QueryStoreDB] SET QUERY_STORE CLEAR;
+  ALTER DATABASE [QueryStoreDB]
+      SET QUERY_STORE CLEAR;
   ```
 
 You can apply one or both of these steps by executing the following statement that explicitly changes the operation mode back to read-write:
 
 ```sql
 ALTER DATABASE [QueryStoreDB]
-SET QUERY_STORE (OPERATION_MODE = READ_WRITE);
+    SET QUERY_STORE (OPERATION_MODE = READ_WRITE);
 ```
 
 Take the following steps to be proactive:
@@ -178,24 +181,27 @@ If the problem persists, it indicates that corruption of Query Store data is per
 Starting with [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)], Query Store can be recovered by executing the `sys.sp_query_store_consistency_check` stored procedure within the affected database. Query Store must be disabled before you attempt the recovery operation. Here is a sample query to use or modify to accomplish the consistency check and recovery of QDS:
 
 ```sql
-IF EXISTS (SELECT * FROM sys.database_query_store_options WHERE actual_state=3)
+IF EXISTS (SELECT *
+           FROM sys.database_query_store_options
+           WHERE actual_state = 3)
 BEGIN
-  BEGIN TRY
-    ALTER DATABASE [QDS] SET QUERY_STORE = OFF
-    Exec [QDS].dbo.sp_query_store_consistency_check
-    ALTER DATABASE [QDS] SET QUERY_STORE = ON
-    ALTER DATABASE [QDS] SET QUERY_STORE (OPERATION_MODE = READ_WRITE)
-  END TRY
-
-  BEGIN CATCH
-    SELECT
-      ERROR_NUMBER() AS ErrorNumber
-      ,ERROR_SEVERITY() AS ErrorSeverity
-      ,ERROR_STATE() AS ErrorState
-      ,ERROR_PROCEDURE() AS ErrorProcedure
-      ,ERROR_LINE() AS ErrorLine
-      ,ERROR_MESSAGE() AS ErrorMessage;
-  END CATCH;
+    BEGIN TRY
+        ALTER DATABASE [QDS]
+            SET QUERY_STORE = OFF;
+        EXECUTE [QDS].dbo.sp_query_store_consistency_check ;
+        ALTER DATABASE [QDS]
+            SET QUERY_STORE = ON;
+        ALTER DATABASE [QDS]
+            SET QUERY_STORE (OPERATION_MODE = READ_WRITE);
+    END TRY
+    BEGIN CATCH
+        SELECT ERROR_NUMBER() AS ErrorNumber,
+                ERROR_SEVERITY() AS ErrorSeverity,
+                ERROR_STATE() AS ErrorState,
+                ERROR_PROCEDURE() AS ErrorProcedure,
+                ERROR_LINE() AS ErrorLine,
+                ERROR_MESSAGE() AS ErrorMessage;
+    END CATCH
 END
 ```
 
@@ -223,18 +229,18 @@ FROM sys.database_query_store_options;
 
 ## Avoid using non-parameterized queries
 
-Using non-parameterized queries when that isn't necessary isn't a best practice. An example is in the case of ad hoc analysis. Cached plans can't be reused, which forces Query Optimizer to compile queries for every unique query text. For more information, see [Guidelines for using forced parameterization](../../relational-databases/query-processing-architecture-guide.md#forced-parameterization).
+Using non-parameterized queries when that isn't necessary isn't a best practice. An example is in the case of ad hoc analysis. Cached plans can't be reused, which forces Query Optimizer to compile queries for every unique query text. For more information, see [Guidelines for using forced parameterization](../query-processing-architecture-guide.md#forced-parameterization).
 
 Also, Query Store can rapidly exceed the size quota because of a potentially large number of different query texts and consequently a large number of different execution plans with similar shape. As a result, performance of your workload is suboptimal, and Query Store might switch to read-only mode or constantly delete data to try to keep up with the incoming queries.
 
 Consider the following options:
 
-- Parameterize queries where applicable. For example, wrap queries inside a stored procedure or `sp_executesql`. For more information, see [Parameters and execution plan reuse](../../relational-databases/query-processing-architecture-guide.md#parameters-and-execution-plan-reuse).
+- Parameterize queries where applicable. For example, wrap queries inside a stored procedure or `sp_executesql`. For more information, see [Parameters and execution plan reuse](../query-processing-architecture-guide.md#parameters-and-execution-plan-reuse).
 - Use the [optimize for ad hoc workloads](../../database-engine/configure-windows/optimize-for-ad-hoc-workloads-server-configuration-option.md) option if your workload contains many single-use ad hoc batches with different query plans.
   - Compare the number of distinct query_hash values with the total number of entries in `sys.query_store_query`. If the ratio is close to 1, your ad hoc workload generates different queries.
-- Apply [forced parameterization](../../relational-databases/query-processing-architecture-guide.md#forced-parameterization) for the database or for a subset of queries if the number of different query plans isn't large.
+- Apply [forced parameterization](../query-processing-architecture-guide.md#forced-parameterization) for the database or for a subset of queries if the number of different query plans isn't large.
   - Use a [plan guide](specify-query-parameterization-behavior-by-using-plan-guides.md) to force parameterization only for the selected query.
-  - Configure forced parameterization by using the [parameterization database option](../../relational-databases/databases/database-properties-options-page.md#miscellaneous) command, if there are a small number of different query plans in your workload. An example is when the ratio between the count of distinct query_hash and the total number of entries in `sys.query_store_query` is much less than 1.
+  - Configure forced parameterization by using the [parameterization database option](../databases/database-properties-options-page.md#miscellaneous) command, if there are a small number of different query plans in your workload. An example is when the ratio between the count of distinct query_hash and the total number of entries in `sys.query_store_query` is much less than 1.
 - Set `QUERY_CAPTURE_MODE` to `AUTO` to automatically filter out ad hoc queries with small resource consumption.
 
 > [!TIP]  
@@ -245,24 +251,46 @@ Consider the following options:
 You can find the number of plans stored in Query Store using the below query, using Query Store DMVs, in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]:
 
 ```sql
-SELECT count(Pl.plan_id) AS plan_count, Qry.query_hash, Txt.query_text_id, Txt.query_sql_text
+SELECT count(Pl.plan_id) AS plan_count,
+       Qry.query_hash,
+       Txt.query_text_id,
+       Txt.query_sql_text
 FROM sys.query_store_plan AS Pl
-INNER JOIN sys.query_store_query AS Qry
-    ON Pl.query_id = Qry.query_id
-INNER JOIN sys.query_store_query_text AS Txt
-    ON Qry.query_text_id = Txt.query_text_id
+     INNER JOIN sys.query_store_query AS Qry
+         ON Pl.query_id = Qry.query_id
+     INNER JOIN sys.query_store_query_text AS Txt
+         ON Qry.query_text_id = Txt.query_text_id
 GROUP BY Qry.query_hash, Txt.query_text_id, Txt.query_sql_text
-ORDER BY plan_count desc;
+ORDER BY plan_count DESC;
 ```
 
 The following sample creates an [Extended Events overview](../extended-events/extended-events.md) to capture the event `query_store_db_diagnostics`, which can be useful in diagnosing query resource consumption. In [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], this extended event session creates an event file in the SQL Server Log folder by default. For example, in a default [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] installation on Windows, the event file (.xel file) should be created in the folder `C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Log`. For [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], specify an Azure Blob Storage location instead. For more information, see [XEvent event_file for Azure SQL Managed Instance](/azure/azure-sql/database/xevent-code-event-file#phase-2-transact-sql-code-that-uses-azure-storage-container). The event 'qds.query_store_db_diagnostics' isn't available for [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
 ```sql
 CREATE EVENT SESSION [QueryStore_Troubleshoot] ON SERVER
-ADD EVENT qds.query_store_db_diagnostics(
-      ACTION(sqlos.system_thread_id,sqlos.task_address,sqlos.task_time,sqlserver.database_id,sqlserver.database_name))
-ADD TARGET package0.event_file(SET filename=N'QueryStore',max_file_size=(100))
-WITH (MAX_MEMORY=4096 KB,EVENT_RETENTION_MODE=ALLOW_SINGLE_EVENT_LOSS,MAX_DISPATCH_LATENCY=30 SECONDS,MAX_EVENT_SIZE=0 KB,MEMORY_PARTITION_MODE=NONE,TRACK_CAUSALITY=OFF,STARTUP_STATE=OFF);
+ADD EVENT qds.query_store_db_diagnostics
+(
+    ACTION (sqlos.system_thread_id,
+        sqlos.task_address,
+        sqlos.task_time,
+        sqlserver.database_id,
+        sqlserver.database_name)
+)
+ADD TARGET package0.event_file
+(
+    SET filename = N'QueryStore',
+    max_file_size = (100)
+)
+WITH
+(
+    MAX_MEMORY = 4096 KB,
+    EVENT_RETENTION_MODE = ALLOW_SINGLE_EVENT_LOSS,
+    MAX_DISPATCH_LATENCY = 30 SECONDS,
+    MAX_EVENT_SIZE = 0 KB,
+    MEMORY_PARTITION_MODE = NONE,
+    TRACK_CAUSALITY = OFF,
+    STARTUP_STATE = OFF
+);
 ```
 
 With this data you can find plan count in the Query Store, and also many other stats as well. Look for the `plan_count`, `query_count`, `max_stmt_hash_map_size_kb`, and `max_size_mb` columns in the event data, in order to understand the amount of memory used and number of plans that are tracked by Query Store. If the plan count is higher than normal, it might indicate an increase in non-parameterized queries. Use the below Query Store DMVs query to review the parameterized queries and non-parameterized queries in the Query Store.
@@ -270,21 +298,24 @@ With this data you can find plan count in the Query Store, and also many other s
 For parameterized queries:
 
 ```sql
-SELECT qsq.query_id, qsqt.query_sql_text
+SELECT qsq.query_id,
+       qsqt.query_sql_text
 FROM sys.query_store_query AS qsq
-INNER JOIN sys.query_store_query_text AS qsqt
-ON qsq.query_text_id= qsqt.query_text_id
-WHERE qsq.query_parameterization_type<>0 or qsqt.query_sql_text like '%@%';
+     INNER JOIN sys.query_store_query_text AS qsqt
+         ON qsq.query_text_id = qsqt.query_text_id
+WHERE qsq.query_parameterization_type <> 0
+      OR qsqt.query_sql_text LIKE '%@%';
 ```
 
 For non-parameterized queries:
 
 ```sql
-SELECT qsq.query_id, qsqt.query_sql_text
+SELECT qsq.query_id,
+       qsqt.query_sql_text
 FROM sys.query_store_query AS qsq
-INNER JOIN sys.query_store_query_text AS qsqt
-ON qsq.query_text_id= qsqt.query_text_id
-WHERE query_parameterization_type=0;
+     INNER JOIN sys.query_store_query_text AS qsqt
+         ON qsq.query_text_id = qsqt.query_text_id
+WHERE query_parameterization_type = 0;
 ```
 
 <a id="Drop"></a>

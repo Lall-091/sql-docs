@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Back Up to a Mirrored Media Set (Transact-SQL)
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

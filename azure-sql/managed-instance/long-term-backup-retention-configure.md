@@ -24,6 +24,9 @@ ms.custom:
 
 This article shows you how to configure a [long-term backup retention (LTR)](../database/long-term-retention-overview.md) policy for Azure SQL Managed Instance by using the Azure portal, PowerShell, and the Azure CLI, as well as how to view and restore backups from Azure storage. An LTR policy allows you to automatically retain database backups within a separate Azure Blob storage containers for up to 10 years. You can then recover a database using these backups.
 
+> [!IMPORTANT]
+> Some older APIs used for long-term retention (LTR) backup operations are deprecated and no longer supported. Avoid using legacy PowerShell cmdlets such as `Copy-AzSqlDatabaseLongTermRetentionBackup`. Use the supported restore methods described in this article instead.
+
 
 ## Prerequisites
 
@@ -354,6 +357,9 @@ Get-AzSqlInstanceDatabaseLongTermRetentionBackup @LTRBackupParam
 
 ### Restore from LTR backups
 
+> [!WARNING]
+> The `Copy-AzSqlDatabaseLongTermRetentionBackup` cmdlet uses a deprecated API and is not supported. Do not use this cmdlet. Use the supported restore methods documented in this article.
+
 This example shows how to restore from an LTR backup. Note, this interface didn't change, but the resource ID parameter now requires the LTR backup resource ID.
 
 ```powershell
@@ -435,7 +441,8 @@ Consider the following limitations:
 
 - Database backups taken from instances configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy) can be restored to instances configured with either the **SQL Server 2022**, **SQL Server 2025**, or **Always-up-to-date** update policy. 
 - Database backups taken from instances configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy) can be restored to instances configured with either the **SQL Server 2025** or **Always-up-to-date** update policy, but not to instances configured with the **SQL Server 2022** update policy.
-- Database backups taken from instances configured with the **Always-up-to-date** update policy can only be restored to instances also configured with the **Always-up-to-date** update policy. 
+- Database backups taken from instances configured with the **Always-up-to-date** update policy can only be restored to instances also configured with the **Always-up-to-date** update policy.
+- LTR backups from instances can be restored to any existing server or managed instance **under the same subscription** as the original database. For a complete list of restore capabilities, limitations and features, see [Restore capabilities and features in Azure SQL Managed Instance](../managed-instance/automated-backups-overview.md#restore-capabilities-and-features).
 
 ## Related content
 

@@ -19,7 +19,7 @@ Learn how to use the **rxExecBy** function in RevoScaleR to parallel process mul
 
 For example, suppose you are monitoring device failures, capturing data for many different types of equipment. By using rxExecBy, you can provide a single large dataset as input, specify a column on which to stratify the dataset, such as device type, and then create multiple models for individual devices.
 
-This use case has been termed ["pleasingly parallel"](https://en.wikipedia.org/wiki/Embarrassingly_parallel) because it breaks a large complicated problem into component parts for concurrent processing.
+This use case has been termed ["pleasingly parallel"](https://wikipedia.org/wiki/Embarrassingly_parallel) because it breaks a large complicated problem into component parts for concurrent processing.
 
 Typical applications of this approach include forecasting for individual household smart meters, creating revenue projections for separate product lines, or creating models for loan approvals that are tailored to individual bank branches.
 

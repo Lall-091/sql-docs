@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "copy-only backups [SQL Server]"
   - "COPY_ONLY option [BACKUP statement]"

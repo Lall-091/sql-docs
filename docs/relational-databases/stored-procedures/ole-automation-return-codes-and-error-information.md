@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/21/2022
 ms.service: sql
 ms.subservice: stored-procedures
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "return codes [SQL Server]"
   - "OLE Automation [SQL Server], return codes"

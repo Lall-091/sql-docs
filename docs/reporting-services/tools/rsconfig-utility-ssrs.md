@@ -4,7 +4,7 @@ description: Learn about the rsconfig.exe utility that encrypts and stores repor
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: reference
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

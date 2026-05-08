@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/10/2022
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 helpviewer_keywords:
   - "troubleshooting [SQL Server], HADR"
   - "Availability Groups [SQL Server], availability replicas"

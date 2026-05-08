@@ -4,7 +4,7 @@ description: Creates a database credential used by the database to access to the
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest, wiassaf
-ms.date: 12/04/2025
+ms.date: 03/27/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -119,7 +119,7 @@ Here are some applications of database scoped credentials:
 
 - [BULK INSERT](bulk-insert-transact-sql.md) and [OPENROWSET](../functions/openrowset-transact-sql.md) use database scoped credentials to access data from Azure Blob Storage. For more information, see [Examples of bulk access to data in Azure Blob Storage](../../relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage.md).
 
-- Use database scoped credentials with [PolyBase](../../relational-databases/polybase/polybase-guide.md) and [Azure SQL Managed Instance data virtualization](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresqlmi-current&preserve-view=true) features.
+- Use database scoped credentials with [PolyBase](../../relational-databases/polybase/overview.md) and [Azure SQL Managed Instance data virtualization](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresqlmi-current&preserve-view=true) features.
 
 - For `BACKUP TO URL` and `RESTORE FROM URL`, use a server-level credential via [CREATE CREDENTIAL](create-credential-transact-sql.md) instead.
 
@@ -171,7 +171,7 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = '<key>';
 ```
 
-### C. Create a database scoped credential for PolyBase Connectivity to Azure Data Lake Store
+### C. Create a database scoped credential for PolyBase connectivity to Azure Data Lake Store
 
 The following example creates a database scoped credential that can be used to create an [external data source](create-external-data-source-transact-sql.md), which can be used by PolyBase in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
 
@@ -220,6 +220,34 @@ In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], if you don't speci
 CREATE DATABASE SCOPED CREDENTIAL MyCredential
 WITH IDENTITY = 'User Identity';
 ```
+
+### F. Create a database scoped credential for cross-instance queries with integrated security
+
+The following example creates a database scoped credential for [elastic queries](/azure/azure-sql/database/elastic-query-overview) or [PolyBase](../../relational-databases/polybase/polybase-guide.md) distributed queries between two SQL Server instances that use Windows (integrated) authentication.
+
+When you use Kerberos authentication between SQL Server instances, don't include the domain name in the `IDENTITY` argument. Use only the username that the remote SQL Server instance recognizes.
+
+```sql
+-- On the local instance, create a DMK if one doesn't already exist
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
+GO
+
+-- Create a credential for the remote instance by using integrated security
+CREATE DATABASE SCOPED CREDENTIAL RemoteSQLCredential
+WITH IDENTITY = 'DomainUser',
+     SECRET = '<password>';
+GO
+
+-- Create the external data source referencing the remote instance
+CREATE EXTERNAL DATA SOURCE RemoteSQLServer
+WITH (
+    LOCATION = 'sqlserver://remote-server-name',
+    CREDENTIAL = RemoteSQLCredential
+);
+```
+
+> [!IMPORTANT]
+> Cross-instance queries with integrated security (Kerberos) require that both SQL Server instances have properly configured Service Principal Names (SPNs) and that Kerberos constrained delegation is enabled in your Active Directory environment. For more information, see [Register a Service Principal Name for Kerberos connections](../../database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections.md).
 
 ## Related content
 

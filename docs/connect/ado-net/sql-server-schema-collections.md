@@ -7,7 +7,7 @@ ms.reviewer: v-chmalh
 ms.date: "11/30/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # SQL Server schema collections
 

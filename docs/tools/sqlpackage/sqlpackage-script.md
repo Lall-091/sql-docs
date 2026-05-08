@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 07/30/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: reference
 ms.collection:
   - data-tools
 ms.custom: sfi-ropc-nochange

@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "variables [Integration Services], passing between packages"
   - "user-defined variables [Integration Services]"

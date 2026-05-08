@@ -3,7 +3,7 @@ title: "Invoking CLR User-Defined Aggregate Functions"
 description: In SQL Server CLR integration, use Transact-SQL SELECT to invoke CLR user-defined aggregates, subject to the rules that apply to system aggregate functions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 03/19/2026
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -26,7 +26,7 @@ The following additional rules apply:
 
 - The current user must have `EXECUTE` permission on the user-defined aggregate.
 
-- User-defined aggregates must be invoked using a two-part name in the form of <schema_name>.<udagg_name>.
+- User-defined aggregates must be invoked by using a two-part name in the form of <schema_name>.<udagg_name>.
 
 - The argument type of the user-defined aggregate must match or be implicitly convertible to the *input_type* of the aggregate, as defined in the `CREATE AGGREGATE` statement.
 
@@ -210,7 +210,7 @@ CREATE AGGREGATE MyAgg(@input NVARCHAR (200))
 > [!NOTE]  
 > Visual C++ database objects, such as scalar-valued functions, that have been compiled with the `/clr:pure` compiler option aren't supported for execution in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
-As with most aggregates, the bulk of the logic is in the `Accumulate` method. Here, the string that is passed in as a parameter to the `Accumulate` method is appended to the `StringBuilder` object that was initialized in the `Init` method. Assuming that the `Accumulate` method wasn't already called, a comma is also appended to the `StringBuilder` before appending the passed-in string. At the conclusion of the computational tasks, the `Terminate` method is called, which returns the `StringBuilder` as a string.
+As with most aggregates, the bulk of the logic is in the `Accumulate` method. Here, the string that is passed in as a parameter to the `Accumulate` method is appended to the `StringBuilder` object that was initialized in the `Init` method. Assuming that the `Accumulate` method wasn't already called, a comma is also appended to the `StringBuilder` before appending the passed-in string. When computation finishes, the `Terminate` method is called, which returns the `StringBuilder` as a string.
 
 For example, consider a table with the following schema:
 
@@ -258,7 +258,6 @@ The following sample shows an aggregate that has two parameters on the `Accumula
 ```csharp
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using Microsoft.SqlServer.Server;
 
@@ -339,7 +338,6 @@ public struct WeightedAvg
 ```vb
 Imports System
 Imports System.Data
-Imports System.Data.SqlClient
 Imports System.Data.SqlTypes
 Imports Microsoft.SqlServer.Server
 Imports System.Runtime.InteropServices
@@ -411,7 +409,7 @@ End Class
 
 ---
 
-After you compile the [!INCLUDE [c-sharp-md](../../includes/c-sharp-md.md)] or [!INCLUDE [visual-basic-md](../../includes/visual-basic-md.md)] .NET source code, run the following [!INCLUDE [tsql](../../includes/tsql-md.md)]. This script assumes that the DLL is called WghtAvg.dll and is in the root directory of your C drive. A database called test is also assumed.
+After you compile the [!INCLUDE [c-sharp-md](../../includes/c-sharp-md.md)] or [!INCLUDE [visual-basic-md](../../includes/visual-basic-md.md)] .NET source code, run the following [!INCLUDE [tsql](../../includes/tsql-md.md)]. This script assumes that the DLL is called WghtAvg.dll and is in the root directory of your C drive. It also assumes a database called test exists.
 
 ```sql
 USE test;

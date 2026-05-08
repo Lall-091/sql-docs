@@ -7,7 +7,7 @@ ms.date: "10/06/2020"
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: get-started
 ---
 # Ruby Driver for SQL Server
 

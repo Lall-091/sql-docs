@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql.data.tools.SqlExecutionAdvancedSettingsOption"
   - "sql.data.tools.SqlExecutionAnsiSettingsDlg"

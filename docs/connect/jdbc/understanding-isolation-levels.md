@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 08/06/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Understanding isolation levels
 

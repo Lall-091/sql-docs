@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 12/05/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: article
+ms.topic: concept-article
 ms.update-cycle: 1825-days
 helpviewer_keywords:
   - "disaster recovery [SQL Server], see restoring [SQL Server]"

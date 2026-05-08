@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "FILESTREAM [SQL Server]"
   - "FILESTREAM [SQL Server], about"

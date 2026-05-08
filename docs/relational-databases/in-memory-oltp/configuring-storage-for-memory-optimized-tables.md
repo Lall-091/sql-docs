@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "1/15/2020"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Configuring Storage for Memory-Optimized Tables
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

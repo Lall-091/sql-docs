@@ -4,14 +4,15 @@ description: Learn about the Microsoft.Data.SqlClient namespace and how it's the
 author: cheenamalhotra
 ms.author: cmalhotra
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 03/17/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: whats-new
 ms.custom:
   - sfi-ropc-nochange
   - ignite-2025
 ---
+
 # Introduction to Microsoft.Data.SqlClient namespace
 
 [!INCLUDE [Driver_ADONET_Download](../../includes/driver_adonet_download.md)]
@@ -24,7 +25,231 @@ There are a few differences in less-used APIs compared to System.Data.SqlClient 
 
 The Microsoft.Data.SqlClient API details can be found in the [.NET API Browser](/dotnet/api/microsoft.data.sqlclient).
 
-## Release notes for Microsoft.Data.SqlClient 6.1
+## Release notes for 7.0
+
+This is the general availability release of **Microsoft.Data.SqlClient 7.0**, a major milestone for the .NET data provider for SQL Server. This release addresses the most upvoted issue in the repository's history — extracting Azure dependencies from the core package — introduces pluggable SSPI authentication, adds enhanced routing for Azure, and delivers async read performance improvements.  
+
+Also released as part of this milestone:
+
+- Released Microsoft.Data.SqlClient.Extensions.Abstractions 1.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/Extensions/Abstractions/1.0/1.0.0.md).
+- Released Microsoft.Data.SqlClient.Extensions.Azure 1.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/Extensions/Azure/1.0/1.0.0.md).
+- Released Microsoft.Data.SqlClient.Internal.Logging 1.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/Internal/Logging/1.0/1.0.0.md).
+- Released Microsoft.Data.SqlClient.AlwaysEncrypted.AzureKeyVaultProvider 7.0.0. See [release notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/add-ons/AzureKeyVaultProvider/7.0/7.0.0.md).
+
+### Breaking changes in 7.0
+
+#### Azure dependencies removed from core package
+
+*What Changed:*
+
+- The core `Microsoft.Data.SqlClient` package no longer depends on `Azure.Core`, `Azure.Identity`, or their transitive dependencies (e.g., `Microsoft.Identity.Client`, `Microsoft.Web.WebView2`). Azure Active Directory / Entra ID authentication functionality (`ActiveDirectoryAuthenticationProvider` and related types) has been extracted into a new `Microsoft.Data.SqlClient.Extensions.Azure` package.
+  ([#1108](https://github.com/dotnet/SqlClient/issues/1108),
+   [#3680](https://github.com/dotnet/SqlClient/pull/3680),
+   [#3902](https://github.com/dotnet/SqlClient/pull/3902),
+   [#3904](https://github.com/dotnet/SqlClient/pull/3904),
+   [#3908](https://github.com/dotnet/SqlClient/pull/3908),
+   [#3917](https://github.com/dotnet/SqlClient/pull/3917),
+   [#3982](https://github.com/dotnet/SqlClient/pull/3982),
+   [#3978](https://github.com/dotnet/SqlClient/pull/3978),
+   [#3986](https://github.com/dotnet/SqlClient/pull/3986))
+- Two additional packages are introduced to support this separation: `Microsoft.Data.SqlClient.Extensions.Abstractions` (shared types between the core driver and extensions) and `Microsoft.Data.SqlClient.Internal.Logging` (shared ETW tracing infrastructure).  
+  ([#3626](https://github.com/dotnet/SqlClient/pull/3626),
+   [#3628](https://github.com/dotnet/SqlClient/pull/3628),
+   [#3967](https://github.com/dotnet/SqlClient/pull/3967),
+   [#4038](https://github.com/dotnet/SqlClient/pull/4038))
+
+*Who Benefits:*
+
+- All users benefit from a significantly lighter core package. Previously, the Azure dependency chain pulled in numerous assemblies even for applications that only needed basic SQL Server connectivity. This was the [most upvoted open issue](https://github.com/dotnet/SqlClient/issues/1108) in the repository.
+- Users who do not use Entra ID authentication no longer carry Azure-related assemblies in their build output.
+- Users who do use Entra ID authentication can now manage Azure dependency versions independently from the core driver.
+
+*Impact:*
+
+- Applications using Entra ID authentication (e.g., `ActiveDirectoryInteractive`, `ActiveDirectoryDefault`, `ActiveDirectoryManagedIdentity`, etc.) must now install the `Microsoft.Data.SqlClient.Extensions.Azure` NuGet package separately:
+
+```console
+dotnet add package Microsoft.Data.SqlClient.Extensions.Azure
+```
+
+- No code changes are required beyond adding the package reference.
+- If an Entra ID authentication method is used without the Azure package installed, the driver now provides an actionable error message guiding users to install the correct package.
+
+#### Other breaking changes in 7.0
+
+- Reverted public visibility of internal interop enums (`IoControlCodeAccess` and `IoControlTransferType`) that were accidentally made public during the project merge.
+  ([#3900](https://github.com/dotnet/SqlClient/pull/3900))
+
+### New Features in 7.0
+
+#### Pluggable authentication with SspiContextProvider  
+
+*What Changed:*
+
+- Added a public `SspiContextProvider` property on `SqlConnection`, completing the SSPI extensibility work begun in 6.1.0. Applications can now supply a custom SSPI context provider for integrated authentication, enabling custom Kerberos ticket negotiation and NTLM username/password authentication scenarios.
+  ([#2253](https://github.com/dotnet/SqlClient/issues/2253),
+   [#2494](https://github.com/dotnet/SqlClient/pull/2494))
+
+*Who Benefits:*
+
+- Users authenticating across untrusted domains, non-domain-joined machines, or cross-platform environments where configuring integrated authentication is difficult.
+- Users running in containers who need manual Kerberos negotiation without deploying sidecars or external ticket-refresh mechanisms.
+- Users who need NTLM username/password authentication to SQL Server, which the driver does not provide natively.
+
+*Impact:*
+
+- Applications can set a custom `SspiContextProvider` on `SqlConnection` before opening the connection:
+
+```c#
+var connection = new SqlConnection(connectionString);
+connection.SspiContextProvider = new MyKerberosProvider();
+connection.Open();
+```
+
+- The provider handles the authentication token exchange during integrated authentication. Existing authentication behavior is unchanged when no custom provider is set. See [SspiContextProvider_CustomProvider.cs](https://github.com/dotnet/SqlClient/tree/main/doc/samples/SspiContextProvider_CustomProvider.cs) for a sample implementation.
+- **Note:** The `SspiContextProvider` is part of the connection pool key. Ensure the implementation returns a consistent identity per resource.  
+
+#### Async read performance: Packet multiplexing (preview)
+
+*What Changed:*
+
+- Continued refinement of packet multiplexing with bug fixes and stability improvements since 6.1.0, plus new app context switches for opt-in control.
+  ([#3534](https://github.com/dotnet/SqlClient/pull/3534),
+   [#3537](https://github.com/dotnet/SqlClient/pull/3537),
+   [#3605](https://github.com/dotnet/SqlClient/pull/3605))
+
+*Who Benefits:*
+
+- Applications performing large async reads (`ExecuteReaderAsync` with big result sets, streaming scenarios, or bulk data retrieval).
+
+*Impact:*
+
+- Packet multiplexing ships behind two opt-in feature switches:
+
+```c#
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseCompatibilityAsyncBehaviour", false);
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseCompatibilityProcessSni", false);
+```
+
+- Setting both switches to `false` enables the new async processing path. By default, the driver uses the existing (compatible) behavior.
+
+#### Enhanced Routing Support
+
+*What Changed:*
+
+- Added support for enhanced routing, a TDS feature that allows the server to redirect connections to a specific server *and* database during login.
+  ([#3641](https://github.com/dotnet/SqlClient/issues/3641),
+   [#3969](https://github.com/dotnet/SqlClient/pull/3969),
+   [#3970](https://github.com/dotnet/SqlClient/pull/3970),
+   [#3973](https://github.com/dotnet/SqlClient/pull/3973))
+
+*Who Benefits:*
+
+- Users connecting to Azure environments that use named read replicas and gateway-based load balancing.
+
+*Impact:*
+
+- Enhanced routing is negotiated automatically during login when the server supports it. No application code changes are required.
+
+#### Support for .NET 10
+
+*What Changed:*
+
+- Updated pipelines and test suites to compile the driver using the .NET 10 SDK.
+  ([#3686](https://github.com/dotnet/SqlClient/pull/3686))
+
+*Who Benefits:*
+
+- Developers targeting .NET 10 on day one.
+
+*Impact:*
+
+- SqlClient 7.0 compiles and tests against .NET 10, ensuring compatibility.
+
+#### Strongly-typed diagnostic events on .NET Framework
+
+*What Changed:*
+
+- Enabled `SqlClientDiagnosticListener` for `SqlCommand` on .NET Framework, closing a long-standing observability gap where diagnostic events were previously only emitted on .NET Core.
+  ([#3658](https://github.com/dotnet/SqlClient/pull/3658))
+
+- Brought the 15 strongly-typed diagnostic event classes in the `Microsoft.Data.SqlClient.Diagnostics` namespace — originally introduced for .NET Core in 6.0 — to .NET Framework as part of the codebase merge. Both platforms now use the same strongly-typed event model. The types cover command, connection, and transaction lifecycle events:
+  - `SqlClientCommandBefore`, `SqlClientCommandAfter`, `SqlClientCommandError`
+  - `SqlClientConnectionOpenBefore`, `SqlClientConnectionOpenAfter`, `SqlClientConnectionOpenError`
+  - `SqlClientConnectionCloseBefore`, `SqlClientConnectionCloseAfter`, `SqlClientConnectionCloseError`
+  - `SqlClientTransactionCommitBefore`, `SqlClientTransactionCommitAfter`, `SqlClientTransactionCommitError`
+  - `SqlClientTransactionRollbackBefore`, `SqlClientTransactionRollbackAfter`, `SqlClientTransactionRollbackError`
+
+  ([#3493](https://github.com/dotnet/SqlClient/pull/3493))
+
+*Who Benefits:*
+
+- .NET Framework users subscribing to `SqlClientDiagnosticListener` events for observability, distributed tracing, or custom telemetry. These users now have parity with .NET Core, gaining IntelliSense, compile-time safety, and eliminating the need to access diagnostic payloads via reflection or dictionary lookups.
+
+*Impact:*
+
+- On .NET Framework, `SqlCommand` now emits the same diagnostic events that were previously only available on .NET Core. Subscribers to `DiagnosticListener` events (e.g., `Microsoft.Data.SqlClient.WriteCommandBefore`) receive the strongly-typed objects:
+
+```c#
+listener.Subscribe(new Observer<KeyValuePair<string, object?>>(kvp =>
+{
+    if (kvp.Value is SqlClientCommandBefore before)
+    {
+        Console.WriteLine($"Executing: {before.Command.CommandText}");
+    }
+}));
+```
+
+- The types implement `IReadOnlyList<KeyValuePair<string, object>>` for backward compatibility with code that iterates properties generically.
+
+#### Other additions in 7.0
+
+- Added `SqlConfigurableRetryFactory.BaselineTransientErrors` static property exposing the default transient error codes list as a `ReadOnlyCollection<int>`, making it easier to extend the default list with application-specific error codes.
+  ([#3903](https://github.com/dotnet/SqlClient/pull/3903))
+
+- Added app context switch `Switch.Microsoft.Data.SqlClient.EnableMultiSubnetFailoverByDefault` to set `MultiSubnetFailover=true` globally without modifying connection strings.
+  ([#3841](https://github.com/dotnet/SqlClient/pull/3841))
+
+- Added app context switch `Switch.Microsoft.Data.SqlClient.IgnoreServerProvidedFailoverPartner` to let the client ignore server-provided failover partner info in Basic Availability Groups.
+  ([#3625](https://github.com/dotnet/SqlClient/pull/3625))
+
+- Enabled User Agent Feature Extension (opt-in via `Switch.Microsoft.Data.SqlClient.EnableUserAgent`).
+  ([#3606](https://github.com/dotnet/SqlClient/pull/3606))
+
+### Changes in 7.0
+
+#### Deprecation of `SqlAuthenticationMethod.ActiveDirectoryPassword`
+
+*What Changed:*
+
+- `SqlAuthenticationMethod.ActiveDirectoryPassword` (the ROPC flow) is now marked `[Obsolete]` and will generate compiler warnings. This aligns with Microsoft's move toward [mandatory multifactor authentication](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
+  ([#3671](https://github.com/dotnet/SqlClient/pull/3671))
+
+*Who Benefits:*
+
+- Teams moving toward stronger, passwordless or MFA-compliant authentication.
+
+*Impact:*
+
+- If you use `Authentication=Active Directory Password`, migrate to a supported alternative:
+
+| Scenario | Recommended Authentication |
+|----------|---------------------------|
+| Interactive / desktop apps | `Active Directory Interactive` |
+| Service-to-service | `Active Directory Service Principal` |
+| Azure-hosted workloads | `Active Directory Managed Identity` |
+| Developer / CI environments | `Active Directory Default` |
+
+- See [Connect to Azure SQL with Microsoft Entra authentication](sql/azure-active-directory-authentication.md) for more information.
+
+### 7.0 Target Platform Support
+
+- .NET Framework 4.6.2+ (Windows x86, Windows x64, Windows ARM64)
+- .NET 8.0+ (Windows x86, Windows x64, Windows ARM, Windows ARM64, Linux, macOS)
+
+Full release notes, including dependencies, are available in the GitHub Repository: [7.0 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/7.0).
+
+## Release notes for 6.1
 
 ### New features in 6.1
 
@@ -95,7 +320,7 @@ The Microsoft.Data.SqlClient API details can be found in the [.NET API Browser](
 
 Full release notes, including dependencies, are available in the GitHub Repository: [6.1 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/6.1).
 
-## Release notes for Microsoft.Data.SqlClient 6.0
+## Release notes for 6.0
 
 ### Breaking changes in 6.0
 
@@ -208,7 +433,7 @@ using(SqlConnection sqlConnection = new SqlConnection("Data Source=(local);Integ
 
 Full release notes, including dependencies, are available in the GitHub Repository: [6.0 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/6.0).
 
-## Release notes for Microsoft.Data.SqlClient 5.2
+## Release notes for 5.2
 
 ### New features in 5.2
 
@@ -347,7 +572,7 @@ class Program
 
 Full release notes, including dependencies, are available in the GitHub Repository: [5.2 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/5.2).
 
-## Release notes for Microsoft.Data.SqlClient 5.1
+## Release notes for 5.1
 
 ### Breaking changes in 5.1
 
@@ -376,7 +601,7 @@ The default value of the `ServerCertificate` connection setting is an empty stri
 
 Full release notes, including dependencies, are available in the GitHub Repository: [5.1 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/5.1).
 
-## Release notes for Microsoft.Data.SqlClient 5.0
+## Release notes for 5.0
 
 ### Breaking changes in 5.0
 
@@ -469,7 +694,7 @@ Switch.Microsoft.Data.SqlClient.SuppressInsecureTLSWarning
 
 Full release notes, including dependencies, are available in the GitHub Repository: [5.0 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/5.0).
 
-## Release notes for Microsoft.Data.SqlClient 4.1
+## Release notes for 4.1
 
 Full release notes, including dependencies, are available in the GitHub Repository: [4.1 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/4.1).
 
@@ -492,7 +717,7 @@ Connection string example:
 - .NET Core 3.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 4.0
+## Release notes for 4.0
 
 Full release notes, including dependencies, are available in the GitHub Repository: [4.0 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/4.0).
 
@@ -577,7 +802,30 @@ using (SqlConnection connection = new SqlConnection(connectionString))
 - .NET Core 3.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 3.0
+## Release notes for 3.1
+
+Full release notes, including dependencies, are available in the GitHub Repository: [3.1 Release Notes](https://github.com/dotnet/SqlClient/tree/main/release-notes/3.1).
+
+### New features in 3.1
+
+#### Introduced Attestation Protocol 'None'
+
+A new attestation protocol called `None` will be allowed in the connection string. This protocol will allow users to forgo enclave attestation for `VBS` enclaves. When this protocol is set, the enclave attestation URL property is optional.  
+
+Connection string example:
+
+```cs
+//Attestation protocol NONE with no URL
+"Data Source = {server}; Initial Catalog = {db}; Column Encryption Setting = Enabled; Attestation Protocol = None;"
+```
+
+## Target Platform Support
+
+- .NET Framework 4.6.1+ (Windows x86, Windows x64)
+- .NET Core 3.1+ (Windows x86, Windows x64, Windows ARM64, Windows ARM, Linux, macOS)
+- .NET Standard 2.0+ (Windows x86, Windows x64, Windows ARM64, Windows ARM, Linux, macOS)
+
+## Release notes for 3.0
 
 Full release notes, including dependencies, are available in the GitHub Repository: [3.0 Release Notes](https://github.com/dotnet/SqlClient/tree/master/release-notes/3.0).
 
@@ -802,7 +1050,7 @@ A new connection property `IPAddressPreference` is introduced to specify the IP 
 - .NET Core 2.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 2.1
+## Release notes for 2.1
 
 Full release notes, including dependencies, are available in the GitHub Repository: [2.1 Release Notes](https://github.com/dotnet/SqlClient/tree/master/release-notes/2.1).
 
@@ -1044,7 +1292,7 @@ Starting with Microsoft.Data.SqlClient v2.1, Microsoft.Data.SqlClient symbols ar
 - .NET Core 2.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 2.0
+## Release notes for 2.0
 
 Full release notes, including dependencies, are available in the GitHub Repository: [2.0 Release Notes](https://github.com/dotnet/SqlClient/tree/master/release-notes/2.0).
 
@@ -1151,7 +1399,7 @@ Microsoft.Data.SqlClient (.NET Core and .NET Standard) on Windows is now depende
 - .NET Core 2.1+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Windows Arm64, Windows ARM, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 1.1.0
+## Release notes for 1.1
 
 Full release notes, including dependencies, are available in the GitHub Repository: [1.1 Release Notes](https://github.com/dotnet/SqlClient/tree/master/release-notes/1.1).
 
@@ -1176,7 +1424,7 @@ For more information, see:
 - .NET Core 2.1+ (Windows x86, Windows x64, Linux, macOS)
 - .NET Standard 2.0+ (Windows x86, Windows x64, Linux, macOS)
 
-## Release notes for Microsoft.Data.SqlClient 1.0
+## Release notes for 1.0
 
 The initial release for the Microsoft.Data.SqlClient namespace offers more functionality over the existing System.Data.SqlClient namespace.
 

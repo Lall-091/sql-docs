@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "swb.memoryoptimizationwizard.f1"
   - "sql13.swb.memoryoptimizationwizard.f1"

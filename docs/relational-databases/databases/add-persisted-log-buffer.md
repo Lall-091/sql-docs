@@ -1,6 +1,6 @@
 ---
 title: "Add persistent log buffer to a database"
-description: "Explains how to add a persistent log buffer to a database in SQL Server 2016 and later. Provides Transact SQL examples."
+description: "Explains how to add a persistent log buffer to a database in SQL Server 2016 and later. Provides Transact-SQL examples."
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mikeray

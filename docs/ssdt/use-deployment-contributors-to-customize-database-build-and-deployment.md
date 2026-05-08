@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Customize database build and deployment by using build and deployment contributors

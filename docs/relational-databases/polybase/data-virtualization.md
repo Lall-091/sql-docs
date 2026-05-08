@@ -7,14 +7,14 @@ ms.reviewer: hudequei
 ms.date: 12/13/2019
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">= sql-server-ver15"
 ms.custom: sfi-image-nochange
 ---
 
 # Use the External Table Wizard with ODBC data sources
 
-One of the key scenarios for SQL Server 2019 is the ability to virtualize data. This process allows the data to stay in its original location. You can *virtualize* the data in a SQL Server instance so that it can be queried there like any other table in SQL Server. This process minimizes the need for ETL processes. This process is possible with the use of PolyBase connectors. For more information on data virtualization, see [Get started with PolyBase](polybase-guide.md).
+One of the key scenarios for SQL Server 2019 is the ability to virtualize data. This process allows the data to stay in its original location. You can *virtualize* the data in a SQL Server instance so that it can be queried there like any other table in SQL Server. This process minimizes the need for ETL processes. This process is possible with the use of PolyBase connectors. For more information on data virtualization, see [Get started with PolyBase](overview.md).
 
 This video provides an introduction into data virtualization:
 

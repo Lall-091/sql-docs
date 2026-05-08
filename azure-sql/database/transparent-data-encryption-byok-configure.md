@@ -5,7 +5,7 @@ description: Learn how to configure an Azure SQL Database and Azure Synapse Anal
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 06/25/2025
+ms.date: 03/05/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -43,7 +43,7 @@ This article applies to Azure SQL Database, Azure SQL Managed Instance, and Azur
   - The expiration date (if set) must be a future date and time
   - The key must be in the Enabled state
   - Able to perform *get*, *wrap key*, *unwrap key* operations
-- To use a Managed HSM key, follow instructions to [create and activate a Managed HSM using Azure CLI](/azure/key-vault/managed-hsm/quick-create-cli)
+- To use an Azure Managed HSM key, follow instructions to [create and activate a Managed HSM using Azure CLI](/azure/key-vault/managed-hsm/quick-create-cli)
 
 # [PowerShell](#tab/azure-powershell)
 
@@ -93,9 +93,22 @@ For adding permissions to your server on a Managed HSM, add the 'Managed HSM Cry
 > The combined length for the key vault name and key name cannot exceed 94 characters.
 
 > [!TIP]
-> An example KeyId from Azure Key Vault: `https://contosokeyvault.vault.azure.net/keys/Key1/<key-id>`
+> **Using versioned and versionless Azure Key Vault keys for TDE**
 >
-> An example KeyId from Managed HSM:<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
+> When you set the TDE protector, you can reference an Azure Key Vault key using either a specific key version or a versionless key identifier.
+>
+> In both cases, Azure SQL Database always resolves and uses the latest enabled version of the key in Azure Key Vault or Azure Key Vault Managed HSM. Use versionless key identifiers to avoid embedding a specific key version in the TDE protector configuration.
+>
+> Versionless key identifiers are currently supported only for Azure SQL Database.
+>
+> Examples:
+> - Key identifier that includes a specific version
+> 
+>     `https://<key-vault-name>.vault.azure.net/keys/<key-name>/<key-version>`
+> 
+> - Versionless key identifier
+>
+>     `https://<key-vault-name>.vault.azure.net/keys/<key-name>`
 
 ```powershell
 # add the key from Azure Key Vault to the server

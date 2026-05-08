@@ -3,8 +3,8 @@ title: Release Notes for SQL Server 2017 on Linux
 description: This article contains the release notes and supported features for SQL Server 2017 running on Linux. Release notes include the most recent release and several previous releases.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: amitkh, vanto
-ms.date: 11/13/2025
+ms.reviewer: amitkh, atsingh
+ms.date: 04/14/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -34,44 +34,51 @@ These release notes are specifically for [!INCLUDE [ssSQL17](../includes/sssql17
 
 Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can seamlessly target [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] running on Linux. Some tools might have a specific version requirement to work well with Linux. For a full list of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] tools, see [SQL tools overview](../tools/overview-sql-tools.md).
 
+## Release and container tag guidance
+
+- As of [!INCLUDE [ssSQL17](../includes/sssql17-md.md)] CU 4, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Agent is no longer installed as a separate package. It's installed with the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] package and must be enabled for use.
+
+- The **mssql-server-is** package isn't supported on SUSE Linux Enterprise Server (SLES). For more information, see [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md#sql-server-integration-services-ssis).
+
+- Some GDR releases apply only to Windows. These Windows-only GDRs aren't published for Linux, and don't appear in this article.
+
+- Container tags can vary by release. For a list of available tags, see [RHEL](https://mcr.microsoft.com/product/mssql/rhel/server/tags) and [Ubuntu](https://mcr.microsoft.com/product/mssql/server/tags) in the Microsoft Artifact Registry.
+
 ## Latest versions for all packages
 
-This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL17](../includes/sssql17-md.md)]. The following table shows the most recent release, which is **CU 31 GDR (Nov 2025)**. For full release history, see [Release history for SQL Server 2017 on Linux](/troubleshoot/sql/releases/linux/release-history-2017).
+This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL17](../includes/sssql17-md.md)]. The following table shows the most recent release, which is **CU 31 GDR (Apr 2026)**. For full release history, see [Release history for SQL Server 2017 on Linux](/troubleshoot/sql/releases/linux/release-history-2017).
 
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
-| [!INCLUDE [ssSQL17](../includes/sssql17-md.md)] | CU 31 GDR | 2025-11-11 | 14.0.3515.1 | [KB 5068402](https://support.microsoft.com/help/5068402) |
+| [!INCLUDE [ssSQL17](../includes/sssql17-md.md)] | CU 31 GDR | 2026-04-14 | 14.0.3525.1 | [KB 5084818](https://support.microsoft.com/help/5084818) |
 
 The latest GDR release includes the Azure Connect Pack for [!INCLUDE [ssSQL17](../includes/sssql17-md.md)].
 
 > [!IMPORTANT]  
 > This is the final cumulative update for [!INCLUDE [ssSQL17](../includes/sssql17-md.md)].
 
-- As of CU 4, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Agent is no longer installed as a separate package. It's installed with the Database Engine package and must be enabled to use.
-- The **mssql-server-is** package isn't supported on SUSE in this release. For more information, see [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md#sql-server-integration-services-ssis).
-
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
 | **Red Hat Enterprise Linux** | | | |
-| RHEL 8 | Database Engine | 14.0.3515.1-1 | [Database Engine RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-14.0.3515.1-1.x86_64.rpm) |
-| RHEL 8 | Full-Text Search | 14.0.3515.1-1 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-fts-14.0.3515.1-1.x86_64.rpm) |
-| RHEL 8 | High Availability | 14.0.3515.1-1 | [High Availability RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-ha-14.0.3515.1-1.x86_64.rpm) |
+| RHEL 8 | Database Engine | 14.0.3525.1-3 | [Database Engine RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-14.0.3525.1-3.x86_64.rpm) |
+| RHEL 8 | Full-Text Search | 14.0.3525.1-3 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-fts-14.0.3525.1-3.x86_64.rpm) |
+| RHEL 8 | High Availability | 14.0.3525.1-3 | [High Availability RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-ha-14.0.3525.1-3.x86_64.rpm) |
 | RHEL 7 | SSIS | 14.0.3015.40-1 | [SSIS RPM package](https://packages.microsoft.com/rhel/7/mssql-server-2017/Packages/m/mssql-server-is-14.0.3015.40-1.x86_64.rpm) |
 | **SUSE Linux Enterprise Server** | | | |
-| SLES 12 | Database Engine | 14.0.3515.1-1 | [Database Engine RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-14.0.3515.1-1.x86_64.rpm) |
-| SLES 12 | Full-Text Search | 14.0.3515.1-1 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-fts-14.0.3515.1-1.x86_64.rpm) |
-| SLES 12 | High Availability | 14.0.3515.1-1 | [High Availability RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-ha-14.0.3515.1-1.x86_64.rpm) |
+| SLES 12 | Database Engine | 14.0.3525.1-3 | [Database Engine RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-14.0.3525.1-3.x86_64.rpm) |
+| SLES 12 | Full-Text Search | 14.0.3525.1-3 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-fts-14.0.3525.1-3.x86_64.rpm) |
+| SLES 12 | High Availability | 14.0.3525.1-3 | [High Availability RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-ha-14.0.3525.1-3.x86_64.rpm) |
 | **Ubuntu** | | | |
-| Ubuntu 18.04 | Database Engine | 14.0.3515.1-1 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server/mssql-server_14.0.3515.1-1_amd64.deb) |
-| Ubuntu 18.04 | Full-Text Search | 14.0.3515.1-1 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server-fts/mssql-server-fts_14.0.3515.1-1_amd64.deb) |
-| Ubuntu 18.04 | High Availability | 14.0.3515.1-1 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server-ha/mssql-server-ha_14.0.3515.1-1_amd64.deb) |
+| Ubuntu 18.04 | Database Engine | 14.0.3525.1-3 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server/mssql-server_14.0.3525.1-3_amd64.deb) |
+| Ubuntu 18.04 | Full-Text Search | 14.0.3525.1-3 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server-fts/mssql-server-fts_14.0.3525.1-3_amd64.deb) |
+| Ubuntu 18.04 | High Availability | 14.0.3525.1-3 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server-ha/mssql-server-ha_14.0.3525.1-3_amd64.deb) |
 | Ubuntu 16.04 | SSIS | 14.0.3015.40-1 | [SSIS Debian package](https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main/m/mssql-server-is/mssql-server-is_14.0.3015.40-1_amd64.deb) |
 
 <a id="cuinstall"></a>
 
 ## How to install updates
 
-When you configure the CU repository (`mssql-server-2017`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/_/microsoft-mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
+When you configure the CU repository (`mssql-server-2017`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/r/microsoft/mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server 2025 on Linux](sql-server-linux-change-repo-2025.md).
 
 If you update existing [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages, run the appropriate update command for each package to get the latest CU. For specific update instructions for each package, see the following installation guides:
 
@@ -84,11 +91,10 @@ If you update existing [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] p
 
 The following table lists the release history for [!INCLUDE [ssSQL17](../includes/sssql17-md.md)].
 
-> [!NOTE]  
-> Any missing GDRs apply to the Windows version only.
-
 | Release | Version | Release date |
 | --- | --- | --- |
+| [CU 31 GDR (Apr 2026)](/troubleshoot/sql/releases/linux/release-history-2017#14-0-3525) | 14.0.3525.1 | 2026-04-14 |
+| [CU 31 GDR (Mar 2026)](/troubleshoot/sql/releases/linux/release-history-2017#14-0-3520) | 14.0.3520.4 | 2026-03-10 |
 | [CU 31 GDR (Nov 2025)](/troubleshoot/sql/releases/linux/release-history-2017#14-0-3515) | 14.0.3515.1 | 2025-11-11 |
 | [CU 31 GDR (Sep 2025)](/troubleshoot/sql/releases/linux/release-history-2017#14-0-3505) | 14.0.3505.1 | 2025-09-09 |
 | [CU 31 GDR (Aug 2025)](/troubleshoot/sql/releases/linux/release-history-2017#14-0-3500) | 14.0.3500.1 | 2025-08-12 |

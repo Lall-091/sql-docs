@@ -4,6 +4,8 @@
   items:
   - name: What is Azure SQL?
     href: azure-sql-iaas-vs-paas-what-is-overview.md
+  - name: Azure SQL decision tree
+    href: azure-sql-decision-tree.md
   - name: Migrate to Azure SQL
     href: migration-guides/index.yml
   - name: Migrating SQL Server Workloads FAQ
@@ -59,6 +61,9 @@
       - name: SQL Vulnerability Assessment
         displayName: database
         href: /azure/defender-for-cloud/sql-azure-vulnerability-assessment-overview?toc=/azure/azure-sql/toc.json
+      - name: Block T-SQL CRUD
+        href: database/block-crud-tsql.md
+        displayName: block-tsql-crud, block-tsql-mi-crud
       - name: Logins, user accounts, roles, and permissions
         href: database/logins-create-manage.md
       - name: Microsoft Entra authentication
@@ -308,7 +313,7 @@
         href: database/azure-sql-dotnet-quickstart.md
       - name: .NET with EF Core
         href: database/azure-sql-dotnet-entity-framework-core-quickstart.md
-      - name: Python with pyodbc
+      - name: Python with mssql-python
         href: database/azure-sql-python-quickstart.md
       - name: Node.js with mssql
         href: database/azure-sql-javascript-mssql-quickstart.md
@@ -322,8 +327,8 @@
       items:
       - name: Design database using SSMS
         href: database/design-first-database-tutorial.md
-      - name: Design database using ADS
-        href: database/design-first-database-azure-data-studio.md
+      - name: Design database using Visual Studio Code
+        href: database/design-first-database-visual-studio-code.md
       - name: Design database using .NET
         href: database/design-first-database-csharp-tutorial.md
     - name: Business continuity
@@ -351,6 +356,8 @@
       items:
       - name: Migrate using DMS
         href: /azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/azure-sql/toc.json
+      - name: Import or export database with managed identity authentication
+        href: database/database-import-export-managed-identity.md
     - name: Scale out
       items:
       - name: Configure Hyperscale named replicas
@@ -665,8 +672,6 @@
         href: database/elastic-pool-resource-management.md
       - name: Hyperscale performance diagnostics
         href: database/hyperscale-performance-diagnostics.md
-      - name: Block T-SQL CRUD
-        href: database/block-crud-tsql.md
       - name: Azure Automation
         href: database/automation-manage.md
       - name: Block geo-replication of Azure SQL Database backups
@@ -700,7 +705,7 @@
         href: database/standby-replica-how-to-configure.md
       - name: Enable zone redundancy
         href: database/enable-zone-redundancy.md
-      - name: Deleted server restore
+      - name: Restore deleted server
         href: database/deleted-logical-server-restore.md
       - name: Restart database
         href: database/restart-database.md
@@ -840,6 +845,8 @@
         href: database/change-data-capture-overview.md
     - name: Database sharding
       items:
+      - name: Elastic Query alternatives
+        href: database/elastic-query-horizontal-partitioning-migration.md
       - name: Upgrade client library
         href: database/elastic-scale-upgrade-client-library.md
       - name: Create sharded app
@@ -1119,7 +1126,9 @@
         href: managed-instance/secure-managed-instance.md
       - name: Always Encrypted
         href: database/always-encrypted-landing.yml
-      - name: Auditing
+      - name: SQL Server Audit in Azure SQL Managed Instance
+        href: managed-instance/auditing.md
+      - name: How to configure SQL Server Audit in Azure SQL Managed Instance
         href: managed-instance/auditing-configure.md
       - name: Native Windows principals
         href: managed-instance/native-windows-principals.md
@@ -1303,16 +1312,6 @@
               href: /sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
       - name: How to
         items:
-        - name: Data exploration and modeling
-          items:
-          - name: Python
-            items:
-            - name: Plot Histogram in Python
-              href: /sql/machine-learning/data-exploration/python-plot-histogram?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
-            - name: Import data into pandas dataframe
-              href: /sql/machine-learning/data-exploration/python-dataframe-pandas?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
-            - name: Insert dataframe into SQL
-              href: /sql/machine-learning/data-exploration/python-dataframe-sql-server?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
         - name: Data type conversions
           items:
           - name: Python to SQL
@@ -1337,8 +1336,6 @@
             items:
             - name: Get Python package information
               href: /sql/machine-learning/package-management/python-package-information?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
-            - name: Install with sqlmlutils
-              href: /sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
           - name: Install new R packages
             items:
             - name: Get R package information
@@ -1453,7 +1450,7 @@
         href: managed-instance/managed-instance-link-configure-how-to-ssms.md
       - name: Configure link with scripts
         href: managed-instance/managed-instance-link-configure-how-to-scripts.md
-      - name: Fail over a Link
+      - name: Fail over a link
         href: managed-instance/managed-instance-link-failover-how-to.md
       - name: Migrate with the link
         href: managed-instance/managed-instance-link-migrate.md
@@ -1539,6 +1536,8 @@
         href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
       - name: Modernization Advisor
         href: virtual-machines/modernization-advisor.md
+      - name: Unified inventory (preview)
+        href: virtual-machines/windows/unified-inventory-sql-vm.md
     - name: Quickstarts
       items:
       - name: Portal
@@ -1618,6 +1617,8 @@
           href: virtual-machines/windows/change-sql-server-edition.md
         - name: Change version
           href: virtual-machines/windows/change-sql-server-version.md
+        - name: Updating SQL Server
+          href: virtual-machines/windows/servicing-updates-guidelines.md
       - name: SQL IaaS Agent extension
         displayName: resource provider, registration, sql vm rp
         items:
@@ -1651,6 +1652,8 @@
           href: virtual-machines/windows/sql-assessment-for-sql-vm.md
         - name: Analyze I/O performance
           href: virtual-machines/windows/storage-performance-analysis.md
+        - name: VM vCore customization
+          href: virtual-machines/windows/vm-vcore-customization-for-sql.md
       - name: Security
         items:
         - name: Microsoft Entra authentication
@@ -1663,7 +1666,7 @@
         items:
         - name: VM to a new region
           href: virtual-machines/windows/move-sql-vm-different-region.md
-        - name: Migrate storage to Ultradisk
+        - name: Migrate storage to Ultra Disk
           href: virtual-machines/windows/storage-migrate-to-ultradisk.md
       - name: Business continuity
         items:
@@ -1959,6 +1962,10 @@
       href: /sql/tools/sqlcmd-utility
     - name: SqlPackage
       href: /sql/tools/sqlpackage/
+    - name: Query editor (Classic)
+      href: database/query-editor-classic.md
+    - name: Connect to the Query editor (Classic)
+      href: database/connect-query-portal-classic.md
 
   - name: Languages & code
     items: 
@@ -1998,14 +2005,21 @@
     - name: Ruby
       href: /sql/connect/ruby/ruby-driver-for-sql-server
 
+- name: Blogs
+  items:
+  - name: Azure SQL Database Blog
+    href: https://www.microsoft.com/sql-server/blog/product/azure-sql-database/
+  - name: Azure SQL Dev Corner
+    href: https://devblogs.microsoft.com/azure-sql/
+  - name: SQL Server
+    href: https://www.microsoft.com/sql-server/blog/
+  - name: Microsoft Azure Blog
+    href: https://azure.microsoft.com/blog/
+
 - name: Resources
   items:
   - name: Build your skills with Microsoft Learn training
     href: /training/browse/?products=azure-sql-database
-  - name: SQL Server Blog
-    href: https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database
-  - name: Microsoft Azure Blog
-    href: https://azure.microsoft.com/blog/
   - name: Azure Roadmap
     href: https://techcommunity.microsoft.com/discussions/microsoft-entra/introducing-the-azure-roadmap/113500
   - name: Public data sets
@@ -2042,7 +2056,9 @@
       href: database/troubleshoot-common-connectivity-issues.md
     - name: Troubleshoot out of memory errors
       href: database/troubleshoot-memory-errors-issues.md
-    - name: Import/Export service hangs
+    - name: Troubleshoot geo-replication redo lag
+      href: database/troubleshoot-geo-replication-redo.md
+    - name: Troubleshoot Import/Export service
       href: database/database-import-export-hang.md
     - name: Transaction log errors in Azure SQL Database
       href: database/troubleshoot-transaction-log-errors-issues.md

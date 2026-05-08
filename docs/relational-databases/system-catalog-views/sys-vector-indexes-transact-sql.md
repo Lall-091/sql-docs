@@ -1,9 +1,9 @@
 ---
 title: "sys.vector_indexes (Transact-SQL)"
 description: "sys.vector_indexes contains a row per vector index."
-author: yorek
-ms.author: damauri
-ms.reviewer: damauri, mikeray
+author: MikeRayMSFT
+ms.author: mikeray
+ms.reviewer: randolphwest, markingmyname
 ms.date: 08/11/2025
 ms.service: sql
 ms.subservice: system-objects
@@ -38,7 +38,7 @@ Contains a row per vector index.
 
 ## Examples
 
-The following example returns all indexes for the table `[dbo].[wikipedia_articles_embeddings]` used in the [DiskANN sample](https://github.com/Azure-Samples/azure-sql-db-vector-search/tree/main/DiskANN/Wikipedia) available in the [https://github.com/Azure-Samples/azure-sql-db-vector-search](https://github.com/Azure-Samples/azure-sql-db-vector-search) GitHub sample repo.
+The following example returns all indexes for the table `[dbo].[wikipedia_articles_embeddings]` used in the [DiskANN sample](https://github.com/Azure-Samples/azure-sql-db-vector-search/tree/main/DiskANN/Wikipedia) available in the [GitHub sample repo](https://github.com/Azure-Samples/azure-sql-db-vector-search).
 
 ```sql
 SELECT
@@ -59,3 +59,4 @@ WHERE
 - [Catalog Views (Transact-SQL)](catalog-views-transact-sql.md)
 - [sys.indexes (Transact-SQL)](sys-indexes-transact-sql.md)
 - [CREATE VECTOR INDEX (Transact-SQL)](../../t-sql/statements/create-vector-index-transact-sql.md)
+- [sys.dm_db_vector_indexes (Transact-SQL)](../system-dynamic-management-views/sys-dm-db-vector-indexes-transact-sql.md)

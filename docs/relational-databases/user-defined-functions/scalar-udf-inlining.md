@@ -4,7 +4,7 @@ description: The scalar UDF inlining feature improves performance of queries tha
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: karam, wiassaf, srdjanmatin
-ms.date: 12/10/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
@@ -135,7 +135,7 @@ The execution plan for this query in [!INCLUDE [ssSQL17](../../includes/sssql17-
 
 :::image type="content" source="media/scalar-udf-inlining/query-plan-without-udf-inlining.png" alt-text="Screenshot of Query Plan without inlining." lightbox="media/scalar-udf-inlining/query-plan-without-udf-inlining.png":::
 
-As the plan shows, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] adopts a simple strategy here: for every tuple in the `CUSTOMER` table, invoke the UDF and output the results. This strategy is naive and inefficient. With inlining, such UDFs are transformed into equivalent scalar subqueries, which are substituted in the calling query in place of the UDF.
+As the plan shows, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] adopts the following basic strategy: for every tuple in the `CUSTOMER` table, invoke the UDF and output the results. This strategy is naive and inefficient. With inlining, such UDFs are transformed into equivalent scalar subqueries, which are substituted in the calling query in place of the UDF.
 
 For the same query, the plan with the UDF inlined looks as follows.
 

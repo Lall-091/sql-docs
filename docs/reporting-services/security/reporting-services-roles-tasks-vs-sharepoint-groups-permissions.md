@@ -4,7 +4,7 @@ description: "Reporting Services roles-tasks vs. SharePoint groups-permissions"
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

@@ -8,7 +8,7 @@ ms.reviewer: mathoma, vanto, wiassaf
 ms.date: 06/12/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Native Windows principals

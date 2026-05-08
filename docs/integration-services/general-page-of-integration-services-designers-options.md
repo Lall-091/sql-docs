@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "VS.ToolsOptionsPages.Business_Intelligence_Designers.Data_Transformation_Designers.General"
 ---

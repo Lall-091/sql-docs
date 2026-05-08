@@ -22,7 +22,7 @@ This article teaches you how to fail over a database [linked](managed-instance-l
 
 To fail over your databases to your secondary replica through the link, you need the following prerequisites: 
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites) with required service update installed.
 - [Link](managed-instance-link-configure-how-to-ssms.md) configured between your primary and secondary replica. 
 - You can fail over the link by using Transact-SQL starting with [SQL Server 2022 CU13 (KB5036432)](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate13).
@@ -30,6 +30,37 @@ To fail over your databases to your secondary replica through the link, you need
 ## Stop workload
 
 If you're ready to fail over your database to the secondary replica, first stop any application workloads on the primary replica during your maintenance hours. This enables database replication to catch up on the secondary so you can fail over to the secondary without data loss. Ensure your applications aren't committing transactions to the primary before failing over. 
+
+## Check replication lag
+
+It's important that the secondary replica catches up to the primary replica before performing a planned failover. Planned failover can time out and fail if the secondary replica lags far behind the primary replica.
+
+Use the following T-SQL query on both SQL Server and SQL Managed Instance to monitor replication lag between the replicas:
+
+```sql
+-- Execute on SQL Server and SQL Managed Instance 
+USE master
+DECLARE @link_name varchar(max) = '<DAGname>'
+SELECT
+   ag.name [Link name], 
+   ars1.role_desc [Link role],
+   ars2.connected_state_desc [Link connected state],
+   ars2.synchronization_health_desc [Link sync health],
+   drs.secondary_lag_seconds [Link replication latency (seconds)]
+FROM
+   sys.availability_groups ag 
+   JOIN sys.dm_hadr_availability_replica_states ars1
+   ON ag.group_id = ars1.group_id
+   JOIN sys.dm_hadr_availability_replica_states ars2
+   ON ag.group_id = ars2.group_id
+   JOIN sys.dm_hadr_database_replica_states drs
+   ON ars2.replica_id = drs.replica_id
+WHERE 
+   ag.is_distributed = 1 AND ag.name = @link_name AND ars1.is_local = 1 AND ars2.is_local = 0
+GO
+```
+
+If the replication lag is high, wait for the secondary replica to catch up with the primary replica. You might need to perform additional troubleshooting steps if the lag persists, such as improving link network throughput between the two instances, or increasing resource capacity on the secondary replica.
 
 ## Fail over a database
 
@@ -93,7 +124,7 @@ If you chose to maintain the link for SQL Server 2022, the secondary becomes the
 If you're on SQL Server 2019 and earlier versions, or if you chose to drop the link for SQL Server 2022, the link is dropped and no longer exists after failover completes. The source database and target database on each replica can both execute a read/write workload. They're completely independent. 
 
 > [!IMPORTANT]
-> After successful fail over to SQL Managed Instance, manually repoint your application(s) connection string to the SQL managed instance FQDN to complete the migration or fail over process and continue running in Azure.
+> After successful failover to SQL Managed Instance, manually repoint your application(s) connection string to the SQL managed instance FQDN to complete the migration or fail over process and continue running in Azure.
 
 ### [PowerShell](#tab/powershell)
 
@@ -245,7 +276,7 @@ Remove-AzSqlInstanceLink -ResourceGroupName $ResourceGroup |
 When failover succeeds, the link is dropped and no longer exists. The SQL Server database and SQL Managed Instance database can both execute read/write workloads as they're now completely independent. 
 
 > [!IMPORTANT]
-> After successful fail over to SQL Managed Instance, manually repoint your application(s) connection string to the SQL managed instance FQDN to complete the migration or fail over process and continue running in Azure.
+> After successful failover to SQL Managed Instance, manually repoint your application(s) connection string to the SQL managed instance FQDN to complete the migration or fail over process and continue running in Azure.
 
 After the link is dropped, you can keep the availability group on SQL Server, but you must drop the _distributed_ availability group to remove link metadata from SQL Server. This additional step is only necessary when failing over by using PowerShell since SSMS performs this action for you. 
 
@@ -265,6 +296,10 @@ GO
 
 > [!IMPORTANT]
 > After executing a planned failover, the replication mode is set to asynchronous.
+
+## Fail over multiple databases
+
+If you plan to fail over multiple databases from instances on the same server, for optimal performance and predictability, fail over 8 databases per instance at a time. For example, if you have 10 instances with 32 linked databases each, fail over 8 databases at a time from each instance, and repeat the process until all databases are failed over.
 
 ## View database after failover
 

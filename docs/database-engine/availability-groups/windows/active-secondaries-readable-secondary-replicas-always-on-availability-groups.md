@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "06/06/2016"
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "connection access to availability replicas"
   - "Availability Groups [SQL Server], availability replicas"

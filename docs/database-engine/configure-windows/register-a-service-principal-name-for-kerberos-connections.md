@@ -3,7 +3,8 @@ title: Register a Service Principal Name for Kerberos Connections
 description: "Find out how to register a Service Principal Name (SPN) with Active Directory. This registration is required for using Kerberos authentication with SQL Server."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/26/2025
+ms.date: 01/22/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -100,9 +101,9 @@ For a TCP/IP connection, where the TCP port is included in the SPN, [!INCLUDE [s
 
 When an instance of the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] starts, [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] tries to register the SPN for the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service. When the instance is stopped, [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] tries to unregister the SPN. For a TCP/IP connection, the SPN is registered in the format `MSSQLSvc/<FQDN>:<tcpport>`. Both named instances and the default instance are registered as `MSSQLSvc`, relying on the `<tcpport>` value to differentiate the instances.
 
-For other connections that support Kerberos the SPN is registered in the format `MSSQLSvc/<FQDN>:<instancename>` for a named instance. The format for registering the default instance is `MSSQLSvc/<FQDN>`.
+For other connections that support Kerberos, the SPN is registered in the format `MSSQLSvc/<FQDN>:<instancename>` for a named instance. The format for registering the default instance is `MSSQLSvc/<FQDN>`.
 
-To give permissions to the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] startup account, to register and modify the SPN, perform the following steps:
+To give permissions to the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] startup account to register and modify the SPN, perform the following steps:
 
 1. On the Domain Controller machine, navigate to **Active Directory Users and Computers**.
 
@@ -116,9 +117,9 @@ To give permissions to the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion
 
    1. Select the account and select **Edit**.
 
-   1. Under Permissions select **Validated Write servicePrincipalName**.
+   1. Under Permissions select **Validated write to service principal name**.
 
-   1. Scroll down and under **Properties** select:
+   1. Scroll down and under **Properties**, select:
 
       - **Read servicePrincipalName**
       - **Write servicePrincipalName**
@@ -200,7 +201,7 @@ The following table describes the authentication defaults that are used, based o
 
 ## Remarks
 
-The Dedicated Administrator Connection (DAC) uses an instance name-based SPN. Kerberos authentication can be used with a DAC if that SPN is registered successfully. As an alternative a user can specify the account name as an SPN.
+The Dedicated Administrator Connection (DAC) uses an instance name-based SPN. Kerberos authentication can be used with a DAC if that SPN is registered successfully. As an alternative, you can specify the account name as an SPN.
 
 If SPN registration fails during startup, this failure is recorded in the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] error log, and startup continues.
 

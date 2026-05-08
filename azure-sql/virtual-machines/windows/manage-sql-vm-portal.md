@@ -16,11 +16,13 @@ tags: azure-resource-manager
 
 [!INCLUDE [appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In the [Azure portal](https://portal.azure.com), the [**SQL virtual machines**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) resource is an independent management service to manage SQL Server on Azure Virtual Machines (VMs) that have been registered with the [SQL Server IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md). You can use the resource to view all of your SQL Server VMs simultaneously and modify settings dedicated to SQL Server:
+In the [Azure portal](https://portal.azure.com), the [**SQL virtual machines**](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/SqlVirtualMachine) resource is an independent management service to manage SQL Server on Azure Virtual Machines (VMs) that have been registered with the [SQL Server IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md). You can use the resource to view all of your SQL Server VMs simultaneously and modify settings dedicated to SQL Server:
 
 :::image type="content" source="./media/manage-sql-vm-portal/sql-vm-manage.png" alt-text="Screenshot of accessing the SQL virtual machines resource in the Azure portal.":::
 
 The **SQL virtual machines** resource management point is different to the **Virtual machine** resource used to manage the underlying VM such as to start it, stop it, or restart it.
+
+[!INCLUDE [unified-inventory](../../includes/sql-virtual-machines/unified-inventory.md)]
 
 ## Prerequisites
 
@@ -106,6 +108,8 @@ Use the **Backups** page of the SQL virtual machines resource to choose between 
 
 Regardless of which backup solution you choose, you can use the **Backups** page to configure your backup settings, such as the retention period, backup storage location, encryption, whether or not to back up system databases, and a backup schedule.
 
+To use Azure backup, you must first make sure Automated backup is disabled.
+
 ## Modernization Advisor (preview)
 
 The [Modernization Advisor (Preview)](../modernization-advisor.md) assesses your SQL Server workload to identify cost-saving or performance optimizations you might gain by migrating to Azure SQL Managed Instance. This feature is currently in preview.
@@ -147,6 +151,7 @@ From the **SQL IaaS Agent Extension Settings** page, you can [repair the extensi
 
 ## Related content
 
+- [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md)
 - [What is SQL Server on Azure Windows Virtual Machines?](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [FAQ for SQL Server on Windows VMs](frequently-asked-questions-faq.yml)
 - [Pricing guidance for SQL Server on Azure VMs](pricing-guidance.md)

@@ -1,10 +1,10 @@
 ---
-title: "Work with SSMA Projects (Db2ToSQL)"
-description: Learn how to work with projects in SSMA for Db2.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 09/24/2024
+title: Work with SSMA Projects (Db2ToSQL)
+description: Learn how to create, customize, save, and open projects in SQL Server Migration Assistant (SSMA) for Db2.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
 ms.topic: how-to
@@ -13,7 +13,7 @@ ms.collection:
 ---
 # Work with SSMA projects (Db2ToSQL)
 
-To migrate Db2 databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], you first create an SQL Server Migration Assistant (SSMA) project. The project is a file that contains the following information:
+To migrate Db2 databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], you first create a SQL Server Migration Assistant (SSMA) project. The project is a file that contains the following information:
 
 - Metadata about the Db2 databases you want to migrate to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
@@ -57,13 +57,7 @@ To migrate data from Db2 databases to [!INCLUDE [ssNoVersion](../../includes/ssn
 
 1. In the **Migration To** dropdown list, select the version of target [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] used for migration. The options available are:
 
-   - [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)]
-   - [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)]
-   - [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]
-   - [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]
-   - [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]
-   - [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]
-   - [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
+   [!INCLUDE [ssma-target-versions](../includes/ssma-target-versions.md)]
 
 ## Customize project settings
 

@@ -209,7 +209,7 @@ Microsoft Corporation [`Microsoft Technical Support`](https://go.microsoft.com/f
 
  ## References
 
-[`Anomaly detection`](https://en.wikipedia.org/wiki/Anomaly_detection)
+[`Anomaly detection`](https://wikipedia.org/wiki/Anomaly_detection)
 
 
 [`Azure Machine Learning Studio (classic): One-Class Support Vector Machine`](/azure/machine-learning/studio-module-reference/one-class-support-vector-machine)

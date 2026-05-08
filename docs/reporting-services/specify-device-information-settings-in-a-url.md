@@ -4,7 +4,7 @@ description: Learn how to specify device information settings in a URL, specific
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

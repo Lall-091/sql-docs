@@ -1,12 +1,13 @@
 ---
 title: High Availability and Disaster Recovery
 description: Install and configure SQL Master Data Services on an Always On Availability group to improve high availability and disaster recovery of backend data.
-author: CordeliaGrey
-ms.author: jiwang6
-ms.date: "07/28/2017"
+author: meetdeepak
+ms.author: dkhare
+ms.reviewer: mikeray
+ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - build-2025
   - sfi-image-nochange

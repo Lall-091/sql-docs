@@ -87,7 +87,7 @@ Returns the product of all *expression* values in the most precise *expression* 
 
 ## Remarks
 
-Support for `PRODUCT` in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] is limited to [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)].
+Support for `PRODUCT` in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] is limited to [!INCLUDE [ssazure-sqlmi-autd](../../includes/applies-to-version/ssazure-sqlmi-autd.md)].
 
 `PRODUCT` is a deterministic function when used without the `OVER` and `ORDER BY` clauses. It's nondeterministic when specified with the `OVER` and `ORDER BY` clauses. For more information, see [Deterministic and nondeterministic functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).
 

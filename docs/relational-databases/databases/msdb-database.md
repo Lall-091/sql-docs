@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: "andreas.wolter"
 ms.date: "11/16/2022"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "SQL Server Agent, msdb database"
   - "alerts [SQL Server], msdb database"

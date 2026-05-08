@@ -14,7 +14,7 @@ monikerRange: ">=sql-server-linux-ver16 || >=sql-server-ver16"
 ---
 # Configure PolyBase to access external data in S3-compatible object storage
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article explains how to use PolyBase to query external data in S3-compatible object storage.
 
@@ -233,7 +233,7 @@ For PolyBase on SQL Server on Linux, more configuration is needed.
 
 ## Related content
 
-- [Data virtualization with PolyBase in SQL Server](polybase-guide.md)
+- [Data virtualization with PolyBase in SQL Server](overview.md)
 - [Configure PolyBase to access external data in S3-compatible object storage](polybase-configure-s3-compatible.md)
 - [Virtualize parquet file in a S3-compatible object storage with PolyBase](polybase-virtualize-parquet-file.md)
 - [PolyBase Transact-SQL reference](polybase-t-sql-objects.md)

@@ -24,7 +24,7 @@ A standalone SQL Server instance with PolyBase can become a performance bottlene
 
 [!INCLUDE [polybase-scaleout-banner-retirement](../../includes/polybase-scaleout-banner-retirement.md)]
 
-See [Data virtualization with PolyBase in SQL Server](polybase-guide.md) and [Data virtualization with PolyBase in SQL Server](polybase-guide.md).
+See [Data virtualization with PolyBase in SQL Server](overview.md) and [Data virtualization with PolyBase in SQL Server](overview.md).
 
 :::image type="content" source="media/polybase-scale-out-groups.png" alt-text="Diagram showing PolyBase scale-out groups." lightbox="media/polybase-scale-out-groups.png":::
 

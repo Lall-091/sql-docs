@@ -4,7 +4,7 @@ description: This detailed guide explains available configuration options when d
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: dpless
-ms.date: 11/18/2025
+ms.date: 03/18/2026
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
 ms.topic: how-to
@@ -21,7 +21,7 @@ This article provides a detailed description of the available configuration opti
 
 ## Prerequisites
 
-An Azure subscription. Create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F) to get started.
+An Azure subscription. Create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) to get started.
 
 <a id="select"></a>
 
@@ -38,12 +38,7 @@ Licensing costs for SQL Server are incorporated into the per-second pricing of t
 
 To choose an image, follow these steps:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **SQL Server on Azure Virtual Machines**, select **Show options**.
-
-   :::image type="content" source="media/create-sql-vm-portal/show-options-create-virtual-machine.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create virtual machine button." lightbox="media/create-sql-vm-portal/show-options-create-virtual-machine.png":::
-
-1. In the **Select an image offer** box, choose a SQL Server image (such as **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025**).
-1. Select **Create virtual machine**.
+[!INCLUDE [create-sql-virtual-machine](../../includes/sql-virtual-machines/create-sql-virtual-machine.md)]
 
 [!INCLUDE [appliesto-sqlvm](../../includes/virtual-machines-2014-end-of-support.md)]
 
@@ -67,7 +62,7 @@ On the **Basics** tab, provide the following information:
   1. Enter a unique **Virtual machine name**.
   1. Choose a location for your **Region**.
   1. For the purpose of this guide, leave **Availability options** set to *No infrastructure redundancy required*. To find out more information about availability options, see [Availability](/azure/virtual-machines/availability).
-  1. In the **Image** list, select *Free SQL Server License: SQL Server 2019 Developer on Windows Server 2019* if it's not already selected.
+  1. In the **Image** list, select *Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025* if it's not already selected.
   1. Choose **Standard** for **Security type**.
   1. Select **See all sizes** for the **Size** of the virtual machine and search for the **E4ds_v5** offering. This is one of the minimum recommended VM sizes for SQL Server on Azure VMs. If this is for testing purposes, be sure to clean up your resources once you're done with them to prevent any unexpected charges. For production workloads, see the recommended machine sizes and configuration in [Performance best practices for SQL Server in Azure Virtual Machines](performance-guidelines-best-practices-vm-size.md).
 
@@ -123,7 +118,7 @@ On the **SQL Server settings** tab, configure specific settings and optimization
 - [SQL instance settings](#sql-instance-settings)
 - [Automated patching](#automated-patching)
 - [Automated backup](#automated-backup)
-- [Machine Learning Services](#machine-learning-services)
+- [R Services (Advanced Analytics)](#r-services-advanced-analytics)
 
 ### Connectivity
 
@@ -204,7 +199,7 @@ Select **Change SQL instance settings** to modify SQL Server configuration optio
 
 ### SQL Server license
 
-If you're a Software Assurance customer, you can use the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) to bring your own SQL Server license and save on resources. Select **Yes** to enable the Azure Hybrid Benefit, and then confirm that you have Software Assurance by selecting the checkbox.
+If you're a Software Assurance customer, you can use the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) to get a discount on the allocation of SQL Server licenses to your SQL Server on Azure VM. Select **Yes** to enable the Azure Hybrid Benefit, and then confirm that you have Software Assurance by selecting the checkbox.
 
 :::image type="content" source="./media/create-sql-vm-portal/azure-sqlvm-license.png" alt-text="Screenshot from the Azure portal of the SQL VM License options.":::
 
@@ -212,11 +207,11 @@ If you chose a free license image, such as the developer edition, the **SQL Serv
 
 ### Automated patching
 
-**Automated patching** is enabled by default. [Automated Patching](automated-patching.md) allows Azure to automatically apply SQL Server and operating system security updates. Specify a day of the week, time, and duration for a maintenance window. Azure performs patching in this maintenance window. The maintenance window schedule uses the VM locale. If you don't want Azure to automatically patch SQL Server and the operating system, select **Disable**.
+**Automated patching** is disabled by default. [Automated Patching](automated-patching.md) allows Azure to automatically apply SQL Server and operating system security updates. If you want Azure to automatically patch SQL Server and the operating system, select **Enable**. Specify a day of the week, time, and duration for a maintenance window. Azure performs patching in this maintenance window. 
 
 :::image type="content" source="./media/create-sql-vm-portal/azure-sqlvm-automated-patching.png" alt-text="Screenshot from the Azure portal of SQL VM automated patching.":::
 
-For improved patching management, which also includes Cumulative Updates, try the integrated [Azure Update Manager](../azure-update-manager-sql-vm.md) experience after your SQL Server VM finishes deployment.
+For improved patching management, which also includes Cumulative Updates, try the integrated [Azure Update Manager](../azure-update-manager-sql-vm.md) experience after your SQL Server VM finishes deployment. For more information about all supported update methods, see [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md).
 
 ### Automated backup
 
@@ -240,9 +235,9 @@ By default the schedule is set automatically, but you can create your own schedu
 
 For more information, see [Automated Backup for SQL Server in Azure Virtual Machines](automated-backup-sql-2014.md).
 
-### Machine Learning Services
+### R Services (Advanced Analytics)
 
-You have the option to enable [Machine Learning Services](/sql/advanced-analytics/). This option lets you use machine learning with Python and R in SQL Server 2017. Select **Enable** on the **SQL Server Settings** window. Enabling this feature from the Azure portal after the SQL Server VM is deployed will trigger a restart of the SQL Server service.
+You have the option to enable [SQL Server Machine Learning Services (In-Database)](/sql/advanced-analytics/). This option lets you use machine learning with Python and R in SQL Server 2017 and later versions. Select **Enable** on the **SQL Server Settings** window. Enabling this feature from the Azure portal after the SQL Server VM is deployed triggers a restart of the SQL Server service.
 
 ## Review + create
 
@@ -289,6 +284,7 @@ SQL Server images from Azure Marketplace install the SQL Server binaries to the 
 
 ## Related content
 
+- [Updating SQL Server on Azure VMs](servicing-updates-guidelines.md)
 - [What is SQL Server on Azure Windows Virtual Machines?](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [Frequently asked questions for SQL Server on Azure VMs](frequently-asked-questions-faq.yml)
 - [Checklist: Best practices for SQL Server on Azure VMs](performance-guidelines-best-practices-checklist.md)

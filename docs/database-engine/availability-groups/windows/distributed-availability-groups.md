@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - intro-overview
   - build-2025
@@ -322,7 +322,7 @@ SELECT * FROM sys.dm_os_performance_counters WHERE instance_name LIKE '%distribu
 
 ### DMV to display health of both AG and Distributed AG
 
-The below query displays a wealth of information about the health of both the availability group, and the distributed availability group. *(Reproduced with permission from [Tracy Boggiano](https://tracyboggiano.com/archive/2017/11/distributed-availability-groups-setup-and-monitoring/).)*
+The below query displays a wealth of information about the health of both the availability group, and the distributed availability group. *(Reproduced with permission from [Tracy Boggiano](https://tracyboggiano.com).)*
 
 ```sql
 -- displays sync status, send rate, and redo rate of availability groups,

@@ -8,7 +8,7 @@ ms.reviewer: maghan, randolphwest
 ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: profiler
-ms.topic: conceptual
+ms.topic: how-to
 ms.collection:
   - data-tools
 ---

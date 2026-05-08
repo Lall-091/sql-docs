@@ -59,7 +59,7 @@ sections:
 
       - question: Can I use my Student subscription with an Azure SQL Database free offer database?
         answer: |
-         There are multiple student offers. Currently, the Microsoft Azure for Students Starter offer is incompatible with this Azure SQL Database free offer. Instead, consider the [Azure for College Students offer](https://azure.microsoft.com/pricing/offers/ms-azr-0170p/) or the [Azure Free offer](https://azure.microsoft.com/pricing/offers/ms-azr-0044p/). If desired, the **Continue using database for additional charges** option can deduct from the starting credits.
+         There are multiple student offers. Currently, the Microsoft Azure for Students Starter offer is incompatible with this Azure SQL Database free offer. Instead, consider the [Azure for College Students offer](https://azure.microsoft.com/pricing/offers/ms-azr-0170p/) or the [Azure Free offer](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). If desired, the **Continue using database for additional charges** option can deduct from the starting credits.
 
       - question: Will any unused vCore seconds in a month carry forward to the next month?
         answer: |

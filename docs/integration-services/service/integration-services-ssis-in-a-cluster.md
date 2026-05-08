@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "05/25/2025"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: integration
 ---
 # Integration Services (SSIS) in a Cluster
 

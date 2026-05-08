@@ -1,3 +1,12 @@
+---
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: rotabor, alexwolf
+ms.date: 01/13/2026
+ms.service: azure-sql-database
+ms.topic: include
+---
+
 1. In Visual Studio Code, in the Azure explorer, right-click your App Service and select **Open in portal**.
 1. Navigate to the **Configuration** page for your App Service. Under the **Application Settings** tab, create environment variables for each property in the following table, with your own values. 
 

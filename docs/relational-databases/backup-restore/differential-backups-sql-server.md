@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "differential backups"
   - "differential backups, about"

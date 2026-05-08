@@ -4,7 +4,7 @@ description: Discover how to visually represent hierarchical data in a paginated
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

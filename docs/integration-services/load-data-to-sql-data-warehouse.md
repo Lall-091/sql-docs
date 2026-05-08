@@ -15,6 +15,8 @@ ms.custom:
 
 [!INCLUDE [asa](../includes/applies-to-version/asa.md)]
 
+[!INCLUDE [synapse-fabric-migration](../includes/synapse-fabric-migration.md)]
+
 Create a SQL Server Integration Services (SSIS) package to load data into a dedicated SQL pool in [Azure Synapse Analytics](/azure/sql-data-warehouse/index). You can optionally restructure, transform, and cleanse the data as it passes through the SSIS data flow.
 
 This article shows you how to do the following things:

@@ -4,7 +4,7 @@ description: Report Builder lets you export to view a report in other applicatio
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

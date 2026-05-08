@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "09/16/2019"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Indexes on Memory-Optimized Tables

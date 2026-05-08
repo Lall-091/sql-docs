@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/05/2012"
 ms.service: sql
 ms.subservice: data-quality-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Domains"
 ms.custom:

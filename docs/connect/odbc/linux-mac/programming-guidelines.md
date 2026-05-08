@@ -7,7 +7,7 @@ ms.date: 02/17/2022
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Programming Guidelines
 

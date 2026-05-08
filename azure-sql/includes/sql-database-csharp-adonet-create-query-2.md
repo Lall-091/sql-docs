@@ -1,7 +1,7 @@
 ---
 author: rothja
 ms.author: jroth
-ms.date: 12/10/2018
+ms.date: 02/09/2026
 ms.service: azure-sql-database
 ms.topic: include
 ms.custom: sfi-ropc-nochange
@@ -27,7 +27,7 @@ The ERD displays the relationship between the two tables. The values in the **ta
 ![ERD showing foreign key](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> You have the option of editing the T-SQL to add a leading `#` to the table names, which creates them as temporary tables in *tempdb*. This is useful for demonstration purposes, when no test database is available. Any reference to foreign keys are not enforced during their use and temporary tables are deleted automatically when the connection closes after the program finishes running.
+> You have the option of editing the T-SQL to add a leading `#` to the table names, which creates them as temporary tables in *tempdb*. This is useful for demonstration purposes, when no test database is available. Foreign key references aren't enforced during their use, and temporary tables are deleted automatically when the connection closes after the program finishes running.
 
 ### To compile and run
 
@@ -46,7 +46,7 @@ The C# program is logically one .cs file, and is physically divided into several
         - *cb.Password*
         - *cb.InitialCatalog*
 
-1. Verify the assembly *System.Data.dll* is referenced. To verify, expand the **References** node in the **Solution Explorer** pane.
+1. Add the **Microsoft.Data.SqlClient** NuGet package to your project. In Visual Studio, right-click on the project in **Solution Explorer**, select **Manage NuGet Packages**, and search for `Microsoft.Data.SqlClient`.
 
 1. To build and run the program from Visual Studio, select the **Start** button. The report output is displayed in a program window, though GUID values will vary between test runs.
 
@@ -82,7 +82,7 @@ The C# program is logically one .cs file, and is physically divided into several
 
 ```csharp
 using System;
-using System.Data.SqlClient;   // System.Data.dll
+using Microsoft.Data.SqlClient;
 //using System.Data;           // For:  SqlDbType , ParameterDirection
 
 namespace csharp_db_test

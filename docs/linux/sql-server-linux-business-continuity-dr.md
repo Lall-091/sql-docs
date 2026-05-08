@@ -19,5 +19,5 @@ monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 
 ## Related content
 
-- [Configure SQL Server availability group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md)
+- [Configure SQL Server availability group for high availability on Linux](high-availability/availability-groups-configure.md)
 - [Always On availability group failover on Linux](sql-server-linux-availability-group-failover-ha.md)

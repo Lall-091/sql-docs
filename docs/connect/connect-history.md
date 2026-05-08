@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: concept-article
 ---
 # Driver history for Microsoft SQL Server
 

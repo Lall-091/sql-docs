@@ -7,7 +7,7 @@ ms.reviewer: v-davidengel
 ms.date: 10/30/2023
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Parsing the results
 

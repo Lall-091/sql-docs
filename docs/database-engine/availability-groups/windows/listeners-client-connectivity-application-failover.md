@@ -3,7 +3,7 @@ title: "Connect to an availability group listener"
 description: "Contains information about connecting to an Always On availability group listener, such as how to connect to the primary replica, a read-only secondary replica, use TLS/SSL, and Kerberos."
 author: MashaMSFT
 ms.author: mathoma
-ms.date: 09/27/2024
+ms.date: 03/24/2026
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: how-to
@@ -38,11 +38,14 @@ For example, to connect to the primary replica in SQL Server Management Studio t
 
 During a failover, when the primary replica changes, existing connections to the listener are disconnected and new connections are routed to the new primary replica.
 
-An example of a basic connection string for the ADO.NET provider (System.Data.SqlClient):
+An example of a basic connection string for the ADO.NET provider (`Microsoft.Data.SqlClient` or `System.Data.SqlClient`):
 
 ```
 Server=tcp: AGListener,1433;Database=MyDB;Integrated Security=SSPI
 ```
+
+> [!NOTE]
+> `Microsoft.Data.SqlClient` is the recommended ADO.NET data provider for new application development. It supports the same connection string keywords as `System.Data.SqlClient`. For more information, see [Introduction to the Microsoft.Data.SqlClient namespace](../../../connect/ado-net/introduction-microsoft-data-sqlclient-namespace.md).
 
 You can verify which replica you're currently connected to through the listener by running the following Transact-SQL (T-SQL) command:
 
@@ -50,7 +53,7 @@ You can verify which replica you're currently connected to through the listener 
 SELECT @@SERVERNAME
 ```
 
-For example, when SQLVM1 is my primary replica: 
+For example, when SQLVM1 is the primary replica: 
 
 :::image type="content" source="media/listeners-client-connectivity-application-failover/replica-server-name.png" alt-text="Screenshot of Check replica connectivity.":::
 
@@ -68,13 +71,13 @@ Connections are automatically routed to the read-only replica if the following a
 
 - The connection string references an availability group listener, and the application intent of the incoming connection is set to read-only (for example, by using the **Application Intent=ReadOnly** keyword in the ODBC or OLEDB connection strings or connection attributes or properties).
 
-The application intent attribute is stored in the client's session during login and the instance of SQL Server will then process this intent and determine what to do according to the configuration of the availability group and the current read-write state of the target database in the secondary replica.
+The application intent attribute is stored in the client's session during login. The instance of SQL Server processes the intent and determines what to do according to the configuration of the availability group and the current read-write state of the target database in the secondary replica.
 
-For example, to connect to a read-only replica using SQL Server Management Studio, select **Options** on the **Connect to Server** dialog box, select the **Additional Connection Parameters** tab, and then specify `ApplicationIntent=ReadOnly` in the text box:
+For example, to connect to a read-only replica by using SQL Server Management Studio, select **Options** on the **Connect to Server** dialog box, select the **Additional Connection Parameters** tab, and then specify `ApplicationIntent=ReadOnly` in the text box:
 
 :::image type="content" source="media/listeners-client-connectivity-application-failover/read-only-intent-in-ssms.png" alt-text="Screenshot of Read only connection in SSMS.":::
 
-An example of a connection string for the ADO.NET provider (System.Data.SqlClient) that designates read-only application intent:
+An example of a connection string for the ADO.NET provider (`Microsoft.Data.SqlClient` or `System.Data.SqlClient`) that designates read-only application intent:
 
 ```
 Server=tcp:AGListener;Database=AdventureWorks;Integrated Security=SSPI;ApplicationIntent=ReadOnly
@@ -88,7 +91,7 @@ When creating your listener, you designate a port for the listener to use. If th
 
 :::image type="content" source="media/listeners-client-connectivity-application-failover/specify-port-in-ssms.png" alt-text="Screenshot of Connect with a nondefault port.":::
 
-An example of a connection string for the ADO.NET provider (System.Data.SqlClient) that specifies a nondefault port for the listener:
+An example of a connection string for the ADO.NET provider (`Microsoft.Data.SqlClient` or `System.Data.SqlClient`) that specifies a nondefault port for the listener:
 
 ```
 Server=tcp:AGListener,1445;Database=AdventureWorks;Integrated Security=SSPI
@@ -98,7 +101,7 @@ Server=tcp:AGListener,1445;Database=AdventureWorks;Integrated Security=SSPI
 
 While availability group listeners enable support for failover redirection and read-only routing, client connections aren't required to use them. A client connection can also directly reference the instance of SQL Server instead of connecting to the availability group listener.
 
-To the instance of SQL Server, it's irrelevant whether a connection logs in using the availability group listener or using another instance endpoint. The instance of SQL Server verifies the state of the targeted database and either allow or disallow connectivity based on the configuration of the availability group and the current state of the database on the instance. For example, if a client application connects directly to an instance of SQL Server port and connects to a target database hosted in an availability group, and the target database is in primary state and online, then connectivity succeeds. If the target database is offline or in a transitional state, connectivity to the database will fail.
+To the instance of SQL Server, it's irrelevant whether a connection logs in using the availability group listener or using another instance endpoint. The instance of SQL Server verifies the state of the targeted database and either allows or disallows connectivity based on the configuration of the availability group and the current state of the database on the instance. For example, if a client application connects directly to an instance of SQL Server port and connects to a target database hosted in an availability group, and the target database is in primary state and online, then connectivity succeeds. If the target database is offline or in a transitional state, connectivity to the database fails.
 
 Alternatively, while migrating from database mirroring to [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)], applications can specify the database mirroring connection string as long as only one secondary replica exists and it disallows user connections.
 
@@ -119,17 +122,17 @@ If you're using client libraries that support the MultiSubnetFailover connection
 
 The **MultiSubnetFailover** connection option only works with the TCP network protocol and is only supported when connecting to an availability group listener and for any virtual network name connecting to [!INCLUDE [ssnoversion](../../../includes/ssnoversion-md.md)].
 
-An example of the ADO.NET provider (System.Data.SqlClient) connection string that enables multi-subnet failover is as follows:
+An example of the ADO.NET provider (`Microsoft.Data.SqlClient` or `System.Data.SqlClient`) connection string that enables multi-subnet failover is as follows:
 
 ```
 Server=tcp:AGListener,1433;Database=AdventureWorks;Integrated Security=SSPI; MultiSubnetFailover=True
 ```
 
-The **MultiSubnetFailover** connection option should be set to **True** even if the availability group only spans a single subnet. This allows you to preconfigure new clients to support future spanning of subnets without any need for future client connection string changes and also optimizes failover performance for single subnet failovers. While the **MultiSubnetFailover** connection option isn't required, it does provide the benefit of a faster subnet failover. This is because the client driver attempts to open up a TCP socket for each IP address in parallel associated with the availability group. The client driver waits for the first IP to respond with success and once it does, will then use it for the connection.
+The **MultiSubnetFailover** connection option should be set to **True** even if the availability group only spans a single subnet. This option lets you preconfigure new clients to support future spanning of subnets without any need for future client connection string changes and also optimizes failover performance for single subnet failovers. While the **MultiSubnetFailover** connection option isn't required, it does provide the benefit of a faster subnet failover. The client driver attempts to open up a TCP socket for each IP address in parallel associated with the availability group. The client driver waits for the first IP to respond with success and once it does, uses it for the connection.
 
-## <a name="SSLcertificates"></a> Listeners & TLS/SSL certificates
+## <a name="SSLcertificates"></a> Listeners and TLS/SSL certificates
 
-When connecting to an availability group listener, if the participating instances of SQL Server use TLS/SSL certificates in conjunction with session encryption, the connecting client driver needs to support the Subject Alternate Name in the TLS/SSL certificate in order to force encryption.
+When connecting to an availability group listener, if the participating instances of SQL Server use TLS/SSL certificates in conjunction with session encryption, the connecting client driver needs to support the Subject Alternate Name in the TLS/SSL certificate to force encryption.
 
 An X.509 certificate must be configured for each participating server node in the failover cluster with a list of all availability group listeners set in the Subject Alternate Name of the certificate.
 
@@ -157,7 +160,7 @@ CN: Win2019.contoso.com
 SAN: Win2019.contoso.com, Listener2019.contoso.com
 ```
 
-With this configuration, your connections is encrypted when connecting to the instance (`WIN2019\SQL2019`), or the listener (`Listener2019`).
+With this configuration, your connection is encrypted when connecting to the instance (`WIN2019\SQL2019`), or the listener (`Listener2019`).
 
 Depending on how networking is configured, there's a small subset of customers that might need to add the NetBIOS to the SAN as well. In which case, the certificate values should be:
 

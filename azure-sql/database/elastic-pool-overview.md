@@ -157,10 +157,10 @@ You can create an elastic pool in the Azure portal in two ways:
 **To create an elastic pool and select an existing or new server:**
 
 1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Elastic pool**.
+1. In the resource menu, expand **Azure SQL Database** and select **Elastic pools**.
+1. In the toolbar, select **+ Create**.
 
-   :::image type="content" source="media/elastic-pool-overview/show-options-create-sql-elastic-pool.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button, and the Create SQL Elastic pool button." lightbox="media/elastic-pool-overview/show-options-create-sql-elastic-pool.png":::
+   :::image type="content" source="media/elastic-pool-overview/show-options-create-sql-elastic-pool.png" alt-text="Screenshot from the Azure portal showing the Azure SQL Database menu, the Elastic pools page, the Create button." lightbox="media/elastic-pool-overview/show-options-create-sql-elastic-pool.png":::
 
 1. Choose a **Subscription**, **Resource group**, **Elastic Pool Name**, and a host logical **Server**, which can be an existing or new server.
 1. To configure the resources and pricing of the pool, select **Configure pool**. Then select a service tier, add databases to the pool, and configure the resource limits for the pool and its databases.

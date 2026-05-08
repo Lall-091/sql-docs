@@ -1,19 +1,19 @@
 ---
-title: "Get Started with SQL Database Projects"
-description: "[Article description]."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+title: Get Started with SQL Database Projects
+description: A SQL database project is a local representation of SQL objects that comprise the schema for a single database, such as tables, stored procedures, or functions.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
+ms.date: 03/11/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: get-started
 ms.collection:
   - data-tools
-zone_pivot_groups: sq1-sql-projects-tools
 ms.custom:
   - ignite-2024
   - sfi-ropc-nochange
+zone_pivot_groups: sq1-sql-projects-tools
 ---
 
 # Get started with SQL database projects
@@ -33,7 +33,7 @@ This article steps through creating a new SQL project, adding objects to the pro
 
 ::: zone pivot="sq1-visual-studio"
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
 - [Install SQL Server Data Tools (SSDT) for Visual Studio](../../ssdt/download-sql-server-data-tools-ssdt.md)
 
@@ -41,23 +41,31 @@ This article steps through creating a new SQL project, adding objects to the pro
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools, SDK-style (preview) installed in Visual Studio 2022](../../ssdt/sql-server-data-tools-sdk-style.md)
+- [SQL Server Data Tools, SDK-style (preview)](../../ssdt/sql-server-data-tools-sdk-style.md)
 
 ::: zone-end
 
 ::: zone pivot="sq1-visual-studio-code"
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [VS Code](https://code.visualstudio.com/Download)
-- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
+- [SQL Database Projects extension](../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
 
 ::: zone-end
 
+:::zone pivot="sq1-sql-server-management-studio"
+
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- [SQL Server Management Studio (SSMS)](/ssms/install/install)
+- [Database DevOps workload installed in SSMS](/ssms/database-devops)
+
+:::zone-end
+
 ::: zone pivot="sq1-command-line"
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - [SqlPackage CLI](../sqlpackage/sqlpackage-download.md)
 - [Microsoft.Build.Sql.Templates .NET templates](https://www.nuget.org/packages/Microsoft.Build.Sql.Templates/)
 
@@ -108,7 +116,7 @@ Select **Create** to create the project. The empty project is opened and visible
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, select the **New Project** button.
+In the **Database Projects** view of Visual Studio Code, select the **New Project** button.
 
 :::image type="content" source="media/getting-started/projects-viewlet.png" alt-text="Screenshot of New viewlet.":::
 
@@ -123,6 +131,20 @@ When prompted whether to create an SDK-style project, select **Yes**.
 Once completed, the empty project is opened and visible in the **Database Projects** view for editing.
 
 ::: zone-end
+
+:::zone pivot="sq1-sql-server-management-studio"
+
+Select **File**, **New**, then **Project**.
+
+In the **New Project** dialog box, use the term **SQL Server** in the search box. The top result should be **SQL Server Database Project**.
+
+:::image type="content" source="media/getting-started/new-project-dialog-ssms.png" alt-text="Screenshot of New project dialog." lightbox="media/getting-started/new-project-dialog-ssms.png":::
+
+Select **Next** to proceed to the next step. Provide a project name, which doesn't need to match a database name. Verify and modify the project location as needed.
+
+Select **Create** to create the project. The empty project is opened and visible in the **Solution Explorer** for editing.
+
+:::zone-end
 
 ::: zone pivot="sq1-command-line"
 
@@ -161,11 +183,21 @@ More database objects can be added through the **Add New Item** dialog, such as 
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Add Table**. In the dialog that appears, specify the table name.
+In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Add Table**. In the dialog that appears, specify the table name.
 
 The table is opened in the text editor with the template table definition, where you can add columns, indexes, and other table properties. Save the file when you're done making the initial edits.
 
-More database objects can be added through the context menu on the project node, such as views, stored procedures, and functions. Access the dialog by right-clicking the project node in **Database Projects** view of VS Code or Azure Data Studio, then the desired object type. Files in the project can be organized into folders through the **New Folder** option under **Add**.
+More database objects can be added through the context menu on the project node, such as views, stored procedures, and functions. Access the dialog by right-clicking the project node in **Database Projects** view of Visual Studio Code, then the desired object type. Files in the project can be organized into folders through the **New Folder** option under **Add**.
+
+::: zone-end
+
+::: zone pivot="sq1-sql-server-management-studio"
+
+In **Solution Explorer**, right-click the project node and select **Add**, then **New Item**. The **Add New Item** dialog appears, select **Show All Templates** and then **Table**. Specify the table name as the file name and select **Add** to create the table in the SQL project.
+
+The table is opened in the SSMS query editor with the template table definition, where you can add columns, indexes, and other table properties. Save the file when you're done making the initial edits.
+
+More database objects can be added through the **Add New Item** dialog, such as views, stored procedures, and functions. Access the dialog by right-clicking the project node in **Solution Explorer** and selecting **Add**, then the desired object type after **Show All Templates**. Files in the project can be organized into folders through the **New Folder** option under **Add**.
 
 ::: zone-end
 
@@ -206,9 +238,17 @@ The output window automatically opens to display the build process. If there are
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Build**.
+In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Build**.
 
 The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin/Debug/projectname.dacpac`).
+
+::: zone-end
+
+::: zone pivot="sq1-sql-server-management-studio"
+
+In **Solution Explorer**, right-click the project node and select **Build**.
+
+The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin\Debug\projectname.dacpac`).
 
 ::: zone-end
 
@@ -253,7 +293,7 @@ Specify a database name and select **Publish** to deploy the project to the targ
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Publish**.
+In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Publish**.
 
 > [!TIP]  
 > If you don't have an available SQL instance for deployment, the SQL Database Projects extension can create a local SQL Server instance for you in a new container. With a container runtime such as Docker Desktop running, select **Publish to a new SQL server local development container** from the dropdown list.
@@ -263,6 +303,16 @@ If you have an existing SQL instance for deployment, select **Publish to an exis
 If you haven't configured a connection to a target database, you're prompted to create a new connection. The new connection inputs ask for the server name, authentication method, and database name.
 
 After the connection is configured, the deployment process will begin. You can choose to automatically execute the deployment (publish) or generate a script to review before executing (generate script).
+
+::: zone-end
+
+::: zone pivot="sq1-sql-server-management-studio"
+
+In **Solution Explorer**, right-click the project node and select **Publish...**.
+
+The publish dialog opens, where you establish the **target database connection**. If you don't have an existing SQL instance for deployment, LocalDB (`(localdb)\MSSQLLocalDB`) is installed with Visual Studio and can be used for testing and development.
+
+Specify a database name and select **Publish** to deploy the project to the target database or **Generate Script** to generate a script to review before executing.
 
 ::: zone-end
 

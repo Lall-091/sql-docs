@@ -16,6 +16,8 @@ monikerRange: "=azuresql || =azuresql-db "
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
+[!INCLUDE [elastic-query-shard-map-manager-mode-end-of-support](includes/elastic-query-shard-map-manager-mode-end-of-support.md)]
+
 This article introduces you to the developer experience for the [elastic database client library](elastic-database-client-library.md) by helping you run a sample app. The sample app creates a simple sharded application and explores key capabilities of the Elastic Database Tools feature of Azure SQL Database. Learn more about the use cases for [shard map management](elastic-scale-shard-map-management.md), [data-dependent routing](elastic-scale-data-dependent-routing.md), and [multi-shard querying](elastic-scale-multishard-querying.md). The client library is available for .NET as well as Java.
 
 ## Elastic Database Tools for Java

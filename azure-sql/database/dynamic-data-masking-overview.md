@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, vanto, mathoma, randolphwest
 ms.date: 11/24/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - ignite-2024

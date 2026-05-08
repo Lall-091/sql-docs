@@ -7,7 +7,7 @@ ms.reviewer: mikeray, maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Certificates for dialog security

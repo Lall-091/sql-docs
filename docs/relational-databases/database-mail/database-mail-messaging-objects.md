@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: 05/16/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Database Mail [SQL Server], host databases"
   - "Database Mail [SQL Server], messaging objects"

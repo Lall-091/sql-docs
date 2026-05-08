@@ -176,6 +176,8 @@ You can also use the Failover Cluster manager; follow the same steps as for the 
 
 It's possible to change the quorum vote of a node participating in a Windows Server Failover Cluster.
 
+For details, review [WSFC quorum modes and voting configuration](/sql/sql-server/failover-clusters/windows/wsfc-quorum-modes-and-voting-configuration-sql-server).
+
 When modifying the node vote settings, follow these guidelines:
 
 | Quorum voting guidelines |
@@ -187,6 +189,26 @@ When modifying the node vote settings, follow these guidelines:
 | Disable votes for nodes that are in secondary disaster recovery sites. Nodes in secondary sites shouldn't contribute to the decision of taking a cluster offline if there's nothing wrong with the primary site. |
 | Have an odd number of votes, with three quorum votes minimum. If necessary, add a [Quorum witness](hadr-cluster-quorum-configure-how-to.md) for a third vote in a two-node cluster. |
 | Reassess vote assignments post-failover. You don't want to fail over into a cluster configuration that doesn't support a healthy quorum. |
+
+You can adjust quorum voting using Failover Cluster Manager or PowerShell: 
+
+```powershell
+Import-Module FailoverClusters  
+  
+$node = "AlwaysOnSrv1"  
+(Get-ClusterNode $node).NodeWeight = 0  
+  
+$cluster = (Get-ClusterNode $node).Cluster  
+$nodes = Get-ClusterNode -Cluster $cluster  
+  
+$nodes | Format-Table -property NodeName, State, NodeWeight  
+```
+
+You can also use cluster.exe in an elevated command prompt:
+
+```
+cluster.exe Cluster001 node AlwaysOnSrv1 /prop NodeWeight=0  
+```
 
 ## Related content
 

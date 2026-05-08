@@ -16,7 +16,7 @@ monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 |
 ---
 # Manage services and network settings with the WMI provider
 
-[!INCLUDE [sqlserver2022](../../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [sqlserver2022](../../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 The WMI provider is a published interface that is used by [!INCLUDE [msCoName](../../../includes/msconame-md.md)] Management Console (MMC) to manage the [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] services and network protocols. In SMO, the <xref:Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer> object represents the WMI provider.
 

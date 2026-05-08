@@ -3,11 +3,13 @@ title: Release Notes ODBC Driver for SQL Server on Linux and macOS
 description: "Learn what's new and changed in released versions of the Microsoft ODBC Driver for SQL Server."
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/17/2025
+ms.reviewer: randolphwest
+ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.custom: linux-related-content
 ms.topic: release-notes
+ms.custom:
+  - linux-related-content
 ---
 # Release Notes for the Microsoft ODBC Driver for SQL Server on Linux and macOS
 
@@ -27,12 +29,26 @@ NOW NEW FILE NAME:    linux-mac/release-notes-odbc-sql-server-linux-mac.md
 Thank you.
 GeneMi.  2019/04/03.
 -->
+## 17.1.1, April 2026
+
+| New item | Details |
+| :------- | :------ |
+| New distributions supported. | macOS 14, 15, 26, Debian 13, Red Hat 10, Oracle Linux 9, 10, SUSE 16, Ubuntu 24.04, 25.10, Alpine 3.21, 3.22, 3.23 |
+| Bug fixes. | [Bug fixes](../bug-fixes.md). |
+
+## 18.6.2, March 2026
+
+| New item | Details |
+| :------- | :------ |
+| Vector parameters. | Improve handling of output and input/output vector parameters when using prepared statements. |
+| Server redirections. | Support Microsoft Fabric redirection scenarios allowing up to 10 server redirections per connection attempt. |
+| Bug fixes. | [Bug fixes](../bug-fixes.md). |
 
 ## 18.6.1, December 2025
 
 | New item | Details |
 | :------- | :------ |
-| New data type | Added support for new Vector data type (float32). |
+| New data type | Added support for new Vector data type (float32). See [Vector data type (ODBC)](../vector-data-type.md) for usage and examples. |
 | ConcatNullYieldsNull property | Added support for ConcatNullYieldsNull as a connection string property. |
 | New distributions supported. | Azure Linux 3.0 ARM, Debian Linux 13, RedHat Linux 10, Ubuntu Linux 25.10 |
 | Azure Linux License | Changed License Acceptance Process for Azure Linux. |

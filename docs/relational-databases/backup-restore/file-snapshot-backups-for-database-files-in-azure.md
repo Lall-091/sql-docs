@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 03/01/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # File-Snapshot Backups for Database Files in Azure
 

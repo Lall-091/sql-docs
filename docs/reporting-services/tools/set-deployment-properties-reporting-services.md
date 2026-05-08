@@ -4,7 +4,7 @@ description: Learn how to set the deployment properties that are used by SQL Ser
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

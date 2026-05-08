@@ -1,5 +1,7 @@
 - name: Overview
   href: sql-server-migration-assistant-for-sybase-sybasetosql.md
+- name: Copilot in SSMA for SAP ASE (Preview)
+  href: copilot-in-ssma-overview.md
 - name: What's new
   items:
   - name: What's new in SSMA
@@ -27,7 +29,7 @@
   - name: Migrating Sybase ASE databases to Azure SQL Database
     href: migrating-sybase-ase-databases-to-sql-server-azure-sql-db-sybasetosql.md
   - name: New project
-    href: new-project-sybasetosql.md
+    href: ../shared/new-project.md
   - name: Connecting to Sybase ASE
     href: connecting-to-sybase-ase-sybasetosql.md
   - name: Connect to Sybase
@@ -35,7 +37,7 @@
   - name: Connecting to SQL Server
     href: connecting-to-sql-server-sybasetosql.md
   - name: Connect to SQL Server
-    href: connect-to-sql-server-sybasetosql.md
+    href: ../shared/connect-to-sql-server.md
   - name: Connecting to Azure SQL Database
     href: connecting-to-azure-sql-db-sybasetosql.md
   - name: Connect to Azure SQL Database
@@ -51,13 +53,13 @@
   - name: Converting Sybase ASE database objects
     href: converting-sybase-ase-database-objects-sybasetosql.md
   - name: Save metadata
-    href: save-metadata-sybasetosql.md
+    href: ../shared/save-metadata.md
   - name: Loading converted database objects into SQL Server
     href: loading-converted-database-objects-into-sql-server-sybasetosql.md
   - name: Migrating Sybase ASE data into Azure SQL Database
     href: migrating-sybase-ase-data-into-sql-server-azure-sql-db-sybasetosql.md
   - name: Data migration report
-    href: data-migration-report-sybasetosql.md
+    href: ../shared/data-migration-report.md
 - name: Validate migrated objects
   items:
   - name: Testing migrated database objects
@@ -123,29 +125,29 @@
     - name: Azure SQL Database
       href: project-settings-azure-sql-db-sybasetosql.md
     - name: Edit type mapping
-      href: edit-type-mapping-sybasetosql.md
+      href: ../shared/edit-type-mapping.md
     - name: Migration
       href: project-settings-migration-sybasetosql.md
     - name: Data migration settings
-      href: data-migration-settings-sybasetosql.md
+      href: ../shared/data-migration-settings.md
     - name: Project settings (GUI)
-      href: project-settings-gui-sybasetosql.md
+      href: ../shared/project-settings-gui.md
     - name: Advanced object selection
-      href: advanced-object-selection-sybasetosql.md
+      href: ../shared/advanced-object-selection.md
     - name: Shortcut keys
       href: shortcut-keys-sybase-to-sql.md
     - name: Menu commands & other shortcut keys
-      href: menu-commands-and-other-shortcut-keys-sybase-to-sql.md
+      href: ../shared/menu-commands-and-other-shortcut-keys.md
   - name: Global settings
     items:
     - name: Global settings
-      href: global-settings-dialogs-sybasetosql.md
+      href: ../shared/global-settings-dialogs.md
     - name: Global settings Output
-      href: global-settings-output-window-sybasetosql.md
+      href: ../shared/global-settings-output-window.md
     - name: Editor
-      href: global-settings-editor-sybasetosql.md
+      href: ../shared/global-settings-editor.md
     - name: Logging
-      href: global-settings-logging-sybasetosql.md
+      href: ../shared/global-settings-logging.md
     - name: Tester
       href: global-settings-tester-sybasetosql.md
   - name: Conversion messages

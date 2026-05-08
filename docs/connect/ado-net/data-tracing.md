@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "12/04/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Data tracing in SqlClient
 

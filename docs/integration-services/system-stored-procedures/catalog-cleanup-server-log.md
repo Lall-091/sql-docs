@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # catalog.cleanup_server_log 
 
@@ -68,8 +68,6 @@ catalog.cleanup_server_log
 5.  Run the stored procedure [catalog.cleanup_server_execution_keys](../../integration-services/system-stored-procedures/catalog-cleanup-server-execution-keys.md) to clean up certificates keys from the SSISDB database. Dropping certificates and keys from the SSISDB database may take a long time, so it should be run periodically during off-peak times.  
   
      You can specify the scope or level (execution vs. project) and number of keys to be deleted. The default batch size for deletion is 1000. When you set the level to 2, the keys and certificates are deleted only if the associated projects have been deleted.  
-  
- For more info, see the following Knowledge Base article: [FIX: Performance issues when you use SSISDB as your deployment store in SQL Server 2012](https://support.microsoft.com/kb/2972285)  
   
 ## Example  
  The following example calls the cleanup_server_log stored procedure.  

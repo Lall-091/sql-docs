@@ -4,7 +4,7 @@ description: Use these steps to customize your reports with added, changed, or d
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 f1_keywords:

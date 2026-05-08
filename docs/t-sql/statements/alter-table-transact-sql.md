@@ -1,10 +1,10 @@
 ---
-title: "ALTER TABLE (Transact-SQL)"
+title: ALTER TABLE (Transact-SQL)
 description: ALTER TABLE modifies a table definition by altering, adding, or dropping columns and constraints. ALTER TABLE also reassigns and rebuilds partitions, or disables and enables constraints and triggers.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/15/2025
+ms.date: 05/5/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -58,7 +58,7 @@ helpviewer_keywords:
   - "data retention policy"
   - "table changes [SQL Server]"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
@@ -68,13 +68,10 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 Modifies a table definition by altering, adding, or dropping columns and constraints. `ALTER TABLE` also reassigns and rebuilds partitions, or disables and enables constraints and triggers.
 
-::: moniker range="=fabric"
+> [!TIP]  
+> The syntax of `ALTER TABLE` varies in different versions of the [Microsoft SQL Database Engine](../../database-engine/sql-database-engine.md). Use the version selector dropdown list to [choose the appropriate product version](../../sql-server/sql-docs-navigation-guide.md#what-the-applies-to-options-mean).
 
-> [!NOTE]  
-> Currently, `ALTER TABLE` in Fabric Warehouse is only supported for constraints and adding nullable columns. See [Syntax for [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]](#syntax-for-warehouse-in-fabric).
-> Currently, memory-optimized tables aren't available in [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
-
-::: moniker-end
+::: moniker range=" =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 
 The syntax for `ALTER TABLE` is different for disk-based tables and memory-optimized tables. Use the following links to take you directly to the appropriate syntax block for your table types and to the appropriate syntax examples:
 
@@ -270,11 +267,11 @@ ALTER TABLE { database_name.schema_name.table_name | schema_name.table_name | ta
 
 For more information, see:
 
-- [ALTER TABLE column_constraint](alter-table-column-constraint-transact-sql.md)
-- [ALTER TABLE column_definition](alter-table-column-definition-transact-sql.md)
-- [ALTER TABLE computed_column_definition](alter-table-computed-column-definition-transact-sql.md)
-- [ALTER TABLE index_option](alter-table-index-option-transact-sql.md)
-- [ALTER TABLE table_constraint](alter-table-table-constraint-transact-sql.md)
+- [ALTER TABLE column_constraint (Transact-SQL)](alter-table-column-constraint-transact-sql.md)
+- [ALTER TABLE column_definition (Transact-SQL)](alter-table-column-definition-transact-sql.md)
+- [ALTER TABLE computed_column_definition (Transact-SQL)](alter-table-computed-column-definition-transact-sql.md)
+- [ALTER TABLE index_option (Transact-SQL)](alter-table-index-option-transact-sql.md)
+- [ALTER TABLE table_constraint (Transact-SQL)](alter-table-table-constraint-transact-sql.md)
 
 ## Syntax for memory-optimized tables
 
@@ -370,6 +367,10 @@ ALTER TABLE { database_name.schema_name.table_name | schema_name.table_name | ta
 }
 ```
 
+::: moniker-end
+
+::: moniker range=">=aps-pdw-2016 || =azure-sqldw-latest"
+
 ## Syntax for Azure Synapse Analytics and Parallel Data Warehouse
 
 ```syntaxsql
@@ -425,10 +426,28 @@ ALTER TABLE { database_name.schema_name.source_table_name | schema_name.source_t
 
 [!INCLUDE [synapse-analytics-od-supported-tables](../../includes/synapse-analytics-od-supported-tables.md)]
 
+::: moniker-end
+
+::: moniker range="=fabric"
+
 ## Syntax for Warehouse in Fabric
 
 ```syntaxsql
 ALTER TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
+{
+    ALTER COLUMN column_name
+    {
+        [ type_schema_name. ] type_name
+            [ (
+                {
+                    precision [ , scale ]
+                }
+            ) ]
+        [ COLLATE collation_name ] 
+        [ NULL | NOT NULL ]
+      | { ADD | DROP } MASKED [ WITH ( FUNCTION = ' mask_function ') ]
+    }
+}
 {
   ADD  { column_name <data_type> [COLLATE collation_name] [ <column_options> ] } [ ,...n ]
 | ADD { <column_constraint> FOR column_name} [ ,...n ]
@@ -439,22 +458,7 @@ ALTER TABLE { database_name.schema_name.table_name | schema_name.table_name | ta
 <column_options> ::=
 [ NULL ] -- default is NULL
 
-<data type> ::=
-datetime2 ( n )
-| date
-| time ( n )
-| float [ ( n ) ]
-| real [ ( n ) ]
-| decimal [ ( precision [ , scale ] ) ]
-| numeric [ ( precision [ , scale ] ) ]
-| bigint
-| int
-| smallint
-| bit
-| varchar [ ( n ) ]
-| char [ ( n ) ]
-| varbinary [ ( n ) ]
-| uniqueidentifier
+<data type> ::= type_name [ ( precision [ , scale ] ) ]
 
 <column_constraint>::=
     [ CONSTRAINT constraint_name ]
@@ -467,76 +471,147 @@ datetime2 ( n )
     }
 ```
 
+::: moniker-end
+
 ## Arguments
 
-#### *database_name*
+#### database_name
 
-The name of the database in which the table was created.
+The name of the database where you created the table.
 
-#### *schema_name*
+#### schema_name
 
 The name of the schema to which the table belongs.
 
-#### *table_name*
+#### table_name
 
-The name of the table to be altered. If the table isn't in the current database or contained by the schema owned by the current user, you must explicitly specify the database and schema.
+The name of the table to alter. If the table isn't in the current database or if the table's schema isn't owned by the current user, you must explicitly specify the database and schema.
 
 #### ALTER COLUMN
 
-Specifies that the named column is to be changed or altered.
+Specifies the named column to alter.
+
+::: moniker range=">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
+
+`ALTER TABLE ... ALTER COLUMN` for Fabric Data Warehouse has different capabilities. For more information, see [the Fabric Data Warehouse version of this article](alter-table-transact-sql.md?view=fabric&preserve-view=true#alter-column).
+
+> [!NOTE]  
+> `ALTER TABLE ... ALTER COLUMN` is in preview for Fabric Data Warehouse.
 
 The modified column can't be:
 
 - A column with a **timestamp** data type.
 - The `ROWGUIDCOL` for the table.
 - A computed column or used in a computed column.
-- Used in statistics generated by the `CREATE STATISTICS` statement. Users need to run `DROP STATISTICS` to drop the statistics before `ALTER COLUMN` can succeed. Run this query to get all the user created statistics and statistics columns for a table.
+- Used in statistics generated by the `CREATE STATISTICS` statement. To drop these statistics, run `DROP STATISTICS` before `ALTER COLUMN` can succeed. Run this query to get all the user-created statistics and statistics columns for a table.
 
-  ```sql
-  SELECT s.name AS statistics_name,
+   ```sql
+   SELECT s.name AS statistics_name,
          c.name AS column_name,
          sc.stats_column_id
-  FROM sys.stats AS s
+   FROM sys.stats AS s
        INNER JOIN sys.stats_columns AS sc
            ON s.object_id = sc.object_id
           AND s.stats_id = sc.stats_id
        INNER JOIN sys.columns AS c
            ON sc.object_id = c.object_id
           AND c.column_id = sc.column_id
-  WHERE s.object_id = OBJECT_ID('<table_name>');
-  ```
-
-  > [!NOTE]  
-  > Statistics that are automatically generated by the query optimizer are automatically dropped by `ALTER COLUMN`.
+   WHERE s.object_id = OBJECT_ID('<table_name>');
+   ```
 
 - Used in a `PRIMARY KEY` or `[FOREIGN KEY] REFERENCES` constraint.
-- Used in a `CHECK` or `UNIQUE` constraint. But, changing the length of a variable-length column used in a `CHECK` or `UNIQUE` constraint is allowed.
-- Associated with a default definition. However, the length, precision, or scale of a column can be changed if the data type isn't changed.
+- Used in a `CHECK` or `UNIQUE` constraint. However, you can change the length of a variable-length column used in a `CHECK` or `UNIQUE` constraint.
+- Associated with a default definition. However, you can change the length, precision, or scale of a column if you don't change the data type.
 
-The data type of **text**, **ntext**, and **image** columns can be changed only in the following ways:
+`ALTER COLUMN` drops statistics that the query optimizer automatically generates.
+
+You can change the data type of **text**, **ntext**, and **image** columns only in the following ways:
 
 - **text** to **varchar(max)**, **nvarchar(max)**, or **xml**
 - **ntext** to **varchar(max)**, **nvarchar(max)**, or **xml**
 - **image** to **varbinary(max)**
 
-Some data type changes might cause a change in the data. For example, changing a **nchar** or **nvarchar** column, to **char** or **varchar**, might cause the conversion of extended characters. For more information, see [CAST and CONVERT](../functions/cast-and-convert-transact-sql.md). Reducing the precision or scale of a column can cause data truncation.
+Some data type changes might cause a change in the data. For example, changing a **nchar** or **nvarchar** column to **char** or **varchar** might cause the conversion of extended characters. For more information, see [CAST and CONVERT (Transact-SQL)](../functions/cast-and-convert-transact-sql.md). 
+
+- Reducing the precision or scale of a column can cause data truncation.
+- You can't change the data type of a column in a partitioned table.
+- You can't change the data type of columns included in an index unless the column is a **varchar**, **nvarchar**, or **varbinary** data type, and the new size is equal to or larger than the old size.
+- You can't change a column included in a primary key constraint from `NOT NULL` to `NULL`.
+
+When you use Always Encrypted (without secure enclaves), if you modify a column that's encrypted with `ENCRYPTED WITH`, you can change the data type to a compatible data type (such as **int** to **bigint**), but you can't change any encryption settings.
+
+When you use Always Encrypted with secure enclaves, you can change any encryption setting if the column encryption key protecting the column (and the new column encryption key, if you're changing the key) supports enclave computations (encrypted with enclave-enabled column `master` keys). For details, see [Always Encrypted with secure enclaves](../../relational-databases/security/encryption/always-encrypted-enclaves.md).
+
+When you modify a column, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] keeps track of each modification by adding a row in a system table and marking the previous column modification as a dropped column. In the rare case that you modify a column too many times, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] might reach the record size limit. If this happens, you get error [MSSQLSERVER_511](../../relational-databases/errors-events/mssqlserver-511-database-engine-error.md) or 1708. To avoid these errors, either rebuild the clustered index on the table periodically or reduce the number of column modifications.
+
+::: moniker-end
+::: moniker range="=fabric"
+
+Supported `ALTER TABLE ... ALTER COLUMN` scenarios allow certain column definition changes to be applied *without modifying the underlying stored data files*. These operations update table metadata and enable compatible interpretation of existing data during subsequent reads.
 
 > [!NOTE]  
-> The data type of a column of a partitioned table can't be changed.
->
-> The data type of columns included in an index can't be changed unless the column is a **varchar**, **nvarchar**, or **varbinary** data type, and the new size is equal to or larger than the old size.
->
-> A column included in a primary key constraint can't be changed from `NOT NULL` to `NULL`.
+> `ALTER TABLE ... ALTER COLUMN` is in preview for Fabric Data Warehouse.
 
-When using Always Encrypted (without secure enclaves), if the column being modified is encrypted with `ENCRYPTED WITH`, you can change the data type to a compatible data type (such as `INT` to `BIGINT`), but you can't change any encryption settings.
+The updated column definition must remain compatible with the existing stored data to ensure correctness during query execution.
 
-When using Always Encrypted with secure enclaves, you can change any encryption setting, if the column encryption key protecting the column (and the new column encryption key, if you're changing the key) support enclave computations (encrypted with enclave-enabled column master keys). For details, see [Always Encrypted with secure enclaves](../../relational-databases/security/encryption/always-encrypted-enclaves.md).
+Any ALTER TABLE DDL operation (including ALTER COLUMN) acquires a schema modification (SCH M) lock for the duration of execution. As a result, it can block, or be blocked by, concurrently executing workloads. For more information, see [Locking Transactions in Fabric Data Warehouse](/fabric/data-warehouse/transactions#understand-locking-and-blocking-in-fabric-data-warehouse).
 
-When you modify a column, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] keeps track of each modification by adding a row in a system table, and marking the previous column modification as a dropped column. In the rare case that you modify a column too many times, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] might reach the record size limit. If this happens, you get error [511](../../relational-databases/errors-events/mssqlserver-511-database-engine-error.md) or 1708. To avoid these errors, either rebuild the clustered index on the table periodically, or reduce the number of column modifications.
+##### Supported schema changes
 
-#### *column_name*
+Currently, `ALTER COLUMN` in Fabric Data Warehouse supports metadata only schema evolution scenarios where the updated column definition does not require validation of existing stored data or rewriting the underlying Parquet data files.
 
-The name of the column to be altered, added, or dropped. The *column_name* maximum is 128 characters. For new columns, you can omit *column_name* for columns created with a **timestamp** data type. The name **timestamp** is used if you don't specify *column_name* for a **timestamp** data type column.
+Only the following column type changes are supported:
+
+| **Type Category** | **Source Type** |**Allowed Target Types**    |
+|---|--|-----|
+| **Integer widening** | **smallint** | - **int**<br> - **bigint** |
+|                       | **int** |  **bigint** |
+| **Floating-point widening** | **real** | **float** |
+|                             | - **smallint**<br> - **int** | **float**|
+| **Decimal widening** | **decimal**(p, s) | **decimal**(p + k1, s + k2) where k1 ≥ k2 ≥ 0 |
+|                             | - **smallint**<br> - **int** | **decimal**(10 + k1, k2) where k1 ≥ k2 ≥ 0 |
+| **Decimal/numeric interchange** | **decimal**(p, s) | **numeric**(p,s) |
+|                             | **numeric**(p,s) | **decimal**(p,s)|
+| **Float/real interchange<sup>1</sup>** | **float**(n < 25) | **real** |
+|                             | **float**(n)  | **float**(n+m) |
+|                             | **real**  | **float**(n) |
+| **Time widening<sup>2</sup>**           | **time**  | **datetime2** |
+|                             | **datetime2**(n) | **datetime2**(n+m) |
+| **String widening**         | **char**(n)   | - **varchar**(n + m)<br> - **char**(n + m)|
+|                             | **varchar**(n) | **varchar**(n + m)<br> - **char**(n + m)|
+| **Binary widening**         | **varbinary**(n) | **varbinary**(n + m)|
+
+<sup>1</sup> In the SQL Database Engine, **float** precision &lt; 25 is stored as **float/real** (4 bytes), and precision ≥ 25 is stored as **double** (8 bytes). Widening from **float** to **double** is supported, but narrowing from **double** to **float** is not supported.
+
+<sup>2</sup> When converting a column from **time** to **datetime2**, the date component is populated with the value `1970 01 01` during query interpretation. This behavior differs from SQL Server, which uses `1900 01 01`. This occurs because timestamps in Fabric Data Warehouse are stored using the Delta Lake TIMESTAMP type, which uses the Unix epoch (1970 01 01).
+
+##### ALTER COLUMN cross-engine interoperability
+
+In Fabric Data Warehouse, some `ALTER COLUMN` operations may enable **type widening** at the storage layer. When this occurs, external engines accessing the same Delta tables must support compatible read time type interpretation. **Type widening** is described in the [public Delta documentation](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#type-widening), and occurs when an existing data type is compatible with a wider type. For more information on engines that support type widening, see [Delta Lake table format interoperability](/fabric/fundamentals/delta-lake-interoperability#delta-lake-features-and-fabric-experiences).
+If you need to remove type widening from a table schema, you can create a new table using `CREATE TABLE AS SELECT`. For more information, see [CREATE TABLE AS SELECT](create-table-as-select-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
+
+##### Limitations of ALTER COLUMN in Fabric Data Warehouse
+
+> [!NOTE]  
+> `ALTER TABLE ... ALTER COLUMN` is in preview for Fabric Data Warehouse.
+
+In Fabric Data Warehouse, these `ALTER COLUMN` operations are not supported:
+
+- Changing a column type from `NULL` to `NOT NULL`
+- Altering an IDENTITY column
+- Altering a column to a different collation
+- Reducing the size of a column of the same type
+- Decrease precision when converting from **time** to **datetime2**
+- Altering a column with manually created stats
+- Altering a column that is a part of the [data clustering](/fabric/data-warehouse/data-clustering) index
+
+::: moniker-end
+
+#### column_name
+
+The name of the column to alter, add, or drop. The *column_name* maximum is 128 characters. 
+
+For new columns, you can omit *column_name* for columns created with a **timestamp** data type. The name **timestamp** is used if you don't specify *column_name* for a **timestamp** data type column.
 
 > [!NOTE]  
 > New columns are added after all existing columns in the table being altered.
@@ -549,39 +624,39 @@ The new data type for the altered column, or the data type for the added column.
 - An alias data type based on a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] system data type. You create alias data types with the `CREATE TYPE` statement before they can be used in a table definition.
 - A [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] user-defined type, and the schema to which it belongs. You create user-defined types with the `CREATE TYPE` statement before they can be used in a table definition.
 
-The following are criteria for *type_name* of an altered column:
+The following criteria apply to *type_name* of an altered column:
 
 - The previous data type must be implicitly convertible to the new data type.
 - *type_name* can't be **timestamp**.
-- ANSI_NULL defaults are always on for `ALTER COLUMN`; if not specified, the column is nullable.
+- `ANSI_NULL` defaults are always on for `ALTER COLUMN`; if not specified, the column is nullable.
 - `ANSI_PADDING` padding is always `ON` for `ALTER COLUMN`.
 - If the modified column is an identity column, *new_data_type* must be a data type that supports the identity property.
 - The current setting for `SET ARITHABORT` is ignored. `ALTER TABLE` operates as if `ARITHABORT` is set to `ON`.
 
 > [!NOTE]  
-> If the `COLLATE` clause isn't specified, changing the data type of a column causes a collation change to the default collation of the database.
+> If you don't specify the `COLLATE` clause, changing the data type of a column causes a collation change to the default collation of the database.
 
-#### *precision*
+#### precision
 
-The precision for the specified data type. For more information about valid precision values, see [Precision, scale, and length](../data-types/precision-scale-and-length-transact-sql.md).
+The precision for the specified data type. For more information about valid precision values, see [Precision, scale, and length (Transact-SQL)](../data-types/precision-scale-and-length-transact-sql.md).
 
-#### *scale*
+#### scale
 
-The scale for the specified data type. For more information about valid scale values, see [Precision, scale, and length](../data-types/precision-scale-and-length-transact-sql.md).
+The scale for the specified data type. For more information about valid scale values, see [Precision, scale, and length (Transact-SQL)](../data-types/precision-scale-and-length-transact-sql.md).
 
 #### max
 
 Applies only to the **varchar**, **nvarchar**, and **varbinary** data types for storing 2^31-1 bytes of character, binary data, and of Unicode data.
 
-#### *xml_schema_collection*
+#### xml_schema_collection
 
 **Applies to**: [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
-Applies only to the **xml** data type for associating an XML schema with the type. Before typing an **xml** column to a schema collection, you first create the schema collection in the database by using [CREATE XML SCHEMA COLLECTION](create-xml-schema-collection-transact-sql.md).
+Applies only to the **xml** data type for associating an XML schema with the type. Before typing an **xml** column to a schema collection, you first create the schema collection in the database by using [CREATE XML SCHEMA COLLECTION (Transact-SQL)](create-xml-schema-collection-transact-sql.md).
 
 #### COLLATE \<*collation_name*>
 
-Specifies the new collation for the altered column. If not specified, the column is assigned the default collation of the database. Collation name can be either a Windows collation name or a SQL collation name. For a list and more information, see [Windows collation name](windows-collation-name-transact-sql.md) and [SQL Server Collation Name](sql-server-collation-name-transact-sql.md).
+Specifies the new collation for the altered column. If you don't specify a collation, the column is assigned the default collation of the database. Collation name can be either a Windows collation name or a SQL collation name. For a list and more information, see [Windows collation name (Transact-SQL)](windows-collation-name-transact-sql.md) and [SQL Server Collation Name (Transact-SQL)](sql-server-collation-name-transact-sql.md).
 
 The `COLLATE` clause changes the collations only of columns of the **char**, **varchar**, **nchar**, and **nvarchar** data types. To change the collation of a user-defined alias data type column, use separate `ALTER TABLE` statements to change the column to a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] system data type. Then, change its collation and change the column back to an alias data type.
 
@@ -591,15 +666,15 @@ The `COLLATE` clause changes the collations only of columns of the **char**, **v
 - Any index, statistics, or full-text index are created on the column. Statistics created automatically on the column changed are dropped if the column collation is changed.
 - A schema-bound view or function references the column.
 
-For more information on supported collations, see [COLLATE](collations.md).
+For more information on supported collations, see [COLLATE (Transact-SQL)](collations.md).
 
 #### NULL | NOT NULL
 
-Specifies whether the column can accept null values. Columns that don't allow null values are added with `ALTER TABLE` only if they have a default specified or if the table is empty. You can specify `NOT NULL` for computed columns only if you have also specified `PERSISTED`. If the new column allows null values and you don't specify a default, the new column contains a null value for each row in the table. If the new column allows null values and you add a default definition with the new column, you can use `WITH VALUES` to store the default value in the new column for each existing row in the table.
+Specifies whether the column can accept null values. You can add columns that don't allow null values by using `ALTER TABLE` only if they have a default specified or if the table is empty. You can specify `NOT NULL` for computed columns only if you also specify `PERSISTED`. If the new column allows null values and you don't specify a default, the new column contains a null value for each row in the table. If the new column allows null values and you add a default definition with the new column, you can use `WITH VALUES` to store the default value in the new column for each existing row in the table.
 
-If the new column doesn't allow null values and the table isn't empty, you have to add a `DEFAULT` definition with the new column. And, the new column automatically loads with the default value in the new columns in each existing row.
+If the new column doesn't allow null values and the table isn't empty, you must add a `DEFAULT` definition with the new column. The new column automatically loads with the default value in the new columns in each existing row.
 
-You can specify `NULL` in `ALTER COLUMN` to force a `NOT NULL` column to allow null values, except for columns in `PRIMARY KEY` constraints. You can specify `NOT NULL` in `ALTER COLUMN` only if the column contains no null values. The null values must be updated to some value before the `ALTER COLUMN` `NOT NULL` is allowed, for example:
+You can specify `NULL` in `ALTER COLUMN` to force a `NOT NULL` column to allow null values, except for columns in `PRIMARY KEY` constraints. You can specify `NOT NULL` in `ALTER COLUMN` only if the column contains no null values. You must update the null values to some value before the `ALTER COLUMN` `NOT NULL` is allowed, for example:
 
 ```sql
 UPDATE MyTable SET NullCol = N'some_value' WHERE NullCol IS NULL;
@@ -607,18 +682,20 @@ UPDATE MyTable SET NullCol = N'some_value' WHERE NullCol IS NULL;
 ALTER TABLE MyTable ALTER COLUMN NullCOl NVARCHAR (20) NOT NULL;
 ```
 
-When you create or alter a table with the `CREATE TABLE` or `ALTER TABLE` statements, the database and session settings influence and possibly override the nullability of the data type that's used in a column definition. Be sure that you always explicitly define a column as `NULL` or `NOT NULL` for noncomputed columns.
+When you create or alter a table by using the `CREATE TABLE` or `ALTER TABLE` statements, database and session settings can influence and possibly override the nullability of the data type that you specify in a column definition. Always explicitly define a column as `NULL` or `NOT NULL` for noncomputed columns.
 
-If you add a column with a user-defined data type, be sure to define the column with the same nullability as the user-defined data type. And, specify a default value for the column. For more information, see [CREATE TABLE](create-table-transact-sql.md).
+If you add a column with a user-defined data type, be sure to define the column with the same nullability as the user-defined data type. And, specify a default value for the column. For more information, see [CREATE TABLE (Transact-SQL)](create-table-transact-sql.md).
 
 > [!NOTE]  
-> If `NULL` or `NOT NULL` is specified with `ALTER COLUMN`, *new_data_type* [(*precision* [, *scale* ])] must also be specified. If the data type, precision, and scale aren't changed, specify the current column values.
+> If you specify `NULL` or `NOT NULL` with `ALTER COLUMN`, you must also specify *new_data_type* [(*precision* [, *scale* ])]. If the data type, precision, and scale aren't changing, specify the current column values.
+
+
 
 #### [ {ADD | DROP} ROWGUIDCOL ]
 
 **Applies to**: [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
-Specifies that the `ROWGUIDCOL` property is added to or dropped from the specified column. `ROWGUIDCOL` indicates that the column is a row GUID column. You can set only one **uniqueidentifier** column per table as the `ROWGUIDCOL` column. And, you can only assign the `ROWGUIDCOL` property to a **uniqueidentifier** column. You can't assign `ROWGUIDCOL` to a column of a user-defined data type.
+Specifies that the `ROWGUIDCOL` property is added to or dropped from the specified column. `ROWGUIDCOL` indicates that the column is a row GUID column. You can set only one **uniqueidentifier** column per table as the `ROWGUIDCOL` column. You can only assign the `ROWGUIDCOL` property to a **uniqueidentifier** column. You can't assign `ROWGUIDCOL` to a column of a user-defined data type.
 
 `ROWGUIDCOL` doesn't enforce uniqueness of the values stored in the column and doesn't automatically generate values for new rows that are inserted into the table. To generate unique values for each column, either use the `NEWID()` or `NEWSEQUENTIALID()` function in `INSERT` statements. Or, specify the `NEWID()` or `NEWSEQUENTIALID()` function as the default for the column.
 
@@ -626,7 +703,7 @@ Specifies that the `ROWGUIDCOL` property is added to or dropped from the specifi
 
 Specifies that the `PERSISTED` property is added to or dropped from the specified column. The column must be a computed column that's defined with a deterministic expression. For columns specified as `PERSISTED`, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] physically stores the computed values in the table and updates the values when any other columns on which the computed column depends are updated. By marking a computed column as `PERSISTED`, you can create indexes on computed columns defined on expressions that are deterministic, but not precise. For more information, see [Indexes on computed columns](../../relational-databases/indexes/indexes-on-computed-columns.md).
 
-`SET QUOTED_IDENTIFIER` must be `ON` when you're creating or changing indexes on computed columns or indexed views. For more information, see [SET QUOTED_IDENTIFIER](set-quoted-identifier-transact-sql.md).
+`SET QUOTED_IDENTIFIER` must be `ON` when you're creating or changing indexes on computed columns or indexed views. For more information, see [SET QUOTED_IDENTIFIER (Transact-SQL)](set-quoted-identifier-transact-sql.md).
 
 Any computed column that's used as a partitioning column of a partitioned table must be explicitly marked `PERSISTED`.
 
@@ -666,35 +743,35 @@ Add and drop a mask require `ALTER ANY MASK` permission.
 
 Allows many alter column actions to be carried out while the table remains available. Default is `OFF`. You can run alter column online for column changes related to data type, column length or precision, nullability, sparseness, and collation.
 
-Online alter column allows user created and autostatistics to reference the altered column for the duration of the `ALTER COLUMN` operation, which allows queries to run as usual. At the end of the operation, autostats that reference the column are dropped and user-created stats are invalidated. The user must manually update user-generated statistics after the operation is completed. If the column is part of a filter expression for any statistics or indexes then you can't perform an alter column operation.
+Online `ALTER COLUMN` allows user-created and autostatistics to reference the altered column for the duration of the `ALTER COLUMN` operation, which allows queries to run as usual. At the end of the operation, autostats that reference the column are dropped and user-created stats are invalidated. The user must manually update user-generated statistics after the operation is completed. If the column is part of a filter expression for any statistics or indexes, you can't perform an `ALTER COLUMN` operation.
 
-- While the online alter column operation is running, any DDL operation that could depend on that column (such as creating or modifying indexes, views, etc.) is blocked, or fails with an appropriate error. This behavior guarantees that online alter column won't fail because of dependencies introduced while the operation was running.
+- While the online `ALTER COLUMN` operation is running, any DDL operation that could depend on that column (such as creating or modifying indexes or views) is blocked, or fails with an appropriate error. This behavior guarantees that online `ALTER COLUMN` won't fail because of dependencies introduced while the operation was running.
 
 - Altering a column from `NOT NULL` to `NULL` isn't supported as an online operation when the altered column is referenced by nonclustered indexes.
 
 - Online `ALTER` isn't supported when the column is referenced by a check constraint and the `ALTER` operation is restricting the precision of the column (**numeric** or **datetime**).
 
-- The `WAIT_AT_LOW_PRIORITY` option can't be used with online alter column.
+- The `WAIT_AT_LOW_PRIORITY` option can't be used with online `ALTER COLUMN`.
 
-- `ALTER COLUMN ... ADD/DROP PERSISTED` isn't supported for online alter column.
+- `ALTER COLUMN ... ADD/DROP PERSISTED` isn't supported for online `ALTER COLUMN`.
 
-- `ALTER COLUMN ... ADD/DROP ROWGUIDCOL/NOT FOR REPLICATION` isn't affected by online alter column.
+- `ALTER COLUMN ... ADD/DROP ROWGUIDCOL/NOT FOR REPLICATION` isn't affected by online `ALTER COLUMN`.
 
-- Online alter column doesn't support altering a table where change tracking is enabled or that's a publisher of merge replication.
+- Online `ALTER COLUMN` doesn't support altering a table where change tracking is enabled or that's a publisher of merge replication.
 
-- Online alter column doesn't support altering from or to CLR data types.
+- Online `ALTER COLUMN` doesn't support altering from or to CLR data types.
 
-- Online alter column doesn't support altering to an XML data type that has a schema collection different than the current schema collection.
+- Online `ALTER COLUMN` doesn't support altering to an XML data type that has a schema collection different than the current schema collection.
 
-- Online alter column doesn't reduce the restrictions on when a column can be altered. References by index/stats, and so on, might cause the alter to fail.
+- Online `ALTER COLUMN` doesn't reduce the restrictions on when a column can be altered. References by index, stats, and so on, might cause the alter to fail.
 
-- Online alter column doesn't support altering more than one column concurrently.
+- Online `ALTER COLUMN` doesn't support altering more than one column concurrently.
 
-- Online alter column has no effect in a system-versioned temporal table. `ALTER` column isn't run as online regardless of which value was specified for `ONLINE` option.
+- Online `ALTER COLUMN` has no effect in a system-versioned temporal table. `ALTER` column isn't run as online regardless of which value was specified for `ONLINE` option.
 
-Online alter column has similar requirements, restrictions, and functionality as online index rebuild, which includes:
+Online `ALTER COLUMN` has similar requirements, restrictions, and functionality as online index rebuild, which includes:
 
-- Online index rebuild isn't supported when the table contains legacy LOB or filestream columns or when the table has a columnstore index. The same limitations apply for online alter column.
+- Online index rebuild isn't supported when the table contains legacy LOB or filestream columns or when the table has a columnstore index. The same limitations apply for online `ALTER COLUMN`.
 - An existing column being altered requires twice the space allocation, for the original column and for the newly created hidden column.
 - The locking strategy during an alter column online operation follows the same locking pattern used for online index build.
 
@@ -702,7 +779,7 @@ Online alter column has similar requirements, restrictions, and functionality as
 
 Specifies whether the data in the table is or isn't validated against a newly added or re-enabled `FOREIGN KEY` or `CHECK` constraint. If you don't specify, `WITH CHECK` is assumed for new constraints, and `WITH NOCHECK` is assumed for re-enabled constraints.
 
-If you don't want to verify new `CHECK` or `FOREIGN KEY` constraints against existing data, use `WITH NOCHECK`. We don't recommend doing this, except in rare cases. The new constraint is evaluated in all later data updates. Any constraint violations that are suppressed by `WITH NOCHECK` when the constraint is added might cause future updates to fail if they update rows with data that doesn't follow the constraint. The query optimizer doesn't consider constraints that are defined `WITH NOCHECK`. Such constraints are ignored until they're re-enabled by using `ALTER TABLE table WITH CHECK CHECK CONSTRAINT ALL`. For more information, see [Disable foreign key constraints with INSERT and UPDATE statements](../../relational-databases/tables/disable-foreign-key-constraints-with-insert-and-update-statements.md).
+If you don't want to verify new `CHECK` or `FOREIGN KEY` constraints against existing data, use `WITH NOCHECK`. This is generally never recommended, but might be required in some circumstances. The new constraint is evaluated in all later data updates. Any constraint violations that are suppressed by `WITH NOCHECK` when the constraint is added might cause future updates to fail if they update rows with data that doesn't follow the constraint. The query optimizer doesn't consider constraints that are defined `WITH NOCHECK`. Such constraints are ignored until they're re-enabled by using `ALTER TABLE table WITH CHECK CHECK CONSTRAINT ALL`. For more information, see [Disable foreign key constraints with INSERT and UPDATE statements](../../relational-databases/tables/disable-foreign-key-constraints-with-insert-and-update-statements.md).
 
 #### ALTER INDEX *index_name*
 
@@ -711,7 +788,7 @@ Specifies that the bucket count for *index_name* is to be changed or altered.
 The syntax `ALTER TABLE ... ADD/DROP/ALTER INDEX` is supported only for memory-optimized tables.
 
 > [!IMPORTANT]  
-> Without using an `ALTER TABLE` statement, the statements [CREATE INDEX](create-index-transact-sql.md), [DROP INDEX](drop-index-transact-sql.md), [ALTER INDEX](alter-index-transact-sql.md), and [PAD_INDEX](alter-table-index-option-transact-sql.md) aren't supported for indexes on memory-optimized tables.
+> Without using an `ALTER TABLE` statement, the statements [CREATE INDEX (Transact-SQL)](create-index-transact-sql.md), [DROP INDEX (Transact-SQL)](drop-index-transact-sql.md), [ALTER INDEX (Transact-SQL)](alter-index-transact-sql.md), and [ALTER TABLE index_option (Transact-SQL)](alter-table-index-option-transact-sql.md) aren't supported for indexes on memory-optimized tables.
 
 #### ADD
 
@@ -721,7 +798,7 @@ Specifies that one or more column definitions, computed column definitions, or t
 > New columns are added after all existing columns in the table being altered.
 
 > [!IMPORTANT]  
-> Without using an `ALTER TABLE` statement, the statements [CREATE INDEX](create-index-transact-sql.md), [DROP INDEX](drop-index-transact-sql.md), [ALTER INDEX](alter-index-transact-sql.md), and [PAD_INDEX](alter-table-index-option-transact-sql.md) aren't supported for indexes on memory-optimized tables.
+> Without using an `ALTER TABLE` statement, the statements [CREATE INDEX (Transact-SQL)](create-index-transact-sql.md), [DROP INDEX (Transact-SQL)](drop-index-transact-sql.md), [ALTER INDEX (Transact-SQL)](alter-index-transact-sql.md), and [ALTER TABLE index_option (Transact-SQL)](alter-table-index-option-transact-sql.md) aren't supported for indexes on memory-optimized tables.
 
 #### PERIOD FOR SYSTEM_TIME ( system_start_time_column_name, system_end_time_column_name )
 
@@ -755,7 +832,7 @@ Specifies that *index_name* is removed from the table.
 The syntax `ALTER TABLE` ... `ADD`/`DROP`/`ALTER INDEX` is supported only for memory-optimized tables.
 
 > [!IMPORTANT]  
-> Without using an `ALTER TABLE` statement, the statements [CREATE INDEX](create-index-transact-sql.md), [DROP INDEX](drop-index-transact-sql.md), [ALTER INDEX](alter-index-transact-sql.md), and [PAD_INDEX](alter-table-index-option-transact-sql.md) aren't supported for indexes on memory-optimized tables.
+> Without using an `ALTER TABLE` statement, the statements [CREATE INDEX (Transact-SQL)](create-index-transact-sql.md), [DROP INDEX (Transact-SQL)](drop-index-transact-sql.md), [ALTER INDEX (Transact-SQL)](alter-index-transact-sql.md), and [ALTER TABLE index_option (Transact-SQL)](alter-table-index-option-transact-sql.md) aren't supported for indexes on memory-optimized tables.
 
 #### COLUMN *column_name*
 
@@ -769,7 +846,7 @@ A column can't be dropped when it's:
 - Bound to a rule.
 
 > [!NOTE]  
-> Dropping a column doesn't reclaim the disk space of the column. You might have to reclaim the disk space of a dropped column when the row size of a table is near, or has exceeded, its limit. Reclaim space by creating a clustered index on the table or rebuilding an existing clustered index by using [ALTER INDEX](alter-index-transact-sql.md). For information about the impact of dropping LOB data types, see this [CSS blog entry](/archive/blogs/psssql/how-it-works-gotcha-varcharmax-caused-my-queries-to-be-slower).
+> Dropping a column doesn't reclaim the disk space of the column. You might have to reclaim the disk space of a dropped column when the row size of a table is near, or has exceeded, its limit. Reclaim space by creating a clustered index on the table or rebuilding an existing clustered index by using [ALTER INDEX (Transact-SQL)](alter-index-transact-sql.md). For information about the impact of dropping LOB data types, see this [CSS blog entry](/archive/blogs/psssql/how-it-works-gotcha-varcharmax-caused-my-queries-to-be-slower).
 
 #### PERIOD FOR SYSTEM_TIME
 
@@ -803,7 +880,7 @@ Use the `MAXDOP` option to limit the number of processors used in parallel plan 
 
   Uses the actual number of processors or fewer based on the current system workload.
 
-For more information, see [Configure Parallel Index Operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
+For more information, see [Configure parallel index operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
 
 > [!NOTE]  
 > Parallel index operations aren't available in every edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For more information, see [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md).
@@ -814,7 +891,7 @@ Specifies whether underlying tables and associated indexes are available for que
 
 - ON
 
-  Long-term table locks aren't held for the duration of the index operation. During the main phase of the index operation, only an Intent Share (`IS`) lock is held on the source table. This behavior enables queries or updates to the underlying table and indexes to continue. At the start of the operation, a Shared (S) lock is held on the source object for a short time. At the end of the operation, for a short time, an S (Shared) lock is acquired on the source if a nonclustered index is being created. Or, an Sch-M (Schema Modification) lock is acquired when a clustered index is created or dropped online and when a clustered or nonclustered index is being rebuilt. `ONLINE` can't be set to `ON` when an index is being created on a local temporary table. Only single-threaded heap rebuild operation is allowed.
+  Long-term table locks aren't held for the duration of the index operation. During the main phase of the index operation, only an Intent Share (`IS`) lock is held on the source table. This behavior enables queries or updates to the underlying table and indexes to continue. At the start of the operation, a Shared (S) lock is held on the source object for a short time. At the end of the operation, for a short time, an S (Shared) lock is acquired on the source if a nonclustered index is being created. Or, a Sch-M (Schema Modification) lock is acquired when a clustered index is created or dropped online and when a clustered or nonclustered index is being rebuilt. `ONLINE` can't be set to `ON` when an index is being created on a local temporary table. Only single-threaded heap rebuild operation is allowed.
 
   To run the DDL for `SWITCH` or online index rebuild, all active blocking transactions running on a particular table must be completed. When executing, the `SWITCH` or rebuild operation prevents new transactions from starting and might significantly affect the workload throughput and temporarily delay access to the underlying table.
 
@@ -834,7 +911,7 @@ Specifies whether underlying tables and associated indexes are available for que
 Specifies a location to move the data rows currently in the leaf level of the clustered index. The table is moved to the new location. This option applies only to constraints that create a clustered index.
 
 > [!NOTE]  
-> In this context, `default` isn't a keyword. It's an identifier for the default filegroup and must be delimited, as in `MOVE TO "default"` or `MOVE TO [default]`. If `"default"` is specified, the `QUOTED_IDENTIFIER` option must be `ON` for the current session. This is the default setting. For more information, see [SET QUOTED_IDENTIFIER](set-quoted-identifier-transact-sql.md).
+> In this context, `default` isn't a keyword. It's an identifier for the default filegroup and must be delimited, as in `MOVE TO "default"` or `MOVE TO [default]`. If `"default"` is specified, the `QUOTED_IDENTIFIER` option must be `ON` for the current session. This is the default setting. For more information, see [SET QUOTED_IDENTIFIER (Transact-SQL)](set-quoted-identifier-transact-sql.md).
 
 #### { CHECK | NOCHECK } CONSTRAINT
 
@@ -862,7 +939,7 @@ Specifies that *trigger_name* is enabled or disabled. When a trigger is disabled
 
 Specifies whether change tracking is enabled disabled for the table. By default, change tracking is disabled.
 
-This option is available only when change tracking is enabled for the database. For more information, see [ALTER DATABASE SET options](alter-database-transact-sql-set-options.md).
+This option is available only when change tracking is enabled for the database. For more information, see [ALTER DATABASE SET options (Transact-SQL)](alter-database-transact-sql-set-options.md).
 
 To enable change tracking, the table must have a primary key.
 
@@ -900,7 +977,7 @@ Nonclustered columnstore indexes were built in a read-only format before [!INCLU
 
 **Limitations**
 
-If both tables are partitioned identically, including nonclustered indexes, and the target table doesn't have any nonclustered indexes, you might receive a [4907 error](../../relational-databases/errors-events/database-engine-events-and-errors-4000-to-4999.md).
+If both tables are partitioned identically, including nonclustered indexes, and the target table doesn't have any nonclustered indexes, you might receive a [4907 Error](../../relational-databases/errors-events/database-engine-events-and-errors-4000-to-4999.md).
 
 Example output:
 
@@ -917,9 +994,9 @@ Specifies where FILESTREAM data is stored.
 
 `ALTER TABLE` with the `SET FILESTREAM_ON` clause succeeds only if the table has no FILESTREAM columns. You can add FILESTREAM columns by using a second `ALTER TABLE` statement.
 
-If you specify *partition_scheme_name*, the rules for [CREATE TABLE](create-table-transact-sql.md) apply. Be sure the table is already partitioned for row data, and its partition scheme uses the same partition function and columns as the FILESTREAM partition scheme.
+If you specify *partition_scheme_name*, the rules for [CREATE TABLE (Transact-SQL)](create-table-transact-sql.md) apply. Be sure the table is already partitioned for row data, and its partition scheme uses the same partition function and columns as the FILESTREAM partition scheme.
 
-*filestream_filegroup_name* specifies the name of a FILESTREAM filegroup. The filegroup must have one file that's defined for the filegroup by using a [CREATE DATABASE](create-database-transact-sql.md) or [ALTER DATABASE](alter-database-transact-sql.md) statement, or you get an error.
+*filestream_filegroup_name* specifies the name of a FILESTREAM filegroup. The filegroup must have one file that's defined for the filegroup by using a [CREATE DATABASE](create-database-transact-sql.md) or [ALTER DATABASE (Transact-SQL)](alter-database-transact-sql.md) statement, or you get an error.
 
 `"default"` specifies the FILESTREAM filegroup with the `DEFAULT` property set. If there's no FILESTREAM filegroup, you get an error.
 
@@ -997,7 +1074,7 @@ All options apply to a table with a clustered index. If the table doesn't have a
 
 When a specific compression setting isn't specified with the `REBUILD` operation, the current compression setting for the partition is used. To return the current setting, query the `data_compression` column in the `sys.partitions` catalog view.
 
-For complete descriptions of the rebuild options, see [ALTER TABLE index_option](alter-table-index-option-transact-sql.md).
+For complete descriptions of the rebuild options, see [ALTER TABLE index_option (Transact-SQL)](alter-table-index-option-transact-sql.md).
 
 #### DATA_COMPRESSION
 
@@ -1189,7 +1266,7 @@ Conditionally drops the column or constraint only if it already exists.
 
 **Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions.
 
-Specifies whether an `ALTER TABLE ADD CONSTRAINT` operation is resumable. Add table constraint operation is resumable when `ON`. Add table constraint operation isn't resumable when `OFF`. Default is `OFF`. The `RESUMABLE` option can be used as part of the [ALTER TABLE index_option](alter-table-index-option-transact-sql.md) in the [ALTER TABLE table_constraint](alter-table-table-constraint-transact-sql.md).
+Specifies whether an `ALTER TABLE ADD CONSTRAINT` operation is resumable. Add table constraint operation is resumable when `ON`. Add table constraint operation isn't resumable when `OFF`. Default is `OFF`. The `RESUMABLE` option can be used as part of the [ALTER TABLE index_option (Transact-SQL)](alter-table-index-option-transact-sql.md) in the [ALTER TABLE table_constraint (Transact-SQL)](alter-table-table-constraint-transact-sql.md).
 
 `MAX_DURATION` when used with `RESUMABLE = ON` (requires `ONLINE = ON`) indicates time (an integer value specified in minutes) that a resumable online add constraint operation is executed before being paused. If not specified, the operation continues until completion.
 
@@ -1197,11 +1274,25 @@ For more information on enabling and using resumable `ALTER TABLE ADD CONSTRAINT
 
 ## Remarks
 
-To add new rows of data, use [INSERT](insert-transact-sql.md). To remove rows of data, use [DELETE](delete-transact-sql.md) or [TRUNCATE TABLE](truncate-table-transact-sql.md). To change the values in existing rows, use [UPDATE](../queries/update-transact-sql.md).
+To add new rows of data, use [INSERT (Transact-SQL)](insert-transact-sql.md). To remove rows of data, use [DELETE (Transact-SQL)](delete-transact-sql.md) or [TRUNCATE TABLE (Transact-SQL)](truncate-table-transact-sql.md). To change the values in existing rows, use [UPDATE (Transact-SQL)](../queries/update-transact-sql.md).
 
 If there are any execution plans in the procedure cache that reference the table, `ALTER TABLE` marks them to be recompiled on their next execution.
 
+::: moniker range=" =fabric-sqldb"
+
+Currently, in-memory, ledger, ledger history, and Always Encrypted tables cannot be created in [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]. For more information, see [Limitations in SQL database in Microsoft Fabric](/fabric/database/sql/limitations).
+
 In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], some table features can be created but aren't [mirrored into the Fabric OneLake](/fabric/database/sql/mirroring-overview). For more information, see [Limitations for Fabric SQL database mirroring](/fabric/database/sql/mirroring-limitations).
+
+::: moniker-end
+
+::: moniker range="=fabric"
+
+In Fabric Data Warehouse, supported `ALTER TABLE` Transact-SQL operations can execute inside an explicit user-defined transaction. For more information, see [Transactions in Fabric Data Warehouse](/fabric/data-warehouse/transactions#explicit-transactions).
+
+In Fabric Data Warehouse, you can alter distributed #temp tables with `ALTER TABLE`, but not MDF-backed temp tables. For more information, see [#temp tables in Fabric Data Warehouse](/fabric/data-warehouse/tables#temp-tables).
+
+::: moniker-end
 
 ## Change the size of a column
 
@@ -1209,11 +1300,9 @@ You can change the length, precision, or scale of a column by specifying a new s
 
 ## Locks and ALTER TABLE
 
-Changes you specify in `ALTER TABLE` implement immediately. If the changes require modifications of the rows in the table, `ALTER TABLE` updates the rows. `ALTER TABLE` acquires a schema modify (Sch-M) lock on the table to make sure that no other connections reference even the metadata for the table during the change, except online index operations that require a short Sch-M lock at the end. In an `ALTER TABLE...SWITCH` operation, the lock is acquired on both the source and target tables. The modifications made to the table are logged and fully recoverable. Changes that affect all the rows in large tables, such as dropping a column or, on some editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], adding a `NOT NULL` column with a default value, can take a long time to complete and generate many log records. Run these `ALTER TABLE` statements with the same care as any `INSERT`, `UPDATE`, or `DELETE` statement that affects many rows.
+Changes you specify in `ALTER TABLE` take effect immediately. If the changes require modifications to the rows in the table, `ALTER TABLE` updates the rows. `ALTER TABLE` acquires a schema modify (Sch-M) lock on the table to ensure that no other connections reference even the metadata for the table during the change, except online index operations that require a short Sch-M lock at the end. In an `ALTER TABLE...SWITCH` operation, the lock is acquired on both the source and target tables. The modifications made to the table are logged and fully recoverable. Changes that affect all the rows in large tables, such as dropping a column or, on some editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], adding a `NOT NULL` column with a default value, can take a long time to complete and generate many log records. Run these `ALTER TABLE` statements with the same care as any `INSERT`, `UPDATE`, or `DELETE` statement that affects many rows.
 
-**Applies to** [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
-
-`ALTER TABLE` can't be part of an explicit transaction.
+::: moniker range=">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 
 ### Extended Events (XEvents) for partition switch
 
@@ -1227,31 +1316,31 @@ The following XEvents are related to `ALTER TABLE ... SWITCH PARTITION` and [onl
 
 ### Add NOT NULL columns as an online operation
 
-In [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] Enterprise edition and later versions, adding a `NOT NULL` column with a default value is an online operation when the default value is a *runtime constant*. This means that the operation is completed almost instantaneously despite the number of rows in the table, because the existing rows in the table aren't updated during the operation. Instead, the default value is stored only in the metadata of the table and the value is looked up, as needed, in queries that access these rows. This behavior is automatic. No additional syntax is required to implement the online operation beyond the `ADD COLUMN` syntax. A runtime constant is an expression that produces the same value at runtime for each row in the table despite its determinism. For example, the constant expression `"My temporary data"`, or the system function `GETUTCDATETIME()` are runtime constants. In contrast, the functions `NEWID()` or `NEWSEQUENTIALID()` aren't runtime constants, because a unique value is produced for each row in the table. Adding a `NOT NULL` column with a default value that's not a runtime constant is always run offline and an exclusive (Sch-M) lock is acquired for the duration of the operation.
+In [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] Enterprise edition and later versions, adding a `NOT NULL` column with a default value is an online operation when the default value is a *runtime constant*. This default behavior means that the operation finishes almost instantaneously despite the number of rows in the table, because the existing rows in the table aren't updated during the operation. Instead, the default value is stored only in the metadata of the table and the value is looked up, as needed, in queries that access these rows. This behavior is automatic. No additional syntax is required to implement the online operation beyond the `ADD COLUMN` syntax. A runtime constant is an expression that produces the same value at runtime for each row in the table despite its determinism. For example, the constant expression `"My temporary data"`, or the system function `GETUTCDATETIME()` are runtime constants. In contrast, the functions `NEWID()` or `NEWSEQUENTIALID()` aren't runtime constants, because a unique value is produced for each row in the table. Adding a `NOT NULL` column with a default value that's not a runtime constant is always run offline and an exclusive (Sch-M) lock is acquired for the duration of the operation.
 
 While the existing rows reference the value stored in metadata, the default value is stored on the row for any new rows that are inserted and don't specify another value for the column. The default value stored in metadata moves to an existing row when the row is updated (even if the actual column isn't specified in the `UPDATE` statement), or if the table or clustered index is rebuilt.
 
-Columns of type **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **xml**, **text**, **ntext**, **image**, **hierarchyid**, **geometry**, **geography**, or CLR user-defined types can't be added in an online operation. A column can't be added online if doing so causes the maximum possible row size to exceed the 8,060-byte limit. The column is added as an offline operation in this case.
+You can't add columns of type **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **xml**, **text**, **ntext**, **image**, **hierarchyid**, **geometry**, **geography**, or CLR user-defined types in an online operation. You can't add a column online if doing so causes the maximum possible row size to exceed the 8,060-byte limit. The column is added as an offline operation in this case.
 
 ## Parallel plan execution
 
-In [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] Enterprise edition and later versions, the number of processors employed to run a single `ALTER TABLE ADD` (index-based) `CONSTRAINT` or `DROP` (clustered index) `CONSTRAINT` statement is determined by the **max degree of parallelism** configuration option and the current workload. If the [!INCLUDE [ssDE](../../includes/ssde-md.md)] detects that the system is busy, the degree of parallelism of the operation is automatically reduced before statement execution starts. You can manually configure the number of processors that are used to run the statement by specifying the `MAXDOP` option. For more information, see [Server configuration: max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md).
+In [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] Enterprise edition and later versions, the `max degree of parallelism` configuration option and the current workload determine the number of processors that run a single `ALTER TABLE ADD` (index-based) `CONSTRAINT` or `DROP` (clustered index) `CONSTRAINT` statement. If the [!INCLUDE [ssDE](../../includes/ssde-md.md)] detects that the system is busy, it automatically reduces the degree of parallelism of the operation before statement execution starts. You can manually configure the number of processors that run the statement by specifying the `MAXDOP` option. For more information, see [Server configuration: max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md).
 
 ## Partitioned tables
 
-In addition to performing SWITCH operations that involve partitioned tables, use `ALTER TABLE` to change the state of the columns, constraints, and triggers of a partitioned table just like it's used for nonpartitioned tables. However, this statement can't be used to change the way the table itself is partitioned. To repartition a partitioned table, use [ALTER PARTITION SCHEME](alter-partition-scheme-transact-sql.md) and [ALTER PARTITION FUNCTION](alter-partition-function-transact-sql.md). Additionally, you can't change the data type of a column of a partitioned table.
+In addition to performing `SWITCH` operations that involve partitioned tables, use `ALTER TABLE` to change the state of the columns, constraints, and triggers of a partitioned table, just like you use it for nonpartitioned tables. However, you can't use this statement to change the way the table itself is partitioned. To repartition a partitioned table, use [ALTER PARTITION SCHEME (Transact-SQL)](alter-partition-scheme-transact-sql.md) and [ALTER PARTITION FUNCTION (Transact-SQL)](alter-partition-function-transact-sql.md). Additionally, you can't change the data type of a column of a partitioned table.
 
 ## Restrictions on tables with schema-bound views
 
-The restrictions that apply to `ALTER TABLE` statements on tables with schema-bound views are the same as the restrictions currently applied when modifying tables with a simple index. Adding a column is allowed. However, removing or changing a column that participates in any schema-bound view isn't allowed. If the `ALTER TABLE` statement requires changing a column used in a schema-bound view, `ALTER TABLE` fails and the [!INCLUDE [ssDE](../../includes/ssde-md.md)] raises an error message. For more information about schema binding and indexed views, see [CREATE VIEW](create-view-transact-sql.md).
+The restrictions that apply to `ALTER TABLE` statements on tables with schema-bound views are the same as the restrictions currently applied when modifying tables with a simple index. You can add a column. However, you can't remove or change a column that participates in any schema-bound view. If the `ALTER TABLE` statement requires changing a column used in a schema-bound view, `ALTER TABLE` fails and the [!INCLUDE [ssDE](../../includes/ssde-md.md)] raises an error message. For more information about schema binding and indexed views, see [CREATE VIEW (Transact-SQL)](create-view-transact-sql.md).
 
 Adding or removing triggers on base tables isn't affected by creating a schema-bound view that references the tables.
 
 ## Indexes and ALTER TABLE
 
-Indexes created as part of a constraint are dropped when the constraint is dropped. Indexes that were created with `CREATE INDEX` must be dropped with `DROP INDEX`. Use The `ALTER INDEX` statement to rebuild an index part of a constraint definition; the constraint doesn't have to be dropped and added again with `ALTER TABLE`.
+Indexes created as part of a constraint are dropped when the constraint is dropped. To drop indexes that you created by using `CREATE INDEX`, use `DROP INDEX`. Use the `ALTER INDEX` statement to rebuild an index that's part of a constraint definition. You don't need to drop and add the constraint again by using `ALTER TABLE`.
 
-All indexes and constraints based on a column must be removed before the column can be removed.
+You must remove all indexes and constraints that are based on a column before you can remove that column.
 
 When you delete a constraint that created a clustered index, the data rows that were stored in the leaf level of the clustered index are stored in a nonclustered table. You can drop the clustered index and move the resulting table to another filegroup or partition scheme in a single transaction by specifying the `MOVE TO` option. The `MOVE TO` option has the following restrictions:
 
@@ -1259,29 +1348,29 @@ When you delete a constraint that created a clustered index, the data rows that 
 
 - The partition scheme or filegroup must already exist.
 
-- If `MOVE TO` isn't specified, the table is located in the same partition scheme or filegroup as was defined for the clustered index.
+- If you don't specify `MOVE TO`, the table is located in the same partition scheme or filegroup as was defined for the clustered index.
 
 When you drop a clustered index, specify the `ONLINE = ON` option so the `DROP INDEX` transaction doesn't block queries and modifications to the underlying data and associated nonclustered indexes.
 
 `ONLINE = ON` has the following restrictions:
 
-- `ONLINE = ON` isn't valid for clustered indexes that are also disabled. Disabled indexes must be dropped by using `ONLINE = OFF`.
-- Only one index at a time can be dropped.
+- `ONLINE = ON` isn't valid for clustered indexes that are also disabled. You must drop disabled indexes by using `ONLINE = OFF`.
+- You can only drop one index at a time.
 - `ONLINE = ON` isn't valid for indexed views, nonclustered indexes, or indexes on local temp tables.
 - `ONLINE = ON` isn't valid for columnstore indexes.
 
-Temporary disk space equal to the size of the existing clustered index is required to drop a clustered index. This additional space is released as soon as the operation is completed.
+Dropping a clustered index requires temporary disk space that's equal to the size of the existing clustered index. This operation releases the additional space as soon as it completes.
 
 > [!NOTE]  
-> The options listed under `<drop_clustered_constraint_option>` apply to clustered indexes on tables and can't be applied to clustered indexes on views or nonclustered indexes.
+> The options listed under `<drop_clustered_constraint_option>` apply to clustered indexes on tables. You can't apply these options to clustered indexes on views or nonclustered indexes.
 
 ## Replicate schema changes
 
-When you run `ALTER TABLE` on a published table at a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher, by default, that change propagates to all [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Subscribers. This functionality has some restrictions. You can disable it. For more information, see [Make Schema Changes on Publication Databases](../../relational-databases/replication/publish/make-schema-changes-on-publication-databases.md).
+When you run `ALTER TABLE` on a published table at a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher, the change propagates to all [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Subscribers by default. This functionality has some restrictions. You can disable it. For more information, see [Make Schema Changes on Publication Databases](../../relational-databases/replication/publish/make-schema-changes-on-publication-databases.md).
 
 ## Data compression
 
-System tables can't be enabled for compression. If the table is a heap, the rebuild operation for `ONLINE` mode is single threaded. Use `OFFLINE` mode for a multi-threaded heap rebuild operation. For more information about data compression, see [Data compression](../../relational-databases/data-compression/data-compression.md).
+You can't enable compression for system tables. If the table is a heap, the rebuild operation for `ONLINE` mode is single-threaded. Use `OFFLINE` mode for a multithreaded heap rebuild operation. For more information about data compression, see [Data compression](../../relational-databases/data-compression/data-compression.md).
 
 To evaluate how changing the compression state affects a table, an index, or a partition, use the [sp_estimate_data_compression_savings](../../relational-databases/system-stored-procedures/sp-estimate-data-compression-savings-transact-sql.md) system stored procedure.
 
@@ -1293,15 +1382,15 @@ The following restrictions apply to partitioned tables:
 
 ## Drop ntext columns
 
-When dropping columns using the deprecated **[ntext](../data-types/ntext-text-and-image-transact-sql.md)** data type, the cleanup of the deleted data occurs as a serialized operation on all rows. The cleanup can require a large amount of time. When dropping an **ntext** column in a table with lots of rows, update the **ntext** column to `NULL` value first, then drop the column. You can run this option with parallel operations and make it much faster.
+When you drop columns that use the deprecated **[ntext](../data-types/ntext-text-and-image-transact-sql.md)** data type, the cleanup of the deleted data occurs as a serialized operation on all rows. The cleanup can require a large amount of time. When you drop an **ntext** column in a table with lots of rows, update the **ntext** column to `NULL` value first, and then drop the column. You can run this option with parallel operations and make it much faster.
 
 ## Online index rebuild
 
-To run the DDL statement for an online index rebuild, all active blocking transactions running on a particular table must be completed. When the online index rebuild launches, it blocks all new transactions that are ready to start running on this table. Although the duration of the lock for online index rebuild is short, waiting for all open transactions on a given table to complete and blocking the new transactions to start, might significantly affect the throughput. This can cause a workload slow-down or timeout and significantly limit access to the underlying table. The `WAIT_AT_LOW_PRIORITY` option allows DBAs to manage the S-lock and Sch-M locks required for online index rebuilds. In all three cases: `NONE`, `SELF`, and `BLOCKERS`, if during the wait time (`(MAX_DURATION = n [minutes])`) there are no blocking activities, the online index rebuild is run immediately without waiting and the DDL statement is completed.
+To run the DDL statement for an online index rebuild, all active blocking transactions running on a particular table must complete. When the online index rebuild launches, it blocks all new transactions that are ready to start running on this table. Although the duration of the lock for online index rebuild is short, waiting for all open transactions on a given table to complete and blocking the new transactions to start might significantly affect the throughput. This lock wait can cause a workload slow-down or timeout and significantly limit access to the underlying table. The `WAIT_AT_LOW_PRIORITY` option allows DBAs to manage the S-lock and Sch-M locks required for online index rebuilds. In all three cases: `NONE`, `SELF`, and `BLOCKERS`, if during the wait time (`(MAX_DURATION = n [minutes])`) there are no blocking activities, the online index rebuild runs immediately without waiting and the DDL statement is completed.
 
 ## Compatibility support
 
-The `ALTER TABLE` statement supports only two-part (`schema.object`) table names. In [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)], specifying a table name using the following formats fails at compile time with error 117.
+The `ALTER TABLE` statement supports only two-part (`schema.object`) table names. In [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)], specifying a table name by using the following formats fails at compile time with error 117.
 
 - `server.database.schema.table`
 - `.database.schema.table`
@@ -1311,13 +1400,15 @@ In earlier versions, specifying the format `server.database.schema.table` return
 
 To resolve the problem, remove the use of a four-part prefix.
 
+::: moniker-end
+
 ## Permissions
 
 Requires `ALTER` permission on the table.
 
 `ALTER TABLE` permissions apply to both tables involved in an `ALTER TABLE SWITCH` statement. Any data that's switched inherits the security of the target table.
 
-If you defined any columns in the `ALTER TABLE` statement to be of a common language runtime (CLR) user-defined type or alias data type, `REFERENCES` permission on the type is required.
+If you define any columns in the `ALTER TABLE` statement to be of a common language runtime (CLR) user-defined type or alias data type, `REFERENCES` permission on the type is required.
 
 Adding or altering a column that updates the rows of the table requires `UPDATE` permission on the table. For example, adding a `NOT NULL` column with a default value or adding an identity column when the table isn't empty.
 
@@ -1329,9 +1420,9 @@ Adding or altering a column that updates the rows of the table requires `UPDATE`
 
 | Category | Featured syntax elements |
 | --- | --- |
-| [Adding columns and constraints](#add) | `ADD`; `PRIMARY KEY` with index options, sparse columns and column sets |
+| [Adding columns and constraints](#add) | `ADD`; `PRIMARY KEY` with index options, sparse columns, and column sets |
 | [Dropping columns and constraints](#Drop) | `DROP` |
-| [Altering a column definition](#alter_column) | change data type; change column size; collation |
+| [Altering a column definition](#alter_column) | Change data type; change column size; collation |
 | [Altering a table definition](#alter_table) | `DATA_COMPRESSION`; `SWITCH PARTITION`; `LOCK ESCALATION`; change tracking |
 | [Disabling and enabling constraints and triggers](#disable_enable) | `CHECK`; `NO CHECK`; `ENABLE TRIGGER`; `DISABLE TRIGGER` |
 | [Online operations](#online) | `ONLINE` |
@@ -1345,7 +1436,7 @@ Examples in this section demonstrate adding columns and constraints to a table.
 
 #### A. Add a new column
 
-The following example adds a column that allows null values and has no values provided through a `DEFAULT` definition. In the new column, each row has `NULL`.
+The following example adds a column that allows null values and doesn't include a `DEFAULT` definition. In the new column, each row has `NULL`.
 
 ```sql
 CREATE TABLE dbo.doc_exa (column_a INT);
@@ -1378,7 +1469,7 @@ GO
 
 #### C. Add an unverified CHECK constraint to an existing column
 
-The following example adds a constraint to an existing column in the table. The column has a value that violates the constraint. Therefore, `WITH NOCHECK` is used to prevent the constraint from being validated against existing rows, and to allow for the constraint to be added.
+The following example adds a constraint to an existing column in the table. The column has a value that violates the constraint. Therefore, the example uses `WITH NOCHECK` to prevent the constraint from being validated against existing rows, and to allow the constraint to be added.
 
 ```sql
 CREATE TABLE dbo.doc_exd (column_a INT);
@@ -1400,7 +1491,7 @@ GO
 
 #### D. Add a DEFAULT constraint to an existing column
 
-The following example creates a table with two columns and inserts a value into the first column, and the other column remains `NULL`. A `DEFAULT` constraint is then added to the second column. To verify that the default is applied, another value is inserted into the first column, and the table is queried.
+The following example creates a table with two columns and inserts a value into the first column, while the other column remains `NULL`. The example then adds a `DEFAULT` constraint to the second column. To verify that the default is applied, the example inserts another value into the first column and queries the table.
 
 ```sql
 CREATE TABLE dbo.doc_exz
@@ -1470,7 +1561,7 @@ GO
 
 #### F. Add a nullable column with default values
 
-The following example adds a nullable column with a `DEFAULT` definition, and uses `WITH VALUES` to provide values for each existing row in the table. If `WITH VALUES` isn't used, each row has the value `NULL` in the new column.
+The following example adds a nullable column with a `DEFAULT` definition, and uses `WITH VALUES` to provide values for each existing row in the table. If you don't use `WITH VALUES`, each row has the value `NULL` in the new column.
 
 ```sql
 CREATE TABLE dbo.doc_exf (column_a INT);
@@ -1557,7 +1648,7 @@ GO
 
 #### I. Add a column set
 
-The following examples show adding a column to table `T2`. A column set can't be added to a table that already contains sparse columns. The code to create table `T2` is as follows.
+The following examples show how to add a column to table `T2`. You can't add a column set to a table that already contains sparse columns. The following code creates table `T2`.
 
 ```sql
 CREATE TABLE T2
@@ -1614,7 +1705,7 @@ WITH (ONLINE = ON, MAXDOP = 2, RESUMABLE = ON, MAX_DURATION = 240);
 
 ### Drop columns and constraints
 
-The examples in this section demonstrate dropping columns and constraints.
+The examples in this section demonstrate how to drop columns and constraints.
 
 #### A. Drop a column or columns
 
@@ -1684,9 +1775,9 @@ ALTER TABLE Production.TransactionHistoryArchive
 GO
 ```
 
-#### D. Add and dropping a FOREIGN KEY constraint
+#### D. Add and drop a FOREIGN KEY constraint
 
-The following example creates the table `ContactBackup`, and then alters the table, first by adding a `FOREIGN KEY` constraint that references the table `Person.Person`, then by dropping the `FOREIGN KEY` constraint.
+The following example creates the table `ContactBackup`, and then alters the table. First, it adds a `FOREIGN KEY` constraint that references the table `Person.Person`. Then, it drops the `FOREIGN KEY` constraint.
 
 ```sql
 CREATE TABLE Person.ContactBackup (ContactID INT);
@@ -1728,7 +1819,7 @@ GO
 
 #### B. Change the size of a column
 
-The following example increases the size of a **varchar** column and the precision and scale of a **decimal** column. Because the columns contain data, the column size can only be increased. Also notice that `col_a` is defined in a unique index. The size of `col_a` can still be increased because the data type is a **varchar** and the index isn't the result of a `PRIMARY KEY` constraint.
+The following example increases the size of a **varchar** column and the precision and scale of a **decimal** column. Because the columns contain data, you can only increase the column size. Also notice that `col_a` is defined in a unique index. You can still increase the size of `col_a` because the data type is a **varchar** and the index isn't the result of a `PRIMARY KEY` constraint.
 
 ```sql
 -- Create a two-column table with a unique index on the varchar column.
@@ -1776,7 +1867,7 @@ WHERE object_id = OBJECT_ID(N'dbo.doc_exy');
 
 #### C. Change column collation
 
-The following example shows how to change the collation of a column. First, a table is created table with the default user collation.
+The following example shows how to change the collation of a column. First, you create a table with the default user collation.
 
 ```sql
 CREATE TABLE T3
@@ -1789,7 +1880,7 @@ CREATE TABLE T3
 GO
 ```
 
-Next, column `C2` collation is changed to Latin1_General_BIN. The data type is required, even though it isn't changed.
+Next, change the collation of column `C2` to `Latin1_General_BIN`. You must specify the data type, even if it isn't changed.
 
 ```sql
 ALTER TABLE T3
@@ -1799,9 +1890,9 @@ GO
 
 #### D. Encrypt a column
 
-The following example shows how to encrypt a column using [Always Encrypted with secure enclaves](../../relational-databases/security/encryption/always-encrypted-enclaves.md).
+The following example shows how to encrypt a column by using [Always Encrypted with secure enclaves](../../relational-databases/security/encryption/always-encrypted-enclaves.md).
 
-First, a table is created without any encrypted columns.
+First, you create a table without any encrypted columns.
 
 ```sql
 CREATE TABLE T3
@@ -1814,9 +1905,9 @@ CREATE TABLE T3
 GO
 ```
 
-Next, column 'C2' is encrypted with a column encryption key, named `CEK1`, and randomized encryption. For the following statement to succeed:
+Next, encrypt column `C2` with a column encryption key, named `CEK1`, and randomized encryption. For the following statement to succeed:
 
-- The column encryption key must be enclave-enabled. Meaning, it must be encrypted with a column master key (CMK) that allows enclave computations.
+- The column encryption key must be enclave-enabled. This requirement means it must be encrypted by using a column `master` key (CMK) that allows enclave computations.
 - The target SQL Server instance must support Always Encrypted with secure enclaves.
 - The statement must be issued over a connection set up for Always Encrypted with secure enclaves, and using a supported client driver.
 - The calling application must have access to the CMK, protecting `CEK1`.
@@ -1868,7 +1959,7 @@ For additional data compression examples, see [Data compression](../../relationa
 
 #### B. Modify a columnstore table to change archival compression
 
-The following example further compresses a columnstore table partition by applying an additional compression algorithm. This compression reduces the table to a smaller size, but also increases the time required for storage and retrieval. This is useful for archiving or for situations that require less space and can afford more time for storage and retrieval.
+The following example further compresses a columnstore table partition by applying an additional compression algorithm. This compression reduces the table to a smaller size, but also increases the time required for storage and retrieval. This compression is useful for archiving or for situations that require less space and can afford more time for storage and retrieval.
 
 **Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
@@ -1963,7 +2054,7 @@ ALTER TABLE Person.Person DISABLE CHANGE_TRACKING;
 
 #### A. Disable and re-enable a constraint
 
-The following example disables a constraint that limits the salaries accepted in the data. `NOCHECK CONSTRAINT` is used with `ALTER TABLE` to disable the constraint and allow for an insert that would typically violate the constraint. `CHECK CONSTRAINT` re-enables the constraint.
+The following example disables a constraint that limits the salaries accepted in the data. Use `NOCHECK CONSTRAINT` with `ALTER TABLE` to disable the constraint and allow an insert that would typically violate the constraint. Use `CHECK CONSTRAINT` to re-enable the constraint.
 
 ```sql
 CREATE TABLE dbo.cnst_example
@@ -1992,7 +2083,7 @@ INSERT INTO dbo.cnst_example VALUES (4, 'Eric James', 110000);
 
 #### B. Disable and re-enable a trigger
 
-The following example uses the `DISABLE TRIGGER` option of `ALTER TABLE` to disable the trigger and allow for an insert that would typically violate the trigger. `ENABLE TRIGGER` is then used to re-enable the trigger.
+The following example uses the `DISABLE TRIGGER` option of `ALTER TABLE` to disable the trigger and allow an insert that would typically violate the trigger. Use `ENABLE TRIGGER` to re-enable the trigger.
 
 ```sql
 CREATE TABLE dbo.trig_example
@@ -2176,7 +2267,7 @@ The following examples A through C use the `FactResellerSales` table in the [!IN
 
 ### A. Determine if a table is partitioned
 
-The following query returns one or more rows if the table `FactResellerSales` is partitioned. If the table isn't partitioned, no rows are returned.
+The following query returns one or more rows if the table `FactResellerSales` is partitioned. If the table isn't partitioned, the query returns no rows.
 
 ```sql
 SELECT *
@@ -2359,11 +2450,11 @@ In this example, the `Orders` table has the following partitions. Each partition
 
 | Partition | Has data? | Boundary range |
 | --- | --- | --- |
-| 1 | Yes | `OrderDate < '2004-01-01'` |
-| 2 | Yes | `'2004-01-01' <= OrderDate < '2005-01-01'` |
-| 3 | Yes | `'2005-01-01' <= OrderDate< '2006-01-01'` |
-| 4 | Yes | `'2006-01-01'<= OrderDate < '2007-01-01'` |
-| 5 | Yes | `'2007-01-01' <= OrderDate` |
+| `1` | Yes | `OrderDate < '2004-01-01'` |
+| `2` | Yes | `'2004-01-01' <= OrderDate < '2005-01-01'` |
+| `3` | Yes | `'2005-01-01' <= OrderDate< '2006-01-01'` |
+| `4` | Yes | `'2006-01-01'<= OrderDate < '2007-01-01'` |
+| `5` | Yes | `'2007-01-01' <= OrderDate` |
 
 - Partition 1 (has data): `OrderDate < '2004-01-01'`
 - Partition 2 (has data): `'2004-01-01' <= OrderDate < '2005-01-01'`

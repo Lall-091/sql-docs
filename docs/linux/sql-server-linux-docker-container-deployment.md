@@ -4,7 +4,7 @@ description: Explore how SQL Server can be deployed on Linux containers and lear
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -44,10 +44,10 @@ This 6-minute video provides an introduction into running SQL Server on containe
 
 To pull and run the Docker container images for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], follow the prerequisites and steps in the following quickstart:
 
-- [[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]](quickstart-install-connect-docker.md?view=sql-server-ver17&preserve-view=true)
-- [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-docker.md?view=sql-server-ver16&preserve-view=true)
-- [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-docker.md?view=sql-server-ver15&preserve-view=true)
-- [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-ver17&preserve-view=true)
+- [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-ver16&preserve-view=true)
+- [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-ver15&preserve-view=true)
+- [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true)
 
 This configuration article provides additional usage scenarios in the following sections.
 
@@ -59,10 +59,10 @@ You can connect and query SQL Server in a container from either outside the cont
 
 [!INCLUDE [connect-instance-client](../includes/connect-instance-client.md)]
 
-The following example uses **sqlcmd** to connect to SQL Server running in a container. The IP address in the connection string is the IP address of the host machine that is running the container.
+The following example uses **`sqlcmd`** to connect to SQL Server running in a container. The IP address in the connection string is the IP address of the host machine that is running the container.
 
 > [!NOTE]  
-> Newer versions of **sqlcmd** (in **mssql-tools18**) are secure by default. If using version 18 or higher, you need to add the `No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+> Newer versions of **`sqlcmd`** (in **mssql-tools18**) are secure by default. If using version 18 or higher, you need to add the `No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ::: zone pivot="cs1-bash"
 
@@ -118,7 +118,7 @@ sqlcmd -S 10.3.2.4,1400 -U sa -P "<YourPassword>"
 
 Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], the [SQL Server command-line tools](sql-server-linux-setup-tools.md) are included in the container image. If you attach to the image with an interactive command-prompt, you can run the tools locally.
 
-1. Use the `docker exec -it` command to start an interactive bash shell inside your running container. In the following example `e69e056c702d` is the container ID.
+1. Use the `docker exec -it` command to start an interactive Bash shell inside your running container. In the following example `e69e056c702d` is the container ID.
 
    ```bash
    docker exec -it e69e056c702d "bash"
@@ -127,18 +127,18 @@ Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], the [SQL Serve
    > [!TIP]  
    > You don't always have to specify the entire container ID. You only have to specify enough characters to uniquely identify it. So in this example, it might be enough to use `e6` or `e69` rather than the full ID. To find out the container ID, run the command `docker ps -a`.
 
-1. Once inside the container, connect locally with **sqlcmd** by using its full path.
+1. Once inside the container, connect locally with **`sqlcmd`** by using its full path.
 
    ```bash
    /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P '<YourPassword>'
    ```
 
    > [!NOTE]  
-   > Newer versions of **sqlcmd** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+   > Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
-1. When finished with **sqlcmd**, type `exit`.
+1. When finished with **`sqlcmd`**, type `exit`.
 
-1. When finished with the interactive command-prompt, type `exit`. Your container continues to run after you exit the interactive bash shell.
+1. When finished with the interactive command-prompt, type `exit`. Your container continues to run after you exit the interactive Bash shell.
 
 <a id="version"></a>
 
@@ -155,7 +155,7 @@ docker exec -it <Container ID or name> /opt/mssql-tools18/bin/sqlcmd \
 ```
 
 > [!NOTE]  
-> Newer versions of **sqlcmd** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+> Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ::: zone-end
 
@@ -168,7 +168,7 @@ docker exec -it <Container ID or name> /opt/mssql-tools18/bin/sqlcmd `
 ```
 
 > [!NOTE]  
-> Newer versions of **sqlcmd** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+> Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ::: zone-end
 
@@ -181,7 +181,7 @@ docker exec -it <Container ID or name> /opt/mssql-tools18/bin/sqlcmd ^
 ```
 
 > [!NOTE]  
-> Newer versions of **sqlcmd** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+> Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ::: zone-end
 
@@ -386,8 +386,6 @@ docker run --name sqlenterprise ^
 > [!IMPORTANT]  
 > By passing the value `Y` to the environment variable `ACCEPT_EULA` and an edition value to `MSSQL_PID`, you express that you have a valid and existing license for the edition and version of SQL Server that you intend to use. You also agree that your use of SQL Server software running in a container image will be governed by the terms of your SQL Server license.
 
-[!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
-
 For a full list of possible values for `MSSQL_PID`, see [Configure SQL Server settings with environment variables on Linux](sql-server-linux-configure-environment-variables.md).
 
 <a id="multiple"></a>
@@ -535,7 +533,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1402:1433 -d 
 Now there are two instances of SQL Server running in separate containers. Clients can connect to each SQL Server instance by using the IP address of the container host and the port number for the container.
 
 > [!NOTE]  
-> Newer versions of **sqlcmd** (in **mssql-tools18**) are secure by default. If using version 18 or higher, you need to add the `No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+> Newer versions of **`sqlcmd`** (in **mssql-tools18**) are secure by default. If using version 18 or higher, you need to add the `No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ::: zone pivot="cs1-bash"
 

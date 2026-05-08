@@ -3,8 +3,7 @@ title: "SQL Server Login Dialog Box (ODBC)"
 description: "The SQL Server Login dialog may appear when an application makes an ODBC connection without specifying enough information to connect to the database."
 author: David-Engel
 ms.author: davidengel
-ms.reviewer: v-davidengel
-ms.date: 12/11/2025
+ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -31,7 +30,7 @@ You can select the following authentication options from the dropdown list:
 | --- | --- |
 | **SQL Server** | Authenticate using SQL username and password. |
 | **Windows Integrated** | Authenticate to SQL Server using the currently logged-in user's Windows account credentials. |
-| **Active Directory Password** | Username and password authentication with a Microsoft Entra identity. |
+| **Active Directory Password** | [DEPRECATED] Username and password authentication with a Microsoft Entra identity. For more information, see [ActiveDirectoryPassword is deprecated](../using-azure-active-directory.md#activedirectorypassword-is-deprecated). |
 | **Active Directory Integrated** | Integrated Windows authentication through Microsoft Entra ID. This mode is used for Windows authentication in Active Directory environments federated with Microsoft Entra ID. |
 | **Active Directory Interactive** | Interactive authentication with a Microsoft Entra identity. This mode supports Microsoft Entra multifactor authentication. |
 | **Managed Service Identity** | Authenticate with a Microsoft Entra managed identity. |
@@ -45,11 +44,11 @@ If you use a trusted connection, you can specify a service principal name (SPN) 
 
 ### Login ID
 
-Specifies the SQL Server or Microsoft Entra login ID to use for the connection if **Authentication Mode** is set to **SQL Server**, **Active Directory Password**, **Active Directory Interactive**, **Managed Service Identity**, or **Active Directory Service Principal**. Otherwise, the **Login ID** box is disabled.
+Specifies the SQL Server or Microsoft Entra login ID to use for the connection if **Authentication Mode** is set to **SQL Server**, **Active Directory Password [DEPRECATED]**, **Active Directory Interactive**, **Managed Service Identity**, or **Active Directory Service Principal**. Otherwise, the **Login ID** box is disabled.
 
 ### Password
 
-Specifies the password for the SQL Server or Microsoft Entra login ID used for the connection if **Authentication Mode** is set to **SQL Server** or **Active Directory Password**. Otherwise, the **Password** box is disabled.
+Specifies the password for the SQL Server or Microsoft Entra login ID used for the connection if **Authentication Mode** is set to **SQL Server** or **Active Directory Password [DEPRECATED]**. Otherwise, the **Password** box is disabled.
 
 ### Options
 

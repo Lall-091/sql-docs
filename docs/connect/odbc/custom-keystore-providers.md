@@ -7,7 +7,7 @@ ms.reviewer: v-davidengel
 ms.date: "07/12/2017"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Custom Keystore Providers
 

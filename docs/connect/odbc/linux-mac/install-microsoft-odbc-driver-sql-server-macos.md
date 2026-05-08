@@ -4,10 +4,10 @@ description: Learn how to install the Microsoft ODBC Driver for SQL Server on ma
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: vanto
-ms.date: 09/12/2024
+ms.date: 03/25/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
   - linux-related-content
@@ -21,9 +21,11 @@ This article explains how to install the Microsoft ODBC Driver for SQL Server on
 
 This article provides commands for installing the ODBC driver from the bash shell. If you want to download the packages directly, see [Download ODBC Driver for SQL Server](../download-odbc-driver-for-sql-server.md).
 
-> [!NOTE]  
-> The Microsoft ODBC driver for SQL Server on macOS is only supported on the x64 architecture through version 17.7. Apple ARM64 support was added starting with version 17.8. The architecture will be detected and the correct package will be automatically installed by the Homebrew formula. If your command prompt is running in x64 emulation mode on ARM64, the x64 package will be installed. If you're not running in emulation mode in your command prompt, the ARM64 package will be installed.
+> [!NOTE]
+> The Microsoft ODBC driver for SQL Server on macOS is only supported on the x64 architecture through version 17.7. Apple ARM64 (M1, M2, M3, and later Apple Silicon chips) support was added starting with version 17.8. The Homebrew formula detects the architecture and automatically installs the correct package. If your command prompt is running in x64 emulation mode on ARM64, the x64 package is installed. If you aren't running in emulation mode, the ARM64 package is installed.
 > Additionally, the Homebrew default directory changed with the ARM64 architecture, to `/opt/homebrew`. The paths in the [Driver files](#driver-files) section use the x64 Homebrew paths, which default to `/usr/local`, so your file paths will vary accordingly.
+>
+> The Microsoft ODBC driver for macOS is designed to work with **unixODBC** (installed by Homebrew). If you use **iODBC** as your driver manager, you might encounter architecture mismatch errors such as `incompatible architecture (have 'arm64', need 'x86_64')`. To resolve this issue, use unixODBC instead of iODBC. Homebrew automatically installs unixODBC as a dependency of the `msodbcsql18` package.
 
 ## Microsoft ODBC 18
 
@@ -85,10 +87,27 @@ The driver needs to load the resource file in order to function. This file is ca
 
 Some users encounter an issue when trying to connect after installing the ODBC driver and receive an error like: `"[01000] [unixODBC][Driver Manager]Can't open lib 'ODBC Driver 18 for SQL Server' : file not found (0) (SQLDriverConnect)"`. It might be the case that unixODBC isn't configured correctly to find registered drivers. In these cases, creating symbolic links can resolve the issue.
 
+The correct paths depend on your Mac's architecture. Run `brew --prefix` to determine your Homebrew installation prefix:
+
+- **Apple Silicon (ARM64)** — Homebrew prefix is `/opt/homebrew`
+- **Intel (x64)** — Homebrew prefix is `/usr/local`
+
+For **Apple Silicon (ARM64)** Macs:
+
+```bash
+sudo ln -s /opt/homebrew/etc/odbcinst.ini /etc/odbcinst.ini
+sudo ln -s /opt/homebrew/etc/odbc.ini /etc/odbc.ini
+```
+
+For **Intel (x64)** Macs:
+
 ```bash
 sudo ln -s /usr/local/etc/odbcinst.ini /etc/odbcinst.ini
 sudo ln -s /usr/local/etc/odbc.ini /etc/odbc.ini
 ```
+
+> [!NOTE]
+> On macOS 15 (Sequoia) and later, the `/usr/local/etc/` directory might not exist by default, especially on Apple Silicon Macs. If the directory doesn't exist, the ODBC configuration files are located under your Homebrew prefix. Run `brew --prefix` to verify the correct path for your system.
 
 For other cases where you're unable to make a connection to SQL Server using the ODBC driver, see the known issues article on [troubleshooting connection problems](known-issues-in-this-version-of-the-driver.md#connectivity).
 

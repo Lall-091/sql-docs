@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 06/16/2025
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Availability Groups [SQL Server], availability replicas"
   - "Availability Groups [SQL Server], failover"

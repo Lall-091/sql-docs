@@ -1,10 +1,10 @@
 ---
 title: "Quickstart: Create an Azure SQL Database server and database using Terraform"
 description: In this article, you create an Azure SQL Database server and database using Terraform.
-author: TomArcherMsft
-ms.author: tarcher
+author: WilliamDAssafMSFT
+ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 09/17/2024
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -56,8 +56,10 @@ In this article, you learn how to:
     [!code-terraform[master](~/../terraform_samples/quickstart/101-sql-database//providers.tf)]
 
 1. Create a file named `main.tf` and insert the following code:
-
+        
     [!code-terraform[master](~/../terraform_samples/quickstart/101-sql-database//main.tf)]
+
+    [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 1. Create a file named `variables.tf` and insert the following code:
 

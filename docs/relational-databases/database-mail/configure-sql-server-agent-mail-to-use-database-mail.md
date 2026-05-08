@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: 05/16/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Database Mail [SQL Server], SQL Server Agent Mail"
   - "SQL Server Agent Mail"

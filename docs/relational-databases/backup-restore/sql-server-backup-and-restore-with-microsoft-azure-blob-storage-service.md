@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 03/01/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 storage: Learn about SQL Server backup to and restore from Azure Blob Storage, including the benefits of using Azure Blob Storage to store SQL Server backups.
 ---
 # SQL Server backup and restore with Azure Blob Storage

@@ -4,10 +4,10 @@ description: Download page for ADO.NET and Microsoft SqlClient Data Provider for
 author: cheenamalhotra
 ms.author: cmalhotra
 ms.reviewer: randolphwest
-ms.date: 11/21/2025
+ms.date: 03/17/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 dev_langs:
   - "csharp"
 ---
@@ -25,6 +25,5 @@ For more information about version compatibility and support, see [SQL version c
 
 ## Download supported versions of Microsoft SqlClient Data Provider for SQL Server
 
-- [6.1.3](https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.1.3)
-- [6.0.4](https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.0.4)
-- [5.1.8](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.1.8)
+- [7.0.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/7.0.0)
+- [6.1.4](https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.1.4)

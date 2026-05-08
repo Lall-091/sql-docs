@@ -1,18 +1,18 @@
 ---
-title: Restore a database from a backup
+title: Restore a Database from a Backup
 titleSuffix: Azure SQL Database
 description: Learn about point-in-time restore, which enables you to roll back a database in Azure SQL Database up to 35 days.
-author: dnethi
-ms.author: dinethi
-ms.reviewer: wiassaf, mathoma, danil
-ms.date: 05/14/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: dinethi, mathoma, danil
+ms.date: 01/26/2026
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
-monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - azure-sql-split
   - sfi-image-nochange
+monikerRange: "=azuresql || =azuresql-db"
 ---
 # Restore a database from a backup in Azure SQL Database
 
@@ -88,13 +88,6 @@ When the restore is complete, it creates a new database on the same server as th
 
 You generally restore a database to an earlier point for recovery purposes. You can treat the restored database as a replacement for the original database or use it as a data source to update the original database.
 
-> [!IMPORTANT]  
-> - You can perform a point-in-time restore of a database to the same server. Cross-server, cross-subscription, and cross-geo point-in-time restore is not currently supported. To restore a database to a different region using geo-replicated backups see [Geo-restore](#geo-restore).
-> - You can't perform a point-in-time restore on a geo-secondary database. You can do so only on a primary database.
-> - The `BackupFrequency` parameter isn't supported for Hyperscale databases.  
-> - Database restore operations are resource-intensive and might require a service tier of S3 or greater for the restoring (target) database. Once restore completes, the database or elastic pool might be scaled down, if required.
-> - If you created any [In-Memory OLTP](in-memory-oltp-overview.md#in-memory-oltp) objects in a database in the Business Critical or Premium service tiers, then you must use the Business Critical or Premium service tiers for the restored database. For more information, see [Restore a database with In-Memory OLTP objects](in-memory-oltp-overview.md#restore-a-database-with-in-memory-oltp-objects).
-
 - **Database replacement**
 
   If you want the restored database to be a replacement for the original database, you should specify the original database's compute size and service tier. You can then rename the original database and give the restored database the original name by using the [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) command in T-SQL.
@@ -144,9 +137,21 @@ To recover a database from a PITR backup by using the REST API:
 
 ---
 
+### Point-in-time restore considerations
+
+- You can perform a point-in-time restore of a database to the same server. Cross-server, cross-subscription, and cross-geo point-in-time restore is not currently supported. To restore a database to a different region using geo-replicated backups, see [Geo-restore](#geo-restore).
+- You can't perform a point-in-time restore on a geo-secondary database. You can do so only on a primary database.
+- The `BackupFrequency` parameter isn't supported for Hyperscale databases.  
+- Database restore operations are resource-intensive and might require a service tier of S3 or greater for the restoring (target) database. Once restore completes, the database or elastic pool might be scaled down, if required.
+- If you created any [In-Memory OLTP](in-memory-oltp-overview.md#in-memory-oltp) objects in a database in the Business Critical or Premium service tiers, then you must use the Business Critical or Premium service tiers for the restored database. For more information, see [Restore a database with In-Memory OLTP objects](in-memory-oltp-overview.md#restore-a-database-with-in-memory-oltp-objects).
+- When you do a point-in-time restore on a database that has change data capture (CDC) enabled, ensure the source database has enough allocated space.
+
 ## Long-term backup restore
 
 To perform a restore operation on a long-term backup, you can use the Azure portal, the Azure CLI, Azure PowerShell, or the REST API. For more information, see [Restore a long-term backup](long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup).
+
+> [!IMPORTANT]
+> Some older APIs used for long-term retention (LTR) backup operations are deprecated and no longer supported. Avoid using legacy PowerShell cmdlets such as `Copy-AzSqlDatabaseLongTermRetentionBackup`. Use the supported restore methods described in this article instead.
 
 ### [Azure portal](#tab/azure-portal)
 
@@ -167,6 +172,9 @@ To restore a database by using PowerShell, use the following cmdlets:
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Gets one or more databases. |
 | [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Gets a geo-redundant backup of a database. |
 | [Restore-AzSqlDatabase -FromLongTermRetentionBackup](/powershell/module/az.sql/restore-azsqldatabase) | Use the `-FromLongTermRetentionBackup` parameter to restore a database from long-term backup. |
+
+> [!WARNING]
+> The `Copy-AzSqlDatabaseLongTermRetentionBackup` cmdlet uses a deprecated API and is not supported. Do not use this cmdlet. Use the supported restore methods documented in this article.
 
 For more information, see [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
@@ -233,7 +241,7 @@ To restore a deleted database by using the REST API:
 Geo-restore uses geo-replicated backups as the source. You can restore a database on any [logical server](logical-servers.md) in any Azure region from the most recent geo-replicated backups. You can request a geo-restore even if an outage has made the database or the entire region inaccessible.
 
 > [!IMPORTANT]  
-> - Geo-restore is available only for databases configured with geo-redundant [backup storage](automated-backups-overview.md#backup-storage-redundancy). If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
+> - Geo-restore is available only for databases configured with geo-redundant or geo-zone redundant (GZRS) [backup storage](automated-backups-overview.md#backup-storage-redundancy). If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
 > - You can perform geo-restore only on databases that reside in the same subscription.
 
 Geo-restore is the default recovery option when your database is unavailable because of an incident in the hosting region. You can restore the database to a server in any other region.

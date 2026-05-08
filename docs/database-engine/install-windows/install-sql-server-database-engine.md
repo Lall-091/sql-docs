@@ -56,7 +56,7 @@ The following features are installed when you select **SQL Server Database Engin
     > [!NOTE]  
     > In this release, selecting the **Data Quality Services** check box in setup doesn't install the Data Quality Services (DQS) server. You'll have to perform additional steps post installation to install DQS server. For more information, see [Install Data Quality Services](../../data-quality-services/install-windows/install-data-quality-services.md).
 
-- [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md) is an optional component. In [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], a Java connector for HDFS data sources is also available.
+- [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/overview.md) is an optional component. In [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], a Java connector for HDFS data sources is also available.
 
 The following additional features are options for many typical user scenarios:
 

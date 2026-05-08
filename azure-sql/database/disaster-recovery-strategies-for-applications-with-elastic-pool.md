@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sqldbrb-1
 ---
 # Disaster recovery strategies for applications using Azure SQL Database elastic pools

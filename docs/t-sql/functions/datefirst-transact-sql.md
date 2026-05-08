@@ -100,8 +100,10 @@ First Day         Today
 SELECT @@DATEFIRST;  
 ```  
   
-## See also
-[Configuration Functions &#40;Transact-SQL&#41;](../../t-sql/functions/configuration-functions-transact-sql.md)
+## Related content
+
+- [Date and time data types and functions (Transact-SQL)](date-and-time-data-types-and-functions-transact-sql.md)
+
   
   
 

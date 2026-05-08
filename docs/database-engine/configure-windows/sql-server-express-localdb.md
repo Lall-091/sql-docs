@@ -3,10 +3,10 @@ title: SQL Server Express LocalDB
 description: Become familiar with SQL Server Express LocalDB. Developers can use this lightweight Database Engine for writing and testing Transact-SQL code.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2025
+ms.date: 03/23/2026
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -15,26 +15,26 @@ helpviewer_keywords:
   - "local database runtime"
   - "file database"
   - "LocalDB"
+ai-usage: ai-assisted
 ---
 
 # SQL Server Express LocalDB
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-Microsoft SQL Server Express LocalDB is a feature of [!INCLUDE [ssexpress-md](../../includes/ssexpress-md.md)] targeted to developers. It's available on SQL Server Express edition with Advanced Services. In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, it's available on [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Express edition.
+Microsoft SQL Server Express LocalDB is a feature of [!INCLUDE [ssexpress-md](../../includes/ssexpress-md.md)] targeted to developers. In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, LocalDB is included with [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Express edition. In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, LocalDB is available on SQL Server Express edition with Advanced Services.
 
-LocalDB installation copies a minimal set of files necessary to start the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)]. Once LocalDB is installed, you can initiate a connection using a special connection string. When you connect, the necessary [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] infrastructure is automatically created and started, enabling the application to use the database without complex configuration tasks. Developer Tools can provide developers with a [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] that lets them write and test [!INCLUDE [tsql](../../includes/tsql-md.md)] code without having to manage a full server instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+LocalDB installation copies a minimal set of files necessary to start the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)]. After LocalDB is installed, you can initiate a connection using a special connection string. When you connect, the necessary [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] infrastructure is automatically created and started, enabling the application to use the database without complex configuration tasks. Developer Tools can provide developers with a [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] that lets them write and test [!INCLUDE [tsql](../../includes/tsql-md.md)] code without having to manage a full server instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
 ## Installation media
 
-LocalDB is a feature you select during SQL Server Express installation, and is available when you download the media. If you download the media, either choose **Express Advanced** or the **LocalDB** package.
+LocalDB is a feature you select during SQL Server Express installation, and is available when you download the media. For [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, LocalDB is included with the **Express** edition download. For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, the edition is called **Express Advanced**, and you can choose either that or the standalone **LocalDB** package when downloading.
 
+- [SQL Server 2025 Express edition](https://go.microsoft.com/fwlink/?linkid=2216019)
 - [SQL Server 2022 Express edition](https://go.microsoft.com/fwlink/?linkid=2215160)
-- [SQL Server 2019 Express edition](https://go.microsoft.com/fwlink/?LinkID=866658)
-- [SQL Server 2017 Express edition](https://go.microsoft.com/fwlink/?LinkID=853017)
-- [SQL Server 2016 Express edition](https://go.microsoft.com/fwlink/?LinkID=799012)
-
-Customers using Visual Studio 2019 and Visual Studio 2022 should install SQL Server 2019 Express edition.
+- [SQL Server 2019 Express edition](https://go.microsoft.com/fwlink/?linkid=866658)
+- [SQL Server 2017 Express edition](https://go.microsoft.com/fwlink/?linkid=853017)
+- [SQL Server 2016 Express edition](https://go.microsoft.com/fwlink/?linkid=799012)
 
 The LocalDB installer `SqlLocalDB.msi` is available in the installation media for all editions except for Express Core. It's located in the `<installation_media_root>\<LCID>_ENU_LP\x64\Setup\x64` folder. LCID is a locale identifier or language code. For example, an LCID value of 1033 refers to the `en-US` locale.
 
@@ -50,7 +50,7 @@ An instance of [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] LocalDB is
 
 ## Description
 
-The LocalDB setup program uses the `SqlLocalDB.msi` program to install the necessary files on the computer. Once installed, LocalDB is an instance of [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] that can create and open [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] databases. The system database files for the database are stored in the local `AppData` path, which is normally hidden. For example, `C:\Users\<user>\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\LocalDBApp1\`. User database files are stored where the user designates, typically somewhere in the `C:\Users\<user>\Documents\` folder.
+The LocalDB setup program uses the `SqlLocalDB.msi` program to install the necessary files on the computer. After it's installed, LocalDB is an instance of [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] that can create and open [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] databases. The system database files for the database are stored in the local `AppData` path, which is normally hidden. For example, `%LOCALAPPDATA%\Microsoft\Microsoft SQL Server Local DB\Instances\LocalDBApp1\`. User database files are stored where the user designates, typically somewhere in the `%LOCALAPPDATA%\Microsoft\Microsoft SQL Server Local DB\Instances\<InstanceName>` folder.
 
 For more information about including LocalDB in an application, see [!INCLUDE [vsprvs](../../includes/vsprvs-md.md)] [Local Data Overview](/previous-versions/visualstudio/visual-studio-2012/ms233817(v=vs.110)), [Create a database and add tables in Visual Studio](/visualstudio/data-tools/create-a-sql-database-by-using-a-designer).
 
@@ -88,7 +88,7 @@ Named instances of LocalDB are private. They're owned by a single application th
 
 To support scenarios where multiple users of the computer need to connect to a single instance of LocalDB, LocalDB supports instance sharing. An instance owner can choose to allow the other users on the computer to connect the instance. Both automatic and named instances of LocalDB can be shared. To share an instance of LocalDB, a user selects a shared name (alias) for it. Because the shared name is visible to all users of the computer, this shared name must be unique on the computer. The shared name for an instance of LocalDB has the same format as the named instance of LocalDB.
 
-Only an administrator on the computer can create a shared instance of LocalDB. A shared instance of LocalDB can be unshared by an administrator or by the owner of the shared instance of LocalDB. To share and unshared an instance of LocalDB, use the `LocalDBShareInstance` and `LocalDBUnShareInstance` methods of the LocalDB API, or the share and unshared options of the `SqlLocalDB` utility.
+Only an administrator on the computer can create a shared instance of LocalDB. A shared instance of LocalDB can be unshared by an administrator or by the owner of the shared instance of LocalDB. To share and unshare an instance of LocalDB, use the `LocalDBShareInstance` and `LocalDBUnShareInstance` methods of the LocalDB API, or the share and unshare options of the `SqlLocalDB` utility.
 
 ## Start LocalDB and connect to LocalDB
 
@@ -136,13 +136,54 @@ To connect to a shared instance of LocalDB, add `\.\` (backslash + dot + backsla
 
 ## Troubleshoot
 
-For information about troubleshooting LocalDB, see [Known SQL Server 2012 setup and migration issues](/troubleshoot/sql/database-engine/install/windows/sql-server-2012-setup-issues).
+LocalDB runs as a lightweight instance under the current user's context, which means most problems relate to instance state, file permissions, or version mismatches rather than server-level configuration. The following steps can help you diagnose and resolve the most common LocalDB problems.
+
+### Upgrade to the latest version
+
+Many common LocalDB problems are resolved by upgrading to the latest version of SQL Server Express. Download the latest version from the [Installation media](#installation-media) section, and install LocalDB. The newer version replaces the existing LocalDB binaries and includes fixes for known stability and compatibility problems.
+
+After upgrading, delete and re-create your instances to use the updated binaries:
+
+```cmd
+sqllocaldb stop MSSQLLocalDB
+sqllocaldb delete MSSQLLocalDB
+sqllocaldb create MSSQLLocalDB
+sqllocaldb start MSSQLLocalDB
+```
+
+> [!CAUTION]
+> Deleting an instance removes all databases associated with that instance. Back up any important data before you delete.
+
+### Verify the installation and instance status
+
+Run the following commands to confirm LocalDB is installed and check the state of your instance:
+
+```cmd
+sqllocaldb info
+sqllocaldb info MSSQLLocalDB
+```
+
+The first command lists all instances. The second command shows the version, owner, and state (Running or Stopped) of a specific instance. If `sqllocaldb` isn't recognized, LocalDB might not be installed or the installation path isn't in the system `PATH` variable.
+
+To start an instance that isn't running:
+
+```cmd
+sqllocaldb start MSSQLLocalDB
+```
+
+### Review error logs
+
+LocalDB writes error logs to the user's `AppData` folder:
+
+`%LOCALAPPDATA%\Microsoft\Microsoft SQL Server Local DB\Instances\MSSQLLocalDB\error.log`
+
+Open this file in a text editor to check for specific error messages, startup failures, or configuration problems.
 
 ## Permissions
 
 An instance of SQL Server Express LocalDB is an instance created by a user for their use. Any user on the computer can create a database using an instance of LocalDB, store files under their user profile, and run the process under their credentials. By default, access to the instance of LocalDB is limited to its owner. The data contained in the LocalDB is protected by file system access to the database files. If user database files are stored in a shared location, the database can be opened by anyone with file system access to that location, by using an instance of LocalDB that they own. If the database files are in a protected location, such as the users data folder, only that user, and any administrators with access to that folder, can open the database. The LocalDB files can only be opened by one instance of LocalDB at a time.
 
-LocalDB always runs under the user's security context. LocalDB never runs with credentials from the local Administrator's group. This means that all database files used by a LocalDB instance must be accessible using the owning user's Windows account, without considering membership in the local Administrators group.
+LocalDB always runs under the user's security context. LocalDB never runs with credentials from the local Administrators group. This means that all database files used by a LocalDB instance must be accessible using the owning user's Windows account, without considering membership in the local Administrators group.
 
 ## Related content
 

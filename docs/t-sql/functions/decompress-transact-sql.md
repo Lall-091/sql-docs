@@ -79,6 +79,5 @@ CREATE TABLE example_table (
 
 ## See also
 
-- [String Functions (Transact-SQL)](../../t-sql/functions/string-functions-transact-sql.md)
 - [COMPRESS (Transact-SQL)](../../t-sql/functions/compress-transact-sql.md)
 

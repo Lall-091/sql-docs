@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: failover-cluster-instance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "flexible failover policy"
 ---

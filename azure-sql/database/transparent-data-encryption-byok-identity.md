@@ -8,8 +8,8 @@ ms.reviewer: vanto, mathoma
 ms.date: 06/25/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: conceptual
-monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+ms.topic: concept-article
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---
 
 # Managed identities for transparent data encryption with customer-managed key

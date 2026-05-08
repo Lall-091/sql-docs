@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 08/08/2022
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Using Always Encrypted with the ODBC Driver for SQL Server
 

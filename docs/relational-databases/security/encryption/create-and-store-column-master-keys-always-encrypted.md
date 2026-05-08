@@ -36,11 +36,11 @@ Always Encrypted enabled client drivers are SQL Server client drivers that have 
 The available built-in providers depend on which driver, driver version, and operating system is selected.  Please consult Always Encrypted documentation for your specific driver to determine which key stores are supported out-of-the-box and if your driver supports custom key store providers - [Develop applications using Always Encrypted](always-encrypted-client-development.md).
 
 ### Which Key Stores are Supported in SQL Tools?
-SQL Server Management Studio, Azure Data Studio and the SqlServer PowerShell module support column master keys stored in:
+SQL Server Management Studio, the [MSSQL extension for Visual Studio Code](../../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md), and the SqlServer PowerShell module support column master keys stored in:
 
 - Key vaults and [managed HSMs](/azure/key-vault/managed-hsm/overview) in Azure Key Vault.
   > [!NOTE]
-  > Managed HSMs require SSMS 18.9 or later and the SqlServer PowerShell module version 21.1.18235 or later. Azure Data Studio currently does not support managed HSMs.
+  > Managed HSMs require SSMS 18.9 or later and the SqlServer PowerShell module version 21.1.18235 or later. Visual Studio Code currently does not support managed HSMs.
 
 - Windows Certificate Store.
 - Key stores, such as hardware security module, that provide Cryptography Next Generation (CNG) API or Cryptography API (CAPI).

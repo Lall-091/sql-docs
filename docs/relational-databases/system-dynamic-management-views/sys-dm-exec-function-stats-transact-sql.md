@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "06/19/2023"
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: conceptual
+ms.topic: reference
 ms.custom:
   - ignite-2025
 f1_keywords:

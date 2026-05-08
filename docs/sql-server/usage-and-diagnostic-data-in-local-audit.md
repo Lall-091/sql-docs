@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 04/12/2022
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: ui-reference
 helpviewer_keywords:
   - "Local Audit"
 monikerRange: ">=sql-server-2016"

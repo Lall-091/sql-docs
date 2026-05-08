@@ -5,7 +5,7 @@ description: Learn about security in Azure SQL Database and Azure SQL Managed In
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jaszymas, vanto, emlisa, mathoma, maghan
-ms.date: 12/01/2025
+ms.date: 01/23/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: concept-article
@@ -71,6 +71,8 @@ Authentication is the process of proving the user is who they claim to be. Azure
 - **SQL authentication**:
 
     SQL authentication refers to the authentication of a user when connecting to Azure SQL Database or Azure SQL Managed Instance by using a username and password. You must specify a **server admin** login with a username and password when creating the server. Using these credentials, a **server admin** can authenticate to any database on that server or instance as the database owner. After that, the server admin can create other SQL logins and users, which enable users to connect by using a username and password.
+
+    [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ## Authorization and access management
 

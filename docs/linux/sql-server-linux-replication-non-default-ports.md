@@ -1,7 +1,7 @@
 ---
-title: "Configure Replication Snapshot Folder (Non-Default Ports)"
+title: "Configure Replication Snapshot Folder (Nondefault Ports)"
 titleSuffix: SQL Server on Linux
-description: Learn to configure snapshot folder shares with non-default ports for SQL Server replication on Linux.
+description: Learn to configure snapshot folder shares with nondefault ports for SQL Server replication on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
@@ -11,21 +11,22 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+ai-usage: ai-assisted
 monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15"
 ---
-# Configure replication with non-default ports (SQL Server Linux)
+# Configure replication with nondefault ports (SQL Server Linux)
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
 You can configure replication with SQL Server on Linux instances listening on any port configured with the `network.tcpport` mssql-conf setting. The port needs to be appended to the server name during configuration if the following conditions are true:
 
 - Replication set-up involves an instance of SQL Server on Linux
-- Any instance (Windows or Linux) is listening on a non-default port.
+- Any instance (Windows or Linux) is listening on a nondefault port.
 
 The server name of an instance can be found by running `@@SERVERNAME` on the instance. Don't use the IP address instead of the server name. Using the IP address for the publisher, distributor, or subscriber might result in an error.
 
 > [!NOTE]  
-> Creating SQL Server replication on Linux with non-default port will only work with SQL Server 2019 and above.
+> Creating SQL Server replication on Linux with nondefault port will only work with SQL Server 2019 and above.
 
 ## Examples
 
@@ -52,6 +53,14 @@ EXEC sp_addsubscription @subscriber = 'Server2,6549' ,  ,
 ```sql
 EXEC sp_addsubscription @subscriber = 'Server3/MSSQL2017,6549',  ,
 ```
+
+## Known issues
+
+### Linked server port not updated when recreating subscription
+
+When you delete and recreate a subscription with a nondefault port on the Subscriber, the system reuses the existing linked server but fails to update the port configuration. This can cause replication to fail when attempting to connect to the Subscriber.
+
+For more information about this known issue, including symptoms, cause, and workaround, see [Delete a push subscription](../relational-databases/replication/delete-a-push-subscription.md#known-issue-port).
 
 ## Related content
 

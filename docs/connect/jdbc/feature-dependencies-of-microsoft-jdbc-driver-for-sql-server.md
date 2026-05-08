@@ -3,10 +3,10 @@ title: Feature dependencies
 description: Learn about the dependencies that the Microsoft JDBC Driver for SQL Server has and how to meet them.
 author: David-Engel
 ms.author: davidengel
-ms.date: 03/17/2025
+ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Feature dependencies of the Microsoft JDBC Driver for SQL Server
 
@@ -126,6 +126,8 @@ If you're using Maven to build or test your project, Maven automatically downloa
 
 ### Work with the Azure Key Vault provider
 
+- JDBC driver version 13.4.0—Dependency versions: Azure-security-keyvault-keys (version 4.10.5), and Azure-identity (version 1.18.2), and their dependencies ([sample application](azure-key-vault-sample-version-9.2.md))
+- JDBC driver version 13.2.0—Dependency versions: Azure-security-keyvault-keys (version 4.9.2), and Azure-identity (version 1.15.3), and their dependencies ([sample application](azure-key-vault-sample-version-9.2.md))
 - JDBC driver version 12.10.0—Dependency versions: Azure-security-keyvault-keys (version 4.9.2), and Azure-identity (version 1.15.3), and their dependencies ([sample application](azure-key-vault-sample-version-9.2.md))
 - JDBC driver version 12.8.0—Dependency versions: Azure-security-keyvault-keys (version 4.7.3), and Azure-identity (version 1.12.2), and their dependencies ([sample application](azure-key-vault-sample-version-9.2.md))
 - JDBC driver version 12.6.0—Dependency versions: Azure-security-keyvault-keys (version 4.7.3), and Azure-identity (version 1.11.1), and their dependencies ([sample application](azure-key-vault-sample-version-9.2.md))
@@ -153,6 +155,8 @@ If you're using Maven to build or test your project, Maven automatically downloa
 
 ### Work with Microsoft Entra authentication
 
+- JDBC driver version 13.4.0—Dependency versions: Azure-identity (version 1.18.2), and its dependencies.
+- JDBC driver version 13.2.0—Dependency versions: Azure-identity (version 1.15.3), and its dependencies.
 - JDBC driver version 12.10.0—Dependency versions: Azure-identity (version 1.15.3), and its dependencies.
 - JDBC driver version 12.8.0—Dependency versions: Azure-identity (version 1.12.2), `Msal4j` (version 1.15.1), and their dependencies.
 - JDBC driver version 12.6.0—Dependency versions: Azure-identity (version 1.11.1), `Msal4j` (version 1.14.1), and their dependencies.
@@ -178,6 +182,16 @@ For *Windows operating systems*, the driver looks for sqljdbc_auth.dll by defaul
 From driver version 8.2.2 onward, `sqljdbc_auth.dll` is renamed to `mssql-jdbc_auth-\<version>-\<arch>.dll`. For example, `mssql-jdbc_auth-8.2.2.x64.dll`.
 
 In addition to the **mssql-jdbc_auth-\<version>-\<arch>.dll** (available in the JDBC driver package), the Azure Active Directory Authentication Library (**ADAL.DLL**) also must be installed for Active Directory Integrated authentication. Microsoft Azure Active Directory Authentication Library can be installed from [Microsoft ODBC Driver for SQL Server](../odbc/download-odbc-driver-for-sql-server.md) or [Microsoft OLE DB Driver for SQL Server](../oledb/download-oledb-driver-for-sql-server.md). The JDBC driver only supports version **1.0.2028.318 and higher** for ADAL.DLL.
+
+(Version 13.4+) The legacy ADAL dependency (`adalsql.dll`/`adal.dll`) has been fully removed. **Authentication=ActiveDirectoryIntegrated** now uses `mssql-auth.dll`, a component installed by the latest Microsoft ODBC Driver 18 for SQL Server and Microsoft OLE DB Driver 19 for SQL Server.
+
+If you receive the following error, install the library from [Microsoft ODBC Driver for SQL Server](../odbc/download-odbc-driver-for-sql-server.md) or [Microsoft OLE DB Driver for SQL Server](../oledb/download-oledb-driver-for-sql-server.md):
+
+```output
+Unable to load mssql-auth.dll. Error code: 0x7e.
+For more information, see:
+https://go.microsoft.com/fwlink/?LinkID=513072
+```
 
 You can get a [sample application](connecting-using-azure-active-directory-authentication.md) that uses this feature.
 

@@ -4,7 +4,7 @@ description: Discover the terms used to describe reports in different states in 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:
@@ -60,6 +60,6 @@ helpviewer_keywords:
 ## Related content
 
 - [Reporting Services Concepts (SSRS)](../reporting-services-concepts-ssrs.md)
-- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Finding, Viewing, and Managing Reports &#40;Report Builder and SSRS &#41;](../../reporting-services/report-builder/finding-viewing-and-managing-reports-report-builder-and-ssrs.md)
 - [Export Reports &#40;Report Builder and SSRS&#41;](../../reporting-services/report-builder/export-reports-report-builder-and-ssrs.md)

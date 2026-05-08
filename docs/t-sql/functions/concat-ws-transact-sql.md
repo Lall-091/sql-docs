@@ -141,5 +141,3 @@ FROM sys.databases;
 - [STRING_ESCAPE (Transact-SQL)](string-escape-transact-sql.md)
 - [STUFF (Transact-SQL)](stuff-transact-sql.md)
 - [TRANSLATE (Transact-SQL)](translate-transact-sql.md)
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
-

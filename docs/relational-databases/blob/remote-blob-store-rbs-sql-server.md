@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "11/03/2016"
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Remote Blob Store (RBS) [SQL Server]"
   - "RBS (Remote Blob Store) [SQL Server]"

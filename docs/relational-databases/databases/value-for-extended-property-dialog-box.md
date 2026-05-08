@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: "03/01/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.common.value.f1"
   - "sql13.swb.extendedpropertiesvalue.f1"

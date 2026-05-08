@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: sample
 helpviewer_keywords:
   - "myTeam sample table [SQL Server]"
   - "bulk importing [SQL Server], examples"

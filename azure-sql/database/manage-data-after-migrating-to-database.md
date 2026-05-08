@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, dfurman, randolphwest
 ms.date: 09/17/2025
 ms.service: azure-sql-database
 ms.subservice: migration
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - sql-migration-content
 ms.custom:

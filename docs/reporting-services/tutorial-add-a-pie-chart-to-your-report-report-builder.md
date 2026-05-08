@@ -207,6 +207,6 @@ Your report is saved on the report server.
 ## Related content
 
 - [Report Builder tutorials](../reporting-services/report-builder-tutorials.md)
-- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Charts in a paginated report (Report Builder)](../reporting-services/report-design/charts-report-builder-and-ssrs.md)
 - [Sparklines and data bars in a paginated report (Report Builder)](../reporting-services/report-design/sparklines-and-data-bars-report-builder-and-ssrs.md)

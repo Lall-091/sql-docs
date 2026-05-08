@@ -54,7 +54,7 @@ This setup allows you to manage and configure your storage resources efficiently
 
 To configure an Azure Elastic SAN for your SQL Server VM, you need the following prerequisites:
 
-- An Azure subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F) before you begin.
+- An Azure subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - An [Azure virtual machine](/azure/virtual-machines/windows/quick-create-portal) appropriately [sized for your SQL Server workload](performance-guidelines-best-practices-vm-size.md). 
 - Access to [SQL Server installation media](https://www.microsoft.com/evalcenter/evaluate-sql-server-2022) and a [product key](https://www.microsoft.com/en-us/sql-server/sql-server-2022-pricing?msockid=3c7688a9da0a67f905079ca8db5d66c6) for the desired version and edition of SQL Server. 
 

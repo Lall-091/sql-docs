@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.restoredb.files.f1"
   - "sql13.swb.restoredb.files.f1 in the code"

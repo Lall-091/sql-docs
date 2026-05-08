@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.reviewer: maghan, randolphwest
 ms.date: 08/11/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - build-2025
 ---

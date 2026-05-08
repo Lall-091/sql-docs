@@ -3,15 +3,13 @@ title: Availability Groups for SQL Server on Linux
 description: Learn about the characteristics of availability groups for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 10/20/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
 ---
-
 # Availability groups for SQL Server on Linux
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
@@ -80,6 +78,9 @@ sudo pcs resource update <AGResourceName> required_synchronized_secondaries_to_c
 sudo crm resource param ms-<AGResourceName> set required_synchronized_secondaries_to_commit <value>
 ```
 
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
 In this example, `<AGResourceName>` is the name of the resource configured for the AG, and `<value>` is 0, 1, or 2. To set it back to the default of Pacemaker managing the parameter, execute the same statement with no value.
 
 Automatic failover of an AG is possible when the following conditions are met:
@@ -147,15 +148,15 @@ An AG that has a cluster type of External or one that is WSFC can't have its rep
 
 An AG with a cluster type of NONE can have its replicas cross OS boundaries, so there could be both Linux- and Windows-based replicas in the same AG. An example is shown here where the primary replica is Windows-based, while the secondary is on one of the Linux distributions.
 
-:::image type="content" source="media/sql-server-linux-availability-group-overview/image1.png" alt-text="Diagram of Hybrid None.":::
+:::image type="content" source="media/sql-server-linux-availability-group-overview/image1.png" alt-text="Diagram of a cross-platform availability group with cluster type None, showing a Windows Server primary replica replicating to a Linux secondary replica.":::
 
 A distributed AG can also cross OS boundaries. The underlying AGs are bound by the rules for how they're configured, such as one configured with External being Linux-only, but the AG that it's joined to could be configured using a WSFC. Consider the following example:
 
-:::image type="content" source="media/sql-server-linux-availability-group-overview/image2.png" alt-text="Diagram of Hybrid Dist AG.":::
+:::image type="content" source="media/sql-server-linux-availability-group-overview/image2.png" alt-text="Diagram of a distributed availability group spanning a Windows Server Failover Cluster and a Pacemaker cluster.":::
 
 ## Related content
 
-- [Configure SQL Server availability group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md)
+- [Configure SQL Server availability group for high availability on Linux](high-availability/availability-groups-configure.md)
 - [Configure a SQL Server availability group for read-scale on Linux](sql-server-linux-availability-group-configure-rs.md)
 - [Configure a Pacemaker cluster for SQL Server availability groups](sql-server-linux-availability-group-cluster-pacemaker.md)
 - [Configure SQL Server Always On availability group on Windows and Linux (cross-platform)](sql-server-linux-availability-group-cross-platform.md)

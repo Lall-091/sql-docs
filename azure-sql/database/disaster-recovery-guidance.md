@@ -7,7 +7,7 @@ ms.reviewer: mathoma, rsetlem
 ms.date: 05/07/2024
 ms.service: azure-sql-database
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresql||=azuresql-db"
 ms.custom:
   - build-2024
@@ -20,9 +20,9 @@ ms.custom:
 > * [Azure SQL Database](disaster-recovery-guidance.md?view=azuresql-db&preserve-view=true)
 > * [Azure SQL Managed Instance](../managed-instance/disaster-recovery-guidance.md?view=azuresql-mi&preserve-view=true)
 
-Azure SQL Database provides an industry leading high availability guarantee of at least 99.99% to support a wide variety of applications, including mission critical, that _always need to be available_. Azure SQL Database also has turn key business continuity capabilities that you can perform for quick disaster recovery in the event of a regional outage. This article contains valuable information to review in advance of application deployment.
+Azure SQL Database provides an [enterprise class availability SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1) to support a wide variety of applications, including mission critical, that _always need to be available_. Azure SQL Database also has turn key business continuity capabilities that you can perform for quick disaster recovery in the event of a regional outage. This article contains valuable information to review in advance of application deployment.
 
-Though we continuously strive to provide high availability, there are times when the Azure SQL Database service incurs outages that cause the unavailability of your database and thus impacts your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.  
+Though we continuously strive to provide availability, there are times when the Azure SQL Database service incurs outages that cause the unavailability of your database and thus impacts your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.  
 
 ## Service outage
 
@@ -127,7 +127,7 @@ Create the logins that must be present in the `master` database on the new prima
 
 ### Setup telemetry alerts
 
-You need to make sure your existing alert rule settings are updated to map to the new primary database and the different server. For more information about database alert rules, see [Receive Alert Notifications](/azure/azure-monitor/alerts/alerts-overview) and [Track Service Health](/azure/service-health/service-notifications).
+You need to make sure your existing alert rule settings are updated to map to the new primary database and the different server. For more information about database alert rules, see [Receive Alert Notifications](/azure/azure-monitor/alerts/alerts-overview) and [Service Health notifications](/azure/service-health/service-health-notifications-properties).
 
 ### Enable auditing
 

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: whats-new
 ms.custom:
   - intro-whats-new
   - ignite-2025
@@ -25,7 +25,7 @@ ADO.NET connection manager now supports Microsoft SqlClient Data Provider. For m
 
 ### .NET API [Microsoft.SqlServer.Dts.Runtime Namespace](/dotnet/api/microsoft.sqlserver.dts.runtime)
 
-When upgrading to SSIS 2025, if you use .NET API [Microsoft.SqlServer.Dts.Runtime Namespace](/dotnet/api/microsoft.sqlserver.dts.runtime), your projects need to update the references and rebuild when SSIS Package includes Execute SQL Task or SSIS package has certain SSIS tasks that rely on SQL Server Management Objects (SMO). For more information, see [ADO.NET connection manager](connection-manager/ado-net-connection-manager.md).
+When upgrading to SSIS 2025, if you use .NET API [Microsoft.SqlServer.Dts.Runtime Namespace](/dotnet/api/microsoft.sqlserver.dts.runtime), your projects need to update the references and rebuild when SSIS Package includes Execute SQL Task or SSIS package has certain SSIS tasks that rely on SQL Server Management Objects (SMO).
 
 ## Deprecated features in Integration Services
 

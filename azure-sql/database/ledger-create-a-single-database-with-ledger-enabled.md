@@ -4,7 +4,7 @@ description: Create a single database in Azure SQL Database with ledger enabled 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma
-ms.date: 08/25/2025
+ms.date: 03/10/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: quickstart
@@ -23,7 +23,7 @@ In this quickstart, you create a [ledger database](/sql/relational-databases/sec
 
 ## Prerequisite
 
-You need an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+You need an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ### Permissions
 
@@ -39,10 +39,11 @@ Create a single ledger database in the [serverless compute tier](serverless-tier
 
 To create a single database in the Azure portal:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/ledger-create-a-single-database-with-ledger-enabled/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/ledger-create-a-single-database-with-ledger-enabled/show-options-create-sql-database.png":::
+   :::image type="content" source="media/ledger-create-a-single-database-with-ledger-enabled/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/ledger-create-a-single-database-with-ledger-enabled/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the Azure subscription you want to use.
 

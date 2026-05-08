@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
 ---
@@ -69,11 +69,11 @@ This section contains descriptions of each of the client functions. The descript
 
 ## ClientVirtualDeviceSet::Create
 
-#### Purpose
+### Purpose
 
 This function creates the virtual device set.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDeviceSet::Create (
@@ -82,28 +82,32 @@ int ClientVirtualDeviceSet::Create (
 );
 ```
 
-| Parameters | Argument | Explanation |
-| --- | --- | --- |
-| | **name** | This identifies the virtual device set. The rules for names used by `CreateFileMapping()` must be followed. Any character except backslash (`\`) might be used. This is a character string. Prefixing the string with the user's product or company name and database name is recommended. |
-| | **cfg** | This is the configuration for the virtual device set. |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | The function succeeded. |
-| | **VD_E_NOTSUPPORTED** | One or more of the fields in the configuration was invalid or otherwise unsupported. |
-| | **VD_E_PROTOCOL** | The virtual device set already exists. |
+| Argument | Explanation |
+| --- | --- |
+| `name` | This identifies the virtual device set. The rules for names used by `CreateFileMapping()` must be followed. Any character except backslash (`\`) might be used. This is a character string. Prefixing the string with the user's product or company name and database name is recommended. |
+| `cfg` | This is the configuration for the virtual device set. |
 
-#### Remarks
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | The function succeeded. |
+| `VD_E_NOTSUPPORTED` | One or more of the fields in the configuration was invalid or otherwise unsupported. |
+| `VD_E_PROTOCOL` | The virtual device set already exists. |
+
+### Remarks
 
 The `Create` method should be called only once per `BACKUP` or `RESTORE` operation. After invoking the `Close` method, the client can reuse the interface to create another virtual device set.
 
 ## ClientVirtualDeviceSet::GetConfiguration
 
-#### Purpose
+### Purpose
 
 This function is used to wait for the server to configure the virtual device set.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDeviceSet::GetConfiguration (
@@ -112,16 +116,20 @@ int ClientVirtualDeviceSet::GetConfiguration (
 );
 ```
 
-| Parameters | Argument | Explanation |
-| --- | --- | --- |
-| | **timeout** | This is the time-out in milliseconds. Use `INFINITE` or any negative integer to prevent time-out. |
-| | **cfg** | Upon successful execution, this contains the configuration selected by the server. |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | The configuration was returned. |
-| | **VD_E_ABORT** | `SignalAbort` was invoked. |
-| | **VD_E_TIMEOUT** | The function timed out. |
+| Argument | Explanation |
+| --- | --- |
+| `timeout` | This is the time-out in milliseconds. Use `INFINITE` or any negative integer to prevent time-out. |
+| `cfg` | Upon successful execution, this contains the configuration selected by the server. |
+
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | The configuration was returned. |
+| `VD_E_ABORT` | `SignalAbort` was invoked. |
+| `VD_E_TIMEOUT` | The function timed out. |
 
 #### Remarks
 
@@ -129,11 +137,11 @@ This function blocks in an `Alertable` state. After successful invocation, the d
 
 ## ClientVirtualDeviceSet::OpenDevice
 
-#### Purpose
+### Purpose
 
 This function opens one of the devices in the virtual device set.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDeviceSet::OpenDevice (
@@ -142,20 +150,24 @@ int ClientVirtualDeviceSet::OpenDevice (
 );
 ```
 
-| Parameters | Argument | Explanation |
-| --- | --- | --- |
-| | **name** | This identifies the virtual device set. |
-| | **ppVirtualDevice** | When the function succeeds, a pointer to the virtual device is returned. This device is used for `GetCommand` and `CompleteCommand`. |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | The function succeeded. |
-| | **VD_E_ABORT** | Abort was requested. |
-| | **VD_E_OPEN** | All devices are open. |
-| | **VD_E_PROTOCOL** | The set isn't in the initializing state or this particular device is already open. |
-| | **VD_E_INVALID** | The device name is invalid. It isn't one of the names known to comprise the set. |
+| Argument | Explanation |
+| --- | --- |
+| `name` | This identifies the virtual device set. |
+| `ppVirtualDevice` | When the function succeeds, a pointer to the virtual device is returned. This device is used for `GetCommand` and `CompleteCommand`. |
 
-#### Remarks
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | The function succeeded. |
+| `VD_E_ABORT` | Abort was requested. |
+| `VD_E_OPEN` | All devices are open. |
+| `VD_E_PROTOCOL` | The set isn't in the initializing state or this particular device is already open. |
+| `VD_E_INVALID` | The device name is invalid. It isn't one of the names known to comprise the set. |
+
+### Remarks
 
 `VD_E_OPEN` might be returned without problem. The client might call `OpenDevice` by means of a loop until this code is returned.
 If more than one device is configured, for example *n* devices, the virtual device set returns *n* unique device interfaces.
@@ -166,11 +178,11 @@ If this function doesn't succeed, then a null value is returned through the `ppV
 
 ## ClientVirtualDevice::GetCommand
 
-#### Purpose
+### Purpose
 
 This function is used to obtain the next command queued to a device. When requested, this function waits for the next command.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDevice::GetCommand (
@@ -179,31 +191,34 @@ int ClientVirtualDevice::GetCommand (
 );
 ```
 
-| Parameters | Argument | Explanation
-| --- | --- | --- |
-| | **timeout** | This is the time to wait, in milliseconds. Use `INFINITE` to wait indefinitely. Use `0` to poll for a command. `VD_E_TIMEOUT` is returned if no command is currently available. If the time-out occurs, the client decides the next action. |
-| | **Timeout** | This is the time to wait, in milliseconds. Use `INFINITE` or a negative value to wait indefinitely. Use 0 to poll for a command. `VD_E_TIMEOUT` is returned if no command is available before the timeout expires. If the timeout occurs, the client decides the next action. |
-| | **ppCmd** | When a command is successfully returned, the parameter returns the address of a command to execute. The memory returned is read-only. When the command is completed, this pointer is passed to the `CompleteCommand` routine. |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | A command was fetched. |
-| | **VD_E_CLOSE** | The device has been closed by the server. |
-| | **VD_E_TIMEOUT** | No command was available and the time-out expired. |
-| | **VD_E_ABORT** | Either the client or the server has used the `SignalAbort` to force a shutdown. |
+| Argument | Explanation |
+| --- | --- |
+| `timeout` | This is the time to wait, in milliseconds. Use `INFINITE` or a negative value to wait indefinitely. Use `0` to poll for a command. `VD_E_TIMEOUT` is returned if no command is currently available. If the time-out occurs, the client decides the next action. |
+| `ppCmd` | When a command is successfully returned, the parameter returns the address of a command to execute. The memory returned is read-only. When the command is completed, this pointer is passed to the `CompleteCommand` routine. |
 
-#### Remarks
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | A command was fetched. |
+| `VD_E_CLOSE` | The device has been closed by the server. |
+| `VD_E_TIMEOUT` | No command was available and the time-out expired. |
+| `VD_E_ABORT` | Either the client or the server has used the `SignalAbort` to force a shutdown. |
+
+### Remarks
 
 When `VD_E_CLOSE` is returned, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] has closed the device. This is part of the normal shutdown. After all devices have been closed, the client invokes `ClientVirtualDeviceSet::Close` to close the virtual device set.
 When this routine must block to wait for a command, the thread is left in an `Alertable` condition.
 
 ## ClientVirtualDevice::CompleteCommand
 
-#### Purpose
+### Purpose
 
 This function is used to notify [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] that a command has finished. Completion information appropriate for the command should be returned.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDevice::CompleteCommand (
@@ -214,71 +229,83 @@ int ClientVirtualDevice::CompleteCommand (
 );
 ```
 
-| Parameters | Argument | Explanation
-| --- | --- | --- |
-| | **pCmd** | This is the address of a command previously returned from `ClientVirtualDevice::GetCommand`. |
-| | **completionCode** | This is a status code that indicates the completion status. This parameter must be returned for all commands. The code returned should be appropriate to the command being performed. `ERROR_SUCCESS` is used in all cases to denote a successfully executed command. For the complete list of possible codes, see the file `vdierror.h`. |
-| | **bytesTransferred** | This is the number of successfully transferred bytes. This is returned only for data transfer commands `Read` and `Write`. |
-| | **position** | This is a response to the `GetPosition` command only. |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | The completion was correctly noted. |
-| | **VD_E_INVALID** | `pCmd` wasn't an active command. |
-| | **VD_E_ABORT** | `Abort` was signaled. |
-| | **VD_E_PROTOCOL** | The device isn't open. |
+| Argument | Explanation |
+| --- | --- |
+| `pCmd` | This is the address of a command previously returned from `ClientVirtualDevice::GetCommand`. |
+| `completionCode` | This is a status code that indicates the completion status. This parameter must be returned for all commands. The code returned should be appropriate to the command being performed. `ERROR_SUCCESS` is used in all cases to denote a successfully executed command. For the complete list of possible codes, see the file `vdierror.h`. |
+| `bytesTransferred` | This is the number of successfully transferred bytes. This is returned only for data transfer commands `Read` and `Write`. |
+| `position` | This is a response to the `GetPosition` command only. |
 
-#### Remarks
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | The completion was correctly noted. |
+| `VD_E_INVALID` | `pCmd` wasn't an active command. |
+| `VD_E_ABORT` | `Abort` was signaled. |
+| `VD_E_PROTOCOL` | The device isn't open. |
+
+### Remarks
 
 None
 
 ## ClientVirtualDeviceSet::SignalAbort
 
-#### Purpose
+### Purpose
 
 This function is used to signal that an abnormal termination should occur.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDeviceSet::SignalAbort ();
 ```
 
-| Parameters | Argument | Explanation
-| --- | --- | --- |
-| | None | Not applicable |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | The `Abort` notification was successfully posted. |
+| Argument | Explanation |
+| --- | --- |
+| None | Not applicable |
 
-#### Remarks
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | The `Abort` notification was successfully posted. |
+
+### Remarks
 
 At any time, the client might choose to abort the `BACKUP` or `RESTORE` operation. This routine signals that all operations should cease. The state of the overall virtual device set enters an `Abnormally Terminated` state. No further commands are returned on any devices. All uncompleted commands are automatically completed, returning `ERROR_OPERATION_ABORTED` as a completion code. The client should call `ClientVirtualDeviceSet::Close` after it's safely terminated any outstanding use of buffers provided to the client.
 
 ## ClientVirtualDeviceSet::Close
 
-#### Purpose
+### Purpose
 
 This function closes the virtual device set created by `ClientVirtualDeviceSet::Create`. It results in the release of all resources associated with the virtual device set.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDeviceSet::Close ();
 ```
 
-| Parameters | Argument | Explanation |
-| --- | --- | --- |
-| | None | Not applicable |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | This is returned when the virtual device set was successfully closed. |
-| | **VD_E_PROTOCOL** | No action was taken because the virtual device set wasn't open. |
-| | **VD_E_OPEN** | Devices were still open. |
+| Argument | Explanation |
+| --- | --- |
+| None | Not applicable |
 
-#### Remarks
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | This is returned when the virtual device set was successfully closed. |
+| `VD_E_PROTOCOL` | No action was taken because the virtual device set wasn't open. |
+| `VD_E_OPEN` | Devices were still open. |
+
+### Remarks
 
 The invocation of `Close` is a client declaration that all resources used by the virtual device set should be released. The client must ensure that all activity involving data buffers and virtual devices is terminated before invoking `Close`. All virtual device interfaces returned by `OpenDevice` are invalidated by `Close`.
 
@@ -288,11 +315,11 @@ If `Close` is called when one or more virtual devices are still open, `VD_E_OPEN
 
 ## ClientVirtualDeviceSet::OpenInSecondary
 
-#### Purpose
+### Purpose
 
 This function opens the virtual device set in a secondary client. The primary client must have already used `Create` and `GetConfiguration` to set up the virtual device set.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDeviceSet::OpenInSecondary (
@@ -300,25 +327,29 @@ int ClientVirtualDeviceSet::OpenInSecondary (
 );
 ```
 
-| Parameters | Argument | Explanation |
-| --- | --- | --- |
-| | **setName** | This identifies the set. This name is case-sensitive and must match the name used by the primary client when it invoked `ClientVirtualDeviceSet::Create`. |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | The function succeeded. |
-| | **VD_E_PROTOCOL** | The virtual device set hasn't been created, has already been opened on this client, or the virtual device set isn't ready to accept open requests from secondary clients. |
-| | **VD_E_ABORT** | The operation is being aborted. |
+| Argument | Explanation |
+| --- | --- |
+| `setName` | This identifies the set. This name is case-sensitive and must match the name used by the primary client when it invoked `ClientVirtualDeviceSet::Create`. |
+
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | The function succeeded. |
+| `VD_E_PROTOCOL` | The virtual device set hasn't been created, has already been opened on this client, or the virtual device set isn't ready to accept open requests from secondary clients. |
+| `VD_E_ABORT` | The operation is being aborted. |
 
 **Remarks** When using a multiple process model, the primary client is responsible for detecting normal and abnormal termination of secondary clients.
 
 ## ClientVirtualDeviceSet::GetBufferHandle
 
-#### Purpose
+### Purpose
 
 Some applications might require more than one process to operate on the buffers returned by `ClientVirtualDevice::GetCommand`. In such cases, the process that receives the command can use `GetBufferHandle` to obtain a process independent handle that identifies the buffer. This handle can then be communicated to any other process that also has the same Virtual Device Set open. That process would then use `ClientVirtualDeviceSet::MapBufferHandle` to obtain the address of the buffer. The address will likely be a different address than in its partner because each process might be mapping buffers at different addresses.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDeviceSet::GetBufferHandle (
@@ -327,28 +358,32 @@ int ClientVirtualDeviceSet::GetBufferHandle (
 );
 ```
 
-| Parameters | Argument | Explanation |
-| --- | --- | --- |
-| | **pBuffer** | This is the address of a buffer obtained from a `Read` or `Write` command. |
-| | **BufferHandle** | A unique identifier for the buffer is returned. |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | The function succeeded. |
-| | **VD_E_PROTOCOL** | The virtual device set isn't currently open. |
-| | **VD_E_INVALID** | The `pBuffer` isn't a valid address. |
+| Argument | Explanation |
+| --- | --- |
+| `pBuffer` | This is the address of a buffer obtained from a `Read` or `Write` command. |
+| `BufferHandle` | A unique identifier for the buffer is returned. |
 
-#### Remarks
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | The function succeeded. |
+| `VD_E_PROTOCOL` | The virtual device set isn't currently open. |
+| `VD_E_INVALID` | The `pBuffer` isn't a valid address. |
+
+### Remarks
 
 The process that invokes the `GetBufferHandle` function is responsible for invoking `ClientVirtualDevice::CompleteCommand` when the data transfer is complete.
 
 ## ClientVirtualDeviceSet::MapBufferHandle
 
-#### Purpose
+### Purpose
 
 This function is used to obtain a valid buffer address from a buffer handle obtained from some other process.
 
-#### Syntax
+### Syntax
 
 ```cpp
 int ClientVirtualDeviceSet::MapBufferHandle (
@@ -357,17 +392,21 @@ int ClientVirtualDeviceSet::MapBufferHandle (
 );
 ```
 
-| Parameters | Argument | Explanation |
-| --- | --- | --- |
-| | **dwBuffer** | This is the handle returned by `ClientVirtualDeviceSet::GetBufferHandle`. |
-| | **ppBuffer** | This is the address of the buffer that is valid in the current process. |
+#### Parameters
 
-| Return values | Argument | Explanation |
-| --- | --- | --- |
-| | **NOERROR** | The function succeeded. |
-| | **VD_E_PROTOCOL** | The virtual device set isn't currently open. |
-| | **VD_E_INVALID** | The `ppBuffer` is an invalid handle. |
+| Argument | Explanation |
+| --- | --- |
+| `dwBuffer` | This is the handle returned by `ClientVirtualDeviceSet::GetBufferHandle`. |
+| `ppBuffer` | This is the address of the buffer that is valid in the current process. |
 
-#### Remarks
+#### Return values
+
+| Argument | Explanation |
+| --- | --- |
+| `NOERROR` | The function succeeded. |
+| `VD_E_PROTOCOL` | The virtual device set isn't currently open. |
+| `VD_E_INVALID` | The `ppBuffer` is an invalid handle. |
+
+### Remarks
 
 Take care to communicate the handles correctly. Handles are local to a single virtual device set. The partner processes sharing a handle must ensure that buffer handles are used only within the scope of the virtual device set, from which the buffer was originally obtained.

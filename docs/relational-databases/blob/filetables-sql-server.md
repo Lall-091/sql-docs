@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/02/2023
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "FileTables [SQL Server], overview"
   - "FileTables [SQL Server]"

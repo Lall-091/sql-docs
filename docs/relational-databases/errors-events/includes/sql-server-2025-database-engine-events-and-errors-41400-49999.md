@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 09/09/2025
+ms.date: 04/16/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -300,6 +300,7 @@ ms.topic: include
 | 41991 | 16 | No | Unable to make database %s on SQL Managed Instance %s accessible because the instance role in failover group changed from %s to %s while the database was in the inaccessible state. Please restore the original database role by executing geo-failover and try again. |
 | 41992 | 16 | No | Unable to make database %s on SQL Managed Instance %s accessible due to ongoing geodr operation. Please wait until the conflicting operation completes and try again. |
 | 41993 | 16 | No | Cannot execute failover of Managed Instance link '%s' because the replica of database '%s' on the managed instance is in an inaccessible state. |
+| 41998 | 16 | No | Managed Instance link creation failed because encryption is not enabled on the on-premises SQL Server endpoint. Enable encryption on the database mirroring endpoint and try again. |
 | 42001 | 16 | No | Failed to parse XML configuration. The operating system returned error %ls. |
 | 42002 | 16 | No | Failed to parse XML configuration. The parser returned error %.\*ls |
 | 42003 | 16 | No | Failed to parse XML configuration. A required attribute '%ls' is missing. |
@@ -1147,6 +1148,7 @@ ms.topic: include
 | 45941 | 16 | No | The operation could not be completed as the backup is not configured for immutability. |
 | 45942 | 16 | No | The operation could not be completed as the backup is immutable and locked. |
 | 45943 | 16 | No | The long-term retention backup with the desired legal hold value already exists backup file backup. ErrorOwner: sqldataintegration |
+| 45946 | 16 | No | Cannot change the state of the database to Inaccessible because the operation is not allowed for encryption protector from Key Vault in region '{0}'. |
 | 46501 | 15 | No | External table references '%S_MSG' that does not exist. |
 | 46502 | 15 | No | Type with name '%.\*ls' already exists. |
 | 46503 | 15 | No | Invalid format for option '%S_MSG'. |

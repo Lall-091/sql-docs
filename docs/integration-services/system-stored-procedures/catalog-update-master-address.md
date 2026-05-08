@@ -1,8 +1,8 @@
 ---
 title: "catalog.update_master_address (SSISDB Database)"
 description: "catalog.update_master_address (SSISDB Database)"
-author: "haoqian"
-ms.author: "haoqian"
+author: chugugrace
+ms.author: chugu
 ms.date: "07/18/2017"
 ms.service: sql
 ms.subservice: integration-services

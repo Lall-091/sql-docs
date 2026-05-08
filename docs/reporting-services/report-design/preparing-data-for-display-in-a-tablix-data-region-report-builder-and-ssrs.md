@@ -4,7 +4,7 @@ description: Learn how to customize the paginated report display of data in Repo
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

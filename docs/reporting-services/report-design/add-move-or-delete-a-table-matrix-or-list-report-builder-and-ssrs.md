@@ -4,7 +4,7 @@ description: Arrange your table or matrix data regions in a paginated report by 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

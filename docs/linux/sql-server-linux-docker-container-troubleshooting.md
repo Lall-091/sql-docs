@@ -4,7 +4,7 @@ description: Explore the different troubleshooting techniques that you can use t
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 07/03/2025
+ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting
@@ -306,8 +306,6 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -e "MSSQL_PID=De
 ::: zone-end
 
 ::: moniker-end
-
-[!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
 
 > [!CAUTION]  
 > [!INCLUDE [password-complexity](includes/password-complexity.md)]

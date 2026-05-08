@@ -43,6 +43,12 @@ Analytic functions compute an aggregate value based on a group of rows. However,
 
 Bit manipulation functions allow you to process and store data more efficiently than with individual bits. For more information, see [Bit manipulation functions](bit-manipulation-functions-overview.md).
 
+## Configuration functions
+
+Configuration functions are scalar functions that return information about current configuration option settings, for example, [@@SERVERNAME (Transact-SQL)](servername-transact-sql.md).
+
+All configuration functions operate in a nondeterministic way. In other words, these functions do not always return the same results every time they are called, even with the same set of input values. For more information about function determinism, see [Deterministic and Nondeterministic Functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).
+
 ## Ranking functions
 
 Ranking functions return a ranking value for each row in a partition. Depending on the function that is used, some rows might receive the same value as other rows. Ranking functions are nondeterministic.
@@ -59,7 +65,7 @@ Operate on a single value and then return a single value. Scalar functions can b
 
 |Function category|Description|  
 |-----------------------|-----------------|  
-|[Configuration Functions](configuration-functions-transact-sql.md)|Return information about the current configuration.|  
+|[Configuration Functions](#configuration-functions)|Return information about the current configuration.|  
 |[Conversion Functions](conversion-functions-transact-sql.md)|Support data type casting and converting.|  
 |[Cursor Functions](cursor-functions-transact-sql.md)|Return information about cursors.|  
 |[Date and Time Data Types and Functions](date-and-time-data-types-and-functions-transact-sql.md)|Perform operations on a date and time input values and return string, numeric, or date and time values.|  
@@ -69,10 +75,18 @@ Operate on a single value and then return a single value. Scalar functions can b
 |[Mathematical Functions](mathematical-functions-transact-sql.md)|Perform calculations based on input values provided as parameters to the functions, and return numeric values.|  
 |[Metadata Functions](metadata-functions-transact-sql.md)|Return information about the database and database objects.|  
 |[Security Functions](security-functions-transact-sql.md)|Return information about users and roles.|  
-|[String Functions](string-functions-transact-sql.md)|Perform operations on a string (**char** or **varchar**) input value and return a string or numeric value.|  
+|[String Functions](#string-functions)|Perform operations on a string (**char** or **varchar**) input value and return a string or numeric value.|  
 |[System Functions](../../relational-databases/system-functions/system-functions-category-transact-sql.md)|Perform operations and return information about values, objects, and settings in an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].|  
 |[System Statistical Functions](system-statistical-functions-transact-sql.md)|Return statistical information about the system.|  
 |[Text and Image Functions](./text-and-image-functions-textptr-transact-sql.md)|Perform operations on text or image input values or columns, and return information about the value.|
+
+## String functions
+
+Scalar functions perform an operation on a string input value and return a string or numeric value, for example, [ASCII (Transact-SQL)](ascii-transact-sql.md).
+
+All built-in string functions except `FORMAT` are deterministic. This means they return the same value any time they are called with a specific set of input values. For more information about function determinism, see [Deterministic and Nondeterministic Functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).  
+  
+When string functions are passed arguments that are not string values, the input type is implicitly converted to a text data type. For more information, see [Data Type Conversion &#40;Database Engine&#41;](../../t-sql/data-types/data-type-conversion-database-engine.md).  
 
 ## Function determinism
 

@@ -3,11 +3,11 @@ title: What is the Hyperscale service tier?
 description: This article describes the Hyperscale service tier in the vCore-based purchasing model in Azure SQL Database and explains how it's different from the General Purpose and Business Critical service tiers.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: dfurman, mathoma, oslake, randolphwest, blakhani, adbadram
-ms.date: 12/12/2025
+ms.reviewer: dfurman, mathoma, oslake, randolphwest, adbadram
+ms.date: 03/09/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - build-2025
@@ -44,7 +44,7 @@ The Hyperscale service tier in Azure SQL Database provides the following additio
 
 The Hyperscale service tier removes many of the practical limits traditionally seen in cloud databases. Where most other databases are limited by the resources available in a single node, databases in the Hyperscale service tier have no such limits. With its flexible storage architecture, storage grows as needed. In fact, Hyperscale databases aren't created with a defined max size. A Hyperscale database grows as needed - and you're billed only for the storage capacity allocated. For read-intensive workloads, the Hyperscale service tier provides rapid scale-out by provisioning additional replicas as needed for offloading read workloads.
 
-Additionally, the time required to create database backups or to scale up or down is no longer tied to the volume of data in the database. Hyperscale databases are backed up virtually instantaneously. You can also scale a database in the tens of terabytes up or down within minutes in the provisioned compute tier or use [serverless](serverless-tier-overview.md) to scale compute automatically. This capability frees you from concerns about being boxed in by your initial configuration choices.
+Additionally, the time required to create database backups or to scale up or down is no longer tied to the volume of data in the database. Hyperscale databases are backed up virtually instantaneously. You can also scale a database in the tens of terabytes up or down within minutes in the provisioned compute tier or use [serverless](serverless-tier-overview.md) to scale compute automatically. This capability frees you from concerns about being boxed in by your initial configuration choices. 
 
 For more information about the compute sizes for the Hyperscale service tier, see [Service tier characteristics](service-tiers-vcore.md#service-tiers).
 
@@ -136,7 +136,7 @@ The vCore-based service tiers are differentiated based on database availability,
 | ㅤ | **General Purpose** | **Business Critical** | **Hyperscale** |
 | :---: | :---: | :---: | :---: |
 | **Best for** | Offers budget-oriented balanced compute and storage options. | OLTP applications with high transaction rate and low I/O latency. Offers high resilience to failures and fast failovers using multiple hot standby replicas. | The widest variety of workloads. Autoscaling storage size up to 128 TB, fast vertical and horizontal compute scaling, fast database restore. |
-| **Compute size** | 2 to 128 vCores | 2 to 128 vCores | 2 to 128 vCores |
+| **Compute size** | 2 to 128 vCores | 2 to 128 vCores | 2 to 192 vCores<sup>3</sup>  |
 | **Storage type** | Premium remote storage (per instance) | Super-fast local SSD storage (per instance) | Decoupled storage with local SSD cache (per compute replica) |
 | **Storage size** | 1 GB – 4 TB | 1 GB – 4 TB | 10 GB – 128 TB |
 | **Max IOPS** | 320 IOPS per vCore with 16,000 maximum IOPS | 4,000 IOPS per vCore with 327,680 maximum IOPS | 5,500 IOPS per vCore with 544,000 maximum local SSD IOPS.<br />Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPS depend on the workload. |
@@ -150,17 +150,25 @@ The vCore-based service tiers are differentiated based on database availability,
 
 <sup>2</sup> As of December 2023, Azure Hybrid Benefit isn't available for new Hyperscale databases, or in dev/test subscriptions. Existing Hyperscale single databases with provisioned compute can continue to use Azure Hybrid Benefit to save on compute costs until December 2026. For more information, review the [Hyperscale pricing blog](https://aka.ms/hsignite2023).
 
+<sup>3</sup> Currently, the 160 and 192 vCore options are a preview feature.
+
 ## Compute resources
+
+The following table compares compute resources in different hardware configurations and compute tiers for Azure SQL Database Hyperscale. For non-Hyperscale Azure SQL Database, see [vCore purchasing model - Azure SQL Database](service-tiers-sql-database-vcore.md#compute-resources-cpu-and-memory).
 
 | Hardware configuration | CPU | Memory |
 | :--- | :--- | :--- |
-| Standard-series (Gen5) | **Provisioned compute**<br />- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)<sup>1</sup>, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz<sup>1</sup>, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)<sup>1</sup>, AMD EPYC 7763v (Milan) processors<br />- Provision up to 80 vCores (hyper-threaded)<br /><br />**Serverless compute**<br />- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)<sup>1</sup>, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz<sup>1</sup>, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)<sup>1</sup>, AMD EPYC 7763v (Milan) processors<br />- Autoscale up to 80 vCores (hyper-threaded)<br />- The memory-to-vCore ratio dynamically adapts to memory and CPU usage based on workload demand and can be as high as 24 GB per vCore. For example, at a given point in time, a workload might use and be billed for 240 GB memory and only 10 vCores. | **Provisioned compute**<br />- 5.1 GB per vCore<br />- Provision up to 625 GB<br /><br />**Serverless compute**<br />- Autoscale up to 24 GB per vCore<br />- Autoscale up to 240 GB max |
-| Premium-series | - Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake), AMD EPYC 7763v (Milan) processors<br />- Provision up to 128 vCores (hyper-threaded) | - 5.1 GB per vCore |
-| Premium-series memory optimized | - Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake), AMD EPYC 7763v (Milan) processors<br />- Provision up to 80 vCores (hyper-threaded) | - 10.2 GB per vCore |
+|Standard-series (Gen5) |**Provisioned compute**<br>- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)\*, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz\*, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC&trade; 7763v (Milan)\*, AMD EPYC 9004 (Genoa)\*, Intel&reg; Xeon&reg; Platinum 8573C (Emerald Rapids)\* processors<br>- Provision up to 128 vCores (hyper-threaded)<br><br>**Serverless compute**<br>- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)\*, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz\*, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC&trade; 7763v (Milan)\*, AMD EPYC 9004 (Genoa)\*, Intel&reg; Xeon&reg; Platinum 8573C (Emerald Rapids)\* processors<br>- Autoscale up to 80 vCores (hyper-threaded)<br>- The memory-to-vCore ratio dynamically adapts to memory and CPU usage based on workload demand and can be as high as 24 GB per vCore.  For example, at a given point in time a workload might use and be billed for 240-GB memory and only 10 vCores.|**Provisioned compute**<br>- 5.1 GB per vCore<br>- Provision up to 625 GB<br><br>**Serverless compute**<br>- Autoscale up to 24 GB per vCore<br>- Autoscale up to 240 GB max|
+|Premium-series |**Provisioned compute**<br>- Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC&trade; 7763v (Milan)\*, AMD EPYC 9004 (Genoa)\*, Intel&reg; Xeon&reg; Platinum 8573C (Emerald Rapids)\* processors<br>- Provision up to 192 vCores (hyper-threaded). | 5.2 GB per vCore |
+|Premium-series memory optimized  |**Provisioned compute**<br>- Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC&trade; 7763v (Milan)\*, AMD EPYC 9004 (Genoa)\*, Intel&reg; Xeon&reg; Platinum 8573C (Emerald Rapids)\* processors<br>- Provision up to 80 vCores (hyper-threaded).| 10.2 GB per vCore |
 
-<sup>1</sup> In the [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamic management view, hardware generation for databases using Intel&reg; SP-8160 (Skylake) processors appears as Gen6, hardware generation for databases using Intel&reg; 8272CL (Cascade Lake) appears as Gen7, and hardware generation for databases using Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake) or AMD&reg; EPYC&reg; 7763v (Milan) appear as Gen8. For a given compute size and hardware configuration, resource limits are the same regardless of CPU type. For more information, see resource limits for [single databases](resource-limits-vcore-single-databases.md) and [elastic pools](resource-limits-vcore-elastic-pools.md).
+\* For a given compute size and hardware configuration, resource limits are the same regardless of CPU type (Intel&reg; Broadwell, Skylake, Ice Lake, Cascade Lake, Emerald Rapid or AMD Milan, Genoa). In the [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamic management view, hardware generation for databases using:
+  - Intel&reg; SP-8160 (Skylake) processors appears as Gen6
+  - Intel&reg; 8272CL (Cascade Lake) appears as Gen7
+  - Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake) or AMD EPYC&trade; 7763v (Milan) appear as Gen8
+  - AMD EPYC&trade; 9004 (Genoa) appear as Gen9 or Intel&reg; Xeon&reg; Platinum 8573C (Emerald Rapids) appear as Gen10
 
-Serverless is only supported on Standard-series (Gen5) hardware.
+For more information, see resource limits for [single databases](resource-limits-vcore-single-databases.md) and [elastic pools](resource-limits-vcore-elastic-pools.md).
 
 ## Create and manage Hyperscale databases
 
@@ -186,7 +194,7 @@ These are the current limitations of the Hyperscale service tier. We're actively
 | Database integrity check | DBCC CHECKDB isn't currently supported for Hyperscale databases. DBCC CHECKTABLE ('TableName') WITH TABLOCK and DBCC CHECKFILEGROUP WITH TABLOCK might be used as a workaround. See [Data Integrity in Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) for details on data integrity management in Azure SQL Database. |
 | Elastic Jobs | Using a Hyperscale database as the Job database isn't supported. However, elastic jobs can target Hyperscale databases in the same way as any other database in Azure SQL Database. |
 | Data Sync | Using a Hyperscale database as a Hub or Sync Metadata database isn't supported. However, a Hyperscale database can be a member database in a Data Sync topology. |
-| Hyperscale service tier premium-series hardware | Premium-series and memory-optimized premium-series hardware doesn't currently support the serverless compute tier. |
+| Hyperscale service tier premium-series hardware | Premium-series and memory-optimized premium-series hardware doesn't currently support the serverless compute tier. Serverless is only supported on Standard-series (Gen5) hardware. |
 | Regional availability | Hyperscale service tier premium-series and premium-series memory-optimized hardware is available in limited Azure regions. For a list, see [Hyperscale premium-series availability](region-availability.md#hyperscale-premium-series-availability). |
 
 ## Related content

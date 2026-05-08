@@ -41,7 +41,7 @@ ML Server supports two forms of authentication contexts:
 
 * LDAP: tuple *(username, password)* 
 
-* Azure Active Directory (AAD): dict *{…}* 
+* Azure Active Directory (AAD): dict *{...}* 
 
 * access-token: str *=4534535* 
 

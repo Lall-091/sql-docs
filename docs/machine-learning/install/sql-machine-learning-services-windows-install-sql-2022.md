@@ -14,7 +14,7 @@ monikerRange: ">=sql-server-ver16"
 ---
 # Install SQL Server 2022 Machine Learning Services (Python and R) on Windows
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article shows you how to install [SQL Server Machine Learning Services with Python and R](../sql-server-machine-learning-services.md) on Windows. With Machine Learning Services, you can run Python and R scripts in-database.
 
@@ -282,7 +282,7 @@ The Python and R solutions that you create for SQL Server can call:
 
 Packages that you want to use from SQL Server must be installed in the default library that the instance uses. If you have a separate installation of Python or R on the computer, or if you installed packages to user libraries, you can't use those packages from T-SQL.
 
-To install and manage additional packages, you can set up user groups to share packages on a per-database level. Or you can configure database roles to enable users to install their own packages. For more information, see [Install Python packages with sqlmlutils](../package-management/install-additional-python-packages-on-sql-server.md) and [Install R packages with sqlmlutils](../package-management/install-additional-r-packages-on-sql-server.md).
+To install and manage additional packages, you can set up user groups to share packages on a per-database level. Or you can configure database roles to enable users to install their own packages. For more information, see [Install R packages with sqlmlutils](../package-management/install-additional-r-packages-on-sql-server.md).
 
 ### Standalone RevoScale packages for Python and R runtime
 

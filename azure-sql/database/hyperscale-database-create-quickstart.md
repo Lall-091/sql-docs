@@ -4,7 +4,7 @@ description: Create a Hyperscale database in Azure SQL Database using the Azure 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 08/25/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -22,7 +22,7 @@ In this quickstart, you create a [logical server in Azure](logical-servers.md) a
 
 ## Prerequisites
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - The latest version of either [Azure PowerShell](/powershell/azure/install-az-ps) or [Azure CLI](/cli/azure/install-azure-cli-windows), if you would like to follow the quickstart programmatically. Alternately, you can complete the quickstart in the Azure portal.
 - An existing [logical server](logical-servers.md) in Azure is required if you would like to create a Hyperscale database with Transact-SQL. For this approach, you will need to run Transact-SQL via [the Azure portal query editor](query-editor.md), [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms), [sqlcmd](/sql/tools/sqlcmd-utility), or the client of your choice.
 
@@ -40,10 +40,9 @@ This quickstart creates a single database in the [Hyperscale service tier](servi
 
 To create a single database in the Azure portal:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **Azure SQL Database Hyperscale**, select **Show options**.
-1. In the **Azure SQL Database Hyperscale options** window, select **Create SQL Database Hyperscale**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **Azure SQL Database Hyperscale**, select **Create**.
 
-   :::image type="content" source="media/hyperscale-database-create-quickstart/show-options-create-sql-database-hyperscale.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database Hyperscale button." lightbox="media/hyperscale-database-create-quickstart/show-options-create-sql-database-hyperscale.png":::
+   :::image type="content" source="media/hyperscale-database-create-quickstart/show-options-create-sql-database-hyperscale.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub and under Create a database, the Create button to create a new Hyperscale database." lightbox="media/hyperscale-database-create-quickstart/show-options-create-sql-database-hyperscale.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 1. For **Resource group**, select **Create new**, enter *myResourceGroup*, and select **OK**.
@@ -53,6 +52,8 @@ To create a single database in the Azure portal:
    - **Server admin login**: Enter *azureuser*.
    - **Password**: Enter a password that meets requirements, and enter it again in the **Confirm password** field.
    - **Location**: Select a location from the dropdown list.
+
+   [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
    Select **OK**.
 
@@ -120,6 +121,8 @@ endIp=0.0.0.0
 
 echo "Using resource group $resourceGroupName with login: $login, password: $password..."
 ```
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ### Create a resource group
 
@@ -206,6 +209,8 @@ Before running the sample code, change the `location` as appropriate for your en
    Write-host "Server name is" $serverName
    Write-host "Password is" $password
 ```
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ### Create resource group
 

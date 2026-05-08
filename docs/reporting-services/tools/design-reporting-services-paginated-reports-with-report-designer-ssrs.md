@@ -4,7 +4,7 @@ description: See how to use Report Designer in SQL Server Reporting Services to 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

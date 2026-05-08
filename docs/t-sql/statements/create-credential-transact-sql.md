@@ -37,7 +37,7 @@ Creates a server-level credential. A credential is a record that contains the au
 >
 > - Create a database scoped credential with `CREATE DATABASE SCOPED CREDENTIAL` to make the database more portable. When a database is moved to a new server, the database scoped credential will move with it.
 > - Use database scoped credentials on [!INCLUDE[ssSDS](../../includes/sssds-md.md)].
-> - Use database scoped credentials with [PolyBase](../../relational-databases/polybase/polybase-guide.md) and [Azure SQL Managed Instance data virtualization](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresqlmi-current&preserve-view=true) features.
+> - Use database scoped credentials with [PolyBase](../../relational-databases/polybase/overview.md) and [Azure SQL Managed Instance data virtualization](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresqlmi-current&preserve-view=true) features.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -67,14 +67,14 @@ When used for backup/restore using external data platforms, such as Azure Blob S
 | Azure Key Vault Managed Hardware Security Module (HSM) | `<akv-name>.managedhsm.azure.net` | [Example H](#h-create-a-managed-identity-credential-for-extensible-key-management-with-azure-key-vault) |
 | S3-compatible object storage | - S3-compatible storage: `s3://<server_name>:<port>/`<br />- AWS S3: `s3://<bucket_name>.S3.<region>.amazonaws.com[:port]/<folder>` </br>or `s3://s3.<region>.amazonaws.com[:port]/<bucket_name>/<folder>` | [Example F](#f-create-a-credential-for-backuprestore-to-s3-compatible-storage) |
 
-#### IDENTITY **='**_identity\_name_**'**
+#### IDENTITY = '*identity_name*'
 
 Specifies the name of the account to be used when connecting outside the server. When the credential is used to access the Azure Key Vault, the **IDENTITY** is the name of the key vault. See example C below. When the credential is using a shared access signature (SAS), the **IDENTITY** is *SHARED ACCESS SIGNATURE*. See example D below.
 
 > [!IMPORTANT]
 > Azure SQL Database only supports Azure Key Vault and Shared Access Signature identities. Windows user identities aren't supported.
 
-#### SECRET **='**_secret_**'**
+#### SECRET = '*secret*'
 
 Specifies the secret required for outgoing authentication.
 

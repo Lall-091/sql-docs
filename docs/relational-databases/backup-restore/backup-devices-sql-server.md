@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/17/2022
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "tape backup devices, about tape backup devices"
   - "backup devices [SQL Server]"

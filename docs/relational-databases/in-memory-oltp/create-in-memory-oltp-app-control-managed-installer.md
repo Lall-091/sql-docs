@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 02/06/2025
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # How to create In-Memory OLTP App Control and Managed Installer policies

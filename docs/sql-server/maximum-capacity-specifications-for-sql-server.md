@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/21/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: limits-and-quotas
 ms.update-cycle: 1825-days
 helpviewer_keywords:
   - "objects [SQL Server]"

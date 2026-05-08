@@ -3,8 +3,7 @@ title: Configure RHEL FCI for SQL Server on Linux
 description: Learn to configure a Red Hat Enterprise Linux (RHEL) shared disk failover cluster instance (FCI) for SQL Server on Linux high availability.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -122,19 +121,19 @@ There are various solutions for providing shared storage. This walk-through demo
 
 On the NFS Server, perform the following steps:
 
-1. Install `nfs-utils`
+1. Install `nfs-utils`:
 
    ```bash
    sudo yum -y install nfs-utils
    ```
 
-1. Enable and start `rpcbind`
+1. Enable and start `rpcbind`:
 
    ```bash
    sudo systemctl enable rpcbind && sudo systemctl start rpcbind
    ```
 
-1. Enable and start `nfs-server`
+1. Enable and start `nfs-server`:
 
    ```bash
    sudo systemctl enable nfs-server && sudo systemctl start nfs-server
@@ -146,19 +145,19 @@ On the NFS Server, perform the following steps:
    /mnt/nfs  10.8.8.0/24(rw,sync,no_subtree_check,no_root_squash)
    ```
 
-1. Export the shares
+1. Export the shares:
 
    ```bash
    sudo exportfs -rav
    ```
 
-1. Verify that the paths are shared/exported, run from the NFS server
+1. Verify that the paths are shared/exported, run from the NFS server:
 
    ```bash
    sudo showmount -e
    ```
 
-1. Add exception in SELinux
+1. Add exception in SELinux:
 
    ```bash
    sudo setsebool -P nfs_export_all_rw 1
@@ -177,13 +176,13 @@ On the NFS Server, perform the following steps:
 
 Do the following steps on all cluster nodes.
 
-1. Install `nfs-utils`
+1. Install `nfs-utils`:
 
    ```bash
    sudo yum -y install nfs-utils
    ```
 
-1. Open up the firewall on clients and NFS server
+1. Open up the firewall on clients and NFS server:
 
    ```bash
    sudo firewall-cmd --permanent --add-service=nfs
@@ -192,7 +191,7 @@ Do the following steps on all cluster nodes.
    sudo firewall-cmd --reload
    ```
 
-1. Verify that you can see the NFS shares on client machines
+1. Verify that you can see the NFS shares on client machines:
 
    ```bash
    sudo showmount -e <IP OF NFS SERVER>

@@ -4,7 +4,7 @@ description: In Report Builder, use the Shared Dataset Design window to create d
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

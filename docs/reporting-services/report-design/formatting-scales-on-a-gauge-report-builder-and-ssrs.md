@@ -4,7 +4,7 @@ description: Learn about the gauge scale range of numbers bound by a minimum and
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

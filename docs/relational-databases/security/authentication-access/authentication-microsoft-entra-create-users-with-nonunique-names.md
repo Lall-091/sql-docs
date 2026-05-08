@@ -8,16 +8,16 @@ ms.reviewer: vanto, mathoma
 ms.date: 10/30/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sfi-image-nochange
   - ignite-2025
-monikerRange: ">=sql-server-ver17 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=sql-server-ver17 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Microsoft Entra logins and users with nonunique display names
 
-[!INCLUDE [SQL Server 2025 Azure SQL Database Azure SQL Managed Instance SQL database in Fabric](../../../includes/applies-to-version/sqlserver2025-asdb-asdbmi-fabric.md)]
+[!INCLUDE [SQL Server 2025 Azure SQL Database Azure SQL Managed Instance SQL database in Fabric](../../../includes/applies-to-version/sqlserver2025-asdb-asdbmi-fabricsqldb.md)]
 
 This article teaches you how to use the T-SQL `Object_ID` syntax to create Microsoft Entra logins and users with nonunique display names in Azure SQL Database, Fabric SQL database, Azure SQL Managed Instance, and SQL Server 2025 and later versions.
 

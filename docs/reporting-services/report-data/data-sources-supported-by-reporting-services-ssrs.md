@@ -4,7 +4,7 @@ description: Learn about the various data sources that are supported by Reportin
 ms.date: 09/11/2025
 ms.service: reporting-services
 ms.subservice: report-data
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:
@@ -63,7 +63,7 @@ helpviewer_keywords:
  For more information about custom data processing extensions, see [Implementing a Data Processing Extension](../../reporting-services/extensions/data-processing/implementing-a-data-processing-extension.md). For more information about standard [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] data providers, see the <xref:System.Data> namespace.   
   
 ## Platform Support for Report Data Sources  
- The data sources you can use in a [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] deployment vary by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] edition, [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] version, and by platform. For more information about features, see [Reporting Services Features Supported by the Editions of SQL Server](../../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md). The table later in this topic provides information about supported data sources by version and by platform.  
+ The data sources you can use in a [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] deployment vary by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] edition, [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] version, and by platform. For more information about features, see [Reporting Services Features Supported by the Editions of SQL Server](../../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server.md). The table later in this topic provides information about supported data sources by version and by platform.  
   
  Platform considerations for [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] data sources are separate for the report authoring client and the report server.  
   

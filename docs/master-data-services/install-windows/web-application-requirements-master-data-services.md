@@ -1,16 +1,17 @@
 ---
 title: Web Application Requirements
 description: Find out about the requirements to install and run the Master Data Services web application hosted by Internet Information Services.
-author: CordeliaGrey
-ms.author: jiwang6
-ms.reviewer: randolphwest
-ms.date: 10/23/2025
+author: meetdeepak
+ms.author: dkhare
+ms.reviewer: randolphwest, mikeray
+ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: checklist
 ms.custom:
   - build-2025
 keywords: master data services
+ai-usage: ai-assisted
 ---
 # Web application requirements (Master Data Services)
 
@@ -45,7 +46,7 @@ To work in the [!INCLUDE [ssMDSmdm](../../includes/ssmdsmdm-md.md)] web applicat
 
 ### Role and role services
 
-On Windows Server 2012 or Windows Server 2012 R2, you can use **Server Manager**, which is available in the Microsoft Management Console (MMC), to install the **Web Server (IIS)** role, and required role services.
+You can use Windows **Server Manager**, which is available in the Microsoft Management Console (MMC), to install the **Web Server (IIS)** role and required role services.
 
 > [!IMPORTANT]  
 > **Dynamic Content Compression** is enabled by default. This significantly reduces the size of the xml response and saves the network I/O, though CPU usage is increased. For more information, see **Improved Performance** in [What's New in Master Data Services (MDS)](../what-s-new-in-master-data-services-mds.md).
@@ -77,7 +78,7 @@ On Windows Server 2012 or Windows Server 2012 R2, you can use **Server Manager**
 
 ### Features
 
-On Windows Server 2012 and Windows Server 2012 R2, you can use **Server Manager** to install the following required features.
+You can use Windows **Server Manager** to install the following required features.
 
 - .NET Framework 3.5 (includes .NET 2.0 and 3.0)
 - .NET Framework 4.5 Advanced Services
@@ -99,7 +100,7 @@ Install-WindowsFeature Web-Mgmt-Console, AS-NET-Framework, Web-Asp-Net, Web-Asp-
 Install-WindowsFeature Web-App-Dev, NET-Framework-45-Features -IncludeAllSubFeature -Restart
 ```
 
-For more information about PowerShell command, see [Install-WindowsFeature](/powershell/module/servermanager/install-windowsfeature).
+For more information about the PowerShell command, see [Install-WindowsFeature](/powershell/module/servermanager/install-windowsfeature).
 
 ### Accounts and permissions
 

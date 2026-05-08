@@ -7,7 +7,7 @@ ms.reviewer: mikeray, randolphwest
 ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: release-notes
 ms.custom:
   - UpdateFrequency5
   - sfi-ropc-nochange
@@ -46,19 +46,9 @@ Now to create Analysis Services, Integration Services, or Reporting Services pro
 
 ### Install SSDT with Visual Studio 2017
 
-To install SSDT during [Visual Studio installation](/visualstudio/install/install-visual-studio), select the **Data storage and processing** workload, and then select **SQL Server Data Tools**.
+To install SSDT with Visual Studio 2017, select the **Data storage and processing** workload in the Visual Studio Installer. The installation steps are the same as for later versions. For detailed instructions, see [Install SSDT with Visual Studio](download-sql-server-data-tools-ssdt.md#install-ssdt-with-visual-studio).
 
-If Visual Studio is already installed, use the Visual Studio Installer to modify the installed workloads to include SSDT.
-
-1. Launch the Visual Studio Installer. In the Windows Start menu, you can search for "installer".
-
-   :::image type="content" source="media/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi/visual-studio-installer.png" alt-text="Screenshot of Visual Studio Installer in the Windows Start menu for 2017.":::
-
-1. In the installer, select for the edition of Visual Studio that you want to add SSDT to, and then choose **Modify**.
-
-1. Select **SQL Server Data Tools** under **Data storage and processing** in the list of workloads.
-
-   :::image type="content" source="media/download-sql-server-data-tools-ssdt/data-workload-2017.png" alt-text="Screenshot of Data storage and processing workload 2017." lightbox="media/download-sql-server-data-tools-ssdt/data-workload-2017.png":::
+:::image type="content" source="media/download-sql-server-data-tools-ssdt/data-workload-2017.png" alt-text="Screenshot of Data storage and processing workload 2017." lightbox="media/download-sql-server-data-tools-ssdt/data-workload-2017.png":::
 
 ### Install Analysis Services, Integration Services, and Reporting Services tools
 

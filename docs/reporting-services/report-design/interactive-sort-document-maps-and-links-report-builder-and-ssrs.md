@@ -4,7 +4,7 @@ description: Enable your users to change the sort order of values in a paginated
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

@@ -3,7 +3,8 @@ title: "Troubleshooting (AccessToSQL)"
 description: "Troubleshooting (AccessToSQL)"
 author: nilabjaball
 ms.author: niball
-ms.date: "01/19/2017"
+ms.reviewer: randolphwest
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: troubleshooting-general
@@ -11,21 +12,16 @@ ms.collection:
   - sql-migration-content
 ---
 # Troubleshooting (AccessToSQL)
-It is not uncommon to run into migration issues midway executing the console scripts or commands.  
-  
-The fixable errors may relate to:  
-  
-1.  Function  
-  
-2.  Procedure  
-  
-3.  View  
-  
-4.  Trigger  
-  
-5.  Modifying the data type  
-  
-6.  Changing the project settings  
-  
-The issues can be fixed using the SSMA user interface by opening the Project File created through the console.  
-  
+
+It isn't uncommon to run into migration issues midway executing the console scripts or commands.
+
+The fixable errors might relate to:
+
+1. Function
+1. Procedure
+1. View
+1. Trigger
+1. Modifying the data type
+1. Changing the project settings
+
+The issues can be fixed using the SSMA user interface by opening the project file created through the console.

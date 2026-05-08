@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 05/31/2017
 ms.service: azure-vm-sql-server
 ms.subservice: management
-ms.topic: conceptual
+ms.topic: concept-article
 tags: azure-service-management, azure-resource-manager
 ---
 # Application patterns and development strategies for SQL Server on Azure Virtual Machines

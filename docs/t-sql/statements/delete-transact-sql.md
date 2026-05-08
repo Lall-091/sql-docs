@@ -200,7 +200,7 @@ DELETE
   
  The FROM clause cannot be specified in a DELETE statement that references, either directly or indirectly, a view with an `INSTEAD OF` trigger defined on it. For more information about INSTEAD OF triggers, see [CREATE TRIGGER &#40;Transact-SQL&#41;](../../t-sql/statements/create-trigger-transact-sql.md).  
   
- Currently, the FROM clause cannot be specified in a DELETE statement on [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
+ Currently, the FROM clause cannot be specified in a DELETE statement on [!INCLUDE [fabricdw](../../includes/fabric-dw.md)].
 
 ## Limitations and Restrictions  
 When `TOP` is used with `DELETE`, the referenced rows are not arranged in any order and the `ORDER BY` clause can not be directly specified in this statement. If you need to use TOP to delete rows in a meaningful chronological order, you must use `TOP` together with an `ORDER BY` clause in a subselect statement. See the Examples section that follows in this topic.  

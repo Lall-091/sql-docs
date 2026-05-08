@@ -11,7 +11,7 @@ ms.topic: how-to
 ---
 
 # Monitoring active queries - Parallel Data Warehouse
-This article shows how to use the Admin Console and the SQL Server PDW system views to monitor active queries. See [Monitor the Appliance by Using the Admin Console](monitor-the-appliance-by-using-the-admin-console.md) and [System Views](tsql-system-views.md) for information on these tools.  
+This article shows how to use the Admin Console and the SQL Server PDW system views to monitor active queries. See [Monitor the Appliance by Using the Admin Console](monitor-the-appliance-by-using-the-admin-console.md) and system views for information on these tools.  
   
 ## Prerequisites  
 Regardless of the method used to monitor active queries, the login must have the permissions described in "Use All of the Admin Console" in [Grant Permissions to Use the Admin Console](grant-permissions.md#grant-permissions-to-use-the-admin-console).  

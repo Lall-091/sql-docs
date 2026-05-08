@@ -4,7 +4,7 @@ description: Create database syntax for SQL Server and all SQL Database Engine p
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, dnethi, randolphwest
-ms.date: 10/01/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -272,7 +272,6 @@ When `OFF`, the database can't participate in cross-database ownership chaining.
 > [!IMPORTANT]  
 > The instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] recognizes this setting when the cross database ownership chaining server option is 0 (`OFF`). When cross-database ownership chaining is 1 (`ON`), all user databases can participate in cross-database ownership chains, regardless of the value of this option. This option is set by using [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md).
 
-To set this option, requires membership in the **sysadmin** fixed server role. The `DB_CHAINING` option can't be set on these system databases: `master`, `model`, `tempdb`.
 
 #### TRUSTWORTHY { OFF | ON }
 
@@ -281,8 +280,6 @@ When `ON` is specified, database modules (for example, views, user-defined funct
 When `OFF`, database modules in an impersonation context can't access resources outside the database. The default is `OFF`.
 
 `TRUSTWORTHY` is set to `OFF` whenever the database is attached.
-
-By default, all system databases except the `msdb` database have `TRUSTWORTHY` set to `OFF`. The value can't be changed for the `model` and `tempdb` databases. We recommend that you never set the `TRUSTWORTHY` option to `ON` for the `master` database.
 
 #### PERSISTENT_LOG_BUFFER = ON ( DIRECTORY_NAME = '*directory_name*' )
 
@@ -1005,7 +1002,6 @@ CREATE DATABASE database_name [ COLLATE collation_name ]
       | 'BC_Gen5_n'
       | 'BC_M_n'
       | 'GP_DC_n'
-      | 'GP_Fsv2_n'
       | 'GP_Gen5_n'
       | 'GP_S_Gen5_n'
       | 'HS_DC_n'
@@ -1026,7 +1022,6 @@ CREATE DATABASE database_name
       { 'Basic' | 'S0' | 'S1' | 'S2' | 'S3' | 'S4' | 'S6' | 'S7' | 'S9' | 'S12'
       | 'P1' | 'P2' | 'P4' | 'P6' | 'P11' | 'P15'
       | 'GP_Gen5_n'
-      | 'GP_Fsv2_n'
       | 'GP_S_Gen5_n'
       | 'BC_Gen5_n'
       | 'BC_M_n'
@@ -1081,7 +1076,7 @@ By default, the metadata catalog for system object names is collated to `SQL_Lat
 
 Specifies how the point-in-time restore and long-term retention backups for a database are replicated. Geo restore or ability to recover from regional outage is only available when database is created with `GEO` backup storage redundancy. Unless explicitly specified, databases created with T-SQL use geo-redundant backup storage.
 
-Use `GEOZONE` for geo-zone redundant storage. Geo-zone redundant storage (GZRS) offers the highest level of protection against zonal outages as well as regional outages for any workload.
+Use `GEOZONE` for geo-zone redundant storage. Geo-zone redundant storage (GZRS) offers the highest level of protection against zone outages as well as regional outages for any workload.
 
 To enforce data residency when you're creating a database by using T-SQL, use `LOCAL` or `ZONE` as input to the `BACKUP_STORAGE_REDUNDANCY` parameter.
 
@@ -1474,12 +1469,14 @@ CREATE DATABASE MyLedgerDB
 
 ## Azure Synapse Analytics
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 ## Overview
 
 In Azure Synapse, this statement can be used with an Azure SQL Database server to create a dedicated SQL pool. With this statement, you specify the database name, collation, maximum size, edition, and service objective.
 
 - `CREATE DATABASE` is supported for standalone dedicated SQL pools (formerly SQL DW) using Gen2 service levels.
-- `CREATE DATABASE` isn't supported for dedicated SQL pools in an Azure Synapse Analytics workspace. Instead, [use the Azure portal](/azure-data-studio/quickstart-sql-dw).
+- `CREATE DATABASE` isn't supported for dedicated SQL pools in an Azure Synapse Analytics workspace. Instead, use the Azure portal.
 - `CREATE DATABASE` is supported for serverless SQL pools in Azure Synapse Analytics.
 
 ## Syntax

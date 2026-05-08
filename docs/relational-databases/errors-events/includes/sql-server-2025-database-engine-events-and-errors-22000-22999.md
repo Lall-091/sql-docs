@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 08/14/2025
+ms.date: 04/16/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -418,6 +418,7 @@ ms.topic: include
 | 22641 | 16 | No | Disabling of mirroring for the table '%.\*ls' failed. Please retry this operation later. |
 | 22642 | 16 | No | Can not enable Fabric Mirroring on a table where primary key (if there exists no primary key then applies to unique key) uses columns of the following types: user-defined types, geometry, geography, hierarchyid, sql_variant or timestamp, datetime2(7), DateTimeOffset(7) and Time(7). |
 | 22643 | 16 | No | Publishing a drop table notification to Fabric OneLake failed. Retry this operation later. |
+| 22644 | 16 | No | Unable to acquire a lock on the source table with object id '%d' because it is in use. If a user session is locking, consider terminating it or retry later. |
 | 22645 | 16 | No | Fabric Mirroring cannot be enabled on a table where its primary key, or if no primary key exists, its clustered index, includes any of the following column types: user-defined types, geometry, geography, hierarchyid, sql_variant, timestamp, datetime2(7), datetimeoffset(7), or time(7). |
 | 22697 | 16 | No | Cannot enable fabric link on the database because the metadata tables are corrupted. |
 | 22698 | 16 | No | Cannot add encrypted column on table '%.\*ls' in SQL Database on the 'Microsoft Fabric' platform |
@@ -694,7 +695,7 @@ ms.topic: include
 | 22985 | 16 | No | Change data capture has not been enabled for source table '%s.%s'. Specify the name of a table enabled for Change Data Capture. To report on the tables enabled for Change Data Capture, query the is_tracked_by_cdc column in the sys.tables catalog view. |
 | 22986 | 16 | No | Could not allocate memory for Change Data Capture population. Verify that SQL Server has sufficient memory for all operations. Check the physical and virtual memory settings on the server and examine memory usage to see if another application is consuming excessive memory. |
 | 22987 | 16 | No | Change Data Capture population failed writing blob data for one or more large object columns. Verify that SQL Server has sufficient memory for all operations. Check the physical and virtual memory settings on the server and examine memory usage to see if another application is consuming excessive memory. |
-| 22988 | 16 | No | This instance of SQL Server is the %s. Change data capture is only available in the Enterprise, Developer, Enterprise Evaluation, and Standard editions. |
+| 22988 | 16 | No | This instance of SQL Server is the %s. Change data capture is only available in the Enterprise, Enterprise Developer, Enterprise Evaluation, Standard, and Standard Developer editions. |
 | 22989 | 16 | No | Could not enable Change Data Capture for database '%s'. Change data capture is not supported on system databases, or on a distribution database. |
 | 22990 | 16 | No | The value specified for the parameter @pollinginterval must be greater than or equal to 0 and less than 24 hours(Max: 86399 seconds). Specify a polling interval (in seconds) that is less than 24 hours (86,400 seconds). |
 | 22991 | 16 | No | The value specified for the parameter @maxtrans must be greater than 0. |

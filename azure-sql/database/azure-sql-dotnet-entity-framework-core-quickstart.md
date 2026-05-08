@@ -23,7 +23,7 @@ This quickstart describes how to connect an application to a database in Azure S
 
 ## Prerequisites
 
-- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccountdotnet/).
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A SQL database configured for authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)). You can create one using the [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md).
 - [.NET 9.0](https://dotnet.microsoft.com/download) or later.
 - [Visual Studio](https://visualstudio.microsoft.com/vs/) or later with the **ASP.NET and web development** workload.

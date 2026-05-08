@@ -4,7 +4,7 @@ description: "This tutorial shows how to configure the prerequisites for creatin
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mathoma
-ms.date: 09/17/2025
+ms.date: 03/18/2026
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: tutorial
@@ -32,7 +32,7 @@ The following diagram illustrates the resources you deploy in this tutorial:
 
 To complete this tutorial, you need the following:
 
-- An Azure subscription. You can [open a free Azure account](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic) or [activate Visual Studio subscriber benefits](/visualstudio/subscriptions/subscriber-benefits).
+- An Azure subscription. You can [open a free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) or [activate Visual Studio subscriber benefits](/visualstudio/subscriptions/subscriber-benefits).
 - A basic understanding of and familiarity with [Always On availability groups in SQL Server](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
 
 ## Create resource group
@@ -349,11 +349,7 @@ Use a single NIC per server (cluster node). Azure networking has physical redund
 
 To create your VMs, follow these steps:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). In the pane for **SQL Server on Azure Virtual Machines**, select **Show options**.
-   :::image type="content" source="media/availability-group-manually-configure-prerequisites-tutorial-multi-subnet/show-options-high-availability-create-virtual-machine.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the high availability option selected for SQL Server on Azure VM." lightbox="media/availability-group-manually-configure-prerequisites-tutorial-multi-subnet/show-options-high-availability-create-virtual-machine.png":::
-1. Under **SQL virtual machines**, select the **High availability** checkbox.
-1. In the **Select an image offer** box, choose a SQL Server image (such as **SQL Server 2016 SP2 Enterprise on Windows Server 2016**).
-1. Select **Create virtual machine**.
+[!INCLUDE [create-sql-virtual-machine](../../includes/sql-virtual-machines/create-sql-virtual-machine.md)]
 
 Use the following table to fill out the values on the **Create a virtual machine** page to create both SQL Server VMs, such as **SQL-VM-1** and **SQL-VM-2** (your IP addresses might differ from the examples in the table):
 

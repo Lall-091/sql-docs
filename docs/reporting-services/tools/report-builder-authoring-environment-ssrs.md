@@ -4,7 +4,7 @@ description: Learn about Report Builder, a stand-alone authoring environment for
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---
@@ -34,7 +34,7 @@ ms.custom:
   
 -   Save your report and related items to a SharePoint library, a report server, or your local computer.  
   
- Report Builder and Report Designer share many features. Read more about [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server-2016.md).  
+ Report Builder and Report Designer share many features. Read more about [Report Builder in SQL Server](../../reporting-services/report-builder/report-builder-in-sql-server.md).  
   
 ## Related content
 

@@ -7,7 +7,7 @@ ms.reviewer: maghan, randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - linux-related-content
   - ignite-2025
@@ -84,7 +84,7 @@ You can use Linux system scheduling tools such as `cron` to schedule packages. Y
 
 ## Limitations and known issues
 
-For detailed info about the limitations and known issues of SSIS on Linux, see [Limitations and known issues for SSIS on Linux](sql-server-linux-ssis-known-issues.md).
+For detailed info about the limitations and known issues of SSIS on Linux, see [Feature support and considerations for SQL Server Integration Services (SSIS) on Linux](sql-server-linux-ssis-known-issues.md).
 
 ## More info about SSIS
 
@@ -110,5 +110,5 @@ To learn more about SSIS, see the following articles:
 
 - [Install SQL Server Integration Services (SSIS) on Linux](sql-server-linux-setup-ssis.md)
 - [Configure SQL Server Integration Services on Linux with ssis-conf](sql-server-linux-configure-ssis.md)
-- [Limitations and known issues for SSIS on Linux](sql-server-linux-ssis-known-issues.md)
+- [Feature support and considerations for SQL Server Integration Services (SSIS) on Linux](sql-server-linux-ssis-known-issues.md)
 - [Schedule SQL Server Integration Services package execution on Linux with cron](sql-server-linux-schedule-ssis-packages.md)

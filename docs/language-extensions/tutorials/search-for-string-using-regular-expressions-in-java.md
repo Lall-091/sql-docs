@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Regex String Search in Java"
-description: This tutorial shows you how to use SQL Server Language Extensions and run Java code that search a string with regular expressions (regex).
+description: This tutorial shows you how to use SQL Server Language Extensions and run Java code that searches a string with regular expressions (regex).
 author: rwestMSFT
 ms.author: randolphwest
 ms.date: 08/28/2025
@@ -23,7 +23,7 @@ This sample code uses a regular expression that checks if a text contains the wo
 
 - Database Engine instance on [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions, with the extensibility framework and Java programming extension [on Windows](../install/windows-java.md) or [on Linux](../../linux/sql-server-linux-setup-language-extensions-java.md). For more information, see [SQL Server Language Extensions](../language-extensions-overview.md). For more information about coding requirements, see [How to call the Java runtime in SQL Server Language Extensions](../how-to/call-java-from-sql.md).
 
-- SQL Server Management Studio or Azure Data Studio for executing T-SQL.
+- A database client. [!INCLUDE [connect-instance-client](../../includes/connect-instance-client.md)]
 
 - Java SE Development Kit (JDK) 8 or JRE 8 on Windows or Linux.
 
@@ -283,7 +283,7 @@ Make sure both security identities have **Read and Execute** permissions on the 
 Create a stored procedure that calls `sp_execute_external_script` to call the Java code from SQL Server. In the `script` parameter, define which `package.class` you want to call. In the following code, the class belongs to a package called `pkg` and a class file called `RegexSample.java`.
 
 > [!NOTE]  
-> The code isn't defining which method to call. By default, the `execute` method will be called. This means that you need to follow the SDK interface and implement an execute method in your Java class, if you want to be able to call the class from SQL Server.
+> The code isn't defining which method to call. By default, the `execute` method is called. This means that you need to follow the SDK interface and implement an execute method in your Java class, if you want to be able to call the class from SQL Server.
 
 The stored procedure takes an input query (input dataset) and a regular expression and returns the rows that fulfilled the given regular expression. It uses a regular expression `[Jj]ava` that checks if a text contains the word `Java` or `java`.
 

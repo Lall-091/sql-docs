@@ -4,7 +4,7 @@ description: Utilizing the SQL Server Configuration Manager client.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2025
+ms.date: 03/16/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: concept-article
@@ -31,7 +31,7 @@ monikerRange: ">=sql-server-2016"
 
 [!INCLUDE [SQL Server Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
-SQL Server Configuration Manager is a tool to manage the services associated with SQL Server, configure the network protocols used by SQL Server, and manage the network connectivity configuration from SQL Server client computers. In SQL Server 2022 (16.x) and later versions, you can also use SQL Server Configuration Manager to manage the Azure extension for SQL Server.
+SQL Server Configuration Manager is a tool to manage the services associated with SQL Server, configure the network protocols used by SQL Server, and manage the network connectivity configuration from SQL Server client computers. In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, you can also use SQL Server Configuration Manager to manage the Azure extension for SQL Server.
 
 SQL Server Configuration Manager is installed automatically with your SQL Server installation. It's a Microsoft Management Console (MMC) snap-in that can be accessed from the Start menu or added to any other MMC display. The MMC uses the `SQLServerManager<version>.msc` file (for example, `SQLServerManager17.msc` for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]) to open SQL Server Configuration Manager.
 
@@ -45,11 +45,9 @@ SQL Server Configuration Manager is installed automatically with your SQL Server
 | [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] | `C:\Windows\SysWOW64\SQLServerManager12.msc` |
 | [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] | `C:\Windows\SysWOW64\SQLServerManager11.msc` |
 
-Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconame-md](../../includes/msconame-md.md)] Management Console program and not a stand-alone program, it doesn't appear as an application in newer versions of Windows.
-
 ## Access SQL Server Configuration Manager
 
-To open SQL Server Configuration Manager, type `SQLServerManager17.msc` (for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]) from the **Start** menu. For other versions, replace `17` with the appropriate number. You can pin SQL Server Configuration Manager to the Start menu or Task Bar by right-clicking `SQLServerManager17.msc` and selecting **Open file location**. Then, right-click the file and select **Pin to Start** or **Pin to Taskbar**.
+[!INCLUDE [open-sql-server-configuration-manager](../../includes/paragraph-content/open-sql-server-configuration-manager.md)]
 
 SQL Server Configuration Manager and SQL Server Management Studio use Window Management Instrumentation (WMI) to view and change some server settings. WMI provides a unified way to interface with API calls and manages the registry operations requested by the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] tools. WMI also provides enhanced control and manipulation over the selected SQL services of the SQL Server Configuration Manager snap-in component. For information about configuring permissions related to WMI, see [Configure WMI to Show Server Status in SQL Server Tools](/ssms/configure-wmi-to-show-server-status-in-sql-server-tools).
 

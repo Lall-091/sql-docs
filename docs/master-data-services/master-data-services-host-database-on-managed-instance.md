@@ -1,17 +1,18 @@
 ---
-title: Host a database on a managed instance
+title: Host a Database on a Managed Instance
 description: Learn how to create and configure a Master Data Services (MDS) database and host it on an Azure SQL Managed Instance.
-author: v-redu
-ms.author: jiwang6
-ms.date: "07/01/2019"
+author: meetdeepak
+ms.author: dkhare
+ms.reviewer: mikeray
+ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: how-to
-monikerRange: ">=sql-server-ver15"
 ms.custom:
   - build-2025
   - sfi-image-nochange
   - sfi-ropc-blocked
+monikerRange: ">=sql-server-ver15"
 ---
 # Host an MDS database on a managed instance
 
@@ -215,7 +216,7 @@ To fix this issue, you need upgrade the database version:
 
    ![Screenshot of the Connect to a Master Data Service Database dialog box.](../master-data-services/media/mds-sqlserver2019-config-mi-connectdbname.png "mds-SQLServer2019-Config-MI_ConnectDBName")
 
-1. Select **Upgrade Database…** .
+1. Select **Upgrade Database...** .
 
    ![Screenshot of the Upgrade Database option.](../master-data-services/media/mds-sqlserver2019-config-mi-selectupgradedb.png "mds-SQLServer2019-Config-MI_SelectUpgradeDB")
 

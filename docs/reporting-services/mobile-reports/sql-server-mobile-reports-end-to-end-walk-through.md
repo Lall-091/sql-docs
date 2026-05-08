@@ -4,7 +4,7 @@ description: Learn to create mobile reports on SQL Server Mobile Report Publishe
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

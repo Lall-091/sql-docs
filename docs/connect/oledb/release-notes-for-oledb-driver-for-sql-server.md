@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: release-notes
 ms.custom:
   - ignite-2024
 ---

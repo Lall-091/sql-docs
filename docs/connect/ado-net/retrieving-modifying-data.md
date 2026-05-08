@@ -7,7 +7,7 @@ ms.reviewer: v-chmalh
 ms.date: 03/24/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Retrieving and modifying data in ADO.NET
 

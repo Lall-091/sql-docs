@@ -28,7 +28,6 @@ To enable migration and monitoring capabilities,
 please update your Azure Arc agent extension "WindowsAgentSQLServer" to the latest version.
 ```
 
-
 ## Arc agent issues
 
 If you encounter issues with the Arc agent, such as an unhealthy extension state or a disconnected SQL Server instance, use the following extension troubleshooting guide: [Troubleshoot Azure extension for SQL Server](troubleshoot-extension.md).
@@ -64,6 +63,42 @@ You can also access the subscription-level activity log for a broader view of ev
 :::image type="content" source="media/migrate-to-azure-sql-managed-instance-troubleshoot/notification-bell.png" alt-text="Screenshot of the notification bell icon highlighted in the Azure portal.":::
 
 Select an event from the activity log to open a pane of event details. Use the **Summary** and **JSON** tabs to view detailed information about the event, including particular error messages. If you create a support request, communicate this information with as much detail as possible.
+
+## New databases unavailable in the Azure portal
+
+Recently added databases to your SQL Server instance might not be immediately visible in the Azure portal when trying to select databases for migration. This is because it takes about an hour for the Arc agent to auto-refresh the database list. 
+
+To work around this issue, you can restart the Arc service to trigger an immediate refresh of the database list. 
+
+On Windows, use the following command in an elevated command prompt on the server that hosts your SQL Server instance:
+
+```cmd
+Restart-Service himds
+Restart-Service gcarcservice
+Restart-Service extensionservice
+```
+
+Wait for the services to restart, and then use the following command to verify the service is running with the following command:
+
+```cmd
+& "$env:ProgramW6432\AzureConnectedMachineAgent\azcmagent.exe" show
+```
+
+On Linux servers, use the following command in an elevated terminal:
+
+```bash
+sudo systemctl restart himdsd
+sudo systemctl restart gcad
+sudo systemctl restart extd
+```
+
+Wait for the services to restart, and then use the following command to verify the service is running with the following command:
+
+```bash
+azcmagent show
+```
+
+Go to the **Databases** page in the Azure portal for your [SQL Server instance](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/SqlServerInstance), and select **Refresh** to see the newly added databases. You can now select these new databases for migration.
 
 ## Managed Instance link migration issues
 
@@ -121,7 +156,7 @@ Investigate other warnings. Some warnings might require resolution on your part 
 
 Configuring a link through the Azure portal for migration isn't compatible with existing links that you create manually, either through SQL Server Management Studio (SSMS) or Transact-SQL (T-SQL). If a link already exists, you can't create a new link through the Azure portal.
 
-If a link already exists on your either the SQL Server source or Azure SQL Managed Instance target, you need to perform the following steps before creating a new link between that source and target through the Azure portal:
+If a link already exists on either the SQL Server source or Azure SQL Managed Instance target, you need to perform the following steps before creating a new link between that source and target through the Azure portal:
 1. Drop the link manually from SQL Managed Instance by using [Remove-AzSqlInstanceLink](/powershell/module/az.sql/remove-azsqlinstancelink) or [az sql mi link delete](/cli/azure/sql/mi/link#az-sql-mi-link-delete) from Azure Cloud Shell or a machine signed in with an Azure Context.
 1. Drop the link manually from SQL Server by using [DROP AVAILABILITY GROUP](../../t-sql/statements/drop-availability-group-transact-sql.md) with the name of the distributed availability group associated with the link.
 1. Drop all link-related certificates from the SQL Server instance by using [DROP CERTIFICATE](../../t-sql/statements/drop-certificate-transact-sql.md). The certificates that you need to drop typically contain the following values: `DigiKey PKI`, `Microsoft PKI`, `endpoint`, and `database.windows.net`. You can use `SELECT * FROM sys.certificates` to list all certificates on SQL Server.
@@ -179,13 +214,19 @@ LRS migration jobs stay on the **Monitor and cutover** page for 28 days after th
 
 To manually delete the jobs, go to the [DMS migration job associated with your LRS migration](#troubleshoot-migration-with-dms) as described in the previous section. Select the migration job you want to delete, then use the **Delete** trash can button to delete the job. Confirm by selecting "Check this box to confirm deleting". This action clears the jobs from the **Monitor and cutover** page in Azure Arc.
 
+## Known issues after migrating to SQL Managed Instance
+
+Consider the following known issues after migrating to Azure SQL Managed Instance:
+
+[!INCLUDE [known-issues-after-migration](../../../azure-sql/includes/sql-managed-instance/known-issues-after-migration.md)]
+
 ## Contact Microsoft
 
 You can contact Microsoft to open a support ticket with an issue you're having or to provide feedback directly to the product group.
 
 ### Contact support
 
-Use [https://aka.ms/azure-support](https://aka.ms/azure-support) to go to the **Help + support** page in the Azure portal, and then follow these steps to open a migration-related support ticket:
+Use <https://aka.ms/azure-support> to go to the **Help + support** page in the Azure portal, and then follow these steps to open a migration-related support ticket:
 
 1. Select **Create a support request** to open the **Support + troubleshooting** pane.
 1. Type `migration` into the text field, then select **None of the above** under **Which service are you having an issue with?**
@@ -194,7 +235,7 @@ Use [https://aka.ms/azure-support](https://aka.ms/azure-support) to go to the **
 1. Select your **SQL Server instance enabled by Azure Arc** resource from the **Resource** dropdown list and then select **Next**.
 1. Select **Migration Issues** in the **Are you having one of the following issues?** tile and then select **Next**.
 1. Select **Create a support request** from the top navigation bar within the **Support + troubleshooting** pane to open the support ticket form.
-1. Use the following **Problem subtype** values to route your issue to the the appropriate support queue:
+1. Use the following **Problem subtype** values to route your issue to the appropriate support queue:
    - **Assess**: If you're having issues with the [migration readiness assessment](migration-assessment.md). 
    - **LRS Data Migration**: If you're having issues with a [Log Replay Service (LRS) migration](migration-sql-mi-prepare-log-replay-service.md).
    - **MI Link Data Migration**: If you're having issues with a [Managed Instance link migration](migration-sql-mi-prepare-link.md).

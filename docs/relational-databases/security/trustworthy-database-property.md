@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 02/10/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "TRUSTWORTHY database property"
 ---

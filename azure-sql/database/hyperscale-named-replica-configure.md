@@ -4,7 +4,7 @@ description: Learn how to configure and manage Hyperscale named replica so that 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: atsingh, dinethi, rsetlem
-ms.date: 08/25/2025
+ms.date: 03/10/2026
 ms.service: azure-sql-database
 ms.subservice: scale-out
 ms.topic: how-to
@@ -25,12 +25,15 @@ The following sample scenarios guide you to create a named replica `WideWorldImp
 
 # [Portal](#tab/portal)
 
-The following example creates a named replica `WideWorldImporters_NamedReplica` for database `WideWorldImporters` using T-SQL. The primary replica uses service level objective HS_Gen5_4, while the named replica uses HS_Gen5_2. Both use the same logical server named `contosoeast`.
+The following example creates a new Hyperscale named replica in the Azure portal.
 
-1. In the Azure portal, view [all of your Azure SQL resources](https://aka.ms/azuresqlhub) and find the database for which you want to create the named replica.
-1. On the **SQL Database** page, select your database, scroll to **Data management**, select **Replicas**, and then select **Create replica**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. On the **SQL Database** page, select the existing Hyperscale database for which you want to create the named replica.
+1. In the resource menu, under **Data management**, select **Replicas**, and then select **Create replica**.
 
     :::image type="content" source="media/named-replicas-configure-portal/azure-create-named-replicas.png" alt-text="Screenshot that shows create named replica step." lightbox="media/named-replicas-configure-portal/azure-create-named-replicas.png":::
+
 1. Choose **Named replica** under **Replica configuration**. Select an existing server or create a new server for the named replica. Enter named replica database name and configure the **Compute + storage** options if necessary.
 
     :::image type="content" source="media/named-replicas-configure-portal/azure-choose-named-replica.png" alt-text="Screenshot that shows configuration of named replica." lightbox="media/named-replicas-configure-portal/azure-choose-named-replica.png":::
@@ -56,7 +59,7 @@ The following example creates a named replica `WideWorldImporters_NamedReplica` 
 
 # [T-SQL](#tab/tsql)
 
-The following example creates a named replica `WideWorldImporters_NamedReplica` for database `WideWorldImporters` using T-SQL. The primary replica uses service level objective HS_Gen5_4, while the named replica uses HS_Gen5_2. Both use the same logical server named `contosoeast`.
+The following example creates a named replica `WideWorldImporters_NamedReplica` for database `WideWorldImporters` using T-SQL. The primary replica uses service level objective `HS_Gen5_4`, while the named replica uses `HS_Gen5_2`. Both use the same logical server named `contosoeast`.
 
 ```sql
 ALTER DATABASE [WideWorldImporters]
@@ -139,9 +142,11 @@ In the following example, `WideWorldImporters_NamedReplica` is the named replica
 
 # [Portal](#tab/portal)
 
-Open named replica database page, and then select **Compute + storage**. Update the vCores.
+1. Open named replica database page. 
+1. In the resource menu, under **Settings**, select **Compute + storage**. 
+1. Update the vCores settings as needed.
 
-:::image type="content" source="media/named-replicas-configure-portal/azure-update-named-replica.png" alt-text="Screenshot that shows named replica service level objective update." lightbox="media/named-replicas-configure-portal/azure-update-named-replica.png":::
+   :::image type="content" source="media/named-replicas-configure-portal/azure-update-named-replica.png" alt-text="Screenshot that shows named replica service level objective update." lightbox="media/named-replicas-configure-portal/azure-update-named-replica.png":::
 
 # [T-SQL](#tab/tsql)
 

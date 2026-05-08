@@ -8,7 +8,7 @@ ms.reviewer: mikeray, dfurman
 ms.date: 05/27/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "surface area configuration [SQL Server], sp_configure"
   - "configuration options [SQL Server], when take effect"

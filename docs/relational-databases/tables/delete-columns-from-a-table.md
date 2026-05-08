@@ -67,7 +67,7 @@ The following steps explain how to delete columns with Table Designer in SSMS:
 
 ## <a id="TsqlProcedure"></a> Delete columns using Transact-SQL
 
-You can delete columns using Transact-SQL in SSMS, [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio), or command-line tools such as the [sqlcmd utility](../../tools/sqlcmd/sqlcmd-utility.md).
+You can delete columns using Transact-SQL in SSMS, the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md), or command-line tools such as the [sqlcmd utility](../../tools/sqlcmd/sqlcmd-utility.md).
 
 The following example shows you how to delete a column `column_b` from table `dbo.doc_exb`. The table and column must already exist.
 
@@ -84,6 +84,5 @@ For more examples, see [ALTER TABLE](../../t-sql/statements/alter-table-transact
 
 - [ALTER TABLE (Transact-SQL)](../../t-sql/statements/alter-table-transact-sql.md)
 - [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
-- [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio)
 - [Object Explorer](/ssms/object/object-explorer)
 - [Table Designer](/ssms/visual-db-tools/visual-database-tool-designers#table-designer)

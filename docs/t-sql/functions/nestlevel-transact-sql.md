@@ -113,7 +113,7 @@ TwoGreater
 ```  
   
 ## See Also  
- [Configuration Functions &#40;Transact-SQL&#41;](../../t-sql/functions/configuration-functions-transact-sql.md)   
+
  [Create a Stored Procedure](../../relational-databases/stored-procedures/create-a-stored-procedure.md)   
  [@@TRANCOUNT &#40;Transact-SQL&#41;](../../t-sql/functions/trancount-transact-sql.md)  
   

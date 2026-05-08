@@ -7,7 +7,7 @@ ms.reviewer: vanto, mathoma
 ms.date: 01/21/2025
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - sqldbrb=1
   - devx-track-azurepowershell

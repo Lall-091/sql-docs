@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/22/2025
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 09/17/2024
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - sqldbrb=1
   - devx-track-azurecli
@@ -21,7 +21,7 @@ You can create and manage servers and single databases in Azure SQL Database usi
 
 ## Prerequisites
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ### Permissions
 

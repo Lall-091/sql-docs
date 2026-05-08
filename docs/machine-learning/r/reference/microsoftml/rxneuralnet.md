@@ -255,7 +255,7 @@ Microsoft Corporation [`Microsoft Technical Support`](https://go.microsoft.com/f
 
  ## References
 
-[`Wikipedia: Artificial neural network`](http://en.wikipedia.org/wiki/Artificial_neural_network)
+[`Wikipedia: Artificial neural network`](http://wikipedia.org/wiki/Artificial_neural_network)
 
 
 

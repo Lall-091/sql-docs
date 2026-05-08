@@ -243,7 +243,6 @@ FROM dbo.DimCustomer;
 
 - [LEN (Transact-SQL)](len-transact-sql.md)
 - [PATINDEX (Transact-SQL)](patindex-transact-sql.md)
-- [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 - [+ (String concatenation) (Transact-SQL)](../language-elements/string-concatenation-transact-sql.md)
 - [Collation and Unicode support](../../relational-databases/collations/collation-and-unicode-support.md)
 

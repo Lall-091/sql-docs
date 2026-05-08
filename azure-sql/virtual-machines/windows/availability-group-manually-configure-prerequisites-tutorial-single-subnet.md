@@ -39,7 +39,7 @@ This tutorial assumes that you have a basic understanding of SQL Server Always O
 
 ## Create an Azure account
 
-You need an Azure account. You can [open a free Azure account](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic) or [activate Visual Studio subscriber benefits](/visualstudio/subscriptions/subscriber-benefits).
+You need an Azure account. You can [open a free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) or [activate Visual Studio subscriber benefits](/visualstudio/subscriptions/subscriber-benefits).
 
 ## Create a resource group
 
@@ -359,9 +359,9 @@ Before you proceed, consider the following design decisions:
 
 - **Storage: Azure managed disks**
 
-  For the virtual machine storage, use Azure managed disks. We recommend managed disks for SQL Server virtual machines. Managed disks handle storage behind the scenes. In addition, when virtual machines with managed disks are in the same availability set, Azure distributes the storage resources to provide appropriate redundancy.
+   For the virtual machine storage, use Azure managed disks. We recommend managed disks for SQL Server virtual machines. Managed disks handle storage behind the scenes. In addition, when virtual machines with managed disks are in the same availability set, Azure distributes the storage resources to provide appropriate redundancy.
 
-  For more information, see [Introduction to Azure managed disks](/azure/virtual-machines/managed-disks-overview). For specifics about managed disks in an availability set, see [Availability options for Azure virtual machines](/azure/virtual-machines/availability).
+   For more information, see [Introduction to Azure managed disks](/azure/virtual-machines/managed-disks-overview). For specifics about managed disks in an availability set, see [Availability options for Azure virtual machines](/azure/virtual-machines/availability).
 
 - **Network: Private IP addresses in production**
 

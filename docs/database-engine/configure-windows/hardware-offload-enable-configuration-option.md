@@ -7,7 +7,7 @@ ms.reviewer: dpless, wiassaf, randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "hardware offload enable"
   - "HARDWARE_OFFLOAD"
@@ -16,7 +16,7 @@ dev_langs:
 ---
 # Server configuration: hardware offload enabled
 
-[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 The `hardware offload enabled` configuration option allows integrated acceleration and offloading with validated solutions from partners. For more information, see [Integrated acceleration and offloading](../../relational-databases/integrated-acceleration/overview.md).
 

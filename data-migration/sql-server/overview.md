@@ -1,10 +1,10 @@
 ---
-title: "Migrate from SQL Server Overview"
+title: Migrate from SQL Server Overview
 description: "Follow the five steps to a successful SQL Server migration to Azure SQL: Discovery, Assessment, Business case, Conversion, and Migration."
-author: abhims14
-ms.author: abhishekum
-ms.reviewer: randolphwest, mathoma
-ms.date: 09/11/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: abhishekum, mathoma
+ms.date: 04/13/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -26,13 +26,13 @@ This article describes the five phases for a successful cloud migration from SQL
 - [Conversion](#conversion)
 - [Migration](#migration)
 
-:::image type="content" source="media/migration-process-flow-small.png" alt-text="Diagram that shows a migration process flow.":::
+:::image type="content" source="media/overview/migration-process-flow-small.png" alt-text="Diagram that shows a migration process flow.":::
 
 ## Discovery
 
 When you start your cloud migration journey, it's critical to discover installed software inventory, web apps, and SQL Server instances and databases on servers running in your on-premises environment. This discovery helps you tailor a migration path to Azure SQL.
 
-The Azure Migrate appliance performs this discovery using the Windows OS domain or non-domain credentials, or SQL Server authentication credentials that have access to your SQL Server instances and databases. This discovery process is agentless, meaning that nothing is installed on the servers. The Azure Migrate appliance supports discovery on various virtualization platforms like VMware, Microsoft Hyper-V, and physical environments.
+The Azure Migrate appliance performs this discovery using the Windows OS domain or non-domain credentials, or SQL Server authentication credentials that have access to your SQL Server instances and databases. This discovery process is agentless, meaning that you don't install anything on the servers. The Azure Migrate appliance supports discovery on various virtualization platforms like VMware, Microsoft Hyper-V, and physical environments.
 
 To learn how to discover your on-premises SQL Servers, see the [Discover](pre-migration.md#discover) section later in this article.
 
@@ -52,7 +52,7 @@ The business case capability helps you build a business proposal to understand h
 
 ## Assessment
 
-Assessment is the analysis of configuration, utilization, and performance data collected during discovery. This analysis is used to measure the readiness, and estimate the effect, of migrating on-premises SQL Server instances to different Azure SQL targets. Assessments on SQL Server instances can be run using Azure Arc for SQL Server, using Azure Migrate, or the Azure Database Migration Service extension in Azure Data Studio.
+Assessment is the analysis of configuration, utilization, and performance data collected during discovery. This analysis is used to measure the readiness, and estimate the effect, of migrating on-premises SQL Server instances to different Azure SQL targets. Assessments on SQL Server instances can be run using Azure Arc for SQL Server, or using Azure Migrate.
 
 An Azure SQL assessment provides two sizing criteria:
 
@@ -64,14 +64,32 @@ After the assessment determines the readiness and the recommended Azure SQL depl
 
 ## Conversion
 
-In heterogeneous migrations, while you migrate data from one database to another, it's important to convert database schema and objects into equivalent Transact-SQL syntax. The source and target databases engines are different. These database objects include tables, indexes, views, data types, Transact-SQL statements, stored procedures, and functions.
+In heterogeneous migrations, while you migrate data from one database to another, make sure you convert the database schema and objects into equivalent Transact-SQL syntax. The source and target database engines are different. These database objects include tables, indexes, views, data types, Transact-SQL statements, stored procedures, and functions.
 
 > [!NOTE]  
-> The conversion phase isn't needed for SQL Server to Azure SQL migrations. SQL Server Migration Assistant (SSMA) performs the conversion while migrating to any of the Azure SQL targets. SSMA supports multiple sources, such as Oracle, MySQL, DB2, Sybase, and Microsoft Access, for both conversion and data migration.
+> You don't need the conversion phase for SQL Server to Azure SQL migrations. SQL Server Migration Assistant (SSMA) performs the conversion while migrating to any of the Azure SQL targets. SSMA supports multiple sources, such as Oracle, MySQL, DB2, Sybase, and Microsoft Access, for both conversion and data migration.
 
 ## Migration
 
-Migration is the last stage of this process, in which the data is migrated from source database to the target database. Azure Database Migration Service (DMS) is a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms. DMS offers minimal downtime, high reliability, and resiliency. DMS is available via various clients, including the Azure SQL migration extension for Azure Data Studio, Azure portal, PowerShell, and Azure CLI. To learn more about Azure Database Migration service, see [What is Azure Database Migration Service?](/azure/dms/dms-overview)
+Migration is the last stage of this process, in which you migrate data from the source database to the target database.
+
+### Choose a migration method
+
+Choose from multiple migration methods depending on your target platform and acceptable application downtime.
+
+### SQL Managed Instance link (near zero downtime to Azure SQL Managed Instance)
+
+If you [enable Azure Arc for your SQL Server instance](managed-instance/overview.md), you can use [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview?view=azuresql&preserve-view=true) to perform an online migration to Azure SQL Managed Instance. The link feature uses distributed availability groups to replicate data from SQL Server to SQL Managed Instance in near real-time. This approach allows your source database to remain operational while data is continuously synchronized to the target environment. Downtime is limited to the final cutover phase when you switch your application to the migrated database.
+
+### Backup and restore (one-time migration to SQL Server on Azure VM)
+
+If planned downtime is acceptable, use a one-time backup and restore migration to [SQL Server on Azure Virtual Machines](/ssms/migrate/upgrade-sql-server#upgrade-sql-server). In this offline migration approach, application downtime begins when the migration starts and continues until the database restore is completed on the target environment.
+
+### Azure Database Migration Service (all targets)
+
+Azure Database Migration Service (Azure DMS) is a fully managed service that supports migrations from multiple database sources to Azure data platforms with minimal downtime, high reliability, and resiliency. You can access Azure DMS through the Azure portal, PowerShell, and Azure CLI. To learn more, see [What is Azure Database Migration Service](/azure/dms/dms-overview).
+
+[Azure DMS](/azure/dms/resource-scenario-status) supports both offline (one-time) migration to Azure SQL Database, SQL Managed Instance, or SQL Server on Azure VM, and online (continuous backup restore) migrations for SQL Managed Instance and Azure VM, so you can choose a migration approach based on downtime requirements.
 
 ## Next step
 

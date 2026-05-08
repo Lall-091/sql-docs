@@ -26,7 +26,7 @@ This quickstart helps you understand how to write backups to and restore from th
 
 To complete this quickstart, you must be familiar with [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] backup and restore concepts and T-SQL syntax.  You need an Azure storage account, SQL Server Management Studio (SSMS), and access to either a server that's running SQL Server or Azure SQL Managed Instance. Additionally, the account used to issue the BACKUP and RESTORE commands should be in the **db_backupoperator** database role with **alter any credential** permissions. 
 
-- Get a free [Azure Account](https://azure.microsoft.com/offers/ms-azr-0044p/).
+- Get a free [Azure Account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - Create an [Azure storage account](/azure/storage/common/storage-quickstart-create-account?tabs=portal).
 - Install [SQL Server Management Studio](/ssms/install/install).
 - Install [SQL Server 2017 Developer Edition](https://www.microsoft.com/sql-server/sql-server-downloads) or deploy [Azure SQL Managed Instance](/azure/sql-database/sql-database-managed-instance-get-started) with connectivity established through an [Azure SQL virtual machine](/azure/sql-database/sql-database-managed-instance-configure-vm) or [point-to-site](/azure/sql-database/sql-database-managed-instance-configure-p2s).

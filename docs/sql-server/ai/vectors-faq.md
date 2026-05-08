@@ -3,8 +3,8 @@ title: "Vector & Embeddings Frequently Asked Questions (FAQ)"
 description: Answers to common questions about vector search and vector indexes in the SQL Server Database Engine.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: damauri, mikeray, randolphwest
-ms.date: 11/18/2025
+ms.reviewer: mikeray, randolphwest
+ms.date: 01/06/2026
 ms.service: sql
 ms.topic: faq
 ms.collection:
@@ -29,7 +29,7 @@ This article contains frequently asked questions about vectors and embeddings in
 
 ## How do I keep embedding up to date?
 
-Update embeddings every time the underlying data that they represent changes. This is especially important for scenarios where the data is dynamic, such as user-generated content or frequently updated databases. To find out more about several strategies to keep embeddings up to date, see [Database and AI: solutions for keeping embeddings updated](https://devblogs.microsoft.com/azure-sql/database-and-ai-solutions-for-keeping-embeddings-updated/).
+Update embeddings every time the underlying data that they represent changes. This practice is especially important for scenarios where the data is dynamic, such as user-generated content or frequently updated databases. For more information about several strategies to keep embeddings up to date, see [Database and AI: solutions for keeping embeddings updated](https://devblogs.microsoft.com/azure-sql/database-and-ai-solutions-for-keeping-embeddings-updated/).
 
 ## What is the overhead storage and processing for vector search?
 
@@ -37,56 +37,60 @@ The overhead for vector search primarily involves the storage of the vector data
 
 For more information about how to choose the right vector size, review [Embedding models and dimensions: optimizing the performance-resource usage ratio](https://devblogs.microsoft.com/azure-sql/embedding-models-and-dimensions-optimizing-the-performance-resource-usage-ratio/).
 
-A SQL Server data page can hold up to 8,060 bytes, so the size of the vector affects how many vectors can be stored in a single page. For example, if you have a vector with 1,024 dimensions, and each dimension is a single precision **float** (4 bytes), the total size of the vector would be 4,104 bytes (4096 bytes payload + 8 bytes header). This limits the number of vectors that can fit in a single page to one.
+A SQL Server data page can hold up to 8,060 bytes, so the size of the vector affects how many vectors can be stored in a single page. For example, if you have a vector with 1,024 dimensions, and each dimension is a single precision **float** (4 bytes), the total size of the vector is 4,104 bytes (4,096 bytes payload + 8 bytes header). This size limits the number of vectors that fit in a single page to one.
 
 ## What embedding model should I use, and when?
 
-There are many embedding models available, and the choice of which one to use depends on the specific use case and the type of data being processed. Some models support multiple languages, while others support multimodal data (text, images, etc.). Some are available only online, others can be run locally.
+Many embedding models are available. The choice depends on your specific use case and the type of data you're processing. Some models support multiple languages, while others support multi-model data (text, images, and more). Some models are available only online, while others can run locally.
 
-In addition to the model itself, consider the size of the model and the number of dimensions it produces. Larger models might provide better accuracy but require more computational resources and storage space, but in many cases having more dimension doesn't really change the quality that much, for common use cases.
+In addition to the model itself, consider the size of the model and the number of dimensions it produces. Larger models might provide better accuracy but require more computational resources and storage space. In many cases, having more dimensions doesn't significantly change the quality for common use cases.
 
 For more information about how to choose the right embedding model, see [Embedding models and dimensions: optimizing the performance-resource usage ratio](https://devblogs.microsoft.com/azure-sql/embedding-models-and-dimensions-optimizing-the-performance-resource-usage-ratio/).
 
-## How to decide when to use single-precision (4-byte) vs half-precision (2-byte) floating-point values for vectors?
+## How do I decide when to use single-precision (4-byte) versus half-precision (2-byte) floating-point values for vectors?
 
-When storing embedding vectors in a database, the choice between single-precision (`float32`) and half-precision (`float16`) floats often comes down to balancing storage efficiency with numerical fidelity.
+When you store embedding vectors in a database, you often need to balance storage efficiency with numerical fidelity when choosing between single-precision (`float32`) and half-precision (`float16`) floats.
 
-Fortunately, embeddings are typically not highly sensitive to small changes in precision.
+Fortunately, embeddings typically aren't highly sensitive to small changes in precision.
 
-Embeddings are dense vector representations used in tasks like semantic search, recommendation systems, and natural language processing. These vectors are often the output of neural networks, which are inherently tolerant to small numerical variations. As a result, reducing precision from `float32` to `float16` usually has minimal impact on the quality of similarity comparisons or downstream tasks—especially during inference.
+Embeddings are dense vector representations used in tasks like semantic search, recommendation systems, and natural language processing. These vectors often come from neural networks, which are inherently tolerant to small numerical variations. As a result, reducing precision from `float32` to `float16` usually has minimal impact on the quality of similarity comparisons or downstream tasks, especially during inference.
 
 Using `float16` can significantly reduce storage and memory usage, which is particularly beneficial when working with large-scale embedding datasets.
 
 ## What about sparse vectors?
 
-At this time, the **vector** data type in the SQL Database Engine is designed for dense vectors, which are arrays of floating-point numbers where most of the elements are non-zero. Sparse vectors, which contain a significant number of zero elements, aren't natively supported.
+Currently, the **vector** data type in the SQL Database Engine is designed for dense vectors. These vectors are arrays of floating-point numbers where most of the elements are non-zero. Sparse vectors, which contain a significant number of zero elements, aren't natively supported.
 
 ## What are some performance benchmarks for SQL vector search?
 
-Performance can vary widely based on the specific use case, the size of the dataset, and the complexity of the queries. However, SQL Server's vector search capabilities are designed to be efficient and scalable, leveraging indexing techniques to optimize search performance.
+Performance can vary widely based on the specific use case, the size of the dataset, and the complexity of the queries. However, SQL Server's vector search capabilities are efficient and scalable. They use indexing techniques to optimize search performance.
 
-## What if I have more than one column that I would like to use for generating embeddings?
+## What if I have more than one column that I want to use for generating embeddings?
 
 If you have multiple columns that you want to use for generating embeddings, you have two main options:
 
 - Create one embedding for each column, or
 - Concatenate the values of multiple columns into a single string and then generate a single embedding for that concatenated string.
 
-For more information about the two options and the related database design considerations, see [Efficiently and Elegantly Modeling Embeddings](https://devblogs.microsoft.com/azure-sql/efficiently-and-elegantly-modeling-embeddings-in-azure-sql-and-sql-server/).
+For more information about these two options and the related database design considerations, see [Efficiently and Elegantly Modeling Embeddings](https://devblogs.microsoft.com/azure-sql/efficiently-and-elegantly-modeling-embeddings-in-azure-sql-and-sql-server/).
 
 ## What about re-ranking?
 
-Re-ranking is a technique used to improve the relevance of search results by re-evaluating the initial results based on additional criteria or models. In the SQL Database Engine, you can implement re-ranking by combining vector search with full-text (which provides BM25 ranking) or additional SQL queries or machine learning models to refine the results based on specific business logic or user preferences.
+Re-ranking improves the relevance of search results by re-evaluating the initial results based on extra criteria or models. In the SQL Database Engine, you can implement re-ranking by combining vector search with full-text search (which provides BM25 ranking), or by using additional SQL queries or machine learning models to refine the results based on specific business logic or user preferences.
 
-For more information, review [Enhancing Search Capabilities with Hybrid Search and RRF Re-Ranking](https://devblogs.microsoft.com/azure-sql/enhancing-search-capabilities-in-sql-server-and-azure-sql-with-hybrid-search-and-rrf-re-ranking/).
+For more information, see [Enhancing Search Capabilities with Hybrid Search and RRF Re-Ranking](https://devblogs.microsoft.com/azure-sql/enhancing-search-capabilities-in-sql-server-and-azure-sql-with-hybrid-search-and-rrf-re-ranking/).
 
-## When to use AI Search (now AI Foundry) vs using SQL for vectors search scenarios?
+A more refined re-ranking technique is called semantic re-ranking. Semantic re-ranking relies on a specialized model (often a cross-encoder or a late interaction approach) to compare each candidate passage against the query and assign a detailed relevance score. By reassessing these passages, rerankers ensure that the most precise, useful, and relevant results rise to the top.
+
+For a sample of using a re-ranking model, see [Semantic Reranking with Azure SQL, SQL Server 2025 and Cohere Rerank models](https://devblogs.microsoft.com/azure-sql/semantic-reranking-with-azure-sql-sql-server-2025-and-cohere-rerank-models/).
+
+## When should I use AI Search (now AI Foundry) versus using SQL for vector search scenarios?
 
 AI Search (now AI Foundry) is a specialized service designed for advanced search scenarios, including vector search, natural language processing, and AI-driven insights. It provides a comprehensive set of features for building intelligent search applications, such as built-in support for various AI models, advanced ranking algorithms, and integration with other AI services.
 
-The SQL Database Engine provides the ability to store any kind of data and run any kind of query: structured and unstructured, and to perform vector search on that data. It's a good choice for scenarios where you need to do search across all these data together, and you don't want to use a separate service for search that would complicate your architecture. The SQL Database Engine offers critical enterprise security features to make sure data is always protected, such as row-level security (RLS), dynamic data masking (DDM), Always Encrypted, immutable ledger tables, and transparent data encryption (TDE).
+The SQL Database Engine provides the ability to store any kind of data and run any kind of query: structured and unstructured. You can perform vector search on that data. It's a good choice for scenarios where you need to search across all these data together, and you don't want to use a separate service for search that would complicate your architecture. The SQL Database Engine offers critical enterprise security features to make sure data is always protected, such as row-level security (RLS), dynamic data masking (DDM), Always Encrypted, immutable ledger tables, and transparent data encryption (TDE).
 
-Here's an example of a single query that can be run in Azure SQL or SQL Server that combines vector, geospatial, structured and unstructured data all at once. The sample query retrieves the top 50 most relevant restaurants based on the description of the restaurant, the location of the restaurant, and the user's preferences, using vector search for the description and geospatial search for the location, filtering also by star numbers, number of reviews, category and so on:
+Here's an example of a single query that you can run in Azure SQL or SQL Server that combines vector, geospatial, structured, and unstructured data all at once. The sample query retrieves the top 50 most relevant restaurants based on the description of the restaurant, the location of the restaurant, and the user's preferences. It uses vector search for the description and geospatial search for the location, filtering also by star numbers, number of reviews, category, and other attributes.
 
 ```sql
 DECLARE @p AS GEOGRAPHY = GEOGRAPHY::Point(47.6694141, -122.1238767, 4326);
@@ -113,7 +117,7 @@ WHERE b.city = 'Redmond'
 ORDER BY semantic_distance DESC;
 ```
 
-In the previous sample, Exact Nearest Neighbor (ENN) search is used to find the most relevant reviews based on the semantic distance of the embeddings, while also filtering by geospatial distance and other business attributes. This query demonstrates the power of combining vector search with traditional SQL capabilities to create a rich and efficient search experience.
+In the previous sample, Exact Nearest Neighbor (ENN) search finds the most relevant reviews based on the semantic distance of the embeddings, while also filtering by geospatial distance and other business attributes. This query demonstrates the power of combining vector search with traditional SQL capabilities to create a rich and efficient search experience.
 
 If you want to use Approximate Nearest Neighbor (ANN) search, you can create a vector index on the `reviews_embeddings` table and use the `VECTOR_SEARCH` function to perform the search.
 

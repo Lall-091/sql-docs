@@ -8,7 +8,7 @@ ms.reviewer: randolphwest, mathoma
 ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
 # Auditing using managed identity

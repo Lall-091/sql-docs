@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 10/05/2021
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Availability Groups [SQL Server], monitoring"
   - "Availability Groups [SQL Server], troubleshooting"

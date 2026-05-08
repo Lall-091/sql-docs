@@ -72,12 +72,10 @@ Base key: `HKEY_LOCAL_MACHINE`
 
 In each instance of SQL Server enabled by Azure Arc, the extension creates the following tables in `msdb`:
 
-- `dq.arcJobTriggers00`
-- `dt.arcJobDefinitions`
-
-These tables store background job definition and execution history. Background jobs perform scheduled and user-initiated actions. These tables allow long-running jobs to automatically resume if the Azure Extension for SQL Server is restarted.
-
-Additionally, the table `dbo.SQLServerAzureArcProperties` contains the resource identity for the SQL Server instance in Azure Resource Manager. This table can be used to detect if the SQL Server instance is Arc-enabled, and if so, what the identity of the resource is in Azure.
+| Table Names| Purpose |
+| --- | --- |
+|`dq.arcJobTriggers00`, `dt.arcJobDefinitions`| These tables store background job definition and execution history. Background jobs perform scheduled and user-initiated actions. These tables allow long-running jobs to automatically resume if the Azure Extension for SQL Server is restarted.|
+| `dbo.SQLServerAzureArcProperties` | This table contains the resource identity for the SQL Server instance in Azure Resource Manager. This table can be used to detect if the SQL Server instance is Arc-enabled, and if so, what the identity of the resource is in Azure. |
 
 ## Frequently asked questions
 

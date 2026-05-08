@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: randolphwest
 ms.date: 12/16/2022
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "cross-database queries [SQL Server]"
   - "logins [SQL Server], recreating on another server instance"

@@ -3,7 +3,7 @@ title: Vector Search & Vector Index
 description: How to create, manage, and search vectors in the SQL Server Database Engine.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: damauri, pookam, jovanpop, randolphwest, mikeray
+ms.reviewer: pookam, jovanpop, randolphwest, mikeray
 ms.date: 07/24/2025
 ms.service: sql
 ms.topic: language-reference
@@ -72,15 +72,15 @@ SELECT
 
 ### Exact search and vector distance (exact nearest neighbors)
 
-Exact search, also known as k-nearest neighbor (k-NN) search, involves calculating the distance between a given vector and all other vectors in a dataset, sorting the results, and selecting the closest neighbors based on a specified distance metric. This method guarantees precise retrieval of the nearest neighbors but can be computationally intensive, especially for large datasets.
+Exact search, also known as k-nearest neighbor (kNN) search, involves calculating the distance between a given vector and all other vectors in a dataset, sorting the results, and selecting the closest neighbors based on a specified distance metric. This method guarantees precise retrieval of the nearest neighbors but can be computationally intensive, especially for large datasets.
 
-Vector distance functions are used to measure the closeness between vectors. Common distance metrics include Euclidean distance, cosine similarity, and dot product. These functions are essential for performing k-NN searches and ensuring accurate results.
+Vector distance functions are used to measure the closeness between vectors. Common distance metrics include Euclidean distance, cosine similarity, and dot product. These functions are essential for performing kNN searches and ensuring accurate results.
 
 Exact nearest neighbor (ENN) vector search performs an exhaustive distance calculation across all indexed vectors to guarantee the retrieval of the closest neighbors based on a specified distance metric. This method is precise but resource-intensive, making it suitable for smaller datasets or scenarios where accuracy is paramount.
 
-In the SQL Database Engine, k-NN searches can be performed using the [VECTOR_DISTANCE](../../t-sql/functions/vector-distance-transact-sql.md) function, which allows for efficient calculation of distances between vectors and facilitates the retrieval of the nearest neighbors.
+In the SQL Database Engine, kNN searches can be performed using the [VECTOR_DISTANCE](../../t-sql/functions/vector-distance-transact-sql.md) function, which allows for efficient calculation of distances between vectors and facilitates the retrieval of the nearest neighbors.
 
-The following example shows how to do k-NN to return the top 10 most similar vectors stored in the `content_vector` table to the given query vector `@qv`.
+The following example shows how to do kNN to return the top 10 most similar vectors stored in the `content_vector` table to the given query vector `@qv`.
 
 ```sql
 DECLARE @qv VECTOR(1536) = AI_GENERATE_EMBEDDINGS(N'Pink Floyd music style' USE MODEL Ada2Embeddings);
@@ -96,15 +96,18 @@ Using an exact search is recommended when you don't have many vectors to search 
 > [!NOTE]
 > Approximate vector index and vector search are in preview and currently only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric-sqldb-md](../../includes/fabric-sqldb.md)].
 
-Identifying all vectors close to a given query vector requires substantial resources to calculate the distance between the query vector and the vectors stored in the table. Searching for all vectors close to a given query vector involves a complete scan of the table and significant CPU usage. This is called a "K-nearest neighbors" or "k-NN" query and returns the "k" closest vectors.
+> [!WARNING]
+> The following example uses the legacy `TOP_N` parameter, which is only supported with earlier version vector indexes. For the latest syntax using `SELECT TOP (N) WITH APPROXIMATE`, see [VECTOR_SEARCH (Transact-SQL)](/sql/t-sql/functions/vector-search-transact-sql) and [CREATE VECTOR INDEX (Transact-SQL)](/sql/t-sql/statements/create-vector-index-transact-sql).
+
+Identifying all vectors close to a given query vector requires substantial resources to calculate the distance between the query vector and the vectors stored in the table. Searching for all vectors close to a given query vector involves a complete scan of the table and significant CPU usage. This is called a "K-nearest neighbors" or "kNN" query and returns the "k" closest vectors.
 
 Vectors are used to find similar data for AI models to answer user queries. This involves querying the database for the "k" vectors nearest to the query vector using distance metrics like dot (inner) product, cosine similarity, or Euclidean distance.
 
-K-NN queries often struggle with scalability, making it acceptable in many cases to trade off some accuracy, particularly recall, for significant speed gains. This method is known as approximate nearest neighbors (ANN). 
+kNN queries often struggle with scalability, making it acceptable in many cases to trade off some accuracy, particularly recall, for significant speed gains. This method is known as approximate nearest neighbors (ANN). 
 
 Recall is an important concept that should become familiar to everyone using or planning to use vectors and embeddings. In fact, recall measures the proportion of the approximate nearest neighbors that are identified by the algorithm, compared to the exact nearest neighbors that an exhaustive search would return. Therefore, it is a good measurement of the quality of the approximation that the algorithm is doing. A perfect recall, which is equivalent to no approximation, is 1. 
 
-For AI applications, the trade-off is quite reasonable. Since vector embeddings already approximate concepts, using ANN doesn't significantly affect the results, provided the recall is close to 1. This ensures that the returned results are very similar to those from k-NN, while offering vastly improved performance and significantly reduced resource usage, which is highly beneficial for operational databases.
+sFor AI applications, the trade-off is quite reasonable. Since vector embeddings already approximate concepts, using ANN doesn't significantly affect the results, provided the recall is close to 1. This ensures that the returned results are very similar to those from kNN, while offering vastly improved performance and significantly reduced resource usage, which is highly beneficial for operational databases.
 
 It is important to understand that the term "index" when used referring to a [vector index](../../t-sql/statements/create-vector-index-transact-sql.md) has a different meaning than the index you are used to working with in relational databases. In fact, a vector index returns approximate results.
 

@@ -1,12 +1,13 @@
 ---
 title: Data Quality Services Features Support
 description: This article summarizes Master Data Services and Data Quality Services features support for the different editions of SQL Server.
-author: CordeliaGrey
-ms.author: jiwang6
-ms.date: "03/07/2017"
+author: meetdeepak
+ms.author: dkhare
+ms.reviewer: mikeray
+ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: feature-availability
 ms.custom:
   - build-2025
 ---
@@ -30,6 +31,4 @@ This article describes which versions of SQL Server support [!INCLUDE[ssMDSshort
 
 |Feature|Enterprise|Standard|Web|Express with Advanced Services|Express with Tools|Express|Developer|  
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-|Data Quality Services|Yes||||||Yes|  
-
-
+|Data Quality Services|Yes||||||Yes|

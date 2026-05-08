@@ -4,7 +4,7 @@ description: Learn how to configure user-assigned managed identity and transpare
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 09/18/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -75,18 +75,20 @@ Before we can configure TDE for Azure SQL Database with a cross-tenant CMK, we n
 
 ## Create server configured with TDE with cross-tenant customer-managed key (CMK)
 
-This guide will walk you through the process of creating a logical server and database on Azure SQL with a user-assigned managed identity, as well as how to set a cross-tenant customer managed key. The user-assigned managed identity is a must for setting up a customer-managed key for transparent data encryption during the server creation phase.
+This guide will walk you through the process of creating a new logical server and database with a user-assigned managed identity, as well as how to set a cross-tenant customer managed key. The user-assigned managed identity is a must for setting up a customer-managed key for transparent data encryption during the server creation phase.
 
 > [!IMPORTANT]
 > The user or application using APIs to create SQL logical servers needs the [**SQL Server Contributor**](/azure/role-based-access-control/built-in-roles#sql-server-contributor) and [**Managed Identity Operator**](/azure/role-based-access-control/built-in-roles#managed-identity-operator) RBAC roles or higher on the subscription.
 
 # [Portal](#tab/azure-portal)
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+To create a new Azure SQL Database in the Azure portal:
 
-   :::image type="content" source="media/transparent-data-encryption-byok-create-server-cross-tenant/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/transparent-data-encryption-byok-create-server-cross-tenant/show-options-create-sql-database.png":::
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
+
+   :::image type="content" source="media/transparent-data-encryption-byok-create-server-cross-tenant/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/transparent-data-encryption-byok-create-server-cross-tenant/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 
@@ -100,6 +102,8 @@ This guide will walk you through the process of creating a logical server and da
    - **Server admin login**: Enter an admin login name, for example: `azureuser`.
    - **Password**: Enter a password that meets the password requirements, and enter it again in the **Confirm password** field.
    - **Location**: Select a location from the dropdown list
+
+   [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 1. Select **Next: Networking** to move to the next step.
 
@@ -148,6 +152,8 @@ This guide will walk you through the process of creating a logical server and da
 For information on installing the current release of Azure CLI, see [Install the Azure CLI](/cli/azure/install-azure-cli) article.
 
 Create a server configured with user-assigned managed identity and cross-tenant customer-managed TDE using the [az sql server create](/cli/azure/sql/server) command. The **Key Identifier** from the second tenant can be used in the `key-id` field. The **Application ID** of the multitenant application can be used in the `federated-client-id` field.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ```azurecli
 az sql server create \
@@ -199,6 +205,8 @@ Replace the following values in the example:
 - `<CustomerManagedKeyId>`: The **Key Identifier** from the second tenant Azure Key Vault
 - `<FederatedClientId>`: The **Application ID** of the multitenant application
 
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
+
 To get your user-assigned managed identity **Resource ID**, search for **Managed Identities** in the [Azure portal](https://portal.azure.com). Find your managed identity, and go to **Properties**. An example of your UMI **Resource ID** looks like `/subscriptions/<subscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managedIdentity>`
 
 ```powershell
@@ -233,6 +241,8 @@ For more information and ARM templates, see [Azure Resource Manager templates fo
 Use a [Custom deployment in the Azure portal](https://portal.azure.com/#create/Microsoft.Template), and **Build your own template in the editor**. Next, **Save** the configuration once you pasted in the example.
 
 To get your user-assigned managed identity **Resource ID**, search for **Managed Identities** in the [Azure portal](https://portal.azure.com). Find your managed identity, and go to **Properties**. An example of your UMI **Resource ID** looks like `/subscriptions/<subscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managedIdentity>`.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ```json
 {

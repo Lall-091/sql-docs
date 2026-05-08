@@ -26,7 +26,7 @@ You need the following prerequisites to run this quickstart.
   - SQL Server 2019 Big Data Clusters. See how to [enable Machine Learning Services on SQL Server 2019 Big Data Clusters](../../big-data-cluster/machine-learning-services.md).
   - Azure SQL Managed Instance Machine Learning Services. For information, see the [Azure SQL Managed Instance Machine Learning Services overview](/azure/azure-sql/managed-instance/machine-learning-services-overview).
 
-- A tool for running SQL queries that contain Python scripts. This quickstart uses [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio).
+- A tool for running SQL queries that contain Python scripts. This quickstart uses the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md).
 
 ## Run a simple script
 
@@ -42,7 +42,7 @@ d = a*b
 print(c, d)
 ```
 
-1. Open a new query window in **Azure Data Studio** connected to your SQL instance.
+1. Open a new query window in **Visual Studio Code** connected to your SQL instance.
 
 1. Pass the complete Python script to the `sp_execute_external_script` stored procedure.
 

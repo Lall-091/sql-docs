@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 08/14/2025
+ms.date: 01/15/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -306,6 +306,9 @@ ms.topic: include
 | 19557 | 16 | No | Invalid value '%.\*ls' for TrustServerCertificate. Valid values are Yes or No. For more information, see %.\*ls. |
 | 19558 | 16 | No | Duplicate key '%.\*ls' in %.\*ls. |
 | 19559 | 16 | No | The key 'Encrypt' must be specified in %.\*ls. |
+| 19561 | 16 | No | As a result of executing sys.sp_mi_dag_repair, database '%.\*ls' was removed from availability group '%.\*ls'. |
+| 19562 | 16 | No | As a result of executing sys.sp_mi_dag_repair, internal availability group '%.\*ls' was removed from availability group '%.\*ls'. |
+| 19563 | 16 | No | Can not execute sp_mi_dag_repair on availability group '%.\*ls' as the local availability replica is not in the primary role. |
 | 19601 | 16 | No | System error. |
 | 19602 | 16 | No | System error. |
 | 19603 | 16 | No | System error. |

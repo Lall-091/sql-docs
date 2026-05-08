@@ -3,8 +3,7 @@ title: Configure iSCSI FCI Storage - SQL Server on Linux
 description: Learn to configure a failover cluster instance (FCI) using iSCSI for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -31,7 +30,7 @@ The target should never be configured on any of the FCI nodes if using a Linux-b
 
 The most important thing to ensure is completed on the target is that the disks that are created are assigned the proper permissions so that only those servers participating in the FCI have access to them. An example is shown here from the Microsoft iSCSI target where `linuxnodes1` is the name created, and in this case, the IP addresses of the nodes are assigned so that `NewFCIDisk1.vhdx` appears to them.
 
-:::image type="content" source="media/sql-server-linux-shared-disk-cluster-configure-iscsi/05-initiator.png" alt-text="Screenshot of the initiator." lightbox="media/sql-server-linux-shared-disk-cluster-configure-iscsi/05-initiator.png":::
+:::image type="content" source="media/sql-server-linux-shared-disk-cluster-configure-iscsi/05-initiator.png" alt-text="Screenshot of the iSCSI target properties dialog for linuxnodes1, showing the Initiators tab with IP addresses assigned to the target." lightbox="media/sql-server-linux-shared-disk-cluster-configure-iscsi/05-initiator.png":::
 
 ### Instructions
 
@@ -42,6 +41,9 @@ For more information on iSCSI initiator for the supported distributions, see the
 - [Red Hat](https://docs.redhat.com/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/configuring-an-iscsi-initiator_managing-storage-devices)
 - [SUSE](https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-iscsi.html)
 - [Ubuntu](https://documentation.ubuntu.com/server/iscsi-initiator-or-client)
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 1. Choose one of the servers that will participate in the FCI configuration. It doesn't matter which one. iSCSI should be on a dedicated network, so configure iSCSI to recognize and use that network. Run `sudo iscsiadm -m iface -I <iSCSIIfaceName> -o new` where `<iSCSIIfaceName>` is the unique or friendly name for the network. The following example uses `iSCSINIC`:
 
@@ -343,7 +345,7 @@ For more information on iSCSI initiator for the supported distributions, see the
 
    1. Type `exit` to no longer be the superuser.
 
-   1. To test, create a database in that folder. The following script creates a database, switches context to it, verifies the files exist at the OS level, and then deletes the temporary location. You can use SSMS or **sqlcmd** to run this script.
+   1. To test, create a database in that folder. The following script creates a database, switches context to it, verifies the files exist at the OS level, and then deletes the temporary location. You can use SSMS or **`sqlcmd`** to run this script.
 
       ```sql
       DROP DATABASE TestDB;

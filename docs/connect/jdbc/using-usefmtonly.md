@@ -7,7 +7,7 @@ ms.reviewer: v-davidengel
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sfi-ropc-nochange
 ---
 # Retrieving ParameterMetaData via useFmtOnly

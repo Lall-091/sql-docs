@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "format files [SQL Server], XML format files"
   - "bulk importing [SQL Server], format files"

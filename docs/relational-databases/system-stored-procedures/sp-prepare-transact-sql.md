@@ -1,5 +1,5 @@
 ---
-title: "sp_prepare (Transact SQL)"
+title: "sp_prepare (Transact-SQL)"
 description: Prepares a parameterized Transact-SQL statement and returns a statement handle for execution.
 author: markingmyname
 ms.author: maghan
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# sp_prepare (Transact SQL)
+# sp_prepare (Transact-SQL)
 
 [!INCLUDE [sql-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdbmi-asa-pdw.md)]
 

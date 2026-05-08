@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 05/24/2022
 ms.service: sql
 ms.subservice: machine-learning-services
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15"
 ---
 # R language extension in SQL Server Machine Learning Services

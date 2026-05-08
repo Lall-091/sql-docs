@@ -4,7 +4,7 @@ description: Learn how to use the Report Data pane to view the currently defined
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

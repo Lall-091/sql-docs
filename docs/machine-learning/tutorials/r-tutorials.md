@@ -35,16 +35,8 @@ This article describes the Python tutorials and quickstarts for [Azure SQL Manag
 ::: moniker range=">=sql-server-2016||>=sql-server-linux-ver15"
 | Tutorial | Description |
 |------|-------------|
-| [Predict ski rental with decision tree](r-predictive-model-introduction.md) | Use R and a decision tree model to predict the number of future ski rentals. Use notebooks in Azure Data Studio for preparing data and training the model, and T-SQL for model deployment. |
-| [Categorizing customers using k-means clustering](r-clustering-model-introduction.md) | Use R to develop and deploy a K-Means clustering model to categorize customers. Use notebooks in Azure Data Studio for preparing data and training the model, and T-SQL for model deployment. |
 | [In-database R analytics for data scientists](../tutorials/walkthrough-data-science-end-to-end-walkthrough.md) | For R developers new to SQL machine learning, this tutorial explains how to perform common data science tasks in SQL. Load and visualize data, train and save a model in a database, and use the model for predictive analytics. |
 | [In-database R analytics for SQL developers](../tutorials/r-taxi-classification-introduction.md) | Build and deploy a complete R solution, using only SQL tools. Focuses on moving a solution into production. You'll learn how to wrap R code in a stored procedure, save an R model in a database, and make parameterized calls to the R model for prediction. |
-::: moniker-end
-::: moniker range="=azuresqldb-mi-current"
-| Tutorial | Description |
-|------|-------------|
-| [Predict ski rental with decision tree](r-predictive-model-introduction.md) | Use R and a decision tree model to predict the number of future ski rentals. Use notebooks in Azure Data Studio for preparing data and training the model, and T-SQL for model deployment. |
-| [Categorizing customers using k-means clustering](r-clustering-model-introduction.md) | Use R to develop and deploy a K-Means clustering model to categorize customers. Use notebooks in Azure Data Studio for preparing data and training the model, and T-SQL for model deployment. |
 ::: moniker-end
 
 ## R quickstarts
@@ -55,7 +47,7 @@ If you are new to SQL machine learning, you can also try the R quickstarts.
 |-|-|
 | [Run simple R scripts](quickstart-r-create-script.md) | Learn the basics of how to call R in T-SQL using [sp_execute_external_script](../../relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md). |
 | [Data structures and objects using R](quickstart-r-data-types-and-objects.md) | Shows how SQL uses the R to handle data structures. |
-| [Create and score a predictive model in R](quickstart-r-data-types-and-objects.md) | Explains how to create, train, and use a R model to make predictions from new data. |
+| [Create and score a predictive model in R](quickstart-r-data-types-and-objects.md) | Explains how to create, train, and use an R model to make predictions from new data. |
 
 ## Next steps
 

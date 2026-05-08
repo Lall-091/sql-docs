@@ -3,7 +3,7 @@ title: Configure Usage and Diagnostic Data Collection for SQL Server on Linux
 description: Describes how SQL Server customer usage and diagnostic data is collected and configured on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -26,7 +26,7 @@ Specifically, [!INCLUDE [msconame-md](../includes/msconame-md.md)] doesn't send 
 - Any sign-in credentials or other authentication information
 - Personal data
 
-[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] always collects and sends information about the installation experience from the setup process so that we can quickly find and fix any installation problems that the customer is experiencing. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] can be configured not to send information (on a per-server instance basis) to [!INCLUDE [msconame-md](../includes/msconame-md.md)] through **mssql-conf**. **mssql-conf** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] for Red Hat Enterprise Linux, SUSE Linux Enterprise Server, and Ubuntu.
+[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] always collects and sends information about the installation experience from the setup process so that we can quickly find and fix any installation problems that the customer is experiencing. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] can be configured not to send information (on a per-server instance basis) to [!INCLUDE [msconame-md](../includes/msconame-md.md)] through **`mssql-conf`**. **`mssql-conf`** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] for Red Hat Enterprise Linux, SUSE Linux Enterprise Server, and Ubuntu.
 
 > [!NOTE]  
 > You can disable the sending of information to [!INCLUDE [msconame-md](../includes/msconame-md.md)] only in paid versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
@@ -40,7 +40,7 @@ This option lets you change if [!INCLUDE [ssnoversion-md](../includes/ssnoversio
 
 ### On Red Hat, SUSE, and Ubuntu
 
-1. Run the **mssql-conf** script as root with the `set` command for `telemetry.customerfeedback`. The following example turns off usage and diagnostic data collection by specifying `false`.
+1. Run the **`mssql-conf`** script as root with the `set` command for `telemetry.customerfeedback`. The following example turns off usage and diagnostic data collection by specifying `false`.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set telemetry.customerfeedback false
@@ -164,7 +164,7 @@ This option enables Local Audit and lets you set the directory where the Local A
    sudo chgrp mssql /tmp/audit
    ```
 
-1. Run the **mssql-conf** script as root with the `set` command for `telemetry.userrequestedlocalauditdirectory`:
+1. Run the **`mssql-conf`** script as root with the `set` command for `telemetry.userrequestedlocalauditdirectory`:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set telemetry.userrequestedlocalauditdirectory /tmp/audit
@@ -229,7 +229,7 @@ To enable Local Audit in a Linux container, you must have the container [persist
    echo 'userrequestedlocalauditdirectory = <host directory>/audit' >> <host directory>/mssql.conf
    ```
 
-1. Run the container image
+1. Run the container image:
 
    ```bash
    docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' -p 1433:1433 -v <host directory>:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2019-latest
@@ -259,7 +259,7 @@ To enable Local Audit in a Linux container, you must have the container [persist
    echo 'userrequestedlocalauditdirectory = <host directory>/audit' >> <host directory>/mssql.conf
    ```
 
-1. Run the container image
+1. Run the container image:
 
    ```bash
    docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' -p 1433:1433 -v <host directory>:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
@@ -289,7 +289,7 @@ To enable Local Audit in a Linux container, you must have the container [persist
    echo 'userrequestedlocalauditdirectory = <host directory>/audit' >> <host directory>/mssql.conf
    ```
 
-1. Run the container image
+1. Run the container image:
 
    ```bash
    docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' -p 1433:1433 -v <host directory>:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2025-latest

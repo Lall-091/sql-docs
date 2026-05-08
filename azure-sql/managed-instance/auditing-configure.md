@@ -4,7 +4,7 @@ description: Learn how to get started with Azure SQL Managed Instance auditing u
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: vanto, randolphwest, mathoma
-ms.date: 08/27/2025
+ms.date: 04/15/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: how-to
@@ -19,15 +19,7 @@ f1_keywords:
 
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) auditing tracks database events and writes them to an audit log in your Azure storage account. 
-
-Auditing also:
-
-- Helps you maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate business concerns or suspected security violations.
-- Enables and facilitates adherence to compliance standards, although it doesn't guarantee compliance. For more information, see the [Microsoft Azure Trust Center](https://www.microsoft.com/trust-center/compliance/compliance-overview) where you can find the most current list of SQL Managed Instance compliance certifications.
-
-> [!IMPORTANT]  
-> The auditing of Azure SQL Managed Instance is optimized for availability and performance. During high activity, or high network load, Azure SQL Managed Instance allows operations to proceed and might not record some audited events.
+This article teaches you to configure [auditing with SQL Server Audit in Azure SQL Managed Instance](auditing.md). Auditing tracks database events and writes them to an audit log in your Azure storage account.
 
 ## Set up auditing for your instance to Azure Storage
 
@@ -94,7 +86,7 @@ The following section describes the configuration of auditing on your SQL manage
 
             :::image type="content" source="media/auditing-configure/7_sas_configure.png" alt-text="Screenshot showing the SAS configuration.":::
 
-        - The SAS token appears at the bottom. Copy the token by selecting on the copy icon, and save it (for example, in Notepad) for future use.
+        - The SAS token appears at the bottom. Copy the token by selecting the copy icon, and save it (for example, in Notepad) for future use.
 
           :::image type="content" source="media/auditing-configure/8_sas_copy.png" alt-text="Screenshot showing how to copy SAS token.":::
 
@@ -142,7 +134,7 @@ The following section describes the configuration of auditing on your SQL manage
 
         :::image type="content" source="media/auditing-configure/12_mi_SSMS_sign_in_to_azure.png" alt-text="Screenshot showing how to Sign in to Azure.":::
 
-     1. Select a subscription, storage account, and blob container from the dropdowns, or create your own container by selecting on **Create**. Once you're finished, select **OK**:
+     1. Select a subscription, storage account, and blob container from the dropdowns, or create your own container by selecting **Create**. Once you're finished, select **OK**:
 
         :::image type="content" source="media/auditing-configure/13-subscription-account-container.png" alt-text="Select Azure subscription, storage account, and blob container.":::
 
@@ -155,8 +147,8 @@ The following section describes the configuration of auditing on your SQL manage
 
 After you configure the blob container as target for the audit logs, create and enable a server audit specification or database audit specification as you would for SQL Server:
 
-   - [Create server audit specification T-SQL guide](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [Create database audit specification T-SQL guide](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [Create server audit specification T-SQL guide](/sql/t-sql/statements/create-server-audit-specification-transact-sql?view=azuresqldb-mi-current&preserve-view=true)
+   - [Create database audit specification T-SQL guide](/sql/t-sql/statements/create-database-audit-specification-transact-sql?view=azuresqldb-mi-current&preserve-view=true)
 
 Use the following T-SQL statement to enable the server audit:
 
@@ -168,9 +160,9 @@ Use the following T-SQL statement to enable the server audit:
 
 For additional information:
 
-- [Auditing differences between Azure SQL Managed Instance and a database in SQL Server](#audit-differences-between-databases-in-azure-sql-managed-instance-and-databases-in-sql-server)
-- [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql)
-- [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [Auditing differences between Azure SQL Managed Instance and a database in SQL Server](auditing.md#audit-differences-between-databases-in-azure-sql-managed-instance-and-databases-in-sql-server)
+- [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql?view=azuresqldb-mi-current&preserve-view=true)
+- [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql?view=azuresqldb-mi-current&preserve-view=true)
 
 ## Auditing of Microsoft Support operations
 
@@ -214,8 +206,8 @@ Audit logs from a SQL managed instance can be sent to Azure Event Hubs or Azure 
 
 1. Create and enable a server audit specification or database audit specification as you would for SQL Server:
 
-   - [Create Server audit specification T-SQL guide](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [Create Database audit specification T-SQL guide](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [Create Server audit specification T-SQL guide](/sql/t-sql/statements/create-server-audit-specification-transact-sql?view=azuresqldb-mi-current&preserve-view=true)
+   - [Create Database audit specification T-SQL guide](/sql/t-sql/statements/create-database-audit-specification-transact-sql?view=azuresqldb-mi-current&preserve-view=true)
 
 1. Enable the server audit created in step 8:
 
@@ -271,7 +263,7 @@ GO
 
 There are several methods you can use to view blob auditing logs.
 
-- You can use the system function [sys.fn_get_audit_file (T-SQL)](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) to return the audit log data in tabular format.
+- You can use the system function [sys.fn_get_audit_file (T-SQL)](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql?view=azuresqldb-mi-current&preserve-view=true) to return the audit log data in tabular format.
 
 - You can explore audit logs by using a tool such as [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). In Azure Storage, auditing logs are saved as a collection of blob files within a container that was defined to store the audit logs. For more information about the hierarchy of the storage folder, naming conventions, and log format, see the [Blob Audit Log Format Reference](../database/audit-log-format.md).
 
@@ -287,24 +279,10 @@ If audit logs are written to Azure Monitor logs, they're available in the Log An
 
 Azure Monitor logs gives you real-time operational insights using integrated search and custom dashboards to readily analyze millions of records across all your workloads and servers. For more information about Azure Monitor logs search language and commands, see [Azure Monitor logs search reference](/azure/azure-monitor/logs/log-query-overview).
 
-## Audit differences between databases in Azure SQL Managed Instance and databases in SQL Server
+## Related content
 
-The key differences between auditing in databases in Azure SQL Managed Instance and databases in SQL Server are:
-
-- With Azure SQL Managed Instance, auditing works at the server level and stores `.xel` log files in Azure Blob storage.
-- In SQL Server, audit works at the server level, but stores events in the file system and Windows event logs.
-
-XEvent auditing in managed instances supports Azure Blob storage targets. File and Windows logs are **not supported**.
-
-The key differences in the `CREATE AUDIT` syntax for auditing to Azure Blob storage are:
-
-- A new syntax `TO URL` is provided and enables you to specify the URL of the Azure Blob storage container where the `.xel` files are placed.
-- A new syntax `TO EXTERNAL MONITOR` is provided to enable Event Hubs and Azure Monitor log targets.
-- The syntax `TO FILE` is **not supported** because Azure SQL Managed Instance can't access Windows file shares.
-- Shutdown option is **not supported**.
-- `queue_delay` of 0 is **not supported**.
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Auditing for Azure SQL Database and Azure Synapse Analytics](../database/auditing-overview.md)
+- [SQL Server Audit in Azure SQL Managed Instance](auditing.md)
+- [Create a Server Audit](/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=azuresqldb-mi-current&preserve-view=true)
+- [Create a server audit and database audit specification](/sql/relational-databases/security/auditing/create-a-server-audit-and-database-audit-specification?view=azuresqldb-mi-current&preserve-view=true)
+- [View a SQL Server Audit Log](/sql/relational-databases/security/auditing/view-a-sql-server-audit-log?view=azuresqldb-mi-current&preserve-view=true)
+- [Write SQL Server Audit events to the Security log](/sql/relational-databases/security/auditing/write-sql-server-audit-events-to-the-security-log?view=azuresqldb-mi-current&preserve-view=true)

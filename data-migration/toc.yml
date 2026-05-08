@@ -8,6 +8,8 @@
     href: sql-server/overview.md
   - name: Pre-migration
     href: sql-server/pre-migration.md
+  - name: Self-hosted integration runtime for database migrations
+    href: sql-server/self-hosted-integration-runtime.md
   - name: To Azure SQL Managed Instance
     items:
     - name: Overview
@@ -20,8 +22,8 @@
       href: sql-server/managed-instance/custom-roles.md
     - name: Migration guide
       href: sql-server/managed-instance/guide.md
-    - name: Migration tutorial
-      href: sql-server/managed-instance/database-migration-service.md
+    - name: Migration tutorial (Azure Arc experience) >
+      href: /sql/sql-server/azure-arc/migration-overview
   - name: To SQL Server on Azure VMs
     items:
     - name: Overview

@@ -466,4 +466,4 @@ Now you can view your table report in Excel:
 
 - [Tables, matrices, and lists in paginated reports (Report Builder)](../reporting-services/report-design/tables-matrices-and-lists-report-builder-and-ssrs.md)
 - [Report Builder tutorials](../reporting-services/report-builder-tutorials.md)
-- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server.md)

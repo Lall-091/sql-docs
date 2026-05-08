@@ -7,7 +7,7 @@ ms.reviewer: derekw, randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "parallel queries [SQL Server]"
   - "processors [SQL Server], parallel queries"
@@ -102,34 +102,32 @@ These options change the `MAXDOP` for the instance.
 
 ## Use Transact-SQL
 
-1. Connect to the [!INCLUDE [ssDE](../../includes/ssde-md.md)] with [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)].
+[!INCLUDE [connect-instance-client](../../includes/connect-instance-client.md)]
 
-1. From the Standard bar, select **New Query**.
+Copy and paste the following example into a query window and select **Execute**. This example shows how to use [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md) to configure the `max degree of parallelism` option to `16`.
 
-1. Copy and paste the following example into the query window and select **Execute**. This example shows how to use [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md) to configure the `max degree of parallelism` option to `16`.
+```sql
+USE master;
+GO
 
-   ```sql
-   USE master;
-   GO
+EXECUTE sp_configure 'show advanced options', 1;
+GO
 
-   EXECUTE sp_configure 'show advanced options', 1;
-   GO
+RECONFIGURE WITH OVERRIDE;
+GO
 
-   RECONFIGURE WITH OVERRIDE;
-   GO
+EXECUTE sp_configure 'max degree of parallelism', 16;
+GO
 
-   EXECUTE sp_configure 'max degree of parallelism', 16;
-   GO
+RECONFIGURE WITH OVERRIDE;
+GO
 
-   RECONFIGURE WITH OVERRIDE;
-   GO
+EXECUTE sp_configure 'show advanced options', 0;
+GO
 
-   EXECUTE sp_configure 'show advanced options', 0;
-   GO
-
-   RECONFIGURE;
-   GO
-   ```
+RECONFIGURE;
+GO
+```
 
 For more information, see [Server configuration options](server-configuration-options-sql-server.md).
 

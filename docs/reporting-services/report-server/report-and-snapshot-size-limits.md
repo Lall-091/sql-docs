@@ -4,7 +4,7 @@ description: Learn about report size limits when a report is published in Report
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: limits-and-quotas
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

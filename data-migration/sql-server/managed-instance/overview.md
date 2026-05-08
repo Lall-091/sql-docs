@@ -4,7 +4,7 @@ description: Learn about the tools and options available to migrate your SQL Ser
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma, danil
-ms.date: 11/03/2025
+ms.date: 02/19/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -54,8 +54,6 @@ One of the key benefits of migrating your SQL Server databases to SQL Managed In
 
 ## Choose an appropriate target
 
-You can use the [Azure SQL migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension) to get right-sized Azure SQL Managed Instance recommendation. The extension collects performance data from your source SQL Server instance to provide right-sized Azure recommendation that meets your workload's performance needs with minimal cost. To learn more, see [Get Azure recommendations to migrate your SQL Server database](/azure/dms/ads-sku-recommend)
-
 The following general guidelines can help you choose the right service tier and characteristics of SQL Managed Instance to help match your [performance baseline](performance-baseline.md):
 
 - Use the CPU usage baseline to provision a managed instance that matches the number of cores that your instance of SQL Server uses. It might be necessary to scale resources to match the [hardware configuration characteristics](/azure/azure-sql/managed-instance/resource-limits#hardware-configuration-characteristics).
@@ -88,11 +86,11 @@ We recommend the following migration tools:
 | Technology | Description |
 | --- | --- |
 | [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | This Azure service helps you discover and assess your SQL data estate at scale on VMware. It provides Azure SQL deployment recommendations, target sizing, and monthly estimates. |
-| [Database migration](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance) | Migrate your SQL Server enabled by Azure Arc instance to Azure SQL Managed Instance through the Azure portal.
+| [Database migration](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance) | Migrate your SQL Server enabled by Azure Arc instance to Azure SQL Managed Instance through the Azure portal. |
 | [Native backup and restore](/azure/azure-sql/managed-instance/restore-sample-database-quickstart) | SQL Managed Instance supports restore of native SQL Server database backups (.bak files). It's the easiest migration option for customers who can provide full database backups to Azure Storage. |
 | [Log Replay Service](/azure/azure-sql/managed-instance/log-replay-service-migrate) | This cloud service is enabled for SQL Managed Instance based on SQL Server log-shipping technology. It's a migration option for customers who can provide full, differential, and log database backups to Azure Storage. Log Replay Service is used to restore backup files from Azure Blob Storage to SQL Managed Instance. |
 | [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview) | This feature enables online migration to SQL Managed Instance by using Always On availability technology to replicate changes nearly real time. It's a migration option for customers who require the database on SQL Managed Instance to be accessible in R/O mode while the migration is in progress, who need to keep the migration running for prolonged periods of time (such as weeks or months at a time), who require true online replication to the Business Critical service tier, and for customers who require the most performant minimum downtime migration. |
-| [Azure Database Migration Service](/data-migration/sql-server/managed-instance/database-migration-service?toc=%2Fazure%2Fdms%2Ftoc.json&tabs=offline-with-extension) | Azure Database Migration Service is a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms with minimal downtime. |
+| [SQL Server migration experience in Azure Arc](/sql/sql-server/azure-arc/migration-overview) | After your SQL Server instance is enabled by Azure Arc, you can assess your SQL Server data estate to identify an optimal Azure SQL migration target. Then you can migrate your SQL Server databases to Azure directly from the Azure portal. |
 
 The following table lists alternative migration tools:
 
@@ -102,7 +100,7 @@ The following table lists alternative migration tools:
 | [Bulk copy](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server) | The [bulk copy program (bcp) tool](/sql/tools/bcp-utility) copies data from an instance of SQL Server into a data file. Use the tool to export the data from your source and import the data file into the target SQL managed instance.<br /><br />For high-speed bulk copy operations to move data to Azure SQL Managed Instance, you can use the [Smart Bulk Copy tool](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) to maximize transfer speed by taking advantage of parallel copy tasks. |
 | [Import Export Wizard/BACPAC](/azure/azure-sql/database/database-import?tabs=azure-powershell) | [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) is a Windows file with a .bacpac extension that encapsulates a database's schema and data. You can use BACPAC to both export data from a SQL Server source and import the data back into Azure SQL Managed Instance. |
 | [Azure Data Factory](/azure/data-factory/connector-azure-sql-managed-instance) | The [Copy activity](/azure/data-factory/copy-activity-overview) in Azure Data Factory migrates data from source SQL Server databases to SQL Managed Instance by using built-in connectors and an [integration runtime](/azure/data-factory/concepts-integration-runtime).<br /><br />Data Factory supports a wide range of [connectors](/azure/data-factory/connector-overview) to move data from SQL Server sources to SQL Managed Instance. |
-| [Azure SQL migration extension for Azure Data Studio](/azure/dms/migration-using-azure-data-studio) | Powered by the [Azure Database Migration service](/azure/dms/dms-overview), the Azure SQL migration extension for Azure Data Studio helps you to assess your database requirements to understand your migration readiness, get the right-sized SKU recommendations for Azure resources, and migrate your SQL Server database to Azure. You can migrate single databases or at scale using [PowerShell and Azure CLI](/azure/dms/migration-dms-powershell-cli).  | 
+| [Command line tools](/azure/dms/migration-dms-powershell-cli) | You can migrate single databases or at scale using PowerShell and Azure CLI. |
 
 ## Compare migration options
 
@@ -203,6 +201,8 @@ If you have memory-optimized tables or memory-optimized table types in your on-p
    ```
 
 To learn more about in-memory technologies, see [Optimize performance by using in-memory technologies in Azure SQL Database and Azure SQL Managed Instance](/azure/azure-sql/in-memory-oltp-overview).
+
+[!INCLUDE [known-issues-after-migration](../../../azure-sql/includes/sql-managed-instance/known-issues-after-migration.md)]
 
 ## Advanced features
 

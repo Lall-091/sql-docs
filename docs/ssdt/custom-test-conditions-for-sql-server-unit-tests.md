@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Custom test conditions for SQL Server unit tests

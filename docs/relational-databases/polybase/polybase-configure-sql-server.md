@@ -92,4 +92,4 @@ You can also utilize the SQL Server (sqlserver://) connector to access Azure SQL
 
 For more tutorials on creating external data sources and external tables to a variety of data sources, see [PolyBase Transact-SQL reference](polybase-t-sql-objects.md).
 
-To learn more about PolyBase, see [Overview of SQL Server PolyBase](polybase-guide.md).
+To learn more about PolyBase, see [Overview of SQL Server PolyBase](overview.md).

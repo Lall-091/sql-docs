@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 09/09/2023
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Query Store, in-memory"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"

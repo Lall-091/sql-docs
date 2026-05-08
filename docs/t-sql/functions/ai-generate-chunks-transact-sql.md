@@ -4,7 +4,7 @@ description: The AI_GENERATE_CHUNKS table-valued function creates text chunks.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/06/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,15 +18,16 @@ helpviewer_keywords:
   - "ai_generate_chunks"
 dev_langs:
   - TSQL
-monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17 || =fabric-sqldb"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # AI_GENERATE_CHUNKS (Transact-SQL)
 
-[!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
-`AI_GENERATE_CHUNKS` is a table-valued function that creates "chunks", or fragments of text based on a type, size, and source expression.
+`AI_GENERATE_CHUNKS` is a table-valued function that creates *chunks*, or fragments of text based on a type, size, and source expression.
 
-#### Compatibility level 170
+> [!NOTE]  
+> `AI_GENERATE_CHUNKS` is available in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 `AI_GENERATE_CHUNKS` requires the compatibility level to be at least 170. When the level is less than 170, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] is unable to find the `AI_GENERATE_CHUNKS` function.
 
@@ -37,39 +38,39 @@ To change the compatibility level of a database, refer to [View or change the co
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-AI_GENERATE_CHUNKS (source = text_expression
-                    , chunk_type = FIXED
-                   [ , chunk_size = numeric_expression ]
-                   [ , overlap = numeric_expression ]
-                   [ , enable_chunk_set_id = numeric_expression ]
+AI_GENERATE_CHUNKS (SOURCE = text_expression
+                   , CHUNK_TYPE = FIXED
+                   [ , CHUNK_SIZE = numeric_expression ]
+                   [ , OVERLAP = numeric_expression ]
+                   [ , ENABLE_CHUNK_SET_ID = numeric_expression ]
 )
 ```
 
 ## Arguments
 
-#### *source*
+#### SOURCE = *text_expression*
 
 An [expression](../language-elements/expressions-transact-sql.md) of any character type (for example, **nvarchar**, **varchar**, **nchar**, or **char**).
 
-#### *chunk_type*
+#### CHUNK_TYPE = FIXED
 
-A string literal naming the type or method to chunk the text/document and can't be `NULL` or a value from a column.
+A string literal naming the type or method to chunk the text/document. This value can't be `NULL` or a value from a column.
 
-Accepted values for this release:
+Accepted values are:
 
 - `FIXED`
 
-#### *chunk_size*
+#### CHUNK_SIZE = *numeric_expression*
 
-When `chunk_type` is `FIXED`, this parameter sets the character count size of each chunk specified as a variable, a literal, or a scalar expression of type **tinyint**, **smallint**, **int**, or **bigint**. *chunk_size* can't be `NULL`, negative, or zero (`0`). This parameter is also **required** when using a `chunk_type` of `FIXED`.
+When `CHUNK_TYPE` is `FIXED`, this parameter sets the character count size of each chunk specified as a variable, a literal, or a scalar expression of type **tinyint**, **smallint**, **int**, or **bigint**. `CHUNK_SIZE` can't be `NULL`, negative, or zero (`0`). This parameter is required when using a `CHUNK_TYPE` of `FIXED`.
 
-#### *overlap*
+#### OVERLAP = *numeric_expression*
 
-The *overlap* parameter determines the percentage of the preceding text that should be included in the current chunk. This percentage is applied to the `chunk_size` parameter to calculate the size in characters. The *overlap* value can be specified as a variable, a literal, or a scalar expression of type tinyint, smallint, int, or bigint. It must be a whole number between zero (`0`) and 50, inclusive, and can't be `NULL` or negative. The default value is zero (`0`).
+The `OVERLAP` parameter determines the percentage of the preceding text that should be included in the current chunk. This percentage is applied to the `CHUNK_SIZE` parameter to calculate the size in characters. The `OVERLAP` value can be specified as a variable, a literal, or a scalar expression of type tinyint, smallint, int, or bigint. It must be a whole number between zero (`0`) and 50, inclusive, and can't be `NULL` or negative. The default value is zero (`0`).
 
-#### *enable_chunk_set_id*
+#### ENABLE_CHUNK_SET_ID = *numeric_expression*
 
-An **int** or **bit** expression that serves as a flag to enable or disable the `chunk_set_id` output column; a column that returns a number to help group returned chunks belonging to the same source. A value of `1` enables the column. If *enable_chunk_set_id* is omitted, `NULL`, or has a value of `0`, the `chunk_set_id` column is disabled and not returned.
+An **int** or **bit** expression that serves as a flag to enable or disable the `chunk_set_id` output column; a column that returns a number to help group returned chunks belonging to the same source. A value of `1` enables the column. If `ENABLE_CHUNK_SET_ID` is omitted, `NULL`, or has a value of `0`, the `chunk_set_id` column is disabled and not returned.
 
 ## Return types
 
@@ -81,7 +82,7 @@ An **int** or **bit** expression that serves as a flag to enable or disable the 
 | `chunk_order` | **bigint** | A sequence of ordered numbers that relates to the order each chunk was processed starting with `1` and increasing by `1`. |
 | `chunk_offset` | **bigint** | Position of the chunk of the source data/document in relation to the start of the chunking process. |
 | `chunk_length` | **int** | Character length of the returned text chunk. |
-| `chunk_set_id` | **bigint** | An *optional column* that contains an ID that groups all the chunks of a source expression, document, or row. If multiple documents or rows are chunked in a single transaction, they're each given a different `chunk_set_id`. Visibility is controlled by the `enable_chunk_set_id` parameter. |
+| `chunk_set_id` | **bigint** | An *optional column* that contains an ID that groups all the chunks of a source expression, document, or row. If multiple documents or rows are chunked in a single transaction, they're each given a different `chunk_set_id`. Visibility is controlled by the `ENABLE_CHUNK_SET_ID` parameter. |
 
 ### Return example
 
@@ -91,7 +92,7 @@ Here's an example of the return results of `AI_GENERATE_CHUNKS` with the followi
 
 - Chunk size of 50 characters.
 
-- The 'chunk_set_id' is enabled.
+- The `chunk_set_id` is enabled.
 
 - Chunk text: `All day long we seemed to dawdle through a country which was full of beauty of every kind. Sometimes we saw little towns or castles on the top of steep hills such as we see in old missals; sometimes we ran by rivers and streams which seemed from the wide stony margin on each side of them to be subject to great floods.`
 
@@ -147,7 +148,7 @@ CROSS APPLY
 
 ### A. Chunk a text column with FIXED type and size of 100 characters
 
-The following example uses `AI_GENERATE_CHUNKS` to chunk a text column. It uses a `chunk_type` of `FIXED` and a `chunk_size` of 100 characters.
+The following example uses `AI_GENERATE_CHUNKS` to chunk a text column. It uses a `CHUNK_TYPE` of `FIXED` and a `CHUNK_SIZE` of 100 characters.
 
 ```sql
 SELECT c.chunk
@@ -158,7 +159,7 @@ CROSS APPLY
 
 ### B. Chunk a text column with overlap
 
-The following example uses `AI_GENERATE_CHUNKS` to chunk a text column using overlap. It uses the chunk_type of FIXED, a chunk_size of 100 characters, and an overlap of 10 percent.
+The following example uses `AI_GENERATE_CHUNKS` to chunk a text column using overlap. It uses the `CHUNK_TYPE` of `FIXED`, a `CHUNK_SIZE` of 100 characters, and an overlap of 10 percent.
 
 ```sql
 SELECT c.chunk

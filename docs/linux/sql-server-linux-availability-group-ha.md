@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
 ---
@@ -49,7 +49,7 @@ The following configurations describe the availability group design patterns and
 
 This configuration consists of three synchronous replicas. By default, it provides high availability and data protection. It can also provide read-scale.
 
-:::image type="content" source="media/sql-server-linux-availability-group-ha/3-three-replica.png" alt-text="Diagram showing three synchronous replicas.":::
+:::image type="content" source="media/sql-server-linux-availability-group-ha/3-three-replica.png" alt-text="Diagram of an availability group with a primary replica synchronizing data to two secondary replicas.":::
 
 An availability group with three synchronous replicas can provide read-scale, high availability, and data protection. The following table describes availability behavior.
 
@@ -69,7 +69,7 @@ An availability group with three synchronous replicas can provide read-scale, hi
 
 This configuration enables data protection. Like the other availability group configurations, it can enable read-scale. The two synchronous replicas configuration doesn't provide automatic high availability. A two replica configuration is only applicable to [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] RTM and is no longer supported with higher (CU1 and beyond) versions of [!INCLUDE [sssql17-md](../includes/sssql17-md.md)].
 
-:::image type="content" source="media/sql-server-linux-availability-group-ha/1-read-scale-out.png" alt-text="Diagram showing two synchronous replicas.":::
+:::image type="content" source="media/sql-server-linux-availability-group-ha/1-read-scale-out.png" alt-text="Diagram of an availability group with a primary replica synchronizing data to one secondary replica.":::
 
 An availability group with two synchronous replicas provides read-scale and data protection. The following table describes availability behavior.
 
@@ -87,7 +87,7 @@ An availability group with two synchronous replicas provides read-scale and data
 
 An availability group with two (or more) synchronous replicas and a configuration only replica provides data protection and might also provide high availability. The following diagram represents this architecture:
 
-:::image type="content" source="media/sql-server-linux-availability-group-ha/2-configuration-only.png" alt-text="Diagram showing a configuration-only availability group.":::
+:::image type="content" source="media/sql-server-linux-availability-group-ha/2-configuration-only.png" alt-text="Diagram of an availability group with a primary replica synchronizing data and metadata to secondary and configuration-only replicas.":::
 
 1. Synchronous replication of user data to the secondary replica. It also includes availability group configuration metadata.
 1. Synchronous replication of availability group configuration metadata. It doesn't include user data.

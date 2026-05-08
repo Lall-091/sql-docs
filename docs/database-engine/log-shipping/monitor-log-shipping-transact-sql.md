@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: log-shipping
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "log shipping [SQL Server], status"
   - "history tables [SQL Server]"

@@ -4,7 +4,7 @@ description: A quickstart that walks through using creating a new container and 
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: maghan, randolphwest
-ms.date: 07/02/2025
+ms.date: 01/28/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: quickstart
@@ -22,7 +22,7 @@ In this quickstart, you'll use a single command in **sqlcmd** to create a new co
 ## Prerequisites
 
 - A container runtime installed, such as [Docker](https://www.docker.com/) or [Podman](https://podman.io/)
-- Download and install [Azure Data Studio](/azure-data-studio/download-azure-data-studio)
+- Install the [MSSQL extension for Visual Studio Code](../visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)
 - Install the latest **sqlcmd**
 
 ## Remarks
@@ -45,53 +45,47 @@ This quickstart walks through the process of creating a local copy of a database
 
 [!INCLUDE [sqlcmd-create-container](../../includes/paragraph-content/sqlcmd-create-container.md)]
 
-## Query the database in Azure Data Studio
+## Query the database in Visual Studio Code
 
-Open Azure Data Studio and have a look at the data.
+Now that you have a local copy of your database, you can run queries.
 
-1. In the same terminal window, run the following command:
+Connect to the database with the MSSQL extension for Visual Studio Code, and run the following query to analyze spending by customer:
 
-   ```bash
-   sqlcmd open ads
-   ```
-
-1. Now that you have a local copy of your database, you can run queries. Here is a query you can use to analyze spending by customer:
-
-   ```sql
-   SELECT bg.BuyingGroupName AS CustomerName,
-          COUNT(DISTINCT i.InvoiceID) AS InvoiceCount,
-          COUNT(il.InvoiceLineID) AS InvoiceLineCount,
-          SUM(il.LineProfit) AS Profit,
-          SUM(il.ExtendedPrice) AS ExtendedPrice
-   FROM Sales.Invoices AS i
-        INNER JOIN Sales.Customers AS c
-            ON i.CustomerID = c.CustomerID
-        INNER JOIN Sales.InvoiceLines AS il
-            ON i.InvoiceID = il.InvoiceID
-        INNER JOIN Sales.BuyingGroups AS bg
-            ON c.BuyingGroupID = bg.BuyingGroupID
-   GROUP BY bg.BuyingGroupName
-   UNION
-   SELECT c.CustomerName,
-          COUNT(DISTINCT i.InvoiceID) AS InvoiceCount,
-          COUNT(il.InvoiceLineID) AS InvoiceLineCount,
-          SUM(il.LineProfit) AS Profit,
-          SUM(il.ExtendedPrice) AS ExtendedPrice
-   FROM Sales.Invoices AS i
-        INNER JOIN Sales.Customers AS c
-            ON i.CustomerID = c.CustomerID
-        INNER JOIN Sales.InvoiceLines AS il
-            ON i.InvoiceID = il.InvoiceID
-        LEFT OUTER JOIN Sales.BuyingGroups AS bg
-            ON c.BuyingGroupID = bg.BuyingGroupID
-   WHERE bg.BuyingGroupID IS NULL
-   GROUP BY c.CustomerName
-   ORDER BY Profit DESC;
-   ```
+```sql
+SELECT bg.BuyingGroupName AS CustomerName,
+        COUNT(DISTINCT i.InvoiceID) AS InvoiceCount,
+        COUNT(il.InvoiceLineID) AS InvoiceLineCount,
+        SUM(il.LineProfit) AS Profit,
+        SUM(il.ExtendedPrice) AS ExtendedPrice
+FROM Sales.Invoices AS i
+    INNER JOIN Sales.Customers AS c
+        ON i.CustomerID = c.CustomerID
+    INNER JOIN Sales.InvoiceLines AS il
+        ON i.InvoiceID = il.InvoiceID
+    INNER JOIN Sales.BuyingGroups AS bg
+        ON c.BuyingGroupID = bg.BuyingGroupID
+GROUP BY bg.BuyingGroupName
+UNION
+SELECT c.CustomerName,
+        COUNT(DISTINCT i.InvoiceID) AS InvoiceCount,
+        COUNT(il.InvoiceLineID) AS InvoiceLineCount,
+        SUM(il.LineProfit) AS Profit,
+        SUM(il.ExtendedPrice) AS ExtendedPrice
+FROM Sales.Invoices AS i
+    INNER JOIN Sales.Customers AS c
+        ON i.CustomerID = c.CustomerID
+    INNER JOIN Sales.InvoiceLines AS il
+        ON i.InvoiceID = il.InvoiceID
+    LEFT OUTER JOIN Sales.BuyingGroups AS bg
+        ON c.BuyingGroupID = bg.BuyingGroupID
+WHERE bg.BuyingGroupID IS NULL
+GROUP BY c.CustomerName
+ORDER BY Profit DESC;
+```
 
 ## How did we solve the problem?
 
-You were able to quickly create a local copy of a database for development and testing purposes. With a single command, you created a new local instance and restored the most recent backup to it. You then ran another command to connect to it via Azure Data Studio. You then queried the database using Azure Data Studio to analyze spending by customer.
+You were able to quickly create a local copy of a database for development and testing purposes. With a single command, you created a new local instance and restored the most recent backup to it. You then ran another command to connect to it via Visual Studio Code. You then queried the database using the MSSQL extension for Visual Studio Code to analyze spending by customer.
 
 ## Clean up resources
 

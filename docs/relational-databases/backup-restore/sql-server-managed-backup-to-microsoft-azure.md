@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 ---
@@ -38,7 +38,7 @@ Microsoft Azure Storage is used by [!INCLUDE [ss-managed-backup](../../includes/
 
 | Prerequisite | Description |
 | --- | --- |
-| **Microsoft Azure Account** | You can get started with Azure with a [free trial](https://azure.microsoft.com/pricing/free-trial/) before exploring [purchase options](https://azure.microsoft.com/pricing/purchase-options/). |
+| **Microsoft Azure Account** | You can get started with Azure with a [free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before exploring [purchase options](https://azure.microsoft.com/pricing/purchase-options/). |
 | **Azure Storage account** | The backups are stored in Azure Blob Storage associated with an Azure storage account. For step-by-step instructions to create a storage account, see [Create a storage account](/azure/storage/common/storage-account-create). |
 | **Blob container** | Blobs are organized in containers. You specify the target container for the backup files. You can create a container in the [Azure Management Portal](https://portal.azure.com/), or you use the `New-AzureStorageContainer`[Azure PowerShell](/powershell/azure/) command. |
 | **Shared access signature (SAS)** | Access to the target container is controlled by a Shared Access Signature (SAS). For an overview of SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](/azure/storage/common/storage-sas-overview). You can create a SAS token in code or with the `New-AzureStorageContainerSASToken` PowerShell command. For a PowerShell script that simplifies this process, see [Simplifying creation of SQL Credentials with Shared Access Signature ( SAS ) tokens on Azure Storage with PowerShell](/archive/blogs/sqlcat/simplifying-creation-of-sql-credentials-with-shared-access-signature-sas-tokens-on-azure-storage-with-powershell). The SAS token can be stored in a **SQL Credential** for use with [!INCLUDE [ss-managed-backup](../../includes/ss-managed-backup-md.md)]. |

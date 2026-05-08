@@ -3,10 +3,10 @@ title: Manage the Database Engine Services
 description: Get acquainted with services that are available in SQL Server. See how to start SQL Server Configuration Manager, which you can use to manage various services.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/26/2025
+ms.date: 03/16/2026
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "SQL Server Configuration Manager, accessing"
   - "Database Engine [SQL Server], services"
@@ -41,25 +41,18 @@ When you start an instance of [!INCLUDE [ssDEnoversion](../../includes/ssdenover
 
 You can also use [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager to view the properties of the selected service. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager is a [!INCLUDE [msCoName](../../includes/msconame-md.md)] Management Console (MMC) snap-in. For more information about MMC and how a snap-in works, see Windows Help.
 
-On the **Start** menu, point to **All Programs**, point to [!INCLUDE [ssCurrentUI](../../includes/sscurrentui-md.md)], point to **Configuration Tools**, and then select **SQL Server Configuration Manager**.
-
-Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconame-md](../../includes/msconame-md.md)] Management Console program and not a stand-alone program, SQL Server Configuration Manager doesn't appear as an application in newer versions of Windows.
-
-| Operating system | Details |
-| --- | --- |
-| **Windows 10 and Windows 11** | To open SQL Server Configuration Manager, on the **Start Page**, type `SQLServerManager16.msc` (for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]). For other versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], replace `16` with the appropriate number. Selecting `SQLServerManager16.msc` opens the Configuration Manager. To pin the Configuration Manager to the Start Page or Task Bar, right-click `SQLServerManager16.msc`, and then select **Open file location**. In the Windows File Explorer, right-click `SQLServerManager16.msc`, and then select **Pin to Start** or **Pin to taskbar**. |
-| **Windows 8** | To open SQL Server Configuration Manager, in the **Search** charm, under **Apps**, type `SQLServerManager<version>.msc`, such as `SQLServerManager16.msc`, and then press **Enter**. |
+[!INCLUDE [open-sql-server-configuration-manager](../../includes/paragraph-content/open-sql-server-configuration-manager.md)]
 
 ## Manage services
 
-- [Broadcast a Shutdown Message (Command Prompt)](broadcast-a-shutdown-message-command-prompt.md)
+- [Broadcast a shutdown message from the command prompt](broadcast-a-shutdown-message-command-prompt.md)
 - [Change server authentication mode](change-server-authentication-mode.md)
 - [Configure file system permissions for Database Engine access](configure-file-system-permissions-for-database-engine-access.md)
 - [Configure Windows service accounts and permissions](configure-windows-service-accounts-and-permissions.md)
 - [Database Engine Service startup options](database-engine-service-startup-options.md)
 - [Sign in to an instance of SQL Server (Command Prompt)](log-in-to-an-instance-of-sql-server-command-prompt.md)
-- [Run SQL Server With or Without a Network](run-sql-server-with-or-without-a-network.md)
-- [Security Requirements for Managing Services](security-requirements-for-managing-services.md)
+- [Run SQL Server with or without a network](run-sql-server-with-or-without-a-network.md)
+- [Security requirements for managing services](security-requirements-for-managing-services.md)
 - [Single-user mode for SQL Server](start-sql-server-in-single-user-mode.md)
 - [SQL Server Browser service (Database Engine and SSAS)](sql-server-browser-service-database-engine-and-ssas.md)
 - [SQL Server Configuration Manager: Change the password of the accounts used](scm-services-change-the-password-of-the-accounts-used.md)

@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "08/31/2016"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # High Availability Support for In-Memory OLTP databases
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

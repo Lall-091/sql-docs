@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 03/26/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Using database metadata

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/27/2025
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: reference
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Supported data types for In-Memory OLTP

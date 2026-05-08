@@ -1,6 +1,21 @@
 {
   "redirections": [
     {
+      "source_path": "docs/relational-databases/search/full-text-index-version-1-binaries.md",
+      "redirect_url": "/sql/relational-databases/search/full-text-index-binaries",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/odbc/reference/introduction-to-odbc.md",
+      "redirect_url": "/sql/odbc/reference/odbc-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/sql-server/applies-to-includes.md",
+      "redirect_url": "/sql/sql-server/sql-server-docs-contribute",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/dma/dma-assess-sql-data-estate-to-sqldb-commandline.md",
       "redirect_url": "/previous-versions/sql/dma/dma-assess-sql-data-estate-to-sqldb-commandline",
       "redirect_document_id": false,
@@ -20273,6 +20288,11 @@
     {
       "source_path": "docs/2014/database-engine/log-shipping/upgrading-log-shipping-to-sql-server-2016-transact-sql.md",
       "redirect_url": "/previous-versions/sql/2014/database-engine/log-shipping/upgrading-log-shipping-to-sql-server-2016-transact-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/database-engine/log-shipping/upgrading-log-shipping-to-sql-server-2016-transact-sql.md",
+      "redirect_url": "/sql/database-engine/log-shipping/upgrade-sql-server-log-shipping-transact-sql",
       "redirect_document_id": false
     },
     {
@@ -47766,6 +47786,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/tools/mssql-cli.md",
+      "redirect_url": "/sql/tools/sqlcmd/sqlcmd-utility",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/2014/tools/profiler-utility.md",
       "redirect_url": "/previous-versions/sql/2014/tools/profiler-utility",
       "redirect_document_id": false
@@ -50027,7 +50052,7 @@
     },
     {
       "source_path": "docs/azdata/install/deploy-install-azdata-pip.md",
-      "redirect_url": "/sql/azdata/install/deploy-install-azdata-installer",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-installer",
       "redirect_document_id": false
     },
     {
@@ -50312,7 +50337,7 @@
     },
     {
       "source_path": "docs/relational-databases/polybase/get-started-with-polybase.md",
-      "redirect_url": "/sql/relational-databases/polybase/polybase-guide",
+      "redirect_url": "/sql/relational-databases/polybase/overview",
       "redirect_document_id": false
     },
     {
@@ -50804,6 +50829,106 @@
       "source_path": "docs/advanced-analytics/concepts/security.md",
       "redirect_url": "/sql/machine-learning/concepts/security",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/machine-learning/data-exploration/python-dataframe-pandas.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/data-exploration/python-dataframe-sql-server.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/data-exploration/python-plot-histogram.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-clustering-model.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-clustering-model-build.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-clustering-model-deploy.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-clustering-model-prepare-data.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-ski-rental-linear-regression.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/python-ski-rental-linear-regression-train-model.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-clustering-model-build.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-clustering-model-deploy.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-clustering-model-introduction.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-clustering-model-prepare-data.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-predictive-model-deploy.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-predictive-model-introduction.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-predictive-model-prepare-data.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/tutorials/r-predictive-model-train.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/package-management/install-additional-python-packages-on-sql-server.md",
+      "redirect_url": "/sql/machine-learning/concepts/extension-python",
+      "redirect_document_id": false
     },
     {
       "source_path": "docs/advanced-analytics/connect/loopback-connection.md",
@@ -51634,6 +51759,11 @@
       "source_path": "docs/lp/sql-server/load-move-data.md",
       "redirect_url": "/sql/sql-server/migrate/",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/sql-server/migrate/dma-azure-migrate-compare-migration-tools.md",
+      "redirect_url": "/sql/sql-server/migrate/compare-sql-migration-tools",
+      "redirect_document_id": false
     },
     {
       "source_path": "docs/2014/2014-toc/books-online-for-sql-server-2014.md",
@@ -53807,17 +53937,17 @@
     },
     {
       "source_path": "docs/connect/odbc/connecting-with-bcp.md",
-      "redirect_url": "/sql/tools/bcp-utility",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/connect/odbc/linux/connecting-with-bcp.md",
-      "redirect_url": "/sql/tools/bcp-utility",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/connect/odbc/linux-mac/connecting-with-bcp.md",
-      "redirect_url": "/sql/tools/bcp-utility",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
       "redirect_document_id": false
     },
     {
@@ -64381,6 +64511,26 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/ssma/access/find-databases-wizard-select-locations-accesstosql.md",
+      "redirect_url": "/sql/ssma/access/find-databases-wizard-accesstosql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/find-databases-wizard-select-files-accesstosql.md",
+      "redirect_url": "/sql/ssma/access/find-databases-wizard-accesstosql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/find-databases-wizard-verify-selection-accesstosql.md",
+      "redirect_url": "/sql/ssma/access/find-databases-wizard-accesstosql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/shortcut-keys-accesstosql.md",
+      "redirect_url": "/sql/ssma/access/menu-commands-and-other-shortcut-keys-accesstosql",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/ssma/db2/legal-notice-db2tosql.md",
       "redirect_url": "/sql/ssma/sql-server-migration-assistant",
       "redirect_document_id": false
@@ -64473,6 +64623,376 @@
     {
       "source_path": "docs/database-engine/install-windows/prepare-for-upgrade-by-running-data-migration-assistant.md",
       "redirect_url": "/sql/ssma/sql-server-migration-assistant",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/advanced-object-selection-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/advanced-object-selection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/connect-to-sql-server-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/connect-to-sql-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/data-migration-report-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/data-migration-report",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/edit-type-mapping-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/edit-type-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/global-settings-dialogs-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-dialogs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/global-settings-editor-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-editor",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/global-settings-logging-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-logging",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/global-settings-output-window-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-output-window",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/menu-commands-and-other-shortcut-keys-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/menu-commands-and-other-shortcut-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/new-project-ssma-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/new-project",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/project-settings-gui-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/project-settings-gui",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/refresh-from-database-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/refresh-from-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/access/save-metadata-accesstosql.md",
+      "redirect_url": "/sql/ssma/shared/save-metadata",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/advanced-object-selection-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/advanced-object-selection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/assessment-report-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/assessment-report",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/connect-to-sql-server-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/connect-to-sql-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/data-migration-report-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/data-migration-report",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/data-migration-settings-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/data-migration-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/edit-type-mapping-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/edit-type-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/global-settings-dialogs-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-dialogs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/global-settings-editor-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-editor",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/global-settings-logging-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-logging",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/global-settings-output-window-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-output-window",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/menu-commands-and-other-shortcut-keys-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/menu-commands-and-other-shortcut-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/new-project-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/new-project",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/project-settings-gui-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/project-settings-gui",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/project-settings-synchronization-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/project-settings-synchronization",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/refresh-from-database-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/refresh-from-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/db2/save-metadata-db2tosql.md",
+      "redirect_url": "/sql/ssma/shared/save-metadata",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/advanced-object-selection-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/advanced-object-selection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/assessment-report-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/assessment-report",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/connect-to-sql-server-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/connect-to-sql-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/data-migration-report-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/data-migration-report",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/data-migration-settings-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/data-migration-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/edit-type-mapping-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/edit-type-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/global-settings-dialogs-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-dialogs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/global-settings-editor-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-editor",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/global-settings-logging-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-logging",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/global-settings-output-window-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-output-window",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/menu-commands-and-other-shortcut-keys-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/menu-commands-and-other-shortcut-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/new-project-ssma-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/new-project",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/project-settings-gui-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/project-settings-gui",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/project-settings-synchronization-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/project-settings-synchronization",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/refresh-from-database-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/refresh-from-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/mysql/save-metadata-mysqltosql.md",
+      "redirect_url": "/sql/ssma/shared/save-metadata",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/advanced-object-selection-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/advanced-object-selection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/assessment-report-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/assessment-report",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/connect-to-sql-server-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/connect-to-sql-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/data-migration-report-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/data-migration-report",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/data-migration-settings-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/data-migration-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/edit-type-mapping-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/edit-type-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/global-settings-dialogs-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-dialogs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/global-settings-editor-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-editor",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/global-settings-logging-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-logging",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/global-settings-output-window-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-output-window",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/menu-commands-and-other-shortcut-keys-oracle-to-sql.md",
+      "redirect_url": "/sql/ssma/shared/menu-commands-and-other-shortcut-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/new-project-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/new-project",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/project-settings-gui-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/project-settings-gui",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/project-settings-synchronization-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/project-settings-synchronization",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/refresh-from-database-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/refresh-from-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/oracle/save-metadata-oracletosql.md",
+      "redirect_url": "/sql/ssma/shared/save-metadata",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/advanced-object-selection-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/advanced-object-selection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/connect-to-sql-server-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/connect-to-sql-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/data-migration-report-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/data-migration-report",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/data-migration-settings-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/data-migration-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/edit-type-mapping-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/edit-type-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/global-settings-dialogs-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-dialogs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/global-settings-editor-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-editor",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/global-settings-logging-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-logging",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/global-settings-output-window-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/global-settings-output-window",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/menu-commands-and-other-shortcut-keys-sybase-to-sql.md",
+      "redirect_url": "/sql/ssma/shared/menu-commands-and-other-shortcut-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/new-project-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/new-project",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/project-settings-gui-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/project-settings-gui",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssma/sybase/save-metadata-sybasetosql.md",
+      "redirect_url": "/sql/ssma/shared/save-metadata",
       "redirect_document_id": false
     },
     {
@@ -66227,7 +66747,7 @@
     },
     {
       "source_path": "docs/relational-databases/polybase/index.md",
-      "redirect_url": "/sql/relational-databases/polybase/polybase-guide",
+      "redirect_url": "/sql/relational-databases/polybase/overview",
       "redirect_document_id": false
     },
     {
@@ -66652,7 +67172,7 @@
     },
     {
       "source_path": "docs/reporting-services/report-builder/index.md",
-      "redirect_url": "/sql/reporting-services/report-builder/report-builder-in-sql-server-2016",
+      "redirect_url": "/sql/reporting-services/report-builder/report-builder-in-sql-server",
       "redirect_document_id": false
     },
     {
@@ -67111,6 +67631,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "docs/tools/bcp-utility.md",
+      "redirect_url": "/sql/tools/bcp/bcp-utility",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "docs/ssms/scripting/edit-sqlcmd-scripts-with-query-editor.md",
       "redirect_url": "/sql/tools/sqlcmd/edit-sqlcmd-scripts-query-editor",
       "redirect_document_id": true
@@ -67183,6 +67708,11 @@
     {
       "source_path": "docs/linux/sql-server-linux-availability-group-cluster-ubuntu.md",
       "redirect_url": "/sql/linux/sql-server-linux-availability-group-cluster-pacemaker",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/linux/sql-server-linux-availability-group-configure-ha.md",
+      "redirect_url": "/sql/linux/high-availability/availability-groups-configure",
       "redirect_document_id": false
     },
     {
@@ -67288,6 +67818,11 @@
     {
       "source_path": "docs/linux/tutorial-sql-server-dh2i-sidecar.md",
       "redirect_url": "/sql/linux/tutorial-sql-server-containers-kubernetes-dh2i",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/linux/sql-server-linux-whats-new.md",
+      "redirect_url": "/sql/linux/sql-server-linux-whats-new-2017",
       "redirect_document_id": false
     },
     {
@@ -67561,6 +68096,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-sql/database/design-first-database-azure-data-studio.md",
+      "redirect_url": "/azure/azure-sql/database/design-first-database-visual-studio-code",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/relational-databases/resource-governor/create-and-test-a-classifier-user-defined-function.md",
       "redirect_url": "/sql/relational-databases/resource-governor/resource-governor-walkthrough",
       "redirect_document_id": false
@@ -67698,6 +68238,411 @@
       "source_path": "docs/connect/python/pymssql/python-sql-driver-pymssql-quickstart.md",
       "redirect_url": "/sql/connect/python/mssql-python/python-sql-driver-mssql-python-quickstart",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/analytics-platform-system/tsql-language-elements.md",
+      "redirect_url": "/sql/analytics-platform-system/home-analytics-platform-system-aps-pdw?view=aps-pdw-2016-au7&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/analytics-platform-system/tsql-statements.md",
+      "redirect_url": "/sql/analytics-platform-system/home-analytics-platform-system-aps-pdw?view=aps-pdw-2016-au7&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/analytics-platform-system/tsql-system-views.md",
+      "redirect_url": "/sql/analytics-platform-system/home-analytics-platform-system-aps-pdw?view=aps-pdw-2016-au7&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/analytics-platform-system/appliance-management-tasks.md",
+      "redirect_url": "/sql/analytics-platform-system/parallel-data-warehouse-overview?view=aps-pdw-2016-au7&preserve-view=true#management-tasks",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/t-sql/functions/string-functions-transact-sql.md",
+      "redirect_url": "/sql/t-sql/functions/functions#string-functions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/t-sql/functions/configuration-functions-transact-sql.md",
+      "redirect_url": "/sql/t-sql/functions/functions#configuration-functions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/connect/jdbc/programming-guide-for-jdbc-sql-driver.md",
+      "redirect_url": "/sql/connect/jdbc/connecting-to-sql-server-with-the-jdbc-driver",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/change-data-capture-service-for-oracle-by-attunity-f1-help.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/connection-to-sql-server.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#connection-to-sql-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/connection-to-sql-server-for-delete.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#connection-to-sql-server-for-delete",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/create-and-edit-an-oracle-cdc-service.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#create-and-edit-an-oracle-cdc-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/manage-an-oracle-cdc-service.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#manage-an-oracle-cdc-service",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/prepare-sql-server-for-cdc.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#prepare-sql-server-for-cdc",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/prepare-sql-server-for-oracle-cdc-view-script.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#prepare-sql-server-for-oracle-cdc-view-script",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/integration-services/change-data-capture/work-with-cdc-services.md",
+      "redirect_url": "/sql/integration-services/change-data-capture/the-oracle-cdc-service#work-with-cdc-services",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/report-server-in-management-studio-f1-help.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/cancel-report-server-jobs-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#cancel-report-server-jobs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/delete-catalog-items-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#delete-catalog-items",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/job-properties-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#job-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/new-shared-schedule-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#new-shared-schedule",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/new-system-role-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#new-system-role",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/new-user-role-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#new-user-role",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/schedule-properties-general-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#schedule-properties-general-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/schedule-properties-reports-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#schedule-properties-reports-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/report-server-properties-general-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-general-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-execution-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-execution-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-history-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-history-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-logging-page.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-logging-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-security-page-reporting-services.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-security-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/server-properties-advanced-page-reporting-services.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#server-properties-advanced-page",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/system-role-properties-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#system-role-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/tools/user-role-properties-management-studio.md",
+      "redirect_url": "/sql/reporting-services/tools/reporting-services-in-sql-server-management-studio-ssrs#user-role-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-installer.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-installer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-linux-package.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-linux-package",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-macos.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-macos",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-yum.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-yum",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-zypper.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata-zypper",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-install-azdata",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-app-template.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-app-template",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-app.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-app",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-app-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-app-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-app.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-app",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-config.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-config",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-control-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-control-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-control.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-debug.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-debug",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-endpoint.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-endpoint",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-gateway-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-gateway-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-gateway-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-gateway-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-gateway.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-gateway",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-encryption-zone.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-encryption-zone",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-key.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-key",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-mount.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-mount",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-hdfs.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-hdfs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-rotate.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-rotate",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-batch.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-batch",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-session.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-session",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-statement.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-statement",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-spark.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-spark",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-sql-settings.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-sql-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-sql-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-sql-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-sql.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-bdc.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-bdc",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-context.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-context",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-extension.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-extension",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-notebook.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-notebook",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-postgres.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-postgres",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata-sql.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/reference/reference-azdata.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-azdata",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/polybase/polybase-guide.md",
+      "redirect_url": "/sql/relational-databases/polybase/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/polybase/data-virtualization-comprehensive-guide.md",
+      "redirect_url": "/sql/relational-databases/polybase/data-virtualization-guide",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/reporting-services/report-builder/report-builder-in-sql-server-2016.md",
+      "redirect_url": "/sql/reporting-services/report-builder/report-builder-in-sql-server",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/database-engine/availability-groups/windows/cluster-dtc-for-sql-server-2016-availability-groups.md",
+      "redirect_url": "/sql/database-engine/availability-groups/windows/cluster-dtc-for-sql-server-availability-groups",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md",
+      "redirect_url": "/sql/reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/sql-server/tutorials-for-sql-server-2016.md",
+      "redirect_url": "/sql/sql-server/tutorials-for-sql-server",
+      "redirect_document_id": true
     }
   ]
 }

@@ -3,7 +3,7 @@ title: "Editions and Supported Features of SQL Server 2022 - Linux"
 description: This article describes editions, features, and components supported by the various editions of SQL Server 2022 on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: amitkh, vanto
+ms.reviewer: amitkh, atsingh
 ms.date: 11/27/2025
 ms.service: sql
 ms.subservice: linux
@@ -215,7 +215,7 @@ For info about the Integration Services (SSIS) features supported by the edition
 | Advanced spatial libraries | Yes | Yes | Yes | Yes |
 | Import/export of industry-standard spatial data formats | Yes | Yes | Yes | Yes |
 
-## Configure memory limits with control group (cgroup) v2
+## Control group (cgroup) v2 support
 
 [!INCLUDE [cgroup-support](includes/cgroup-support.md)]
 
@@ -240,7 +240,7 @@ The following features and services aren't available for [!INCLUDE [sssql22](../
 | **High Availability** | Database mirroring | This feature is [deprecated](../database-engine/database-mirroring/database-mirroring-sql-server.md). Use Always On availability groups instead. |
 | **Security** | Extensible Key Management (EKM) | Extensible Key Management using Azure Key Vault is available for SQL Server on Linux environments, starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 12. Follow the instructions from [Step 5: Configure SQL Server](../relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault.md#step-5-configure-sql-server) onward. |
 | | Windows integrated authentication for linked servers | |
-| | Windows integrated authentication for availability group (AG) endpoints | Create and use certificate based endpoint authentication for availability groups. For more information, see [Configure SQL Server availability group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md). |
+| | Windows integrated authentication for availability group (AG) endpoints | Create and use certificate based endpoint authentication for availability groups. For more information, see [Configure SQL Server availability group for high availability on Linux](high-availability/availability-groups-configure.md). |
 | | Always Encrypted with secure enclaves | |
 | | TLS 1.3 | |
 | | SQL Server on Linux deployments aren't FIPS compliant | |

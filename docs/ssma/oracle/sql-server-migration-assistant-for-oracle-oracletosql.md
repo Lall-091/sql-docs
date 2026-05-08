@@ -1,13 +1,13 @@
 ---
-title: "SQL Server Migration Assistant for Oracle (OracleToSQL)"
-description: Learn about SSMA for Oracle and follow step-by-step instructions for migrating Oracle databases to SQL Server.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 11/19/2024
+title: SQL Server Migration Assistant for Oracle (OracleToSQL)
+description: Learn about SSMA for Oracle and follow step-by-step instructions for migrating Oracle databases to SQL Server and Azure SQL.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 04/20/2026
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - sql-migration-content
 f1_keywords:
@@ -15,7 +15,7 @@ f1_keywords:
 ---
 # SQL Server Migration Assistant for Oracle (OracleToSQL)
 
-SQL Server Migration Assistant (SSMA) for Oracle is a tool for migrating Oracle databases to [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] through [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] on Windows and Linux, or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. SSMA for Oracle converts Oracle database objects to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL objects, loads those objects into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL, and then migrates data from Oracle to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL.
+SQL Server Migration Assistant (SSMA) for Oracle is a tool for migrating Oracle databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and Azure SQL. [!INCLUDE [ssma-target-description](../includes/ssma-target-description.md)]
 
 This documentation introduces you to SSMA for Oracle and provides step-by-step instructions for migrating Oracle databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. The following table shows articles to help you learn more:
 

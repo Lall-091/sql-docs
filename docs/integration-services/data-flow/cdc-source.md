@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 02/22/2023
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.ssis.designer.cdcsource.f1"
   - "sql13.ssis.designer.cdcsource.connection.f1"

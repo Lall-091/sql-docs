@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 07/14/2020
 ms.service: sql
 ms.subservice: machine-learning-services
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15"
 ---
 # Python language extension in SQL Server Machine Learning Services
@@ -99,4 +99,3 @@ The following diagram summarizes the overall workflow when scripts are sent from
 + [Extensibility framework in SQL Server](extensibility-framework.md)
 + [R and machine learning extensions in SQL Server](extension-r.md)
 + [Get Python package information](../package-management/python-package-information.md)
-+ [Install Python packages with sqlmlutils](../package-management/install-additional-python-packages-on-sql-server.md)

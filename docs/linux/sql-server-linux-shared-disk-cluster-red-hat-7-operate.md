@@ -3,8 +3,7 @@ title: Operate RHEL FCI for SQL Server on Linux
 description: Learn how to operate a Red Hat Enterprise Linux (RHEL) shared disk failover cluster instance (FCI) for SQL Server for high availability, such as manually failover the FCI, and add or remove nodes to the cluster.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -97,13 +96,13 @@ View the resource agent logs at `/var/log/cluster/corosync.log`
 
 1. Follow the instructions to mount the database file directory to the shared location:
 
-   From the NFS server, install `nfs-utils`
+   From the NFS server, install `nfs-utils`:
 
    ```bash
    sudo yum -y install nfs-utils
    ```
 
-   Open up the firewall on clients and NFS server
+   Open up the firewall on clients and NFS server:
 
    ```bash
    sudo firewall-cmd --permanent --add-service=nfs

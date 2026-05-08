@@ -25,7 +25,7 @@ This tutorial teaches you how to get started with [Always Encrypted with secure 
 
 ## Prerequisites
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount). You need to be a member of the Contributor role or the Owner role for the subscription to be able to create resources and configure an attestation policy.
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). You need to be a member of the Contributor role or the Owner role for the subscription to be able to create resources and configure an attestation policy.
 - Optional, but recommended for storing your column master key for Always Encrypted: a key vault in Azure Key Vault. For information on how to create a key vault, see [Quickstart: Create a key vault using the Azure portal](/azure/key-vault/general/quick-create-portal). 
   - If your key vault uses the access policy permissions model, make sure you have the following key permissions in the key vault: `get`, `list`, `create`, `unwrap key`, `wrap key`, `verify`, `sign`. For more information, see [Assign a Key Vault access policy](/azure/key-vault/general/assign-access-policy).
   - If you're using the Azure role-based access control (RBAC) permission model, make you sure you're a member of the [Key Vault Crypto Officer](/azure/role-based-access-control/built-in-roles#key-vault-crypto-officer) role for your key vault. See [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-migration).
@@ -49,10 +49,10 @@ In this step, you'll create a new Azure SQL Database logical server and a new da
 # [Portal](#tab/azure-portal)
 
 1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/always-encrypted-enclaves-getting-started-sgx/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/always-encrypted-enclaves-getting-started-sgx/show-options-create-sql-database.png":::
+   :::image type="content" source="media/always-encrypted-enclaves-getting-started-sgx/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/always-encrypted-enclaves-getting-started-sgx/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 1. For **Resource group**, select **Create new**, enter a name for your resource group, and select **OK**.

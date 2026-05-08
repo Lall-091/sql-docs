@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "08/31/2016"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "SQL Server Integration Services packages, about packages"
   - "packages [Integration Services], about packages"

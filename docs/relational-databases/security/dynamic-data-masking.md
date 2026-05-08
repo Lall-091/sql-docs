@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 06/30/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
@@ -139,6 +139,14 @@ It's important to properly manage the permissions on the database, and to always
 ## Granular permissions introduced in SQL Server 2022
 
 Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], you can prevent unauthorized access to sensitive data and gain control by masking it to an unauthorized user at different levels of the database. You can grant or revoke **UNMASK** permission at the database-level, schema-level, table-level or at the column-level to a user, database role, Microsoft Entra identity, or Microsoft Entra group. This enhancement provides a more granular way to control and limit unauthorized access to data stored in the database and improve data security management.
+
+## Dynamic data masking in Fabric SQL database
+
+Dynamic data masking is supported in SQL database in Microsoft Fabric. DDM functionality in Fabric SQL database is consistent with Azure SQL Database.
+
+The `EXECUTE AS USER` clause isn't supported in Fabric SQL database. To test masking behavior, connect as a different user who doesn't have the **UNMASK** permission, and verify that the masked data returns as expected.
+
+You can only configure dynamic data masking in Fabric SQL database through [!INCLUDE [tsql](../../includes/tsql-md.md)]. Define masking functions explicitly on table columns using [!INCLUDE [tsql](../../includes/tsql-md.md)] statements.
 
 ## Examples
 

@@ -7,7 +7,7 @@ ms.reviewer: mathoma, davidph
 ms.date: 03/17/2021
 ms.service: azure-sql-managed-instance
 ms.subservice: machine-learning
-ms.topic: conceptual
+ms.topic: overview
 ---
 
 # Machine Learning Services in Azure SQL Managed Instance

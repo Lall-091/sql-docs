@@ -3,7 +3,7 @@ title: "sys.dm_hadr_cluster_members (Transact-SQL)"
 description: Returns a row for each of the members that constitute the WSFC quorum, and the state of each of them.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/17/2023
+ms.date: 04/13/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -15,6 +15,7 @@ f1_keywords:
   - "dm_hadr_cluster_members_TSQL"
   - "dm_hadr_cluster_members"
 helpviewer_keywords:
+  - "sys.dm_hadr_cluster_members dynamic management view"
   - "Availability Groups [SQL Server], monitoring"
   - "Availability Groups [SQL Server], WSFC clusters"
   - "sys.dm_hadr_cluster_members catalog view"
@@ -22,13 +23,14 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
+
 # sys.dm_hadr_cluster_members (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
-If the WSFC node that hosts a local instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] that is enabled for [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] has WSFC quorum, returns a row for each of the members that constitute the quorum and the state of each of them. This includes of all nodes in the cluster (returned with `CLUSTER_ENUM_NODE` type by the `Clusterenum` function) and the disk or file-share witness, if any. The row returned for a given member contains information about the state of that member. For example, for a five node cluster with majority node quorum in which one node is down, when `sys.dm_hadr_cluster_members` is queried from a server instance that is enabled for [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] that resides on a node with quorum, `sys.dm_hadr_cluster_members` reflects the state of the down node as `NODE_DOWN`.
+If the Windows Server failover cluster (WSFC) node hosts a local instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] that is enabled for [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] and has WSFC quorum, the view returns a row for each member that constitutes the quorum, and the state of that member. This set includes all nodes in the cluster (returned with `CLUSTER_ENUM_NODE` type by the `Clusterenum` function) and the disk or file-share witness, if any. The row returned for a given member contains information about the state of that member. For example, for a five node cluster with majority node quorum in which one node is down, when you query `sys.dm_hadr_cluster_members` from a server instance that is enabled for [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] that resides on a node with quorum, `sys.dm_hadr_cluster_members` reflects the state of the down node as `NODE_DOWN`.
 
-If the WSFC node has no quorum, no rows are returned.
+If the WSFC node has no quorum, the view returns no rows.
 
 Use this dynamic management view to answer the following questions:
 
@@ -39,14 +41,15 @@ Use this dynamic management view to answer the following questions:
 > [!TIP]  
 > Beginning in [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)], this dynamic management view supports Always On failover cluster instances (FCIs) in addition to availability groups (AGs).
 
-| Column name | Data type | Description |
-| --- | --- | --- |
-| `member_name` | **nvarchar(128)** | Member name, which can be a computer name, a drive letter, or a file share path. |
-| `member_type` | **tinyint** | The type of member, one of:<br /><br />0 = WSFC node<br /><br />1 = Disk witness<br />2 = File share witness<br />3 = Cloud Witness |
-| `member_type_desc` | **nvarchar(50)** | Description of `member_type`, one of:<br /><br />CLUSTER_NODE<br />DISK_WITNESS<br />FILE_SHARE_WITNESS<br />CLOUD_WITNESS |
-| `member_state` | **tinyint** | The member state, one of:<br /><br />0 = Offline<br />1 = Online |
-| `member_state_desc` | **nvarchar(60)** | Description of `member_state`, one of:<br /><br />UP<br />DOWN |
-| `number_of_quorum_votes` | **tinyint** | Number of quorum votes possessed by this quorum member. For No Majority: Disk Only quorums, this value defaults to 0. For other quorum types, this value defaults to 1. |
+| Column name | Data type | Nullable | Description |
+| --- | --- | --- | --- |
+| `member_name` | **nvarchar(256)** | No | Member name, which can be a computer name, a drive letter, or a file share path. |
+| `member_type` | **tinyint** | No | The type of member, one of:<br /><br />`0` = WSFC node<br />`1` = Disk witness<br />`2` = File share witness<br />`3` = Cloud witness |
+| `member_type_desc` | **nvarchar(60)** | No | Description of `member_type`, one of:<br /><br />`CLUSTER_NODE`<br />`DISK_WITNESS`<br />`FILE_SHARE_WITNESS`<br />`CLOUD_WITNESS` |
+| `member_state` | **tinyint** | No | The member state, one of:<br /><br />`0` = Offline<br />`1` = Online |
+| `member_state_desc` | **nvarchar(60)** | No | Description of `member_state`, one of:<br /><br />`UP`<br />`DOWN` |
+| `number_of_quorum_votes` | **int** | Yes | Number of quorum votes that you can assign to this quorum member. For **No Majority: Disk Only** quorums, this value defaults to `0`. For other quorum types, this value defaults to `1`. |
+| `number_of_current_votes` | **int** | Yes | Number of quorum votes currently assigned to this quorum member. This value is dynamic and reflects the actual quorum value assigned by dynamic quorum and dynamic witness. |
 
 ## Remarks
 
@@ -54,9 +57,9 @@ Use this dynamic management view to answer the following questions:
 
 ## Permissions
 
-For [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and previous versions, requires VIEW SERVER STATE permission on the server.
+For [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and earlier versions, you need `VIEW SERVER STATE` permission on the server.
 
-For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, requires VIEW SERVER PERFORMANCE STATE permission on the server.
+For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, you need `VIEW SERVER PERFORMANCE STATE` permission on the server.
 
 ## Related content
 

@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 05/15/2025
+ms.date: 03/12/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -397,6 +397,8 @@ ms.topic: include
 | 2817 | 16 | No | '%.\*ls' is not supported on the '%.\*ls' platform. |
 | 2818 | 16 | No | The stored procedure '%.\*ls' cannot be run since this server has not been enabled for external governance. |
 | 2819 | 16 | No | Plan Cache Hydration application login failed because feature switch PlanCacheHydrationReplay is not enabled on this server |
+| 2820 | 16 | No | The feature '%.\*ls' is not enabled on this SQL Server instance. |
+| 2821 | 16 | No | Failed to reload configuration for '%.\*ls'. %.\*ls |
 | 2950 | 16 | No | The operation encountered an integer overflow exception. |
 | 2951 | 16 | No | The operation encountered a bad format exception. |
 | 2952 | 16 | No | The operation encountered a bad array length exception. |

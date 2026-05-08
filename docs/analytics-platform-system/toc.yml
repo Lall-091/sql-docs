@@ -129,7 +129,6 @@
   - name: Configure domain trusts
     href: ./configure-domain-trusts.md
 - name: Appliance management tasks
-  href: ./appliance-management-tasks.md
   items:
   - name: Appliance installation and configuration overview
     href: ./appliance-installation-and-configuration-overview.md
@@ -233,11 +232,3 @@
       href: ./determine-which-cluster-node-failed.md
     - name: Understanding Admin Console alerts
       href: ./understanding-admin-console-alerts.md
-- name: Reference
-  items:
-  - name: T-SQL language elements
-    href: ./tsql-language-elements.md
-  - name: T-SQL statements
-    href: ./tsql-statements.md
-  - name: T-SQL system views
-    href: ./tsql-system-views.md

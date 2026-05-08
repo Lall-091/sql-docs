@@ -23,7 +23,7 @@ The SQL Server VM Bicep file requires the following:
 
 - The latest version of the [Azure CLI](/cli/azure/install-azure-cli) and/or [PowerShell](/powershell/scripting/install/installing-powershell).
 - A pre-configured [resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) with a prepared [virtual network](/azure/virtual-network/quick-create-portal) and [subnet](/azure/virtual-network/virtual-network-manage-subnet#add-a-subnet).
-- An Azure subscription. If you don't have one, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F) before you begin.
+- An Azure subscription. If you don't have one, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Review the Bicep file
 

@@ -1,8 +1,8 @@
 ---
 title: "Manage Certificates for SQL Server Integration Services Scale Out"
 description: This article describes how to manage certificates to secure communications between SSIS Scale Out Master and Scale Out Workers.
-author: haoqian
-ms.author: haoqian
+author: chugugrace
+ms.author: chugu
 ms.reviewer: randolphwest
 ms.date: 01/23/2025
 ms.service: sql
@@ -86,7 +86,7 @@ For example:
 
 ```cmd
 netsh http delete sslcert ipport=0.0.0.0:8391
-netsh http add sslcert ipport=0.0.0.0:8391 certhash=0011001100110011001100110011001100110011 certstorename=Root appid=<00001111-aaaa-2222-bbbb-3333cccc4444>
+netsh http add sslcert ipport=0.0.0.0:8391 certhash=AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00 certstorename=Root appid=<00001111-aaaa-2222-bbbb-3333cccc4444>
 ```
 
 #### 3. Update the Scale Out Master service configuration file

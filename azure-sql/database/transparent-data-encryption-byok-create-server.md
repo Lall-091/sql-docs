@@ -5,7 +5,7 @@ description: Learn how to configure user-assigned managed identity and customer-
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 08/25/2025
+ms.date: 03/10/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -35,11 +35,11 @@ This how-to guide outlines the steps to create an [Azure SQL Database logical se
 
 # [Portal](#tab/azure-portal)
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+1. In the resource menu, expand **Azure SQL Database** and select **SQL databases**.
+1. Select the **+ Create** dropdown button and select **SQL database**.
 
-   :::image type="content" source="media/transparent-data-encryption-byok-create-server/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/transparent-data-encryption-byok-create-server/show-options-create-sql-database.png":::
+   :::image type="content" source="media/transparent-data-encryption-byok-create-server/create-sql-database.png" alt-text="Screenshot from the Azure portal showing the SQL databases page, the Create button, and the SQL database option." lightbox="media/transparent-data-encryption-byok-create-server/create-sql-database.png":::
 
 1. On the **Basics** tab of the **Create SQL Database** form, under **Project details**, select the desired Azure **Subscription**.
 
@@ -53,6 +53,8 @@ This how-to guide outlines the steps to create an [Azure SQL Database logical se
     - **Server admin login**: Enter an admin login name, for example: `azureuser`.
     - **Password**: Enter a password that meets the password requirements, and enter it again in the **Confirm password** field.
     - **Location**: Select a location from the dropdown list
+
+   [!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 1. Select **Next: Networking** to move to the next step.
 
@@ -83,6 +85,24 @@ This how-to guide outlines the steps to create an [Azure SQL Database logical se
 1. On the **Security** tab, under **Transparent Data Encryption Key Management**, you have the option to configure transparent data encryption for the server or database.
     - For **Server level key**: Select **Configure transparent data encryption**. Select **Customer-Managed Key**, and an option to select **Select a key** will appear. Select **Change key**. Select the desired **Subscription**, **Key vault**, **Key**, and **Version** for the customer-managed key to be used for TDE. Select the **Select** button.
 
+        > [!TIP]
+        > **Using versioned and versionless Azure Key Vault keys for TDE**
+        >
+        > When you set the TDE protector, you can reference an Azure Key Vault key using either a specific key version or a versionless key identifier.
+        >
+        > In both cases, Azure SQL Database always resolves and uses the latest enabled version of the key in Azure Key Vault or Azure Key Vault Managed HSM. Use versionless key identifiers to avoid embedding a specific key version in the TDE protector configuration.
+        >
+        > Versionless key identifiers are currently supported only for Azure SQL Database.
+        >
+        > Examples:
+        > - Key identifier that includes a specific version
+        > 
+        >     `https://<key-vault-name>.vault.azure.net/keys/<key-name>/<key-version>`
+        > 
+        > - Versionless key identifier
+        >
+        >     `https://<key-vault-name>.vault.azure.net/keys/<key-name>`
+    
     :::image type="content" source="media/transparent-data-encryption-byok-create-server/configure-tde-for-server.png" alt-text="Screenshot of configuring TDE for the server in Azure SQL.":::
 
     :::image type="content" source="media/transparent-data-encryption-byok-create-server/select-key-for-tde.png" alt-text="Screenshot selecting key for use with TDE.":::
@@ -103,9 +123,11 @@ This how-to guide outlines the steps to create an [Azure SQL Database logical se
 
 1. On the **Review + create** page, after reviewing, select **Create**.
 
-# [The Azure CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
 For information on installing the current release of Azure CLI, see [Install the Azure CLI](/cli/azure/install-azure-cli) article.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 Create a server configured with user-assigned managed identity and customer-managed TDE using the [az sql server create](/cli/azure/sql/server) command.
 
@@ -157,6 +179,8 @@ Replace the following values in the example:
 - `<PrimaryUserAssignedIdentityId>`: The user-assigned managed identity that should be used as the primary or default on this server
 - `<CustomerManagedKeyId>`: **Key Identifier** and can be [retrieved from the key in Azure Key Vault](/azure/key-vault/keys/quick-create-portal#retrieve-a-key-from-key-vault)
 
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
+
 To get your user-assigned managed identity **Resource ID**, search for **Managed Identities** in the [Azure portal](https://portal.azure.com). Find your managed identity, and go to **Properties**. An example of your UMI **Resource ID** looks like `/subscriptions/<subscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managedIdentity>`
 
 ```powershell
@@ -188,6 +212,8 @@ For more information and ARM templates, see [Azure Resource Manager templates fo
 Use a [Custom deployment in the Azure portal](https://portal.azure.com/#create/Microsoft.Template), and **Build your own template in the editor**. Next, **Save** the configuration once you pasted in the example.
 
 To get your user-assigned managed identity **Resource ID**, search for **Managed Identities** in the [Azure portal](https://portal.azure.com). Find your managed identity, and go to **Properties**. An example of your UMI **Resource ID** looks like `/subscriptions/<subscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<managedIdentity>`.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 ```json
 {

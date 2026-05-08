@@ -1,10 +1,10 @@
 ---
-title: "sp_helppublication (Transact-SQL)"
+title: "sys.sp_helppublication (Transact-SQL)"
 description: sp_helppublication returns information about a publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,19 +16,20 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helppublication (Transact-SQL)
+# sys.sp_helppublication (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-Returns information about a publication. For a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] publication, this stored procedure is executed at the Publisher on the publication database. For an Oracle publication, this stored procedure is executed at the Distributor on any database.
+Returns information about a publication. For a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] publication, execute this stored procedure at the Publisher on the publication database. For an Oracle publication, execute this stored procedure at the Distributor on any database.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
 ```syntaxsql
-sp_helppublication_snapshot
-    [ @publication = ] N'publication'
+sys.sp_helppublication
+    [ [ @publication = ] N'publication' ]
+    [ , [ @found = ] found OUTPUT ]
     [ , [ @publisher = ] N'publisher' ]
 [ ; ]
 ```
@@ -37,14 +38,18 @@ sp_helppublication_snapshot
 
 #### [ @publication = ] N'*publication*'
 
-The name of the publication to be viewed. *@publication* is **sysname**, with a default of `%`, which returns information about all publications.
+The name of the publication to view. *@publication* is **sysname**, with a default of `%`, which returns information about all publications.
+
+#### [ @found = ] *found* OUTPUT
+
+*@found* is an OUTPUT parameter of type **int**. A value of `0` means that no publication matching the input criteria was found.
 
 #### [ @publisher = ] N'*publisher*'
 
 Specifies a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] publisher. *@publisher* is **sysname**, with a default of `NULL`.
 
 > [!NOTE]  
-> *publisher* shouldn't be specified when requesting publication information from a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher.
+> Don't specify *@publisher* when you request publication information from a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher.
 
 ## Result set
 
@@ -71,11 +76,11 @@ Specifies a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] publi
 | `retention` | **int** | Amount of change, in hours, to save for the given publication. |
 | `has subscription` | **bit** | Specifies whether the publication has an active subscription. `1` means that the publication has active subscriptions, and `0` means that the publication has no subscriptions. |
 | `allow_queued_tran` | **bit** | Specifies whether disables queuing of changes at the Subscriber until they can be applied at the Publisher is enabled. If `0`, changes at the Subscriber aren't queued. |
-| `snapshot_in_defaultfolder` | **bit** | Specifies whether snapshot files are stored in the default folder. If `0`, snapshot files are stored in the alternate location specified by *alternate_snapshot_folder*. If `1`, snapshot files can be found in the default folder. |
+| `snapshot_in_defaultfolder` | **bit** | Specifies whether snapshot files are stored in the default folder. If `0`, snapshot files are stored in the alternate location specified by `alt_snapshot_folder`. If `1`, snapshot files can be found in the default folder. |
 | `alt_snapshot_folder` | **nvarchar(255)** | Specifies the location of the alternate folder for the snapshot. |
 | `pre_snapshot_script` | **nvarchar(255)** | Specifies a pointer to an `.sql` file location. The Distribution Agent runs the pre-snapshot script before running any of the replicated object scripts when applying a snapshot at a Subscriber. |
 | `post_snapshot_script` | **nvarchar(255)** | Specifies a pointer to an `.sql` file location. The Distribution Agent will run the post-snapshot script after all the other replicated object scripts and data are applied during an initial synchronization. |
-| `compress_snapshot` | **bit** | Specifies that the snapshot that is written to the *alt_snapshot_folder* location is to be compressed into the [!INCLUDE [msCoName](../../includes/msconame-md.md)] CAB format. `0` specifies that the snapshot isn't compressed. |
+| `compress_snapshot` | **bit** | Specifies that the snapshot that is written to the `alt_snapshot_folder` location is to be compressed into the [!INCLUDE [msCoName](../../includes/msconame-md.md)] CAB format. `0` specifies that the snapshot isn't compressed. |
 | `ftp_address` | **sysname** | The network address of the FTP service for the Distributor. Specifies where publication snapshot files are located for the Distribution Agent or Merge Agent of a subscriber to pick up. |
 | `ftp_port` | **int** | The port number of the FTP service for the Distributor. |
 | `ftp_subdirectory` | **nvarchar(255)** | Specifies where the snapshot files are available for the Distribution Agent or Merge Agent of subscriber to pick up if the publication supports propagating snapshots using FTP. |
@@ -98,7 +103,7 @@ Specifies a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] publi
 | `p2p_continue_onconflict` | **int** | Specifies whether The Distribution Agent continues to process changes when a conflict is detected. A value of `1` means that the agent continues to process changes.<br /><br />**Caution:** We recommend that you use the default value of `0`. When this option is set to `1`, the Distribution Agent tries to converge data in the topology by applying the conflicting row from the node that's the highest originator ID. This method doesn't guarantee convergence. You should make sure that the topology is consistent after a conflict is detected. For more information, see "Handling Conflicts" in [Peer-to-Peer - Conflict Detection in Peer-to-Peer Replication](../replication/transactional/peer-to-peer-conflict-detection-in-peer-to-peer-replication.md). |
 | `allow_partition_switch` | **int** | Specifies whether `ALTER TABLE...SWITCH` statements can be executed against the published database. For more information, see [Replicate Partitioned Tables and Indexes](../replication/publish/replicate-partitioned-tables-and-indexes.md). |
 | `replicate_partition_switch` | **int** | Specifies whether `ALTER TABLE...SWITCH` statements that are executed against the published database should be replicated to Subscribers. This option is valid only if `allow_partition_switch` is set to `1`. |
-| `enabled_for_p2p_lastwriter_conflictdetection` | **int** | Specifies whether the Distribution Agent detects [Configure last writer conflict detection & resolution](../replication/transactional/peer-to-peer/configure-last-writer.md) conflicts for a publication that is enabled for peer-to-peer replication. A value of `1` means that last writer conflicts are detected.<br /><br />**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 13 and later versions. |
+| `enabled_for_p2p_lastwriter_conflictdetection` | **int** | Specifies whether the Distribution Agent detects [Configure last writer conflict detection & resolution](../replication/transactional/peer-to-peer/configure-last-writer.md) conflicts for a publication that is enabled for peer-to-peer replication. A value of `1` means that last writer conflicts are detected.<br /><br />**Applies to**: [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 13 and later versions. |
 
 ## Return code values
 
@@ -116,9 +121,9 @@ Specifies a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] publi
 
 ## Permissions
 
-Only members of the **sysadmin** fixed server role at the Publisher or members of the **db_owner** fixed database role on the publication database or users in the publication access list (PAL) can execute `sp_helppublication`.
+Only members of the **sysadmin** fixed server role at the Publisher, members of the **db_owner** fixed database role on the publication database, or users in the publication access list (PAL) can execute `sp_helppublication`.
 
-For a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher, only members of the **sysadmin** fixed server role at the Distributor or members of the **db_owner** fixed database role on the distribution database or users in the PAL can execute `sp_helppublication`.
+For a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher, only members of the **sysadmin** fixed server role at the Distributor, members of the **db_owner** fixed database role on the distribution database, or users in the PAL can execute `sp_helppublication`.
 
 ## Related content
 

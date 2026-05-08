@@ -25,7 +25,7 @@ Once the edition of SQL Server has been changed internally to the SQL Server VM,
 
 To do an in-place change of the edition of SQL Server, you need the following:
 
-- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A [SQL Server VM on Windows](create-sql-vm-portal.md) registered with the [SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md).
 - Setup media with the **desired edition** of SQL Server. Customers who have [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) can obtain their installation media from the [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Customers who don't have Software Assurance can deploy an Azure Marketplace SQL Server VM image with the desired edition of SQL Server, and then copy the setup media (typically located in `C:\SQLServerFull`) from it to their target SQL Server VM.
 

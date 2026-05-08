@@ -101,5 +101,4 @@ aijklmnef
 - [STRING_ESCAPE (Transact-SQL)](../../t-sql/functions/string-escape-transact-sql.md)
 - [TRANSLATE (Transact-SQL)](../../t-sql/functions/translate-transact-sql.md)
 - [Data Types (Transact-SQL)](../../t-sql/data-types/data-types-transact-sql.md)
-- [String Functions (Transact-SQL)](../../t-sql/functions/string-functions-transact-sql.md)
 

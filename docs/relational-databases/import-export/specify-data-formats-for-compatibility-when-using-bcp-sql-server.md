@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 04/11/2023
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "bulk exporting [SQL Server], compatibility"
   - "bulk importing [SQL Server], compatibility"

@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot helps developers build globally aware appl
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -97,7 +97,7 @@ In Django ORM, design models that support product localization and write a query
 
 ## Share your experience
 
-[!INCLUDE [feedback](../includes/feedback.md)]
+[!INCLUDE [copilot-feedback](../includes/copilot-feedback.md)]
 
 ## Related content
 

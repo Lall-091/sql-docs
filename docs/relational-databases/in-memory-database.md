@@ -6,7 +6,7 @@ ms.author: dpless
 ms.date: 10/30/2019
 ms.service: sql
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "in-memory systems"
   - "in-memory technologies"

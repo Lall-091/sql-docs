@@ -71,7 +71,7 @@ GO
   
 ## See Also  
  [REPLICATE &#40;Transact-SQL&#41;](../../t-sql/functions/replicate-transact-sql.md)   
- [String Functions &#40;Transact-SQL&#41;](../../t-sql/functions/string-functions-transact-sql.md)   
+    
  [Built-in Functions &#40;Transact-SQL&#41;](~/t-sql/functions/functions.md)  
   
   

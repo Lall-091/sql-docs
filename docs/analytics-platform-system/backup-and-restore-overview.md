@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: 01/19/2019
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Backup and restore
 

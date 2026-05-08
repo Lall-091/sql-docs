@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/22/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "full recovery model [SQL Server], RESTORE example"
   - "online restores [SQL Server], full recovery model"

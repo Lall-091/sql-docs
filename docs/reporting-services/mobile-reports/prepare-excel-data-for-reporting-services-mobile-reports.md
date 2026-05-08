@@ -4,7 +4,7 @@ description: Reporting Services mobile reports can use data from Excel files. Fo
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - updatefrequency5
 ---

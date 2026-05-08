@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ai-usage: ai-assisted
 helpviewer_keywords:
   - "static database views"

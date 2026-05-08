@@ -4,7 +4,7 @@ description: Provides detailed steps and PowerShell commands to create a Windows
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: dpless
-ms.date: 05/29/2024
+ms.date: 01/23/2026
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
 ms.topic: how-to
@@ -21,7 +21,7 @@ This guide covers options for using PowerShell to create a SQL Server on Azure V
 
 To complete this guide, you should have the following: 
 
-- An Azure subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F) before you begin.
+- An Azure subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - The latest version of Azure PowerShell
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
@@ -46,12 +46,12 @@ Modify as you want and then run these cmdlets to initialize these variables.
 
 Define the storage account and the type of storage to be used by the virtual machine.
 
-Modify as you want, and then run the following cmdlet to initialize these variables. We recommend using [premium SSDs](/azure/virtual-machines/disks-types#premium-ssds) for production workloads.
+Modify as you want, and then run the following cmdlet to initialize these variables. We recommend using [Premium SSDs](/azure/virtual-machines/disks-types#premium-ssds) for production workloads.
 
 :::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/virtual-machine/create-sql-server-vm.ps1" id="StorageVariables":::
 
 > [!NOTE]
-> The storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only, so make sure your resource group name doesn't have any special characters, or modify the name of the storage account to use a different name than $ResourceGroupName. 
+> The storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ### Network properties
 
@@ -119,7 +119,7 @@ Run this cmdlet to connect to Azure, establish subscription context and create y
 
 ## Create a storage account
 
-The virtual machine requires storage resources for the operating system disk and for the SQL Server data and log files. For simplicity, you'll create a single disk for both. You can attach additional disks later using the [Add-Azure Disk](/powershell/module/servicemanagement/azure/add-azuredisk) cmdlet to place your SQL Server data and log files on dedicated disks. Use the [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet to create a standard storage account in your new resource group. Specify the variables that you previously initialized for the storage account name, storage SKU name, and location.
+The virtual machine requires storage resources for the operating system disk and for the SQL Server data and log files. For simplicity, you'll create a single disk for both. You can attach additional disks later using the [New-AzDisk](/powershell/module/az.compute/new-azdisk) cmdlet to place your SQL Server data and log files on dedicated disks. Use the [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet to create a standard storage account in your new resource group. Specify the variables that you previously initialized for the storage account name, storage SKU name, and location.
 
 Run this cmdlet to create your new storage account: 
 

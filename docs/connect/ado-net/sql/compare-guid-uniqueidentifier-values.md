@@ -7,7 +7,7 @@ ms.reviewer: v-kaywon
 ms.date: "09/30/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 dev_langs:
   - "csharp"
 ---

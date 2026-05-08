@@ -2,13 +2,13 @@
 title: Automatic, Geo-Redundant Backups
 titleSuffix: Azure SQL Managed Instance
 description: Learn how Azure SQL Managed Instance automatically backs up all databases and provides point-in-time restore capability.
-author: dinethi
-ms.author: dinethi
-ms.reviewer: mathoma, wiassaf, mlandzic, strrodic, danil, randolphwest
-ms.date: 06/26/2025
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: dinethi, wiassaf, mlandzic, strrodic, danil, randolphwest
+ms.date: 01/15/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - azure-sql-split
   - build-2024
@@ -107,6 +107,19 @@ You can use these backups to:
    > Geo-restore is available only for databases that are configured with geo-redundant backup storage. If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
 - [Restore a database from a long-term backup](../database/long-term-retention-overview.md) of a database, if the database has a configured LTR policy. LTR allows you to [restore an older version of the database](long-term-backup-retention-configure.md) by using the Azure portal, the Azure CLI, or Azure PowerShell to satisfy a compliance request or to run an old version of the application. For more information, see [Long-term retention backups - Azure SQL Database and Azure SQL Managed Instance](../database/long-term-retention-overview.md).
 
+## Automatic backups on secondary replicas
+
+Automatic backups are now taken from a secondary replica in the [Business Critical service tier](service-tiers-managed-instance-vcore.md#business-critical). Since data is replicated between SQL Database Engine processes on each node, the backup service takes the backup from the non-readable secondary replicas. This design ensures the primary replica remains dedicated to your main workload, and the readable secondary replica is dedicated to read-only workloads. Automatic backups in the Business Critical service tier are taken from a secondary replica most of the time. If an automatic backup fails on a secondary replica, then the backup service takes the backup from the primary replica. 
+
+Automatic backups on secondary replicas:
+
+- Are enabled by default.
+- Are included at no additional cost beyond the price of the service tier.
+- Bring improved performance and predictability to the Business Critical service tier.
+
+> [!NOTE]
+> Create an Azure support request to disable this feature for your instance.
+
 ## Restore capabilities and features
 
 This table summarizes the capabilities and features of [point-in-time restore](recovery-using-backups.md#point-in-time-restore) (PITR), [geo-restore](recovery-using-backups.md#geo-restore), and [long-term retention](../database/long-term-retention-overview.md).
@@ -117,7 +130,7 @@ This table summarizes the capabilities and features of [point-in-time restore](r
 | **Recovery point objective (RPO)** | Approximately 10 minutes, based on compute size and amount of database activity. | Up to 1 hour, based on geo-replication. <sup>1</sup> | One week (or user's policy). |
 | **Recovery time objective (RTO)** | Restore usually takes less than 12 hours but could take longer, depending on size and activity. See [Recovery](recovery-using-backups.md#recovery-time). | Restore usually takes less than 12 hours but could take longer, depending on size and activity. See [Recovery](recovery-using-backups.md#recovery-time). | Restore usually takes less than 12 hours but could take longer, depending on size and activity. See [Recovery](recovery-using-backups.md#recovery-time). |
 | **Retention** | 1 to 35 days. | Enabled by default, same as source. <sup>2</sup> | Not enabled by default. Retention is up to 10 years. |
-| **Azure storage** | Geo-redundant by default. You can optionally configure zone-redundant or locally redundant storage. | Available when PITR backup storage redundancy is set to geo-redundant. Not available when PITR backup storage is zone-redundant or locally redundant. | Geo-redundant by default. You can configure zone-redundant or locally redundant storage. |
+| **Azure storage** | Geo-redundant by default. You can optionally configure zone-redundant or locally redundant storage. | Available when PITR backup storage redundancy is set to geo-redundant or geo-zone redundant (GZRS). Not available when PITR backup storage is zone-redundant or locally redundant. | Geo-redundant by default. You can configure zone-redundant or locally redundant storage. |
 | **Configure backups as [immutable](/azure/storage/blobs/immutable-storage-overview)** | Not supported | Not supported | Not supported |
 | **Update policy** <sup>3</sup> | Must match, or upgrade | Must match, or upgrade | Must match, or upgrade |
 | **Restoring a new database in the same region** | Supported | Supported | Supported |

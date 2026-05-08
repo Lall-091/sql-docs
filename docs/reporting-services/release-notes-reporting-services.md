@@ -1,9 +1,7 @@
 ---
 title: "Release notes for Reporting Services 2017 and later"
 description: Learn details about the changes in SQL Server Reporting Services (SSRS), for versions 2017 and later.
-author: casualoak
-ms.author: petebro
-ms.reviewer: kfollis
+ms.reviewer: petebro
 ms.date: 05/28/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

@@ -4,7 +4,7 @@ description: In this article, you diagnose and fix issues that occur when you pu
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ms.custom:
   - updatefrequency5
 ---

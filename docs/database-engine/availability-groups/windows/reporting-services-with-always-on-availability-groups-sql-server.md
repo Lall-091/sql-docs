@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 09/27/2023
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Reporting Services, AlwaysOn Availability Groups"
   - "Reporting Services, Always On Availability Groups"

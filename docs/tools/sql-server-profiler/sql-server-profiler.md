@@ -4,7 +4,7 @@ titleSuffix: SQL Server Profiler
 description: Explore the features of SQL Server Profiler. Get help troubleshooting problems by using this tool to create traces and analyze and replay trace results.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/05/2025
+ms.date: 02/21/2026
 ms.service: sql
 ms.subservice: profiler
 ms.topic: concept-article
@@ -16,9 +16,7 @@ ms.collection:
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-[!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] is an interface to create and manage traces and analyze and replay trace results. Events are saved in a trace file that can later be analyzed or used to replay a specific series of steps when diagnosing a problem.
-
-[!INCLUDE [xevents-sql-server-profiler](../Includes/sql-server-profiler/xevents-sql-server-profiler.md)]
+[!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] is an interface to create and manage traces and analyze and replay trace results. Events are saved in a trace file that you can later analyze or use to replay a specific series of steps when diagnosing a problem.
 
 When you try to connect to an Azure SQL Database from the SQL Server Profiler, it incorrectly throws a misleading error message as follows:
 
@@ -26,24 +24,37 @@ When you try to connect to an Azure SQL Database from the SQL Server Profiler, i
 To run a trace against SQL Server, you must be a sysadmin fixed server role member or have the ALTER TRACE permission.
 ```
 
-The message should have explained that Azure SQL Database isn't supported by SQL Server profiler.
+The message should state that Azure SQL Database isn't supported by SQL Server Profiler.
+
+## Deprecation notice
+
+> [!IMPORTANT]  
+> SQL Trace and SQL Server Profiler are deprecated. Use [Extended Events](../../relational-databases/extended-events/extended-events.md) instead. [!INCLUDE [ssnotedepfutureavoid-md](../../includes/ssnotedepfutureavoid-md.md)]
+
+The `Microsoft.SqlServer.Management.Trace` namespace that contains the SQL Server Trace and Replay objects is also deprecated. However, Analysis Services workloads are supported.
+
+For more information on [Extended Events](../../relational-databases/extended-events/extended-events.md), see the following articles:
+
+- [Quickstart: Extended Events](../../relational-databases/extended-events/quick-start-extended-events-in-sql-server.md)
+- For SQL Server Management Studio, use [XEvent Profiler](../../relational-databases/extended-events/use-the-ssms-xe-profiler.md)
+- For the [MSSQL extension for Visual Studio Code](../visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md), use [Query Profiler (Preview)](../visual-studio-code-extensions/mssql/mssql-query-profiler.md).
 
 ## Where's the Profiler?
 
-You can start the Profiler within [Run SQL Server Profiler](start-sql-server-profiler.md) or with the [SQL Server Profiler extension (Preview)](/azure-data-studio/extensions/sql-server-profiler-extension).
+You can start the Profiler within [Run SQL Server Profiler](start-sql-server-profiler.md).
 
 ## Capture and replay trace data
 
-The following table shows the features we recommend using in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] to capture and replay your trace data.
+The following table shows the features you can use in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] to capture and replay your trace data.
 
-| **Feature\Target Workload** | **Relational Engine** | **Analysis Services** |
+| Feature / target workload | Relational Engine | Analysis Services |
 | --- | --- | --- |
 | **Trace Capture** | [Extended Events overview](../../relational-databases/extended-events/extended-events.md) graphical user interface in SQL Server Management Studio | [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] |
 | **Trace Replay** | [SQL Server Distributed Replay overview](../distributed-replay/sql-server-distributed-replay.md) | [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] |
 
 ## Use SQL Server Profiler
 
-Microsoft [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] is a graphical user interface to SQL Trace for monitoring an instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] or Analysis Services. You can capture and save data about each event to a file or table to analyze later. For example, you can monitor a production environment to see which stored procedures affect performance by executing too slowly. [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] is used for activities such as:
+Microsoft [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] is a graphical user interface to SQL Trace for monitoring an instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] or Analysis Services. You can capture and save data about each event to a file or table to analyze later. For example, you can monitor a production environment to see which stored procedures affect performance by executing too slowly. Use [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] for activities such as:
 
 - Stepping through problem queries to find the cause of the problem.
 
@@ -65,7 +76,7 @@ Understanding SQL Trace helps when working with [!INCLUDE [ssSqlProfiler](../../
 
 ### Event
 
-An event is an action generated within an instance of [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)]. Examples of these are:
+An event is an action generated within an instance of [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)]. Examples of these events include:
 
 - Login connections, failures, and disconnections.
 - [!INCLUDE [tsql](../../includes/tsql-md.md)] `SELECT`, `INSERT`, `UPDATE`, and `DELETE` statements.
@@ -78,11 +89,11 @@ An event is an action generated within an instance of [!INCLUDE [ssDEnoversion](
 - An opened cursor.
 - Security permission checks.
 
-The trace displays all of the data generated by an event in a single row. This row is intersected by data columns that describe the event in detail.
+The trace displays all of the data generated by an event in a single row. Data columns that describe the event in detail intersect this row.
 
 ### EventClass
 
-An event class is a type of event that can be traced. The event class contains all of the data that an event can report. The following are examples of event classes:
+An event class is a type of event that you can trace. The event class contains all of the data that an event can report. The following list shows examples of event classes:
 
 - **SQL:BatchCompleted**
 - **Audit Login**
@@ -92,7 +103,7 @@ An event class is a type of event that can be traced. The event class contains a
 
 ### EventCategory
 
-An event category defines the way events are grouped within [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. For example, all lock event classes are grouped within the **Locks** event category. However, event categories only exist within [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. This term doesn't reflect the way Engine events are grouped.
+An event category defines how [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] groups events. For example, the **Locks** event category groups all lock event classes. However, event categories exist only within [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. This term doesn't reflect how Engine events are grouped.
 
 ### DataColumn
 
@@ -100,19 +111,19 @@ A data column is an attribute of an event class captured in the trace. Because t
 
 ### Template
 
-A template defines the default configuration for a trace. Specifically, it includes the event classes you want to monitor with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. For example, you can create a template specifying the events, data columns, and filters. A template isn't executed but saved as a file with a .tdf extension. Once saved, the template controls the trace data captured when a trace based on the template is launched.
+A template defines the default configuration for a trace. Specifically, it includes the event classes you want to monitor with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. For example, you can create a template specifying the events, data columns, and filters. You can't execute a template directly. Instead, you save it as a file with a `.tdf` extension. Once saved, the template controls the trace data captured when a trace based on the template is launched.
 
 ### Trace
 
-A trace captures data based on selected event classes, data columns, and filters. For example, you can create a trace to monitor exception errors. You select the **Exception** event class and the **Error**, **State**, and **Severity** data columns to do this. Data from these three columns must be collected for the trace results to provide meaningful data. You can then run a trace, configured in such a manner, and collect data on any **Exception** events in the server. Trace data can be saved or used immediately for analysis. Traces can be replayed later, although certain events, such as **Exception** events, are never replayed. You can also save the trace as a template to build similar traces.
+A trace captures data based on selected event classes, data columns, and filters. For example, you can create a trace to monitor exception errors. You select the **Exception** event class and the **Error**, **State**, and **Severity** data columns to do this. The trace results provide meaningful data only if data is collected from these three columns. You can run a trace configured in such a manner and collect data on any **Exception** events in the server. Save the trace data, or use it immediately for analysis. You can replay traces later, although certain events, such as **Exception** events, are never replayed. You can also save the trace as a template to build similar traces.
 
 [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] provides two ways to trace an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]: you can trace with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)], or you can trace using system stored procedures.
 
 ### Filter
 
-When you create a trace or template, you can define criteria to filter the data collected by the event. To keep traces from becoming too large, you can filter them so that only a subset of the event data is collected. For example, limiting the Microsoft Windows user names in the trace to specific users reduces the output data.
+When you create a trace or template, you can define criteria to filter the data that the event collects. To keep traces from becoming too large, filter them so that you collect only a subset of the event data. For example, limiting the Microsoft Windows user names in the trace to specific users reduces the output data.
 
-If a filter isn't set, the trace output returns all events of the selected event classes.
+If you don't set a filter, the trace output returns all events of the selected event classes.
 
 ## SQL Server Profiler tasks
 
@@ -126,8 +137,8 @@ If a filter isn't set, the trace output returns all events of the selected event
 | Describes how to save trace results to a table. | [Save trace results to a table (SQL Server Profiler)](save-trace-results-to-a-table-sql-server-profiler.md) |
 | Describes how to filter events in a trace. | [Filter events in a trace (SQL Server Profiler)](filter-events-in-a-trace-sql-server-profiler.md) |
 | Describes how to view filter information. | [View filter information (SQL Server Profiler)](view-filter-information-sql-server-profiler.md) |
-| Describes how to Modify a Filter. | [Modify a filter (SQL Server Profiler)](modify-a-filter-sql-server-profiler.md) |
-| Describes how to Set a Maximum File Size for a Trace File ([!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]). | [Set a maximum file size for a trace file (SQL Server Profiler)](set-a-maximum-file-size-for-a-trace-file-sql-server-profiler.md). |
+| Describes how to modify a filter. | [Modify a filter (SQL Server Profiler)](modify-a-filter-sql-server-profiler.md) |
+| Describes how to set a maximum file size for a trace file ([!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]). | [Set a maximum file size for a trace file (SQL Server Profiler)](set-a-maximum-file-size-for-a-trace-file-sql-server-profiler.md). |
 | Describes how to set a maximum table size for a trace table. | [Set a maximum table size for a trace table (SQL Server Profiler)](set-a-maximum-table-size-for-a-trace-table-sql-server-profiler.md) |
 | Describes how to start a trace. | [Start a trace (SQL Server Profiler)](start-a-trace.md) |
 | Describes how to start a trace automatically after connecting to a server. | [Start a trace automatically after connecting to a server (SQL Server Profiler)](start-a-trace-automatically-after-connecting-to-a-server-sql-server-profiler.md) |

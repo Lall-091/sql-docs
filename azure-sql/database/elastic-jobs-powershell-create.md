@@ -4,7 +4,7 @@ description: Learn how to create an elastic job agent and run scripts across man
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: srinia, mathoma
-ms.date: 04/03/2024
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: elastic-jobs
 ms.topic: tutorial
@@ -38,7 +38,7 @@ These cmdlets were updated in November 2023.
 
 ### Install the latest elastic jobs cmdlets
 
-If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount) before you begin.
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 If not already present, install the latest versions of the `Az.Sql` and `SqlServer` modules. Run the following commands in PowerShell with administrative access.
 
@@ -63,6 +63,8 @@ For details, see [Install SQL Server PowerShell module](/sql/powershell/download
 Creating an elastic job agent requires a database (S1 or higher) for use as the [elastic job database](elastic-jobs-overview.md#elastic-job-database).
 
 The following script creates a new resource group, server, and database for use as the elastic job database. The second script creates a second server with two blank databases to execute jobs against.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)]
 
 Elastic jobs have no specific naming requirements so you can use whatever naming conventions you want, as long as they conform to any [Azure requirements](/azure/architecture/best-practices/resource-naming). If you already have created a blank database to server as the elastic job database, skip to [Create the elastic job agent](#create-the-elastic-job-agent).
 
@@ -124,6 +126,9 @@ $jobDatabase
 Write-Output "Creating target server..."
 $targetServerName = Read-Host "Please enter a target server name"
 $targetServerName = $targetServerName + "-" + [guid]::NewGuid()
+```
+
+```powershell
 $parameters = @{
     ResourceGroupName= $resourceGroupName
     Location= $location 

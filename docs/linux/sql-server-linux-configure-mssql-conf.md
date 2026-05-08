@@ -3,7 +3,7 @@ title: Configure SQL Server Settings on Linux
 description: This article describes how to use the mssql-conf tool to configure SQL Server settings on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/04/2025
+ms.date: 01/13/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -16,9 +16,12 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-**mssql-conf** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] for Red Hat Enterprise Linux, SUSE Linux Enterprise Server, and Ubuntu. It modifies the [mssql.conf file](#mssql-conf-format) where configuration values are stored.
+**`mssql-conf`** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] for Red Hat Enterprise Linux, SUSE Linux Enterprise Server, and Ubuntu. It modifies the [mssql.conf file](#mssql-conf-format) where configuration values are stored.
 
-**mssql-conf** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. You can use this utility to set the following parameters:
+**`mssql-conf`** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. You can use this utility to set the following parameters:
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
@@ -30,8 +33,8 @@ ms.custom:
 | [Collation](#collation) | Set a new collation for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
 | [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
 | [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
-| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
-| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log (.ldf) files. |
+| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (`.mdf`). |
+| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log files (`.ldf`). |
 | [Default master database directory](#masterdatabasedir) | Changes the default directory for the `master` database and log files. |
 | [Default master database file name](#masterdatabasename) | Changes the name of `master` database files. |
 | [Default dump directory](#dumpdir) | Change the default directory for new memory dumps and other troubleshooting files. |
@@ -60,8 +63,8 @@ ms.custom:
 | [Collation](#collation) | Set a new collation for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
 | [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
 | [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
-| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
-| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log (.ldf) files. |
+| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (`.mdf`). |
+| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log files (`.ldf`). |
 | [Default master database file directory](#masterdatabasedir) | Changes the default directory for the `master` database files on existing SQL installation. |
 | [Default master database file name](#masterdatabasename) | Changes the name of `master` database files. |
 | [Default dump directory](#dumpdir) | Change the default directory for new memory dumps and other troubleshooting files. |
@@ -93,8 +96,8 @@ ms.custom:
 | [Collation](#collation) | Set a new collation for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
 | [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
 | [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
-| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
-| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log (.ldf) files. |
+| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (`.mdf`). |
+| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log files (`.ldf`). |
 | [Default master database file directory](#masterdatabasedir) | Changes the default directory for the `master` database files on existing SQL installation. |
 | [Default master database file name](#masterdatabasename) | Changes the name of `master` database files. |
 | [Default dump directory](#dumpdir) | Change the default directory for new memory dumps and other troubleshooting files. |
@@ -129,8 +132,8 @@ ms.custom:
 | [Custom password policy](#custom-password-policies) | Password policies enforce complexity, expiration, and password changes. |
 | [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
 | [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
-| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
-| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log (.ldf) files. |
+| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (`.mdf`). |
+| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log files (`.ldf`). |
 | [Default master database file directory](#masterdatabasedir) | Changes the default directory for the `master` database files on existing SQL installation. |
 | [Default master database file name](#masterdatabasename) | Changes the name of `master` database files. |
 | [Default dump directory](#dumpdir) | Change the default directory for new memory dumps and other troubleshooting files. |
@@ -162,7 +165,7 @@ ms.custom:
 
 - For the shared disk cluster scenario, don't attempt to restart the `mssql-server` service to apply changes. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is running as an application. Instead, take the resource offline and then back online.
 
-- These examples run **mssql-conf** by specifying the full path: `/opt/mssql/bin/mssql-conf`. If you choose to navigate to that path instead, run **mssql-conf** in the context of the current directory: `./mssql-conf`.
+- These examples run **`mssql-conf`** by specifying the full path: `/opt/mssql/bin/mssql-conf`. If you choose to navigate to that path instead, run **`mssql-conf`** in the context of the current directory: `./mssql-conf`.
 
 - If you want to modify the `mssql.conf` file inside of a container, create a `mssql.conf` file on the host where you have the container running with your desired settings, and then redeploy your container. For example, the following addition to the `mssql.conf` file enables [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent.
 
@@ -327,7 +330,7 @@ The `set-collation` option changes the collation value to any of the supported c
    sudo /opt/mssql/bin/mssql-conf set-collation
    ```
 
-1. The **mssql-conf** utility attempts to change to the specified collation value and restart the service. If there are any errors, it rolls back the collation to the previous value.
+1. The **`mssql-conf`** utility attempts to change to the specified collation value and restart the service. If there are any errors, it rolls back the collation to the previous value.
 
 1. Restore your user database backups.
 
@@ -360,7 +363,7 @@ The `telemetry.customerfeedback` setting changes whether [!INCLUDE [ssnoversion-
 > [!IMPORTANT]  
 > You can not turn off customer feedback for free editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], Express and Developer.
 
-1. Run the **mssql-conf** script as root with the `set` command for `telemetry.customerfeedback`. The following example turns off customer feedback by specifying `false`.
+1. Run the **`mssql-conf`** script as root with the `set` command for `telemetry.customerfeedback`. The following example turns off customer feedback by specifying `false`.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set telemetry.customerfeedback false
@@ -393,7 +396,7 @@ The `filelocation.defaultdatadir` and `filelocation.defaultlogdir` settings chan
    sudo chgrp mssql /tmp/data
    ```
 
-1. Use **mssql-conf** to change the default data directory with the `set` command:
+1. Use **`mssql-conf`** to change the default data directory with the `set` command:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set filelocation.defaultdatadir /tmp/data
@@ -405,7 +408,7 @@ The `filelocation.defaultdatadir` and `filelocation.defaultlogdir` settings chan
    sudo systemctl restart mssql-server
    ```
 
-1. Now all the database files for the new databases created are stored in this new location. If you would like to change the location of the log (.ldf) files of the new databases, you can use the following `set` command:
+1. Now all the database files for the new databases created are stored in this new location. If you would like to change the location of the transaction log files (`.ldf`) of the new databases, you can use the following `set` command:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set filelocation.defaultlogdir /tmp/log
@@ -434,7 +437,7 @@ To change these settings, use the following steps:
    sudo chgrp mssql /tmp/masterdatabasedir
    ```
 
-1. Use **mssql-conf** to change the default `master` database directory for the master data and log files with the `set` command:
+1. Use **`mssql-conf`** to change the default `master` database directory for the `master` data and log files with the `set` command:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set filelocation.masterdatafile /tmp/masterdatabasedir/master.mdf
@@ -442,7 +445,7 @@ To change these settings, use the following steps:
    ```
 
    > [!NOTE]  
-   > In addition to moving the master data and log files, this also moves the default location for all other system databases.
+   > In addition to moving the `master` data and log files, this also moves the default location for all other system databases.
 
 1. Stop the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service:
 
@@ -480,7 +483,7 @@ To change these settings, use the following steps:
    sudo systemctl stop mssql-server
    ```
 
-1. Use **mssql-conf** to change the expected `master` database names for the `master` data and log files with the `set` command:
+1. Use **`mssql-conf`** to change the expected `master` database names for the `master` data and log files with the `set` command:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set filelocation.masterdatafile /var/opt/mssql/data/masternew.mdf
@@ -524,7 +527,7 @@ To set up this new location, use the following commands:
    sudo chgrp mssql /tmp/dump
    ```
 
-1. Use **mssql-conf** to change the default data directory with the `set` command:
+1. Use **`mssql-conf`** to change the default data directory with the `set` command:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set filelocation.defaultdumpdir /tmp/dump
@@ -557,7 +560,7 @@ To change these settings:
    sudo chgrp mssql /tmp/logs
    ```
 
-1. Use **mssql-conf** to change the default error log filename with the `set` command:
+1. Use **`mssql-conf`** to change the default error log filename with the `set` command:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set filelocation.errorlogfile /tmp/logs/errorlog
@@ -592,7 +595,7 @@ To set up this new location, use the following commands:
    sudo chgrp mssql /tmp/backup
    ```
 
-1. Use **mssql-conf** to change the default backup directory with the `set` command:
+1. Use **`mssql-conf`** to change the default backup directory with the `set` command:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set filelocation.defaultbackupdir /tmp/backup
@@ -662,7 +665,7 @@ sudo systemctl restart mssql-server
 
 For information on how this is used with availability groups, see the following two articles.
 
-- [Configure SQL Server availability group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md)
+- [Configure SQL Server availability group for high availability on Linux](high-availability/availability-groups-configure.md)
 - [Configure a SQL Server availability group for read-scale on Linux](sql-server-linux-availability-group-configure-rs.md)
 
 <a id="localaudit"></a>
@@ -684,7 +687,7 @@ The `telemetry.userrequestedlocalauditdirectory` setting enables Local Audit and
    sudo chgrp mssql /tmp/audit
    ```
 
-1. Run the **mssql-conf** script as root with the `set` command for `telemetry.userrequestedlocalauditdirectory`:
+1. Run the **`mssql-conf`** script as root with the `set` command for `telemetry.userrequestedlocalauditdirectory`:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set telemetry.userrequestedlocalauditdirectory /tmp/audit
@@ -725,7 +728,7 @@ The `memory.memorylimitmb` setting controls the amount of physical memory (in MB
 > [!IMPORTANT]  
 > The `memory.memorylimitmb` setting limits the amount of *physical memory* available to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] process. The **max server memory (MB)** setting can be used to adjust the amount of memory available to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] *buffer pool*, but it can never exceed the amount of physical memory available to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. For more information about the **max server memory (MB)** server configuration option, see [Server memory configuration options](../database-engine/configure-windows/server-memory-server-configuration-options.md).
 
-1. Run the **mssql-conf** script as root with the `set` command for `memory.memorylimitmb`. The following example changes the memory available to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to 3.25 GB (3,328 MB).
+1. Run the **`mssql-conf`** script as root with the `set` command for `memory.memorylimitmb`. The following example changes the memory available to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to 3.25 GB (3,328 MB).
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set memory.memorylimitmb 3328
@@ -753,7 +756,7 @@ The following options are available to the memory settings.
 
 The `network.rpcport` and `distributedtransaction.servertcpport` settings are used to configure the Microsoft Distributed Transaction Coordinator (MSDTC). To change these settings, run the following commands:
 
-1. Run the **mssql-conf** script as root with the `set` command for `network.rpcport`:
+1. Run the **`mssql-conf`** script as root with the `set` command for `network.rpcport`:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set network.rpcport <rcp_port>
@@ -767,7 +770,7 @@ The `network.rpcport` and `distributedtransaction.servertcpport` settings are us
 
 In addition to setting these values, you must also configure routing and update the firewall for port 135. For more information on how to do this, see [How to configure the Microsoft Distributed Transaction Coordinator (MSDTC) on Linux](sql-server-linux-configure-msdtc.md).
 
-There are several other settings for **mssql-conf** that you can use to monitor and troubleshoot MSDTC. The following table briefly describes these settings. For more information on their use, see the details in the Windows support article, [Enable diagnostic tracing for MS DTC on a Windows 10 computer](/troubleshoot/windows/win32/enable-diagnostic-tracing-ms-dtc).
+There are several other settings for **`mssql-conf`** that you can use to monitor and troubleshoot MSDTC. The following table briefly describes these settings. For more information on their use, see the details in the Windows support article, [Enable diagnostic tracing for MS DTC on a Windows 10 computer](/troubleshoot/windows/win32/enable-diagnostic-tracing-ms-dtc).
 
 | Option | Description |
 | --- | --- |
@@ -828,7 +831,7 @@ accepteulaml = Y
 
 ## Enable outbound network access
 
-Outbound network access for R, Python, and Java extensions in the [SQL Server Machine Learning Services](sql-server-linux-setup-machine-learning.md) feature is disabled by default. To enable outbound requests, set the `outboundnetworkaccess` Boolean property using **mssql-conf**.
+Outbound network access for R, Python, and Java extensions in the [SQL Server Machine Learning Services](sql-server-linux-setup-machine-learning.md) feature is disabled by default. To enable outbound requests, set the `outboundnetworkaccess` Boolean property using **`mssql-conf`**.
 
 After setting the property, restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Launchpad service to read the updated values from the INI file. A restart message reminds you whenever an extensibility-related setting is modified.
 
@@ -880,7 +883,7 @@ For more information, see [Use SQL Server Connector with SQL Encryption Features
 
 The `network.tcpport` setting changes the TCP port where [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] listens for connections. By default, this port is set to 1433. To change the port, run the following commands:
 
-1. Run the **mssql-conf** script as root with the `set` command for `network.tcpport`:
+1. Run the **`mssql-conf`** script as root with the `set` command for `network.tcpport`:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set network.tcpport <new_tcp_port>
@@ -892,7 +895,7 @@ The `network.tcpport` setting changes the TCP port where [!INCLUDE [ssnoversion-
    sudo systemctl restart mssql-server
    ```
 
-1. When connecting to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] now, you must specify the custom port with a comma (,) after the hostname or IP address. For example, to connect with **sqlcmd**, you would use the following command:
+1. When connecting to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] now, you must specify the custom port with a comma (,) after the hostname or IP address. For example, to connect with **`sqlcmd`**, you would use the following command:
 
    ```bash
    sqlcmd -S localhost,<new_tcp_port> -U test -P test
@@ -907,6 +910,7 @@ The following options configure TLS for an instance of [!INCLUDE [ssnoversion-md
 | Option | Description |
 | --- | --- |
 | `network.forceencryption` | If 1, then [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] forces all connections to be encrypted. By default, this option is 0. |
+| `network.forcestrict` | If 1, then [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] enforces [strict encryption](../relational-databases/security/networking/tds-8.md#strict-connection-encryption) on all endpoints. By default, this option is 0.<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions. |
 | `network.tlscert` | The absolute path to the certificate file that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] uses for TLS. Example: `/etc/ssl/certs/mssql.pem` The certificate file must be accessible by the mssql account. Microsoft recommends restricting access to the file using `chown mssql:mssql <file>; chmod 400 <file>`. |
 | `network.tlskey` | The absolute path to the private key file that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] uses for TLS. Example: `/etc/ssl/private/mssql.key` The certificate file must be accessible by the mssql account. Microsoft recommends restricting access to the file using `chown mssql:mssql <file>; chmod 400 <file>`. |
 | `network.tlsprotocols` | A comma-separated list of which TLS protocols are allowed by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] always attempts to negotiate the strongest allowed protocol. If a client doesn't support any allowed protocol, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] rejects the connection attempt. For compatibility, all supported protocols are allowed by default (1.2, 1.1, 1.0). If your clients support TLS 1.2, Microsoft recommends allowing only TLS 1.2. |
@@ -921,7 +925,7 @@ For an example of using the TLS settings, see [Encrypt connections to SQL Server
 
 See [Tutorial: Use Active Directory authentication with SQL Server on Linux](sql-server-linux-active-directory-authentication.md) for comprehensive information on using Active Directory authentication with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux.
 
-The following options are additional network settings configurable using **mssql-conf**.
+The following options are additional network settings configurable using **`mssql-conf`**.
 
 | Option | Description |
 | --- | --- |
@@ -967,7 +971,7 @@ The `traceflag` option enables or disables trace flags for the startup of the [!
 
 ## Remove a setting
 
-To unset any setting made with `mssql-conf set`, call **mssql-conf** with the `unset` option and the name of the setting. This clears the setting, effectively returning it to its default value.
+To unset any setting made with `mssql-conf set`, call **`mssql-conf`** with the `unset` option and the name of the setting. This clears the setting, effectively returning it to its default value.
 
 1. The following example clears the `network.tcpport` option.
 
@@ -993,7 +997,7 @@ Any settings not shown in this file are using their default values. The next sec
 
 ## View various options
 
-To view the various options that can be configured using the **mssql-conf** utility, run the `help` command:
+To view the various options that can be configured using the **`mssql-conf`** utility, run the `help` command:
 
 ```bash
 sudo /opt/mssql/bin/mssql-conf --help

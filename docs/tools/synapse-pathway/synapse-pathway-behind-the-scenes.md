@@ -60,7 +60,7 @@ For example, a common pattern that is seen in data loading scenarios is to first
 
 ```sql  
 DELETE staging.table1 ALL;
-INSERT INTO staging.table1…
+INSERT INTO staging.table1...
 FROM staging.table2;
 ```
 
@@ -68,7 +68,7 @@ Synapse SQL has an optimized path for this scenario – a [CREATE TABLE AS SELEC
 
 ```sql  
 TRUNCATE TABLE staging.table1;
-INSERT INTO staging.table1…
+INSERT INTO staging.table1...
 FROM staging.table2;
 ```
 

@@ -4,7 +4,7 @@ description: Find out about adding or deleting rows in a tablix data region in a
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

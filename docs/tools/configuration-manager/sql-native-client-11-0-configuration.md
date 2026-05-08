@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: article
+ms.topic: concept-article
 ms.collection:
   - data-tools
 helpviewer_keywords:

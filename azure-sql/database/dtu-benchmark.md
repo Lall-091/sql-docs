@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresql || =azuresql-db "
 ---
 # DTU benchmark

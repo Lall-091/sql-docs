@@ -1,4 +1,4 @@
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 IF OBJECT_ID('dbo.Gloves', 'U') IS NOT NULL
@@ -13,7 +13,7 @@ WHERE ProductModelID IN (3, 4);
 GO
 
 /* INCORRECT */
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT ProductModelID, Name
@@ -28,7 +28,7 @@ FROM dbo.Gloves;
 GO
 
 /* CORRECT */
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT ProductModelID, Name

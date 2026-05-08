@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/17/2022
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "string literals"
   - "numeric literals [Integration Services]"

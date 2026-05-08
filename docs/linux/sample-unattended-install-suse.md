@@ -4,7 +4,7 @@ titleSuffix: SQL Server
 description: Use a sample bash script to install SQL Server on SUSE Linux Enterprise Server (SLES) without interactive input.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -17,25 +17,27 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-This sample bash script installs [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on SUSE Linux Enterprise Server (SLES) without interactive input. It provides examples of installing the [!INCLUDE [ssde-md](../includes/ssde-md.md)], the SQL Server command-line tools, SQL Server Agent, and performs post-install steps. You can optionally install full-text search and create an administrative user.
+This sample bash script installs [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on SUSE Linux Enterprise Server (SLES) without interactive input. It provides examples of installing the [!INCLUDE [ssde-md](../includes/ssde-md.md)], the SQL Server command-line tools, SQL Server Agent, and performs post-install steps. You can optionally install full-text search and create an administrative user.
 
-> [!TIP]  
-> If you don't need an unattended installation script, the fastest way to install SQL Server is to follow the [quickstart for SLES](quickstart-install-connect-suse.md). For other setup information, see [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md).
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
+If you don't need an unattended installation script, the fastest way to install SQL Server is to follow the [quickstart for SLES](quickstart-install-connect-suse.md). For other setup information, see [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md).
 
 ## Prerequisites
 
 - You need at least 2 GB of memory to run SQL Server on Linux.
-- The file system must be **XFS** or **ext4**. Other file systems, such as **BTRFS**, are unsupported.
+- The file system must be **XFS** or **ext4**. Other file systems, such as **BTRFS**, aren't supported.
 - For other system requirements, see [System requirements for SQL Server on Linux](sql-server-linux-setup.md#system).
 
 > [!IMPORTANT]  
-> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] requires `libsss_nss_idmap0`, which isn't provided by the default SLES repositories. You can install it from the SLES SDK.
+> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] requires `libsss_nss_idmap0`, which the default SLES repositories don't provide. You can install this package from the SLES SDK.
 
 ## Sample script
 
 This example installs [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on SLES v15 SP6. If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] or SLES, change the Microsoft repository paths accordingly.
 
-Save the sample script to a file and then to customize it. You must replace the variable values in the script. You can also set any of the scripting variables as environment variables, as long as you remove them from the script file.
+Save the sample script to a file and then customize it. Replace the variable values in the script. You can also set any of the scripting variables as environment variables, as long as you remove them from the script file.
 
 > [!IMPORTANT]  
 > The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead.
@@ -72,7 +74,7 @@ then
 fi
 
 echo Adding Microsoft repositories...
-sudo zypper addrepo -fc https://packages.microsoft.com/config/sles/15/mssql-server-2019.repo
+sudo zypper addrepo -fc https://packages.microsoft.com/config/sles/15/mssql-server-2022.repo
 sudo zypper addrepo -fc https://packages.microsoft.com/config/sles/15/prod.repo
 sudo zypper --gpg-auto-import-keys refresh
 
@@ -170,13 +172,13 @@ To run the script:
 
 1. Customize `MSSQL_SA_PASSWORD`, `MSSQL_PID`, and any of the other variables you'd like to change.
 
-1. Mark the script as executable
+1. Mark the script as executable.
 
    ```bash
    chmod +x install_sql.sh
    ```
 
-1. Run the script
+1. Run the script.
 
    ```bash
    ./install_sql.sh
@@ -184,7 +186,9 @@ To run the script:
 
 ## Understand the script
 
-The first thing the bash script does is set a few variables. These variables can be either scripting variables, like the sample, or environment variables. The variable `MSSQL_SA_PASSWORD` is **required** by SQL Server installation. The others are custom variables created for the script. The sample script performs the following steps:
+The bash script starts by setting a few variables. These variables can be either scripting variables, like the sample, or environment variables. The script requires the `MSSQL_SA_PASSWORD` variable for installing SQL Server. The script uses custom variables for the other variables.
+
+The sample script performs the following steps:
 
 1. Import the public Microsoft GPG keys.
 
@@ -208,7 +212,7 @@ The first thing the bash script does is set a few variables. These variables can
 
 1. Optionally set trace flags for deadlock tracing (requires uncommenting the lines).
 
-1. SQL Server is now installed, to make it operational, restart the process.
+1. SQL Server is now installed. To make it operational, restart the process.
 
 1. Verify that SQL Server is installed correctly, while hiding any error messages.
 
@@ -216,7 +220,7 @@ The first thing the bash script does is set a few variables. These variables can
 
 ## Unattended install
 
-Simplify multiple unattended installs and create a stand-alone bash script that sets the proper environment variables. You can remove any of the variables the sample script uses and put them in their own bash script.
+Simplify multiple unattended installs by creating a stand-alone bash script that sets the proper environment variables. You can remove any of the variables the sample script uses and put them in your own bash script.
 
 ```bash
 #!/bin/bash
@@ -230,7 +234,7 @@ export SQL_INSTALL_USER_PASSWORD='<password>'
 > [!CAUTION]  
 > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-Then run the bash script as follows:
+Then, run the bash script as follows:
 
 ```bash
 . ./my_script_name.sh

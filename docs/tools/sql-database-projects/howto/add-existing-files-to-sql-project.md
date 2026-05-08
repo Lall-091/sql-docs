@@ -3,8 +3,8 @@ title: Add Existing Files to a SQL Project
 description: "How to add the contents of a dacpac or SQL scripts to a project."
 author: dzsquared
 ms.author: drskwier
-ms.reviewer: maghan
-ms.date: 09/10/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -27,7 +27,7 @@ As a concept, once a SQL project is created, objects can be added to it one at a
 
 ## Import from a `.dacpac` file
 
-A `.dacpac` file is a compiled database model and requires specific tooling to read and apply the file. A `.dacpac` file can be generated as a SQL project build artifact or from an existing database, and you may be provided with one with no access to the source. In addition to the many tools that can apply a `.dacpac` to a database, SQL Server Data Tools (SSDT) in Visual Studio can import the contents of a `.dacpac` file directly into a project. The ability to import schema from a database or a .dacpac file is only available if there are no schema objects already defined in the project.
+A `.dacpac` file is a compiled database model and requires specific tooling to read and apply the file. A `.dacpac` file can be generated as a SQL project build artifact or from an existing database, and you might be provided with one with no access to the source. In addition to the many tools that can apply a `.dacpac` to a database, SQL Server Data Tools (SSDT) in Visual Studio can import the contents of a `.dacpac` file directly into a project. The ability to import schema from a database or a .dacpac file is only available if there are no schema objects already defined in the project.
 
 :::image type="content" source="media/add-existing-files-to-sql-project/vs-import-menu.png" alt-text="Screenshot of the import menu on a SQL project in Visual Studio SSDT.":::
 
@@ -35,7 +35,7 @@ On import, object definitions are scripted into project files using SSDT's organ
 
 If Visual Studio and SQL Server Data Tools isn't available, you can either:
 
-- Use the Schema Compare extension in Azure Data Studio to compare the contents of a `.dacpac` file to a project, then selectively apply the changes to the project.
+- Use the Schema Compare extension in Visual Studio Code to compare the contents of a `.dacpac` file to a project, then selectively apply the changes to the project.
 - Use the [SqlPackage](../../sqlpackage/sqlpackage.md) command-line utility to import the contents of a `.dacpac` file into a database, then [create a project from the database](../tutorials/start-from-existing-database.md).
 
 ## Import from SQL scripts
@@ -62,11 +62,15 @@ More information on [pre/post deployment scripts](../concepts/pre-post-deploymen
 
 SQL Server Data Tools (SSDT) in Visual Studio also has the capability to process the contents of SQL scripts while adding them to an original-style project. During this processing, if a script contains an object already defined in the project, the object's definition are updated to match the script. If the script contains an object not already defined in the project, a new file is created for the object.
 
-There are known issues where the script processing may result in duplicate constraint and encryption key statements. If you encounter these issues, utilize the build output window to identify the source of the duplicates and manually remove them from the project.
+There are known issues where the script processing might result in duplicate constraint and encryption key statements. If you encounter these issues, utilize the build output window to identify the source of the duplicates and manually remove them from the project.
 
 The Import from Script process doesn't incorporate Pre/Post-Deployment scripts, SQLCMD variables, or RefactorLog files. These and any other unsupported constructs that are detected on import are placed in a ScriptsIgnoredOnImport.sql file in a Scripts folder in your project.
 
+## XSD files
+
+SQL projects also support importing XSD files to generate XML schema collections in the database. For more information on how to configure XSD files in a SQL project, see [XML schema collections in SQL projects](../concepts/xml-schema-collection.md).
+
 ## Related content
 
-- [Create a project from a database](../tutorials/start-from-existing-database.md)
-- [Schema compare overview](../concepts/schema-comparison.md)
+- [Tutorial: start from an existing database](../tutorials/start-from-existing-database.md)
+- [Schema comparison overview](../concepts/schema-comparison.md)

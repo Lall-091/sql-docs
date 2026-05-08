@@ -7,7 +7,7 @@ ms.date: 05/06/2020
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # High availability and disaster recovery on Linux and macOS
 

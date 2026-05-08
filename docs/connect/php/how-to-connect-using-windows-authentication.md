@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "03/26/2018"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "connecting to the server, Windows Authentication"
 ---

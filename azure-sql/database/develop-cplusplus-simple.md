@@ -24,7 +24,7 @@ This article helps C and C++ developers connect to [Azure SQL Database](sql-data
 
 To complete the steps in this guide, you need the following: 
 
-- An active Azure account. If you don't have one, you can sign up for a [Free Azure Trial](https://azure.microsoft.com/pricing/free-trial/).
+- An active Azure account. If you don't have one, you can sign up for a [Free Azure Trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Visual Studio](https://visualstudio.microsoft.com/downloads). You must install the C++ language components to build and run this sample.
 - [Visual Studio Linux Development](/cpp/linux/). If you are developing on Linux, you must also install the Visual Studio Linux extension.
 

@@ -1,9 +1,9 @@
 ---
 title: "Updating UDT Columns With DataAdapters"
-description: UDTs in a SQL Server database are supported by using System.Data.DataSet and System.Data.SqlClient.SqlDataAdapter to retrieve and modify data.
+description: UDTs in a SQL Server database are supported by using System.Data.DataSet and Microsoft.Data.SqlClient.SqlDataAdapter to retrieve and modify data.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 03/19/2026
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -26,11 +26,17 @@ ms.custom: sfi-ropc-nochange
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-User-defined types (UDTs) are supported by using a `System.Data.DataSet` and a `System.Data.SqlClient.SqlDataAdapter` to retrieve and modify data.
+You can retrieve and modify user-defined types (UDTs) by using a `System.Data.DataSet` and a `Microsoft.Data.SqlClient.SqlDataAdapter`.
+
+The code examples in this article use `Microsoft.Data.SqlClient`, which is available as a NuGet package. To add this dependency to your project, run the following command:
+
+```dotnetcli
+dotnet add package Microsoft.Data.SqlClient
+```
 
 ## Populate a dataset
 
-You can use a [!INCLUDE [tsql](../../includes/tsql-md.md)] `SELECT` statement to select UDT column values to populate a dataset using a data adapter. The following example assumes that you have a `Points` table defined with the following structure and some sample data. The following [!INCLUDE [tsql](../../includes/tsql-md.md)] statements create the `Points` table and insert a few rows.
+Use a [!INCLUDE [tsql](../../includes/tsql-md.md)] `SELECT` statement to select UDT column values to populate a dataset by using a data adapter. The following example assumes that you have a `Points` table defined with the following structure and some sample data. The following [!INCLUDE [tsql](../../includes/tsql-md.md)] statements create the `Points` table and insert a few rows.
 
 ```sql
 CREATE TABLE dbo.Points
@@ -81,7 +87,7 @@ You can use two methods to update a UDT column in a `DataSet`:
 
 - Provide custom `InsertCommand`, `UpdateCommand`, and `DeleteCommand` objects for a `SqlDataAdapter` object.
 
-- Use the command builder (`System.Data.SqlClient.SqlCommandBuilder`) to create automatically the `INSERT`, `UPDATE`, and `DELETE` commands for you. In order to have conflict detection, add a **timestamp** column (alias **rowversion**) to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] table that contains the UDT. The **timestamp** data type allows you to version-stamp the rows in a table, and is guaranteed to be unique within a database. When a value in the table is changed, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] automatically updates the 8-byte binary number for the row affected by the change.
+- Use the command builder (`Microsoft.Data.SqlClient.SqlCommandBuilder`) to create automatically the `INSERT`, `UPDATE`, and `DELETE` commands for you. To enable conflict detection, add a **timestamp** column (alias **rowversion**) to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] table that contains the UDT. The **timestamp** data type allows you to version-stamp the rows in a table, and is guaranteed to be unique within a database. When a value in the table is changed, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] automatically updates the 8-byte binary number for the row affected by the change.
 
 The `SqlCommandBuilder` doesn't consider the UDT for conflict detection unless there's a **timestamp** column in the underlying table. UDTs might or might not be comparable, so they aren't included in the `WHERE` clause when the "compare original values" option is used to generate a command.
 
@@ -112,7 +118,7 @@ VALUES (4, CONVERT (Point, '4,6'));
 
 The following ADO.NET example has two methods:
 
-- `UserProvidedCommands`, which demonstrates how to supply `InsertCommand`, `UpdateCommand`, and `DeleteCommand` objects for updating the `Point` UDT in the `Points` table (which doesn't contain a **timestamp** column).
+- `UserProvidedCommands`, which demonstrates how to supply `InsertCommand`, `UpdateCommand`, and `DeleteCommand` objects for updating the `Point` UDT in the `Points` table (without a **timestamp** column).
 
 - `CommandBuilder`, which demonstrates how to use a `SqlCommandBuilder` in the `Points_ts` table that contains the **timestamp** column.
 
@@ -121,7 +127,7 @@ The following ADO.NET example has two methods:
 ```csharp
 using System;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 class Class1
 {
@@ -268,7 +274,7 @@ class Class1
 ```vb
 Imports System
 Imports System.Data
-Imports System.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 
 Module Module1
     ' Retrieves the connection string

@@ -60,7 +60,7 @@ Beginning with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], runtimes f
 
 You can execute an R external script with the stored procedure [sp_execute_external script](../../relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md).
 
-To enable external scripts, use [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio) to execute the statement below.
+To enable external scripts, use the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) to execute the following statement.
 
 ```sql
 sp_configure 'external scripts enabled', 1;

@@ -7,7 +7,7 @@ ms.date: 09/01/2020
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "data access tracing"
   - "tracing"

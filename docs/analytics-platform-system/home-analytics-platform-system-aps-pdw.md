@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: 04/18/2018
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Microsoft Analytics Platform System
 
@@ -42,6 +42,10 @@ In addition to achieving breakthrough query performance, PDW makes it easy to:
 
 - Use Business Intelligence tools to build comprehensive end-to-end solutions.
 
-## Next steps
+## T-SQL support
 
-For more information about the benefits of PDW, see the whitepaper [A Breakthrough Platform for Next-Generation Data Warehousing and Big Data Solutions](/previous-versions/sql/sql-server-2012/dn520808(v=msdn.10)) on MSDN.
+To view T-SQL reference articles for PDW, select the **Analytics Platform System (PDW)** product version from the version dropdown list.
+
+:::image type="content" source="media/version-selector.png" alt-text="Screenshot from learn.microsoft.com of the product Version selector.":::
+
+For example, view the APS version of the [Collations and Unicode Support](../t-sql/statements/collations.md?view=aps-pdw-2016-au7&preserve-view=true) document.

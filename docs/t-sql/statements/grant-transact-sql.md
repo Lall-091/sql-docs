@@ -158,7 +158,7 @@ GRANT EXECUTE ON TestProc TO User2 AS TesterRole;
 
 ## Chart of SQL Server permissions
 
-For a poster sized chart of all [!INCLUDE [ssDE](../../includes/ssde-md.md)] permissions in PDF format, see [https://aka.ms/sql-permissions-poster](https://aka.ms/sql-permissions-poster).
+For a poster sized chart of all [!INCLUDE [ssDE](../../includes/ssde-md.md)] permissions in PDF format, see <https://aka.ms/sql-permissions-poster>.
 
 ## Permissions
 

@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "data flow [Integration Services], transformations"
   - "transformations [Integration Services], about transformations"

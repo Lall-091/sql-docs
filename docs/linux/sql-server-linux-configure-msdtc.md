@@ -3,7 +3,7 @@ title: How to Configure MSDTC on Linux
 description: In this article, learn how to configure the Microsoft Distributed Transaction Coordinator (MSDTC) on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/24/2025
+ms.date: 03/16/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -24,7 +24,7 @@ You enable distributed transactions on [!INCLUDE [ssnoversion-md](../includes/ss
 
 A process requires super user privileges to bind to well-known ports (port numbers less than 1024) on Linux. To avoid starting [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] with root privileges for the RPC endpoint mapper process, system administrators must use **iptables** to create Network Address Translation to route traffic on port 135 to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance's RPC endpoint-mapping process.
 
-MSDTC uses two configuration parameters for the **mssql-conf** utility:
+MSDTC uses two configuration parameters for the **`mssql-conf`** utility:
 
 | mssql-conf setting | Description |
 | --- | --- |
@@ -49,7 +49,7 @@ For more information, see [Understanding XA Transactions](../connect/jdbc/unders
 
 Complete the following three steps to configure MSDTC communication and functionality for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
-- Configure `network.rpcport` and `distributedtransaction.servertcpport` with **mssql-conf**.
+- Use **`mssql-conf`** to configure `network.rpcport` and `distributedtransaction.servertcpport`.
 - Configure the firewall to allow communication on `distributedtransaction.servertcpport` and port 135.
 - Configure Linux server routing so that RPC communication on port 135 is redirected to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance's `network.rpcport`.
 
@@ -57,9 +57,9 @@ The following sections provide detailed instructions for each step.
 
 ## Configure RPC and MSDTC ports
 
-Configure `network.rpcport` and `distributedtransaction.servertcpport` with **mssql-conf**. This step is specific to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and common across all supported distributions.
+Use **`mssql-conf`** to configure `network.rpcport` and `distributedtransaction.servertcpport`. This step applies to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and is common across all supported distributions.
 
-1. Use **mssql-conf** to set the `network.rpcport` value. The following example sets it to 13500.
+1. Use **`mssql-conf`** to set the `network.rpcport` value. The following example sets it to 13500.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set network.rpcport 13500
@@ -109,6 +109,9 @@ It's important to configure the firewall before configuring port routing in the 
 
 Configure the Linux server routing table so that RPC communication on port 135 is redirected to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance's `network.rpcport`. The configuration mechanism for port forwarding might differ on different distributions. The following sections provide guidance for Ubuntu, SUSE Enterprise Linux (SLES), and Red Hat Enterprise Linux (RHEL).
 
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
 ### [Port routing in Ubuntu and SLES](#tab/ubuntu)
 
 Ubuntu and SLES don't use the **firewalld** service, so **iptables** rules are an efficient mechanism to achieve port routing. The **iptables** rules might not persist during restarts, so the following commands also provide instructions for restoring the rules after a restart.
@@ -145,9 +148,9 @@ Ubuntu and SLES don't use the **firewalld** service, so **iptables** rules are a
    > [!NOTE]  
    > You must have super user (sudo) privileges to edit the `rc.local` or `after.local` files.
 
-The `iptables-save` and `iptables-restore` commands, along with `rc.local`/`after.local` startup configuration, provide a basic mechanism to save and restore **iptables** entries. Depending on your Linux distribution, there might be more advanced or automated options available. For example, an Ubuntu alternative is the `iptables-persistent` package to make entries persistent.
+The `iptables-save` and `iptables-restore` commands, along with `rc.local`/`after.local` startup configuration, provide a basic mechanism to save and restore **iptables** entries. Depending on your Linux distribution, you might have more advanced or automated options available. For example, an Ubuntu alternative is the `iptables-persistent` package to make entries persistent.
 
-The previous steps assume a fixed IP address. If the IP address for your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance changes (due to manual intervention or DHCP), you must remove and recreate the routing rules if you created them with **iptables**. If you need to recreate or delete existing routing rules, use the following command to remove old `RpcEndPointMapper` rules:
+The previous steps assume a fixed IP address. If the IP address for your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance changes (due to manual intervention or DHCP), you must remove and recreate the routing rules if you created them with **iptables**. To recreate or delete existing routing rules, use the following command to remove old `RpcEndPointMapper` rules:
 
 ```bash
 sudo iptables -S -t nat | grep "RpcEndPointMapper" | sed 's/^-A //' | while read rule; do iptables -t nat -D $rule; done
@@ -172,7 +175,7 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] should
 sudo netstat -tulpn | grep sqlservr
 ```
 
-You should see output similar to the following example:
+The output looks similar to the following example:
 
 ```output
 tcp 0 0 0.0.0.0:1433 0.0.0.0:* LISTEN 13911/sqlservr
@@ -189,7 +192,7 @@ However, after a restart, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.
 
 ## Configure authentication on RPC communication for MSDTC
 
-MSDTC for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux doesn't use authentication on RPC communication by default. However, when the host machine is joined to an Active Directory domain, you can configure MSDTC to use authenticated RPC communication by using the following **mssql-conf** settings:
+MSDTC for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux doesn't use authentication on RPC communication by default. However, when the host machine is joined to an Active Directory domain, you can configure MSDTC to use authenticated RPC communication by using the following **`mssql-conf`** settings:
 
 | Setting | Description |
 | --- | --- |
@@ -211,6 +214,16 @@ If a client on a Windows operating system needs to enlist into distributed trans
 | --- | --- | --- |
 | [Windows Server](/windows-server/get-started/windows-server-release-info) | 1903 | 18362.30.190401-1528 |
 | [Windows 10](/windows/release-information/) | 1903 | 18362.267 |
+
+### Limitations
+
+- Distributed transactions support only standalone SQL Server instances. They don't support high-availability clustering.
+
+- MSDTC isn't supported with Always On availability groups on Linux, regardless of cluster type (`CLUSTER_TYPE = NONE` or `CLUSTER_TYPE = EXTERNAL`).
+
+- Coordinating distributed transactions across availability group replicas isn't supported. Handling distributed transactions during availability group failover scenarios isn't supported.
+
+- Clustered MSDTC configurations aren't supported on Linux.
 
 ## Related content
 

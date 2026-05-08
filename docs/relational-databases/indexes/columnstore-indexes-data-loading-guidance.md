@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 04/04/2025
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"

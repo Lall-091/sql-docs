@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, urmilano
 ms.date: 08/16/2024
 ms.service: azure-sql
 ms.subservice: monitoring
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: 
   - sqldbrb=2
 monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"

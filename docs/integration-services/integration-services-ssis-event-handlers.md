@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/04/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Integration Services packages, events"
   - "run-time [Integration Services]"

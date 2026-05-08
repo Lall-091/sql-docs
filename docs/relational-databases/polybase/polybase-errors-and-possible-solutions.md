@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 04/23/2024
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 f1_keywords:
   - "PolyBase, monitoring"
   - "PolyBase, performance monitoring"
@@ -102,9 +102,9 @@ If there are multiple files per table, put each set of files into different dire
 
 ```syntaxsql
 Create External Table foo
-(col1 int)WITH (LOCATION='/bar/foobar.txt',DATA_SOURCE…); OR
+(col1 int)WITH (LOCATION='/bar/foobar.txt',DATA_SOURCE...); OR
 Create External Table foo
-(col1 int) WITH (LOCATION = '/bar/', DATA_SOURCE…);
+(col1 int) WITH (LOCATION = '/bar/', DATA_SOURCE...);
 ```
 
 > [!NOTE] 

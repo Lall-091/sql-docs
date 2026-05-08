@@ -4,7 +4,7 @@ description: Find out about images as items in paginated reports in Report Build
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

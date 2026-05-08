@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -25,14 +25,13 @@ For other deployment scenarios, see:
 
 - [Installation guidance for SQL Server on Linux](../../linux/sql-server-linux-setup.md)
 - [Deploy and connect to SQL Server Linux containers](../../linux/sql-server-linux-docker-container-deployment.md)
-- [Kubernetes - Big Data Clusters](../../big-data-cluster/deploy-get-started.md) ([!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] only)
 
 Beginning with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] is only available as a 64-bit application. Here are important details about how to get [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] and how to install it.
 
 ## Get started
 
 > [!IMPORTANT]  
-> Beginning with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], Data Quality Services (DQS), Master Data Services (MDS), Azure Synapse Link, and Reporting Services are removed, and are deprecated on previous versions.
+> Beginning with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], Data Quality Services (DQS), Master Data Services (MDS), Azure Synapse Link, and Reporting Services are removed. Azure Synapse Link and Reporting Services were deprecated in previous versions.
 
 - **Editions and features**: Review the supported features for the different editions and versions of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] to determine which best suits your business needs.
 
@@ -67,6 +66,7 @@ Other [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] components can 
 - [Latest updates and version history for SQL Server](/troubleshoot/sql/releases/download-and-install-latest-updates)
 - [SQL Server Reporting Services](https://www.microsoft.com/download/details.aspx?id=104502).
 - [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms)
+- [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)
 
 ## Considerations
 
@@ -102,7 +102,7 @@ Other [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] components can 
 
 | Article | Description |
 | --- | --- |
-| [Install SQL Server Database Engine](install-sql-server-database-engine.md) | Install and configure the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)]. |
+| [Install SQL Server Database Engine](install-sql-server-database-engine.md) | Install and configure the [[!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)]](../sql-database-engine.md). |
 | [Install SQL Server replication](install-sql-server-replication.md) | Install and configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Replication. |
 | [Install Distributed Replay](../../tools/distributed-replay/install-distributed-replay.md)<sup>1</sup> | Lists articles to install the Distributed Replay feature. |
 | [SQL Server Management Tools](/ssms/install/install) | Install and configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] management tools. |

@@ -1,18 +1,18 @@
 ---
-title: Restore a database from a backup
+title: Restore a Database from a Backup
 titleSuffix: Azure SQL Managed Instance
 description: Learn about point-in-time restore, which enables you to roll back a database in Azure SQL Managed Instance up to 35 days.
-author: dinethi
-ms.author: dinethi
-ms.reviewer: wiassaf, mathoma, strrodic, mlandzic
-ms.date: 12/05/2025
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: dinethi, mathoma, wiassaf, strrodic, mlandzic
+ms.date: 01/15/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
 ms.topic: how-to
 ms.custom:
   - azure-sql-split
   - build-2024
-monikerRange: "=azuresql||=azuresql-mi"
+monikerRange: "=azuresql || =azuresql-mi"
 ---
 # Restore a database from a backup in Azure SQL Managed Instance
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -39,6 +39,9 @@ This article provides steps to recover a database from a backup in Azure SQL Man
 - Create a new database on any managed instance in same subscription or different subscription in same tenant and in the same region, recovered to the point of the most recent backups.
 
 If you configured [long-term retention (LTR)](../database/long-term-retention-overview.md), you can also create a new database from any long-term retention backup on any instance.
+
+> [!IMPORTANT]
+> Some older APIs used for long-term retention (LTR) backup operations are deprecated and no longer supported. Avoid using legacy PowerShell cmdlets such as `Copy-AzSqlDatabaseLongTermRetentionBackup`. Use the supported restore methods described in this article instead.
 
 > [!IMPORTANT]
 > You can't overwrite an existing database during restore.
@@ -163,7 +166,7 @@ If you need to restore an unintentionally deleted SQL managed instance, contact 
 ## Geo-restore
 
 > [!IMPORTANT]
-> - Geo-restore is available only for managed instances configured with geo-redundant [backup storage](automated-backups-overview.md#backup-storage-redundancy). If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
+> - Geo-restore is available only for SQL managed instances configured with geo-redundant or geo-zone redundant (GZRS) [backup storage](automated-backups-overview.md#backup-storage-redundancy). If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
 > - You can perform geo-restore on managed instances that reside in the same subscription only.
 
 Geo-restore is the default recovery option when your database is unavailable because of an incident in the hosting region. You can restore the database to an instance in any other region. You can restore a database on any managed instance in any Azure region from the most recent geo-replicated backups. Geo-restore uses a geo-replicated backup as its source. You can request a geo-restore even if an outage has made the database or datacenter inaccessible.
@@ -232,6 +235,7 @@ Consider the following limitations when working with backups and Azure SQL Manag
    - Database backups taken from instances configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy) can be restored to instances configured with either the **SQL Server 2022**, **SQL Server 2025**, or **Always-up-to-date** update policy.  
    - Database backups taken from instances configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy) can be restored to instances configured with either the **SQL Server 2025**, or **Always-up-to-date** update policy. 
    - Database backups taken from instances configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) can only be restored to instances also configured with the **Always-up-to-date** update policy.
+- Restoring a backup from an HNS-enabled (ADLS Gen2) account is not supported.
 
 ## Related content
 

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 11/19/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "cross-database ownership chaining"
   - "cross db ownership chaining option"

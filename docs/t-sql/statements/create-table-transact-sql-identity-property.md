@@ -26,6 +26,12 @@ monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 |
 
 [!INCLUDE [sql-asdb-asdbmi-asa-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricdw-fabricsqldb.md)]
 
+::: moniker range="=azure-sqldw-latest"
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
+::: moniker-end
+
 Creates an identity column in a table. This property is used with the `CREATE TABLE` and `ALTER TABLE` [!INCLUDE [tsql](../../includes/tsql-md.md)] statements.
 
 > [!NOTE]  
@@ -107,7 +113,8 @@ You can [migrate tables to Fabric Data Warehouse with surrogate key columns](/fa
 
 ::: moniker-end
 
-::: moniker Range="=azure-sqldw-latest"
+::: moniker range="=azure-sqldw-latest"
+
 Azure Synapse Analytics doesn't support `PRIMARY KEY` or `UNIQUE` constraint or `UNIQUE` index. For more information, see [Using IDENTITY to create surrogate keys in a Synapse SQL pool](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity#what-is-a-surrogate-key).
     - In dedicated SQL pools in Azure Synapse Analytics, values for identity aren't incremental due to the distributed architecture of the data warehouse. For more information, see [Using IDENTITY to create surrogate keys in a Synapse SQL pool](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity#allocation-of-values). 
     - `IDENTITY` is not supported by serverless SQL pools in Azure Synapse Analytics.

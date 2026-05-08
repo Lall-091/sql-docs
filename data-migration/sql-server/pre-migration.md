@@ -4,7 +4,7 @@ description: Follow these steps when migrating from SQL Server, for a successful
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 06/16/2025
+ms.date: 02/19/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -133,49 +133,9 @@ To assess your instances using SQL Server enabled by Azure Arc, follow these ste
 
 For details, see [Assess instances for migration with SQL Server enabled by Azure arc](/sql/sql-server/azure-arc/migration-assessment).
 
-### Assess with Azure Data Studio 
-
-The [Azure SQL migration extension for Azure Data Studio](/azure/dms/migration-using-azure-data-studio) provides a seamless wizard-based experience to assess, get Azure recommendations and migrate your SQL Server databases on-premises to Azure. Besides highlighting any migration blockers or warnings, the extension also includes an option for Azure recommendations to collect your databases' performance data and [ recommends a right-sized Azure SQL target](/azure/dms/ads-sku-recommend) to meet the performance needs of your workload (with the lowest price).
-
-You can use the Azure SQL migration extension for Azure Data Studio to assess databases to get:
-
-- [Assessment rules for SQL Server to Azure SQL migration targets](managed-instance/assessment-rules.md)
-- [Get Azure recommendations to migrate your SQL Server database](/azure/dms/ads-sku-recommend)
-
-> [!IMPORTANT]  
-> To assess databases using the Azure SQL migration extension, ensure that the logins used to connect the source SQL Server are members of the sysadmin server role or have CONTROL SERVER permission.
-
-To assess your environment using the Azure SQL migration extension, follow these steps:
-
-1. Open the [Azure SQL migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension).
-1. Connect to your source SQL Server instance.
-1. Select **Migrate to Azure SQL**, in the Azure SQL Migration wizard in Azure Data Studio.
-1. Select databases for assessment, then select **Next**.
-1. Select your Azure SQL target. 
-1. Select **View/Select** to review the assessment report.
-1. Look for migration blocking and feature parity issues. The assessment report can also be exported to a file that can be shared with other teams or personnel in your organization.
-1. Determine the database compatibility level that minimizes post-migration efforts.
-
-To get an Azure recommendation using the Azure SQL migration extension, follow these steps:
-
-1. Open the [Azure SQL migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension).
-1. Connect to your source SQL Server instance.
-1. Select **Migrate to Azure SQL**, in the Azure SQL Migration wizard in Azure Data Studio.
-1. Select databases for assessment, then select **Next**.
-1. Select your Azure SQL target. 
-1. Navigate to the Azure recommendations sections, and select **Get Azure recommendation**.
-1. Select **Collect performance data now**. Choose a folder on your local computer to store the performance logs, and then select **Start**.
-1. After 10 minutes, Azure Data Studio indicates that a recommendation is available for Azure SQL Managed Instance.
-1. Check the Azure SQL Managed Instance card, in the Azure SQL target panel to review your Azure SQL Managed Instance SKU recommendation.
-
-For specific Azure SQL migration target tutorials, see: 
-- [Tutorial: Migrate SQL Server to Azure SQL Managed Instance with DMS](managed-instance/database-migration-service.md)
-- [Tutorial: Migrate SQL Server to Azure SQL Database (offline)](database/database-migration-service.md)
-
-
 ### Scaled assessments and analysis
 
-The [Azure SQL migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension) and [Azure Migrate](https://azure.microsoft.com/services/azure-migrate) can perform scaled assessments and consolidate assessment reports for analysis.
+[Azure Migrate](https://azure.microsoft.com/services/azure-migrate) can perform scaled assessments and consolidate assessment reports for analysis.
 
 If you have multiple servers and databases that need to be assessed and analyzed at scale to provide a wider view of the data estate, see [Migrate databases at scale using automation with DMS (Preview)](/azure/dms/migration-dms-powershell-cli).
 

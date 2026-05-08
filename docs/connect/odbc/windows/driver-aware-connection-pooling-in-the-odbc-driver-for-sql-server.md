@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 02/15/2022
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Driver-Aware Connection Pooling in the ODBC Driver for SQL Server
 

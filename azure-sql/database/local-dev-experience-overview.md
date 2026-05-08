@@ -1,11 +1,11 @@
 ---
-title: What Is the Local Development Experience?
+title: What is the Local Development Experience?
 titleSuffix: Azure SQL Database
 description: Learn about the local development experience for Azure SQL Database.
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: wiassaf, randolphwest
-ms.date: 06/13/2025
+ms.date: 02/19/2026
 ms.service: azure-sql-database
 ms.topic: overview
 monikerRange: "=azuresql || =azuresql-db"
@@ -53,7 +53,7 @@ To streamline the local development experience, several tools and extensions are
 | --- | --- | --- |
 | **[Azure SQL Database Dev Container Templates](https://aka.ms/azuresql-devcontainers-repo)** | Provides preconfigured development environments, eliminating manual setup and ensuring consistency. Supports multiple popular languages. | [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)<br />[GitHub Codespaces](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) |
 | **[SQL Server extension](/sql/tools/visual-studio-code/sql-server-develop-use-vscode)** | Enables connection, query execution, and script testing against a database, whether local or in Azure SQL Database. | [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)<br />GitHub Codespaces |
-| **[SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension)** | Allows capturing existing database schemas, designing new objects using a declarative model, committing schemas to version control, and publishing to databases. | [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)<br />GitHub Codespaces |
+| **[SQL Database Projects extension](/sql/tools/sql-database-projects/sql-database-projects#original-projects-vs-sdk-style-projects)** | Allows capturing existing database schemas, designing new objects using a declarative model, committing schemas to version control, and publishing to databases. | [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)<br />GitHub Codespaces |
 
 ## Azure SQL Database Dev Container templates
 

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Local language versions in SQL Server
 

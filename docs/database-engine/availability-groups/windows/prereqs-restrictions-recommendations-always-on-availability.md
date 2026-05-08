@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: checklist
 ms.update-cycle: 1825-days
 ms.custom:
   - ignite-2025
