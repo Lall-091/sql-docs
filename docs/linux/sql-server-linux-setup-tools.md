@@ -4,7 +4,7 @@ titleSuffix: SQL Server
 description: Learn how to install the SQL Server command-line tools, Microsoft ODBC drivers, and their dependencies on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/02/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy

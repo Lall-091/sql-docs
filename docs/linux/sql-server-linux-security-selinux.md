@@ -4,7 +4,7 @@ description: Learn about installing and configuring SQL Server on SELinux, using
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh
-ms.date: 01/27/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to

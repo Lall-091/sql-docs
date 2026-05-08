@@ -4,7 +4,7 @@ description: Learn about the different options for upgrading SQL Server on Linux
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, atsingh
-ms.date: 04/19/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: upgrade-and-migration-article

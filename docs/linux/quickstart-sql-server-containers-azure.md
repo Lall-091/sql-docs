@@ -3,7 +3,7 @@ title: "Quickstart: Deploy a SQL Server Container Cluster on Azure Kubernetes Se
 description: This tutorial shows how to deploy a SQL Server high availability solution with Azure Kubernetes Service or Azure Red Hat OpenShift.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/11/2025
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart

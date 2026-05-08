@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/11/2025
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: include

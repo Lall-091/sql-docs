@@ -3,7 +3,7 @@ title: Configure iSCSI FCI Storage - SQL Server on Linux
 description: Learn to configure a failover cluster instance (FCI) using iSCSI for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/02/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to

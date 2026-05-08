@@ -5,7 +5,7 @@ description: This tutorial provides the configuration steps for Active Directory
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: randolphwest
-ms.date: 01/02/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial

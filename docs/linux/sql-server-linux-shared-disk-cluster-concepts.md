@@ -4,7 +4,7 @@ description: Concepts for SQL Server failover cluster instances on Linux include
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 07/03/2025
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: concept-article
