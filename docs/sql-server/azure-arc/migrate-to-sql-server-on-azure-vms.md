@@ -7,6 +7,8 @@ ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
 ms.date: 04/16/2026
 ms.topic: how-to
+ms.collection: ce-skilling-ai-copilot
+
 ---
 
 # Migration to SQL Server on Azure VMs (preview) - SQL Server migration in Azure Arc
