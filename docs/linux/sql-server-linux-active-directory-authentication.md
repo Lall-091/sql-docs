@@ -148,7 +148,7 @@ Configuring Active Directory authentication for [!INCLUDE [ssnoversion-md](../in
    sudo chmod 400 /var/opt/mssql/secrets/mssql.keytab
    ```
 
-1. The following configuration option needs to be set with the **mssql-conf** tool to specify the account to be used while accessing the keytab file.
+1. The following configuration option needs to be set with the **`mssql-conf`** tool to specify the account to be used while accessing the keytab file.
 
    ```bash
    sudo mssql-conf set network.privilegedadaccount <username>
@@ -208,7 +208,7 @@ Sign in to a domain-joined Linux client using **ssh** and your domain credential
 ssh -l user@contoso.com client.contoso.com
 ```
 
-Make sure you've installed the [mssql-tools](sql-server-linux-setup-tools.md) package, then connect using **sqlcmd** without specifying any credentials:
+Make sure you've installed the [mssql-tools](sql-server-linux-setup-tools.md) package, then connect using **`sqlcmd`** without specifying any credentials:
 
 ```bash
 sqlcmd -S mssql-host.contoso.com
@@ -234,7 +234,7 @@ The following table describes recommendations for other client drivers:
 
 ## Additional configuration options
 
-If you're using third-party utilities such as [PBIS](https://www.beyondtrust.com/), [VAS](https://www.oneidentity.com/products/one-identity-safeguard-authentication-services), or [Centrify](https://delinea.com/centrify) to join the Linux host to Active Directory domain and you would like to force [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to use the OpenLDAP library directly, you can configure the `disablesssd` option with **mssql-conf** as follows:
+If you're using third-party utilities such as [PBIS](https://www.beyondtrust.com/), [VAS](https://www.oneidentity.com/products/one-identity-safeguard-authentication-services), or [Centrify](https://delinea.com/centrify) to join the Linux host to Active Directory domain and you would like to force [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to use the OpenLDAP library directly, you can configure the `disablesssd` option with **`mssql-conf`** as follows:
 
 ```bash
 sudo mssql-conf set network.disablesssd true

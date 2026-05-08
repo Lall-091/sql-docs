@@ -480,7 +480,7 @@ The following recommendations are optional configuration settings that you might
 
 To ensure there's enough free physical memory for the Linux operating system, the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] process uses only 80% of the physical RAM by default. For some systems with large amounts of physical RAM, 20% might be a significant number.
 
-For example, on a system with 1 TB of RAM, the default setting would leave around 200 GB of RAM unused. In this situation, you might want to configure the memory limit to a higher value. You can adjust this value with the **mssql-conf** tool. For more information, see the [memory.memorylimitmb](sql-server-linux-configure-mssql-conf.md#memorylimit) setting that controls the memory visible to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] (in units of MB).
+For example, on a system with 1 TB of RAM, the default setting would leave around 200 GB of RAM unused. In this situation, you might want to configure the memory limit to a higher value. You can adjust this value with the **`mssql-conf`** tool. For more information, see the [memory.memorylimitmb](sql-server-linux-configure-mssql-conf.md#memorylimit) setting that controls the memory visible to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] (in units of MB).
 
   > [!NOTE]  
   > You can also configure a memory limit using the `MSSQL_MEMORY_LIMIT_MB` environment variable. This method is commonly used when deploying containers, or automating [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container or package-based deployments. The `MSSQL_MEMORY_LIMIT_MB` environment variable takes precedence over the `memory.memorylimitmb` setting.

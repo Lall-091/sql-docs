@@ -57,9 +57,9 @@ Use [adutil](sql-server-linux-ad-auth-adutil-introduction.md) to fetch the passw
 
 1. Establish a Kerberos authenticated session:
 
-   - Run `kinit` with `sudo` to get or renew the Kerberos ticket-granting ticket (TGT).
+   - Run **`kinit`** with `sudo` to get or renew the Kerberos ticket-granting ticket (TGT).
 
-   - Use a privileged account for the `kinit` command. The account needs permission to connect to the domain.
+   - Use a privileged account for the **`kinit`** command. The account needs permission to connect to the domain.
 
    In the following example, replace `<user>` with an account that has elevated privileges in the domain.
 
@@ -73,7 +73,7 @@ Use [adutil](sql-server-linux-ad-auth-adutil-introduction.md) to fetch the passw
    sudo klist
    ```
 
-1. To update the password policy, query the domain with **adutil**:
+1. To update the password policy, query the domain with **`adutil`**:
 
    ```bash
    sudo adutil updatepasswordpolicy
@@ -86,7 +86,7 @@ Use [adutil](sql-server-linux-ad-auth-adutil-introduction.md) to fetch the passw
    Restart SQL Server to apply the changes.
    ```
 
-   Optionally, you can add the `--path` option to the previous command. You might use this option if you have the **mssql-conf** tool in a different location from the default path. The default path is `/opt/mssql/bin/mssql-conf`.
+   Optionally, you can add the `--path` option to the previous command. You might use this option if you have the **`mssql-conf`** tool in a different location from the default path. The default path is `/opt/mssql/bin/mssql-conf`.
 
 1. Restart SQL Server service:
 
@@ -98,9 +98,9 @@ Use [adutil](sql-server-linux-ad-auth-adutil-introduction.md) to fetch the passw
 
 ## Manually set a custom password policy with mssql-conf
 
-Update the policy parameters in `mssql.conf` directly by using **mssql-conf**. Use this method when the Linux host isn't joined to a domain, or when no domain controller is available to source the policy from.
+Update the policy parameters in `mssql.conf` directly by using **`mssql-conf`**. Use this method when the Linux host isn't joined to a domain, or when no domain controller is available to source the policy from.
 
-Run the following **mssql-conf** commands to set each policy property.
+Run the following **`mssql-conf`** commands to set each policy property.
 
 1. Set the minimum password length to 14 characters, adhering to the complexity requirements outlined in the [Password policy](../relational-databases/security/password-policy.md).
 
@@ -144,13 +144,13 @@ Run the following **mssql-conf** commands to set each policy property.
 
 Before [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 23 and [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 3, the `passwordminimumlength` parameter can't be set to more than 14 characters.
 
-Changes to the group password policy in Active Directory don't automatically propagate. Run `adutil updatepasswordpolicy` to refresh `mssql.conf` after each change, or set the values manually by using **mssql-conf** if the Linux host isn't joined to the domain.
+Changes to the group password policy in Active Directory don't automatically propagate. Run `adutil updatepasswordpolicy` to refresh `mssql.conf` after each change, or set the values manually by using **`mssql-conf`** if the Linux host isn't joined to the domain.
 
 In Active Directory, you can define or undefine each group-level password policy using a checkbox:
 
 :::image type="content" source="media/sql-server-linux-custom-password-policy/password-length-properties.png" alt-text="Screenshot of minimum password length security policy setting.":::
 
-Clearing the checkbox doesn't disable the policy in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. To stop enforcing a value, update it directly in **mssql-conf**.
+Clearing the checkbox doesn't disable the policy in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. To stop enforcing a value, update it directly in **`mssql-conf`**.
 
 ## Related content
 

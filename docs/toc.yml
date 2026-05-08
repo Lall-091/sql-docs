@@ -15608,13 +15608,15 @@ items:
       - name: DBCC USEROPTIONS
         href: t-sql/database-console-commands/dbcc-useroptions-transact-sql.md
     - name: Functions
-      href: t-sql/functions/functions.md
       items:
-      - name: ODBC Scalar
+      - name: Overview
+        href: t-sql/functions/functions.md
+      - name: ODBC scalar
         href: t-sql/functions/odbc-scalar-functions-transact-sql.md
       - name: Aggregate
-        href: t-sql/functions/aggregate-functions-transact-sql.md
         items:
+        - name: Overview
+          href: t-sql/functions/aggregate-functions-transact-sql.md
         - name: ANY_VALUE
           href: t-sql/functions/any-value-transact-sql.md
         - name: APPROX_COUNT_DISTINCT
@@ -15652,8 +15654,9 @@ items:
         - name: VARP
           href: t-sql/functions/varp-transact-sql.md
       - name: AI
-        href: t-sql/functions/ai-functions-transact-sql.md
         items:
+        - name: Overview
+          href: t-sql/functions/ai-functions-transact-sql.md
         - name: AI_GENERATE_EMBEDDINGS
           href: t-sql/functions/ai-generate-embeddings-transact-sql.md
         - name: AI_GENERATE_CHUNKS
@@ -16487,16 +16490,20 @@ items:
             href: t-sql/language-elements/bitwise-operators-transact-sql.md
           - name: '& (Bitwise AND)'
             href: t-sql/language-elements/bitwise-and-transact-sql.md
-          - name: '&= (Bitwise & Assignment)'
+          - name: '&= (Bitwise & assignment)'
             href: t-sql/language-elements/bitwise-and-equals-transact-sql.md
           - name: '| (Bitwise OR)'
             href: t-sql/language-elements/bitwise-or-transact-sql.md
-          - name: '|= (Bitwise OR Assignment)'
+          - name: '|= (Bitwise OR assignment)'
             href: t-sql/language-elements/bitwise-or-equals-transact-sql.md
-          - name: ^ (Bitwise Exclusive OR)
+          - name: ^ (Bitwise exclusive OR)
             href: t-sql/language-elements/bitwise-exclusive-or-transact-sql.md
-          - name: ^= (Bitwise Exclusive OR Assignment)
+          - name: ^= (Bitwise exclusive OR assignment)
             href: t-sql/language-elements/bitwise-exclusive-or-equals-transact-sql.md
+          - name: << (Bitwise left shift)
+            href: t-sql/functions/left-shift-transact-sql.md
+          - name: \>\> (Bitwise right shift)
+            href: t-sql/functions/right-shift-transact-sql.md
           - name: ~ (Bitwise NOT)
             href: t-sql/language-elements/bitwise-not-transact-sql.md
         - name: Comparison

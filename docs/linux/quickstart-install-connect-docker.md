@@ -24,7 +24,7 @@ monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
 
-In this quickstart, you use Docker to pull and run the [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] Linux container image, [mssql-server-linux](https://mcr.microsoft.com/product/mssql/server/about). Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you use Docker to pull and run the [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] Linux container image, [mssql-server-linux](https://mcr.microsoft.com/product/mssql/server/about). Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 > [!NOTE]  
 > [!INCLUDE [container-emulation](includes/container-emulation.md)]
@@ -45,7 +45,7 @@ This quickstart creates [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] conta
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
-In this quickstart, you use Docker to pull and run the [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] Linux container image, [mssql-server-linux](https://mcr.microsoft.com/product/mssql/server/about). Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you use Docker to pull and run the [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] Linux container image, [mssql-server-linux](https://mcr.microsoft.com/product/mssql/server/about). Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 > [!NOTE]  
 > [!INCLUDE [container-emulation](includes/container-emulation.md)]
@@ -66,7 +66,7 @@ This quickstart creates [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] conta
 <!--SQL Server 2022 on Linux-->
 ::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
-In this quickstart, you use Docker to pull and run the [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Linux container image, [mssql-server-linux](https://mcr.microsoft.com/product/mssql/server/about). Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you use Docker to pull and run the [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Linux container image, [mssql-server-linux](https://mcr.microsoft.com/product/mssql/server/about). Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 > [!NOTE]  
 > [!INCLUDE [container-emulation](includes/container-emulation.md)]
@@ -87,7 +87,7 @@ This quickstart creates [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] conta
 <!--SQL Server 2025 on Linux-->
 ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
-In this quickstart, you use Docker to pull and run the [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Linux container image, [mssql-server-linux](https://mcr.microsoft.com/product/mssql/server/about). Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you use Docker to pull and run the [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Linux container image, [mssql-server-linux](https://mcr.microsoft.com/product/mssql/server/about). Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 > [!NOTE]  
 > [!INCLUDE [container-emulation](includes/container-emulation.md)]
@@ -112,7 +112,7 @@ Starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 14 and [!INC
 The examples in this article use the `docker` command. However, most of these commands also work with Podman. Podman provides a command-line interface similar to the Docker Engine. You can [find out more about Podman](https://docs.podman.io/en/latest).
 
 > [!IMPORTANT]  
-> **sqlcmd** doesn't currently support the `MSSQL_PID` parameter when creating containers. If you use the **sqlcmd** instructions in this quickstart, you create a container with the Developer edition of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Use the command line interface (CLI) instructions to create a container using the license of your choice. For more information, see [Deploy and connect to SQL Server Linux containers](sql-server-linux-docker-container-deployment.md).
+> **`sqlcmd`** doesn't currently support the `MSSQL_PID` parameter when creating containers. If you use the **`sqlcmd`** instructions in this quickstart, you create a container with the Developer edition of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Use the command line interface (CLI) instructions to create a container using the license of your choice. For more information, see [Deploy and connect to SQL Server Linux containers](sql-server-linux-docker-container-deployment.md).
 
 <a id="requirements"></a>
 
@@ -211,7 +211,7 @@ The previous command pulls the latest [!INCLUDE [sssql17-md](../includes/sssql17
 
 ### Run the container
 
-To run the Linux container image with Docker, use the following command from a bash shell or elevated PowerShell command prompt.
+To run the Linux container image with Docker, use the following command from a Bash shell or elevated PowerShell command prompt.
 
 > [!IMPORTANT]  
 > The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead.
@@ -452,7 +452,7 @@ The previous command pulls the latest [!INCLUDE [sssql19-md](../includes/sssql19
 
 ### Run the container
 
-To run the Linux container image with Docker, use the following command from a bash shell or elevated PowerShell command prompt.
+To run the Linux container image with Docker, use the following command from a Bash shell or elevated PowerShell command prompt.
 
 > [!IMPORTANT]  
 > The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead.
@@ -698,7 +698,7 @@ The previous command pulls the latest [!INCLUDE [sssql22-md](../includes/sssql22
 
 ### Run the container
 
-To run the Linux container image with Docker, use the following command from a bash shell or elevated PowerShell command prompt.
+To run the Linux container image with Docker, use the following command from a Bash shell or elevated PowerShell command prompt.
 
 > [!IMPORTANT]  
 > The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead.
@@ -764,7 +764,7 @@ The system administrator account (`sa`) is created on the [!INCLUDE [ssnoversion
 
 1. Choose a strong password to use for the `sa` account. [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-1. Use `docker exec` to run **sqlcmd** to change the password using Transact-SQL. In the following example, the old and new passwords are read from user input.
+1. Use `docker exec` to run **`sqlcmd`** to change the password using Transact-SQL. In the following example, the old and new passwords are read from user input.
 
    ::: zone pivot="cs1-bash"
 
@@ -800,7 +800,7 @@ The system administrator account (`sa`) is created on the [!INCLUDE [ssnoversion
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-   Recent versions of **sqlcmd** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ## Disable the SA account as a best practice
 
@@ -883,7 +883,7 @@ The following table provides a description of the parameters in the previous `do
 | `--hostname sql1` | Used to explicitly set the container hostname. If you don't specify the hostname, it defaults to the container ID, which is a randomly generated system GUID. |
 | `--tag 2022-latest` | The [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux container image. |
 
-**sqlcmd** disables the `sa` password and creates a new login based on the current user when it creates a container. Use the following command to view your login information. You need it in later steps.
+**`sqlcmd`** disables the `sa` password and creates a new login based on the current user when it creates a container. Use the following command to view your login information. You need it in later steps.
 
 ::: zone pivot="cs1-bash"
 
@@ -1018,7 +1018,7 @@ The previous command pulls the latest [!INCLUDE [sssql25-md](../includes/sssql25
 
 ### Run the container
 
-To run the Linux container image with Docker, use the following command from a bash shell or elevated PowerShell command prompt.
+To run the Linux container image with Docker, use the following command from a Bash shell or elevated PowerShell command prompt.
 
 > [!IMPORTANT]  
 > The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead.
@@ -1084,7 +1084,7 @@ The system administrator account (`sa`) is created on the [!INCLUDE [ssnoversion
 
 1. Choose a strong password to use for the `sa` account. [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-1. Use `docker exec` to run **sqlcmd** to change the password using Transact-SQL. In the following example, the old and new passwords are read from user input.
+1. Use `docker exec` to run **`sqlcmd`** to change the password using Transact-SQL. In the following example, the old and new passwords are read from user input.
 
    ::: zone pivot="cs1-bash"
 
@@ -1120,7 +1120,7 @@ The system administrator account (`sa`) is created on the [!INCLUDE [ssnoversion
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-   Recent versions of **sqlcmd** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ## Disable the SA account as a best practice
 
@@ -1203,7 +1203,7 @@ The following table provides a description of the parameters in the previous `do
 | `--hostname sql1` | Used to explicitly set the container hostname. If you don't specify the hostname, it defaults to the container ID, which is a randomly generated system GUID. |
 | `--tag 2025-latest` | The [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux container image. |
 
-**sqlcmd** disables the `sa` password and creates a new login based on the current user when it creates a container. Use the following command to view your login information. You need it in later steps.
+**`sqlcmd`** disables the `sa` password and creates a new login based on the current user when it creates a container. Use the following command to view your login information. You need it in later steps.
 
 ::: zone pivot="cs1-bash"
 
@@ -1289,7 +1289,7 @@ sqlcmd config view --raw
 
 The following steps use the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] command-line tool, [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md), inside the container to connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
-1. Use the `docker exec -it` command to start an interactive bash shell inside your running container. In the following example, `sql1` is name specified by the `--name` parameter when you created the container.
+1. Use the `docker exec -it` command to start an interactive Bash shell inside your running container. In the following example, `sql1` is name specified by the `--name` parameter when you created the container.
 
    ::: zone pivot="cs1-bash"
 
@@ -1318,13 +1318,13 @@ The following steps use the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-m
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
 
-2. Once inside the container, connect locally with **sqlcmd**, using its full path.
+2. Once inside the container, connect locally with **`sqlcmd`**, using its full path.
 
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U <userid> -P "<password>"
    ```
 
-   Recent versions of **sqlcmd** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
    You can omit the password on the command-line to be prompted to enter it. For example:
 
@@ -1337,13 +1337,13 @@ The following steps use the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-m
 <!--SQL Server 2019 on Linux and later versions-->
 ::: moniker range=">=sql-server-linux-ver15 || >=sql-server-ver15"
 
-2. Once inside the container, connect locally with **sqlcmd**, using its full path.
+2. Once inside the container, connect locally with **`sqlcmd`**, using its full path.
 
    ```bash
    /opt/mssql-tools18/bin/sqlcmd -S localhost -U <userid> -P "<password>"
    ```
 
-   Recent versions of **sqlcmd** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
    You can omit the password on the command-line to be prompted to enter it. For example:
 
@@ -1353,17 +1353,17 @@ The following steps use the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-m
 
 ::: moniker-end
 
-1. If successful, you reach a **sqlcmd** command prompt: `1>`.
+1. If successful, you reach a **`sqlcmd`** command prompt: `1>`.
 
 ## Create and query data
 
-The following sections show you how to use **sqlcmd** and Transact-SQL to create a new database, add data, and run a query.
+The following sections show you how to use **`sqlcmd`** and Transact-SQL to create a new database, add data, and run a query.
 
 ### Create a new database
 
 The following steps create a new database named `TestDB`.
 
-1. From the **sqlcmd** command prompt, paste the following Transact-SQL command to create a test database:
+1. From the **`sqlcmd`** command prompt, paste the following Transact-SQL command to create a test database:
 
    ```sql
    CREATE DATABASE TestDB;
@@ -1423,7 +1423,7 @@ Next, create a new table named `Inventory` and insert two new rows.
 
 Now, run a query to return data from the `Inventory` table.
 
-1. From the **sqlcmd** command prompt, enter a query that returns rows from the `Inventory` table where the quantity is greater than 152:
+1. From the **`sqlcmd`** command prompt, enter a query that returns rows from the `Inventory` table where the quantity is greater than 152:
 
    ```sql
    SELECT *
@@ -1439,13 +1439,13 @@ Now, run a query to return data from the `Inventory` table.
 
 ### Exit the sqlcmd command prompt
 
-1. To end your **sqlcmd** session, type `QUIT`:
+1. To end your **`sqlcmd`** session, type `QUIT`:
 
    ```sql
    QUIT
    ```
 
-1. To exit the interactive command-prompt in your container, type `exit`. Your container continues to run after you exit the interactive bash shell.
+1. To exit the interactive command-prompt in your container, type `exit`. Your container continues to run after you exit the interactive Bash shell.
 
 <a id="connectexternal"></a>
 
@@ -1455,15 +1455,15 @@ Now, run a query to return data from the `Inventory` table.
 
 You can connect to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance on your Docker machine from any external Linux, Windows, or macOS tool that supports SQL connections. The external tool uses the IP address for the host machine.
 
-The following steps use **sqlcmd** outside of your container to connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] running in the container. These steps assume that you already have the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] command-line tools installed outside of your container. The same principles apply when using other tools, but the process of connecting is unique to each tool.
+The following steps use **`sqlcmd`** outside of your container to connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] running in the container. These steps assume that you already have the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] command-line tools installed outside of your container. The same principles apply when using other tools, but the process of connecting is unique to each tool.
 
 1. Find the IP address for your container's host machine, using `ifconfig` or `ip addr`.
 
-1. For this example, install the **sqlcmd** tool on your client machine. For more information, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) or [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md).
+1. For this example, install the **`sqlcmd`** tool on your client machine. For more information, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) or [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md).
 
-1. Run **sqlcmd** specifying the IP address and the port mapped to port 1433 in your container. In this example, the port is the same as port 1433 on the host machine. If you specified a different mapped port on the host machine, use it here. You also need to open the appropriate inbound port on your firewall to allow the connection.
+1. Run **`sqlcmd`** specifying the IP address and the port mapped to port 1433 in your container. In this example, the port is the same as port 1433 on the host machine. If you specified a different mapped port on the host machine, use it here. You also need to open the appropriate inbound port on your firewall to allow the connection.
 
-   Recent versions of **sqlcmd** are secure by default. If the connection doesn't succeed, and you're using version 18 or higher, add the `-No` option to **sqlcmd** to specify that encryption is optional, not mandatory.
+   Recent versions of **`sqlcmd`** are secure by default. If the connection doesn't succeed, and you're using version 18 or higher, add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
    ::: zone pivot="cs1-bash"
 
@@ -1498,9 +1498,9 @@ The following steps use **sqlcmd** outside of your container to connect to [!INC
 
 You can connect to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance on your Docker machine from any external Linux, Windows, or macOS tool that supports SQL connections. The external tool uses the IP address for the host machine.
 
-The following steps use **sqlcmd** outside of your container to connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] running in the container. The same principles apply when using other tools, but the process of connecting is unique to each tool.
+The following steps use **`sqlcmd`** outside of your container to connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] running in the container. The same principles apply when using other tools, but the process of connecting is unique to each tool.
 
-1. Run **sqlcmd** in the same session you used to create your container. It keeps track of the connection information through contexts, so you can easily connect at any time. Use `sqlcmd config view` to view your available contexts.
+1. Run **`sqlcmd`** in the same session you used to create your container. It keeps track of the connection information through contexts, so you can easily connect at any time. Use `sqlcmd config view` to view your available contexts.
 
    ::: zone pivot="cs1-bash"
 

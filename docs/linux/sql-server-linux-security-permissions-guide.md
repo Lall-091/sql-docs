@@ -56,7 +56,7 @@ For more information on how to change user data location, log file location, or 
 
 | Purpose | Default path | Details |
 | --- | --- | --- |
-| System and user databases | `/var/opt/mssql/data` | Includes `master`, `model`, `tempdb`, and any new databases unless **mssql-conf** redirects them. For more information, see [Change the default location for system databases](sql-server-linux-configure-mssql-conf.md#masterdatabasedir). |
+| System and user databases | `/var/opt/mssql/data` | Includes `master`, `model`, `tempdb`, and any new databases unless **`mssql-conf`** redirects them. For more information, see [Change the default location for system databases](sql-server-linux-configure-mssql-conf.md#masterdatabasedir). |
 | Transaction logs (if separated) | `/var/opt/mssql/data`, or the path set via `mssql-conf set filelocation.defaultlogdir`. | Keep the same ownership if you move transaction logs. For more information, see [Change the default data or log directory location](sql-server-linux-configure-mssql-conf.md#change-the-default-data-or-log-directory-location). |
 | Backups | `/var/opt/mssql/data` | Create and set with `chown` before first backup, or when mapping a volume or directory. For more information, see [Change the default backup directory location](sql-server-linux-configure-mssql-conf.md#change-the-default-backup-directory-location). |
 | Error logs, and Extended Event (XE) logs | `/var/opt/mssql/log` | Also hosts the default system‑health XE session. For more information, see [Change the default error log file directory location](sql-server-linux-configure-mssql-conf.md#change-the-default-error-log-file-directory-location). |

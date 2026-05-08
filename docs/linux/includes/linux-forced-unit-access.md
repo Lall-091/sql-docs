@@ -34,13 +34,13 @@ Recommended configuration:
 
 1. Enable trace flag 3979 as a startup parameter.
 
-1. Use **mssql-conf** to configure `control.writethrough = 1` and `control.alternatewritethrough = 0`.
+1. Use **`mssql-conf`** to configure `control.writethrough = 1` and `control.alternatewritethrough = 0`.
 
 For almost all other configurations that don't meet the previous conditions, use the following recommended configuration:
 
 1. Enable trace flag 3982 as a startup parameter (which is the default for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] in the Linux ecosystem), and make sure that trace flag 3979 isn't enabled as a startup parameter.
 
-1. Use **mssql-conf** to configure `control.writethrough = 1` and `control.alternatewritethrough = 1`.
+1. Use **`mssql-conf`** to configure `control.writethrough = 1` and `control.alternatewritethrough = 1`.
 
 #### FUA support for SQL Server containers deployed in Kubernetes
 
@@ -60,4 +60,4 @@ If the preceding conditions are met, use the following recommended FUA settings:
 
 1. Enable trace flag 3979 as a startup parameter.
 
-1. Use **mssql-conf** to configure `control.writethrough = 1` and `control.alternatewritethrough = 0`.
+1. Use **`mssql-conf`** to configure `control.writethrough = 1` and `control.alternatewritethrough = 0`.

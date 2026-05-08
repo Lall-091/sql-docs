@@ -81,7 +81,7 @@ To install Ubuntu 22.04, run the following command. Make a note of the UNIX user
 wsl --install -d Ubuntu-22.04
 ```
 
-The output looks similar to the following example. At the end, it shows that you're logged into the Ubuntu 22.04 bash shell.
+The output looks similar to the following example. At the end, it shows that you're logged into the Ubuntu 22.04 Bash shell.
 
 ```output
 Installing: Ubuntu 22.04 LTS
@@ -117,7 +117,7 @@ This message is shown once a day. To disable it please create the
 
 ### Install SQL Server
 
-After you sign in to the Ubuntu 22.04 bash shell, follow the steps outlined in [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-ver16&preserve-view=true&tabs=ubuntu2204#install-sql-server) to install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)].
+After you sign in to the Ubuntu 22.04 Bash shell, follow the steps outlined in [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-ver16&preserve-view=true&tabs=ubuntu2204#install-sql-server) to install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)].
 
 You should also [install the SQL Server command-line tools](quickstart-install-connect-ubuntu.md?view=sql-server-ver16&preserve-view=true&tabs=ubuntu2204#install-the-sql-server-command-line-tools).
 

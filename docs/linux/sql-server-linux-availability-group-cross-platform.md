@@ -37,7 +37,7 @@ In this scenario, two servers are on different operating systems. A Windows Serv
 
 ## Configure the AG
 
-The steps to create the AG are the same as the steps to create an AG for [read-scale workloads](sql-server-linux-availability-group-configure-rs.md). The AG cluster type is NONE, because there's no cluster manager.
+The steps to create the AG are the same as the steps to create an AG for [read-scale workloads](sql-server-linux-availability-group-configure-rs.md). The AG cluster type is `NONE`, because there's no cluster manager.
 
 For the scripts in this article, angle brackets `<` and `>` identify values that you must replace for your environment. The angle brackets themselves aren't required for the scripts.
 
@@ -48,7 +48,7 @@ For the scripts in this article, angle brackets `<` and `>` identify values that
 
    **Enable Availability Groups**
 
-   For instructions, see [Enable or disable Always On availability group feature](../database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server.md).
+   For instructions, see [Enable or disable the Always On availability group feature](../database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server.md).
 
    :::image type="content" source="media/sql-server-linux-availability-group-cross-platform/configuration-manager.png" alt-text="Screenshot showing how to enable Availability Groups." lightbox="media/sql-server-linux-availability-group-cross-platform/configuration-manager.png":::
 
@@ -60,9 +60,9 @@ For the scripts in this article, angle brackets `<` and `>` identify values that
 
    For instructions, see [Change server authentication mode](../database-engine/configure-windows/change-server-authentication-mode.md#use-ssms).
 
-1. Install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Linux. For instructions, see [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md). Enable `hadr` with **mssql-conf**.
+1. Install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Linux. For instructions, see [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md). Enable `hadr` with **`mssql-conf`**.
 
-   To enable `hadr` via **mssql-conf** from a shell prompt, issue the following command:
+   To enable `hadr` via **`mssql-conf`** from a shell prompt, issue the following command:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1

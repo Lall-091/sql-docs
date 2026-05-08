@@ -20,7 +20,7 @@ ms.custom:
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
 
-In this quickstart, you install [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on Red Hat Enterprise Linux (RHEL) 8.x. Then you connect by using **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on Red Hat Enterprise Linux (RHEL) 8.x. Then you connect by using **`sqlcmd`** to create your first database and run queries.
 
 For more information on supported platforms, see [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md).
 
@@ -28,7 +28,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
-In this quickstart, you install [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on Red Hat Enterprise Linux (RHEL) 8.x. Then you connect by using **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on Red Hat Enterprise Linux (RHEL) 8.x. Then you connect by using **`sqlcmd`** to create your first database and run queries.
 
 For more information on supported platforms, see [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md).
 
@@ -36,7 +36,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2022 on Linux-->
 ::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
-In this quickstart, you install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Red Hat Enterprise Linux (RHEL) 8.x or 9.x. Then you connect by using **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Red Hat Enterprise Linux (RHEL) 8.x or 9.x. Then you connect by using **`sqlcmd`** to create your first database and run queries.
 
 If you want to automate your installation using Ansible, see [Quickstart: Deploy SQL Server on Linux using an Ansible playbook](sql-server-linux-deploy-ansible.md).
 
@@ -46,7 +46,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2025 on Linux-->
 ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
-In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Red Hat Enterprise Linux (RHEL) 9.x or 10.x. Then you connect by using **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Red Hat Enterprise Linux (RHEL) 9.x or 10.x. Then you connect by using **`sqlcmd`** to create your first database and run queries.
 
 > [!NOTE]  
 > Red Hat 9 includes support for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and TLS 1.3, which is enabled by default. Starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1, Red Hat 10 is supported.

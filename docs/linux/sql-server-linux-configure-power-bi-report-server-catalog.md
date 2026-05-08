@@ -45,7 +45,7 @@ Separate servers and separate accounts are used in this example scenario to ensu
 
 Before proceeding with the configuration (or reconfiguration) of PBIRS to use [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux as the backend to host the Report Server catalog databases, ensure that the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux instance has been joined to the domain.
 
-You can install and configure **adutil**, and join the domain, following the instructions in [Tutorial: Use adutil to configure Active Directory authentication with SQL Server on Linux](sql-server-linux-ad-auth-adutil-tutorial.md).
+You can install and configure **`adutil`**, and join the domain, following the instructions in [Tutorial: Use adutil to configure Active Directory authentication with SQL Server on Linux](sql-server-linux-ad-auth-adutil-tutorial.md).
 
 > [!NOTE]  
 > For information about specific packages on RHEL 8, see [Connecting RHEL systems directly to AD using SSSD](https://docs.redhat.com/documentation/red_hat_enterprise_linux/8/html-single/integrating_rhel_systems_directly_with_windows_active_directory/index#discovering-and-joining-an-ad-domain-using-sssd_connecting-directly-to-ad).

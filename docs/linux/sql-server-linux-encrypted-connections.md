@@ -137,7 +137,7 @@ systemctl restart mssql-server
 
   :::image type="content" source="media/sql-server-linux-encrypted-connections/ssms-encrypt-connection.png" alt-text="Screenshot of SQL Server Management Studio connection dialog.":::
 
-- **sqlcmd**
+- **`sqlcmd`**
 
   `sqlcmd -S <sqlhostname> -N -U sa -P '<password>'`
 
@@ -202,7 +202,7 @@ systemctl restart mssql-server
 > [!CAUTION]  
 > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-- **sqlcmd**
+- **`sqlcmd`**
 
   `sqlcmd -S <sqlhostname> -U sa -P '<password>'`
 

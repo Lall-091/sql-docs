@@ -81,7 +81,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" --cap-add SYS_PT
 ```
 
 > [!WARNING]  
-> Make sure that the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container has a named user such as `mssql` or `root`, otherwise **sqlcmd** can't run within the container. You can check if the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container is running as a named user by running `whoami` within the container.
+> Make sure that the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container has a named user such as `mssql` or `root`, otherwise **`sqlcmd`** can't run within the container. You can check if the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container is running as a named user by running `whoami` within the container.
 
 #### Run the non-root container as the root user
 
