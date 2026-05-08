@@ -150,7 +150,7 @@ To address such issues:
 - If the database and log files aren't intact and as a result the database can't come online, restore the last known good backup of the database
 - For troubleshooting suggestions, see [MSSQLSERVER error 823](mssqlserver-823-database-engine-error.md) and [Troubleshoot database consistency errors reported by DBCC CHECKDB](/troubleshoot/sql/database-engine/database-file-operations/troubleshoot-dbcc-checkdb-errors)
 
-### Resolve TDE encryption or description failure
+### Resolve TDE encryption or decryption failure
 
 If you're using an external Extensible Key Management (EKM)/Hardware Security Modules (HSM) service or provider, ensure the modules provided by the service are stable and updated. Work with the EKM/HSM provider vendor to resolve any issues with the modules that perform the encryption/decryption of files.
 
