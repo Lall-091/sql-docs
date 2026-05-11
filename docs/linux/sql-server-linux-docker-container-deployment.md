@@ -4,7 +4,7 @@ description: Explore how SQL Server can be deployed on Linux containers and lear
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 01/27/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy

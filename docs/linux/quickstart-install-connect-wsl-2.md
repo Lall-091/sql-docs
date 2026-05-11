@@ -3,7 +3,7 @@ title: "WSL 2: Install SQL Server on Windows Subsystem for Linux"
 description: This quickstart shows how to install SQL Server on Windows Subsystem for Linux (WSL 2) and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/27/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart

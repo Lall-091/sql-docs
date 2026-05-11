@@ -3,7 +3,7 @@ title: "SUSE: Install SQL Server on Linux"
 description: This quickstart shows how to install SQL Server on SUSE Linux Enterprise Server and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2025
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart

@@ -4,7 +4,7 @@ description: Learn how SQL Server 2017 (14.x) (CU18) and later support SQL Serve
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 01/21/2025
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: overview

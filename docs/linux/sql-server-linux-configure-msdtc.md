@@ -3,7 +3,7 @@ title: How to Configure MSDTC on Linux
 description: In this article, learn how to configure the Microsoft Distributed Transaction Coordinator (MSDTC) on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/16/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
