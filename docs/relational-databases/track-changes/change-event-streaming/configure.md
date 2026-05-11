@@ -4,7 +4,7 @@ description: Describes how to configure change event streaming.
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray, randolphwest
-ms.date: 03/18/2026
+ms.date: 05/11/2026
 ms.service: sql
 ms.topic: how-to
 ms.custom:
@@ -53,11 +53,11 @@ To learn how to create Azure Event Hubs, review [Create an event hub using the A
 
 ## Azure Event Hubs access control
 
-Configure access control for your SQL resource to Azure Event Hubs. Microsoft Entra authentication is the most secure method but is currently only supported by Azure SQL Database for CES. While using a shared access policy is supported by both Azure SQL Database and SQL Server 2025, use it only in Azure SQL Database if Microsoft Entra authentication isn't an option.
+Configure access control for your SQL resource to Azure Event Hubs. Microsoft Entra authentication is the most secure method. CES supports Microsoft Entra authentication in Azure SQL Database, Azure SQL Managed Instance and SQL Server 2025 starting with Cumulative Update 3 (CU3) for instances [enabled by Azure Arc](../../../sql-server/azure-arc/connect.md) or running on an [Azure VM](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview). While shared access policies are supported, use them only when Microsoft Entra authentication isn't an option.
 
 ### [Shared access policy based access control](#tab/sas-access)
 
-[Shared access policies](/azure/event-hubs/authorize-access-shared-access-signature#shared-access-authorization-policies) provide authentication and authorization to Azure Event Hubs. Each shared access policy needs a name, an access level (`Manage`, `Send`, or `Listen`), and a resource binding (Event Hubs namespace or a specific Event Hub instance). Instance level policies offer more security by following the principle of least privilege. Both SQL Server 2025 and Azure SQL Database support this method. However, use Microsoft Entra authentication whenever possible with Azure SQL Database, as it provides better security.
+[Shared access policies](/azure/event-hubs/authorize-access-shared-access-signature#shared-access-authorization-policies) provide authentication and authorization to Azure Event Hubs. Each shared access policy needs a name, an access level (`Manage`, `Send`, or `Listen`), and a resource binding (Event Hubs namespace or a specific Event Hub instance). Instance level policies offer more security by following the principle of least privilege. While shared access policies are supported by SQL Database Engine products, use Microsoft Entra authentication whenever possible, as it provides better security.
 
 If you use a shared access policy for authentication and authorization, clients sending data to an Azure Event Hub need to provide the name of the policy they want to use, along with either a **SAS token** generated from the policy or the policy's **Service key**.
 
@@ -227,12 +227,21 @@ SharedAccessSignature sr=https%3a%2f%YourEventHubNamespace.servicebus.windows.ne
 
 ### [Microsoft Entra based access control](#tab/entra-access)
 
-Use Microsoft Entra [managed identities](/entra/identity/managed-identities-azure-resources/overview) to control access to Azure Event Hubs. It's the simplest and most secure way to grant access to Azure Event Hubs. Currently, only Azure SQL Database supports Microsoft Entra authentication for CES.
+Use Microsoft Entra [managed identities](/entra/identity/managed-identities-azure-resources/overview) to control access to Azure Event Hubs. It's the simplest and most secure way to grant access to Azure Event Hubs. CES supports Microsoft Entra authentication in Azure SQL Database, Azure SQL Managed Instance, and SQL Server 2025 instances enabled by Azure Arc or running on an Azure VM starting with Cumulative Update 3 (CU3).
 
-To [allow Azure SQL Database managed identity write access](/azure/event-hubs/authenticate-managed-identity) to the Events Hub, follow these steps:
+> [!IMPORTANT]
+> If your SQL Server instance isn't enabled by Azure Arc or running on an Azure VM, and you haven't installed CU3 or later, Microsoft Entra authentication isn't available and you must use shared access policies instead.
 
-1. Configure a [managed identity](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity) for your Azure SQL Database [logical server](/azure/azure-sql/database/logical-servers), if you haven't already.
-1. Add the `Azure Event Hubs Data Sender` role assignment to the managed identity of your logical server for your Azure Event Hub instance. You can do this programmatically with any programming or scripting language, or on the **Access Control (IAM)** page for your Azure Event Hub instance in the Azure portal.
+To [allow managed identity write access](/azure/event-hubs/authenticate-managed-identity) to the Event Hub from Azure SQL Database, Azure SQL Managed Instance, or SQL Server, follow these steps:
+
+1. If you haven't already, configure a [managed identity](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity?view=azuresql-db&preserve-view=true) for your SQL Database Engine:
+    1.  The [logical server](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity?view=azuresql-db&preserve-view=true) for Azure SQL Database
+    1.  [Azure SQL Managed Instance](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity?view=azuresql-mi&preserve-view=true)
+    1.  [SQL Server on Azure Virtual Machines](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm?view=azuresql&preserve-view=true)
+    1.  [SQL Server enabled by Azure Arc](../../../sql-server/azure-arc/microsoft-entra-authentication-with-managed-identity.md)
+
+
+1. Add the `Azure Event Hubs Data Sender` role assignment to the managed identity of your logical server, SQL managed instance, or SQL Server for your Azure Event Hub instance. You can do this programmatically with any programming or scripting language, or on the **Access Control (IAM)** page for your Azure Event Hub instance in the Azure portal.
 
 To follow the principle of least privilege, grant access to the specific Event Hubs instance that receives the change events. Granting write access to the entire Event Hubs namespace is technically allowed, but not recommended since it applies to any event Event Hubs instance within the namespace.
 
@@ -308,7 +317,7 @@ EXEC sys.sp_add_object_to_event_stream_group
 
 #### [Microsoft Entra authentication](#tab/entra-auth)
 
-The example in this section uses Microsoft Entra authentication to authenticate to your Azure Event Hubs instance through the AMQP protocol. This method is the most secure but is currently only supported by Azure SQL Database for CES.
+The example in this section uses Microsoft Entra authentication to authenticate to your Azure Event Hubs instance through the AMQP protocol. This method is the most secure.
 
 Replace the values in angle brackets (`<value>`) with values for your environment.
 
@@ -406,7 +415,7 @@ EXEC sys.sp_add_object_to_event_stream_group
 
 #### [Microsoft Entra authentication](#tab/entra-auth)
 
-The example in this section uses Microsoft Entra authentication to authenticate to your Azure Event Hubs instance through the Apache Kafka protocol. This method is the most secure but is currently only supported by Azure SQL Database for CES.
+The example in this section uses Microsoft Entra authentication to authenticate to your Azure Event Hubs instance through the Apache Kafka protocol. This method is the most secure.
 
 Replace the values in angle brackets (`<value>`) with values for your environment.
 
@@ -564,7 +573,6 @@ The following limitations apply when using CES with Azure SQL Database:
 - Currently, CES doesn't stream data that exists in a table before CES is enabled. Existing data isn't seeded, or sent as a snapshot, when CES is enabled.
 - If a message exceeds the Azure Event Hubs message size limit, the failure is currently only observable through Extended Events. CES xEvents are currently only available in SQL Server 2025, and not Azure SQL Database.
 - Renaming tables and columns configured for CES isn't supported. Renaming a table or column fails. Database renames **are allowed**.
-- Microsoft Entra authentication for CES isn't currently available in SQL Server 2025.
 - CES isn't available to Azure SQL Managed Instance configured with the SQL Server 2022 [update policy](/azure/azure-sql/managed-instance/update-policy). It's only available to instances configured with the SQL Server 2025 or Always-up-to-date update policy.
 
 ### Database-level limitations

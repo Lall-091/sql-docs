@@ -4,7 +4,7 @@ description: "Describes the message format for change event streaming"
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray
-ms.date: 03/18/2026
+ms.date: 05/11/2026
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
