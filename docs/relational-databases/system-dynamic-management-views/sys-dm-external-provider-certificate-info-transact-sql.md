@@ -9,7 +9,7 @@ ms.subservice: system-objects
 ms.topic: "reference"
 ---
 # sys.dm_external_provider_certificate_info (Transact-SQL)
-[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 > [!NOTE]
 > This view is introduced in SQL Server 2022 CU1.

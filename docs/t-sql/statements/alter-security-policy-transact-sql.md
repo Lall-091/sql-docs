@@ -60,7 +60,7 @@ The name of the security policy. Security policy names must fulfill the rules fo
 
 The name of the schema to which the security policy belongs. *schema_name* is required because of schema binding.
 
-#### [ FILTER | BLOCK ] **
+#### [ FILTER | BLOCK ]
 
 The type of security predicate for the function bound to the target table. `FILTER` predicates silently filter the rows that are available to read operations. `BLOCK` predicates explicitly block write operations that violate the predicate function.
 

@@ -90,7 +90,7 @@ You need to enable logging as described in the previous steps and then complete 
   
 ## <a name="bkmk_executionlog3"></a> Log fields (ExecutionLog3)  
 
-This view adds more performance diagnostics nodes inside the XML based **AdditionalInfo** column. The **AdditionalInfo** column contains an XML structure of 1 to many fields of information. The following example shows a Transact SQL statement that retrieves rows from the view ExecutionLog3. The sample assumes the report server database is named ReportServer:  
+This view adds more performance diagnostics nodes inside the XML based **AdditionalInfo** column. The **AdditionalInfo** column contains an XML structure of 1 to many fields of information. The following example shows a Transact-SQL statement that retrieves rows from the view ExecutionLog3. The sample assumes the report server database is named ReportServer:  
   
 ``` tsql
 Use ReportServer  
@@ -307,7 +307,7 @@ The following are examples of the contents of the **AdditionalInfo** field for b
   
 ## <a name="bkmk_executionlog2"></a> Log fields (ExecutionLog2)  
 
-This view added a few new fields and renamed a few others. The following sample is a Transact SQL statement that retrieves rows from the view **ExecutionLog2**. The sample assumes the report server database is named `ReportServer`:  
+This view added a few new fields and renamed a few others. The following sample is a Transact-SQL statement that retrieves rows from the view **ExecutionLog2**. The sample assumes the report server database is named `ReportServer`:  
   
 ``` tsql
 Use ReportServer  
@@ -339,7 +339,7 @@ The following table describes the data that's captured in the report execution l
   
 ## <a name="bkmk_executionlog"></a> Log fields (ExecutionLog)  
 
-The following sample is a Transact SQL statement that retrieves rows from the view ExecutionLog. The sample assumes the report server database is named `ReportServer`:  
+The following sample is a Transact-SQL statement that retrieves rows from the view ExecutionLog. The sample assumes the report server database is named `ReportServer`:  
   
 ``` tsql
 Use ReportServer  

@@ -78,7 +78,7 @@ The process for presenting shared storage is the same for the different supporte
 
 One major difference with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux is that while you can configure the default user data and log file location, the system databases must always exist at `/var/opt/mssql/data`. On Windows Server, you have the ability to move the system databases including `tempdb`. This fact plays into how shared storage is configured for an FCI.
 
-The default paths for non-system databases can be changed using the `mssql-conf` utility. For information on how to change the defaults, [Change the default data or log directory location](sql-server-linux-configure-mssql-conf.md#datadir). You can also store [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] data and transaction in other locations as long as they have the proper security even if it isn't a default location; the location would need to be stated.
+The default paths for non-system databases can be changed using the **`mssql-conf`** utility. For information on how to change the defaults, [Change the default data or log directory location](sql-server-linux-configure-mssql-conf.md#datadir). You can also store [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] data and transaction in other locations as long as they have the proper security even if it isn't a default location; the location would need to be stated.
 
 ## Related content
 

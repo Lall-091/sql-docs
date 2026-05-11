@@ -128,7 +128,7 @@
   - name: Report Design Tips
     href: ../reporting-services/report-design/report-design-tips-report-builder-and-ssrs.md
   - name: Reporting Services features in editions of SQL Server
-    href: ../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md
+    href: ../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server.md
 - name: Install Reporting Services versions
   items:
   - name: Install Reporting Services
@@ -439,7 +439,7 @@
 - name: Microsoft Report Builder (SSRS)
   items:
   - name: Microsoft Report Builder Overview
-    href: ../reporting-services/report-builder/report-builder-in-sql-server-2016.md
+    href: ../reporting-services/report-builder/report-builder-in-sql-server.md
   - name: Start Report Builder
     href: ../reporting-services/report-builder/start-report-builder.md
     items:

@@ -532,7 +532,7 @@ If you save it to a report server, you can view it there.
 ## Related content
 
 - [Report Builder tutorials](../reporting-services/report-builder-tutorials.md)
-- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Map Wizard and Map Layer Wizard &#40;Report Builder and SSRS&#41;](../reporting-services/report-design/map-wizard-and-map-layer-wizard-report-builder-and-ssrs.md)
 - [Vary polygon, line, and point display in a paginated report by rules and analytical data (Report Builder)](../reporting-services/report-design/vary-polygon-line-and-point-display-by-rules-and-analytical-data.md)
 

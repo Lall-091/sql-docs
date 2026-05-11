@@ -1,9 +1,9 @@
 ---
 title: "!= (Not Equal To) (Transact-SQL)"
-description: "Not Equal To (Transact SQL) - exclamation"
+description: Tests whether one expression isn't equal to another expression (a comparison operator).
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "03/06/2017"
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -19,15 +19,14 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
-# Not Equal To (Transact SQL) - exclamation
+
+# Not equal to (Transact-SQL) - exclamation
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-Tests whether one expression is not equal to another expression (a comparison operator). If either or both operands are NULL, NULL is returned. Functions the same as the [<> (Not Equal To)](../../t-sql/language-elements/not-equal-to-transact-sql-traditional.md) comparison operator.  
-  
-## See Also  
+Tests whether one expression isn't equal to another expression (a comparison operator). If either or both operands are `NULL`, `NULL` is returned. Functions the same as the [Not equal to - traditional](not-equal-to-transact-sql-traditional.md) comparison operator.
 
-[Expressions &#40;Transact-SQL&#41;](../../t-sql/language-elements/expressions-transact-sql.md)   
-[Operators &#40;Transact-SQL&#41;](../../t-sql/language-elements/operators-transact-sql.md)  
-  
-  
+## Related content
+
+- [Expressions (Transact-SQL)](expressions-transact-sql.md)
+- [Operators (Transact-SQL)](operators-transact-sql.md)

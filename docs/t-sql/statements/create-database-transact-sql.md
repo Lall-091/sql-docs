@@ -272,7 +272,6 @@ When `OFF`, the database can't participate in cross-database ownership chaining.
 > [!IMPORTANT]  
 > The instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] recognizes this setting when the cross database ownership chaining server option is 0 (`OFF`). When cross-database ownership chaining is 1 (`ON`), all user databases can participate in cross-database ownership chains, regardless of the value of this option. This option is set by using [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md).
 
-To set this option, requires membership in the **sysadmin** fixed server role. The `DB_CHAINING` option can't be set on these system databases: `master`, `model`, `tempdb`.
 
 #### TRUSTWORTHY { OFF | ON }
 
@@ -281,8 +280,6 @@ When `ON` is specified, database modules (for example, views, user-defined funct
 When `OFF`, database modules in an impersonation context can't access resources outside the database. The default is `OFF`.
 
 `TRUSTWORTHY` is set to `OFF` whenever the database is attached.
-
-By default, all system databases except the `msdb` database have `TRUSTWORTHY` set to `OFF`. The value can't be changed for the `model` and `tempdb` databases. We recommend that you never set the `TRUSTWORTHY` option to `ON` for the `master` database.
 
 #### PERSISTENT_LOG_BUFFER = ON ( DIRECTORY_NAME = '*directory_name*' )
 
@@ -1471,6 +1468,8 @@ CREATE DATABASE MyLedgerDB
 :::row-end:::
 
 ## Azure Synapse Analytics
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
 
 ## Overview
 

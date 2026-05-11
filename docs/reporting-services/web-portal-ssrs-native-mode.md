@@ -41,7 +41,7 @@ Use the web portal for these and other tasks:
 
 The web portal is used only for a report server that runs in Native mode. It isn't supported for a report server that you configure for SharePoint integrated mode.
 
-Some web portal features are only available in specified editions of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)]. For more information, see [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md).
+Some web portal features are only available in specified editions of [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)]. For more information, see [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server.md).
 
 On a new installation, only local administrators have sufficient permissions to work with content and settings. To grant permissions to other users, a local administrator must create role assignments that provide access to the report server. The application pages and tasks that a user can then access depend on the role assignments for that user. For more information, see [Grant user access to a report server](./security/grant-user-access-to-a-report-server.md).
 
@@ -110,6 +110,6 @@ Enter a search term and see everything you can access. The results are categoriz
 ::: moniker-end
 - [Configure a URL (Report Server Configuration Manager)](../reporting-services/install-windows/configure-a-url-ssrs-configuration-manager.md)  
 - [Reporting Services tools](../reporting-services/tools/reporting-services-tools.md)  
-- [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md)  
+- [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server.md)  
 
 More questions? [Try the Reporting Services forum](/answers/search.html?c=&f=&includeChildren=&q=ssrs+OR+reporting+services&redirect=search%2fsearch&sort=relevance&type=question+OR+idea+OR+kbentry+OR+answer+OR+topic+OR+user).

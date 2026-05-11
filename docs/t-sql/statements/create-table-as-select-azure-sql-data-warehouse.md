@@ -4,7 +4,7 @@ description: "CREATE TABLE AS SELECT creates a new table based on the output of 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: vanto, xiaoyul, mariyaali, periclesrocha
-ms.date: 11/03/2025
+ms.date: 05/01/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -19,6 +19,8 @@ monikerRange: "=azure-sqldw-latest || =fabric"
 ::: moniker range="=azure-sqldw-latest"
  
 [!INCLUDE[applies-to-version/asa-pdw](../../includes/applies-to-version/asa-pdw.md)]
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
 
 `CREATE TABLE AS SELECT` (CTAS) is one of the most important T-SQL features available. It's a fully parallelized operation that creates a new table based on the output of a SELECT statement. CTAS is the simplest and fastest way to create a copy of a table.
 
@@ -899,9 +901,11 @@ For details, see [General Remarks](create-table-azure-sql-data-warehouse.md?vers
 
 ## Limitations and restrictions
 
+When using CTAS, the data types of the target table are inferred from the result set of the `SELECT` statement. If any column in the result set resolves to a data type that is not supported for table storage, the CTAS operation fails. This restriction applies to persisted tables (Parquet-backed tables), where only supported data types can be written. Some data types may be valid in query expressions and intermediate results but are not supported for table columns. For the list of supported and unsupported data types for tables, see [Data types in Fabric Data Warehouse](/fabric/data-warehouse/data-types). 
+
 [SET ROWCOUNT (Transact-SQL)](../statements/set-rowcount-transact-sql.md) has no effect on CTAS. To achieve a similar behavior, use [TOP (Transact-SQL)](../queries/top-transact-sql.md?version=fabric&preserve-view=true).  
  
-For details, see [Limitations and Restrictions](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#LimitationsRestrictions) in `CREATE TABLE`.
+For more details and other limitations that apply to CTAS, see [Limitations and Restrictions](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#LimitationsRestrictions) in `CREATE TABLE`.
 
 <a name="locking-behavior-bk-fabric"></a>
 

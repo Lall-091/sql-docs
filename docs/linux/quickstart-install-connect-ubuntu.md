@@ -19,7 +19,7 @@ ms.custom:
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
 
-In this quickstart, you install [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on Ubuntu 18.04. Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on Ubuntu 18.04. Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 For more information on supported platforms, see [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md).
 
@@ -27,7 +27,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
-In this quickstart, you install [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on Ubuntu 20.04. Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on Ubuntu 20.04. Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 For more information on supported platforms, see [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md).
 
@@ -35,7 +35,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2022 on Linux-->
 ::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
-In this quickstart, you install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Ubuntu 20.04 or 22.04. Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Ubuntu 20.04 or 22.04. Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 For more information on supported platforms, see [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md).
 
@@ -44,7 +44,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2025 on Linux-->
 ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
-In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Ubuntu 22.04. Then you can connect with **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Ubuntu 22.04. Then you can connect with **`sqlcmd`** to create your first database and run queries.
 
 > [!NOTE]  
 > Starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Cumulative Update (CU) 1, Ubuntu 24.04 is supported.

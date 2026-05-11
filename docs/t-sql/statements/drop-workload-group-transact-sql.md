@@ -80,6 +80,8 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-late
 
 ## Azure Synapse Analytics
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 Drops a workload group.  Once the statement completes, the settings are in effect.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)

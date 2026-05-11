@@ -22,9 +22,9 @@ This tutorial explains how to configure Windows Active Directory authentication 
 This tutorial consists of the following tasks:
 
 > [!div class="checklist"]
-> - Install **adutil**
+> - Install **`adutil`**
 > - Join Linux machine to your Active Directory domain
-> - Create an Active Directory user for SQL Server and set the Service Principal Name (SPN) using **adutil**
+> - Create an Active Directory user for SQL Server and set the Service Principal Name (SPN) using **`adutil`**
 > - Create the SQL Server service keytab (key table) file
 > - Configure SQL Server to use the keytab file
 > - Create Active Directory-based SQL Server logins using Transact-SQL
@@ -35,7 +35,7 @@ This tutorial consists of the following tasks:
 Before configuring Active Directory authentication, you need:
 
 - A Windows Domain Controller running Active Directory Domain Services in your network.
-- The **adutil** tool installed on a domain-joined host machine.
+- The **`adutil`** tool installed on a domain-joined host machine.
 
 ## Domain machine preparation
 
@@ -51,13 +51,13 @@ To join `sql1` to the Active Directory domain, see [Join SQL Server on a Linux h
 
 ## Install adutil
 
-To install **adutil**, follow the steps explained in the article [Introduction to adutil - Active Directory utility](sql-server-linux-ad-auth-adutil-introduction.md) on the host machine that you added to the domain in the previous step.
+To install **`adutil`**, follow the steps explained in the article [Introduction to adutil - Active Directory utility](sql-server-linux-ad-auth-adutil-introduction.md) on the host machine that you added to the domain in the previous step.
 
 <a id="adutil-spn"></a>
 
 ## Use adutil to create an Active Directory user for SQL Server and set the Service Principal Name (SPN)
 
-1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the `kinit` command. You must use a privileged account for the `kinit` command, and the host machine should already be part of the domain. The account needs permission to connect to the domain, and create accounts and SPNs in the domain.
+1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the **`kinit`** command. You must use a privileged account for the **`kinit`** command, and the host machine should already be part of the domain. The account needs permission to connect to the domain, and create accounts and SPNs in the domain.
 
    In this example script, a privileged user called `privilegeduser@CONTOSO.COM` is already created on the domain controller.
 
@@ -65,7 +65,7 @@ To install **adutil**, follow the steps explained in the article [Introduction t
    kinit privilegeduser@CONTOSO.COM
    ```
 
-1. Using **adutil**, create the new user to use as the privileged Active Directory account by SQL Server.
+1. Using **`adutil`**, create the new user to use as the privileged Active Directory account by SQL Server.
 
    Passwords can be specified in three different ways. If you use more than one of these methods, they take precedence in the following order:
 
@@ -94,7 +94,7 @@ To install **adutil**, follow the steps explained in the article [Introduction t
    adutil spn addauto -n sqluser -s MSSQLSvc -H sql1.contoso.com -p 1433
    ```
 
-   - `addauto` creates the SPNs automatically, as long as there are sufficient privileges for the `kinit` account.
+   - `addauto` creates the SPNs automatically, as long as there are sufficient privileges for the **`kinit`** account.
    - `-n`: The name of the account to assign the SPNs.
    - `-s`: The service name to use for generating SPNs. In this case it's for the SQL Server service, which is why the service name is `MSSQLSvc`.
    - `-H`: The hostname to use for generating SPNs. If not specified, the local host's FQDN is used. In this case, the host name is `sql1` and the FQDN is `sql1.contoso.com`.
@@ -102,11 +102,11 @@ To install **adutil**, follow the steps explained in the article [Introduction t
 
 ## Create the SQL Server service keytab file using mssql-conf
 
-You can install **adutil** and integrate it with **mssql-conf**, to create and configure the keytab using **mssql-conf** directly. This method is preferred for creating a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service keytab file. Otherwise, you can [create the SQL Server service keytab file manually](#create-the-sql-server-service-keytab-file-manually).
+You can install **`adutil`** and integrate it with **`mssql-conf`**, to create and configure the keytab using **`mssql-conf`** directly. This method is preferred for creating a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service keytab file. Otherwise, you can [create the SQL Server service keytab file manually](#create-the-sql-server-service-keytab-file-manually).
 
 ### Prerequisites
 
-1. Make sure that the `mssql` user owns the `/var/opt/mssql/mssql.conf` file, and not `root`. Otherwise, you must run the **mssql-conf** commands using `sudo`.
+1. Make sure that the `mssql` user owns the `/var/opt/mssql/mssql.conf` file, and not `root`. Otherwise, you must run the **`mssql-conf`** commands using `sudo`.
 
 1. On a domain controller, in the Active Directory settings for the `network.privilegedadaccount` account (in these examples, `sqluser@CONTOSO.COM`), enable the following options under the **Account** tab, in the **Account options** section:
 
@@ -123,7 +123,7 @@ Once you [create the user and SPNs](#adutil-spn), you can create the keytab usin
    su mssql
    ```
 
-1. Sign in as the Active Directory user using the `kinit` command:
+1. Sign in as the Active Directory user using the **`kinit`** command:
 
    ```bash
    kinit privilegeduser@CONTOSO.COM
@@ -156,7 +156,7 @@ Once you [create the user and SPNs](#adutil-spn), you can create the keytab usin
       4 12/30/2021 14:02:08 MSSQLSvc/sql1@CONTOSO.COM (aes256-cts-hmac-sha1-96)
    ```
 
-   If the `/var/opt/mssql/mssql.conf` file isn't owned by `mssql`, you must configure **mssql-conf** to set the `network.kerberoskeytabfile` and `network.privilegedadaccount` values according to the previous steps. Type the password when prompted.
+   If the `/var/opt/mssql/mssql.conf` file isn't owned by `mssql`, you must configure **`mssql-conf`** to set the `network.kerberoskeytabfile` and `network.privilegedadaccount` values according to the previous steps. Type the password when prompted.
 
    ```bash
    /opt/mssql/bin/mssql-conf set network.kerberoskeytabfile /var/opt/mssql/secrets/mssql.keytab
@@ -188,7 +188,7 @@ Once you [create the user and SPNs](#adutil-spn), you can create the keytab usin
 
 ## Create the SQL Server service keytab file manually
 
-If you installed **adutil** and integrated it with **mssql-conf**, you can skip ahead to [Create the SQL Server service keytab file using mssql-conf](#create-the-sql-server-service-keytab-file-using-mssql-conf).
+If you installed **`adutil`** and integrated it with **`mssql-conf`**, you can skip ahead to [Create the SQL Server service keytab file using mssql-conf](#create-the-sql-server-service-keytab-file-using-mssql-conf).
 
 1. Create the keytab file that contains entries for each of the four SPNs created previously, and one for the user.
 

@@ -4,7 +4,7 @@ description: "OPENROWSET BULK function reads data from an external data source."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, hudequei, wiassaf, jovanpop, fresantos
-ms.date: 12/12/2025
+ms.date: 05/11/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -150,7 +150,9 @@ For information about how to use the `BULK` option, see the [Remarks](#remarks) 
 
 For information on preparing data for bulk import, see [Prepare data for bulk export or import](../../relational-databases/import-export/prepare-data-for-bulk-export-or-import-sql-server.md).
 
-### BULK '*data_file_path*'
+<a id="bulk-data_file_path"></a>
+
+### BULK
 
 The path or URI of the data file(s) whose data is to be read and returned as row set.
 
@@ -394,7 +396,9 @@ FROM OPENROWSET(
 
 The default field terminator is `,` (comma). For more information, see [Specify Field and Row Terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md?view=fabric&preserve-view=true). For example, to read tab-delimited data from a file:
 
-#### FIELDQUOTE = '*field_quote*'
+<a id="fieldquote--field_quote"></a>
+
+#### FIELDQUOTE
 
 Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], this argument specifies a character that is used as the quote character in the CSV file, like in the following New York example:
 
@@ -417,7 +421,7 @@ FROM OPENROWSET(
 
 ::: moniker range="=fabric"
 
-#### PARSER_VERSION = 'parser_version'
+#### PARSER_VERSION
 
 **Applies to:** Fabric Data Warehouse only
 
@@ -455,7 +459,7 @@ CSV parser version 2.0 specifics:
 - Supported format for **datetime2** data type: `YYYY-MM-DD HH:MM:SS[.fractional seconds]`
 - Default terminators are `\r\n` and `\n`.
 
-#### ESCAPE_CHAR = 'char'
+#### ESCAPE_CHAR
 
 Specifies the character in the file that is used to escape itself and all delimiter values in the file, for example:
 
@@ -479,7 +483,7 @@ FROM OPENROWSET(
 );
 ```
 
-#### HEADER_ROW = { TRUE | FALSE }
+#### HEADER_ROW
 
 Specifies whether a CSV file contains header row that should not be returned with other data rows. An example of CSV file with a header is shown in the following example:
 
@@ -503,7 +507,7 @@ FROM OPENROWSET(
 
 ### Error handling options
 
-#### ERRORFILE = '*file_name*'
+#### ERRORFILE
 
 Specifies the file used to collect rows that have formatting errors and can't be converted to an OLE DB rowset. These rows are copied into this error file from the data file "as is."
 
@@ -539,7 +543,7 @@ FROM OPENROWSET(
 
 For more information, see [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](../statements/create-external-data-source-transact-sql.md).
 
-#### MAXERRORS = *maximum_errors*
+#### MAXERRORS
 
 Specifies the maximum number of syntax errors or nonconforming rows, as defined in the format file, which can occur before `OPENROWSET` throws an exception. Until `MAXERRORS` is reached, `OPENROWSET` ignores each bad row, not loading it, and counts the bad row as one error.
 
@@ -558,15 +562,15 @@ The default for *maximum_errors* is 10.
 
 ### Data processing options
 
-#### FIRSTROW = *first_row*
+#### FIRSTROW
 
 Specifies the number of the first row to load. The default is 1. This indicates the first row in the specified data file. The row numbers are determined by counting the row terminators. `FIRSTROW` is 1-based.
 
-#### LASTROW = *last_row*
+#### LASTROW
 
 Specifies the number of the last row to load. The default is 0. This indicates the last row in the specified data file.
 
-#### ROWS_PER_BATCH = *rows_per_batch*
+#### ROWS_PER_BATCH
 
 Specifies the approximate number of rows of data in the data file. This value is an estimate, and should be an approximation (within one order of magnitude) of the actual number of rows. By default, `ROWS_PER_BATCH` is estimated based on file characteristics (number of files, file sizes, size of the returned data types). Specifying `ROWS_PER_BATCH = 0` is the same as omitting `ROWS_PER_BATCH`. For example:
 

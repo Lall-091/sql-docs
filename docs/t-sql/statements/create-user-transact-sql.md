@@ -283,7 +283,7 @@ In SQL database in Microsoft Fabric, `sid` should be a valid ID of the specified
 
 Specifies the type of a Microsoft Entra principal. `E` indicates the principal is a user or a service principal (an application or a managed identity). `X` indicates the principal is a group.
   
-#### ALLOW_ENCRYPTED_VALUE_MODIFICATIONS = [ ON | **OFF** ]  
+#### ALLOW_ENCRYPTED_VALUE_MODIFICATIONS = [ ON | OFF ]  
  **Applies to**: [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)] and later, [!INCLUDE[ssSDS](../../includes/sssds-md.md)].  
   
  Suppresses cryptographic metadata checks on the server in bulk copy operations. This  enables the user to bulk copy encrypted data between tables or databases, without decrypting the data. The default is OFF.  

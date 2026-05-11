@@ -617,7 +617,7 @@ items:
           href: database-engine/availability-groups/windows/transactions-always-on-availability-and-database-mirroring.md
           items:
           - name: Cluster DTC
-            href: database-engine/availability-groups/windows/cluster-dtc-for-sql-server-2016-availability-groups.md
+            href: database-engine/availability-groups/windows/cluster-dtc-for-sql-server-availability-groups.md
         - name: Encrypted databases
           href: database-engine/availability-groups/windows/encrypted-databases-with-always-on-availability-groups-sql-server.md
         - name: SQL Server Analysis Services (SSAS)
@@ -1574,7 +1574,7 @@ items:
               href: database-engine/service-broker/handling-service-broker-error-messages.md
             - name: Handling Poison Messages
               href: database-engine/service-broker/handling-poison-messages.md
-            - name: 'How to: Retrieve Information from a Service Broker Error Message (Transact SQL)'
+            - name: 'How to: Retrieve Information from a Service Broker Error Message (Transact-SQL)'
               href: database-engine/service-broker/how-to-retrieve-information-from-a-service-broker-error-message-transact-sql.md
     - name: Creating Service Broker Objects
       items:
@@ -9028,7 +9028,7 @@ items:
 - name: Tutorials
   items:
   - name: SQL Server
-    href: sql-server/tutorials-for-sql-server-2016.md
+    href: sql-server/tutorials-for-sql-server.md
   - name: Database Engine
     href: relational-databases/database-engine-tutorials.md
     items:
@@ -9194,6 +9194,8 @@ items:
         href: linux/usage-and-diagnostic-data-configuration-for-sql-server-linux.md
     - name: Containers
       items:
+      - name: Overview
+        href: linux/containers/overview.md
       - name: Deploy and connect to containers
         href: linux/sql-server-linux-docker-container-deployment.md
       - name: Configure and customize containers
@@ -13099,7 +13101,7 @@ items:
         href: relational-databases/system-stored-procedures/sp-describe-cursor-tables-transact-sql.md
       - name: sp_execute
         href: relational-databases/system-stored-procedures/sp-execute-transact-sql.md
-      - name: sp_prepare (Transact SQL)
+      - name: sp_prepare (Transact-SQL)
         href: relational-databases/system-stored-procedures/sp-prepare-transact-sql.md
       - name: sp_prepexec
         href: relational-databases/system-stored-procedures/sp-prepexec-transact-sql.md
@@ -15608,13 +15610,15 @@ items:
       - name: DBCC USEROPTIONS
         href: t-sql/database-console-commands/dbcc-useroptions-transact-sql.md
     - name: Functions
-      href: t-sql/functions/functions.md
       items:
-      - name: ODBC Scalar
+      - name: Overview
+        href: t-sql/functions/functions.md
+      - name: ODBC scalar
         href: t-sql/functions/odbc-scalar-functions-transact-sql.md
       - name: Aggregate
-        href: t-sql/functions/aggregate-functions-transact-sql.md
         items:
+        - name: Overview
+          href: t-sql/functions/aggregate-functions-transact-sql.md
         - name: ANY_VALUE
           href: t-sql/functions/any-value-transact-sql.md
         - name: APPROX_COUNT_DISTINCT
@@ -15652,8 +15656,9 @@ items:
         - name: VARP
           href: t-sql/functions/varp-transact-sql.md
       - name: AI
-        href: t-sql/functions/ai-functions-transact-sql.md
         items:
+        - name: Overview
+          href: t-sql/functions/ai-functions-transact-sql.md
         - name: AI_GENERATE_EMBEDDINGS
           href: t-sql/functions/ai-generate-embeddings-transact-sql.md
         - name: AI_GENERATE_CHUNKS
@@ -16487,16 +16492,20 @@ items:
             href: t-sql/language-elements/bitwise-operators-transact-sql.md
           - name: '& (Bitwise AND)'
             href: t-sql/language-elements/bitwise-and-transact-sql.md
-          - name: '&= (Bitwise & Assignment)'
+          - name: '&= (Bitwise & assignment)'
             href: t-sql/language-elements/bitwise-and-equals-transact-sql.md
           - name: '| (Bitwise OR)'
             href: t-sql/language-elements/bitwise-or-transact-sql.md
-          - name: '|= (Bitwise OR Assignment)'
+          - name: '|= (Bitwise OR assignment)'
             href: t-sql/language-elements/bitwise-or-equals-transact-sql.md
-          - name: ^ (Bitwise Exclusive OR)
+          - name: ^ (Bitwise exclusive OR)
             href: t-sql/language-elements/bitwise-exclusive-or-transact-sql.md
-          - name: ^= (Bitwise Exclusive OR Assignment)
+          - name: ^= (Bitwise exclusive OR assignment)
             href: t-sql/language-elements/bitwise-exclusive-or-equals-transact-sql.md
+          - name: << (Bitwise left shift)
+            href: t-sql/functions/left-shift-transact-sql.md
+          - name: \>\> (Bitwise right shift)
+            href: t-sql/functions/right-shift-transact-sql.md
           - name: ~ (Bitwise NOT)
             href: t-sql/language-elements/bitwise-not-transact-sql.md
         - name: Comparison

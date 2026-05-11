@@ -14,7 +14,7 @@ monikerRange: ">=sql-server-linux-ver16 || >=sql-server-ver16"
 ---
 # Configure PolyBase to access external data in S3-compatible object storage
 
-[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
 This article explains how to use PolyBase to query external data in S3-compatible object storage.
 

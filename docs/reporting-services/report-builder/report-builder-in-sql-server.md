@@ -19,7 +19,7 @@ Microsoft [!INCLUDE[ssRBnoversion](../../includes/ssrbnoversion.md)] is a tool f
 
 You can also publish a paginated report to the Power BI service. If so, we recommend using [Power BI Report Builder](/power-bi/paginated-reports/report-builder-power-bi). For more information, see [paginated reports in Power BI Premium](/power-bi/paginated-reports-report-builder-power-bi) (Preview).
 
-:::image type="content" source="media/report-builder-in-sql-server-2016/rs-getting-started-report.png" alt-text="Screenshot of Getting Started Report.":::
+:::image type="content" source="media/report-builder-in-sql-server/rs-getting-started-report.png" alt-text="Screenshot of Getting Started Report.":::
 
 This paginated report features a matrix with row and column groups, sparklines, indicators, and a summary pie chart in the corner cell. The matrix accompanies a map with two sets of geographic data represented by color and by circle size.
 

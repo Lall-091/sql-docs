@@ -13,11 +13,19 @@ on:
 jobs:
   preview-check:
     runs-on: ubuntu-latest
-    # Skip job entirely if head branch doesn't contain 'release-preview'
-    if: contains(github.head_ref, 'release-preview')
-    
+
     steps:
+      - name: Post workflow information
+        run: |
+          {
+            echo "## Preview branch merge protection"
+            echo ""
+            echo "This check guards against accidental merges from \`release-preview\` branches."
+            echo "For details, see the [Preview branch merge protection](https://dev.azure.com/msft-skilling/Content/_wiki/wikis/Database%20Docs/4593/Preview-branch-merge-protection) wiki article."
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Check merge restrictions for release-preview branch
+        if: contains(github.head_ref, 'release-preview')
         shell: bash
         env:
           HEAD_REF: ${{ github.head_ref }}
@@ -52,6 +60,8 @@ jobs:
               echo "- **Head branch:** $HEAD_REF"
               echo "- **Target branch:** $BASE_REF"
               echo "- **Restriction:** $restriction"
+              echo ""
+              echo "For details, see the [Preview branch merge protection](https://dev.azure.com/msft-skilling/Content/_wiki/wikis/Database%20Docs/4593/Preview-branch-merge-protection) wiki article."
             } >> "$GITHUB_STEP_SUMMARY"
             
             exit 1

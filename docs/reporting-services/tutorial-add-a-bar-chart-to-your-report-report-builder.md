@@ -292,6 +292,6 @@ The chart shows the top five salesperson names from the 2015 sales data.
 ## Related content
 
 - [Report Builder tutorials](../reporting-services/report-builder-tutorials.md)
-- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server-2016.md)
+- [Report Builder in SQL Server](../reporting-services/report-builder/report-builder-in-sql-server.md)
 - [Charts in a paginated report (Report Builder)](../reporting-services/report-design/charts-report-builder-and-ssrs.md)
 - [Bar charts in a paginated report (Report Builder)](../reporting-services/report-design/bar-charts-report-builder-and-ssrs.md)

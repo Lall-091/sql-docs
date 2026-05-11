@@ -174,9 +174,9 @@ To upgrade [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], first [ch
 
 To verify your current version and edition of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, use the following procedure:
 
-1. If you don't already have **sqlcmd** installed, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md).
+1. If you don't already have **`sqlcmd`** installed, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md).
 
-1. Use **sqlcmd** to run a Transact-SQL command that displays your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] version and edition.
+1. Use **`sqlcmd`** to run a Transact-SQL command that displays your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] version and edition.
 
    ```bash
    sqlcmd -S localhost -U sa -Q 'select @@VERSION'
@@ -260,7 +260,7 @@ If your Linux machine can't access the online repositories used in the [quick st
 
    After you resolve the missing dependencies, you can try installing the `mssql-server` package again.
 
-1. **Complete the SQL Server setup**. Use **mssql-conf** to complete the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] setup:
+1. **Complete the SQL Server setup**. Use **`mssql-conf`** to complete the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] setup:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf setup

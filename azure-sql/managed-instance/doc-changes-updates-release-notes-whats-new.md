@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, randolphwest
-ms.date: 04/13/2026
+ms.date: 05/06/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -38,6 +38,7 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 | [Change event streaming](/sql/relational-databases/track-changes/change-event-streaming/overview) | Capture and publish incremental DML changes of data (such as updates, inserts, and deletes) in near real-time. Change event streaming sends details of data changes such as the schema, previous values, and new values to Azure Event Hubs in a simple CloudEvent, serialized as either native JSON or Avro Binary. |
 |[Database watcher for Azure SQL](../database-watcher-overview.md) | Database watcher is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement).|
 |[Endpoint policies](./service-endpoint-policies-configure.md) | Configure which Azure Storage accounts can be accessed from a SQL Managed Instance subnet. Grants an extra layer of protection against inadvertent or malicious data exfiltration.|
+| [Flexible memory](resource-limits.md#flexible-memory) | Save on cost and better serve your workload needs by modifying the memory allocation for your Business Critical SQL managed instance. |
 |[Modernization Advisor](../virtual-machines/modernization-advisor.md) | Use the Modernization Advisor in the Azure portal to help you determine if migrating to Azure SQL Managed Instance from a SQL Server VM saves you money or optimizes performance. |
 |[SDK-style SQL project](/sql/tools/sql-database-projects/sql-database-projects) | Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Visual Studio Code. SDK-style SQL projects are especially advantageous for applications shipped through pipelines or built in cross-platform environments.|
 |[Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) | Support for cross-instance message exchange using Service Broker between instances of Azure SQL Managed Instance, and between SQL Server and Azure SQL Managed Instance. |
@@ -74,6 +75,12 @@ The following table lists features of Azure SQL Managed Instance that have been 
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Managed Instance documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### April 2026
+
+| Changes | Details |
+| --- | --- |
+| **Flexible memory preview** | It's now possible to modify the memory allocation for your Business Critical SQL managed instance based on your workload needs. This capability is now in preview for this service tier. Flexible memory is generally available (GA) for the Next-gen General Purpose service tier. To learn more, review [Flexible memory](resource-limits.md#flexible-memory). |
 
 ### March 2026
 

@@ -99,6 +99,17 @@ If the machine remains disconnected for more than 30 days, the SQL Arc service s
 
 These charges use separate recurring pay-as-you-go (`PAYG`) meters to track usage during the disconnected state.
 
+For more information, see [Billing during connectivity loss and other disruptions](extended-security-updates.md#billing-during-connectivity-loss-and-other-disruptions).
+
+> [!IMPORTANT]
+> During disconnected periods exceeding 30 days, if your machine's Virtual Machine ID changes (due to VM rebuild, migration, or other infrastructure changes), the system treats it as a new machine when reconnected. This results in:
+>
+> - Continued recurring billing on the original machine resource (until manually deactivated)
+> - New billing starting on the newly identified machine resource
+> - Potential double billing for the same workload
+>
+> Always disconnect machines from Azure Arc before performing operations that might change the VMID.
+
 ### Intermittent use of SQL Server
 
 If you have an application that's infrequently used and can be offline longer than 30 days, it will trigger recurring billing because the SQL Arc service cannot tell if the disconnection is intentional or not. To prevent billing, disconnect the SQL Server instance from Azure Arc. When the VM is up and running, you will need to onboard it to Arc again using any of the supported methods. For details, review [Disconnect SQL Server instances from Azure Arc](delete-from-azure-arc.md).

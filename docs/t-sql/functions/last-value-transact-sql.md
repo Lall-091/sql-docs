@@ -41,7 +41,7 @@ LAST_VALUE ( [ scalar_expression ] ) [ IGNORE NULLS | RESPECT NULLS ]
 
 The value to be returned. *scalar_expression* can be a column, subquery, or other expression that results in a single value. Other analytic functions aren't permitted.
 
-#### [ IGNORE NULLS | RESPECT NULLS ] **
+#### [ IGNORE NULLS | RESPECT NULLS ]
 
 **Applies to**: [!INCLUDE [sssql22](../../includes/sssql22-md.md)] and later versions, Azure SQL Database, Azure SQL Managed Instance, and [!INCLUDE [ssazurede-md](../../includes/ssazurede-md.md)]
 

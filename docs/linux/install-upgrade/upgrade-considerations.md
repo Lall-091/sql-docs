@@ -49,7 +49,7 @@ If you perform an in-place upgrade, the previous [!INCLUDE [ssnoversion-md](../.
 
 ### Configuration
 
-- **mssql-conf**: Use the **mssql-conf** tool to configure the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance. It stores settings in the `mssql.conf` file. For information on where this file is located, see [Configure SQL Server on Linux with the mssql-conf tool](../sql-server-linux-configure-mssql-conf.md).
+- **`mssql-conf`**: Use the **`mssql-conf`** tool to configure the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance. It stores settings in the `mssql.conf` file. For information on where this file is located, see [Configure SQL Server on Linux with the mssql-conf tool](../sql-server-linux-configure-mssql-conf.md).
 
   > [!NOTE]  
   > The SQL Server platform abstraction layer (SQLPAL) doesn't store any user accessible configuration. You don't need to back it up.

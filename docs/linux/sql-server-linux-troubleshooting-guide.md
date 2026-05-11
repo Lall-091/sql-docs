@@ -137,7 +137,7 @@ For example, use the following script to start [!INCLUDE [ssNoVersion](../includ
    sudo -u mssql /opt/mssql/bin/sqlservr -m
    ```
 
-This script starts [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single user mode with **sqlcmd**:
+This script starts [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single user mode with **`sqlcmd`**:
 
    ```bash
    sudo -u mssql /opt/mssql/bin/sqlservr -m sqlcmd

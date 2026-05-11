@@ -18,8 +18,8 @@ ms.custom:
 
 The following steps install the command-line tools, Microsoft ODBC drivers, and their dependencies. The **mssql-tools** package contains:
 
-- **sqlcmd**: Command-line query utility.
-- **bcp**: Bulk import-export utility.
+- **`sqlcmd`**: Command-line query utility.
+- **`bcp`**: Bulk import-export utility.
 
 Install the tools for your platform:
 
@@ -29,10 +29,10 @@ Install the tools for your platform:
 - [macOS](#macos)
 - [Docker](#docker)
 
-This article describes how to install the command-line tools. If you're looking for examples of how to use **sqlcmd** or **bcp**, see the [Related content](#related-content) at the end of this article.
+This article describes how to install the command-line tools. If you're looking for examples of how to use **`sqlcmd`** or **`bcp`**, see the [Related content](#related-content) at the end of this article.
 
 > [!IMPORTANT]  
-> **sqlcmd** and **bcp** are available in **mssql-tools18** for `x64` and `arm64` architectures. For a modern alternative across Linux, macOS, and Windows, see [go-sqlcmd utility](../tools/sqlcmd/go-sqlcmd-utility.md).
+> **`sqlcmd`** and **`bcp`** are available in **mssql-tools18** for `x64` and `arm64` architectures. For a modern alternative across Linux, macOS, and Windows, see [go-sqlcmd utility](../tools/sqlcmd/go-sqlcmd-utility.md).
 
 ## Install tools on Linux
 
@@ -75,7 +75,7 @@ brew install mssql-tools18
 
 ## Install tools on Docker
 
-If you [run SQL Server in a Docker container](quickstart-install-connect-docker.md), the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] command-line tools are already included in the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux container image. If you attach to a running container with an interactive bash shell, you can run the tools locally.
+If you [run SQL Server in a Docker container](quickstart-install-connect-docker.md), the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] command-line tools are already included in the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux container image. If you attach to a running container with an interactive Bash shell, you can run the tools locally.
 
 If you're creating a container with the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] command-line tools, you should add `ACCEPT_EULA=Y` to the installation command to silently accept the EULA, and not interrupt image creation. An example final command as part of installation on an Ubuntu-based image is:
 

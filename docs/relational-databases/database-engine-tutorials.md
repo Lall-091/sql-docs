@@ -47,6 +47,6 @@ This tutorial helps you understand how to store SQL Server data files in Azure B
   
 ## Next steps
 
-[Tutorials for SQL Server 2016](../sql-server/tutorials-for-sql-server-2016.md)  
+[Tutorials for SQL Server](../sql-server/tutorials-for-sql-server.md)  
 [SQL Server Samples](../samples/sql-samples-where-are.md)  
 

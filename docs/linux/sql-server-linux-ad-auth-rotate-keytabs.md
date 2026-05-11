@@ -20,7 +20,7 @@ monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-a
 
 Based on your organization's security best practices, you might be required to rotate the password regularly for the Windows Active Directory account provided as `network.privilegedadaccount` in `mssql.conf`, or any other account that owns the service principal names (SPN) for the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service. The supported method for changing the password for the account is documented in this article. The password change takes effect without the need to restart the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service on Linux.
 
-The **adutil** tool is used to update the keytab. The **adutil** command must be run from a domain-joined machine. For more information about **adutil** and how to download the tool, see [Introduction to adutil - Active Directory utility](sql-server-linux-ad-auth-adutil-introduction.md).
+The **`adutil`** tool is used to update the keytab. The **`adutil`** command must be run from a domain-joined machine. For more information about **`adutil`** and how to download the tool, see [Introduction to adutil - Active Directory utility](sql-server-linux-ad-auth-adutil-introduction.md).
 
 It's critical to update the new password in the keytab with the next **kvno** number before updating it in Active Directory. Using the next **kvno** number prevents the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service from the need to be restarted after the password change. If you update the password in Active Directory first, and then change the keytab, you must restart the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service to ensure that Active Directory authentication works properly.
 
@@ -30,23 +30,23 @@ Let's consider an example. Active Directory authentication is already enabled fo
 
 1. [Install adutil](sql-server-linux-ad-auth-adutil-introduction.md#install-adutil) on the domain joined machine.
 
-1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the `kinit` command. Use a privileged account for the `kinit` command. The account needs to have permission to connect to the domain and should be able to create accounts and SPNs in the domain. In this case, we're using the account `privilegeduser@CONTOSO.COM` that has permissions to create accounts and SPNs in our domain called `CONTOSO.COM`.
+1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the **`kinit`** command. Use a privileged account for the **`kinit`** command. The account needs to have permission to connect to the domain and should be able to create accounts and SPNs in the domain. In this case, we're using the account `privilegeduser@CONTOSO.COM` that has permissions to create accounts and SPNs in our domain called `CONTOSO.COM`.
 
    ```bash
    kinit privilegeduser@CONTOSO.COM
    ```
 
-1. Once you run `kinit` to obtain/renew the TGT, query the current **kvno** number of the `network.privilegedadaccount`. In this case, it's `sqluser@CONTOSO.COM`.
+1. Once you run **`kinit`** to obtain/renew the TGT, query the current **kvno** number of the `network.privilegedadaccount`. In this case, it's `sqluser@CONTOSO.COM`.
 
    ```bash
    kvno sqluser@CONTOSO.COM
    ```
 
-You can choose to [rotate the keytab with mssql-conf](#rotate-the-keytab-with-mssql-conf), or [rotate the keytab manually](#rotate-the-keytab-manually-with-adutil) using **adutil**.
+You can choose to [rotate the keytab with mssql-conf](#rotate-the-keytab-with-mssql-conf), or [rotate the keytab manually](#rotate-the-keytab-manually-with-adutil) using **`adutil`**.
 
 ### Rotate the keytab with mssql-conf
 
-You can install **adutil** and integrate it with **mssql-conf**, which means you can rotate the keytab using **mssql-conf**.
+You can install **`adutil`** and integrate it with **`mssql-conf`**, which means you can rotate the keytab using **`mssql-conf`**.
 
 1. Sign in as the root user and switch to the `mssql` user.
 
@@ -54,13 +54,13 @@ You can install **adutil** and integrate it with **mssql-conf**, which means you
    su mssql
    ```
 
-1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the `kinit` command. Use a privileged account for the `kinit` command. The account needs to have permission to connect to the domain and should be able to create accounts and SPNs in the domain. In this case, we're using the account `privilegeduser@CONTOSO.COM` that has permissions to create accounts and SPNs in our domain called `CONTOSO.COM`.
+1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the **`kinit`** command. Use a privileged account for the **`kinit`** command. The account needs to have permission to connect to the domain and should be able to create accounts and SPNs in the domain. In this case, we're using the account `privilegeduser@CONTOSO.COM` that has permissions to create accounts and SPNs in our domain called `CONTOSO.COM`.
 
    ```bash
    kinit privilegeduser@CONTOSO.COM
    ```
 
-1. Run the **mssql-conf** command, providing the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] keytab and the `network.privilegedadaccount` details. In this example, the `privilegedadaccount` is `sqluser`.
+1. Run the **`mssql-conf`** command, providing the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] keytab and the `network.privilegedadaccount` details. In this example, the `privilegedadaccount` is `sqluser`.
 
    ```bash
    ./mssql-conf setup-ad-keytab /var/opt/mssql/secrets/mssql.keytab sqluser --use-next-kvno'
@@ -111,9 +111,9 @@ You can install **adutil** and integrate it with **mssql-conf**, which means you
 
 ### Rotate the keytab manually with adutil
 
-If you want to update the keytab manually using **adutil**, refer to the following steps.
+If you want to update the keytab manually using **`adutil`**, refer to the following steps.
 
-Updating the keytab using **adutil** adds an entry into the current keytab. For example, if the **kvno** number from the previous command is `2`, use the **kvno** number `3` when updating the keytab. Following are the **adutil** commands that you need to run.
+Updating the keytab using **`adutil`** adds an entry into the current keytab. For example, if the **kvno** number from the previous command is `2`, use the **kvno** number `3` when updating the keytab. Following are the **`adutil`** commands that you need to run.
 
 - Change the port number (`-p`), hostname (`-H`), path to keytab (`-k`), and kvno number, to match your environment.
 

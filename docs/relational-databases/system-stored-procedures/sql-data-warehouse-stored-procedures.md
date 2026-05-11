@@ -15,6 +15,8 @@ monikerRange: "=azure-sqldw-latest || =fabric"
 
 [!INCLUDE [asa-fabricse-fabricdw](../../includes/applies-to-version/asa-fabricse-fabricdw.md)]
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [fabric](../../includes/fabric.md)] provide built-in procedures that you can use to perform operations related to database roles.
 
 <a id="AggregateFunctions"></a>
