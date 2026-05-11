@@ -220,5 +220,6 @@ FROM sys.dm_os_wait_stats;
 - [Monitor and troubleshoot memory usage with in-memory OLTP](../relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage.md)
 - [In-Memory OLTP overview and usage scenarios](../relational-databases/in-memory-oltp/overview-and-usage-scenarios.md)
 - [Performance monitoring and tuning tools](../relational-databases/performance/performance-monitoring-and-tuning-tools.md)
-- [Performance best practices and configuration guidelines for SQL Server on Linux](sql-server-linux-performance-best-practices.md)
+- [Performance best practices: Storage, kernel, CPU, and network for SQL Server on Linux](configure/performance-best-practices-operating-system.md)
+- [Performance best practices: SQL Server memory on Linux](configure/performance-best-practices-sql-server-memory.md)
 - [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)

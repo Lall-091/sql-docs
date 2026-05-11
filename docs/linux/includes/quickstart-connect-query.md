@@ -127,7 +127,10 @@ QUIT
 
 ## Performance best practices
 
-After installing [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Linux, review the best practices for configuring Linux and [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] to improve performance for production scenarios. For more information, see [Performance best practices and configuration guidelines for SQL Server on Linux](../sql-server-linux-performance-best-practices.md).
+After installing [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Linux, review the best practices for configuring Linux and [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] to improve performance for production scenarios. For more information, see:
+
+- [Performance best practices: Storage, kernel, CPU, and network for SQL Server on Linux](../configure/performance-best-practices-operating-system.md)
+- [Performance best practices: SQL Server memory on Linux](../configure/performance-best-practices-sql-server-memory.md)
 
 ## Cross-platform data tools
 

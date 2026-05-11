@@ -204,7 +204,12 @@ Only use these steps if you understand the implications.
 
 ## Improve performance
 
-Many factors affect performance, including database design, hardware, and workload demands. If you're looking to improve performance, start by reviewing the best practices in the article, [Performance best practices and configuration guidelines for SQL Server on Linux](sql-server-linux-performance-best-practices.md). Then explore some of the available tools for troubleshooting performance problems.
+Many factors affect performance, including database design, hardware, and workload demands. If you're looking to improve performance, start by reviewing the best practices articles:
+
+- [Performance best practices: Storage, kernel, CPU, and network for SQL Server on Linux](configure/performance-best-practices-operating-system.md)
+- [Performance best practices: SQL Server memory on Linux](configure/performance-best-practices-sql-server-memory.md)
+
+Then, explore some of the available tools for troubleshooting performance problems.
 
 - [Monitor performance by using the Query Store](../relational-databases/performance/monitoring-performance-by-using-the-query-store.md)
 - [System dynamic management views](../relational-databases/system-dynamic-management-views/system-dynamic-management-views.md)

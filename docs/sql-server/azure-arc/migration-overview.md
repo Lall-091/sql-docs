@@ -7,6 +7,8 @@ ms.author: ajithkr
 ms.reviewer: mikeray, mathoma
 ms.date: 04/16/2026
 ms.topic: how-to
+ms.collection: ce-skilling-ai-copilot
+
 ---
 
 # SQL Server migration in Azure Arc Overview
