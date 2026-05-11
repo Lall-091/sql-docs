@@ -8,7 +8,6 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 03/03/2026
 ms.service: azure-sql-database
 ms.subservice: security
-ms.collection: ce-skilling-ai-copilot
 ms.topic: how-to
 ms.custom:
   - sqldbrb=1
