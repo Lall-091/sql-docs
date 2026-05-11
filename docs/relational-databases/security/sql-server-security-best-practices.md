@@ -1,10 +1,10 @@
 ---
-title: "SQL Server security best practices"
-description: This article provides general guidance for securing SQL Server running in an Azure virtual machine.
+title: SQL Server Security Best Practices
+description: This article provides general guidance for securing SQL Server, Azure SQL Database, and Azure SQL Managed Instance, as well as SQL Server on Azure virtual machines.
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: randolphwest
-ms.date: 02/29/2024
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: best-practice
@@ -55,6 +55,10 @@ The business logic is encapsulated within table-valued functions controlled by a
 
 > [!TIP]  
 > Use Row-Level Security (RLS) together with either Always Encrypted or Dynamic Data Masking (DDM) to maximize the security posture of your organization.
+
+## Enable encryption with Extended Protection
+
+[!INCLUDE [extended-protection-recommendation](../../includes/extended-protection-recommendation.md)]
 
 ## File encryption
 

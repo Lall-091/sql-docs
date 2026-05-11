@@ -20,6 +20,10 @@ SQL Server Reporting Services (SSRS) supports and enforces Extended Protection t
 > [!IMPORTANT]  
 >  By default, Windows does not enable Extended Protection. For information about how to enable Extended Protection in Windows, see [Extended protection for authentication](https://support.microsoft.com/topic/microsoft-security-advisory-extended-protection-for-authentication-7dd2ee6d-c2e9-3484-2d8e-466261d3f0c7). Both the operating system and client authentication stack must support Extended Protection so that authentication succeeds. For older operating systems you may need to install more than one update for a complete, Extended Protection ready computer. For information on recent developments with Extended Protection, see [updated information with extended protection](/previous-versions/sql/sql-server-2008/dd146365(v=sql.100)).  
 
+## Enable encryption with Extended Protection
+
+[!INCLUDE [extended-protection-recommendation](../../includes/extended-protection-recommendation.md)]
+
 ## Reporting Services extended protection overview
 
 SSRS supports and enforces extended protection that was enabled in the operating system. If the operating system doesn't support extended protection or the feature in the operating system wasn't enabled, the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] extended protection feature fails authentication. [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] Extended Protection also requires a TLS/SSL Certificate. For more information, see [Configure TLS connections on a native mode report server](../../reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server.md)  
