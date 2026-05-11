@@ -79,7 +79,10 @@ If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../i
 
 For other system requirements, see [System requirements for SQL Server on Linux](sql-server-linux-setup.md#system).
 
-To ensure you configure your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance according to the recommended standards, see [Performance best practices and configuration guidelines for SQL Server on Linux](sql-server-linux-performance-best-practices.md).
+To ensure you configure your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance according to the recommended standards, see:
+
+- [Performance best practices: Storage, kernel, CPU, and network for SQL Server on Linux](configure/performance-best-practices-operating-system.md)
+- [Performance best practices: SQL Server memory on Linux](configure/performance-best-practices-sql-server-memory.md)
 
 <a id="install"></a>
 

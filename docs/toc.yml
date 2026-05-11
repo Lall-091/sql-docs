@@ -9404,8 +9404,10 @@ items:
         href: linux/sql-server-linux-schedule-ssis-packages.md
   - name: Performance tuning
     items:
-    - name: Best practices
-      href: linux/sql-server-linux-performance-best-practices.md
+    - name: Storage, kernel, CPU, and network best practices
+      href: linux/configure/performance-best-practices-operating-system.md
+    - name: SQL Server memory best practices
+      href: linux/configure/performance-best-practices-sql-server-memory.md
     - name: Get started with performance features
       href: linux/sql-server-linux-performance-get-started.md
   - name: Replication

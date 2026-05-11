@@ -52441,6 +52441,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "docs/linux/sql-server-linux-performance-best-practices.md",
+      "redirect_url": "/sql/linux/configure/performance-best-practices-operating-system",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/relational-databases/relational-databases-new-updated-sql-docs-pr.md",
       "redirect_url": "/sql/relational-databases/new-updated-relational-databases",
       "redirect_document_id": false

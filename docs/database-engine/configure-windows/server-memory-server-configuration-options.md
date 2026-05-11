@@ -35,7 +35,7 @@ In older versions of SQL Server, memory utilization was virtually uncapped, indi
 - At any time you can reconfigure the bounds of memory (in megabytes) for a SQL Server process used by an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] via the `min server memory (MB)` and `max server memory (MB)` configuration options.
 
 > [!NOTE]  
-> This guide refers to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance on Windows. For information on memory configuration in Linux, see [Performance best practices and configuration guidelines for SQL Server on Linux](../../linux/sql-server-linux-performance-best-practices.md#virtual-machines-and-dynamic-memory) and the [memory.memorylimitmb setting](../../linux/sql-server-linux-configure-mssql-conf.md#memorylimit).
+> This guide refers to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance on Windows. For information on memory configuration in Linux, see [Performance best practices: Storage, kernel, CPU, and network for SQL Server on Linux](../../linux/configure/performance-best-practices-operating-system.md#virtual-machines-and-dynamic-memory) and the [memory.memorylimitmb setting](../../linux/sql-server-linux-configure-mssql-conf.md#memorylimit).
 
 ## Recommendations
 
