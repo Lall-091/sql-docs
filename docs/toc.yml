@@ -9194,6 +9194,8 @@ items:
         href: linux/usage-and-diagnostic-data-configuration-for-sql-server-linux.md
     - name: Containers
       items:
+      - name: Overview
+        href: linux/containers/overview.md
       - name: Deploy and connect to containers
         href: linux/sql-server-linux-docker-container-deployment.md
       - name: Configure and customize containers
