@@ -4,7 +4,7 @@ description: "Provides an overview of change event streaming"
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray
-ms.date: 03/18/2026
+ms.date: 05/11/2026
 ms.service: sql
 ms.topic: overview
 ms.custom:
@@ -53,13 +53,16 @@ To get started with the feature, see [Configure change event streaming](configur
 
 To learn how to consume change events from Azure Event Hubs with a .NET Core console application that receives events from an event hub using an event processor, review [Quickstart: Send or receive events using .NET](/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events-from-the-event-hub).
 
+## Microsoft Entra authentication
+
+CES supports Microsoft Entra authentication in Azure SQL Database, Azure SQL Managed Instance and SQL Server 2025 starting with Cumulative Update 3 (CU3) for instances [enabled by Azure Arc](../../../sql-server/azure-arc/connect.md) or running on an [Azure VM](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview).
+
 ## CES in Azure SQL Database and Azure SQL Managed Instance
 
 CES is also available for all service tiers of Azure SQL Database (including Hyperscale) and Azure SQL Managed Instance, but has the following differences in functionality and configuration compared to SQL Server:
 
 - The `preview_features` database scoped configuration isn't required to use CES in Azure SQL Database or Azure SQL Managed Instance.
-- Azure SQL Database and Azure SQL Managed Instance support Microsoft Entra authentication for CES, while SQL Server only supports key-value authentication and shared access signatures (SAS) authentication.
-- xEvent debugging in Azure SQL Database isn't currently available, but is available in Azure SQL Managed Instance.
+- xEvent debugging isn't currently available in Azure SQL Database, but is available in Azure SQL Managed Instance.
 
 ## Limitations
 
