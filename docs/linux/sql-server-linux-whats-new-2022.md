@@ -3,10 +3,11 @@ title: "What's New for SQL Server 2022 on Linux"
 description: In this article, learn about the major features and services available for SQL Server 2022 running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/27/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: whats-new
+ms.update-cycle: 1825-days
 ms.custom:
   - intro-whats-new
   - linux-related-content

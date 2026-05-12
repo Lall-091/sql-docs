@@ -4,7 +4,7 @@ description: Learn how to use a custom password policy for SQL logins with SQL S
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: matripathy, mikeray
-ms.date: 04/30/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to

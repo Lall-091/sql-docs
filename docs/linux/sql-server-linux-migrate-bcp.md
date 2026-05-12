@@ -3,7 +3,7 @@ title: Bulk Copy Data to SQL Server on Linux
 description: This article describes the bcp utility. Use bcp to import large numbers of rows into SQL Server tables or to export data from SQL Server tables into data files.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/21/2025
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
