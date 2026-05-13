@@ -2,7 +2,7 @@
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/24/2025
+ms.date: 05/13/2026
 ms.service: sql
 ms.topic: include
 ms.custom:
