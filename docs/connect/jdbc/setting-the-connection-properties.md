@@ -263,7 +263,7 @@ For details, see [Client Certificate Authentication for Loopback Scenarios](clie
 
 For details, see [Client Certificate Authentication for Loopback Scenarios](client-certification-authentication-for-loopback-scenarios.md).
 
-### :::no-loc text="columnEncryptionSetting":::
+### `columnEncryptionSetting`
 
 - **Type**: `String` [`Enabled` | `Disabled`]
 - **Default**: `Disabled`
@@ -298,7 +298,7 @@ For more information, see [SET CONCAT_NULL_YIELDS_NULL](../../t-sql/statements/s
 
 (Version 9.4+) The number of seconds between each connection retry attempt.
 
-### :::no-loc text="databaseName, database":::
+### `databaseName, database`
 
 - **Type**: `String` [`<=128 char`]
 - **Default**: `null`
@@ -332,7 +332,7 @@ Flag to indicate whether to stream all the LOB objects retrieved from the Result
 
 Flag that indicates if statement pooling should be used.
 
-### :::no-loc text="domainName, domain":::
+### `domainName, domain`
 
 - **Type**: `String`
 - **Default**: `null`
@@ -366,7 +366,7 @@ For more information about Always Encrypted with secure enclaves, see [Using Alw
 
 For more information about Always Encrypted with secure enclaves, see [Using Always Encrypted with secure enclaves with the JDBC driver](using-always-encrypted-with-secure-enclaves-with-the-jdbc-driver.md).
 
-### :::no-loc text="encrypt":::
+### `encrypt`
 
 - **Type**: `String`
 - **Default**: `null`
@@ -381,7 +381,7 @@ In version 11.2.0 and up, `encrypt` was changed from `Boolean` to `string`, allo
 
 The default change in version 10.2 is a breaking change. If you're upgrading from 9.4 or earlier and your server doesn't have a valid TLS certificate, set `trustServerCertificate` to `true` or provide a valid certificate.
 
-### :::no-loc text="failoverPartner":::
+### `failoverPartner`
 
 - **Type**: `String`
 - **Default**: `null`
@@ -599,7 +599,7 @@ The network packet size used to communicate with the server, specified in bytes.
 
 For more information about this property, see the [setPacketSize](reference/setpacketsize-method-sqlserverdatasource.md) method of the [SQLServerDataSource](reference/sqlserverdatasource-class.md) class.
 
-### :::no-loc text="password":::
+### `password`
 
 - **Type**: `String` [`<=128 char`]
 - **Default**: `null`
@@ -663,21 +663,21 @@ The number of seconds to wait before a timeout happens on a query. The default v
 
 For more information, see [SET QUOTED_IDENTIFIER](../../t-sql/statements/set-quoted-identifier-transact-sql.md).
 
-### :::no-loc text="realm":::
+### `realm`
 
 - **Type**: `String`
 - **Default**: `null`
 
 (Version 9.4+) The realm for Kerberos authentication. Set this value to override the Kerberos authentication realm the driver autodetects from the server's realm.
 
-### :::no-loc text="replication":::
+### `replication`
 
 - **Type**: `Boolean` [`true` | `false`]
 - **Default**: `false`
 
 (Version 9.4+) This setting tells the server if the connection is used for replication. When enabled, triggers with the `NOT FOR REPLICATION` option don't fire on the connection.
 
-### :::no-loc text="responseBuffering":::
+### `responseBuffering`
 
 - **Type**: `String` [`full` | `adaptive`]
 - **Default**: `adaptive`
@@ -751,7 +751,7 @@ The default value for this property is currently `true` and might change in a fu
 
 For more information about how the [!INCLUDE [jdbcNoVersion](../../includes/jdbcnoversion_md.md)] configures java.sql.Time values before it sends them to the server, see [Configuring how java.sql.Time values are sent](configuring-how-java-sql-time-values-are-sent-to-the-server.md).
 
-### :::no-loc text="serverCertificate, server":::
+### `serverCertificate, server`
 
 - **Type**: `String`
 - **Default**: `null`
@@ -881,7 +881,7 @@ For more information about encryption support, see [Understanding encryption sup
 > [!NOTE]  
 > Use this property with the `encrypt` and `authentication` properties. This property only affects server TLS/SSL certificate validation if the connection uses TLS encryption.
 
-### :::no-loc text="trustStore":::
+### `trustStore`
 
 - **Type**: `String`
 - **Default**: `null`
@@ -917,7 +917,7 @@ If you don't set the `trustStore` property but set the `trustStorePassword` prop
 > [!NOTE]  
 > The `trustStorePassword` property only affects the certificate `trustStore` lookup, if the connection uses TLS connection and the `trustServerCertificate` property is set to `false`.
 
-### :::no-loc text="trustStoreType":::
+### `trustStoreType`
 
 - **Type**: `String`
 - **Default**: `JKS`
@@ -965,7 +965,7 @@ This feature currently only supports single `SELECT/INSERT/UPDATE/DELETE` querie
 
 For more information about this property, see [Retrieving ParameterMetaData via `useFmtOnly`](using-usefmtonly.md).
 
-### :::no-loc text="userName, user":::
+### `userName, user`
 
 - **Type**: `String` [`<=128 char`]
 - **Default**: `null`
