@@ -4,7 +4,7 @@ description: Use regular expressions to filter and manipulate text strings in SQ
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, randolphwest, wiassaf
-ms.date: 01/26/2026
+ms.date: 05/13/2026
 ms.service: sql
 ms.topic: quickstart
 ms.custom:
