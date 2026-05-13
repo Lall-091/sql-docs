@@ -185,21 +185,9 @@ Regex queries can have a performance impact depending on the complexity of the r
 
 ## Limitations
 
-The following items aren't currently supported:
+The following limitations currently apply:
 
-- LOB data types (**varchar(max)** or **nvarchar(max)**) for `string_expressions` are supported in the following intrinsic functions:
-  - `REGEXP_LIKE`
-  - `REGEXP_COUNT`
-  - `REGEXP_INSTR`
-
-However, this support is limited to input sizes up to 2 MB.
-
-- LOB data types aren't supported in the following regex functions:
-  - `REGEXP_REPLACE`
-  - `REGEXP_SUBSTR`
-  - `REGEXP_MATCHES`
-  - `REGEXP_SPLIT_TO_TABLE`
-
+- LOB data types (**varchar(max)** or **nvarchar(max)**) for `string_expression` are supported in all `REGEXP_*` functions, but the input size is limited to 2 MB.
 - Regular expression functions aren't supported in natively compiled stored procedures.
 
 ## Related content

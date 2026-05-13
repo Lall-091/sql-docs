@@ -44,7 +44,7 @@ REGEXP_REPLACE
 
 #### *string_replacement*
 
-String expression that specifies the replacement string for matching substrings and replaces the substrings matched by the pattern. The string_replacement can be of char, varchar, nchar, and nvarchar datatypes. If an empty string (`''`) is specified, the function removes all matched substrings and returns the resulting string. The default replacement string is the empty string (`''`).
+String expression that specifies the replacement string for matching substrings and replaces the substrings matched by the pattern. The `string_replacement` can be of **char**, **varchar**, **nchar**, **nvarchar**, **varchar(max)**, or **nvarchar(max)** data types (LOB types are supported up to 2 MB). If an empty string (`''`) is specified, the function removes all matched substrings and returns the resulting string. The default replacement string is the empty string (`''`).
 
 The string_replacement can contain \n, where n is 1 through 9, to indicate that the source substring matching the n'th parenthesized group (subexpression) of the pattern should be inserted, and it can contain `&` to indicate that the substring matching the entire pattern should be inserted. Write \ if you need to put a literal backslash in the replacement text.
 
