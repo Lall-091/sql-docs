@@ -1102,6 +1102,8 @@
         href: managed-instance/traffic-management-overview.md
       - name: Connectivity architecture
         href: managed-instance/connectivity-architecture-overview.md
+      - name: Internal connectivity tests
+        href: managed-instance/connectivity-testing-overview.md
 
     - name: Log Replay Service (LRS)
       items: 

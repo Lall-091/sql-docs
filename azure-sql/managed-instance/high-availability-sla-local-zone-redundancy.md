@@ -5,7 +5,7 @@ description: Learn about the architecture of Azure SQL Managed Instance that ach
 author: Stralle
 ms.author: strrodic
 ms.reviewer: mathoma, randolphwest
-ms.date: 07/07/2025
+ms.date: 05/12/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
 ms.topic: concept-article
@@ -136,12 +136,18 @@ A local failover can be initiated by using PowerShell, REST API, or Azure CLI:
 | :--- | :--- | :--- |
 | [Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/) | [SQL Managed Instance - Failover](/rest/api/sql/managed-instances/failover) | [az sql mi failover](/cli/azure/sql/mi/#az-sql-mi-failover) can be used to invoke a REST API call from Azure CLI |
 
+## Automatic internal connectivity tests
+
+To help ensure the availability of your service, [!INCLUDE [auto-connectivity-tests](../includes/auto-connectivity-tests.md)]
+
 ## Conclusion
 
 Azure SQL Managed Instance features a built-in high availability solution that is deeply integrated with the Azure platform. The service depends on Service Fabric to detect failure and recover, Azure Blob storage to protect data, and on Availability Zones for higher fault tolerance. And for the Business Critical service tier, SQL Managed Instance uses SQL Server Always On availability group technology for database replication and failover. The combination of these technologies enables applications to fully realize the benefits of a mixed storage model and supports the most demanding SLAs.
 
+
 ## Related content
 
+- [Automatic internal connectivity tests - Azure SQL Managed Instance](connectivity-testing-overview.md)
 - [Configure zone redundancy - Azure SQL Managed Instance](instance-zone-redundancy-configure.md)
 - [Azure Availability Zones](/azure/reliability/availability-zones-overview)
 - [Service Fabric](/azure/service-fabric/service-fabric-overview)
