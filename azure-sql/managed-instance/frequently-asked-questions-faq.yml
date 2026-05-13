@@ -6,7 +6,7 @@ metadata:
   author: MashaMSFT
   ms.author: mathoma
   ms.reviewer: urmilano, danil, nnikolic, wiassaf, mathoma
-  ms.date: 12/18/2025
+  ms.date: 05/12/2026
   ms.service: azure-sql-managed-instance
   ms.subservice: service-overview
   ms.topic: faq
@@ -347,7 +347,11 @@ sections:
 
       - question: How many IP addresses do I need for a SQL managed instance?
         answer: |
-          The subnet must have a sufficient number of available [IP addresses](connectivity-architecture-overview.md#network-requirements). To determine virtual network subnet size for SQL Managed Instance, see [Determine required subnet size and range for Azure SQL Managed Instance](./vnet-subnet-determine-size.md).
+          The subnet must have a sufficient number of available [IP addresses](connectivity-architecture-overview.md#network-requirements). To determine virtual network subnet size for SQL Managed Instance, see [Determine required subnet size and range for Azure SQL Managed Instance](./vnet-subnet-determine-size.md). With [automatic internal connectivity tests](connectivity-testing-overview.md) enabled, each VM group requires 8 IP addresses (up from 6).
+
+      - question: Why am I seeing failed login attempts from AzureSQLConnectivityChecker?
+        answer: |
+          Azure SQL Managed Instance runs [automatic internal connectivity tests](connectivity-testing-overview.md) to monitor service reliability. One of these tests validates end-to-end connectivity by attempting a login with a known-to-fail credential (`AzureSQLConnectivityChecker`). This is expected behavior and not a security concern. The failed login appears approximately every 10 seconds in audit logs, Extended Events, and SQL error logs. For details on how to identify and filter these entries, see [Observing failed logins caused by end-to-end tests](connectivity-testing-overview.md#observe-failed-logins-caused-by-end-to-end-tests).
 
       - question: What if there aren't enough IP addresses for performing instance update operation?
         answer: |
