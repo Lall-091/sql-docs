@@ -4,7 +4,7 @@ description: REGEXP_REPLACE Returns a modified source string replaced by a repla
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 11/18/2025
+ms.date: 05/13/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
