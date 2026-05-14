@@ -71,6 +71,8 @@
     href: ../integration-services/lift-shift/ssis-migration-to-Azure.md
 - name: Integrating with Microsoft Fabric
   items:
+  - name: Tutorial - Run SSIS packages in Fabric to Azure SQL Database
+    href: ../integration-services/fabric-integration/tutorial-run-ssis-package-in-fabric-azure-sql-database.md
   - name: Tutorial - Integrating SSIS with Fabric Data Warehouse
     href: ../integration-services/fabric-integration/integrate-fabric-data-warehouse.md
   - name: Tutorial - Integrating SSIS with SQL database in Fabric
