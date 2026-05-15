@@ -310,7 +310,7 @@ The most common causes for lack of networking connectivity to Azure Key Vault or
 
 - Bad DNS resolution, like when the key vault or managed HSM FQDN isn't resolved or resolves to an invalid IP address.
 
-[Test the connectivity](https://techcommunity.microsoft.com/t5/azure-sql-blog/how-to-test-tcp-connectivity-from-a-sql-managed-instance/ba-p/3058458) from SQL Managed Instance to the Azure Key Vault or Azure Managed HSM hosting the TDE protector.
+[Test the connectivity](https://github.com/Azure/sqlmi/tree/main/how-to/how-to-test-tcp-connection-from-mi) from SQL Managed Instance to the Azure Key Vault or Azure Managed HSM hosting the TDE protector.
 
 - The endpoint is your vault FQDN, like *<vault_name>.vault.azure.net* (without the https://).
 - The port to be tested is 443.
