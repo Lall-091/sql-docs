@@ -80,7 +80,7 @@ The following factors affect the amount of storage used for data and log files, 
 The following storage considerations apply to Hyperscale:
 
 - Maximum data storage size is set to 128 TB and isn't configurable.
-- You're charged only for the allocated data storage, not for maximum data storage.
+- You're charged only for the allocated data storage, not for maximum data storage, with a minimum of 10 GB.
 - You aren't charged for log storage.
 - `tempdb` uses local SSD storage, and its cost is included in the vCore price.
 To monitor the current allocated and used data storage size in SQL Database, use the *allocated_data_storage* and *storage* Azure Monitor [metrics](/azure/azure-monitor/essentials/metrics-supported#microsoftsqlserversdatabases) respectively. 

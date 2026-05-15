@@ -1,10 +1,10 @@
 ---
 title: Hyperscale distributed functions architecture
 description: Learn how Hyperscale databases are architected to scale out storage and compute resources for Azure SQL Database.
-author: dimitri-furman
-ms.author: dfurman
-ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 04/27/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: dfurman, mathoma, randolphwest, adbadram, malstewart
+ms.date: 05/14/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -18,10 +18,7 @@ ms.custom:
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-The [Hyperscale service tier](service-tier-hyperscale.md) utilizes an architecture with highly scalable and separate storage and compute tiers. This article describes the components that enable customers to quickly scale Hyperscale databases while benefiting from nearly instantaneous backups and highly scalable transaction logging.
-
-> [!TIP]
-> Simplified pricing for SQL Database Hyperscale arrived in December 2023. Review the [Hyperscale pricing blog](https://aka.ms/hsignite2023) for details.
+[Azure SQL Database Hyperscale](service-tier-hyperscale.md) is a cost efficient, high performance database service tier. This article details the highly scalable architecture of Hyperscale, featuring separate storage and compute tiers, fast scaling, nearly instantaneous backups and fast restores, read scale-out, and high read and write throughput.
 
 ## Hyperscale architecture overview
 
