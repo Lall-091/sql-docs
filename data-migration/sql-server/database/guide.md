@@ -23,7 +23,7 @@ Complete [pre-migration](../pre-migration.md) steps before continuing.
 
 ## Migrate
 
-After you complete the steps for the [pre-migration stage](../pre-migration.md), you're ready to perform the schema and data migration.
+After you complete the steps for the [pre-migration stage](../pre-migration.md), you're ready to perform the schema and data migration. See [Migrate databases from Amazon Web Services to Azure](/azure/migration/migrate-databases-from-aws), which includes [example migration scenarios](/azure/migration/migrate-databases-from-aws#migration-scenarios) that might align to your use case.
 
 Migrate your data using your chosen [migration method](overview.md#compare-migration-options).
 
