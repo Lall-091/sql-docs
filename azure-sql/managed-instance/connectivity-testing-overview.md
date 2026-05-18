@@ -105,10 +105,17 @@ For example, if SQL authentication is disabled on the SQL managed instance, the 
 
 In `sp_readerrorlog`, failed logins from the connectivity test appear as pairs of rows:
 
-| ProcessInfo | Text |
+| Column | Value |
 | --- | --- |
-| `Logon` | `Error: 18456, Severity: 14, State: <variable>` |
-| `Logon` | Message depends on authentication configuration |
+| `ProcessInfo` | `Logon` |
+| `Text` | `Error: 18456, Severity: 14, State: ` (variable) `.` |
+
+and
+
+| Column | Value |
+| --- | --- |
+| `ProcessInfo` | `Logon` |
+| `Text` |  Message depends on authentication configuration |
 
 For example, when SQL authentication is disabled, the message states that Microsoft Entra-only authentication is enabled and includes a subnet IP address.
 

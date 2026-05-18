@@ -10662,7 +10662,12 @@
     },
     {
       "source_path": "docs/sql-server/artificial-intelligence-intelligent-applications-faq.md",
-      "redirect_url": "/sql/sql-server/ai/artificial-intelligence-intelligent-applications-faq",
+      "redirect_url": "/sql/sql-server/ai/artificial-intelligence-intelligent-applications-frequently-asked-questions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/sql-server/ai/artificial-intelligence-intelligent-applications-faq.md",
+      "redirect_url": "/sql/sql-server/ai/artificial-intelligence-intelligent-applications-frequently-asked-questions",
       "redirect_document_id": false
     },
     {
@@ -10672,7 +10677,12 @@
     },
     {
       "source_path": "docs/relational-databases/vectors/vectors-faq.md",
-      "redirect_url": "/sql/sql-server/ai/vectors-faq",
+      "redirect_url": "/sql/sql-server/ai/vectors-frequently-asked-questions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/sql-server/ai/vectors-faq.md",
+      "redirect_url": "/sql/sql-server/ai/vectors-frequently-asked-questions",
       "redirect_document_id": false
     },
     {

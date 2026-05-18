@@ -69,11 +69,11 @@ items:
   - name: Intelligent applications and AI
     href: sql-server/ai/artificial-intelligence-intelligent-applications.md
   - name: Intelligent applications and AI FAQ
-    href: sql-server/ai/artificial-intelligence-intelligent-applications-faq.md
+    href: sql-server/ai/artificial-intelligence-intelligent-applications-frequently-asked-questions.yml
   - name: Vectors and embeddings
-    href: sql-server/ai/vectors.md    
+    href: sql-server/ai/vectors.md
   - name: Vectors and embeddings FAQ
-    href: sql-server/ai/vectors-faq.md          
+    href: sql-server/ai/vectors-frequently-asked-questions.yml
 - name: Business continuity
   items:
   - name: Overview
