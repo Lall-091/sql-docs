@@ -175,7 +175,7 @@ namespace FileStreamTest
 }
 ```
 
-For another sample, see [How to store and fetch binary data into a file stream column](https://web.archive.org/web/20220213192416/https://www.codeproject.com/Articles/32216/How-to-store-and-fetch-binary-data-into-a-file-str?fid=1533207&df=90&mpp=25&sort=Position&spc=Relaxed&tid=2867612).
+For another sample, see [How to store and fetch binary data into a file stream column](https://web.archive.org/web/20220213192416/https://www.codeproject.com/Articles/32216/How-to-store-and-fetch-binary-data-into-a-file-str).
 
 ## Resources in SQL Server Books Online
 
