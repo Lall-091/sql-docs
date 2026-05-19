@@ -4633,12 +4633,14 @@ items:
         href: database-engine/configure-windows/lightweight-pooling-server-configuration-option.md
       - name: Configure locks
         href: database-engine/configure-windows/configure-the-locks-server-configuration-option.md
-      - name: Configure max RPC request params (KB)
-        href: database-engine/configure-windows/max-rpc-request-params-configuration-option.md
       - name: Configure max degree of parallelism
         href: database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md
       - name: Configure max full-text crawl range
         href: database-engine/configure-windows/max-full-text-crawl-range-server-configuration-option.md
+      - name: Configure max lock manager cache memory (%)
+        href: database-engine/configure-windows/max-lock-manager-cache-memory-configuration-option.md
+      - name: Configure max RPC request params (KB)
+        href: database-engine/configure-windows/max-rpc-request-params-configuration-option.md
       - name: Configure max text repl size
         href: database-engine/configure-windows/configure-the-max-text-repl-size-server-configuration-option.md
       - name: Configure max worker threads
