@@ -4,7 +4,7 @@ metadata:
   description: "Find answers to common questions about the change event streaming feature for [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)]."
   ms.date: 05/11/2026
   ms.service: sql
-  ms.topic: conceptual
+  ms.topic: concept-article
   author: nzagorac-ms
   ms.author: nzagorac
   ms.reviewer: mathoma, mikeray
