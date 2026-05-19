@@ -4,7 +4,7 @@ description: "The OPENJSON table-valued function parses JSON text and returns ob
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, umajay
-ms.date: 07/23/2025
+ms.date: 05/05/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -35,6 +35,8 @@ Use `OPENJSON` to import JSON data into [!INCLUDE[ssNoVersion](../../includes/ss
 > You can check compatibility level in the `sys.databases` view or in database properties. You can change the compatibility level of a database with the following command:  
 > 
 > `ALTER DATABASE DatabaseName SET COMPATIBILITY_LEVEL = 130`
+>
+> The compatibility level requirement doesn't apply if the [ALLOW_BUILTIN_TVF_IN_ALL_COMPAT_LEVELS](../statements/alter-database-scoped-configuration-transact-sql.md#allow-builtin-tvf-in-all-compat-levels) database-scoped configuration is enabled.
 
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false":::[Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
 
