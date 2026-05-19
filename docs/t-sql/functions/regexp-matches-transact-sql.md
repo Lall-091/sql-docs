@@ -4,7 +4,7 @@ description: Returns a table of captured substrings that match a regular express
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 11/18/2025
+ms.date: 05/05/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -30,6 +30,8 @@ REGEXP_MATCHES
 ```
 
 Requires database compatibility level 170. To set database compatibility level, review [ALTER DATABASE (Transact-SQL) compatibility level](../statements/alter-database-transact-sql-compatibility-level.md).
+
+The compatibility level requirement doesn't apply if the [ALLOW_BUILTIN_TVF_IN_ALL_COMPAT_LEVELS](../statements/alter-database-scoped-configuration-transact-sql.md#allow-builtin-tvf-in-all-compat-levels) database-scoped configuration is enabled.
 
 > [!NOTE]  
 > Regular expressions are available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).

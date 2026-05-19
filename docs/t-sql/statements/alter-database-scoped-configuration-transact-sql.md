@@ -5,7 +5,7 @@ description: Enable several database configuration settings at the individual da
 author: markingmyname
 ms.author: maghan
 ms.reviewer: derekw, bobward, jovanpop, wiassaf, mariyaali, randolphwest
-ms.date: 01/27/2025
+ms.date: 05/05/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -79,6 +79,7 @@ ALTER DATABASE SCOPED CONFIGURATION
 < set_options > ::=
 {
       ACCELERATED_PLAN_FORCING = { ON | OFF }
+    | ALLOW_BUILTIN_TVF_IN_ALL_COMPAT_LEVELS = { ON | OFF }
     | ALLOW_STALE_VECTOR_INDEX = { ON | OFF }
     | ASYNC_STATS_UPDATE_WAIT_AT_LOW_PRIORITY = { ON | OFF }
     | BATCH_MODE_ADAPTIVE_JOINS = { ON | OFF }
@@ -161,6 +162,24 @@ Enables an optimized mechanism for query plan forcing, applicable to all forms o
 
 > [!NOTE]  
 > It isn't recommended to disable accelerated plan forcing.
+
+<a id="allow-builtin-tvf-in-all-compat-levels"></a>
+
+#### ALLOW_BUILTIN_TVF_IN_ALL_COMPAT_LEVELS = { ON | OFF }
+
+**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
+
+The `ALLOW_BUILTIN_TVF_IN_ALL_COMPAT_LEVELS` database-scoped configuration is **in preview**.
+
+When enabled, it allows the following built-in table-valued functions (TVFs) to be used regardless of the database compatibility level:
+
+- [GENERATE_SERIES](../functions/generate-series-transact-sql.md)
+- [OPENJSON](../functions/openjson-transact-sql.md)
+- [REGEXP_MATCHES](../functions/regexp-matches-transact-sql.md)
+- [REGEXP_SPLIT_TO_TABLE](../functions/regexp-split-to-table-transact-sql.md)
+- [STRING_SPLIT](../functions/string-split-transact-sql.md)
+
+When disabled, built-in TVFs are only recognized starting with a specific compatibility level, as described in the documentation article for each function.
 
 #### ALLOW_STALE_VECTOR_INDEX = { ON | OFF }
 
