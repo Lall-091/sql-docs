@@ -11,7 +11,7 @@ metadata:
   author: WilliamDAssafMSFT
   ms.author: wiassaf
   ms.reviewer: dfurman, mathoma, dinethi, adbadram
-  ms.date: 05/14/2026
+  ms.date: 05/19/2026
 title: Azure SQL Database Hyperscale FAQ
 summary: |
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -255,7 +255,7 @@ sections:
       - question: |
           In what increments does my database size grow?
         answer: |
-          Each data file grows by 10 GB. Multiple data files can grow at the same time.
+          Each data file grows by a minimum of 10 GB. If a transaction requires more than 10 GB of new storage space, files grow by 10 GB each, one file at a time, until the demand for new storage is satisfied. When the free space in the existing files drops below a threshold, new files are added in the background. Each new file is initially 10 GB in size and grows as needed.
 
       - question: |
           Is the storage in Hyperscale local or remote?
