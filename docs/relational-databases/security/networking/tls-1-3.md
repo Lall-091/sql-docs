@@ -3,7 +3,7 @@ title: TLS 1.3 support
 description: This article discusses TLS 1.3 support with SQL Server 2022 and Azure SQL Database.
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.date: 11/24/2025
+ms.date: 05/15/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: concept-article
@@ -85,19 +85,19 @@ For more information on certificate validation, see [Encryption and certificate 
 
 SQL Server 2025 introduces secure-by-default configurations for several features that now use TDS 8.0 with encryption enabled by default:
 
-- **SQL Server Agent**: Uses Microsoft OLE DB Driver for SQL Server version 19 with `Encrypt=Mandatory` and requires valid server certificates with `TrustServerCertificate=False`. When the only TLS version enabled is TLS 1.3, you must configure `Encrypt=Strict` (Force Strict Encryption).
+- **SQL Server Agent**: Uses Microsoft OLE DB Driver for SQL Server version 19 with `Encrypt=Mandatory` and requires valid server certificates with `TrustServerCertificate` set to `No`. When the only TLS version enabled is TLS 1.3, you must configure `Encrypt=Strict` (Force Strict Encryption).
 
-- **Always On availability groups and FCIs**: Uses ODBC Driver for SQL Server version 18 with `Encrypt=Mandatory` by default. Unlike other features, Always On availability groups and FCIs allow `TrustServerCertificate=True` for self-signed scenarios.
+- **Always On availability groups and FCIs**: Uses ODBC Driver for SQL Server version 18 with `Encrypt=Mandatory` by default. Unlike other features, Always On availability groups and FCIs allow `TrustServerCertificate=Yes` for self-signed scenarios.
 
 - **Linked servers**: Uses Microsoft OLE DB Driver for SQL Server version 19 with `Encrypt=Mandatory` by default. The encryption parameter must be specified in the connection string when targeting another SQL Server instance.
 
-- **Log shipping**: Uses Microsoft OLE DB Driver for SQL Server version 19 with `Encrypt=Mandatory` and requires valid server certificates. When performing an in-place upgrade from a lower version, which doesn't support the latest security configurations, if encryption settings aren't explicitly overridden with a more secure option, log shipping will use `TrustServerCertificate=True` to allow for backwards compatibility. To enforce TLS 1.3 and `Encrypt=Strict` with TDS 8.0 after upgrading, drop and recreate the topology with the updated parameters in the log shipping stored procedures.
+- **Log shipping**: Uses Microsoft OLE DB Driver for SQL Server version 19 with `Encrypt=Mandatory` and requires valid server certificates. When performing an in-place upgrade from a lower version, which doesn't support the latest security configurations, if encryption settings aren't explicitly overridden with a more secure option, log shipping will use `TrustServerCertificate=Yes` to allow for backwards compatibility. To enforce TLS 1.3 and `Encrypt=Strict` with TDS 8.0 after upgrading, drop and recreate the topology with the updated parameters in the log shipping stored procedures.
 
 - **Replication**: (Transactional, Snapshot, Merge) Uses Microsoft OLE DB Driver for SQL Server version 19 with `Encrypt=Mandatory` and requires valid certificates with `TrustServerCertificate=False`.
 
-- **Database Mail**: The default settings are `Encrypt=Optional` and `TrustServerCertificate=True`. When TLS 1.3 is enforced, these values change to `Encrypt=Strict` and `TrustServerCertificate=False`. By default, Azure SQL Managed Instance uses the TLS 1.3 protocol.
+- **Database Mail**: The default settings are `Encrypt=Optional` and `TrustServerCertificate=Yes`. When TLS 1.3 is enforced, these values change to `Encrypt=Strict` and `TrustServerCertificate=False`. By default, Azure SQL Managed Instance uses the TLS 1.3 protocol.
 
-- **PolyBase**: Uses ODBC Driver for SQL Server version 18 with `Encrypt=Yes` (`Mandatory`). PolyBase allows `TrustServerCertificate=True` for self-signed scenarios.
+- **PolyBase**: Uses ODBC Driver for SQL Server version 18 with `Encrypt=Yes` (`Mandatory`). PolyBase allows `TrustServerCertificate=Yes` for self-signed scenarios.
 
 - **SQL VSS Writer**: When connecting to a SQL Server 2025 instance with `Encryption=Strict`, SQL VSS Writer will use TLS 1.3 and TDS 8.0 for the non-Virtual Device Interface (VDI) part of that connection.
 
