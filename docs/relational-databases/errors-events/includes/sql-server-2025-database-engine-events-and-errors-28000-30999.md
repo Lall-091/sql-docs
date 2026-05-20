@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 09/09/2025
+ms.date: 05/14/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -117,6 +117,7 @@ ms.topic: include
 | 30008 | 16 | No | This is an internal error when invoking the TVF to access the full-text index. The level number specified for the TVF is not valid. Valid level numbers start from 0 and must be less than the number of levels of the compressed index. |
 | 30009 | 16 | No | The argument data type '%ls' specified for the full-text query is not valid. Allowed data types are char, varchar, nchar, nvarchar. |
 | 30010 | 16 | No | An error has occurred during the full-text query. Common causes include: word-breaking errors or timeout, FDHOST permissions/ACL issues, service account missing privileges, malfunctioning IFilters, communication channel issues with FDHost and sqlservr.exe, etc. If recently performed in-place upgrade to SQL2025, For help please see https://aka.ms/sqlfulltext. |
+| 30011 | 16 | No | Full-text index version 1 is not supported by this instance configuration. Rebuild or recreate the index with database scoped configuration FULLTEXT_INDEX_VERSION = 2. For more information, see https://aka.ms/fts-version-upgrade. If unable to upgrade, contact support for assistance. |
 | 30020 | 16 | No | The full-text query parameter for %S_MSG is not valid. |
 | 30022 | 10 | No | Warning: The configuration of a full-text stoplist was modified using the WITH NO POPULATION clause. This put the full-text index into an inconsistent state. To bring the full-text index into a consistent state, start a full population. The basic Transact-SQL syntax for this is: ALTER FULLTEXT INDEX ON table_name START FULL POPULATION. |
 | 30023 | 16 | No | The fulltext stoplist '%.\*ls' does not exist or the current user does not have permission to perform this action. Verify that the correct stoplist name is specified and that the user had the permission required by the Transact-SQL statement. |
