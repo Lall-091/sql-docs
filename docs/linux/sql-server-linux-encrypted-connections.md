@@ -1,10 +1,10 @@
 ---
 title: Encrypt Connections to SQL Server on Linux
 description: SQL Server on Linux uses TLS to encrypt data transmitted across a network between a client application and an instance of SQL Server.
-author: amitkh-msft
-ms.author: amitkh
-ms.reviewer: randolphwest
-ms.date: 05/07/2026
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh
+ms.date: 05/19/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -17,15 +17,21 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux can use Transport Layer Security (TLS) to encrypt data that is transmitted across a network between a client application and an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] supports the same TLS protocols on both Windows and Linux: 1.2, 1.1, and 1.0.
+[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux can use Transport Layer Security (TLS) to encrypt data that is transmitted across a network between a client application and an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)].
 
-> [!NOTE]  
-> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]:
->
-> - TLS 1.3 is enabled by default
-> - SUSE Linux Enterprise Server (SLES) isn't supported
+## Operating system support
+
+[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] supports the same TLS protocols on both Windows and Linux: 1.3, 1.2, 1.1, and 1.0.
+
+Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]:
+
+- TLS 1.3 is enabled by default
+- SUSE Linux Enterprise Server (SLES) isn't supported
 
 The steps to configure TLS are specific to the operating system on which [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is running.
+
+> [!NOTE]  
+> TLS is not supported for Always On availability group database mirroring endpoints.
 
 ## Requirements for certificates
 
@@ -54,6 +60,9 @@ These symbolic links should be named `libcrypto.so` and `libssl.so` and placed i
 ## Overview
 
 TLS is used to encrypt connections from a client application to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. When configured correctly, TLS provides both privacy and data integrity for communications between the client and the server. TLS connections can either be client initiated or server initiated.
+
+> [!NOTE]  
+> TLS is not supported for Always On availability group database mirroring endpoints.
 
 ## [Client initiated encryption](#tab/client)
 

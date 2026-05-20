@@ -917,11 +917,11 @@ Controls the parameterization option. For more information on parameterization, 
 
 - `SIMPLE`
 
-  Queries are parameterized based on the default behavior of the database.
+  Queries are parameterized based on the default behavior of the database. For more information, see [Simple parameterization](../../relational-databases/query-processing-architecture-guide.md#simple-parameterization).
 
 - `FORCED`
 
-  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] parameterizes all queries in the database.
+  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] parameterizes all queries in the database. For more information, see [Forced parameterization](../../relational-databases/query-processing-architecture-guide.md#forced-parameterization).
 
 The current setting of this option can be determined by examining the `is_parameterization_forced` column in the [sys.databases](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md) catalog view.
 

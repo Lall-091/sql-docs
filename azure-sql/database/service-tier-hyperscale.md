@@ -4,7 +4,7 @@ description: This article describes the Hyperscale service tier in the vCore-bas
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, mathoma, oslake, randolphwest, adbadram, malstewart
-ms.date: 05/14/2026
+ms.date: 05/19/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -59,7 +59,7 @@ The Hyperscale service tier is intended for all customers who require higher per
 
 ## Hyperscale pricing model
 
-For high performance databases, Hyperscale offers a significant price advantage over other Azure SQL Database service tiers. For more information, see [Blog: Azure SQL Database Hyperscale pricing announcement from Ignite 2023](https://aka.ms/hsignite2023). For pricing change details, see [Blog: Azure SQL Database Hyperscale – lower, simplified pricing!](https://techcommunity.microsoft.com/t5/azure-sql-blog/azure-sql-database-hyperscale-lower-simplified-pricing/ba-p/3982209)
+For high performance databases, Hyperscale offers a significant price advantage over other Azure SQL Database service tiers. For more information, see [Blog: Azure SQL Database Hyperscale pricing announcement from Ignite 2023](https://aka.ms/hsignite2023). For pricing change details, see [Blog: Azure SQL Database Hyperscale - lower, simplified pricing!](https://techcommunity.microsoft.com/blog/azuresqlblog/azure-sql-database-hyperscale-–-lower-simplified-pricing/3982209)
 
 The Hyperscale service tier is available only in the [vCore model](service-tiers-sql-database-vcore.md) and comes in two compute tiers. Billing for Hyperscale is based on the provisioned or serverless compute tier:
 
@@ -71,7 +71,7 @@ The Hyperscale service tier is available only in the [vCore model](service-tiers
 
    Serverless compute billing is based on usage. For more information, see [Serverless compute tier for Azure SQL Database](serverless-tier-overview.md).
 
-You don't specify the max data size when configuring a Hyperscale database. In the Hyperscale tier, you pay for storage based on actual allocation. Storage is automatically allocated at a minimum of 10 GB, up to 128 TB, and grows in 10 GB increments as needed.
+You don't specify the max data size when configuring a Hyperscale database. In the Hyperscale tier, you pay for storage based on actual allocation. Storage is automatically allocated between 10 GB and 128 TB, and grows as needed. For more information, see [In what increments does my database size grow?](service-tier-hyperscale-frequently-asked-questions-faq.yml#in-what-increments-does-my-database-size-grow-).
 
 <a id="distributed-functions-architecture"></a>
 
@@ -147,7 +147,7 @@ The vCore-based service tiers differ in database availability, storage type, per
 | **Best for** | Budget-oriented balanced compute and storage options. | OLTP applications with high transaction rate and low I/O latency. High resilience to failures and fast failovers by using multiple hot standby replicas. | The widest variety of workloads. Autoscaling storage size up to 128 TB, fast vertical and horizontal compute scaling, fast database backups and restores. |
 | **Compute size** | 2 to 128 vCores | 2 to 128 vCores | 2 to 192 vCores<sup>3</sup>  |
 | **Storage type** | Premium remote storage (per instance) | Super-fast local SSD storage (per instance) | Decoupled storage with local SSD cache (per compute replica) |
-| **Storage size** | 1 GB – 4 TB | 1 GB – 4 TB | 10 GB – 128 TB |
+| **Storage size** | 1 GB - 4 TB | 1 GB - 4 TB | 10 GB - 128 TB |
 | **Max IOPS** | 320 IOPS per vCore with 16,000 maximum IOPS | 4,000 IOPS per vCore with 327,680 maximum IOPS | 5,500 IOPS per vCore with 544,000 maximum local SSD IOPS.<br />Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPS depend on the workload. |
 | **Memory/vCore** | 5.1 GB | 5.1 GB | 5.1 GB or 10.2 GB |
 | **Availability** | One replica, no read scale-out, zone-redundant HA | Three replicas, one read scale-out, zone-redundant HA | Multiple replicas, up to four read scale-out, zone-redundant HA |

@@ -3,7 +3,7 @@ title: Connect to SQL Server with strict encryption
 description: This article describes how to connect to SQL Server using the strict encryption type
 author: VanMSFT
 ms.author: vanto
-ms.date: 08/15/2025
+ms.date: 05/19/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -25,7 +25,7 @@ In this article, learn how to connect to [!INCLUDE [sssql22-md](../../../include
 - ODBC or OLE DB Driver for SQL Server
   - [ODBC Driver for SQL Server](../../../connect/odbc/download-odbc-driver-for-sql-server.md) version 18.1.2.1 or higher
   - [OLE DB Driver for SQL Server](../../../connect/oledb/download-oledb-driver-for-sql-server.md) version 19.2.0 or higher
-- Create and install a TLS certificate to SQL Server. For more information, see [Enable encrypted connections to the Database Engine](../../../database-engine/configure-windows/configure-sql-server-encryption.md)
+- Create and install a Transport Layer Security (TLS) certificate to SQL Server. For more information, see [Enable encrypted connections to the Database Engine](../../../database-engine/configure-windows/configure-sql-server-encryption.md)
 
 ## Connect to SQL Server using a .NET application
 
@@ -90,6 +90,9 @@ Starting with version 20, you can enforce strict encryption in [SQL Server Manag
 
 Starting with [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], you can encrypt communication between the Windows Server Failover Cluster and an Always On availability group replica using the `Strict` or `Mandatory` connection encryption type. Your availability group can only enforce encryption if it's based on a Windows Server Failover Cluster. Other types of availability groups don't support strict encryption.
 
+> [!NOTE]  
+> Encryption for database mirroring endpoints is configured separately, and TLS is not supported. For more information, see [Transport security in availability groups and database mirroring](../../../database-engine/database-mirroring/transport-security-database-mirroring-always-on-availability.md).
+
 The steps differ based on whether or not your availability already exists.
 
 #### [New AG](#tab/new-ag)
@@ -141,9 +144,8 @@ You can enforce strict encryption using the SQL Server Configuration Manager sta
 1. In the **TCP/IP Properties** dialog, go to the **Flags** tab, and then select **Yes** for the **Force Strict Encryption** option: 
 
    :::image type="content" source="media/connect-with-strict-encryption/enforce-strict-encryption.png" alt-text="Screenshot of the Force Strict Encryption option in SQL Server Configuration Manager.":::
+
 1. Restart the SQL Server instance during a maintenance window to apply the changes.
-
-
 
 ## Remarks
 

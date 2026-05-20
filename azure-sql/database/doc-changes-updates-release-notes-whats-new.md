@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 04/13/2026
+ms.date: 05/20/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -51,6 +51,7 @@ The following table lists the features of Azure SQL Database that are currently 
 | **Immutable LTR backups** | You can [configure long-term retention backups of Azure SQL Database as immutable](backup-immutability.md) with legal hold immutability (preview feature). Time-based backup immutability is generally available.| 
 | **Import and export using managed identity** | You can [import or export an Azure SQL Database BACPAC file with managed identity authentication](database-import-export-managed-identity.md). Use managed identity authentication for enhanced security when importing or exporting databases. |
 | **Import and export using Private Link** | You can [import or export an Azure SQL Database using private link](database-import-export-private-link.md). Leave *Allow Access to Azure Services* off when you import or export a database using a service-managed endpoint. |
+| **MAX_ROLLOVER_FILES in extended event sessions using Azure Storage blobs** | For new extended event sessions, you can specify the `MAX_ROLLOVER_FILES` option to retain only the specified number of the most recent Azure Storage blobs. For more information, see [event_file target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target). |
 | **Microsoft Entra server principals** | The ability to [create server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) in Azure SQL Database is in preview. |
 | **Multiple geo-replicas for Hyperscale** | The ability to create up to four geo-replicas for Azure SQL Hyperscale is in preview.  Learn more about [multiple geo-replicas for Hyperscale](https://aka.ms/sqlhs-multi-geo-announcement). |
 | **Multiple secondaries for failover groups** | You can [configure multiple secondary servers for failover groups](failover-group-sql-db.md#multiple-secondaries) in Azure SQL Database. |
@@ -90,6 +91,12 @@ The following table lists features of Azure SQL Database that have been made gen
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Database documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### May 2026
+
+| Changes | Details |
+| --- | --- |
+| **MAX_ROLLOVER_FILES in extended event sessions using Azure Storage blobs (preview)** | For new extended event sessions, you can specify the `MAX_ROLLOVER_FILES` option to retain only the specified number of the most recent Azure Storage blobs. For more information, see [event_file target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target). |
 
 ### March 2026
 
