@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 08/14/2025
+ms.date: 05/14/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -61,58 +61,80 @@ ms.topic: include
 | 23579 | 16 | No | This procedure is reserved and cannot be called. |
 | 23587 | 16 | No | File stream cannot be null. |
 | 23588 | 16 | No | Container ids must be the same. |
-| 23601 | 10 | No | Change Streams |
-| 23622 | 16 | No | Change Streams requires Change feed to be enabled. |
-| 23623 | 16 | No | The feature switch enabling support for using Event Hub with change streams is disabled. |
-| 23624 | 16 | No | The caller does not have permission to configure Change Streams. |
-| 23625 | 16 | No | The argument '%s' failed validation. |
+| 23601 | 10 | No | Change Event Streaming |
+| 23615 | 16 | No | The argument '%s' must not be null. |
+| 23616 | 16 | No | The value provided for the argument '@partition_key_column_name' is invalid. This argument must be null unless the argument '@partition_key_scheme' is set to 'Column'. |
+| 23617 | 16 | No | The argument '@partition_key_column_name' must not be null or empty when using 'Column' partition key scheme. |
+| 23618 | 16 | No | The value provided for the argument '%s' is invalid. Allowed values: %s. |
+| 23619 | 16 | No | The value provided for the argument '%s' is invalid. Stream group with the provided name already exists. |
+| 23620 | 16 | No | The value provided for the argument '%s' is invalid. %s with the provided name does not exist. |
+| 23621 | 16 | No | The argument '%s' must not be null or empty. |
+| 23622 | 16 | No | Could not enable Change Event Streaming for database '%s'. Change Event Streaming cannot be enabled on a database that already has Mirroring in Fabric or Synapse Link enabled. |
+| 23623 | 16 | No | Cannot enable Change Event Streaming because it is a preview feature in SQL Server. Please enable the PREVIEW_FEATURES database-scoped configuration before configuring Change Event Streaming. |
+| 23624 | 16 | No | Insufficient permissions: The user must have CONTROL permission on the database to configure Change Event Streaming. |
+| 23625 | 16 | No | The value provided for the argument '%s' is invalid. |
 | 23626 | 16 | No | An error occurred. The error/state returned was %d/%d: '%s'. |
-| 23627 | 16 | No | An error occurred when configuring change feed. |
 | 23628 | 16 | No | The argument '%s' failed validation. Expects: 'schemaName.objectName' |
-| 23629 | 16 | No | The configuration already exists in '%s'. |
-| 23630 | 16 | No | Change Streams could not create the object configuration. |
-| 23631 | 16 | No | The configuration does not exists in '%s'. |
-| 23632 | 16 | No | Change Streams could not remove the object configuration. |
-| 23633 | 16 | No | Change Streams could not drop the object configuration from the group. |
-| 23634 | 16 | No | Change Streams feature is not supported for this database. |
-| 23635 | 16 | No | Change Streams feature is currently enabled only on Azure SQL DB and Azure SQL MI. |
-| 23636 | 16 | No | Change Streams is not enabled on database '%s'. |
-| 23637 | 16 | No | Change Streams is not supported on Free, Basic or Standard tier Single Database (S0,S1,S2) and Database in Elastic pool with max eDTUs \< 100 or max vCore \< 1. Please upgrade to a higher Service Objective. |
-| 23638 | 16 | No | Change Streams encountered an Avro Exception: '%ls'. |
+| 23634 | 16 | No | Change Event Streaming is not supported for this database. |
+| 23636 | 16 | No | Change Event Streaming is not enabled on database '%s'. |
+| 23637 | 16 | No | Change Event Streaming is not supported in the free offer databases, single databases using the Basic, S0, S1, or S2 service objectives, and in elastic pools with less than 100 eDTUs or less than 1 vCore. Upgrade to a higher service objective and try again. |
+| 23638 | 16 | No | Change Streams encountered an Avro exception. |
 | 23639 | 16 | No | Change Streams encountered a serialization exception: '%s'. |
 | 23640 | 16 | No | Change Streams serializer not initialzied. |
-| 23641 | 16 | No | The argument '%s' failed validation. Expects '%s' to be '%s'. |
+| 23641 | 16 | No | The value in provided argument '@include_old_lob_values' is incompatible with value '0' provided in argument '@include_old_values'. To use '@include_old_lob_values' with value '1', the parameter '@include_old_values' is expected to be '1'. |
 | 23642 | 16 | No | Destination location parameter is not in the expected format. Expected format is \[Event Hubs Namespace Host name\]/\[Event Hubs Instance\] or \[Event Hubs Namespace Host name\]:\[Port\]/\[Event Hubs Instance\] |
-| 23643 | 16 | No | Change Streams is already enabled for '%s'. |
-| 23644 | 16 | No | Change Streams is not currently enabled for '%s'. |
-| 23645 | 16 | No | Port number in the destination location parameter is invalid. It must be a numeric value between 0 and 65535. |
+| 23643 | 16 | No | Change Event Streaming for '%s' is already enabled for stream group '%s'. |
+| 23644 | 16 | No | Table name supplied in the argument '%s' is either not configured for Change Event Streaming or it does not exist for the supplied stream group. |
+| 23645 | 16 | No | The value provided for the 'Port number' in the destination location parameter is invalid. It must be a numeric value between 0 and 65535. |
 | 23646 | 16 | No | Change Streams message exceeds the configured message size limit. |
 | 23647 | 16 | No | Tables contained in the changefeed schema cannot be enabled for Change Streams. |
-| 23648 | 16 | No | Could not enable Change Streams for database '%s'. Change Streams is not supported on system databases, or on a distribution database. |
-| 23649 | 16 | No | Change Streams is not supported in contained databases. Change Streams cannot be enabled on the contained database '%s'. |
-| 23650 | 16 | No | Could not enable Change Streams for database '%s'. Change Streams cannot be enabled on a DB with Change Data Capture. |
-| 23651 | 16 | No | Could not enable Change Streams for database '%s'. Change Streams cannot be enabled on a DB with delayed durability set. |
-| 23652 | 16 | No | Could not enable Change Streams for database '%s'. Change Streams cannot be enabled on a DB which is mirrored. |
-| 23653 | 16 | No | Could not enable Change Streams for database '%s' as it is already enabled. |
-| 23654 | 16 | No | The application lock request '%s' needed to modify Change Streams metadata was not granted. The value returned from the request was %d: -1 = timeout; -2 = canceled; -3 = deadlock victim; -999 validation or other call error. Examine the error cause and resubmit the request. |
-| 23655 | 16 | No | Change Streams table group limit of %d groups exceeded. |
-| 23656 | 16 | No | Enabling Change Streams for an external table '%s' is not allowed. |
-| 23657 | 16 | No | The number of tables enabled for a Change Streams table group cannot exceed %d. Current number of tables enabled: %d. |
-| 23658 | 16 | No | Change Streams encountered a SQL Exception. Error: '%ls', State: '%ls', Severity: '%ls'. |
+| 23648 | 16 | No | Could not enable Change Event Streaming for database '%s'. Change Event Streaming is not supported on system databases, or on a distribution database. |
+| 23649 | 16 | No | Change Event Streaming is not supported in contained databases. Change Event Streaming cannot be enabled on the contained database '%s'. |
+| 23650 | 16 | No | Could not enable Change Event Streaming for database '%s'. Change Event Streaming cannot be enabled on a database configured for Change Data Capture. |
+| 23651 | 16 | No | Could not enable Change Event Streaming for database '%s'. Change Event Streaming cannot be enabled on a database with forced or allowed DELAYED_DURABILITY. |
+| 23652 | 16 | No | Could not enable Change Event Streaming for database '%s'. Change Event Streaming cannot be enabled on a database configured for Database Mirroring in SQL Server. |
+| 23653 | 16 | No | Could not enable Change Event Streaming for database '%s' as it is already enabled. |
+| 23654 | 16 | No | The application lock request '%s' needed to modify Change Event Streaming metadata was not granted. The value returned by sp_getapplock was %d. Examine the error cause and resubmit the request. |
+| 23655 | 16 | No | Allowed number of Change Event Streaming stream groups is exceeded. The limit is %d stream groups per database. |
+| 23656 | 16 | No | Enabling Change Event Streaming for table '%s' failed because '%s' table type is not supported. |
+| 23657 | 16 | No | The number of tables enabled for a Change Event Streaming stream group cannot exceed %d. Current number of tables enabled: %d. |
+| 23658 | 16 | No | Change Streams encountered a SQL exception. |
 | 23659 | 16 | No | Schema changes on table '%ls' are not supported because it is enabled for Change Streams. |
 | 23660 | 16 | No | The switch partition operation is currently not supported for table '%.\*ls' because it is enabled for Change Streams. |
-| 23661 | 16 | No | Cannot rename the table because it is being used for Change Streams. |
+| 23661 | 16 | No | Cannot rename the table because it is enabled for Change Event Streaming. |
 | 23662 | 16 | No | Cannot drop the table because it is being used for Change Streams. |
 | 23663 | 16 | No | Cannot truncate the table because it is being used for Change Streams. |
 | 23664 | 16 | No | Cannot add a primary key constraint because the table '%.\*ls' is being used for Change Streams. |
 | 23665 | 16 | No | Cannot drop a primary key constraint because the table '%.\*ls' is being used for Change Streams. |
-| 23666 | 16 | No | The expected value for argument '%s' is between '%d' and '%s', inclusive. |
+| 23666 | 16 | No | The expected value for argument '%s' is between '%d' and '%d' KB, inclusive. |
 | 23667 | 16 | No | Change Streams event delivery error : '%ls'. |
-| 23668 | 16 | No | User table '%s' has reached the max number of Change Event Streaming destinations. |
-| 23669 | 10 | No | Microsoft Fabric Mirroring cannot be enabled on Linux. |
+| 23668 | 16 | No | User table '%s' has reached the maximum number of Change Event Streaming destinations. |
+| 23669 | 10 | No | PREVIEW_FEATURES must be enabled on the database to use Microsoft Fabric Mirroring on Linux. |
 | 23670 | 10 | No | No primary system assigned managed identity found. |
 | 23671 | 10 | No | Microsoft Fabric Mirroring is not supported on Azure VM. |
 | 23672 | 10 | No | Microsoft Fabric Mirroring is not supported with Arc user assigned managed identity. Please use Arc system assigned managed identity. |
+| 23675 | 16 | No | Enabling Change Event Streaming for table '%s' that has a column_set column is not supported. |
+| 23676 | 16 | No | Adding a column set column to table '%ls' that is enabled for Change Streams is not supported. |
+| 23677 | 16 | No | Change Streams encountered a Kafka exception. |
+| 23678 | 16 | No | Failed to send a message to Kafka endpoint. |
+| 23679 | 16 | No | Unable to reach the configured destination. |
+| 23680 | 16 | No | The specified destination instance could not be found. Verify the destination_location parameter in the stream group configuration. |
+| 23681 | 16 | No | Could not connect to the destination due to an authentication error. |
+| 23682 | 16 | No | Could not connect to the Kafka endpoint due to throttling happening on the destination. |
+| 23683 | 16 | No | Failed to send a message to AMQP endpoint. |
+| 23684 | 16 | No | The specified destination instance could not be found. Verify the destination_location parameter in the stream group configuration. |
+| 23685 | 16 | No | The message could not be sent because its size exceeds an AMQP broker limit. |
+| 23686 | 16 | No | Could not connect to the AMQP endpoint due to throttling happening on the destination. |
+| 23687 | 16 | No | Failed to verify access to the destination. Verify that SAS token is valid. |
+| 23688 | 16 | No | Could not connect to the destination due to an authentication error. |
+| 23689 | 16 | No | The request to the AMQP endpoint was not authorized. Verify that your credentials or access policy include the required permissions. |
+| 23690 | 16 | No | The request to the Kafka endpoint was not authorized. Verify that your credentials or access policy include the required permissions. |
+| 23691 | 16 | No | Failed to send a message to the requested topic. The SAS token provided when creating the credential is invalid. |
+| 23692 | 16 | No | Delivery of the message failed due to a timeout. Check if the broker is available and accessible over the network. |
+| 23693 | 16 | No | Request to the broker failed due to a timeout. Check if the broker is available and accessible over the network. |
+| 23694 | 16 | No | Unable to establish a secure connection to the broker. |
+| 23695 | 16 | No | The requested AMQP entity does not exist on the broker. |
+| 23696 | 16 | No | The AMQP resource was removed or disabled after a connection to the resource was established. |
 | 23701 | 16 | No | Database '%ls' went to suspect state. Backup cannot be performed on a database that is in suspect state. |
 | 23702 | 16 | No | Backup on participant is not allowed in SDA failover. |
 | 23996 | 16 | No | The request could not be performed because of an device I/O error. |

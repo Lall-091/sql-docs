@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 01/15/2026
+ms.date: 05/14/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -286,6 +286,7 @@ ms.topic: include
 | 41988 | 16 | No | The link supporting bi-directional failover requires matching database formats on source and target server. |
 | 41989 | 16 | No | The parameters (%ls) can only be set/updated on SQL Database Managed Instance. Review the documentation for supported parameters. |
 | 41990 | 16 | No | %s cannot be null or empty when %s is set to 0 (SQL Server Authentication). |
+| 41998 | 16 | No | Managed Instance link creation failed because encryption is not enabled on the on-premises SQL Server endpoint. Enable encryption on the database mirroring endpoint and try again. |
 | 42001 | 16 | No | Failed to parse XML configuration. The operating system returned error %ls. |
 | 42002 | 16 | No | Failed to parse XML configuration. The parser returned error %.\*ls |
 | 42003 | 16 | No | Failed to parse XML configuration. A required attribute '%ls' is missing. |
@@ -340,6 +341,8 @@ ms.topic: include
 | 42116 | 11 | No | Cannot open database "%.\*ls" requested by the login because this database is currently being dropped. The login failed. |
 | 42117 | 16 | No | The elastic pool '%.\*ls' has reached its active database count limit. The active database count for the elastic pool cannot exceed (%d) for the current service tier. |
 | 42118 | 16 | No | Login failed because the network security perimeter denied inbound access. |
+| 42119 | 16 | No | This database has reached the monthly free amount allowance for the month of %.\*ls and is paused for the remainder of the month. The free amount will renew at 12:00 AM (UTC) on %.\*ls. To regain access immediately, open the Compute and Storage tab from the database menu on the Azure Portal and select the "Continue using database with additional charges" option. This will resume the database and bill you for additional usage charges the rest of this month. For more details, see [https://go.microsoft.com/fwlink/?linkid=2243105&clcid=0x409](https://go.microsoft.com/fwlink/?linkid=2243105&clcid=0x409). |
+| 42120 | 16 | No | The connection was denied because the server's Public Network Access is set to 'SecuredByPerimeter', but the resource is not in a Network Security Perimeter. For more information, please see \<doc placeholder\>. |
 | 42134 | 16 | No | Cannot open database "%.\*ls" requested by the login because this database is participating in a failover group as a secondary and has geo link in an inactive state. The login failed. |
 | 43001 | 16 | No | '%.\*ls' is not a valid login name. |
 | 43002 | 16 | No | The storage size of %d MB exceeds the maximum allowed storage of %d MB. |
@@ -1191,6 +1194,8 @@ ms.topic: include
 | 47076 | 10 | No | Server access failure due to RBAC Deny. |
 | 47077 | 10 | No | Login was denied since the token used was malformed. |
 | 47078 | 10 | No | Login was denied since an incorrect token type was used. |
+| 47079 | 10 | No | Login was denied since perms were requested on an invalid database. |
+| 47080 | 10 | No | User has insufficient permissions to complete the login. |
 | 47081 | 14 | No | Cannot verify connect permissions on database '%ls'. |
 | 47082 | 14 | No | Cannot verify connect permissions on the default database. |
 | 47083 | 16 | No | Token is expired. |
@@ -1209,6 +1214,7 @@ ms.topic: include
 | 47096 | 10 | No | Reason: Login to public IPv6 endpoint is disabled. |
 | 47097 | 10 | No | Reason: Login to public IPv6 endpoint from an IPv4 source is disabled. |
 | 47098 | 10 | No | Reason: Retrieving IPv4 address from IPv4 mapped IPv6 address failed. |
+| 47099 | 10 | No | Sql Authentication connections are not supported. |
 | 47100 | 16 | No | The cluster type of availability group '%.\*ls' doesn't match its primary configuration. Verify that the specified availability group cluster type is correct, then retry the operation. |
 | 47101 | 16 | No | The cluster type of availability group '%.\*ls' only supports MANUAL failover mode. Verify that the specified availability group cluster type is correct, then retry the operation. |
 | 47102 | 16 | No | The cluster type of availability group '%.\*ls' only supports EXTERNAL failover mode. Verify that the specified availability group cluster type is correct, then retry the operation. |
@@ -1315,6 +1321,13 @@ ms.topic: include
 | 47604 | 10 | No | Service principal is disabled. |
 | 47605 | 10 | No | Service principal has insufficient permissions. |
 | 47606 | 10 | No | Reason: There was an user error while attempting Windows Authentication for Azure AD Principals. |
+| 47607 | 10 | No | Reason: Login failure in mpdw |
+| 47608 | 10 | No | Reason: Login ack failure in mpdw |
+| 47609 | 10 | No | Conditional Access Policy is blocking usage of Service Principal. |
+| 47610 | 10 | No | Reason: An update SLO operation is in progress. The external connections are denied. |
+| 47611 | 10 | No | Reason: A Geo failover operation is in progress. The external connections are denied. |
+| 47612 | 10 | No | Reason: The database is in dropping state. The external connections are denied. |
+| 47613 | 10 | No | Reason: The login cannot obtain a LOCK resource at this time. This may be caused by insufficient resources or other queries holding locks on the system tables and/or system objects required for login processing. Query sys.dm_tran_locks to see if any sessions are holding Sch-S or Sch-M locks, and query sys.dm_tran_database_transactions and sys.dm_tran_session_transactions to see if there are long-running transactions holding these locks. |
 | 49301 | 16 | No | One or more errors occurred during a native external table operation. The last error code was 0x%08x. See previous error messages (if any) for further details. |
 | 49302 | 16 | No | One or more SQL Server host errors occurred during a native external table operation. The last error was %d. See previous error messages (if any) for further details. |
 | 49303 | 16 | No | Operation not implemented or not supported: '%s'. \[0x%8x\]\[%d\] '%s'(), %s: %u. |

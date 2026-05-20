@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 03/12/2026
+ms.date: 05/14/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -59,7 +59,7 @@ ms.topic: include
 | 16216 | 15 | No | Invalid column reference. Expressions are not allowed in the index definition. |
 | 16217 | 16 | No | Conflicting query hints and/or internal configuration settings forcing both single node and distributed plans were detected |
 | 16218 | 15 | No | '%.\*ls' option is not supported when creating index on expression. |
-| 16219 | 16 | No | The value for %.\*ls is out of range. The value must be greater than or equal to %I64u and less than or equal to %I64u. |
+| 16220 | 16 | No | The value for %.\*ls is out of range. The value must be greater than or equal to %I64u and less than or equal to %I64u. |
 | 16310 | 16 | No | '%.\*ls' is not supported in this version of Azure SQL Edge. |
 | 16401 | 16 | No | Page id not hosted by the current page server. |
 | 16501 | 16 | No | %ls is not supported with this set of options. |
