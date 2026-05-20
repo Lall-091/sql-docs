@@ -4,7 +4,7 @@ description: "Get an introduction to SQL Database: technical details and capabil
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 05/14/2026
+ms.date: 05/19/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: overview
@@ -37,7 +37,7 @@ You get the newest SQL Server capabilities with no overhead for patching or upgr
 
 SQL Database offers the following purchasing models:
 
-- The [vCore-based purchasing model](service-tiers-vcore.md) lets you choose the number of vCores, the amount of memory, and the amount and speed of storage. The vCore-based purchasing model also allows you to use [Azure Hybrid Benefit for SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) to get a discount on the allocation of SQL Server licenses to the SQL Database Engine.
+- The [vCore-based purchasing model](service-tiers-vcore.md) lets you choose the number of vCores, the amount of memory, and the amount and speed of storage. The vCore-based purchasing model also allows you to use [Azure Hybrid Benefit for SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) to get a discount on the allocation of SQL Server licenses for non-Hyperscale databases. Hyperscale databases don't benefit from Azure Hybrid Benefit because Hyperscale has no separate SQL Database Engine licensing cost.
 - The [DTU-based purchasing model](service-tiers-dtu.md) offers a blend of compute, memory, and I/O resources in three service tiers, to support light to heavy database workloads. Compute sizes within each tier provide a different mix of these resources, to which you can add additional storage resources.
 
 ## Service tiers
