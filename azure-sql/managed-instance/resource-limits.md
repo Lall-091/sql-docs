@@ -357,7 +357,7 @@ SQL Managed Instance can be created only in [supported regions](https://azure.mi
 SQL Managed Instance currently supports deployment only on the following types of subscriptions:
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Pay-as-you-go](https://azure.microsoft.com/offers/ms-azr-0003p/)
+- [Pay-as-you-go](https://azure.microsoft.com/pricing/offers/ms-azr-0003p?cid=msft_learn)
 - [Cloud Service Provider (CSP)](/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Pay-as-you-go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
