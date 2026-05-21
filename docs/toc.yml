@@ -12149,6 +12149,8 @@ items:
     - name: Database
       href: relational-databases/system-dynamic-management-views/database-related-dynamic-management-views-transact-sql.md
       items:
+      - name: sys.dm_db_external_tables_log_status
+        href: relational-databases/system-dynamic-management-views/sys-dm-db-external-tables-log-status-transact-sql.md
       - name: sys.dm_db_file_space_usage
         href: relational-databases/system-dynamic-management-views/sys-dm-db-file-space-usage-transact-sql.md
       - name: sys.dm_db_fts_index_physical_stats
@@ -13261,6 +13263,8 @@ items:
         href: relational-databases/system-stored-procedures/sp-dropmessage-transact-sql.md
       - name: sp_droptype
         href: relational-databases/system-stored-procedures/sp-droptype-transact-sql.md
+      - name: sp_dw_refresh_ext_table
+        href: relational-databases/system-stored-procedures/sp-dw-refresh-ext-table-transact-sql.md
       - name: sp_estimate_data_compression_savings
         href: relational-databases/system-stored-procedures/sp-estimate-data-compression-savings-transact-sql.md
       - name: sp_estimated_rowsize_reduction_for_vardecimal
