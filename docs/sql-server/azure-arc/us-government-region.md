@@ -4,7 +4,7 @@ description: "Describes features and limitations currently available for SQL Ser
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mikeray
-ms.date: 08/15/2025
+ms.date: 05/19/2026
 ms.topic: feature-availability
 #customer intent:Understand the features, limitations, and onboarding process for using SQL Server enabled by Azure Arc in US Government regions, specifically to manage their SQL Server resources securely and compliantly within the Azure Government portal.
 
@@ -41,19 +41,22 @@ To onboard your SQL Server, complete the following steps from the Azure (US Gov)
 
 ## Available features
 
-Currently, in the US Government Virginia region, SQL Server registration provides the following features:
+SQL Server enabled by Azure Arc in the US Virginia Government region currently only supports a subset of the capabilities available in commercial Azure regions. If you're registering your SQL Server instance in the US Virginia Government cloud, review the supported features in this section to ensure alignment with current platform capabilities, as [all other features](overview.md#feature-differentiation) are not currently available.
+
+Only the following features are available in the US Government Virginia region:
 
 - [Connect your SQL Server to Azure Arc](connect.md) (onboard) a SQL Server instance to Azure Arc.
 - [SQL Server inventory](overview.md#manage-your-sql-server-instances-at-scale-from-a-single-point-of-control) which includes the following capabilities in the Azure portal:
   - View SQL Server instances as Azure resources.
   - View databases Azure resources.
   - View the properties for each server. For example, you can view the version, edition, and database for each instance.
-- [Subscribe to Extended Security Updates in a production environment](extended-security-updates.md#subscribe-to-extended-security-updates-in-a-production-environment).
-- [Manage licensing and billing of SQL Server enabled by Azure Arc](manage-license-billing.md).
-- License virtual cores.
+- [Manage licensing and billing of SQL Server enabled by Azure Arc](manage-license-billing.md): 
+  - [License physical cores (p-cores) with unlimited virtualization](manage-license-billing.md#unlimited-virtualization)
+  - [License physical cores (p-cores) without virtual machines](manage-license-billing.md#license-pcores-without-vms)
+  - License virtual cores.
 - [Failover cluster instances support](support-for-fci.md) - onboard and manage SQL Server failover cluster instances. 
+- [Subscribe to Extended Security Updates in a production environment](extended-security-updates.md#subscribe-to-extended-security-updates-in-a-production-environment).
 
-[All other features](overview.md#feature-differentiation) aren't currently available.
 
 ## Related content
 

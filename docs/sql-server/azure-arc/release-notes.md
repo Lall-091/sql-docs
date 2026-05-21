@@ -4,7 +4,7 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 04/20/2026
+ms.date: 05/19/2026
 ms.topic: release-notes
 ms.custom:
   - ignite-2025
@@ -27,6 +27,9 @@ This article lists:
 Extension versions are cumulative. Higher extension versions include all of the updates from previous versions. A release might also include internal features.
 
 Only Azure extension for SQL Server versions released within the last year are supported.
+
+> [!IMPORTANT]
+> [!INCLUDE [azure-government-feature-availability-note](includes/azure-government-feature-availability-note.md)]
 
 ## Preview
 
@@ -128,7 +131,7 @@ The following features are now generally available (GA):
 
 **Extension version**: `1.1.3176.319`
 
-Certain limitations in [US Government Virginia](us-government-region.md) are lifted. You can now:
+The following capabilities are now supported in [US Government Virginia](us-government-region.md):
 
 - [License physical cores (p-cores) with unlimited virtualization](manage-license-billing.md#unlimited-virtualization)
 - [License physical cores (p-cores) without virtual machines](manage-license-billing.md#license-pcores-without-vms)
