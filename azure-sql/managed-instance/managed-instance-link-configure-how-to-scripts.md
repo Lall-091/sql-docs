@@ -604,7 +604,7 @@ If SQL Managed Instance is your initial primary, create the availability group _
 First, find out your SQL Server name by running the following T-SQL statement:
 
 ```sql
--- Run on the initial primary
+-- Run on SQL Server
 SELECT @@SERVERNAME AS SQLServerName 
 ```
 
@@ -642,6 +642,19 @@ Since SQL Managed Instance is the initial primary, the database will be replicat
 ALTER AVAILABILITY GROUP [<AGNameOnSQLServer>] GRANT CREATE ANY DATABASE; 
 ```
 
+Run the following statement on the SQL Server instance to allow connections for the Secondary role.
+
+```sql
+-- Run on SQL Server
+-- Enable SQL Server to allow connections for Secondary role.
+
+ALTER AVAILABILITY GROUP [<AGNameOnSQLServer>]
+MODIFY REPLICA ON '<SQLServerName>'
+    WITH (SECONDARY_ROLE ( ALLOW_CONNECTIONS = ALL ))
+GO
+```
+
+
 Next, create the distributed availability group _on SQL Server_. If you plan to create multiple links, then you need to create a distributed availability group for each link, even if you're establishing multiple links for the same database. 
 
 Replace the following values and then run the T-SQL script to create your distributed availability group. 
@@ -654,31 +667,29 @@ Replace the following values and then run the T-SQL script to create your distri
 - `<ManagedInstanceFQDN>` with the fully qualified domain name of your managed instance.
 
 ```sql
--- Run on SQL Server 
--- Create a distributed availability group for the availability group and database 
+-- Run on SQL Server
+-- Join the distributed availability group on SQL Server to the Managed Instance link
 -- ManagedInstanceName example: 'sqlmi1' 
 -- ManagedInstanceFQDN example: 'sqlmi1.73d19f36a420a.database.windows.net' 
 
-USE MASTER 
-CREATE AVAILABILITY GROUP [<DAGName>] 
-WITH (DISTRIBUTED)  
-    AVAILABILITY GROUP ON   
-    N'<AGNameOnSQLServer>' WITH  
-    ( 
-      LISTENER_URL = 'TCP://<SQLServerIP>:<EndpointPort>', 
-      AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT, 
-      FAILOVER_MODE = MANUAL, 
-      SEEDING_MODE = AUTOMATIC, 
-      SESSION_TIMEOUT = 20 
-    ), 
-    N'<AGNameOnSQLMI>' WITH 
-    ( 
-      LISTENER_URL = 'tcp://<ManagedInstanceFQDN>:5022;Server=[<ManagedInstanceName>];Database=[<DatabaseName>]', 
-      AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT, 
-      FAILOVER_MODE = MANUAL, 
-      SEEDING_MODE = AUTOMATIC 
-    ); 
-GO 
+ALTER AVAILABILITY GROUP [<DAGName>]
+JOIN 
+AVAILABILITY GROUP ON
+        '<AGNameOnSQLMI>' WITH
+        (
+            LISTENER_URL = 'tcp://<ManagedInstanceFQDN>:5022;Server=[<ManagedInstanceName>];Database=[<DatabaseName>]',
+            AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT,
+            FAILOVER_MODE = MANUAL,
+            SEEDING_MODE = AUTOMATIC
+        ), 
+        '<AGNameOnSQLServer>' WITH
+        ( 
+            LISTENER_URL = 'TCP://<SQLServerIP>:<EndpointPort>',
+            AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT,
+            FAILOVER_MODE = MANUAL,
+            SEEDING_MODE = AUTOMATIC
+        );
+GO
 ```
 
 ---
@@ -712,6 +723,7 @@ To simplify the process, sign in to the Azure portal and run the following scrip
 - `<DAGName>` with the name of the distributed availability group created on SQL Server. 
 - `<DatabaseName>` with the database replicated in the availability group on SQL Server. 
 - `<SQLServerIP>` with the IP address of your SQL Server. The provided IP address must be accessible by managed instance.
+- `<EndpointPort>` with the SQL Server Endpoint port
  
 > [!NOTE]
 > If you want to establish a link to an availability group that already exists, then provide the IP address of the listener when supplying the `<SQLServerIP>` parameter. Please ensure that trust has been established between all availability group nodes and SQL Managed Instance (see [Establish trust between instances](#establish-trust-between-instances) section).
@@ -742,13 +754,16 @@ $DatabaseName = "<DatabaseName>"
 # Enter the SQL Server IP
 $SQLServerIP = "<SQLServerIP>"
 
+# Enter the SQL Server Endpoint Port
+$EndpointPort = "<EndpointPort>"
+
 # ==== Do not customize the following cmdlet ====
 
 # Find out the resource group name
 $ResourceGroup = (Get-AzSqlInstance -InstanceName $ManagedInstanceName).ResourceGroupName
 
 # Build properly formatted connection endpoint
-$SourceIP = "TCP://" + $SQLServerIP + ":<EndpointPort>"
+$SourceIP = "TCP://" + $SQLServerIP + ":"+$EndpointPort
 
 # Create link on managed instance. Join distributed availability group on SQL Server.
 New-AzSqlInstanceLink -ResourceGroupName $ResourceGroup -InstanceName $ManagedInstanceName -Name $DAGName |
@@ -766,6 +781,7 @@ To simplify the process, sign in to the Azure portal and run the following scrip
 - `<DAGName>` with the name of the distributed availability group created on SQL Server. 
 - `<DatabaseName>` with the database replicated in the availability group on SQL Server. 
 - `<SQLServerIP>` with the IP address of your SQL Server. The provided IP address must be accessible by managed instance.
+- `<EndpointPort>` with the SQL Server Endpoint port
 
 ```powershell-interactive
 #  Run in Azure Cloud Shell (select PowerShell console) 
@@ -790,7 +806,10 @@ $DAGName = "<DAGName>"
 $DatabaseName = "<DatabaseName>"  
 
 # Enter the SQL Server IP 
-$SQLServerIP = "<SQLServerIP>" 
+$SQLServerIP = "<SQLServerIP>"
+
+# Enter the SQL Server Endpoint Port
+$EndpointPort = "<EndpointPort>"
 
 # Enter the Azure subscription ID 
 $SubscriptionID = "<SubscriptionID>" 
@@ -801,7 +820,7 @@ $SubscriptionID = "<SubscriptionID>"
 $ResourceGroup = (Get-AzSqlInstance -InstanceName $ManagedInstanceName).ResourceGroupName 
 
 # Build properly formatted connection endpoint 
-$DestinationIP = "TCP://" + $SQLServerIP + ":<EndpointPort>"  
+$DestinationIP = "TCP://" + $SQLServerIP + ":"+$EndpointPort
 
 # Create link on managed instance. Join distributed availability group on SQL Server.
 New-AzSqlInstanceLink -ResourceGroupName $ResourceGroup -InstanceName $ManagedInstanceName -Name $DAGName |
