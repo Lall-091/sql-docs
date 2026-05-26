@@ -47,79 +47,57 @@ To deploy the project to Azure SQL Database, get the connection information you 
 
 Refer to [authentication methods for deployment](ssis-quickstart-deploy-ssms.md#authentication-methods-for-deployment).
 
-## SSIS PowerShell Provider
-Provide appropriate values for the variables at the top of the following script, and then run the script to deploy the SSIS project.
-
-> [!NOTE]
-> The following example uses Windows Authentication to deploy to a SQL Server on premises. Use the `New-PSDive` cmdlet to establish a connection using SQL Server authentication. If you're connecting to an Azure SQL Database server, you can't use Windows authentication.
-
-```powershell
-# Variables
-$TargetInstanceName = "localhost\default"
-$TargetFolderName = "Project1Folder"
-$ProjectFilePath = "C:\Projects\Integration Services Project1\Integration Services Project1\bin\Development\Integration Services Project1.ispac"
-$ProjectName = "Integration Services Project1"
-
-# Get the Integration Services catalog
-$catalog = Get-Item SQLSERVER:\SSIS\$TargetInstanceName\Catalogs\SSISDB\
-
-# Create the target folder
-New-Object "Microsoft.SqlServer.Management.IntegrationServices.CatalogFolder" ($catalog,
-$TargetFolderName,"Folder description") -OutVariable folder
-$folder.Create()
-
-# Read the project file and deploy it
-[byte[]] $projectFile = [System.IO.File]::ReadAllBytes($ProjectFilePath)
-$folder.DeployProject($ProjectName, $projectFile)
-
-# Verify packages were deployed.
-dir "$($catalog.PSPath)\Folders\$TargetFolderName\Projects\$ProjectName\Packages" |
-SELECT Name, DisplayName, PackageId
-```
 
 ## PowerShell script
 Provide appropriate values for the variables at the top of the following script, and then run the script to deploy the SSIS project.
 
 > [!NOTE]
-> The following script requires the **Microsoft.Data.SqlClient** assembly. Install it from the [NuGet package](https://www.nuget.org/packages/Microsoft.Data.SqlClient) and ensure the DLL is accessible to PowerShell. You can load it with `Add-Type -Path "path\to\Microsoft.Data.SqlClient.dll"` before running the script.
 >
 > The following example uses Windows Authentication to deploy to a SQL Server on premises. To use SQL Server authentication, replace the `Integrated Security=SSPI;` argument with `User ID=<user name>;Password=<password>;`. If you're connecting to an Azure SQL Database server, you can't use Windows authentication.
 
 ```powershell
-# Variables
-$SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
-$TargetServerName = "localhost"
-$TargetFolderName = "Project1Folder"
-$ProjectFilePath = "C:\Projects\Integration Services Project1\Integration Services Project1\bin\Development\Integration Services Project1.ispac"
-$ProjectName = "Integration Services Project1"
+# ===== Param =====
+$TargetSqlVersion  = '2025'   # 2017 / 2019 / 2022 / 2025
+$TargetServerName  = 'localhost'
+$TargetFolderName  = 'Project1Folder'
+$ProjectName       = 'Integration Services Project1'
+$ProjectFilePath   = 'C:\Projects\Integration Services Project1\Integration Services Project1\bin\Development\Integration Services Project1.ispac'
+# ========================
 
-# Load the IntegrationServices assembly
-$loadStatus = [System.Reflection.Assembly]::Load("Microsoft.SQLServer.Management.IntegrationServices, "+
-    "Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL")
+$SSISNamespace  = 'Microsoft.SqlServer.Management.IntegrationServices'
+$isV2025OrLater = [int]$TargetSqlVersion -ge 2025
 
-# Create a connection to the server
-$sqlConnectionString = `
-    "Data Source=" + $TargetServerName + ";Initial Catalog=master;Integrated Security=SSPI;"
-$sqlConnection = New-Object Microsoft.Data.SqlClient.SqlConnection $sqlConnectionString
+if ($isV2025OrLater) {
+    # 2025+ : need Microsoft.Data.SqlClient (shipped with SqlServer module 22.x)
+    $required = '22.4.5.1'
+    if (-not (Get-Module -ListAvailable -Name SqlServer |
+              Where-Object { $_.Version -eq [version]$required })) {
+        Install-Module -Name SqlServer -RequiredVersion $required -Scope CurrentUser -AllowClobber -Force
+    }
+    Import-Module SqlServer -RequiredVersion $required
+    $sqlClientType = 'Microsoft.Data.SqlClient.SqlConnection'
+}
+else {
+    # 2017 / 2019 / 2022 : in-box System.Data.SqlClient
+    $sqlClientType = 'System.Data.SqlClient.SqlConnection'
+}
 
-# Create the Integration Services object
-$integrationServices = New-Object $SSISNamespace".IntegrationServices" $sqlConnection
+[Reflection.Assembly]::LoadWithPartialName($SSISNamespace) | Out-Null
+[Reflection.Assembly]::LoadWithPartialName(($SSISNamespace + 'Enum')) | Out-Null
 
-# Get the Integration Services catalog
-$catalog = $integrationServices.Catalogs["SSISDB"]
+$sqlConnectionString = "Data Source=$TargetServerName;Initial Catalog=master;Integrated Security=SSPI;Encrypt=True;TrustServerCertificate=True; 
+$sqlConnection       = New-Object $sqlClientType $sqlConnectionString
 
-# Create the target folder
-$folder = New-Object $SSISNamespace".CatalogFolder" ($catalog, $TargetFolderName,
-    "Folder description")
+$integrationServices = New-Object ($SSISNamespace + '.IntegrationServices') $sqlConnection
+$catalog             = $integrationServices.Catalogs['SSISDB']
+
+$folder = New-Object ($SSISNamespace + '.CatalogFolder') ($catalog, $TargetFolderName, 'Folder description')
 $folder.Create()
 
-Write-Host "Deploying " $ProjectName " project ..."
-
-# Read the project file and deploy it
-[byte[]] $projectFile = [System.IO.File]::ReadAllBytes($ProjectFilePath)
+Write-Host "Deploying $ProjectName ..."
+[byte[]]$projectFile = [System.IO.File]::ReadAllBytes($ProjectFilePath)
 $folder.DeployProject($ProjectName, $projectFile)
-
-Write-Host "Done."
+Write-Host 'Done.'
 ```
 
 ## Related content
