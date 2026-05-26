@@ -10,6 +10,7 @@ ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
   - ignite-2025
+ai-usage: ai-assisted
 f1_keywords:
   - "sys_sp_create_event_stream_group_TSQL"
   - "sys_sp_create_event_stream_group"
@@ -93,8 +94,8 @@ Defines the type of partitioning. *@partition_key_scheme* is **sysname**, and ca
 | --- | --- |
 | `None` (default) | Partitioning isn't specified, so events are assigned to partitions by the [event hub using a round-robin strategy](/azure/event-hubs/event-hubs-features#mapping-of-events-to-partitions). |
 | `StreamGroup` | Partitioning is done by stream group so that all tables in the stream group are streamed to the same partition. |
-| `Table` | Partitioning is done by table so that each table in the stream group is streamed to a different partition. |
-| `Column` | Partitioning is done by column so that each column in the stream group is streamed to a different partition. |
+| `Table` | Partitioning is done by table so that events from the same table in the stream group are guaranteed to be sent to the same partition. The partitioning key is the internal table identifier. |
+| `Column` | Partitioning is done by the value of the column specified by the `partition_key_column_name` parameter. Events are assigned to partitions based on that column's value in the row for which the event is published. |
 
 #### [ @partition_key_column_name = ] N'*partition_key_column_name*'
 
