@@ -4,7 +4,7 @@ description: Explains the max lock manager cache memory instance configuration s
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: randolphwest
-ms.date: 05/20/2026
+ms.date: 05/26/2026
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -26,11 +26,15 @@ This configuration option is available in the following SQL platforms and versio
 
 ## Remarks
 
-Before [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] CU 5 and in previous versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], the lock manager cache can use up to 60 percent of the total SQLOS committed memory. In rare cases, a workload can grow the size of the lock manager cache up to the limit, which reduces buffer pool memory. For example, this situation can occur in large concurrent query workloads when lock escalation is disabled for the [!INCLUDE [ssDE](../../includes/ssde-md.md)] instance.
+When a lock is released, the memory used by the lock structure isn't freed, but is cached by the lock manager to avoid the memory allocation overhead in subsequent lock acquisition and to improve performance.
 
-In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] CU 5 and later versions, the maximum size of lock manager cache is limited to 20 percent by default. Setting this configuration to a larger value isn't recommended, but is supported for backward compatibility. You can set the value in the 20-60 percent range.
+Before [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] CU 5 and in previous versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], the lock manager cache can grow up to the maximum size of lock manager memory, which is 60 percent of the total SQLOS committed memory. A workload can grow the size of the lock manager cache up to this limit. For example, this uncommon situation can occur in large concurrent query workloads when lock escalation is disabled for the [!INCLUDE [ssDE](../../includes/ssde-md.md)] instance. If the lock manager cache grows large, the buffer pool, plan cache, and other memory caches for a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance shrink, reducing performance.
 
-You can monitor the memory consumption by the lock manager cache using [sys.dm_os_memory_clerks](../../relational-databases/system-dynamic-management-views/sys-dm-os-memory-clerks-transact-sql.md), with `OBJECTSTORE_LOCK_MANAGER` as the memory clerk type.
+In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] CU 5 and later versions, the maximum size of the lock manager cache is limited to 20 percent by default. Lock manager memory can still grow up to 60 percent of the SQLOS committed memory if required by the workload. However, when locks are released, memory is freed rather than cached if the lock manager cache already reached its configured limit.
+
+Setting the `max lock manager cache memory (%)` configuration to a value larger than 20 percent isn't recommended, but is supported for backward compatibility. You can set the value in the 20-60 percent range.
+
+You can monitor the total size of lock manager memory using [sys.dm_os_memory_clerks](../../relational-databases/system-dynamic-management-views/sys-dm-os-memory-clerks-transact-sql.md), with `OBJECTSTORE_LOCK_MANAGER` as the memory clerk type. On an idle database engine instance, the reported value is the size of lock manager cache memory.
 
 ## Examples
 
@@ -46,9 +50,9 @@ EXECUTE sp_configure 'max lock manager cache memory (%)', 25;
 RECONFIGURE;
 ```
 
-### B. Monitor the current size of the lock manager cache
+### B. Monitor lock manager memory
 
-The following example shows the current size of the lock manager cache:
+The following example shows the current size of the lock manager memory. The value includes the memory held by the acquired locks, if any, and the memory cached to improve performance of subsequent lock acquisition.
 
 ```sql
 SELECT SUM(pages_kb) / 1024. AS lock_manager_cache_memory_mb
