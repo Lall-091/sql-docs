@@ -4,7 +4,7 @@ description: Learn about the new features for and improvements to SQL Server on 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, dpless
-ms.date: 04/16/2026
+ms.date: 05/27/2026
 ms.service: azure-vm-sql-server
 ms.topic: whats-new
 ms.custom:
@@ -40,7 +40,6 @@ The following table lists the features of SQL Server on Azure VMs that are curre
 | [Migration from the Azure portal](/sql/sql-server/azure-arc/migrate-to-sql-server-on-azure-vms) | Migrate your SQL Server databases to SQL Server on Azure VMs directly from the Azure portal. |
 | [Premium SSD v2 in the Azure portal](storage-configuration-premium-ssd-v2.md) | Deploy your SQL Server on Azure VM with Premium SSD v2 disks in the Azure portal for improved throughput and performance. |  
 | [Unified inventory](unified-inventory-sql-vm.md) | View your SQL Server on Azure VM and SQL Server enabled by Azure Arc resources in a single pane in the Azure portal. With unified inventory, you can view your *SQL Server instance* resources, making it easier to monitor and maintain your SQL Server workloads in Azure. |
-| [VM vCore customization](vm-vcore-customization-for-sql.md) |Customize the number of vCPUs presented to the guest OS for SQL Server workloads with configurable constrained cores (CCC), and disable Simultaneous Multithreading (SMT). This capability allows you to appropriately size the vCPU count to match your SQL Server licensing needs while preserving the VM's memory and I/O capabilities. |
 
 ## General availability (GA)
 
@@ -48,14 +47,18 @@ The following table lists features of SQL Server on Azure VMs that have been mad
 
 | Changes | Month | Details |
 | --- | --- |--- |
-| [I/O Analysis](storage-performance-analysis.md) | April 2025 | Use the Azure portal to identify performance issues with your SQL Server workloads from exceeding virtual machine and data disk limits. | 
-| [Azure Elastic SAN](storage-configuration-azure-elastic-san.md) | March 2025 | Place your SQL Server workloads on an Azure Elastic SAN for improved performance, throughput, and cost. |
-| [FCI with Azure Elastic SAN](failover-cluster-instance-azure-elastic-san-manually-configure.md) | March 2025 | Deploy your SQL Server failover cluster instance (FCI) by using an Azure Elastic SAN. |
-| [Managed identity support for SQL Server 2022 on Azure VM](managed-identity-extensible-key-management.md) | January 2025 | Starting with SQL Server 2022 Cumulative Update 17 (CU17), managed identities are supported for SQL Server on Azure VMs (Windows only). Managed identities can be used with [SQL Server credentials](/sql/t-sql/statements/create-credential-transact-sql) to [back up to and restore SQL Server on Azure VM databases from Azure Blob storage](backup-restore-to-url-using-managed-identities.md). Support for managed identities also enables functionalities like [Extensible Key Management (EKM) with Azure Key Vault (AKV) and Managed Hardware Security Modules (HSM)](managed-identity-extensible-key-management.md) to be used with SQL Server on Azure VMs. |
+| [VM vCore customization](vm-vcore-customization-for-sql.md) | May 2026 | Customize the number of vCPUs presented to the guest OS for SQL Server workloads with configurable constrained cores (CCC), and disable Simultaneous Multithreading (SMT). This capability allows you to appropriately size the vCPU count to match your SQL Server licensing needs while preserving the VM's memory and I/O capabilities. |
+
 
 ## Documentation changes 
 
 Learn about significant changes to the SQL Server on Azure VMs documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### May 2026
+
+| Changes | Details |
+| --- | --- |
+| **VM vCore customization GA** |Customize the number of vCPUs presented to the guest OS for SQL Server workloads with configurable constrained cores (CCC), and disable Simultaneous Multithreading (SMT). This capability allows you to appropriately size the vCPU count to match your SQL Server licensing needs while preserving the VM's memory and I/O capabilities. VM vCore customization is now generally available (GA) for SQL Server on Azure VMs. To learn more, review [VM vCore customization](vm-vcore-customization-for-sql.md). |
 
 ### April 2026
 
