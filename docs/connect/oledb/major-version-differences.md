@@ -14,7 +14,7 @@ helpviewer_keywords:
   - "OLE DB Driver for SQL Server, additional resources"
   - "OLE DB Driver 19 for SQL Server, additional resources"
 ---
-# Major version differences
+# Major version differences in MSOLEDBSQL
 
 This article describes breaking changes between Microsoft OLE DB Driver 19 for SQL Server and earlier versions.
 

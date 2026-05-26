@@ -4,7 +4,7 @@ description: This release notes article describes the changes in each release of
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 09/26/2025
+ms.date: 05/26/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: release-notes
@@ -23,6 +23,36 @@ Hello, from now on, please use the table-based format standard for all new Relea
 See section "## 18.2.1" for a live example in this article.
 Thank you. For questions, contact GeneMi. (2019/03/16)
 -->
+
+## 19.4.2
+
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download x64/Arm64 installer](https://go.microsoft.com/fwlink/?linkid=2364027)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download x86 installer](https://go.microsoft.com/fwlink/?linkid=2364026)**  
+
+Released: May 22, 2026
+
+If you need to download the installer in a language other than the one detected for you, you can use these direct links.
+
+For the x64/Arm64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2364027&clcid=0x41f)
+
+For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2364026&clcid=0x41f)
+
+### Features added
+
+| Feature added | Details |
+| --- | --- |
+| SSL/TLS improvements | Improved SSL/TLS handling for better security and performance. |
+| Server redirections. | Support Microsoft Fabric redirection scenarios allowing up to 10 server redirections per connection attempt. |
+| Updated authentication library. | Updated Microsoft SQL Driver Authentication library (mssql-auth.dll) to version 1.1.3. This update fixes an authentication issue for Microsoft Entra Password (formerly Azure Active Directory Password), includes retry logic improvements for Linked Server scenarios, and updates underlying dependencies (OneAuth 8.0.1, Azure Identity 1.13.2). |
+
+### Bugs fixed
+
+| Bug fixed | Details |
+| --- | --- |
+| Fixed intermittent crash with Strict encryption and TLS 1.3. | Fixed an intermittent crash when connecting with Strict encryption and TLS 1.3. |
+| Fixed accessibility defects. | Fixed accessibility issues in the Universal Data Link (UDL) dialog. |
+
+## Previous releases
 
 ## 19.4.1
 
@@ -53,8 +83,6 @@ For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?link
 | Fixed a prepared statement issue. | Fixed a bug in prepared statements when connection recovery is performed. |
 | Fixed an installer bug. | Bug fixed to prevent the installer from asking for a reboot when unnecessary. |
 | Don't migrate TrustServerCertificiate registry flag. | Modified the installer to not copy the TrustServerCertificiate registry flag value from a previously installed major version; and instead use the installer default value for the flag. For more information, see [Registry settings](features/registry-settings.md). |
-
-## Previous releases
 
 ## 19.3.7
 
@@ -245,7 +273,7 @@ For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?link
 | Feature added | Details |
 | --- | --- |
 | Support for TLS 1.3 | TDS 8.0 connections can now be configured to use TLS 1.3. For more information, see [TLS 1.3 support](../../relational-databases/security/networking/tls-1-3.md). |
-| Support for the `Server Certificate` connection string keyword, and the `SSPROP_INIT_SERVER_CERTIFICATE` initialization property | The user can now specify the path to a certificate file to match against the SQL Server TLS/SSL certificate.<br /><br />For more information, see: [Using Connection String Keywords with OLE DB Driver for SQL Server](applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md). |
+| Support for the `Server Certificate` connection string keyword, and the `SSPROP_INIT_SERVER_CERTIFICATE` initialization property | The user can now specify the path to a certificate file to match against the SQL Server TLS/SSL certificate.<br /><br />For more information, see: [Using connection string keywords with OLE DB Driver for SQL Server](applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md). |
 
 ## 19.1.0
 
@@ -552,7 +580,7 @@ For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?link
 | Fixed a memory leak in the [IOpenRowset::OpenRowset](/previous-versions/windows/desktop/ms716724(v=vs.85)) interface | Fixed a memory leak in the [IOpenRowset::OpenRowset](/previous-versions/windows/desktop/ms716724(v=vs.85)) interface when the `SSPROP_IRowsetFastLoad` property was enabled. |
 | Fixed a bug in scenarios involving a `sql_variant` data type and non-ASCII strings. | Executing certain scenarios involving a `sql_variant` data type and non-ASCII strings might result in data corruption. For details, see: [Known issues](ole-db-data-types/ssvariant-structure.md#known-issues). |
 | Fixed issues with the *Test Connection* button in the [Universal Data Link (UDL) configuration](help-topics/data-link-pages.md). | The *Test Connection* button in the [Universal Data Link (UDL) configuration](help-topics/data-link-pages.md) now honors initialization properties set in the *All* tab. |
-| Fixed the `SSPROP_INIT_PACKETSIZE` property default value handling. | Fixed an unexpected error when the `SSPROP_INIT_PACKETSIZE` property was set to its default value of `0`. For details about this property, see [Initialization and Authorization Properties](ole-db-data-source-objects/initialization-and-authorization-properties.md). |
+| Fixed the `SSPROP_INIT_PACKETSIZE` property default value handling. | Fixed an unexpected error when the `SSPROP_INIT_PACKETSIZE` property was set to its default value of `0`. For details about this property, see [Initialization and authorization properties](ole-db-data-source-objects/initialization-and-authorization-properties.md). |
 | Fixed buffer overflow issues in [IBCPSession (OLE DB)](ole-db-interfaces/ibcpsession-ole-db.md). | Fixed buffer overflow issues when using malformed data files. |
 | Fixed accessibility issues. | Fixed accessibility issues in the installer UI and the [SQL Server Login dialog box](help-topics/sql-server-login-dialog.md) (reading content, tab stops). |
 
@@ -659,7 +687,7 @@ For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?link
 
 | Feature added | Details |
 | --- | --- |
-| Support for the `UseFMTONLY` connection string keyword, and for the `SSPROP_INIT_USEFMTONLY` initialization property | `UseFMTONLY` controls how metadata is retrieved when connecting to [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and newer.<br /><br />For more information, see: [Using Connection String Keywords with OLE DB Driver for SQL Server](applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md). |
+| Support for the `UseFMTONLY` connection string keyword, and for the `SSPROP_INIT_USEFMTONLY` initialization property | `UseFMTONLY` controls how metadata is retrieved when connecting to [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and newer.<br /><br />For more information, see: [Using connection string keywords with OLE DB Driver for SQL Server](applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md). |
 
 ### Bugs fixed in 18.1.0
 
@@ -684,9 +712,9 @@ For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?link
 
 | Feature added | Details |
 | --- | --- |
-| Support for the `MultiSubnetFailover` connection string keyword, and the `SSPROP_INIT_MULTISUBNETFAILOVER` initialization property. | For more information, see:<br />- [OLE DB Driver for SQL Server Support for High Availability, Disaster Recovery](features/oledb-driver-for-sql-server-support-for-high-availability-disaster-recovery.md),<br />- [Using Connection String Keywords with OLE DB Driver for SQL Server](applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md). |
+| Support for the `MultiSubnetFailover` connection string keyword, and the `SSPROP_INIT_MULTISUBNETFAILOVER` initialization property. | For more information, see:<br />- [OLE DB Driver for SQL Server Support for High Availability, Disaster Recovery](features/oledb-driver-for-sql-server-support-for-high-availability-disaster-recovery.md),<br />- [Using connection string keywords with OLE DB Driver for SQL Server](applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md). |
 
 ## Related content
 
 - [Microsoft OLE DB Driver for SQL Server](oledb-driver-for-sql-server.md)
-- [MSOLEDBSQL major version differences](major-version-differences.md)
+- [Major version differences in MSOLEDBSQL](major-version-differences.md)
