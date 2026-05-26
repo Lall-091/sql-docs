@@ -3,7 +3,7 @@ title: Support Matrix for Microsoft JDBC Driver
 description: This page contains the support matrix and support life-cycle policy for the Microsoft JDBC Driver for SQL Server.
 author: dlevy-msft-sql
 ms.author: dlevy
-ms.reviewer: randolphwest
+ms.reviewer: randolphwest, davidengel, machavan, sunilbs
 ms.date: 05/11/2026
 ms.service: sql
 ms.subservice: connectivity

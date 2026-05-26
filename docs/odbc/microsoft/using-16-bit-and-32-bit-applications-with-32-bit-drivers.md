@@ -1,8 +1,9 @@
 ---
 title: "Using 16-Bit and 32-Bit Applications with 32-Bit Drivers"
 description: "Using 16-Bit and 32-Bit Applications with 32-Bit Drivers"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity

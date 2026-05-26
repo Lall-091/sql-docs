@@ -1,9 +1,9 @@
 ---
 title: Download Microsoft SqlClient Data Provider for SQL Server
 description: Download page for ADO.NET and Microsoft SqlClient Data Provider for SQL Server.
-author: cheenamalhotra
-ms.author: cmalhotra
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, paulmedynski, cmalhotra
 ms.date: 03/17/2026
 ms.service: sql
 ms.subservice: connectivity

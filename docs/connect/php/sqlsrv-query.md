@@ -1,8 +1,9 @@
 ---
 title: "sqlsrv_query"
 description: "The sqlsrv_query function provides a method to execute a query with a minimum amount of code and can be used to execute parameterized queries."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "04/11/2019"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,9 +1,9 @@
 ---
 title: "Tutorial: Develop a .NET application using Always Encrypted with secure enclaves"
 description: "Tutorial: Develop a .NET application using Always Encrypted with secure enclaves"
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 02/15/2023
 ms.service: sql
 ms.subservice: connectivity

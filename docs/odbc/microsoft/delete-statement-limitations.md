@@ -1,9 +1,9 @@
 ---
 title: "DELETE statement limitations"
 description: "DELETE statement limitations"
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 12/14/2023
 ms.service: sql
 ms.subservice: connectivity

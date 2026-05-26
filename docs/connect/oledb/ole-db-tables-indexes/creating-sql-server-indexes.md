@@ -1,8 +1,9 @@
 ---
 title: "Create SQL Server indexes (OLE DB driver)"
 description: "The OLE DB Driver for SQL Server exposes the IIndexDefinition::CreateIndex function, which allows consumers to define new indexes on SQL Server tables."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,9 +1,9 @@
 ---
 title: "Polling in console applications"
 description: "Provides an example demonstrating the use of polling to wait for the completion of an asynchronous command execution from a console application. This technique is also valid in a class library or other application without a user interface."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "08/15/2019"
 ms.service: sql
 ms.subservice: connectivity

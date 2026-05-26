@@ -1,9 +1,9 @@
 ---
 title: "Converting Data from SQL to C Data Types"
 description: Learn about converting data from SQL to C data types.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 07/17/2025
 ms.service: sql
 ms.subservice: connectivity

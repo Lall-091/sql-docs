@@ -1,8 +1,9 @@
 ---
 title: "Example demonstrating use of Azure Key Vault provider with Always Encrypted"
 description: "Example demonstrating use of Azure Key Vault provider with Always Encrypted"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 05/24/2022
 ms.service: sql
 ms.subservice: connectivity

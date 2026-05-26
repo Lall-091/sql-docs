@@ -1,8 +1,9 @@
 ---
 title: "Updating Large Data Sample"
 description: "This JDBC Driver for SQL Server sample application demonstrates how to update a large column in a database."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "08/12/2019"
 ms.service: sql
 ms.subservice: connectivity

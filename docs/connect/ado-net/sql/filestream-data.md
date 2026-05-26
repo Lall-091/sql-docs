@@ -1,9 +1,9 @@
 ---
 title: FILESTREAM data
 description: Describes how to work with large-value data stored in SQL Server 2008 with the FILESTREAM attribute.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity

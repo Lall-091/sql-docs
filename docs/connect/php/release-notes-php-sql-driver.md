@@ -1,9 +1,9 @@
 ---
 title: Release Notes for the Microsoft Drivers for PHP
 description: This page discusses what was changed in each version of the Microsoft Drivers for PHP for SQL Server.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: 04/30/2026
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: Using the OLE DB Driver for SQL Server header and library files
 description: Learn how to use the OLE DB Driver for SQL Server header and library files in your development environment.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 03/30/2022
 ms.service: sql
 ms.subservice: connectivity

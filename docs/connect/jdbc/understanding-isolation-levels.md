@@ -1,8 +1,9 @@
 ---
 title: Understanding isolation levels
 description: Learn about how to control transaction isolation levels in the JDBC Driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 08/06/2021
 ms.service: sql
 ms.subservice: connectivity

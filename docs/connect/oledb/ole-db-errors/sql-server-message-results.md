@@ -1,8 +1,9 @@
 ---
 title: SQL Server message results (OLE DB driver)
 description: Learn about Transact-SQL statements that don't generate OLE DB Driver for SQL Server rowsets or a count, and their expected return values.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: "OLE DB Driver for SQL Server Programming"
 description: "Learn about programming applications using the OLE DB Driver for SQL Server, which implements the OLE DB API to enable applications to connect to the database."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/12/2018"
 ms.service: sql
 ms.subservice: connectivity

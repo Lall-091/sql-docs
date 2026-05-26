@@ -1,9 +1,9 @@
 ---
 title: "Vector Data Type (ODBC)"
 description: Guidance for using the new vector SQL data type through the Microsoft ODBC driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 02/10/2026
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: Handling errors
 description: Learn about error handling and what information the SQLServerException class provides in the Microsoft JDBC Driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 07/31/2024
 ms.service: sql
 ms.subservice: connectivity

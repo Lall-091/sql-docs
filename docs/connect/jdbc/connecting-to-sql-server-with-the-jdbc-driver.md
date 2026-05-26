@@ -1,8 +1,9 @@
 ---
 title: Connecting to SQL Server with the JDBC driver
 description: When connecting to the database using the Microsoft JDBC Driver for SQL Server, all interaction with the database goes through the SQLServerConnection object.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 08/12/2019
 ms.service: sql
 ms.subservice: connectivity

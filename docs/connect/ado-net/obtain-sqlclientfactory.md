@@ -1,9 +1,9 @@
 ---
 title: "Obtain a SqlClientFactory"
 description: Learn how to obtain a SqlClientFactory from the DbProviderFactories class to work with specific data sources in .NET.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-chmalh
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "12/22/2020"
 ms.service: sql
 ms.subservice: connectivity

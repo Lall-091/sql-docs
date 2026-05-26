@@ -3,7 +3,7 @@ title: "Quickstart: Python SQL Driver - mssql-python Connect to a SQL Database f
 description: This quickstart describes connect to your SQL database from a Jupyter Notebook in Visual Studio Code.
 author: dlevy-msft-sql
 ms.author: dlevy
-ms.reviewer: vanto, randolphwest
+ms.reviewer: vanto, randolphwest, davidengel, sumitsar
 ms.date: 12/29/2025
 ms.service: sql
 ms.subservice: connectivity

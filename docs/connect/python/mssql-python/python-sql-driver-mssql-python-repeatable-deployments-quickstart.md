@@ -3,7 +3,7 @@ title: "Quickstart: Python SQL Driver - mssql-python Repeatable Deployments with
 description: This quickstart describes repeatable deployments of the mssql-python.
 author: dlevy-msft-sql
 ms.author: dlevy
-ms.reviewer: vanto, randolphwest
+ms.reviewer: vanto, randolphwest, davidengel, sumitsar
 ms.date: 12/29/2025
 ms.service: sql
 ms.subservice: connectivity

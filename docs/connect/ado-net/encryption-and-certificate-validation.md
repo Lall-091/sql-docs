@@ -1,8 +1,9 @@
 ---
 title: Encryption and certificate validation
 description: Learn about encryption and certificate validation for SQL Server connections. Encrypt and trust server certificate settings affect the security of your connections.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 04/25/2023
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: Connect using Microsoft Entra authentication
 description: Learn how to develop Java applications that use the Microsoft Entra authentication feature with the Microsoft JDBC Driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: connectivity

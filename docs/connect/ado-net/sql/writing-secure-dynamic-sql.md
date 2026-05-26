@@ -1,9 +1,9 @@
 ---
 title: "Writing secure dynamic SQL in SQL Server"
 description: "Describes techniques for writing secure dynamic SQL using stored procedures."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "09/26/2019"
 ms.service: sql
 ms.subservice: connectivity

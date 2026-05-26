@@ -1,8 +1,9 @@
 ---
 title: Modifying result set data sample
 description: This JDBC Driver for SQL Server sample application demonstrates how to retrieve an updateable set of data from a database. Then you can insert, update, and delete rows.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity

@@ -1,9 +1,9 @@
 ---
 title: "MSOLEDBSQL Major Version Differences"
 description: Learn about breaking changes between OLE DB Driver 19 and version 18, including encryption defaults, property type changes, and migration steps.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 01/30/2026
 ms.service: sql
 ms.subservice: connectivity

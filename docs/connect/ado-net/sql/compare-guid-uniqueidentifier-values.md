@@ -1,9 +1,9 @@
 ---
 title: "Comparing GUID and uniqueidentifier values"
 description: "Demonstrates how to work with GUID and uniqueidentifier values in SQL Server and .NET."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "09/30/2019"
 ms.service: sql
 ms.subservice: connectivity

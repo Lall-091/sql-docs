@@ -1,8 +1,9 @@
 ---
 title: "Step 2: Create a SQL database for PHP"
 description: Step 2 of this getting started guide involves creating a database in SQL Server or Azure SQL Database for this PHP sample.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: 01/19/2017
 ms.service: sql
 ms.subservice: connectivity

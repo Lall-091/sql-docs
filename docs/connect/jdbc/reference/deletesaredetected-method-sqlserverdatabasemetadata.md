@@ -1,8 +1,9 @@
 ---
 title: "deletesAreDetected Method (SQLServerDatabaseMetaData)"
 description: "deletesAreDetected Method (SQLServerDatabaseMetaData)"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "01/20/2017"
 ms.service: sql
 ms.subservice: connectivity

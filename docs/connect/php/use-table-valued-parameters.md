@@ -1,8 +1,9 @@
 ---
 title: Use table-valued parameters
 description: Learn how to use table-valued parameters with the Microsoft Drivers for PHP for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: 01/31/2022
 ms.service: sql
 ms.subservice: connectivity

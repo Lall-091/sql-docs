@@ -1,9 +1,9 @@
 ---
 title: "XML data in SQL Server"
 description: "Describes how to work with XML data retrieved from SQL Server."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "08/15/2019"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: "Mixed Cursors"
 description: "Mixed Cursors"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "01/20/2017"
 ms.service: sql
 ms.subservice: connectivity

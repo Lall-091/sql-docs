@@ -1,8 +1,9 @@
 ---
 title: Understanding transactions
 description: Learn about transactions and how to group logical units of work that need to maintain consistent data across multiple database operations.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "08/12/2019"
 ms.service: sql
 ms.subservice: connectivity

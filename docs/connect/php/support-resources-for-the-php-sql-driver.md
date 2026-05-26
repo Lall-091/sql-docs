@@ -1,8 +1,9 @@
 ---
 title: Support Resources
 description: Helpful resources when you're developing applications that use the Microsoft Drivers for PHP for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: 05/06/2020
 ms.service: sql
 ms.subservice: connectivity

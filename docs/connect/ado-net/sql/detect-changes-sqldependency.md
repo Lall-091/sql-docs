@@ -1,9 +1,9 @@
 ---
 title: Detecting changes with SqlDependency
 description: Demonstrates how to detect when query results will be different from the results originally received.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity

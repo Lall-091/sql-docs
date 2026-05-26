@@ -1,8 +1,9 @@
 ---
 title: Data source objects (OLE DB driver)
 description: Learn how an OLE DB Driver for SQL Server consumer creates an instance of a data source object for a provider.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity

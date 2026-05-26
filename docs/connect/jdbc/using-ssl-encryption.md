@@ -1,9 +1,9 @@
 ---
 title: Using encryption
 description: Learn how to establish secure communication channels using TLS encryption with your SQL database connections.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: vanto
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: vanto, davidengel, machavan, sunilbs
 ms.date: 03/31/2021
 ms.service: sql
 ms.subservice: connectivity

@@ -1,9 +1,9 @@
 ---
 title: "ISSDataClassification::GetSensitivityClassification"
 description: "ISSDataClassification::GetSensitivityClassification"
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "09/30/2020"
 ms.service: sql
 ms.subservice: connectivity

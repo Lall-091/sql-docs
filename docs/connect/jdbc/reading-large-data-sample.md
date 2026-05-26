@@ -1,8 +1,9 @@
 ---
 title: Reading large data sample
 description: This Microsoft JDBC Driver for SQL Server sample application demonstrates how to retrieve large column values from a database using the getCharacterStream method.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 08/12/2019
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: "Display Column and Catalog Metadata for Sparse Columns (OLE DB)"
 description: Learn how to display column and catalog metadata for sparse columns in OLE DB Driver for SQL Server with this example.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

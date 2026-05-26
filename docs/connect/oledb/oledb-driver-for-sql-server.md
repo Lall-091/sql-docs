@@ -1,9 +1,9 @@
 ---
 title: Microsoft OLE DB Driver for SQL Server
 description: The Microsoft OLE DB Driver for SQL Server provides connectivity to SQL Server and Azure SQL Database via standard OLE DB APIs.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: connectivity

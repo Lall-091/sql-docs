@@ -1,8 +1,9 @@
 ---
 title: "Step 4: Connect resiliently to SQL with PHP"
 description: Step 4 is a demo program designed to showcase how transient errors during an attempt to connect leads to a retry.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: 01/20/2026
 ai-usage: ai-assisted
 ms.service: sql

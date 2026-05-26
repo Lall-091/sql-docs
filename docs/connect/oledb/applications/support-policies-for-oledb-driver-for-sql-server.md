@@ -1,9 +1,9 @@
 ---
 title: "Support Policies for OLE DB Driver for SQL Server"
 description: "Learn about the support policies for OLE DB Driver for SQL Server and what operating systems and SQL database versions are supported with each driver version."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 05/26/2026
 ms.service: sql
 ms.subservice: connectivity

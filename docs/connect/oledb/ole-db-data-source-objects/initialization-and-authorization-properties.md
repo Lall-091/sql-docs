@@ -1,9 +1,9 @@
 ---
 title: "Initialization and Authorization Properties (OLE DB Driver)"
 description: Learn how the OLE DB Driver for SQL Server interprets OLE DB initialization and authorization properties.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: "Conversions Performed from Server to Client"
 description: Learn about date/time conversions performed between SQL Server and a client application written with OLE DB Driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

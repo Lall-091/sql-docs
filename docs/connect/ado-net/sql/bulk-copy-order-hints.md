@@ -1,9 +1,9 @@
 ---
 title: Order hints for bulk copy operations
 description: Describes how to use order hints in bulk copy operations.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 06/01/2022
 ms.service: sql
 ms.subservice: connectivity

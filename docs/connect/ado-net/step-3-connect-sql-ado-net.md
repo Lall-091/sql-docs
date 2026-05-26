@@ -1,9 +1,9 @@
 ---
 title: "Step 3: Proof of concept connecting to SQL using ADO.NET"
 description: "Contains C# code examples for connecting to SQL Server, executing a query and inserting a row."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "08/05/2020"
 ms.service: sql
 ms.subservice: connectivity

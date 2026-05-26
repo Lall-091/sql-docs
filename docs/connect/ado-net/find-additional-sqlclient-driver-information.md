@@ -1,9 +1,9 @@
 ---
 title: Finding additional SqlClient driver information
 description: Page that contains useful information regarding the driver.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 03/31/2022
 ms.service: sql
 ms.subservice: connectivity

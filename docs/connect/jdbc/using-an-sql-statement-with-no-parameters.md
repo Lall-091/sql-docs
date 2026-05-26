@@ -1,8 +1,9 @@
 ---
 title: Using a SQL statement with no parameters
 description: Learn how to execute SQL statement with no parameters using the Microsoft JDBC Driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity
