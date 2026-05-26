@@ -112,7 +112,7 @@ Currently, MSOLEDBSQL19 prevents the creation of linked servers without encrypti
 
 ### Linked server queries that use MSDASQL fail with error 7416
 
-**Applies to**: [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 24 and CU 24 GDR (Apr 2026).
+**Applies to**: [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] starting with CU 24.
 
 [!INCLUDE [msdasql-linked-server-7416](../includes/msdasql-linked-server-7416.md)]
 

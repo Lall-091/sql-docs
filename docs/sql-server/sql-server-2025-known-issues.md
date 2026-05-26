@@ -234,7 +234,7 @@ A fix is planned for a future update of [!INCLUDE [sssql25-md](../includes/sssql
 
 ## Linked server queries that use MSDASQL fail with error 7416
 
-**Applies to**: [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 4.
+**Applies to**: [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] starting with CU 4.
 
 [!INCLUDE [msdasql-linked-server-7416](../includes/msdasql-linked-server-7416.md)]
 

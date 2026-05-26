@@ -144,7 +144,7 @@ The following table shows the ways that a linked server can be set up for data s
 
 <sup>2</sup> "Any" indicates that the product name can be anything.
 
-<sup>3</sup> Linked servers that use `MSDASQL` with a provider string (*@provstr*) might fail with error 7416 on [SQL Server 2022 CU 24](../../sql-server/sql-server-2022-release-notes.md#linked-server-queries-that-use-msdasql-fail-with-error-7416) and [SQL Server 2025 CU 4](../../sql-server/sql-server-2025-known-issues.md#linked-server-queries-that-use-msdasql-fail-with-error-7416).
+<sup>3</sup> Linked servers that use `MSDASQL` with a provider string (*@provstr*) might fail with error 7416 on [SQL Server 2022](../../sql-server/sql-server-2022-release-notes.md#linked-server-queries-that-use-msdasql-fail-with-error-7416) and [SQL Server 2025](../../sql-server/sql-server-2025-known-issues.md#linked-server-queries-that-use-msdasql-fail-with-error-7416).
 
 The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB provider is the provider that is used with [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] if no provider name is specified or if [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is specified as the product name. Even if you specify the older provider name, SQLOLEDB, it changes to SQLNCLI when persisted to the catalog.
 
