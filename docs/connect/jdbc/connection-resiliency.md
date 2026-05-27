@@ -1,49 +1,102 @@
 ---
 title: Connection resiliency
 description: Connection resiliency can transparently restore broken idle connections. This feature improves application behavior when the server closes idle connections.
-author: David-Engel
-ms.author: davidengel
-ms.date: 10/24/2025
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
+ms.date: 05/22/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
+
 # Connection resiliency (JDBC)
 
 [!INCLUDE[Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]
 
-Connection resiliency allows a broken idle connection to be reestablished, within limitations. If an initial connection fails, connection resiliency also allows the driver to automatically retry the connection. Only SQL Server 2014 and later and Azure SQL Database support reconnecting a broken idle connection. This feature is available starting with Microsoft JDBC Driver 10.2.0 for SQL Server.
+*Connection resiliency* lets the JDBC driver transparently restore a broken idle connection and retry the initial login if it fails. This article covers the two connection-string properties that control this behavior (`connectRetryCount` and `connectRetryInterval`) and the keepalive settings the driver uses to detect a dropped idle connection. Connection resiliency is available starting with Microsoft JDBC Driver 10.2.0 for SQL Server. Reconnecting a broken idle connection requires SQL Server 2014 or later, or Azure SQL Database.
 
-## Connection retry
+> [!TIP]
+> Connection resiliency only retries the **initial login** and **silently restores broken idle connections**. To automatically retry **failed statements** (for example, deadlock victim 1205 or lock timeout 1222), or to extend the login retry list with **custom error numbers** (for example, Azure SQL transient errors such as 40197 or 40613), use [Configurable retry logic (CRL)](configurable-retry-logic.md). CRL is rule-based, you pick the errors and the backoff, and it works alongside the features in this article.
 
-There are two aspects to connection resiliency. The first is the ability to transparently retry an initial database connection. The second is the ability to transparently restore an existing, idle connection. A typical idle connection might be a connection sitting in a connection pool. An "idle" connection is generally one that has been idle for at least 30 seconds. These connections often can be closed by the server or by network devices between the client and server.
+## How the JDBC driver retries
 
-The JDBC driver has two connection options that control connection resiliency behavior. These options can be added to the connection string or set via data source properties.
+The JDBC driver provides three independent retry mechanisms. They work together, so you can use all of them at once:
+
+| Mechanism | What it does | Where to learn more |
+| --- | --- | --- |
+| Idle connection resiliency | Transparently restores a broken idle connection (for example, a pooled connection closed by the server or a load balancer). | [Detect broken idle connections](#detect-broken-idle-connections) (this article) |
+| Initial-login retry | Retries a failed initial login on a fixed schedule for a built-in list of transient errors. | [Retry initial connections](#retry-initial-connections) (this article) |
+| Configurable retry logic (CRL) | Rule-based retry for failed statements and for custom login error numbers. Introduced in Microsoft JDBC Driver 12.10. | [Configurable retry logic (JDBC)](configurable-retry-logic.md) |
+
+## Retry initial connections
+
+The JDBC driver has two connection properties that control how often, and how long apart, the driver retries the initial connection. You can add them to the connection string or set them through data source properties.
 
 | Keyword | Values | Default | Description |
-|--|--|--|--|
-| `connectRetryCount` | Integer between 0 and 255 (inclusive) | 1 | The maximum number of attempts to establish or reestablish a connection before giving up. By default, a single retry attempt is made. A value of `0` means that a retry won't be attempted. |
-| `connectRetryInterval` | Integer between 1 and 60 (inclusive) | 10 | The time, in seconds, between connection retry attempts. The driver will attempt to reconnect immediately upon detecting a broken idle connection, and will then wait `connectRetryInterval` seconds before trying again. This keyword is ignored if `connectRetryCount` is 0. |
+| --- | --- | --- | --- |
+| `connectRetryCount` | Integer between 0 and 255 (inclusive) | 1 | The maximum number of attempts to establish or reestablish a connection before giving up. By default, a single retry attempt is made. A value of `0` disables retry. |
+| `connectRetryInterval` | Integer between 1 and 60 (inclusive) | 10 | The time, in seconds, between connection retry attempts. The driver attempts to reconnect immediately when it detects a broken idle connection, then waits `connectRetryInterval` seconds before trying again. This property is ignored when `connectRetryCount` is `0`. |
 
-If the product of `connectRetryCount` multiplied by `connectRetryInterval` is larger than `loginTimeout`, then the driver will stop attempting to connect once `loginTimeout` is reached. Otherwise, it will continue to try to reconnect until `connectRetryCount` is reached.
+If `connectRetryCount * connectRetryInterval` is larger than `loginTimeout`, the driver stops attempting to connect once `loginTimeout` is reached. Otherwise, it continues until `connectRetryCount` is exhausted.
 
-## Connection recovery
+These properties retry only the **built-in list of transient login errors**. For the full list of errors covered (4060, 40197, 40501, 40613, 49918-49920, and others), see [Built-in transient login error list](configurable-retry-logic.md#built-in-transient-login-error-list). To retry custom error numbers (or to retry failed statements at all), see [Configurable retry logic (JDBC)](configurable-retry-logic.md).
 
-To detect broken idle connections, the driver relies on TCP keepalive packets at the socket level. On Linux and Java 11+, the driver automatically enables keepalive packets at a 30-second interval (`KeepAliveTime`) with a 1-second delay between retries when a failure occurs (`KeepAliveInterval`).
+### Set the properties
+
+You can set `connectRetryCount` and `connectRetryInterval` in the JDBC URL, on a `Properties` object, or on a `SQLServerDataSource`.
+
+In the JDBC URL:
+
+```text
+jdbc:sqlserver://server;databaseName=db;connectRetryCount=3;connectRetryInterval=10
+```
+
+With a `Properties` object:
+
+```java
+Properties props = new Properties();
+props.setProperty("user", "...");
+props.setProperty("password", "...");
+props.setProperty("connectRetryCount", "3");
+props.setProperty("connectRetryInterval", "10");
+Connection c = DriverManager.getConnection("jdbc:sqlserver://server;databaseName=db", props);
+```
+
+With `SQLServerDataSource`:
+
+```java
+SQLServerDataSource ds = new SQLServerDataSource();
+ds.setServerName("server");
+ds.setDatabaseName("db");
+ds.setUser("...");
+ds.setPassword("...");
+ds.setConnectRetryCount(3);
+ds.setConnectRetryInterval(10);
+```
+
+## Detect broken idle connections
+
+A typical idle connection is one sitting in a connection pool. The driver considers a connection idle after about 30 seconds with no activity. The server or a network device between the client and the server can close idle connections, so the driver needs a way to notice that the socket is dead before the next query runs.
+
+To detect broken idle connections, the driver relies on TCP keepalive packets at the socket level. On Linux and Java 11 or later, the driver automatically enables keepalive packets at a 30-second interval (`KeepAliveTime`), with a 1-second delay between retries when a failure occurs (`KeepAliveInterval`).
 
 > [!IMPORTANT]
-> On Windows and Java 11 and prior, keepalives must be manually configured in the operating system in order to take advantage of restoring broken idle connections. For information on how to configure keepalives, see [Connection to Azure SQL database](connecting-to-an-azure-sql-database.md#connections-dropped).
+> On Windows, and on Java 11 or earlier, you must configure keepalives manually in the operating system to take advantage of broken-idle-connection recovery. For information on how to configure keepalives, see [Connection to Azure SQL database](connecting-to-an-azure-sql-database.md#connections-dropped).
 
 ## Limitations
 
-Broken idle connections can't be restored when:
+The driver can't restore a broken idle connection when any of the following are true:
 
-- There's an open result set that hasn't been completely parsed or buffered
-- Switching databases against Azure SQL
-- There's an open transaction
+- There's an open result set that hasn't been completely parsed or buffered.
+- The connection switched databases against Azure SQL.
+- There's an open transaction.
 
-## See also
+## Related content
 
-[Connecting to an Azure SQL database](connecting-to-an-azure-sql-database.md)  
-[Technical Article - Idle Connection Resiliency](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/Idle%20Connection%20Resiliency.docx)  
-[Overview of the JDBC driver](overview-of-the-jdbc-driver.md)  
+- [Configurable retry logic (JDBC)](configurable-retry-logic.md)
+- [Connecting to an Azure SQL database](connecting-to-an-azure-sql-database.md)
+- [Understanding timeouts](understand-timeouts.md)
+- [Technical article: Idle Connection Resiliency](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/Idle%20Connection%20Resiliency.docx)
+- [Overview of the JDBC driver](overview-of-the-jdbc-driver.md)

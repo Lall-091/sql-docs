@@ -1,8 +1,9 @@
 ---
 title: "SQLGetDiagRec Function"
 description: "SQLGetDiagRec Function"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 12/08/2021
 ms.service: sql
 ms.subservice: connectivity

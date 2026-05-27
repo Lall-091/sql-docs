@@ -1,8 +1,9 @@
 ---
 title: System requirements
 description: The Microsoft Drivers for PHP for SQL Server support a wide range of PHP versions, operating systems, and SQL Server versions.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: 02/24/2026
 ms.service: sql
 ms.subservice: connectivity

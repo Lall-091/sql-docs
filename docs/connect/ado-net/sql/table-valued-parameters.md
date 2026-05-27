@@ -1,9 +1,9 @@
 ---
 title: Table-valued parameters
 description: Learn how to work with table-valued parameters in ADO.NET by using Microsoft.Data.SqlClient.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity

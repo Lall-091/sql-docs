@@ -1,8 +1,9 @@
 ---
 title: "Date and Time and Schema Rowsets"
 description: Learn about the OLE DB date and time enhancements in relation to COLUMNS rowset and PROCEDURE_PARAMETERS rowset in OLE DB Driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

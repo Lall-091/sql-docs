@@ -1,8 +1,9 @@
 ---
 title: Using advanced data types
 description: Learn how to use JDBC advanced data types to convert from SQL Server data types to Java data types using the Microsoft JDBC Driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 08/15/2025
 ms.service: sql
 ms.subservice: connectivity

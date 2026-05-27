@@ -1,8 +1,9 @@
 ---
 title: "ODBC Programmer's Reference"
 description: "ODBC Programmer's Reference"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 03/27/2026
 ms.service: sql
 ms.subservice: connectivity

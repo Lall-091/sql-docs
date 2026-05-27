@@ -1,9 +1,9 @@
 ---
 title: Configurable retry logic in SqlClient introduction
 description: Learn about the different aspects of configurable retry logic in Microsoft.Data.SqlClient and how to make your application resilient to transient errors.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-deshtehari
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 03/22/2021
 ms.service: sql
 ms.subservice: connectivity

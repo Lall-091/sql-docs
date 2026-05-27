@@ -1,8 +1,9 @@
 ---
 title: "Send Data to FILESTREAM - ISequentialStream Bound to ICommandText"
 description: Learn how to use the ISequentialStream interface bound to an ICommandText parameter to send from 4 MB to 4 GB of data to a filestream column with this example.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

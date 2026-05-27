@@ -1,8 +1,9 @@
 ---
 title: Basic data types sample
 description: This Microsoft JDBC Driver for SQL Server sample application demonstrates how to use result set methods to retrieve and update values in the database.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity

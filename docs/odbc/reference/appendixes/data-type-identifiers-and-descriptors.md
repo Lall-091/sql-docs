@@ -1,8 +1,9 @@
 ---
 title: "Data Type Identifiers and Descriptors"
 description: "Data Type Identifiers and Descriptors"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "02/02/2019"
 ms.service: sql
 ms.subservice: connectivity

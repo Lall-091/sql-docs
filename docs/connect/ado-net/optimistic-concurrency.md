@@ -1,9 +1,9 @@
 ---
 title: "Optimistic concurrency"
 description: "Describes optimistic and pessimistic concurrency, and how you can test for concurrency violations."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-chmalh
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "11/25/2020"
 ms.service: sql
 ms.subservice: connectivity

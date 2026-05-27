@@ -1,8 +1,9 @@
 ---
 title: "sqlsrv_get_field"
 description: "sqlsrv_get_field"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "06/26/2018"
 ms.service: sql
 ms.subservice: connectivity

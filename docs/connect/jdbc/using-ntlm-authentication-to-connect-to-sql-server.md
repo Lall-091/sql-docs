@@ -1,8 +1,9 @@
 ---
 title: Using NTLM authentication to connect to SQL Server
 description: Learn how to establish a SQL database connection using NTLM authentication with the JDBC driver.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 03/31/2021
 ms.service: sql
 ms.subservice: connectivity

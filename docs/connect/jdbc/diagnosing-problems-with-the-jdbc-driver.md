@@ -1,8 +1,9 @@
 ---
 title: Diagnosing problems with the JDBC driver
 description: Learn how to diagnose and troubleshoot problems like error handling, checking the driver version and tracing.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 08/12/2019
 ms.service: sql
 ms.subservice: connectivity

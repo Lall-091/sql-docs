@@ -1,8 +1,9 @@
 ---
 title: "ODBC functions and the cursor library"
 description: "Learn how the ODBC cursor library intercepts function calls to provide scrollable cursor support for drivers that don't natively support it."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 02/05/2026
 ms.service: sql
 ms.subservice: connectivity

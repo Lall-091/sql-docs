@@ -1,8 +1,9 @@
 ---
 title: "Performing Bulk Copy Operations"
 description: "Learn about performing bulk copy operations using OLE DB Driver for SQL Server and how it enables fast transfer of data into the database."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/12/2018"
 ms.service: sql
 ms.subservice: connectivity

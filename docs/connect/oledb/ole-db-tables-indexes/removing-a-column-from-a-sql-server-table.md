@@ -1,8 +1,9 @@
 ---
 title: Remove column from SQL Server table (OLE DB driver)
 description: "The OLE DB Driver for SQL Server exposes the ITableDefinition::DropColumn function, which allows consumers to remove a column from a SQL Server table."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

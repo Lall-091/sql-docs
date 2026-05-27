@@ -1,8 +1,9 @@
 ---
 title: "Installer DLL API reference"
 description: "Learn about the ODBC Installer DLL API functions for managing data sources, drivers, translators, and configuration."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 02/05/2026
 ms.service: sql
 ms.subservice: connectivity

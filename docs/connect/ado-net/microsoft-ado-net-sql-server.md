@@ -3,9 +3,9 @@ title: "Microsoft ADO.NET"
 description: "Microsoft ADO.NET, for SQL Server and Azure SQL, is the core data access technology for .NET languages. Use the Microsoft.Data.SqlClient library to access SQL Server."
 
 
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "05/06/2020"
 ms.service: sql
 ms.subservice: connectivity

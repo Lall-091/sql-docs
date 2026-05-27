@@ -1,9 +1,9 @@
 ---
 title: "Custom Keystore Providers"
 description: "Learn about how to implement a custom key store provider for use with the ODBC Driver for SQL Server and the Always Encrypted feature."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "07/12/2017"
 ms.service: sql
 ms.subservice: connectivity

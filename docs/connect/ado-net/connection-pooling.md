@@ -1,8 +1,9 @@
 ---
 title: "Connection pooling"
 description: Learn about connection pooling, an optimization technique that ADO.NET uses to minimize the cost of opening connections to data sources.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "11/13/2020"
 ms.service: sql
 ms.subservice: connectivity

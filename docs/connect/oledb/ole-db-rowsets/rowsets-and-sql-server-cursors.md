@@ -1,8 +1,9 @@
 ---
 title: Rowsets and SQL Server cursors (OLE DB driver)
 description: Learn about how SQL Server returns result sets to consumers and default result sets differ from server cursors in OLE DB Driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,9 +1,9 @@
 ---
 title: "Diagnostic counters in SqlClient"
 description: Use Microsoft SqlClient Data Provider for SQL Server diagnostic counters to monitor your application status and its connection resources.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-deshtehari
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "05/31/2021"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: Using Microsoft Entra ID with the ODBC Driver
 description: The Microsoft ODBC Driver for SQL Server allows ODBC applications to connect to Azure SQL Database or Azure SQL Managed Instance by authenticating with Microsoft Entra ID.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: connectivity

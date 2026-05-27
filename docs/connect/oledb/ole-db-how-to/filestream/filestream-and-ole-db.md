@@ -1,9 +1,9 @@
 ---
 title: "FILESTREAM and OLE DB (OLE DB driver)"
 description: Learn how to use OLE DB Driver for SQL Server with the FILESTREAM feature with the four examples in this section.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 10/02/2023
 ms.service: sql
 ms.subservice: connectivity

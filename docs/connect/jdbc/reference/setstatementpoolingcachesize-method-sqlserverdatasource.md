@@ -1,8 +1,9 @@
 ---
 title: "setStatementPoolingCacheSize Method (SQLServerDataSource)"
 description: "setStatementPoolingCacheSize Method (SQLServerDataSource)"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 01/20/2026
 ai-usage: ai-assisted
 ms.service: sql

@@ -1,8 +1,9 @@
 ---
 title: "Example Application (SQLSRV Driver)"
 description: "The AdventureWorks Product Reviews example is a Web application that uses the SQLSRV driver to demonstrate how to interact with a SQL Server database from PHP."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "03/26/2018"
 ms.service: sql
 ms.subservice: connectivity

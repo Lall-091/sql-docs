@@ -1,9 +1,9 @@
 ---
 title: Known Issues for the ODBC Driver on Linux and macOS
 description: "Learn about known issues with the Microsoft ODBC Driver for SQL Server on Linux and macOS and steps for troubleshooting connectivity issues."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 07/24/2025
 ms.service: sql
 ms.subservice: connectivity

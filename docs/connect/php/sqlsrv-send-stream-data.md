@@ -1,8 +1,9 @@
 ---
 title: "sqlsrv_send_stream_data"
 description: "sqlsrv_send_stream_data"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "02/28/2019"
 ms.service: sql
 ms.subservice: connectivity

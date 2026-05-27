@@ -1,8 +1,9 @@
 ---
 title: "OLE DB Driver for SQL Server Features"
 description: "Learn about features supported by the OLE DB Driver for SQL Server like database mirroring, asynchronous operation, Microsoft Entra ID, and others."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "02/18/2022"
 ms.service: sql
 ms.subservice: connectivity

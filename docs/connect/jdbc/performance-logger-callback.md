@@ -1,8 +1,9 @@
 ---
 title: Performance logger and callback
 description: Learn how to use the performance logging framework and callback infrastructure in the Microsoft JDBC Driver for SQL Server to track execution timing for driver operations.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: connectivity

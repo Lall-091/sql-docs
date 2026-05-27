@@ -1,8 +1,9 @@
 ---
 title: Using Sql_variant data type
 description: Learn about the sql_variant data type in the JDBC driver and how it can be used to support table-valued parameters (TVP) and bulk copy.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 03/26/2021
 ms.service: sql
 ms.subservice: connectivity

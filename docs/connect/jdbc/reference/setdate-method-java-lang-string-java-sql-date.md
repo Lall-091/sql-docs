@@ -1,8 +1,9 @@
 ---
 title: "setDate Method setDate Method to date value - string"
 description: "setDate Method setDate Method to date value - string"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity

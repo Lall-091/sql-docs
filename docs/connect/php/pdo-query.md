@@ -1,8 +1,9 @@
 ---
 title: "PDO::query"
 description: "API reference for the PDO::query function in the Microsoft PDO_SQLSRV Driver for PHP for SQL Server."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "08/01/2018"
 ms.service: sql
 ms.subservice: connectivity

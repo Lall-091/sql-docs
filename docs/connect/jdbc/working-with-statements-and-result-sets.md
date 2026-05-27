@@ -1,8 +1,9 @@
 ---
 title: Working with statements and result sets
 description: Learn how to work with statements and result sets in JDBC and how to use the right object for the job.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "08/12/2019"
 ms.service: sql
 ms.subservice: connectivity

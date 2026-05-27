@@ -1,9 +1,9 @@
 ---
 title: "SQL Server features and ADO.NET"
 description: "Describes SQL Server features that are useful for ADO.NET application developers."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "07/09/2020"
 ms.service: sql
 ms.subservice: connectivity

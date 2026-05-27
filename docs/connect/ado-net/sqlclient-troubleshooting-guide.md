@@ -1,9 +1,9 @@
 ---
 title: SqlClient Troubleshooting Guide
 description: Article that provides resolutions to commonly observed problems.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, paulmedynski, cmalhotra
 ms.date: 07/24/2025
 ms.service: sql
 ms.subservice: connectivity

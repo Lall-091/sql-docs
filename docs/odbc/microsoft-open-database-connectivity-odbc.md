@@ -1,8 +1,9 @@
 ---
 title: Microsoft Open Database Connectivity (ODBC)
 description: Learn about the Microsoft Open Database Connectivity (ODBC) C programming language interface used to connect applications to SQL data.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article

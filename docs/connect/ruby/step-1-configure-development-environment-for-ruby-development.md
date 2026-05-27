@@ -1,8 +1,9 @@
 ---
 title: "Step 1: Configure development environment for Ruby"
 description: "Step 1 of this getting started guide involves installing Ruby and an ODBC driver for SQL Server into your development environment."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel
 ms.date: "03/25/2026"
 ms.service: sql
 ms.subservice: connectivity

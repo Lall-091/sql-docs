@@ -1,9 +1,9 @@
 ---
 title: "Date and time data"
 description: "Describes how to use the new date and time data types introduced in SQL Server 2008."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "09/30/2019"
 ms.service: sql
 ms.subservice: connectivity

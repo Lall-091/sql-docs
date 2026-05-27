@@ -1,9 +1,9 @@
 ---
 title: "SQL Server schema collections"
 description: "Describes the additional schema collections supported by the Microsoft SqlClient Data Provider for SQL Server."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-chmalh
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "11/30/2020"
 ms.service: sql
 ms.subservice: connectivity

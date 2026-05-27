@@ -1,8 +1,9 @@
 ---
 title: Retrieve rows using bookmarks (OLE DB driver)
 description: Learn how consumers can retrieve rows by using bookmarks in OLE DB Driver for SQL Server with this example.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

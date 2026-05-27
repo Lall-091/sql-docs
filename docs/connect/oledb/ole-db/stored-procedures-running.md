@@ -1,8 +1,9 @@
 ---
 title: "Running Stored Procedures (OLE DB)"
 description: Learn about the advantages of calling a stored procedure on the data source and the mechanisms that OLE DB Driver for SQL Server offers to return data.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/12/2018"
 ms.service: sql
 ms.subservice: connectivity

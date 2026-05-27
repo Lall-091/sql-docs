@@ -1,8 +1,9 @@
 ---
 title: "SQLServerException Constructor (java.lang.Object, java.lang.String, java.lang.String, int, boolean)"
 description: "SQLServerException Constructor (java.lang.Object, java.lang.String, java.lang.String, int, boolean)"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "01/19/2018"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: "SQLDriverConnect Function"
 description: "The SQLDriverConnect function is part of the ODBC API standard and this reference documentation provides information on its syntax."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "08/20/2020"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: Date and Time Improvements in OLE DB
 description: These articles describe how OLE DB Driver for SQL Server supports new date and time data types.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 06/14/2018
 ms.service: sql
 ms.subservice: connectivity

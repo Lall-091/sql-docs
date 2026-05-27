@@ -1,8 +1,9 @@
 ---
 title: Table-valued parameter type support (OLE DB driver)
 description: Learn how to create a specialized rowset object for table-valued parameters in OLE DB Driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

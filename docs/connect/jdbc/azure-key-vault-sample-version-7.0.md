@@ -1,8 +1,9 @@
 ---
 title: Azure Key Vault sample 7.0, 8.0
 description: This article provides sample code for using JDBC driver version 7.0 or 8.0 and Azure Key Vault with the Always Encrypted feature.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity

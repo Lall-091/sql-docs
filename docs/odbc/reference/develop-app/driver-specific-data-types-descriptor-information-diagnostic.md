@@ -1,8 +1,9 @@
 ---
 title: "Driver-Specific Types - Data, Descriptor, Information, Diagnostic"
 description: "Driver-Specific Data Types, Descriptor Types, Information Types, Diagnostic Types, and Attributes"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity

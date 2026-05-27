@@ -1,8 +1,9 @@
 ---
 title: SQLXML data type sample
 description: This JDBC Driver for SQL Server sample application demonstrates how to store, retrieve, and parse XML data from a database with the **SQLXML** Java data type.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity

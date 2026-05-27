@@ -1,8 +1,9 @@
 ---
 title: "Date and Time Improvements"
 description: Learn about the OLE DB Driver for SQL Server support for the date and time data types that were added in SQL Server 2008.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/12/2018"
 ms.service: sql
 ms.subservice: connectivity

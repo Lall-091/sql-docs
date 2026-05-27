@@ -1,9 +1,9 @@
 ---
 title: Parsing the results
 description: Learn about fully processing results, including multiple result sets, from a query execution in the JDBC driver.
-author: DavidEngel
-ms.author: davidengel
-ms.reviewer: v-davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 10/30/2023
 ms.service: sql
 ms.subservice: connectivity

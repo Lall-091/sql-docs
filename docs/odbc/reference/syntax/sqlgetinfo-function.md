@@ -1,8 +1,9 @@
 ---
 title: "SQLGetInfo Function"
 description: "SQLGetInfo Function"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "05/28/2020"
 ms.service: sql
 ms.subservice: connectivity

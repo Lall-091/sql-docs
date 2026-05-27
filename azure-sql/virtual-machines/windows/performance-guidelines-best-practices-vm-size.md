@@ -4,7 +4,7 @@ description: Provides VM size guidelines and best practices to optimize the perf
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: randolphwest, mathoma
-ms.date: 02/11/2026
+ms.date: 05/27/2026
 ms.service: azure-vm-sql-server
 ms.subservice: performance
 ms.topic: best-practice
@@ -490,9 +490,6 @@ Consider the following points:
 The [VM vCore customization](vm-vcore-customization-for-sql.md) feature of Azure VMs includes Configurable Constrained Cores (CCC) and the ability to disable Simultaneous Multithreading (SMT) / hyperthreading settings. This capability allows you to appropriately size the vCPU count to match your SQL Server licensing needs at a granular level rather than relying on the one-fourth to one-half limitations of the original constrained vCPU model. 
  
 Configurable Constrained Cores preserves the parent VM's memory and I/O capabilities, beyond what is currently possible with constrained vCPU VM sizes.
-
-> [!NOTE]
-> [VM vCore customization](/azure/virtual-machines/vm-customization) is currently in preview for SQL Server on Azure VMs.
 
 ## Related content
 

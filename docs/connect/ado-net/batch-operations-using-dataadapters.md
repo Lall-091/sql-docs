@@ -1,8 +1,9 @@
 ---
 title: "Batch operations using DataAdapters"
 description: Describes enhancing application performance by reducing the number of round trips to SQL Server when applying updates from the DataSet.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "11/30/2020"
 ms.service: sql
 ms.subservice: connectivity

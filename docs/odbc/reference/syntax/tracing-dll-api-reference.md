@@ -1,8 +1,9 @@
 ---
 title: "Tracing DLL API Reference"
 description: "Tracing DLL API Reference"
-author: corylaban
-ms.author: corylaban
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "05/07/2025"
 ms.service: sql
 ms.subservice: connectivity

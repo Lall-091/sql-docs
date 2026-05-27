@@ -1,8 +1,9 @@
 ---
 title: "Working with large data"
 description: "Learn how to work with large data types in the JDBC Driver for SQL Server in these sample applications."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "08/12/2019"
 ms.service: sql
 ms.subservice: connectivity

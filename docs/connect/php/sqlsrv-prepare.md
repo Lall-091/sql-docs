@@ -1,8 +1,9 @@
 ---
 title: "sqlsrv_prepare"
 description: "API reference for the sqlsrv_prepare function in the Microsoft SQLSRV Driver for PHP for SQL Server."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "04/11/2019"
 ms.service: sql
 ms.subservice: connectivity
