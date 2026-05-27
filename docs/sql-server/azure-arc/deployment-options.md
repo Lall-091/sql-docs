@@ -1,8 +1,8 @@
 ---
 title: Deployment Options
 description: Explains different ways to deploy SQL Server enabled by Azure Arc.
-author: anosov1960
-ms.author: sashan
+author: pochiraju
+ms.author: rajpo
 ms.reviewer: mikeray, randolphwest
 ms.date: 07/03/2025
 ms.topic: install-set-up-deploy
