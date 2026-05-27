@@ -4,7 +4,7 @@ description: Learn how to configure VM vCore customization for SQL Server on Azu
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma
-ms.date: 01/26/2026
+ms.date: 05/27/2026
 ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: how-to
@@ -15,9 +15,6 @@ tags: azure-resource-manager
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 This article shows you how to optimize performance and reduce licensing costs for your SQL Server on Azure Virtual Machines (VMs) by using the [VM vCore customization](/azure/virtual-machines/vm-customization) of Azure VMs, which includes Configurable Constrained Cores (CCC) and the ability to disable Simultaneous Multithreading (SMT) settings.
-
-> [!NOTE]
-> [VM vCore customization](/azure/virtual-machines/vm-customization) is currently in preview for SQL Server on Azure VMs.
 
 ## Overview
 
