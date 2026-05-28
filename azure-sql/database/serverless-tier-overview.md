@@ -4,7 +4,7 @@ description: This article describes the new serverless compute tier and compares
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: kendalv, moslake, mathoma, dfurman
-ms.date: 04/14/2026
+ms.date: 05/28/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -83,7 +83,7 @@ The following table describes serverless support based on purchasing model, serv
 
 ### Scaling responsiveness
 
-Serverless databases are run on a machine with sufficient capacity to satisfy resource demand without interruption for any amount of compute requested, within limits set by the maximum vCores value. Occasionally, load balancing automatically occurs if the machine is unable to satisfy resource demand within a few minutes. For example, if the resource demand is 4 vCores, but only 2 vCores are available, then it can take up to a few minutes to load balance before 4 vCores are provided. The database remains online during load balancing except for a brief period at the end of the operation when connections are dropped.
+Serverless databases are run on machines with sufficient capacity to satisfy resource demand without interruption for any amount of compute requested within limits set by the maximum vCore configuration.  In general, CPU scale-up to the maximum vCores configured is nearly instantaneous and occurs without any connectivity disruption.  Occasionally, scale-up can take longer if machine resources need to be rebalanced which can take up to a few minutes.  The database remains online during rebalancing except at the end of the operation when connections are briefly dropped, but this kind of rebalancing is rare.  In all cases, CPU scale-up is independent of memory scale-up.
 
 ### Memory management
 
