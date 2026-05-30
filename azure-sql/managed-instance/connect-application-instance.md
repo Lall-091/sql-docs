@@ -9,6 +9,7 @@ ms.date: 08/27/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: connect
 ms.topic: concept-article
+monikerRange: "=azuresql || =azuresql-mi"
 ms.custom:
   - sqldbrb=1
   - sfi-image-nochange

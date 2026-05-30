@@ -35,7 +35,7 @@ Azure SQL Database LTR backups support both **time based** and **legal hold** ty
 
 - **Time-based immutability** is enabled at the policy level. Once the time based immutability is enabled and **locked**, any new LTR backups taken from that point forward inherit these settings, and the backups remain immutable until the end of the configured retention period.
    - Any changes to the LTR retention or to immutability will only apply to future backups from the time of policy change. Changes to LTR retention or immutability aren't applied retroactively to existing LTR backups.
-   - For non-hyperscale databases when you configure an LTR policy for the first time the most recent full backup is considered for LTR and immutability is applied on this full backup. For more informatino, see [Long-term retention backups](long-term-retention-overview.md).
+   - For non-hyperscale databases when you configure an LTR policy for the first time the most recent full backup is considered for LTR and immutability is applied on this full backup. For more information, see [Long-term retention backups](long-term-retention-overview.md).
 
 - **Legal hold immutability** is a type of immutability that can be enabled or disabled on a specific existing backup, independent of any existing time based immutability. Legal hold immutability is useful for scenarios such as auditing, legal purposes, etc. where data from specific backups must be held immutable for an unknown amount of time, typically until an audit or litigation is complete. Legal hold immutability can be enabled and disabled on a backup at any time.
 
