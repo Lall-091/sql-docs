@@ -3,7 +3,7 @@ title: Configure a Pacemaker Cluster for SQL Server Availability Groups
 description: Learn to create a three-node cluster on Red Hat, SUSE, or Ubuntu, and add a previously created availability group resource to the cluster.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: amitkh-msft
+ms.reviewer: amitkh, atsingh
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux

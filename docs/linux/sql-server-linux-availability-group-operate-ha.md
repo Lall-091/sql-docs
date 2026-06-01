@@ -3,7 +3,7 @@ title: Operate Availability Group SQL Server on Linux
 description: This article describes how to perform a rolling upgrade with SQL Server instances on Linux with availability groups. Before you upgrade, review best practices.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
+ms.reviewer: amitkh, atsingh
 ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux

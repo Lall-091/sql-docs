@@ -3,7 +3,7 @@ title: Pacemaker for Availability Groups and Failover Cluster Instances on Linux
 description: Learn about using Pacemaker for high availability options for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: amitkh-msft
+ms.reviewer: amitkh, atsingh
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
