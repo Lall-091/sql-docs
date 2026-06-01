@@ -29,11 +29,11 @@ helpviewer_keywords:
   - "importing data, bcp utility"
   - "file importing [SQL Server]"
   - "column exporting [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb || =fabric "
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb || =fabric"
 ---
 # bcp utility
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 The bulk copy program utility (**bcp**) bulk copies data between an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and a data file in a user-specified format.
 
@@ -45,6 +45,10 @@ For more information about which version of **bcp** is installed on your system,
 > **bcp** data files don't include any schema or format information. If you use **bcp** to back up data, and then later drop or alter the source table, you need either an identical table definition or a format file to import the data back.
 
 For the syntax conventions that are used for the **bcp** syntax, see [Transact-SQL syntax conventions (Transact-SQL)](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md).
+
+> [!NOTE]  
+> - `bcp` is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
+> - `bcp` cannot import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 ## How to use bcp
 
