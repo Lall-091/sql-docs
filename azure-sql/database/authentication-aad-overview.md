@@ -5,7 +5,7 @@ description: Learn about how to use Microsoft Entra ID for authentication with A
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 09/11/2025
+ms.date: 05/15/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: concept-article
@@ -87,16 +87,16 @@ To enable Microsoft Entra authentication, a Microsoft Entra administrator has to
 > [!TIP]  
 > Microsoft Entra groups enables multiple identities to act as the Microsoft Entra administrator on the server. When the administrator is set to a group, all group members inherit the Microsoft Entra administrator role. A Microsoft Entra group admin enhances manageability by shifting admin management from server data plane actions into Microsoft Entra ID and the hands of the group owners. Groups can be used for all Microsoft Entra identities that connect to SQL, allowing for onetime user and permission configuration in the server and databases, leaving all user management to the groups.
 
-The Microsoft Entra admin plays a special role: it's the first account that can create other Microsoft Entra logins (in preview in SQL Database) and users, collectively referred to as principals. The admin is a contained database user in the `master` database of the server. Administrator accounts are members of the **db_owner** role in every user database, and each user database is entered as the **dbo** user. For more information about administrator accounts, see [Managing Databases and Logins](logins-create-manage.md).
+The Microsoft Entra admin plays a special role: it's the first account that can create other Microsoft Entra logins and users, collectively referred to as principals. The admin is a contained database user in the `master` database of the server. Administrator accounts are members of the **db_owner** role in every user database, and each user database is entered as the **dbo** user. For more information about administrator accounts, see [Managing Databases and Logins](logins-create-manage.md).
 
 ## Microsoft Entra principals
 
 > [!NOTE]  
-> [Microsoft Entra server principals (logins)](authentication-azure-ad-logins.md) are currently in public preview for Azure SQL Database and Azure Synapse Analytics. Microsoft Entra logins are generally available for Azure SQL Managed Instance and SQL Server 2022.
+> [Microsoft Entra server principals (logins)](authentication-azure-ad-logins.md) are generally available for Azure SQL Database, Azure SQL Managed Instance, and SQL Server 2022 and later. Microsoft Entra server principals are currently in public preview for Azure Synapse Analytics.
 
 Microsoft Entra identities can be created as principals in Azure SQL in three ways:
 
-- as server principals or [logins](authentication-azure-ad-logins.md) (in preview for Azure SQL Database)
+- as server principals or [logins](authentication-azure-ad-logins.md)
 - as login-based users (a type of database principal)
 - as contained database users
 
@@ -105,7 +105,7 @@ Microsoft Entra identities can be created as principals in Azure SQL in three wa
 
 ### Logins (server principals)
 
-[Server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) are generally available for Azure SQL Managed Instance, SQL Server 2022, and SQL Server on Azure VMs. Microsoft Entra logins are in preview for Azure SQL Database.
+[Server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) are generally available for Azure SQL Database, Azure SQL Managed Instance, SQL Server 2022 and later, and SQL Server on Azure VMs. Microsoft Entra logins are in public preview for Azure Synapse Analytics.
 
 The following T-SQL shows how to create a Microsoft Entra login:
 
@@ -123,7 +123,7 @@ A Microsoft Entra login has the following property values in [sys.server_princip
 
 ### Login-based users
 
-Login-based users inherit the server-level roles and permissions assigned to its Microsoft Entra login. Microsoft Entra login-based users are in preview for Azure SQL Database.
+Login-based users inherit the server-level roles and permissions assigned to its Microsoft Entra login.
 
 The following T-SQL shows how to create a login-based user for a Microsoft Entra identity:
 
