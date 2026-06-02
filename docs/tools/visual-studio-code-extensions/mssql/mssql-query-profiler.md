@@ -15,9 +15,9 @@ ai-usage: ai-assisted
 
 # Query Profiler
 
-The Query Profiler in the MSSQL extension for Visual Studio Code captures and monitors database activity in real time using [Extended Events](../../../relational-databases/extended-events/extended-events.md). You can observe live T-SQL activity, identify slow operations, and find performance bottlenecks during development.
+The Query Profiler in the MSSQL extension for Visual Studio Code captures and monitors database activity in real time using [Extended Events](../../../relational-databases/extended-events/extended-events.md). You can observe live Transact-SQL (T-SQL) activity, identify slow operations, and find performance bottlenecks during development.
 
-Query Profiler supports SQL Server (on-premises or in cloud environments), Azure SQL Database, and SQL database in Fabric endpoints. You can monitor active sessions, review execution details, and understand how your application interacts with your database during development and testing.
+Query Profiler supports SQL Server (on-premises or in cloud environments), Azure SQL Database, and SQL database in Microsoft Fabric endpoints. You can monitor active sessions, review execution details, and understand how your application interacts with your database during development and testing.
 
 :::image type="content" source="media/mssql-query-profiler/query-profiler-grid.png" alt-text="Screenshot of the Query Profiler live events grid showing captured database activity in the MSSQL extension for Visual Studio Code." lightbox="media/mssql-query-profiler/query-profiler-grid.png":::
 
@@ -206,7 +206,8 @@ Query Profiler works with the following SQL Server and Azure SQL targets:
 | Target | Supported templates |
 | --- | --- |
 | SQL Server (on-premises, VMs, containers) | Standard_OnPrem, TSQL_OnPrem, TSQL_Locks, TSQL_Duration |
-| Azure SQL Database | Standard_Azure |
+| Azure SQL Database | Standard_Azure, TSQL_Azure |
+| SQL database in Fabric | Standard_Azure, TSQL_Azure |
 
 > [!NOTE]  
 > If you select an unsupported template or attempt a server-level session on Azure SQL Database, Query Profiler shows a targeted error message and suggests the appropriate template.
@@ -226,7 +227,8 @@ Query Profiler works with the following SQL Server and Azure SQL targets:
 
 ## Related content
 
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Schema Designer](mssql-schema-designer.md)
 - [Schema Compare](mssql-schema-compare.md)

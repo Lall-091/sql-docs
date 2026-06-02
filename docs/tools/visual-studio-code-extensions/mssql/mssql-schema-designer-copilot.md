@@ -4,7 +4,7 @@ description: Learn how to use GitHub Copilot within the Schema Designer in the M
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: yoleichen, roblescarlos
-ms.date: 03/13/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -14,14 +14,11 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# GitHub Copilot integration in Schema Designer (preview)
+# GitHub Copilot integration in Schema Designer
 
-The Schema Designer in the MSSQL extension for Visual Studio Code includes GitHub Copilot integration, so you can design, modify, and validate database schemas using natural language. Describe what you need in the chat pane, and GitHub Copilot translates your requests into schema actions reflected in the visual diagram canvas, generated T-SQL, and change highlights.
+The Schema Designer in the MSSQL extension for Visual Studio Code includes GitHub Copilot integration. You can design, modify, and validate database schemas using natural language. Describe what you need in the chat pane, and GitHub Copilot translates your requests into schema actions reflected in the visual diagram canvas, generated Transact-SQL (T-SQL) or ORM code, and change highlights.
 
 :::image type="content" source="media/mssql-schema-designer-copilot/schema-designer-copilot-chat.png" alt-text="Screenshot of the Schema Designer with the GitHub Copilot chat panel open in Visual Studio Code." lightbox="media/mssql-schema-designer-copilot/schema-designer-copilot-chat.png":::
-
-> [!TIP]  
-> GitHub Copilot integration in Schema Designer is currently in preview and might change based on feedback. Join the community at [GitHub Discussions](https://aka.ms/vscode-mssql-discussions) to share ideas or report issues.
 
 ## Features
 
@@ -29,6 +26,7 @@ GitHub Copilot integration in Schema Designer offers these capabilities:
 
 - Create database schemas from natural language descriptions, with tables, columns, and relationships generated automatically.
 - Evolve existing schemas by adding, modifying, or removing tables and columns through conversational prompts.
+- Generate migration-ready object-relational mapping (ORM) scripts from your visual schema changes, with support for Prisma, Sequelize, TypeORM, Drizzle, SQLAlchemy, and Entity Framework Core.
 - Review AI-proposed changes individually through a guided change review flow, with the ability to accept or undo each edit.
 - View a schema diff that shows all pending changes before they're applied to the database.
 - Bootstrap application schemas on an empty database using a single natural language prompt.
@@ -41,7 +39,7 @@ Before you use GitHub Copilot in the Schema Designer, ensure the following requi
 
 - The MSSQL extension for Visual Studio Code is installed. For installation steps, see the [MSSQL extension for Visual Studio Code](mssql-extension-visual-studio-code.md) overview.
 - GitHub Copilot and GitHub Copilot Chat extensions are installed and signed in. For setup instructions, see [Set up GitHub Copilot](../github-copilot/overview.md#set-up-github-copilot-in-visual-studio-code).
-- An active database connection is established through the MSSQL extension. For connection steps, see [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md).
+- An active database connection is established through the MSSQL extension. For connection steps, see [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md).
 
 ## Open Schema Designer with GitHub Copilot
 
@@ -56,7 +54,7 @@ You can open the Schema Designer with GitHub Copilot from two entry points:
 1. When the Schema Designer canvas opens with your database schema loaded, select the **Chat** button (with the GitHub Copilot icon) in the Schema Designer toolbar to open a GitHub Copilot chat session scoped to the current schema context.
 
 > [!TIP]  
-> You can also right-click a database node and select **Open in Copilot Agent mode** to start a GitHub Copilot agent chat session. In agent mode, you can ask GitHub Copilot to open the Schema Designer for you, for example: `"Open schema designer for AdventureWorksLT2022"`. For more information, see [Quickstart: Use GitHub Copilot Agent Mode](../github-copilot/agent-mode.md).
+> You can also right-click a database node and select **Open in Copilot Agent mode** to start a GitHub Copilot agent chat session. In agent mode, you can ask GitHub Copilot to open the Schema Designer for you, for example: `"Open schema designer for AdventureWorksLT2022"`. For more information, see [Quickstart: Use GitHub Copilot agent mode](../github-copilot/agent-mode.md).
 
 ## Create a schema with natural language
 
@@ -147,6 +145,26 @@ Nested objects in JSON are modeled as separate related tables. Schema Designer i
 
 :::image type="content" source="media/mssql-schema-designer-copilot/schema-designer-copilot-import-artifacts.png" alt-text="Screenshot of GitHub Copilot importing a JSON payload and generating tables in the Schema Designer diagram." lightbox="media/mssql-schema-designer-copilot/schema-designer-copilot-import-artifacts.png":::
 
+## Generate ORM migration scripts
+
+After you design or evolve a schema with GitHub Copilot, you can export your changes as migration-ready object-relational mapping (ORM) code instead of plain Transact-SQL. The Schema Designer Copilot panel includes a dedicated ORM output view that turns your pending schema changes into framework-specific migration files you can drop into an existing application project.
+
+The following ORMs are supported:
+
+- **Prisma** (Node.js / TypeScript)
+- **Sequelize** (Node.js)
+- **TypeORM** (Node.js / TypeScript)
+- **Drizzle** (TypeScript)
+- **SQLAlchemy** (Python)
+- **Entity Framework Core** (.NET)
+
+To generate ORM code, pick your target ORM from the framework selector in the Schema Designer Copilot panel. GitHub Copilot regenerates the migration script to match the conventions of the selected framework, including model definitions, relationship mappings, and migration metadata. You can copy the generated script directly into your project's migrations folder.
+
+:::image type="content" source="media/mssql-schema-designer-copilot/schema-designer-copilot-sequelize-example.png" alt-text="Screenshot of the Schema Designer Copilot panel showing a Sequelize migration script generated from visual schema changes, with the framework selector at the top of the panel." lightbox="media/mssql-schema-designer-copilot/schema-designer-copilot-sequelize-example.png":::
+
+> [!TIP]  
+> Use ORM script generation when you want your database schema changes tracked alongside your application code. The generated migration files follow each framework's standard format, so they integrate cleanly with existing CI/CD pipelines and code review workflows.
+
 ## Validation and guardrails
 
 As schemas evolve, GitHub Copilot validates changes and raises potential problems inline. Validation checks include:
@@ -163,7 +181,7 @@ GitHub Copilot explains detected problems inline and suggests corrective actions
 
 - **Chat session state**: Chat sessions don't keep history when you switch database context. A new context resets the chat memory.
 - **Active database connection required**: You need an active database connection through the MSSQL extension to load and modify schemas. When you use GitHub Copilot in agent mode, the agent can set up the connection for you.
-- **AI-generated output should be reviewed**: GitHub Copilot might suggest incorrect or suboptimal schema recommendations. Always review generated SQL and schema changes before publishing to your database.
+- **Review AI-generated output**: GitHub Copilot might suggest incorrect or suboptimal schema recommendations. Always review generated SQL and schema changes before publishing to your database.
 
 ## Feedback and support
 
@@ -174,9 +192,9 @@ GitHub Copilot explains detected problems inline and suggests corrective actions
 - [Schema Designer](mssql-schema-designer.md)
 - [Quickstart: Use the schema explorer and designer](../github-copilot/schema-explorer-designer.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
-- [Quickstart: Use GitHub Copilot Agent Mode](../github-copilot/agent-mode.md)
+- [Quickstart: Use GitHub Copilot agent mode](../github-copilot/agent-mode.md)
 - [Schema Compare](mssql-schema-compare.md)
 - [Data-tier Application (DACPAC and BACPAC) import and export](mssql-data-tier-application.md)
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
 - [MSSQL extension for Visual Studio Code repository on GitHub](https://github.com/Microsoft/vscode-mssql)

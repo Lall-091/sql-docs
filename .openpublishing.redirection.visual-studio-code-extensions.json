@@ -1,13 +1,23 @@
 {
   "redirections": [
     {
+      "source_path": "docs/tools/visual-studio-code-extensions/mssql/mssql-extension-connections.md",
+      "redirect_url": "/sql/tools/visual-studio-code-extensions/mssql/mssql-database-connections",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md",
+      "redirect_url": "/sql/tools/visual-studio-code-extensions/mssql/mssql-run-first-query",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "docs/tools/visual-studio-code/mssql-extensions.md",
       "redirect_url": "/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/tools/visual-studio-code/sql-server-develop-use-vscode.md",
-      "redirect_url": "/sql/tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code",
+      "redirect_url": "/sql/tools/visual-studio-code-extensions/mssql/mssql-run-first-query",
       "redirect_document_id": false
     },
     {

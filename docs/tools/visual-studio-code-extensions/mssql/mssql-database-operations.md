@@ -4,7 +4,7 @@ description: Learn how to manage databases, search objects, back up and restore 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: tsiddique, roblescarlos
-ms.date: 04/23/2026
+ms.date: 05/25/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -25,9 +25,6 @@ The MSSQL extension for Visual Studio Code provides built-in tools for common da
 | [Restore database](#restore-database) | Restore databases from existing backup sets, backup files, or Azure Blob Storage. |
 | [Import flat file](#import-flat-file) | Import CSV and TXT files into new SQL Server tables with a guided wizard. |
 
-> [!TIP]  
-> The features on this page are currently in preview and might change based on feedback. Join the community at [GitHub Discussions](https://aka.ms/vscode-mssql-discussions) to share ideas or report issues.
-
 ## Database management
 
 The MSSQL extension provides dialogs for creating, renaming, and dropping databases directly from the **Object Explorer**.
@@ -45,7 +42,7 @@ The MSSQL extension provides dialogs for creating, renaming, and dropping databa
 
 1. (Optional) Expand **Advanced Options** to configure collation, recovery model, compatibility level, and containment type.
 
-1. Select **Create** to create the database, or select **Script** to generate the equivalent T-SQL script.
+1. Select **Create** to create the database, or select **Script** to generate the equivalent Transact-SQL (T-SQL) script.
 
    :::image type="content" source="media/mssql-database-operations/create-database.png" alt-text="Screenshot of the Create Database dialog with database name and advanced options.":::
 
@@ -267,7 +264,8 @@ Select **Import Data** to create the table and import the data.
 
 ## Related content
 
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Schema Designer](mssql-schema-designer.md)
 - [Schema Compare](mssql-schema-compare.md)
