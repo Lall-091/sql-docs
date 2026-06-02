@@ -5,7 +5,7 @@ description: This article provides common security requirements and best practic
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 06/13/2025
+ms.date: 05/26/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: best-practice
@@ -93,7 +93,7 @@ Central identity management offers the following benefits:
   - For more information, see [Configure and manage Microsoft Entra authentication with Azure SQL](authentication-aad-configure.md) and [Microsoft Entra authentication for Azure SQL](authentication-aad-overview.md).
 
   > [!NOTE]  
-  > In SQL Managed Instance, you can also create logins that map to Microsoft Entra principals in the `master` database. See [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
+  > In Azure SQL Database and SQL Managed Instance, you can also create logins that map to Microsoft Entra principals in the `master` database. See [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 - Using Microsoft Entra groups simplifies permission management and both the group owner, and the resource owner can add/remove members to/from the group.
 

@@ -9,6 +9,7 @@ ms.date: 04/15/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: concept-article
+monikerRange: "=azuresql || =azuresql-db "
 ms.custom:
   - azure-synapse
   - sqldbrb=1
