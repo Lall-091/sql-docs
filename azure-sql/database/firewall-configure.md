@@ -1,25 +1,29 @@
 ---
 title: IP Firewall Rules
-titleSuffix: Azure SQL Database and Azure Synapse Analytics
-description: Configure server-level IP firewall rules for a database in Azure SQL Database or Azure Synapse Analytics firewall. Manage access and configure database-level IP firewall rules for SQL Database.
+titleSuffix: Azure SQL Database
+description: Configure server-level IP firewall rules for a database in Azure SQL Database firewall. Manage access and configure database-level IP firewall rules for SQL Database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/03/2026
+ms.date: 05/28/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db "
 ms.custom:
   - sqldbrb=1
   - devx-track-azurecli
   - devx-track-azurepowershell
   - sfi-image-nochange
 ---
-# Azure SQL Database and Azure Synapse IP firewall rules
+# Azure SQL Database IP firewall rules
 
-[!INCLUDE [appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-When you create a new server in Azure SQL Database or Azure Synapse Analytics named *mysqlserver*, for example, a server-level firewall blocks all access to the public endpoint for the server (which is accessible at *mysqlserver.database.windows.net*). For simplicity, *SQL Database* is used to refer to both SQL Database and Azure Synapse Analytics. This article does *not* apply to *Azure SQL Managed Instance*. For information about network configuration, see [Connect your application to Azure SQL Managed Instance](../managed-instance/connect-application-instance.md).
+When you create a new logical server in Azure SQL Database named *mysqlserver*, for example, a server-level firewall blocks all access to the public endpoint for the logical server (which is accessible at `mysqlserver.database.windows.net`).
+
+- This article does *not* apply to *Azure SQL Managed Instance*. For information about network configuration, see [Connect your application to Azure SQL Managed Instance](../managed-instance/connect-application-instance.md).
+- For information on server firewall rules for Azure Synapse Analytics, see [Azure Synapse IP firewall rules](/azure/synapse-analytics/sql/firewall-configure).
 
 [!INCLUDE [entra-id](../includes/entra-id.md)]
 
@@ -28,9 +32,6 @@ When you create a new server in Azure SQL Database or Azure Synapse Analytics na
 Connection attempts from the internet and Azure must pass through the firewall before they reach your server or database, as the following diagram shows.
 
 :::image type="content" source="media/firewall-configure/sqldb-firewall-1.png" alt-text="Diagram of the Azure SQL Database firewall.":::
-
-> [!IMPORTANT]  
-> Azure Synapse only supports server-level IP firewall rules. It doesn't support database-level IP firewall rules.
 
 ### Server-level IP firewall rules
 
@@ -137,7 +138,7 @@ You create the first server-level firewall setting by using the [Azure portal](h
 To improve performance, server-level IP firewall rules are temporarily cached at the database level. To refresh the cache, see [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql).
 
 > [!TIP]  
-> You can use [Auditing for Azure SQL Database and Azure Synapse Analytics](auditing-overview.md) to audit server-level and database-level firewall changes.
+> You can use [Auditing for Azure SQL Database](auditing-overview.md) to audit server-level and database-level firewall changes.
 
 ### Use the Azure portal to manage server-level IP firewall rules
 
@@ -245,23 +246,6 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 >  
 > For a CLI example in the context of a quickstart, see [Azure CLI samples for Azure SQL Database](az-cli-script-samples-content-guide.md) and [Create a single database and configure a firewall rule using the Azure CLI](scripts/create-and-configure-database-cli.md).
 
-For Azure Synapse Analytics, refer to the following examples:
-
-| Cmdlet | Level | Description |
-| --- | --- | --- |
-| [az synapse workspace firewall-rule create](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-create) | Server | Create a firewall rule |
-| [az synapse workspace firewall-rule delete](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-delete) | Server | Delete a firewall rule |
-| [az synapse workspace firewall-rule list](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-list) | Server | List all firewall rules |
-| [az synapse workspace firewall-rule show](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-show) | Server | Get a firewall rule |
-| [az synapse workspace firewall-rule update](/cli/azure/synapse/workspace/firewall-rule#az-synapse-workspace-firewall-rule-update) | Server | Update a firewall rule |
-| [az synapse workspace firewall-rule wait](/cli/azure/synapse/workspace/firewall-rule##az-synapse-workspace-firewall-rule-wait) | Server | Place the CLI in a waiting state until a condition of a firewall rule is met |
-
-The following example uses CLI to set a server-level IP firewall rule in Azure Synapse:
-
-```azurecli-interactive
-az synapse workspace firewall-rule create --name AllowAllWindowsAzureIps --workspace-name $workspacename --resource-group $resourcegroupname --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
-```
-
 ### Use a REST API to manage server-level IP firewall rules
 
 | API | Level | Description |
@@ -286,7 +270,8 @@ The following table describes the latency of security settings changes based on 
 
 ## Manually refreshing firewall rules
 
-If you need to see firewall rules updated more quickly than the 5 minute latency, you can manually refresh the firewall rules. Log in to the database instance that needs its rules updated, and run DBCC FLUSHAUTHCACHE.  This will cause the database instance to flush its local cache and refresh firewall rules.
+If you need to see firewall rules updated more quickly than the 5 minute latency, you can manually refresh the firewall rules. Log in to the database instance that needs its rules updated, and run `DBCC FLUSHAUTHCACHE`.  This will cause the database instance to flush its local cache and refresh firewall rules.
+
 ```syntaxsql
 DBCC FLUSHAUTHCACHE[;]
 ```
@@ -302,6 +287,7 @@ Consider the following points when access to Azure SQL Database doesn't behave a
 - **Network address translation:**
 
   Because of network address translation (NAT), the IP address that's used by your computer to connect to Azure SQL Database might be different than the IP address in your computer's IP configuration settings. To view the IP address that your computer is using to connect to Azure:
+  
     1. Sign in to the portal.
     1. Go to the **Configure** tab on the server that hosts your database.
     1. The **Current Client IP Address** is displayed in the **Allowed IP Addresses** section. Select **Add** for **Allowed IP Addresses** to allow this computer to access the server.
@@ -312,7 +298,7 @@ Consider the following points when access to Azure SQL Database doesn't behave a
 
 - **The login isn't authorized, or an incorrect password was used:**
 
-  If a login doesn't have permissions on the server or the password is incorrect, the connection to the server is denied. Creating a firewall setting only gives clients an *opportunity* to try to connect to your server. The client must still provide the necessary security credentials. For more information about preparing logins, see [Authorize database access to SQL Database, SQL Managed Instance, and Azure Synapse Analytics](logins-create-manage.md).
+  If a login doesn't have permissions on the server or the password is incorrect, the connection to the server is denied. Creating a firewall setting only gives clients an *opportunity* to try to connect to your server. The client must still provide the necessary security credentials. For more information about preparing logins, see [Authorize database access to SQL Database and SQL Managed Instance](logins-create-manage.md).
 
 - **Dynamic IP address:**
 

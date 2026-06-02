@@ -64,8 +64,6 @@
       - name: Block T-SQL CRUD
         href: database/block-crud-tsql.md
         displayName: block-tsql-crud, block-tsql-mi-crud
-      - name: Logins, user accounts, roles, and permissions
-        href: database/logins-create-manage.md
       - name: Microsoft Entra authentication
         items:
         - name: Microsoft Entra authentication documentation
@@ -321,6 +319,8 @@
         href: database/authentication-azure-ad-user-assigned-managed-identity-create-server.md
     - name: Configure
       items:
+      - name: Logins, user accounts, roles, and permissions
+        href: database/logins-create-manage.md
       - name: Server-level IP firewall rules
         href: database/firewall-create-server-level-portal-quickstart.md
     - name: Connect and query
@@ -1037,6 +1037,8 @@
         href: managed-instance/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance.md
     - name: Configure
       items:
+      - name: Logins, user accounts, roles, and permissions
+        href: managed-instance/logins-create-manage.md
       - name: Service-aided subnet configuration
         href: managed-instance/subnet-service-aided-configuration-enable.md
       - name: Minimal TLS version
