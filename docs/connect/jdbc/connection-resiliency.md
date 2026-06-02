@@ -1,10 +1,10 @@
 ---
-title: Connection resiliency
+title: Connection Resiliency
 description: Connection resiliency can transparently restore broken idle connections. This feature improves application behavior when the server closes idle connections.
 author: dlevy-msft-sql
 ms.author: dlevy
-ms.reviewer: davidengel, machavan, sunilbs
-ms.date: 05/22/2026
+ms.reviewer: davidengel, machavan, sunilbs, randolphwest
+ms.date: 06/02/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -13,12 +13,12 @@ ai-usage: ai-assisted
 
 # Connection resiliency (JDBC)
 
-[!INCLUDE[Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]
+[!INCLUDE [Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]
 
 *Connection resiliency* lets the JDBC driver transparently restore a broken idle connection and retry the initial login if it fails. This article covers the two connection-string properties that control this behavior (`connectRetryCount` and `connectRetryInterval`) and the keepalive settings the driver uses to detect a dropped idle connection. Connection resiliency is available starting with Microsoft JDBC Driver 10.2.0 for SQL Server. Reconnecting a broken idle connection requires SQL Server 2014 or later, or Azure SQL Database.
 
-> [!TIP]
-> Connection resiliency only retries the **initial login** and **silently restores broken idle connections**. To automatically retry **failed statements** (for example, deadlock victim 1205 or lock timeout 1222), or to extend the login retry list with **custom error numbers** (for example, Azure SQL transient errors such as 40197 or 40613), use [Configurable retry logic (CRL)](configurable-retry-logic.md). CRL is rule-based, you pick the errors and the backoff, and it works alongside the features in this article.
+> [!TIP]  
+> Connection resiliency only retries the **initial login** and **silently restores broken idle connections**. To automatically retry **failed statements** (for example, deadlock victim 1205 or lock timeout 1222), or to extend the login retry list with **custom error numbers** (for example, Azure SQL transient errors such as 40197 or 40613), use [Configurable retry logic](configurable-retry-logic.md). CRL is rule-based, you pick the errors and the backoff, and it works alongside the features in this article.
 
 ## How the JDBC driver retries
 
@@ -28,7 +28,7 @@ The JDBC driver provides three independent retry mechanisms. They work together,
 | --- | --- | --- |
 | Idle connection resiliency | Transparently restores a broken idle connection (for example, a pooled connection closed by the server or a load balancer). | [Detect broken idle connections](#detect-broken-idle-connections) (this article) |
 | Initial-login retry | Retries a failed initial login on a fixed schedule for a built-in list of transient errors. | [Retry initial connections](#retry-initial-connections) (this article) |
-| Configurable retry logic (CRL) | Rule-based retry for failed statements and for custom login error numbers. Introduced in Microsoft JDBC Driver 12.10. | [Configurable retry logic (JDBC)](configurable-retry-logic.md) |
+| Configurable retry logic (CRL) | Rule-based retry for failed statements and for custom login error numbers. Introduced in Microsoft JDBC Driver 12.10. | [Configurable retry logic](configurable-retry-logic.md) |
 
 ## Retry initial connections
 
@@ -41,7 +41,7 @@ The JDBC driver has two connection properties that control how often, and how lo
 
 If `connectRetryCount * connectRetryInterval` is larger than `loginTimeout`, the driver stops attempting to connect once `loginTimeout` is reached. Otherwise, it continues until `connectRetryCount` is exhausted.
 
-These properties retry only the **built-in list of transient login errors**. For the full list of errors covered (4060, 40197, 40501, 40613, 49918-49920, and others), see [Built-in transient login error list](configurable-retry-logic.md#built-in-transient-login-error-list). To retry custom error numbers (or to retry failed statements at all), see [Configurable retry logic (JDBC)](configurable-retry-logic.md).
+These properties retry only the **built-in list of transient login errors**. For the full list of errors covered (4060, 40197, 40501, 40613, 49918-49920, and others), see [Built-in transient login error list](configurable-retry-logic.md#built-in-transient-login-error-list). To add custom login error numbers to this set, or replace it entirely, use `retryConn` in [Configurable retry logic](configurable-retry-logic.md). To retry failed statements, use `retryExec` in the same article.
 
 ### Set the properties
 
@@ -54,6 +54,8 @@ jdbc:sqlserver://server;databaseName=db;connectRetryCount=3;connectRetryInterval
 ```
 
 With a `Properties` object:
+
+The Java snippets in this article omit imports and class wrappers for brevity.
 
 ```java
 Properties props = new Properties();
@@ -82,7 +84,7 @@ A typical idle connection is one sitting in a connection pool. The driver consid
 
 To detect broken idle connections, the driver relies on TCP keepalive packets at the socket level. On Linux and Java 11 or later, the driver automatically enables keepalive packets at a 30-second interval (`KeepAliveTime`), with a 1-second delay between retries when a failure occurs (`KeepAliveInterval`).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > On Windows, and on Java 11 or earlier, you must configure keepalives manually in the operating system to take advantage of broken-idle-connection recovery. For information on how to configure keepalives, see [Connection to Azure SQL database](connecting-to-an-azure-sql-database.md#connections-dropped).
 
 ## Limitations
@@ -96,7 +98,7 @@ The driver can't restore a broken idle connection when any of the following are 
 ## Related content
 
 - [Configurable retry logic (JDBC)](configurable-retry-logic.md)
-- [Connecting to an Azure SQL database](connecting-to-an-azure-sql-database.md)
-- [Understanding timeouts](understand-timeouts.md)
+- [Connect to an Azure SQL database](connecting-to-an-azure-sql-database.md)
+- [Understanding timeout properties in the JDBC driver](understand-timeouts.md)
 - [Technical article: Idle Connection Resiliency](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/Idle%20Connection%20Resiliency.docx)
 - [Overview of the JDBC driver](overview-of-the-jdbc-driver.md)

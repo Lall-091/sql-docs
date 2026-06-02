@@ -1,9 +1,10 @@
 ---
-title: Configurable retry logic
+title: Configurable Retry Logic
 description: Use the JDBC driver's configurable retry logic (CRL) to automatically retry failed statements or login attempts based on SQL Server error numbers, with timing parameters you control.
 author: dlevy-msft-sql
 ms.author: dlevy
-ms.date: 05/22/2026
+ms.reviewer: randolphwest
+ms.date: 06/02/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -12,7 +13,7 @@ ai-usage: ai-assisted
 
 # Configurable retry logic (JDBC)
 
-[!INCLUDE[Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]
+[!INCLUDE [Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]
 
 Configurable retry logic (CRL) is a rule-based mechanism that automatically retries failed statements or initial connection attempts based on SQL Server error numbers that you choose, with timing parameters that you control. CRL was introduced in Microsoft JDBC Driver 12.10 for SQL Server.
 
@@ -46,7 +47,9 @@ jdbc:sqlserver://server;databaseName=db;retryConn={+<customLoginErrorNumber>}
 
 ### With a `Properties` object
 
-The `{...}` wrappers are optional with `Properties`. The driver strips them either way:
+The driver strips the optional `{...}` wrappers either way:
+
+The Java snippets in this article omit imports and class wrappers for brevity.
 
 ```java
 Properties props = new Properties();
@@ -89,13 +92,13 @@ To use multiple rules in the same property, separate them with `;` and wrap each
 
 For a statement rule with timings `retryCount, initialRetryTime <op> retryChange`:
 
-- `retryCount`: How many additional attempts the driver makes after the first failure. A value of `0` disables retry. Negative values are invalid.
-- `initialRetryTime`: How long, in seconds, to wait before the first retry. Default is `0`.
-- `<op>`: `+` or `*`. Default is `+`.
-- `retryChange`: Amount applied to compute subsequent wait times. Default is `2`. When the operand is `*` and `retryChange` is omitted from the rule, the driver sets `retryChange = initialRetryTime`.
+- `retryCount`: The number of additional attempts the driver makes after the first failure. A value of `0` disables retry. Negative values are invalid.
+- `initialRetryTime`: The number of seconds to wait before the first retry. The default value is `0`.
+- `<op>`: The operator, which can be `+` or `*`. The default value is `+`.
+- `retryChange`: The amount applied to compute subsequent wait times. The default value is `2`. When the operand is `*` and `retryChange` is omitted from the rule, the driver sets `retryChange = initialRetryTime`.
 
-> [!IMPORTANT]
-> If you supply `initialRetryTime` without an explicit operand (for example, `3,5`), the driver leaves the operand and `retryChange` at their defaults (`+` and `2`). The waits aren't constant. They grow by 2 every retry. To get a constant wait, use the explicit form `retryCount,N+0` (for example, `3,5+0`).
+> [!IMPORTANT]  
+> If you supply `initialRetryTime` without an explicit operand (for example, `3,5`), the driver uses the default values for the operand and `retryChange` (`+` and `2`). The waits aren't constant. They grow by 2 every retry. To get a constant wait, use the explicit form `retryCount,N+0` (for example, `3,5+0`).
 
 The driver computes the wait time for attempt *i* (0-based) at parse time:
 
@@ -114,7 +117,7 @@ Examples of timing strings:
 | `3,2*2` | 3 | 2 | `*` | 2 | 2, 4, 8 |
 | `4,1*` | 4 | 1 | `*` | 1 (equals `initialRetryTime` because the operand is `*` and `retryChange` is omitted) | 1, 1, 1, 1 |
 
-A `retryTimings` section can contain at most one comma. More than one raises `R_invalidParameterNumber`.
+A `retryTimings` section can contain at most one comma. More than one comma raises `R_invalidParameterNumber`.
 
 ## Statement retry rules (`retryExec`)
 
@@ -170,15 +173,15 @@ The connect loop continues to use `connectRetryInterval` and `connectRetryCount`
 | `{+<customLoginError1>,<customLoginError2>}` | Add multiple custom login error numbers to the built-in transient error list. |
 | `{4060}` | Retry **only** error 4060. Built-in transient errors are no longer retried by CRL. |
 
-> [!NOTE]
-> Even when CRL retries are exhausted, the driver still enforces `loginTimeout`. If the next interval would push elapsed time past `loginTimeout`, the driver rethrows the original exception immediately.
+> [!NOTE]  
+> `retryConn` doesn't change `loginTimeout` semantics. The existing connect-retry loop still bounds total elapsed time and gives up early if the next `connectRetryInterval` would push elapsed time past `loginTimeout`.
 
 ### Built-in transient login error list
 
 The connect-retry loop already retries the following errors without any CRL configuration, as long as `connectRetryCount > 0`. Listing any of these in a `retryConn` rule with `+` is a no-op (they're already covered). Use a `retryConn` rule when you need to add an error that *isn't* in this list, or when you need to drop the list entirely with the no-`+` replace form.
 
-> [!NOTE]
-> You don't need to append common Azure SQL transient login errors such as 40197, 40501, 40613, 49918, 49919, or 49920. They're already retried by the built-in list.
+> [!NOTE]  
+> You don't need to append common Azure SQL transient login errors such as 40197, 40501, 40613, 49918, 49919, or 49920. The built-in list already retries them.
 
 | Error | Description |
 | --- | --- |
@@ -203,11 +206,13 @@ The connect-retry loop already retries the following errors without any CRL conf
 | 49919 | Cannot process create or update request. Too many create or update operations in progress for subscription. |
 | 49920 | Cannot process request. Too many operations in progress for subscription. |
 
-The list is sourced from the [Azure SQL transient errors article](/azure/azure-sql/database/troubleshoot-common-connectivity-issues) and the [.NET SqlClient transient error set](https://github.com/dotnet/SqlClient/blob/main/src/Microsoft.Data.SqlClient/src/Microsoft/Data/SqlClient/SqlInternalConnectionTds.cs). Statement-level errors (such as deadlock victim 1205 or lock-request timeout 1222) aren't in this list, because the connect-retry loop only fires during initial login. To retry those, use a `retryExec` rule.
+The list is sourced from [Azure SQL transient connection errors](/azure/azure-sql/database/troubleshoot-common-connectivity-issues) and the [.NET SqlClient transient error set](https://github.com/dotnet/SqlClient/blob/main/src/Microsoft.Data.SqlClient/src/Microsoft/Data/SqlClient/SqlInternalConnectionTds.cs). Statement-level errors (such as deadlock victim 1205 or lock-request timeout 1222) aren't in this list, because the connect-retry loop only fires during initial login. To retry those errors, use a `retryExec` rule.
 
 ## Load rules from a properties file
 
-If you don't set `retryExec` or `retryConn` on the connection, CRL looks for a file named `mssql-jdbc.properties` next to the driver JAR on the classpath. The file uses simple `key=value` parsing. Lines that start with `retryExec=` or `retryConn=` are picked up. Values use the same syntax described in this article, with `;` separating multiple rules.
+If you don't set `retryExec` or `retryConn` on the connection, CRL looks for a file named `mssql-jdbc.properties` next to the driver JAR on the classpath. The file uses basic `key=value` parsing. Lines that start with `retryExec=` or `retryConn=` are picked up. Values use the same syntax described in this article, with `;` separating multiple rules.
+
+Use exact key names (`retryExec` and `retryConn`). Keys such as `retryExec2` aren't treated as aliases, and comment-prefixed lines aren't parsed as rule definitions.
 
 Example `mssql-jdbc.properties`:
 
@@ -224,21 +229,21 @@ Connection string values take precedence. If `retryExec` or `retryConn` are none
 
 CRL maintains a single, JVM-wide rule set. After construction, the driver refreshes the rules lazily:
 
-- The driver checks for a refresh every time a statement runs or a connection retry is evaluated.
+- The driver evaluates refresh opportunities during statement execution and connection retries.
 - A refresh actually happens only after 30 seconds have elapsed since the previous read.
 - If the rules originally came from `mssql-jdbc.properties`, the driver compares the file's last-modified timestamp to the timestamp it recorded on the previous read. If the file changed, the driver reparses it.
 - If the rules originally came from a connection string, the driver reapplies the previously stored connection-string value.
 
 This behavior means that edits to `mssql-jdbc.properties` are picked up automatically within about 30 seconds without restarting the application.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Because the rule set is a JVM-wide singleton, opening a second connection that sets a different `retryExec` or `retryConn` value replaces the rules for the first connection too. Treat CRL configuration as a process-level setting, not a per-connection setting, when multiple connections in the same JVM disagree.
 
 ## Interaction with queryTimeout and connectRetryCount
 
 ### Statement retries and `queryTimeout`
 
-When a statement rule fires, the driver compares the next wait time against the connection-level `queryTimeout`:
+When a statement rule fires, the driver compares the next wait time against the connection-level `queryTimeout` value:
 
 - If `queryTimeout >= 0` *and* `timeToWait > queryTimeout`, the driver raises `R_InvalidRetryInterval` instead of retrying. The driver doesn't rethrow the original error. It throws the configuration error.
 - The `queryTimeout` connection property defaults to `-1`, so by default the comparison is skipped and any wait is allowed.
@@ -254,7 +259,7 @@ When you set `queryTimeout` to a positive value, keep `initialRetryTime + (retry
 - `connectRetryInterval` (default 10 seconds, range 1-60) is the wait between attempts. The first retry runs immediately.
 - `loginTimeout` is the overall bound. The driver gives up early if the next interval would push elapsed time past `loginTimeout`.
 
-For more information, see [Connection resiliency](connection-resiliency.md).
+For more information, see [Connection resiliency (JDBC)](connection-resiliency.md).
 
 ## Examples
 
@@ -306,7 +311,7 @@ Common configuration errors:
 | Error message key | Cause |
 | --- | --- |
 | `R_invalidParameterNumber` | A nonnumeric token appeared where the driver expected an error number or a timing parameter, or `retryTimings` contained more than one comma. |
-| `R_InvalidRuleFormat` | The rule had more than 3 colon-separated sections, or 0 sections after the braces were stripped. |
+| `R_InvalidRuleFormat` | The rule had more than 3 colon-separated sections. |
 | `R_InvalidRetryInterval` | A statement rule's computed wait time exceeds `queryTimeout`. Shorten the wait or raise `queryTimeout`. |
 | `R_PathInvalid` or `R_URLInvalid` | The driver couldn't resolve a path to look for `mssql-jdbc.properties`. |
 | `R_errorReadingStream` | I/O error while reading `mssql-jdbc.properties`. |
@@ -321,7 +326,7 @@ Things to check when a rule doesn't fire:
 
 ## Related content
 
-- [Connection resiliency](connection-resiliency.md)
-- [Understanding timeouts](understand-timeouts.md)
-- [Setting the connection properties](setting-the-connection-properties.md)
+- [Connection resiliency (JDBC)](connection-resiliency.md)
+- [Understanding timeout properties in the JDBC driver](understand-timeouts.md)
+- [Set the connection properties](setting-the-connection-properties.md)
 - [Diagnosing problems with the JDBC driver](diagnosing-problems-with-the-jdbc-driver.md)
