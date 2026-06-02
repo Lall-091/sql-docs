@@ -5,7 +5,7 @@ description: Learn about available connectivity libraries and best practices for
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: wiassaf, mathoma
-ms.date: 06/11/2025
+ms.date: 05/26/2026
 ms.service: azure-sql
 ms.subservice: development
 ms.topic: concept-article
@@ -28,7 +28,7 @@ You can use open-source tools like [cheetah](https://github.com/wunderlist/cheet
 
 ## Authentication
 
-Access to Azure SQL Database is protected with logins and firewalls. Azure SQL Database and SQL Managed Instance support users and logins for both SQL authentication and [authentication](authentication-aad-overview.md) with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)). Microsoft Entra logins are generally available in SQL Managed Instance and are in Public Preview for Azure SQL Database.
+Access to Azure SQL Database is protected with logins and firewalls. Azure SQL Database and SQL Managed Instance support users and logins for both SQL authentication and [authentication](authentication-aad-overview.md) with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)).
 
 Learn more about [managing database access and logins](logins-create-manage.md).
 
