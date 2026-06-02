@@ -150,7 +150,8 @@ This feature makes a local SQL Server container ideal for:
 
 ## Related content
 
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Database operations](mssql-database-operations.md)
 - [Schema Designer](mssql-schema-designer.md)

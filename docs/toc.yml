@@ -8951,40 +8951,58 @@ items:
       items:
       - name: Overview
         href: tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md
-      - name: Connect and query
-        href: tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md
+      - name: Connect to a database
+        href: tools/visual-studio-code-extensions/mssql/mssql-database-connections.md
+      - name: Run your first query
+        href: tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md
       - name: Features
         items:
         - name: GitHub Copilot for the MSSQL extension
           items:
           - name: Overview
             href: tools/visual-studio-code-extensions/github-copilot/overview.md
+          - name: How it works
+            href: tools/visual-studio-code-extensions/github-copilot/how-it-works.md
           - name: Limitations and known issues
             href: tools/visual-studio-code-extensions/github-copilot/limitations-and-known-issues.md
-          - name: Quickstarts
+          - name: Interaction modes
             items:
-            - name: Use Agent mode tools
+            - name: Chat with @mssql (ask mode)
+              href: tools/visual-studio-code-extensions/github-copilot/chat-ask-mode.md
+            - name: Use agent mode
               href: tools/visual-studio-code-extensions/github-copilot/agent-mode.md
+            - name: Use plan mode
+              href: tools/visual-studio-code-extensions/github-copilot/plan-mode.md
             - name: Use slash commands
               href: tools/visual-studio-code-extensions/github-copilot/slash-commands.md
-            - name: Generate data for testing and mocking
-              href: tools/visual-studio-code-extensions/github-copilot/test-and-mocking-data-generator.md
-            - name: Use the business logic explainer
-              href: tools/visual-studio-code-extensions/github-copilot/business-logic-explainer.md
+            - name: Inline completions
+              href: tools/visual-studio-code-extensions/github-copilot/inline-completions.md
+          - name: Configuration
+            items:
+            - name: Use custom instructions
+              href: tools/visual-studio-code-extensions/github-copilot/custom-instructions.md
+          - name: Feature quickstarts
+            items:
             - name: Generate code
               href: tools/visual-studio-code-extensions/github-copilot/code-generation.md
-            - name: Use GitHub Copilot inline and chat suggestions
-              href: tools/visual-studio-code-extensions/github-copilot/inline-copilot-suggestions.md
-            - name: Use the localization format helper
-              href: tools/visual-studio-code-extensions/github-copilot/localization-formatting-helper.md
+            - name: Schema Designer with GitHub Copilot scenarios
+              href: tools/visual-studio-code-extensions/github-copilot/schema-designer-scenarios.md
+            - name: Use the schema explorer (chat-based)
+              href: tools/visual-studio-code-extensions/github-copilot/schema-explorer-designer.md
+            - name: Use the smart query builder
+              href: tools/visual-studio-code-extensions/github-copilot/smart-query-builder.md
             - name: Use the query optimizer assistant
               href: tools/visual-studio-code-extensions/github-copilot/query-optimizer-assistant.md
-            - name: Use the schema explorer and designer
-              href: tools/visual-studio-code-extensions/github-copilot/schema-explorer-designer.md
+            - name: Use the business logic explainer
+              href: tools/visual-studio-code-extensions/github-copilot/business-logic-explainer.md
             - name: Use the security analyzer
               href: tools/visual-studio-code-extensions/github-copilot/security-analyzer.md
-            - name: Use smart query builder
-              href: tools/visual-studio-code-extensions/github-copilot/smart-query-builder.md
+            - name: Use the localization format helper
+              href: tools/visual-studio-code-extensions/github-copilot/localization-formatting-helper.md
+            - name: Generate data for testing and mocking
+              href: tools/visual-studio-code-extensions/github-copilot/test-and-mocking-data-generator.md
+          - name: Object-relational mapping integrations
+            href: tools/visual-studio-code-extensions/github-copilot/orm-integrations.md
         - name: Schema designer
           href: tools/visual-studio-code-extensions/mssql/mssql-schema-designer.md
         - name: Schema designer with GitHub Copilot
@@ -9001,6 +9019,8 @@ items:
           href: tools/visual-studio-code-extensions/mssql/mssql-query-profiler.md
         - name: SQL Notebooks
           href: tools/visual-studio-code-extensions/mssql/mssql-sql-notebooks.md
+        - name: Azure integration (Preview)
+          href: tools/visual-studio-code-extensions/mssql/mssql-azure-integration.md
         - name: Data-tier application
           href: tools/visual-studio-code-extensions/mssql/mssql-data-tier-application.md
         - name: Schema compare
@@ -9223,7 +9243,7 @@ items:
       - name: Connectivity libraries
         href: linux/sql-server-linux-develop-connectivity-libraries.md
       - name: Use Visual Studio Code
-        href: tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md
+        href: tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md
       - name: Use SSDT
         href: linux/sql-server-linux-develop-use-ssdt.md
     - name: Administration and management

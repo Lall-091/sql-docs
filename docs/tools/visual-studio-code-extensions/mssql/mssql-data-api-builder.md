@@ -4,7 +4,7 @@ description: Learn how to use the Data API builder integration in the MSSQL exte
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: yoleichen, roblescarlos
-ms.date: 03/13/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -13,14 +13,11 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# Data API builder (preview)
+# Data API builder
 
 The MSSQL extension for Visual Studio Code includes an integrated UI for [Data API builder](https://aka.ms/dab/), so you can create REST, GraphQL, and MCP endpoints for your SQL database tables without writing configuration files or leaving Visual Studio Code. You can select which tables to expose, configure CRUD permissions, choose API types, preview the generated configuration, and deploy a local backend powered by Data API builder, all from a visual interface.
 
 :::image type="content" source="media/mssql-data-api-builder/data-api-builder.png" alt-text="Screenshot of the Data API builder UI with entity list and CRUD checkboxes in Visual Studio Code." lightbox="media/mssql-data-api-builder/data-api-builder-configuration-view.png":::
-
-> [!TIP]  
-> Data API builder is currently in preview and might change based on feedback. Join the community at [GitHub Discussions](https://aka.ms/vscode-mssql-discussions) to share ideas or report issues.
 
 > [!IMPORTANT]  
 > This feature has known limitations, including SQL authentication-only support for container deployment and restricted data type compatibility. Review [Known limitations](#known-limitations) and [Known issues](#known-issues) before deploying.
@@ -29,8 +26,9 @@ The MSSQL extension for Visual Studio Code includes an integrated UI for [Data A
 
 Data API builder integration offers these capabilities:
 
-- Select database entities (tables) to expose as API endpoints, organized by schema with collapsible grouping.
+- Select database entities (tables) and individual columns to expose as API endpoints, organized by schema with collapsible grouping.
 - Configure Create, Read, Update, and Delete (CRUD) permissions independently for each entity.
+- Use column-level configuration to choose exactly which columns are included in the generated API.
 - Choose API types to generate: REST, GraphQL, MCP, or any combination.
 - Configure advanced entity settings including custom REST paths, custom GraphQL type names, and authorization roles.
 - Preview the generated Data API builder JSON configuration in a read-only Definition panel.
@@ -43,7 +41,7 @@ Data API builder integration offers these capabilities:
 Before you use Data API builder, ensure the following requirements are met:
 
 - The MSSQL extension for Visual Studio Code is installed. For installation steps, see the [MSSQL extension for Visual Studio Code](mssql-extension-visual-studio-code.md) overview.
-- An active database connection is established through the MSSQL extension. For connection steps, see [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md).
+- An active database connection is established through the MSSQL extension. For connection steps, see [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md).
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) is installed and running on your machine (required for local deployment).
 - (Optional) GitHub Copilot and GitHub Copilot Chat extensions are installed for AI-assisted entity configuration.
 
@@ -51,7 +49,7 @@ Before you use Data API builder, ensure the following requirements are met:
 
 You can open the Data API builder configuration view from two entry points:
 
-- **From the Object Explorer**: Right-click on a database node and select **Build Data API (Preview)...**.
+- **From the Object Explorer**: Right-click on a database node and select **Build Data API...**.
 
   :::image type="content" source="media/mssql-data-api-builder/data-api-builder-configuration-view.png" alt-text="Screenshot of the Data API builder configuration view with entity list and CRUD checkboxes in Visual Studio Code." lightbox="media/mssql-data-api-builder/data-api-builder-configuration-view.png":::
 
@@ -289,8 +287,8 @@ The following example shows GitHub Copilot enabling MCP endpoints for the Data A
 - [Data API builder documentation](/azure/data-api-builder)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Schema Designer](mssql-schema-designer.md)
-- [GitHub Copilot integration in Schema Designer (preview)](mssql-schema-designer-copilot.md)
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [GitHub Copilot integration in Schema Designer](mssql-schema-designer-copilot.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
 - [Local SQL Server container](mssql-local-container.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
 - [MSSQL extension for Visual Studio Code repository on GitHub](https://github.com/Microsoft/vscode-mssql)

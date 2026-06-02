@@ -55,7 +55,7 @@ Ubuntu 18.04 is supported in [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] 
 
 - Command-line configuration tool, [mssql-conf](sql-server-linux-configure-mssql-conf.md).
 - Unattended installation support with [environment variables](sql-server-linux-configure-environment-variables.md).
-- Cross-platform [SQL Server extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md).
+- Cross-platform [SQL Server extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md).
 - Cross-platform script generator, [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli/blob/dev/doc/usage_guide.md).
 - Cross-platform Dynamic Management View (DMV) monitor, [DBFS tool](https://github.com/Microsoft/dbfs).
 

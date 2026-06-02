@@ -5,7 +5,7 @@ description: Introduction to the GitHub Copilot integration with the MSSQL exten
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: roblescarlos
-ms.date: 03/13/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -89,21 +89,59 @@ GitHub Copilot for the MSSQL extension is designed for developers who work with 
 | **Solutions architect** | Design data-centric systems across services and environments. GitHub Copilot helps you visualize, validate, and prototype database interactions. |
 | **Database engineer** | Manage schema evolution, write T-SQL queries, and optimize performance. GitHub Copilot offers suggestions, explains code, and identifies potential optimizations. |
 
+## Choose a mode for your task
+
+GitHub Copilot offers several interaction modes. Use this table to pick the right one.
+
+| Task | Ask mode | Edit mode | Agent mode | Plan mode |
+| --- | --- | --- | --- | --- |
+| Explain a stored procedure | Recommended | No | Yes | No |
+| Generate a query for a schema | Recommended | No | Yes | No |
+| Refactor a query across multiple files | No | Recommended | Yes | No |
+| Add audit columns to every table and update related procedures | No | Yes | Recommended | Yes |
+| Design a full data model from a product requirements document | No | No | Yes | Recommended |
+| Connect, switch database, run query in chat | [Slash commands](slash-commands.md) | No | Recommended | No |
+| Design a schema visually with artificial intelligence assistance | [Schema Designer scenarios](schema-designer-scenarios.md) | No | No | No |
+
+For a deeper explanation of each mode, see [How GitHub Copilot works with the MSSQL extension](how-it-works.md).
+
+## Interaction surfaces
+
+Each surface has different schema awareness. Know which surface to use when you need schema-aware suggestions.
+
+| Surface | Provided by | Schema-aware? | Article |
+| --- | --- | --- | --- |
+| Chat participant (`@mssql`) | MSSQL extension | Yes (connected database) | [Chat with `@mssql` (ask mode)](chat-ask-mode.md) |
+| Agent mode tools | MSSQL extension contributes tools | Yes (via tool calls) | [Agent mode](agent-mode.md) |
+| Plan mode | Visual Studio Code | Yes (via `@mssql` context) | [Plan mode](plan-mode.md) |
+| Slash commands | MSSQL extension | Yes | [Slash commands](slash-commands.md) |
+| Inline completions (ghost text) | GitHub Copilot model directly | **No** | [Inline completions](inline-completions.md) |
+| Schema Designer canvas | Embedded GitHub Copilot | Yes | [Schema Designer scenarios](schema-designer-scenarios.md) |
+| Data API builder canvas | Embedded GitHub Copilot | Yes | [Data API builder](../mssql/mssql-data-api-builder.md) |
+
+Inline completions (ghost text in `.sql` files) **don't see your connected database schema**. For schema-aware SQL suggestions, use the [`@mssql` chat participant](chat-ask-mode.md). For the architectural reason, see [How GitHub Copilot works with the MSSQL extension](how-it-works.md).
+
 ## Features
 
-| Feature | Description |
-| --- | --- |
-| **Chat / inline Copilot suggestions** | Engage in natural language conversations with the `@mssql` chat participant or use inline completions for T-SQL or ORM code. Suggestions adapt based on your database schema and active files. |
-| **Schema explorer and designer** | Understand, design, and evolve your database schema using AI assistance. Supports object creation, relationships, and reverse engineering. |
-| **Schema Designer with GitHub Copilot** | Use natural language within the [Schema Designer interface](../mssql/mssql-schema-designer-copilot.md) to create, evolve, and review database schemas. GitHub Copilot drives the visual tool with live diagram and T-SQL updates, diff views, and artifact import. |
-| **Smart query builder** | Generate SQL and object-relational mapping (ORM) queries using filters, joins, groupings, and conditions, based on schema awareness and natural language prompts. |
-| **Code generation** | Scaffold database code, stored procedures, or ORM-based data access layers based on your current database schema and active files. GitHub Copilot generates patterns such as CRUD operations or access methods based on your development stack. |
-| **Query optimizer assistant** | Get suggestions for improving SQL query performance. GitHub Copilot can suggest indexing strategies, refactor joins, or identify inefficiencies in `WHERE` clauses. It also supports execution plan analysis for recommendations based on your query's actual execution context. |
-| **Business logic explainer** | Ask GitHub Copilot to explain what a stored procedure, view, or user-defined function does. Useful for understanding how business rules are implemented in T-SQL. |
-| **Security analyzer** | GitHub Copilot can identify patterns that might expose your code to SQL injection, overly permissive roles, or unencrypted sensitive data, and recommend safer alternatives. |
-| **Localization and formatting helper** | GitHub Copilot can suggest collation settings, Unicode usage, and query patterns for language-specific and region-specific requirements. |
-| **Test data generator** | Generate schema-aware sample data (via SQL `INSERT` statements or ORM seeders) for your development environment. GitHub Copilot can also infer schema from existing sample files (JSON, CSV, TXT) or generate themed test data. |
-| **Data API builder** | Configure REST, GraphQL, and MCP endpoints for your SQL database tables using an [integrated UI](../mssql/mssql-data-api-builder.md) with optional GitHub Copilot chat assistance for natural language entity configuration. |
+| Feature | Status | Description |
+| --- | --- | --- |
+| [Chat with `@mssql` (ask mode)](chat-ask-mode.md) | GA | Natural-language conversations with the `@mssql` chat participant. Schema-aware suggestions based on your connected database and active files. |
+| [Agent mode](agent-mode.md) | GA | Multi-step workflows where GitHub Copilot orchestrates MSSQL extension tools (connect, list databases, run query). Requires your approval on each tool invocation. |
+| [Plan mode](plan-mode.md) | GA | Reason about a data model before writing SQL data definition language. Pair with product requirements documents for spec-driven design. |
+| [Slash commands](slash-commands.md) | GA | Structured prompts for common tasks: connect, list databases, run query, show schema. Faster than typing a full natural-language prompt. |
+| [Inline completions](inline-completions.md) | GA | Ghost text while typing. Useful for common SQL patterns. Doesn't see your database schema. |
+| [Custom instructions](custom-instructions.md) | GA | Teach GitHub Copilot your team's Transact-SQL (T-SQL) conventions. Applies across ask, edit, agent, and inline completions. |
+| [Smart query builder](smart-query-builder.md) | GA | Generate SQL and object-relational mapping (ORM) queries from natural language with schema awareness. |
+| [Code generation](code-generation.md) | GA | Scaffold stored procedures, tables, and ORM data access code from your schema. |
+| [Query optimizer assistant](query-optimizer-assistant.md) | GA | Performance suggestions, indexing strategies, execution plan analysis. |
+| [Business logic explainer](business-logic-explainer.md) | GA | Natural-language explanations of stored procedures, views, and user-defined functions. |
+| [Security analyzer](security-analyzer.md) | GA | Detect SQL injection patterns, overly permissive roles, and unencrypted sensitive data. |
+| [Localization and formatting helper](localization-formatting-helper.md) | GA | Collation, Unicode, and region-specific query patterns. |
+| [Test data generator](test-and-mocking-data-generator.md) | GA | Generate realistic seed data and `INSERT` statements. |
+| [Schema Designer with GitHub Copilot](schema-designer-scenarios.md) | GA | Embedded artificial intelligence in the visual Schema Designer canvas. Create, evolve, and review schemas with live diagram updates. |
+| [Data API builder with GitHub Copilot](../mssql/mssql-data-api-builder.md) | GA | Configure REST, GraphQL, and Model Context Protocol (MCP) endpoints using natural language. |
+| [Schema explorer (chat-based)](schema-explorer-designer.md) | GA | Prompt-driven schema exploration, creation, and reverse engineering via `@mssql` chat. |
+| [Object-relational mapping integrations](orm-integrations.md) | GA | Reference for Entity Framework, Prisma, Sequelize, SQLAlchemy, Django ORM, TypeORM, Drizzle, and Dapper. |
 
 ## Prerequisites
 
@@ -158,7 +196,7 @@ For more information, see the official [Quickstart for GitHub Copilot in Visual 
 To get started with GitHub Copilot for the MSSQL extension, connect to a supported SQL Server or Azure SQL database from the **Connections** view in Visual Studio Code.
 
 > [!NOTE]  
-> For step-by-step instructions on how to create a new connection profile and connect to a database, see [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](../mssql/connect-database-visual-studio-code.md).
+> For step-by-step instructions on how to create a new connection profile and connect to a database, see [Connect to a database with the MSSQL extension for Visual Studio Code](../mssql/mssql-database-connections.md).
 
 ## Start chatting with your database
 
@@ -197,7 +235,7 @@ You can connect to a database in multiple ways:
 
 1. **Use slash commands**: Type `@mssql /connect` in the GitHub Copilot chat to quickly open the connection dialog. For more connection-related slash commands, see [Connection management slash commands](slash-commands.md#connection-management).
 
-1. **Use Agent Mode**: If you're using [Quickstart: Use GitHub Copilot Agent Mode](agent-mode.md), you can connect directly through natural language prompts without requiring a pre-established connection. For more information on how Agent Mode handles connections, see [How connection logic works](agent-mode.md#how-connection-logic-works).
+1. **Use Agent Mode**: If you're using [GitHub Copilot agent mode](agent-mode.md), you can connect directly through natural language prompts without requiring a pre-established connection. For more information on how Agent Mode handles connections, see [How connection logic works](agent-mode.md#how-connection-logic-works).
 
 :::image type="content" source="media/overview/vscode-copilot-connection-flow.gif" alt-text="Animation showing the complete flow of connecting to a database through the @mssql chat participant." lightbox="media/overview/vscode-copilot-connection-flow.gif":::
 
@@ -233,7 +271,7 @@ To switch to a different database while working, use one of the following option
 - **Agent Mode tools**: Use natural language prompts with Agent Mode to switch databases. For more information, see [Connection management in Agent Mode](agent-mode.md#connection-management).
 
   > [!NOTE]  
-  > When using [GitHub Copilot Agent Mode](agent-mode.md), you can connect to databases without requiring a pre-established connection. Agent Mode uses tools contributed by the MSSQL extension to handle connections through natural language prompts or chat variables like `#mssql_connect`. For details, see [How connection logic works](agent-mode.md#how-connection-logic-works).
+  > When using [GitHub Copilot agent mode](agent-mode.md), you can connect to databases without requiring a pre-established connection. Agent Mode uses tools contributed by the MSSQL extension to handle connections through natural language prompts or chat variables like `#mssql_connect`. For details, see [How connection logic works](agent-mode.md#how-connection-logic-works).
 
 GitHub Copilot detects your connection state and provides context-aware assistance whether you're connecting for the first time or switching between environments.
 
@@ -244,8 +282,8 @@ GitHub Copilot detects your connection state and provides context-aware assistan
 ## Related content
 
 - [Quickstart: Use GitHub Copilot slash commands](slash-commands.md)
-- [Quickstart: Use GitHub Copilot Agent Mode](agent-mode.md)
-- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [Quickstart: Use GitHub Copilot agent mode](agent-mode.md)
+- [Quickstart: Chat with the `@mssql` participant (ask mode)](chat-ask-mode.md)
 - [Quickstart: Generate code](code-generation.md)
 - [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
 - [Quickstart: Use the smart query builder](smart-query-builder.md)
@@ -254,6 +292,6 @@ GitHub Copilot detects your connection state and provides context-aware assistan
 - [Quickstart: Security analyzer](security-analyzer.md)
 - [Quickstart: Localization and formatting helper](localization-formatting-helper.md)
 - [Quickstart: Generate data for testing and mocking](test-and-mocking-data-generator.md)
-- [GitHub Copilot integration in Schema Designer (Preview)](../mssql/mssql-schema-designer-copilot.md)
-- [Data API builder (preview)](../mssql/mssql-data-api-builder.md)
+- [GitHub Copilot integration in Schema Designer](../mssql/mssql-schema-designer-copilot.md)
+- [Data API builder](../mssql/mssql-data-api-builder.md)
 - [Limitations and known issues](limitations-and-known-issues.md)

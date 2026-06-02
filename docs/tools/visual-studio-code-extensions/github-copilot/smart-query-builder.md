@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot's Query Building Assistant helps construct
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 01/19/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -19,7 +19,7 @@ ai-usage: ai-assisted
 
 # Quickstart: Use the smart query builder
 
-In this quickstart, you learn how the query building assistant helps you craft efficient, accurate, and secure queries using either raw SQL or your preferred ORM. Designed for both code-first and data-first developers, it enables faster generation of production-ready logic aligned with your connected database schema.
+In this quickstart, you learn how the query building assistant helps you craft efficient, accurate, and secure queries using either raw SQL or your preferred ORM (Object-Relational Mapping) framework. It supports both code-first and data-first workflows, generating production-ready logic aligned with your connected database schema.
 
 ## Get started
 
@@ -81,7 +81,7 @@ Using my current database, create a SQLAlchemy query to fetch customers along wi
 Using Prisma, generate a query that joins `SalesLT.Customer`, `SalesLT.SalesOrderHeader`, and `SalesLT.SalesOrderDetail` and calculates total revenue per customer.
 ```
 
-#### Return top ten customers by sales
+#### Return top 10 customers by sales
 
 ```copilot-prompt
 In Entity Framework, write a LINQ query that returns the top 10 customers by sales in the past year using the `SalesLT` schema.
@@ -146,7 +146,7 @@ Using SQLAlchemy and Pandas, create a report that identifies customers with decl
 ## Related content
 
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](overview.md)
-- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [Quickstart: Chat with the `@mssql` participant (ask mode)](chat-ask-mode.md)
 - [Quickstart: Generate code](code-generation.md)
 - [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
 - [Quickstart: Query optimizer assistant](query-optimizer-assistant.md)
