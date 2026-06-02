@@ -5,7 +5,7 @@ description: Overview of customer managed keys (CMK) support for transparent dat
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 06/25/2025
+ms.date: 06/02/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: concept-article
@@ -21,15 +21,13 @@ monikerRange: "=azuresql || =azuresql-db"
 This article describes transparent data encryption (TDE) with customer-managed keys at the database level for Azure SQL Database. 
 
 > [!NOTE]
-> Database Level TDE CMK is available for Azure SQL Database (all SQL Database editions). It is not available for Azure SQL Managed Instance, SQL Server on-premises, Azure VMs, and Azure Synapse Analytics (dedicated SQL pools (formerly SQL DW)).
-
-[!INCLUDE [entra-id](../includes/entra-id.md)]
+> Database level TDE CMK is available for Azure SQL Database (all SQL Database editions). It is not available for Azure SQL Managed Instance, SQL Server on-premises, Azure VMs, and Azure Synapse Analytics (dedicated SQL pools (formerly SQL DW)).
 
 ## Overview
 
-Azure SQL offers encryption at rest capability to customers through [transparent data encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption). Extending TDE with [customer-managed key (CMK)](transparent-data-encryption-byok-overview.md) enables data protection at rest where the TDE protector (the encryption key) is stored in an Azure Key Vault or Azure Managed HSM that encrypts the database encryption keys. TDE with CMK can be set at the server level, and is inherited by all encrypted databases associated with that server. You can also set the TDE protector as a customer-managed key individually for each database within the server. Any `Microsoft.Sql/servers/databases` resource with a valid, nonempty `encryptionProtector` property is configured with database level customer-managed keys.
+Azure SQL offers encryption at rest capability to customers through [transparent data encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption). Extending TDE with [customer-managed key (CMK)](transparent-data-encryption-byok-overview.md) enables data protection at rest where the TDE protector (the encryption key) is stored in an Azure Key Vault or Azure Managed HSM that encrypts the database encryption keys. TDE with CMK can be set at the server level, and is inherited by all encrypted databases associated with that server. You can also set the TDE protector as a customer-managed key individually for each database within the server. Any `Microsoft.Sql/servers/databases` resource with a valid, nonempty `encryptionProtector` property is configured with database level customer-managed keys. Customer-managed keys supports both asymmetric (RSA) and symmetric (AES) keys, depending on the selected key store.
 
-In this scenario, an asymmetric key that is stored in a customer-owned and customer-managed [Azure Key Vault](/azure/key-vault/general/security-features) or [Azure Managed HSM](/azure/key-vault/managed-hsm/overview) can be used individually for each database within a server to encrypt the database encryption key (DEK), called TDE protector. There's an option to add keys, remove keys, and change the user-assigned managed identity (UMI) for each database. For more information on identities, see [Managed identity types](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) in Azure.
+In this scenario, an asymmetric or symmetric key that is stored in a customer-owned and customer-managed [Azure Key Vault](/azure/key-vault/general/security-features) or [Azure Managed HSM](/azure/key-vault/managed-hsm/overview) can be used individually for each database within a server to encrypt the database encryption key (DEK), called TDE protector. There's an option to add keys, remove keys, and change the user-assigned managed identity (UMI) for each database. For more information on identities, see [Managed identity types](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) in Azure.
 
 The following functionality is available:
 
@@ -98,13 +96,61 @@ Logical server is configured with serviced-managed key (SMK) for TDE. A differen
 >
 > Although the revert operation is only supported if the logical server is configured with service-managed key when using TDE, a database configured with database level CMK can be restored to a server configured with CMK, provided the server has access to all the keys being used by the source database with a valid identity.
 
+Transparent Data Encryption with customer‑managed keys uses an external key, referred to as the TDE protector, stored in Azure Key Vault or Azure Managed HSM to protect the database encryption key (DEK).
+
+## Supported key types and sizes
+
+Depending on the Azure SQL offering and TDE configuration, the TDE protector can be backed by either asymmetric or symmetric keys stored in Azure Key Vault or Azure Key Vault Managed HSM.
+
+- Asymmetric keys (RSA or RSA HSM)
+  - Supported in Azure Key Vault and Azure Key Vault Managed HSM
+  - Supported key sizes: 2048‑bit and 3072‑bit
+  - Supported for Azure SQL Database, Azure SQL Managed Instance and Azure Synapse Analytics
+
+- Symmetric keys (AES)
+  - Supported in Azure Key Vault Managed HSM
+  - Supported key sizes: 128‑bit, 192‑bit, and 256‑bit
+  - Supported only for Azure SQL Database, currently in public preview. You may see this capability appear over time depending on your region and service deployment status. 
+
+> [!NOTE]
+> Transparent Data Encryption with symmetric keys (AES) are currently in preview. Preview features are released with limited capabilities, but are made available on a *preview* basis so customers can get early access and provide feedback. Preview features are subject to separate [supplemental preview terms](https://go.microsoft.com/fwlink/?linkid=2240967), and aren't subject to SLAs. Support is provided as best effort in certain cases. However, Microsoft Support is eager to get your feedback on the preview functionality, and might provide best effort support in certain cases. Preview features might have limited or restricted functionality, and might be available only in selected geographic areas.
+
+### Limitations for symmetric (AES) keys
+When using symmetric (AES) keys as the TDE protector, only keys stored in Azure Key Vault or Azure Key Vault Managed HSM are supported for ongoing key lifecycle operations. Customers can import a key from an on‑premises hardware security module (HSM) one time into Azure Key Vault or Azure Key Vault Managed HSM. After the initial import, all subsequent key lifecycle operations including point‑in‑time recovery, geo‑disaster recovery, and key revalidation must rely on the Azure Key Vault or Azure Key Vault Managed HSM infrastructure. Customers are responsible for maintaining local backups of imported keys to support recovery and revalidation scenarios. These limitations apply only to symmetric (AES) keys and do not apply to asymmetric (RSA) keys.
+
+### Key state and validity requirements
+
+- If a key activation date is specified, it must be set to a date and time in the past.
+- If a key expiration date is specified, it must be set to a date and time in the future.
+- The key must be in the *Enabled* state.
+
+### Key import requirements
+If you import an existing key into Azure Key Vault, the key must be provided in one of the following supported formats:
+
+- .pfx
+- .byok
+- .backup
+
+To import HSM-protected keys into Azure Managed HSM, see [Import HSM-protected keys to Managed HSM (BYOK)](/azure/key-vault/managed-hsm/hsm-protected-keys-byok).
+
 ## Azure Key vault and Azure Managed HSM - managed identity requirements
 
 The same requirements for configuring Azure Key Vault or Azure Managed HSM keys and managed identities, including key settings and permissions granted to the identity that apply to the server-level customer-managed key (CMK) feature also apply to the database-level CMK. For more information, see [Transparent Data Encryption (TDE) with CMK](transparent-data-encryption-byok-overview.md) and [Managed Identities with CMK](transparent-data-encryption-byok-identity.md).
 
 ## Key management
 
-Rotating the TDE protector for a database means to switch to a new asymmetric key that protects the database. Key rotation is an online operation and should only take a few seconds to complete. The operation only decrypts and re-encrypts the database encryption key, not the entire database. Once a valid user-assigned managed identity has been assigned to a database, rotating the key at the database level is a database CRUD operation that involves updating the encryption protector property of the database. [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) and the property `-EncryptionProtector` can be used to rotate keys. To create a new database configured with database level CMK, [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) can be used with the `-EncryptionProtector`, `-AssignIdentity`, and `-UserAssignedIdentityId` parameters.
+Rotating the TDE protector for a database means to switch to a new asymmetric key that protects the database. Key rotation is an online operation and should only take a few seconds to complete. The operation only decrypts and re-encrypts the database encryption key, not the entire database. 
+
+You can rotate the TDE protector by switching the configuration to use a new key stored in Azure Key Vault or Azure Key Vault Managed HSM. Depending on the Azure SQL offering and supported configuration, this can include:
+
+- Switching to a new key version of the same key
+- Switching to a different key
+- Switching between supported key types, such as asymmetric (RSA) and symmetric (AES) keys
+
+> [!NOTE]  
+> Transparent Data Encryption with symmetric keys (AES) is currently supported only for Azure SQL Database and is in public preview. You may see this capability appear over time depending on your region and service deployment status.
+
+Once a valid user-assigned managed identity has been assigned to a database, rotating the key at the database level is a database CRUD operation that involves updating the encryption protector property of the database. [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) and the property `-EncryptionProtector` can be used to rotate keys. To create a new database configured with database level CMK, [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) can be used with the `-EncryptionProtector`, `-AssignIdentity`, and `-UserAssignedIdentityId` parameters.
 
 New keys can be added and existing keys can be removed from the database using similar requests and modifying the keys property for the database resource. [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) with the parameter `-KeyList` and `-KeysToRemove` can be used for these operations. To retrieve the encryption protector, identity, and keys setting, [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) can be used. The Azure Resource Manager resource *Microsoft.Sql/servers/databases* by default only shows the TDE protector and managed identity configured on the database. To expand the full list of keys, other parameters like `-ExpandKeyList` are needed. Additionally, `-KeysFilter "current"` and a point in time value (for example, `2023-01-01`) can be used to retrieve the current keys used and keys used in the past at a specific point in time.
 
