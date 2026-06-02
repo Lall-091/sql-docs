@@ -66,6 +66,8 @@ To compare schemas, open the Schema Compare dialog box. Follow these steps:
 
 ## Apply changes
 
+After you review the comparison results, apply the selected changes to the target.
+
 1. Navigate through the object list, and make sure that you select the objects you want to apply changes to.
 
    :::image type="content" source="media/mssql-schema-compare/schema-compare-diff-view.png" alt-text="Screenshot of Viewing the list of schema differences in the Schema Compare." lightbox="media/mssql-schema-compare/schema-compare-diff-view.png":::
@@ -80,7 +82,8 @@ To compare schemas, open the Schema Compare dialog box. Follow these steps:
 
 ## Related content
 
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Schema Designer](mssql-schema-designer.md)
 - [Data-tier Application (DACPAC and BACPAC) import and export](mssql-data-tier-application.md)

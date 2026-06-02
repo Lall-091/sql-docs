@@ -4,7 +4,7 @@ description: Learn how to use the Schema Designer in the MSSQL extension for Vis
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: yoleichen, roblescarlos
-ms.date: 03/13/2026
+ms.date: 05/25/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -32,7 +32,7 @@ Schema designer offers these features:
 
 ## Open schema designer
 
-Right-click on the database in the object explorer and select **Design Schema** from the menu. This action opens the schema designer view, which then allows you to see the visual database diagram.
+Right-click on the database in the **Object Explorer** and select **Design Schema** from the menu. This action opens the schema designer view, where you can see the visual database diagram.
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-entry-point.png" alt-text="Screenshot of the entry point to open the schema designer in Visual Studio Code MSSQL extension.":::
 
@@ -112,7 +112,7 @@ Review the report carefully. Check the confirmation box to acknowledge and accep
 
 The Schema Designer supports GitHub Copilot for AI-assisted schema design. You can use natural language to create schemas, modify existing schemas, review changes through a diff view, and import external artifacts. Changes are reflected in the visual diagram and T-SQL script.
 
-For detailed instructions on using GitHub Copilot within the Schema Designer, see [GitHub Copilot integration in Schema Designer (preview)](mssql-schema-designer-copilot.md).
+For detailed instructions on using GitHub Copilot within the Schema Designer, see [GitHub Copilot integration in Schema Designer](mssql-schema-designer-copilot.md).
 
 ## Feedback and support
 
@@ -120,8 +120,9 @@ For detailed instructions on using GitHub Copilot within the Schema Designer, se
 
 ## Related content
 
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
-- [GitHub Copilot integration in Schema Designer (preview)](mssql-schema-designer-copilot.md)
+- [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
+- [GitHub Copilot integration in Schema Designer](mssql-schema-designer-copilot.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Schema Compare](mssql-schema-compare.md)
 - [Data-tier Application (DACPAC and BACPAC) import and export](mssql-data-tier-application.md)

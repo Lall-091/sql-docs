@@ -3,7 +3,7 @@ title: Develop Applications for SQL Server on Linux
 description: You can create applications that connect to and use SQL Server on Linux from various programming languages and popular web frameworks.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 05/25/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: get-started
@@ -55,7 +55,7 @@ See the following articles for more information:
 
 You can use the [mssql extension](https://aka.ms/mssql-marketplace) for [Visual Studio Code](https://code.visualstudio.com) on Linux, macOS, and Windows. For a step-by-step walkthrough, see the following tutorial:
 
-- [SQL Server extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md)
+- [SQL Server extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md)
 
 You can also use command-line tools that are native for Linux. These tools include the following:
 
@@ -65,6 +65,6 @@ You can also use command-line tools that are native for Linux. These tools inclu
 
 ## Related content
 
-- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md)
 - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
 - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)

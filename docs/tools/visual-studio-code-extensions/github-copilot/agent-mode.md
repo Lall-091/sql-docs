@@ -5,7 +5,7 @@ description: Learn how to use GitHub Copilot Agent Mode with the MSSQL extension
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 01/19/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -17,18 +17,35 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Use GitHub Copilot Agent Mode
+# Quickstart: Use GitHub Copilot agent mode
 
-Agent Mode allows GitHub Copilot to use the tools available in the MSSQL extension for Visual Studio Code. When the extension is installed and active, Copilot can list SQL Server connections, connect to a server and database, and retrieve database metadata.
+Agent mode lets GitHub Copilot orchestrate the tools contributed by the MSSQL extension for Visual Studio Code. When the extension is installed and active, GitHub Copilot can list Microsoft SQL Server connections, connect to a server and database, retrieve schema metadata, and execute queries, all from natural-language prompts, with your approval on each action.
 
-All actions use the same connection context and credentials as the MSSQL extension. Agent Mode doesn't introduce additional authentication or permission changes.
+All actions use the same connection context and credentials as the MSSQL extension. Agent mode doesn't introduce another authentication or permission changes.
 
 > [!TIP]  
-> You don't need to reference the MSSQL extension (`@mssql`) explicitly when using Agent Mode. If the extension is active, its tools are available automatically. For more information, see [Agent Mode Tools](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
+> Use agent mode for multi-step workflows, exploration at scale, and delegated changes. Use [ask mode](chat-ask-mode.md) when you need a single answer or a one-shot query. Use [plan mode](plan-mode.md) when you need to reason about a design before writing Transact-SQL (T-SQL) data definition language (DDL).
 
-For details about how Agent Mode selects and executes tools, see the [Visual Studio Code documentation on Agent Mode](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
+## Key takeaways
 
-## What is Agent Mode?
+- Agent mode picks up MSSQL extension tools automatically. No `@mssql` mention required.
+- Every tool call requires your approval before execution.
+- Agent mode is *schema-aware* through its tools: each tool call returns real data from your connected database.
+- For architectural context across all surfaces, see [How GitHub Copilot works with the MSSQL extension](how-it-works.md).
+
+## When to use agent mode
+
+Agent mode is best for:
+
+- **Multi-step workflows.** "Connect to LocalDev, switch to AdventureWorks, then show me every table with a foreign key to Customer."
+- **Exploration at scale.** "Find any stored procedures that reference SalesOrderHeader and summarize what each one does."
+- **Delegated changes.** "Add audit columns to every table in the Sales schema and regenerate the related stored procedures."
+
+Use [ask mode](chat-ask-mode.md) when a single question or a one-shot query answers your need. Use [slash commands](slash-commands.md) when you already know which action you want. Use [plan mode](plan-mode.md) when you want a written plan before any changes.
+
+For details about how agent mode selects and executes tools, see the [Visual Studio Code documentation on agent mode](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
+
+## What is agent mode?
 
 Agent Mode lets GitHub Copilot perform SQL-related actions using the MSSQL extension, and user confirmation is required before execution.
 
@@ -109,7 +126,7 @@ When you connect by specifying a server and database:
 
   - GitHub Copilot reports an error.
 
-This flexible matching system allows GitHub Copilot to handle a range of connection scenarios. It minimizes user effort while ensuring secure, confirmable actions.
+This flexible matching system lets GitHub Copilot handle a range of connection scenarios. It minimizes user effort while ensuring secure, confirmable actions.
 
 ### Schema exploration
 
@@ -176,16 +193,98 @@ This confirmation step helps ensure secure, intentional interactions with your d
 > [!NOTE]  
 > For more information on how confirmation works across all tools in Agent Mode, see the [Visual Studio Code documentation on tool approvals](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
 
+## Agent mode prompt catalog
+
+Use these natural-language prompts to invoke MSSQL extension tools through agent mode. For each category, an equivalent [slash command](slash-commands.md) or [ask mode prompt](chat-ask-mode.md) is cross-referenced.
+
+### Connection management
+
+```copilot-prompt
+Connect to my LocalDev profile and set AdventureWorks as the active database.
+```
+
+```copilot-prompt
+List all my saved connection profiles and tell me which one I'm currently connected to.
+```
+
+```copilot-prompt
+Disconnect from my current database.
+```
+
+Equivalent slash commands: `/connect`, `/listServers`, `/changeDatabase`, `/disconnect`.
+
+### Schema exploration
+
+```copilot-prompt
+Show me every table in the SalesLT schema, grouped by whether they're
+referenced by a foreign key from another table.
+```
+
+```copilot-prompt
+Find all stored procedures that reference SalesLT.SalesOrderHeader and
+summarize what each one does in one sentence.
+```
+
+```copilot-prompt
+Which tables in the current database have no primary key?
+```
+
+Equivalents ask prompts: see [Chat with the `@mssql` participant](chat-ask-mode.md#list-or-explore-objects-in-your-database-schema).
+
+### Query execution
+
+```copilot-prompt
+Run a query to count the number of active customers in SalesLT.Customer,
+then show me the top 10 by order total.
+```
+
+```copilot-prompt
+Show me the execution plan for this query: SELECT ... FROM ...
+```
+
+```copilot-prompt
+Execute the last query I ran against my Dev database instead.
+```
+
+### Multi-step workflows
+
+```copilot-prompt
+Connect to LocalDev, switch to AdventureWorks, list all tables with a
+foreign key to SalesLT.Customer, and save the list to a file called
+customer-dependents.md.
+```
+
+```copilot-prompt
+Find every stored procedure that uses dynamic SQL and open each one
+in a new editor tab so I can review them.
+```
+
+### Delegated schema changes
+
+> [!NOTE]  
+> Schema changes are good candidates to run through [plan mode](plan-mode.md) first. Plan the changes, review them, then hand the plan to agent mode for execution.
+
+```copilot-prompt
+Add createdAt and updatedAt audit columns to every table in the Sales
+schema that doesn't already have them. Use DATETIME2(7) with a default
+of GETUTCDATE().
+```
+
+```copilot-prompt
+Regenerate every stored procedure that inserts into SalesLT.Customer
+to include the new email column.
+```
+
 ## Related content
 
-- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [How GitHub Copilot works with the MSSQL extension](how-it-works.md)
+- [Quickstart: Chat with the `@mssql` participant (ask mode)](chat-ask-mode.md)
+- [Quickstart: Use plan mode for spec-driven database design](plan-mode.md)
 - [Quickstart: Use GitHub Copilot slash commands](slash-commands.md)
+- [Quickstart: Use custom instructions to align GitHub Copilot with your T-SQL conventions](custom-instructions.md)
 - [Quickstart: Generate code](code-generation.md)
-- [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
+- [Quickstart: Design schemas visually with embedded GitHub Copilot scenarios](schema-designer-scenarios.md)
 - [Quickstart: Use the smart query builder](smart-query-builder.md)
 - [Quickstart: Query optimizer assistant](query-optimizer-assistant.md)
-- [Quickstart: Use the business logic explainer](business-logic-explainer.md)
-- [Quickstart: Security analyzer](security-analyzer.md)
-- [Quickstart: Localization and formatting helper](localization-formatting-helper.md)
-- [Quickstart: Generate data for testing and mocking](test-and-mocking-data-generator.md)
+- [Object-relational mapping integrations with GitHub Copilot](orm-integrations.md)
 - [Limitations and known issues](limitations-and-known-issues.md)

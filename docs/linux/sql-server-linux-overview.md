@@ -85,7 +85,7 @@ After installation, connect to the [!INCLUDE [ssnoversion-md](../includes/ssnove
 | Tool | Tutorial |
 | --- | --- |
 | **[sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md)** | [Connect to SQL Server with sqlcmd](../tools/sqlcmd/sqlcmd-connect-database-engine.md) |
-| **[MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)** | [Connect to and query a database with the MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md) |
+| **[MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)** | [Connect to and query a database with the MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md) |
 | **[SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)** | [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md) |
 | **[SQL Server Data Tools (SSDT)](../ssdt/sql-server-data-tools.md)** | [Use Visual Studio to create databases for SQL Server on Linux](sql-server-linux-develop-use-ssdt.md) |
 

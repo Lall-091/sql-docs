@@ -5,7 +5,7 @@ description: Learn how to use GitHub Copilot slash commands with the MSSQL exten
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 01/19/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -175,8 +175,8 @@ You can use both approaches together. Slash commands speed up prompt entry, and 
 
 ## Related content
 
-- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
-- [Quickstart: Use GitHub Copilot Agent Mode](agent-mode.md)
+- [Quickstart: Chat with the `@mssql` participant (ask mode)](chat-ask-mode.md)
+- [Quickstart: Use GitHub Copilot agent mode](agent-mode.md)
 - [Quickstart: Generate code](code-generation.md)
 - [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
 - [Quickstart: Use the smart query builder](smart-query-builder.md)

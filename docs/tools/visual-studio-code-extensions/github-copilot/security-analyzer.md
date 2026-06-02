@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot helps developers identify and address comm
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 01/19/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -69,7 +69,7 @@ Review the stored procedure `SalesLT.uspGetCustomerOrderHistory` in my current d
 ```copilot-prompt
 Review the `SalesLT.uspGetCustomerOrderHistory_Insecure` stored procedure. Identify any potential security issues in the implementation and then provide a revised version of the stored procedure that addresses these concerns without explicitly listing security best practices.
 
-You can use the following T-SQL to create the stored procedure:
+You can use the following Transact-SQL (T-SQL) to create the stored procedure:
 
 CREATE OR ALTER PROCEDURE [SalesLT].[uspGetCustomerOrderHistory_Insecure]
 @CustomerID NVARCHAR (50)
@@ -89,31 +89,31 @@ Beyond SQL injection, many database applications expose sensitive data or rely o
 
 GitHub Copilot can assist by providing guidance on encrypting connections, protecting or masking personal data, and following secure authentication and authorization practices across various development stacks.
 
-#### Sensitive data storage example
+#### Example: Sensitive data storage
 
 ```copilot-prompt
 Recommend secure methods for storing sensitive data in the `SalesLT.Address` table.
 ```
 
-#### Masking personal data example
+#### Example: Personal data masking
 
 ```copilot-prompt
 What are the best strategies or built-in features in my database for masking personal data in the `SalesLT.Customer` table?
 ```
 
-#### Enforce encryption in Entity Framework Core example
+#### Example: Enforce encryption in Entity Framework Core
 
 ```copilot-prompt
 How can I configure my connection string in Entity Framework Core to enforce encryption and avoid exposing credentials?
 ```
 
-#### Microsoft Entra ID in Node.js authentication example
+#### Example: Microsoft Entra ID in Node.js authentication
 
 ```copilot-prompt
 In a Prisma or Node.js environment, how can I securely use Microsoft Entra ID authentication or managed identity with SQL Server instead of storing passwords?
 ```
 
-#### Recommend SQL Server options for securing data example
+#### Example: Recommend SQL Server options for securing data
 
 ```copilot-prompt
 What SQL Server options should I enable or verify (for example, Always Encrypted, Transparent Data Encryption) to protect customer data when using object-relational mapping (ORM) frameworks like Sequelize or EF Core?
@@ -126,7 +126,7 @@ What SQL Server options should I enable or verify (for example, Always Encrypted
 ## Related content
 
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](overview.md)
-- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [Quickstart: Chat with the `@mssql` participant (ask mode)](chat-ask-mode.md)
 - [Quickstart: Generate code](code-generation.md)
 - [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
 - [Quickstart: Use the smart query builder](smart-query-builder.md)
