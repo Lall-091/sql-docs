@@ -3,18 +3,19 @@ title: SqlPackage Extract
 description: Learn how to automate database development tasks with SqlPackage Extract. View examples and available parameters, properties, and SQLCMD variables.
 author: dzsquared
 ms.author: drskwier
-ms.reviewer: maghan
-ms.date: 04/15/2025
+ms.reviewer: randolphwest
+ms.date: 06/03/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: reference
 ms.collection:
   - data-tools
-ms.custom: sfi-ropc-blocked
+ms.custom:
+  - sfi-ropc-blocked
 ---
 
 # SqlPackage Extract parameters and properties
-The SqlPackage Extract action creates a schema of a connected database in a DACPAC file (.dacpac). By default, data isn't included in the .dacpac file. To include data, utilize the [Export action](sqlpackage-export.md) or use the Extract properties *ExtractAllTableData*/*TableData*. 
+The SqlPackage Extract action reverse-engineers a schema of a connected database to a DACPAC file (`.dacpac`) or a SQL project (`.sqlproj` and `.sql` files). By default, data isn't included in the `.dacpac` file. To include data with the database schema, use the Extract properties `ExtractAllTableData` or `TableData`, or create a `.bacpac` file with the [Export action](sqlpackage-export.md).
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
 
@@ -36,9 +37,9 @@ SqlPackage /Action:Extract {parameters} {properties}
 SqlPackage /Action:Extract /TargetFile:{filename}.dacpac /DiagnosticsFile:{logFile}.log /p:ExtractAllTableData=false /p:VerifyExtraction=true \
     /SourceServerName:{serverFQDN} /SourceDatabaseName:{databaseName} /SourceUser:{username} /SourcePassword:{password}
 
-# example extract to create a .sql file containing the schema definition of the database
-SqlPackage /Action:Extract /TargetFile:{filename}.dacpac /DiagnosticsFile:{logFile}.log /SourceServerName:{serverFQDN} \
-    /SourceDatabaseName:{databaseName} /SourceUser:{username} /SourcePassword:{password} /p:ExtractTarget=File
+# example extract to create a .sqlproject containing the schema definition of the database
+SqlPackage /Action:Extract /TargetFile:{foldername} /DiagnosticsFile:{logFile}.log /SourceServerName:{serverFQDN} \
+    /SourceDatabaseName:{databaseName} /SourceUser:{username} /SourcePassword:{password} /p:ExtractTarget=SqlProject
 
 # example extract to create a .dacpac file with data connecting using SQL authentication
 SqlPackage /Action:Extract /TargetFile:{filename}.dacpac /DiagnosticsFile:{logFile}.log /p:ExtractAllTableData=true /p:VerifyExtraction=true \
@@ -128,7 +129,7 @@ SqlPackage /at:$($AccessToken_Object.Token) /Action:Extract /TargetFile:"C:\Adve
 |**/p:**|ExtractAllTableData=(BOOLEAN 'False')|Indicates whether data from all user tables is extracted. If 'true', data from all user tables is extracted, and you can't specify individual user tables for extracting data. If 'false', specify one or more user tables to extract data from.|
 |**/p:**|ExtractApplicationScopedObjectsOnly=(BOOLEAN 'True')|If true, only extract application-scoped objects for the specified source. If false, extract all objects for the specified source.|
 |**/p:**|ExtractReferencedServerScopedElements=(BOOLEAN 'True')|If true, extract login, server audit, and credential objects referenced by source database objects.|
-|**/p:**|ExtractTarget=({DacPac&#124;File&#124;Flat&#124;ObjectType&#124;Schema&#124;SchemaObjectType} 'DacPac')|Specifies alternative output formats of the database schema, default is 'DacPac' to output a `.dacpac` single file. Additional options output one or more `.sql` files organized by either 'SchemaObjectType' (files in folders for each schema and object type), 'Schema' (files in folders for each schema), 'ObjectType' (files in folders for each object type), 'Flat' (all files in the same folder), or 'File' (one single file).|
+|**/p:**|ExtractTarget=({DacPac&#124;File&#124;Flat&#124;ObjectType&#124;SqlProject&#124;Schema&#124;SchemaObjectType} 'DacPac')|Specifies alternative output formats of the database schema, default is 'DacPac' to output a `.dacpac` single file. 'SqlProject' outputs a [SQL project file](../sql-database-projects/sql-database-projects.md) (`.sqlproj`) that contains the database options in addition to `.sql` files for each of the database objects. Additional options output one or more `.sql` files organized by either 'SchemaObjectType' (files in folders for each schema and object type), 'Schema' (files in folders for each schema), 'ObjectType' (files in folders for each object type), 'Flat' (all files in the same folder), or 'File' (one single file).|
 |**/p:**|ExtractUsageProperties=(BOOLEAN 'False')|Specifies whether usage properties, such as table row count and index size, will be extracted from the database.|
 |**/p:**|HashObjectNamesInLogs=(BOOLEAN 'False')|Specifies whether to replace all object names in logs with a random hash value.|
 |**/p:**|IgnoreExtendedProperties=(BOOLEAN 'False')|Specifies whether extended properties should be ignored.|
