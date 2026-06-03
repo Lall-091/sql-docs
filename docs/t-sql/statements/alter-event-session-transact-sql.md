@@ -412,7 +412,7 @@ Specifies whether or not to start this event session automatically when the [!IN
 
 #### MAX_DURATION = { *time duration* { SECONDS | MINUTES | HOURS | DAYS } | UNLIMITED }
 
-**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)], [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] and later versions
+**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazure-sqlmi-autd](../../includes/applies-to-version/ssazure-sqlmi-autd.md)], [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] and later versions
 
 - UNLIMITED
 
