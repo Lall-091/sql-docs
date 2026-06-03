@@ -3,7 +3,7 @@ title: Failover Cluster Instances - SQL Server on Linux
 description: Concepts for SQL Server failover cluster instances on Linux include the clustering layer, number of instances, IP address and name, and shared storage.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
+ms.reviewer: amitkh, atsingh
 ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux

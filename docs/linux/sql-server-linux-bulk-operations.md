@@ -1,9 +1,9 @@
 ---
 title: Configure Bulk Import Operations for SQL Server on Linux
 description: Learn how to configure and use the bulkadmin server role or the ADMINISTER BULK OPERATIONS permission for bulk data import in SQL Server on Linux.
-author: VanMSFT
-ms.author: vanto
-ms.reviewer: matripathy, randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: matripathy, amitkh, atsingh
 ms.date: 03/20/2026
 ms.service: sql
 ms.subservice: linux

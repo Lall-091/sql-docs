@@ -3,7 +3,7 @@ title: Known Issues for SQL Server on Linux
 description: This article contains the known issues for SQL Server running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: amitkh, vanto
+ms.reviewer: amitkh, atsingh
 ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: linux

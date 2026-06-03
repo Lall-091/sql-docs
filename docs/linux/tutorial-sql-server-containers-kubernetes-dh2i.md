@@ -1,9 +1,9 @@
 ---
 title: Deploy Availability Groups with DH2i DxEnterprise on Kubernetes
 description: Set up an availability group in SQL Server on Kubernetes using DH2i DxEnterprise.
-author: amitkh-msft
-ms.author: amitkh
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh, atsingh
 ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux

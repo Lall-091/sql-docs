@@ -1,9 +1,9 @@
 ---
 title: Troubleshoot Active Directory Authentication for SQL Server on Linux and Containers
 description: Troubleshoot Active Directory authentication issues with SQL Server on Linux and containers, configuration tips, common errors. Includes Kerberos, keytabs, and DNS.
-author: amitkh-msft
-ms.author: amitkh
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh, atsingh
 ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
