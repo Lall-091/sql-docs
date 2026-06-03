@@ -1,9 +1,9 @@
 ---
 title: Examples to Configure Tempdb Space Resource Governance
 description: Use examples to learn how to configure tempdb space resource governance.
-author: dimitri-furman
-ms.author: dfurman
-ms.reviewer: randolphwest
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: dfurman, randolphwest
 ms.date: 06/10/2025
 ms.service: sql
 ms.topic: tutorial
