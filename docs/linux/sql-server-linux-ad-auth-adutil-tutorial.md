@@ -1,9 +1,9 @@
 ---
 title: Configure Active Directory Authentication with SQL Server on Linux Using adutil
 description: Step by step on how to configure Active Directory authentication with SQL Server on Linux using adutil
-author: amitkh-msft
-ms.author: amitkh
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh, atsingh
 ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux

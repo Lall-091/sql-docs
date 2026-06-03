@@ -5,7 +5,7 @@ description: Learn how to configure user-assigned managed identity and customer-
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 03/10/2026
+ms.date: 06/02/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -88,9 +88,9 @@ This how-to guide outlines the steps to create an [Azure SQL Database logical se
         > [!TIP]
         > **Using versioned and versionless Azure Key Vault keys for TDE**
         >
-        > When you set the TDE protector, you can reference an Azure Key Vault key using either a specific key version or a versionless key identifier.
+        > When setting the TDE protector, you can reference an Azure Key Vault key using either a specific key version or a versionless key identifier.
         >
-        > In both cases, Azure SQL Database always resolves and uses the latest enabled version of the key in Azure Key Vault or Azure Key Vault Managed HSM. Use versionless key identifiers to avoid embedding a specific key version in the TDE protector configuration.
+        > In both cases, Azure SQL Database always resolves and uses the latest enabled version of the key in Azure Key Vault or Azure Key Vault Managed HSM. Versionless key identifiers can be used to avoid embedding a specific key version in the TDE protector configuration.
         >
         > Versionless key identifiers are currently supported only for Azure SQL Database.
         >
@@ -99,10 +99,10 @@ This how-to guide outlines the steps to create an [Azure SQL Database logical se
         > 
         >     `https://<key-vault-name>.vault.azure.net/keys/<key-name>/<key-version>`
         > 
-        > - Versionless key identifier
+        >- Versionless key identifier
         >
         >     `https://<key-vault-name>.vault.azure.net/keys/<key-name>`
-    
+
     :::image type="content" source="media/transparent-data-encryption-byok-create-server/configure-tde-for-server.png" alt-text="Screenshot of configuring TDE for the server in Azure SQL.":::
 
     :::image type="content" source="media/transparent-data-encryption-byok-create-server/select-key-for-tde.png" alt-text="Screenshot selecting key for use with TDE.":::

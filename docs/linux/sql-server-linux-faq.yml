@@ -4,6 +4,7 @@ metadata:
    description: This article provides answers to frequently asked questions (FAQ) about SQL Server running on Linux.
    author: rwestMSFT
    ms.author: randolphwest
+   ms.reviewer: amitkh, atsingh
    ms.date: 07/11/2025
    ms.topic: concept-article
    ms.service: sql

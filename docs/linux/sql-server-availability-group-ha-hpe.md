@@ -1,9 +1,9 @@
 ---
 title: "Deploy Availability Group with HPE Serviceguard"
 description: Use HPE Serviceguard as the cluster manager to achieve high availability with an availability group on SQL Server on Linux
-author: amitkh-msft
-ms.author: amitkh
-ms.reviewer: randolphwest, maghan
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh, atsingh, maghan
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux

@@ -3,7 +3,7 @@ title: Availability Group Deployment Patterns - SQL Server on Linux
 description: Learn supported deployment configurations for SQL Server Always on availability groups on Linux servers.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
+ms.reviewer: amitkh, atsingh
 ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: linux
