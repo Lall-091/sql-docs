@@ -70,7 +70,7 @@ In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazu
 
 When the event data produced by a session is voluminous, time-bound event sessions help you capture smaller, targeted diagnostic data for specific durations of time. You can start a time-bound event session manually or using a scheduled job at the time of your choice and with a guarantee that the session won't be left running indefinitely.
 
-To make an event session time-bound, specify the `MAX_DURATION` argument when creating or modifying the session. For more information, see [CREATE EVENT SESSION](../../t-sql/statements/create-event-session-transact-sql.md#max_duration---time-duration--seconds--minutes--hours--days---unlimited-) and [ALTER EVENT SESSION](../../t-sql/statements/alter-event-session-transact-sql.md).
+To make an event session time-bound, specify the `MAX_DURATION` argument when creating or modifying the session. For more information, see [CREATE EVENT SESSION](../../t-sql/statements/create-event-session-transact-sql.md#max_duration---time-duration--seconds--minutes--hours--days---unlimited-) and [ALTER EVENT SESSION](../../t-sql/statements/alter-event-session-transact-sql.md#max_duration---time-duration--seconds--minutes--hours--days---unlimited-).
 
 Just like any event session, you can stop a time-bound session before its maximum duration time elapses using the `ALTER EVENT SESSION ... STATE = STOP` statement. If the session is started again, the entire time duration specified by `MAX_DURATION` must elapse again before the session is stopped automatically.
 
