@@ -3,7 +3,7 @@ title: "sys.database_event_sessions"
 description: The sys.database_event_sessions dynamic management view (DMV) lists all the database-scoped event session definitions that exist in the current database.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/29/2025
+ms.date: 07/03/2026
 ms.service: azure-sql-database
 ms.topic: "reference"
 ms.custom:
@@ -33,6 +33,7 @@ The `sys.database_event_sessions` dynamic management view (DMV) lists all the da
 | `memory_partition_mode_desc` |**sysname**|The default is `NONE`. Is not nullable. Is one of:<br /><br /> `NONE`. A single set of buffers are created within a SQL Server instance.<br /><br /> PER_CPU. A set of buffers is created for each CPU.<br /><br /> `PER_NODE`. A set of buffers is created for each non-uniform memory access (NUMA) node.|  
 | `track_causality` |**bit**|Enable or disable causality tracking. If set to 1 (ON), tracking is enabled and related events on different server connections can be correlated. The default setting is 0 (OFF). Is not nullable.|  
 | `startup_state` |**bit**|Value determines whether or not session is started automatically when the server starts. The default is 0. Is not nullable. Is one of:<br /><br /> 0 (OFF). The session doesn't start when the server starts.<br /><br /> 1 (ON). The event session starts when the server starts.|  
+| `max_duration` | **bigint** | The value that determines the maximum duration of an event session once it's started, in seconds. Set to `0` when `MAX_DURATION` is not specified or is set to `UNLIMITED`. For more information, see [Time-bound event sessions](../extended-events/sql-server-extended-events-sessions.md#time-bound-event-sessions). |
 
 ## Permissions
 

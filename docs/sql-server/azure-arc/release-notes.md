@@ -4,7 +4,7 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: pochiraju
 ms.author: rajpo
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 05/19/2026
+ms.date: 06/03/2026
 ms.topic: release-notes
 ms.custom:
   - ignite-2025
@@ -67,6 +67,7 @@ This section lists the release notes by date, starting with the most recent rele
 
 | Date of release | Extension version |
 | --- | --- |
+| [May 2026](#may-2026) |`1.1.3428.422`|
 | [April 2026](#april-2026) |`1.1.3394.392`|
 | [February 2026](#february-2026) |`1.1.3348.364`|
 | [January 2026](#january-2026) | `1.1.3307.355` (no longer available) |
@@ -87,6 +88,10 @@ This section lists the release notes by date, starting with the most recent rele
 | [January 2025](#january-2025) | `1.1.2914.231` |
 | [November 2024](#november-2024) | `1.1.2859.223` |
 | [October 2024](#october-2024) | `1.1.2830.214` |
+
+### May 2026
+
+**Extension version**: `1.1.3428.422`
 
 ### April 2026
 

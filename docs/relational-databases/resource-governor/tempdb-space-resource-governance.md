@@ -63,7 +63,13 @@ To view your `tempdb` configuration, see the [View tempdb data file configuratio
 
 When using percent limits, consider the following:
 
-- If you set `GROUP_MAX_TEMPDB_DATA_PERCENT` and execute the [ALTER RESOURCE GOVERNOR RECONFIGURE](../../t-sql/statements/alter-resource-governor-transact-sql.md) statement, but the data file configuration doesn't meet the requirements, the statement completes successfully and the percent limits are stored, but they aren't enforced. In this case, you receive warning message 10989, severity 10, "*GROUP_MAX_TEMPDB_DATA_PERCENT is not in effect because tempdb configuration requirements aren't met." The message is also logged in the error log.
+- If you set `GROUP_MAX_TEMPDB_DATA_PERCENT` and execute the [ALTER RESOURCE GOVERNOR RECONFIGURE](../../t-sql/statements/alter-resource-governor-transact-sql.md) statement, but the data file configuration doesn't meet the requirements, the statement completes successfully and the percent limits are stored, but they aren't enforced. In this case, you receive warning message 10989, severity 10, which is also logged in the error log:
+
+  ```output
+  GROUP_MAX_TEMPDB_DATA_PERCENT is not in effect because tempdb
+  configuration requirements aren't met.
+  ```
+
 - To make the percent limits effective, reconfigure `tempdb` data files to meet the requirements and execute `ALTER RESOURCE GOVERNOR RECONFIGURE` again. For more information about configuring `SIZE`, `FILEGROWTH`, and `MAXSIZE`, see [ALTER DATABASE File and Filegroup Options](../../t-sql/statements/alter-database-transact-sql-file-and-filegroup-options.md).
 - If a percent limit is in effect, and you add, remove, or resize `tempdb` data files, you must execute `ALTER RESOURCE GOVERNOR RECONFIGURE` to update resource governor with the new maximum size of `tempdb` (100%).
 
@@ -79,7 +85,12 @@ This section describes `tempdb` space resource governance in detail.
 
 - As data pages in `tempdb` are allocated and deallocated, resource governor keeps the accounting of the `tempdb` space consumed by each workload group.
 
-    If resource governor is enabled and a `tempdb` space consumption limit is set for a workload group, and a request (a query) running in the workload group attempts to bring the total `tempdb` space consumption by the group above the limit, the request is aborted with error 1138, severity 17, "Could not allocate a new page for database 'tempdb' because that would exceed the limit set for workload group 'workload-group-name'".
+  If resource governor is enabled and a `tempdb` space consumption limit is set for a workload group, and a request (a query) running in the workload group attempts to bring the total `tempdb` space consumption by the group above the limit, the request is aborted with error 1138, severity 17:
+
+  ```output
+  Could not allocate a new page for database 'tempdb' because that
+  would exceed the limit set for workload group 'workload-group-name'".
+  ```
 
     When a request is aborted with error 1138, the value in the `total_tempdb_data_limit_violation_count` column of the [sys.dm_resource_governor_workload_groups](../system-dynamic-management-views/sys-dm-resource-governor-workload-groups-transact-sql.md) dynamic management view (DMV) is incremented by one, and the `tempdb_data_workload_group_limit_reached` extended event fires.
 - Resource governor keeps track of all `tempdb` usage that can be attributed to a workload group, including temporary tables, variables (including table variables), table-valued parameters, nontemporary tables, cursors, and `tempdb` usage during query processing, such as spools, spills, worktables, and workfiles.
@@ -94,10 +105,10 @@ This section describes `tempdb` space resource governance in detail.
     >
     > You can create the classifier function and workload groups without setting any limits initially. Monitor `tempdb` usage by each group over time to establish representative usage patterns, and then set limits as required.
 
-- `Tempdb` usage by the version stores, including the persistent version store (PVS) when [accelerated database recovery (ADR)](../accelerated-database-recovery-concepts.md) is enabled in `tempdb`, isn't governed because row versions might be used by requests in multiple workload groups.
+- `tempdb` usage by the version stores, including the persistent version store (PVS) when [accelerated database recovery (ADR)](../accelerated-database-recovery-concepts.md) is enabled in `tempdb`, isn't governed because row versions might be used by requests in multiple workload groups.
 - Space consumption in `tempdb` is accounted as the number of 8-KB data pages used. Even if a page isn't filled with data fully, it adds 8 KB to the `tempdb` consumption by a workload group.
-- `Tempdb` space accounting is maintained for the lifetime of a workload group. If a workload group is dropped while global temporary tables or nontemporary tables with the data accounted to this workload group remain in `tempdb`, the space used by these tables isn't accounted under any other workload group.
-- `Tempdb` space resource governance controls the space in `tempdb` data files, but not disk space on the underlying volumes. Unless you pre-grow `tempdb` data files to their intended sizes, the space on the volume(s) where `tempdb` is located might be consumed by other files. If there is no remaining space for `tempdb` data files to grow, then `tempdb` might run out of space before any workload group limit on `tempdb` space consumption is reached.
+- `tempdb` space accounting is maintained for the lifetime of a workload group. If a workload group is dropped while global temporary tables or nontemporary tables with the data accounted to this workload group remain in `tempdb`, the space used by these tables isn't accounted under any other workload group.
+- `tempdb` space resource governance controls the space in `tempdb` data files, but not disk space on the underlying volumes. Unless you pre-grow `tempdb` data files to their intended sizes, the space on the volumes where `tempdb` is located might be consumed by other files. If there is no remaining space for `tempdb` data files to grow, then `tempdb` might run out of space before any workload group limit on `tempdb` space consumption is reached.
 - Space resource governance in `tempdb` applies to data files but not the transaction log file. To ensure that the transaction log in `tempdb` doesn't consume a large amount of space, enable [ADR](../accelerated-database-recovery-concepts.md) in `tempdb`.
 
 ### Differences with session-level space tracking
@@ -106,7 +117,7 @@ The [sys.dm_db_session_space_usage](../system-dynamic-management-views/sys-dm-db
 
 - Unlike `sys.dm_resource_governor_workload_groups`, `sys.dm_db_session_space_usage`:
     - Doesn't reflect `tempdb` space usage by the currently running tasks. Statistics in `sys.dm_db_session_space_usage` are updated when a task completes. Statistics in `sys.dm_resource_governor_workload_groups` are updated continuously.
-    - Doesn't track index allocation map (IAM) pages. For more information, see [Pages and extents architecture guide](../pages-and-extents-architecture-guide.md).
+  - Doesn't track index allocation map (IAM) pages. For more information, see [Page and extent architecture guide](../pages-and-extents-architecture-guide.md).
 - After rows are deleted, or when a table, index, or partition is dropped or truncated, the database engine deallocates the data pages. The deallocation might be synchronous or performed by an asynchronous background process. `sys.dm_resource_governor_workload_groups` reflects these page deallocations as they occur, even if the session that caused these deallocations was closed and is no longer present in `sys.dm_db_session_space_usage`.
 
 ## Best practices for tempdb space resource governance
@@ -132,13 +143,12 @@ The following query shows the current `tempdb` data file configuration:
 SELECT file_id,
        name,
        size * 8. / 1024 AS size_mb,
-       IIF(max_size = -1, NULL, max_size * 8. / 1024) AS maxsize_mb,
-       IIF(is_percent_growth = 0, growth * 8. / 1024, NULL) AS filegrowth_mb,
-       IIF(is_percent_growth = 1, growth, NULL) AS filegrowth_percent
+       IIF (max_size = -1, NULL, max_size * 8. / 1024) AS maxsize_mb,
+       IIF (is_percent_growth = 0, growth * 8. / 1024, NULL) AS filegrowth_mb,
+       IIF (is_percent_growth = 1, growth, NULL) AS filegrowth_percent
 FROM sys.master_files
 WHERE database_id = 2
-      AND
-      type_desc = 'ROWS';
+      AND type_desc = 'ROWS';
 ```
 
 For a given file in the result set:
@@ -159,27 +169,23 @@ If the `group_effective_limit_mb` column is `NULL`, it means one of the followin
 SELECT wg.group_id,
        wg.name,
        tf.tempdb_max_size_mb,
-       CASE WHEN wg.group_max_tempdb_data_mb IS NOT NULL
-            THEN wg.group_max_tempdb_data_mb
-            WHEN wg.group_max_tempdb_data_percent IS NOT NULL AND tf.tempdb_max_size_mb IS NOT NULL
-            THEN 0.01 * wg.group_max_tempdb_data_percent * tf.tempdb_max_size_mb
-            ELSE NULL
-       END
-       AS group_effective_limit_mb
+       CASE
+           WHEN wg.group_max_tempdb_data_mb IS NOT NULL
+               THEN wg.group_max_tempdb_data_mb
+           WHEN wg.group_max_tempdb_data_percent IS NOT NULL AND tf.tempdb_max_size_mb IS NOT NULL
+               THEN 0.01 * wg.group_max_tempdb_data_percent * tf.tempdb_max_size_mb
+       ELSE NULL END AS group_effective_limit_mb
 FROM sys.resource_governor_workload_groups AS wg
 CROSS APPLY (
-            SELECT IIF(
-                      SUM(IIF(max_size <> -1 AND growth > 0, 1, 0)) = COUNT(1) /* autogrow up to the maxsize */
-                      OR
-                      SUM(IIF(max_size = -1 AND growth = 0, 1, 0)) = COUNT(1), /* pregrown and fixed */
-                      SUM(IIF(growth = 0, size, max_size)) * 8 / 1024.,
-                      NULL
-                      ) AS tempdb_max_size_mb
-            FROM sys.master_files
-            WHERE database_id = 2
-                  AND
-                  type_desc = 'ROWS'
-            ) AS tf;
+    SELECT IIF (SUM(IIF (max_size <> -1
+        AND growth > 0, 1, 0)) = COUNT(1) /* autogrow up to the maxsize */
+        OR SUM(IIF (max_size = -1
+        AND growth = 0, 1, 0)) = COUNT(1), /* pregrown and fixed */
+        SUM(IIF (growth = 0, size, max_size)) * 8 / 1024., NULL) AS tempdb_max_size_mb
+    FROM sys.master_files
+    WHERE database_id = 2
+        AND type_desc = 'ROWS'
+) AS tf;
 ```
 
 ## Next step

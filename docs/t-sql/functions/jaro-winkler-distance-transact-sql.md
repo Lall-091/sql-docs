@@ -12,12 +12,12 @@ ms.custom:
   - ignite-2025
 dev_langs:
   - TSQL
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb || >=sql-server-2016"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb || >=sql-server-2016 || =fabric"
 ---
 
 # JARO_WINKLER_DISTANCE (Transact-SQL) preview
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 [!INCLUDE [preview](../../includes/preview.md)]
 
