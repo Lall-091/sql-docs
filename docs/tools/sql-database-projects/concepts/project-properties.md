@@ -92,6 +92,7 @@ Some project properties are associated with database options that apply to only 
 | AutoClose | `AUTO_CLOSE` | Database settings, Operational, Auto close | False | {True&#124;False} |
 | AutoCreateStatistics | `AUTO_CREATE_STATISTICS` | Database settings, Operational, Auto create statistics | True | {True&#124;False} |
 | AutoCreateStatisticsIncremental | `AUTO_CREATE_STATISTICS` (`INCREMENTAL`) | Database settings, Operational, Auto create incremental | False | {True&#124;False} |
+| AutomaticIndexCompaction | `AUTOMATIC_INDEX_COMPACTION` | Database settings, Operational, Automatic index compaction | False | {True&#124;False} |
 | AutoShrink | `AUTO_SHRINK` | Database settings, Operational, Auto shrink | False | {True&#124;False} |
 | AutoUpdateStatistics | `AUTO_UPDATE_STATISTICS` | Database settings, Operational, Auto update statistics | True | {True&#124;False} |
 | AutoUpdateStatisticsAsynchronously | `AUTO_UPDATE_STATISTICS_ASYNC` | Database settings, Operational, Auto update statistics asynchronously | False | {True&#124;False} |
