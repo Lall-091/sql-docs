@@ -18,19 +18,15 @@ helpviewer_keywords:
   - "bcp utility [SQL Server], Microsoft Entra ID"
   - "Microsoft Entra ID, bcp"
   - "managed identity, bcp"
-monikerRange: ">=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb || =fabric"
+monikerRange: ">=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 # Authenticate with Microsoft Entra ID in bcp
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 The [bulk copy program utility (bcp)](bcp-utility.md) supports several Microsoft Entra ID authentication models when you connect to Azure SQL Database, Azure SQL Managed Instance, [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], Azure Synapse Analytics, or [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions.
 
 To check whether your installed **bcp** supports Microsoft Entra authentication, run `bcp --help` and verify that `-G` appears in the list of available arguments.
-
-> [!NOTE]  
-> - `bcp` is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
-> - `bcp` cannot import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 ## Platform restrictions
 
