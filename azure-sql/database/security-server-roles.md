@@ -17,8 +17,8 @@ ms.topic: concept-article
 
 This article describes fixed server-level roles in Azure SQL Database.
 
-> [!NOTE]  
-> The fixed server-level roles in this article are in public preview for Azure SQL Database. These server-level roles are also part of the release for [SQL Server 2022](/sql/relational-databases/security/authentication-access/server-level-roles#fixed-server-level-roles-introduced-in-sql-server-2022).
+> [!NOTE]
+> These server-level roles are also part of the release for [SQL Server 2022](/sql/relational-databases/security/authentication-access/server-level-roles#fixed-server-level-roles-introduced-in-sql-server-2022).
 
 ## Overview
 
