@@ -161,6 +161,8 @@ View the backups that are retained for a specific database with an LTR policy, a
 > [!NOTE]
 > If the logical server has been deleted, use Azure CLI or PowerShell commands to view and restore LTR backups.
 
+[!INCLUDE [hyperscale-cross-tier-restore-note](../includes/hyperscale-cross-tier-restore-note.md)]
+
 # [Portal](#tab/portal)
 
 <a id="delete-ltr-backups"></a>

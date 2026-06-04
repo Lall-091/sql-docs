@@ -122,6 +122,8 @@ You can configure long-term backup retention using the Azure portal and PowerShe
 
 When a restore request is initiated in the final seven days of the LTR retention period, the LTR backup is only deleted after the restore operation is completed, even if the retention period has expired. 
 
+[!INCLUDE [hyperscale-cross-tier-restore-note](../includes/hyperscale-cross-tier-restore-note.md)]
+
 
 In Azure SQL Managed Instance, you can use SQL Agent jobs to schedule [copy-only database backups](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=azuresqldb-mi-current&preserve-view=true) and move them to your own storage account as an alternative to: 
 - Keep backups for longer than 10 years. 
