@@ -24,18 +24,18 @@ zone_pivot_groups: sq1-sql-projects-tools
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-Database references in SQL projects enable you to incorporate objects that aren't included in a project by linking to another project, `.dacpac` file, or published NuGet package. The database objects added to a project can be part of the same database, a different database on the same server, or a different database on a different server. For SQL Server development, database references can be used to link to another database on the same server for three-part naming, or to link to a different database on a different server for cross-database queries. For databases with a large number of objects in distinct groups, database references can be used to break up a database into smaller, more manageable projects. Smaller project size can help to improve performance and reduce the time required to build a project during iterative local development.
+Database references in SQL projects enable you to incorporate objects that aren't included in a project by linking to another project, `.dacpac` file, or published NuGet package. The database objects you add to a project can be part of the same database, a different database on the same server, or a different database on a different server. For SQL Server development, use database references to link to another database on the same server for three-part naming, or to link to a different database on a different server for cross-database queries. For databases with a large number of objects in distinct groups, use database references to break up a database into smaller, more manageable projects. Smaller project size can help improve performance and reduce the time required to build a project during iterative local development.
 
 :::image type="content" source="media/database-references/database-references.png" alt-text="Screenshot of Example of a SQL project referencing a dacpac, a nuget package, and a project for database references." lightbox="media/database-references/database-references.png":::
 
 > [!NOTE]  
-> Project references and NuGet package references are the recommended methods for database references in new development. Referencing NuGet packages isn't supported by original SQL projects.
+> Use project references and NuGet package references for database references in new development. Original SQL projects don't support referencing NuGet packages.
 
 ## SQL project file sample and syntax
 
-Database references are included in a project through entries in the `.sqlproj` file, similar to C# projects. When a database reference is to a different database on the same server, a `<DatabaseSqlCmdVariable>` element is included in the project reference. When a database reference is to a different database on a different server, a `<ServerSqlCmdVariable>` element is also included in the project reference. Database references to the same database don't include `<ServerSqlCmdVariable>` or `<DatabaseSqlCmdVariable>` elements.
+Include database references in a project through entries in the `.sqlproj` file, similar to C# projects. Use SQLCMD syntax to reference the database name in SQL project objects. When a database reference points to a different database on the same server, include a `<DatabaseSqlCmdVariable>` element in the project reference. When a database reference points to a different database on a different server, also include a `<ServerSqlCmdVariable>` element in the project reference. Database references to the same database don't include `<ServerSqlCmdVariable>` or `<DatabaseSqlCmdVariable>` elements.
 
-Including a specific reference to the database reference in the SQL scripts use SQLCMD variables named in the project file to specify the database name. For example, the following SQL script references a table in the `Warehouse` database:
+To include a specific reference to the database reference in the SQL scripts, use SQLCMD variables named in the project file to specify the database name. For example, the following SQL script references a table in the `Warehouse` database:
 
 ```sql
 SELECT ProductId,
@@ -44,11 +44,33 @@ SELECT ProductId,
 FROM [$(Warehouse)].[Production].[ProductInventory];
 ```
 
-A database reference corresponding to the `$(Warehouse)` SQLCMD variable is included in the project file and contains `<DatabaseSqlCmdVariable>Warehouse</DatabaseSqlCmdVariable>`.
+The project file includes a database reference corresponding to the `$(Warehouse)` SQLCMD variable and contains `<DatabaseSqlCmdVariable>Warehouse</DatabaseSqlCmdVariable>`.
+
+### Same-database three-part naming
+
+When an object in a SQL project references another object in the same database, three-part naming isn't necessary even if the objects are included through a database reference. However, SQL projects incorporate an automatic SQLCMD variable for the database name, which you can use in SQL scripts to reference the project's database without hardcoding the name. If three-part naming is necessary, use `$(DatabaseName)` in your SQL scripts to reference the database. For example, the following SQL script references a table in the project's database:
+
+```sql
+UPDATE [$(DatabaseName)].[SalesLT].[Customer]
+SET [SalesPerson] = 'John Doe',
+    [ModifiedDate] = GETDATE()
+WHERE [CustomerId] = @CustomerId;
+```
+
+### Database literal values
+
+In some cases, you might need to use a literal (non-variable) value for the name of database from a database reference in your SQL objects. You can configure the `.sqlproj` file to specify a literal value for a database name instead of using a SQLCMD variable. The element used to specify a literal value is `<DatabaseLiteralValue>`. If you use this element, don't use the `<DatabaseSqlCmdVariable>` element. Inside the `<DatabaseLiteralValue>` element, you specify the literal value for the database name. For example, a database reference with `<DatabaseVariableLiteralValue>WarehouseDB</DatabaseVariableLiteralValue>` is used in a SQL script as follows:
+
+```sql
+SELECT ProductId,
+       StorageLocation,
+       BinNumber
+FROM [WarehouseDB].[Production].[ProductInventory];
+```
 
 ### Project references
 
-In this example, a project reference is added to a SQL project `AdventureWorksSalesLT.sqlproj` that is part of the same database.
+In this example, you add a project reference to a SQL project named `AdventureWorksSalesLT.sqlproj` that is part of the same database.
 
 ```xml
   <ItemGroup>
@@ -63,9 +85,9 @@ In this example, a project reference is added to a SQL project `AdventureWorksSa
 
 ### Dacpac package references
 
-More information on package references in SQL projects can be found in the [SQL projects package references](package-references.md) article.
+For more information about package references in SQL projects, see [SQL projects package references](package-references.md).
 
-A [package reference](package-references.md) to the `master` system database for SQL 2022 is shown in the following example:
+The following example shows a [package reference](package-references.md) to the `master` system database for SQL Server 2022:
 
 ```xml
   <ItemGroup>
@@ -75,9 +97,9 @@ A [package reference](package-references.md) to the `master` system database for
 
 ### Dacpac artifact references
 
-References to a `.dacpac` artifact file directly aren't recommended for new development in SDK-style projects. Instead, use [NuGet package references](package-references.md).
+Don't use direct references to a `.dacpac` artifact file for new development in SDK-style projects. Instead, use [NuGet package references](package-references.md).
 
-In original SQL projects, `.dacpac` file references are specified in the `.sqlproj` file with an `<ArtifactReference>` item. The following example shows a `.dacpac` artifact reference to a `.dacpac` file in a different project on the same server:
+In original SQL projects, you specify `.dacpac` file references in the `.sqlproj` file by using an `<ArtifactReference>` item. The following example shows a `.dacpac` artifact reference to a `.dacpac` file in a different project on the same server:
 
 ```xml
   <ItemGroup>
@@ -217,11 +239,11 @@ FROM [$(WWIServer)].[$(WorldWideImporters)].[Purchasing].[Suppliers]
 
 ### Build with project references
 
-Building a SQL project with database references might require extra configuration to ensure that the referenced objects are available during the build process. For example, if a project is being built in a continuous integration (CI) pipeline, the build agent environment needs to be set up similarly to the local development environment.
+Building a SQL project with database references might require extra configuration to ensure that the referenced objects are available during the build process. For example, if you're building a project in a continuous integration (CI) pipeline, you need to set up the build agent environment similarly to the local development environment.
 
 - `.dacpac` references in the SQL project require that the `.dacpac` be present on the build agent at the same relative file path as specified in the project file.
-- project references in the SQL project require that the referenced project must be present on the build agent at the same relative file path as specified in the project file and be able to build successfully on the build agent.
-- system database references created in original SQL projects in Visual Studio require that the build agent have Visual Studio installed.
+- Project references in the SQL project require that the referenced project be present on the build agent at the same relative file path as specified in the project file and be able to build successfully on the build agent.
+- System database references created in original SQL projects in Visual Studio require that the build agent have Visual Studio installed.
 - NuGet package references in the SQL project require the package be published to a NuGet feed that is also set as a package source for the build agent.
 
 ### Publish with project references
@@ -234,7 +256,7 @@ For database references to objects in the same database, the objects from the re
 sqlpackage /Action:Publish /SourceFile:AdventureWorks.dacpac /TargetConnectionString:{connection_string_here} /p:IncludeCompositeObjects=true
 ```
 
-When you deploy a `.dacpac` file with database references to different database (on same or different server), the SQLCMD variables specified in the project file must be set to the correct values for the target environment. Setting the SQLCMD variable values during deployment is done with the `/v` option in the [SqlPackage](../../sqlpackage/sqlpackage-publish.md#sqlcmd-variables) command line tool. For example, the following command sets the `WorldWideImporters` variable to `WorldWideImporters` and the `WWIServer` variable to `localhost`:
+When you deploy a `.dacpac` file with database references to different database (on same or different server), set the SQLCMD variables specified in the project file to the correct values for the target environment. Set the SQLCMD variable values during deployment by using the `/v` option in the [SqlPackage](../../sqlpackage/sqlpackage-publish.md#sqlcmd-variables) command line tool. For example, the following command sets the `WorldWideImporters` variable to `WorldWideImporters` and the `WWIServer` variable to `localhost`:
 
 ```bash
 sqlpackage /Action:Publish /SourceFile:AdventureWorks.dacpac /TargetConnectionString:{connection_string_here} /v:WorldWideImporters=WorldWideImporters /v:WWIServer=localhost
