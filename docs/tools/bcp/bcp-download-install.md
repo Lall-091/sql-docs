@@ -18,13 +18,17 @@ helpviewer_keywords:
   - "bcp utility [SQL Server], install"
   - "command prompt utilities [SQL Server], bcp"
   - "Microsoft Command Line Utilities for SQL Server"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb || =fabric"
 ---
 # Download and install the bcp utility
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 The [bulk copy program utility (bcp)](bcp-utility.md) bulk copies data between an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and a data file in a user-specified format.
+
+> [!NOTE]  
+> - `bcp` is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
+> - `bcp` cannot import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 For detailed information about using **bcp** with Azure Synapse Analytics, see [Load data with bcp](/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp).
 
