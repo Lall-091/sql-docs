@@ -83,7 +83,7 @@ The following table describes serverless support based on purchasing model, serv
 
 ### Scaling responsiveness
 
-Serverless databases are run on machines with sufficient capacity to satisfy resource demand without interruption for any amount of compute requested within limits set by the maximum vCore configuration.  In general, CPU scale-up to the maximum vCores configured is nearly instantaneous and occurs without any connectivity disruption.  Occasionally, scale-up can take longer if machine resources need to be rebalanced which can take up to a few minutes.  The database remains online during rebalancing except at the end of the operation when connections are briefly dropped, but this kind of rebalancing is rare.  In all cases, CPU scale-up is independent of memory scale-up.
+Serverless databases run on infrastructure with enough capacity to satisfy resource demand without interruption for any amount of compute requested within limits set by the maximum vCore configuration. In general, CPU scale-up to the maximum vCores configured is nearly instantaneous and occurs without any connectivity disruption. Occasionally, scale-up can take longer if machine resources need to be rebalanced, which can take up to a few minutes. The database remains online during rebalancing except at the end of the operation when connections are briefly dropped. This kind of rebalancing is rare. In all cases, CPU scale-up is independent of memory scale-up.
 
 ### Memory management
 
