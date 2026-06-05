@@ -4,7 +4,7 @@ description: "Learn about the properties that you can set for SQL database proje
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: randolphwest
-ms.date: 02/19/2025
+ms.date: 06/04/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -16,7 +16,7 @@ ms.collection:
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-In addition to the contents of the individual `.sql` files, SQL database projects contain properties that define the project's behavior and database-level settings. These properties are stored in the `.sqlproj` file and can be set by editing the `.sqlproj` file directly. Some SQL projects tools, such as Visual Studio and VS Code, provide access to edit a few or many of the project properties in a graphical user interface. This article provides an overview of the properties that you can set for SQL database projects.
+In addition to the contents of the individual `.sql` files, SQL database projects contain properties that define the project's behavior and database-level settings. The `.sqlproj` file stores these properties. You can set these properties by editing the `.sqlproj` file directly. Some SQL projects tools, such as Visual Studio and VS Code, provide access to edit a few or many of the project properties in a graphical user interface. This article provides an overview of the properties that you can set for SQL database projects.
 
 Commonly used SQL projects properties include:
 
@@ -25,20 +25,21 @@ Commonly used SQL projects properties include:
 - [DacApplicationName and DacVersion](#data-tier-application-properties)
 - [Default schema](#default-schema)
 - [TreatTSqlWarningsAsErrors](#t-sql-warnings)
+- [SDK update warnings](#sdk-update-warnings)
 
 ## Disable database options changes
 
-During SQL project publish, changes to the database options are scripted based on the values defined in the project properties and default project values. To prevent the database options from being modified during publish, using a tool like [SqlPackage CLI](../../sqlpackage/sqlpackage-publish.md) or Visual Studio, set the publish property to `ScriptDatabaseOptions` to false. This setting can also be incorporated in a publish profile.
+During SQL project publish, the process scripts changes to the database options based on the values defined in the project properties and default project values. To prevent the database options from being modified during publish, set the `ScriptDatabaseOptions` publish property to `false` by using a tool like [SqlPackage CLI](../../sqlpackage/sqlpackage-publish.md) or Visual Studio. You can also incorporate this setting in a publish profile.
 
 ## Common project properties
 
-The [target platform](target-platform.md) property specifies the version of SQL Server that the project targets. The `DSP` property is used to set the target platform for the SQL project. More information on the target platform can be found in the [target platform](target-platform.md) article.
+The [target platform](target-platform.md) property specifies the version of SQL Server that the project targets. Use the `DSP` property to set the target platform for the SQL project. For more information, see the [target platform](target-platform.md) article.
 
-Code analysis can dramatically improve the continuous integration and deployment process by catching potential issues early in the development lifecycle. Learn more about enabling code analysis and including custom rules in the [SQL code analysis](sql-code-analysis/sql-code-analysis.md) article.
+Code analysis can dramatically improve the continuous integration and deployment process by catching potential problems early in the development lifecycle. For more information about enabling code analysis and including custom rules, see the [SQL code analysis](sql-code-analysis/sql-code-analysis.md) article.
 
 ### Data-tier application properties
 
-The following properties are used to define the data-tier application (DAC) that is created when the SQL project is built.
+Use the following properties to define the data-tier application (DAC) that you create when you build the SQL project.
 
 - **DacApplicationName**: The name of the data-tier application `.dacpac`. The default value is the project name.
 - **DacDescription**: An optional description of the data-tier application `.dacpac`.
@@ -46,13 +47,17 @@ The following properties are used to define the data-tier application (DAC) that
 
 ### Default schema
 
-The `DefaultSchema` property sets the default schema for the SQL project. This property applies to 1-part named objects. The default value is `dbo`.
+The `DefaultSchema` property sets the default schema for the SQL project. This property applies to one-part named objects. The default value is `dbo`.
 
 ### T-SQL warnings
 
 The `SuppressTSqlWarnings` and `TreatTSqlWarningsAsErrors` properties control how T-SQL warnings are handled during project build. The `SuppressTSqlWarnings` property suppresses T-SQL warnings during project build, specified as a comma-separated list of error numbers.
 
 The `TreatTSqlWarningsAsErrors` property treats T-SQL warnings as errors, causing any T-SQL warnings to fail the build. The default value for `TreatTSqlWarningsAsErrors` is `False`.
+
+### SDK update warnings
+
+The Microsoft.Build.Sql project SDK automatically checks for new versions of the SDK during project build and displays a warning if a newer version is available. Keeping projects up to date with the latest SDK ensures that you have access to the newest features and improvements, including bug fixes and syntax additions. To disable this behavior, set the `SkipCheckForNewSDKVersion` property to `true`.
 
 ## Example usage of project properties
 
@@ -61,7 +66,7 @@ The following example shows how to set the `CompatibilityMode`, `IsChangeTrackin
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build">
-  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0-rc1" />
+  <Sdk Name="Microsoft.Build.Sql" Version="2.2.0" />
   <PropertyGroup>
     <Name>AdventureWorks</Name>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
@@ -155,6 +160,7 @@ Some project properties are associated with database options that apply to only 
 | Recovery | `RECOVERY` | Database settings, Operational, Recovery | FULL | {FULL&#124;SIMPLE&#124;BULK_LOGGED} |
 | RecursiveTriggersEnabled | `RECURSIVE_TRIGGERS` | Database settings, Recursive triggers enabled | False | {True&#124;False} |
 | ServiceBrokerOption | `SERVICE_BROKER` | Database settings, Service broker options | DisableBroker | {DisableBroker&#124;EnableBroker&#124;NewBroker&#124;ErrorBrokerConversations} |
+| SkipCheckForNewSDKVersion | | Build settings, Skip check for new SDK version | False | {True&#124;False} |
 | SuppressTSqlWarnings | | Build settings, Suppress T-SQL warnings (comma-separated list of T-SQL warning codes) | | {string} |
 | TargetRecoveryTimePeriod | Database settings, Operational, target recovery time (seconds) | Specifies the frequency of indirect checkpoints on a per-database basis. | 60 | {integer} |
 | TargetRecoveryTimeUnit | | Database settings, Operational, target recovery time | SECONDS | {MINUTES&#124;SECONDS} |
