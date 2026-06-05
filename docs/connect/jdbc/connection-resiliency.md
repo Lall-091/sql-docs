@@ -1,5 +1,5 @@
 ---
-title: Connection Resiliency
+title: Connection resiliency
 description: Connection resiliency can transparently restore broken idle connections. This feature improves application behavior when the server closes idle connections.
 author: dlevy-msft-sql
 ms.author: dlevy
@@ -15,10 +15,10 @@ ai-usage: ai-assisted
 
 [!INCLUDE [Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]
 
-*Connection resiliency* lets the JDBC driver transparently restore a broken idle connection and retry the initial login if it fails. This article covers the two connection-string properties that control this behavior (`connectRetryCount` and `connectRetryInterval`) and the keepalive settings the driver uses to detect a dropped idle connection. Connection resiliency is available starting with Microsoft JDBC Driver 10.2.0 for SQL Server. Reconnecting a broken idle connection requires SQL Server 2014 or later, or Azure SQL Database.
+*Connection resiliency* lets the JDBC driver transparently restore a broken idle connection and retry the initial connection if it fails. This article covers the two connection-string properties that control this behavior (`connectRetryCount` and `connectRetryInterval`) and the keepalive settings the driver uses to detect a dropped idle connection. Connection resiliency is available starting with Microsoft JDBC Driver 10.2.0 for SQL Server. Reconnecting a broken idle connection requires SQL Server 2014 or later, or Azure SQL Database.
 
 > [!TIP]  
-> Connection resiliency only retries the **initial login** and **silently restores broken idle connections**. To automatically retry **failed statements** (for example, deadlock victim 1205 or lock timeout 1222), or to extend the login retry list with **custom error numbers** (for example, Azure SQL transient errors such as 40197 or 40613), use [Configurable retry logic](configurable-retry-logic.md). CRL is rule-based, you pick the errors and the backoff, and it works alongside the features in this article.
+> Connection resiliency only retries the **initial connection** and **silently restores broken idle connections**. To automatically retry **failed statements** (for example, deadlock victim 1205 or lock timeout 1222), or to extend the connection retry list with **custom error numbers** (for example, Azure SQL transient errors such as 40197 or 40613), use [Configurable retry logic](configurable-retry-logic.md). CRL is rule-based, you pick the errors and the backoff, and it works alongside the features in this article.
 
 ## How the JDBC driver retries
 
@@ -27,25 +27,25 @@ The JDBC driver provides three independent retry mechanisms. They work together,
 | Mechanism | What it does | Where to learn more |
 | --- | --- | --- |
 | Idle connection resiliency | Transparently restores a broken idle connection (for example, a pooled connection closed by the server or a load balancer). | [Detect broken idle connections](#detect-broken-idle-connections) (this article) |
-| Initial-login retry | Retries a failed initial login on a fixed schedule for a built-in list of transient errors. | [Retry initial connections](#retry-initial-connections) (this article) |
-| Configurable retry logic (CRL) | Rule-based retry for failed statements and for custom login error numbers. Introduced in Microsoft JDBC Driver 12.10. | [Configurable retry logic](configurable-retry-logic.md) |
+| Initial connection retry | Retries a failed initial connection on a fixed schedule for a built-in list of transient errors. | [Retry initial connections](#retry-initial-connections) (this article) |
+| Configurable retry logic (CRL) | Rule-based retry for failed statements and for custom error numbers. Introduced in Microsoft JDBC Driver 12.10. | [Configurable retry logic](configurable-retry-logic.md) |
 
 ## Retry initial connections
 
-The JDBC driver has two connection properties that control how often, and how long apart, the driver retries the initial connection. You can add them to the connection string or set them through data source properties.
+The JDBC driver includes two connection properties that control how often and how long the driver waits before retrying the initial connection. Add these properties to the connection string or set them through data source properties.
 
 | Keyword | Values | Default | Description |
 | --- | --- | --- | --- |
-| `connectRetryCount` | Integer between 0 and 255 (inclusive) | 1 | The maximum number of attempts to establish or reestablish a connection before giving up. By default, a single retry attempt is made. A value of `0` disables retry. |
+| `connectRetryCount` | Integer between 0 and 255 (inclusive) | 1 | The maximum number of attempts to establish or reestablish a connection before giving up. By default, the driver makes a single retry attempt. A value of `0` disables retry. |
 | `connectRetryInterval` | Integer between 1 and 60 (inclusive) | 10 | The time, in seconds, between connection retry attempts. The driver attempts to reconnect immediately when it detects a broken idle connection, then waits `connectRetryInterval` seconds before trying again. This property is ignored when `connectRetryCount` is `0`. |
 
 If `connectRetryCount * connectRetryInterval` is larger than `loginTimeout`, the driver stops attempting to connect once `loginTimeout` is reached. Otherwise, it continues until `connectRetryCount` is exhausted.
 
-These properties retry only the **built-in list of transient login errors**. For the full list of errors covered (4060, 40197, 40501, 40613, 49918-49920, and others), see [Built-in transient login error list](configurable-retry-logic.md#built-in-transient-login-error-list). To add custom login error numbers to this set, or replace it entirely, use `retryConn` in [Configurable retry logic](configurable-retry-logic.md). To retry failed statements, use `retryExec` in the same article.
+These properties retry only the **built-in list of transient connection errors**. For the full list of errors covered (4060, 40197, 40501, 40613, 49918-49920, and others), see [Built-in transient connection error list](configurable-retry-logic.md#built-in-transient-connection-error-list). To add custom error numbers to this set, or replace it entirely, use `retryConn` in [Configurable retry logic](configurable-retry-logic.md). To retry failed statements, use `retryExec` in the same article.
 
 ### Set the properties
 
-You can set `connectRetryCount` and `connectRetryInterval` in the JDBC URL, on a `Properties` object, or on a `SQLServerDataSource`.
+Set `connectRetryCount` and `connectRetryInterval` in the JDBC URL, on a `Properties` object, or on a `SQLServerDataSource`.
 
 In the JDBC URL:
 
@@ -53,9 +53,7 @@ In the JDBC URL:
 jdbc:sqlserver://server;databaseName=db;connectRetryCount=3;connectRetryInterval=10
 ```
 
-With a `Properties` object:
-
-The Java snippets in this article omit imports and class wrappers for brevity.
+With a `Properties` object. The Java snippets in this article omit imports and class wrappers for brevity.
 
 ```java
 Properties props = new Properties();
@@ -89,9 +87,9 @@ To detect broken idle connections, the driver relies on TCP keepalive packets at
 
 ## Limitations
 
-The driver can't restore a broken idle connection when any of the following are true:
+The driver can't restore a broken idle connection when any of the following conditions are true:
 
-- There's an open result set that hasn't been completely parsed or buffered.
+- There's an open result set that isn't completely parsed or buffered.
 - The connection switched databases against Azure SQL.
 - There's an open transaction.
 

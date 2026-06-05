@@ -27,7 +27,7 @@ The Microsoft Java Database Connectivity (JDBC) Driver for SQL Server is a Type 
 
 ## Production baseline for Azure SQL
 
-Use this snippet as a starting point for a production-oriented Azure SQL connection. It loads the server name and database name from application configuration, such as Azure App Service app settings, environment variables, or a config file, and sets the rest of the connection properties programmatically. The configuration combines Transport Layer Security (TLS), managed identity, login retries on transient failures, fast failover-group recovery, a longer login timeout to cover a first-touch failover, and configurable retry logic (CRL) for statements that hit Azure SQL throttling or mid-query failover.
+Use this snippet as a starting point for a production-oriented Azure SQL connection. It loads the server name and database name from application configuration, such as Azure App Service app settings, environment variables, or a config file, and sets the rest of the connection properties programmatically. The configuration combines Transport Layer Security (TLS), managed identity, connection retries on transient failures, fast failover-group recovery, a longer login timeout to cover a cold-start failover, and configurable retry logic (CRL) for statements that hit Azure SQL throttling or mid-query failover.
 
 For higher security and easier scale-out, keep connection information outside your code. In production, store connection information in your application's configuration system, and use Azure Key Vault for sensitive values and centrally managed connection settings. For more information, see [Securing connection strings](securing-connection-strings.md).
 
@@ -53,8 +53,8 @@ props.setProperty("encrypt", "true");
 props.setProperty("trustServerCertificate", "false");
 props.setProperty("authentication", "ActiveDirectoryManagedIdentity");
 props.setProperty("loginTimeout", "120");         // 90 is the minimum floor for this retry profile; 120 leaves practical failover margin
-props.setProperty("connectRetryCount", "5");     // retry transient login failures up to 5 times (default 1)
-props.setProperty("connectRetryInterval", "15"); // 15 seconds between login retries (default 10)
+props.setProperty("connectRetryCount", "5");     // retry transient connection failures up to 5 times (default 1)
+props.setProperty("connectRetryInterval", "15"); // 15 seconds between connection retries (default 10)
 props.setProperty("multiSubnetFailover", "true"); // recommended for any Azure SQL HA listener
 // props.setProperty("applicationIntent", "ReadOnly"); // uncomment to route to a readable secondary
 // Retry deadlocks and lock timeouts, plus Azure SQL throttling and mid-query failover.
@@ -73,7 +73,7 @@ This snippet is tuned for Azure SQL Database failover groups and Azure SQL Manag
 
 Set `multiSubnetFailover=true` only when you connect to a failover-group listener, availability group listener, or failover cluster instance endpoint. Using this property against endpoints that aren't high availability (HA) listeners can hurt performance and isn't supported. For more information, see [JDBC driver support for High Availability, disaster recovery](jdbc-driver-support-for-high-availability-disaster-recovery.md).
 
-The snippet doesn't set `retryConn` because the driver already retries the most common Azure SQL transient login errors (including 4060, 40197, 40501, 40613, 49918, 49919, 49920, 10928, and 10929) out of the box, gated by `connectRetryCount` and `connectRetryInterval`. For the full list, see [Built-in transient login error list](configurable-retry-logic.md#built-in-transient-login-error-list). Add `retryConn` with `+<errorNumber>` only when you need to extend the list with an error that isn't already covered, or set it to `<errorNumber>` (no leading `+`) to replace it. If you place the same value in a JDBC URL, wrap it as `retryConn={+<errorNumber>}` or `retryConn={<errorNumber>}`.
+The snippet doesn't set `retryConn` because the driver already retries the most common Azure SQL transient connection errors (including 4060, 40197, 40501, 40613, 49918, 49919, 49920, 10928, and 10929) out of the box, gated by `connectRetryCount` and `connectRetryInterval`. For the full list, see [Built-in transient connection error list](configurable-retry-logic.md#built-in-transient-connection-error-list). Add `retryConn` with `+<errorNumber>` only when you need to extend the list with an error that isn't already covered, or set it to `<errorNumber>` (no leading `+`) to replace it. If you place the same value in a JDBC URL, wrap it as `retryConn={+<errorNumber>}` or `retryConn={<errorNumber>}`.
 
 The `retryExec` property has two parts, written as `rule1;rule2` when you set it programmatically. If you place the same value in a JDBC URL, wrap each rule in braces as `{rule1};{rule2}`:
 
@@ -97,14 +97,15 @@ For the catalog of Azure SQL transient errors, see [Troubleshoot transient conne
 
 ## Key features
 
-- **Standards-based JDBC**: Type 4 driver that's JDBC 4.2 compliant, with partial JDBC 4.3 support.
+- **Standards-based JDBC**: Type 4 driver. The JRE 11+ build implements JDBC 4.2 plus the JDBC 4.3 request-boundary methods (`beginRequest`, `endRequest`) and `Statement` quoting helpers. JDBC 4.3 sharding APIs (`setShardingKey`, the `createConnectionBuilder` family) throw `SQLFeatureNotSupportedException`. The JRE 8 build implements JDBC 4.2. For the per-version breakdown and the full list of supported and unsupported 4.3 methods, see [Java and JDBC specification support](microsoft-jdbc-driver-for-sql-server-support-matrix.md#java-and-jdbc-specification-support).
 - **Wide platform support**: Runs on any platform with a supported Java Virtual Machine (JVM), including Windows, Linux, and macOS.
 - **Encrypted by default**: TLS-encrypted connections with `encrypt=true` as the default for current drivers.
 - **Microsoft Entra ID authentication**: Passwordless connections with managed identity, service principal, interactive, integrated, default credential chain, and access-token flows.
-- **Kerberos and NTLM**: Integrated authentication for on-premises Active Directory deployments.
+- **Kerberos**: Integrated authentication for on-premises Active Directory.
+- **NTLM**: Windows challenge/response authentication for nondomain or legacy scenarios.
 - **Always Encrypted**: Client-side encryption for sensitive columns, with optional secure enclaves for in-place operations.
 - **Bulk copy**: High-throughput inserts with the `SQLServerBulkCopy` API and batch-insert performance for `executeBatch`.
-- **Connection resiliency**: Built-in login retries for transient errors, plus opt-in configurable retry logic for statements and custom error numbers.
+- **Connection resiliency**: Built-in connection retries for transient errors, plus opt-in configurable retry logic for statements (`retryExec`) and a customizable connection error list (`retryConn`).
 - **Rich SQL Server data type support**: **datetimeoffset**, **sql_variant**, JSON, spatial, vector, table-valued parameters, and user-defined types.
 
 ## Get started
@@ -128,8 +129,8 @@ For the catalog of Azure SQL transient errors, see [Troubleshoot transient conne
 | [Setting the data source properties](setting-the-data-source-properties.md) | Configure `SQLServerDataSource` for use with JNDI and app servers. |
 | [Working with a connection](working-with-a-connection.md) | Open, reuse, and close connections correctly. |
 | [Using connection pooling](using-connection-pooling.md) | JNDI data sources and integration with external pools. |
-| [Connection resiliency](connection-resiliency.md) | Built-in login retries and broken-connection detection. |
-| [Configurable retry logic](configurable-retry-logic.md) | Retry failed statements and customize the login retry list with `retryExec` and `retryConn`. |
+| [Connection resiliency](connection-resiliency.md) | Built-in connection retries and broken-connection detection. |
+| [Configurable retry logic](configurable-retry-logic.md) | Retry failed statements with `retryExec` and customize the connection retry list with `retryConn`. |
 | [Understanding timeout properties in the JDBC driver](understand-timeouts.md) | `loginTimeout`, `queryTimeout`, socket timeouts, and how they interact. |
 | [Deploying the JDBC driver](deploying-the-jdbc-driver.md) | Package and deploy the driver with your application. |
 
