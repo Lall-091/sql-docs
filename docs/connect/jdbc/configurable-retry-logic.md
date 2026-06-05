@@ -1,6 +1,6 @@
 ---
-title: Configurable Retry Logic
-description: Use the JDBC driver's configurable retry logic (CRL) to automatically retry failed statements or login attempts based on SQL Server error numbers, with timing parameters you control.
+title: Configurable retry logic
+description: Use the JDBC driver's configurable retry logic (CRL) to automatically retry failed statements or connection attempts based on SQL Server error numbers, with timing parameters you control.
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: randolphwest
@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 
 Configurable retry logic (CRL) is a rule-based mechanism that automatically retries failed statements or initial connection attempts based on SQL Server error numbers that you choose, with timing parameters that you control. CRL was introduced in Microsoft JDBC Driver 12.10 for SQL Server.
 
-CRL is separate from [idle connection resiliency and the `connectRetryCount` / `connectRetryInterval` properties](connection-resiliency.md). Idle resiliency transparently recovers broken connections, and `connectRetryCount` retries the initial login on a fixed schedule for a built-in list of transient errors. CRL lets you decide *which* errors are retryable, *how many times*, and *how long* to wait between attempts. You can use all three mechanisms together.
+CRL is separate from [idle connection resiliency and the `connectRetryCount` / `connectRetryInterval` properties](connection-resiliency.md). Idle resiliency transparently recovers broken connections, and `connectRetryCount` retries the initial authentication on a fixed schedule for a built-in list of transient errors. CRL lets you decide *which* errors are retryable, *how many times*, and *how long* to wait between attempts. You can use all three mechanisms together.
 
 ## What CRL retries
 
@@ -26,15 +26,20 @@ CRL handles two distinct scenarios, each controlled by its own connection proper
 | Scenario | Property | When the retry runs | Triggered by |
 | --- | --- | --- | --- |
 | Statement execution failure | `retryExec` | While executing a statement (for example, `executeQuery`, `executeUpdate`, `execute`, or batch execution) | A `SQLServerException` whose error number matches a configured statement rule |
-| Initial connection or login failure | `retryConn` | Inside the driver's connect-retry loop (which is gated by `connectRetryCount` and `loginTimeout`) | A `SQLServerException` during login whose error number matches a configured connection rule, or by default, any transient error already covered by the built-in retry list |
+| Initial connection or authentication failure | `retryConn` | Inside the driver's connect-retry loop (which is gated by `connectRetryCount` and `loginTimeout`) | A `SQLServerException` during authentication whose error number matches a configured connection rule, or by default, any transient error already covered by the built-in retry list |
 
-For statements, only the failing command is retried. The driver doesn't reset the current transaction state, so design your rules around errors that leave the session usable, such as deadlock victim (1205), lock timeout (1222), or online-index errors.
+For statements, the driver retries only the failing command. The driver doesn't reset the current transaction state, so design your rules around errors that leave the session usable, such as deadlock victim (1205) or lock timeout (1222).
 
-For connections, CRL augments or replaces the driver's built-in list of transient login errors. See [Connection retry rules](#connection-retry-rules-retryconn) for the `+` prefix semantics.
+For connections, CRL augments or replaces the driver's built-in list of transient connection errors. See [Connection retry rules](#connection-retry-rules-retryconn) for the `+` prefix semantics.
 
 ## Enable CRL
 
-CRL is off by default. Both `retryExec` and `retryConn` are empty strings unless you set them. You can enable CRL through the JDBC URL, a `Properties` object, or a `SQLServerDataSource`.
+CRL has two layers:
+
+1. The connection-retry layer is on by default: as long as `connectRetryCount > 0` (the default is 1), the driver retries the [built-in transient connection error list](#built-in-transient-connection-error-list).
+1. The customization layer (your own `retryExec` and `retryConn` rules) is off by default. Both properties are empty strings unless you set them. You can set them through the JDBC URL, a `Properties` object, or a `SQLServerDataSource`. The driver strips the optional `{...}` wrappers in all three forms.
+
+Java snippets in this article omit imports and class wrappers for brevity.
 
 ### In the JDBC URL
 
@@ -42,21 +47,17 @@ Each rule (or the whole list of rules) must be wrapped in braces (`{...}`) becau
 
 ```text
 jdbc:sqlserver://server;databaseName=db;retryExec={1205,1222:3,2*2:select,update}
-jdbc:sqlserver://server;databaseName=db;retryConn={+<customLoginErrorNumber>}
+jdbc:sqlserver://server;databaseName=db;retryConn={+<customErrorNumber>}
 ```
 
 ### With a `Properties` object
-
-The driver strips the optional `{...}` wrappers either way:
-
-The Java snippets in this article omit imports and class wrappers for brevity.
 
 ```java
 Properties props = new Properties();
 props.setProperty("user", "...");
 props.setProperty("password", "...");
 props.setProperty("retryExec", "1205,1222:3,2*2:select,update");
-props.setProperty("retryConn", "+<customLoginErrorNumber>");
+props.setProperty("retryConn", "+<customErrorNumber>");
 Connection c = DriverManager.getConnection("jdbc:sqlserver://server;databaseName=db", props);
 ```
 
@@ -69,7 +70,7 @@ SQLServerDataSource ds = new SQLServerDataSource();
 ds.setServerName("server");
 ds.setDatabaseName("db");
 ds.setRetryExec("1205,1222:3,2*2:select,update");
-ds.setRetryConn("+<customLoginErrorNumber>");
+ds.setRetryConn("+<customErrorNumber>");
 ```
 
 ## Rule syntax
@@ -150,7 +151,7 @@ Listing several error numbers (for example, `1205,1222`) is shorthand. The drive
 
 ## Connection retry rules (`retryConn`)
 
-Connection rules participate in the existing connect-retry loop, which is **only active when `connectRetryCount > 0`** (the default is 1). The loop already retries a built-in list of transient login errors at `connectRetryInterval` seconds apart, up to `connectRetryCount` extra attempts, bounded by `loginTimeout`.
+Connection rules work with the existing connect-retry loop. This loop is **only active when `connectRetryCount > 0`** (the default is 1). The loop already retries a built-in list of transient connection errors at `connectRetryInterval` seconds apart, up to `connectRetryCount` extra attempts, and is bounded by `loginTimeout`.
 
 A connection rule supplies only an error number section. It has no timings or query filter:
 
@@ -169,50 +170,50 @@ The connect loop continues to use `connectRetryInterval` and `connectRetryCount`
 
 | Rule | Effect |
 | --- | --- |
-| `{+<customLoginErrorNumber>}` | Add a custom login error number to the built-in transient error list. |
-| `{+<customLoginError1>,<customLoginError2>}` | Add multiple custom login error numbers to the built-in transient error list. |
+| `{+<customErrorNumber>}` | Add a custom error number to the built-in transient error list. |
+| `{+<customError1>,<customError2>}` | Add multiple custom error numbers to the built-in transient error list. |
 | `{4060}` | Retry **only** error 4060. Built-in transient errors are no longer retried by CRL. |
 
 > [!NOTE]  
 > `retryConn` doesn't change `loginTimeout` semantics. The existing connect-retry loop still bounds total elapsed time and gives up early if the next `connectRetryInterval` would push elapsed time past `loginTimeout`.
 
-### Built-in transient login error list
+### Built-in transient connection error list
 
-The connect-retry loop already retries the following errors without any CRL configuration, as long as `connectRetryCount > 0`. Listing any of these in a `retryConn` rule with `+` is a no-op (they're already covered). Use a `retryConn` rule when you need to add an error that *isn't* in this list, or when you need to drop the list entirely with the no-`+` replace form.
+The connect-retry loop already retries the following errors without any CRL configuration, as long as `connectRetryCount > 0`. Listing any of these errors in a `retryConn` rule with `+` is a no-op (they're already covered). Use a `retryConn` rule when you need to add an error that *isn't* in this list, or when you need to drop the list entirely by using the no-`+` replace form.
 
 > [!NOTE]  
-> You don't need to append common Azure SQL transient login errors such as 40197, 40501, 40613, 49918, 49919, or 49920. The built-in list already retries them.
+> You don't need to append common Azure SQL transient connection errors such as 40197, 40501, 40613, 49918, 49919, or 49920. The built-in list already retries them.
 
-| Error | Description |
-| --- | --- |
-| 64 | A connection was successfully established with the server, but then an error occurred during the login process. |
-| 233 | The client was unable to establish a connection because of an error during connection initialization. |
-| 4060 | Cannot open database requested by the login. The login failed. |
-| 4221 | Login to read-secondary failed due to long wait on `HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING`. |
-| 10053 | A transport-level error has occurred when sending the request to the server (TCP existing connection forcibly closed). |
-| 10054 | A transport-level error has occurred when sending the request to the server (TCP existing connection forcibly closed). |
-| 10928 | Resource ID limit for the database has been reached. |
-| 10929 | Resource ID minimum guarantee, server currently too busy to support requests above the configured limit. |
-| 40020 | Embedded code from 40197 (failover or upgrade). |
-| 40143 | Embedded code from 40197 (failover or upgrade). |
-| 40166 | Embedded code from 40197 (failover or upgrade). |
-| 40197 | Service down due to software or hardware upgrade, hardware failure, or other failover. Embedded error codes include 40020, 40143, 40166, and 40540. |
-| 40501 | The service is currently busy. Retry the request. |
-| 40540 | Embedded code from 40197 (failover or upgrade). |
-| 40613 | Database on server is not currently available. Retry the connection. |
-| 42108 | Can't connect to the SQL pool because it's paused. |
-| 42109 | The SQL pool is warming up. |
-| 49918 | Cannot process request. Not enough resources to process request. |
-| 49919 | Cannot process create or update request. Too many create or update operations in progress for subscription. |
-| 49920 | Cannot process request. Too many operations in progress for subscription. |
+| Error | Message | Troubleshooting |
+| --- | --- | --- |
+| 64 | A connection was successfully established with the server, but then an error occurred during the login process. (provider: TCP Provider, error: 0 - The specified network name is no longer available.) | The TCP connection dropped mid-handshake. Not a credential failure. If it persists, check for client-side network instability, NIC offload bugs, or an intermediate device that drops half-established connections. |
+| 233 | The client was unable to establish a connection because of an error during connection initialization process before login. | Pre-login transport or TLS failure. The server commonly returns this when it can't accept the connection (resource exhaustion, max-connections reached, or an unsupported client). Not a credential failure. Verify server health, then check `loginTimeout`, TLS settings, and client/server TLS version compatibility. |
+| 4060 | Cannot open database *database_name* requested by the login. The login failed. | The login authenticated but couldn't open the requested database. Transient causes include the database being in transition (failover, restore, scale-up) or auto-paused. Persistent causes (database doesn't exist, login lacks access) won't be fixed by retry; check the database name, login mapping, and database state. |
+| 4221 | Login to read-secondary failed due to long wait on `HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING`. | The readable secondary couldn't accept the login because row versions are still missing from in-flight transactions when the replica was recycled. Mitigate by avoiding long write transactions on the primary; the retry usually succeeds once the primary commits or rolls back the open transactions. |
+| 10053 | A transport-level error has occurred when sending the request to the server. (provider: TCP Provider, error: 0 - An established connection was aborted by the software in your host machine.) | The *local* side aborted the connection (Windows Sockets `WSAECONNABORTED`). Often a keepalive failure or the local network stack tearing down an idle or half-open connection. Check client-side network health, OS keepalive timers, and any local firewall or VPN client. |
+| 10054 | A transport-level error has occurred when sending the request to the server. (provider: TCP Provider, error: 0 - An existing connection was forcibly closed by the remote host.) | The *remote* side sent a TCP reset (Windows Sockets `WSAECONNRESET`). Common causes: the peer process crashed, a firewall injected a reset, or the Azure SQL gateway closed an idle connection. For idle-reset patterns, enable TCP keepalive on the client or shorten the connection-pool idle timeout. |
+| 10928 | Resource ID: *N*. The *limit-type* limit for the database is *N* and has been reached. See `sys.dm_exec_sessions` for usage. | A resource governance limit on the database has been hit (sessions, workers, or requests). Identify the limit type from the message, then reduce concurrency, scale up the database, or shorten long-running operations holding the resource. |
+| 10929 | Resource ID: *N*. The *limit-type* minimum guarantee is *N*, maximum limit is *N* and the current usage for the database is *N*. However, the server is currently too busy to support requests greater than *N* for this database. | The database is over its minimum guarantee and the underlying server is throttling. Retry typically succeeds when neighbor load drops. Sustained occurrences indicate you need a higher service tier or a less noisy environment. |
+| 40020<br>40143<br>40166<br>40540 | Reported in the `Error code %d` slot of error 40197 during failover. | Sub-codes embedded in a 40197 failover message that some paths surface as the top-level error number. The driver lists each individually so it retries on either form. Treat them the same as 40197. |
+| 40197 | The service has encountered an error processing your request. Please try again. Error code *N*. | A software upgrade, hardware failure, or other failover event in Azure SQL. Reconnecting routes you to a healthy replica. The embedded error code identifies the failover type. Persistent occurrences should be reported with the session tracing ID. |
+| 40501 | The service is currently busy. Retry the request after 10 seconds. Incident ID: *guid*. Code: *N*. | Azure SQL engine throttling. The recommended floor is a 10-second backoff. Sustained throttling indicates you've exceeded the DTU/vCore allowance; scale up or reduce concurrency. |
+| 40613 | Database *database_name* on server *server_name* is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of *guid*. | The database is unavailable, usually mid-failover or briefly during a scale operation. Retry on a backoff; if it persists past a few minutes, capture the session tracing ID and open a support case. |
+| 42108 | Can not connect to the SQL pool since it is paused. Please resume the SQL pool and try again. | The dedicated SQL pool (Synapse) is in a paused state. Retry only helps if something resumes the pool in parallel. Resume the pool explicitly or schedule the workload after resume. |
+| 42109 | The SQL pool is warming up. Please try again. | The dedicated SQL pool is resuming. Retry on a backoff until it's online; warmup typically takes a few minutes. |
+| 49918 | Cannot process request. Not enough resources to process request. | The control plane couldn't allocate resources for the request right now. Retry on a backoff. Persistent occurrences indicate regional capacity pressure. |
+| 49919 | Cannot process create or update request. Too many create or update operations in progress for subscription *N*. | Subscription-level concurrency limit on management operations. Reduce parallel create/update calls or stagger them. |
+| 49920 | Cannot process request. Too many operations in progress for subscription *N*. | Subscription-level concurrency limit on operations in flight. Reduce parallelism or wait for in-flight operations to drain. |
 
-The list is sourced from [Azure SQL transient connection errors](/azure/azure-sql/database/troubleshoot-common-connectivity-issues) and the [.NET SqlClient transient error set](https://github.com/dotnet/SqlClient/blob/main/src/Microsoft.Data.SqlClient/src/Microsoft/Data/SqlClient/SqlInternalConnectionTds.cs). Statement-level errors (such as deadlock victim 1205 or lock-request timeout 1222) aren't in this list, because the connect-retry loop only fires during initial login. To retry those errors, use a `retryExec` rule.
+The driver's canonical list is the [`TransientError` enum in `SQLServerError.java`](https://github.com/microsoft/mssql-jdbc/blob/main/src/main/java/com/microsoft/sqlserver/jdbc/SQLServerError.java). Error message text is from [Azure SQL transient connection errors](/azure/azure-sql/database/troubleshoot-common-connectivity-issues). Statement-level errors (such as deadlock victim 1205 or lock-request timeout 1222) aren't in this list, because the connect-retry loop only fires during the initial connection. To retry those errors, use a `retryExec` rule.
 
 ## Load rules from a properties file
 
 If you don't set `retryExec` or `retryConn` on the connection, CRL looks for a file named `mssql-jdbc.properties` next to the driver JAR on the classpath. The file uses basic `key=value` parsing. Lines that start with `retryExec=` or `retryConn=` are picked up. Values use the same syntax described in this article, with `;` separating multiple rules.
 
-Use exact key names (`retryExec` and `retryConn`). Keys such as `retryExec2` aren't treated as aliases, and comment-prefixed lines aren't parsed as rule definitions.
+Use exact key names (`retryExec` and `retryConn`), with no leading whitespace. The file isn't parsed as a full Java properties file. The driver does a literal `startsWith` check on each line, so:
+
+- Lines that start with `#` or any other non-`retryExec`/`retryConn` prefix are ignored.
+- Lines whose key only starts with `retryExec` or `retryConn` (for example, `retryExec2=...`) are treated as the matching property and can produce parse errors. Don't introduce custom variants.
 
 Example `mssql-jdbc.properties`:
 
@@ -249,13 +250,13 @@ When a statement rule fires, the driver compares the next wait time against the 
 - The `queryTimeout` connection property defaults to `-1`, so by default the comparison is skipped and any wait is allowed.
 - Setting `queryTimeout=0` does **not** disable this check, because `0 >= 0` is true. Any `timeToWait > 0` raises `R_InvalidRetryInterval`.
 
-When you set `queryTimeout` to a positive value, keep `initialRetryTime + (retryCount - 1) * retryChange` (additive) or `initialRetryTime * retryChange^(retryCount-1)` (multiplicative) below it.
+When you set `queryTimeout` to a positive value, keep `initialRetryTime + (retryCount - 1) * retryChange` (additive) or `initialRetryTime * retryChange^(retryCount-1)` (multiplicative) value below it.
 
 ### Connection retries and `connectRetryCount` and `loginTimeout`
 
-`retryConn` doesn't by itself enable login retries. The existing properties remain in charge:
+`retryConn` doesn't by itself enable authentication retries. The existing properties remain in charge:
 
-- `connectRetryCount` (default 1, range 0-255) is the number of extra login attempts. Set it to `0` to disable login retries. `retryConn` has no effect when `connectRetryCount = 0`, because the driver throws on the first failure.
+- `connectRetryCount` (default 1, range 0-255) is the number of extra authentication attempts. Set it to `0` to disable authentication retries. `retryConn` has no effect when `connectRetryCount = 0`, because the driver throws on the first failure.
 - `connectRetryInterval` (default 10 seconds, range 1-60) is the wait between attempts. The first retry runs immediately.
 - `loginTimeout` is the overall bound. The driver gives up early if the next interval would push elapsed time past `loginTimeout`.
 
@@ -269,7 +270,7 @@ For more information, see [Connection resiliency (JDBC)](connection-resiliency.m
 jdbc:sqlserver://server;databaseName=db;retryExec={1205,1222:4,2*2:insert,update,delete,merge}
 ```
 
-Up to 4 retries for deadlock victim (1205) or lock timeout (1222), with backoff of 2, 4, 8, and 16 seconds, but only for write statements.
+Up to four retries for deadlock victim (1205) or lock timeout (1222), with backoff of 2, 4, 8, and 16 seconds, but only for write statements.
 
 ### Rerun schema creation under online operations
 
@@ -279,13 +280,13 @@ retryExec={2714:2,1+1};{3702:2,1+1}
 
 Retries error 2714 (`object already exists`) and 3702 (`cannot drop database currently in use`) twice each, with 1 and 2 second waits.
 
-### Add a custom login error to the transient-error list
+### Add a custom error to the transient-error list
 
 ```text
-retryConn={+<customLoginErrorNumber>}
+retryConn={+<customErrorNumber>}
 ```
 
-Adds a custom login error number that isn't already in the built-in list. If you append a built-in Azure SQL transient error such as 40197, 40501, 40613, 49918, 49919, or 49920, nothing changes because the driver already retries it.
+Adds a custom error number that isn't already in the built-in list. If you append a built-in Azure SQL transient error such as 40197, 40501, 40613, 49918, 49919, or 49920, nothing changes because the driver already retries it.
 
 ### Configure CRL through a properties file
 
@@ -293,7 +294,7 @@ Place `mssql-jdbc.properties` next to the driver JAR:
 
 ```properties
 retryExec=1205:3,5+5:select,update
-retryConn=+<customLoginErrorNumber>
+retryConn=+<customErrorNumber>
 ```
 
 Don't set `retryExec` or `retryConn` on the connection. The driver reads the rules from the file and rereads after each modification (checked once every 30 seconds).
@@ -315,6 +316,9 @@ Common configuration errors:
 | `R_InvalidRetryInterval` | A statement rule's computed wait time exceeds `queryTimeout`. Shorten the wait or raise `queryTimeout`. |
 | `R_PathInvalid` or `R_URLInvalid` | The driver couldn't resolve a path to look for `mssql-jdbc.properties`. |
 | `R_errorReadingStream` | I/O error while reading `mssql-jdbc.properties`. |
+
+> [!NOTE]  
+> The text of an `R_invalidParameterNumber` message reads *The parameter number {0} is not valid*, which is the same resource string the driver uses for prepared-statement parameter-binding errors. When CRL throws it, the offending value is your retry rule token (for example, an error number or timing element that isn't numeric), not a `PreparedStatement` parameter index.
 
 Things to check when a rule doesn't fire:
 
