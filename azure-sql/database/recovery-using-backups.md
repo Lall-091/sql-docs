@@ -47,6 +47,8 @@ When you're using the Standard or Premium service tier in the DTU purchasing mod
 
 For pricing details of extra storage, see the [SQL Database pricing page](https://azure.microsoft.com/pricing/details/sql-database/). If the actual amount of used space is less than the amount of storage included, you can avoid this extra cost by setting the maximum database size to the included amount.
 
+[!INCLUDE [hyperscale-cross-tier-restore-note](../includes/hyperscale-cross-tier-restore-note.md)]
+
 ## Recovery time
 
 Several factors affect the recovery time to restore a database through automated database backups:

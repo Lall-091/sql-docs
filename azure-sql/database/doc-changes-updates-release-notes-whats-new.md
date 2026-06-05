@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 05/20/2026
+ms.date: 06/05/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -39,6 +39,7 @@ The following table lists the features of Azure SQL Database that are currently 
 | Feature | Details |
 | --- | --- |
 | **160 and 192 vCore for Hyperscale Premium-series**|160 and 192 vCore options for Hyperscale Premium-series are now available as a preview offering, for both single Hyperscale databases and Hyperscale elastic pools. For more information, see [160 and 192 vCore offering for Hyperscale Premium Series](https://aka.ms/PRMS192vCores).|
+| **AES keys for transparent data encryption**| The TDE protector for Azure SQL Database can now be backed by symmetric (AES) keys stored in Azure Key Vault Managed HSM, in addition to asymmetric (RSA) keys. For more information, see [Customer-managed transparent data encryption](transparent-data-encryption-byok-overview.md). |
 | **Approximate or fuzzy string matching**| Check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that might be different because of character corruption. [What is fuzzy string matching?](/sql/relational-databases/fuzzy-string-match/overview)|
 | **Availability metric**| Availability is now a metric in the Azure Monitor metrics. Driven by a variety of user connection failures, you can [monitor and configure alerts on Azure SQL Database Availability](monitoring-metrics-alerts.md#availability-metric). |
 | **Automatic index compaction** | [Automatic index compaction](/sql/relational-databases/indexes/automatic-index-compaction) helps you reduce the consumption of storage space, disk I/O, memory, and improve workload performance without investing time and effort into index maintenance jobs. |
@@ -91,6 +92,13 @@ The following table lists features of Azure SQL Database that have been made gen
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Database documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### June 2026
+
+| Changes | Details |
+| --- | --- |
+| **AES keys for transparent data encryption (preview)** | The TDE protector for Azure SQL Database can now be backed by symmetric (AES) keys stored in Azure Key Vault Managed HSM, in addition to asymmetric (RSA) keys. This capability is in public preview. For more information, see [Customer-managed transparent data encryption](transparent-data-encryption-byok-overview.md). |
+| **Microsoft Entra server principals** | The ability to [create server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) in Azure SQL Database is now generally available. |
 
 ### May 2026
 
