@@ -117,6 +117,18 @@ For the best experience, use the latest JDBC driver.
 | 1.0 | 1.4 | 3.0 |
 | 2000 | 1.4 | 3.0 |
 
+### Java 4.3 partial compatibility
+
+The JRE 11+ jars are built against the JDBC 4.3 interface surface, but not every method added in JDBC 4.3 is implemented. The following table summarizes runtime behavior on current drivers (7.0 and later).
+
+| JDBC 4.3 addition | Behavior |
+| --- | --- |
+| `Connection.beginRequest()`<br>`Connection.endRequest()` | Supported. Used by connection pools to mark request boundaries. |
+| `Statement.enquoteLiteral`<br>`enquoteIdentifier`<br>`isSimpleIdentifier`<br>`enquoteNCharLiteral` | Supported through the JDK default implementations on `java.sql.Statement`. |
+| `Connection.setShardingKey`<br>`Connection.setShardingKeyIfValid`<br>`DataSource.createConnectionBuilder`<br>`XADataSource.createXAConnectionBuilder`<br>`ConnectionPoolDataSource.createPooledConnectionBuilder`<br>`DataSource.createShardingKeyBuilder` | Throws `SQLFeatureNotSupportedException`. |
+
+Applications that rely on JDBC 4.3 sharding APIs need an alternative driver or a custom implementation; the Microsoft JDBC Driver for SQL Server doesn't support sharding.
+
 ## Supported operating systems
 
 The Microsoft JDBC driver is designed to work on any operating system that supports the use of a Java Virtual Machine (JVM). Some commonly used platforms include Windows, Windows Server, Linux, Unix, AIX, macOS, and others.
