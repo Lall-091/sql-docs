@@ -123,7 +123,7 @@ For the catalog of Azure SQL transient errors, see [Troubleshoot transient conne
 | Article | Description |
 | --- | --- |
 | [Connecting to SQL Server with the JDBC driver](connecting-to-sql-server-with-the-jdbc-driver.md) | Open a connection to a SQL Server instance from Java. |
-| [Connect to an Azure SQL database](connecting-to-an-azure-sql-database.md) | Connect a Java application to Azure SQL Database. |
+| [Connecting to an Azure SQL database](connecting-to-an-azure-sql-database.md) | Connect a Java application to Azure SQL Database. |
 | [Building the connection URL](building-the-connection-url.md) | Full reference for `jdbc:sqlserver://` URL syntax and properties. |
 | [Set the connection properties](setting-the-connection-properties.md) | All connection properties, defaults, and how to set them. |
 | [Setting the data source properties](setting-the-data-source-properties.md) | Configure `SQLServerDataSource` for use with JNDI and app servers. |
@@ -236,6 +236,7 @@ For the catalog of Azure SQL transient errors, see [Troubleshoot transient conne
 | [JDBC 4.2 compliance](jdbc-4-2-compliance-for-the-jdbc-driver.md) | JDBC 4.2 API conformance. |
 | [JDBC 4.1 compliance](jdbc-4-1-compliance-for-the-jdbc-driver.md) | JDBC 4.1 API conformance. |
 | [Compliance and legal](compliance-and-legal-for-the-jdbc-sql-driver.md) | Specification compliance and licensing. |
+| [JDBC driver API reference](reference/jdbc-driver-api-reference.md) | Classes, interfaces, methods, and fields exposed by the driver. |
 | [Sample JDBC driver applications](sample-jdbc-driver-applications.md) | End-to-end code samples. |
 | [FAQ](frequently-asked-questions-faq-for-jdbc-driver.yml) | Frequently asked questions. |
 
