@@ -54752,7 +54752,12 @@
     },
     {
       "source_path": "docs/whitepapers/sql-server-in-memory-oltp-internals-for-sql-server-2016.md",
-      "redirect_url": "/sql/relational-databases/in-memory-oltp/sql-server-in-memory-oltp-internals-for-sql-server-2016",
+      "redirect_url": "/sql/relational-databases/in-memory-oltp/sql-server-in-memory-oltp-internals-download",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/in-memory-oltp/sql-server-in-memory-oltp-internals-for-sql-server-2016.md",
+      "redirect_url": "/sql/relational-databases/in-memory-oltp/sql-server-in-memory-oltp-internals-download",
       "redirect_document_id": false
     },
     {

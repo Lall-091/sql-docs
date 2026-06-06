@@ -6850,7 +6850,7 @@ items:
           - name: IDENTITY implementation
             href: relational-databases/in-memory-oltp/implementing-identity-in-a-memory-optimized-table.md
         - name: Architecture of In-Memory
-          href: relational-databases/in-memory-oltp/sql-server-in-memory-oltp-internals-for-sql-server-2016.md
+          href: relational-databases/in-memory-oltp/sql-server-in-memory-oltp-internals-download.md
           items:
           - name: Storage
             href: relational-databases/in-memory-oltp/creating-and-managing-storage-for-memory-optimized-objects.md
