@@ -54,7 +54,7 @@ The following updates apply to [!INCLUDE [sssql25-md](../includes/sssql25-md.md)
   - [sys.dm_os_linux_net_stats](../relational-databases/system-dynamic-management-views/sys-dm-os-linux-net-stats-transact-sql.md)
   - [sys.dm_os_linux_vm_stats](../relational-databases/system-dynamic-management-views/sys-dm-os-linux-vm-stats-transact-sql.md)
 
-- **Support for the adutil tool on Ubuntu 24.04 and Red Hat Enterprise Linux 10**. The **adutil** tool is available on Ubuntu 24.04 and Red Hat Enterprise Linux (RHEL) 10, expanding support for Active Directory authentication scenarios on Linux.
+- **Support for the adutil tool on Ubuntu 24.04 and Red Hat Enterprise Linux 10**. The **`adutil`** tool is available on Ubuntu 24.04 and Red Hat Enterprise Linux (RHEL) 10, expanding support for Active Directory authentication scenarios on Linux.
 
   For more information, see [Introduction to adutil - Active Directory utility](sql-server-linux-ad-auth-adutil-introduction.md).
 

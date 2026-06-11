@@ -1,0 +1,276 @@
+---
+title: "Configure FCI - SQL Server on Linux (RHEL)"
+description: Learn to configure a failover cluster instance (FCI) on Red Hat Enterprise Linux (RHEL) for SQL Server.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: amitkh, atsingh
+ms.date: 07/03/2025
+ms.service: sql
+ms.subservice: linux
+ms.topic: install-set-up-deploy
+ms.custom:
+  - linux-related-content
+  - build-2025
+  - sfi-ropc-blocked
+---
+# Configure failover cluster instance - SQL Server on Linux (RHEL)
+
+[!INCLUDE [SQL Server - Linux](../../../includes/applies-to-version/sql-linux.md)]
+
+A [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] two-node shared disk failover cluster instance provides server-level redundancy for high availability. In this tutorial, you learn how to create a two-node failover cluster instance of [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] on Linux. The specific steps that you'll complete include:
+
+> [!div class="checklist"]
+> - Set up and configure Linux
+> - Install and configure [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)]
+> - Configure the hosts file
+> - Configure shared storage and move the database files
+> - Install and configure Pacemaker on each cluster node
+> - Configure the failover cluster instance
+
+This article explains how to create a two-node shared disk failover cluster instance (FCI) for [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)]. The article includes instructions and script examples for Red Hat Enterprise Linux (RHEL). Ubuntu distributions are similar to RHEL so the script examples will normally also work on Ubuntu.
+
+For conceptual information, see [Failover Cluster Instances - SQL Server on Linux](shared-disk-cluster-concepts.md).
+
+## Prerequisites
+
+To complete the following end-to-end scenario, you need two machines to deploy the two nodes cluster and another server for storage. Below steps outline how these servers will be configured.
+
+## Set up and configure Linux
+
+The first step is to configure the operating system on the cluster nodes. On each node in the cluster, configure a linux distribution. Use the same distribution and version on both nodes. Use either one or the other of the following distributions:
+
+- RHEL with a valid subscription for the HA add-on
+
+## Install and configure SQL Server
+
+1. Install and set up [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] on both nodes. For detailed instructions, see [Installation guidance for SQL Server on Linux](../../install-upgrade/setup.md).
+1. Designate one node as primary and the other as secondary, for purposes of configuration. Use these terms for the following this guide.
+1. On the secondary node, stop and disable [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)].
+   The following example stops and disables [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)]:
+
+   ```bash
+   sudo systemctl stop mssql-server
+   sudo systemctl disable mssql-server
+   ```
+
+   > [!NOTE]  
+   > At set up time, a Server Master Key is generated for the [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] instance and placed at `var/opt/mssql/secrets/machine-key`. On Linux, [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)], always runs as a local account called `mssql`. Because it's a local account, its identity isn't shared across nodes. Therefore, you need to copy the encryption key from primary node to each secondary node so each local `mssql` account can access it to decrypt the Server Master Key.
+
+1. On the primary node, create a [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] login for Pacemaker and grant the login permission to run `sp_server_diagnostics`. Pacemaker uses this account to verify which node is running [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)].
+
+   ```bash
+   sudo systemctl start mssql-server
+   ```
+
+   Connect to the [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] `master` database with the `sa` account and run the following:
+
+   ```sql
+   USE [master];
+   GO
+
+   CREATE LOGIN [<loginName>]
+       WITH PASSWORD = N'<password>';
+
+   ALTER SERVER ROLE [sysadmin] ADD MEMBER [<loginName>];
+   ```
+
+   > [!CAUTION]  
+   > [!INCLUDE [password-complexity](../../includes/password-complexity.md)]
+
+   Alternatively, you can set the permissions at a more granular level. The Pacemaker login requires `VIEW SERVER STATE` to query health status with `sp_server_diagnostics`, **setupadmin**, and ALTER ANY LINKED SERVER to update the FCI instance name with the resource name, by running `sp_dropserver` and `sp_addserver`.
+
+1. On the primary node, stop and disable [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)].
+
+## Configure the hosts file
+
+On each cluster node, configure the hosts file. The hosts file must include the IP address and name of every cluster node.
+
+1. Check the IP address for each node. The following script shows the IP address of your current node.
+
+   ```bash
+   sudo ip addr show
+   ```
+
+1. Set the computer name on each node. Give each node a unique name that is 15 characters or less. Set the computer name by adding it to `/etc/hosts`. The following script lets you edit `/etc/hosts` with `vi`.
+
+   ```bash
+   sudo vi /etc/hosts
+   ```
+
+   The following example shows `/etc/hosts` with additions for two nodes named `sqlfcivm1` and `sqlfcivm2`.
+
+   ```text
+   127.0.0.1        localhost localhost4 localhost4.localdomain4
+   ::1              localhost localhost6 localhost6.localdomain6
+   10.128.18.128    sqlfcivm1
+   10.128.16.77     sqlfcivm2
+   ```
+
+## Configure storage and move database files
+
+You need to provide storage that both nodes can access. You can use iSCSI, NFS, or SMB. Configure storage, present the storage to the cluster nodes, and then move the database files to the new storage. The following articles explain the steps for each storage type:
+
+- [Configure failover cluster instance - iSCSI - SQL Server on Linux](shared-disk-cluster-configure-iscsi.md)
+- [Configure failover cluster instance - NFS - SQL Server on Linux](shared-disk-cluster-configure-network-file-system.md)
+- [Configure SMB storage failover cluster instance - SQL Server on Linux](shared-disk-cluster-configure-server-message-block.md)
+
+## Install and configure Pacemaker on each cluster node
+
+1. On both cluster nodes, create a file to store the [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] username and password for the Pacemaker login.
+
+   The following command creates and populates this file:
+
+   ```bash
+   sudo touch /var/opt/mssql/secrets/passwd
+   sudo echo '<loginName>' >> /var/opt/mssql/secrets/passwd
+   sudo echo '<loginPassword>' >> /var/opt/mssql/secrets/passwd
+   sudo chown root:root /var/opt/mssql/secrets/passwd
+   sudo chmod 600 /var/opt/mssql/secrets/passwd
+   ```
+
+1. On both cluster nodes, open the Pacemaker firewall ports. To open these ports with `firewalld`, run the following command:
+
+   ```bash
+   sudo firewall-cmd --permanent --add-service=high-availability
+   sudo firewall-cmd --reload
+   ```
+
+   If you're using another firewall that doesn't have a built-in high-availability configuration, the following ports need to be opened for Pacemaker to be able to communicate with other nodes in the cluster:
+
+   - **TCP:** Ports 2224, 3121, 21064
+   - **UDP:** Port 5405
+
+1. Install Pacemaker packages on each node.
+
+   ```bash
+   sudo yum install pacemaker pcs fence-agents-all resource-agents
+   ```
+
+1. Set the password for the default user that is created when installing Pacemaker and Corosync packages. Use the same password on both nodes.
+
+   ```bash
+   sudo passwd hacluster
+   ```
+
+1. Enable and start `pcsd` service and Pacemaker. This will allow nodes to rejoin the cluster after the reboot. Run the following command on both nodes.
+
+   ```bash
+   sudo systemctl enable pcsd
+   sudo systemctl start pcsd
+   sudo systemctl enable pacemaker
+   ```
+
+1. Install the FCI resource agent for [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)]. Run the following commands on both nodes.
+
+   ```bash
+   sudo yum install mssql-server-ha
+   ```
+
+## Configure the failover cluster instance
+
+The FCI will be created in a resource group. This is slightly easier since the resource group alleviates the need for constraints. However, add the resources into the resource group in the order they should start. The order they should start is:
+
+1. Storage resource
+1. Network resource
+1. Application resource
+
+This example creates an FCI in the group NewLinFCIGrp. The name of the resource group must be unique from any resource created in Pacemaker.
+
+1. Create the disk resource. You get no response back if there isn't a problem. The way to create the disk resource depends on the storage type. The following section shows examples for each storage type (iSCSI, NFS, and SMB). Use the example that applies to the storage type for your clustered storage.
+
+   #### [iSCSI](#tab/iscsi)
+
+   ```bash
+   sudo pcs resource create <iSCSIDiskResourceName> Filesystem device="/dev/<VolumeGroupName>/<LogicalVolumeName>" directory="<FolderToMountiSCSIDisk>" fstype="<FileSystemType>" --group RGName
+   ```
+
+   - `<iSCSIDIskResourceName>` is the name of the resource associated with the iSCSI disk
+   - `<VolumeGroupName>` is the name of the volume group
+   - `<LogicalVolumeName>` is the name of the logical volume that was created
+   - `<FolderToMountiSCSIDIsk>` is the folder to mount the disk (for system databases and the default location, it would be `/var/opt/mssql/data`)
+   - `<FileSystemType>` would be ext4 or XFS, depending on how things were formatted and what the distribution supports.
+
+   #### [NFS](#tab/nfs)
+
+   ```bash
+   sudo pcs resource create <NFSDiskResourceName> Filesystem device="<IPAddressOfNFSServer>:<FolderOnNFSServer>" directory="<FolderToMountNFSShare>" fstype=nfs4 options=" nfsvers=4.2,timeo=14,intr" --group RGName
+   mount -t nfs4 IPAddressOfNFSServer:FolderOnNFSServer /var/opt/mssql/data -o
+   ```
+
+   - `<NFSDIskResourceName>` is the name of the resource associated with the NFS share
+   - `<IPAddressOfNFSServer>` is the IP address of the NFS server that you're going to use
+   - `<FolderOnNFSServer>` is the name of the NFS share
+   - `<FolderToMountNFSShare>` is the folder to mount the disk (for system databases and the default location, it would be /var/opt/mssql/data)
+
+   An example is shown here:
+
+   ```bash
+   mount -t nfs4 200.201.202.63:/var/nfs/fci1 /var/opt/mssql/data -o nfsvers=4.2,timeo=14,intr
+   ```
+
+   #### [SMB](#tab/smb)
+
+   ```bash
+   sudo pcs resource create SMBDiskResourceName Filesystem device="//<ServerName>/<ShareName>" directory="<FolderName>" fstype=cifs options="vers=3.0,username=<UserName>,password=<Password>,domain=<ADDomain>,uid=<mssqlUID>,gid=<mssqlGID>,file_mode=0777,dir_mode=0777" --group <RGName>
+   ```
+
+   - `<ServerName>` is the name of the server with the SMB share
+   - `<ShareName>` is the name of the share
+   - `<FolderName>` is the name of the folder created in the last step
+   - `<UserName>` is the name of the user to access the share
+   - `<Password>` is the password for the user
+   - `<ADDomain>` is the Active Directory DS domain (if applicable when using a Windows Server-based SMB share)
+   - `<mssqlUID>` is the UID of the `mssql` user
+   - `<mssqlGID>` is the GID of the `mssql` user
+   - `<RGName>` is the name of the resource group
+
+   ---
+
+1. Create the IP address that will be used by the FCI. You get no response back if there isn't a problem.
+
+   ```bash
+   sudo pcs resource create <IPResourceName> ocf:heartbeat:IPaddr2 ip=<IPAddress> nic=<NetworkCard> cidr_netmask=<NetMask> --group <RGName>
+   ```
+
+   - `<IPResourceName>` is the name of the resource associated with the IP address
+   - `<IPAddress>` is the IP address for the FCI
+   - `<NetworkCard>` is the network card associated with the subnet (that is, eth0)
+   - `<NetMask>` is the netmask of the subnet (that is, 24)
+   - `<RGName>` is the name of the resource group
+
+1. Create the FCI resource. You get no response back if there isn't a problem.
+
+   ```bash
+   sudo pcs resource create FCIResourceName ocf:mssql:fci op defaults timeout=60s --group RGName
+   ```
+
+   - `<FCIResourceName>` isn't only the name of the resource, but the friendly name that is associated with the FCI. This is what users and applications use to connect.
+   - `<RGName>` is the name of the resource group.
+
+1. Run the command `sudo pcs resource`. The FCI should be online.
+
+1. Connect to the FCI with SSMS or sqlcmd using the DNS/resource name of the FCI.
+
+1. Issue the statement `SELECT @@SERVERNAME`. It should return the name of the FCI.
+
+1. Issue the statement `SELECT SERVERPROPERTY('ComputerNamePhysicalNetBIOS')`. It should return the name of the node that the FCI is running on.
+
+1. Manually fail the FCI to the other node(s). See the instructions under [Operate failover cluster instance - SQL Server on Linux](shared-disk-cluster-operate.md).
+
+1. Finally, fail the FCI back to the original node and remove the colocation constraint.
+
+## Summary
+
+In this tutorial, you completed the following tasks.
+
+> [!div class="checklist"]
+> - Set up and configure Linux
+> - Install and configure [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)]
+> - Configure the hosts file
+> - Configure shared storage and move the database files
+> - Install and configure Pacemaker on each cluster node
+> - Configure the failover cluster instance
+
+## Related content
+
+- [Operate failover cluster instance - SQL Server on Linux](shared-disk-cluster-operate.md)

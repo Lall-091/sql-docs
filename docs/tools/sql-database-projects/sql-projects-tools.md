@@ -4,7 +4,7 @@ description: Compare SQL project tools available in Visual Studio Code, SSMS, Vi
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: drskwier
-ms.date: 04/15/2026
+ms.date: 06/09/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: overview
@@ -59,8 +59,8 @@ These tools provide a graphical interface for SQL projects, a Transact-SQL (T-SQ
 | [Pre-deployment and post-deployment scripts](concepts/pre-post-deployment-scripts.md) | Yes | Yes | Yes | Yes |
 | New object templates | Yes<sup>4</sup> | Yes | Yes | Yes<sup>4</sup> |
 | Project files can be organized into folders | Yes | Yes | Yes | Yes |
-| [Schema comparison](concepts/schema-comparison.md) project to database | Yes | No | Yes | Yes |
-| [Schema comparison](concepts/schema-comparison.md) database to project | Yes | No | Yes | No |
+| [Schema comparison](concepts/schema-comparison.md) project to database | Yes | Yes | Yes | Yes |
+| [Schema comparison](concepts/schema-comparison.md) database to project | Yes | Yes | Yes | No |
 | Graphical table designer | No | No | Yes | Yes |
 | [Code analysis](concepts/sql-code-analysis/sql-code-analysis.md) - enable/disable rules GUI | Yes | Yes | Yes | No |
 | Project properties - build output settings | No | No | Yes | Yes |
