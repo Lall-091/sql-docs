@@ -800,7 +800,7 @@ The system administrator account (`sa`) is created on the [!INCLUDE [ssnoversion
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
+   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, Linux, and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ## Disable the SA account as a best practice
 
@@ -1120,7 +1120,7 @@ The system administrator account (`sa`) is created on the [!INCLUDE [ssnoversion
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
-   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
+   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, Linux, and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ## Disable the SA account as a best practice
 
@@ -1165,7 +1165,7 @@ This quickstart creates [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] conta
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 
-The previous command pulls the latest [!INCLUDE [sssql25-md](../includes/sssql22-md.md)] Linux container image. If you want to pull a specific image, change the tag name, such as `2025-ubuntu-GA-22.04`. To see all available images, run the following command:
+The previous command pulls the latest [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Linux container image. If you want to pull a specific image, change the tag name, such as `2025-ubuntu-GA-22.04`. To see all available images, run the following command:
 
 ::: zone pivot="cs1-bash"
 
@@ -1324,7 +1324,7 @@ The following steps use the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-m
    /opt/mssql-tools/bin/sqlcmd -S localhost -U <userid> -P "<password>"
    ```
 
-   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
+   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, Linux, and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
    You can omit the password on the command-line to be prompted to enter it. For example:
 
@@ -1343,7 +1343,7 @@ The following steps use the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-m
    /opt/mssql-tools18/bin/sqlcmd -S localhost -U <userid> -P "<password>"
    ```
 
-   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
+   Recent versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, Linux, and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
    You can omit the password on the command-line to be prompted to enter it. For example:
 

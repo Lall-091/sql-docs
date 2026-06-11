@@ -134,7 +134,7 @@ Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], the [SQL Serve
    ```
 
    > [!NOTE]  
-   > Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
+   > Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, Linux, and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 1. When finished with **`sqlcmd`**, type `exit`.
 
@@ -155,7 +155,7 @@ docker exec -it <Container ID or name> /opt/mssql-tools18/bin/sqlcmd \
 ```
 
 > [!NOTE]  
-> Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
+> Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, Linux, and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ::: zone-end
 
@@ -168,7 +168,7 @@ docker exec -it <Container ID or name> /opt/mssql-tools18/bin/sqlcmd `
 ```
 
 > [!NOTE]  
-> Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
+> Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, Linux, and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ::: zone-end
 
@@ -181,7 +181,7 @@ docker exec -it <Container ID or name> /opt/mssql-tools18/bin/sqlcmd ^
 ```
 
 > [!NOTE]  
-> Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, and [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md) for Linux and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
+> Newer versions of **`sqlcmd`** are secure by default. For more information about connection encryption, see [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) for Windows, Linux, and macOS. If the connection doesn't succeed, you can add the `-No` option to **`sqlcmd`** to specify that encryption is optional, not mandatory.
 
 ::: zone-end
 
