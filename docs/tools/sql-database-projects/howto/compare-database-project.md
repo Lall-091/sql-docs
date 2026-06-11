@@ -4,7 +4,7 @@ description: Compare a project and a database and with different approaches.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: drskwier
-ms.date: 03/11/2026
+ms.date: 06/09/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -29,14 +29,14 @@ This article reviews methods for comparing a database and a SQL project using di
 - You can use **schema compare** or SqlPackage **extract** to [import changes from a database](#import-changes-from-a-database) into a SQL project file set.
 - You can use SqlPackage **deploy script** or **schema compare** to [review the T-SQL statements](#review-deployment-t-sql-scripts) that are executed to update a database to match the project.
 
-## Schema compare: visualize differences
+## Schema Compare: visualize differences
 
 ### Prerequisites
 
 ::: zone pivot="sq1-visual-studio"
 
-- [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools (SSDT) installed in Visual Studio](../../../ssdt/download-sql-server-data-tools-ssdt.md)
+- [Visual Studio Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
+- [SQL Server Data Tools (SSDT) for Visual Studio](../../../ssdt/download-sql-server-data-tools-ssdt.md)
 
 ::: zone-end
 
@@ -55,7 +55,7 @@ Graphical schema comparison isn't yet available in the SDK-style SQL projects pr
 
 :::zone pivot="sq1-sql-server-management-studio"
 
-[!INCLUDE [schema-compare-where-found](../includes/schema-compare-where-found.md)]
+- [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms)
 
 :::zone-end
 
@@ -67,11 +67,11 @@ Graphical schema comparison isn't yet available in the SDK-style SQL projects pr
 
 ### Summary
 
-Schema compare provides the visually richest interface to understanding the differences between a database and a project. A key capability with schema compare is that the directionality of the comparison is reversible. As a result, you can use schema comparison to understand changes from a project to be deployed to a database or changes from a database to add to a project. You can use schema compare to identify differences in object definitions, such as tables, views, stored procedures, and functions.
+Schema Compare provides the visually richest interface to understanding the differences between a database and a project. A key capability with schema compare is that the directionality of the comparison is reversible. As a result, you can use schema comparison to understand changes from a project to be deployed to a database or changes from a database to add to a project. You can use schema compare to identify differences in object definitions, such as tables, views, stored procedures, and functions.
 
-The complete set of differences or a selected subset can be used to apply the changes to the database or project. Schema compare can also generate a deployment script that, when run, effectively applies the changes to a database.
+The complete set of differences or a selected subset can be used to apply the changes to the database or project. Schema Compare can also generate a deployment script that, when run, effectively applies the changes to a database.
 
-Learn more about schema compare in the [schema comparison overview](../concepts/schema-comparison.md).
+For more information, see [Schema comparison overview](../concepts/schema-comparison.md).
 
 ## Deploy report: review changes
 
