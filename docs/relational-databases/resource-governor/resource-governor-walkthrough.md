@@ -4,7 +4,7 @@ description: Use examples to learn how to create and validate resource governor 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman
-ms.date: 04/09/2025
+ms.date: 06/12/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: tutorial
@@ -501,6 +501,7 @@ GROUP BY wg.name,
 
 - Configure Dedicated Administrator Connection (DAC), and learn how to use it. For more information, see [Diagnostic connection for database administrators](../../database-engine/configure-windows/diagnostic-connection-for-database-administrators.md). If your resource governor configuration malfunctions, you can use DAC to troubleshoot it or to [disable resource governor](disable-resource-governor.md).
 - When configuring resource pools, be careful specifying large values for `MIN_CPU_PERCENT`, `MIN_MEMORY_PERCENT`, and `MIN_IOPS_PER_VOLUME`. A `MIN` configuration setting reserves resources for a resource pool and makes them unavailable to other resource pools, including the `default` pool. For more information, see [Create a resource pool](create-a-resource-pool.md).
+- Similarly, be careful specifying very small values for `MAX_CPU_PERCENT` or `CAP_CPU_PERCENT`, or setting `MAX_IOPS_PER_VOLUME` to a much smaller value than the I/O subsystem can provide. A strongly constrained workload that uses shared resources can affect other workloads using the same resources. For example, a CPU-constrained query can hold locks for longer and cause long blocking chains. An IO-constrained workload can hold latches on shared [system pages](../pages-and-extents-architecture-guide#system-pages) for longer, resulting in latch timeouts for other workloads.
 - The classifier function extends login processing time. Avoid complex logic and long-running or resource-intensive queries in the classifier, particularly if queries use large tables. An overly complex function can cause login delays or connection timeouts.
 - If you need to use a table in the classifier, and the table is small and mostly static, consider using a [table-valued constructor](../../t-sql/queries/table-value-constructor-transact-sql.md) instead, as shown in an [example](#TableValuedConstructorInClassifier) earlier in this article.
 - Avoid using a frequently modified table in the classifier. That increases the risk of blocking that can delay logins and cause connection timeouts. The following workarounds can mitigate the risk, however they have downsides, including the risk of incorrect classification:
