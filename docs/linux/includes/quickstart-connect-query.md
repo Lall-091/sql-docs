@@ -149,9 +149,9 @@ If you have a Windows machine that can connect to your Linux machine, try the sa
 
 For other tools that run on Windows but connect to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Linux, see:
 
-- [SQL Server Management Studio (SSMS)](../sql-server-linux-manage-ssms.md)
-- [Windows PowerShell](../sql-server-linux-manage-powershell.md)
-- [SQL Server Data Tools (SSDT)](../sql-server-linux-develop-use-ssdt.md)
+- [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](../sql-server-linux-manage-ssms.md)
+- [Use PowerShell on Windows to manage SQL Server on Linux](../sql-server-linux-manage-powershell.md)
+- [Use Visual Studio to create databases for SQL Server on Linux](../sql-server-linux-develop-use-ssdt.md)
 
 ## Other deployment scenarios
 
@@ -166,6 +166,6 @@ For answers to frequently asked questions, see the [SQL Server on Linux FAQ](../
 
 ## Related content
 
-- [Migrate a SQL Server database from Windows to Linux using backup and restore](../sql-server-linux-migrate-restore-database.md)
+- [Migrate a SQL Server database from Windows to Linux using backup and restore](../migrate/restore-database.md)
 
 [!INCLUDE [contribute-to-content](../../includes/paragraph-content/contribute-to-content.md)]

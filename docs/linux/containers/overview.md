@@ -35,21 +35,21 @@ To begin working with [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.m
 
 ### Install and configure
 
-- [Quickstart: Run SQL Server Linux container images with Docker](../quickstart-install-connect-docker.md)
-- [Deploy and connect to SQL Server Linux containers](../sql-server-linux-docker-container-deployment.md)
-- [Configure and customize SQL Server Linux containers](../sql-server-linux-docker-container-configure.md)
-- [Install SQL Server Machine Learning Services (Python and R) on Docker](../sql-server-linux-setup-machine-learning-docker.md)
+- [Quickstart: Run SQL Server Linux container images with Docker](../install-upgrade/quickstart-install-docker.md)
+- [Deploy and connect to SQL Server Linux containers](deploy.md)
+- [Configure and customize SQL Server Linux containers](configure.md)
+- [Install SQL Server Machine Learning Services (Python and R) on Docker](../install-upgrade/setup-machine-learning-docker.md)
 
 ### Security and authentication
 
-- [Secure SQL Server Linux containers](../sql-server-linux-docker-container-security.md)
-- [Tutorial: Configure Active Directory authentication with SQL Server on Linux containers](../sql-server-linux-containers-ad-auth-adutil-tutorial.md)
+- [Secure SQL Server Linux containers](security.md)
+- [Tutorial: Configure Active Directory authentication with SQL Server on Linux containers](tutorial-adutil.md)
 
 ### High availability
 
-- [High availability for SQL Server containers](../sql-server-linux-container-ha-overview.md)
-- [How to use distributed transactions with SQL Server Linux containers](../sql-server-linux-configure-msdtc-docker.md)
-- [Troubleshoot SQL Server Docker containers](../sql-server-linux-docker-container-troubleshooting.md)
+- [High availability for SQL Server containers](../business-continuity/containers/high-availability-overview.md)
+- [How to use distributed transactions with SQL Server Linux containers](configure-distributed-transactions.md)
+- [Troubleshoot SQL Server Docker containers](troubleshoot.md)
 
 ## Orchestration
 
@@ -57,9 +57,9 @@ For production deployments, use an orchestrator such as Kubernetes, Azure Kubern
 
 Microsoft provides guidance and tooling for running [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] containers on Kubernetes, including supported container images and deployment examples.
 
-- [Quickstart: Deploy a SQL Server container cluster on Azure or Red Hat OpenShift](../quickstart-sql-server-containers-azure.md)
-- [Quickstart: Deploy a SQL Server Linux container to Kubernetes using Helm charts](../sql-server-linux-containers-deploy-helm-charts-kubernetes.md)
-- [Deploy availability groups on Kubernetes with DH2i DxOperator on Azure Kubernetes Service](../tutorial-sql-server-containers-kubernetes-dxoperator.md)
+- [Quickstart: Deploy a SQL Server container cluster on Azure or Red Hat OpenShift](../install-upgrade/quickstart-containers-azure.md)
+- [Quickstart: Deploy a SQL Server Linux container to Kubernetes using Helm charts](kubernetes-deploy-helm-charts.md)
+- [Deploy availability groups on Kubernetes with DH2i DxOperator on Azure Kubernetes Service](../business-continuity/containers/tutorial-kubernetes-dxoperator.md)
 
 ## Storage considerations
 
@@ -76,5 +76,5 @@ With this configuration, the orchestrator can automatically restart or replace c
 ## Related content
 
 - [What is SQL Server on Linux?](../sql-server-linux-overview.md)
-- [Deploy SQL Server Linux containers on Kubernetes with StatefulSets](../sql-server-linux-kubernetes-best-practices-statefulsets.md)
-- [Configure SQL Server on Linux with the mssql-conf tool](../sql-server-linux-configure-mssql-conf.md)
+- [Deploy SQL Server Linux containers on Kubernetes with StatefulSets](kubernetes-best-practices-statefulsets.md)
+- [Configure SQL Server on Linux with the mssql-conf tool](../configure/mssql-conf.md)

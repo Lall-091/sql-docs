@@ -434,7 +434,7 @@ At this point, [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] is 
 
 ## Install the SQL Server command-line tools
 
-To create a database, you need to connect to the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance using a tool that can run Transact-SQL statements. The following steps install the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] command-line tools: [sqlcmd utility](../../tools/sqlcmd/sqlcmd-utility.md) and [bcp utility](../../tools/bcp-utility.md).
+To create a database, you need to connect to the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance using a tool that can run Transact-SQL statements. The following steps install the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] command-line tools: [sqlcmd utility](../../tools/sqlcmd/sqlcmd-utility.md) and [bcp utility](../../tools/bcp/bcp-utility.md).
 
 [!INCLUDE [odbc-redhat](../includes/odbc-redhat.md)]
 

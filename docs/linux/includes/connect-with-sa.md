@@ -13,9 +13,9 @@ When you connect to your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-m
 
    - Depending on whether you have a container or non-container deployment, enable Windows authentication, and create a new Windows-based login and add it to the **sysadmin** server role.
 
-     - [Tutorial: Use adutil to configure Active Directory authentication with SQL Server on Linux](../sql-server-linux-ad-auth-adutil-tutorial.md)
+     - [Tutorial: Use adutil to configure Active Directory authentication with SQL Server on Linux](../security/authentication/adutil-tutorial.md)
 
-     - [Tutorial: Configure Active Directory authentication with SQL Server on Linux containers](../sql-server-linux-containers-ad-auth-adutil-tutorial.md)
+     - [Tutorial: Configure Active Directory authentication with SQL Server on Linux containers](../containers/tutorial-adutil.md)
 
    - Otherwise, create a login using [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] authentication, and add it to the **sysadmin** server role.
 

@@ -20,7 +20,7 @@ The following table lists connectivity libraries or *drivers* that client applic
 
 | Language | Platform | Additional resources | Download | Get started |
 | :--- | :--- | :--- | :--- | :--- |
-| C# | Windows, Linux, macOS | [Microsoft ADO.NET for SQL Server](../connect/ado-net/microsoft-ado-net-sql-server.md) | [Download](https://msdn.microsoft.com/vstudio/aa496123.aspx) | [Get started](../connect/ado-net/microsoft-ado-net-sql-server.md) |
+| C# | Windows, Linux, macOS | [Microsoft ADO.NET for SQL Server](../connect/ado-net/microsoft-ado-net-sql-server.md) | [Download](../connect/ado-net/download-microsoft-sqlclient-data-provider.md) | [Get started](../connect/ado-net/microsoft-ado-net-sql-server.md) |
 | Java | Windows, Linux, macOS | [Microsoft JDBC Driver for SQL Server](../connect/jdbc/microsoft-jdbc-driver-for-sql-server.md) | | [Get started](../connect/jdbc/microsoft-jdbc-driver-for-sql-server.md) |
 | PHP | Windows, Linux, macOS | [PHP SQL Driver for SQL Server](../connect/php/microsoft-php-driver-for-sql-server.md) | Operating System:<br /><br />- [Windows](../connect/php/microsoft-php-driver-for-sql-server.md)<br />- [Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix)<br />\- [macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) | [Get started](../connect/php/microsoft-php-driver-for-sql-server.md) |
 | Node.js | Windows, Linux, macOS | [Node.js Driver for SQL Server](../connect/node-js/node-js-driver-for-sql-server.md) | | [Get started](../connect/node-js/node-js-driver-for-sql-server.md) |

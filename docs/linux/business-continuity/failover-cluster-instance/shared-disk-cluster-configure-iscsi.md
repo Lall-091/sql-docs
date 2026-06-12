@@ -40,7 +40,7 @@ For more information on iSCSI initiator for the supported distributions, see the
 
 - [Red Hat](https://docs.redhat.com/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/configuring-an-iscsi-initiator_managing-storage-devices)
 - [SUSE](https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-iscsi.html)
-- [Ubuntu](https://documentation.ubuntu.com/server/iscsi-initiator-or-client)
+- [Ubuntu](https://ubuntu.com/server/docs/iscsi-initiator-or-client)
 
 > [!NOTE]  
 > Starting in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.

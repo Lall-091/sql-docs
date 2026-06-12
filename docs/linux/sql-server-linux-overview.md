@@ -41,9 +41,9 @@ The following quickstart articles describe how to install SQL Server on Linux on
 
 | Platform | SQL Server version supported |
 | --- | --- |
-| [Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md) (RHEL) | 2017, 2019, 2022, and 2025 |
-| [Ubuntu](quickstart-install-connect-ubuntu.md) | 2017, 2019, 2022, and 2025 |
-| [SUSE Linux Enterprise Server](quickstart-install-connect-suse.md) (SLES) <sup>1</sup> | 2017, 2019, and 2022 only |
+| [Red Hat Enterprise Linux](install-upgrade/quickstart-install-red-hat.md) (RHEL) | 2017, 2019, 2022, and 2025 |
+| [Ubuntu](install-upgrade/quickstart-install-ubuntu.md) | 2017, 2019, 2022, and 2025 |
+| [SUSE Linux Enterprise Server](install-upgrade/quickstart-install-suse.md) (SLES) <sup>1</sup> | 2017, 2019, and 2022 only |
 | [SQL Server on Azure Virtual Machines](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart?toc=/sql/toc/toc.json) | 2017, 2019, 2022, and 2025 |
 
 <sup>1</sup> SUSE Linux Enterprise Server (SLES) isn't supported on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions.
@@ -54,7 +54,7 @@ The following quickstart articles describe how to install SQL Server on Linux on
 
 Containers are useful in local testing, continuous integration and deployment (CI/CD), and ephemeral workloads in your development environment. They're also commonly used as part of container orchestration in production environments, including Azure Kubernetes Service (AKS), Red Hat OpenShift, and DH2i DxOperator.
 
-For instructions on how to install SQL Server in a Linux container, see [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md).
+For instructions on how to install SQL Server in a Linux container, see [Quickstart: Run SQL Server Linux container images with Docker](install-upgrade/quickstart-install-docker.md).
 
 The [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container images are published and available on the Microsoft Container Registry (MCR). They're also cataloged at the following locations, based on the operating system image that was used when creating the container image:
 
@@ -76,16 +76,16 @@ To learn more about containers, see [SQL Server on Linux containers](containers/
 
 SQL Server on WSL 2 is intended for development purposes only, and is **not** supported for production workloads. Run SQL Server in WSL environments on one of the [supported platforms](sql-server-linux-release-notes-2025.md#supported-platforms) for the version of SQL Server you intend to run.
 
-For instructions on how to install SQL Server on WSL 2, see [Windows Subsystem for Linux (WSL 2)](quickstart-install-connect-wsl-2.md).
+For instructions on how to install SQL Server on WSL 2, see [Quickstart: Install SQL Server and create a database on Windows Subsystem for Linux (WSL 2)](install-upgrade/quickstart-install-windows-subsystem-linux.md).
 
 ## Connect
 
-After installation, connect to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance on your Linux machine. You can connect locally or remotely and with various tools and drivers. The quickstarts demonstrate how to use the [sqlcmd](sql-server-linux-setup-tools.md) command-line tool. Other tools include:
+After installation, connect to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance on your Linux machine. You can connect locally or remotely and with various tools and drivers. The quickstarts demonstrate how to use the [sqlcmd](install-upgrade/setup-tools.md) command-line tool. Other tools include:
 
 | Tool | Tutorial |
 | --- | --- |
 | **[sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md)** | [Connect to SQL Server with sqlcmd](../tools/sqlcmd/sqlcmd-connect-database-engine.md) |
-| **[MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)** | [Connect to and query a database with the MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md) |
+| **[MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)** | [Run your first query with the MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md) |
 | **[SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)** | [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md) |
 | **[SQL Server Data Tools (SSDT)](../ssdt/sql-server-data-tools.md)** | [Use Visual Studio to create databases for SQL Server on Linux](sql-server-linux-develop-use-ssdt.md) |
 
@@ -124,7 +124,7 @@ These capabilities help organizations meet compliance and data protection requir
 
 #### Automation and maintenance
 
-SQL Server Agent is available on Linux to run scheduled and automated tasks, including Transact-SQL (T-SQL) jobs, Database Mail, and [log shipping](sql-server-linux-use-log-shipping.md). The agent is included in the SQL Server package and can be enabled by using the `mssql-conf` utility.
+SQL Server Agent is available on Linux to run scheduled and automated tasks, including Transact-SQL (T-SQL) jobs, Database Mail, and [log shipping](business-continuity/use-log-shipping.md). The agent is included in the SQL Server package and can be enabled by using the `mssql-conf` utility.
 
 #### High availability and disaster recovery
 
@@ -145,7 +145,7 @@ Additional capabilities available on Linux include:
 - **Full-text search** for linguistically aware text queries.
 - **Integration Services (SSIS)** package execution for ETL workloads. Package development and design is performed on Windows.
 
-Some features, such as PolyBase, Machine Learning Services, and full-text search, require installing additional packages. For more information, see [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md).
+Some features, such as PolyBase, Machine Learning Services, and full-text search, require installing additional packages. For more information, see [Installation guidance for SQL Server on Linux](install-upgrade/setup.md).
 
 If you're already familiar with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, review the release notes for general guidelines and known issues for each release.
 

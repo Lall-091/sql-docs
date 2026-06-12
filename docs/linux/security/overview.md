@@ -23,7 +23,7 @@ This article assumes that you deployed [!INCLUDE [ssnoversion-md](../../includes
 Security practices vary based on the Linux distribution you're using. For detailed guidance, contact your distribution provider and review their recommended best practices. You can also refer to documentation such as:
 
 - [Red Hat Enterprise Linux security hardening](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html/security_hardening/index)
-- [Ubuntu: Security suggestions](https://documentation.ubuntu.com/server/explanation/security/security_suggestions/)
+- [Ubuntu: Security suggestions](https://ubuntu.com/server/docs/explanation/security/security_suggestions)
 
 Always validate your chosen platform and configuration in a controlled test environment before deploying to production.
 

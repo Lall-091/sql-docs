@@ -305,7 +305,7 @@ Additional configuration is primarily through the [mssql-conf tool](../configure
    sudo /opt/mssql/bin/mssql-conf set extensibility outboundnetworkaccess 1
    ```
 
-1. For R feature integration only, set the `MKL_CBWR` environment variable to [ensure consistent output](https://www.intel.com/content/www/us/en/developer/articles/technical/introduction-to-the-conditional-numerical-reproducibility-cnr.html) from Intel Math Kernel Library (MKL) calculations.
+1. For R feature integration only, set the `MKL_CBWR` environment variable to [ensure consistent output](https://www.intel.com/content/www/us/en/developer/archive/training/conditional-numerical-reproducibility-cnr.html) from Intel Math Kernel Library (MKL) calculations.
 
    - Edit or create a file `.bash_profile` in your user home directory, adding the line `export MKL_CBWR="AUTO"` to the file.
 
@@ -440,7 +440,6 @@ mssql-mlservices-mlm-py-9.4.7.64
 
 ## Related content
 
-- [Python Tutorial: Deploy a linear regression model with SQL machine learning](../../machine-learning/concepts/extension-python.md)
-- [Python tutorial: Categorizing customers using k-means clustering with SQL machine learning](../../machine-learning/concepts/extension-python.md)
+- [Python language extension in SQL Server Machine Learning Services](../../machine-learning/concepts/extension-python.md)
 - [Quickstart: Run simple R scripts with SQL machine learning](../../machine-learning/tutorials/quickstart-r-create-script.md)
 - [R tutorial: Predict NYC taxi fares with binary classification](../../machine-learning/tutorials/r-taxi-classification-introduction.md)

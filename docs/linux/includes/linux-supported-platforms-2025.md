@@ -13,9 +13,9 @@ You should run production workloads on supported platforms like [Red Hat Enterpr
 
 | Platform | File system | Installation guide | Get |
 | --- | --- | --- | --- |
-| Red Hat Enterprise Linux 10.x Server<br /><br />Red Hat Enterprise Linux 9.x Server | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-red-hat.md) | [Get RHEL 10](https://access.redhat.com/products/red-hat-enterprise-linux/evaluation)<br /><br />[Get RHEL 9](https://access.redhat.com/products/red-hat-enterprise-linux/evaluation) |
-| Ubuntu 24.04<br /><br />Ubuntu 22.04 | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-ubuntu.md) | [Get Ubuntu 24.04](https://releases.ubuntu.com/24.04/)<br /><br />[Get Ubuntu 22.04](https://releases.ubuntu.com/22.04/) |
-| Docker Engine 1.8+ on Linux <sup>1</sup> | N/A | [Installation guide](../quickstart-install-connect-docker.md) | [Get Docker](https://www.docker.com/get-started) |
+| Red Hat Enterprise Linux 10.x Server<br /><br />Red Hat Enterprise Linux 9.x Server | **XFS** or **ext4** | [Installation guide](../install-upgrade/quickstart-install-red-hat.md) | [Get RHEL 10](https://access.redhat.com/products/red-hat-enterprise-linux/evaluation)<br /><br />[Get RHEL 9](https://access.redhat.com/products/red-hat-enterprise-linux/evaluation) |
+| Ubuntu 24.04<br /><br />Ubuntu 22.04 | **XFS** or **ext4** | [Installation guide](../install-upgrade/quickstart-install-ubuntu.md) | [Get Ubuntu 24.04](https://releases.ubuntu.com/24.04/)<br /><br />[Get Ubuntu 22.04](https://releases.ubuntu.com/22.04/) |
+| Docker Engine 1.8+ on Linux <sup>1</sup> | N/A | [Installation guide](../install-upgrade/quickstart-install-docker.md) | [Get Docker](https://www.docker.com/get-started) |
 
 <sup>1</sup> [!INCLUDE [container-emulation](container-emulation.md)]
 

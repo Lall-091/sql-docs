@@ -369,8 +369,8 @@ This section shows how to create an AG with a cluster type of External using SSM
 
 This section shows examples of creating an AG using Transact-SQL. You can configure the listener and read-only routing after creating the AG. You can modify the AG itself by using `ALTER AVAILABILITY GROUP`, but you can't change the cluster type in [!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)]. If you didn't mean to create an AG with a cluster type of External, you must delete it and recreate it with a cluster type of None. For more information and other options, see the following links:
 
-- [CREATE AVAILABILITY GROUP (Transact-SQL)](../../../t-sql/statements/create-availability-group-transact-sql.md)
-- [ALTER AVAILABILITY GROUP (Transact-SQL)](../../../t-sql/statements/alter-availability-group-transact-sql.md)
+- [CREATE AVAILABILITY GROUP](../../../t-sql/statements/create-availability-group-transact-sql.md)
+- [ALTER AVAILABILITY GROUP](../../../t-sql/statements/alter-availability-group-transact-sql.md)
 - [Configure read-only routing for an Always On availability group](../../../database-engine/availability-groups/windows/configure-read-only-routing-for-an-availability-group-sql-server.md)
 - [Configure a listener for an Always On availability group](../../../database-engine/availability-groups/windows/create-or-configure-an-availability-group-listener-sql-server.md)
 

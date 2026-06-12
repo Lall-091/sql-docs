@@ -182,6 +182,6 @@ If you're not going to continue using your Azure VMs, remember to remove them. I
 ## Related content
 
 - [Quickstart: Deploy a SQL Server Linux container to Kubernetes using Helm charts](../containers/kubernetes-deploy-helm-charts.md)
-- [Introduction to adutil - Active Directory utility](../security/authentication/adutil-introduction.md)
+- [Introduction to `adutil` - Active Directory utility](../security/authentication/adutil-introduction.md)
 - [Back up and restore SQL Server databases on Linux](../business-continuity/backup-restore/database-backup-restore.md)
 - [How to configure the Microsoft Distributed Transaction Coordinator (MSDTC) on Linux](../configure/distributed-transactions.md)

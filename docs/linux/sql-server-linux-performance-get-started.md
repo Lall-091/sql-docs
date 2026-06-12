@@ -18,7 +18,7 @@ ms.custom:
 If you're a Linux user who is new to SQL Server, the following tasks walk you through some of the performance features. These aren't unique or specific to Linux, but it helps to give you an idea of areas to investigate further. In each example, a link is provided to the depth documentation for that area.
 
 > [!NOTE]  
-> The following examples use the `AdventureWorks2022` sample database. For instructions on how to obtain and install this sample database, see [Migrate a SQL Server database from Windows to Linux using backup and restore](sql-server-linux-migrate-restore-database.md).
+> The following examples use the `AdventureWorks2022` sample database. For instructions on how to obtain and install this sample database, see [Migrate a SQL Server database from Windows to Linux using backup and restore](migrate/restore-database.md).
 
 ## Create a columnstore index
 
@@ -222,4 +222,4 @@ FROM sys.dm_os_wait_stats;
 - [Performance monitoring and tuning tools](../relational-databases/performance/performance-monitoring-and-tuning-tools.md)
 - [Performance best practices: Storage, kernel, CPU, and network for SQL Server on Linux](configure/performance-best-practices-operating-system.md)
 - [Performance best practices: SQL Server memory on Linux](configure/performance-best-practices-sql-server-memory.md)
-- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](install-upgrade/quickstart-install-red-hat.md)

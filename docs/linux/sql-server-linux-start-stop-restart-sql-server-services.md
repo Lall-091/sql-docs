@@ -31,7 +31,7 @@ This article describes how to start, stop, or restart the [!INCLUDE [ssNoVersion
 
 For [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Windows, see [Start, stop, pause, resume, and restart SQL Server services](../database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services.md).
 
-For [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux containers, see [Configure and customize SQL Server Linux containers](sql-server-linux-docker-container-configure.md).
+For [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux containers, see [Configure and customize SQL Server Linux containers](containers/configure.md).
 
 ## Identify the service
 
@@ -39,7 +39,7 @@ For [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux containers,
 
 ### SQL Server Database Engine service
 
-The [!INCLUDE [ssDE](../includes/ssde-md.md)] service is the default instance, with a limit of one per computer. Named instances aren't supported on Linux. To run multiple instances of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on a single computer using containers, see [Deploy and connect to SQL Server Linux containers](sql-server-linux-docker-container-deployment.md).
+The [!INCLUDE [ssDE](../includes/ssde-md.md)] service is the default instance, with a limit of one per computer. Named instances aren't supported on Linux. To run multiple instances of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on a single computer using containers, see [Deploy and connect to SQL Server Linux containers](containers/deploy.md).
 
 ### SQL Server Agent service
 
@@ -49,7 +49,7 @@ The SQL Server Agent service executes scheduled administrative tasks, which are 
 
 On Linux, you can't pause the [!INCLUDE [ssDE](../includes/ssde-md.md)] service like you can on Windows. The SQL Server Agent service also can't be paused or resumed.
 
-When running on a cluster, use the appropriate cluster management tool to manage the [!INCLUDE [ssDE](../includes/ssde-md.md)] for your Linux distribution. See [Deploy a Pacemaker cluster for SQL Server on Linux](sql-server-linux-deploy-pacemaker-cluster.md) for an example using Pacemaker.
+When running on a cluster, use the appropriate cluster management tool to manage the [!INCLUDE [ssDE](../includes/ssde-md.md)] for your Linux distribution. See [Deploy a Pacemaker cluster for SQL Server on Linux](business-continuity/failover-cluster-instance/deploy-pacemaker-cluster.md) for an example using Pacemaker.
 
 ### Permissions
 
@@ -77,7 +77,7 @@ You can stop, start, or restart the [!INCLUDE [ssDE](../includes/ssde-md.md)] se
    sudo systemctl restart mssql-server
    ```
 
-To set up and manage the SQL Server Agent, see [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md). To restart the SQL Server Agent service, you must restart the [!INCLUDE [ssDE](../includes/ssde-md.md)] service.
+To set up and manage the SQL Server Agent, see [Install SQL Server Agent on Linux](install-upgrade/setup-sql-agent.md). To restart the SQL Server Agent service, you must restart the [!INCLUDE [ssDE](../includes/ssde-md.md)] service.
 
 <a id="TsqlProcedure"></a>
 
@@ -103,6 +103,6 @@ For more information, see [SHUTDOWN](../t-sql/language-elements/shutdown-transac
 
 ## Related content
 
-- [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md)
+- [Installation guidance for SQL Server on Linux](install-upgrade/setup.md)
 - [Troubleshoot SQL Server on Linux](sql-server-linux-troubleshooting-guide.md)
-- [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md)
+- [Install the sqlcmd and bcp SQL Server command-line tools on Linux](install-upgrade/setup-tools.md)
