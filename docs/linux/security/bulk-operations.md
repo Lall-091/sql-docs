@@ -22,7 +22,7 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 > [!IMPORTANT]
 > This feature is currently in preview.
 
-Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] Cumulative Update 24 (CU24) and [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] Cumulative Update 3 (CU3), you can use the **bulkadmin** server role or the `ADMINISTER BULK OPERATIONS` permission to perform bulk data import operations on [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] running on Linux. Previously, only members of the **sysadmin** server role could run [BULK INSERT](../../t-sql/statements/bulk-insert-transact-sql.md) or [OPENROWSET(BULK...)](../../relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md) on Linux.
+Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] Cumulative Update 24 (CU24) and [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] Cumulative Update 3 (CU3), you can use the **bulkadmin** server role or the `ADMINISTER BULK OPERATIONS` permission to perform bulk data import operations on [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] running on Linux. Previously, only members of the **sysadmin** server role could run [BULK INSERT](../../t-sql/statements/bulk-insert-transact-sql.md) or [Use BULK INSERT or OPENROWSET(BULK...) to import data to SQL Server](../../relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md) on Linux.
 
 [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Linux enforces additional file system and path validation checks for bulk operations, beyond what's required on Windows. An administrator must:
 
@@ -183,7 +183,7 @@ SELECT * FROM dbo.Sales;
 GO
 ```
 
-The same permissions, Linux file system configuration, and path approval steps apply to `INSERT ... SELECT * FROM OPENROWSET(BULK...)` statements. For more information, see [Import bulk data by using BULK INSERT or OPENROWSET(BULK...)](../../relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md).
+The same permissions, Linux file system configuration, and path approval steps apply to `INSERT ... SELECT * FROM OPENROWSET(BULK...)` statements. For more information, see [Use BULK INSERT or OPENROWSET(BULK...) to import data to SQL Server](../../relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md).
 
 ## Upgrade and downgrade behavior
 
@@ -197,7 +197,7 @@ If you downgrade to a cumulative update earlier than [!INCLUDE [sssql22-md](../.
 ## Related content
 
 - [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md)
-- [Import bulk data by using BULK INSERT or OPENROWSET(BULK...)](../../relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md)
+- [Use BULK INSERT or OPENROWSET(BULK...) to import data to SQL Server](../../relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md)
 - [Security considerations for SQL Server on Linux](overview.md)
 - [SQL Server on Linux - Security and permissions guide](permissions-guide.md)
 - [Configure SQL Server on Linux with the mssql-conf tool](../configure/mssql-conf.md)

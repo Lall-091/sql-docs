@@ -33,7 +33,7 @@ The following updates apply to [!INCLUDE [sssql25-md](../includes/sssql25-md.md)
 
 - **Bulk import operations without sysadmin**. You can use the **bulkadmin** server role or the `ADMINISTER BULK OPERATIONS` permission to perform `BULK INSERT` and `OPENROWSET(BULK...)` operations on [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, without requiring **sysadmin** permissions. An administrator must configure Linux file system permissions and approve directory paths using `mssql-conf`.
 
-  For more information, see [Configure bulk import operations for SQL Server on Linux (preview)](sql-server-linux-bulk-operations.md).
+  For more information, see [Configure bulk import operations for SQL Server on Linux (preview)](security/bulk-operations.md).
 
 ### Cumulative Update 1
 
@@ -56,7 +56,7 @@ The following updates apply to [!INCLUDE [sssql25-md](../includes/sssql25-md.md)
 
 - **Support for the adutil tool on Ubuntu 24.04 and Red Hat Enterprise Linux 10**. The **`adutil`** tool is available on Ubuntu 24.04 and Red Hat Enterprise Linux (RHEL) 10, expanding support for Active Directory authentication scenarios on Linux.
 
-  For more information, see [Introduction to adutil - Active Directory utility](sql-server-linux-ad-auth-adutil-introduction.md).
+  For more information, see [Introduction to `adutil` - Active Directory utility](security/authentication/adutil-introduction.md).
 
 ### General availability
 
@@ -64,9 +64,9 @@ The following updates are available in [!INCLUDE [sssql25-md](../includes/sssql2
 
 | New feature or update | Details |
 | --- | --- |
-| TLS 1.3 enabled by default | [Encrypt connections to SQL Server on Linux](sql-server-linux-encrypted-connections.md) |
-| Custom password policy | [Set custom password policy for SQL logins in SQL Server on Linux](sql-server-linux-custom-password-policy.md) |
-| tmpfs support for `tempdb` | [Enable and run tempdb on tmpfs for SQL Server 2025 on Linux](sql-server-linux-tmpfs-tempdb.md) |
+| TLS 1.3 enabled by default | [Encrypt connections to SQL Server on Linux](security/encrypted-connections.md) |
+| Custom password policy | [Set custom password policy for SQL logins in SQL Server on Linux](security/authentication/custom-password-policy.md) |
+| tmpfs support for `tempdb` | [Enable and run tempdb on tmpfs for SQL Server 2025 on Linux](configure/tmpfs-tempdb-system-database.md) |
 | Generic ODBC data source support for PolyBase | [Connect to ODBC data sources with PolyBase on SQL Server on Linux](sql-server-linux-polybase.md) |
 
 ## AI developer features

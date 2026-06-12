@@ -78,7 +78,7 @@ You can stop or restart the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.m
    ```
 
 > [!TIP]  
-> For more troubleshooting tips for Linux containers, see [Troubleshoot SQL Server Docker containers](sql-server-linux-docker-container-troubleshooting.md).
+> For more troubleshooting tips for Linux containers, see [Troubleshoot SQL Server Docker containers](containers/troubleshoot.md).
 
 ## Access the log files
 

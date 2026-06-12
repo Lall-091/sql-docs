@@ -162,7 +162,7 @@ If you choose to use a quickstart article, remember that you already configured 
 
 ## Related content
 
-- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-red-hat.md)
 - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-suse.md)
 - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-ubuntu.md)
 - [Installation guidance for SQL Server on Linux](setup.md)

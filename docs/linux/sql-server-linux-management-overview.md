@@ -19,11 +19,11 @@ There are several ways to manage [!INCLUDE [ssnoversion-md](../includes/ssnovers
 
 ## mssql-conf
 
-The **`mssql-conf`** tool configures [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. For more information, see [Configure SQL Server on Linux with the mssql-conf tool](sql-server-linux-configure-mssql-conf.md).
+The **`mssql-conf`** tool configures [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. For more information, see [Configure SQL Server on Linux with the mssql-conf tool](configure/mssql-conf.md).
 
 ## Transact-SQL
 
-Almost everything you can do in a client tool can also be accomplished with Transact-SQL statements. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] provides [System dynamic management views](../relational-databases/system-dynamic-management-views/system-dynamic-management-views.md) that query the status and configuration of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. There are also [Transact-SQL commands](../t-sql/language-reference.md) for database management tasks. You can run these commands in any client tool that supports connecting to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and running Transact-SQL queries, for example [sqlcmd](sql-server-linux-setup-tools.md) or [Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md).
+Almost everything you can do in a client tool can also be accomplished with Transact-SQL statements. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] provides [System dynamic management views](../relational-databases/system-dynamic-management-views/system-dynamic-management-views.md) that query the status and configuration of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. There are also [Transact-SQL commands](../t-sql/language-reference.md) for database management tasks. You can run these commands in any client tool that supports connecting to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and running Transact-SQL queries, for example [sqlcmd](install-upgrade/setup-tools.md) or [Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md).
 
 ## MSSQL extension for Visual Studio Code
 

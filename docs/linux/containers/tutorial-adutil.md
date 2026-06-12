@@ -60,7 +60,7 @@ For this tutorial, we're using an environment in Azure with three virtual machin
 
 ## Install adutil
 
-To install **`adutil`**, follow the steps in [Introduction to adutil - Active Directory utility](../security/authentication/adutil-introduction.md), on a host machine that is joined to the domain.
+To install **`adutil`**, follow the steps in [Introduction to `adutil` - Active Directory utility](../security/authentication/adutil-introduction.md), on a host machine that is joined to the domain.
 
 ## Create Active Directory user, SPNs, and SQL Server service keytab
 

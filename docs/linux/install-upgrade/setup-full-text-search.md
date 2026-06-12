@@ -20,8 +20,7 @@ The following steps install [Full-Text Search](../../relational-databases/search
 ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
 > [!IMPORTANT]  
-> The supported Full-Text languages and document types have changed in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Linux. You must rebuild any existing indexes upgraded from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. For more information, see [Breaking changes to Database Engine features in SQL Server 2025
-](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md#full-text-queries-and-populations-fail-after-upgrade).
+> The supported Full-Text languages and document types have changed in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Linux. You must rebuild any existing indexes upgraded from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. For more information, see [Breaking changes to Database Engine features in SQL Server 2025](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md#full-text-queries-and-populations-fail-after-upgrade).
 
 ::: moniker-end
 

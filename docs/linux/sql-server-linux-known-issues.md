@@ -24,7 +24,7 @@ The following table lists the most common issues with [!INCLUDE [ssnoversion-md]
 | --- | --- |
 | The length of the hostname where [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is installed needs to be 15 characters or less. | Change the name in `/etc/hostname` to a value 15 characters long or less. |
 | Manually setting the system time backward in time causes [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] to stop updating the internal system time within the [!INCLUDE [ssde-md](../includes/ssde-md.md)]. | Restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. |
-| Only single instance installations are supported. | If you want to have more than one instance on a given host, consider using [virtual machines](/azure/azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview) or [Linux containers](sql-server-linux-docker-container-deployment.md). |
+| Only single instance installations are supported. | If you want to have more than one instance on a given host, consider using [virtual machines](/azure/azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview) or [Linux containers](containers/deploy.md). |
 | [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Configuration Manager can't connect to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux. | Configuration Manager isn't supported on Linux. Use **`mssql-conf`** to manage [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux instead. |
 | The default language of the `sa` account is English. | Change the language of the `sa` account with the `ALTER LOGIN` statement. |
 | The OLE DB provider logs the following warning:<br /><br />`Failed to verify the Authenticode signature of 'C:\binn\msoledbsql.dll'. Signature verification of SQL Server DLLs will be skipped. Genuine copies of SQL Server are signed. Failure to verify the Authenticode signature might indicate that this isn't an authentic release of SQL Server. Install a genuine copy of SQL Server or contact customer support.` | No action is required. The OLE DB provider is signed using SHA256. The [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)] doesn't validate the signed .dll correctly. |
@@ -34,7 +34,7 @@ The following table lists the most common issues with [!INCLUDE [ssnoversion-md]
 
 - The `master` database can't be moved with the **`mssql-conf`** utility. Other system databases can be moved with **`mssql-conf`**.
 
-- When you restore a database that was backed up on [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Windows, you must use the `WITH MOVE` clause in the Transact-SQL statement. For more information, see [Migrate a SQL Server database from Windows to Linux using backup and restore](sql-server-linux-migrate-restore-database.md).
+- When you restore a database that was backed up on [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Windows, you must use the `WITH MOVE` clause in the Transact-SQL statement. For more information, see [Migrate a SQL Server database from Windows to Linux using backup and restore](migrate/restore-database.md).
 
 - Certain algorithms (cipher suites) for Transport Layer Security (TLS) don't work properly with [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux. This results in connection failures when attempting to connect to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)], and problems establishing connections between replicas in high availability groups.
 
@@ -144,13 +144,13 @@ The following features aren't supported in this release when you run SSIS packag
 - Hadoop and HDFS support
 - Microsoft Connector for SAP BW
 
-For a list of built-in SSIS components that aren't currently supported, or that are supported with limitations, see [Feature support and considerations for SQL Server Integration Services (SSIS) on Linux](sql-server-linux-ssis-known-issues.md).
+For a list of built-in SSIS components that aren't currently supported, or that are supported with limitations, see [Feature support and considerations for SQL Server Integration Services (SSIS) on Linux](migrate/ssis-known-issues.md).
 
 For more info about SSIS on Linux, see the following articles:
 
 - [Blog post announcing SSIS support for Linux](https://techcommunity.microsoft.com/category/sql-server/blog/ssis).
-- [Install SQL Server Integration Services (SSIS) on Linux](sql-server-linux-setup-ssis.md)
-- [Extract, transform, and load data on Linux with SSIS](sql-server-linux-migrate-ssis.md)
+- [Install SQL Server Integration Services (SSIS) on Linux](install-upgrade/setup-ssis.md)
+- [Extract, transform, and load data on Linux with SSIS](migrate/ssis.md)
 
 ## SQL Server Management Studio (SSMS)
 

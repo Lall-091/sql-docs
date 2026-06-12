@@ -338,4 +338,4 @@ As described in the previous diagram, a log shipping session involves the follow
 ## Related content
 
 - [About log shipping (SQL Server)](../../database-engine/log-shipping/about-log-shipping-sql-server.md)
-- [Configure Log Shipping (SQL Server)](../../database-engine/log-shipping/configure-log-shipping-sql-server.md)
+- [Configure log shipping (SQL Server)](../../database-engine/log-shipping/configure-log-shipping-sql-server.md)

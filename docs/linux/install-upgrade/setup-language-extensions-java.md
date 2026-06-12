@@ -56,8 +56,7 @@ On an internet-connected device, packages are downloaded and installed independe
 
 You can install Language Extensions and Java on Linux by installing `mssql-server-extensibility-java`. When you install `mssql-server-extensibility-java`, the package automatically installs JRE 11 if it isn't already installed. It also adds the JVM path to an environment variable called `JRE_HOME`.
 
-To enable the Java Language Extension, build a custom binary by following the instructions from the [Java Language Extension page on GitHub](
-https://github.com/microsoft/sql-server-language-extensions/tree/main/language-extensions/java).
+To enable the Java Language Extension, build a custom binary by following the instructions from the [Java Language Extension page on GitHub](https://github.com/microsoft/sql-server-language-extensions/tree/main/language-extensions/java).
 
 > [!NOTE]  
 > On an internet-connected server, package dependencies are downloaded and installed as part of the main package installation. If your server isn't connected to the internet, see more details in the [offline setup](#offline-install).
@@ -68,8 +67,7 @@ https://github.com/microsoft/sql-server-language-extensions/tree/main/language-e
 
 You can download and install any Java runtime as desired, including the latest [Microsoft Build of OpenJDK](https://www.microsoft.com/openjdk) or officially licensed Java runtime. Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Setup doesn't install a Java runtime.
 
-To enable the Java Language Extension, build a custom binary by following the instructions from the [Java Language Extension page on GitHub](
-https://github.com/microsoft/sql-server-language-extensions/tree/main/language-extensions/java).
+To enable the Java Language Extension, build a custom binary by following the instructions from the [Java Language Extension page on GitHub](https://github.com/microsoft/sql-server-language-extensions/tree/main/language-extensions/java).
 
 ::: moniker-end
 
@@ -272,7 +270,7 @@ Implied authentication is currently not available on Linux at this time, which m
 
 ### Resource governance
 
-There's parity between Linux and Windows for [Resource governance](../../t-sql/statements/create-external-resource-pool-transact-sql.md) for external resource pools, but the statistics for [sys.dm_resource_governor_external_resource_pools](../../relational-databases/system-dynamic-management-views/sys-dm-resource-governor-external-resource-pools.md) currently have different units on Linux.
+There's parity between Linux and Windows for [resource governance](../../t-sql/statements/create-external-resource-pool-transact-sql.md) for external resource pools, but the statistics for [sys.dm_resource_governor_external_resource_pools](../../relational-databases/system-dynamic-management-views/sys-dm-resource-governor-external-resource-pools.md) currently have different units on Linux.
 
 > [!NOTE]  
 > Statistics in the following table are sourced from the specified Control Groups (cgroups) subsystems.

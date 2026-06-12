@@ -26,7 +26,7 @@ In addition to these capabilities in this article, cumulative updates (CUs) are 
 
 [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Cumulative Update (CU) 23 provides support for configuring a custom password policy. This feature was backported from [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
-For more information, see [Set custom password policy for SQL logins in SQL Server on Linux](sql-server-linux-custom-password-policy.md).
+For more information, see [Set custom password policy for SQL logins in SQL Server on Linux](security/authentication/custom-password-policy.md).
 
 ## Red Hat Enterprise Linux 9 support
 

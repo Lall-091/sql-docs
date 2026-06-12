@@ -9203,7 +9203,7 @@ items:
       - name: Configure persistent memory (PMEM)
         href: linux/configure/persistent-memory.md
       - name: Configure tempdb on tmpfs for SQL Server 2025
-        href: linux/configure/tmpfs-temporary-database.md
+        href: linux/configure/tmpfs-tempdb-system-database.md
       - name: Configure time zone on SQL Server 2022 and later
         href: linux/configure/time-zone.md
       - name: Configure time zone on SQL Server 2019
@@ -15687,10 +15687,24 @@ items:
         items:
         - name: Overview
           href: t-sql/functions/ai-functions-transact-sql.md
-        - name: AI_GENERATE_EMBEDDINGS
-          href: t-sql/functions/ai-generate-embeddings-transact-sql.md
+        - name: AI_ANALYZE_SENTIMENT
+          href: t-sql/functions/ai-analyze-sentiment-transact-sql.md
+        - name: AI_CLASSIFY
+          href: t-sql/functions/ai-classify-transact-sql.md
+        - name: AI_EXTRACT
+          href: t-sql/functions/ai-extract-transact-sql.md
+        - name: AI_FIX_GRAMMAR
+          href: t-sql/functions/ai-fix-grammar-transact-sql.md
         - name: AI_GENERATE_CHUNKS
           href: t-sql/functions/ai-generate-chunks-transact-sql.md
+        - name: AI_GENERATE_EMBEDDINGS
+          href: t-sql/functions/ai-generate-embeddings-transact-sql.md
+        - name: AI_GENERATE_RESPONSE
+          href: t-sql/functions/ai-generate-response-transact-sql.md
+        - name: AI_SUMMARIZE
+          href: t-sql/functions/ai-summarize-transact-sql.md
+        - name: AI_TRANSLATE
+          href: t-sql/functions/ai-translate-transact-sql.md
         - name: CREATE EXTERNAL MODEL
           href: t-sql/statements/create-external-model-transact-sql.md
         - name: ALTER EXTERNAL MODEL

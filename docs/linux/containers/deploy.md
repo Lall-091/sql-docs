@@ -29,7 +29,7 @@ For other deployment scenarios, see:
 
 - [Windows](../../database-engine/install-windows/install-sql-server.md)
 - [Linux](../install-upgrade/setup.md)
-- [Container cluster on Azure](../install-upgrade/quickstart-containers-azure.md)
+- [Container cluster on Azure or Red Hat OpenShift](../install-upgrade/quickstart-containers-azure.md)
 
 This article specifically focuses on using the `mssql-server-linux` image. SQL Server deployments in Windows containers aren't covered by support. For development and testing, you can create your own custom container images to work with SQL Server in Windows containers. Sample files are available on [GitHub](https://github.com/microsoft/mssql-docker/blob/master/windows/mssql-server-windows-developer/dockerfile_1). Sample files are for reference only.
 

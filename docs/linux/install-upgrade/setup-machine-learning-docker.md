@@ -119,7 +119,6 @@ RECONFIGURE WITH OVERRIDE;
 
 ## Related content
 
-- [Python Tutorial: Deploy a linear regression model with SQL machine learning](../../machine-learning/concepts/extension-python.md)
-- [Python tutorial: Categorizing customers using k-means clustering with SQL machine learning](../../machine-learning/concepts/extension-python.md)
+- [Python language extension in SQL Server Machine Learning Services](../../machine-learning/concepts/extension-python.md)
 - [Quickstart: Run simple R scripts with SQL machine learning](../../machine-learning/tutorials/quickstart-r-create-script.md)
 - [R tutorial: Predict NYC taxi fares with binary classification](../../machine-learning/tutorials/r-taxi-classification-introduction.md)

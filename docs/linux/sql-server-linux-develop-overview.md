@@ -53,18 +53,16 @@ See the following articles for more information:
 
 ## Use new SQL tools for Linux
 
-You can use the [mssql extension](https://aka.ms/mssql-marketplace) for [Visual Studio Code](https://code.visualstudio.com) on Linux, macOS, and Windows. For a step-by-step walkthrough, see the following tutorial:
-
-- [SQL Server extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md)
+You can use the [MSSQL extension](https://aka.ms/mssql-marketplace) for [Visual Studio Code](https://code.visualstudio.com) on Linux, macOS, and Windows. For a step-by-step walkthrough, see [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md).
 
 You can also use command-line tools that are native for Linux. These tools include the following:
 
 - [sqlcmd](../tools/sqlcmd/sqlcmd-utility.md)
-- [bcp](sql-server-linux-migrate-bcp.md)
-- [mssql-conf](sql-server-linux-configure-mssql-conf.md)
+- [bcp](migrate/bulk-copy.md)
+- [mssql-conf](configure/mssql-conf.md)
 
 ## Related content
 
-- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md)
-- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
-- [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](install-upgrade/quickstart-install-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](install-upgrade/quickstart-install-suse.md)
+- [Quickstart: Install SQL Server and create a database on Ubuntu](install-upgrade/quickstart-install-ubuntu.md)

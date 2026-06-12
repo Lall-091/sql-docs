@@ -92,5 +92,5 @@ After restart:
 
 For more information, see the following resources:
 
-- [Quickstart: Deploy a SQL Server Linux container to Kubernetes using Helm charts](../sql-server-linux-containers-deploy-helm-charts-kubernetes.md)
+- [Quickstart: Deploy a SQL Server Linux container to Kubernetes using Helm charts](../containers/kubernetes-deploy-helm-charts.md)
 - [Control Group v2 (Linux Kernel documentation)](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)

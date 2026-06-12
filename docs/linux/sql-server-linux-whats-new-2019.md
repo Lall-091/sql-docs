@@ -43,10 +43,10 @@ The following updates are available in [!INCLUDE [sssql19-md](../includes/sssql1
 
 | New feature or update | Details |
 | --- | --- |
-| Replication support | [SQL Server replication on Linux](sql-server-linux-replication.md) |
-| Support for the Microsoft Distributed Transaction Coordinator (MSDTC) | [How to configure the Microsoft Distributed Transaction Coordinator (MSDTC) on Linux](sql-server-linux-configure-msdtc.md) |
-| OpenLDAP support for third-party Active Directory providers | [Tutorial: Use Active Directory authentication with SQL Server on Linux](sql-server-linux-active-directory-authentication.md) |
-| Machine Learning on Linux | [Install SQL Server 2019 Machine Learning Services (Python and R) on Linux](sql-server-linux-setup-machine-learning.md) |
+| Replication support | [SQL Server replication on Linux](replication/overview.md) |
+| Support for the Microsoft Distributed Transaction Coordinator (MSDTC) | [How to configure the Microsoft Distributed Transaction Coordinator (MSDTC) on Linux](configure/distributed-transactions.md) |
+| OpenLDAP support for third-party Active Directory providers | [Tutorial: Use Active Directory authentication with SQL Server on Linux](security/authentication/active-directory-tutorial.md) |
+| Machine Learning on Linux | [Install SQL Server 2019 Machine Learning Services (Python and R) on Linux](install-upgrade/setup-machine-learning.md) |
 | `tempdb` improvements | By default, a new installation of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux creates multiple `tempdb` data files based on the number of logical cores (with up to eight data files). This setting doesn't apply to in-place minor or major version upgrades. Each `tempdb` file is 8 MB with an auto growth of 64 MB. This behavior is similar to the default [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] installation on Windows. |
 | PolyBase on Linux | [Install PolyBase on Linux](../relational-databases/polybase/polybase-linux-setup.md) on Linux for non-Hadoop connectors.<br /><br />[Type mapping with PolyBase](../relational-databases/polybase/polybase-type-mapping.md). |
 | Change Data Capture (CDC) support | Change Data Capture (CDC) is supported on Linux for [!INCLUDE [sssql19-md](../includes/sssql19-md.md)]. |

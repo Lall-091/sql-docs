@@ -83,16 +83,16 @@ This section lists the latest versions of each package per distribution, for [!I
 
 ## How to install updates
 
-When you configure the CU repository (`mssql-server-2019`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/r/microsoft/mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server 2025 on Linux](sql-server-linux-change-repo-2025.md).
+When you configure the CU repository (`mssql-server-2019`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/r/microsoft/mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server 2025 on Linux](install-upgrade/change-repo-2025.md).
 
 If you update existing [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages, run the appropriate update command for each package to get the latest CU. For specific update instructions for each package, see the following installation guides:
 
 - [Install SQL Server package](sql-server-linux-setup.md#upgrade)
-- [Install SQL Server Full-Text Search on Linux](sql-server-linux-setup-full-text-search.md)
-- [Install SQL Server Integration Services (SSIS) on Linux](sql-server-linux-setup-ssis.md)
-- [Install SQL Server 2019 Machine Learning Services (Python and R) on Linux](sql-server-linux-setup-machine-learning.md)
+- [Install SQL Server Full-Text Search on Linux](install-upgrade/setup-full-text-search.md)
+- [Install SQL Server Integration Services (SSIS) on Linux](install-upgrade/setup-ssis.md)
+- [Install SQL Server 2019 Machine Learning Services (Python and R) on Linux](install-upgrade/setup-machine-learning.md)
 - [Install PolyBase on Linux](../relational-databases/polybase/polybase-linux-setup.md)
-- [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md)
+- [Install SQL Server Agent on Linux](install-upgrade/setup-sql-agent.md)
 
 ## Release history
 
@@ -158,9 +158,9 @@ For more information, see [SQL Server on Linux: Known issues](sql-server-linux-k
 ## Related content
 
 - [SQL Server on Linux FAQ](sql-server-linux-faq.yml)
-- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
-- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
-- [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
-- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](install-upgrade/quickstart-install-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](install-upgrade/quickstart-install-suse.md)
+- [Quickstart: Install SQL Server and create a database on Ubuntu](install-upgrade/quickstart-install-ubuntu.md)
+- [Quickstart: Run SQL Server Linux container images with Docker](install-upgrade/quickstart-install-docker.md)
 - [Provision a Linux virtual machine running SQL Server in the Azure portal](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart)
-- [Quickstart: Run SQL Server in the cloud](quickstart-install-connect-clouds.md)
+- [Quickstart: Run SQL Server in the cloud](install-upgrade/quickstart-install-clouds.md)

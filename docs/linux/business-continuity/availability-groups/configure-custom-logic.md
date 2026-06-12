@@ -25,7 +25,7 @@ This article explains how to configure a SQL Server Always On availability group
 
 - Recommended for production environments requiring minimal downtime.
 
-- To configure this setup, see [Configure SQL Server availability group for high availability on Linux](../../high-availability/availability-groups-configure.md).
+- To configure this setup, see [Configure SQL Server availability group for high availability on Linux](configure.md).
 
 ### Read-scale architecture
 

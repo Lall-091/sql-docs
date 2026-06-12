@@ -14,7 +14,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../../includes/applies-to-version/sql-linux.md)]
 
-This article shows how to use the [bcp utility](../../tools/bcp-utility.md) to bulk copy data between an instance of SQL Server on Linux and a data file in a user-specified format.
+This article shows how to use the [bcp utility](../../tools/bcp/bcp-utility.md) to bulk copy data between an instance of SQL Server on Linux and a data file in a user-specified format.
 
 You can use **`bcp`** to import large numbers of rows into SQL Server tables or to export data from SQL Server tables into data files. Except when used with the queryout option, **`bcp`** requires no knowledge of Transact-SQL. The **`bcp`** command-line utility works with Microsoft SQL Server running on-premises or in the cloud, on Linux, Windows or Docker and Azure SQL Database and Azure Synapse Analytics.
 
@@ -145,7 +145,7 @@ This should display the following in your terminal window:
 
 ## Related content
 
-- [bcp utility](../../tools/bcp-utility.md)
+- [bcp utility](../../tools/bcp/bcp-utility.md)
 - [Specify compatibility data formats when using bcp (SQL Server)](../../relational-databases/import-export/specify-data-formats-for-compatibility-when-using-bcp-sql-server.md)
 - [Use BULK INSERT or OPENROWSET(BULK...) to import data to SQL Server](../../relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md)
 - [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md)

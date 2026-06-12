@@ -51,7 +51,7 @@ To join `sql1` to the Active Directory domain, see [Join SQL Server on a Linux h
 
 ## Install adutil
 
-To install **`adutil`**, follow the steps explained in the article [Introduction to adutil - Active Directory utility](adutil-introduction.md) on the host machine that you added to the domain in the previous step.
+To install **`adutil`**, follow the steps explained in the article [Introduction to `adutil` - Active Directory utility](adutil-introduction.md) on the host machine that you added to the domain in the previous step.
 
 <a id="adutil-spn"></a>
 

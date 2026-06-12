@@ -108,7 +108,7 @@ To restore the database, you must first transfer the backup file from the Window
    ```
 
 > [!TIP]  
-> There are alternatives to using **scp** for file transfer. One is to use [Samba](https://help.ubuntu.com/community/Samba) to configure an SMB network share between Windows and Linux. For a walkthrough on Ubuntu, see [Samba as a file server](https://documentation.ubuntu.com/server/samba-as-a-file-server). Once established, you can access it as a network file share from Windows, such as `\\machinenameorip\share`.
+> There are alternatives to using **scp** for file transfer. One is to use [Samba](https://help.ubuntu.com/community/Samba) to configure an SMB network share between Windows and Linux. For a walkthrough on Ubuntu, see [Samba as a file server](https://ubuntu.com/server/docs/samba-as-a-file-server). Once established, you can access it as a network file share from Windows, such as `\\machinenameorip\share`.
 
 ## Move the backup file before restoring
 

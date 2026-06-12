@@ -56,7 +56,7 @@ This information includes the default domain, properties of each domain (such as
 
 This file is necessary for Active Directory authentication to work. `krb5.conf` is an INI file, but each value in the key-value pair can be a subgroup enclosed by `{` and `}`.
 
-For more information on the `krb5.conf` file, refer to the [MIT Kerberos Consortium documentation](http://web.mit.edu/kerberos/krb5-1.16/doc/admin/conf_files/krb5_conf.html).
+For more information on the `krb5.conf` file, refer to the [MIT Kerberos Consortium documentation](https://web.mit.edu/kerberos/krb5-1.16/doc/admin/conf_files/krb5_conf.html).
 
 ## Configure Kerberos for SQL Server on Linux
 
