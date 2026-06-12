@@ -68887,7 +68887,12 @@
     },
     {
       "source_path": "docs/linux/sql-server-linux-tmpfs-tempdb.md",
-      "redirect_url": "/sql/linux/configure/tmpfs-temporary-database",
+      "redirect_url": "/sql/linux/configure/tmpfs-tempdb-system-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/linux/configure/tmpfs-temporary-database.md",
+      "redirect_url": "/sql/linux/configure/tmpfs-tempdb-system-database",
       "redirect_document_id": false
     },
     {
