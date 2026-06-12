@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 05/14/2026
+ms.date: 06/11/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -429,7 +429,7 @@ ms.topic: include
 | 22703 | 16 | No | Could not enable Change Feed for database '%s'. Change Feed is not supported on system databases, or on a distribution database. |
 | 22704 | 16 | No | Could not enable Change Feed for database '%s'. Change Feed can not be enabled on a DB with Change Data Capture or transactional replication publishing. |
 | 22705 | 16 | No | Could not enable Change Feed for database '%s' as it is already enabled. |
-| 22706 | 16 | No | Synapse Link, Fabric Mirroring or Change Event Streaming are not enabled on database '%s'. |
+| 22706 | 16 | No | Change Feed or Fabric Link is not enabled on database '%s'. |
 | 22707 | 16 | No | The specified database scoped credential name can't be found. |
 | 22708 | 16 | No | The specified database scoped credential name does not match the landing zone URL path |
 | 22709 | 16 | No | Parameter '%s' cannot be null or empty. Specify a value for the named parameter and retry the operation. |
@@ -493,7 +493,7 @@ ms.topic: include
 | 22767 | 16 | No | The value for parameter @pollinterval specified must be equal to or greater than 5. |
 | 22768 | 16 | No | Could not update change_feed_settings, the table has not been created yet. |
 | 22769 | 16 | No | Could not find table group or table with the provided table_group_id/table_id or source_schema/source_name |
-| 22770 | 16 | No | Missing parameters: Please provide table_group_id and table_id or source_schema and source_name. |
+| 22770 | 16 | No | Could not return results, please provide table_group_id and table_id or source_schema and source_name |
 | 22771 | 16 | No | Error occurred while publishing data via CSVOutputter |
 | 22772 | 10 | No | environment |
 | 22773 | 10 | No | database |
@@ -614,7 +614,6 @@ ms.topic: include
 | 22895 | 16 | No | Could not drop cdc user. CDC user is required for proper working of CDC. |
 | 22896 | 10 | No | sp_cdc_disable_db caught an exception in try block when executing command : '%s'. The error returned was %d: '%s' |
 | 22897 | 16 | No | Enabling Change Data Capture for an external table '%s' is not allowed. |
-| 22898 | 16 | No | Could not enable Change Data Capture for database '%ls'. Change Data Capture cannot be enabled on a database configured for Change Event Streaming. |
 | 22901 | 16 | No | The database '%s' is not enabled for Change Data Capture. Ensure that the correct database context is set and retry the operation. To report on the databases enabled for Change Data Capture, query the is_cdc_enabled column in the sys.databases catalog view. |
 | 22902 | 16 | No | Caller is not authorized to initiate the requested action. %s privileges are required. |
 | 22903 | 16 | No | Another connection with session ID %I64d is already running 'sp_replcmds' for Change Data Capture in the current database. |

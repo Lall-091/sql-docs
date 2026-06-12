@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 01/15/2026
+ms.date: 06/11/2026
 ms.topic: include
 ---
 > [!NOTE]
@@ -1330,7 +1330,7 @@ ms.topic: include
 | 37560 | 16 | No | Encryption scan cannot be suspended because it is already in suspended state. |
 | 37561 | 16 | No | Database encryption key cannot be altered because the database is not encrypted. |
 | 37562 | 16 | No | When key change is in progress, only suspend and resume operations are allowed. |
-| 37563 | 16 | Yes | The primary managed identity is not selected for this SQL Server instance. If the SQL Server instance is in an Azure VM, enable the managed identity of the VM to use Microsoft Entra authentication. For more information, see [[https://go.microsoft.com/fwlink/?linkid=2323210](https://go.microsoft.com/fwlink/?linkid=2323210](https://go.microsoft.com/fwlink/?linkid=2323210](https://go.microsoft.com/fwlink/?linkid=2323210)). If the SQL Server instance is not in an Azure VM, connect it to Azure Arc. For more information, see https://go.microsoft.com/fwlink/?linkid=2323209. |
+| 37563 | 16 | Yes | The primary managed identity is not selected for this SQL Server instance. If the SQL Server instance is in an Azure VM, enable the managed identity of the VM to use Microsoft Entra authentication. For more information, see [https://go.microsoft.com/fwlink/?linkid=2323210](https://go.microsoft.com/fwlink/?linkid=2323210). If the SQL Server instance is not in an Azure VM, connect it to Azure Arc. For more information, see [https://go.microsoft.com/fwlink/?linkid=2323209](https://go.microsoft.com/fwlink/?linkid=2323209). |
 | 37564 | 10 | Yes | The managed identity with Client_ID/Application_ID '%ls', is the primary identity assigned for this server. |
 | 37565 | 16 | Yes | Microsoft Graph is currently experiencing a high volume of requests. Please wait for %d seconds and try again. |
 | 37566 | 16 | No | Operations on customer managed key '%s' are not allowed because the key has been disabled in Azure Key Vault '%s'. Please enable the key. For help resolving this issue, please see https://aka.ms/sqlmi-tde-troubleshooting. |
