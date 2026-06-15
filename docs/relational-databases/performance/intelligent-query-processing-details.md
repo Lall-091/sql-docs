@@ -4,7 +4,7 @@ description: Intelligent query processing features described in detail.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, wiassaf, randolphwest
-ms.date: 11/18/2025
+ms.date: 06/12/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
@@ -271,6 +271,14 @@ For more information, see [APPROX_PERCENTILE_DISC](../../t-sql/functions/approx-
 **Applies to:** [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
 
 Batch mode on rowstore enables batch mode execution for analytic workloads without requiring columnstore indexes. This feature supports batch mode execution and bitmap filters for on-disk heaps and B-tree indexes. Batch mode on rowstore enables support for all existing batch mode-enabled operators.
+
+Existing queries that can benefit most from batch mode on rowstore include:
+ - Hash joins between large rowstore tables
+ - Queries with `GROUP BY` over many distinct values
+ - Aggregate functions like `SUM`, `COUNT`, `MIN`, `MAX`, `AVG`
+ - Window function queries with `OVER`, `PARTITION BY`, and `ORDER BY`, including aggregate functions, `ROW_NUMBER` and `RANK` 
+
+For more information about window function performance, see [Performance considerations](../../t-sql/queries/select-over-clause-transact-sql.md#performance-considerations) in the `OVER` clause reference.
 
 [!INCLUDE [sql-b-tree](../../includes/sql-b-tree.md)]
 

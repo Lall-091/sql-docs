@@ -3,11 +3,12 @@ title: "OVER Clause (Transact-SQL)"
 description: "Transact-SQL reference for the OVER clause, which defines a user-specified set of rows within a query result set."
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: randolphwest
-ms.date: 02/02/2026
+ms.reviewer: randolphwest, wiassaf
+ms.date: 06/12/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ai-usage: ai-assisted
 ms.custom:
   - ignite-2025
 f1_keywords:
@@ -40,8 +41,6 @@ The `OVER` clause determines the partitioning and ordering of a rowset before th
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
-
-Syntax for SQL Server, Azure SQL Database, and Azure Synapse Analytics.
 
 ```syntaxsql
 OVER (
@@ -92,7 +91,7 @@ ORDER BY order_by_expression
 {  <unsigned integer literal> }
 ```
 
-Syntax for Analytics Platform System (PDW):
+Syntax only for Analytics Platform System (PDW):
 
 ```syntaxsql
 OVER ( [ PARTITION BY value_expression ] [ order_by_clause ] )
@@ -100,15 +99,15 @@ OVER ( [ PARTITION BY value_expression ] [ order_by_clause ] )
 
 ## Arguments
 
-Window functions might have the following arguments in their `OVER` clause:
+Window functions can include the following arguments in their `OVER` clause:
 
-- [PARTITION BY](#partition-by) that divides the query result set into partitions.
+- [PARTITION BY](#partition-by) divides the query result set into partitions.
 
-- [ORDER BY](#order-by) that defines the logical order of the rows within each partition of the result set.
+- [ORDER BY](#order-by) defines the logical order of the rows within each partition of the result set.
 
-- [ROWS or RANGE](#rows-or-range) that limits the rows within the partition by specifying start and end points within the partition. It requires `ORDER BY` argument and the default value is from the start of partition to the current element if the `ORDER BY` argument is specified.
+- [ROWS or RANGE](#rows-or-range) limits the rows within the partition by specifying start and end points within the partition. It requires an `ORDER BY` argument. If you specify `ORDER BY`, the default value is from the start of the partition to the current element.
 
-If you don't specify any argument, the window functions are applied on the entire result set.
+If you don't specify any argument, the window functions apply to the entire result set.
 
 ```sql
 SELECT object_id,
@@ -127,7 +126,7 @@ FROM sys.objects;
 
 ### PARTITION BY
 
-Divides the query result set into partitions. The window function is applied to each partition separately and computation restarts for each partition.
+Divides the query result set into partitions. The window function applies to each partition separately, and computation restarts for each partition.
 
 ```syntaxsql
 PARTITION BY <value_expression>
@@ -135,7 +134,7 @@ PARTITION BY <value_expression>
 
 If you don't specify `PARTITION BY`, the function treats all rows of the query result set as a single partition.
 
-If you don't specify an `ORDER BY` clause, the function is applied on all rows in the partition.
+If you don't specify an `ORDER BY` clause, the function applies to all rows in the partition.
 
 #### PARTITION BY *value_expression*
 
@@ -167,7 +166,7 @@ FROM sys.objects;
 ORDER BY <order_by_expression> [ COLLATE <collation_name> ] [ ASC | DESC ]
 ```
 
-Defines the logical order of the rows within each partition of the result set. That is, it specifies the logical order in which the window function calculation is performed.
+Defines the logical order of the rows within each partition of the result set. It specifies the logical order in which the window function calculation is performed.
 
 - If you don't specify an order, the default order is `ASC` and the window function uses all rows in the partition.
 
@@ -299,6 +298,46 @@ You can't use the `OVER` clause with the `DISTINCT` aggregations.
 You can't use `RANGE` with `<unsigned value specification> PRECEDING` or `<unsigned value specification> FOLLOWING`.
 
 Support for `ORDER BY` clause, and the `ROWS` and `RANGE` clauses, depends on the ranking, aggregate, or analytic function that you use with the `OVER` clause.
+
+## Performance considerations
+
+With window functions, the SQL Database Engine is often tasked with partitioning and sorting large datasets for complex analytical queries. Use the following techniques to keep queries with window functions efficient.
+
+### Provide a supporting index
+
+For high-value or frequently executed queries that use window functions, consider creating a new nonclustered index. To benefit a query that uses a window function, the position of the key columns in the new nonclustered index must match the `PARTITION BY` columns followed by the `ORDER BY` columns, if any. If an `ORDER BY` clause is present, the order of the index key columns must also match the order specified in the `ORDER BY` clause. For example:
+
+```sql
+SELECT CustomerID,
+       OrderDate,
+       SUM(TotalDue) OVER (PARTITION BY CustomerID ORDER BY OrderDate) AS RunningTotal
+FROM Sales.SalesOrderHeader;
+```
+
+This query might benefit from this rowstore nonclustered index:
+
+```sql
+CREATE INDEX IX_SalesOrderHeader_Customer_OrderDate
+    ON Sales.SalesOrderHeader (CustomerID, OrderDate)
+    INCLUDE (TotalDue);
+```
+
+### Benefit from batch mode execution
+
+**Window Aggregate** operators might run faster in [batch mode](../../relational-databases/performance/intelligent-query-processing-details.md#batch-mode-on-rowstore) than in row mode. With batch mode processing, query operators work on batches of rows instead of one row at a time. Batch mode is possible in the following cases:
+
+- The query references a table that has a [columnstore index](../../relational-databases/indexes/columnstore-indexes-overview.md). For more information, see [Columnstore indexes - query performance](../../relational-databases/indexes/columnstore-indexes-query-performance.md).
+- The query runs on rowstore tables (heap or B+ tree) with database compatibility level 150 or higher, starting in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)].
+
+You can't force a query to use batch mode. The SQL Database Engine uses it when possible and judged beneficial. A set of execution plan operators can use batch mode for both rowstore and columnstore objects. To confirm that batch mode is used, look for the operator in the actual execution plan, such as **Window Aggregate**, and verify that the operator's `Actual Execution Mode` property is `Batch`. For more information on execution plan operators, see [Logical and physical showplan operator reference](../../relational-databases/showplan-logical-and-physical-operators-reference.md).
+
+### Avoid sort spills
+
+Underestimated cardinality can cause the sort operation to require more memory at execution time. This process can increase query cost. To mitigate spills:
+
+- Ensure statistics cover the partitioning and ordering columns. Ensure these statistics are up to date. For more information, see [Statistics](../../relational-databases/statistics/statistics.md).
+- Ensure that [Memory Grant Feedback](../../relational-databases/performance/intelligent-query-processing-memory-grant-feedback.md) is enabled. Memory grant feedback helps the Query Optimizer adjust memory grants on subsequent executions. To ensure your workloads automatically eligible for memory grant feedback, use database compatibility level 140 or higher. When enabled, this setting appears as enabled in [sys.database_scoped_configurations](../../relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql.md).
+- Reduce input row count with `WHERE` filters.
 
 ## Examples
 
@@ -441,7 +480,7 @@ SalesOrderID ProductID   OrderQty Total       Percent by ProductID
 
 ### C. Produce a moving average and cumulative total
 
-The following example uses the `AVG` and `SUM` functions with the `OVER` clause to provide a moving average and cumulative total of yearly sales for each territory in the `Sales.SalesPerson` table. The query partitions the data by `TerritoryID` and logically orders it by `SalesYTD`. This means that the `AVG` function is computed for each territory based on the sales year. For `TerritoryID` of `1`, two rows exist for sales year `2022`, representing the two sales people with sales that year. The average sales for these two rows are computed, and then the third row representing sales for the year `2023` is included in the computation.
+The following example uses the `AVG` and `SUM` functions with the `OVER` clause to provide a moving average and cumulative total of yearly sales for each territory in the `Sales.SalesPerson` table. The query partitions the data by `TerritoryID` and logically orders it by `SalesYTD`. This use of `OVER` means that the `AVG` function is computed for each territory based on the sales year. For `TerritoryID` of `1`, two rows exist for sales year `2022`, representing the two sales people with sales that year. The average sales for these two rows are computed, and then the third row representing sales for the year `2023` is included in the computation.
 
 ```sql
 USE AdventureWorks2025;

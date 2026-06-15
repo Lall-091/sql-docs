@@ -1,10 +1,10 @@
 ---
-title: "NTILE (Transact-SQL)"
-description: "NTILE (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
-ms.reviewer: randolphwest
-ms.date: 08/21/2025
+title: NTILE (Transact-SQL)
+description: The NTILE ranking function distributes the rows in an ordered partition into a specified number of groups.
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: randolphwest, wiassaf
+ms.date: 06/13/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -19,7 +19,7 @@ helpviewer_keywords:
   - "row distribution [SQL Server]"
   - "NTILE function"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # NTILE (Transact-SQL)
@@ -38,7 +38,7 @@ NTILE (integer_expression) OVER ( [ <partition_by_clause> ] <order_by_clause> )
 
 ## Arguments
 
-#### *integer_expression*
+#### integer_expression
 
 A positive integer expression that specifies the number of groups into which each partition must be divided. *integer_expression* can be of type **int**, or **bigint**.
 
@@ -59,6 +59,8 @@ Determines the order in which the `NTILE` values are assigned to the rows in a p
 If the number of rows in a partition isn't divisible by *integer_expression*, this causes groups of two sizes that differ by one member. Larger groups come before smaller groups in the order specified by the `OVER` clause. For example, if the total number of rows is 53 and the number of groups is five, the first three groups have 11 rows and the two remaining groups have 10 rows each. If on the other hand the total number of rows is divisible by the number of groups, the rows are evenly distributed among the groups. For example, if the total number of rows is 50, and there are five groups, each bucket contains 10 rows.
 
 `NTILE` is nondeterministic. For more information, see [Deterministic and nondeterministic functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).
+
+For window function performance tuning guidance, see [OVER() Performance considerations](../queries/select-over-clause-transact-sql.md#performance-considerations).
 
 ## Examples
 
@@ -247,9 +249,8 @@ Ansman-Wolfe      2         1,183,000.00   United States
 
 ## Related content
 
+- [SELECT - OVER clause (Transact-SQL)](../queries/select-over-clause-transact-sql.md)
 - [RANK (Transact-SQL)](rank-transact-sql.md)
 - [DENSE_RANK (Transact-SQL)](dense-rank-transact-sql.md)
 - [ROW_NUMBER (Transact-SQL)](row-number-transact-sql.md)
 - [Ranking Functions (Transact-SQL)](ranking-functions-transact-sql.md)
-- [What are the SQL database functions?](functions.md)
-
