@@ -1332,7 +1332,7 @@ ALTER DATABASE CustomerSales
 The following query returns the current statistics values for all databases. The value `1` means the feature is on, and a `0` means the feature is off.
 
 ```sql
-SELECT NAME,
+SELECT [name],
     is_auto_create_stats_on,
     is_auto_update_stats_on,
     is_auto_update_stats_async_on

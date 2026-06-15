@@ -1,9 +1,9 @@
 ---
-title: "DBCC SHOW_STATISTICS (Transact-SQL)"
+title: DBCC SHOW_STATISTICS (Transact-SQL)
 description: DBCC SHOW_STATISTICS displays current query optimization statistics for a table or indexed view.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/26/2025
+ms.date: 06/12/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -30,7 +30,7 @@ helpviewer_keywords:
   - "densities [SQL Server]"
   - "displaying distribution statistics"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
@@ -38,7 +38,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-Displays current query optimization statistics for a table or indexed view. The query optimizer uses statistics to estimate the cardinality or number of rows in the query result, which enables the Query Optimizer to create a high quality query plan. For example, the Query Optimizer could use cardinality estimates to choose the index seek operator instead of the index scan operator in the query plan, improving query performance by avoiding a resource-intensive index scan.
+The `DBCC SHOW_STATISTICS` command displays current query optimization statistics for a table or indexed view. The query optimizer uses statistics to estimate the cardinality or number of rows in the query result, which enables the Query Optimizer to create a high quality query plan. For example, the Query Optimizer could use cardinality estimates to choose the index seek operator instead of the index scan operator in the query plan, improving query performance by avoiding a resource-intensive index scan.
 
 The Query Optimizer stores statistics for a table or indexed view in a statistics object. For a table, the statistics object is created on either an index or a list of table columns. The statistics object includes a header with metadata about the statistics, a histogram with the distribution of values in the first key column of the statistics object, and a density vector to measure cross-column correlation. The [!INCLUDE [ssDE](../../includes/ssde-md.md)] can compute cardinality estimates with any of the data in the statistics object. For more information, see [Statistics](../../relational-databases/statistics/statistics.md) and [Cardinality Estimation (SQL Server)](../../relational-databases/performance/cardinality-estimation-sql-server.md).
 
@@ -80,15 +80,15 @@ DBCC SHOW_STATISTICS ( table_name , target )
 
 ## Arguments
 
-#### *table_or_indexed_view_name*
+#### table_or_indexed_view_name
 
 Name of the table or indexed view for which to display statistics information.
 
-#### *table_name*
+#### table_name
 
 Name of the table that contains the statistics to display. The table can't be an external table.
 
-#### *target*
+#### target
 
 Name of the index, statistics, or column for which to display statistics information. *target* is enclosed in brackets, single quotes, double quotes, or no quotes.
 
@@ -117,25 +117,25 @@ The following table describes the columns returned in the result set when STAT_H
 
 | Column name | Description |
 | --- | --- |
-| Name | Name of the statistics object. |
-| Updated | Date and time the statistics were last updated. The [STATS_DATE](../functions/stats-date-transact-sql.md) function is an alternate way to retrieve this information. For more information, see the [Remarks](#remarks) section in this page. |
-| Rows | Total number of rows in the table or indexed view when the statistics were last updated. If the statistics are filtered or correspond to a filtered index, the number of rows might be less than the number of rows in the table. For more information, see [Statistics](../../relational-databases/statistics/statistics.md). |
-| Rows Sampled | Total number of rows sampled for statistics calculations. If Rows Sampled < Rows, the displayed histogram and density results are estimates based on the sampled rows. |
-| Steps | Number of steps in the histogram. Each step spans a range of column values followed by an upper bound column value. The histogram steps are defined on the first key column in the statistics. The maximum number of steps is 200. |
-| Density | Calculated as 1 / *distinct values* for all values in the first key column of the statistics object, excluding the histogram boundary values. This Density value isn't used by the Query Optimizer and is displayed for backward compatibility with versions before [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)]. |
-| Average Key Length | Average number of bytes per value for all of the key columns in the statistics object. |
-| String Index | Yes indicates the statistics object contains string summary statistics to improve the cardinality estimates for query predicates that use the LIKE operator; for example, `WHERE ProductName LIKE '%Bike'`. String summary statistics are stored separately from the histogram and are created on the first key column of the statistics object when it's of type **char**, **varchar**, **nchar**, **nvarchar**, **varchar(max)**, **nvarchar(max)**, **text**, or **ntext.**. |
-| Filter Expression | Predicate for the subset of table rows included in the statistics object. `NULL` = non-filtered statistics. For more information about filtered predicates, see [Create filtered indexes](../../relational-databases/indexes/create-filtered-indexes.md). For more information about filtered statistics, see [Statistics](../../relational-databases/statistics/statistics.md). |
-| Unfiltered Rows | Total number of rows in the table before applying the filter expression. If Filter Expression is `NULL`, `Unfiltered Rows` is equal to `Rows`. |
-| Persisted Sample Percent | Persisted sample percentage used for statistic updates that don't explicitly specify a sampling percentage. If value is zero, then no persisted sample percentage is set for this statistic.<br /><br />**Applies to:** [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] Service Pack 1 CU 4 |
+| `Name` | Name of the statistics object. |
+| `Updated` | Date and time the statistics were last updated. The [STATS_DATE](../functions/stats-date-transact-sql.md) function is an alternate way to retrieve this information. For more information, see the [Remarks](#remarks) section in this page. |
+| `Rows` | Total number of rows in the table or indexed view when the statistics were last updated. If the statistics are filtered or correspond to a filtered index, the number of rows might be less than the number of rows in the table. For more information, see [Statistics](../../relational-databases/statistics/statistics.md). |
+| `Rows Sampled` | Total number of rows sampled for statistics calculations. If `Rows Sampled` < `Rows`, the displayed histogram and density results are estimates based on the sampled rows. |
+| `Steps` | Number of steps in the histogram. Each step spans a range of column values followed by an upper bound column value. The histogram steps are defined on the first key column in the statistics. The maximum number of steps is 200. |
+| `Density` | Calculated as 1 / *distinct values* for all values in the first key column of the statistics object, excluding the histogram boundary values. This `Density` value isn't used by the Query Optimizer and is displayed for backward compatibility with versions before [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)]. |
+| `Average Key Length` | Average number of bytes per value for all of the key columns in the statistics object. |
+| `String Index` | Yes indicates the statistics object contains string summary statistics to improve the cardinality estimates for query predicates that use the `LIKE` operator; for example, `WHERE ProductName LIKE '%Bike'`. String summary statistics are stored separately from the histogram and are created on the first key column of the statistics object when it's of type **char**, **varchar**, **nchar**, **nvarchar**, **varchar(max)**, **nvarchar(max)**, **text**, or **ntext.**. |
+| `Filter Expression` | Predicate for the subset of table rows included in the statistics object. `NULL` = non-filtered statistics. For more information about filtered predicates, see [Create filtered indexes](../../relational-databases/indexes/create-filtered-indexes.md). For more information about filtered statistics, see [Statistics](../../relational-databases/statistics/statistics.md). |
+| `Unfiltered Rows` | Total number of rows in the table before applying the filter expression. If Filter Expression is `NULL`, `Unfiltered Rows` is equal to `Rows`. |
+| `Persisted Sample Percent` | Persisted sample percentage used for statistic updates that don't explicitly specify a sampling percentage. If value is zero, then no persisted sample percentage is set for this statistic.<br /><br />**Applies to:** [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] Service Pack 1 CU 4 and later versions.|
 
 The following table describes the columns returned in the result set when `DENSITY_VECTOR` is specified.
 
 | Column name | Description |
 | --- | --- |
-| All Density | Density is 1 / *distinct values*. Results display density for each prefix of columns in the statistics object, one row per density. A distinct value is a distinct list of the column values per row and per columns prefix. For example, if the statistics object contains key columns (A, B, C), the results report the density of the distinct lists of values in each of these column prefixes: (A), (A,B), and (A, B, C). Using the prefix (A, B, C), each of these lists is a distinct value list: (3, 5, 6), (4, 4, 6), (4, 5, 6), (4, 5, 7). Using the prefix (A, B) the same column values have these distinct value lists: (3, 5), (4, 4), and (4, 5) |
-| Average Length | Average length, in bytes, to store a list of the column values for the column prefix. For example, if the values in the list (3, 5, 6) each require 4 bytes the length is 12 bytes. |
-| Columns | Names of columns in the prefix for which All density and Average length are displayed. |
+| `All Density` | Density is 1 / *distinct values*. Results display density for each prefix of columns in the statistics object, one row per density. A distinct value is a distinct list of the column values per row and per columns prefix. For example, if the statistics object contains key columns (A, B, C), the results report the density of the distinct lists of values in each of these column prefixes: (A), (A,B), and (A, B, C). Using the prefix (A, B, C), each of these lists is a distinct value list: (3, 5, 6), (4, 4, 6), (4, 5, 6), (4, 5, 7). Using the prefix (A, B) the same column values have these distinct value lists: (3, 5), (4, 4), and (4, 5) |
+| `Average Length` | `Average length`, in bytes, stores a list of the column values for the column prefix. For example, if the values in the list (3, 5, 6) each require 4 bytes the length is 12 bytes. |
+| `Columns` | Names of columns in the prefix for which `All density` and `Average length` are displayed. |
 
 The following table describes the columns returned in the result set when the `HISTOGRAM` option is specified.
 
@@ -151,6 +151,8 @@ The following table describes the columns returned in the result set when the `H
 
 Statistics update date is stored in the [statistics blob object](../../relational-databases/statistics/statistics.md#DefinitionQOStatistics) together with the [histogram](#histogram) and [density vector](#density), not in the metadata. When no data is read to generate statistics data, the statistics blob isn't created, the date isn't available, and the `updated` column is `NULL`. This is the case for filtered statistics for which the predicate doesn't return any rows, or for new empty tables.
 
+To identify which statistics the Query Optimizer loaded when it compiled a specific query, inspect the `StatisticsInfo` element in the query's actual execution plan XML. The `Statistics` attribute of that element is the `target` argument of `DBCC SHOW_STATISTICS`. For more information, see [Determine which statistics the Query Optimizer used](../../relational-databases/statistics/statistics.md#determine-which-statistics-the-query-optimizer-used).
+
 ## Histogram
 
 A histogram measures the frequency of occurrence for each distinct value in a data set. The query optimizer computes a histogram on the column values in the first key column of the statistics object, selecting the column values by statistically sampling the rows or by performing a full scan of all rows in the table or view. If the histogram is created from a sampled set of rows, the stored totals for number of rows and number of distinct values are estimates and don't need to be whole integers.
@@ -163,9 +165,9 @@ The following diagram shows a histogram with six steps. The area to the left of 
 
 For each histogram step:
 
-- Bold line represents the upper boundary value (RANGE_HI_KEY) and the number of times it occurs (EQ_ROWS)
-- Solid area left of RANGE_HI_KEY represents the range of column values and the average number of times each column value occurs (AVG_RANGE_ROWS). The AVG_RANGE_ROWS for the first histogram step is always 0.
-- Dotted lines represent the sampled values used to estimate total number of distinct values in the range (DISTINCT_RANGE_ROWS) and total number of values in the range (RANGE_ROWS). The query optimizer uses RANGE_ROWS and DISTINCT_RANGE_ROWS to compute AVG_RANGE_ROWS and doesn't store the sampled values.
+- Bold line represents the upper boundary value (`RANGE_HI_KEY`) and the number of times it occurs (`EQ_ROWS`)
+- Solid area left of `RANGE_HI_KEY` represents the range of column values and the average number of times each column value occurs (`AVG_RANGE_ROWS`). The AVG_RANGE_ROWS for the first histogram step is always 0.
+- Dotted lines represent the sampled values used to estimate total number of distinct values in the range (`DISTINCT_RANGE_ROWS`) and total number of values in the range (`RANGE_ROWS`). The query optimizer uses `RANGE_ROWS` and `DISTINCT_RANGE_ROWS` to compute `AVG_RANGE_ROWS` and doesn't store the sampled values.
 
 The query optimizer defines the histogram steps according to their statistical significance. It uses a maximum difference algorithm to minimize the number of steps in the histogram while maximizing the difference between the boundary values. The maximum number of steps is 200. The number of histogram steps can be fewer than the number of distinct values, even for columns with fewer than 200 boundary points. For example, a column with 100 distinct values can have a histogram with fewer than 100 boundary points.
 

@@ -1,10 +1,10 @@
 ---
-title: "RANK (Transact-SQL)"
+title: RANK (Transact-SQL)
 description: RANK returns the rank of each row within the partition of a result set.
-author: MikeRayMSFT
-ms.author: mikeray
-ms.reviewer: randolphwest
-ms.date: 11/20/2025
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: randolphwest, wiassaf
+ms.date: 06/13/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -19,7 +19,7 @@ helpviewer_keywords:
   - "ranking rows"
   - "RANK function [Transact-SQL]"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # RANK (Transact-SQL)
@@ -60,6 +60,8 @@ If two or more rows tie for a rank, each tied row receives the same rank. For ex
 The sort order that is used for the whole query determines the order in which the rows appear in a result set.
 
 `RANK` is nondeterministic. For more information, see [Deterministic and nondeterministic functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).
+
+For window function performance tuning guidance, see [OVER() Performance considerations](../queries/select-over-clause-transact-sql.md#performance-considerations).
 
 ## Examples
 
@@ -184,8 +186,8 @@ Tsoflias           Pacific              1687000.00   1
 
 ## Related content
 
+- [SELECT - OVER clause (Transact-SQL)](../queries/select-over-clause-transact-sql.md)
 - [DENSE_RANK (Transact-SQL)](dense-rank-transact-sql.md)
 - [ROW_NUMBER (Transact-SQL)](row-number-transact-sql.md)
 - [NTILE (Transact-SQL)](ntile-transact-sql.md)
 - [Ranking Functions (Transact-SQL)](ranking-functions-transact-sql.md)
-- [What are the SQL database functions?](functions.md)

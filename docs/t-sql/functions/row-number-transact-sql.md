@@ -1,9 +1,10 @@
 ---
-title: "ROW_NUMBER (Transact-SQL)"
-description: "Transact-SQL reference for the ROW_NUMBER function. This function numbers the output of a result set."
-author: MikeRayMSFT
-ms.author: mikeray
-ms.date: "09/11/2017"
+title: ROW_NUMBER (Transact-SQL)
+description: Transact-SQL reference for the ROW_NUMBER function. This function numbers the output of a result set.
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: randolphwest, wiassaf
+ms.date: 06/15/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,42 +19,49 @@ helpviewer_keywords:
   - "row numbers [SQL Server]"
   - "sequential row numbers [SQL Server]"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # ROW_NUMBER (Transact-SQL)
+
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Numbers the output of a result set. More specifically, returns the sequential number of a row within a partition of a result set, starting at 1 for the first row in each partition. 
-  
+
 `ROW_NUMBER` and `RANK` are similar. `ROW_NUMBER` numbers all rows sequentially (for example 1, 2, 3, 4, 5). `RANK` provides the same numeric value for ties (for example 1, 2, 2, 4, 5).   
-  
+
 > [!NOTE]
-> `ROW_NUMBER` is a temporary value calculated when the query is run. To persist numbers in a table, see [IDENTITY Property](../../t-sql/statements/create-table-transact-sql-identity-property.md) and [SEQUENCE](../../t-sql/statements/create-sequence-transact-sql.md). 
-  
+> `ROW_NUMBER` is a temporary value calculated when the query is run. To persist numbers in a table, see [IDENTITY Property](../statements/create-table-transact-sql-identity-property.md) and [SEQUENCE](../statements/create-sequence-transact-sql.md). 
+
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
- 
-  
-## Syntax  
-  
+
+## Syntax
+
 ```syntaxsql
-ROW_NUMBER ( )   
+ROW_NUMBER ( )
     OVER ( [ PARTITION BY value_expression , ... [ n ] ] order_by_clause )  
 ```  
-  
+
 ## Arguments
- PARTITION BY *value_expression*  
- Divides the result set produced by the [FROM](../../t-sql/queries/from-transact-sql.md) clause into partitions to which the ROW_NUMBER function is applied. *value_expression* specifies the column by which the result set is partitioned. If `PARTITION BY` is not specified, the function treats all rows of the query result set as a single group. For more information, see [OVER Clause &#40;Transact-SQL&#41;](../../t-sql/queries/select-over-clause-transact-sql.md).  
-  
- *order_by_clause*  
- The `ORDER BY` clause determines the sequence in which the rows are assigned their unique `ROW_NUMBER` within a specified partition. It is required. For more information, see [OVER Clause &#40;Transact-SQL&#41;](../../t-sql/queries/select-over-clause-transact-sql.md).  
-  
-## Return Types  
+
+#### PARTITION BY value_expression
+
+ Divides the result set produced by the [FROM](../queries/from-transact-sql.md) clause into partitions to which the `ROW_NUMBER` function is applied. *value_expression* specifies the column by which the result set is partitioned. If `PARTITION BY` is not specified, the function treats all rows of the query result set as a single group. For more information, see [OVER Clause (Transact-SQL)](../queries/select-over-clause-transact-sql.md).  
+
+#### order_by_clause
+
+ The `ORDER BY` clause determines the sequence in which the rows are assigned their unique `ROW_NUMBER` within a specified partition. It is required. For more information, see [OVER Clause (Transact-SQL)](../queries/select-over-clause-transact-sql.md).  
+
+## Return types
+
  **bigint**  
-  
-## General Remarks  
+
+<a id="general-remarks"></a>
+
+## Remarks
+
  There is no guarantee that the rows returned by a query using `ROW_NUMBER()` will be ordered exactly the same with each execution unless the following conditions are true.  
-  
+
 - Values of the partitioned column are unique. 
 
 - Values of the `ORDER BY` columns are unique.
@@ -64,9 +72,11 @@ If the `ORDER BY` columns are not unique within the results, consider using `RAN
 
 `ROW_NUMBER()` is nondeterministic. For more information, see [Deterministic and Nondeterministic Functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).  
 
-## Examples  
-  
-### A. Simple examples 
+For window function performance tuning guidance, see [OVER() Performance considerations](../queries/select-over-clause-transact-sql.md#performance-considerations).
+
+## Examples
+
+### A. Simple examples
 
 The following query returns the four system tables in alphabetic order.
 
@@ -79,13 +89,13 @@ ORDER BY name ASC;
 ```
 
  [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-   
+
 |name    |recovery_model_desc |  
 |-----------  |------------ |  
-|master |SIMPLE |
-|model |FULL |
-|msdb |SIMPLE |
-|tempdb |SIMPLE |
+| `master` |SIMPLE |
+| `model` |FULL |
+| `msdb` |SIMPLE |
+| `tempdb` |SIMPLE |
 
 To add a row number column in front of each row, add a column with the `ROW_NUMBER` function, in this case named `Row#`. You must move the `ORDER BY` clause up to the `OVER` clause.
 
@@ -98,16 +108,16 @@ WHERE database_id < 5;
 ```
 
  [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-   
+
 |Row# |name    |recovery_model_desc |  
 |------- |-----------  |------------ |  
-|1 |master |SIMPLE |
-|2 |model |FULL |
-|3 |msdb |SIMPLE |
-|4 |tempdb |SIMPLE |
+| `1` |`master` |SIMPLE |
+| `2` |`model` |FULL |
+| `3` |`msdb` |SIMPLE |
+| `4` |`tempdb` |SIMPLE |
 
 The `PARTITION BY` clause on the `recovery_model_desc` column, restarts the numbering when the `recovery_model_desc` value changes. 
- 
+
 ```sql
 SELECT 
   ROW_NUMBER() OVER(PARTITION BY recovery_model_desc ORDER BY name ASC) 
@@ -117,18 +127,20 @@ FROM sys.databases WHERE database_id < 5;
 ```  
 
  [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-   
+
 |Row# |name    |recovery_model_desc |  
 |------- |-----------  |------------ |  
-|1 |model |FULL |
-|1 |master |SIMPLE |
-|2 |msdb |SIMPLE |
-|3 |tempdb |SIMPLE |
+| `1` |`model` |FULL |
+| `1` |`master` |SIMPLE |
+| `2` |`msdb` |SIMPLE |
+| `3` |`tempdb` |SIMPLE |
 
+<a id="b-returning-the-row-number-for-salespeople"></a>
 
-### B. Returning the row number for salespeople  
+### B. Return the row number for salespeople
+
  The following example calculates a row number for the salespeople in [!INCLUDE[ssSampleDBCoFull](../../includes/sssampledbcofull-md.md)] based on their year-to-date sales ranking.  
-  
+
 ```sql  
 USE AdventureWorks2022;   
 GO  
@@ -137,11 +149,10 @@ SELECT ROW_NUMBER() OVER(ORDER BY SalesYTD DESC) AS Row,
 FROM Sales.vSalesPerson  
 WHERE TerritoryName IS NOT NULL AND SalesYTD <> 0;  
 ```  
-  
+
  [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-  
+
 ```  
-  
 Row FirstName    LastName               SalesYTD  
 --- -----------  ---------------------- -----------------  
 1   Linda        Mitchell               4251368.54  
@@ -159,10 +170,13 @@ Row FirstName    LastName               SalesYTD
 13  Lynn         Tsoflias               1421810.92  
 14  Pamela       Ansman-Wolfe           1352577.13  
 ```  
-  
-### C. Returning a subset of rows  
+
+<a id="c-returning-a-subset-of-rows"></a>
+
+### C. Return a subset of rows
+
  The following example calculates row numbers for all rows in the `SalesOrderHeader` table in the order of the `OrderDate` and returns only rows `50` to `60` inclusive.  
-  
+
 ```sql  
 USE AdventureWorks2022;  
 GO  
@@ -176,10 +190,13 @@ SELECT SalesOrderID, OrderDate, RowNumber
 FROM OrderedOrders   
 WHERE RowNumber BETWEEN 50 AND 60;  
 ```  
-  
-### D. Using ROW_NUMBER() with PARTITION  
+
+<a id="d-using-row_number-with-partition"></a>
+
+### D. Use ROW_NUMBER() with PARTITION
+
  The following example uses the `PARTITION BY` argument to partition the query result set by the column `TerritoryName`. The `ORDER BY` clause specified in the `OVER` clause orders the rows in each partition by the column `SalesYTD`. The `ORDER BY` clause in the `SELECT` statement orders the entire query result set by `TerritoryName`.  
-  
+
 ```sql  
 USE AdventureWorks2022;  
 GO  
@@ -190,11 +207,10 @@ FROM Sales.vSalesPerson
 WHERE TerritoryName IS NOT NULL AND SalesYTD <> 0  
 ORDER BY TerritoryName;  
 ```  
-  
+
  [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-  
+
 ```  
-  
 FirstName  LastName             TerritoryName        SalesYTD      Row  
 ---------  -------------------- ------------------   ------------  ---  
 Lynn       Tsoflias             Australia            1421810.92    1  
@@ -212,15 +228,18 @@ Linda      Mitchell             Southwest            4251368.54    1
 Shu        Ito                  Southwest            2458535.61    2  
 Jae        Pak                  United Kingdom       4116871.22    1  
 ```  
-  
-## Examples: [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)]  
-  
-### E. Returning the row number for salespeople  
+
+## Examples: [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)]
+
+<a id="e-returning-the-row-number-for-salespeople"></a>
+
+### E. Return the row number for salespeople
+
  The following example returns the `ROW_NUMBER` for sales representatives based on their assigned sales quota.  
-  
+
 ```sql  
 -- Uses AdventureWorks  
-  
+
 SELECT ROW_NUMBER() OVER(ORDER BY SUM(SalesAmountQuota) DESC) 
     AS RowNumber,  
     FirstName, LastName,   
@@ -231,11 +250,10 @@ INNER JOIN dbo.FactSalesQuota AS sq
 WHERE e.SalesPersonFlag = 1  
 GROUP BY LastName, FirstName;  
 ```  
-  
+
  Here is a partial result set.  
 
 ```  
-
 RowNumber  FirstName  LastName            SalesQuota  
 ---------  ---------  ------------------  -------------  
 1          Jillian    Carson              12,198,000.00  
@@ -244,12 +262,15 @@ RowNumber  FirstName  LastName            SalesQuota
 4          Jae        Pak                 10,514,000.00  
 ```
 
-### F. Using ROW_NUMBER() with PARTITION  
+<a id="f-using-row_number-with-partition"></a>
+
+### F. Use ROW_NUMBER() with PARTITION
+
  The following example shows using the `ROW_NUMBER` function with the `PARTITION BY` argument. This causes the `ROW_NUMBER` function to number the rows in each partition.  
-  
+
 ```sql  
 -- Uses AdventureWorks  
-  
+
 SELECT ROW_NUMBER() OVER(PARTITION BY SalesTerritoryKey 
         ORDER BY SUM(SalesAmountQuota) DESC) AS RowNumber,  
     LastName, SalesTerritoryKey AS Territory,  
@@ -260,11 +281,10 @@ INNER JOIN dbo.FactSalesQuota AS sq
 WHERE e.SalesPersonFlag = 1  
 GROUP BY LastName, FirstName, SalesTerritoryKey;  
 ```  
-  
+
  Here is a partial result set.  
- 
+
 ```  
- 
 RowNumber  LastName            Territory  SalesQuota  
 ---------  ------------------  ---------  -------------  
 1          Campbell            1           4,025,000.00  
@@ -275,13 +295,10 @@ RowNumber  LastName            Territory  SalesQuota
 1          Mitchell            4          11,786,000.00  
 2          Ito                 4           7,804,000.00  
 ```
-  
-## See Also  
- [RANK &#40;Transact-SQL&#41;](../../t-sql/functions/rank-transact-sql.md)   
- [DENSE_RANK &#40;Transact-SQL&#41;](../../t-sql/functions/dense-rank-transact-sql.md)   
- [NTILE &#40;Transact-SQL&#41;](../../t-sql/functions/ntile-transact-sql.md)  
-  
-  
 
+## Related content
 
-
+- [SELECT - OVER clause (Transact-SQL)](../queries/select-over-clause-transact-sql.md)
+- [RANK (Transact-SQL)](rank-transact-sql.md)
+- [DENSE_RANK (Transact-SQL)](dense-rank-transact-sql.md)
+- [NTILE (Transact-SQL)](ntile-transact-sql.md)
