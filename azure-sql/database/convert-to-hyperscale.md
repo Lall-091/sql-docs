@@ -4,7 +4,7 @@ description: How to convert an Azure SQL Database to the Hyperscale tier.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman
-ms.date: 05/18/2026
+ms.date: 06/15/2026
 ms.service: azure-sql-database
 ms.topic: how-to
 ms.custom:
@@ -24,6 +24,8 @@ You can convert an existing database in Azure SQL Database to Hyperscale by usin
 - To convert a database that uses [geo-replication](active-geo-replication-overview.md) or is part of a [failover group](failover-group-sql-db.md) to Hyperscale, start by converting the primary replica. The geo-secondary replica is converted automatically. You can [convert a geo-replicated non-Hyperscale database to Hyperscale](#convert-database-with-geo-replicas) by using T-SQL, REST API, PowerShell, or Azure CLI.
 
 - Direct conversion from the Basic service tier to Hyperscale isn't supported. To perform this conversion, first change the database to any service tier other than Basic (for example, General Purpose), and then proceed with the conversion to Hyperscale.
+
+- Direct movement of a database from a zone-redundant elastic pool to a non–zone-redundant Hyperscale pool is not supported. To complete this transition, first remove the database from the elastic pool and convert it to a standalone database. Next, disable zone redundancy for the database. Once these steps are complete, the database can be added to a new or existing non–zone-redundant Hyperscale pool.
 
 - You can monitor the progress of the conversion with T-SQL. To run T-SQL commands on your Azure SQL Database, use [SQL Server Management Studio (SSMS)](https://aka.ms/ssms), the [MSSQL extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code), [sqlcmd](/sql/tools/sqlcmd/sqlcmd-utility), or your favorite T-SQL querying tool.
 
