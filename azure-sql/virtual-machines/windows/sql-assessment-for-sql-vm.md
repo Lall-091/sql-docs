@@ -4,7 +4,7 @@ description: "Identify performance issues and assess that your SQL Server VM is 
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma
-ms.date: 09/22/2025
+ms.date: 06/08/2026
 ms.service: azure-vm-sql-server
 ms.topic: how-to
 ms.custom:
@@ -33,7 +33,7 @@ Assessment run time depends on your environment (number of databases, objects, a
 To use the SQL best practices assessment feature, you must have the following prerequisites:
 
 - Your SQL Server VM must be registered with the [SQL Server IaaS extension](sql-agent-extension-manually-register-single-vm.md#register-with-extension).
-- A [Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace) in the same subscription as your SQL Server VM to upload assessment results to.
+- A [Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace) in the same subscription as your SQL Server VM to upload assessment results to. The location property of the Log Analytics workspace can't have any whitespaces.
 - SQL Server 2012 or later.
 
 ## Permissions
@@ -211,6 +211,16 @@ foreach ($sqlvm in $sqlvms)
 
 You might encounter some of the following known issues when using SQL best practices assessments.
 
+- [Migrate to Azure Monitor Agent (AMA)](#migrating-to-azure-monitor-agent-ama)
+- [Failed to enable assessments](#failed-to-enable-assessments)
+- [Failed to run an assessment](#failed-to-run-an-assessment)
+- [Upload result to Log Analytics workspace failed](#uploading-result-to-log-analytics-workspace-failed)
+- [Errors with incorrect TLS configuration using Log Analytics](#errors-with-incorrect-tls-configuration-using-log-analytics)
+- [Unable to change the Log Analytics workspace after configuring SQL Assessment](#unable-to-change-the-log-analytics-workspace-after-configuring-sql-assessment)
+- [Result expired due to Log Analytics workspace data retention](#result-expired-due-to-log-analytics-workspace-data-retention)
+- [SQL best practice assessment not enabled in Azure portal after enabling via Azure Policy or other automation](#sql-best-practice-assessment-not-enabled-in-azure-portal-after-enabling-via-azure-policy-or-other-automation)
+- [Preflight validation failed](#preflight-validation-failed)
+
 <a id="migrating-to-azure-monitor-agent-ama"></a>
 
 ### Migrate to Azure Monitor Agent (AMA)
@@ -267,6 +277,22 @@ The names must use the following naming conventions:
 - The data collection rule must be named using the `<guid>_<regionname>_DCR_<number>` naming convention, such as the following example: `37e0cae3-c2bd-44f3-85af-975f28b08871_eastus2_DCR_1`
 - The data collection rule association must be named using the `<guid>_<regionname>_DCRA_<number>` naming convention, such as the following example: `37e0cae3-c2bd-44f3-85af-975f28b08871_eastus2_DCRA_1`
 
+### Preflight validation failed
+
+This error occurs when the location property of the Log Analytics workspace contains white spaces. When you enable SQL best practices assessment and select a Log Analytics workspace that has white spaces in the location property, the deployment fails with the error message:
+
+```text
+The template deployment is not valid according to the validation procedure.
+Exception Details:      (PreflightValidationCheckFailed) Preflight validation failed. Please refer to the details for the specific errors.
+        Code: PreflightValidationCheckFailed
+        Message: Preflight validation failed. Please refer to the details for the specific errors.
+        Exception Details:      (InvalidResource) 'Name' is using invalid characters. It should consist of alphanumeric characters and '-', '_', '(', ')' and '.'
+                Code: InvalidResource
+                Message: 'Name' is using invalid characters. It should consist of alphanumeric characters and '-', '_', '(', ')' and '.'
+                Target: Name
+```
+
+To resolve this issue, create a new Log Analytics workspace without any white spaces in its location property and enable SQL best practices assessment using that workspace.
 
 ## Related content
 
