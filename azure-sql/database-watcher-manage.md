@@ -5,7 +5,7 @@ description: Database watcher setup and configuration details
 author: lcwright
 ms.author: lancewright
 ms.reviewer: wiassaf, dfurman
-ms.date: 01/12/2026
+ms.date: 06/16/2026
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: how-to
@@ -297,6 +297,14 @@ When you delete a watcher, the Azure resources referenced as its SQL targets and
 ## Grant access to SQL targets
 
 To allow a watcher to collect SQL monitoring data, you need to execute a T-SQL script that grants the watcher specific, limited SQL permissions.
+
+To ensure that a watcher collects data successfully, follow these rules:
+
+- Always create logins and grant permissions using the sample scripts available on the SQL targets page in the Azure portal. These scripts are also provided later in this section.
+- Create a dedicated login for each watcher. Do not reuse existing logins you might have created for other purposes.
+- Do not add watcher logins to any server or database roles other than the ones in the provided sample scripts.
+
+For more information, see [Watcher authorization](database-watcher-overview.md#watcher-authorization).
 
 - To execute the script in Azure SQL Database, you need server administrator access to the logical server containing databases and elastic pools you want to monitor.
     - In Azure SQL Database, you only need to execute the script once per logical server for every watcher you create. This grants the watcher access to all existing and new databases and elastic pools on that server.
