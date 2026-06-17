@@ -1,74 +1,82 @@
 ---
 title: "sys.dm_db_mirroring_connections (Transact-SQL)"
-description: Database Mirroring - sys.dm_db_mirroring_connections returns a row for each connection established for database mirroring.
+description: sys.dm_db_mirroring_connections returns a row for each connection established for database mirroring.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "02/24/2023"
+ms.date: 06/12/2026
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "reference"
+ms.topic: reference
 f1_keywords:
-  - "sys.dm_db_mirroring_connections"
-  - "dm_db_mirroring_connections"
   - "sys.dm_db_mirroring_connections_TSQL"
+  - "sys.dm_db_mirroring_connections"
   - "dm_db_mirroring_connections_TSQL"
+  - "dm_db_mirroring_connections"
 helpviewer_keywords:
   - "sys.dm_db_mirroring_connections dynamic management view"
 dev_langs:
   - "TSQL"
 ---
-# Database Mirroring - sys.dm_db_mirroring_connections
+# sys.dm_db_mirroring_connections (Database mirroring)
+
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-  Returns a row for each connection established for database mirroring.  
-  
-|Column name|Data type|Description|  
-|-----------------|---------------|-----------------|  
-|**connection_id**|**uniqueidentifier**|Identifier of the connection.|  
-|**transport_stream_id**|**uniqueidentifier**|Identifier of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Network Interface (SNI) connection used by this connection for TCP/IP communications.|  
-|**state**|**smallint**|Current state of the connection. Possible values:<br /><br /> 1 = NEW<br /><br /> 2 = CONNECTING<br /><br /> 3 = CONNECTED<br /><br /> 4 = LOGGED_IN<br /><br /> 5 = CLOSED|  
-|**state_desc**|**nvarchar(60)**|Current state of the connection. Possible values:<br /><br /> NEW<br /><br /> CONNECTING<br /><br /> CONNECTED<br /><br /> LOGGED_IN<br /><br /> CLOSED|  
-|**connect_time**|**datetime**|Date and time at which the connection was opened.|  
-|**login_time**|**datetime**|Date and time at which login for the connection succeeded.|  
-|**authentication_method**|**nvarchar(128)**|Name of the Windows Authentication method, such as NTLM or KERBEROS. The value comes from Windows.|  
-|**principal_name**|**nvarchar(128)**|Name of the login that was validated for connection permissions. For Windows Authentication, this value is the remote user name. For certificate authentication, this value is the certificate owner.|  
-|**remote_user_name**|**nvarchar(128)**|Name of the peer user from the other database that is used by Windows Authentication.|  
-|**last_activity_time**|**datetime**|Date and time at which the connection was last used to send or receive information.|  
-|**is_accept**|**bit**|Indicates whether the connection originated on the remote side.<br /><br /> 1 = The connection is a request accepted from the remote instance.<br /><br /> 0 = The connection was started by the local instance.|  
-|**login_state**|**smallint**|State of the login process for this connection. Possible values:<br /><br /> 0 = INITIAL<br /><br /> 1 = WAIT LOGIN NEGOTIATE<br /><br /> 2 = ONE ISC<br /><br /> 3 = ONE ASC<br /><br /> 4 = TWO ISC<br /><br /> 5 = TWO ASC<br /><br /> 6 = WAIT ISC Confirm<br /><br /> 7 = WAIT ASC Confirm<br /><br /> 8 = WAIT REJECT<br /><br /> 9 = WAIT PRE-MASTER SECRET<br /><br /> 10 = WAIT VALIDATION<br /><br /> 11 = WAIT ARBITRATION<br /><br /> 12 = ONLINE<br /><br /> 13 = ERROR|  
-|**login_state_desc**|**nvarchar(60)**|Current state of login from the remote computer. Possible values:<br /><br /> Connection handshake is initializing.<br /><br /> Connection handshake is waiting for Login Negotiate message.<br /><br /> Connection handshake has initialized and sent security context for authentication.<br /><br /> Connection handshake has received and accepted security context for authentication.<br /><br /> Connection handshake has initialized and sent security context for authentication. There is an optional mechanism available for authenticating the peers.<br /><br /> Connection handshake has received and sent accepted security context for authentication. There is an optional mechanism available for authenticating the peers.<br /><br /> Connection handshake is waiting for Initialize Security Context Confirmation message.<br /><br /> Connection handshake is waiting for Accept Security Context Confirmation message.<br /><br /> Connection handshake is waiting for SSPI rejection message for failed authentication.<br /><br /> Connection handshake is waiting for Pre-Master Secret message.<br /><br /> Connection handshake is waiting for Validation message.<br /><br /> Connection handshake is waiting for Arbitration message.<br /><br /> Connection handshake is complete and is online (ready) for message exchange.<br /><br /> Connection is in error.|  
-|**peer_certificate_id**|**int**|The local object ID of the certificate used by the remote instance for authentication. The owner of this certificate must have CONNECT permissions to the database mirroring endpoint.|  
-|**encryption_algorithm**|**smallint**|Encryption algorithm that is used for this connection. NULLABLE. Possible values:<br /><br /> **Value:** 0<br /><br /> **Description:** None<br /><br /> **DDL Option:** Disabled<br /><br /> **Value:** 1<br /><br /> **Description:** RC4<br /><br /> **DDL Option:** {Required &#124; Required algorithm RC4}<br /><br /> **Value:** 2<br /><br /> **Description:** AES<br /><br /> **DDL Option:** Required algorithm AES<br /><br /> **Value:** 3<br /><br /> **Description:** None, RC4<br /><br /> **DDL Option:** {Supported &#124; Supported algorithm RC4}<br /><br /> **Value:** 4<br /><br /> **Description:** none, AES<br /><br /> **DDL Option:** Supported algorithm RC4<br /><br /> **Value:** 5<br /><br /> **Description:** RC4, AES<br /><br /> **DDL Option:** Required algorithm RC4 AES<br /><br /> **Value:** 6<br /><br /> **Description:** AES, RC4<br /><br /> **DDL Option:** Required Algorithm AES RC4<br /><br /> **Value:** 7<br /><br /> **Description:** NONE, RC4, AES<br /><br /> **DDL Option:** Supported Algorithm RC4 AES<br /><br /> **Value:** 8<br /><br /> **Description:** NONE, AES, RC4<br /><br /> **DDL Option:** Supported algorithm AES RC4<br /><br /> **Note:** The RC4 algorithm is only supported for backward compatibility. New material can only be encrypted using RC4 or RC4_128 when the database is in compatibility level 90 or 100. (Not recommended.) Use a newer algorithm such as one of the AES algorithms instead. In [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and higher versions, material encrypted using RC4 or RC4_128 can be decrypted in any compatibility level.|  
-|**encryption_algorithm_desc**|**nvarchar(60)**|Textual representation of the encryption algorithm. NULLABLE. Possible Values:<br /><br /> **Description:** None<br /><br /> **DDL Option:** Disabled<br /><br /> **Description:** RC4<br /><br /> **DDL Option:** {Required &#124; Required Algorithm RC4}<br /><br /> **Description:** AES<br /><br /> **DDL Option:** Required Algorithm AES<br /><br /> **Description:** NONE, RC4<br /><br /> **DDL Option:** {Supported &#124; Supported Algorithm RC4}<br /><br /> **Description:** NONE, AES<br /><br /> **DDL Option:** Supported Algorithm RC4<br /><br /> **Description:** RC4, AES<br /><br /> **DDL Option:** Required Algorithm RC4 AES<br /><br /> **Description:** AES, RC4<br /><br /> **DDL Option:** Required Algorithm AES RC4<br /><br /> **Description:** NONE, RC4, AES<br /><br /> **DDL Option:** Supported Algorithm RC4 AES<br /><br /> **Description:** NONE, AES, RC4<br /><br /> **DDL Option:** Supported Algorithm AES RC4|  
-|**receives_posted**|**smallint**|Number of asynchronous network receives that have not yet completed for this connection.|  
-|**is_receive_flow_controlled**|**bit**|Whether network receives have been postponed due to flow control because the network is busy.<br /><br /> 1 = True|  
-|**sends_posted**|**smallint**|The number of asynchronous network sends that have not yet completed for this connection.|  
-|**is_send_flow_controlled**|**bit**|Whether network sends have been postponed due to network flow control because the network is busy.<br /><br /> 1 = True|  
-|**total_bytes_sent**|**bigint**|Total number of bytes sent by this connection.|  
-|**total_bytes_received**|**bigint**|Total number of bytes received by this connection.|  
-|**total_fragments_sent**|**bigint**|Total number of database mirroring message fragments sent by this connection.|  
-|**total_fragments_received**|**bigint**|Total number of database mirroring message fragments received by this connection.|  
-|**total_sends**|**bigint**|Total number of network send requests issued by this connection.|  
-|**total_receives**|**bigint**|Total number of network receive requests issued by this connection.|  
-|**peer_arbitration_id**|**uniqueidentifier**|Internal identifier for the endpoint. NULLABLE.|  
-  
-## Permissions  
- Requires VIEW SERVER STATE permission on the server.  
+Returns a row for each connection established for database mirroring.
 
-### Permissions for SQL Server 2022 and later
+| Column name | Data type | Nullable | Description |
+| --- | --- | --- | --- |
+| `connection_id` | **uniqueidentifier** | Yes | Identifier of the connection. |
+| `transport_stream_id` | **uniqueidentifier** | Yes | Identifier of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Network Interface (SNI) connection used by this connection for TCP/IP communications. |
+| `state` | **smallint** | Yes | Current state of the connection. Possible values:<br /><br />`1` = New<br />`2` = Connecting<br />`3` = Connected<br />`4` = Signed in<br />`5` = Closed |
+| `state_desc` | **nvarchar(60)** | Yes | Current state of the connection. Possible values:<br /><br />`NEW`<br />`CONNECTING`<br />`CONNECTED`<br />`LOGGED_IN`<br />`CLOSED` |
+| `connect_time` | **datetime** | Yes | Date and time at which the connection was opened. |
+| `login_time` | **datetime** | Yes | Date and time at which login for the connection succeeded. |
+| `authentication_method` | **nvarchar(128)** | Yes | Name of the Windows Authentication method, such as NTLM or `KERBEROS`. The value comes from Windows. |
+| `principal_name` | **nvarchar(128)** | Yes | Name of the login that was validated for connection permissions. For Windows Authentication, this value is the remote user name. For certificate authentication, this value is the certificate owner. |
+| `remote_user_name` | **nvarchar(128)** | Yes | Name of the peer user from the other database that is used by Windows Authentication. |
+| `last_activity_time` | **datetime** | Yes | Date and time at which the connection was last used to send or receive information. |
+| `is_accept` | **bit** | Yes | Indicates whether the connection originated on the remote side.<br /><br />`1` = The connection is a request accepted from the remote instance.<br /><br />`0` = The local instance started the connection. |
+| `login_state` | **smallint** | Yes | State of the login process for this connection. For possible values, see [Login state values](#login-state-values). |
+| `login_state_desc` | **nvarchar(60)** | Yes | Current state of login from the remote computer. For possible values, see [Login state values](#login-state-values). |
+| `peer_certificate_id` | **int** | Yes | The local object ID of the certificate used by the remote instance for authentication. The owner of this certificate must have `CONNECT` permissions to the database mirroring endpoint. |
+| `encryption_algorithm` | **smallint** | Yes | Encryption algorithm that is used for this connection. For possible values, see [Encryption algorithm values](#encryption-algorithm-values). |
+| `encryption_algorithm_desc` | **nvarchar(60)** | Yes | Textual representation of the encryption algorithm. For possible values, see the **encryption_algorithm_desc** column in [Encryption algorithm values](#encryption-algorithm-values). |
+| `receives_posted` | **smallint** | Yes | Number of asynchronous network receive operations that aren't yet completed for this connection. |
+| `is_receive_flow_controlled` | **bit** | Yes | Whether network receive operations are postponed due to flow control because the network is busy.<br /><br />`1` = True |
+| `sends_posted` | **smallint** | Yes | The number of asynchronous network send operations that aren't yet completed for this connection. |
+| `is_send_flow_control` | **bit** | Yes | Whether network send operations are postponed due to network flow control because the network is busy.<br /><br />`1` = True |
+| `total_bytes_sent` | **bigint** | Yes | Total number of bytes sent by this connection. |
+| `total_bytes_received` | **bigint** | Yes | Total number of bytes received by this connection. |
+| `total_fragments_sent` | **bigint** | Yes | Total number of database mirroring message fragments sent by this connection. |
+| `total_fragments_received` | **bigint** | Yes | Total number of database mirroring message fragments received by this connection. |
+| `total_sends` | **bigint** | Yes | Total number of network send requests issued by this connection. |
+| `total_receives` | **bigint** | Yes | Total number of network receive requests issued by this connection. |
+| `peer_arbitration_id` | **uniqueidentifier** | Yes | Internal identifier for the endpoint. |
+| `address` | **nvarchar(256)** | Yes | Peer address in the form of `TCP://peer_host:peer_port`. |
+| `encryption_key_bit_length` | **int** | Yes | Length of the session encryption keys, in bits. Possible values are `128` or `256`. |
+| `encryption_protocol_version` | **nvarchar(32)** | Yes | When `encryption_algorithm_desc` is either `RC4` (deprecated) or `AES`, the value is the negotiated UCS encryption protocol version number, from 1 to 4:<br /><br />`1` = [!INCLUDE [ssversion2005-md](../../includes/ssversion2005-md.md)] and [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)]<br /><br />`2` = [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)]<br /><br />`3` = [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] with UCS redirection support<br /><br />`4` = [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]<br /><br />When `encryption_algorithm_desc` is `TLS`, this value displays the TLS version (for example `1.2` or `1.3`) |
 
-Requires VIEW SERVER PERFORMANCE STATE permission on the server.
-  
-## Physical joins  
+[!INCLUDE [login-state-values](../../includes/login-state-values.md)]
 
-:::image type="content" source="../../relational-databases/system-dynamic-management-views/media/join-dm-db-mirroring-connections.svg" alt-text="Diagram of physical joins for sys.join_dm_db_mirroring_connections.":::
-  
-## Relationship cardinalities  
-  
-|From|To|Relationship|  
-|----------|--------|------------------|  
-|`dm_db_mirroring_connections.connection_id`|`dm_exec_connections.connection_id`|One-to-one|  
-  
-## Next steps
- [Dynamic Management Views and Functions &#40;Transact-SQL&#41;](~/relational-databases/system-dynamic-management-views/system-dynamic-management-views.md)   
- [Monitoring Database Mirroring &#40;SQL Server&#41;](../../database-engine/database-mirroring/monitoring-database-mirroring-sql-server.md)
+[!INCLUDE [encryption-algorithm-values](../../includes/encryption-algorithm-values.md)]
+
+## Permissions
+
+[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and earlier versions require `VIEW SERVER STATE` permission on the server.
+
+[!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions require `VIEW SERVER PERFORMANCE STATE` permission on the server.
+
+## Physical joins
+
+:::image type="content" source="media/join-dm-db-mirroring-connections.svg" alt-text="Diagram of physical joins for sys.join_dm_db_mirroring_connections.":::
+
+## Relationship cardinalities
+
+| From | To | Relationship |
+| --- | --- | --- |
+| `dm_db_mirroring_connections.connection_id` | `dm_exec_connections.connection_id` | One-to-one |
+
+## Related content
+
+- [System dynamic management views](system-dynamic-management-views.md)
+- [Monitoring Database Mirroring (SQL Server)](../../database-engine/database-mirroring/monitoring-database-mirroring-sql-server.md)
