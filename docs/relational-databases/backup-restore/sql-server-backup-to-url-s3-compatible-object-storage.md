@@ -4,7 +4,7 @@ description: Learn about the concepts, requirements, and components necessary fo
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: hudequei
-ms.date: 04/18/2024
+ms.date: 05/01/2026
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: concept-article
@@ -82,6 +82,18 @@ High-level overview of the supported features for `BACKUP` and `RESTORE`:
 1. `WITH CREDENTIAL` is supported.
 1. `REGION` is supported and the default value is `us-east-1`.
 1. `MAXTRANSFERSIZE` ranges from 5 MB to 20 MB. 10 MB is the default value for the S3 connector.
+
+### Supported backup and restore statements
+
+| Statement | S3 Endpoint | Notes |
+| --- | --- | --- |
+| `BACKUP` | Yes | |
+| `RESTORE` | Yes | |
+| `RESTORE FILELISTONLY` | Yes | |
+| `RESTORE HEADERONLY` | Yes | |
+| `RESTORE LABELONLY` | Yes | |
+| `RESTORE VERIFYONLY` | Yes | |
+| `RESTORE REWINDONLY` | No | |
 
 ### Supported arguments for backup
 

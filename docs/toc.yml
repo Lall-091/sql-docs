@@ -14399,7 +14399,6 @@ items:
       - name: sp_delete_backup
         href: relational-databases/system-stored-procedures/snapshot-backup-sp-delete-backup.md
     - name: Azure Synapse Analytics
-      href: relational-databases/system-stored-procedures/sql-data-warehouse-stored-procedures.md
       items:
       - name: sp_datatype_info_90
         href: relational-databases/system-stored-procedures/sp-datatype-info-90-sql-data-warehouse.md

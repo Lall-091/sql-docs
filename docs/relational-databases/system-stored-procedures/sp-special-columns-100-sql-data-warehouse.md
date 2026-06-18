@@ -115,4 +115,4 @@ EXECUTE sp_special_columns_100 @table_name = 'FactFinance';
 
 ## Related content
 
-- [Azure Synapse Analytics Stored Procedures](sql-data-warehouse-stored-procedures.md)
+- [System stored procedures](system-stored-procedures-transact-sql.md)
