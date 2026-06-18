@@ -3,7 +3,7 @@ title: Troubleshoot SQL Server on Linux
 description: Troubleshoot SQL Server running on Linux or in a Linux container. Learn where to find information about supported features and known limitations.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/02/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting
@@ -78,7 +78,7 @@ You can stop or restart the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.m
    ```
 
 > [!TIP]  
-> For more troubleshooting tips for Linux containers, see [Troubleshoot SQL Server Docker containers](sql-server-linux-docker-container-troubleshooting.md).
+> For more troubleshooting tips for Linux containers, see [Troubleshoot SQL Server Docker containers](containers/troubleshoot.md).
 
 ## Access the log files
 
@@ -137,7 +137,7 @@ For example, use the following script to start [!INCLUDE [ssNoVersion](../includ
    sudo -u mssql /opt/mssql/bin/sqlservr -m
    ```
 
-This script starts [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single user mode with **sqlcmd**:
+This script starts [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single user mode with **`sqlcmd`**:
 
    ```bash
    sudo -u mssql /opt/mssql/bin/sqlservr -m sqlcmd
@@ -204,7 +204,12 @@ Only use these steps if you understand the implications.
 
 ## Improve performance
 
-Many factors affect performance, including database design, hardware, and workload demands. If you're looking to improve performance, start by reviewing the best practices in the article, [Performance best practices and configuration guidelines for SQL Server on Linux](sql-server-linux-performance-best-practices.md). Then explore some of the available tools for troubleshooting performance problems.
+Many factors affect performance, including database design, hardware, and workload demands. If you're looking to improve performance, start by reviewing the best practices articles:
+
+- [Performance best practices: Storage, kernel, CPU, and network for SQL Server on Linux](configure/performance-best-practices-operating-system.md)
+- [Performance best practices: SQL Server memory on Linux](configure/performance-best-practices-sql-server-memory.md)
+
+Then, explore some of the available tools for troubleshooting performance problems.
 
 - [Monitor performance by using the Query Store](../relational-databases/performance/monitoring-performance-by-using-the-query-store.md)
 - [System dynamic management views](../relational-databases/system-dynamic-management-views/system-dynamic-management-views.md)

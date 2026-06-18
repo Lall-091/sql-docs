@@ -1,9 +1,9 @@
 ---
 title: Configurable retry logic in SqlClient
 description: Learn how to use the configurable retry logic feature of Microsoft.Data.SqlClient when establishing a connection or executing a command.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-deshtehari
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 03/22/2021
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: "Using a SQL statement to modify data"
 description: "Using a SQL statement to modify data"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "08/12/2019"
 ms.service: sql
 ms.subservice: connectivity

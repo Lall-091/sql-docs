@@ -1,9 +1,9 @@
 ---
 title: "DataAdapters and DataReaders"
 description: Learn about the Microsoft SqlClient Data Provider for SQL Server DataReader, which retrieves data from a database, and DataAdapter, which retrieves data from a data source and populates a DataSet.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-chmalh
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "11/30/2020"
 ms.service: sql
 ms.subservice: connectivity

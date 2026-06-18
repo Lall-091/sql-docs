@@ -1,8 +1,9 @@
 ---
 title: "SQLEndTran Function"
 description: "SQLEndTran Function"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "07/18/2019"
 ms.service: sql
 ms.subservice: connectivity

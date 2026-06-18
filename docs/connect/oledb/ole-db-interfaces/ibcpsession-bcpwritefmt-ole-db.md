@@ -1,8 +1,9 @@
 ---
 title: "IBCPSession::BCPWriteFmt (OLE DB driver)"
 description: "Using IBCPSession::BCPWriteFmt to save the format files in either xml or text format (OLE DB)"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

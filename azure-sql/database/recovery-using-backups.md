@@ -47,6 +47,8 @@ When you're using the Standard or Premium service tier in the DTU purchasing mod
 
 For pricing details of extra storage, see the [SQL Database pricing page](https://azure.microsoft.com/pricing/details/sql-database/). If the actual amount of used space is less than the amount of storage included, you can avoid this extra cost by setting the maximum database size to the included amount.
 
+[!INCLUDE [hyperscale-cross-tier-restore-note](../includes/hyperscale-cross-tier-restore-note.md)]
+
 ## Recovery time
 
 Several factors affect the recovery time to restore a database through automated database backups:
@@ -150,6 +152,9 @@ To recover a database from a PITR backup by using the REST API:
 
 To perform a restore operation on a long-term backup, you can use the Azure portal, the Azure CLI, Azure PowerShell, or the REST API. For more information, see [Restore a long-term backup](long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup).
 
+> [!IMPORTANT]
+> Some older APIs used for long-term retention (LTR) backup operations are deprecated and no longer supported. Avoid using legacy PowerShell cmdlets such as `Copy-AzSqlDatabaseLongTermRetentionBackup`. Use the supported restore methods described in this article instead.
+
 ### [Azure portal](#tab/azure-portal)
 
 To recover a long-term backup by using the Azure portal, go to your logical server. Select **Backups** under **Data Management**, and then select **Manage** under **Available LTR backups** for the database you're trying to restore.
@@ -169,6 +174,9 @@ To restore a database by using PowerShell, use the following cmdlets:
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Gets one or more databases. |
 | [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Gets a geo-redundant backup of a database. |
 | [Restore-AzSqlDatabase -FromLongTermRetentionBackup](/powershell/module/az.sql/restore-azsqldatabase) | Use the `-FromLongTermRetentionBackup` parameter to restore a database from long-term backup. |
+
+> [!WARNING]
+> The `Copy-AzSqlDatabaseLongTermRetentionBackup` cmdlet uses a deprecated API and is not supported. Do not use this cmdlet. Use the supported restore methods documented in this article.
 
 For more information, see [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 

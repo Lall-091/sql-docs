@@ -1,8 +1,9 @@
 ---
 title: "Data type mappings"
 description: "Describes the data types are used by Microsoft SqlClient Data Provider for SQL Server."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "11/13/2020"
 ms.service: sql
 ms.subservice: connectivity

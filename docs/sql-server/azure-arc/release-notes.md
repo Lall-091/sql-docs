@@ -1,10 +1,10 @@
 ---
 title: Release Notes
 description: Latest release notes for SQL Server enabled by Azure Arc
-author: anosov1960
-ms.author: sashan
+author: pochiraju
+ms.author: rajpo
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 04/16/2026
+ms.date: 06/03/2026
 ms.topic: release-notes
 ms.custom:
   - ignite-2025
@@ -27,6 +27,9 @@ This article lists:
 Extension versions are cumulative. Higher extension versions include all of the updates from previous versions. A release might also include internal features.
 
 Only Azure extension for SQL Server versions released within the last year are supported.
+
+> [!IMPORTANT]
+> [!INCLUDE [azure-government-feature-availability-note](includes/azure-government-feature-availability-note.md)]
 
 ## Preview
 
@@ -64,6 +67,8 @@ This section lists the release notes by date, starting with the most recent rele
 
 | Date of release | Extension version |
 | --- | --- |
+| [May 2026](#may-2026) |`1.1.3428.422`|
+| [April 2026](#april-2026) |`1.1.3394.392`|
 | [February 2026](#february-2026) |`1.1.3348.364`|
 | [January 2026](#january-2026) | `1.1.3307.355` (no longer available) |
 | [December 2025](#december-2025) | `1.1.3238.350` |
@@ -83,6 +88,14 @@ This section lists the release notes by date, starting with the most recent rele
 | [January 2025](#january-2025) | `1.1.2914.231` |
 | [November 2024](#november-2024) | `1.1.2859.223` |
 | [October 2024](#october-2024) | `1.1.2830.214` |
+
+### May 2026
+
+**Extension version**: `1.1.3428.422`
+
+### April 2026
+
+**Extension version**: `1.1.3394.392`
 
 ### February 2026
 
@@ -123,7 +136,7 @@ The following features are now generally available (GA):
 
 **Extension version**: `1.1.3176.319`
 
-Certain limitations in [US Government Virginia](us-government-region.md) are lifted. You can now:
+The following capabilities are now supported in [US Government Virginia](us-government-region.md):
 
 - [License physical cores (p-cores) with unlimited virtualization](manage-license-billing.md#unlimited-virtualization)
 - [License physical cores (p-cores) without virtual machines](manage-license-billing.md#license-pcores-without-vms)

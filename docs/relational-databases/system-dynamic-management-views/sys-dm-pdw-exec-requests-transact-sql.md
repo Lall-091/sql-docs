@@ -16,6 +16,8 @@ monikerRange: ">=aps-pdw-2016||=azure-sqldw-latest"
 
 [!INCLUDE [applies-to-version/asa-pdw](../../includes/applies-to-version/asa-pdw.md)]
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 Holds information about all requests currently or recently active in Azure Synapse Analytics dedicated SQL pools and Analytics Platform System (PDW). It lists one row per request/query.
 
 > [!NOTE]  

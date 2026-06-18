@@ -1,8 +1,8 @@
 ---
 title: "Apache Spark Connector for SQL Server and Azure SQL"
 description: "Learn how to use the Apache Spark connector for SQL Server and Azure SQL."
-author: MikeRayMSFT
-ms.author: mikeray
+author: avinandac
+ms.author: avinandac
 ms.reviewer: hudequei, randolphwest
 ms.date: 01/02/2026
 ms.service: sql

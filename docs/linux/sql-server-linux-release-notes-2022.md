@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, atsingh
-ms.date: 04/14/2026
+ms.date: 05/20/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -44,49 +44,49 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Latest versions for all packages
 
-This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL22](../includes/sssql22-md.md)]. The following table shows the most recent release, which is **CU 24 GDR (Apr 2026)**. For full release history, see [Release history for SQL Server 2022 on Linux](/troubleshoot/sql/releases/linux/release-history-2022).
+This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL22](../includes/sssql22-md.md)]. The following table shows the most recent release, which is **CU 25**. For full release history, see [Release history for SQL Server 2022 on Linux](/troubleshoot/sql/releases/linux/release-history-2022).
 
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
-| [!INCLUDE [ssSQL22](../includes/sssql22-md.md)] | CU 24 GDR | 2026-04-14 | 16.0.4250.1 | [KB 5083252](https://support.microsoft.com/help/5083252) |
+| [!INCLUDE [ssSQL22](../includes/sssql22-md.md)] | CU 25 | 2026-05-20 | 16.0.4255.1 | [Support article](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate25) |
 
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
 | **Red Hat Enterprise Linux** | | | |
-| RHEL 9 | Database Engine | 16.0.4250.1-1 | [Database Engine RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-16.0.4250.1-1.x86_64.rpm) |
-| RHEL 9 | Extensibility | 16.0.4250.1-1 | [Extensibility RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4250.1-1.x86_64.rpm) |
-| RHEL 9 | Full-Text Search | 16.0.4250.1-1 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4250.1-1.x86_64.rpm) |
-| RHEL 9 | High Availability | 16.0.4250.1-1 | [High Availability RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4250.1-1.x86_64.rpm) |
-| RHEL 9 | PolyBase | 16.0.4250.1-1 | [PolyBase RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4250.1-1.x86_64.rpm) |
+| RHEL 9 | Database Engine | 16.0.4255.1-8 | [Database Engine RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-16.0.4255.1-8.x86_64.rpm) |
+| RHEL 9 | Extensibility | 16.0.4255.1-8 | [Extensibility RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4255.1-8.x86_64.rpm) |
+| RHEL 9 | Full-Text Search | 16.0.4255.1-8 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4255.1-8.x86_64.rpm) |
+| RHEL 9 | High Availability | 16.0.4255.1-8 | [High Availability RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4255.1-8.x86_64.rpm) |
+| RHEL 9 | PolyBase | 16.0.4255.1-8 | [PolyBase RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4255.1-8.x86_64.rpm) |
 | RHEL 9 | SSIS | 16.0.4215.2-3 | [SSIS RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-is-16.0.4215.2-3.x86_64.rpm) |
 | **SUSE Linux Enterprise Server** | | | |
-| SLES 15 | Database Engine | 16.0.4250.1-1 | [Database Engine RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-16.0.4250.1-1.x86_64.rpm) |
-| SLES 15 | Extensibility | 16.0.4250.1-1 | [Extensibility RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4250.1-1.x86_64.rpm) |
-| SLES 15 | Full-Text Search | 16.0.4250.1-1 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4250.1-1.x86_64.rpm) |
-| SLES 15 | High Availability | 16.0.4250.1-1 | [High Availability RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4250.1-1.x86_64.rpm) |
-| SLES 15 | PolyBase | 16.0.4250.1-1 | [PolyBase RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4250.1-1.x86_64.rpm) |
+| SLES 15 | Database Engine | 16.0.4255.1-8 | [Database Engine RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-16.0.4255.1-8.x86_64.rpm) |
+| SLES 15 | Extensibility | 16.0.4255.1-8 | [Extensibility RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4255.1-8.x86_64.rpm) |
+| SLES 15 | Full-Text Search | 16.0.4255.1-8 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4255.1-8.x86_64.rpm) |
+| SLES 15 | High Availability | 16.0.4255.1-8 | [High Availability RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4255.1-8.x86_64.rpm) |
+| SLES 15 | PolyBase | 16.0.4255.1-8 | [PolyBase RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4255.1-8.x86_64.rpm) |
 | **Ubuntu** | | | |
-| Ubuntu 22.04 | Database Engine | 16.0.4250.1-1 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server/mssql-server_16.0.4250.1-1_amd64.deb) |
-| Ubuntu 22.04 | Extensibility | 16.0.4250.1-1 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_16.0.4250.1-1_amd64.deb) |
-| Ubuntu 22.04 | Full-Text Search | 16.0.4250.1-1 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-fts/mssql-server-fts_16.0.4250.1-1_amd64.deb) |
-| Ubuntu 22.04 | High Availability | 16.0.4250.1-1 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-ha/mssql-server-ha_16.0.4250.1-1_amd64.deb) |
-| Ubuntu 22.04 | PolyBase | 16.0.4250.1-1 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-polybase/mssql-server-polybase_16.0.4250.1-1_amd64.deb) |
+| Ubuntu 22.04 | Database Engine | 16.0.4255.1-8 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server/mssql-server_16.0.4255.1-8_amd64.deb) |
+| Ubuntu 22.04 | Extensibility | 16.0.4255.1-8 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_16.0.4255.1-8_amd64.deb) |
+| Ubuntu 22.04 | Full-Text Search | 16.0.4255.1-8 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-fts/mssql-server-fts_16.0.4255.1-8_amd64.deb) |
+| Ubuntu 22.04 | High Availability | 16.0.4255.1-8 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-ha/mssql-server-ha_16.0.4255.1-8_amd64.deb) |
+| Ubuntu 22.04 | PolyBase | 16.0.4255.1-8 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-polybase/mssql-server-polybase_16.0.4255.1-8_amd64.deb) |
 | Ubuntu 22.04 | SSIS | 16.0.4215.2-3 | [SSIS Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-is/mssql-server-is_16.0.4215.2-3_amd64.deb) |
 
 <a id="cuinstall"></a>
 
 ## How to install updates
 
-When you configure the CU repository (`mssql-server-2022`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/r/microsoft/mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server 2025 on Linux](sql-server-linux-change-repo-2025.md).
+When you configure the CU repository (`mssql-server-2022`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/r/microsoft/mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server 2025 on Linux](install-upgrade/change-repo-2025.md).
 
 If you update existing [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages, run the appropriate update command for each package to get the latest CU. For specific update instructions for each package, see the following installation guides:
 
 - [Install SQL Server package](sql-server-linux-setup.md#upgrade)
-- [Install SQL Server Full-Text Search on Linux](sql-server-linux-setup-full-text-search.md)
-- [Install SQL Server Integration Services (SSIS) on Linux](sql-server-linux-setup-ssis.md)
-- [Install SQL Server 2019 Machine Learning Services (Python and R) on Linux](sql-server-linux-setup-machine-learning.md)
+- [Install SQL Server Full-Text Search on Linux](install-upgrade/setup-full-text-search.md)
+- [Install SQL Server Integration Services (SSIS) on Linux](install-upgrade/setup-ssis.md)
+- [Install SQL Server 2019 Machine Learning Services (Python and R) on Linux](install-upgrade/setup-machine-learning.md)
 - [Install PolyBase on Linux](../relational-databases/polybase/polybase-linux-setup.md)
-- [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md)
+- [Install SQL Server Agent on Linux](install-upgrade/setup-sql-agent.md)
 
 ## Release history
 
@@ -94,6 +94,8 @@ The following table lists the release history for [!INCLUDE [ssSQL22](../include
 
 | Release | Version | Release date |
 | --- | --- | --- |
+| [CU 25](/troubleshoot/sql/releases/linux/release-history-2022#16-0-4255) | 16.0.4255.1 | 2026-05-20 |
+| [CU 24 GDR (May 2026)](/troubleshoot/sql/releases/linux/release-history-2022#16-0-4252) | 16.0.4252.3 | 2026-05-12 |
 | [CU 24 GDR (Apr 2026)](/troubleshoot/sql/releases/linux/release-history-2022#16-0-4250) | 16.0.4250.1 | 2026-04-14 |
 | [CU 24](/troubleshoot/sql/releases/linux/release-history-2022#16-0-4245) | 16.0.4245.2 | 2026-03-12 |
 | [CU 23 GDR (Mar 2026)](/troubleshoot/sql/releases/linux/release-history-2022#16-0-4240) | 16.0.4240.4 | 2026-03-10 |
@@ -141,9 +143,9 @@ For more information, see [SQL Server on Linux: Known issues](sql-server-linux-k
 ## Related content
 
 - [SQL Server on Linux FAQ](sql-server-linux-faq.yml)
-- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
-- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
-- [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
-- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](install-upgrade/quickstart-install-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](install-upgrade/quickstart-install-suse.md)
+- [Quickstart: Install SQL Server and create a database on Ubuntu](install-upgrade/quickstart-install-ubuntu.md)
+- [Quickstart: Run SQL Server Linux container images with Docker](install-upgrade/quickstart-install-docker.md)
 - [Provision a Linux virtual machine running SQL Server in the Azure portal](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart)
-- [Quickstart: Run SQL Server in the cloud](quickstart-install-connect-clouds.md)
+- [Quickstart: Run SQL Server in the cloud](install-upgrade/quickstart-install-clouds.md)

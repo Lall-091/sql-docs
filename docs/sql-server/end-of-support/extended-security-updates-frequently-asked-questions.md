@@ -109,6 +109,16 @@ Not at this stage. For more information, see the [Supported regions](sql-server-
 
 Government customers that are unable to connect or register their [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances in one of the supported Azure regions, can [open a ticket with Microsoft Support](https://support.serviceshub.microsoft.com/supportforbusiness) for further instructions. For more information, review the [support options for businesses](https://support.microsoft.com/smallbusiness).
 
+#### Are all SQL Server enabled by Azure Arc features available in Azure Government?
+
+No. Feature availability can differ in Azure Government compared to the commercial Azure cloud.
+
+For current supported features and limitations, review [SQL Server enabled by Azure Arc in US Government](../azure-arc/us-government-region.md) and [Release notes - SQL Server enabled by Azure Arc](../azure-arc/release-notes.md).
+
+#### Is physical core (p-core) pay-as-you-go billing available for SQL Server enabled by Azure Arc in US Government Virginia?
+
+Yes, physical core (p-core) pay-as-you-go billing is available for SQL Server enabled by Azure Arc in US Government Virginia.
+
 #### Can I get free Extended Security Updates on Azure Stack?
 
 Yes, you can migrate [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to Azure Stack and receive ESUs for no extra cost after the End of Support dates.

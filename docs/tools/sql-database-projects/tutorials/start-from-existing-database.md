@@ -4,7 +4,7 @@ description: Create a SQL project with objects from an existing database.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: drskwier
-ms.date: 04/15/2026
+ms.date: 05/12/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: tutorial
@@ -132,7 +132,13 @@ Open the **Database Projects** view to see the new project and imported object d
 
 ::: zone pivot="sq1-sql-server-management-studio"
 
-Option 1 isn't available for SQL Server Management Studio. Use [option 2](#option-2-create-a-new-empty-sql-project-and-import-objects-from-an-existing-database) instead.
+From the **Object Explorer** in SQL Server Management Studio, right-click the database you want to create a project from and select **Create Project from Database...** under the **Tasks** menu.
+
+:::image type="content" source="media/start-from-existing-database/ssms-new-project-from-database.png" alt-text="Screenshot of New SQL Project from Database dialog in SQL Server Management Studio.":::
+
+In the **Create SQL Project from Database** dialog, verify the selected database and modify the project name and location as needed. The new project will be created with the objects from the selected database and arranged in folders by schema, then object type.
+
+A solution file is automatically created in the folder above the project folder, and opens in the **Solution Explorer** after creation. If you want to add your new project to an existing solution, select **Add to solution** and browse to the solution file. Select **Create** to create the project.
 
 ::: zone-end
 

@@ -1,8 +1,9 @@
 ---
 title: Prepared statement parameter performance
 description: Learn how parameter types, scale, and precision affect prepared statement performance in the JDBC Driver for SQL Server and how to optimize parameter usage to minimize server repreparation.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 12/18/2025
 ms.service: sql
 ms.subservice: connectivity

@@ -1,9 +1,9 @@
 ---
 title: "%= (Modulus assignment) (Transact-SQL)"
-description: "The %= (modulus assignment) operator divides one number by another and sets a value to the result of the operation."
+description: Divides one number by another and sets a value to the remainder of the operation.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/19/2024
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -22,6 +22,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
+
 # %= (Modulus assignment) (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
@@ -42,16 +43,16 @@ expression %= expression
 
 Any valid [expression](expressions-transact-sql.md) of any one of the data types in the numeric category, except the **bit** data type.
 
-## Result types
+## Return types
 
-Returns the data type of the argument with the higher precedence. For more information, see [Data type precedence (Transact-SQL)](../data-types/data-type-precedence-transact-sql.md).
+Returns the data type of the argument with the higher precedence. For more information, see [Data type precedence](../data-types/data-type-precedence-transact-sql.md).
 
 ## Remarks
 
-For more information, see [% (Modulus) (Transact-SQL)](modulo-transact-sql.md).
+For more information, see [% (Modulus)](modulo-transact-sql.md).
 
 ## Related content
 
-- [Compound Operators (Transact-SQL)](compound-operators-transact-sql.md)
+- [Compound operators (Transact-SQL)](compound-operators-transact-sql.md)
 - [Expressions (Transact-SQL)](expressions-transact-sql.md)
 - [Operators (Transact-SQL)](operators-transact-sql.md)

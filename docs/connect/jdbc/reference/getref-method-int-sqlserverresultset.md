@@ -1,8 +1,9 @@
 ---
 title: "getRef Method (int) (SQLServerResultSet)"
 description: "getRef Method (int) (SQLServerResultSet)"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity

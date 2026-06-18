@@ -1,9 +1,9 @@
 ---
 title: "Data type limitations"
 description: Learn about the data type limitations for Microsoft ODBC Desktop Database Drivers.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
 ms.date: 12/14/2023
 ms.service: sql
 ms.subservice: connectivity

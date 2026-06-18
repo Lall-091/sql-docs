@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 04/16/2026
+ms.date: 05/14/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -533,6 +533,7 @@ ms.topic: include
 | 13688 | 16 | No | One or more of the specified ALTER INDEX options is invalid for a JSON index. |
 | 13689 | 16 | No | DATA_COMPRESSION is not compatible with JSON index '%.\*ls'. Please drop it and recreate it. |
 | 13690 | 16 | No | JSON index '%.\*ls' cannot be rebuilt. Drop and recreate it. |
+| 13691 | 16 | No | The JSON data type is not supported in a data mask. |
 | 13692 | 16 | No | The comparison_mode argument of JSON_CONTAINS must be 0 or 1. |
 | 13701 | 16 | No | System-versioned table schema modification failed because history table '%.\*ls' has custom unique keys defined. Consider dropping all unique keys and trying again. |
 | 13702 | 16 | No | System-versioned table schema modification failed because history table '%.\*ls' has foreign keys defined. Consider dropping all foreign keys and trying again. |

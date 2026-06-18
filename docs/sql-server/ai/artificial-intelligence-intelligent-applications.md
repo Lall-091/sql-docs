@@ -28,7 +28,7 @@ For samples and examples, visit the [SQL AI Samples repository](https://aka.ms/s
 
 Large language models (LLMs) enable developers to create AI-powered applications with a familiar user experience.
 
-Using LLMs in applications brings greater value and an improved user experience when the models can access the right data, at the right time, from your application's database. This process is known as Retrieval Augmented Generation (RAG) and the SQL Database Engine has many features that support this new pattern, making it a great database to build intelligent applications.
+Using LLMs in applications brings greater value and an improved user experience when the models can access the right data, at the right time, from your application's database. This process is known as Retrieval-Augmented Generation (RAG) and the SQL Database Engine has many features that support this new pattern, making it a great database to build intelligent applications.
 
 The following links provide sample code of various options to build intelligent applications:
 
@@ -75,7 +75,7 @@ This section includes key concepts that are critical to implement RAG with Azure
 
 <a id="retrieval-augmented-generation"></a>
 
-### Retrieval Augmented Generation (RAG)
+### Retrieval-Augmented Generation (RAG)
 
 RAG is a technique that enhances the LLM's ability to produce relevant and informative responses by retrieving additional data from external sources. For example, RAG can query articles or documents that contain domain-specific knowledge related to the user's question or prompt. The LLM can then use this retrieved data as a reference when generating its response. For example, a simple RAG pattern using the SQL Database Engine could be:
 
@@ -186,19 +186,19 @@ Implement RAG patterns by using the SQL Database Engine and Azure AI Search. You
 To learn more about the integration of Azure AI Search with Azure OpenAI and the SQL Database Engine, see the following articles. These articles also apply to SQL Server and Azure SQL Managed Instance:
 
 - [Azure OpenAI on your data](/azure/ai-services/openai/concepts/use-your-data)
-- [Retrieval Augmented Generation (RAG) in Azure AI Search](/azure/search/retrieval-augmented-generation-overview)
+- [Retrieval-Augmented Generation (RAG) in Azure AI Search](/azure/search/retrieval-augmented-generation-overview)
 - [Vector Search with Azure SQL and Azure AI Search](https://devblogs.microsoft.com/azure-sql/vector-search-with-azure-sql-database/)
 
 ## Intelligent applications
 
-You can use the SQL Database Engine to build intelligent applications that include AI features, such as recommenders and Retrieval Augmented Generation (RAG), as the following diagram demonstrates:
+You can use the SQL Database Engine to build intelligent applications that include AI features, such as recommenders and Retrieval-Augmented Generation (RAG), as the following diagram demonstrates:
 
 :::image type="content" source="../media/ai-artificial-intelligence-intelligent-applications/session-recommender-architecture.png" alt-text="Diagram of different AI features to build intelligent applications with Azure SQL Database." lightbox="../media/ai-artificial-intelligence-intelligent-applications/session-recommender-architecture.png":::
 
 For an end-to-end sample that shows how to build an AI-enabled application using sessions abstract as a sample dataset, see:
 
 - [How I built a session recommender in 1 hour using OpenAI](https://devblogs.microsoft.com/azure-sql/how-i-built-a-session-recommender-in-1-hour-using-open-ai/).
-- [Use Retrieval Augmented Generation to build a conference session assistant](https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2).
+- [Use Retrieval-augmented generation to build a conference session assistant](https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2).
 
 > [!NOTE]  
 > LangChain integration and Semantic Kernel integration rely on the [vector data type](../../t-sql/data-types/vector-data-type.md), which is available starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and in Azure SQL Managed Instance configured with the [Always-up-to-date or SQL Server 2025 update policy](/azure/azure-sql/managed-instance/update-policy), Azure SQL Database, and SQL database in Microsoft Fabric.
@@ -230,8 +230,8 @@ An example of how easily Semantic Kernel helps you build AI-enabled solutions is
 
 ## Related content
 
-- [Intelligent applications and AI Frequently Asked Questions (FAQ)](artificial-intelligence-intelligent-applications-faq.md)
-- [Vector and embeddings: Frequently asked questions (FAQ)](vectors-faq.md)
+- [Intelligent applications and AI Frequently Asked Questions (FAQ)](artificial-intelligence-intelligent-applications-frequently-asked-questions.yml)
+- [Vector and embeddings: Frequently asked questions (FAQ)](vectors-frequently-asked-questions.yml)
 - [Create and deploy an Azure OpenAI Service resource](/azure/ai-services/openai/how-to/create-resource?pivots=web-portal)
 - [Embeddings models](/azure/ai-services/openai/concepts/models#embeddings-models)
 - [SQL AI Samples and Examples](https://aka.ms/sqlaisamples)

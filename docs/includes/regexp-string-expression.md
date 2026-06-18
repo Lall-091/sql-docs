@@ -2,7 +2,7 @@
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/24/2025
+ms.date: 05/13/2026
 ms.service: sql
 ms.topic: include
 ms.custom:
@@ -16,4 +16,4 @@ Can be a constant, variable, or column of character string.
 Data types: **char**, **nchar**, **varchar**, or **nvarchar**.
 
 > [!NOTE]  
-> The `REGEXP_LIKE`, `REGEXP_COUNT`, and `REGEXP_INSTR` functions support LOB types (**varchar(max)** and **nvarchar(max)**) up to 2 MB for the *string_expression* parameter.
+> The `REGEXP_*` functions support LOB types (**varchar(max)** and **nvarchar(max)**) up to 2 MB for the *string_expression* parameter.

@@ -1,9 +1,9 @@
 ---
 title: Use ODBC Data Source with SQL Server on Linux
 description: Learn how to connect to ODBC data sources with PolyBase on SQL Server on Linux.
-author: HugoMSFT
-ms.author: hudequei
-ms.reviewer: mikeray, randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: hudequei, amitkh, atsingh, mikeray
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
@@ -156,3 +156,4 @@ You can find this message in PolyBase's log file, located at: `/var/opt/mssql-po
 ## Related content
 
 - [Install PolyBase on Linux](../relational-databases/polybase/polybase-linux-setup.md)
+- [PolyBase EES encryption (SQL Server on Linux)](sql-server-linux-polybase-ees-encryption.md)

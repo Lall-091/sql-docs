@@ -1,9 +1,9 @@
 ---
 title: Understanding encryption support
 description: Learn how to ensure the JDBC driver uses TLS encryption to secure connections to a SQL database.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: vanto
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: vanto, davidengel, machavan, sunilbs
 ms.date: 08/08/2022
 ms.service: sql
 ms.subservice: connectivity

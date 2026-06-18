@@ -1,8 +1,9 @@
 ---
 title: "SQL to C: Date"
 description: "SQL to C: Date"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 01/28/2026
 ms.service: sql
 ms.subservice: connectivity

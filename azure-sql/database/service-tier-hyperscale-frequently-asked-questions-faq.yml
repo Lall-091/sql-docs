@@ -11,7 +11,7 @@ metadata:
   author: WilliamDAssafMSFT
   ms.author: wiassaf
   ms.reviewer: dfurman, mathoma, dinethi, adbadram
-  ms.date: 03/02/2026
+  ms.date: 05/19/2026
 title: Azure SQL Database Hyperscale FAQ
 summary: |
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -88,7 +88,76 @@ sections:
             - Up to four [high-availability replicas](service-tier-hyperscale-replicas.md#high-availability-replica) having the same compute size as primary. These serve as hot standby replicas to quickly fail over from the primary. You can also use them to offload read workloads from the primary.
             - Up to 30 [named replicas](service-tier-hyperscale-replicas.md#named-replica) having the same or different compute size than the primary, to cater to various read scale-out scenarios.
             - A [geo-replica](service-tier-hyperscale-replicas.md#geo-replica) in a different Azure region to protect against regional outages and to enable geographic read scale-out.
+
+  - name: AI questions
+    questions:
+      - question: |
+          Is Azure SQL Database Hyperscale an AI-ready database?
+        answer: |
+          Yes, Hyperscale supports [modern AI applications](/sql/sql-server/ai/artificial-intelligence-intelligent-applications?view=azuresqldb-current&preserve-view=true) with [multi-model capabilities](../multi-model-features.md?view=azuresql-db&preserve-view=true) that support relational and non-relational data in the same database, including vector, graph, JSON or XML, spatial data, and key-value pairs. You can avoid complexity of multiple platforms and langauges with modern cloud applications. 
+      - question: |
+          Does Azure SQL Database Hyperscale support vector data?
+        answer: |
+          Yes. The vector capabilities of the [SQL Database Engine](/sql/database-engine/sql-database-engine) are available in Hyperscale databases. You don't need a seperate vector data store. Hyperscale supports [querying vector data and using native vector search functions](/sql/sql-server/ai/vectors?view=azuresqldb-current&preserve-view-true), including a native **vector** data type for efficient queries on vector data. For more information about working with T-SQL native vector search functions like `VECTOR_SEARCH` and `VECTOR_DISTANCE`, see [Vector search and vector indexes in the SQL Database Engine](/sql/sql-server/ai/vectors?view=azuresqldb-current&preserve-view=true).
+      - question: |
+          Why use Azure SQL Database Hyperscale for Retrieval-Augmented Generation (RAG) instead of a dedicated vector store?
+        answer: |
+          Dedicated vector stores require your operational data to be duplicated and synchronized across two systems. With Hyperscale, vectors live alongside the relational data they describe. For more information, see [Implementing RAG with Azure OpenAI in the SQL Database Engine](/sql/sql-server/ai/artificial-intelligence-intelligent-applications?view=azuresqldb-current&preserve-view=true#key-concepts-for-implementing-rag-with-azure-openai).
+
+          The native **vector** data type and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql) such as `VECTOR_DISTANCE` provide semantic search directly on live business data, eliminating data duplication, reducing risk from stale context, and accelerating AI outcomes without adding new platforms.
+                    
+          You can process relational and vector data in the same ACID-compliant transactions, use the same security model, and protect all data consistently with same HA/DR solution.
           
+          Your agents can retrieve context and write transactional state in a single round-trip, eliminating the synchronization overhead that adds latency.        
+
+      - question: | 
+          Does Azure SQL Database Hyperscale have native MCP support for AI agents?
+        answer: | 
+          Yes, the [SQL MCP Server](/sql/mcp/) is built on the Data API Builder. Agents can connect to Hyperscale data via HTTP, for production, cloud-hosted agent deployments, or `stdio` for local development and CLI workflows.
+
+          The SQL MCP Server lets agents perform safe CRUD operations, call stored procedures, and query tables and views — with full logging of every tool call for audit purposes. It integrates with Microsoft Foundry, GitHub Copilot, and any MCP-compatible orchestration framework.
+
+      - question: | 
+          Which AI agent frameworks are supported in the SQL Database Engine?
+        answer: | 
+          The latest [SQL Database Engine](/sql/database-engine/sql-database-engine) platforms, including Azure SQL Database Hyperscale, have integrations with the leading agent frameworks, including:
+
+          - LangChain — Official integration with the [langchain_sqlserver connector](https://pypi.org/project/langchain-sqlserver/) is [documented by LangChain](https://docs.langchain.com/oss/python/integrations/vectorstores/sqlserver).
+          - Semantic Kernel — Official integration with the [SQL Server Vector Store connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/sql-connector). Watch a video: [Data Exposed: Implementing RAG with SQL Database Vector Search and Semantic Kernel](/shows/data-exposed/implementing-rag-with-sql-database-vector-search-and-semantic-kernel-data-exposed-mvp-edition).
+          - [Azure AI Foundry](https://ai.azure.com) — Connect models directly to SQL data via the [SQL MCP Server](/sql/mcp/).
+          - [Data API Builder](/azure/data-api-builder/) — exposes tables and views as REST and GraphQL without a custom data layer.
+
+      - question: | 
+          How does Hyperscale handle the unpredictable, bursty nature of agent workloads?
+        answer: | 
+          Hyperscale's core architecture — decoupled compute and storage — was designed for this pattern. Because the storage layer is a shared, distributed page-server system, compute can scale without data movement:
+
+          -	Fast scaling: Scaling compute up or down takes single-digit minutes for provisioned and under one second for serverless, because no data movement is involved.
+          -	Up to 30 named read replicas: Offload read-only workloads to replicas. Each named replica is configurable with the same or different compute size than the primary, enabling independent scaling of read-write and read-only compute capacity.
+
+      - question: | 
+          How does Hyperscale scale for read-heavy agent architectures?
+        answer: | 
+          Hyperscale supports up to 30 [named replicas](service-tier-hyperscale-replicas.md?view=azuresql-db&preserve-view=true#named-replica), each with configurable compute. This enables several patterns that are particularly valuable for multi-agent systems:
+
+          -	Dedicate one or more replicas exclusively to RAG retrieval workloads, keeping the primary compute free for transactional writes from agents.
+          -	Size read replicas independently — larger replicas for analytics-style queries, serverless replicas for "bursty" read workloads that only occur during certain times of day or month.
+          -	Route concurrent sub-agent queries to different replicas to eliminate resource contention.
+          -	Configure geo-replicas in different Azure regions for global low-latency read-only agent workloads.
+
+      - question: | 
+          How does Hyperscale deliver transactional integrity for agent applications?
+        answer: | 
+
+          AI agents are stateful, multi-step reasoning systems. Between each reasoning step an agent writes intermediate state — task queues, tool call history, partial results, memory updates. If a step fails mid-write, the next step may read inconsistent or corrupt state, producing hallucinations or incorrect decisions that are difficult to trace. Hyperscale runs on the SQL Database Engine and three decades of SQL Server transaction engineering, including version-based transaction isolation, optimistic concurrency, and automatic point-in-time recovery. This guarantees that agent state is always consistent and failed steps leave no partial writes.
+
+      - question: |
+          Can AI and transactional workloads run on the same database?
+        answer: |
+          Yes, by design, a single database.
+          
+          If a single database's resource are insufficient, up to 30 named replicas of the primary database let you isolate core write transactions from read-heavy AI, analytics, and reporting workloads. Each read-only replica has its own connection string and independent scaling configuration. Named replicas provide built-in HTAP isolation: the primary handles transactional writes from agents, while dedicated read replicas serve analytical queries (training data extraction, telemetry, trend reporting) without competing for compute.
+
   - name: Deep dive questions
     questions:
       - question: |
@@ -125,7 +194,7 @@ sections:
           
           If you're running data analytics on a large scale with complex queries and sustained ingestion rates higher than 100 MiB/s or using Parallel Data Warehouse (PDW), Teradata, or other Massively Parallel Processing (MPP) data warehouses such as Azure Synapse Analytics, then Microsoft Fabric could be the best choice.
 
-          Ingestion or log generation rate is 150 MiB/s per database for premium-series and premium-series memory optimized hardware of Azure SQL Database Hyperscale. For standard-series hardware, the maximum log rate is 100 MiB/s per database. For elastic pools, the maximum log rate is 150 MiB/s per pool for premium-series and premium-series memory optimized hardware, and 125 MiB/s per pool for other hardware.
+          Ingestion or log generation rate is 150 MiB/s per database for premium-series and premium-series memory optimized hardware of Hyperscale. For standard-series hardware, the maximum log rate is 100 MiB/s per database. For elastic pools, the maximum log rate is 150 MiB/s per pool for premium-series and premium-series memory optimized hardware, and 125 MiB/s per pool for other hardware.
 
   - name: Hyperscale compute questions
     questions:
@@ -186,7 +255,7 @@ sections:
       - question: |
           In what increments does my database size grow?
         answer: |
-          Each data file grows by 10 GB. Multiple data files can grow at the same time.
+          Each data file grows by a minimum of 10 GB. If a transaction requires more than 10 GB of new storage space, files grow by 10 GB each, one file at a time, until the demand for new storage is satisfied. When the free space in the existing files drops below a threshold, new files are added in the background. Each new file is initially 10 GB in size and grows as needed.
 
       - question: |
           Is the storage in Hyperscale local or remote?
@@ -243,7 +312,7 @@ sections:
       - question: |
           Do I lose any functionality or capabilities after migration to the Hyperscale service tier?
         answer: |
-          Yes. Some Azure SQL Database features are not supported in Hyperscale. If some of these features are enabled for your database, migration to Hyperscale could be blocked, or these features stop working after migration. For details, see [Known limitations](service-tier-hyperscale.md#known-limitations).
+          Yes, in some workloads. Some Azure SQL Database features are not supported in Hyperscale. If these features are enabled for your database, migration to Hyperscale could be blocked, or these features stop working after migration. For details, see [Known limitations](service-tier-hyperscale.md#known-limitations).
 
       - question: |
           Can I move my on-premises SQL Server database, or my SQL Server database in a cloud virtual machine to Hyperscale?

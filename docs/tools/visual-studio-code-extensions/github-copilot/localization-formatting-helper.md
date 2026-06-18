@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot helps developers build globally aware appl
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 01/19/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -33,7 +33,7 @@ Here are common use cases and examples of what you can ask via the chat particip
 
 ### Optimize multilingual and locale-specific data
 
-Use GitHub Copilot to help with formatting queries for regional standards, choosing the right collation settings, and designing schema elements to support multilingual content, like storing product descriptions in multiple languages.
+Use GitHub Copilot to help with formatting queries for regional standards, choose the right collation settings, and design schema elements to support multilingual content, like storing product descriptions in multiple languages.
 
 #### Store product descriptions in multiple languages
 
@@ -63,7 +63,7 @@ Write Prisma models and queries to store and retrieve multilingual product descr
 
 ### Code-first localization scenarios
 
-These examples show how GitHub Copilot supports code-first workflows by generating ORM models and queries that store and retrieve localized data. The examples span popular ORMs like Prisma, SQLAlchemy, Entity Framework, Sequelize, and Django.
+These examples show how GitHub Copilot supports code-first workflows by generating ORM (Object-Relational Mapping) models and queries that store and retrieve localized data. The examples span popular ORMs like Prisma, SQLAlchemy, Entity Framework, Sequelize, and Django.
 
 #### Define Entity Framework Core model for multiple languages
 
@@ -102,7 +102,7 @@ In Django ORM, design models that support product localization and write a query
 ## Related content
 
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](overview.md)
-- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [Quickstart: Chat with the `@mssql` participant (ask mode)](chat-ask-mode.md)
 - [Quickstart: Generate code](code-generation.md)
 - [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
 - [Quickstart: Use the smart query builder](smart-query-builder.md)

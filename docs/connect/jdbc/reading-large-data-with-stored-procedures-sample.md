@@ -1,8 +1,9 @@
 ---
 title: Reading large data with stored procedures sample
 description: This JDBC Driver sample demonstrates how to retrieve a large OUT parameter from a stored procedure.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: "Using a SQL statement with parameters"
 description: "To work with a SQL statement that contains IN parameters, use the executeQuery method of the SQLServerPreparedStatement class to return a SQLServerResultSet."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 12/18/2025
 ms.service: sql
 ms.subservice: connectivity

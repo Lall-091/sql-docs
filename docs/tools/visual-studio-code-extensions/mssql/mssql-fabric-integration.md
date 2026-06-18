@@ -15,7 +15,7 @@ ai-usage: ai-assisted
 
 # Fabric integration
 
-The MSSQL extension for Visual Studio Code supports connecting to SQL database in Microsoft Fabric. The Connection dialog includes a Fabric connectivity option that you use to sign in using Microsoft Entra ID. You can browse Fabric workspaces in a tree view, search across workspaces, and connect to SQL databases or endpoints without manually configuring connection strings. The extension supports persistent sign-in, tenant switching, and a seamless **Open in MSSQL** flow from the Fabric extension.
+The MSSQL extension for Visual Studio Code supports connecting to SQL database in Microsoft Fabric. The Connection dialog includes a Fabric connectivity option that you use to sign in using Microsoft Entra ID. You can browse Fabric workspaces in a tree view, search across workspaces, and connect to SQL databases or endpoints without manually configuring connection strings. The extension supports persistent sign-in, tenant switching, and an integrated **Open in MSSQL** flow from the Fabric extension.
 
 You can create new SQL databases in Fabric directly from Visual Studio Code. Authenticate, select or create a workspace, specify a database name, and connect after provisioning completes. An indicator keeps you up to date on the progress.
 
@@ -27,7 +27,7 @@ Use the Fabric browse experience in the MSSQL extension to connect to your SQL d
 
 - **Dedicated Fabric experience**: A Fabric-specific option within the Connection dialog for connecting to Fabric databases.
 
-- **Seamless authentication**: Uses your Microsoft account for sign-in. You authenticate once to access all your Fabric workspaces and databases.
+- **Single sign-on**: Uses your Microsoft account for sign-in. You authenticate once to access all your Fabric workspaces and databases.
 
 - **Workspace browsing**: Displays all Fabric workspaces in a hierarchical tree view with resources loaded on demand.
 
@@ -85,7 +85,7 @@ Use the Fabric browse experience in the MSSQL extension to connect to your SQL d
 > [!TIP]  
 > Use **Search** at the top of the tree to quickly locate a workspace or database. Results prioritize closest matches and recently used items.
 
-### Error handling and edge cases
+### Errors and edge cases
 
 If something goes wrong, the UI shows a clear message and recommended actions:
 
@@ -105,7 +105,7 @@ If something goes wrong, the UI shows a clear message and recommended actions:
 - You can browse across tenants by switching tenants, but you must create each database connection separately. There's no unified cross-tenant or multi-database connection.
 - Offline sign-in and device-code authentication flows aren't supported.
 
-## SQL database in Fabric provisioning
+## Provision a SQL database in Fabric
 
 The SQL database provisioning experience is integrated into the Deployments page of the MSSQL extension. You can create and connect to new Fabric SQL databases without leaving Visual Studio Code.
 
@@ -172,7 +172,8 @@ The following animation shows the SQL database in Fabric provisioning workflow i
 
 ## Related content
 
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Local SQL Server container](mssql-local-container.md)
 - [Schema Designer](mssql-schema-designer.md)

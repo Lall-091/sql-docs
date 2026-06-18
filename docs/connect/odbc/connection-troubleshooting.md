@@ -1,9 +1,9 @@
 ---
 title: Connection encryption troubleshooting
 description: Learn how to troubleshoot common connection issues related to connection encryption.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: vanto
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: vanto, davidengel, sunilbs, mcimfl
 ms.date: 09/16/2024
 ms.service: sql
 ms.subservice: connectivity

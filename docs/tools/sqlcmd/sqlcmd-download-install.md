@@ -4,7 +4,7 @@ description: Learn how to download, install, or find the sqlcmd utility preinsta
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: randolphwest
-ms.date: 01/29/2026
+ms.date: 05/29/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: install-set-up-deploy
@@ -165,15 +165,15 @@ Download the command line utilities for Windows, using the following table.
 
 | Driver | Platform |
 | --- | --- |
-| Microsoft Command Line Utilities 15 for SQL Server | [x64](https://go.microsoft.com/fwlink/?linkid=2230791)&emsp;[x86](https://go.microsoft.com/fwlink/?linkid=2231320) |
+| Microsoft Command Line Utilities for SQL Server | [x64](https://go.microsoft.com/fwlink/?linkid=2366027)&emsp;[x86](https://go.microsoft.com/fwlink/?linkid=2365930) |
 
 The command line tools are General Availability (GA), however they're also released with the installer package for [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] and later versions.
 
 #### Version information
 
-- Release number: 15.0.4298.1
-- Build number: 15.0.4298.1
-- Release date: April 7, 2023
+- Release number: 17.0.4045.5
+- Build number: 17.0.4045.5
+- Release date: May 29, 2026
 
 > [!NOTE]  
 > The **sqlcmd** download provided here might not have the same release and build number as **sqlcmd** installed with the latest SQL Server cumulative update (CU). This behavior is expected. This version contains all the fixes included in the latest CU.
@@ -185,7 +185,7 @@ The command line tools are General Availability (GA), however they're also relea
 - Windows 10 and later versions
 - Windows Server 2016 and later versions
 
-This component requires the latest [Microsoft ODBC Driver 17 for SQL Server](../../connect/odbc/download-odbc-driver-for-sql-server.md#version-17).
+This component requires the latest [Microsoft ODBC Driver 18 for SQL Server](../../connect/odbc/download-odbc-driver-for-sql-server.md).
 
 ### [macOS](#tab/mac)
 

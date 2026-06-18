@@ -92,5 +92,5 @@ GO
 
 ## Related content
 
-- [Azure Synapse Analytics Stored Procedures](sql-data-warehouse-stored-procedures.md)
+- [System stored procedures](system-stored-procedures-transact-sql.md)
 - [Data types (Transact-SQL)](../../t-sql/data-types/data-types-transact-sql.md)

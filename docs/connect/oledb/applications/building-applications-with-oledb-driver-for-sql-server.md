@@ -1,9 +1,9 @@
 ---
 title: "Building applications with OLE DB Driver for SQL Server"
 description: "Learn about common issues when building applications with OLE DB Driver for SQL Server and what to expect when upgrading from an older OLE DB driver."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: mikeray
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: mikeray, davidengel, sunilbs, mcimfl
 ms.date: "02/12/2019"
 ms.service: sql
 ms.subservice: connectivity

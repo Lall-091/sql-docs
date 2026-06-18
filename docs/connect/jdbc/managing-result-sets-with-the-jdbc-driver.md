@@ -1,8 +1,9 @@
 ---
 title: Managing result sets
 description: Learn how to manage the results of a query by using result sets in the JDBC driver for SQL Server.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "08/12/2019"
 ms.service: sql
 ms.subservice: connectivity

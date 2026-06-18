@@ -1,8 +1,9 @@
 ---
 title: "Step 3: Build and Execute a SQL Statement"
 description: "Step 3: Build and Execute a SQL Statement"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity

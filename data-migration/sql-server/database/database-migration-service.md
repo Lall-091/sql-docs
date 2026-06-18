@@ -5,7 +5,7 @@ description: Learn how to migrate on-premises SQL Server to Azure SQL Database o
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: abhishekum, mathoma
-ms.date: 02/19/2026
+ms.date: 05/04/2026
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
@@ -58,7 +58,7 @@ Before you begin the tutorial:
 
 | Roles | Description |
 | --- | --- |
-| **##MS_DatabaseManager##** | Members of the **##MS_DatabaseManager##** fixed server role can create and delete databases. A member of the **##MS_DatabaseManager##** role that creates a database becomes the owner of that database, which allows that user to connect to that database as the dbo user. The dbo user has all database permissions in the database. Members of the **##MS_DatabaseManager##** role don't necessarily have permission to access databases that they don't own. It's recommended to use this server role over the **dbmanager** database level role that exists in the `master` database. |
+| **##MS_DatabaseManager##** | Members of the **##MS_DatabaseManager##** fixed server role can create and delete databases. A member of the **##MS_DatabaseManager##** role that creates a database becomes the owner of that database, which allows that user to connect to that database as the dbo user. The dbo user has all database permissions in the database. Members of the **##MS_DatabaseManager##** role don't necessarily have permission to access databases that they don't own. Use this server role instead of the **dbmanager** fixed database role that exists in `master`. |
 | **##MS_DatabaseConnector##** | Members of the **##MS_DatabaseConnector##** fixed server role can connect to any database without requiring a user account in the database to connect with. |
 | **##MS_DefinitionReader##** | Members of the **##MS_DefinitionReader##** fixed server role can read all catalog views that are covered by `VIEW ANY DEFINITION` on any database on which the member of this role has a user account. |
 | **##MS_LoginManager##** | Members of the **##MS_LoginManager##** fixed server role can create and delete logins. It's recommended to use this server role over the **loginmanager** database level role that exists in the `master` database. |
@@ -219,6 +219,7 @@ Azure SQL Database offline migration utilizes Azure Data Factory (ADF) pipelines
 - Database names that include semicolons are currently not supported.
 - Computed columns don't get migrated.
 - Columns in the source database that have default constraints and contain `NULL` values, are migrated with their defined default values on the target Azure SQL database, rather than retaining the NULLs.
+- If your source database has [change data capture](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) (CDC) enabled and you are using Azure Database Migration Service (Azure DMS) for schema migration, you should disable CDC on the source database before starting the migration. If CDC isn't disabled beforehand, Azure DMS will migrate CDC-related objects (such as tables) to the target. This can cause problems when attempting to enable CDC on the target database post-migration.
 
 ## Related content
 

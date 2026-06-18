@@ -1,8 +1,9 @@
 ---
 title: Using Kerberos integrated authentication to connect to SQL Server
 description: Learn how to configure Kerberos integrated authentication to connect to SQL Server on Windows, Linux, and macOS.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 07/31/2024
 ms.service: sql
 ms.subservice: connectivity

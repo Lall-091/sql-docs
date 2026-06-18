@@ -1,9 +1,9 @@
 ---
 title: "Retrieve identity or autonumber values"
 description: Learn how to retrieve identity and autonumber values of primary keys in SQL Server, and how to merge new identity values in ADO.NET.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-chmalh
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "12/04/2020"
 ms.service: sql
 ms.subservice: connectivity

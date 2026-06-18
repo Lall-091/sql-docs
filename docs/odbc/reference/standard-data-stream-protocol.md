@@ -1,8 +1,9 @@
 ---
 title: "Standard Data Stream Protocol"
 description: "Standard Data Stream Protocol"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: 11/14/2018
 ms.service: sql
 ms.subservice: connectivity

@@ -4,7 +4,7 @@ description: Known issues, causes, and workarounds for SQL Server 2025 (17.x), c
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 03/04/2026
+ms.date: 05/01/2026
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: troubleshooting-known-issue
@@ -37,6 +37,7 @@ The following issues are currently identified:
 - [Full-Text Search](#full-text-search)
 - [Incorrect license agreement for LocalDB installer](#incorrect-license-agreement-for-localdb-installer)
 - [SQL Server might become slow or unresponsive after creating or bringing online a large number of databases](#sql-server-might-become-slow-or-unresponsive-after-creating-or-bringing-online-a-large-number-of-databases)
+- [Linked server queries that use MSDASQL fail with error 7416](#linked-server-queries-that-use-msdasql-fail-with-error-7416)
 
 ## SQL Server 2025 installation fails when TLS 1.2 is disabled
 
@@ -230,6 +231,12 @@ We have identified a fix for a future release of [!INCLUDE [sssql25-md](../inclu
 **Workaround**: Enable startup [trace flag 15608](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf15608) and restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. You must enable the trace flag at startup. Enabling it after startup doesn't stop background threads that are already created for databases that were brought online. In scenarios with no secondary replicas, this trace flag is still required as a temporary mitigation to prevent the per database background thread from being created during database startup.
 
 A fix is planned for a future update of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
+
+## Linked server queries that use MSDASQL fail with error 7416
+
+**Applies to**: [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] starting with CU 4.
+
+[!INCLUDE [msdasql-linked-server-7416](../includes/msdasql-linked-server-7416.md)]
 
 ## Related content
 

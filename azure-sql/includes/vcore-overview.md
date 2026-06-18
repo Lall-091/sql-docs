@@ -12,7 +12,7 @@ A virtual core (vCore) represents a logical CPU and offers you the option to cho
 
 In the vCore-based purchasing model, your costs depend on the choice and usage of:
 
-- Service tier
+- Service tier (Hyperscale, Business Critical, or General Purpose)
 - Hardware configuration
 - Compute resources (the number of vCores and the amount of memory)
 - Reserved database storage

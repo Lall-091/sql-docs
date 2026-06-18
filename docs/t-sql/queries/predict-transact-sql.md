@@ -72,6 +72,9 @@ Generates a predicted value or scores based on a stored model. For more informat
         **_\* Azure Synapse<br />Analytics \*_** &nbsp;
     :::column-end:::
 :::row-end:::
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 ::: moniker-end
 ::: moniker range=">=sql-server-2017||>=sql-server-linux-2017||=azuresqldb-mi-current"
 

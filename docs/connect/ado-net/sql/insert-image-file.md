@@ -1,9 +1,9 @@
 ---
 title: "Inserting an image from a file"
 description: "Describes how to work with an image from a file."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "08/15/2019"
 ms.service: sql
 ms.subservice: connectivity

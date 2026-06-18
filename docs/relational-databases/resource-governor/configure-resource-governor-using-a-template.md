@@ -1,7 +1,7 @@
 ---
 title: Configure Resource Governor Using a Template
 description: Learn how to configure resource governor by using a template that is provided in SQL Server Management Studio.
-author: williamdassafmsft
+author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman
 ms.date: 01/02/2025

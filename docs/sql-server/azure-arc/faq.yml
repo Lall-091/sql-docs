@@ -3,7 +3,7 @@ metadata:
   title: Frequently asked questions
   description: Provides questions and answers frequently asked about SQL Server enabled by Azure Arc.
   ms.topic: faq
-  ms.date: 04/01/2026
+  ms.date: 05/19/2026
   ai-usage: ai-assisted
   ms.author: mikeray
   author: MikeRayMSFT
@@ -27,6 +27,12 @@ sections:
       - question: Is the data from my instance of SQL Server sent to Azure?
         answer: |
            No. Microsoft only captures metadata and information about your SQL Server to help troubleshoot and inventory. The data sent doesn't include user data or about your utilization of SQL Server.
+
+      - question: Are all SQL Server enabled by Azure Arc features available in the US Virginia Government cloud?
+        answer: |
+          No. Feature availability can differ in US Virginia Government cloud compared to the commercial Azure cloud.
+          
+          For current supported features and limitations, review [SQL Server enabled by Azure Arc in US Virginia Government](us-government-region.md) and [Release notes - SQL Server enabled by Azure Arc](release-notes.md).
 
   - name: Pay-as-you-go billing
     questions:
@@ -82,6 +88,10 @@ sections:
       - question: How does core detection work for PAYG on Linux?
         answer: |
           On Linux, core count is reported based on the operating system environment (virtual or physical cores visible to the OS). Database Engine-level core verification isn't available. Billing is based on the OS-reported core count, subject to the four-core minimum per OSE.
+
+      - question: Is physical core (p-core) pay-as-you-go billing available for SQL Server enabled by Azure Arc in the US Government Virginia cloud?
+        answer: |
+          Yes, physical core (p-core) pay-as-you-go billing is available for SQL Server enabled by Azure Arc in the US Government Virginia cloud.
 
   - name: Security
     questions:

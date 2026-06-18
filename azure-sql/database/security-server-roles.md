@@ -17,8 +17,8 @@ ms.topic: concept-article
 
 This article describes fixed server-level roles in Azure SQL Database.
 
-> [!NOTE]  
-> The fixed server-level roles in this article are in public preview for Azure SQL Database. These server-level roles are also part of the release for [SQL Server 2022](/sql/relational-databases/security/authentication-access/server-level-roles#fixed-server-level-roles-introduced-in-sql-server-2022).
+> [!NOTE]
+> These server-level roles are also part of the release for [SQL Server 2022](/sql/relational-databases/security/authentication-access/server-level-roles#fixed-server-level-roles-introduced-in-sql-server-2022).
 
 ## Overview
 
@@ -50,7 +50,7 @@ The following table shows the fixed server-level roles and their capabilities.
 | Fixed server-level role | Description |
 | --- | --- |
 | `##MS_DatabaseConnector##` | Members of the `##MS_DatabaseConnector##` fixed server role can connect to any database without requiring a User-account in the database to connect to.<br /><br />To deny the `CONNECT` permission to a specific database, users can create a matching user account for this login in the database and then `DENY` the `CONNECT` permission to the database-user. This `DENY` permission overrules the `GRANT CONNECT` permission coming from this role. |
-| `##MS_DatabaseManager##` | Members of the `##MS_DatabaseManager##` fixed server role can create and delete databases. A member of the `##MS_DatabaseManager##` role that creates a database, becomes the owner of that database, which allows that user to connect to that database as the `dbo` user. The `dbo` user has all database permissions in the database. Members of the `##MS_DatabaseManager##` role don't necessarily have permission to access databases that they don't own. You should use this server role over the **dbmanager** database level role that exists in `master`. |
+| `##MS_DatabaseManager##` | Members of the `##MS_DatabaseManager##` fixed server role can create and delete databases. A member of the `##MS_DatabaseManager##` role that creates a database, becomes the owner of that database, which allows that user to connect to that database as the `dbo` user. The `dbo` user has all database permissions in the database. Members of the `##MS_DatabaseManager##` role don't necessarily have permission to access databases that they don't own. Use this server role instead of the **dbmanager** fixed database role that exists in `master`. |
 | `##MS_DefinitionReader##` | Members of the `##MS_DefinitionReader##` fixed server role can read all catalog views that are covered by `VIEW ANY DEFINITION`, respectively `VIEW DEFINITION` on any database on which the member of this role has a user account. |
 | `##MS_LoginManager##` | Members of the `##MS_LoginManager##` fixed server role can create and delete logins. You should use this server role over the **loginmanager** database level role that exists in `master`. |
 | `##MS_SecurityDefinitionReader##` | Members of the `##MS_SecurityDefinitionReader##` fixed server role can read all catalog views that are covered by `VIEW ANY SECURITY DEFINITION`, and respectively has `VIEW SECURITY DEFINITION` permission on any database on which the member of this role has a user account. This is a small subset of what the `##MS_DefinitionReader##` server role has access to. |

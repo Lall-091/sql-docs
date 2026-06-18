@@ -5,7 +5,7 @@ description: Learn how to rotate the Transparent data encryption (TDE) protector
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 03/05/2026
+ms.date: 06/02/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -20,7 +20,7 @@ ms.custom:
 
 [!INCLUDE [appliesto-sqldb-sqlmi-asa-dedicated-only](../includes/appliesto-sqldb-sqlmi-asa-dedicated-only.md)]
 
-This article describes key rotation for a [server](logical-servers.md) using a TDE protector from Azure Key Vault. Rotating the logical TDE protector for a server means to switch to a new asymmetric key that protects the databases on the server. Key rotation is an online operation and should only take a few seconds to complete, because this only decrypts and re-encrypts the database's data encryption key, not the entire database.
+This article describes key rotation for a [server](logical-servers.md) using a TDE protector from Azure Key Vault. Rotating the logical TDE protector for a server means switching to a new supported key that protects the databases on the server. Depending on the configuration, the TDE protector can be backed by a supported asymmetric (RSA) or symmetric (AES) key stored in Azure Key Vault or Azure Key Vault Managed HSM. Key rotation is an online operation and should only take a few seconds to complete, because this only decrypts and re-encrypts the database's data encryption key, not the entire database.
 
 This article discusses both automated and manual methods to rotate the TDE protector on the server.
 
@@ -30,6 +30,14 @@ This article discusses both automated and manual methods to rotate the TDE prote
 - Even when switching from customer managed key (CMK) to service-managed key, keep all previously used keys in Azure Key Vault or Azure Managed HSM. This ensures database backups, including backed-up log files, can be restored with the TDE protectors stored in Azure Key Vault or Azure Managed HSM.
 - Apart from old backups, transaction log files might also require access to the older TDE protector. To determine if there are any remaining logs that still require the older key, after performing key rotation, use the [sys.dm_db_log_info](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-info-transact-sql) dynamic management view (DMV). This DMV returns information on the virtual log file (VLF) of the transaction log along with its encryption key thumbprint of the VLF.
 - Older keys need to be kept in Azure Key Vault or Azure Managed HSM and available to the server based on the backup retention period configured as back of backup retention policies on the database. This helps ensure any Long Term Retention (LTR) backups on the server can still be restored using the older keys.
+- You can rotate the TDE protector by switching the configuration to use a new key stored in Azure Key Vault or Azure Key Vault Managed HSM. Depending on the Azure SQL offering and supported configuration, this can include:
+
+   -  Switching to a new key version of the same key
+   -  Switching to a different key
+   -  Switching between supported key types, such as asymmetric (RSA) and symmetric (AES) keys
+
+      > [!NOTE]  
+      > Transparent Data Encryption with symmetric keys (AES) is currently supported only for Azure SQL Database and is in public preview. You may see this capability appear over time depending on your region and service deployment status.
 
 > [!NOTE]
 > A paused dedicated SQL pool in Azure Synapse Analytics must be resumed before key rotations.

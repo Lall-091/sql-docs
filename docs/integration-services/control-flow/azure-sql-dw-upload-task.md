@@ -15,7 +15,7 @@ f1_keywords:
 
 [!INCLUDE[sqlserver-ssis](../../includes/applies-to-version/sqlserver-ssis.md)]
 
-
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
 
 The **Azure Synapse Analytics Task** enables an SSIS package to copy tabular data to Azure Synapse Analytics dedicated SQL pool from file system or Azure Blob Storage.
 The task leverages PolyBase to improve performance, as described in the article [Azure Synapse Analytics Loading Patterns and Strategies](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies).

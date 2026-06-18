@@ -19,7 +19,7 @@ monikerRange: "=fabric"
 
 Creates a new table as a [zero-copy clone of another table](/fabric/data-warehouse/clone-table) in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]. Only the metadata of the table is copied. The underlying data of the table, stored as parquet files, is not copied.
 
-For more information on cloning a table in [!INCLUDE [fabric](../../includes/fabric.md)], see [Clone table with TSQL in Microsoft Fabric](/fabric/data-warehouse/tutorial-clone-table). You can also clone tables in [!INCLUDE [fabric](../../includes/fabric.md)] via the Fabric portal, for examples see [Clone tables in the Fabric portal](/fabric/data-warehouse/tutorial-clone-table-portal).
+For more information on cloning a table in [!INCLUDE [fabric](../../includes/fabric.md)], see [Clone table with T-SQL in Microsoft Fabric](/fabric/data-warehouse/tutorial-clone-table). You can also clone tables in [!INCLUDE [fabric](../../includes/fabric.md)] via the Fabric portal, for examples see [Clone tables in the Fabric portal](/fabric/data-warehouse/tutorial-clone-table-portal).
 
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 

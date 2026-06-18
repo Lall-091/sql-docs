@@ -1,10 +1,10 @@
 ---
 title: "Support Policies for OLE DB Driver for SQL Server"
 description: "Learn about the support policies for OLE DB Driver for SQL Server and what operating systems and SQL database versions are supported with each driver version."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: randolphwest
-ms.date: 09/09/2025
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: randolphwest, davidengel, sunilbs, mcimfl
+ms.date: 05/26/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
@@ -39,6 +39,7 @@ The following table lists which operating systems are supported by OLE DB Driver
 
 | Operating system&nbsp;&#8594;<br />&#8595; Driver version | Windows Server 2025 | Windows Server 2022 | Windows Server 2019 | Windows Server 2016 | Windows Server 2012<sup>1</sup> | Windows Server 2012 R2<sup>2</sup> | Windows 11 | Windows 10 | Windows 8.1<sup>3</sup> |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 19.4.2+ | Yes | Yes | Yes | Yes | No | No | Yes | No | No |
 | 19.3.3+ | Yes | Yes | Yes | Yes | No | No | Yes | Yes | No |
 | 19.3+ | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | No |
 | 19.0+ | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
@@ -64,4 +65,3 @@ Applications can use the OLE DB provider (SQLOLEDB) included with the Windows op
 ## Related content
 
 - [Building applications with OLE DB Driver for SQL Server](building-applications-with-oledb-driver-for-sql-server.md)
-

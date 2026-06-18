@@ -1,8 +1,9 @@
 ---
 title: "Connecting to the Server"
 description: "Learn about the different methods to connect to the database using the Microsoft Drivers for PHP for SQL Server."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "03/26/2018"
 ms.service: sql
 ms.subservice: connectivity

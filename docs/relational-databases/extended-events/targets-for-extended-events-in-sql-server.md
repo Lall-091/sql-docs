@@ -4,7 +4,7 @@ description: This article explains different targets for Extended Events session
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, randolphwest
-ms.date: 10/28/2025
+ms.date: 05/28/2026
 ms.service: sql
 ms.subservice: xevents
 ms.topic: concept-article
@@ -50,6 +50,14 @@ The `event_file` target writes event session output from memory buffers to a dis
 - You can optionally specify the `MAX_FILE_SIZE` parameter. It defines the maximum size in megabytes (MB) to which the file can grow before a new file is created.
 
 - You can optionally specify the `MAX_ROLLOVER_FILES` option to choose the maximum number of files to retain in the file system in addition to the current file. The default value is `UNLIMITED`. When `MAX_ROLLOVER_FILES` is evaluated, if the number of files exceeds the `MAX_ROLLOVER_FILES` setting, the older files are deleted.
+
+> [!NOTE]
+>
+> Prior to May 2026, the `MAX_ROLLOVER_FILES` option had no effect for the `event_file` targets using blobs in Azure Storage.
+>
+> Starting from May 2026, the `MAX_ROLLOVER_FILES` option can be used to retain only the specified number of the most recent blobs. You must create a new event session and specify `MAX_ROLLOVER_FILES` in the `ADD TARGET` clause. For more information, see [Create an event session with event_file target in Azure Storage in T-SQL](#create-an-event-session-with-event_file-target-in-azure-storage-in-t-sql).
+>
+> Support for `MAX_ROLLOVER_FILES` with Azure Storage blobs is currently **in preview** in Azure SQL Database and SQL database in Fabric only.
 
 > [!IMPORTANT]  
 > Depending on the events added to a session, the files produced by the `event_file` target might contain sensitive data. Carefully review the file system and share permissions on the directory and individual `.xel` files, including inherited access, to avoid granting unnecessary read access. Follow the [principle of least privilege](/entra/identity-platform/secure-least-privileged-access). To reduce the risk of collecting sensitive data inadvertently, avoid long-running event sessions if they might collect sensitive data.
@@ -258,11 +266,25 @@ ADD EVENT sqlserver.sql_batch_starting
 ADD TARGET package0.event_file
 (
     SET filename = N'https://<storage-account-name>.blob.core.windows.net/<container-name>/example-session.xel'
-)
-GO
+);
 ```
 
 To use this example in Azure SQL Database or SQL database in Fabric, replace `ON SERVER` with `ON DATABASE`.
+
+Here's a similar example for in Azure SQL Database or SQL database in Fabric that limits the size of each blob in Azure Storage to approximately 6 megabytes, and limits the number of the most recent files retained by the session to 3.
+
+```sql
+CREATE EVENT SESSION [example-session-with-rollover]
+ON DATABASE
+ADD EVENT sqlserver.lock_acquired
+ADD TARGET package0.event_file
+(
+    SET
+    filename = N'https://<storage-account-name>.blob.core.windows.net/<container-name>/example-session-with-rollover.xel',
+    max_file_size = 6,
+    max_rollover_files = 3
+);
+```
 
 ### Troubleshoot event sessions with event_file target in Azure Storage
 

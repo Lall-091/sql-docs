@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot can accelerate database-related code gener
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 01/19/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -19,7 +19,7 @@ ai-usage: ai-assisted
 
 # Quickstart: Generate code
 
-In this quickstart, you learn how GitHub Copilot accelerates SQL and object-relational mapping (ORM) development by generating context-aware code directly within Visual Studio Code. GitHub Copilot helps you scaffold tables, evolve schemas, and reduce repetitive scripting. Whether you're using Transact-SQL, or working with object-relational mapping (ORM) frameworks like Entity Framework, Sequelize, Prisma, or SQLAlchemy, GitHub Copilot helps you focus on building application logic.
+In this quickstart, you learn how GitHub Copilot accelerates SQL and object-relational mapping (ORM) development by generating context-aware code directly within Visual Studio Code. GitHub Copilot helps you scaffold tables, evolve schemas, and reduce repetitive scripting. Whether you're using Transact-SQL (T-SQL), or working with object-relational mapping (ORM) frameworks like Entity Framework, Sequelize, Prisma, or SQLAlchemy, GitHub Copilot helps you focus on building application logic.
 
 ## Get started
 
@@ -201,7 +201,7 @@ Scaffold a Django backend with Django REST Framework for the `SalesLT.Customer` 
 ## Related content
 
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](overview.md)
-- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [Quickstart: Chat with the `@mssql` participant (ask mode)](chat-ask-mode.md)
 - [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
 - [Quickstart: Use the smart query builder](smart-query-builder.md)
 - [Quickstart: Query optimizer assistant](query-optimizer-assistant.md)

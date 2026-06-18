@@ -1,8 +1,9 @@
 ---
 title: "Connecting with SQLDriverConnect"
 description: "SQLDriverConnect provides additional connection functionality over SQLConnect, including options to prompt the user for more information."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "08/20/2020"
 ms.service: sql
 ms.subservice: connectivity

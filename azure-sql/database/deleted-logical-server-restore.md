@@ -5,7 +5,7 @@ description: Learn about restoring a deleted logical server in Azure SQL Databas
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dinethi, jaypatel, mathoma
-ms.date: 04/07/2026
+ms.date: 05/27/2026
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -242,10 +242,27 @@ az sql server restore \
 
 If you want to permanently delete a logical server, make sure the soft delete retention period is set to 0 to disable retention before deleting the server. When the server is deleted, it's deleted permanently.
 
-If your server has already been deleted with a specified retention but you want to permanently delete it before the retention period expires, follow these steps: 
-1. Restore the server. 
-1. Set the soft delete retention period to 0 to disable retention. 
-1. Delete the server again.
+If your logical server has already been deleted with a specified retention but you want to permanently delete it before the retention period expires, follow these steps:
+1. Restore the logical server.
+1. Disable retention by setting the soft delete retention period to `0`. 
+1. Delete the logical server again.
+
+## Actions after restoring a deleted server
+
+After the logical server has been restored, the databases can be restored manually using the **Backups** pane under **Data management** for your [logical server](https://portal.azure.com/#servicemenu/SqlAzureExtension/AzureSqlHub/DatabaseServer) in the Azure portal.
+
+The following server-level configurations are dropped during soft-deletion and must be reconfigured after restoring the server:
+
+- Failover groups
+- Geo-replication links
+- Server DNS aliases
+- Private endpoint connections
+- Firewall rules
+- Elastic job agents
+- Server identity in Microsoft Entra ID
+- CMK/TDE encryption keys
+- Data Sync groups (server communication links), if Data Sync was being used
+- Synapse workspace link,  if there was a connected Synapse workspace
 
 ## Limitations
 

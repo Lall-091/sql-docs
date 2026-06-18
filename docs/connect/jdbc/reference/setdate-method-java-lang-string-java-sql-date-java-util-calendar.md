@@ -1,8 +1,9 @@
 ---
 title: "setDate Method to date and calendar - string"
 description: "setDate Method (java.lang.String, java.sql.Date, java.util.Calendar)"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity

@@ -4,7 +4,7 @@ description: Learn how to use SQL Notebooks in the MSSQL extension for Visual St
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: tsiddique, roblescarlos
-ms.date: 03/13/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -13,18 +13,15 @@ ms.collection:
 ai-usage: ai-assisted
 ---
 
-# SQL Notebooks (preview)
+# SQL Notebooks
 
 SQL Notebooks in the MSSQL extension for Visual Studio Code provide notebook-based SQL development using native Visual Studio Code Jupyter notebooks. You can combine interactive SQL query execution with Markdown documentation cells to build runnable query collections, document database operations, and share reproducible analysis.
-
-> [!TIP]  
-> SQL Notebooks is currently in preview and might change based on feedback. Join the community at [GitHub Discussions](https://aka.ms/vscode-mssql-discussions) to share ideas or report issues.
 
 ## Features
 
 SQL Notebooks offers these capabilities:
 
-- Execute T-SQL queries interactively in notebook code cells with inline results displayed below each cell.
+- Execute Transact-SQL (T-SQL) queries interactively in notebook code cells with inline results displayed below each cell.
 
 - Use the native Visual Studio Code Jupyter notebook format (`.ipynb` files) for full compatibility with existing notebook tooling.
 
@@ -50,7 +47,7 @@ Before you use SQL Notebooks, ensure the following requirements are met:
 
 - The MSSQL extension for Visual Studio Code is installed. For installation steps, see the [MSSQL extension for Visual Studio Code](mssql-extension-visual-studio-code.md) overview.
 
-- An active database connection is established through the MSSQL extension. For connection steps, see [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md).
+- An active database connection is established through the MSSQL extension. For connection steps, see [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md).
 
 - (Optional) The [Jupyter extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) for Visual Studio Code, if you want to use other kernels such as Python alongside SQL in the same notebook.
 
@@ -157,9 +154,9 @@ All subsequent cell executions use the newly selected database.
 
 ## Related content
 
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
-- [Transition from Azure Data Studio (preview)](mssql-azure-data-studio-transition.md)
+- [Transition from Azure Data Studio](mssql-azure-data-studio-transition.md)
 - [What is the MSSQL extension for Visual Studio Code?](mssql-extension-visual-studio-code.md)
 - [Visual Studio Code Jupyter notebooks documentation](https://code.visualstudio.com/docs/datascience/jupyter-notebooks)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)

@@ -1,8 +1,9 @@
 ---
 title: "SQLSetStmtAttr Function"
 description: "SQLSetStmtAttr Function"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity
@@ -86,7 +87,7 @@ SQLRETURN SQLSetStmtAttr(
 |SQLSTATE|Error|Description|  
 |--------------|-----------|-----------------|  
 |01000|General warning|Driver-specific informational message. (Function returns SQL_SUCCESS_WITH_INFO.)|  
-|01S02|Option value changed|The driver did not support the value specified in *ValuePtr*, or the value specified in *ValuePtr* was invalid because of implementation working conditions, so the driver substituted a similar value. (**SQLGetStmtAttr** can be called to determine the temporarily substituted value.) The substitute value is valid for the *StatementHandle* until the cursor is closed, at which point the statement attribute reverts to its previous value. The statement attributes that can be changed are:<br /><br /> SQL_ ATTR_CONCURRENCY SQL_ ATTR_CURSOR_TYPE SQL_ ATTR_KEYSET_SIZE SQL_ ATTR_MAX_LENGTH SQL_ ATTR_MAX_ROWS SQL_ ATTR_QUERY_TIMEOUT  SQL_ATTR_ROW_ARRAY_SIZE SQL_ ATTR_SIMULATE_CURSOR<br /><br /> (Function returns SQL_SUCCESS_WITH_INFO.)|  
+|01S02|Option value changed|The driver did not support the value specified in *ValuePtr*, or the value specified in *ValuePtr* was invalid because of implementation working conditions, so the driver substituted a similar value. (**SQLGetStmtAttr** can be called to determine the temporarily substituted value.) The substitute value is valid for the *StatementHandle* until the cursor is closed, at which point the statement attribute reverts to its previous value. The statement attributes that can be changed are:<br /><br /> SQL_ATTR_CONCURRENCY SQL_ATTR_CURSOR_TYPE SQL_ATTR_KEYSET_SIZE SQL_ATTR_MAX_LENGTH SQL_ATTR_MAX_ROWS SQL_ATTR_QUERY_TIMEOUT  SQL_ATTR_ROW_ARRAY_SIZE SQL_ATTR_SIMULATE_CURSOR<br /><br /> (Function returns SQL_SUCCESS_WITH_INFO.)|  
 |08S01|Communication link failure|The communication link between the driver and the data source to which the driver was connected failed before the function completed processing.|  
 |24000|Invalid cursor state|The *Attribute* was SQL_ATTR_CONCURRENCY, SQL_ATTR_CURSOR_TYPE, SQL_ATTR_SIMULATE_CURSOR, or SQL_ATTR_USE_BOOKMARKS, and the cursor was open.|  
 |HY000|General error|An error occurred for which there was no specific SQLSTATE and for which no implementation-specific SQLSTATE was defined. The error message returned by **SQLGetDiagRec** in the *\*MessageText* buffer describes the error and its cause.|  

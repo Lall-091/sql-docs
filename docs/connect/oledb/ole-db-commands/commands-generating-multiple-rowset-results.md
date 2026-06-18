@@ -1,8 +1,9 @@
 ---
 title: "Commands generating multiple-rowset results (OLE DB driver)"
 description: Learn how OLE DB Driver for SQL Server returns multiple rowsets for batched SQL statements and when stored procedures implement batched SQL statements.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

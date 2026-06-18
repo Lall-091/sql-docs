@@ -3,10 +3,11 @@ title: "What's New for SQL Server 2022 on Linux"
 description: In this article, learn about the major features and services available for SQL Server 2022 running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/27/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: whats-new
+ms.update-cycle: 1825-days
 ms.custom:
   - intro-whats-new
   - linux-related-content
@@ -25,7 +26,7 @@ In addition to these capabilities in this article, cumulative updates (CUs) are 
 
 [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Cumulative Update (CU) 23 provides support for configuring a custom password policy. This feature was backported from [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
-For more information, see [Set custom password policy for SQL logins in SQL Server on Linux](sql-server-linux-custom-password-policy.md).
+For more information, see [Set custom password policy for SQL logins in SQL Server on Linux](security/authentication/custom-password-policy.md).
 
 ## Red Hat Enterprise Linux 9 support
 

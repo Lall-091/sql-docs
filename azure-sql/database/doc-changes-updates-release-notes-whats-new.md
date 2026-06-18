@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 04/13/2026
+ms.date: 06/05/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -39,6 +39,7 @@ The following table lists the features of Azure SQL Database that are currently 
 | Feature | Details |
 | --- | --- |
 | **160 and 192 vCore for Hyperscale Premium-series**|160 and 192 vCore options for Hyperscale Premium-series are now available as a preview offering, for both single Hyperscale databases and Hyperscale elastic pools. For more information, see [160 and 192 vCore offering for Hyperscale Premium Series](https://aka.ms/PRMS192vCores).|
+| **AES keys for transparent data encryption**| The TDE protector for Azure SQL Database can now be backed by symmetric (AES) keys stored in Azure Key Vault Managed HSM, in addition to asymmetric (RSA) keys. For more information, see [Customer-managed transparent data encryption](transparent-data-encryption-byok-overview.md). |
 | **Approximate or fuzzy string matching**| Check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that might be different because of character corruption. [What is fuzzy string matching?](/sql/relational-databases/fuzzy-string-match/overview)|
 | **Availability metric**| Availability is now a metric in the Azure Monitor metrics. Driven by a variety of user connection failures, you can [monitor and configure alerts on Azure SQL Database Availability](monitoring-metrics-alerts.md#availability-metric). |
 | **Automatic index compaction** | [Automatic index compaction](/sql/relational-databases/indexes/automatic-index-compaction) helps you reduce the consumption of storage space, disk I/O, memory, and improve workload performance without investing time and effort into index maintenance jobs. |
@@ -51,7 +52,7 @@ The following table lists the features of Azure SQL Database that are currently 
 | **Immutable LTR backups** | You can [configure long-term retention backups of Azure SQL Database as immutable](backup-immutability.md) with legal hold immutability (preview feature). Time-based backup immutability is generally available.| 
 | **Import and export using managed identity** | You can [import or export an Azure SQL Database BACPAC file with managed identity authentication](database-import-export-managed-identity.md). Use managed identity authentication for enhanced security when importing or exporting databases. |
 | **Import and export using Private Link** | You can [import or export an Azure SQL Database using private link](database-import-export-private-link.md). Leave *Allow Access to Azure Services* off when you import or export a database using a service-managed endpoint. |
-| **Microsoft Entra server principals** | The ability to [create server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) in Azure SQL Database is in preview. |
+| **MAX_ROLLOVER_FILES in extended event sessions using Azure Storage blobs** | For new extended event sessions, you can specify the `MAX_ROLLOVER_FILES` option to retain only the specified number of the most recent Azure Storage blobs. For more information, see [event_file target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target). |
 | **Multiple geo-replicas for Hyperscale** | The ability to create up to four geo-replicas for Azure SQL Hyperscale is in preview.  Learn more about [multiple geo-replicas for Hyperscale](https://aka.ms/sqlhs-multi-geo-announcement). |
 | **Multiple secondaries for failover groups** | You can [configure multiple secondary servers for failover groups](failover-group-sql-db.md#multiple-secondaries) in Azure SQL Database. |
 | **Network Security Perimeter** | [Azure Network Security Perimeter](network-security-perimeter.md) allows organizations to define a logical network isolation boundary for PaaS resources (for example, Azure Storage and SQL Database) that are deployed outside your organization's virtual networks. It restricts public network access to PaaS resources outside of the perimeter, and access can be exempted by using explicit access rules for public inbound and outbound. |
@@ -68,6 +69,7 @@ The following table lists features of Azure SQL Database that have been made gen
 
 | Feature | GA Month | Details |
 | --- | --- | --- |
+| **Microsoft Entra server principals** | June 2026 | The ability to [create server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) in Azure SQL Database is now generally available. |
 | **DATEADD number allows bigint** | November 2025 | For `DATEADD (datepart, number, date)`, number can be expressed as a **bigint**. For more information, see [DATEADD (Transact-SQL)](/sql/t-sql/functions/dateadd-transact-sql).|
 | **Regular expression functions** | November 2025 | Regular expression (REGEX) functions return text based on values in a search pattern. [Regular expressions](/sql/relational-databases/regular-expressions/overview). |
 | **Immutable LTR backups** | November 2025 | You can [configure long-term retention backups of Azure SQL Database as immutable](backup-immutability.md) with time-based immutability. | 
@@ -90,6 +92,19 @@ The following table lists features of Azure SQL Database that have been made gen
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Database documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### June 2026
+
+| Changes | Details |
+| --- | --- |
+| **AES keys for transparent data encryption (preview)** | The TDE protector for Azure SQL Database can now be backed by symmetric (AES) keys stored in Azure Key Vault Managed HSM, in addition to asymmetric (RSA) keys. This capability is in public preview. For more information, see [Customer-managed transparent data encryption](transparent-data-encryption-byok-overview.md). |
+| **Microsoft Entra server principals** | The ability to [create server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) in Azure SQL Database is now generally available. |
+
+### May 2026
+
+| Changes | Details |
+| --- | --- |
+| **MAX_ROLLOVER_FILES in extended event sessions using Azure Storage blobs (preview)** | For new extended event sessions, you can specify the `MAX_ROLLOVER_FILES` option to retain only the specified number of the most recent Azure Storage blobs. For more information, see [event_file target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target). |
 
 ### March 2026
 

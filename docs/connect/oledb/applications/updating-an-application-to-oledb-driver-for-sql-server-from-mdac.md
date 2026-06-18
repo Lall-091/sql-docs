@@ -1,8 +1,9 @@
 ---
 title: "Updating an Application to OLE DB Driver for SQL Server from MDAC"
 description: "Learn what's changed from the old OLE DB Provider for SQL Server and the new OLE DB Driver for SQL Server and what you need to know to update to the new driver."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/12/2018"
 ms.service: sql
 ms.subservice: connectivity

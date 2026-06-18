@@ -3,7 +3,7 @@ title: Connect to the SQL Server Database Engine
 description: Learn how to connect to the Database Engine used by SQL Server and Azure SQL services
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/29/2026
+ms.date: 05/25/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: how-to
@@ -173,7 +173,7 @@ You can connect to Fabric Data Warehouse and SQL database in Fabric in much the 
 For complete details, see:
 
 - [Connect to Fabric Data Warehouse](/fabric/data-warehouse/how-to-connect)
-- [Connect to SQL database in Fabric](/fabric/database/sql/connect)
+- [Connect to your SQL database in Microsoft Fabric](/fabric/database/sql/connect)
 
 <a id="tsql"></a>
 
@@ -187,7 +187,7 @@ Once you connect successfully to the [!INCLUDE [ssde-md](../includes/ssde-md.md)
 For more information about running T-SQL queries in client tools, see:
 
 - [SQL Server Management Studio (SSMS)](/ssms/quickstarts/ssms-connect-query-sql-server)
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md)
 - [sqlcmd utility](../tools/sqlcmd/sqlcmd-run-transact-sql-script-files.md)
 - [Azure portal query editor for Azure SQL Database](/azure/azure-sql/database/query-editor)
 - [Query with the SQL query editor](/fabric/database/sql/query-editor)
@@ -197,8 +197,7 @@ For more information about running T-SQL queries in client tools, see:
 
 ## Get help
 
-- [Create a valid connection string using the shared memory protocol](../tools/configuration-manager/aliases-sql-server-configuration-manager.md)
-- [Create a valid connection string using TCP/IP](../tools/configuration-manager/aliases-sql-server-configuration-manager.md)
+- [Aliases (SQL Server Configuration Manager)](../tools/configuration-manager/aliases-sql-server-configuration-manager.md)
 - [Troubleshoot connectivity issues in SQL Server](/troubleshoot/sql/database-engine/connect/resolve-connectivity-errors-overview)
 - [Trace the network authentication process to the Database Engine](../relational-databases/database-engine-connection-open-network-trace.md)
 
@@ -207,5 +206,5 @@ For more information about running T-SQL queries in client tools, see:
 - [Sign in to SQL Server](../database-engine/configure-windows/logging-in-to-sql-server.md)
 - [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 - [What is the MSSQL extension for Visual Studio Code?](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)
-- [Configure Database Engine Instances (SQL Server)](../database-engine/configure-windows/configure-database-engine-instances-sql-server.md)
+- [Configure Database Engine instances (SQL Server)](../database-engine/configure-windows/configure-database-engine-instances-sql-server.md)
 - [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md)

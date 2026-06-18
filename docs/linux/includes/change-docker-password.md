@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: include
@@ -13,7 +13,7 @@ The `sa` account is a system administrator on the [!INCLUDE [ssnoversion-md](../
 
 1. Choose a strong password to use for the `sa` account. [!INCLUDE [password-complexity](password-complexity.md)]
 
-1. Use `docker exec` to run the **sqlcmd** utility to change the password through a Transact-SQL statement. Replace `<old-password>` and `<new-password>` with your own password values:
+1. Use `docker exec` to run the **`sqlcmd`** utility to change the password through a Transact-SQL statement. Replace `<old-password>` and `<new-password>` with your own password values:
 
    > [!IMPORTANT]  
    > The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead.

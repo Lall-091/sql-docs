@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, randolphwest
-ms.date: 04/13/2026
+ms.date: 05/12/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -38,6 +38,7 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 | [Change event streaming](/sql/relational-databases/track-changes/change-event-streaming/overview) | Capture and publish incremental DML changes of data (such as updates, inserts, and deletes) in near real-time. Change event streaming sends details of data changes such as the schema, previous values, and new values to Azure Event Hubs in a simple CloudEvent, serialized as either native JSON or Avro Binary. |
 |[Database watcher for Azure SQL](../database-watcher-overview.md) | Database watcher is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement).|
 |[Endpoint policies](./service-endpoint-policies-configure.md) | Configure which Azure Storage accounts can be accessed from a SQL Managed Instance subnet. Grants an extra layer of protection against inadvertent or malicious data exfiltration.|
+| [Flexible memory](resource-limits.md#flexible-memory) | Save on cost and better serve your workload needs by modifying the memory allocation for your Business Critical SQL managed instance. |
 |[Modernization Advisor](../virtual-machines/modernization-advisor.md) | Use the Modernization Advisor in the Azure portal to help you determine if migrating to Azure SQL Managed Instance from a SQL Server VM saves you money or optimizes performance. |
 |[SDK-style SQL project](/sql/tools/sql-database-projects/sql-database-projects) | Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Visual Studio Code. SDK-style SQL projects are especially advantageous for applications shipped through pipelines or built in cross-platform environments.|
 |[Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) | Support for cross-instance message exchange using Service Broker between instances of Azure SQL Managed Instance, and between SQL Server and Azure SQL Managed Instance. |
@@ -50,6 +51,7 @@ The following table lists features of Azure SQL Managed Instance that have been 
 
 | Feature | GA Month | Details |
 | ---| --- |--- |
+|[Internal connectivity testing](connectivity-testing-overview.md) | May 2026 | Azure SQL Managed Instance now performs automatic internal connectivity tests to monitor service reliability and accelerate issue detection. |
 |[Block T-SQL CRUD commands](../database/block-crud-tsql.md) | March 2026 | Azure administrators can block T-SQL commands to create or modify Azure SQL resources. |
 |[SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy) | March 2026 | Align your SQL managed instance database format with the SQL Server 2025 database engine. | 
 |[DATEADD number allows bigint](/sql/t-sql/functions/dateadd-transact-sql) | November 2025 | For `DATEADD (datepart, number, date)`, number can be expressed as a **bigint**.|
@@ -61,7 +63,7 @@ The following table lists features of Azure SQL Managed Instance that have been 
 |[UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql) | July 2025 | Azure SQL Managed Instance now supports the `UNISTR` T-SQL syntax for Unicode string literals.|
 |[\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql?view=azuresqlmi-current&preserve-view=true) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql?view=azuresqlmi-current&preserve-view=true) syntax support | July 2025 |Azure SQL Managed Instance now supports [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql?view=azuresqlmi-current&preserve-view=true) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql?view=azuresqlmi-current&preserve-view=true) Transact-SQL syntax.|
 |[Degrees of parallelism (DOP) feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-mi-current&preserve-view=true) | July 2025|  DOP feedback improves query performance by identifying parallelism inefficiencies for repeating queries, based on elapsed time and waits. For more information, see the [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318) blog. |
-| Vector data type and functions | June 2025 | Working with vector data is now easier in Azure SQL Managed Instance with the Always-up-to-date policy, with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true). For more information, see [Intelligent applications with Azure SQL Database](ai-artificial-intelligence-intelligent-applications.md#vectors).|
+| [Vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true) | June 2025 | Working with vector data is now easier in Azure SQL Managed Instance with the Always-up-to-date update policy, with the introduction of a new vector data type and vector functions. For more information, see [Intelligent applications with Azure SQL Managed Instance](/sql/sql-server/ai/artificial-intelligence-intelligent-applications#vectors).|
 |[Zone redundancy for General Purpose](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) | June 2025|  Deploy your General Purpose SQL Managed Instance to multiple availability zones to improve the availability of your instance in the event of a disaster. | 
 |[Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) | June 2025 | Use the `sp_invoke_external_rest_endpoint` stored procedure to invoke an HTTPS REST endpoint provided as an input argument to the procedure. | 
 |[TLS 1.3 support for replication](replication-transactional-overview.md#tls-13-support) | May 2025 | Configure Azure SQL Managed Instance replication agents to use TLS 1.3. |
@@ -74,6 +76,18 @@ The following table lists features of Azure SQL Managed Instance that have been 
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Managed Instance documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### May 2026
+
+| Changes | Details |
+| --- | --- |
+| **Internal connectivity testing GA** | [!INCLUDE [auto-connectivity-tests](../includes/auto-connectivity-tests.md)] |
+
+### April 2026
+
+| Changes | Details |
+| --- | --- |
+| **Flexible memory preview** | It's now possible to modify the memory allocation for your Business Critical SQL managed instance based on your workload needs. This capability is now in preview for this service tier. Flexible memory is generally available (GA) for the Next-gen General Purpose service tier. To learn more, review [Flexible memory](resource-limits.md#flexible-memory). |
 
 ### March 2026
 

@@ -7,7 +7,7 @@ ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: concept-article
 ms.custom: horz-security
-ms.date: 09/15/2025
+ms.date: 05/12/2026
 ai-usage: ai-assisted
 ---
 
@@ -146,6 +146,10 @@ Maintaining compliance and governance ensures your SQL Managed Instance deployme
 - **Use resource locks**: Apply resource locks to prevent accidental deletion or modification of critical SQL managed instance resources. This helps maintain configuration integrity and prevents unauthorized changes that could impact compliance. For more information, see [Resource locks](/azure/azure-resource-manager/management/lock-resources).
 
 - **Monitor with Azure Advisor**: Use Azure Advisor to receive personalized recommendations for security, cost optimization, performance, and operational excellence. Regularly review and implement advisor recommendations to maintain best practices. For more information, see [Azure Advisor](/azure/advisor/advisor-overview).
+
+## Automatic internal connectivity tests
+
+[!INCLUDE [auto-connectivity-tests](../includes/auto-connectivity-tests.md)]
 
 ## Related content
 

@@ -4,7 +4,7 @@ description: "Generates a series of numbers within a given interval. The interva
 author: kendalvandyke
 ms.author: kendalv
 ms.reviewer: randolphwest
-ms.date: 10/27/2023
+ms.date: 05/05/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -30,6 +30,8 @@ Generates a series of numbers within a given interval. The interval and the step
 #### Compatibility level 160
 
 `GENERATE_SERIES` requires the compatibility level to be at least 160. When the compatibility level is less than 160, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] is unable to find the `GENERATE_SERIES` function.
+
+The compatibility level requirement doesn't apply if the [ALLOW_BUILTIN_TVF_IN_ALL_COMPAT_LEVELS](../statements/alter-database-scoped-configuration-transact-sql.md#allow-builtin-tvf-in-all-compat-levels) database-scoped configuration is enabled.
 
 To change the compatibility level of a database, refer to [View or change the compatibility level of a database](../../relational-databases/databases/view-or-change-the-compatibility-level-of-a-database.md).
 ::: moniker-end

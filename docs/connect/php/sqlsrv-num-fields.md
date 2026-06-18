@@ -1,8 +1,9 @@
 ---
 title: "sqlsrv_num_fields"
 description: "sqlsrv_num_fields"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "03/23/2017"
 ms.service: sql
 ms.subservice: connectivity

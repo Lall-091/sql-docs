@@ -777,6 +777,8 @@ GO
 
 ## Azure Synapse Analytics
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 ## Syntax
 
 ```syntaxsql

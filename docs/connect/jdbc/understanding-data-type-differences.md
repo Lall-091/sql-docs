@@ -1,8 +1,9 @@
 ---
 title: "Understanding data type differences"
 description: "Learn the differences between Java programming language data types and SQL Server data types and how the JDBC Driver for SQL Server helps with conversions."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "08/12/2019"
 ms.service: sql
 ms.subservice: connectivity

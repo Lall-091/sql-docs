@@ -1,9 +1,9 @@
 ---
 title: "Authentication in SQL Server"
 description: "Learn about logins and authentication in SQL Server when using ADO.NET and where to find additional resources."
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: "09/26/2019"
 ms.service: sql
 ms.subservice: connectivity

@@ -5,7 +5,7 @@ description: Learn about Azure SQL Managed Instance communication and connectivi
 author: zoran-rilak-msft
 ms.author: zoranrilak
 ms.reviewer: mathoma, bonova
-ms.date: 03/18/2026
+ms.date: 05/12/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -160,14 +160,18 @@ The following constraints on virtual network features and traffic are in effect:
 - **TLS 1.2 is enforced on outbound connections**: Beginning in January 2020, Microsoft enforces TLS 1.2 for intra-service traffic in all Azure services. For SQL Managed Instance, this resulted in TLS 1.2 being enforced on outbound connections that are used for replication and on linked server connections to SQL Server. If you use a version of SQL Server that's earlier than 2016 with SQL Managed Instance, make sure that you apply [TLS 1.2-specific updates](/troubleshoot/sql/database-engine/connect/tls-1-2-support-microsoft-sql-server).
 - **Internal fallback to Azure DNS**: SQL managed instances depend on functioning DNS resolution in their virtual networks. If a SQL managed instance's virtual network is configured to use [custom DNS servers](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server) and a DNS request issued to custom DNS servers fails to complete within a certain interval (1-2 seconds), SQL managed instance will repeat the request against [Azure DNS](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#azure-provided-name-resolution) in that virtual network.
 
+## Automatic internal connectivity tests
+
+[!INCLUDE [auto-connectivity-tests](../includes/auto-connectivity-tests.md)]
+
 ## Related content
 
-- For an overview, see [What is Azure SQL Managed Instance?](sql-managed-instance-paas-overview.md).
-- To learn more, see:
+- For an overview, see [What is Azure SQL Managed Instance?](sql-managed-instance-paas-overview.md). To learn more, see:
   - [Virtual cluster architecture](virtual-cluster-architecture.md).
   - [Service-aided subnet configuration](subnet-service-aided-configuration-enable.md).
   - [Set up a new Azure virtual network](virtual-network-subnet-create-arm-template.md) or an [existing Azure virtual network](vnet-existing-add-subnet.md) where you can deploy SQL Managed Instance.
   - [Calculate the size of the subnet](vnet-subnet-determine-size.md) where you want to deploy SQL Managed Instance.
+  - [Automatic internal connectivity tests](connectivity-testing-overview.md)
 - Learn how to create a SQL managed instance:
   - From the [Azure portal](instance-create-quickstart.md).
   - By using [PowerShell](scripts/create-configure-managed-instance-powershell.md).

@@ -38,7 +38,13 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 Adds one or more rows to a table or a view in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For examples, see [Examples](#InsertExamples).  
   
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
-  
+
+::: moniker range="=azure-sqldw-latest"
+
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
+::: moniker-end
+
 ## Syntax  
   
 Syntax for SQL Server and Azure SQL Database and Fabric SQL database

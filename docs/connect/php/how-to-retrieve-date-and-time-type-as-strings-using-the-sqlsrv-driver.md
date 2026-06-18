@@ -1,8 +1,9 @@
 ---
 title: "Retrieve Date and Time Types as Strings Using the SQLSRV Driver"
 description: "Learn how to retrieve date and time types as strings using the SQLSRV driver for PHP for SQL Server."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "02/11/2019"
 ms.service: sql
 ms.subservice: connectivity

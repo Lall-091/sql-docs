@@ -1,8 +1,9 @@
 ---
 title: Connection events
 description: The connection events to retrieve informational messages from a data source and determine if its state is changed.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 11/13/2020
 ms.service: sql
 ms.subservice: connectivity

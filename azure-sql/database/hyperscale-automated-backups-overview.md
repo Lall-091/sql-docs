@@ -40,6 +40,8 @@ Changing the [storage redundancy](hyperscale-automated-backups-overview.md#data-
 
 Creating new databases by restoring an existing backup or copying the database, also takes advantage of compute and storage separation in Hyperscale. You can create copies for development or testing purposes, even of multi-terabyte databases, in minutes within the same region when you use the same storage type.
 
+[!INCLUDE [hyperscale-cross-tier-restore-note](../includes/hyperscale-cross-tier-restore-note.md)]
+
 ## Backup retention
 
 The default short-term retention of backups for Hyperscale databases is 7 days.

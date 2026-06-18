@@ -5,7 +5,7 @@ description: This article provides common security requirements and best practic
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 06/13/2025
+ms.date: 06/02/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: best-practice
@@ -93,7 +93,7 @@ Central identity management offers the following benefits:
   - For more information, see [Configure and manage Microsoft Entra authentication with Azure SQL](authentication-aad-configure.md) and [Microsoft Entra authentication for Azure SQL](authentication-aad-overview.md).
 
   > [!NOTE]  
-  > In SQL Managed Instance, you can also create logins that map to Microsoft Entra principals in the `master` database. See [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
+  > In Azure SQL Database and SQL Managed Instance, you can also create logins that map to Microsoft Entra principals in the `master` database. See [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
 - Using Microsoft Entra groups simplifies permission management and both the group owner, and the resource owner can add/remove members to/from the group.
 
@@ -412,7 +412,7 @@ Encryption at rest is the cryptographic protection of data when it is persisted 
 
 - Use customer-managed keys in Azure Key Vault if you need increased transparency and granular control over the TDE protection. Azure Key Vault allows the ability to revoke permissions at any time to render the database inaccessible. You can centrally manage TDE protectors along with other keys, or rotate the TDE protector at your own schedule using Azure Key Vault.
 
-- If you're using customer-managed keys in Azure Key Vault, follow the articles, [Guidelines for configuring TDE with Azure Key Vault](transparent-data-encryption-byok-overview.md#recommendations-when-configuring-customer-managed-tde) and [How to configure Geo-DR with Azure Key Vault](transparent-data-encryption-byok-overview.md#geo-dr-and-customer-managed-tde).
+- If you're using customer-managed keys in Azure Key Vault, follow the articles, [Guidelines for configuring TDE with Azure Key Vault](transparent-data-encryption-byok-overview.md#recommendations-for-configuring-customer-managed-tde) and [How to configure Geo-DR with Azure Key Vault](transparent-data-encryption-byok-overview.md#geo-dr-and-customer-managed-tde).
 
 > [!NOTE]  
 > Some items considered customer content, such as table names, object names, and index names, might be transmitted in log files for support and troubleshooting by Microsoft.

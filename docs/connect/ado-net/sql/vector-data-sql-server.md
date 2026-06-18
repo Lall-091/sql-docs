@@ -1,9 +1,9 @@
 ---
 title: "Vector datatype support in SqlClient"
 description: "Describes how to work with vector datatype for SQL Server using SqlClient."
-author: apoorvdeshmukh
-ms.author: apdeshmukh
-ms.reviewer: 
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 10/31/2025
 ms.service: sql
 ms.subservice: connectivity

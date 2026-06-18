@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, atsingh
-ms.date: 04/14/2026
+ms.date: 05/12/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -46,11 +46,11 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Latest versions for all packages
 
-This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL17](../includes/sssql17-md.md)]. The following table shows the most recent release, which is **CU 31 GDR (Apr 2026)**. For full release history, see [Release history for SQL Server 2017 on Linux](/troubleshoot/sql/releases/linux/release-history-2017).
+This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL17](../includes/sssql17-md.md)]. The following table shows the most recent release, which is **CU 31 GDR (May 2026)**. For full release history, see [Release history for SQL Server 2017 on Linux](/troubleshoot/sql/releases/linux/release-history-2017).
 
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
-| [!INCLUDE [ssSQL17](../includes/sssql17-md.md)] | CU 31 GDR | 2026-04-14 | 14.0.3525.1 | [KB 5084818](https://support.microsoft.com/help/5084818) |
+| [!INCLUDE [ssSQL17](../includes/sssql17-md.md)] | CU 31 GDR | 2026-05-12 | 14.0.3530.2 | [KB 5090354](https://support.microsoft.com/help/5090354) |
 
 The latest GDR release includes the Azure Connect Pack for [!INCLUDE [ssSQL17](../includes/sssql17-md.md)].
 
@@ -60,32 +60,32 @@ The latest GDR release includes the Azure Connect Pack for [!INCLUDE [ssSQL17](.
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
 | **Red Hat Enterprise Linux** | | | |
-| RHEL 8 | Database Engine | 14.0.3525.1-3 | [Database Engine RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-14.0.3525.1-3.x86_64.rpm) |
-| RHEL 8 | Full-Text Search | 14.0.3525.1-3 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-fts-14.0.3525.1-3.x86_64.rpm) |
-| RHEL 8 | High Availability | 14.0.3525.1-3 | [High Availability RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-ha-14.0.3525.1-3.x86_64.rpm) |
+| RHEL 8 | Database Engine | 14.0.3530.2-6 | [Database Engine RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-14.0.3530.2-6.x86_64.rpm) |
+| RHEL 8 | Full-Text Search | 14.0.3530.2-6 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-fts-14.0.3530.2-6.x86_64.rpm) |
+| RHEL 8 | High Availability | 14.0.3530.2-6 | [High Availability RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2017/Packages/m/mssql-server-ha-14.0.3530.2-6.x86_64.rpm) |
 | RHEL 7 | SSIS | 14.0.3015.40-1 | [SSIS RPM package](https://packages.microsoft.com/rhel/7/mssql-server-2017/Packages/m/mssql-server-is-14.0.3015.40-1.x86_64.rpm) |
 | **SUSE Linux Enterprise Server** | | | |
-| SLES 12 | Database Engine | 14.0.3525.1-3 | [Database Engine RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-14.0.3525.1-3.x86_64.rpm) |
-| SLES 12 | Full-Text Search | 14.0.3525.1-3 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-fts-14.0.3525.1-3.x86_64.rpm) |
-| SLES 12 | High Availability | 14.0.3525.1-3 | [High Availability RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-ha-14.0.3525.1-3.x86_64.rpm) |
+| SLES 12 | Database Engine | 14.0.3530.2-6 | [Database Engine RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-14.0.3530.2-6.x86_64.rpm) |
+| SLES 12 | Full-Text Search | 14.0.3530.2-6 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-fts-14.0.3530.2-6.x86_64.rpm) |
+| SLES 12 | High Availability | 14.0.3530.2-6 | [High Availability RPM package](https://packages.microsoft.com/sles/12/mssql-server-2017/Packages/m/mssql-server-ha-14.0.3530.2-6.x86_64.rpm) |
 | **Ubuntu** | | | |
-| Ubuntu 18.04 | Database Engine | 14.0.3525.1-3 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server/mssql-server_14.0.3525.1-3_amd64.deb) |
-| Ubuntu 18.04 | Full-Text Search | 14.0.3525.1-3 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server-fts/mssql-server-fts_14.0.3525.1-3_amd64.deb) |
-| Ubuntu 18.04 | High Availability | 14.0.3525.1-3 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server-ha/mssql-server-ha_14.0.3525.1-3_amd64.deb) |
+| Ubuntu 18.04 | Database Engine | 14.0.3530.2-6 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server/mssql-server_14.0.3530.2-6_amd64.deb) |
+| Ubuntu 18.04 | Full-Text Search | 14.0.3530.2-6 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server-fts/mssql-server-fts_14.0.3530.2-6_amd64.deb) |
+| Ubuntu 18.04 | High Availability | 14.0.3530.2-6 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/18.04/mssql-server-2017/pool/main/m/mssql-server-ha/mssql-server-ha_14.0.3530.2-6_amd64.deb) |
 | Ubuntu 16.04 | SSIS | 14.0.3015.40-1 | [SSIS Debian package](https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main/m/mssql-server-is/mssql-server-is_14.0.3015.40-1_amd64.deb) |
 
 <a id="cuinstall"></a>
 
 ## How to install updates
 
-When you configure the CU repository (`mssql-server-2017`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/r/microsoft/mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server 2025 on Linux](sql-server-linux-change-repo-2025.md).
+When you configure the CU repository (`mssql-server-2017`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/r/microsoft/mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server 2025 on Linux](install-upgrade/change-repo-2025.md).
 
 If you update existing [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages, run the appropriate update command for each package to get the latest CU. For specific update instructions for each package, see the following installation guides:
 
 - [Install SQL Server package](sql-server-linux-setup.md#upgrade)
-- [Install SQL Server Full-Text Search on Linux](sql-server-linux-setup-full-text-search.md)
-- [Install SQL Server Integration Services (SSIS) on Linux](sql-server-linux-setup-ssis.md)
-- [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md)
+- [Install SQL Server Full-Text Search on Linux](install-upgrade/setup-full-text-search.md)
+- [Install SQL Server Integration Services (SSIS) on Linux](install-upgrade/setup-ssis.md)
+- [Install SQL Server Agent on Linux](install-upgrade/setup-sql-agent.md)
 
 ## Release history
 
@@ -93,6 +93,7 @@ The following table lists the release history for [!INCLUDE [ssSQL17](../include
 
 | Release | Version | Release date |
 | --- | --- | --- |
+| [CU 31 GDR (May 2026)](/troubleshoot/sql/releases/linux/release-history-2017#14-0-3530) | 14.0.3530.2 | 2026-05-12 |
 | [CU 31 GDR (Apr 2026)](/troubleshoot/sql/releases/linux/release-history-2017#14-0-3525) | 14.0.3525.1 | 2026-04-14 |
 | [CU 31 GDR (Mar 2026)](/troubleshoot/sql/releases/linux/release-history-2017#14-0-3520) | 14.0.3520.4 | 2026-03-10 |
 | [CU 31 GDR (Nov 2025)](/troubleshoot/sql/releases/linux/release-history-2017#14-0-3515) | 14.0.3515.1 | 2025-11-11 |
@@ -154,9 +155,9 @@ For more information, see [SQL Server on Linux: Known issues](sql-server-linux-k
 ## Related content
 
 - [SQL Server on Linux FAQ](sql-server-linux-faq.yml)
-- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
-- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
-- [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
-- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](install-upgrade/quickstart-install-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](install-upgrade/quickstart-install-suse.md)
+- [Quickstart: Install SQL Server and create a database on Ubuntu](install-upgrade/quickstart-install-ubuntu.md)
+- [Quickstart: Run SQL Server Linux container images with Docker](install-upgrade/quickstart-install-docker.md)
 - [Provision a Linux virtual machine running SQL Server in the Azure portal](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart)
-- [Quickstart: Run SQL Server in the cloud](quickstart-install-connect-clouds.md)
+- [Quickstart: Run SQL Server in the cloud](install-upgrade/quickstart-install-clouds.md)

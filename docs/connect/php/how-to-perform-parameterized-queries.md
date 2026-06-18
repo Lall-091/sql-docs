@@ -1,8 +1,9 @@
 ---
 title: "How to: Perform Parameterized Queries"
 description: "Learn how to use parameterized queries in just a few steps using the Drivers for PHP for SQL Server."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "03/26/2018"
 ms.service: sql
 ms.subservice: connectivity

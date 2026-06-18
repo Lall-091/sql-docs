@@ -4,7 +4,7 @@ description: Learn about SQL Server Audit in Azure SQL Managed Instance.
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: vanto, randolphwest, mathoma, wiassaf
-ms.date: 04/15/2026
+ms.date: 05/12/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: concept-article
@@ -74,7 +74,11 @@ To set up SQL managed instance auditing, you need to following database permissi
 | `ALTER ANY DATABASE AUDIT` | Yes        | No        |
 | `CONTROL DATABASE` | Yes        | Yes        |
 
-To configure auditing to Azure storage, you need the **Storage blob data contributor** role on the storage account or higher permissions. To configure auditing to Event Hubs or Log Analytics, you need the **Monitoring Contributor** role or higher permissions on the resource group where the Event Hub or Log Analytics workspace is provisioned.
+To configure auditing to Azure storage, you need the **Storage blob data contributor** role on the storage account or higher permissions. To configure auditing to Event Hubs or Log Analytics, you need the **Monitoring Contributor** role or higher permissions on the resource group where the Event Hubs or Log Analytics workspace is provisioned.
+
+## Automatic internal connectivity tests
+
+Once you enable auditing, you might notice that [!INCLUDE [auto-connectivity-tests](../includes/auto-connectivity-tests.md)]
 
 ## Next step
 

@@ -2,9 +2,9 @@
 metadata:
   title: "Frequently Asked Questions (FAQ) for Change Event Streaming"
   description: "Find answers to common questions about the change event streaming feature for [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)]."
-  ms.date: 03/18/2026
+  ms.date: 05/11/2026
   ms.service: sql
-  ms.topic: conceptual
+  ms.topic: concept-article
   author: nzagorac-ms
   ms.author: nzagorac
   ms.reviewer: mathoma, mikeray
@@ -57,8 +57,8 @@ sections:
         answer: CES supports AMQP and Kafka protocols for Azure Event Hubs. HTTPS isn't supported.
       - question: Can CES stream directly to Kafka?
         answer: No. CES currently supports only Azure Event Hubs (AMQP and Kafka protocol) as the destination.
-      - question: Does CES support Microsoft Entra managed identity for authenticating with Azure Event Hubs?
-        answer: It depends on the data source. CES on Azure SQL Database supports Microsoft Entra managed identity to authenticate with Azure Event Hubs, where SQL Server 2025 currently does **not** support Microsoft Entra for authentication.
+      - question: Does CES support Microsoft Entra managed identity for authentication with Azure Event Hubs?
+        answer: Yes. CES supports Microsoft Entra authentication in Azure SQL Database, Azure SQL Managed Instance and SQL Server 2025 starting with Cumulative Update 3 (CU3) for instances [enabled by Azure Arc](../../../sql-server/azure-arc/connect.md) or running on an [Azure VM](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview).
 
   - name: Functionality and features
     questions:

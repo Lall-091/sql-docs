@@ -1,8 +1,9 @@
 ---
 title: Using table-valued parameters
 description: Table-valued parameters provide an efficient way to send multiple rows of data from a client to SQL Server in a single parameterized command.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 04/21/2022
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: Use JSON Data Type
 description: Learn about the JSON data type in the JDBC driver and how it can be used to support various operations.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 08/15/2025
 ms.service: sql
 ms.subservice: connectivity

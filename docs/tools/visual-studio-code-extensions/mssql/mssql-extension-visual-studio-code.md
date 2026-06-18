@@ -4,7 +4,7 @@ description: Learn about the MSSQL extension for Visual Studio Code, which provi
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: roblescarlos
-ms.date: 04/23/2026
+ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -18,7 +18,7 @@ ai-usage: ai-assisted
 
 # What is the MSSQL extension for Visual Studio Code?
 
-The [MSSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) supports developers building applications that use Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure Virtual Machines), SQL database in Fabric, and SQL Server. It provides tools for connecting to databases, managing and designing schemas, exploring database objects, executing Transact-SQL (T-SQL) queries, and viewing query execution plans within Visual Studio Code.
+The [MSSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) supports developers building applications that use Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure Virtual Machines), SQL database in Microsoft Fabric, and SQL Server. It provides tools for connecting to databases, managing and designing schemas, exploring database objects, executing Transact-SQL (T-SQL) queries, and viewing query execution plans within Visual Studio Code.
 
 The extension includes IntelliSense, T-SQL script execution, and customizable options for local and cloud-based databases.
 
@@ -62,9 +62,10 @@ The following table provides an overview of the features available in the MSSQL 
 | [Database object search](mssql-database-operations.md#database-object-search) | GA | Find tables, views, functions, and stored procedures with type-aware search |
 | [Import flat file](mssql-database-operations.md#import-flat-file) | GA | Import `.csv` and `.txt` files into new SQL Server tables |
 | [Query Profiler](mssql-query-profiler.md) | GA | Real-time database activity monitoring with Extended Events |
-| [Schema Designer with GitHub Copilot](mssql-schema-designer-copilot.md) | Preview | Natural language schema design within the visual Schema Designer |
-| [Data API builder](mssql-data-api-builder.md) | Preview | Create REST, GraphQL, and MCP endpoints for SQL databases |
-| [SQL notebooks](mssql-sql-notebooks.md) | Preview | Jupyter-based SQL notebooks with rich results and multi-kernel support |
+| [Schema Designer with GitHub Copilot](mssql-schema-designer-copilot.md) | GA | Natural language schema design with visual change tracking and ORM script generation |
+| [Data API builder](mssql-data-api-builder.md) | GA | Create REST, GraphQL, and MCP endpoints for SQL databases |
+| [SQL notebooks](mssql-sql-notebooks.md) | GA | Jupyter-based SQL notebooks with rich results and multi-kernel support |
+| [Azure integration](mssql-azure-integration.md) | Preview | Provision Azure SQL databases directly from Visual Studio Code, starting with the free tier |
 
 ### Connection dialog
 
@@ -143,7 +144,7 @@ Key capabilities include:
 
 - **Save Changes**: All edits remain in a pending state until you select **Save Changes**, so you have complete control over when updates are committed to the database.
 
-- **Show Script**: This pane displays a read-only DML script that reflects all actions performed in the data grid in real time. This allows you to review the underlying DML operations before saving changes
+- **Show Script**: This pane displays a read-only DML script that reflects all actions performed in the data grid in real time. Use the script to review the underlying DML operations before saving changes.
 
 :::image type="content" source="media/mssql-extension-visual-studio-code/edit-data.png" alt-text="Screenshot of the Edit Data screen." lightbox="media/mssql-extension-visual-studio-code/edit-data.png":::
 
@@ -211,13 +212,15 @@ The extension can download and install a required `SqlToolsService` package duri
 
 ## Related content
 
-- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [Connect to a database with the MSSQL extension for Visual Studio Code](mssql-database-connections.md)
+- [Quickstart: Run your first query with the MSSQL extension for Visual Studio Code](mssql-run-first-query.md)
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Database operations](mssql-database-operations.md)
 - [Schema Designer](mssql-schema-designer.md)
-- [GitHub Copilot integration in Schema Designer (preview)](mssql-schema-designer-copilot.md)
-- [Data API builder (preview)](mssql-data-api-builder.md)
-- [SQL Notebooks (preview)](mssql-sql-notebooks.md)
+- [GitHub Copilot integration in Schema Designer](mssql-schema-designer-copilot.md)
+- [Data API builder](mssql-data-api-builder.md)
+- [SQL Notebooks](mssql-sql-notebooks.md)
+- [Create an Azure SQL Database (Preview)](mssql-azure-integration.md)
 - [Schema Compare](mssql-schema-compare.md)
 - [Visual Studio Code documentation](https://code.visualstudio.com/docs)
 - [MSSQL extension for Visual Studio Code repository on GitHub](https://github.com/Microsoft/vscode-mssql)

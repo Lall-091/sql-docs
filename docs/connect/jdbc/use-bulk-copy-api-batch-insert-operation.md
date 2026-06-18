@@ -1,8 +1,9 @@
 ---
 title: Bulk copy API for batch insert in JDBC
 description: Microsoft JDBC Driver for SQL Server supports using Bulk Copy for batch inserts for faster loading of data into the database.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 08/11/2025
 ms.service: sql
 ms.subservice: connectivity

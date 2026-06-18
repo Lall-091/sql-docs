@@ -1,8 +1,8 @@
 ---
 title: Move SQL Server license agreement to pay-as-you-go subscription
 description: How to transition SQL Server from the legacy licensing model to Azure pay-as-you-go subscription. 
-author: anosov1960
-ms.author: sashan
+author: pochiraju
+ms.author: rajpo
 ms.reviewer: mikeray, randolphwest, maghan
 ms.date: 04/01/2026
 ai-usage: ai-assisted

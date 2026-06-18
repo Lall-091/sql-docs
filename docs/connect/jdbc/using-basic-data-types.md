@@ -1,8 +1,9 @@
 ---
 title: Using basic JDBC data types
 description: The Microsoft JDBC Driver for SQL Server uses basic JDBC data types to convert SQL Server data types to a format understood by Java.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 08/15/2025
 ms.service: sql
 ms.subservice: connectivity

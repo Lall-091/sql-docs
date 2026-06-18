@@ -1,8 +1,9 @@
 ---
 title: Azure Key Vault sample version 6.2.2
 description: This JDBC code example for driver version 6.2.2 demonstrates how to use Azure Key Vault as your key store provider when using Always Encrypted.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 01/29/2021
 ms.service: sql
 ms.subservice: connectivity

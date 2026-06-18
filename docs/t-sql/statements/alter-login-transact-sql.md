@@ -774,6 +774,8 @@ ALTER LOGIN [joe@contoso.com] DISABLE;
 
 ## Azure Synapse Analytics
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 ### Syntax for Azure Synapse
 
 ```syntaxsql

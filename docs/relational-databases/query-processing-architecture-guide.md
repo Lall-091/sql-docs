@@ -1,6 +1,6 @@
 ---
 title: "Query Processing Architecture Guide"
-description: "How SQL Server processes queries and optimizes query reuse through execution plan caching."
+description: "Learn how SQL Server processes queries, including simple and forced parameterization, execution plan caching, and query plan reuse."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: maghan, randolphwest, derekw
@@ -14,6 +14,14 @@ helpviewer_keywords:
   - "query processing architecture guide"
   - "row mode execution"
   - "batch mode execution"
+  - "forced parameterization"
+  - "simple parameterization"
+  - "parameterization [SQL Server]"
+  - "PARAMETERIZATION FORCED"
+  - "PARAMETERIZATION SIMPLE"
+  - "query plan reuse"
+  - "execution plan caching"
+  - "plan cache"
 ai-usage: ai-assisted
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---

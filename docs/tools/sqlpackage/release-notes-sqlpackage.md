@@ -4,7 +4,7 @@ description: Release notes for Microsoft SqlPackage.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: drskwier, llali
-ms.date: 03/16/2026
+ms.date: 06/03/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: release-notes
@@ -32,6 +32,49 @@ The **Applies to** column in each section is scoped as follows:
 ## Current releases (170.x)
 
 The following releases are the currently supported versions of SqlPackage.
+
+## 170.4.83.3 SqlPackage
+
+**Release date:** June 3, 2026
+
+```bash
+dotnet tool install -g microsoft.sqlpackage --version 170.4.83.3
+```
+
+| Platform | Download |
+| --- | --- |
+| Windows .NET 10 | [.zip file](https://go.microsoft.com/fwlink/?linkid=2366026) |
+| Windows .NET Framework | [.msi file](https://go.microsoft.com/fwlink/?linkid=2366025) |
+| macOS .NET 10 | [.zip file](https://go.microsoft.com/fwlink/?linkid=2365929) |
+| Linux .NET 10 | [.zip file](https://go.microsoft.com/fwlink/?linkid=2365831) |
+
+### Features
+
+| Feature | Details | Applies to |
+| --- | --- | --- |
+| Database option | Added support for database option `AUTOMATIC_INDEX_COMPACTION`. [Automatic index compaction documentation](../../relational-databases/indexes/automatic-index-compaction.md) | SqlPackage CLI; DacFx API / Schema compare |
+| Dynamic data masking | Added support of dynamic data masking to the extract and publish operations for Data Warehouse in Microsoft Fabric. | SqlPackage CLI; DacFx API / Schema compare |
+| Extract | Added support to extract a database to SQL project format. [GitHub issue](https://github.com/microsoft/DacFx/issues/760) | SqlPackage CLI; DacFx API / Schema compare |
+| Platform | References [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.1.5) v6.1.5. | Platform |
+| ScriptDom | Updated ScriptDom to version 180.18.1. | Platform |
+
+### Fixes
+
+| Feature | Details | Applies to |
+| --- | --- | --- |
+| Deployment | Fixed deploy failures caused by schema-bound function blocking `ALTER TABLE` operations. | SqlPackage CLI; DacFx API / Schema compare |
+| Deployment | Fixed an issue with preserving external model ownership information when deploying to a database. | SqlPackage CLI; DacFx API / Schema compare |
+| Deployment | Fixed an issue with deploying a table with `CLUSTER BY` to a Data Warehouse in Microsoft Fabric. | SqlPackage CLI; DacFx API / Schema compare |
+| Deployment | Fixed an issue with deploying a table with `IDENTITY` column to a Data Warehouse in Microsoft Fabric. | SqlPackage CLI; DacFx API / Schema compare |
+| Deployment | Fixed an issue where a DacPac file is searched in uppercase form during deployment, which could break deployment in some locales such as Turkish. [GitHub issue](https://github.com/microsoft/DacFx/issues/383) | SqlPackage CLI; DacFx API / Schema compare |
+| Import | Fixed an issue where database and DDL triggers inserting data to tables could interfere with the import process. | SqlPackage CLI; DacFx API / Schema compare |
+| Schema compare | Fixed an issue where increasing the length of a **varchar** field leads to a data loss warning, and a check that fails when rows are present. [GitHub issue](https://github.com/microsoft/DacFx/issues/724) | SqlPackage CLI; DacFx API / Schema compare |
+| SQL projects | Fixed a bug when generating SQL files from a project in non-Windows machines. | MSBuild / SQL projects |
+| SQL projects | Fixed an issue where generated scripts using a `.scmp` file as source contained unwanted `SET ANSI_NULLS OFF` commands. [GitHub issue](https://github.com/microsoft/DacFx/issues/172) | MSBuild / SQL projects; DacFx API / Schema compare |
+| Schema compare | Fixed an issue where the exception message was incorrect when the `TargetScripts` tag was missing from a `.scmp` file. [GitHub issue](https://github.com/microsoft/DacFx/issues/111) | DacFx API / Schema compare |
+| Deployment | Fixed an issue where a `NullReferenceException` occurred when using `IncludeCompositeObjects=true` with a `SameDatabase` reference. [GitHub issue](https://github.com/microsoft/DacFx/issues/775) | SqlPackage CLI; DacFx API / Schema compare |
+| Platform | Improved the error message when specifying an unsupported storage model on .NET Core. [GitHub issue](https://github.com/microsoft/DacFx/issues/47) | Platform; SqlPackage CLI |
+| Fabric Data Warehouse | Fixed an issue where deploying tables with `IDENTITY` columns to Fabric Data Warehouse failed due to unsupported `SEED` or `INCREMENT` syntax. [GitHub issue](https://github.com/microsoft/DacFx/issues/747) | SqlPackage CLI; DacFx API / Schema compare |
 
 ## 170.3.93 SqlPackage
 

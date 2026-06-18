@@ -3,7 +3,7 @@ title: Create and Run Jobs for SQL Server on Linux
 description: Learn how to create a SQL Server Agent job on Linux using both Transact-SQL and SQL Server Management Studio (SSMS).
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/02/2026
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -31,9 +31,9 @@ The following prerequisites are required to complete this tutorial:
 
 - Linux machine with the following prerequisites:
 
-  - [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md)
-  - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
-  - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md) with command-line tools.
+  - [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](install-upgrade/quickstart-install-red-hat.md)
+  - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](install-upgrade/quickstart-install-suse.md)
+  - [Quickstart: Install SQL Server and create a database on Ubuntu](install-upgrade/quickstart-install-ubuntu.md) with command-line tools.
 
   > [!NOTE]  
   > Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
@@ -60,7 +60,7 @@ To use SQL Server Agent on Linux, you must first enable SQL Server Agent on a ma
    ```
 
 > [!NOTE]  
-> Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 4, SQL Server Agent is included with the `mssql-server` package and is disabled by default. For Agent set up before CU 4, see [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md).
+> Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 4, SQL Server Agent is included with the `mssql-server` package and is disabled by default. For Agent set up before CU 4, see [Install SQL Server Agent on Linux](install-upgrade/setup-sql-agent.md).
 
 ## Create a sample database
 
@@ -68,7 +68,7 @@ Use the following steps to create a sample database named `SampleDB`. This datab
 
 1. On your Linux machine, open a bash terminal session.
 
-1. Use **sqlcmd** to run a Transact-SQL `CREATE DATABASE` command.
+1. Use **`sqlcmd`** to run a Transact-SQL `CREATE DATABASE` command.
 
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -Q 'CREATE DATABASE SampleDB'
@@ -85,7 +85,7 @@ Use the following steps to create a sample database named `SampleDB`. This datab
 The following steps create a SQL Server Agent job on Linux with Transact-SQL commands. The job runs a daily backup of the sample database, `SampleDB`.
 
 > [!TIP]  
-> You can use any T-SQL client to run these commands. For example, on Linux you can use [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md) or [SQL Server extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md). From a remote Windows Server, you can also run queries in SQL Server Management Studio (SSMS) or use the UI interface for job management, which is described in the next section.
+> You can use any T-SQL client to run these commands. For example, on Linux you can use [Install the sqlcmd and bcp SQL Server command-line tools on Linux](install-upgrade/setup-tools.md) or [MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md). From a remote Windows Server, you can also run queries in SQL Server Management Studio (SSMS) or use the UI interface for job management, which is described in the next section.
 
 1. Use [sp_add_job](../relational-databases/system-stored-procedures/sp-add-job-transact-sql.md) to create a job named `Daily SampleDB Backup`.
 
@@ -162,7 +162,7 @@ You can also create and manage jobs remotely using SQL Server Management Studio 
 
    :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-0.png" alt-text="Screenshot of creating a SampleDB database." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-0.png":::
 
-1. Verify that SQL Agent was [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md) and configured correctly. Look for the plus sign next to SQL Server Agent in the Object Explorer. If SQL Server Agent isn't enabled, try restarting the **mssql-server** service on Linux.
+1. Verify that SQL Agent was [Install SQL Server Agent on Linux](install-upgrade/setup-sql-agent.md) and configured correctly. Look for the plus sign next to SQL Server Agent in the Object Explorer. If SQL Server Agent isn't enabled, try restarting the **mssql-server** service on Linux.
 
    :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-1.png" alt-text="Screenshot showing how to verify SQL Server Agent was installed.":::
 

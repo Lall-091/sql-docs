@@ -63,9 +63,9 @@ On Linux, you must create an availability group before you add it as a cluster r
 
 Install [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. The following links point to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] installation instructions for various distributions:
 
-- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](../quickstart-install-connect-red-hat.md)
-- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](../quickstart-install-connect-suse.md)
-- [Quickstart: Install SQL Server and create a database on Ubuntu](../quickstart-install-connect-ubuntu.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](../install-upgrade/quickstart-install-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](../install-upgrade/quickstart-install-suse.md)
+- [Quickstart: Install SQL Server and create a database on Ubuntu](../install-upgrade/quickstart-install-ubuntu.md)
 
 > [!NOTE]  
 > Starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.

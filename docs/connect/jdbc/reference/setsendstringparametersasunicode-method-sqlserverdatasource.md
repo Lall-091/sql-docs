@@ -1,8 +1,9 @@
 ---
 title: "setSendStringParametersAsUnicode Method (SQLServerDataSource)"
 description: "setSendStringParametersAsUnicode Method (SQLServerDataSource)"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "01/28/2026"
 ms.service: sql
 ms.subservice: connectivity

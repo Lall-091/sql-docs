@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 09/09/2025
+ms.date: 06/11/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -678,6 +678,7 @@ ms.topic: include
 | 12844 | 16 | Yes | ALTER DATABASE statement failed; this functionality is not available in the current edition of SQL Server. |
 | 12845 | 16 | Yes | CREATE DATABASE statement failed; cannot specify both CONTAINMENT = PARTIAL and CATALOG_COLLATION. |
 | 12846 | 16 | Yes | Change Feed is not supported in contained databases. The database '%.\*ls' cannot be altered to a contained database, since Change Feed has been enabled. |
+| 12847 | 16 | Yes | Change Event Streaming is not supported in contained databases. The database '%.\*ls' cannot be altered to a contained database, since Change Event Streaming has been enabled. |
 | 12980 | 16 | No | Supply either %s or %s to identify the log entries. |
 | 12981 | 16 | No | You must specify %s when creating a subplan. |
 | 12982 | 16 | No | Supply either %s or %s to identify the plan or sub-plan to be run. |

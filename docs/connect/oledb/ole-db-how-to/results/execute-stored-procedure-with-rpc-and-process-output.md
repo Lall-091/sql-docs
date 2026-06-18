@@ -1,8 +1,9 @@
 ---
 title: "Execute Stored Procedure with RPC and Process Output"
 description: Learn how to run SQL Server stored procedures with RPC, and process return codes and output parameters in this example.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

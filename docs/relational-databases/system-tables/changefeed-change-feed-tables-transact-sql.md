@@ -22,6 +22,8 @@ monikerRange: ">=sql-server-ver16||=azuresqldb-current||=azure-sqldw-latest"
 
 Contains metadata that is used to configure change feed tables for Azure Synapse Link for SQL.
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 |Column name|Data type|Description|  
 |-----------------|---------------|-----------------|  
 | `table_group_id` |**uniqueidentifier**| Unique Identifier of the change feed table group.|

@@ -1,9 +1,10 @@
 ---
-title: "DENSE_RANK (Transact-SQL)"
-description: "DENSE_RANK (Transact-SQL)"
-author: markingmyname
-ms.author: maghan
-ms.date: "03/16/2017"
+title: DENSE_RANK (Transact-SQL)
+description: DENSE_RANK (Transact-SQL)
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: randolphwest, wiassaf, maghan
+ms.date: 06/13/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,44 +19,55 @@ helpviewer_keywords:
   - "tied rows [SQL Server]"
   - "ranking rows"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # DENSE_RANK (Transact-SQL)
+
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 This function returns the rank of each row within a result set partition, with no gaps in the ranking values. The rank of a specific row is one plus the number of distinct rank values that come before that specific row.  
-  
+
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
-  
-## Syntax  
-  
-```syntaxsql  
+
+## Syntax
+
+```syntaxsql
 DENSE_RANK ( ) OVER ( [ <partition_by_clause> ] < order_by_clause > )  
 ```  
-  
+
 ## Arguments
- \<partition_by_clause>  
-First divides the result set produced by the [FROM](../../t-sql/queries/from-transact-sql.md) clause into partitions, and then the `DENSE_RANK` function is applied to each partition. See [OVER Clause &#40;Transact-SQL&#41;](../../t-sql/queries/select-over-clause-transact-sql.md) for the `PARTITION BY` syntax.  
-  
- \<order_by_clause>  
+
+#### \<partition_by_clause>
+
+First divides the result set produced by the [FROM](../queries/from-transact-sql.md) clause into partitions, and then the `DENSE_RANK` function is applied to each partition. See [OVER Clause (Transact-SQL)](../queries/select-over-clause-transact-sql.md) for the `PARTITION BY` syntax.  
+
+#### \<order_by_clause>
+
 Determines the order in which the `DENSE_RANK` function applies to the rows in a partition.  
-  
-## Return Types  
+
+## Return types
+
  **bigint**  
-  
-## Remarks  
-If two or more rows have the same rank value in the same partition, each of those rows will receive the same rank. For example, if the two top salespeople have the same SalesYTD value, they will both have a rank value of one. The salesperson with the next highest SalesYTD will have a rank value of two. This exceeds the number of distinct rows that come before the row in question by one. Therefore, the numbers returned by the `DENSE_RANK` function do not have gaps, and always have consecutive rank values.  
-  
-The sort order used for the whole query determines the order of the rows in the result set. This implies that a row ranked number one does not have to be the first row in the partition.  
-  
-`DENSE_RANK` is nondeterministic. See [Deterministic and Nondeterministic Functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md) for more information.  
-  
-## Examples  
-  
-### A. Ranking rows within a partition  
-This example ranks the products in inventory, by the specified inventory locations, according to their quantities. `DENSE_RANK` partitions the result set by `LocationID` and logically orders the result set by `Quantity`. Notice that products 494 and 495 have the same quantity. Because they both have the same quantity value, they both have a rank value of one.  
-  
+
+## Remarks
+
+If two or more rows have the same rank value in the same partition, each of those rows gets the same rank. For example, if the two top salespeople have the same `SalesYTD` value, they both have a rank value of one. The salesperson with the next highest `SalesYTD` has a rank value of two. This rank value exceeds the number of distinct rows that come before the row in question by one. Therefore, the numbers returned by the `DENSE_RANK` function don't have gaps, and always have consecutive rank values.    
+
+The sort order used for the whole query determines the order of the rows in the result set. This order implies that a row ranked number one doesn't have to be the first row in the partition.  
+
+`DENSE_RANK` is nondeterministic. For more information, see [Deterministic and Nondeterministic Functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).  
+
+For window function performance tuning guidance, see [OVER() Performance considerations](../queries/select-over-clause-transact-sql.md#performance-considerations).
+
+## Examples
+
+<a id="a-ranking-rows-within-a-partition"></a>
+
+### A. Rank rows within a partition
+
+This example ranks the products in inventory, by the specified inventory locations, according to their quantities. `DENSE_RANK` partitions the result set by `LocationID` and logically orders the result set by `Quantity`. Products 494 and 495 have the same quantity. Because they both have the same quantity value, they both have a rank value of one.  
+
 ```sql  
 USE AdventureWorks2022;  
 GO  
@@ -69,9 +81,9 @@ WHERE i.LocationID BETWEEN 3 AND 4
 ORDER BY i.LocationID;  
 GO  
 ```  
-  
+
  [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-  
+
 ```  
 ProductID   Name                               LocationID Quantity Rank  
 ----------- ---------------------------------- ---------- -------- -----  
@@ -85,14 +97,16 @@ ProductID   Name                               LocationID Quantity Rank
 493         Paint - Red                        4          24       3  
 492         Paint - Black                      4          14       4  
 494         Paint - Silver                     4          12       5  
-  
+
 (10 row(s) affected)  
-  
 ```  
-  
-### B. Ranking all rows in a result set  
-This example returns the top ten employees ranked by their salary. Because the `SELECT` statement did not specify a `PARTITION BY` clause, the `DENSE_RANK` function applied to all result set rows.  
-  
+
+<a id="b-ranking-all-rows-in-a-result-set"></a>
+
+### B. Rank all rows in a result set
+
+This example returns the top ten employees ranked by their salary. Because the `SELECT` statement doesn't specify a `PARTITION BY` clause, the `DENSE_RANK` function applies to all result set rows.  
+
 ```sql  
 USE AdventureWorks2022;  
 GO  
@@ -100,9 +114,9 @@ SELECT TOP(10) BusinessEntityID, Rate,
        DENSE_RANK() OVER (ORDER BY Rate DESC) AS RankBySalary  
 FROM HumanResources.EmployeePayHistory;  
 ```  
-  
+
  [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-  
+
 ```  
 BusinessEntityID Rate                  RankBySalary  
 ---------------- --------------------- --------------------  
@@ -117,17 +131,18 @@ BusinessEntityID Rate                  RankBySalary
 285              48.101                8  
 274              48.101                8  
 ```  
-  
-## C. Four ranking functions used in the same query  
+
+## C. Four ranking functions used in the same query
+
 This example shows the four ranking functions
 
-+ [DENSE_RANK()](./dense-rank-transact-sql.md)
-+ [NTILE()](./ntile-transact-sql.md)
-+ [RANK()](./rank-transact-sql.md)
-+ [ROW_NUMBER()](./row-number-transact-sql.md)
+- [DENSE_RANK()](dense-rank-transact-sql.md)
+- [NTILE()](ntile-transact-sql.md)
+- [RANK()](rank-transact-sql.md)
+- [ROW_NUMBER()](row-number-transact-sql.md)
 
 used in the same query. See each ranking function for function-specific examples.  
-  
+
 ```sql  
 USE AdventureWorks2022;  
 GO  
@@ -145,9 +160,9 @@ FROM Sales.SalesPerson AS s
         ON a.AddressID = p.BusinessEntityID  
 WHERE TerritoryID IS NOT NULL AND SalesYTD <> 0;  
 ```  
-  
+
  [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-  
+
 |FirstName|LastName|Row Number|Rank|Dense Rank|Quartile|SalesYTD|PostalCode|  
 |---------------|--------------|----------------|----------|----------------|--------------|--------------|----------------|  
 |Michael|Blythe|1|1|1|1|4557045.0459|98027|  
@@ -165,14 +180,15 @@ WHERE TerritoryID IS NOT NULL AND SalesYTD <> 0;
 |Ranjit|Varkey Chudukatil|13|6|2|4|3827950.238|98055| 
 
 
-## Examples: [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)]  
-  
-### D: Ranking rows within a partition  
+## Examples: [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)]
+
+### D: Ranking rows within a partition
+
 This example ranks the sales representatives in each sales territory according to their total sales. `DENSE_RANK` partitions the rowset by `SalesTerritoryGroup`, and sorts the result set by `SalesAmountQuota`.  
-  
+
 ```sql  
 -- Uses AdventureWorks  
-  
+
 SELECT LastName, SUM(SalesAmountQuota) AS TotalSales, SalesTerritoryGroup,  
     DENSE_RANK() OVER (PARTITION BY SalesTerritoryGroup ORDER BY SUM(SalesAmountQuota) DESC ) AS RankResult  
 FROM dbo.DimEmployee AS e  
@@ -181,9 +197,9 @@ INNER JOIN dbo.DimSalesTerritory AS st ON e.SalesTerritoryKey = st.SalesTerritor
 WHERE SalesPersonFlag = 1 AND SalesTerritoryGroup != N'NA'  
 GROUP BY LastName, SalesTerritoryGroup;  
 ```  
-  
+
  [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-  
+
 ```
  LastName          TotalSales     SalesTerritoryGroup  RankResult  
 ----------------  -------------  -------------------  --------  
@@ -203,13 +219,10 @@ Mensa-Annan        2753000.0000  North America        10
 Tsoflias           1687000.0000  Pacific              1 
 ```  
 
-## See Also  
- [RANK &#40;Transact-SQL&#41;](../../t-sql/functions/rank-transact-sql.md)   
- [ROW_NUMBER &#40;Transact-SQL&#41;](../../t-sql/functions/row-number-transact-sql.md)   
- [NTILE &#40;Transact-SQL&#41;](../../t-sql/functions/ntile-transact-sql.md)   
- [Ranking Functions &#40;Transact-SQL&#41;](../../t-sql/functions/ranking-functions-transact-sql.md)   
- [Functions](../../t-sql/functions/functions.md)  
-  
-  
+## Related content
 
-
+- [SELECT - OVER clause (Transact-SQL)](../queries/select-over-clause-transact-sql.md)
+- [RANK (Transact-SQL)](rank-transact-sql.md)
+- [ROW_NUMBER (Transact-SQL)](row-number-transact-sql.md)
+- [NTILE (Transact-SQL)](ntile-transact-sql.md)
+- [Ranking Functions (Transact-SQL)](ranking-functions-transact-sql.md)

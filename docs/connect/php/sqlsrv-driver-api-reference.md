@@ -1,8 +1,9 @@
 ---
 title: "SQLSRV Driver API Reference"
 description: "The API reference for the SQLSRV driver for PHP describes available functions, their parameters, and return values."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "03/26/2018"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,9 +1,9 @@
 ---
 title: FILESTREAM data
 description: Describes how to work with large-value data stored in SQL Server 2008 with the FILESTREAM attribute.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity
@@ -175,7 +175,7 @@ namespace FileStreamTest
 }
 ```
 
-For another sample, see [How to store and fetch binary data into a file stream column](https://www.codeproject.com/Articles/32216/How-to-store-and-fetch-binary-data-into-a-file-str).
+For another sample, see [How to store and fetch binary data into a file stream column](https://web.archive.org/web/20220213192416/https://www.codeproject.com/Articles/32216/How-to-store-and-fetch-binary-data-into-a-file-str).
 
 ## Resources in SQL Server Books Online
 

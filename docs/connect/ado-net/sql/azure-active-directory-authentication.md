@@ -1,9 +1,9 @@
 ---
 title: Connect to Azure SQL with Microsoft Entra authentication and SqlClient
 description: Describes how to use supported Microsoft Entra authentication modes to connect to Azure SQL data sources with SqlClient
-author: cheenamalhotra
-ms.author: cmalhotra
-ms.reviewer: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 03/17/2026
 ms.service: sql
 ms.subservice: connectivity

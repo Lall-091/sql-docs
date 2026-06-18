@@ -1,8 +1,9 @@
 ---
 title: "executeUpdate Method (java.lang.String)"
 description: "executeUpdate Method (java.lang.String)"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: "02/07/2017"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,9 +1,9 @@
 ---
 title: "Microsoft Golang driver for Microsoft SQL Server"
 description: "Learn how to use the Golang driver for SQL Server and Azure SQL Database, enabling connectivity from any application written in the Go language."
-author: dlevy-msft
+author: dlevy-msft-sql
 ms.author: dlevy
-ms.reviewer: randolphwest
+ms.reviewer: randolphwest, davidshi
 ms.date: 12/01/2023
 ms.service: sql
 ms.subservice: connectivity

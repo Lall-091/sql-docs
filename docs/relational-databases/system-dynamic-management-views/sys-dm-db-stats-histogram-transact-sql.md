@@ -150,13 +150,13 @@ SELECT ss.name,
        sh.range_rows,
        sh.equal_rows
 FROM sys.stats AS ss
-     INNER JOIN sys.stats_columns AS sc
-         ON ss.stats_id = sc.stats_id
-        AND ss.object_id = sc.object_id
-     INNER JOIN sys.all_columns AS ac
-         ON ac.column_id = sc.column_id
-        AND ac.object_id = sc.object_id
-CROSS APPLY sys.dm_db_stats_properties(ss.object_id, ss.stats_id) AS shr
+INNER JOIN sys.stats_columns AS sc
+    ON ss.stats_id = sc.stats_id
+  AND ss.object_id = sc.object_id
+INNER JOIN sys.all_columns AS ac
+    ON ac.column_id = sc.column_id
+  AND ac.object_id = sc.object_id
+OUTER APPLY sys.dm_db_stats_properties(ss.object_id, ss.stats_id) AS shr
 CROSS APPLY sys.dm_db_stats_histogram(ss.object_id, ss.stats_id) AS sh
 WHERE ss.[object_id] = OBJECT_ID('Region')
       AND ac.name = 'Region_Name'

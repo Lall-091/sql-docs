@@ -1,8 +1,9 @@
 ---
 title: "Data source properties (OLE DB driver)"
 description: Learn how OLE DB Driver for SQL Server implements data source properties, including a provider-specific property set with additional data source properties.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity

@@ -1,10 +1,10 @@
 ---
 title: Overview
 description: Feature overview. Explains how you can manage instances of SQL Server enabled by Azure Arc.
-author: anosov1960
-ms.author: sashan
+author: pochiraju
+ms.author: rajpo
 ms.reviewer: mikeray, randolphwest
-ms.date: 04/28/2026
+ms.date: 05/19/2026
 ai-usage: ai-assisted
 ms.topic: concept-article
 ms.custom: references_regions
@@ -21,6 +21,9 @@ ms.custom: references_regions
 - On any public cloud or hosting provider
 
 Managing SQL Server through Azure Arc can also be configured for SQL Server VMs in Azure VMware Solution. See [Deploy Arc-enabled Azure VMware Solution](/azure/azure-vmware/deploy-arc-for-azure-vmware-solution).
+
+> [!IMPORTANT]
+> [!INCLUDE [azure-government-feature-availability-note](includes/azure-government-feature-availability-note.md)]
 
 ## Manage your SQL Server instances at scale from a single point of control
 

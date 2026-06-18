@@ -21,7 +21,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =azuresqldb-current || =fabric || =fabric-sqldb"
 ---
-# GET_BIT (Transact SQL)
+# GET_BIT (Transact-SQL)
 
 [!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
@@ -81,8 +81,8 @@ The results are as follows:
 
 ## Related content
 
-- [SET_BIT (Transact SQL)](set-bit-transact-sql.md)
-- [LEFT_SHIFT (Transact SQL)](left-shift-transact-sql.md)
-- [RIGHT_SHIFT (Transact SQL)](right-shift-transact-sql.md)
-- [BIT_COUNT (Transact SQL)](bit-count-transact-sql.md)
+- [SET_BIT (Transact-SQL)](set-bit-transact-sql.md)
+- [LEFT_SHIFT (Transact-SQL)](left-shift-transact-sql.md)
+- [RIGHT_SHIFT (Transact-SQL)](right-shift-transact-sql.md)
+- [BIT_COUNT (Transact-SQL)](bit-count-transact-sql.md)
 - [Bit manipulation functions](bit-manipulation-functions-overview.md)

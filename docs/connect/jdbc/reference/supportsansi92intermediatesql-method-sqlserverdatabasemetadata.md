@@ -1,8 +1,9 @@
 ---
 title: supportsANSI92IntermediateSQL Method (SQLServerDatabaseMetaData)
 description: "API reference for the mssql-jdbc library. Method: supportsANSI92IntermediateSQL (SQLServerDatabaseMetaData)"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 01/11/2022
 ms.service: sql
 ms.subservice: connectivity

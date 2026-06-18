@@ -804,7 +804,7 @@ Controls whether the database can be accessed by external resources, such as obj
 > [!IMPORTANT]  
 > The instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] recognizes this setting when the cross db ownership chaining server option is 0 (OFF). When cross db ownership chaining is 1 (ON), all user databases can participate in cross-database ownership chains, regardless of the value of this option. This option is set by using [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md).
 
-To set this option, requires `CONTROL SERVER` permission on the database.
+This option requires `ALTER ANY DATABASE` permission.
 
 The DB_CHAINING option can't be set on the `master`, `model`, and `tempdb` system databases.
 
@@ -917,11 +917,11 @@ Controls the parameterization option. For more information on parameterization, 
 
 - `SIMPLE`
 
-  Queries are parameterized based on the default behavior of the database.
+  Queries are parameterized based on the default behavior of the database. For more information, see [Simple parameterization](../../relational-databases/query-processing-architecture-guide.md#simple-parameterization).
 
 - `FORCED`
 
-  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] parameterizes all queries in the database.
+  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] parameterizes all queries in the database. For more information, see [Forced parameterization](../../relational-databases/query-processing-architecture-guide.md#forced-parameterization).
 
 The current setting of this option can be determined by examining the `is_parameterization_forced` column in the [sys.databases](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md) catalog view.
 
@@ -1497,7 +1497,7 @@ You can determine this option's status by examining the `is_recursive_triggers_o
 
 Suspends databases for snapshot backup. Can define a group of one or more databases. Can designate copy only mode.
 
-#### SET SUSPEND_FOR_SNAPSHOT_BACKUP = { ON | **OFF** }
+#### SET SUSPEND_FOR_SNAPSHOT_BACKUP = { ON | OFF }
 
 Suspends, or un-suspends databases. Default OFF.
 
@@ -4763,6 +4763,8 @@ SET QUERY_STORE = ON
 
 ## Azure Synapse Analytics
 
+[!INCLUDE [synapse-fabric-migration](../../includes/synapse-fabric-migration.md)]
+
 ## Syntax
 
 ```syntaxsql
@@ -5042,6 +5044,7 @@ SET
   | <timestamp>
   | <result_set_caching>
   | <proactive_statistics_refresh>
+  | <data_retention_period>
 }
 ;
 
@@ -5069,6 +5072,11 @@ SET
 {    
     PROACTIVE_STATISTICS_REFRESH = { ON | OFF } 
 }
+
+<data_retention_period> ::=
+{
+    TIME_TRAVEL_RETENTION_PERIOD = { n } DAYS
+}
 ```
 
 ## Arguments
@@ -5094,6 +5102,16 @@ Enables or disables result set caching for the target item. The default setting 
 **Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric](../../includes/fabric-dw.md)].
 
 Enables or disables proactive statistics refresh for the target item. The default is `ON`. You should use the default setting for most items. For more information, see [Statistics](/fabric/data-warehouse/statistics).
+
+#### TIME_TRAVEL_RETENTION_PERIOD = { n } DAYS
+
+**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric](../../includes/fabric-dw.md)].
+
+Specify the retention period of the warehouse in days between `1` and `120`. The default is `30`. 
+
+You can configure the [data retention period](/fabric/data-warehouse/data-retention) for a warehouse in Microsoft Fabric. This retention period determines how far back in time you can perform [time travel](/fabric/data-warehouse/time-travel) queries, create [table clones](/fabric/data-warehouse/clone-table), use [restore points](/fabric/data-warehouse/restore-in-place), and create [warehouse snapshots](/fabric/data-warehouse/warehouse-snapshot). 
+
+View the current value in `time_travel_retention_period_days` in [sys.databases](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md?view=fabric&preserve-view=true).
 
 ## Permissions
 

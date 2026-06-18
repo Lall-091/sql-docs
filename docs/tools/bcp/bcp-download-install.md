@@ -4,7 +4,7 @@ description: Learn how to download and install the bulk copy program (bcp) utili
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: davidengel
-ms.date: 04/19/2026
+ms.date: 05/29/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: how-to
@@ -59,7 +59,7 @@ The following instructions are for **bcp** running on Windows. For instructions 
 
 | Package | Platform |
 | --- | --- |
-| Microsoft Command Line Utilities 15 for SQL Server | [x64](https://go.microsoft.com/fwlink/?linkid=2230791)&emsp;[x86](https://go.microsoft.com/fwlink/?linkid=2231320) |
+| Microsoft Command Line Utilities for SQL Server | [x64](https://go.microsoft.com/fwlink/?linkid=2366027)&emsp;[x86](https://go.microsoft.com/fwlink/?linkid=2365930) |
 
 The Microsoft Command Line Utilities package contains both **bcp** and **sqlcmd** (ODBC). It also installs (or requires) the [Microsoft ODBC Driver for SQL Server](../../connect/odbc/download-odbc-driver-for-sql-server.md).
 

@@ -5,7 +5,7 @@ description: This article guides you through creating and utilizing Microsoft En
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: mathoma
-ms.date: 09/17/2025
+ms.date: 05/15/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: tutorial
@@ -26,9 +26,6 @@ In this tutorial, you learn how to:
 > - Use the `WITH OBJECT_ID` syntax for nonunique display names
 > - Grant server roles to a Microsoft Entra user
 > - Disable a Microsoft Entra login
-
-> [!NOTE]  
-> Microsoft Entra server principals (logins) are currently in public preview for Azure SQL Database. Azure SQL Managed Instance and SQL Server 2022 and later can already utilize Microsoft Entra logins in general availability.
 
 ## Prerequisites
 

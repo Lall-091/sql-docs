@@ -12,10 +12,10 @@ ms.custom:
 ---
 | Platform | File system | Installation guide |
 | --- | --- | --- |
-| Red Hat Enterprise Linux 7.7 - 7.9 Server <sup>1</sup>, or 8.x Server | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-red-hat.md) |
-| SUSE Linux Enterprise Server v12 SP3 - SP5 <sup>2</sup> | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-suse.md) |
-| Ubuntu 18.04 LTS <sup>3</sup> | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-ubuntu.md) |
-| Docker Engine 1.8+ on Linux <sup>4</sup> | N/A | [Installation guide](../quickstart-install-connect-docker.md) |
+| Red Hat Enterprise Linux 7.7 - 7.9 Server <sup>1</sup>, or 8.x Server | **XFS** or **ext4** | [Installation guide](../install-upgrade/quickstart-install-red-hat.md) |
+| SUSE Linux Enterprise Server v12 SP3 - SP5 <sup>2</sup> | **XFS** or **ext4** | [Installation guide](../install-upgrade/quickstart-install-suse.md) |
+| Ubuntu 18.04 LTS <sup>3</sup> | **XFS** or **ext4** | [Installation guide](../install-upgrade/quickstart-install-ubuntu.md) |
+| Docker Engine 1.8+ on Linux <sup>4</sup> | N/A | [Installation guide](../install-upgrade/quickstart-install-docker.md) |
 
 <sup>1</sup> At the end of June 2024, RHEL 7.x transitioned from mainstream maintenance to extended lifecycle support (ELS). For more information, see [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata/).
 

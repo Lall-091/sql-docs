@@ -1,8 +1,9 @@
 ---
 title: Deploying the JDBC driver
 description: Learn how you can redistribute and deploy the Microsoft JDBC Driver for SQL Server with your application and what files are required.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 07/31/2024
 ms.service: sql
 ms.subservice: connectivity

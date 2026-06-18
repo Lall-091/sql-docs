@@ -33,7 +33,7 @@ Monitor an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)
 
 By default, a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance might over time consume most of the available Windows operating system memory in the server. Once the memory is acquired, it will not be released unless memory pressure is detected. This is by design and doesn't indicate a memory leak in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process. Use [the **max server memory** option](../../database-engine/configure-windows/server-memory-server-configuration-options.md) to limit the amount of memory that [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is allowed to acquire for most of its uses. For more information, see the [Memory Management Architecture Guide](../../relational-databases/memory-management-architecture-guide.md#changes-to-memory-management-starting-with-).
 
-In SQL Server on Linux, [set the memory limit](../../linux/sql-server-linux-performance-best-practices.md#advanced-configuration) with the mssql-conf tool and the [memory.memorylimitmb setting](../../linux/sql-server-linux-configure-mssql-conf.md#memorylimit).
+In SQL Server on Linux, [set the memory limit](../../linux/configure/performance-best-practices-sql-server-memory.md#set-a-memory-limit-using-mssql-conf) with the **`mssql-conf`** tool and the [memory.memorylimitmb setting](../../linux/sql-server-linux-configure-mssql-conf.md#memorylimit).
 
 ## Monitor operating system memory
 

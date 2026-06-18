@@ -1,11 +1,11 @@
 ---
 title: DNS Alias (PowerShell & Azure CLI)
-titleSuffix: Azure SQL Database & Azure Synapse Analytics
+titleSuffix: Azure SQL Database
 description: PowerShell and Azure CLI cmdlets enable you to redirect new client connections to a different SQL server in Azure, without having to touch any client configuration.
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma, amagarwa, maboja, vanto
-ms.date: 01/21/2025
+ms.date: 05/29/2026
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: how-to
@@ -16,8 +16,9 @@ ms.custom:
 keywords: dns sql database
 ms.devlang: powershell
 ---
-# PowerShell for DNS Alias to Azure SQL Database
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+# PowerShell and Azure CLI for DNS Alias to Azure SQL Database
+
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 This article provides Azure PowerShell Az module or Azure CLI scripts to demonstrate how you can manage a DNS alias for the [Azure SQL logical server](logical-servers.md) hosting your Azure SQL Database.
 
@@ -29,10 +30,10 @@ To connect a [logical SQL server](logical-servers.md), a client such as SQL Serv
 
 ## Prerequisites
 
-If you want to run the demo PowerShell script given in this article, the following prerequisites apply:
+To run the demo PowerShell script given in this article, ensure the following prerequisites:
 
-- An Azure subscription and account, for free trial, see [Azure trials](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
-- Two Azure SQL logical servers
+- An Azure subscription and account. For a free trial, see [Azure trials](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+- Two Azure SQL logical servers.
 - Install the [Azure PowerShell module](/powershell/azure/install-az-ps) or the [Azure CLI](/cli/azure/install-azure-cli).
 
 ## Example
@@ -43,16 +44,16 @@ To run the code, edit the placeholder values to match real values in your system
 
 # [PowerShell](#tab/azure-powershell)
 
-The cmdlets used are the following:
+Use the following cmdlets:
 
 - [New-AzSqlServerDNSAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias): Creates a DNS alias in the Azure SQL Database service system. The alias refers to server 1.
-- [Get-AzSqlServerDNSAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Get and list all the aliases assigned to server 1.
-- [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Modifies the server name that the alias is configured to refer to, from server 1 to server 2.
-- [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Remove the alias from server 2, by using the name of the alias.
+- [Get-AzSqlServerDNSAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Gets and lists all the aliases assigned to server 1.
+- [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Modifies the server name that the alias refers to, changing from server 1 to server 2.
+- [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Removes the alias from server 2 by using the name of the alias.
 
 To install or upgrade, see [Install Azure PowerShell module](/powershell/azure/install-az-ps).
 
-Use `Get-Module -ListAvailable Az` in *powershell\_ise.exe*, to find the version.
+Use `Get-Module -ListAvailable Az` in `powershell_ise.exe` to find the version.
 
 ```powershell
 $subscriptionName = '<subscriptionName>';
@@ -89,12 +90,12 @@ Remove-AzSqlServerDnsAlias –ResourceGroupName $resourceGroupName2 -ServerName 
 
 # [Azure CLI](#tab/azure-cli)
 
-The commands used are the following:
+Use the following commands:
 
 - [az sql server dns-alias create](/powershell/module/az.Sql/New-azSqlServerDnsAlias): Creates a DNS alias for a server. The alias refers to server 1.
-- [az sql server dns-alias show](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Get and list all the aliases assigned to server 1.
-- [az sql server dns-alias set](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Modifies the server name that the alias is configured to refer to, from server 1 to server 2.
-- [az sql server dns-alias delete](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Remove the alias from server 2, by using the name of the alias.
+- [az sql server dns-alias show](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Gets and lists all the aliases assigned to server 1.
+- [az sql server dns-alias set](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Modifies the server name that the alias refers to, changing from server 1 to server 2.
+- [az sql server dns-alias delete](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Removes the alias from server 2 by using the name of the alias.
 
 To install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 

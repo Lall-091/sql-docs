@@ -1,8 +1,9 @@
 ---
 title: Programming with SQLXML
 description: Learn how to use the APIs in the JDBC Driver for SQL Server to store and retrieve XML documents using SQLXML objects.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, machavan, sunilbs
 ms.date: 08/12/2019
 ms.service: sql
 ms.subservice: connectivity

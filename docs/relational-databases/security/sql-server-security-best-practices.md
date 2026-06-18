@@ -1,10 +1,10 @@
 ---
-title: "SQL Server security best practices"
-description: This article provides general guidance for securing SQL Server running in an Azure virtual machine.
+title: SQL Server Security Best Practices
+description: This article provides general guidance for securing SQL Server, Azure SQL Database, and Azure SQL Managed Instance, as well as SQL Server on Azure virtual machines.
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: randolphwest
-ms.date: 02/29/2024
+ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: best-practice
@@ -55,6 +55,10 @@ The business logic is encapsulated within table-valued functions controlled by a
 
 > [!TIP]  
 > Use Row-Level Security (RLS) together with either Always Encrypted or Dynamic Data Masking (DDM) to maximize the security posture of your organization.
+
+## Enable encryption with Extended Protection
+
+[!INCLUDE [extended-protection-recommendation](../../includes/extended-protection-recommendation.md)]
 
 ## File encryption
 
@@ -112,7 +116,7 @@ Keeping historical records of data changes over time can be beneficial to addres
 The following configuration and assessment tools address surface-area security, identify data security opportunities, and provide a best practice assessment of the security of your SQL Server environment at the instance level.
 
 - [Surface area configuration](surface-area-configuration.md) - You should enable only the features required by your environment, to minimize the number of features that can be attacked by a malicious user.
-- [Vulnerability assessment for SQL Server (SSMS)](sql-vulnerability-assessment.md) - SQL vulnerability assessment is a tool in [SSMS v17.4+](/ssms/sql-server-management-studio-ssms) that helps discover, track, and remediate potential database vulnerabilities. The vulnerability assessment is a valuable tool to improve your database security and is executed at the database level, per database.
+- [Vulnerability assessment for SQL Server](sql-vulnerability-assessment.md) - SQL vulnerability assessment helps you discover, track, and remediate potential database vulnerabilities to proactively improve your database security. This capability is delivered through Microsoft Defender for SQL, which scans your databases for security misconfigurations across cloud and on-premises resources and provides actionable remediation steps.
 - [SQL Data Discovery and Classification (SSMS)](sql-data-discovery-and-classification.md) - It's common for DBAs to manage servers and databases and not be aware of sensitivity of the data that is contained in the database. Data Discovery & Classification adds the capability to discover, classify, label, and report on the sensitivity level of your data. Data Discovery & Classification is supported starting with SSMS 17.5.
 
 ## Common SQL threats

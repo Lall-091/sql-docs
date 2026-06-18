@@ -23,7 +23,7 @@ T-SQL functions like [GETDATE()](/sql/t-sql/functions/getdate-transact-sql) or C
   > Azure SQL Database does not support time zone settings; it always follows UTC. Use [AT TIME ZONE](/sql/t-sql/queries/at-time-zone-transact-sql) in SQL Database if you need to interpret date and time information in a non-UTC time zone.
 
   > [!IMPORTANT]
-  > When migrating your existing solutions to Azure SQL Managed Instance, consider carefully the timezone ramifications and as a rule of thumb match your original timezone settings unless you are reimplementing the relevant application logic.
+  > When migrating your existing solutions to Azure SQL Managed Instance, consider carefully the time zone ramifications and as a rule of thumb match your original time zone settings unless you are reimplementing the relevant application logic.
 
 ## Supported time zones
 
@@ -50,9 +50,11 @@ When you enter parameters for a new instance, select a time zone from the list o
   
 ![Setting a time zone during instance creation](./media/timezones-overview/01-setting_timezone-during-instance-creation.png)
 
+After the instance is created, verify the time zone using the [CURRENT_TIMEZONE](/sql/t-sql/functions/current-timezone-transact-sql) function or the steps in [Check the time zone of an instance](#check-the-time-zone-of-an-instance).
+
 ### Azure Resource Manager template
 
-Specify the timezoneId property in your [Resource Manager template](./create-template-quickstart.md) to set the time zone during instance creation.
+To set the time zone for a new SQL managed instance, specify the `timezoneId` property in your [Resource Manager template](./create-template-quickstart.md).
 
 ```json
 "properties": {
@@ -81,15 +83,15 @@ The [CURRENT_TIMEZONE](/sql/t-sql/functions/current-timezone-transact-sql) funct
 
 ### Restore and import
 
-You can restore a backup file or import data to a managed instance from an instance or a server with different time zone settings. Make sure to do so with caution. Analyze the application behavior and the results of the queries and reports, just like when you transfer data between two SQL Server instances with different time zone settings.
+When you restore a backup file or import data to a SQL managed instance from an instance or a server with different time zone settings, do so with caution. Analyze the application behavior and the results of the queries and reports, just like when you transfer data between two SQL Server instances with different time zone settings.
 
 ### Point-in-time restore
 
-When you perform a point-in-time restore, the time to restore to is interpreted as UTC time. This way any ambiguities due to daylight saving time and its potential changes are avoided.
+When you perform a point-in-time restore on a SQL managed instance, the time to restore to is interpreted as UTC time. This way any ambiguities due to daylight saving time and its potential changes are avoided.
 
 ### Failover groups
 
-Using the same time zone across a primary and secondary instance in a failover group isn't enforced, but we strongly recommend it.
+When you use a [failover group](failover-group-sql-mi.md) with Azure SQL Managed Instance, using the same time zone across the primary and secondary instance isn't enforced, but we strongly recommend it.
 
   >[!WARNING]
   > We strongly recommend that you use the same time zone for the primary and secondary instance in a failover group. Because of certain rare use cases keeping the same time zone across primary and secondary instances isn't enforced. It's important to understand that in the case of manual or automatic failover, the secondary instance will retain its original time zone.
@@ -100,6 +102,8 @@ Using the same time zone across a primary and secondary instance in a failover g
 - External processes launched from the SQL Server Agent jobs don't observe the time zone of the instance.
 
 ## List of supported time zones
+
+The following table lists every supported Windows time zone ID and its display name, ordered by UTC offset from UTC-12 to UTC+14. Use the **Time zone ID** value when setting the time zone via T-SQL, PowerShell, the Azure CLI, or an ARM template.
 
 | **Time zone ID** | **Time zone display name** |
 | --- | --- |
@@ -128,7 +132,6 @@ Using the same time zone across a primary and secondary instance in a failover g
 | Cuba Standard Time | (UTC-05:00) Havana |
 | US Eastern Standard Time | (UTC-05:00) Indiana (East) |
 | Turks And Caicos Standard Time | (UTC-05:00) Turks and Caicos |
-| Paraguay Standard Time | (UTC-03:00) Asuncion |
 | Atlantic Standard Time | (UTC-04:00) Atlantic Time (Canada) |
 | Venezuela Standard Time | (UTC-04:00) Caracas |
 | Central Brazilian Standard Time | (UTC-04:00) Cuiaba |
@@ -138,6 +141,7 @@ Using the same time zone across a primary and secondary instance in a failover g
 | Tocantins Standard Time | (UTC-03:00) Araguaina |
 | E. South America Standard Time | (UTC-03:00) Brasilia |
 | SA Eastern Standard Time | (UTC-03:00) Cayenne, Fortaleza |
+| Paraguay Standard Time | (UTC-03:00) Asuncion |
 | Argentina Standard Time | (UTC-03:00) City of Buenos Aires |
 | Greenland Standard Time | (UTC-03:00) Greenland |
 | Montevideo Standard Time | (UTC-03:00) Montevideo |

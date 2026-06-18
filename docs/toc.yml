@@ -69,11 +69,11 @@ items:
   - name: Intelligent applications and AI
     href: sql-server/ai/artificial-intelligence-intelligent-applications.md
   - name: Intelligent applications and AI FAQ
-    href: sql-server/ai/artificial-intelligence-intelligent-applications-faq.md
+    href: sql-server/ai/artificial-intelligence-intelligent-applications-frequently-asked-questions.yml
   - name: Vectors and embeddings
-    href: sql-server/ai/vectors.md    
+    href: sql-server/ai/vectors.md
   - name: Vectors and embeddings FAQ
-    href: sql-server/ai/vectors-faq.md          
+    href: sql-server/ai/vectors-frequently-asked-questions.yml
 - name: Business continuity
   items:
   - name: Overview
@@ -617,7 +617,7 @@ items:
           href: database-engine/availability-groups/windows/transactions-always-on-availability-and-database-mirroring.md
           items:
           - name: Cluster DTC
-            href: database-engine/availability-groups/windows/cluster-dtc-for-sql-server-2016-availability-groups.md
+            href: database-engine/availability-groups/windows/cluster-dtc-for-sql-server-availability-groups.md
         - name: Encrypted databases
           href: database-engine/availability-groups/windows/encrypted-databases-with-always-on-availability-groups-sql-server.md
         - name: SQL Server Analysis Services (SSAS)
@@ -1574,7 +1574,7 @@ items:
               href: database-engine/service-broker/handling-service-broker-error-messages.md
             - name: Handling Poison Messages
               href: database-engine/service-broker/handling-poison-messages.md
-            - name: 'How to: Retrieve Information from a Service Broker Error Message (Transact SQL)'
+            - name: 'How to: Retrieve Information from a Service Broker Error Message (Transact-SQL)'
               href: database-engine/service-broker/how-to-retrieve-information-from-a-service-broker-error-message-transact-sql.md
     - name: Creating Service Broker Objects
       items:
@@ -4633,12 +4633,14 @@ items:
         href: database-engine/configure-windows/lightweight-pooling-server-configuration-option.md
       - name: Configure locks
         href: database-engine/configure-windows/configure-the-locks-server-configuration-option.md
-      - name: Configure max RPC request params (KB)
-        href: database-engine/configure-windows/max-rpc-request-params-configuration-option.md
       - name: Configure max degree of parallelism
         href: database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md
       - name: Configure max full-text crawl range
         href: database-engine/configure-windows/max-full-text-crawl-range-server-configuration-option.md
+      - name: Configure max lock manager cache memory (%)
+        href: database-engine/configure-windows/max-lock-manager-cache-memory-configuration-option.md
+      - name: Configure max RPC request params (KB)
+        href: database-engine/configure-windows/max-rpc-request-params-configuration-option.md
       - name: Configure max text repl size
         href: database-engine/configure-windows/configure-the-max-text-repl-size-server-configuration-option.md
       - name: Configure max worker threads
@@ -6848,7 +6850,7 @@ items:
           - name: IDENTITY implementation
             href: relational-databases/in-memory-oltp/implementing-identity-in-a-memory-optimized-table.md
         - name: Architecture of In-Memory
-          href: relational-databases/in-memory-oltp/sql-server-in-memory-oltp-internals-for-sql-server-2016.md
+          href: relational-databases/in-memory-oltp/sql-server-in-memory-oltp-internals-download.md
           items:
           - name: Storage
             href: relational-databases/in-memory-oltp/creating-and-managing-storage-for-memory-optimized-objects.md
@@ -8949,40 +8951,58 @@ items:
       items:
       - name: Overview
         href: tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md
-      - name: Connect and query
-        href: tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md
+      - name: Connect to a database
+        href: tools/visual-studio-code-extensions/mssql/mssql-database-connections.md
+      - name: Run your first query
+        href: tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md
       - name: Features
         items:
         - name: GitHub Copilot for the MSSQL extension
           items:
           - name: Overview
             href: tools/visual-studio-code-extensions/github-copilot/overview.md
+          - name: How it works
+            href: tools/visual-studio-code-extensions/github-copilot/how-it-works.md
           - name: Limitations and known issues
             href: tools/visual-studio-code-extensions/github-copilot/limitations-and-known-issues.md
-          - name: Quickstarts
+          - name: Interaction modes
             items:
-            - name: Use Agent mode tools
+            - name: Chat with @mssql (ask mode)
+              href: tools/visual-studio-code-extensions/github-copilot/chat-ask-mode.md
+            - name: Use agent mode
               href: tools/visual-studio-code-extensions/github-copilot/agent-mode.md
+            - name: Use plan mode
+              href: tools/visual-studio-code-extensions/github-copilot/plan-mode.md
             - name: Use slash commands
               href: tools/visual-studio-code-extensions/github-copilot/slash-commands.md
-            - name: Generate data for testing and mocking
-              href: tools/visual-studio-code-extensions/github-copilot/test-and-mocking-data-generator.md
-            - name: Use the business logic explainer
-              href: tools/visual-studio-code-extensions/github-copilot/business-logic-explainer.md
+            - name: Inline completions
+              href: tools/visual-studio-code-extensions/github-copilot/inline-completions.md
+          - name: Configuration
+            items:
+            - name: Use custom instructions
+              href: tools/visual-studio-code-extensions/github-copilot/custom-instructions.md
+          - name: Feature quickstarts
+            items:
             - name: Generate code
               href: tools/visual-studio-code-extensions/github-copilot/code-generation.md
-            - name: Use GitHub Copilot inline and chat suggestions
-              href: tools/visual-studio-code-extensions/github-copilot/inline-copilot-suggestions.md
-            - name: Use the localization format helper
-              href: tools/visual-studio-code-extensions/github-copilot/localization-formatting-helper.md
+            - name: Schema Designer with GitHub Copilot scenarios
+              href: tools/visual-studio-code-extensions/github-copilot/schema-designer-scenarios.md
+            - name: Use the schema explorer (chat-based)
+              href: tools/visual-studio-code-extensions/github-copilot/schema-explorer-designer.md
+            - name: Use the smart query builder
+              href: tools/visual-studio-code-extensions/github-copilot/smart-query-builder.md
             - name: Use the query optimizer assistant
               href: tools/visual-studio-code-extensions/github-copilot/query-optimizer-assistant.md
-            - name: Use the schema explorer and designer
-              href: tools/visual-studio-code-extensions/github-copilot/schema-explorer-designer.md
+            - name: Use the business logic explainer
+              href: tools/visual-studio-code-extensions/github-copilot/business-logic-explainer.md
             - name: Use the security analyzer
               href: tools/visual-studio-code-extensions/github-copilot/security-analyzer.md
-            - name: Use smart query builder
-              href: tools/visual-studio-code-extensions/github-copilot/smart-query-builder.md
+            - name: Use the localization format helper
+              href: tools/visual-studio-code-extensions/github-copilot/localization-formatting-helper.md
+            - name: Generate data for testing and mocking
+              href: tools/visual-studio-code-extensions/github-copilot/test-and-mocking-data-generator.md
+          - name: Object-relational mapping integrations
+            href: tools/visual-studio-code-extensions/github-copilot/orm-integrations.md
         - name: Schema designer
           href: tools/visual-studio-code-extensions/mssql/mssql-schema-designer.md
         - name: Schema designer with GitHub Copilot
@@ -8999,6 +9019,8 @@ items:
           href: tools/visual-studio-code-extensions/mssql/mssql-query-profiler.md
         - name: SQL Notebooks
           href: tools/visual-studio-code-extensions/mssql/mssql-sql-notebooks.md
+        - name: Azure integration (Preview)
+          href: tools/visual-studio-code-extensions/mssql/mssql-azure-integration.md
         - name: Data-tier application
           href: tools/visual-studio-code-extensions/mssql/mssql-data-tier-application.md
         - name: Schema compare
@@ -9028,7 +9050,7 @@ items:
 - name: Tutorials
   items:
   - name: SQL Server
-    href: sql-server/tutorials-for-sql-server-2016.md
+    href: sql-server/tutorials-for-sql-server.md
   - name: Database Engine
     href: relational-databases/database-engine-tutorials.md
     items:
@@ -9117,101 +9139,103 @@ items:
     - name: Install and upgrade
       items:
       - name: Overview
-        href: linux/sql-server-linux-setup.md
+        href: linux/install-upgrade/setup.md
       - name: Install Database Engine
         items:
         - name: Install and connect (Red Hat)
-          href: linux/quickstart-install-connect-red-hat.md
+          href: linux/install-upgrade/quickstart-install-red-hat.md
         - name: Install and connect (SUSE)
-          href: linux/quickstart-install-connect-suse.md
+          href: linux/install-upgrade/quickstart-install-suse.md
         - name: Install and connect (Ubuntu)
-          href: linux/quickstart-install-connect-ubuntu.md
+          href: linux/install-upgrade/quickstart-install-ubuntu.md
         - name: Install and connect (WSL2)
-          href: linux/quickstart-install-connect-wsl-2.md
+          href: linux/install-upgrade/quickstart-install-windows-subsystem-linux.md
         - name: Run and connect (containers)
-          href: linux/quickstart-install-connect-docker.md
+          href: linux/install-upgrade/quickstart-install-docker.md
         - name: Run and connect - Cloud
-          href: linux/quickstart-install-connect-clouds.md
+          href: linux/install-upgrade/quickstart-install-clouds.md
       - name: Install SQL Server tools
-        href: linux/sql-server-linux-setup-tools.md
+        href: linux/install-upgrade/setup-tools.md
       - name: Install SQL Server Agent
-        href: linux/sql-server-linux-setup-sql-agent.md
+        href: linux/install-upgrade/setup-sql-agent.md
       - name: Install SQL Server Full-Text Search
-        href: linux/sql-server-linux-setup-full-text-search.md
+        href: linux/install-upgrade/setup-full-text-search.md
       - name: Install SQL Server Integration Services
-        href: linux/sql-server-linux-setup-ssis.md
+        href: linux/install-upgrade/setup-ssis.md
       - name: Install SQL Server Machine Learning Services (Python and R)
-        href: linux/sql-server-linux-setup-machine-learning.md
+        href: linux/install-upgrade/setup-machine-learning.md
       - name: Install SQL Server Machine Learning Services (Python and R) on Docker
-        href: linux/sql-server-linux-setup-machine-learning-docker.md
+        href: linux/install-upgrade/setup-machine-learning-docker.md
       - name: Install SQL Server Java Language Extension
-        href: linux/sql-server-linux-setup-language-extensions-java.md
+        href: linux/install-upgrade/setup-language-extensions-java.md
       - name: Configure repositories (up to SQL Server 2022)
-        href: linux/sql-server-linux-change-repo.md
+        href: linux/install-upgrade/change-repo.md
       - name: Configure repositories (SQL Server 2025 and later)
-        href: linux/sql-server-linux-change-repo-2025.md
+        href: linux/install-upgrade/change-repo-2025.md
       - name: Upgrade SQL Server on Linux
         href: linux/install-upgrade/upgrade-considerations.md
     - name: Quickstarts
       items:
       - name: Deploy SQL Server container cluster
-        href: linux/quickstart-sql-server-containers-azure.md
+        href: linux/install-upgrade/quickstart-containers-azure.md
       - name: Deploy to Azure VMs with Ansible playbook
-        href: linux/sql-server-linux-deploy-ansible.md
+        href: linux/install-upgrade/deploy-ansible.md
       - name: Provision a SQL Server VM in Azure >
         href: /azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart
     - name: Unattended install
       items:
       - name: Red Hat Enterprise Linux (RHEL)
-        href: linux/sample-unattended-install-redhat.md
+        href: linux/install-upgrade/unattended-install-redhat.md
       - name: SUSE Linux Enterprise Server (SLES)
-        href: linux/sample-unattended-install-suse.md
+        href: linux/install-upgrade/unattended-install-suse.md
       - name: Ubuntu
-        href: linux/sample-unattended-install-ubuntu.md
+        href: linux/install-upgrade/unattended-install-ubuntu.md
   - name: Configuration and operations
     items:
     - name: System configuration
       items:
       - name: Configure with mssql-conf
-        href: linux/sql-server-linux-configure-mssql-conf.md
+        href: linux/configure/mssql-conf.md
       - name: Environment variables
-        href: linux/sql-server-linux-configure-environment-variables.md
+        href: linux/configure/environment-variables.md
       - name: Configure MSDTC
-        href: linux/sql-server-linux-configure-msdtc.md
+        href: linux/configure/distributed-transactions.md
       - name: Configure persistent memory (PMEM)
-        href: linux/sql-server-linux-configure-pmem.md
+        href: linux/configure/persistent-memory.md
       - name: Configure tempdb on tmpfs for SQL Server 2025
-        href: linux/sql-server-linux-tmpfs-tempdb.md
+        href: linux/configure/tmpfs-tempdb-system-database.md
       - name: Configure time zone on SQL Server 2022 and later
-        href: linux/sql-server-linux-configure-time-zone.md
+        href: linux/configure/time-zone.md
       - name: Configure time zone on SQL Server 2019
-        href: linux/sql-server-linux-configure-time-zone-2019.md
+        href: linux/configure/time-zone-2019.md
       - name: Configure time zone on SQL Server 2017
-        href: linux/sql-server-linux-configure-time-zone-2017.md
+        href: linux/configure/time-zone-2017.md
       - name: Configure Power BI Report Server catalog
-        href: linux/sql-server-linux-configure-power-bi-report-server-catalog.md
+        href: linux/configure/power-bi-report-server-catalog.md
       - name: Configure to send usage and diagnostic data to Microsoft
-        href: linux/usage-and-diagnostic-data-configuration-for-sql-server-linux.md
+        href: linux/configure/usage-diagnostic-data-configuration.md
     - name: Containers
       items:
+      - name: Overview
+        href: linux/containers/overview.md
       - name: Deploy and connect to containers
-        href: linux/sql-server-linux-docker-container-deployment.md
+        href: linux/containers/deploy.md
       - name: Configure and customize containers
-        href: linux/sql-server-linux-docker-container-configure.md
+        href: linux/containers/configure.md
       - name: Container security
-        href: linux/sql-server-linux-docker-container-security.md
+        href: linux/containers/security.md
       - name: Use MSDTC with containers
-        href: linux/sql-server-linux-configure-msdtc-docker.md
+        href: linux/containers/configure-distributed-transactions.md
       - name: Troubleshoot containers
-        href: linux/sql-server-linux-docker-container-troubleshooting.md
+        href: linux/containers/troubleshoot.md
       - name: Setup AD Authentication using adutil
-        href: linux/sql-server-linux-containers-ad-auth-adutil-tutorial.md
+        href: linux/containers/tutorial-adutil.md
     - name: Kubernetes
       items:
       - name: Guidance for deploying to Kubernetes
-        href: linux/sql-server-linux-kubernetes-best-practices-statefulsets.md
+        href: linux/containers/kubernetes-best-practices-statefulsets.md
       - name: Deploy to AKS with Helm charts
-        href: linux/sql-server-linux-containers-deploy-helm-charts-kubernetes.md
+        href: linux/containers/kubernetes-deploy-helm-charts.md
     - name: Development
       items:
       - name: Overview
@@ -9219,7 +9243,7 @@ items:
       - name: Connectivity libraries
         href: linux/sql-server-linux-develop-connectivity-libraries.md
       - name: Use Visual Studio Code
-        href: tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md
+        href: tools/visual-studio-code-extensions/mssql/mssql-run-first-query.md
       - name: Use SSDT
         href: linux/sql-server-linux-develop-use-ssdt.md
     - name: Administration and management
@@ -9235,11 +9259,13 @@ items:
       - name: Use PowerShell Core
         href: linux/sql-server-linux-manage-powershell-core.md
       - name: Use log shipping
-        href: linux/sql-server-linux-use-log-shipping.md
+        href: linux/business-continuity/use-log-shipping.md
       - name: Database Mail and email alerts
         href: linux/sql-server-linux-db-mail-sql-agent.md
       - name: Data virtualization (PolyBase)
         href: linux/sql-server-linux-polybase.md
+      - name: PolyBase EES encryption
+        href: linux/sql-server-linux-polybase-ees-encryption.md
       - name: Create a SQL Server Agent job
         href: linux/sql-server-linux-run-sql-server-agent-job.md
       - name: SQL Assessment API
@@ -9247,177 +9273,179 @@ items:
   - name: Security
     items:
     - name: Overview
-      href: linux/sql-server-linux-security-overview.md
+      href: linux/security/overview.md
     - name: Get started with security features
-      href: linux/sql-server-linux-security-get-started.md
+      href: linux/security/get-started.md
     - name: Security and permissions guide
-      href: linux/sql-server-linux-security-permissions-guide.md
+      href: linux/security/permissions-guide.md
     - name: Get started with SQL Server on SELinux
-      href: linux/sql-server-linux-security-selinux.md
+      href: linux/security/selinux.md
     - name: Encrypt connections
-      href: linux/sql-server-linux-encrypted-connections.md
+      href: linux/security/encrypted-connections.md
     - name: Authentication
       items:
       - name: Active Directory authentication
-        href: linux/sql-server-linux-active-directory-auth-overview.md
+        href: linux/security/authentication/active-directory-overview.md
       - name: Introduction to adutil
-        href: linux/sql-server-linux-ad-auth-adutil-introduction.md
+        href: linux/security/authentication/adutil-introduction.md
       - name: Set up Active Directory authentication
         items:
         - name: Use AD authentication
-          href: linux/sql-server-linux-active-directory-authentication.md
+          href: linux/security/authentication/active-directory-tutorial.md
         - name: Use adutil to set up AD Authentication
-          href: linux/sql-server-linux-ad-auth-adutil-tutorial.md
+          href: linux/security/authentication/adutil-tutorial.md
       - name: Join an Active Directory domain
-        href: linux/sql-server-linux-active-directory-join-domain.md
+        href: linux/security/authentication/active-directory-join-domain.md
       - name: Understand AD Authentication
-        href: linux/sql-server-linux-ad-auth-understanding.md
+        href: linux/security/authentication/understand-active-directory.md
       - name: Troubleshoot AD Authentication
-        href: linux/sql-server-linux-ad-auth-troubleshooting.md
+        href: linux/security/authentication/troubleshoot-active-directory.md
       - name: Rotate SQL Server on Linux keytabs
-        href: linux/sql-server-linux-ad-auth-rotate-keytabs.md
+        href: linux/security/authentication/rotate-keytabs.md
       - name: Set password policy
-        href: linux/sql-server-linux-custom-password-policy.md
+        href: linux/security/authentication/custom-password-policy.md
       - name: Enable Microsoft Entra manually for containers
-        href: linux/authentication/container-kubernetes-microsoft-entra-deployment.md
+        href: linux/security/authentication/container-kubernetes-microsoft-entra-deployment.md
     - name: Configure bulk import operations
-      href: linux/sql-server-linux-bulk-operations.md
+      href: linux/security/bulk-operations.md
   - name: High availability and disaster recovery
     items:
     - name: Overview
-      href: linux/sql-server-linux-business-continuity-dr.md
+      href: linux/business-continuity/overview.md
     - name: Availability basics
-      href: linux/sql-server-linux-ha-basics.md
+      href: linux/business-continuity/high-availability-basics.md
     - name: Backup and restore
       items:
       - name: Overview
-        href: linux/sql-server-linux-backup-and-restore-database.md
+        href: linux/business-continuity/backup-restore/database-backup-restore.md
       - name: Restore the master database
-        href: linux/sql-server-linux-restore-master-database-in-single-user-mode.md
+        href: linux/business-continuity/backup-restore/restore-master-database-single-user-mode.md
       - name: Virtual Device Interface specification (Linux)
-        href: linux/sql-server-linux-backup-vdi-specification.md
+        href: linux/business-continuity/backup-restore/backup-virtual-device-interface-specification.md
     - name: Failover clustering
       items:
       - name: Failover cluster concepts
-        href: linux/sql-server-linux-shared-disk-cluster-concepts.md
+        href: linux/business-continuity/failover-cluster-instance/shared-disk-cluster-concepts.md
       - name: Configure failover cluster instance
         items:
         - name: Overview
-          href: linux/sql-server-linux-shared-disk-cluster-configure.md
+          href: linux/business-continuity/failover-cluster-instance/shared-disk-cluster-configure.md
         - name: iSCSI
-          href: linux/sql-server-linux-shared-disk-cluster-configure-iscsi.md
+          href: linux/business-continuity/failover-cluster-instance/shared-disk-cluster-configure-iscsi.md
         - name: NFS
-          href: linux/sql-server-linux-shared-disk-cluster-configure-nfs.md
+          href: linux/business-continuity/failover-cluster-instance/shared-disk-cluster-configure-network-file-system.md
         - name: SMB
-          href: linux/sql-server-linux-shared-disk-cluster-configure-smb.md
+          href: linux/business-continuity/failover-cluster-instance/shared-disk-cluster-configure-server-message-block.md
       - name: Operate failover cluster instances
-        href: linux/sql-server-linux-shared-disk-cluster-operate.md
+        href: linux/business-continuity/failover-cluster-instance/shared-disk-cluster-operate.md
       - name: Red Hat Enterprise Linux (RHEL)
         items:
         - name: Configure (HA add-on)
-          href: linux/sql-server-linux-shared-disk-cluster-red-hat-7-configure.md
+          href: linux/business-continuity/failover-cluster-instance/shared-disk-cluster-red-hat-7-configure.md
         - name: Operate (HA add-on)
-          href: linux/sql-server-linux-shared-disk-cluster-red-hat-7-operate.md
+          href: linux/business-continuity/failover-cluster-instance/shared-disk-cluster-red-hat-7-operate.md
       - name: SUSE Linux Enterprise Server (SLES)
         items:
         - name: Configure (HA add-on)
-          href: linux/sql-server-linux-shared-disk-cluster-sles-configure.md
+          href: linux/business-continuity/failover-cluster-instance/shared-disk-cluster-sles-configure.md
       - name: Deploy a Pacemaker cluster
-        href: linux/sql-server-linux-deploy-pacemaker-cluster.md
+        href: linux/business-continuity/failover-cluster-instance/deploy-pacemaker-cluster.md
     - name: Availability groups
       items:
       - name: Overview
-        href: linux/sql-server-linux-availability-group-overview.md
+        href: linux/business-continuity/availability-groups/overview.md
       - name: Create and configure availability groups
-        href: linux/sql-server-linux-create-availability-group.md
+        href: linux/business-continuity/availability-groups/create.md
       - name: Configure with custom high availability logic
-        href: linux/business-continuity/high-availability/configure-custom-logic.md
+        href: linux/business-continuity/availability-groups/configure-custom-logic.md
       - name: Configure machine key for contained AG
-        href: linux/sql-server-linux-availability-group-prepare-machine-key.md
+        href: linux/business-continuity/availability-groups/prepare-machine-key.md
       - name: High availability
         items:
         - name: Create for high availability
-          href: linux/sql-server-linux-availability-group-ha.md
+          href: linux/business-continuity/availability-groups/high-availability.md
         - name: Configure with DH2i
           href: /azure/azure-sql/virtual-machines/linux/dh2i-high-availability-tutorial
         - name: Configure with HPE Serviceguard
-          href: linux/sql-server-availability-group-ha-hpe.md
+          href: linux/business-continuity/availability-groups/high-availability-hpe.md
         - name: Configure with Pacemaker
           items:
           - name: Pacemaker basics
-            href: linux/sql-server-linux-pacemaker-basics.md
+            href: linux/business-continuity/availability-groups/pacemaker-basics.md
           - name: Configure an AG
-            href: linux/high-availability/availability-groups-configure.md
+            href: linux/business-continuity/availability-groups/configure.md
           - name: Configure on RHEL, SLES, and Ubuntu
-            href: linux/sql-server-linux-availability-group-cluster-pacemaker.md
+            href: linux/business-continuity/availability-groups/cluster-pacemaker.md
           - name: Configure failover
-            href: linux/sql-server-linux-availability-group-failover-ha.md
+            href: linux/business-continuity/availability-groups/failover-high-availability.md
           - name: Operate an AG
-            href: linux/sql-server-linux-availability-group-operate-ha.md
+            href: linux/business-continuity/availability-groups/operate-high-availability.md
           - name: Configure multiple subnets for availability
-            href: linux/sql-server-linux-configure-multiple-subnet.md
+            href: linux/business-continuity/availability-groups/configure-multiple-subnet.md
       - name: Configure AG for read-scale only
-        href: linux/sql-server-linux-availability-group-configure-rs.md
+        href: linux/business-continuity/availability-groups/configure-read-scale.md
       - name: Configure cross-platform (Windows and Linux)
-        href: linux/sql-server-linux-availability-group-cross-platform.md
+        href: linux/business-continuity/availability-groups/cross-platform.md
     - name: High availability for containers
       items:
       - name: Overview
-        href: linux/sql-server-linux-container-ha-overview.md
+        href: linux/business-continuity/containers/high-availability-overview.md
       - name: Configure a Kubernetes cluster
-        href: linux/quickstart-sql-server-containers-azure.md
+        href: linux/install-upgrade/quickstart-containers-azure.md
       - name: Deploy AGs with DH2i DxEnterprise
-        href: linux/tutorial-sql-server-containers-kubernetes-dh2i.md
+        href: linux/business-continuity/containers/tutorial-kubernetes-dh2i.md
       - name: Deploy AGs with DH2i DxOperator
-        href: linux/tutorial-sql-server-containers-kubernetes-dxoperator.md
+        href: linux/business-continuity/containers/tutorial-kubernetes-dxoperator.md
       - name: Deploy AGs with Rancher Prime and DH2i DxOperator
-        href: linux/tutorial-sql-server-containers-kubernetes-dxoperator-rancher-suse.md
+        href: linux/business-continuity/containers/tutorial-kubernetes-dxoperator-rancher-suse.md
   - name: Migration and data movement
     items:
     - name: Overview
-      href: linux/sql-server-linux-migrate-overview.md
+      href: linux/migrate/overview.md
     - name: Platform migration
       items:
       - name: Migrate from Windows
-        href: linux/sql-server-linux-migrate-restore-database.md
+        href: linux/migrate/restore-database.md
       - name: Migrate to Docker
-        href: linux/tutorial-restore-backup-in-sql-server-container.md
+        href: linux/migrate/tutorial-restore-backup-sql-server-container.md
       - name: Migrate with SQL Server Migration Assistant
-        href: linux/sql-server-linux-migrate-ssma.md
+        href: linux/migrate/sql-server-migration-assistant.md
     - name: Data transfer
       items:
       - name: Export and import a BACPAC from Windows
-        href: linux/sql-server-linux-migrate-ssms.md
+        href: linux/migrate/sql-server-management-studio.md
       - name: Bulk copy with bcp
-        href: linux/sql-server-linux-migrate-bcp.md
+        href: linux/migrate/bulk-copy.md
     - name: ETL and integration
       items:
       - name: Overview
-        href: linux/sql-server-linux-migrate-ssis.md
+        href: linux/migrate/ssis.md
       - name: Feature support and considerations for SSIS
-        href: linux/sql-server-linux-ssis-known-issues.md
+        href: linux/migrate/ssis-known-issues.md
       - name: Configure SSIS
-        href: linux/sql-server-linux-configure-ssis.md
+        href: linux/migrate/configure-ssis.md
       - name: Schedule SSIS packages
-        href: linux/sql-server-linux-schedule-ssis-packages.md
+        href: linux/migrate/schedule-ssis-packages.md
   - name: Performance tuning
     items:
-    - name: Best practices
-      href: linux/sql-server-linux-performance-best-practices.md
+    - name: Storage, kernel, CPU, and network best practices
+      href: linux/configure/performance-best-practices-operating-system.md
+    - name: SQL Server memory best practices
+      href: linux/configure/performance-best-practices-sql-server-memory.md
     - name: Get started with performance features
       href: linux/sql-server-linux-performance-get-started.md
   - name: Replication
     items:
     - name: Overview
-      href: linux/sql-server-linux-replication.md
+      href: linux/replication/overview.md
     - name: Configure replication
-      href: linux/sql-server-linux-replication-tutorial-tsql.md
+      href: linux/replication/tutorial-tsql.md
     - name: Configure
-      href: linux/sql-server-linux-replication-configure.md
+      href: linux/replication/configure.md
     - name: Snapshot folder
-      href: linux/sql-server-linux-replication-snapshot-shares.md
+      href: linux/replication/snapshot-shares.md
     - name: Non-default ports
-      href: linux/sql-server-linux-replication-non-default-ports.md
+      href: linux/replication/non-default-ports.md
   - name: Support and community
     items:
     - name: Troubleshooting guide
@@ -12143,6 +12171,8 @@ items:
     - name: Database
       href: relational-databases/system-dynamic-management-views/database-related-dynamic-management-views-transact-sql.md
       items:
+      - name: sys.dm_db_external_tables_log_status
+        href: relational-databases/system-dynamic-management-views/sys-dm-db-external-tables-log-status-transact-sql.md
       - name: sys.dm_db_file_space_usage
         href: relational-databases/system-dynamic-management-views/sys-dm-db-file-space-usage-transact-sql.md
       - name: sys.dm_db_fts_index_physical_stats
@@ -13099,7 +13129,7 @@ items:
         href: relational-databases/system-stored-procedures/sp-describe-cursor-tables-transact-sql.md
       - name: sp_execute
         href: relational-databases/system-stored-procedures/sp-execute-transact-sql.md
-      - name: sp_prepare (Transact SQL)
+      - name: sp_prepare (Transact-SQL)
         href: relational-databases/system-stored-procedures/sp-prepare-transact-sql.md
       - name: sp_prepexec
         href: relational-databases/system-stored-procedures/sp-prepexec-transact-sql.md
@@ -13255,6 +13285,8 @@ items:
         href: relational-databases/system-stored-procedures/sp-dropmessage-transact-sql.md
       - name: sp_droptype
         href: relational-databases/system-stored-procedures/sp-droptype-transact-sql.md
+      - name: sp_dw_refresh_ext_table
+        href: relational-databases/system-stored-procedures/sp-dw-refresh-ext-table-transact-sql.md
       - name: sp_estimate_data_compression_savings
         href: relational-databases/system-stored-procedures/sp-estimate-data-compression-savings-transact-sql.md
       - name: sp_estimated_rowsize_reduction_for_vardecimal
@@ -14367,7 +14399,6 @@ items:
       - name: sp_delete_backup
         href: relational-databases/system-stored-procedures/snapshot-backup-sp-delete-backup.md
     - name: Azure Synapse Analytics
-      href: relational-databases/system-stored-procedures/sql-data-warehouse-stored-procedures.md
       items:
       - name: sp_datatype_info_90
         href: relational-databases/system-stored-procedures/sp-datatype-info-90-sql-data-warehouse.md
@@ -15608,13 +15639,15 @@ items:
       - name: DBCC USEROPTIONS
         href: t-sql/database-console-commands/dbcc-useroptions-transact-sql.md
     - name: Functions
-      href: t-sql/functions/functions.md
       items:
-      - name: ODBC Scalar
+      - name: Overview
+        href: t-sql/functions/functions.md
+      - name: ODBC scalar
         href: t-sql/functions/odbc-scalar-functions-transact-sql.md
       - name: Aggregate
-        href: t-sql/functions/aggregate-functions-transact-sql.md
         items:
+        - name: Overview
+          href: t-sql/functions/aggregate-functions-transact-sql.md
         - name: ANY_VALUE
           href: t-sql/functions/any-value-transact-sql.md
         - name: APPROX_COUNT_DISTINCT
@@ -15652,12 +15685,27 @@ items:
         - name: VARP
           href: t-sql/functions/varp-transact-sql.md
       - name: AI
-        href: t-sql/functions/ai-functions-transact-sql.md
         items:
-        - name: AI_GENERATE_EMBEDDINGS
-          href: t-sql/functions/ai-generate-embeddings-transact-sql.md
+        - name: Overview
+          href: t-sql/functions/ai-functions-transact-sql.md
+        - name: AI_ANALYZE_SENTIMENT
+          href: t-sql/functions/ai-analyze-sentiment-transact-sql.md
+        - name: AI_CLASSIFY
+          href: t-sql/functions/ai-classify-transact-sql.md
+        - name: AI_EXTRACT
+          href: t-sql/functions/ai-extract-transact-sql.md
+        - name: AI_FIX_GRAMMAR
+          href: t-sql/functions/ai-fix-grammar-transact-sql.md
         - name: AI_GENERATE_CHUNKS
           href: t-sql/functions/ai-generate-chunks-transact-sql.md
+        - name: AI_GENERATE_EMBEDDINGS
+          href: t-sql/functions/ai-generate-embeddings-transact-sql.md
+        - name: AI_GENERATE_RESPONSE
+          href: t-sql/functions/ai-generate-response-transact-sql.md
+        - name: AI_SUMMARIZE
+          href: t-sql/functions/ai-summarize-transact-sql.md
+        - name: AI_TRANSLATE
+          href: t-sql/functions/ai-translate-transact-sql.md
         - name: CREATE EXTERNAL MODEL
           href: t-sql/statements/create-external-model-transact-sql.md
         - name: ALTER EXTERNAL MODEL
@@ -16487,16 +16535,20 @@ items:
             href: t-sql/language-elements/bitwise-operators-transact-sql.md
           - name: '& (Bitwise AND)'
             href: t-sql/language-elements/bitwise-and-transact-sql.md
-          - name: '&= (Bitwise & Assignment)'
+          - name: '&= (Bitwise & assignment)'
             href: t-sql/language-elements/bitwise-and-equals-transact-sql.md
           - name: '| (Bitwise OR)'
             href: t-sql/language-elements/bitwise-or-transact-sql.md
-          - name: '|= (Bitwise OR Assignment)'
+          - name: '|= (Bitwise OR assignment)'
             href: t-sql/language-elements/bitwise-or-equals-transact-sql.md
-          - name: ^ (Bitwise Exclusive OR)
+          - name: ^ (Bitwise exclusive OR)
             href: t-sql/language-elements/bitwise-exclusive-or-transact-sql.md
-          - name: ^= (Bitwise Exclusive OR Assignment)
+          - name: ^= (Bitwise exclusive OR assignment)
             href: t-sql/language-elements/bitwise-exclusive-or-equals-transact-sql.md
+          - name: << (Bitwise left shift)
+            href: t-sql/functions/left-shift-transact-sql.md
+          - name: \>\> (Bitwise right shift)
+            href: t-sql/functions/right-shift-transact-sql.md
           - name: ~ (Bitwise NOT)
             href: t-sql/language-elements/bitwise-not-transact-sql.md
         - name: Comparison

@@ -5,7 +5,7 @@ description: Learn how to connect to Azure SQL Database, Azure SQL Managed Insta
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma, maghan
-ms.date: 03/03/2026
+ms.date: 05/15/2026
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -463,7 +463,7 @@ CREATE USER [adrian@contoso.com] FROM EXTERNAL PROVIDER;
 ### Login based users
 
 > [!NOTE]  
-> [Microsoft Entra server principals (logins)](authentication-azure-ad-logins.md) are currently in public preview for Azure SQL Database and Azure Synapse Analytics. Microsoft Entra logins are generally available for Azure SQL Managed Instance and SQL Server 2022.
+> [Microsoft Entra server principals (logins)](authentication-azure-ad-logins.md) are generally available for Azure SQL Database, Azure SQL Managed Instance, and SQL Server 2022 and later. Microsoft Entra server principals are currently in public preview for Azure Synapse Analytics.
 
 [Microsoft Entra server principals (or logins)](authentication-azure-ad-logins.md) are supported, which means contained database users aren't required. Database principals (users) can be created based off of a server principal, which means Microsoft Entra users can inherit server-level assigned permissions of a login.
 

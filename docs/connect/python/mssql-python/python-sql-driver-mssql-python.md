@@ -3,7 +3,7 @@ title: "Microsoft Python Driver for SQL Server - mssql-python"
 description: This guide provides an overview to get started with the Microsoft Python Driver for SQL Server - mssql-python
 author: dlevy-msft-sql
 ms.author: dlevy
-ms.reviewer: vanto, randolphwest
+ms.reviewer: vanto, randolphwest, davidengel, sumitsar
 ms.date: 03/14/2026
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: "Support for High Availability, Disaster Recovery for the Microsoft Drivers for PHP for SQL Server"
 description: "Support for High Availability, Disaster Recovery for the Microsoft Drivers for PHP for SQL Server"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "07/31/2018"
 ms.service: sql
 ms.subservice: connectivity

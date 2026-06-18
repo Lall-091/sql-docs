@@ -93,7 +93,7 @@ Regularly assessing your SQL Server environment helps identify vulnerabilities a
 
 - **Limit enabled features to reduce attack surface**: Enable only the SQL Server features required for your environment. For more information, see [Surface area configuration](surface-area-configuration.md).
 
-- **Run vulnerability assessments**: Use SQL **Vulnerability Assessment** in SSMS to discover and remediate potential database vulnerabilities. For more information, see [SQL Vulnerability Assessment](sql-vulnerability-assessment.md).
+- **Run vulnerability assessments**: Use SQL vulnerability assessment, delivered through Microsoft Defender for SQL, to discover and remediate potential database vulnerabilities across cloud and on-premises resources. For more information, see [Vulnerability assessment for SQL Server](sql-vulnerability-assessment.md).
 
 - **Classify and label sensitive data**: Use SQL Data Discovery and Classification to identify and label sensitive data for better protection and compliance. For more information, see [SQL Data Discovery and Classification](sql-data-discovery-and-classification.md).
 

@@ -1,8 +1,9 @@
 ---
 title: "About Code Examples in the Documentation"
 description: "There are several points to note when you execute the code examples in the Microsoft Drivers for PHP for SQL Server documentation."
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sumitsar, jathakkar
 ms.date: "03/26/2018"
 ms.service: sql
 ms.subservice: connectivity

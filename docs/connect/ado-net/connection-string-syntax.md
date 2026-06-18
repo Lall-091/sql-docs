@@ -1,8 +1,9 @@
 ---
 title: Connection string syntax
 description: Learn about syntax of connection strings in the Microsoft SqlClient Data Provider for SQL Server. The syntax for each provider is documented in its ConnectionString property.
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 04/19/2023
 ms.service: sql
 ms.subservice: connectivity

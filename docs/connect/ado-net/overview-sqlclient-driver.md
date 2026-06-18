@@ -1,9 +1,9 @@
 ---
 title: Overview of the SqlClient driver
 description: Find an overview of the Microsoft SqlClient Data Provider for SQL Server and its role as an ADO.NET provider for .NET applications.
-author: David-Engel
-ms.author: davidengel
-ms.reviewer: v-kaywon
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, paulmedynski, cmalhotra
 ms.date: 06/15/2019
 ms.service: sql
 ms.subservice: connectivity

@@ -1,8 +1,9 @@
 ---
 title: "Batches of SQL Statements"
 description: "Batches of SQL Statements"
-author: David-Engel
-ms.author: davidengel
+author: dlevy-msft-sql
+ms.author: dlevy
+ms.reviewer: davidengel, sunilbs, mcimfl
 ms.date: "01/22/2026"
 ai-usage: ai-assisted
 ms.service: sql
