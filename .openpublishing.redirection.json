@@ -67871,6 +67871,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/relational-databases/system-stored-procedures/sql-data-warehouse-stored-procedures.md",
+      "redirect_url": "/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql?view=azure-sqldw-latest&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/ssdt/release-notes-integration-services-2022.md",
       "redirect_url": "/sql/ssdt/ssis-vs2022-troubleshooting-guide",
       "redirect_document_id": false
