@@ -412,7 +412,6 @@ SELECT SERVERPROPERTY('IsExternalAuthenticationOnly')
 
 When Microsoft Entra-only authentication is enabled for SQL Database, the following features aren't supported:
 
-- [Azure SQL Database server roles for permission management](security-server-roles.md) are supported for [Microsoft Entra server principals](authentication-azure-ad-logins.md), but not if the Microsoft Entra login is a group.
 - [Elastic jobs in Azure SQL Database](elastic-jobs-overview.md)
 - [SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md)
 - [Change data capture (CDC)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) - If you create a database in Azure SQL Database as a Microsoft Entra user and enable change data capture on it, a SQL user won't be able to disable or make changes to CDC artifacts. However, another Microsoft Entra user will be able to enable or disable CDC on the same database. Similarly, if you create an Azure SQL Database as a SQL user, enabling or disabling CDC as a Microsoft Entra user won't work
