@@ -745,6 +745,9 @@ See the description of this argument earlier in this section.
 
 Removes the specified IP address from the specified availability group listener.
 
+> [!NOTE]  
+> The last remaining IP address can't be removed. Attempting to do so results in error 19535.
+
 #### RESTART LISTENER '*dns_name*'
 
 Restarts the listener that's associated with the specified DNS name. Supported only on the primary replica.

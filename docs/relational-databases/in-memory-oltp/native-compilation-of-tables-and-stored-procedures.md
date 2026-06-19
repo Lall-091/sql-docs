@@ -1,207 +1,178 @@
 ---
-title: "Native compilation of tables & stored procedures"
-description: Learn how In-Memory OLTP can compile memory-optimized tables and stored procedures that access memory-optimized tables into native code to enhance performance.
+title: Native Compilation of Tables and Stored Procedures
+description: Learn how in-memory OLTP can compile memory-optimized tables and stored procedures that access memory-optimized tables into native code to enhance performance.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: "04/20/2017"
+ms.reviewer: randolphwest
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: in-memory-oltp
 ms.topic: concept-article
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
-# Native Compilation of Tables and Stored Procedures
+# Native compilation of tables and stored procedures
+
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
-In-Memory OLTP introduces the concept of native compilation. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] can natively compile stored procedures that access memory-optimized tables. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is also able to natively compile memory-optimized tables. Native compilation allows faster data access and more efficient query execution than interpreted (traditional) [!INCLUDE[tsql](../../includes/tsql-md.md)]. Native compilation of tables and stored procedures produce DLLs.
 
-Native compilation of memory optimized table types is also supported. For more information, see [Faster temp table and table variable by using memory optimization](../../relational-databases/in-memory-oltp/faster-temp-table-and-table-variable-by-using-memory-optimization.md).
+In-memory online transaction processing (OLTP) uses native compilation to provide faster data access and more efficient query execution than interpreted (traditional) [!INCLUDE [tsql](../../includes/tsql-md.md)]. Native compilation of tables and stored procedures produces [dynamic link libraries](/troubleshoot/windows-client/setup-upgrade-and-drivers/dynamic-link-library) (DLLs).
 
-Native compilation refers to the process of converting programming constructs to native code, consisting of processor instructions without the need for further compilation or interpretation.
+The [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] can natively compile memory-optimized tables, stored procedures that access memory-optimized tables, and memory-optimized table types. For more information, see [Faster temp table and table variable by using memory optimization](faster-temp-table-and-table-variable-by-using-memory-optimization.md).
 
-In-Memory OLTP compiles memory-optimized tables when they are created, and natively compiled stored procedures when they are loaded to native DLLs. In addition, the DLLs are recompiled after a database or server restart. The information necessary to recreate the DLLs is stored in the database metadata. The DLLs are not part of the database, though they are associated with the database. For example, the DLLs are not included in database backups.
+In-memory OLTP compiles memory-optimized tables when you create them, and natively compiles stored procedures into native DLLs when they're loaded. In addition, DLLs are recompiled after a database or server restart. The database stores the information necessary to recreate the DLLs in metadata. The DLLs aren't part of the database, though they're associated with the database. For example, the DLLs aren't included in database backups.
 
-> [!NOTE]
-> Memory-optimized tables are recompiled during a server restart. To speed up database recovery, natively compiled stored procedures are not recompiled during a server restart, they are compiled at the time of first execution. As a result of this deferred compilation, natively compiled stored procedures only appear when calling [sys.dm_os_loaded_modules &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-os-loaded-modules-transact-sql.md) after first execution.
+> [!NOTE]  
+> Memory-optimized tables are recompiled after a server restarts. To speed up database recovery, the server doesn't recompile natively compiled stored procedures during the restart itself. Instead, it compiles them at the time of first execution. As a result of this deferred compilation, natively compiled stored procedures only appear when calling [sys.dm_os_loaded_modules](../system-dynamic-management-views/sys-dm-os-loaded-modules-transact-sql.md) after first execution.
 
-## Maintenance of In-Memory OLTP DLLs
+## Maintenance of in-memory OLTP DLLs
 
 The following query shows all table and stored procedure DLLs currently loaded in memory on the server:
 
 ```sql
-SELECT
-		mod1.name,
-		mod1.description
-	from
-		sys.dm_os_loaded_modules  as mod1
-	where
-		mod1.description = 'XTP Native DLL';
+SELECT mod1.name,
+       mod1.description
+FROM sys.dm_os_loaded_modules AS mod1
+WHERE mod1.description = 'XTP Native DLL';
 ```
 
-Database administrators do not need to maintain files that are generated by a native compilation. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] automatically removes generated files that are no longer needed. For example, generated files will be deleted when a table and stored procedure is deleted, or if a database is dropped.
+Database administrators don't need to maintain files generated by native compilation. The [!INCLUDE [ssde-md](../../includes/ssde-md.md)] automatically removes generated files that are no longer needed. For example, generated files are deleted when a table and stored procedure are deleted, or if a database is dropped.
 
-> [!NOTE]
-> If compilation fails or is interrupted, some generated files are not removed. These files are intentionally left behind for supportability and are removed when the database is dropped.
+> [!NOTE]  
+> If compilation fails or is interrupted, some generated files aren't removed. These files are intentionally left behind for supportability and are removed when the database is dropped.
 
-> [!NOTE]
-> SQL Server compiles DLLs for all tables needed for database recovery. If a table was dropped just prior to a database restart there can still be remnants of the table in the checkpoint files or the transaction log so the DLL for the table might be recompiled during database startup. After restart the DLL will be unloaded and the files will be removed by the normal cleanup process.
+The [!INCLUDE [ssde-md](../../includes/ssde-md.md)] compiles DLLs for all tables needed for database recovery. If a table is dropped right before a database restart, remnants of the table might exist in the checkpoint files or the transaction log. As a result, the DLL for the table might be recompiled during database startup. If this process occurs after the database restart, the normal cleanup process unloads the DLL and removes the files.
 
-## Native Compilation of Tables
+## Native compilation of tables
 
-Creating a memory-optimized table using the **CREATE TABLE** statement results in the table information being written to the database metadata and the table and index structures created in memory. The table will also be compiled to a DLL.
+When you create a memory-optimized table using the `CREATE TABLE` statement, the table information is written to the database metadata, and the table and index structures are created in memory. The table is then compiled to a DLL.
 
-Consider the following sample script, which creates a database and a memory-optimized table:
+The following sample script creates a database and a memory-optimized table. Make sure you set the `FILENAME` path to where your `DATA` subdirectory is.
 
 ```sql
 USE master;
 GO
 
-CREATE DATABASE DbMemopt3;
+CREATE DATABASE DbMemOpt3;
 GO
 
-ALTER DATABASE DbMemopt3
-	add filegroup DbMemopt3_mod_memopt_1_fg
-		contains memory_optimized_data
-;
+ALTER DATABASE DbMemOpt3
+ADD FILEGROUP DbMemOpt3_mod_memopt_1_fg
+    CONTAINS MEMORY_OPTIMIZED_DATA;
 GO
 
--- You must edit the front portion of filename= path, to where your DATA\ subdirectory is,
--- keeping only the trailing portion '\DATA\DbMemopt3_mod_memopt_1_fn'!
-
-ALTER DATABASE DbMemopt3
-	add file
-	(
-		name     = 'DbMemopt3_mod_memopt_1_name',
-		filename = 'C:\DATA\DbMemopt3_mod_memopt_1_fn'
-
-		--filename = 'C:\Program Files\Microsoft SQL Server\MSSQL13.SQLSVR2016ID\MSSQL\DATA\DbMemopt3_mod_memopt_1_fn'
-	)
-		to filegroup DbMemopt3_mod_memopt_1_fg
-;
+-- Change the FILENAME path to where your DATA subdirectory is located,
+-- keeping only the trailing portion '\DATA\DbMemOpt3_mod_memopt_1_fn'.
+ALTER DATABASE DbMemOpt3
+ADD FILE (
+    NAME = 'DbMemOpt3_mod_memopt_1_name',
+    FILENAME = 'C:\DATA\DbMemOpt3_mod_memopt_1_fn'
+)
+TO FILEGROUP DbMemOpt3_mod_memopt_1_fg;
 GO
 
-USE DbMemopt3;
+USE DbMemOpt3;
 GO
 
 CREATE TABLE dbo.t1
 (
-	c1 int not null primary key nonclustered,
-	c2 int
+    c1 INT NOT NULL PRIMARY KEY NONCLUSTERED,
+    c2 INT
 )
-	with (memory_optimized = on)
-;
+WITH (MEMORY_OPTIMIZED = ON);
 GO
-
-
-
--- You can safely rerun from here to the end.
 
 -- Retrieve the path of the DLL for table t1.
+DECLARE @moduleName AS NVARCHAR (256);
 
+SET @moduleName = ('%xtp_t_'
+    + CAST (db_id() AS NVARCHAR (16))
+    + '_' + CAST (object_id('dbo.t1') AS NVARCHAR (16))
+    + '%.dll');
 
-DECLARE @moduleName  nvarchar(256);
-
-SET @moduleName =
-	(
-		'%xtp_t_' +
-		cast(db_id() as nvarchar(16)) +
-		'_' +
-		cast(object_id('dbo.t1') as nvarchar(16)) +
-		'%.dll'
-	)
-;
-
-
--- SEARCHED FOR NAME EXAMPLE:  mod1.name LIKE '%xtp_t_8_565577053%.dll'
+-- Search for the name: mod1.name LIKE '%xtp_t_8_565577053%.dll'
 PRINT @moduleName;
 
-
-SELECT
-		mod1.name,
-		mod1.description
-	from
-		sys.dm_os_loaded_modules  as mod1
-	where
-		mod1.name LIKE @moduleName
-	order by
-		mod1.name
-;
--- ACTUAL NAME EXAMPLE:  mod1.name = 'C:\Program Files\Microsoft SQL Server\MSSQL13.SQLSVR2016ID\MSSQL\DATA\xtp\8\xtp_t_8_565577053_184009305855461.dll'
+SELECT mod1.name,
+       mod1.description
+FROM sys.dm_os_loaded_modules AS mod1
+WHERE mod1.name LIKE @moduleName
+ORDER BY mod1.name;
 GO
 
---   DROP DATABASE DbMemopt3;  -- Clean up.
-GO
+-- Clean up.
+-- DROP DATABASE DbMemOpt3;
+-- GO
 ```
 
-Creating the table also creates the table DLL and loads the DLL in memory. The DMV query immediately after the CREATE TABLE statement retrieves the path of the table DLL.
+Creating the table also creates the table DLL and loads the DLL in memory. The DMV query immediately after the `CREATE TABLE` statement retrieves the path of the table DLL.
 
-The table DLL understands the index structures and row format of the table. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] uses the DLL for traversing indexes, retrieving rows, as well as storing the contents of the rows.
+The table DLL understands the index structures and row format of the table. The [!INCLUDE [ssde-md](../../includes/ssde-md.md)] uses the DLL for traversing indexes, retrieving rows, and storing the contents of the rows.
 
-## Native Compilation of Stored Procedures
+## Native compilation of stored procedures
 
-Stored procedures that are marked with NATIVE_COMPILATION are natively compiled. This means the [!INCLUDE[tsql](../../includes/tsql-md.md)] statements in the procedure are all compiled to native code for efficient execution of performance-critical business logic.
+Mark stored procedures with `NATIVE_COMPILATION` to natively compile them. [!INCLUDE [tsql](../../includes/tsql-md.md)] statements in the procedure are all compiled to native code for efficient execution of performance-critical business logic.
 
-For more information about natively compiled stored procedures, see [Natively Compiled Stored Procedures](./a-guide-to-query-processing-for-memory-optimized-tables.md).
+For more information about natively compiled stored procedures, see [A Guide to Query Processing for Memory-Optimized Tables](a-guide-to-query-processing-for-memory-optimized-tables.md).
 
-Consider the following sample stored procedure, which inserts rows in the table t1 from the previous example:
+The following sample stored procedure inserts rows in the table `t1` from the previous example:
 
 ```sql
 CREATE PROCEDURE dbo.native_sp
-	with native_compilation,
-	     schemabinding,
-	     execute as owner
-as
-begin atomic
-	with (transaction isolation level = snapshot,
-	      language = N'us_english')
+WITH NATIVE_COMPILATION, SCHEMABINDING, EXECUTE AS OWNER
+AS
+BEGIN ATOMIC
+WITH (TRANSACTION ISOLATION LEVEL = SNAPSHOT, LANGUAGE = N'us_english')
+    DECLARE @i AS INT = 1000000;
 
-	DECLARE @i int = 1000000;
+    WHILE @i > 0
+        BEGIN
+            INSERT dbo.t1
+            VALUES (@i, @i + 1);
 
-	WHILE @i > 0
-	begin
-		INSERT dbo.t1 values (@i, @i+1);
-		SET @i -= 1;
-	end
-end;
+            SET @i -= 1;
+
+        END
+END;
 GO
 
 EXECUTE dbo.native_sp;
 GO
 
 -- Reset.
-
-DELETE from dbo.t1;
+DELETE dbo.t1;
 GO
 ```
 
-The DLL for native_sp can interact directly with the DLL for t1, as well as the In-Memory OLTP storage engine, to insert the rows as fast as possible.
+The DLL for `native_sp` can interact directly with the DLL for `t1`, and with the in-memory OLTP storage engine, to insert the rows as fast as possible. The query optimizer creates an efficient execution plan for each of the queries in the stored procedure.
 
-The In-Memory OLTP compiler leverages the query optimizer to create an efficient execution plan for each of the queries in the stored procedure. Note that natively compiled stored procedures are not automatically recompiled if the data in the table changes. For more information on maintaining statistics and stored procedures with In-Memory OLTP see [Statistics for Memory-Optimized Tables](../../relational-databases/in-memory-oltp/statistics-for-memory-optimized-tables.md).
+Natively compiled stored procedures aren't automatically recompiled if the data in the table changes. For more information on maintaining statistics and stored procedures with in-memory OLTP, see [Statistics for Memory-Optimized Tables](statistics-for-memory-optimized-tables.md).
 
-## Security Considerations for Native Compilation
+## Security considerations for native compilation
 
-Native compilation of tables and stored procedures uses the In-Memory OLTP compiler. This compiler produces files that are written to disk and loaded into memory. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] uses the following mechanisms to limit access to these files.
+Native compilation of tables and stored procedures uses the in-memory OLTP compiler. The compiler produces files that are written to disk and loaded into memory. The [!INCLUDE [ssde-md](../../includes/ssde-md.md)] uses the following mechanisms to limit access to these files.
 
-### Native Compiler
+<a id="native-compiler"></a>
 
-The compiler executable, as well as binaries and header files required for native compilation are installed as part of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance under the folder MSSQL\Binn\Xtp. So, if the default instance is installed under C:\Program Files, the compiler files are installed in C:\Program Files\\[!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]\MSSQL13.MSSQLSERVER\MSSQL\Binn\Xtp.
+### Compiler
 
-To limit access to the compiler, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] uses access control lists (ACLs) to restrict access to binary files. All [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] binaries are protected against modification or tampering through ACLs. The native compiler's ACLs also limit use of the compiler; only the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service account and system administrators have read and execute permissions for native compiler files.
+The compiler executable, binaries, and header files required for native compilation are installed as part of the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] instance, under the folder `MSSQL\Binn\Xtp`. If you install the default instance under `C:\Program Files`, the compiler files are in `C:\Program Files\Microsoft SQL Server\MSSQL\<version>.MSSQLSERVER\MSSQL\Binn\Xtp`.
 
-### Files Generated by a Native Compilation
+To limit access to the compiler, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] uses access control lists (ACLs) to restrict access to binary files. ACLs protect all [!INCLUDE [ssde-md](../../includes/ssde-md.md)] binaries against modification or tampering. The native compiler's ACLs also limit use of the compiler; only the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] service account and system administrators have read and execute permissions for native compiler files.
 
-The files produced when a table or stored procedure is compiled include the DLL and intermediate files including files with the following extensions: .c, .obj, .xml, and .pdb. The generated files are saved in a subfolder of the default data folder. The subfolder is called Xtp. When installing the default instance with the default data folder, the generated files are placed in C:\Program Files\\[!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]\MSSQL13.MSSQLSERVER\MSSQL\DATA\Xtp.
+### Files generated by a native compilation
 
-[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] prevents tampering with the generated DLLs in three ways:
+The files produced when a table or stored procedure is compiled include the DLL and intermediate files including files with the following extensions: `.c`, `.obj`, `.xml`, and `.pdb`. The generated files are saved in the `xtp` subfolder of the default data folder defined as `InstanceDefaultDataPath` in [SERVERPROPERTY](../../t-sql/functions/serverproperty-transact-sql.md). An example file path is: `C:\Program Files\Microsoft SQL Server\MSSQL\<version>.MSSQLSERVER\MSSQL\DATA\Xtp`.
 
-- When a table or stored procedure is compiled to a DLL, this DLL is immediately loaded into memory and linked to the sqlserver.exe process. A DLL cannot be modified while it is linked to a process.
+The [!INCLUDE [ssde-md](../../includes/ssde-md.md)] prevents tampering with the generated DLLs in three ways:
 
-- When a database is restarted, all tables and stored procedures are recompiled (removed and recreated) based on the database metadata. This will remove any changes made to a generated file by a malicious agent.
+- When a table or stored procedure is compiled to a DLL, the DLL is immediately loaded into memory, and linked to the `sqlserver.exe` process. You can't modify a DLL while it's linked to a process.
 
-- The generated files are considered part of user data, and have the same security restrictions, via ACLs, as database files: only the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service account and system administrators can access these files.
+- When a database restarts, all tables and stored procedures are recompiled (that is, removed and recreated) from the database metadata, with stored procedures compiled at first execution. Recompilation discards any changes made to a generated file, such as tampering by a malicious agent.
 
-No user interaction is needed to manage these files. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] will create and remove the files as necessary.
+- The generated files are treated as user data and have the same security restrictions, via ACLs, as database files. Only the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] service account and system administrators can access these files.
 
-## See Also
+You don't need to manage these files. The [!INCLUDE [ssde-md](../../includes/ssde-md.md)] creates and removes the files as necessary.
 
-[Memory-Optimized Tables](./sample-database-for-in-memory-oltp.md)
+## Related content
 
-[Natively Compiled Stored Procedures](./a-guide-to-query-processing-for-memory-optimized-tables.md)
+- [Sample database for in-memory OLTP](sample-database-for-in-memory-oltp.md)
+- [A Guide to Query Processing for Memory-Optimized Tables](a-guide-to-query-processing-for-memory-optimized-tables.md)

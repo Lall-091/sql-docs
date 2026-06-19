@@ -150,6 +150,10 @@ If you use a proxy server, set the `NO_PROXY` environment variable to exclude pr
 
 [!INCLUDE [entra-id-authentication-prerequisites](includes/entra-id-authentication-prerequisites.md)]
 
+## Supported extension versions
+
+Only extensions released within the last 12 months are supported. If you contact support and the extension version is out of support, the support team might ask you to update to the latest version before proceeding with troubleshooting. For version history and release dates, see [Release Notes](release-notes.md).
+
 ## Supported SQL Server versions and environments
 
 [!INCLUDE [supported-configurations](includes/supported-configurations.md)]
