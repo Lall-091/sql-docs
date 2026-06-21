@@ -4,7 +4,7 @@ description: Disassociates the specified maintenance plan from the specified dat
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -35,7 +35,7 @@ Disassociates the specified maintenance plan from the specified database.
 ## Syntax
 
 ```syntaxsql
-sp_delete_maintenance_plan_db
+dbo.sp_delete_maintenance_plan_db
     [ @plan_id = ] 'plan_id'
     , [ @db_name = ] N'db_name'
 [ ; ]

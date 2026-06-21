@@ -1,10 +1,10 @@
 ---
-title: "sp_help_log_shipping_primary_secondary (Transact-SQL)"
+title: "sys.sp_help_log_shipping_primary_secondary (Transact-SQL)"
 description: Returns information regarding all the secondary databases for a given primary database.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_log_shipping_primary_secondary (Transact-SQL)
+# sys.sp_help_log_shipping_primary_secondary (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ This stored procedure returns information regarding all the secondary databases 
 ## Syntax
 
 ```syntaxsql
-sp_help_log_shipping_primary_secondary
+sys.sp_help_log_shipping_primary_secondary
     [ @primary_database = ] N'primary_database'
 [ ; ]
 ```

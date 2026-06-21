@@ -1,10 +1,10 @@
 ---
-title: "sp_requestpeertopologyinfo (Transact-SQL)"
+title: "sys.sp_requestpeertopologyinfo (Transact-SQL)"
 description: Populates the MSpeer_topologyresponse system table with information about a peer-to-peer transactional replication topology.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_requestpeertopologyinfo (Transact-SQL)
+# sys.sp_requestpeertopologyinfo (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Populates the [MSpeer_topologyresponse](../system-tables/mspeer-topologyresponse
 ## Syntax
 
 ```syntaxsql
-sp_requestpeertopologyinfo
+sys.sp_requestpeertopologyinfo
     [ @publication = ] N'publication'
     [ , [ @request_id = ] request_id OUTPUT ]
 [ ; ]
@@ -41,7 +41,7 @@ The name of the publication for which to perform a topology-wide status request.
 
 #### [ @request_id = ] *request_id* OUTPUT
 
-The ID number that is assigned to the topology status request. *@request_id* is an OUTPUT parameter of type **int**. This ID can be used by [sp_gettopologyinfo](sp-gettopologyinfo-transact-sql.md).
+The ID number that is assigned to the topology status request. *@request_id* is an `OUTPUT` parameter of type **int**. This ID can be used by [sp_gettopologyinfo](sp-gettopologyinfo-transact-sql.md).
 
 ## Return code values
 

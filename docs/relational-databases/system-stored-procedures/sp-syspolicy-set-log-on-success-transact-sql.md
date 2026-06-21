@@ -4,7 +4,7 @@ description: "Specifies whether successful policy evaluations are logged in the 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,7 @@ Specifies whether successful policy evaluations are logged in the Policy History
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_set_log_on_success
-    [ @value = ] value
+dbo.sp_syspolicy_set_log_on_success [ @value = ] value
 [ ; ]
 ```
 

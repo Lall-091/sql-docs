@@ -4,7 +4,7 @@ description: "Deletes a policy category subscription for a specific database."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Deletes a policy category subscription for a specific database.
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_delete_policy_category_subscription
+dbo.sp_syspolicy_delete_policy_category_subscription
     [ @policy_category_subscription_id = ] policy_category_subscription_id
 [ ; ]
 ```

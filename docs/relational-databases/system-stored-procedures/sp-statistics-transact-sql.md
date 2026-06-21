@@ -1,10 +1,10 @@
 ---
-title: "sp_statistics (Transact-SQL)"
+title: "sys.sp_statistics (Transact-SQL)"
 description: "The sp_statistics system stored procedure returns a list of all indexes and statistics on a specified table or indexed view."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_statistics (Transact-SQL)
+# sys.sp_statistics (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
@@ -30,7 +30,7 @@ Returns a list of all indexes and statistics on a specified table or indexed vie
 ## Syntax
 
 ```syntaxsql
-sp_statistics
+sys.sp_statistics
     [ @table_name = ] N'table_name'
     [ , [ @table_owner = ] N'table_owner' ]
     [ , [ @table_qualifier = ] N'table_qualifier' ]

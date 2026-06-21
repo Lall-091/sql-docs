@@ -4,7 +4,7 @@ description: Creates a collection item in a user-defined collection set.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Creates a collection item in a user-defined collection set. A collection item de
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_create_collection_item
+dbo.sp_syscollector_create_collection_item
     [ @collection_set_id = ] collection_set_id
     , [ @collector_type_uid = ] 'collector_type_uid'
     , [ @name = ] N'name'
@@ -66,7 +66,7 @@ The input parameters for the collector type. *@parameters* is **xml**, with a de
 
 #### [ @collection_item_id = ] *collection_item_id* OUTPUT
 
-The unique identifier that identifies the collection set item. *@collection_item_id* is an OUTPUT parameter of type **int**.
+The unique identifier that identifies the collection set item. *@collection_item_id* is an `OUTPUT` parameter of type **int**.
 
 ## Return code values
 

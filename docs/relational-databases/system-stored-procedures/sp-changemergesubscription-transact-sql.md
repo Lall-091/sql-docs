@@ -1,10 +1,10 @@
 ---
-title: "sp_changemergesubscription (Transact-SQL)"
+title: "sys.sp_changemergesubscription (Transact-SQL)"
 description: "Changes selected properties of a merge push subscription. This stored procedure is executed at the Publisher on the publication database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changemergesubscription (Transact-SQL)
+# sys.sp_changemergesubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -28,7 +28,7 @@ Changes selected properties of a merge push subscription. This stored procedure 
 ## Syntax
 
 ```syntaxsql
-sp_changemergesubscription
+sys.sp_changemergesubscription
     [ [ @publication = ] N'publication' ]
     [ , [ @subscriber = ] N'subscriber' ]
     [ , [ @subscriber_db = ] N'subscriber_db' ]

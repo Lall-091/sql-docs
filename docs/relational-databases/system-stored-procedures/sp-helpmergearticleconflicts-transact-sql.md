@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergearticleconflicts (Transact-SQL)"
+title: "sys.sp_helpmergearticleconflicts (Transact-SQL)"
 description: "Returns the articles in the publication that have conflicts."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergearticleconflicts (Transact-SQL)
+# sys.sp_helpmergearticleconflicts (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the articles in the publication that have conflicts. This stored procedu
 ## Syntax
 
 ```syntaxsql
-sp_helpmergearticleconflicts
+sys.sp_helpmergearticleconflicts
     [ [ @publication = ] N'publication' ]
     [ , [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]

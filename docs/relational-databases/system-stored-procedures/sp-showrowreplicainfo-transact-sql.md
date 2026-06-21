@@ -1,10 +1,10 @@
 ---
-title: "sp_showrowreplicainfo (Transact-SQL)"
+title: "sys.sp_showrowreplicainfo (Transact-SQL)"
 description: sp_showrowreplicainfo displays information about a row in a table that is being used as an article in merge replication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_showrowreplicainfo (Transact-SQL)
+# sys.sp_showrowreplicainfo (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Displays information about a row in a table that is being used as an article in 
 ## Syntax
 
 ```syntaxsql
-sp_showrowreplicainfo
+sys.sp_showrowreplicainfo
     [ [ @ownername = ] N'ownername' ]
     [ , [ @tablename = ] N'tablename' ]
     , [ @rowguid = ] 'rowguid'

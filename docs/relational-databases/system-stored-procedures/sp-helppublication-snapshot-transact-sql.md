@@ -4,7 +4,7 @@ description: sp_helppublication_snapshot returns information on the Snapshot age
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 01/19/2026
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"

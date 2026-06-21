@@ -4,7 +4,7 @@ description: sp_resync_targetserver resynchronizes all multiserver jobs in the s
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Resynchronizes all multiserver jobs in the specified target server.
 ## Syntax
 
 ```syntaxsql
-sp_resync_targetserver [ @server_name = ] N'server_name'
+dbo.sp_resync_targetserver [ @server_name = ] N'server_name'
 [ ; ]
 ```
 

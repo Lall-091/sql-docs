@@ -4,7 +4,7 @@ description: "Manually clean the side table (change_tracking_objectid) for a tab
 author: JetterMcTedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -33,20 +33,30 @@ This stored procedure allows you to manually clean the side table (`change_track
 
 ```syntaxsql
 sys.sp_flush_CT_internal_table_on_demand
-    [ @TableToClean = ] 'TableToClean'
+    [ [ @TableToClean = ] N'TableToClean' ]
     [ , [ @DeletedRowCount = ] DeletedRowCount OUTPUT ]
+    [ , [ @DeleteBatchSize = ] DeleteBatchSize ]
+    [ , [ @SysCommitTabRowCount = ] SysCommitTabRowCount ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @TableToClean = ] '*TableToClean*'
+#### [ @TableToClean = ] N'*TableToClean*'
 
 The change tracking-enabled table to be manually cleaned up. The backlogs are left for the automatic cleanup by change tracking. Can be null to clean up all side tables.
 
-#### [ @DeletedRowCount = ] '*DeletedRowCount*' OUTPUT
+#### [ @DeletedRowCount = ] *DeletedRowCount* OUTPUT
 
-*@DeletedRowCount* is an OUTPUT parameter of type **bigint**. This parameter returns the total number of rows that got cleaned up during the process.
+*@DeletedRowCount* is an `OUTPUT` parameter of type **bigint**. This parameter returns the total number of rows that got cleaned up during the process.
+
+#### [ @DeleteBatchSize = ] *DeleteBatchSize*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @SysCommitTabRowCount = ] *SysCommitTabRowCount*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

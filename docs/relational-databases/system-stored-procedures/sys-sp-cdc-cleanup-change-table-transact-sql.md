@@ -4,7 +4,7 @@ description: Removes rows from the change table in the current database based on
 author: tameikal-msft
 ms.author: talawren
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,20 +30,21 @@ Removes rows from the change table in the current database based on the specifie
 ## Syntax
 
 ```syntaxsql
-sys.sp_cdc_cleanup_change_table [ @capture_instance = ] 'capture_instance'
+sys.sp_cdc_cleanup_change_table
+    [ @capture_instance = ] N'capture_instance'
     , [ @low_water_mark = ] low_water_mark
-    , [ @threshold = ] 'delete threshold'
-    , [ @fCleanupFailed = ] 'cleanup failed' OUTPUT
+    [ , [ @threshold = ] threshold ]
+    [ , [ @fCleanupFailed = ] fCleanupFailed OUTPUT ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @capture_instance = ] '*capture_instance*'
+#### [ @capture_instance = ] N'*capture_instance*'
 
 The name of the capture instance associated with the change table. *@capture_instance* is **sysname**, with no default, and can't be `NULL`.
 
-*capture_instance* must name a capture instance that exists in the current database.
+*@capture_instance* must name a capture instance that exists in the current database.
 
 #### [ @low_water_mark = ] *low_water_mark*
 
@@ -56,13 +57,13 @@ If the value is explicitly set to `NULL`, the current *@low_water_mark* for the 
 > [!NOTE]  
 > *@low_water_mark* is the LSN threshold. Any transactions with a LSN value lower than the value provided is processed, and the value in question is excluded.
 
-#### [ @threshold = ] '*delete threshold*'
+#### [ @threshold = ] *threshold*
 
 The maximum number of delete entries that can be deleted by using a single statement on cleanup. *@threshold* is **bigint**, with a default of 5000.
 
-#### [ @fCleanupFailed = ] '*cleanup failed*' OUTPUT
+#### [ @fCleanupFailed = ] *fCleanupFailed* OUTPUT
 
-An OUTPUT parameter indicating whether the cleanup operation failed or not. *@fCleanupFailed* is **bit**, with a default of `0`.
+An `OUTPUT` parameter indicating whether the cleanup operation failed or not. *@fCleanupFailed* is **bit**, with a default of `0`.
 
 ## Result set
 

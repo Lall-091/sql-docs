@@ -1,10 +1,10 @@
 ---
-title: "sp_replshowcmds (Transact-SQL)"
+title: "sys.sp_replshowcmds (Transact-SQL)"
 description: sp_replshowcmds returns the commands for transactions marked for replication in readable format.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replshowcmds (Transact-SQL)
+# sys.sp_replshowcmds (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns the commands for transactions marked for replication in readable format.
 ## Syntax
 
 ```syntaxsql
-sp_replshowcmds [ [ @maxtrans = ] maxtrans ]
+sys.sp_replshowcmds [ [ @maxtrans = ] maxtrans ]
 [ ; ]
 ```
 

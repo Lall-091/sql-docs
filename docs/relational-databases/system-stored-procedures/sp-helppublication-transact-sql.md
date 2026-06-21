@@ -4,7 +4,7 @@ description: sp_helppublication returns information about a publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 01/19/2026
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -42,7 +42,7 @@ The name of the publication to view. *@publication* is **sysname**, with a defau
 
 #### [ @found = ] *found* OUTPUT
 
-*@found* is an OUTPUT parameter of type **int**. A value of `0` means that no publication matching the input criteria was found.
+*@found* is an `OUTPUT` parameter of type **int**. A value of `0` means that no publication matching the input criteria was found.
 
 #### [ @publisher = ] N'*publisher*'
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_dbcmptlevel (Transact-SQL)"
+title: "sys.sp_dbcmptlevel (Transact-SQL)"
 description: sp_dbcmptlevel sets certain database behaviors to be compatible with the specified version of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbcmptlevel (Transact-SQL)
+# sys.sp_dbcmptlevel (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Sets certain database behaviors to be compatible with the specified version of [
 ## Syntax
 
 ```syntaxsql
-sp_dbcmptlevel
+sys.sp_dbcmptlevel
     [ [ @dbname = ] N'dbname' ]
     [ , [ @new_cmptlevel = ] new_cmptlevel OUTPUT ]
 [ ; ]
@@ -44,7 +44,7 @@ The name of the database for which the compatibility level is to be changed. Dat
 
 #### [ @new_cmptlevel = ] *new_cmptlevel* OUTPUT
 
-The version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] with which the database is to be made compatible. *@new_cmptlevel* is an OUTPUT parameter of type **tinyint**, and must be one of the following values:
+The version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] with which the database is to be made compatible. *@new_cmptlevel* is an `OUTPUT` parameter of type **tinyint**, and must be one of the following values:
 
 - `90` = [!INCLUDE [ssVersion2005](../../includes/ssversion2005-md.md)]
 - `100` = [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)]

@@ -1,10 +1,10 @@
 ---
-title: "sp_revokelogin (Transact-SQL)"
+title: "sys.sp_revokelogin (Transact-SQL)"
 description: sp_revokelogin Removes the login entries from SQL Server for a Windows user or group.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_revokelogin (Transact-SQL)
+# sys.sp_revokelogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Removes the login entries from [!INCLUDE [ssNoVersion](../../includes/ssnoversio
 ## Syntax
 
 ```syntaxsql
-sp_revokelogin [ @loginame = ] N'loginame'
+sys.sp_revokelogin [ @loginame = ] N'loginame'
 [ ; ]
 ```
 

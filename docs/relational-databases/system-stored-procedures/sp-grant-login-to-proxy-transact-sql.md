@@ -4,7 +4,7 @@ description: sp_grant_login_to_proxy grants a security principal access to a pro
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Grants a security principal access to a proxy.
 ## Syntax
 
 ```syntaxsql
-sp_grant_login_to_proxy
+dbo.sp_grant_login_to_proxy
     [ [ @login_name = ] N'login_name' ]
     [ , [ @fixed_server_role = ] N'fixed_server_role' ]
     [ , [ @msdb_role = ] N'msdb_role' ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_showpendingchanges (Transact-SQL)"
+title: "sys.sp_showpendingchanges (Transact-SQL)"
 description: sp_showpendingchanges returns a result set showing the changes that are waiting to be replicated.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_showpendingchanges (Transact-SQL)
+# sys.sp_showpendingchanges (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Returns a result set showing the changes that are waiting to be replicated. This
 ## Syntax
 
 ```syntaxsql
-sp_showpendingchanges
+sys.sp_showpendingchanges
     [ [ @destination_server = ] N'destination_server' ]
     [ , [ @publication = ] N'publication' ]
     [ , [ @article = ] N'article' ]

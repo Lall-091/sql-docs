@@ -1,10 +1,10 @@
 ---
-title: "sp_dbremove (Transact-SQL)"
+title: "sys.sp_dbremove (Transact-SQL)"
 description: sp_dbremove removes a database and all files associated with that database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbremove (Transact-SQL)
+# sys.sp_dbremove (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Removes a database and all files associated with that database.
 ## Syntax
 
 ```syntaxsql
-sp_dbremove
+sys.sp_dbremove
     [ [ @dbname = ] N'dbname' ]
     [ , [ @dropdev = ] 'dropdev' ]
 [ ; ]
@@ -42,7 +42,7 @@ sp_dbremove
 
 The name of the database to be removed. *@dbname* is **sysname**, with a default of `NULL`.
 
-#### [ @dropdev = ] 'dropdev'
+#### [ @dropdev = ] '*dropdev*'
 
 A flag provided for backward compatibility only and is currently ignored. *@dropdev* is **varchar(10)**, with a default of `dropdev`.
 

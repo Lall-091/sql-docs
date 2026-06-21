@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergealternatepublisher (Transact-SQL)"
+title: "sys.sp_helpmergealternatepublisher (Transact-SQL)"
 description: "Returns a list of all servers enabled as alternate Publishers for merge publications."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergealternatepublisher (Transact-SQL)
+# sys.sp_helpmergealternatepublisher (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns a list of all servers enabled as alternate Publishers for merge publicat
 ## Syntax
 
 ```syntaxsql
-sp_helpmergealternatepublisher
+sys.sp_helpmergealternatepublisher
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

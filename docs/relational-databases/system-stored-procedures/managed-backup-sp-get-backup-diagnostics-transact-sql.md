@@ -1,10 +1,10 @@
 ---
-title: "managed_backup.sp_get_backup_diagnostics (Transact-SQL)"
+title: "smart_admin.sp_get_backup_diagnostics (Transact-SQL)"
 description: "Returns the Extended Events logged by Smart Admin."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# managed_backup.sp_get_backup_diagnostics (Transact-SQL)
+# smart_admin.sp_get_backup_diagnostics (Transact-SQL)
 
 [!INCLUDE [sqlserver2016](../../includes/applies-to-version/sqlserver2016.md)]
 
@@ -32,26 +32,26 @@ Use this stored procedure to monitor Extended Events logged by Smart Admin. [!IN
 ## Syntax
 
 ```syntaxsql
-managed_backup.sp_get_backup_diagnostics
-    [ [ @xevent_channel = ] 'event_type'
-    [ , [ @begin_time = ] 'time1' ]
-    [ , [ @end_time = ] 'time2' ] ]
+smart_admin.sp_get_backup_diagnostics
+    [ [ @xevent_channel = ] 'xevent_channel' ]
+    [ , [ @begin_time = ] begin_time ]
+    [ , [ @end_time = ] end_time ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @xevent_channel = ] '*event_type*'
+#### [ @xevent_channel = ] '*xevent_channel*'
 
 The type of Extended Event. The default value is set to return all events logged for the previous 30 minutes. The events logged depend on the type of Extended Events enabled. You can use this parameter to filter the stored procedure to show only events of a certain type. You can either specify the full event name or specify a substring such as: `Admin`, `Analytic`, `Operational`, and `Debug`. *@event_channel* is **varchar(255)**.
 
 To get a list of event types currently enabled use the `managed_backup.fn_get_current_xevent_settings` function.
 
-#### [ @begin_time = ] '*time1*'
+#### [ @begin_time = ] *begin_time*
 
 The start of the time period from which the events should be displayed. *@begin_time* is **datetime** with a default value of `NULL`. If this isn't specified, then the events from the past 30 minutes are displayed.
 
-#### [ @end_time = ] '*time2*'
+#### [ @end_time = ] *end_time*
 
 The end of the time period up to which the events should be displayed. *@end_time* is **datetime** with a default value of `NULL`. If this isn't specified, then the events up to the current time is displayed.
 

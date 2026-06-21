@@ -1,10 +1,10 @@
 ---
-title: "sp_generatefilters (Transact-SQL)"
+title: "sys.sp_generatefilters (Transact-SQL)"
 description: sp_generatefilters creates filters on foreign key tables when a specified table is replicated.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_generatefilters (Transact-SQL)
+# sys.sp_generatefilters (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Creates filters on foreign key tables when a specified table is replicated. This
 ## Syntax
 
 ```syntaxsql
-sp_generatefilters [ @publication = ] N'publication'
+sys.sp_generatefilters [ @publication = ] N'publication'
 [ ; ]
 ```
 

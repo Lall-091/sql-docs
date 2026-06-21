@@ -4,7 +4,7 @@ description: sp_help_targetserver lists all target servers.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Lists all target servers.
 ## Syntax
 
 ```syntaxsql
-sp_help_targetserver [ [ @server_name = ] N'server_name' ]
+dbo.sp_help_targetserver [ [ @server_name = ] N'server_name' ]
 [ ; ]
 ```
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_reinitpullsubscription (Transact-SQL)"
+title: "sys.sp_reinitpullsubscription (Transact-SQL)"
 description: sp_reinitpullsubscription marks a transactional pull or anonymous subscription for reinitialization the next time the Distribution Agent runs.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_reinitpullsubscription (Transact-SQL)
+# sys.sp_reinitpullsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Marks a transactional pull or anonymous subscription for reinitialization the ne
 ## Syntax
 
 ```syntaxsql
-sp_reinitpullsubscription
+sys.sp_reinitpullsubscription
     [ @publisher = ] N'publisher'
     [ , [ @publisher_db = ] N'publisher_db' ]
     [ , [ @publication = ] N'publication' ]

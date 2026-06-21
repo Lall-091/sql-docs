@@ -1,10 +1,10 @@
 ---
-title: "sp_catalogs (Transact-SQL)"
+title: "sys.sp_catalogs (Transact-SQL)"
 description: sp_catalogs returns the list of catalogs in the specified linked server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_catalogs (Transact-SQL)
+# sys.sp_catalogs (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the list of catalogs in the specified linked server. This is equivalent 
 ## Syntax
 
 ```syntaxsql
-sp_catalogs [ @server_name = ] N'server_name'
+sys.sp_catalogs [ @server_name = ] N'server_name'
 [ ; ]
 ```
 

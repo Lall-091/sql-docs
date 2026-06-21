@@ -4,7 +4,7 @@ description: sp_help_proxy lists information for one or more proxies.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,9 @@ Lists information for one or more proxies.
 ## Syntax
 
 ```syntaxsql
-sp_help_proxy
-    [ [ @proxy_id = ] proxy_id ]
-    [ , [ @proxy_name = ] N'proxy_name' ]
+dbo.sp_help_proxy
+    [ { [ @proxy_id = ] proxy_id
+        | [ @proxy_name = ] N'proxy_name' } ]
     [ , [ @subsystem_name = ] N'subsystem_name' ]
     [ , [ @name = ] N'name' ]
 [ ; ]
@@ -39,11 +39,11 @@ sp_help_proxy
 
 #### [ @proxy_id = ] *proxy_id*
 
-The proxy identification number of the proxy to list information for. *@proxy_id* is **int**, with a default of `NULL`. Either the *@proxy_id* or the *@proxy_name* can be specified.
+The proxy identification number of the proxy to list information for. *@proxy_id* is **int**, with a default of `NULL`. Either *@proxy_id* or *@proxy_name* can be specified.
 
 #### [ @proxy_name = ] N'*proxy_name*'
 
-The name of the proxy to list information for. *@proxy_name* is **sysname**, with a default of `NULL`. Either the *@proxy_id* or the *@proxy_name* can be specified.
+The name of the proxy to list information for. *@proxy_name* is **sysname**, with a default of `NULL`. Either *@proxy_id* or *@proxy_name* can be specified.
 
 #### [ @subsystem_name = ] N'*subsystem_name*'
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_db_vardecimal_storage_format (Transact-SQL)"
+title: "sys.sp_db_vardecimal_storage_format (Transact-SQL)"
 description: sp_db_vardecimal_storage_format returns the current vardecimal storage format state of a database, or enables a database for vardecimal storage format.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -21,7 +21,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_db_vardecimal_storage_format (Transact-SQL)
+# sys.sp_db_vardecimal_storage_format (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -33,7 +33,7 @@ Returns the current **vardecimal** storage format state of a database or enables
 ## Syntax
 
 ```syntaxsql
-sp_db_vardecimal_storage_format
+sys.sp_db_vardecimal_storage_format
     [ [ @dbname = ] N'dbname' ]
     [ , [ @vardecimal_storage_format = ] 'vardecimal_storage_format' ]
 [ ; ]

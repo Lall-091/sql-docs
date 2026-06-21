@@ -4,7 +4,7 @@ description: "Adds a policy category that can be used with Policy-Based Manageme
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,10 +27,10 @@ Adds a policy category that can be used with Policy-Based Management. Policy cat
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_add_policy_category
+dbo.sp_syspolicy_add_policy_category
     [ @name = ] N'name'
     [ , [ @mandate_database_subscriptions = ] mandate_database_subscriptions ]
-      , [ @policy_category_id = ] policy_category_id OUTPUT
+    , [ @policy_category_id = ] policy_category_id OUTPUT
 [ ; ]
 ```
 
@@ -44,7 +44,7 @@ The name of the policy category. *@name* is **sysname**, and is required. *@name
 
 Determines whether database subscription is mandated for the policy category. *@mandate_database_subscriptions* is **bit** value, with a default of `1` (enabled).
 
-#### [ @policy_category_id = ] *policy_category_id*
+#### [ @policy_category_id = ] *policy_category_id* OUTPUT
 
 The identifier for the policy category. *@policy_category_id* is **int**, and is returned as `OUTPUT`.
 

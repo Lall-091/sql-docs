@@ -1,10 +1,10 @@
 ---
-title: "sp_help_fulltext_columns (Transact-SQL)"
+title: "sys.sp_help_fulltext_columns (Transact-SQL)"
 description: sp_help_fulltext_columns returns the columns designated for full-text indexing.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_fulltext_columns (Transact-SQL)
+# sys.sp_help_fulltext_columns (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Returns the columns designated for full-text indexing.
 ## Syntax
 
 ```syntaxsql
-sp_help_fulltext_columns
+sys.sp_help_fulltext_columns
     [ [ @table_name = ] N'table_name' ]
     [ , [ @column_name = ] N'column_name' ]
 [ ; ]

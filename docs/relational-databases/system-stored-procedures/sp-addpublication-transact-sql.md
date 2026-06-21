@@ -1,10 +1,10 @@
 ---
-title: "sp_addpublication (Transact-SQL)"
+title: "sys.sp_addpublication (Transact-SQL)"
 description: sp_addpublication creates a snapshot or transactional publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addpublication (Transact-SQL)
+# sys.sp_addpublication (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Creates a snapshot or transactional publication. This stored procedure is execut
 ## Syntax
 
 ```syntaxsql
-sp_addpublication
+sys.sp_addpublication
     [ @publication = ] N'publication'
     [ , [ @taskid = ] taskid ]
     [ , [ @restricted = ] N'restricted' ]
@@ -333,7 +333,8 @@ Indicates if schema replication is supported for the publication. *@replicate_dd
 - `1` indicates that data definition language (DDL) statements executed at the publisher are replicated.
 - `0` indicates that DDL statements aren't replicated.
 
-*Schema replication isn't supported for Oracle Publishers.*
+> [!NOTE]  
+> Schema replication isn't supported for Oracle Publishers.
 
 For more information, see [Make Schema Changes on Publication Databases](../replication/publish/make-schema-changes-on-publication-databases.md).
 

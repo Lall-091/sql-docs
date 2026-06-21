@@ -1,10 +1,10 @@
 ---
-title: "sp_helparticle (Transact-SQL)"
+title: "sys.sp_helparticle (Transact-SQL)"
 description: sp_helparticle displays information about an article.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helparticle (Transact-SQL)
+# sys.sp_helparticle (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Displays information about an article. This stored procedure is executed at the 
 ## Syntax
 
 ```syntaxsql
-sp_helparticle
+sys.sp_helparticle
     [ @publication = ] N'publication'
     [ , [ @article = ] N'article' ]
     [ , [ @returnfilter = ] returnfilter ]

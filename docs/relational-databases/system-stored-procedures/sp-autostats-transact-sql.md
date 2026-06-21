@@ -1,10 +1,10 @@
 ---
-title: "sp_autostats (Transact-SQL)"
+title: "sys.sp_autostats (Transact-SQL)"
 description: Displays or changes AUTO_UPDATE_STATISTICS for an index, statistics object, a table, or an indexed view.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_autostats (Transact-SQL)
+# sys.sp_autostats (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -32,7 +32,7 @@ For more information about the `AUTO_UPDATE_STATISTICS` option, see [ALTER DATAB
 ## Syntax
 
 ```syntaxsql
-sp_autostats
+sys.sp_autostats
     [ @tblname = ] N'tblname'
     [ , [ @flagc = ] 'flagc' ]
     [ , [ @indname = ] N'indname' ]

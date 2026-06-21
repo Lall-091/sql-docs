@@ -4,7 +4,7 @@ description: Inserts rows into the sysdownloadlist system table for target serve
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Inserts operations (rows) into the `sysdownloadlist` system table for target ser
 ## Syntax
 
 ```syntaxsql
-sp_post_msx_operation
+dbo.sp_post_msx_operation
     [ @operation = ] 'operation'
     [ , [ @object_type = ] 'object_type' ]
     [ , [ @job_id = ] 'job_id' ]

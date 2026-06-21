@@ -1,10 +1,10 @@
 ---
-title: "sp_check_dynamic_filters (Transact-SQL)"
+title: "sys.sp_check_dynamic_filters (Transact-SQL)"
 description: sp_check_dynamic_filters displays information on parameterized row filter properties for a publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -20,7 +20,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_check_dynamic_filters (Transact-SQL)
+# sys.sp_check_dynamic_filters (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -31,7 +31,7 @@ Displays information on parameterized row filter properties for a publication, i
 ## Syntax
 
 ```syntaxsql
-sp_check_dynamic_filters [ @publication = ] N'publication'
+sys.sp_check_dynamic_filters [ @publication = ] N'publication'
 [ ; ]
 ```
 

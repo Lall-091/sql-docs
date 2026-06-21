@@ -4,7 +4,7 @@ description: Deletes rows from syscommittab in batches.
 author: JetterMcTedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,7 +30,7 @@ Deletes rows from `syscommittab` in batches.
 ## Syntax
 
 ```syntaxsql
-sp_flush_commit_table_on_demand
+sys.sp_flush_commit_table_on_demand
     [ @numrows = ] numrows
     , [ @deleted_rows = ] deleted_rows OUTPUT
     , [ @date_cleanedup = ] date_cleanedup OUTPUT
@@ -46,15 +46,15 @@ Specifies the number of rows you want to delete from syscommittab. *@numrows* is
 
 #### [ @deleted_rows = ] *deleted_rows* OUTPUT
 
-*@deleted_rows* is an OUTPUT parameter of type **bigint**.
+*@deleted_rows* is an `OUTPUT` parameter of type **bigint**.
 
 #### [ @date_cleanedup = ] *date_cleanedup* OUTPUT
 
-*@date_cleanedup* is an OUTPUT parameter of type **datetime**.
+*@date_cleanedup* is an `OUTPUT` parameter of type **datetime**.
 
 #### [ @cleanup_ts = ] *cleanup_ts* OUTPUT
 
-*@cleanup_ts* is an OUTPUT parameter of type **bigint**.
+*@cleanup_ts* is an `OUTPUT` parameter of type **bigint**.
 
 ## Return code values
 

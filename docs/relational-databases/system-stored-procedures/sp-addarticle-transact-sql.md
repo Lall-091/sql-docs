@@ -1,10 +1,10 @@
 ---
-title: "sp_addarticle (Transact-SQL)"
+title: "sys.sp_addarticle (Transact-SQL)"
 description: Creates an article and adds it to a publication. This stored procedure runs at the Publisher on the publication database.
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addarticle (Transact-SQL)
+# sys.sp_addarticle (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Creates an article and adds it to a publication. This stored procedure is execut
 ## Syntax
 
 ```syntaxsql
-sp_addarticle
+sys.sp_addarticle
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     [ , [ @source_table = ] N'source_table' ]
@@ -289,7 +289,7 @@ The database object to be published. *@source_object* is **sysname**, with a def
 
 #### [ @artid = ] *artid* OUTPUT
 
-The article ID of the new article. *@artid* is an OUTPUT parameter of type **int**.
+The article ID of the new article. *@artid* is an `OUTPUT` parameter of type **int**.
 
 #### [ @auto_identity_range = ] N'*auto_identity_range*'
 

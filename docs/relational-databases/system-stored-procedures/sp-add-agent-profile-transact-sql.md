@@ -1,10 +1,10 @@
 ---
-title: "sp_add_agent_profile (Transact-SQL)"
+title: "sys.sp_add_agent_profile (Transact-SQL)"
 description: "sp_add_agent_profile (Transact-SQL)"
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_add_agent_profile (Transact-SQL)
+# sys.sp_add_agent_profile (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,21 +27,23 @@ Creates a new profile for a replication agent. This stored procedure is executed
 ## Syntax
 
 ```syntaxsql
-sp_add_agent_profile [ [ @profile_id = ] profile_id OUTPUT ]
-      , [ @profile_name = ] 'profile_name'
-      , [ @agent_type = ] agent_type
+sys.sp_add_agent_profile
+    [ [ @profile_id = ] profile_id OUTPUT ]
+    , [ @profile_name = ] N'profile_name'
+    , [ @agent_type = ] agent_type
     [ , [ @profile_type = ] profile_type ]
     [ , [ @description = ] N'description' ]
     [ , [ @default = ] default ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### [ @profile_id = ] *profile_id*
+#### [ @profile_id = ] *profile_id* OUTPUT
 
-The ID associated with the newly inserted profile. *@profile_id* is **int** and is an optional OUTPUT parameter. If specified, the value is set to the new profile ID.
+The ID associated with the newly inserted profile. *@profile_id* is **int** and is an optional `OUTPUT` parameter. If specified, the value is set to the new profile ID.
 
-#### [ @profile_name = ] '*profile_name*'
+#### [ @profile_name = ] N'*profile_name*'
 
 The name of the profile. *@profile_name* is **sysname**, with no default.
 
@@ -59,7 +61,7 @@ The type of replication agent. *@agent_type* is **int**, with no default, and ca
 
 #### [ @profile_type = ] *profile_type*
 
-The type of profile.*profile_type* is **int**, with a default of `1`.
+The type of profile. *@profile_type* is **int**, with a default of `1`.
 
 `0` indicates a system profile. `1` indicates a custom profile. Only custom profiles can be created using this stored procedure; therefore the only valid value is `1`. Only [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] creates system profiles.
 

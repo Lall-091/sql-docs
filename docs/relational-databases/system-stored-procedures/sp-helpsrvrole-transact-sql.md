@@ -1,10 +1,10 @@
 ---
-title: "sp_helpsrvrole (Transact-SQL)"
+title: "sys.sp_helpsrvrole (Transact-SQL)"
 description: sp_helpsrvrole Returns a list of the SQL Server fixed server roles.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpsrvrole (Transact-SQL)
+# sys.sp_helpsrvrole (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns a list of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]
 ## Syntax
 
 ```syntaxsql
-sp_helpsrvrole [ [ @srvrolename = ] N'srvrolename' ]
+sys.sp_helpsrvrole [ [ @srvrolename = ] N'srvrolename' ]
 [ ; ]
 ```
 

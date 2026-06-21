@@ -4,7 +4,7 @@ description: "Sets up a notification for an alert."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -25,19 +25,20 @@ Sets up a notification for an alert.
 ## Syntax
 
 ```syntaxsql
-sp_add_notification [ @alert_name = ] 'alert' ,
-    [ @operator_name = ] 'operator' ,
-    [ @notification_method = ] notification_method
+dbo.sp_add_notification
+    [ @alert_name = ] N'alert_name'
+    , [ @operator_name = ] N'operator_name'
+    , [ @notification_method = ] notification_method
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @alert_name = ] '*alert*'
+#### [ @alert_name = ] N'*alert_name*'
 
 The alert for this notification. *@alert_name* is **sysname**, with no default.
 
-#### [ @operator_name = ] '*operator*'
+#### [ @operator_name = ] N'*operator_name*'
 
 The operator to be notified when the alert occurs. *@operator_name* is **sysname**, with no default.
 

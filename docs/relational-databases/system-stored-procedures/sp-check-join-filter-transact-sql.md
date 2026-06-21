@@ -1,10 +1,10 @@
 ---
-title: "sp_check_join_filter (Transact-SQL)"
+title: "sys.sp_check_join_filter (Transact-SQL)"
 description: sp_check_join_filter verifies a join filter between two tables to determine if the join filter clause is valid.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_check_join_filter (Transact-SQL)
+# sys.sp_check_join_filter (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Verifies a join filter between two tables to determine if the join filter clause
 ## Syntax
 
 ```syntaxsql
-sp_check_join_filter
+sys.sp_check_join_filter
     [ @filtered_table = ] N'filtered_table'
     , [ @join_table = ] N'join_table'
     , [ @join_filterclause = ] N'join_filterclause'

@@ -4,7 +4,7 @@ description: "sp_update_job (Transact-SQL) update the attributes of an existing 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, wiassaf
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Updates the attributes of an existing job created in the [!INCLUDE [ssnoversion-
 ## Syntax
 
 ```syntaxsql
-sp_update_job
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_update_job
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @new_name = ] N'new_name' ]
     [ , [ @enabled = ] enabled ]
     [ , [ @description = ] N'description' ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_replqueuemonitor (Transact-SQL)"
+title: "sys.sp_replqueuemonitor (Transact-SQL)"
 description: sp_replqueuemonitor lists the queue messages from a queue in SQL Server or Microsoft Message Queue.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replqueuemonitor (Transact-SQL)
+# sys.sp_replqueuemonitor (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Lists the queue messages from a [!INCLUDE [ssNoVersion](../../includes/ssnoversi
 ## Syntax
 
 ```syntaxsql
-sp_replqueuemonitor
+sys.sp_replqueuemonitor
     [ [ @publisher = ] N'publisher' ]
     [ , [ @publisherdb = ] N'publisherdb' ]
     [ , [ @publication = ] N'publication' ]

@@ -4,7 +4,7 @@ description: "Creates a schedule that can be used by any number of jobs."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,8 @@ Creates a schedule that can be used by any number of jobs.
 ## Syntax
 
 ```syntaxsql
-sp_add_schedule
-    [ @schedule_name = ] 'schedule_name'
+dbo.sp_add_schedule
+    [ @schedule_name = ] N'schedule_name'
     [ , [ @enabled = ] enabled ]
     [ , [ @freq_type = ] freq_type ]
     [ , [ @freq_interval = ] freq_interval ]
@@ -40,16 +40,16 @@ sp_add_schedule
     [ , [ @active_end_date = ] active_end_date ]
     [ , [ @active_start_time = ] active_start_time ]
     [ , [ @active_end_time = ] active_end_time ]
-    [ , [ @owner_login_name = ] 'owner_login_name' ]
-    [ , [ @schedule_uid = ] schedule_uid OUTPUT ]
+    [ , [ @owner_login_name = ] N'owner_login_name' ]
+    [ , [ @schedule_uid = ] 'schedule_uid' OUTPUT ]
     [ , [ @schedule_id = ] schedule_id OUTPUT ]
-    [ , [ @originating_server = ] server_name ] /* internal */
+    [ , [ @originating_server = ] N'originating_server' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @schedule_name = ] '*schedule_name*'
+#### [ @schedule_name = ] N'*schedule_name*'
 
 The name of the schedule. *@schedule_name* is **sysname**, with no default.
 
@@ -71,7 +71,7 @@ A value indicating when a job is to be executed. *@freq_type* is **int**, with a
 | `64` | Run when [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service starts |
 | `128` | Run when the computer is idle (not supported in [Azure SQL Managed Instance](/azure/sql-database/sql-database-managed-instance-transact-sql-information#sql-server-agent)) |
 
-#### [ @freq_interval = ] *@freq_interval*
+#### [ @freq_interval = ] *freq_interval*
 
 The days that a job is executed. *@freq_interval* is **int**, with a default of `1`, and depends on the value of *@freq_type*.
 
@@ -136,11 +136,11 @@ The time on any day between *@active_start_date* and *@active_end_date* to begin
 
 The time on any day between *@active_start_date* and *@active_end_date* to end execution of a job. *@active_end_time* is **int**, with a default of `235959`, which indicates 11:59:59 P.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
 
-#### [ @owner_login_name = ] '*owner_login_name*'
+#### [ @owner_login_name = ] N'*owner_login_name*'
 
 The name of the server principal that owns the schedule. *@owner_login_name* is **sysname**, with a default of `NULL`, which indicates that the schedule is owned by the creator.
 
-#### [ @schedule_uid = ] *schedule_uid* OUTPUT
+#### [ @schedule_uid = ] '*schedule_uid*' OUTPUT
 
 A unique identifier for the schedule. *@schedule_uid* is a variable of type **uniqueidentifier**.
 
@@ -148,7 +148,7 @@ A unique identifier for the schedule. *@schedule_uid* is a variable of type **un
 
 An identifier for the schedule. *@schedule_id* is a variable of type **int**.
 
-#### [ @originating_server = ] *server_name*
+#### [ @originating_server = ] N'*originating_server*'
 
 [!INCLUDE [ssInternalOnly](../../includes/ssinternalonly-md.md)]
 

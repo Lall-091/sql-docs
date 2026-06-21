@@ -4,7 +4,7 @@ description: sys.sp_persistent_version_cleanup manually starts the persistent ve
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 03/11/2026
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
@@ -34,7 +34,7 @@ For more information about ADR, see [Accelerated database recovery](../accelerat
 ## Syntax
 
 ```syntaxsql
-sp_persistent_version_cleanup
+sys.sp_persistent_version_cleanup
     [ [ @dbname = ] N'dbname' ]
     [ , [ @scanallpages = ] scanallpages ]
     [ , [ @clean_option = ] clean_option ]

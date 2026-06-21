@@ -1,10 +1,10 @@
 ---
-title: "sp_dbmmonitorresults (Transact-SQL)"
+title: "sys.sp_dbmmonitorresults (Transact-SQL)"
 description: Returns status rows for a monitored database from the status table in which database mirroring monitoring history is stored.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbmmonitorresults (Transact-SQL)
+# sys.sp_dbmmonitorresults (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -28,7 +28,7 @@ Returns status rows for a monitored database from the status table in which data
 ## Syntax
 
 ```syntaxsql
-sp_dbmmonitorresults
+sys.sp_dbmmonitorresults
     [ @database_name = ] N'database_name'
     [ , [ @mode = ] mode ]
     [ , [ @update_table = ] update_table ]

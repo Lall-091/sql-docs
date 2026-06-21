@@ -4,7 +4,7 @@ description: "Deletes the policy health states in Policy-Based Management."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,14 +27,14 @@ Deletes the policy health states in Policy-Based Management. Policy health state
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_purge_health_state
-    [ @target_tree_root_with_id = ] 'target_tree_root_with_id'
+dbo.sp_syspolicy_purge_health_state
+    [ [ @target_tree_root_with_id = ] N'target_tree_root_with_id' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @target_tree_root_with_id = ] '*target_tree_root_with_id*'
+#### [ @target_tree_root_with_id = ] N'*target_tree_root_with_id*'
 
 Represents the node in Object Explorer where you want to clear the health state. *@target_tree_root_with_id* is **nvarchar(400)**, with a default of `NULL`.
 

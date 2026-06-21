@@ -1,10 +1,10 @@
 ---
-title: "sp_configure (Transact-SQL)"
+title: "sys.sp_configure (Transact-SQL)"
 description: sp_configure displays or changes global configuration settings for the current server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
-# sp_configure (Transact-SQL)
+# sys.sp_configure (Transact-SQL)
 
 [!INCLUDE [sql-asdbmi-pdw](../../includes/applies-to-version/sql-asdbmi-pdw.md)]
 
@@ -33,7 +33,7 @@ Displays or changes global configuration settings for the current server.
 Syntax for SQL Server.
 
 ```syntaxsql
-sp_configure
+sys.sp_configure
     [ [ @configname = ] 'configname' ]
     [ , [ @configvalue = ] configvalue ]
 [ ; ]

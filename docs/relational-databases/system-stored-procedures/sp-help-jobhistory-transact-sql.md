@@ -4,7 +4,7 @@ description: Provides information about the jobs for servers in the multiserver 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Provides information about the jobs for servers in the multiserver administratio
 ## Syntax
 
 ```syntaxsql
-sp_help_jobhistory
+dbo.sp_help_jobhistory
     [ [ @job_id = ] 'job_id' ]
     [ , [ @job_name = ] N'job_name' ]
     [ , [ @step_id = ] step_id ]
@@ -91,7 +91,7 @@ The minimum length of time for the completion of the job. *@minimum_run_duration
 
 #### [ @run_status = ] *run_status*
 
-The execution status of the job.*@run_status* is **int**, and can be one of these values.
+The execution status of the job. *@run_status* is **int**, and can be one of these values.
 
 | Value | Description |
 | --- | --- |

@@ -4,7 +4,7 @@ description: Reports a list of alerts for a given operator or a list of operator
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Reports a list of alerts for a given operator or a list of operators for a given
 ## Syntax
 
 ```syntaxsql
-sp_help_notification
+dbo.sp_help_notification
     [ @object_type = ] 'object_type'
     , [ @name = ] N'name'
     , [ @enum_type = ] 'enum_type'

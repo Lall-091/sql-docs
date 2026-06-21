@@ -1,10 +1,10 @@
 ---
-title: "sp_help_fulltext_system_components (Transact-SQL)"
+title: "sys.sp_help_fulltext_system_components (Transact-SQL)"
 description: sp_help_fulltext_system_components returns information for the registered word-breakers, filter, and protocol handlers.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# sp_help_fulltext_system_components (Transact-SQL)
+# sys.sp_help_fulltext_system_components (Transact-SQL)
 
 [!INCLUDE [sql-asa](../../includes/applies-to-version/sql-asa.md)]
 
@@ -28,7 +28,7 @@ Returns information for the registered word-breakers, filter, and protocol handl
 ## Syntax
 
 ```syntaxsql
-sp_help_fulltext_system_components
+sys.sp_help_fulltext_system_components
     [ { 'all' | [ @component_type = ] N'component_type' } ]
     [ , [ @param = ] N'param' ]
 [ ; ]

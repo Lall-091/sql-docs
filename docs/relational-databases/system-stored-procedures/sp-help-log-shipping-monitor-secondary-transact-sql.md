@@ -1,10 +1,10 @@
 ---
-title: "sp_help_log_shipping_monitor_secondary (Transact-SQL)"
+title: "sys.sp_help_log_shipping_monitor_secondary (Transact-SQL)"
 description: Returns information regarding a secondary database from the monitor tables.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_log_shipping_monitor_secondary (Transact-SQL)
+# sys.sp_help_log_shipping_monitor_secondary (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information regarding a secondary database from the monitor tables.
 ## Syntax
 
 ```syntaxsql
-sp_help_log_shipping_monitor_secondary
+sys.sp_help_log_shipping_monitor_secondary
     [ @secondary_server = ] N'secondary_server'
     , [ @secondary_database = ] N'secondary_database'
 [ ; ]

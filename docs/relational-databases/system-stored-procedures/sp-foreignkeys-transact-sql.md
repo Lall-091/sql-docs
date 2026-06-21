@@ -1,10 +1,10 @@
 ---
-title: "sp_foreignkeys (Transact-SQL)"
+title: "sys.sp_foreignkeys (Transact-SQL)"
 description: sp_foreignkeys returns the foreign keys that reference primary keys on the table in the linked server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_foreignkeys (Transact-SQL)
+# sys.sp_foreignkeys (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the foreign keys that reference primary keys on the table in the linked 
 ## Syntax
 
 ```syntaxsql
-sp_foreignkeys
+sys.sp_foreignkeys
     [ @table_server = ] N'table_server'
     [ , [ @pktab_name = ] N'pktab_name' ]
     [ , [ @pktab_schema = ] N'pktab_schema' ]
@@ -66,7 +66,7 @@ The name of the schema with a foreign key. *@fktab_schema* is **sysname**, with 
 
 #### [ @fktab_catalog = ] N'*fktab_catalog*'
 
-The name of the catalog with a foreign key.*@fktab_catalog* is **sysname**, with a default of `NULL`.
+The name of the catalog with a foreign key. *@fktab_catalog* is **sysname**, with a default of `NULL`.
 
 ## Return code values
 

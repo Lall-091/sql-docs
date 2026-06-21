@@ -4,7 +4,7 @@ description: sp_purge_jobhistory removes the history records for a job in the SQ
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Removes the history records for a job in the [!INCLUDE [ssnoversion-md](../../in
 ## Syntax
 
 ```syntaxsql
-sp_purge_jobhistory
-    [ [ @job_name = ] N'job_name' ]
-    [ , [ @job_id = ] 'job_id' ]
+dbo.sp_purge_jobhistory
+    { [ @job_name = ] N'job_name'
+        | [ @job_id = ] 'job_id' }
     [ , [ @oldest_date = ] oldest_date ]
 [ ; ]
 ```
@@ -51,7 +51,7 @@ See the note in the description of *@job_name* for information about how **sysad
 
 #### [ @oldest_date = ] *oldest_date*
 
-The oldest record to retain in the history. *@oldest_date* is **datetime**, with a default of `NULL`. When *oldest_date* is specified, `sp_purge_jobhistory` only removes records that are older than the value specified.
+The oldest record to retain in the history. *@oldest_date* is **datetime**, with a default of `NULL`. When *@oldest_date* is specified, `sp_purge_jobhistory` only removes records that are older than the value specified.
 
 ## Return code values
 

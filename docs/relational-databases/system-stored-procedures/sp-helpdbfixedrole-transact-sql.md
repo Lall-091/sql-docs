@@ -1,10 +1,10 @@
 ---
-title: "sp_helpdbfixedrole (Transact-SQL)"
+title: "sys.sp_helpdbfixedrole (Transact-SQL)"
 description: sp_helpdbfixedrole returns a list of the fixed database roles.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpdbfixedrole (Transact-SQL)
+# sys.sp_helpdbfixedrole (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns a list of the fixed database roles.
 ## Syntax
 
 ```syntaxsql
-sp_helpdbfixedrole [ [ @rolename = ] N'rolename' ]
+sys.sp_helpdbfixedrole [ [ @rolename = ] N'rolename' ]
 [ ; ]
 ```
 

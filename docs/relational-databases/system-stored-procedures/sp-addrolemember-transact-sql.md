@@ -1,10 +1,10 @@
 ---
-title: "sp_addrolemember (Transact-SQL)"
+title: "sys.sp_addrolemember (Transact-SQL)"
 description: Adds a database user, database role, Windows login, or Windows group to a database role in the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_addrolemember (Transact-SQL)
+# sys.sp_addrolemember (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
@@ -33,7 +33,7 @@ Adds a database user, database role, Windows login, or Windows group to a databa
 ## Syntax
 
 ```syntaxsql
-sp_addrolemember
+sys.sp_addrolemember
     [ @rolename = ] N'rolename'
     , [ @membername = ] N'membername'
 [ ; ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_tableoption (Transact-SQL)"
+title: "sys.sp_tableoption (Transact-SQL)"
 description: sp_tableoption sets option values for user-defined tables.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_tableoption (Transact-SQL)
+# sys.sp_tableoption (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -33,7 +33,7 @@ Sets option values for user-defined tables. `sp_tableoption` can be used to cont
 ## Syntax
 
 ```syntaxsql
-sp_tableoption
+sys.sp_tableoption
     [ @TableNamePattern = ] N'TableNamePattern'
     , [ @OptionName = ] 'OptionName'
     , [ @OptionValue = ] 'OptionValue'

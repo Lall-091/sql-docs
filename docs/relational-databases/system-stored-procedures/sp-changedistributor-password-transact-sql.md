@@ -1,10 +1,10 @@
 ---
-title: "sp_changedistributor_password (Transact-SQL)"
+title: "sys.sp_changedistributor_password (Transact-SQL)"
 description: sp_changedistributor_password changes the password for a Distributor.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changedistributor_password (Transact-SQL)
+# sys.sp_changedistributor_password (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes the password for a Distributor. This stored procedure is executed at the
 ## Syntax
 
 ```syntaxsql
-sp_changedistributor_password [ @password = ] N'password'
+sys.sp_changedistributor_password [ @password = ] N'password'
 [ ; ]
 ```
 

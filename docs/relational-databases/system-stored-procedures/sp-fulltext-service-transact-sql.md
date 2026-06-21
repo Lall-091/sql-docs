@@ -1,10 +1,10 @@
 ---
-title: "sp_fulltext_service (Transact-SQL)"
+title: "sys.sp_fulltext_service (Transact-SQL)"
 description: Changes the server properties of full-text search for SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 01/12/2026
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_fulltext_service (Transact-SQL)
+# sys.sp_fulltext_service (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -32,7 +32,7 @@ Changes the server properties of full-text search for [!INCLUDE [ssNoVersion](..
 ## Syntax
 
 ```syntaxsql
-sp_fulltext_service
+sys.sp_fulltext_service
     [ [ @action = ] N'action' ]
     [ , [ @value = ] value ]
 [ ; ]

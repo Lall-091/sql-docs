@@ -1,10 +1,10 @@
 ---
-title: "sp_helprole (Transact-SQL)"
+title: "sys.sp_helprole (Transact-SQL)"
 description: sp_helprole returns information about the roles in the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_helprole (Transact-SQL)
+# sys.sp_helprole (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -30,7 +30,7 @@ Returns information about the roles in the current database.
 ## Syntax
 
 ```syntaxsql
-sp_helprole [ [ @rolename = ] N'rolename' ]
+sys.sp_helprole [ [ @rolename = ] N'rolename' ]
 [ ; ]
 ```
 

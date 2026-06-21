@@ -1,10 +1,10 @@
 ---
-title: "sp_helppeerresponses (Transact-SQL)"
+title: "sys.sp_helppeerresponses (Transact-SQL)"
 description: sp_helppeerresponses returns all responses to a specific status request received from a participant in a peer-to-peer replication topology.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helppeerresponses (Transact-SQL)
+# sys.sp_helppeerresponses (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns all responses to a specific status request received from a participant i
 ## Syntax
 
 ```syntaxsql
-sp_helppeerresponses [ @request_id = ] request_id
+sys.sp_helppeerresponses [ @request_id = ] request_id
 [ ; ]
 ```
 

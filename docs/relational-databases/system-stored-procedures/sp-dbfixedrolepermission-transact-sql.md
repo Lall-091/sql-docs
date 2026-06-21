@@ -1,10 +1,10 @@
 ---
-title: "sp_dbfixedrolepermission (Transact-SQL)"
+title: "sys.sp_dbfixedrolepermission (Transact-SQL)"
 description: sp_dbfixedrolepermission displays the permissions of a fixed database role.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbfixedrolepermission (Transact-SQL)
+# sys.sp_dbfixedrolepermission (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Displays the permissions of a fixed database role. `sp_dbfixedrolepermission` re
 ## Syntax
 
 ```syntaxsql
-sp_dbfixedrolepermission [ [ @rolename = ] N'rolename' ]
+sys.sp_dbfixedrolepermission [ [ @rolename = ] N'rolename' ]
 [ ; ]
 ```
 

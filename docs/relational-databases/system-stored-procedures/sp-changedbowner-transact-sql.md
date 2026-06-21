@@ -1,10 +1,10 @@
 ---
-title: "sp_changedbowner (Transact-SQL)"
+title: "sys.sp_changedbowner (Transact-SQL)"
 description: sp_changedbowner changes the owner of the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changedbowner (Transact-SQL)
+# sys.sp_changedbowner (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Changes the owner of the current database.
 ## Syntax
 
 ```syntaxsql
-sp_changedbowner
+sys.sp_changedbowner
     [ @loginame = ] N'loginame'
     [ , [ @map = ] 'map' ]
 [ ; ]

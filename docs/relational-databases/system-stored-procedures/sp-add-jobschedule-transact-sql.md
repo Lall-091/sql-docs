@@ -4,7 +4,7 @@ description: "sp_add_jobschedule creates a schedule for a SQL Server Agent job."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -31,9 +31,9 @@ Creates a schedule for a [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-m
 ## Syntax
 
 ```syntaxsql
-sp_add_jobschedule
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_add_jobschedule
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     , [ @name = ] N'name'
     [ , [ @enabled = ] enabled ]
     [ , [ @freq_type = ] freq_type ]
@@ -153,11 +153,11 @@ The time on any day between *@active_start_date* and *@active_end_date* to begin
 
 #### [ @active_end_time = ] *active_end_time*
 
-The time on any day between *active_start_date* and *@active_end_date* to end job execution. *@active_end_time* is **int**, with a default of `235959`. The time is formatted as `HHmmss` on a 24-hour clock.
+The time on any day between *@active_start_date* and *@active_end_date* to end job execution. *@active_end_time* is **int**, with a default of `235959`. The time is formatted as `HHmmss` on a 24-hour clock.
 
 #### [ @schedule_id = ] *schedule_id* OUTPUT
 
-Schedule identification number assigned to the schedule if it's created successfully. *@schedule_id* is an OUTPUT parameter of type **int**.
+Schedule identification number assigned to the schedule if it's created successfully. *@schedule_id* is an `OUTPUT` parameter of type **int**.
 
 #### [ @automatic_post = ] *automatic_post*
 
@@ -165,7 +165,7 @@ Schedule identification number assigned to the schedule if it's created successf
 
 #### [ @schedule_uid = ] '*schedule_uid*' OUTPUT
 
-A unique identifier for the schedule. *@schedule_uid* is an OUTPUT parameter of type **uniqueidentifier**.
+A unique identifier for the schedule. *@schedule_uid* is an `OUTPUT` parameter of type **uniqueidentifier**.
 
 ## Return code values
 

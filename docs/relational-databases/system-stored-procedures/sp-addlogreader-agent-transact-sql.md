@@ -1,10 +1,10 @@
 ---
-title: "sp_addlogreader_agent (Transact-SQL)"
+title: "sys.sp_addlogreader_agent (Transact-SQL)"
 description: Adds a Log Reader agent for a given database.
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addlogreader_agent (Transact-SQL)
+# sys.sp_addlogreader_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Adds a Log Reader agent for a given database. This stored procedure is executed 
 ## Syntax
 
 ```syntaxsql
-sp_addlogreader_agent
+sys.sp_addlogreader_agent
     [ [ @job_login = ] N'job_login' ]
     [ , [ @job_password = ] N'job_password' ]
     [ , [ @job_name = ] N'job_name' ]
@@ -38,6 +38,7 @@ sp_addlogreader_agent
     [ , [ @publisher_login = ] N'publisher_login' ]
     [ , [ @publisher_password = ] N'publisher_password' ]
     [ , [ @publisher = ] N'publisher' ]
+    [ , [ @job_security_mode = ] job_security_mode ]
 [ ; ]
 ```
 
@@ -90,6 +91,10 @@ The name of the non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] P
 
 > [!NOTE]  
 > You shouldn't specify this parameter for a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher.
+
+#### [ @job_security_mode = ] *job_security_mode*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

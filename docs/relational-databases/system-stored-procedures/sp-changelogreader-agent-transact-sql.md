@@ -1,10 +1,10 @@
 ---
-title: "sp_changelogreader_agent (Transact-SQL)"
+title: "sys.sp_changelogreader_agent (Transact-SQL)"
 description: sp_changelogreader_agent changes security properties of a Log Reader agent.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changelogreader_agent (Transact-SQL)
+# sys.sp_changelogreader_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -28,13 +28,14 @@ Changes security properties of a Log Reader agent. This stored procedure is exec
 ## Syntax
 
 ```syntaxsql
-sp_changelogreader_agent
+sys.sp_changelogreader_agent
     [ [ @job_login = ] N'job_login' ]
     [ , [ @job_password = ] N'job_password' ]
     [ , [ @publisher_security_mode = ] publisher_security_mode ]
     [ , [ @publisher_login = ] N'publisher_login' ]
     [ , [ @publisher_password = ] N'publisher_password' ]
     [ , [ @publisher = ] N'publisher' ]
+    [ , [ @job_security_mode = ] job_security_mode ]
 [ ; ]
 ```
 
@@ -81,6 +82,10 @@ The password used when connecting to the Publisher. *@publisher_password* is **s
 #### [ @publisher = ] N'*publisher*'
 
 The name of the Publisher. *@publisher* is **sysname**, with a default of `NULL`. This parameter is only supported for non-[!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Publishers.
+
+#### [ @job_security_mode = ] *job_security_mode*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

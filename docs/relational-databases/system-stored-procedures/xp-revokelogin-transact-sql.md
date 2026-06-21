@@ -1,10 +1,10 @@
 ---
-title: "xp_revokelogin (Transact-SQL)"
+title: "sys.xp_revokelogin (Transact-SQL)"
 description: "Revokes access from a Windows group or user to SQL Server."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# xp_revokelogin (Transact-SQL)
+# sys.xp_revokelogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,12 +30,13 @@ Revokes access from a Windows group or user to [!INCLUDE [ssNoVersion](../../inc
 ## Syntax
 
 ```syntaxsql
-xp_revokelogin { [ @loginame = ] 'login' }
+sys.xp_revokelogin [ @loginame = ] N'loginame'
+[ ; ]
 ```
 
 ## Arguments
 
-#### [ @loginame = ] '*login*'
+#### [ @loginame = ] N'*loginame*'
 
 The name of the Windows user or group from which to revoke access. *@loginame* must include the domain name, for example `[CONTOSO\sylvester1]`. *@loginame* is **sysname**, with no default.
 

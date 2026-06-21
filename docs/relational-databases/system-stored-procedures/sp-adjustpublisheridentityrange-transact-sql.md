@@ -1,10 +1,10 @@
 ---
-title: "sp_adjustpublisheridentityrange (Transact-SQL)"
+title: "sys.sp_adjustpublisheridentityrange (Transact-SQL)"
 description: Adjusts the identity range on a publication and reallocates new ranges based on the threshold value on the publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_adjustpublisheridentityrange (Transact-SQL)
+# sys.sp_adjustpublisheridentityrange (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Adjusts the identity range on a publication and reallocates new ranges based on 
 ## Syntax
 
 ```syntaxsql
-sp_adjustpublisheridentityrange
+sys.sp_adjustpublisheridentityrange
     [ [ @publication = ] N'publication' ]
     [ , [ @table_name = ] N'table_name' ]
     [ , [ @table_owner = ] N'table_owner' ]

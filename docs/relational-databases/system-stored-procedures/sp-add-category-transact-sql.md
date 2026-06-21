@@ -4,7 +4,7 @@ description: "Adds the specified category of jobs, alerts, or operators to the s
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,10 +30,10 @@ Adds the specified category of jobs, alerts, or operators to the server. For alt
 ## Syntax
 
 ```syntaxsql
-sp_add_category
-     [ [ @class = ] 'class' ]
-     [ , [ @type = ] 'type' ]
-     [ , [ @name = ] 'name' ]
+dbo.sp_add_category
+    [ [ @class = ] 'class' ]
+    [ , [ @type = ] 'type' ]
+    , [ @name = ] N'name'
 [ ; ]
 ```
 
@@ -59,7 +59,7 @@ The type of category to be added. *@type* is **varchar(12)**, with a default val
 | `MULTI-SERVER` | A multiserver job category. |
 | `NONE` | A category for a class other than `JOB`. |
 
-#### [ @name = ] '*name*'
+#### [ @name = ] N'*name*'
 
 The name of the category to be added. The name must be unique within the specified class. *@name* is **sysname**, with no default.
 

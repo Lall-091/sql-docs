@@ -1,10 +1,10 @@
 ---
-title: "sp_changedistributiondb (Transact-SQL)"
+title: "sys.sp_changedistributiondb (Transact-SQL)"
 description: sp_changedistributiondb changes the properties of the distribution database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changedistributiondb (Transact-SQL)
+# sys.sp_changedistributiondb (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes the properties of the distribution database. This stored procedure is ex
 ## Syntax
 
 ```syntaxsql
-sp_changedistributiondb
+sys.sp_changedistributiondb
     [ @database = ] N'database'
     [ , [ @property = ] N'property' ]
     [ , [ @value = ] N'value' ]

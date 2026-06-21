@@ -4,7 +4,7 @@ description: "The sys.sp_help_change_feed_table system stored procedure provides
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 12/17/2025
+ms.date: 06/19/2026
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -39,24 +39,29 @@ This system stored procedure is used for:
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-EXECUTE sys.sp_help_change_feed_table;
+sys.sp_help_change_feed_table
+    [ [ @table_group_id = ] 'table_group_id' ]
+    [ , [ @table_id = ] 'table_id' ]
+    [ , [ @source_schema = ] N'source_schema' ]
+    [ , [ @source_name = ] N'source_name' ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### @table_group_id
+#### [ @table_group_id = ] '*table_group_id*'
 
 The unique identifier of the table group
 
-#### @table_id
+#### [ @table_id = ] '*table_id*'
 
 The source table identifier
 
-#### @source_schema
+#### [ @source_schema = ] N'*source_schema*'
 
 The source table schema name
 
-#### @source_name
+#### [ @source_name = ] N'*source_name*'
 
 The source table name
 

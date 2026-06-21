@@ -1,10 +1,10 @@
 ---
-title: "sp_enumcustomresolvers (Transact-SQL)"
+title: "sys.sp_enumcustomresolvers (Transact-SQL)"
 description: sp_enumcustomresolvers returns a list of all available business logic handlers and custom resolvers registered at the Distributor.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_enumcustomresolvers (Transact-SQL)
+# sys.sp_enumcustomresolvers (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns a list of all available business logic handlers and custom resolvers reg
 ## Syntax
 
 ```syntaxsql
-sp_enumcustomresolvers [ [ @distributor = ] N'distributor' ]
+sys.sp_enumcustomresolvers [ [ @distributor = ] N'distributor' ]
 [ ; ]
 ```
 

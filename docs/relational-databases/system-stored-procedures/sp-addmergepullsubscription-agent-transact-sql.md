@@ -1,10 +1,10 @@
 ---
-title: "sp_addmergepullsubscription_agent (Transact-SQL)"
+title: "sys.sp_addmergepullsubscription_agent (Transact-SQL)"
 description: Adds a new agent job used to schedule synchronization of a pull subscription to a merge publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addmergepullsubscription_agent (Transact-SQL)
+# sys.sp_addmergepullsubscription_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Adds a new agent job used to schedule synchronization of a pull subscription to 
 ## Syntax
 
 ```syntaxsql
-sp_addmergepullsubscription_agent
+sys.sp_addmergepullsubscription_agent
     [ [ @name = ] N'name' ]
     , [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
@@ -146,7 +146,7 @@ The security mode to use when connecting to a Subscriber when synchronizing. *@s
 
 #### [ @subscriber_login = ] N'*subscriber_login*'
 
-The Subscriber login to use when connecting to a Subscriber when synchronizing. *@subscriber_login* is **sysname**, with a default of `NULL`. *@subscriber_login* is required if *subscriber_security_mode* is set to `0`.
+The Subscriber login to use when connecting to a Subscriber when synchronizing. *@subscriber_login* is **sysname**, with a default of `NULL`. *@subscriber_login* is required if *@subscriber_security_mode* is set to `0`.
 
 > [!NOTE]  
 > [!INCLUDE [deprecated-parameter-returns-warning](../includes/deprecated-parameter-returns-warning.md)]
@@ -288,7 +288,7 @@ Can be used to supply additional parameters to the Merge Agent, such as in the f
 
 #### [ @merge_jobid = ] *merge_jobid* OUTPUT
 
-The output parameter for the job ID. *@merge_jobid* is an OUTPUT parameter of type **binary(16)**, with a default of `NULL`.
+The output parameter for the job ID. *@merge_jobid* is an `OUTPUT` parameter of type **binary(16)**, with a default of `NULL`.
 
 #### [ @enabled_for_syncmgr = ] N'*enabled_for_syncmgr*'
 

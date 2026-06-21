@@ -25,8 +25,9 @@ This stored procedure shares the name of `sp_purge_jobhistory` with a similar ob
 ## Syntax
 
 ```syntaxsql
-[jobs].sp_purge_jobhistory [ @job_name = ] 'job_name'
-      [ , [ @job_id = ] job_id ]
+[jobs].sp_purge_jobhistory
+      { [ @job_name = ] 'job_name'
+          | [ @job_id = ] job_id }
       [ , [ @oldest_date = ] oldest_date ]
 ```
 

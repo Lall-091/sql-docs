@@ -1,10 +1,10 @@
 ---
-title: "sp_adddistributiondb (Transact-SQL)"
+title: "sys.sp_adddistributiondb (Transact-SQL)"
 description: Creates a new distribution database and installs the Distributor schema.
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_adddistributiondb (Transact-SQL)
+# sys.sp_adddistributiondb (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Creates a new distribution database and installs the Distributor schema. The dis
 ## Syntax
 
 ```syntaxsql
-sp_adddistributiondb
+sys.sp_adddistributiondb
     [ @database = ] N'database'
     [ , [ @data_folder = ] N'data_folder' ]
     [ , [ @data_file = ] N'data_file' ]

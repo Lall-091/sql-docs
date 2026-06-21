@@ -1,10 +1,10 @@
 ---
-title: "sp_refresh_parameter_encryption (Transact-SQL)"
+title: "sys.sp_refresh_parameter_encryption (Transact-SQL)"
 description: sp_refresh_parameter_encryption updates the Always Encrypted metadata for the parameters of the specified non-schema-bound object.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
@@ -20,7 +20,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# sp_refresh_parameter_encryption (Transact-SQL)
+# sys.sp_refresh_parameter_encryption (Transact-SQL)
 
 [!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
 
@@ -29,7 +29,7 @@ Updates the Always Encrypted metadata for the parameters of the specified non-sc
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-sp_refresh_parameter_encryption
+sys.sp_refresh_parameter_encryption
     [ @name = ] N'name'
     [ , [ @namespace = ] { OBJECT | DATABASE_DDL_TRIGGER | SERVER_DDL_TRIGGER } ]
 [ ; ]

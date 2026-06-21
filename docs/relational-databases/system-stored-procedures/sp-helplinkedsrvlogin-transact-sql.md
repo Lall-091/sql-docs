@@ -1,10 +1,10 @@
 ---
-title: "sp_helplinkedsrvlogin (Transact-SQL)"
+title: "sys.sp_helplinkedsrvlogin (Transact-SQL)"
 description: Provides information about login mappings defined against a specific linked server used for distributed queries and remote stored procedures.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helplinkedsrvlogin (Transact-SQL)
+# sys.sp_helplinkedsrvlogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Provides information about login mappings defined against a specific linked serv
 ## Syntax
 
 ```syntaxsql
-sp_helplinkedsrvlogin
+sys.sp_helplinkedsrvlogin
     [ [ @rmtsrvname = ] N'rmtsrvname' ]
     [ , [ @locallogin = ] N'locallogin' ]
 [ ; ]

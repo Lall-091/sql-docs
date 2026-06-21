@@ -1,10 +1,10 @@
 ---
-title: "sp_script_synctran_commands (Transact-SQL)"
+title: "sys.sp_script_synctran_commands (Transact-SQL)"
 description: Generates a script that contains the sp_addsynctrigger calls to be applied at Subscribers for updatable subscriptions.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_script_synctran_commands (Transact-SQL)
+# sys.sp_script_synctran_commands (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Generates a script that contains the `sp_addsynctrigger` calls to be applied at 
 ## Syntax
 
 ```syntaxsql
-sp_script_synctran_commands
+sys.sp_script_synctran_commands
     [ @publication = ] N'publication'
     [ , [ @article = ] N'article' ]
     [ , [ @trig_only = ] trig_only ]

@@ -4,7 +4,7 @@ description: sp_revoke_proxy_from_subsystem revokes access to a subsystem from a
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,11 +27,11 @@ Revokes access to a subsystem from a proxy.
 ## Syntax
 
 ```syntaxsql
-sp_revoke_proxy_from_subsystem
-    [ [ @proxy_id = ] proxy_id ]
-    [ , [ @proxy_name = ] N'proxy_name' ]
-    [ , [ @subsystem_id = ] subsystem_id ]
-    [ , [ @subsystem_name = ] N'subsystem_name' ]
+dbo.sp_revoke_proxy_from_subsystem
+    { [ @proxy_id = ] proxy_id
+        | [ @proxy_name = ] N'proxy_name' }
+    , { [ @subsystem_id = ] subsystem_id
+        | [ @subsystem_name = ] N'subsystem_name' }
 [ ; ]
 ```
 

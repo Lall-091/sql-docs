@@ -4,7 +4,7 @@ description: Used to modify the properties of a user-defined collection set or t
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -31,7 +31,7 @@ Used to modify the properties of a user-defined collection set or to rename a us
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_update_collection_set
+dbo.sp_syscollector_update_collection_set
     [ [ @collection_set_id = ] collection_set_id ]
     [ , [ @name = ] N'name' ]
     [ , [ @new_name = ] N'new_name' ]

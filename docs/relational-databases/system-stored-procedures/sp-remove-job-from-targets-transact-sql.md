@@ -4,7 +4,7 @@ description: sp_remove_job_from_targets removes the specified job from the given
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,9 @@ Removes the specified job from the given target servers or target server groups.
 ## Syntax
 
 ```syntaxsql
-sp_remove_job_from_targets
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_remove_job_from_targets
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @target_server_groups = ] N'target_server_groups' ]
     [ , [ @target_servers = ] N'target_servers' ]
 [ ; ]

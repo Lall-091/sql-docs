@@ -1,10 +1,10 @@
 ---
-title: "sp_mergemetadataretentioncleanup (Transact-SQL)"
+title: "sys.sp_mergemetadataretentioncleanup (Transact-SQL)"
 description: "Performs a manual cleanup of metadata in the MSmerge_* system tables."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_mergemetadataretentioncleanup (Transact-SQL)
+# sys.sp_mergemetadataretentioncleanup (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Performs a manual cleanup of metadata in the [MSmerge_genhistory](../system-tabl
 ## Syntax
 
 ```syntaxsql
-sp_mergemetadataretentioncleanup
+sys.sp_mergemetadataretentioncleanup
     [ [ @num_genhistory_rows = ] num_genhistory_rows OUTPUT ]
     [ , [ @num_contents_rows = ] num_contents_rows OUTPUT ]
     [ , [ @num_tombstone_rows = ] num_tombstone_rows OUTPUT ]
@@ -39,15 +39,15 @@ sp_mergemetadataretentioncleanup
 
 #### [ @num_genhistory_rows = ] *num_genhistory_rows* OUTPUT
 
-Returns the number of rows cleaned-up from the [MSmerge_genhistory](../system-tables/msmerge-genhistory-transact-sql.md) table. *@num_genhistory_rows* is an OUTPUT parameter of type **int**, with a default of `0`.
+Returns the number of rows cleaned-up from the [MSmerge_genhistory](../system-tables/msmerge-genhistory-transact-sql.md) table. *@num_genhistory_rows* is an `OUTPUT` parameter of type **int**, with a default of `0`.
 
 #### [ @num_contents_rows = ] *num_contents_rows* OUTPUT
 
-Returns the number of rows cleaned-up from the [MSmerge_contents](../system-tables/msmerge-contents-transact-sql.md) table. *@num_contents_rows* is an OUTPUT parameter of type **int**, with a default of `0`
+Returns the number of rows cleaned-up from the [MSmerge_contents](../system-tables/msmerge-contents-transact-sql.md) table. *@num_contents_rows* is an `OUTPUT` parameter of type **int**, with a default of `0`
 
 #### [ @num_tombstone_rows = ] *num_tombstone_rows* OUTPUT
 
-Returns the number of rows cleaned-up from the [MSmerge_tombstone](../system-tables/msmerge-tombstone-transact-sql.md) table. *@num_tombstone_rows* is an OUTPUT parameter of type **int**, with a default of `0`.
+Returns the number of rows cleaned-up from the [MSmerge_tombstone](../system-tables/msmerge-tombstone-transact-sql.md) table. *@num_tombstone_rows* is an `OUTPUT` parameter of type **int**, with a default of `0`.
 
 #### [ @aggressive_cleanup_only = ] *aggressive_cleanup_only*
 

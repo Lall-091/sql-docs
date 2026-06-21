@@ -1,10 +1,10 @@
 ---
-title: "sp_setdefaultdatatypemapping (Transact-SQL)"
+title: "sys.sp_setdefaultdatatypemapping (Transact-SQL)"
 description: Marks an existing data type mapping between SQL Server and a non-SQL Server database management system (DBMS) as the default.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_setdefaultdatatypemapping (Transact-SQL)
+# sys.sp_setdefaultdatatypemapping (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Marks an existing data type mapping between [!INCLUDE [ssNoVersion](../../includ
 ## Syntax
 
 ```syntaxsql
-sp_setdefaultdatatypemapping
+sys.sp_setdefaultdatatypemapping
     [ [ @mapping_id = ] mapping_id ]
     [ , [ @source_dbms = ] N'source_dbms' ]
     [ , [ @source_version = ] 'source_version' ]
@@ -73,7 +73,7 @@ The version number of the source DBMS. *@source_version* is **varchar(10)**, wit
 
 #### [ @source_type = ] N'*source_type*'
 
-The data type in the source DBMS. *@source_type* is **sysname**, with a default of `NULL`. You must specify this parameter if *mapping_id* is `NULL`.
+The data type in the source DBMS. *@source_type* is **sysname**, with a default of `NULL`. You must specify this parameter if *@mapping_id* is `NULL`.
 
 #### [ @source_length_min = ] *source_length_min*
 

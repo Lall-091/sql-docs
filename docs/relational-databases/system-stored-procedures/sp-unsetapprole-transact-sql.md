@@ -1,10 +1,10 @@
 ---
-title: "sp_unsetapprole (Transact-SQL)"
+title: "sys.sp_unsetapprole (Transact-SQL)"
 description: Deactivates an application role and reverts to the previous security context.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_unsetapprole (Transact-SQL)
+# sys.sp_unsetapprole (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Deactivates an application role and reverts to the previous security context.
 ## Syntax
 
 ```syntaxsql
-sp_unsetapprole [ @cookie = ] cookie
+sys.sp_unsetapprole [ @cookie = ] cookie
 [ ; ]
 ```
 

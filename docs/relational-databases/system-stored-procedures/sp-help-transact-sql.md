@@ -1,10 +1,10 @@
 ---
-title: "sp_help (Transact-SQL)"
+title: "sys.sp_help (Transact-SQL)"
 description: Reports information about a database object (any object listed in the sys.sysobjects compatibility view), a user-defined data type, or a data type.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_help (Transact-SQL)
+# sys.sp_help (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -30,7 +30,7 @@ Reports information about a database object (any object listed in the `sys.sysob
 ## Syntax
 
 ```syntaxsql
-sp_help [ [ @objname = ] N'objname' ]
+sys.sp_help [ [ @objname = ] N'objname' ]
 [ ; ]
 ```
 

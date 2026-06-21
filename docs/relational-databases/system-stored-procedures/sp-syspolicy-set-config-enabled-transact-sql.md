@@ -4,7 +4,7 @@ description: "Enables or disables Policy-Based Management."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Enables or disables Policy-Based Management.
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_set_config_enabled [ @value = ] value
+dbo.sp_syspolicy_set_config_enabled [ @value = ] value
 [ ; ]
 ```
 

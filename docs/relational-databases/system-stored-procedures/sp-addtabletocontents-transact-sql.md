@@ -1,10 +1,10 @@
 ---
-title: "sp_addtabletocontents (Transact-SQL)"
+title: "sys.sp_addtabletocontents (Transact-SQL)"
 description: Inserts references into the merge tracking tables for any rows in a source table that aren't currently included in the tracking tables.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addtabletocontents (Transact-SQL)
+# sys.sp_addtabletocontents (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ dev_langs:
 ## Syntax
 
 ```syntaxsql
-sp_addtabletocontents
+sys.sp_addtabletocontents
     [ @table_name = ] N'table_name'
     [ , [ @owner_name = ] N'owner_name' ]
     [ , [ @filter_clause = ] N'filter_clause' ]

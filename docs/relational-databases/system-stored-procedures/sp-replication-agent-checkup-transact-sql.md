@@ -1,10 +1,10 @@
 ---
-title: "sp_replication_agent_checkup (Transact-SQL)"
+title: "sys.sp_replication_agent_checkup (Transact-SQL)"
 description: Checks each distribution database for running replication agents with no logged history in the specified heartbeat interval.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replication_agent_checkup (Transact-SQL)
+# sys.sp_replication_agent_checkup (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,8 @@ Checks each distribution database for replication agents that are running but ha
 ## Syntax
 
 ```syntaxsql
-sp_replication_agent_checkup [ [ @heartbeat_interval = ] heartbeat_interval ]
+sys.sp_replication_agent_checkup
+    [ [ @heartbeat_interval = ] heartbeat_interval ]
 [ ; ]
 ```
 

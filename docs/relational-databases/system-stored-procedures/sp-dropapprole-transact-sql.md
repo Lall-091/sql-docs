@@ -1,10 +1,10 @@
 ---
-title: "sp_dropapprole (Transact-SQL)"
+title: "sys.sp_dropapprole (Transact-SQL)"
 description: sp_dropapprole removes an application role from the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropapprole (Transact-SQL)
+# sys.sp_dropapprole (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Removes an application role from the current database.
 ## Syntax
 
 ```syntaxsql
-sp_dropapprole [ @rolename = ] N'rolename'
+sys.sp_dropapprole [ @rolename = ] N'rolename'
 [ ; ]
 ```
 

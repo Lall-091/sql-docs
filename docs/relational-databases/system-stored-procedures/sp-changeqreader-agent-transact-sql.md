@@ -1,10 +1,10 @@
 ---
-title: "sp_changeqreader_agent (Transact-SQL)"
+title: "sys.sp_changeqreader_agent (Transact-SQL)"
 description: sp_changeqreader_agent changes security properties of a Queue Reader agent.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changeqreader_agent (Transact-SQL)
+# sys.sp_changeqreader_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Changes security properties of a Queue Reader agent. This stored procedure is ex
 ## Syntax
 
 ```syntaxsql
-sp_changeqreader_agent
+sys.sp_changeqreader_agent
     [ [ @job_login = ] N'job_login' ]
     [ , [ @job_password = ] N'job_password' ]
     [ , [ @frompublisher = ] frompublisher ]

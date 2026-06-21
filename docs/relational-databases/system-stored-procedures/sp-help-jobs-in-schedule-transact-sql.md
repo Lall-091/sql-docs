@@ -4,7 +4,7 @@ description: Returns information about the jobs that a particular schedule is at
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Returns information about the jobs that a particular schedule is attached to.
 ## Syntax
 
 ```syntaxsql
-sp_help_jobs_in_schedule
+dbo.sp_help_jobs_in_schedule
     [ [ @schedule_name = ] N'schedule_name' ]
     [ , [ @schedule_id = ] schedule_id ]
 [ ; ]
@@ -36,15 +36,15 @@ sp_help_jobs_in_schedule
 
 ## Arguments
 
-#### [ @schedule_id = ] *schedule_id*
-
-The identifier of the schedule to list information for. *@schedule_id* is **int**, with a default of `NULL`.
-
-Either *@schedule_id* or *@schedule_name* can be specified.
-
 #### [ @schedule_name = ] N'*schedule_name*'
 
 The name of the schedule to list information for. *@schedule_name* is **sysname**, with a default of `NULL`.
+
+Either *@schedule_id* or *@schedule_name* can be specified.
+
+#### [ @schedule_id = ] *schedule_id*
+
+The identifier of the schedule to list information for. *@schedule_id* is **int**, with a default of `NULL`.
 
 Either *@schedule_id* or *@schedule_name* can be specified.
 

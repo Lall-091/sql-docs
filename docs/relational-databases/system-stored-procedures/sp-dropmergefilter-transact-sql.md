@@ -1,10 +1,10 @@
 ---
-title: "sp_dropmergefilter (Transact-SQL)"
+title: "sys.sp_dropmergefilter (Transact-SQL)"
 description: "sp_dropmergefilter drops all the merge filter columns defined on the merge filter that is to be dropped."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropmergefilter (Transact-SQL)
+# sys.sp_dropmergefilter (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Drops a merge filter. `sp_dropmergefilter` drops all the merge filter columns de
 ## Syntax
 
 ```syntaxsql
-sp_dropmergefilter
+sys.sp_dropmergefilter
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     , [ @filtername = ] N'filtername'

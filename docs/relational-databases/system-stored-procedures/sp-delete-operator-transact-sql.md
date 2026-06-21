@@ -4,7 +4,7 @@ description: sp_delete_operator removes an operator.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Removes an operator.
 ## Syntax
 
 ```syntaxsql
-sp_delete_operator
+dbo.sp_delete_operator
     [ @name = ] N'name'
     [ , [ @reassign_to_operator = ] N'reassign_to_operator' ]
 [ ; ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_refreshview (Transact-SQL)"
+title: "sys.sp_refreshview (Transact-SQL)"
 description: sp_refreshview updates the metadata for the specified non-schema-bound view.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 11/20/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_refreshview (Transact-SQL)
+# sys.sp_refreshview (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -30,13 +30,13 @@ Updates the metadata for the specified non-schema-bound view. Persistent metadat
 ## Syntax
 
 ```syntaxsql
-sp_refreshview [ @viewname = ] 'viewname'
+sys.sp_refreshview [ @viewname = ] N'viewname'
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @viewname = ] '*viewname*'
+#### [ @viewname = ] N'*viewname*'
 
 The name of the view. *@viewname* is **nvarchar**, with no default. *@viewname* can be a multipart identifier, but can only refer to views in the current database.
 

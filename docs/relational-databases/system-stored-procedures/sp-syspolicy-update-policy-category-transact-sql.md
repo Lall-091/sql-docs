@@ -4,7 +4,7 @@ description: "Updates whether a policy category is set to mandate database subsc
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,9 @@ Updates whether a policy category is set to mandate database subscriptions. If s
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_update_policy_category
-    { [ @name = ] N'name' | [ @policy_category_id = ] policy_category_id }
+dbo.sp_syspolicy_update_policy_category
+    [ [ @name = ] N'name' ]
+    [ , [ @policy_category_id = ] policy_category_id ]
     [ , [ @mandate_database_subscriptions = ] mandate_database_subscriptions ]
 [ ; ]
 ```

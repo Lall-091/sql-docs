@@ -1,10 +1,10 @@
 ---
-title: "sp_updateextendedproperty (Transact-SQL)"
+title: "sys.sp_updateextendedproperty (Transact-SQL)"
 description: Updates the value of an existing extended property.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_updateextendedproperty (Transact-SQL)
+# sys.sp_updateextendedproperty (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -30,7 +30,7 @@ Updates the value of an existing extended property.
 ## Syntax
 
 ```syntaxsql
-sp_updateextendedproperty
+sys.sp_updateextendedproperty
     [ @name = ] N'name'
     [ , [ @value = ] value ]
     [ , [ @level0type = ] 'level0type' ]
@@ -50,7 +50,7 @@ The name of the property to be updated. *@name* is **sysname**, with no default.
 
 #### [ @value = ] *value*
 
-The value associated with the property. *@value* is **sql_variant**, with a default of `NULL`. The size of *value* can't be more than 7,500 bytes.
+The value associated with the property. *@value* is **sql_variant**, with a default of `NULL`. The size of *@value* can't be more than 7,500 bytes.
 
 #### [ @level0type = ] '*level0type*'
 

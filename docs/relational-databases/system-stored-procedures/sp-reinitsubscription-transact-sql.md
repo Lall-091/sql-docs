@@ -1,10 +1,10 @@
 ---
-title: "sp_reinitsubscription (Transact-SQL)"
+title: "sys.sp_reinitsubscription (Transact-SQL)"
 description: sp_reinitsubscription marks the subscription for reinitialization.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_reinitsubscription (Transact-SQL)
+# sys.sp_reinitsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Marks the subscription for reinitialization. This stored procedure is executed a
 ## Syntax
 
 ```syntaxsql
-sp_reinitsubscription
+sys.sp_reinitsubscription
     [ [ @publication = ] N'publication' ]
     [ , [ @article = ] N'article' ]
     , [ @subscriber = ] N'subscriber'

@@ -4,7 +4,7 @@ description: "Executes the change data capture log scan operation."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -29,20 +29,22 @@ Executes the change data capture log scan operation.
 ## Syntax
 
 ```syntaxsql
-sys.sp_cdc_scan [ [ @maxtrans = ] max_trans ]
-    [ , [ @maxscans = ] max_scans ]
+sys.sp_cdc_scan
+    [ [ @maxtrans = ] maxtrans ]
+    [ , [ @maxscans = ] maxscans ]
     [ , [ @continuous = ] continuous ]
-    [ , [ @pollinginterval = ] polling_interval ]
+    [ , [ @pollinginterval = ] pollinginterval ]
+    [ , [ @is_from_job = ] is_from_job ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @maxtrans = ] *max_trans*
+#### [ @maxtrans = ] *maxtrans*
 
 Maximum number of transactions to process in each scan cycle. *@maxtrans* is **int** with a default of `500`.
 
-#### [ @maxscans = ] *max_scans*
+#### [ @maxscans = ] *maxscans*
 
 Maximum number of scan cycles to execute in order to extract all rows from the log. *@maxscans* is **int** with a default of `10`.
 
@@ -50,9 +52,13 @@ Maximum number of scan cycles to execute in order to extract all rows from the l
 
 Indicates whether the stored procedure should end after executing a single scan cycle (`0`) or run continuously, pausing for the time specified by *@pollinginterval* before re-executing the scan cycle (`1`). *@continuous* is **tinyint** with a default of `0`.
 
-#### [ @pollinginterval = ] *polling_interval*
+#### [ @pollinginterval = ] *pollinginterval*
 
 Number of seconds between log scan cycles. *@pollinginterval* is **bigint** with a default of `0`.
+
+#### [ @is_from_job = ] *is_from_job*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

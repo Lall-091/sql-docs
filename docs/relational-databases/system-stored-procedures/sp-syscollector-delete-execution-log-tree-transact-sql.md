@@ -4,7 +4,7 @@ description: Deletes all the log entries for the run of a single collection set.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Deletes all the log entries for the run of a single collection set. It also dele
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_delete_execution_log_tree
+dbo.sp_syscollector_delete_execution_log_tree
     [ @log_id = ] log_id
     [ , [ @from_collection_set = ] from_collection_set ]
 [ ; ]

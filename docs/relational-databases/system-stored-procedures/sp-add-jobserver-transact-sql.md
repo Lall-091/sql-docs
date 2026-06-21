@@ -4,7 +4,7 @@ description: "Targets the specified job at the specified server."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,30 +28,35 @@ Targets the specified job at the specified server.
 ## Syntax
 
 ```syntaxsql
-sp_add_jobserver
-    [ @job_id = ] job_id
-        | [ @job_name = ] 'job_name'
-    [ , [ @server_name = ] 'server' ]
+dbo.sp_add_jobserver
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
+    [ , [ @server_name = ] N'server_name' ]
+    [ , [ @automatic_post = ] automatic_post ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @job_id = ] *job_id*
+#### [ @job_id = ] '*job_id*'
 
-The identification number of the job. *job_id* is **uniqueidentifier**, with a default of `NULL`.
-
-Either *@job_id* or *@job_name* must be specified, but both can't be specified.
-
-#### [ @job_name = ] '*job_name*'
-
-The name of the job. *job_name* is **sysname**, with a default of `NULL`.
+The identification number of the job. *@job_id* is **uniqueidentifier**, with a default of `NULL`.
 
 Either *@job_id* or *@job_name* must be specified, but both can't be specified.
 
-#### [ @server_name = ] N'*server*'
+#### [ @job_name = ] N'*job_name*'
+
+The name of the job. *@job_name* is **sysname**, with a default of `NULL`.
+
+Either *@job_id* or *@job_name* must be specified, but both can't be specified.
+
+#### [ @server_name = ] N'*server_name*'
 
 The name of the server at which to target the job. *@server_name* is **nvarchar(30)**, with a default of `(LOCAL)`. *@server_name* can be either `(LOCAL)` for a local server, or the name of an existing target server.
+
+#### [ @automatic_post = ] *automatic_post*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

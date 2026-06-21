@@ -4,7 +4,7 @@ description: "Enables per query statistics collection for all or specific native
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,22 +30,22 @@ To enable statistics collection at the procedure level for all natively compiled
 
 ```syntaxsql
 sys.sp_xtp_control_query_exec_stats
-    [ [ @new_collection_value = ] collection_value ]
+    [ [ @new_collection_value = ] new_collection_value ]
     [ , [ @database_id = ] database_id ]
-    [ , [ @xtp_object_id = ] procedure_id ]
-    , [ @old_collection_value = ] old_collection_value OUTPUT
+    [ , [ @xtp_object_id = ] xtp_object_id ]
+    [ , [ @old_collection_value = ] old_collection_value OUTPUT ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @new_collection_value = ] *collection_value*
+#### [ @new_collection_value = ] *new_collection_value*
 
 Determines whether procedure-level statistics collection is on (`1`) or off (`0`). *@new_collection_value* is **bit**.
 
 *@new_collection_value* is set to `0` when [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] starts.
 
-#### [ @database_id = ] *database_id*, [ @xtp_object_id = ] *procedure_id*
+#### [ @database_id = ] *database_id*, [ @xtp_object_id = ] *xtp_object_id*
 
 The database ID and object ID (data type **int**) for the natively compiled stored procedure. If statistics collection is enabled for the instance ([sys.sp_xtp_control_proc_exec_stats](sys-sp-xtp-control-proc-exec-stats-transact-sql.md)), statistics on a natively compiled stored procedure are collected. Turning off statistics collection on the instance doesn't turn off statistics collection for individual natively compiled stored procedures.
 

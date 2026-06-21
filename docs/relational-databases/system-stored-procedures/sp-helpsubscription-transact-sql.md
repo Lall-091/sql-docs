@@ -1,10 +1,10 @@
 ---
-title: "sp_helpsubscription (Transact-SQL)"
+title: "sys.sp_helpsubscription (Transact-SQL)"
 description: sp_helpsubscription lists subscription information associated with a particular publication, article, Subscriber, or set of subscriptions.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpsubscription (Transact-SQL)
+# sys.sp_helpsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Lists subscription information associated with a particular publication, article
 ## Syntax
 
 ```syntaxsql
-sp_helpsubscription
+sys.sp_helpsubscription
     [ [ @publication = ] N'publication' ]
     [ , [ @article = ] N'article' ]
     [ , [ @subscriber = ] N'subscriber' ]
@@ -57,7 +57,7 @@ The name of the destination database. *@destination_db* is **sysname**, with a d
 
 #### [ @found = ] *found* OUTPUT
 
-A flag to indicate returning rows. *@found* is an OUTPUT parameter of type **int**.
+A flag to indicate returning rows. *@found* is an `OUTPUT` parameter of type **int**.
 
 - `1` indicates the publication is found.
 - `0` indicates the publication isn't found.

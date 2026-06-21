@@ -4,7 +4,7 @@ description: Deletes information about the specified database from the backup an
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Deletes information about the specified database from the backup and restore his
 ## Syntax
 
 ```syntaxsql
-sp_delete_database_backuphistory [ @database_name = ] N'database_name'
+dbo.sp_delete_database_backuphistory [ @database_name = ] N'database_name'
 [ ; ]
 ```
 

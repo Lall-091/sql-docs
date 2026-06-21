@@ -1,10 +1,10 @@
 ---
-title: "sp_columns (Transact-SQL)"
+title: "sys.sp_columns (Transact-SQL)"
 description: sp_columns returns column information for the specified objects that can be queried in the current environment.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
-# sp_columns (Transact-SQL)
+# sys.sp_columns (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
@@ -30,7 +30,7 @@ Returns column information for the specified objects that can be queried in the 
 ## Syntax
 
 ```syntaxsql
-sp_columns
+sys.sp_columns
     [ @table_name = ] N'table_name'
     [ , [ @table_owner = ] N'table_owner' ]
     [ , [ @table_qualifier = ] N'table_qualifier' ]

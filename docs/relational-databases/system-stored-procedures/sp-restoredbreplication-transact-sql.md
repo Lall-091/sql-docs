@@ -1,10 +1,10 @@
 ---
-title: "sp_restoredbreplication (Transact-SQL)"
+title: "sys.sp_restoredbreplication (Transact-SQL)"
 description: sp_restoredbreplication removes replication settings when restoring a database to a non-originating server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_restoredbreplication (Transact-SQL)
+# sys.sp_restoredbreplication (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Removes replication settings if restoring a database to the non-originating serv
 ## Syntax
 
 ```syntaxsql
-sp_restoredbreplication
+sys.sp_restoredbreplication
     [ @srv_orig = ] N'srv_orig'
     , [ @db_orig = ] N'db_orig'
     [ , [ @keep_replication = ] keep_replication ]

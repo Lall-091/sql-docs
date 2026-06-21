@@ -1,10 +1,10 @@
 ---
-title: "sp_change_log_shipping_secondary_primary (Transact-SQL)"
+title: "sys.sp_change_log_shipping_secondary_primary (Transact-SQL)"
 description: Changes secondary database settings.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 10/22/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - TSQL
 ---
-# sp_change_log_shipping_secondary_primary (Transact-SQL)
+# sys.sp_change_log_shipping_secondary_primary (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,9 +27,9 @@ Changes secondary database settings.
 ## Syntax
 
 ```syntaxsql
-sp_change_log_shipping_secondary_primary
-    [ @primary_server = ] 'primary_server' ,
-    [ @primary_database = ] 'primary_database' ,
+sys.sp_change_log_shipping_secondary_primary
+    [ @primary_server = ] N'primary_server'
+    , [ @primary_database = ] N'primary_database'
     [ , [ @backup_source_directory = ] N'backup_source_directory' ]
     [ , [ @backup_destination_directory = ] N'backup_destination_directory' ]
     [ , [ @file_retention_period = ] file_retention_period ]
@@ -42,11 +42,11 @@ sp_change_log_shipping_secondary_primary
 
 ## Arguments
 
-#### [ @primary_server = ] '*primary_server*'
+#### [ @primary_server = ] N'*primary_server*'
 
 The name of the primary instance of the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] in the log shipping configuration. *@primary_server* is **sysname** and can't be `NULL`.
 
-#### [ @primary_database = ] '*primary_database*'
+#### [ @primary_database = ] N'*primary_database*'
 
 The name of the database on the primary server. *@primary_database* is **sysname**, with no default.
 
@@ -58,11 +58,11 @@ The directory where transaction log backup files from the primary server are sto
 
 The directory on the secondary server where backup files are copied to. *@backup_destination_directory* is **nvarchar(500)** and can't be `NULL`.
 
-#### [ @file_retention_period = ] '*file_retention_period*'
+#### [ @file_retention_period = ] *file_retention_period*
 
 The length of time in minutes in which the backup files are retained. *@file_retention_period* is **int**, with a default of `NULL`. A value of 14420 is used if none is specified.
 
-#### [ @monitor_server_security_mode = ] '*monitor_server_security_mode*'
+#### [ @monitor_server_security_mode = ] *monitor_server_security_mode*
 
 The security mode used to connect to the monitor server.
 
@@ -71,11 +71,11 @@ The security mode used to connect to the monitor server.
 
 *@monitor_server_security_mode* is **bit** and defaults to `NULL`.
 
-#### [ @monitor_server_login = ] '*monitor_server_login*'
+#### [ @monitor_server_login = ] N'*monitor_server_login*'
 
 The username of the account used to access the monitor server.
 
-#### [ @monitor_server_password = ] '*monitor_server_password*'
+#### [ @monitor_server_password = ] N'*monitor_server_password*'
 
 The password of the account used to access the monitor server.
 

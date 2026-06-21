@@ -1,10 +1,10 @@
 ---
-title: "sp_setreplfailovermode (Transact-SQL)"
+title: "sys.sp_setreplfailovermode (Transact-SQL)"
 description: sp_setreplfailovermode allows you to set the failover operation mode for subscriptions enabled for immediate updating, with queued updating as failover.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_setreplfailovermode (Transact-SQL)
+# sys.sp_setreplfailovermode (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Allows you to set the failover operation mode for subscriptions enabled for imme
 ## Syntax
 
 ```syntaxsql
-sp_setreplfailovermode
+sys.sp_setreplfailovermode
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

@@ -1,10 +1,10 @@
 ---
-title: "sp_mergesubscription_cleanup (Transact-SQL)"
+title: "sys.sp_mergesubscription_cleanup (Transact-SQL)"
 description: "Removes metadata, such as triggers and entries, in sysmergesubscriptions and sysmergearticles."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_mergesubscription_cleanup (Transact-SQL)
+# sys.sp_mergesubscription_cleanup (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Removes metadata, such as triggers and entries, in `sysmergesubscriptions` and `
 ## Syntax
 
 ```syntaxsql
-sp_mergesubscription_cleanup
+sys.sp_mergesubscription_cleanup
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

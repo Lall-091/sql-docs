@@ -4,7 +4,7 @@ description: "sp_add_alert (Transact-SQL)"
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,21 +27,23 @@ Creates an alert.
 ## Syntax
 
 ```syntaxsql
-sp_add_alert [ @name = ] N'name'
-     [ , [ @message_id = ] message_id ]
-     [ , [ @severity = ] severity ]
-     [ , [ @enabled = ] enabled ]
-     [ , [ @delay_between_responses = ] delay_between_responses ]
-     [ , [ @notification_message = ] N'notification_message' ]
-     [ , [ @include_event_description_in = ] include_event_description_in ]
-     [ , [ @database_name = ] N'database_name' ]
-     [ , [ @event_description_keyword = ] N'event_description_keyword' ]
-     [ , { [ @job_id = ] job_id | [ @job_name = ] N'job_name' } ]
-     [ , [ @raise_snmp_trap = ] raise_snmp_trap ]
-     [ , [ @performance_condition = ] N'performance_condition' ]
-     [ , [ @category_name = ] N'category_name' ]
-     [ , [ @wmi_namespace = ] N'wmi_namespace' ]
-     [ , [ @wmi_query = ] N'wmi_query' ]
+dbo.sp_add_alert
+    [ @name = ] N'name'
+    [ , [ @message_id = ] message_id ]
+    [ , [ @severity = ] severity ]
+    [ , [ @enabled = ] enabled ]
+    [ , [ @delay_between_responses = ] delay_between_responses ]
+    [ , [ @notification_message = ] N'notification_message' ]
+    [ , [ @include_event_description_in = ] include_event_description_in ]
+    [ , [ @database_name = ] N'database_name' ]
+    [ , [ @event_description_keyword = ] N'event_description_keyword' ]
+    [ , [ @job_id = ] 'job_id' ]
+    [ , [ @job_name = ] N'job_name' ]
+    [ , [ @raise_snmp_trap = ] raise_snmp_trap ]
+    [ , [ @performance_condition = ] N'performance_condition' ]
+    [ , [ @category_name = ] N'category_name' ]
+    [ , [ @wmi_namespace = ] N'wmi_namespace' ]
+    [ , [ @wmi_query = ] N'wmi_query' ]
 [ ; ]
 ```
 
@@ -103,7 +105,7 @@ A sequence of characters that must be found in the description of the [!INCLUDE 
 > [!NOTE]  
 > [!INCLUDE [tsql](../../includes/tsql-md.md)] `LIKE` expression pattern-matching characters can't be used.
 
-#### [ @job_id = ] *job_id*
+#### [ @job_id = ] '*job_id*'
 
 The job identification number of the job to run in response to this alert. *@job_id* is **uniqueidentifier**, with a default of `NULL`.
 

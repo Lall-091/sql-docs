@@ -1,10 +1,10 @@
 ---
-title: "sp_check_subset_filter (Transact-SQL)"
+title: "sys.sp_check_subset_filter (Transact-SQL)"
 description: sp_check_subset_filter checks a filter clause against any table to determine if the filter clause is valid for the table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_check_subset_filter (Transact-SQL)
+# sys.sp_check_subset_filter (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Checks a filter clause against any table to determine if the filter clause is va
 ## Syntax
 
 ```syntaxsql
-sp_check_subset_filter
+sys.sp_check_subset_filter
     [ @filtered_table = ] N'filtered_table'
     , [ @subset_filterclause = ] N'subset_filterclause'
     [ , [ @has_dynamic_filters = ] has_dynamic_filters OUTPUT ]
@@ -47,7 +47,11 @@ The filter clause being tested. *@subset_filterclause* is **nvarchar(1000)**, wi
 
 #### [ @has_dynamic_filters = ] *has_dynamic_filters* OUTPUT
 
-Specifies whether the filter clause is a parameterized row filter. *@has_dynamic_filters* is an OUTPUT parameter of type **bit**. Returns a value of `1` when the filter clause is a parameterized row filter.
+Specifies whether the filter clause is a parameterized row filter. *@has_dynamic_filters* is an `OUTPUT` parameter of type **bit**. Returns a value of `1` when the filter clause is a parameterized row filter.
+
+#### [ @dynamic_filters_function_list = ] N'*dynamic_filters_function_list*' OUTPUT
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Result set
 

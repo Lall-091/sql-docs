@@ -1,10 +1,10 @@
 ---
-title: "sp_create_plan_guide (Transact-SQL)"
+title: "sys.sp_create_plan_guide (Transact-SQL)"
 description: sp_create_plan_guide creates a plan guide for associating query hints or actual query plans with queries in a database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_create_plan_guide (Transact-SQL)
+# sys.sp_create_plan_guide (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -29,7 +29,7 @@ Creates a plan guide for associating query hints or actual query plans with quer
 ## Syntax
 
 ```syntaxsql
-sp_create_plan_guide
+sys.sp_create_plan_guide
     [ @name = ] N'name'
     [ , [ @stmt = ] N'stmt' ]
     , [ @type = ] { N'OBJECT' | N'SQL' | N'TEMPLATE' }
@@ -75,7 +75,7 @@ For a plan guide to match a batch submitted from an application, *@module_or_bat
 
 `[ <schema_name>. ] <object_name>` specifies the name of a [!INCLUDE [tsql](../../includes/tsql-md.md)] stored procedure, scalar function, multistatement table-valued function, or [!INCLUDE [tsql](../../includes/tsql-md.md)] DML trigger that contains *@stmt*. If `<schema_name>` isn't specified, `<schema_name>` uses the schema of the current user. If `NULL` is specified and *@type* is `SQL`, the value of *@module_or_batch* is set to the value of *@stmt*. If *@type* is `TEMPLATE`, *@module_or_batch* must be `NULL`.
 
-#### [ @params = ] N'*@parameter_name* *data_type* [ ,... *n* ]'
+#### [ @params = ] N'*parameter_name* *data_type* [ ,... *n* ]'
 
 Specifies the definitions of all parameters that are embedded in *@stmt*. *@params* is **nvarchar(max)**, with a default of `NULL`. *@params* applies only when either of the following options is true:
 

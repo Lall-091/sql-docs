@@ -4,7 +4,7 @@ description: Updates a collector type for a collection item.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Updates a collector type for a collection item. Given the name and GUID of a col
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_update_collector_type
+dbo.sp_syscollector_update_collector_type
     [ [ @collector_type_uid = ] 'collector_type_uid' ]
     [ , [ @name = ] N'name' ]
     [ , [ @parameter_schema = ] N'parameter_schema' ]
@@ -42,7 +42,7 @@ sp_syscollector_update_collector_type
 
 #### [ @collector_type_uid = ] '*collector_type_uid*'
 
-The GUID for the collector type. *@collector_type_uid* is **uniqueidentifier**, and if it's `NULL`, *@collector_type_uid* is automatically created and returned as OUTPUT.
+The GUID for the collector type. *@collector_type_uid* is **uniqueidentifier**, and if it's `NULL`, *@collector_type_uid* is automatically created and returned as `OUTPUT`.
 
 #### [ @name = ] N'*name*'
 

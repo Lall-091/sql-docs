@@ -1,10 +1,10 @@
 ---
-title: "sp_changedynamicsnapshot_job (Transact-SQL)"
+title: "sys.sp_changedynamicsnapshot_job (Transact-SQL)"
 description: Modifies the agent job that generates the snapshot for a subscription to a publication with a parameterized row filter.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changedynamicsnapshot_job (Transact-SQL)
+# sys.sp_changedynamicsnapshot_job (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Modifies the agent job that generates the snapshot for a subscription to a publi
 ## Syntax
 
 ```syntaxsql
-sp_changedynamicsnapshot_job
+sys.sp_changedynamicsnapshot_job
     [ @publication = ] N'publication'
     [ , [ @dynamic_snapshot_jobname = ] N'dynamic_snapshot_jobname' ]
     [ , [ @dynamic_snapshot_jobid = ] 'dynamic_snapshot_jobid' ]

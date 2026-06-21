@@ -1,10 +1,10 @@
 ---
-title: "sp_help_log_shipping_monitor (Transact-SQL)"
+title: "sys.sp_help_log_shipping_monitor (Transact-SQL)"
 description: Returns a result set containing status and other information for registered primary and secondary databases.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_log_shipping_monitor (Transact-SQL)
+# sys.sp_help_log_shipping_monitor (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns a result set containing status and other information for registered prim
 ## Syntax
 
 ```syntaxsql
-sp_help_log_shipping_monitor [ [ @verbose = ] verbose ]
+sys.sp_help_log_shipping_monitor [ [ @verbose = ] verbose ]
 [ ; ]
 ```
 
@@ -56,7 +56,7 @@ sp_help_log_shipping_monitor [ [ @verbose = ] verbose ]
 | `time_since_last_copy` | **int** | The length of time, in minutes, since the last log backup was copied.<br /><br />`NULL` = The information isn't available or isn't relevant. |
 | `last_copied_file` | **nvarchar(500)** | The name of the last successfully copied log backup file.<br /><br />`NULL` = The information isn't available or isn't relevant. |
 | `time_since_last_restore` | **int** | The length of time, in minutes, since the last log backup was restored.<br /><br />`NULL` = The information isn't available or isn't relevant. |
-| `last_restored_file` | **nvarchar(500).** | The name of the last successfully restored log backup file.<br /><br />`NULL` = The information isn't available or isn't relevant. |
+| `last_restored_file` | **nvarchar(500)** | The name of the last successfully restored log backup file.<br /><br />`NULL` = The information isn't available or isn't relevant. |
 | `last_restored_latency` | **int** | Duration of time, in minutes, from the creation of the last backup to restore of the backup.<br /><br />`NULL` = The information isn't available or isn't relevant. |
 | `restore_threshold` | **int** | The number of minutes allowed to elapse between restore operations before an alert is generated. **restore_threshold** can't be `NULL`. |
 | `is_restore_alert_enabled` | **bit** | Specifies whether an alert is raised when `restore_threshold` is exceeded. The value of one (`1`), the default, means that the alert is raised.<br /><br />`NULL` = The information isn't available or isn't relevant.<br /><br />To set restore threshold, use [sp_add_log_shipping_secondary_database](sp-add-log-shipping-secondary-database-transact-sql.md). |

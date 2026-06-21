@@ -1,10 +1,10 @@
 ---
-title: "sp_changesubscriber (Transact-SQL)"
+title: "sys.sp_changesubscriber (Transact-SQL)"
 description: sp_changesubscriber changes the options for a Subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changesubscriber (Transact-SQL)
+# sys.sp_changesubscriber (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes the options for a Subscriber. Any distribution task for the Subscribers 
 ## Syntax
 
 ```syntaxsql
-sp_changesubscriber
+sys.sp_changesubscriber
     [ @subscriber = ] N'subscriber'
     [ , [ @type = ] type ]
     [ , [ @login = ] N'login' ]

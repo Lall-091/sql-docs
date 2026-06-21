@@ -4,7 +4,7 @@ description: "Creates an operator (notification recipient) for use with alerts a
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 12/01/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"

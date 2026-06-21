@@ -1,10 +1,10 @@
 ---
-title: "sp_help_peerconflictdetection (Transact-SQL)"
+title: "sys.sp_help_peerconflictdetection (Transact-SQL)"
 description: Returns information about the conflict detection settings for a publication involved in a peer-to-peer transactional replication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_peerconflictdetection (Transact-SQL)
+# sys.sp_help_peerconflictdetection (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information about the conflict detection settings for a publication that
 ## Syntax
 
 ```syntaxsql
-sp_help_peerconflictdetection
+sys.sp_help_peerconflictdetection
     [ @publication = ] N'publication'
     [ , [ @timeout = ] timeout ]
 [ ; ]

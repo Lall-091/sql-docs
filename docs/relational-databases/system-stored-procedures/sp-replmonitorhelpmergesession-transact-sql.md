@@ -1,10 +1,10 @@
 ---
-title: "sp_replmonitorhelpmergesession (Transact-SQL)"
+title: "sys.sp_replmonitorhelpmergesession (Transact-SQL)"
 description: Returns information on past sessions for a given replication Merge Agent.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replmonitorhelpmergesession (Transact-SQL)
+# sys.sp_replmonitorhelpmergesession (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns information on past sessions for a given replication Merge Agent, with o
 ## Syntax
 
 ```syntaxsql
-sp_replmonitorhelpmergesession
+sys.sp_replmonitorhelpmergesession
     [ [ @agent_name = ] N'agent_name' ]
     [ , [ @hours = ] hours ]
     [ , [ @session_type = ] session_type ]
@@ -51,7 +51,7 @@ The range of time, in hours, for which historical agent session information is r
 | --- | --- |
 | < `0` | Returns information on past agent runs, up to a maximum of 100 runs. |
 | `0` (default) | Returns information on all past agent runs. |
-| > `0` | Returns information on agent runs that occurred in the last *hours* number of hours. |
+| > `0` | Returns information on agent runs that occurred in the last *@hours* number of hours. |
 
 #### [ @session_type = ] *session_type*
 

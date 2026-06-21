@@ -4,7 +4,7 @@ description: Starts a collection set if the collector is already enabled, and th
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -33,9 +33,9 @@ Starts a collection set if the collector is already enabled, and the collection 
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_run_collection_set
-    [ [ @collection_set_id = ] collection_set_id ]
-    [ , [ @name = ] N'name' ]
+dbo.sp_syscollector_run_collection_set
+    { [ @collection_set_id = ] collection_set_id
+        | [ @name = ] N'name' }
 [ ; ]
 ```
 

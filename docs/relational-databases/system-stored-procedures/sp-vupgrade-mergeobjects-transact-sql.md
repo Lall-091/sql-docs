@@ -1,10 +1,10 @@
 ---
-title: "sp_vupgrade_mergeobjects (Transact-SQL)"
+title: "sys.sp_vupgrade_mergeobjects (Transact-SQL)"
 description: Regenerates the article-specific triggers, stored procedures, and views that are used to track and apply data changes for merge replication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_vupgrade_mergeobjects (Transact-SQL)
+# sys.sp_vupgrade_mergeobjects (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -33,7 +33,7 @@ Executing this stored procedure doesn't require reinitialization of subscription
 ## Syntax
 
 ```syntaxsql
-sp_vupgrade_mergeobjects
+sys.sp_vupgrade_mergeobjects
     [ [ @login = ] N'login' ]
     [ , [ @password = ] N'password' ]
     [ , [ @security_mode = ] security_mode ]

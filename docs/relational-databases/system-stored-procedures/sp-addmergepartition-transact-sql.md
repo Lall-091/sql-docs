@@ -1,10 +1,10 @@
 ---
-title: "sp_addmergepartition (Transact-SQL)"
+title: "sys.sp_addmergepartition (Transact-SQL)"
 description: Creates a dynamically filtered partition for a subscription that is filtered.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addmergepartition (Transact-SQL)
+# sys.sp_addmergepartition (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Creates a dynamically filtered partition for a subscription, filtered by the val
 ## Syntax
 
 ```syntaxsql
-sp_addmergepartition
+sys.sp_addmergepartition
     [ @publication = ] N'publication'
     [ , [ @suser_sname = ] N'suser_sname' ]
     [ , [ @host_name = ] N'host_name' ]

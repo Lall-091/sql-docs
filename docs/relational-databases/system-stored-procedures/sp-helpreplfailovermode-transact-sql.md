@@ -1,10 +1,10 @@
 ---
-title: "sp_helpreplfailovermode (Transact-SQL)"
+title: "sys.sp_helpreplfailovermode (Transact-SQL)"
 description: sp_helpreplfailovermode displays the current failover mode of a subscription.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpreplfailovermode (Transact-SQL)
+# sys.sp_helpreplfailovermode (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Displays the current failover mode of a subscription. This stored procedure is e
 ## Syntax
 
 ```syntaxsql
-sp_helpreplfailovermode
+sys.sp_helpreplfailovermode
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'
@@ -52,11 +52,11 @@ The name of the publication that is participating in the update of this Subscrib
 
 #### [ @failover_mode_id = ] *failover_mode_id* OUTPUT
 
-Returns the integer value of the failover mode. *@failover_mode_id* is an OUTPUT parameter of type **tinyint**. It returns `0` for immediate updating and `1` for queued updating.
+Returns the integer value of the failover mode. *@failover_mode_id* is an `OUTPUT` parameter of type **tinyint**. It returns `0` for immediate updating and `1` for queued updating.
 
 #### [ @failover_mode = ] N'*failover_mode*' OUTPUT
 
-Returns the mode in which data modifications are made at the Subscriber. *@failover_mode* is an OUTPUT parameter of type **nvarchar(10)**, and can be one of the following values.
+Returns the mode in which data modifications are made at the Subscriber. *@failover_mode* is an `OUTPUT` parameter of type **nvarchar(10)**, and can be one of the following values.
 
 | Value | Description |
 | --- | --- |

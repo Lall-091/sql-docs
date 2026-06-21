@@ -4,7 +4,7 @@ description: "Removes an existing binding between a database and a resource pool
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,14 +30,13 @@ This system procedure removes an existing binding between a database and a resou
 ## Syntax
 
 ```syntaxsql
-sys.sp_xtp_unbind_db_resource_pool
-    [ @database_name = ] 'database_name'
+sys.sp_xtp_unbind_db_resource_pool [ @database_name = ] N'database_name'
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @database_name = ] '*database_name*'
+#### [ @database_name = ] N'*database_name*'
 
 The name of an existing [!INCLUDE [inmemory](../../includes/inmemory-md.md)] enabled database. *@database_name* is **sysname**.
 

@@ -4,7 +4,7 @@ description: Lists information about the runtime state of SQL Server Agent jobs.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Lists information about the runtime state of [!INCLUDE [ssNoVersion](../../inclu
 ## Syntax
 
 ```syntaxsql
-sp_help_jobactivity
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_help_jobactivity
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @session_id = ] session_id ]
 [ ; ]
 ```

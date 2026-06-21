@@ -1,10 +1,10 @@
 ---
-title: "sp_addmergepushsubscription_agent (Transact-SQL)"
+title: "sys.sp_addmergepushsubscription_agent (Transact-SQL)"
 description: Adds a new agent job used to schedule synchronization of a push subscription to a merge publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addmergepushsubscription_agent (Transact-SQL)
+# sys.sp_addmergepushsubscription_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -32,7 +32,7 @@ Adds a new agent job used to schedule synchronization of a push subscription to 
 ## Syntax
 
 ```syntaxsql
-sp_addmergepushsubscription_agent
+sys.sp_addmergepushsubscription_agent
     [ @publication = ] N'publication'
     [ , [ @subscriber = ] N'subscriber' ]
     [ , [ @subscriber_db = ] N'subscriber_db' ]
@@ -134,7 +134,7 @@ The password for the Windows account under which the agent runs. *@job_password*
 
 #### [ @job_name = ] N'*job_name*'
 
-The name of an existing agent job. *@job_name* is **sysname**, with a default of `NULL`. This parameter is only specified when the subscription is synchronized using an existing job instead of a newly created job (the default). If you aren't a member of the **sysadmin** fixed server role, you must specify *job_login* and *job_password* when you specify *@job_name*.
+The name of an existing agent job. *@job_name* is **sysname**, with a default of `NULL`. This parameter is only specified when the subscription is synchronized using an existing job instead of a newly created job (the default). If you aren't a member of the **sysadmin** fixed server role, you must specify *@job_login* and *@job_password* when you specify *@job_name*.
 
 #### [ @frequency_type = ] *frequency_type*
 

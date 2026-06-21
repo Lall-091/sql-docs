@@ -1,10 +1,10 @@
 ---
-title: "sp_helpreplicationdboption (Transact-SQL)"
+title: "sys.sp_helpreplicationdboption (Transact-SQL)"
 description: sp_helpreplicationdboption shows whether databases at the Publisher are enabled for replication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,18 +16,21 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpreplicationdboption (Transact-SQL)
+# sys.sp_helpreplicationdboption (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-Shows whether databases at the Publisher are enabled for replication. This stored procedure is executed at the Publisher on any database. *Not supported for Oracle Publishers.*
+Shows whether databases at the Publisher are enabled for replication. This stored procedure is executed at the Publisher on any database.
+
+> [!NOTE]  
+> Not supported for Oracle Publishers.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
 ```syntaxsql
-sp_helpreplicationdboption
+sys.sp_helpreplicationdboption
     [ [ @dbname = ] N'dbname' ]
     [ , [ @type = ] N'type' ]
     [ , [ @reserved = ] reserved ]

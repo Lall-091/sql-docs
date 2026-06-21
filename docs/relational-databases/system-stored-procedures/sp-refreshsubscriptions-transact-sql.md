@@ -1,10 +1,10 @@
 ---
-title: "sp_refreshsubscriptions (Transact-SQL)"
+title: "sys.sp_refreshsubscriptions (Transact-SQL)"
 description: sp_refreshsubscriptions adds subscriptions to new articles for all the existing Subscribers to an immediate-updating publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_refreshsubscriptions (Transact-SQL)
+# sys.sp_refreshsubscriptions (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Add subscriptions to new articles for all the existing Subscribers to an immedia
 ## Syntax
 
 ```syntaxsql
-sp_refreshsubscriptions
+sys.sp_refreshsubscriptions
     [ @publication = ] N'publication'
     [ , [ @publisher = ] N'publisher' ]
 [ ; ]

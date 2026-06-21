@@ -4,7 +4,7 @@ description: sp_revoke_login_from_proxy removes access to a proxy for a security
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,10 +27,10 @@ Removes access to a proxy for a security principal.
 ## Syntax
 
 ```syntaxsql
-sp_revoke_login_from_proxy
+dbo.sp_revoke_login_from_proxy
     [ @name = ] N'name'
-    [ , [ @proxy_id = ] proxy_id ]
-    [ , [ @proxy_name = ] N'proxy_name' ]
+    , { [ @proxy_id = ] proxy_id
+        | [ @proxy_name = ] N'proxy_name' }
 [ ; ]
 ```
 

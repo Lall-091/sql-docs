@@ -1,10 +1,10 @@
 ---
-title: "sp_help_fulltext_catalogs (Transact-SQL)"
+title: "sys.sp_help_fulltext_catalogs (Transact-SQL)"
 description: Returns the ID, name, root directory, status, and number of full-text indexed tables for the specified full-text catalog.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_fulltext_catalogs (Transact-SQL)
+# sys.sp_help_fulltext_catalogs (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,8 @@ Returns the ID, name, root directory, status, and number of full-text indexed ta
 ## Syntax
 
 ```syntaxsql
-sp_help_fulltext_catalogs [ [ @fulltext_catalog_name = ] N'fulltext_catalog_name' ]
+sys.sp_help_fulltext_catalogs
+    [ [ @fulltext_catalog_name = ] N'fulltext_catalog_name' ]
 [ ; ]
 ```
 

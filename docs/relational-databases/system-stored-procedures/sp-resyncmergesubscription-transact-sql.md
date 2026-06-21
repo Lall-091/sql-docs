@@ -1,10 +1,10 @@
 ---
-title: "sp_resyncmergesubscription (Transact-SQL)"
+title: "sys.sp_resyncmergesubscription (Transact-SQL)"
 description: Resynchronizes a merge subscription to a known validation state that you specify.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_resyncmergesubscription (Transact-SQL)
+# sys.sp_resyncmergesubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Resynchronizes a merge subscription to a known validation state that you specify
 ## Syntax
 
 ```syntaxsql
-sp_resyncmergesubscription
+sys.sp_resyncmergesubscription
     [ [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]
     , [ @publication = ] N'publication'
@@ -68,7 +68,7 @@ Defines when the resynchronization should start. *@resync_type* is **int**, and 
 | --- | --- |
 | `0` | Synchronization starts from after the initial snapshot. This option is the most resource-intensive, because all changes since the initial snapshot are reapplied to the Subscriber. |
 | `1` | Synchronization starts since last successful validation. All new or incomplete generations originating since the last successful validation are reapplied to the Subscriber. |
-| `2` | Synchronization starts from the date given in *resync_date_str*. All new or incomplete generations originating after the date are reapplied to the Subscriber |
+| `2` | Synchronization starts from the date given in *@resync_date_str*. All new or incomplete generations originating after the date are reapplied to the Subscriber |
 
 #### [ @resync_date_str = ] N'*resync_date_str*'
 

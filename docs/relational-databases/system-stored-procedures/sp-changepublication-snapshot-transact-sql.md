@@ -1,10 +1,10 @@
 ---
-title: "sp_changepublication_snapshot (Transact-SQL)"
+title: "sys.sp_changepublication_snapshot (Transact-SQL)"
 description: sp_changepublication_snapshot Changes properties of the Snapshot Agent for the specified publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changepublication_snapshot (Transact-SQL)
+# sys.sp_changepublication_snapshot (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Changes properties of the Snapshot Agent for the specified publication. This sto
 ## Syntax
 
 ```syntaxsql
-sp_changepublication_snapshot
+sys.sp_changepublication_snapshot
     [ @publication = ] N'publication'
     [ , [ @frequency_type = ] frequency_type ]
     [ , [ @frequency_interval = ] frequency_interval ]
@@ -49,6 +49,7 @@ sp_changepublication_snapshot
     [ , [ @job_login = ] N'job_login' ]
     [ , [ @job_password = ] N'job_password' ]
     [ , [ @publisher = ] N'publisher' ]
+    [ , [ @job_security_mode = ] job_security_mode ]
 [ ; ]
 ```
 
@@ -176,6 +177,10 @@ Specifies a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] publi
 
 > [!NOTE]  
 > *@publisher* shouldn't be used when creating a Snapshot Agent at a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher.
+
+#### [ @job_security_mode = ] *job_security_mode*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

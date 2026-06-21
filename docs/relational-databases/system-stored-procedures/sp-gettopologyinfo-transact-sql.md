@@ -1,10 +1,10 @@
 ---
-title: "sp_gettopologyinfo (Transact-SQL)"
+title: "sys.sp_gettopologyinfo (Transact-SQL)"
 description: sp_gettopologyinfo returns information about a peer-to-peer transactional replication topology.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_gettopologyinfo (Transact-SQL)
+# sys.sp_gettopologyinfo (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information about a peer-to-peer transactional replication topology. Exe
 ## Syntax
 
 ```syntaxsql
-sp_gettopologyinfo [ [ @request_id = ] request_id ]
+sys.sp_gettopologyinfo [ [ @request_id = ] request_id ]
 [ ; ]
 ```
 
@@ -35,7 +35,7 @@ sp_gettopologyinfo [ [ @request_id = ] request_id ]
 
 #### [ @request_id = ] *request_id*
 
-The ID of a topology status request. *@request_id* is **int**, with a default of `NULL`. To obtain an ID, use the *@request_id* OUTPUT parameter from [sp_requestpeertopologyinfo](sp-requestpeertopologyinfo-transact-sql.md), or query the [MSpeer_topologyrequest](../system-tables/mspeer-topologyrequest-transact-sql.md) system table.
+The ID of a topology status request. *@request_id* is **int**, with a default of `NULL`. To obtain an ID, use the *@request_id* `OUTPUT` parameter from [sp_requestpeertopologyinfo](sp-requestpeertopologyinfo-transact-sql.md), or query the [MSpeer_topologyrequest](../system-tables/mspeer-topologyrequest-transact-sql.md) system table.
 
 ## Result set
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_register_custom_scripting (Transact-SQL)"
+title: "sys.sp_register_custom_scripting (Transact-SQL)"
 description: sp_register_custom_scripting registers a stored procedure or Transact-SQL script file that is executed when a schema change occurs.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_register_custom_scripting (Transact-SQL)
+# sys.sp_register_custom_scripting (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -29,7 +29,7 @@ Replication allows user-defined custom stored procedures to replace one or more 
 ## Syntax
 
 ```syntaxsql
-sp_register_custom_scripting
+sys.sp_register_custom_scripting
     [ @type = ] 'type'
     , [ @value = ] N'value'
     [ , [ @publication = ] N'publication' ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergedeleteconflictrows (Transact-SQL)"
+title: "sys.sp_helpmergedeleteconflictrows (Transact-SQL)"
 description: "Returns information on data rows that lost delete conflicts."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergedeleteconflictrows (Transact-SQL)
+# sys.sp_helpmergedeleteconflictrows (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information on data rows that lost delete conflicts. This stored procedu
 ## Syntax
 
 ```syntaxsql
-sp_helpmergedeleteconflictrows
+sys.sp_helpmergedeleteconflictrows
     [ [ @publication = ] N'publication' ]
     [ , [ @source_object = ] N'source_object' ]
     [ , [ @publisher = ] N'publisher' ]

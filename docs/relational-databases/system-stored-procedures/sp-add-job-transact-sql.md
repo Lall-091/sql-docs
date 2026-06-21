@@ -4,7 +4,7 @@ description: "sp_add_job creates a new job to be executed by the SQL Server Agen
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -31,57 +31,58 @@ Creates a new job executed by the [!INCLUDE [ssnoversion-md](../../includes/ssno
 ## Syntax
 
 ```syntaxsql
-sp_add_job
-         [ @job_name = ] N'job_name'
-     [ , [ @enabled = ] enabled ]
-     [ , [ @description = ] N'description' ]
-     [ , [ @start_step_id = ] step_id ]
-     [ , [ @category_name = ] 'category' ]
-     [ , [ @category_id = ] category_id ]
-     [ , [ @owner_login_name = ] 'login' ]
-     [ , [ @notify_level_eventlog = ] eventlog_level ]
-     [ , [ @notify_level_email = ] email_level ]
-     [ , [ @notify_level_netsend = ] netsend_level ]
-     [ , [ @notify_level_page = ] page_level ]
-     [ , [ @notify_email_operator_name = ] 'email_name' ]
-     [ , [ @notify_netsend_operator_name = ] 'netsend_name' ]
-     [ , [ @notify_page_operator_name = ] 'page_name' ]
-     [ , [ @delete_level = ] delete_level ]
-     [ , [ @job_id = ] job_id OUTPUT ]
+dbo.sp_add_job
+    [ @job_name = ] N'job_name'
+    [ , [ @enabled = ] enabled ]
+    [ , [ @description = ] N'description' ]
+    [ , [ @start_step_id = ] start_step_id ]
+    [ , [ @category_name = ] N'category_name' ]
+    [ , [ @category_id = ] category_id ]
+    [ , [ @owner_login_name = ] N'owner_login_name' ]
+    [ , [ @notify_level_eventlog = ] notify_level_eventlog ]
+    [ , [ @notify_level_email = ] notify_level_email ]
+    [ , [ @notify_level_netsend = ] notify_level_netsend ]
+    [ , [ @notify_level_page = ] notify_level_page ]
+    [ , [ @notify_email_operator_name = ] N'notify_email_operator_name' ]
+    [ , [ @notify_netsend_operator_name = ] N'notify_netsend_operator_name' ]
+    [ , [ @notify_page_operator_name = ] N'notify_page_operator_name' ]
+    [ , [ @delete_level = ] delete_level ]
+    [ , [ @job_id = ] 'job_id' OUTPUT ]
+    [ , [ @originating_server = ] N'originating_server' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### @job_name
+#### [ @job_name = ] N'*job_name*'
 
 The name of the job. The name must be unique and can't contain the percent (`%`) character. *@job_name* is **nvarchar(128)**, with no default. Required.
 
-#### @enabled
+#### [ @enabled = ] *enabled*
 
-Indicates the status of the added job. *enabled* is **tinyint**, with a default of `1` (enabled). If `0`, the job isn't enabled and doesn't run according to its schedule; however, it can be run manually.
+Indicates the status of the added job. *@enabled* is **tinyint**, with a default of `1` (enabled). If `0`, the job isn't enabled and doesn't run according to its schedule; however, it can be run manually.
 
-#### @description
+#### [ @description = ] N'*description*'
 
 The description of the job. *@description* is **nvarchar(512)**, with a default of `NULL`. If *@description* is omitted, `N'No description available'` is used.
 
-#### @start_step_id
+#### [ @start_step_id = ] *start_step_id*
 
 The identification number of the first step to execute for the job. *@start_step_id* is **int**, with a default of `1`.
 
-#### @category_name
+#### [ @category_name = ] N'*category_name*'
 
 The category for the job. *@category_name* is **sysname**, with a default of `NULL`.
 
-#### @category_id
+#### [ @category_id = ] *category_id*
 
 A language-independent mechanism for specifying a job category. *@category_id* is **int**, with a default of `NULL`.
 
-#### @owner_login_name
+#### [ @owner_login_name = ] N'*owner_login_name*'
 
 The name of the login that owns the job. *@owner_login_name* is **sysname**, with a default of `NULL`, which is interpreted as the current login name. Only members of the **sysadmin** fixed server role can set or change the value for *@owner_login_name*. If users who aren't members of the **sysadmin** role set or change the value of *@owner_login_name*, execution of this stored procedure fails and an error is returned.
 
-#### @notify_level_eventlog
+#### [ @notify_level_eventlog = ] *notify_level_eventlog*
 
 A value indicating when to place an entry in the Microsoft Windows application log for this job. *@notify_level_eventlog* is **int**, and can be one of these values:
 
@@ -92,40 +93,44 @@ A value indicating when to place an entry in the Microsoft Windows application l
 | `2` (default) | On failure |
 | `3` | Always |
 
-#### @notify_level_email
+#### [ @notify_level_email = ] *notify_level_email*
 
 A value that indicates when to send an e-mail upon the completion of this job. *@notify_level_email* is **int**, with a default of `0`, which indicates never. *@notify_level_email* uses the same values as *@notify_level_eventlog*.
 
-#### @notify_level_netsend
+#### [ @notify_level_netsend = ] *notify_level_netsend*
 
 A value that indicates when to send a network message upon the completion of this job. *@notify_level_netsend* is **int**, with a default of `0`, which indicates never. *@notify_level_netsend* uses the same values as *@notify_level_eventlog*.
 
-#### @notify_level_page
+#### [ @notify_level_page = ] *notify_level_page*
 
 A value that indicates when to send a page upon the completion of this job. *@notify_level_page* is **int**, with a default of `0`, which indicates never. *@notify_level_page* uses the same values as *@notify_level_eventlog*.
 
-#### @notify_email_operator_name
+#### [ @notify_email_operator_name = ] N'*notify_email_operator_name*'
 
 The e-mail name of the person to send e-mail to when *@notify_email_operator_name* is reached. *@notify_email_operator_name* is **sysname**, with a default of `NULL`.
 
-#### @notify_netsend_operator_name
+#### [ @notify_netsend_operator_name = ] N'*notify_netsend_operator_name*'
 
 The name of the operator to whom the network message is sent upon completion of this job. *@notify_netsend_operator_name* is **sysname**, with a default of `NULL`.
 
-#### @notify_page_operator_name
+#### [ @notify_page_operator_name = ] N'*notify_page_operator_name*'
 
 The name of the person to page upon completion of this job. *@notify_page_operator_name* is **sysname**, with a default of `NULL`.
 
-#### @delete_level
+#### [ @delete_level = ] *delete_level*
 
 A value that indicates when to delete the job. *delete_value* is **int**, with a default of `0`, which means never. *@delete_level* uses the same values as *@notify_level_eventlog*.
 
 > [!NOTE]  
 > When *@delete_level* is `3`, the job is executed only once, regardless of any schedules defined for the job. Furthermore, if a job deletes itself, all history for the job is also deleted.
 
-#### @job_id OUTPUT
+#### [ @job_id = ] '*job_id*' OUTPUT
 
 The job identification number assigned to the job if created successfully. *@job_id* is an output variable of type **uniqueidentifier**, with a default of `NULL`.
+
+#### [ @originating_server = ] N'*originating_server*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

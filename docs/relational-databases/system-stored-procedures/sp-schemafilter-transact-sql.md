@@ -1,10 +1,10 @@
 ---
-title: "sp_schemafilter (Transact-SQL)"
+title: "sys.sp_schemafilter (Transact-SQL)"
 description: Modifies and displays information on the schema that is excluded when listing Oracle tables eligible for publishing.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_schemafilter (Transact-SQL)
+# sys.sp_schemafilter (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Modifies and displays information on the schema that is excluded when listing Or
 ## Syntax
 
 ```syntaxsql
-sp_schemafilter
+sys.sp_schemafilter
     [ @publisher = ] N'publisher'
     [ , [ @schema = ] N'schema' ]
     [ , [ @operation = ] N'operation' ]
@@ -38,7 +38,7 @@ sp_schemafilter
 
 #### [ @publisher = ] N'*publisher*'
 
-The name of the non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher.*@publisher* is **sysname**, with no default.
+The name of the non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher. *@publisher* is **sysname**, with no default.
 
 #### [ @schema = ] N'*schema*'
 

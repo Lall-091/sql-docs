@@ -1,10 +1,10 @@
 ---
-title: "sp_ivindexhasnullcols (Transact-SQL)"
+title: "sys.sp_ivindexhasnullcols (Transact-SQL)"
 description: sp_ivindexhasnullcols validates that the clustered index of the indexed view is unique.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_ivindexhasnullcols (Transact-SQL)
+# sys.sp_ivindexhasnullcols (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Validates that the clustered index of the indexed view is unique, and doesn't co
 ## Syntax
 
 ```syntaxsql
-sp_ivindexhasnullcols
+sys.sp_ivindexhasnullcols
     [ @viewname = ] N'viewname'
     , [ @fhasnullcols = ] fhasnullcols OUTPUT
 [ ; ]
@@ -41,7 +41,7 @@ The name of the view to verify. *@viewname* is **sysname**, with no default.
 
 #### [ @fhasnullcols = ] *fhasnullcols* OUTPUT
 
-The flag indicating whether the view index has columns that allow `NULL`. *@fhasnullcols* is an OUTPUT parameter of type **bit**.
+The flag indicating whether the view index has columns that allow `NULL`. *@fhasnullcols* is an `OUTPUT` parameter of type **bit**.
 
 - Returns a value of `1` if the view index has columns that allow `NULL`.
 - Returns a value of `0` if the view doesn't contain columns that allow `NULL`.

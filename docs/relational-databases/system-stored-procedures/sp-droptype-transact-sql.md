@@ -1,10 +1,10 @@
 ---
-title: "sp_droptype (Transact-SQL)"
+title: "sys.sp_droptype (Transact-SQL)"
 description: sp_droptype deletes an alias data type from systypes.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_droptype (Transact-SQL)
+# sys.sp_droptype (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Deletes an alias data type from `systypes`.
 ## Syntax
 
 ```syntaxsql
-sp_droptype [ @typename = ] N'typename'
+sys.sp_droptype [ @typename = ] N'typename'
 [ ; ]
 ```
 

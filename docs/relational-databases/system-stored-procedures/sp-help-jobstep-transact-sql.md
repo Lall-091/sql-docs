@@ -4,7 +4,7 @@ description: Returns information for the steps in a job used by SQL Server Agent
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Returns information for the steps in a job used by [!INCLUDE [ssNoVersion](../..
 ## Syntax
 
 ```syntaxsql
-sp_help_jobstep
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_help_jobstep
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @step_id = ] step_id ]
     [ , [ @step_name = ] N'step_name' ]
     [ , [ @suffix = ] suffix ]
@@ -61,7 +61,7 @@ The name of the step in the job. *@step_name* is **sysname**, with a default of 
 
 #### [ @suffix = ] *suffix*
 
-A flag indicating whether a text description is appended to the **flags** column in the output. *@suffix* is **bit**, with a default of `0`. If @*suffix* is `1`, a description is appended.
+A flag indicating whether a text description is appended to the **flags** column in the output. *@suffix* is **bit**, with a default of `0`. If *@suffix* is `1`, a description is appended.
 
 ## Return code values
 

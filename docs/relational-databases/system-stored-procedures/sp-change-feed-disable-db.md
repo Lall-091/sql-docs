@@ -1,5 +1,5 @@
 ---
-title: "sys.sp_change_feed_disable_db (Transact-SQL)"
+title: "sp_change_feed_disable_db (Transact-SQL)"
 description: "The sys.sp_change_feed_disable_db system stored procedure disables the SQL change feed at the database level."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
@@ -21,7 +21,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =fabric-sqldb || =azure-sqldw-latest"
 ---
-# sys.sp_change_feed_disable_db (Transact-SQL)
+# sp_change_feed_disable_db (Transact-SQL)
 
 [!INCLUDE [sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb.md)]
 

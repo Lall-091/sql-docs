@@ -1,10 +1,10 @@
 ---
-title: "sp_helpsubscriberinfo (Transact-SQL)"
+title: "sys.sp_helpsubscriberinfo (Transact-SQL)"
 description: sp_helpsubscriberinfo displays information about a Subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpsubscriberinfo (Transact-SQL)
+# sys.sp_helpsubscriberinfo (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Displays information about a Subscriber. This stored procedure is executed at th
 ## Syntax
 
 ```syntaxsql
-sp_helpsubscriberinfo
+sys.sp_helpsubscriberinfo
     [ [ @subscriber = ] N'subscriber' ]
     [ , [ @publisher = ] N'publisher' ]
 [ ; ]

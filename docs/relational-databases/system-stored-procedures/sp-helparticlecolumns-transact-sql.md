@@ -1,10 +1,10 @@
 ---
-title: "sp_helparticlecolumns (Transact-SQL)"
+title: "sys.sp_helparticlecolumns (Transact-SQL)"
 description: sp_helparticlecolumns returns all columns in the underlying table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helparticlecolumns (Transact-SQL)
+# sys.sp_helparticlecolumns (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns all columns in the underlying table. This stored procedure is executed a
 ## Syntax
 
 ```syntaxsql
-sp_helparticlecolumns
+sys.sp_helparticlecolumns
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     [ , [ @publisher = ] N'publisher' ]

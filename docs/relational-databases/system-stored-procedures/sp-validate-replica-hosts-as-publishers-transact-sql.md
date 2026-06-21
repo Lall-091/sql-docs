@@ -1,10 +1,10 @@
 ---
-title: "sp_validate_replica_hosts_as_publishers (T-SQL)"
+title: "sys.sp_validate_replica_hosts_as_publishers (Transact-SQL)"
 description: Describes the sp_validate_replica_hosts_as_publishers stored procedure that allows all secondary replicas to be validated.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_validate_replica_hosts_as_publishers (Transact-SQL)
+# sys.sp_validate_replica_hosts_as_publishers (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ dev_langs:
 ## Syntax
 
 ```syntaxsql
-sp_validate_replica_hosts_as_publishers
+sys.sp_validate_replica_hosts_as_publishers
     [ @original_publisher = ] N'original_publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @redirected_publisher = ] N'redirected_publisher' OUTPUT
@@ -46,7 +46,7 @@ The name of the database being published. *@publisher_db* is **sysname**, with n
 
 #### [ @redirected_publisher = ] N'*redirected_publisher*' OUTPUT
 
-The target of redirection when `sp_redirect_publisher` was called for the original publisher/published database pair. *@redirected_publisher* is an OUTPUT parameter of type **sysname**, with no default.
+The target of redirection when `sp_redirect_publisher` was called for the original publisher/published database pair. *@redirected_publisher* is an `OUTPUT` parameter of type **sysname**, with no default.
 
 ## Return code values
 

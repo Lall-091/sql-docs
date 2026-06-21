@@ -1,10 +1,10 @@
 ---
-title: "sp_invoke_external_rest_endpoint (Transact-SQL)"
+title: "sys.sp_invoke_external_rest_endpoint (Transact-SQL)"
 description: The sp_invoke_external_rest_endpoint stored procedure invokes an HTTPS REST endpoint.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 12/08/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -20,7 +20,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_invoke_external_rest_endpoint (Transact-SQL)
+# sys.sp_invoke_external_rest_endpoint (Transact-SQL)
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
@@ -44,15 +44,16 @@ To mitigate the risk of unauthorized access or transfer of data, consider the fo
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-EXECUTE @returnValue = sp_invoke_external_rest_endpoint
-  [ @url = ] N'url'
-  [ , [ @payload = ] N'request_payload' ]
-  [ , [ @headers = ] N'http_headers_as_json_array' ]
-  [ , [ @method = ] 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD' ]
-  [ , [ @timeout = ] seconds ]
-  [ , [ @credential = ] credential ]
-  [ , @response OUTPUT ]
-  [ , [ @retry_count = ] # of retries if there are errors ]
+sys.sp_invoke_external_rest_endpoint
+    [ @url = ] N'url'
+    [ , [ @payload = ] N'payload' ]
+    [ , [ @headers = ] N'headers' ]
+    [ , [ @method = ] { 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD' } ]
+    [ , [ @timeout = ] timeout ]
+    [ , [ @credential = ] N'credential' ]
+    [ , [ @response = ] N'response' OUTPUT ]
+    [ , [ @retry_count = ] retry_count ]
+[ ; ]
 ```
 
 ## Arguments
@@ -61,7 +62,7 @@ EXECUTE @returnValue = sp_invoke_external_rest_endpoint
 
 URL of the HTTPS REST endpoint to be called. *@url* is **nvarchar(4000)** with no default.
 
-#### [ @payload = ] N'*request_payload*'
+#### [ @payload = ] N'*payload*'
 
 Unicode string in a JSON, XML, or TEXT format that contains the payload to send to the HTTPS REST endpoint. Payloads must be a valid JSON document, a well formed XML document, or text. *@payload* is **nvarchar(max)** with no default.
 
@@ -75,21 +76,21 @@ The *@headers* parameter is **nvarchar(4000)** with no default.
 
 HTTP method for calling the URL. Must be one of the following values: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`. *@method* is **nvarchar(6)** with `POST` as default value.
 
-#### [ @timeout = ] *seconds*
+#### [ @timeout = ] *timeout*
 
 Time in seconds allowed for the HTTPS call to run. If the full HTTP request and response can't be sent and received within the defined timeout in seconds, the stored procedure execution is halted, and an exception is raised. Timeout starts when the HTTP connection starts and ends when the response, and payload included if any, has been received. *@timeout* is a positive **smallint** with a default value 30. Accepted values: 1 to 230.
 
 If the *@retry_count* parameter is specified, the *@timeout* parameter acts as the cumulative timeout for the procedure.
 
-#### [ @credential = ] *credential*
+#### [ @credential = ] N'*credential*'
 
 Indicate which DATABASE SCOPED CREDENTIAL object is used to inject authentication info in the HTTPS request. *@credential* is **sysname** with no default value.
 
-#### @response OUTPUT
+#### [ @response = ] N'*response*' OUTPUT
 
 Allow the response received from the called endpoint to be passed into the specified variable. *@response* is **nvarchar(max)**.
 
-#### [ @retry_count = ] # of retries if there are errors
+#### [ @retry_count = ] *retry_count*
 
 Specifies how many times the stored procedure retries connecting to the specified endpoint if there's an error. *@retry_count* is a positive **tinyint** with a default value of 0. Accepted values: 0 to 10, with 0 bypassing all retry logic. The retry interval is determined using the `Retry-After` header if it is present. If the header is absent, the system applies an exponential backoff strategy for specific error codes. In all other cases, a default delay of 200 milliseconds is used.
 
@@ -215,7 +216,7 @@ And the following example shows a `response` section in XML:
 ## Allowed endpoints
 
 > [!IMPORTANT]  
-> **This list only applies to Azure SQL Database and Azure SQL Managed Instance.**
+> This list only applies to Azure SQL Database and Azure SQL Managed Instance.
 
 Only calls to endpoints for the following services are allowed:
 
@@ -422,19 +423,19 @@ While *user-agent* is always overwritten by the stored procedure, the *content-t
 
 The following are accepted values for the header *content-type*.
 
-- application/json
-- application/vnd.microsoft.*.json
-- application/xml
-- application/vnd.microsoft.*.xml
-- application/vnd.microsoft.*+xml
-- application/x-www-form-urlencoded
-- text/*
+- `application/json`
+- `application/vnd.microsoft.*.json`
+- `application/xml`
+- `application/vnd.microsoft.*.xml`
+- `application/vnd.microsoft.*+xml`
+- `application/x-www-form-urlencoded`
+- `text/*`
 
 For the *accept* header, the following are the accepted values.
 
-- application/json
-- application/xml
-- text/*
+- `application/json`
+- `application/xml`
+- `text/*`
 
 For more information on text header types, see the [text type registry at IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#text).
 

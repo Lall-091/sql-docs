@@ -4,7 +4,7 @@ description: sp_notify_operator sends an e-mail message to an operator using Dat
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Sends an e-mail message to an operator using Database Mail.
 ## Syntax
 
 ```syntaxsql
-sp_notify_operator
+dbo.sp_notify_operator
     [ [ @profile_name = ] N'profile_name' ]
     [ , [ @id = ] id ]
     [ , [ @name = ] N'name' ]

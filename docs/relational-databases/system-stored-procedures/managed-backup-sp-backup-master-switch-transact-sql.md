@@ -1,10 +1,10 @@
 ---
-title: "managed_backup.sp_backup_master_switch (Transact-SQL)"
+title: "smart_admin.sp_backup_master_switch (Transact-SQL)"
 description: "Pauses or resumes the SQL Server Managed Backup to Microsoft Azure."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# managed_backup.sp_backup_master_switch (Transact-SQL)
+# smart_admin.sp_backup_master_switch (Transact-SQL)
 
 [!INCLUDE [sqlserver2016](../../includes/applies-to-version/sqlserver2016.md)]
 
@@ -38,7 +38,7 @@ In other words, there's no check to determine:
 ## Syntax
 
 ```syntaxsql
-EXECUTE managed_backup.sp_backup_master_switch [ @new_state = ] { 0 | 1 }
+smart_admin.sp_backup_master_switch [ @new_state = ] { 0 | 1 }
 [ ; ]
 ```
 

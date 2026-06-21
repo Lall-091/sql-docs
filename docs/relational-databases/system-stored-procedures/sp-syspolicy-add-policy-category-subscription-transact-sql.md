@@ -4,7 +4,7 @@ description: "Adds a policy category subscription to the specified database."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,10 +27,10 @@ Adds a policy category subscription to the specified database.
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_add_policy_category_subscription
+dbo.sp_syspolicy_add_policy_category_subscription
     [ @target_type = ] N'target_type'
-      , [ @target_object = ] N'target_object'
-      , [ @policy_category = ] N'policy_category'
+    , [ @target_object = ] N'target_object'
+    , [ @policy_category = ] N'policy_category'
     [ , [ @policy_category_subscription_id = ] policy_category_subscription_id OUTPUT ]
 [ ; ]
 ```
@@ -51,7 +51,7 @@ The name of the policy category to subscribe to. *@policy_category* is **sysname
 
 To obtain values for *@policy_category*, query the `msdb.dbo.syspolicy_policy_categories` system view.
 
-#### [ @policy_category_subscription_id = ] *policy_category_subscription_id*
+#### [ @policy_category_subscription_id = ] *policy_category_subscription_id* OUTPUT
 
 The identifier for the category subscription. *@policy_category_subscription_id* is **int**, and is returned as `OUTPUT`.
 

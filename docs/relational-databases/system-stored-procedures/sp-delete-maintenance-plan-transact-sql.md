@@ -4,7 +4,7 @@ description: sp_delete_maintenance_plan deletes the specified maintenance plan.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,7 +30,7 @@ Deletes the specified maintenance plan.
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-sp_delete_maintenance_plan [ @plan_id = ] 'plan_id'
+dbo.sp_delete_maintenance_plan [ @plan_id = ] 'plan_id'
 [ ; ]
 ```
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_browsereplcmds (Transact-SQL)"
+title: "sys.sp_browsereplcmds (Transact-SQL)"
 description: Returns a result set in a readable version of the replicated commands stored in the distribution database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_browsereplcmds (Transact-SQL)
+# sys.sp_browsereplcmds (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns a result set in a readable version of the replicated commands stored in 
 ## Syntax
 
 ```syntaxsql
-sp_browsereplcmds
+sys.sp_browsereplcmds
     [ [ @xact_seqno_start = ] N'xact_seqno_start' ]
     [ , [ @xact_seqno_end = ] N'xact_seqno_end' ]
     [ , [ @originator_id = ] originator_id ]
@@ -51,7 +51,7 @@ Specifies the highest exact sequence number to return. *@xact_seqno_end* is **nc
 
 #### [ @originator_id = ] *originator_id*
 
-Specifies if commands with the specified *originator_id* are returned. *@originator_id* is **int**, with a default of `NULL`.
+Specifies if commands with the specified *@originator_id* are returned. *@originator_id* is **int**, with a default of `NULL`.
 
 #### [ @publisher_database_id = ] *publisher_database_id*
 

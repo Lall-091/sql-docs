@@ -1,10 +1,10 @@
 ---
-title: "sp_help_agent_parameter (Transact-SQL)"
+title: "sys.sp_help_agent_parameter (Transact-SQL)"
 description: Returns all the parameters of a profile from the MSagent_parameters system table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_agent_parameter (Transact-SQL)
+# sys.sp_help_agent_parameter (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns all the parameters of a profile from the [MSagent_parameters](../system-
 ## Syntax
 
 ```syntaxsql
-sp_help_agent_parameter [ [ @profile_id = ] profile_id ]
+sys.sp_help_agent_parameter [ [ @profile_id = ] profile_id ]
 [ ; ]
 ```
 

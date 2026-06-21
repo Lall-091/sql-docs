@@ -1,10 +1,10 @@
 ---
-title: "sp_redirect_publisher (Transact-SQL)"
+title: "sys.sp_redirect_publisher (Transact-SQL)"
 description: "sp_redirect_publisher specifies a redirected publisher for an existing publisher and/or database pair."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_redirect_publisher (Transact-SQL)
+# sys.sp_redirect_publisher (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Specifies a redirected publisher for an existing publisher/database pair. If the
 ## Syntax
 
 ```syntaxsql
-sp_redirect_publisher
+sys.sp_redirect_publisher
     [ @original_publisher = ] N'original_publisher'
     , [ @publisher_db = ] N'publisher_db'
     [ , [ @redirected_publisher = ] N'redirected_publisher' ]

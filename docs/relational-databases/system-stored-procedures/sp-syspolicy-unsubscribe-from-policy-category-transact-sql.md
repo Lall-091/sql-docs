@@ -1,10 +1,10 @@
 ---
-title: "sp_syspolicy_unsubscribe_from_policy_category (Transact-SQL)"
+title: "sys.sp_syspolicy_unsubscribe_from_policy_category (Transact-SQL)"
 description: "Deletes a policy category subscription for the current database."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_syspolicy_unsubscribe_from_policy_category (Transact-SQL)
+# sys.sp_syspolicy_unsubscribe_from_policy_category (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Deletes a policy category subscription for the current database.
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_unsubscribe_from_policy_category
+sys.sp_syspolicy_unsubscribe_from_policy_category
     [ @policy_category = ] N'policy_category'
 [ ; ]
 ```
@@ -36,7 +36,7 @@ sp_syspolicy_unsubscribe_from_policy_category
 
 #### [ @policy_category = ] N'*policy_category*'
 
-The name of the policy category subscription that you want to delete. *policy_category* is **sysname**, and is required.
+The name of the policy category subscription that you want to delete. *@policy_category* is **sysname**, and is required.
 
 To obtain values for *@policy_category*, query the `msdb.dbo.syspolicy_policy_categories` system view.
 

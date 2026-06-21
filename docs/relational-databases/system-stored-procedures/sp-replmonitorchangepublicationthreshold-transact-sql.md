@@ -1,10 +1,10 @@
 ---
-title: "sp_replmonitorchangepublicationthreshold (T-SQL)"
+title: "sys.sp_replmonitorchangepublicationthreshold (Transact-SQL)"
 description: sp_replmonitorchangepublicationthreshold changes the monitoring threshold metric for a publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replmonitorchangepublicationthreshold (Transact-SQL)
+# sys.sp_replmonitorchangepublicationthreshold (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes the monitoring threshold metric for a publication. This stored procedure
 ## Syntax
 
 ```syntaxsql
-sp_replmonitorchangepublicationthreshold
+sys.sp_replmonitorchangepublicationthreshold
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

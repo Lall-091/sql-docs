@@ -1,10 +1,10 @@
 ---
-title: "sp_replmonitorhelpmergesessiondetail (T-SQL)"
+title: "sys.sp_replmonitorhelpmergesessiondetail (Transact-SQL)"
 description: Returns detailed, article-level information about a specific replication Merge Agent session, which is used to monitor merge replication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replmonitorhelpmergesessiondetail (Transact-SQL)
+# sys.sp_replmonitorhelpmergesessiondetail (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns detailed, article-level information about a specific replication Merge A
 ## Syntax
 
 ```syntaxsql
-sp_replmonitorhelpmergesessiondetail [ @session_id = ] session_id
+sys.sp_replmonitorhelpmergesessiondetail [ @session_id = ] session_id
 [ ; ]
 ```
 

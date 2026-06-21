@@ -1,10 +1,10 @@
 ---
-title: "sp_changedistributor_property (Transact-SQL)"
+title: "sys.sp_changedistributor_property (Transact-SQL)"
 description: sp_changedistributor_property changes the properties of the Distributor.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, mathoma
-ms.date: 11/18/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: reference
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - TSQL
 ---
-# sp_changedistributor_property (Transact-SQL)
+# sys.sp_changedistributor_property (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -31,7 +31,7 @@ If the distribution or Publisher database is in an availability group, the store
 ## Syntax
 
 ```syntaxsql
-sp_changedistributor_property
+sys.sp_changedistributor_property
     [ [ @property = ] N'property' ]
     [ , [ @value = ] N'value' ]
 [ ; ]

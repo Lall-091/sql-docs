@@ -1,10 +1,10 @@
 ---
-title: "sp_help_fulltext_catalogs_cursor (Transact-SQL)"
+title: "sys.sp_help_fulltext_catalogs_cursor (Transact-SQL)"
 description: Uses a cursor to return the ID, name, root directory, status, and number of full-text indexed tables for the specified full-text catalog.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# sp_help_fulltext_catalogs_cursor (Transact-SQL)
+# sys.sp_help_fulltext_catalogs_cursor (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
@@ -31,7 +31,7 @@ Uses a cursor to return the ID, name, root directory, status, and number of full
 ## Syntax
 
 ```syntaxsql
-sp_help_fulltext_catalogs_cursor
+sys.sp_help_fulltext_catalogs_cursor
     [ @cursor_return = ] cursor_return OUTPUT
     [ , [ @fulltext_catalog_name = ] N'fulltext_catalog_name' ]
 [ ; ]
@@ -41,7 +41,7 @@ sp_help_fulltext_catalogs_cursor
 
 #### [ @cursor_return = ] *cursor_return* OUTPUT
 
-*@cursor_return* is an OUTPUT parameter of type **int**. The cursor is a read-only, scrollable, dynamic cursor.
+*@cursor_return* is an `OUTPUT` parameter of type **int**. The cursor is a read-only, scrollable, dynamic cursor.
 
 #### [ @fulltext_catalog_name = ] N'*fulltext_catalog_name*'
 

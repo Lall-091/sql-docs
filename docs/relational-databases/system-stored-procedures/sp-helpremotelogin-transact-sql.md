@@ -1,10 +1,10 @@
 ---
-title: "sp_helpremotelogin (Transact-SQL)"
+title: "sys.sp_helpremotelogin (Transact-SQL)"
 description: Reports information about remote logins for a particular remote server, or for all remote servers, defined on the local server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpremotelogin (Transact-SQL)
+# sys.sp_helpremotelogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Reports information about remote logins for a particular remote server, or for a
 ## Syntax
 
 ```syntaxsql
-sp_helpremotelogin
+sys.sp_helpremotelogin
     [ [ @remoteserver = ] N'remoteserver' ]
     [ , [ @remotename = ] N'remotename' ]
 [ ; ]

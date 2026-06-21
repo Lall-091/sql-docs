@@ -4,7 +4,7 @@ description: Specifies the directory where collected data is stored before it is
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,8 @@ Specifies the directory where collected data is stored before it's uploaded to t
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_set_cache_directory [ [ @cache_directory = ] N'cache_directory' ]
+dbo.sp_syscollector_set_cache_directory
+    [ [ @cache_directory = ] N'cache_directory' ]
 [ ; ]
 ```
 

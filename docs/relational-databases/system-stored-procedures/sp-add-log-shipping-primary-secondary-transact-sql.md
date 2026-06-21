@@ -1,10 +1,10 @@
 ---
-title: "sp_add_log_shipping_primary_secondary (Transact-SQL)"
+title: "sys.sp_add_log_shipping_primary_secondary (Transact-SQL)"
 description: "This stored procedure adds an entry for a secondary database on the primary server."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_add_log_shipping_primary_secondary (Transact-SQL)
+# sys.sp_add_log_shipping_primary_secondary (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,26 +27,31 @@ This stored procedure adds an entry for a secondary database on the primary serv
 ## Syntax
 
 ```syntaxsql
-sp_add_log_shipping_primary_secondary
-[ @primary_database = ] 'primary_database' ,
-[ @secondary_server = ] 'secondary_server' ,
-[ @secondary_database = ] 'secondary_database'
+sys.sp_add_log_shipping_primary_secondary
+    [ @primary_database = ] N'primary_database'
+    , [ @secondary_server = ] N'secondary_server'
+    , [ @secondary_database = ] N'secondary_database'
+    [ , [ @overwrite = ] overwrite ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @primary_database = ] '*primary_database*'
+#### [ @primary_database = ] N'*primary_database*'
 
 The name of the database on the primary server. *@primary_database* is **sysname**, with no default.
 
-#### [ @secondary_server = ] '*secondary_server*'
+#### [ @secondary_server = ] N'*secondary_server*'
 
 The name of the secondary server. *@secondary_server* is **sysname**, with no default.
 
-#### [ @secondary_database = ] '*secondary_database*'
+#### [ @secondary_database = ] N'*secondary_database*'
 
 The name of the secondary database. *@secondary_database* is **sysname**, with no default.
+
+#### [ @overwrite = ] *overwrite*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_fulltext_load_thesaurus_file (Transact-SQL)"
+title: "sys.sp_fulltext_load_thesaurus_file (Transact-SQL)"
 description: Causes the server instance to parse and load the data from the thesaurus file that corresponds to the language whose LCID is specified.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_fulltext_load_thesaurus_file (Transact-SQL)
+# sys.sp_fulltext_load_thesaurus_file (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -29,7 +29,7 @@ Causes the server instance to parse and load the data from the thesaurus file th
 ## Syntax
 
 ```syntaxsql
-sp_fulltext_load_thesaurus_file
+sys.sp_fulltext_load_thesaurus_file
     [ @lcid = ] lcid
     [ , [ @loadOnlyIfNotLoaded = ] loadOnlyIfNotLoaded ]
 [ ; ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_tables (Transact-SQL)"
+title: "sys.sp_tables (Transact-SQL)"
 description: sp_tables returns a list of objects that can be queried in the current environment.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
-# sp_tables (Transact-SQL)
+# sys.sp_tables (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
@@ -35,7 +35,7 @@ Returns a list of objects that can be queried in the current environment. This m
 Syntax for SQL Server, Azure SQL Database, Azure Synapse Analytics, Analytics Platform System (PDW):
 
 ```syntaxsql
-sp_tables
+sys.sp_tables
     [ [ @table_name = ] N'table_name' ]
     [ , [ @table_owner = ] N'table_owner' ]
     [ , [ @table_qualifier = ] N'table_qualifier' ]

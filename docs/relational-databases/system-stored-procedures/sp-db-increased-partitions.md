@@ -1,10 +1,10 @@
 ---
-title: "sp_db_increased_partitions"
+title: "sys.sp_db_increased_partitions (Transact-SQL)"
 description: "sp_db_increased_partitions enables or disables support for up to 15,000 partitions for the specified database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_db_increased_partitions
+# sys.sp_db_increased_partitions (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Enables or disables support for up to 15,000 partitions for the specified databa
 ## Syntax
 
 ```syntaxsql
-sp_db_increased_partitions
+sys.sp_db_increased_partitions
     [ [ @dbname = ] N'dbname' ]
     [ , [ @increased_partitions = ] 'increased_partitions' ]
 [ ; ]

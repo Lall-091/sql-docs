@@ -4,7 +4,7 @@ description: Disassociates the specified maintenance plan from the specified job
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -32,7 +32,7 @@ Disassociates the specified maintenance plan from the specified job.
 ## Syntax
 
 ```syntaxsql
-sp_delete_maintenance_plan_job
+dbo.sp_delete_maintenance_plan_job
     [ @plan_id = ] 'plan_id'
     , [ @job_id = ] 'job_id'
 [ ; ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_droppublication (Transact-SQL)"
+title: "sys.sp_droppublication (Transact-SQL)"
 description: Drops a publication and its associated Snapshot Agent. This stored procedure runs at the Publisher on the publication database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_droppublication (Transact-SQL)
+# sys.sp_droppublication (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Drops a publication and its associated Snapshot Agent. All subscriptions must be
 ## Syntax
 
 ```syntaxsql
-sp_droppublication
+sys.sp_droppublication
     [ @publication = ] N'publication'
     [ , [ @ignore_distributor = ] ignore_distributor ]
     [ , [ @publisher = ] N'publisher' ]

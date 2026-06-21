@@ -1,10 +1,10 @@
 ---
-title: "sp_registercustomresolver (Transact-SQL)"
+title: "sys.sp_registercustomresolver (Transact-SQL)"
 description: Registers a business logic handler or a COM-based custom resolver that can be invoked during the merge replication synchronization process.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_registercustomresolver (Transact-SQL)
+# sys.sp_registercustomresolver (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Registers a business logic handler or a COM-based custom resolver that can be in
 ## Syntax
 
 ```syntaxsql
-sp_registercustomresolver
+sys.sp_registercustomresolver
     [ @article_resolver = ] N'article_resolver'
     [ , [ @resolver_clsid = ] N'resolver_clsid' ]
     [ , [ @is_dotnet_assembly = ] N'is_dotnet_assembly' ]

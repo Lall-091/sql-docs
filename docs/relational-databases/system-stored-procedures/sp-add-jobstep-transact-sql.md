@@ -4,7 +4,7 @@ description: "sp_add_jobstep adds a step (operation) to a SQL Server Agent job."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -31,9 +31,9 @@ Adds a step (operation) to a [!INCLUDE [ssnoversion-md](../../includes/ssnoversi
 ## Syntax
 
 ```syntaxsql
-sp_add_jobstep
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_add_jobstep
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @step_id = ] step_id ]
     , [ @step_name = ] N'step_name'
     [ , [ @subsystem = ] N'subsystem' ]
@@ -201,7 +201,7 @@ The name of the proxy that the job step runs as. *@proxy_name* is **sysname**, w
 
 #### [ @step_uid = ] '*step_uid*' OUTPUT
 
-*@step_uid* is an OUTPUT parameter of type **uniqueidentifier**.
+*@step_uid* is an `OUTPUT` parameter of type **uniqueidentifier**.
 
 ## Return code values
 

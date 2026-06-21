@@ -1,10 +1,10 @@
 ---
-title: "sys.sp_cleanup_temporal_history"
+title: "sys.sp_cleanup_temporal_history (Transact-SQL)"
 description: "Removes all rows from temporal history table that match configured HISTORY_RETENTION PERIOD within a single transaction."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.topic: reference
 ms.custom:
@@ -24,10 +24,11 @@ Removes all rows from temporal history table that match configured `HISTORY_RETE
 ## Syntax
 
 ```syntaxsql
-sp_cleanup_temporal_history
+sys.sp_cleanup_temporal_history
     [ @schema_name = ] N'schema_name'
     , [ @table_name = ] N'table_name'
-    [ , [ @row_count = ] @row_count_var [ OUTPUT ] ]
+    [ , [ @rowcount = ] rowcount OUTPUT ]
+[ ; ]
 ```
 
 ## Arguments
@@ -40,7 +41,7 @@ The name of the temporal table for which retention cleanup is invoked.
 
 The name of the schema that current temporal table belongs to.
 
-#### [ @row_count = ] *@row_count_var* [ OUTPUT ]
+#### [ @rowcount = ] *rowcount* OUTPUT
 
 The output parameter that returns number of deleted rows. If the history table has a clustered columnstore index, this parameter returns `0`.
 

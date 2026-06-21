@@ -1,10 +1,10 @@
 ---
-title: "sp_article_validation (Transact-SQL)"
+title: "sys.sp_article_validation (Transact-SQL)"
 description: sp_article_validation initiates a data validation request for the specified article.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_article_validation (Transact-SQL)
+# sys.sp_article_validation (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Initiates a data validation request for the specified article. This stored proce
 ## Syntax
 
 ```syntaxsql
-sp_article_validation
+sys.sp_article_validation
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     [ , [ @rowcount_only = ] rowcount_only ]

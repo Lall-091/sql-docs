@@ -4,7 +4,7 @@ description: "Permanently deletes e-mail messages from the Database Mail interna
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,14 +27,15 @@ Permanently deletes e-mail messages from the Database Mail internal tables.
 ## Syntax
 
 ```syntaxsql
-sysmail_delete_mailitems_sp [ [ @sent_before = ] 'sent_before' ]
+dbo.sysmail_delete_mailitems_sp
+    [ [ @sent_before = ] sent_before ]
     [ , [ @sent_status = ] 'sent_status' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @sent_before = ] '*sent_before*'
+#### [ @sent_before = ] *sent_before*
 
 Deletes e-mails up to the date and time provided as the *@sent_before* argument. *@sent_before* is **datetime** with `NULL` as default. `NULL` indicates all dates.
 

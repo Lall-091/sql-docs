@@ -1,10 +1,10 @@
 ---
-title: "sp_help_agent_profile (Transact-SQL)"
+title: "sys.sp_help_agent_profile (Transact-SQL)"
 description: Displays the profile of a specified agent. This stored procedure is executed at the Distributor on any database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_agent_profile (Transact-SQL)
+# sys.sp_help_agent_profile (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Displays the profile of a specified agent. This stored procedure is executed at 
 ## Syntax
 
 ```syntaxsql
-sp_help_agent_profile
+sys.sp_help_agent_profile
     [ [ @agent_type = ] agent_type ]
     [ , [ @profile_id = ] profile_id ]
 [ ; ]

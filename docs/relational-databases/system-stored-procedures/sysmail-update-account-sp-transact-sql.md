@@ -4,7 +4,7 @@ description: "Changes the information in an existing Database Mail account."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,19 +27,22 @@ Changes the information in an existing Database Mail account.
 ## Syntax
 
 ```syntaxsql
-sysmail_update_account_sp [ [ @account_id = ] account_id ] [ , ] [ [ @account_name = ] 'account_name' ]
-    , [ @email_address = ] 'email_address'
-    , [ @display_name = ] 'display_name'
-    , [ @replyto_address = ] 'replyto_address'
-    , [ @description = ] 'description'
-    , [ @mailserver_name = ] 'server_name'
-    , [ @mailserver_type = ] 'server_type'
-    , [ @port = ] port_number
-    , [ @timeout = ] 'timeout'
-    , [ @username = ] 'username'
-    , [ @password = ] 'password'
-    , [ @use_default_credentials = ] use_default_credentials
-    , [ @enable_ssl = ] enable_ssl
+dbo.sysmail_update_account_sp
+    [ [ @account_id = ] account_id ]
+    [ , [ @account_name = ] N'account_name' ]
+    [ , [ @email_address = ] N'email_address' ]
+    [ , [ @display_name = ] N'display_name' ]
+    [ , [ @replyto_address = ] N'replyto_address' ]
+    [ , [ @description = ] N'description' ]
+    [ , [ @mailserver_name = ] N'mailserver_name' ]
+    [ , [ @mailserver_type = ] N'mailserver_type' ]
+    [ , [ @port = ] port ]
+    [ , [ @username = ] N'username' ]
+    [ , [ @password = ] N'password' ]
+    [ , [ @use_default_credentials = ] use_default_credentials ]
+    [ , [ @enable_ssl = ] enable_ssl ]
+    [ , [ @timeout = ] timeout ]
+    [ , [ @no_credential_change = ] no_credential_change ]
 [ ; ]
 ```
 
@@ -49,47 +52,43 @@ sysmail_update_account_sp [ [ @account_id = ] account_id ] [ , ] [ [ @account_na
 
 The account ID to update. *@account_id* is **int**, with a default of `NULL`. At least one of *@account_id* or *@account_name* must be specified. If both are specified, the procedure changes the name of the account.
 
-#### [ @account_name = ] '*account_name*'
+#### [ @account_name = ] N'*account_name*'
 
 The name of the account to update. *@account_name* is **sysname**, with a default of `NULL`. At least one of *@account_id* or *@account_name* must be specified. If both are specified, the procedure changes the name of the account.
 
-#### [ @email_address = ] '*email_address*'
+#### [ @email_address = ] N'*email_address*'
 
 The new e-mail address to send the message from. This address must be an internet e-mail address. The server name in the address is the server that Database Mail uses to send mail from this account. *@email_address* is **nvarchar(128)**, with a default of `NULL`.
 
-#### [ @display_name = ] '*display_name*'
+#### [ @display_name = ] N'*display_name*'
 
 The new display name to use on e-mail messages from this account. *@display_name* is **nvarchar(128)**, with no default.
 
-#### [ @replyto_address = ] '*replyto_address*'
+#### [ @replyto_address = ] N'*replyto_address*'
 
 The new address to use in the Reply-To header of e-mail messages from this account. *@replyto_address* is **nvarchar(128)**, with no default.
 
-#### [ @description = ] '*description*'
+#### [ @description = ] N'*description*'
 
 The new description for the account. *@description* is **nvarchar(256)**, with a default of `NULL`.
 
-#### [ @mailserver_name = ] '*server_name*'
+#### [ @mailserver_name = ] N'*mailserver_name*'
 
 The new name of the SMTP mail server to use for this account. The computer that runs [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] must be able to resolve the *@mailserver_name* to an IP address. *@mailserver_name* is **sysname**, with no default.
 
-#### [ @mailserver_type = ] '*server_type*'
+#### [ @mailserver_type = ] N'*mailserver_type*'
 
 The new type of the mail server. *@mailserver_type* is **sysname**, with no default. Only a value of `SMTP` is supported.
 
-#### [ @port = ] *port_number*
+#### [ @port = ] *port*
 
 The new port number of the mail server. *@port* is **int**, with no default.
 
-#### [ @timeout = ] '*timeout*'
-
-Timeout parameter for `SmtpClient.Send` of a single email message. *@timeout* is **int** in seconds, with no default.
-
-#### [ @username = ] '*username*'
+#### [ @username = ] N'*username*'
 
 The new user name to use to log on to the mail server. *@username* is **sysname**, with no default.
 
-#### [ @password = ] '*password*'
+#### [ @password = ] N'*password*'
 
 The new password to use to log on to the mail server. *@password* is **sysname**, with no default.
 
@@ -100,6 +99,14 @@ Specifies whether to send the mail to the SMTP server using the credentials of t
 #### [ @enable_ssl = ] *enable_ssl*
 
 Specifies whether Database Mail encrypts communication using Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL). Use this option if TLS is required on your SMTP server. *@enable_ssl* is **bit**, with no default.
+
+#### [ @timeout = ] *timeout*
+
+Timeout parameter for `SmtpClient.Send` of a single email message. *@timeout* is **int** in seconds, with no default.
+
+#### [ @no_credential_change = ] *no_credential_change*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

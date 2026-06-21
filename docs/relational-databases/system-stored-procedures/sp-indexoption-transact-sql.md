@@ -1,10 +1,10 @@
 ---
-title: "sp_indexoption (Transact-SQL)"
+title: "sys.sp_indexoption (Transact-SQL)"
 description: sp_indexoption sets locking option values for user-defined clustered and nonclustered indexes or tables with no clustered index.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_indexoption (Transact-SQL)
+# sys.sp_indexoption (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -32,7 +32,7 @@ The [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] automatically
 ## Syntax
 
 ```syntaxsql
-sp_indexoption
+sys.sp_indexoption
     [ @IndexNamePattern = ] N'IndexNamePattern'
     , [ @OptionName = ] 'OptionName'
     , [ @OptionValue = ] 'OptionValue'

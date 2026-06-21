@@ -1,10 +1,10 @@
 ---
-title: "sp_helptracertokens (Transact-SQL)"
+title: "sys.sp_helptracertokens (Transact-SQL)"
 description: sp_helptracertokens returns one row for each tracer token that was inserted into a publication to determine latency.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helptracertokens (Transact-SQL)
+# sys.sp_helptracertokens (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns one row for each tracer token that was inserted into a publication to de
 ## Syntax
 
 ```syntaxsql
-sp_helptracertokens
+sys.sp_helptracertokens
     [ @publication = ] N'publication'
     [ , [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]

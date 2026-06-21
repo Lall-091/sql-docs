@@ -1,10 +1,10 @@
 ---
-title: "sp_copysubscription (Transact-SQL)"
+title: "sys.sp_copysubscription (Transact-SQL)"
 description: sp_copysubscription copies a subscription database that's pull subscriptions, but no push subscriptions.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_copysubscription (Transact-SQL)
+# sys.sp_copysubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Copies a subscription database that's pull subscriptions, but no push subscripti
 ## Syntax
 
 ```syntaxsql
-sp_copysubscription
+sys.sp_copysubscription
     [ @filename = ] N'filename'
     [ , [ @temp_dir = ] N'temp_dir' ]
     [ , [ @overwrite_existing_file = ] overwrite_existing_file ]

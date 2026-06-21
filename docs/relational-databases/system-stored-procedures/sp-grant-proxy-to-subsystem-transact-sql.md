@@ -4,7 +4,7 @@ description: sp_grant_proxy_to_subsystem grants a proxy access to a subsystem.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,11 +27,11 @@ Grants a proxy access to a subsystem.
 ## Syntax
 
 ```syntaxsql
-sp_grant_proxy_to_subsystem
-    [ [ @proxy_id = ] proxy_id ]
-    [ , [ @proxy_name = ] N'proxy_name' ]
-    [ , [ @subsystem_id = ] subsystem_id ]
-    [ , [ @subsystem_name = ] N'subsystem_name' ]
+dbo.sp_grant_proxy_to_subsystem
+    { [ @proxy_id = ] proxy_id
+        | [ @proxy_name = ] N'proxy_name' }
+    , { [ @subsystem_id = ] subsystem_id
+        | [ @subsystem_name = ] N'subsystem_name' }
 [ ; ]
 ```
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergesubscription (Transact-SQL)"
+title: "sys.sp_helpmergesubscription (Transact-SQL)"
 description: Returns information about a subscription to a merge publication, both push and pull.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergesubscription (Transact-SQL)
+# sys.sp_helpmergesubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information about a subscription to a merge publication, both push and p
 ## Syntax
 
 ```syntaxsql
-sp_helpmergesubscription
+sys.sp_helpmergesubscription
     [ [ @publication = ] N'publication' ]
     [ , [ @subscriber = ] N'subscriber' ]
     [ , [ @subscriber_db = ] N'subscriber_db' ]
@@ -72,7 +72,7 @@ The type of subscription. *@subscription_type* is **nvarchar(15)**, and can be o
 
 #### [ @found = ] *found* OUTPUT
 
-A flag to indicate returning rows. *@found* is an OUTPUT parameter of type **int**.
+A flag to indicate returning rows. *@found* is an `OUTPUT` parameter of type **int**.
 
 - `1` indicates the publication is found.
 - `0` indicates the publication isn't found.

@@ -1,10 +1,10 @@
 ---
-title: "sp_replsetoriginator (Transact-SQL)"
+title: "sys.sp_replsetoriginator (Transact-SQL)"
 description: sp_replsetoriginator used to invoke loopback detection and handling in bidirectional transactional replication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replsetoriginator (Transact-SQL)
+# sys.sp_replsetoriginator (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Used to invoke loopback detection and handling in bidirectional transactional re
 ## Syntax
 
 ```syntaxsql
-sp_replsetoriginator
+sys.sp_replsetoriginator
     [ @originator_srv = ] N'originator_srv'
     , [ @originator_db = ] N'originator_db'
     [ , [ @publication = ] N'publication' ]

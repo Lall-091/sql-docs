@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergepullsubscription (Transact-SQL)"
+title: "sys.sp_helpmergepullsubscription (Transact-SQL)"
 description: Returns information about pull subscriptions that exist at a Subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergepullsubscription (Transact-SQL)
+# sys.sp_helpmergepullsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information about pull subscriptions that exist at a Subscriber. This st
 ## Syntax
 
 ```syntaxsql
-sp_helpmergepullsubscription
+sys.sp_helpmergepullsubscription
     [ [ @publication = ] N'publication' ]
     [ , [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]

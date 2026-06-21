@@ -1,10 +1,10 @@
 ---
-title: "sp_replmonitorhelppublicationthresholds (T-SQL)"
+title: "sys.sp_replmonitorhelppublicationthresholds (Transact-SQL)"
 description: sp_replmonitorhelppublicationthresholds returns the threshold metrics set for a monitored publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replmonitorhelppublicationthresholds (Transact-SQL)
+# sys.sp_replmonitorhelppublicationthresholds (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns the threshold metrics set for a monitored publication. This stored proce
 ## Syntax
 
 ```syntaxsql
-sp_replmonitorhelppublicationthresholds
+sys.sp_replmonitorhelppublicationthresholds
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

@@ -4,7 +4,7 @@ description: Deletes the definition of a collector type.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Deletes the definition of a collector type.
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_delete_collector_type
-    [ [ @collector_type_uid = ] 'collector_type_uid' ]
-    [ , [ @name = ] N'name' ]
+dbo.sp_syscollector_delete_collector_type
+    { [ @collector_type_uid = ] 'collector_type_uid'
+        | [ @name = ] N'name' }
 [ ; ]
 ```
 

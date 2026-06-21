@@ -1,10 +1,10 @@
 ---
-title: "sp_helpdatatypemap (Transact-SQL)"
+title: "sys.sp_helpdatatypemap (Transact-SQL)"
 description: sp_helpdatatypemap returns information on the defined data type mappings between SQL Server and non-SQL Server database management systems (DBMS).
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpdatatypemap (Transact-SQL)
+# sys.sp_helpdatatypemap (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns information on the defined data type mappings between [!INCLUDE [ssNoVer
 ## Syntax
 
 ```syntaxsql
-sp_helpdatatypemap
+sys.sp_helpdatatypemap
     [ @source_dbms = ] N'source_dbms'
     [ , [ @source_version = ] 'source_version' ]
     [ , [ @source_type = ] N'source_type' ]

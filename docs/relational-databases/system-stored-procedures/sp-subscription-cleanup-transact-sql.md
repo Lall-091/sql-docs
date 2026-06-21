@@ -1,10 +1,10 @@
 ---
-title: "sp_subscription_cleanup (Transact-SQL)"
+title: "sys.sp_subscription_cleanup (Transact-SQL)"
 description: sp_subscription_cleanup removes metadata when a subscription is dropped at a Subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_subscription_cleanup (Transact-SQL)
+# sys.sp_subscription_cleanup (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Removes metadata when a subscription is dropped at a Subscriber. For a synchroni
 ## Syntax
 
 ```syntaxsql
-sp_subscription_cleanup
+sys.sp_subscription_cleanup
     [ @publisher = ] N'publisher'
     [ , [ @publisher_db = ] N'publisher_db' ]
     [ , [ @publication = ] N'publication' ]

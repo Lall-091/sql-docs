@@ -1,10 +1,10 @@
 ---
-title: "sp_MSchange_merge_agent_properties (Transact-SQL)"
+title: "sys.sp_MSchange_merge_agent_properties (Transact-SQL)"
 description: "Changes the properties of a Merge Agent job that runs at a SQL Server 2005 or later version Distributor."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_MSchange_merge_agent_properties (Transact-SQL)
+# sys.sp_MSchange_merge_agent_properties (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Changes the properties of a Merge Agent job that runs at a [!INCLUDE [ssVersion2
 ## Syntax
 
 ```syntaxsql
-sp_MSchange_merge_agent_properties
+sys.sp_MSchange_merge_agent_properties
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

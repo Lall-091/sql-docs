@@ -1,10 +1,10 @@
 ---
-title: "sp_MSchange_distribution_agent_properties (T-SQL)"
+title: "sys.sp_MSchange_distribution_agent_properties (Transact-SQL)"
 description: Describes the sp_MSchange_distribution_agent_properties stored procedure used to change the properties of the Distribution Agent for a SQL Server Replication topology.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_MSchange_distribution_agent_properties (Transact-SQL)
+# sys.sp_MSchange_distribution_agent_properties (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Changes the properties of a Distribution Agent job that runs at a [!INCLUDE [ssV
 ## Syntax
 
 ```syntaxsql
-sp_MSchange_distribution_agent_properties
+sys.sp_MSchange_distribution_agent_properties
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

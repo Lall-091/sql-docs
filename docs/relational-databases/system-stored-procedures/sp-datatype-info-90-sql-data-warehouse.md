@@ -1,17 +1,17 @@
 ---
-title: "sp_datatype_info_90"
+title: "sys.sp_datatype_info_90 (Transact-SQL)"
 description: sp_datatype_info_90 returns information about the data types supported by the current environment.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.topic: "reference"
 dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || =fabric"
 ---
-# sp_datatype_info_90
+# sys.sp_datatype_info_90 (Transact-SQL)
 
 [!INCLUDE [applies-to-version/asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/asa-pdw-fabricse-fabricdw.md)]
 
@@ -22,7 +22,7 @@ Returns information about the data types supported by the current environment in
 ## Syntax
 
 ```syntaxsql
-sp_datatype_info_90
+sys.sp_datatype_info_90
     [ [ @data_type = ] data_type ]
     [ , [ @ODBCVer = ] ODBCVer ]
 [ ; ]

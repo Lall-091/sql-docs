@@ -1,10 +1,10 @@
 ---
-title: "sp_indexes (Transact-SQL)"
+title: "sys.sp_indexes (Transact-SQL)"
 description: sp_indexes returns index information for the specified remote table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_indexes (Transact-SQL)
+# sys.sp_indexes (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns index information for the specified remote table.
 ## Syntax
 
 ```syntaxsql
-sp_indexes
+sys.sp_indexes
     [ @table_server = ] N'table_server'
     [ , [ @table_name = ] N'table_name' ]
     [ , [ @table_schema = ] N'table_schema' ]

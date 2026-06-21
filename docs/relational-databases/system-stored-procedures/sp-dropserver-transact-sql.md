@@ -1,10 +1,10 @@
 ---
-title: "sp_dropserver (Transact-SQL)"
+title: "sys.sp_dropserver (Transact-SQL)"
 description: Removes a server from the list of known remote and linked servers on the local instance of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
-# sp_dropserver (Transact-SQL)
+# sys.sp_dropserver (Transact-SQL)
 
 [!INCLUDE [SQL Server - ASDBMI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -28,7 +28,7 @@ Removes a server from the list of known remote and linked servers on the local i
 ## Syntax
 
 ```syntaxsql
-sp_dropserver
+sys.sp_dropserver
     [ @server = ] N'server'
     [ , [ @droplogins = ] 'droplogins' ]
 [ ; ]

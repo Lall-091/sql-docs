@@ -4,7 +4,7 @@ description: Specifies the database name defined in the connection string used t
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,8 @@ Specifies the database name defined in the connection string used to connect to 
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_set_warehouse_database_name [ [ @database_name = ] N'database_name' ]
+dbo.sp_syscollector_set_warehouse_database_name
+    [ [ @database_name = ] N'database_name' ]
 [ ; ]
 ```
 

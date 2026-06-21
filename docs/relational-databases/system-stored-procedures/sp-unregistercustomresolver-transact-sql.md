@@ -1,10 +1,10 @@
 ---
-title: "sp_unregistercustomresolver (Transact-SQL)"
+title: "sys.sp_unregistercustomresolver (Transact-SQL)"
 description: Unregisters a previously registered business logic module.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_unregistercustomresolver (Transact-SQL)
+# sys.sp_unregistercustomresolver (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Unregisters a previously registered business logic module. Business logic can be
 ## Syntax
 
 ```syntaxsql
-sp_unregistercustomresolver [ @article_resolver = ] N'article_resolver'
+sys.sp_unregistercustomresolver [ @article_resolver = ] N'article_resolver'
 [ ; ]
 ```
 

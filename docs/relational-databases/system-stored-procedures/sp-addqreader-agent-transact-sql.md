@@ -1,10 +1,10 @@
 ---
-title: "sp_addqreader_agent (Transact-SQL)"
+title: "sys.sp_addqreader_agent (Transact-SQL)"
 description: sp_addqreader_agent adds a Queue Reader agent for a given Distributor.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addqreader_agent (Transact-SQL)
+# sys.sp_addqreader_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Adds a Queue Reader agent for a given Distributor. This stored procedure is exec
 ## Syntax
 
 ```syntaxsql
-sp_addqreader_agent
+sys.sp_addqreader_agent
     [ [ @job_login = ] N'job_login' ]
     [ , [ @job_password = ] N'job_password' ]
     [ , [ @job_name = ] N'job_name' ]

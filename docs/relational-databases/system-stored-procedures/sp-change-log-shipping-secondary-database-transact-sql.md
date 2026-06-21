@@ -1,10 +1,10 @@
 ---
-title: "sp_change_log_shipping_secondary_database (Transact-SQL)"
+title: "sys.sp_change_log_shipping_secondary_database (Transact-SQL)"
 description: sp_change_log_shipping_secondary_database changes secondary database settings.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_change_log_shipping_secondary_database (Transact-SQL)
+# sys.sp_change_log_shipping_secondary_database (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Changes secondary database settings.
 ## Syntax
 
 ```syntaxsql
-sp_change_log_shipping_secondary_database
+sys.sp_change_log_shipping_secondary_database
     [ @secondary_database = ] N'secondary_database'
     [ , [ @restore_delay = ] restore_delay ]
     [ , [ @restore_all = ] restore_all ]

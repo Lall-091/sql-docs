@@ -4,7 +4,7 @@ description: Updates information about an operator (notification recipient) for 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Updates information about an operator (notification recipient) for use with aler
 ## Syntax
 
 ```syntaxsql
-sp_update_operator
+dbo.sp_update_operator
     [ @name = ] N'name'
     [ , [ @new_name = ] N'new_name' ]
     [ , [ @enabled = ] enabled ]

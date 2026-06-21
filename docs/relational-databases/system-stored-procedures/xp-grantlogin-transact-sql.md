@@ -1,10 +1,10 @@
 ---
-title: "xp_grantlogin (Transact-SQL)"
+title: "sys.xp_grantlogin (Transact-SQL)"
 description: "Grants a Windows group or user access to SQL Server."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# xp_grantlogin (Transact-SQL)
+# sys.xp_grantlogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,12 +30,15 @@ Grants a Windows group or user access to [!INCLUDE [ssNoVersion](../../includes/
 ## Syntax
 
 ```syntaxsql
-xp_grantlogin { [ @loginame = ] 'login' } [ , [ @logintype = ] 'logintype' ]
+sys.xp_grantlogin
+    [ @loginame = ] N'loginame'
+    [ , [ @logintype = ] 'logintype' ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### [ @loginame = ] '*login*'
+#### [ @loginame = ] N'*loginame*'
 
 The name of the Windows user or group to be added. The Windows user or group must be qualified with a Windows domain name in the form `<domain>\<user>`. *@loginame* is **sysname**, with no default.
 

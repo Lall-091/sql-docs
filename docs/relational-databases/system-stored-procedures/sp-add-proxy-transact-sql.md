@@ -4,7 +4,7 @@ description: "Adds the specified SQL Server Agent proxy."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,31 +28,31 @@ Adds the specified [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Ag
 ## Syntax
 
 ```syntaxsql
-sp_add_proxy
-    [ @proxy_name = ] 'proxy_name'
-    , [ @enabled = ] is_enabled
-    , [ @description = ] 'description'
-    , [ @credential_name = ] 'credential_name'
-    , [ @credential_id = ] credential_id
-    , [ @proxy_id = ] id OUTPUT
+dbo.sp_add_proxy
+    [ @proxy_name = ] N'proxy_name'
+    [ , [ @enabled = ] enabled ]
+    [ , [ @description = ] N'description' ]
+    , { [ @credential_name = ] N'credential_name'
+        | [ @credential_id = ] credential_id }
+    [ , [ @proxy_id = ] proxy_id OUTPUT ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @proxy_name = ] '*proxy_name*'
+#### [ @proxy_name = ] N'*proxy_name*'
 
 The name of the proxy to create. The *@proxy_name* is **sysname**, with a default of `NULL`. When the *@proxy_name* is `NULL` or an empty string, the name of the proxy defaults to the *@credential_name* or *@credential_id* supplied.
 
-#### [ @enabled = ] *is_enabled*
+#### [ @enabled = ] *enabled*
 
 Specifies whether the proxy is enabled. The *@enabled* flag is **tinyint**, with a default of `1`. When *@enabled* is `0`, the proxy isn't enabled, and can't be used by a job step.
 
-#### [ @description = ] '*description*'
+#### [ @description = ] N'*description*'
 
 A description of the proxy. The description is **nvarchar(512)**, with a default of `NULL`. The description allows you to document the proxy, but isn't otherwise used by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent. Therefore, this argument is optional.
 
-#### [ @credential_name = ] '*credential_name*'
+#### [ @credential_name = ] N'*credential_name*'
 
 The name of the credential for the proxy. The *@credential_name* is **sysname**, with a default of `NULL`. Either *@credential_name* or *@credential_id* must be specified.
 

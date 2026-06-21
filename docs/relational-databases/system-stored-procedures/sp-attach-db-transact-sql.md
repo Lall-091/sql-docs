@@ -1,10 +1,10 @@
 ---
-title: "sp_attach_db (Transact-SQL)"
+title: "sys.sp_attach_db (Transact-SQL)"
 description: sp_attach_db attaches a database to a server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_attach_db (Transact-SQL)
+# sys.sp_attach_db (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Don't attach or restore databases from unknown or untrusted sources. Such databa
 ## Syntax
 
 ```syntaxsql
-sp_attach_db
+sys.sp_attach_db
     [ @dbname = ] N'dbname'
     , [ { @filename1 ... @filename16 } = ] { N'*filename1*' ... N'*filename16*' }
 [ ; ]

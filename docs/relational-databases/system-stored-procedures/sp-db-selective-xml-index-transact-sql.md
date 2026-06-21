@@ -1,10 +1,10 @@
 ---
-title: "sp_db_selective_xml_index (Transact-SQL)"
+title: "sys.sp_db_selective_xml_index (Transact-SQL)"
 description: sp_db_selective_xml_index enables and disables selective XML index (SXI) functionality on a SQL Server database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_db_selective_xml_index (Transact-SQL)
+# sys.sp_db_selective_xml_index (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Enables and disables selective XML index (SXI) functionality on a [!INCLUDE [ssN
 ## Syntax
 
 ```syntaxsql
-sp_db_selective_xml_index
+sys.sp_db_selective_xml_index
     [ [ @dbname = ] N'dbname' ]
     [ , [ @selective_xml_index = ] 'selective_xml_index' ]
 [ ; ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_adduser (Transact-SQL)"
+title: "sys.sp_adduser (Transact-SQL)"
 description: sp_adduser adds a new user to the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_adduser (Transact-SQL)
+# sys.sp_adduser (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Adds a new user to the current database.
 ## Syntax
 
 ```syntaxsql
-sp_adduser
+sys.sp_adduser
     [ @loginame = ] N'loginame'
     [ , [ @name_in_db = ] N'name_in_db' ]
     [ , [ @grpname = ] N'grpname' ]

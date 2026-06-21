@@ -1,10 +1,10 @@
 ---
-title: "sp_dropdistributor (Transact-SQL)"
+title: "sys.sp_dropdistributor (Transact-SQL)"
 description: Uninstalls the Distributor. This stored procedure is executed at the Distributor on any database except the distribution database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropdistributor (Transact-SQL)
+# sys.sp_dropdistributor (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Uninstalls the Distributor. This stored procedure is executed at the Distributor
 ## Syntax
 
 ```syntaxsql
-sp_dropdistributor
+sys.sp_dropdistributor
     [ [ @no_checks = ] no_checks ]
     [ , [ @ignore_distributor = ] ignore_distributor ]
 [ ; ]

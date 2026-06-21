@@ -1,10 +1,10 @@
 ---
-title: "sp_enumeratependingschemachanges (Transact-SQL)"
+title: "sys.sp_enumeratependingschemachanges (Transact-SQL)"
 description: sp_enumeratependingschemachanges returns a list of all pending schema changes.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_enumeratependingschemachanges (Transact-SQL)
+# sys.sp_enumeratependingschemachanges (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns a list of all pending schema changes. This stored procedure can be used 
 ## Syntax
 
 ```syntaxsql
-sp_enumeratependingschemachanges
+sys.sp_enumeratependingschemachanges
     [ @publication = ] N'publication'
     [ , [ @starting_schemaversion = ] starting_schemaversion ]
 [ ; ]

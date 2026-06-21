@@ -1,10 +1,10 @@
 ---
-title: "sp_replmonitorhelpsubscription (Transact-SQL)"
+title: "sys.sp_replmonitorhelpsubscription (Transact-SQL)"
 description: sp_replmonitorhelpsubscription returns current status information for subscriptions belonging to one or more publications at the Publisher.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replmonitorhelpsubscription (Transact-SQL)
+# sys.sp_replmonitorhelpsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns current status information for subscriptions belonging to one or more pu
 ## Syntax
 
 ```syntaxsql
-sp_replmonitorhelpsubscription
+sys.sp_replmonitorhelpsubscription
     [ [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]
     [ , [ @publication = ] N'publication' ]

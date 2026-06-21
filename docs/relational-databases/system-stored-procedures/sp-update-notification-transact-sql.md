@@ -4,7 +4,7 @@ description: Updates the notification method of an alert notification.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Updates the notification method of an alert notification.
 ## Syntax
 
 ```syntaxsql
-sp_update_notification
+dbo.sp_update_notification
     [ @alert_name = ] N'alert_name'
     , [ @operator_name = ] N'operator_name'
     , [ @notification_method = ] notification_method

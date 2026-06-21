@@ -1,10 +1,10 @@
 ---
-title: "sp_addsrvrolemember (Transact-SQL)"
+title: "sys.sp_addsrvrolemember (Transact-SQL)"
 description: sp_addsrvrolemember adds a security principal as a member of a fixed server role.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addsrvrolemember (Transact-SQL)
+# sys.sp_addsrvrolemember (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Adds a login, or security principal, as a member of a fixed server role.
 ## Syntax
 
 ```syntaxsql
-sp_addsrvrolemember
+sys.sp_addsrvrolemember
     [ @loginame = ] N'loginame'
     [ , [ @rolename = ] N'rolename' ]
 [ ; ]

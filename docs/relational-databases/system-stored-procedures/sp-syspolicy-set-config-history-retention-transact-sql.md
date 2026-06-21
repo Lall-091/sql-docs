@@ -4,7 +4,7 @@ description: "Specifies the number of days to keep policy evaluation history for
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,7 @@ Specifies the number of days to keep policy evaluation history for Policy-Based 
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_set_config_history_retention
-    [ @value = ] value
+dbo.sp_syspolicy_set_config_history_retention [ @value = ] value
 [ ; ]
 ```
 

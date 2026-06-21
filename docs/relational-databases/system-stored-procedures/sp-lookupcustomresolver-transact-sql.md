@@ -1,10 +1,10 @@
 ---
-title: "sp_lookupcustomresolver (Transact-SQL)"
+title: "sys.sp_lookupcustomresolver (Transact-SQL)"
 description: Returns the information on a business logic handler or the class identifier (CLSID) value of a COM-based custom resolver component that is registered at the Distributor.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_lookupcustomresolver (Transact-SQL)
+# sys.sp_lookupcustomresolver (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the information on a business logic handler or the class identifier (CLS
 ## Syntax
 
 ```syntaxsql
-sp_lookupcustomresolver
+sys.sp_lookupcustomresolver
     [ @article_resolver = ] N'article_resolver'
     , [ @resolver_clsid = ] N'resolver_clsid' OUTPUT
     [ , [ @is_dotnet_assembly = ] is_dotnet_assembly OUTPUT ]
@@ -45,22 +45,22 @@ Specifies the name of the custom business logic being unregistered. *@article_re
 
 #### [ @resolver_clsid = ] N'*resolver_clsid*' OUTPUT
 
-The CLSID value of the COM object associated with the name of the custom business logic specified in the *@article_resolver* parameter. *@resolver_clsid* is an OUTPUT parameter of type **nvarchar(50)**.
+The CLSID value of the COM object associated with the name of the custom business logic specified in the *@article_resolver* parameter. *@resolver_clsid* is an `OUTPUT` parameter of type **nvarchar(50)**.
 
 #### [ @is_dotnet_assembly = ] *is_dotnet_assembly* OUTPUT
 
-Specifies the type of custom business logic that is being registered. *@is_dotnet_assembly* is an OUTPUT parameter of type **bit**.
+Specifies the type of custom business logic that is being registered. *@is_dotnet_assembly* is an `OUTPUT` parameter of type **bit**.
 
 - `1` indicates that the custom business logic being registered is a business logic handler assembly.
 - `0` (default) indicates that it's a COM component.
 
 #### [ @dotnet_assembly_name = ] N'*dotnet_assembly_name*' OUTPUT
 
-The name of the assembly that implements the business logic handler. *@dotnet_assembly_name* is an OUTPUT parameter of type **nvarchar(255)**.
+The name of the assembly that implements the business logic handler. *@dotnet_assembly_name* is an `OUTPUT` parameter of type **nvarchar(255)**.
 
 #### [ @dotnet_class_name = ] N'*dotnet_class_name*' OUTPUT
 
-The name of the class that overrides <xref:Microsoft.SqlServer.Replication.BusinessLogicSupport.BusinessLogicModule> to implement the business logic handler. *@dotnet_class_name* is an OUTPUT parameter of type **nvarchar(255)**.
+The name of the class that overrides <xref:Microsoft.SqlServer.Replication.BusinessLogicSupport.BusinessLogicModule> to implement the business logic handler. *@dotnet_class_name* is an `OUTPUT` parameter of type **nvarchar(255)**.
 
 #### [ @publisher = ] N'*publisher*'
 

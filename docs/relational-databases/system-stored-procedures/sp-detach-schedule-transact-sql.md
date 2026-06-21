@@ -4,7 +4,7 @@ description: sp_detach_schedule removes an association between a schedule and a 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,11 +27,11 @@ Removes an association between a schedule and a job.
 ## Syntax
 
 ```syntaxsql
-sp_detach_schedule
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
-    [ , [ @schedule_id = ] schedule_id ]
-    [ , [ @schedule_name = ] N'schedule_name' ]
+dbo.sp_detach_schedule
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
+    , { [ @schedule_id = ] schedule_id
+        | [ @schedule_name = ] N'schedule_name' }
     [ , [ @delete_unused_schedule = ] delete_unused_schedule ]
     [ , [ @automatic_post = ] automatic_post ]
 [ ; ]

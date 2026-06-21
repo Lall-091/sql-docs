@@ -1,10 +1,10 @@
 ---
-title: "sp_helpxactsetjob (Transact-SQL)"
+title: "sys.sp_helpxactsetjob (Transact-SQL)"
 description: sp_helpxactsetjob displays information on the Xactset job for an Oracle Publisher.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpxactsetjob (Transact-SQL)
+# sys.sp_helpxactsetjob (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Displays information on the Xactset job for an Oracle Publisher. This stored pro
 ## Syntax
 
 ```syntaxsql
-sp_helpxactsetjob [ @publisher = ] N'publisher'
+sys.sp_helpxactsetjob [ @publisher = ] N'publisher'
 [ ; ]
 ```
 

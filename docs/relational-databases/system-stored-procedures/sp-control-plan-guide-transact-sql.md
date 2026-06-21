@@ -1,10 +1,10 @@
 ---
-title: "sp_control_plan_guide (Transact-SQL)"
+title: "sys.sp_control_plan_guide (Transact-SQL)"
 description: The sp_control_plan_guide system stored procedure drops, enables, or disables a plan guide.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_control_plan_guide (Transact-SQL)
+# sys.sp_control_plan_guide (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,17 +27,13 @@ The `sp_control_plan_guide` system stored procedure is used to drop, enable, or 
 ## Syntax
 
 ```syntaxsql
-sp_control_plan_guide
+sys.sp_control_plan_guide
     [ @operation = ] { N'DROP [ ALL ]' | N'DISABLE [ ALL ]' | N'ENABLE [ ALL ]' }
     [ , [ @name = ] N'name' ]
 [ ; ]
 ```
 
 ## Arguments
-
-#### [ @name = ] N'*name*'
-
-Specifies the plan guide that is being dropped, enabled, or disabled. *@name* is **sysname**, with a default of `NULL`. *@name* is resolved to the current database. If not specified, *@name* defaults to `NULL`.
 
 #### [ @operation = ] { N'DROP [ ALL ]' | N'DISABLE [ ALL ]' | N'ENABLE [ ALL ]' }
 
@@ -66,6 +62,10 @@ The operation to perform on the plan guide specified in *@name*. *@operation* is
 - `ENABLE ALL`
 
   Enables all plan guides in the current database. *@name* can't be specified when `ENABLE ALL` is specified.
+
+#### [ @name = ] N'*name*'
+
+Specifies the plan guide that is being dropped, enabled, or disabled. *@name* is **sysname**, with a default of `NULL`. *@name* is resolved to the current database. If not specified, *@name* defaults to `NULL`.
 
 ## Remarks
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_changeobjectowner (Transact-SQL)"
+title: "sys.sp_changeobjectowner (Transact-SQL)"
 description: sp_changeobjectowner changes the owner of an object in the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changeobjectowner (Transact-SQL)
+# sys.sp_changeobjectowner (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Changes the owner of an object in the current database.
 ## Syntax
 
 ```syntaxsql
-sp_changeobjectowner
+sys.sp_changeobjectowner
     [ @objname = ] N'objname'
     , [ @newowner = ] N'newowner'
 [ ; ]

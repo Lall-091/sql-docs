@@ -1,10 +1,10 @@
 ---
-title: "sp_changearticle (Transact-SQL)"
+title: "sys.sp_changearticle (Transact-SQL)"
 description: sp_changearticle changes the properties of an article in a transactional or snapshot publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changearticle (Transact-SQL)
+# sys.sp_changearticle (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes the properties of an article in a transactional or snapshot publication.
 ## Syntax
 
 ```syntaxsql
-sp_changearticle
+sys.sp_changearticle
     [ [ @publication = ] N'publication' ]
     [ , [ @article = ] N'article' ]
     [ , [ @property = ] N'property' ]
@@ -171,7 +171,7 @@ See the [Remarks](#remarks) section for the properties that, when changed, requi
 Specifies a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher. *@publisher* is **sysname**, with a default of `NULL`.
 
 > [!NOTE]  
-> *publisher* shouldn't be used when changing article properties on a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher.
+> *@publisher* shouldn't be used when changing article properties on a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher.
 
 ## Return code values
 

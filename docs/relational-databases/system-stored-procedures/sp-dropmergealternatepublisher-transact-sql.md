@@ -1,10 +1,10 @@
 ---
-title: "sp_dropmergealternatepublisher (Transact-SQL)"
+title: "sys.sp_dropmergealternatepublisher (Transact-SQL)"
 description: "Removes an alternate Publisher from a merge publication. This stored procedure is executed at the Subscriber on the subscription database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropmergealternatepublisher (Transact-SQL)
+# sys.sp_dropmergealternatepublisher (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Removes an alternate Publisher from a merge publication. This stored procedure i
 ## Syntax
 
 ```syntaxsql
-sp_dropmergealternatepublisher
+sys.sp_dropmergealternatepublisher
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

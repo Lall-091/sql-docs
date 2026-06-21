@@ -1,10 +1,10 @@
 ---
-title: "sp_can_tlog_be_applied (Transact-SQL)"
+title: "sys.sp_can_tlog_be_applied (Transact-SQL)"
 description: Verifies whether a transaction log backup can be applied to a SQL Server database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_can_tlog_be_applied (Transact-SQL)
+# sys.sp_can_tlog_be_applied (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Verifies whether a transaction log backup can be applied to a [!INCLUDE [ssNoVer
 ## Syntax
 
 ```syntaxsql
-sp_can_tlog_be_applied
+sys.sp_can_tlog_be_applied
     [ @backup_file_name = ] N'backup_file_name'
     , [ @database_name = ] N'database_name'
     [ , [ @result = ] result OUTPUT ]
@@ -47,7 +47,7 @@ The name of the database. *@database_name* is **sysname**, with no default.
 
 #### [ @result = ] *result* OUTPUT
 
-Indicates whether the transaction log can be applied to the database. *@result* is an OUTPUT parameter of type **bit**.
+Indicates whether the transaction log can be applied to the database. *@result* is an `OUTPUT` parameter of type **bit**.
 
 - `1` = The log can be applies
 - `0` = The log can't be applied.

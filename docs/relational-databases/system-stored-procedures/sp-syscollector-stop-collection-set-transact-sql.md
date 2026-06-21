@@ -4,7 +4,7 @@ description: Stops a collection set.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Stops a collection set.
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_stop_collection_set
+dbo.sp_syscollector_stop_collection_set
     [ [ @collection_set_id = ] collection_set_id ]
     [ , [ @name = ] N'name' ]
     [ , [ @stop_collection_job = ] stop_collection_job ]

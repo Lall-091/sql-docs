@@ -1,10 +1,10 @@
 ---
-title: "sp_adddynamicsnapshot_job (Transact-SQL)"
+title: "sys.sp_adddynamicsnapshot_job (Transact-SQL)"
 description: Creates an agent job that generates a filtered data snapshot for a publication with parameterized row filters.
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_adddynamicsnapshot_job (Transact-SQL)
+# sys.sp_adddynamicsnapshot_job (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -32,7 +32,7 @@ For more information, see [Create a Snapshot for a Merge Publication with Parame
 ## Syntax
 
 ```syntaxsql
-sp_adddynamicsnapshot_job
+sys.sp_adddynamicsnapshot_job
     [ @publication = ] N'publication'
     [ , [ @suser_sname = ] N'suser_sname' ]
     [ , [ @host_name = ] N'host_name' ]
@@ -63,11 +63,11 @@ The value used when creating a filtered data snapshot for a subscription that is
 
 #### [ @host_name = ] N'*host_name*'
 
-The value used when creating a filtered data snapshot for a subscription that is filtered by the value of the [HOST_NAME](../../t-sql/functions/host-name-transact-sql.md) function at the Subscriber. *@host_name* is **sysname**, with a default of `NULL`. *host_name* should be `NULL` if this function isn't used to dynamically filter the publication.
+The value used when creating a filtered data snapshot for a subscription that is filtered by the value of the [HOST_NAME](../../t-sql/functions/host-name-transact-sql.md) function at the Subscriber. *@host_name* is **sysname**, with a default of `NULL`. *@host_name* should be `NULL` if this function isn't used to dynamically filter the publication.
 
 #### [ @dynamic_snapshot_jobname = ] N'*dynamic_snapshot_jobname*' OUTPUT
 
-The name of the filtered data snapshot job created. *@dynamic_snapshot_jobname* is an OUTPUT parameter of type **sysname**. If specified, *@dynamic_snapshot_jobname* must resolve to a unique job at the Distributor. If unspecified, a job name is automatically generated in the result set, where the name is created as follows:
+The name of the filtered data snapshot job created. *@dynamic_snapshot_jobname* is an `OUTPUT` parameter of type **sysname**. If specified, *@dynamic_snapshot_jobname* must resolve to a unique job at the Distributor. If unspecified, a job name is automatically generated in the result set, where the name is created as follows:
 
 ```text
 'dyn_' + <name of the standard snapshot job> + <GUID>
@@ -78,7 +78,7 @@ The name of the filtered data snapshot job created. *@dynamic_snapshot_jobname* 
 
 #### [ @dynamic_snapshot_jobid = ] '*dynamic_snapshot_jobid*' OUTPUT
 
-An identifier for the filtered data snapshot job created. *@dynamic_snapshot_jobid* is an OUTPUT parameter of type **uniqueidentifier**, with a default of `NULL`.
+An identifier for the filtered data snapshot job created. *@dynamic_snapshot_jobid* is an `OUTPUT` parameter of type **uniqueidentifier**, with a default of `NULL`.
 
 #### [ @frequency_type = ] *frequency_type*
 
@@ -122,7 +122,7 @@ Specifies the units for *@frequency_subday_interval*. *@frequency_subday* is **i
 
 #### [ @frequency_subday_interval = ] *frequency_subday_interval*
 
-The number of *frequency_subday* periods that occur between each execution of the job. *@frequency_subday_interval* is **int**, with a default of `1`.
+The number of *@frequency_subday* periods that occur between each execution of the job. *@frequency_subday_interval* is **int**, with a default of `1`.
 
 #### [ @frequency_relative_interval = ] *frequency_relative_interval*
 
@@ -138,7 +138,7 @@ The occurrence of the filtered data snapshot job in each month. This parameter i
 
 #### [ @frequency_recurrence_factor = ] *frequency_recurrence_factor*
 
-The recurrence factor used by *frequency_type*. *@frequency_recurrence_factor* is **int**, with a default of `1`.
+The recurrence factor used by *@frequency_type*. *@frequency_recurrence_factor* is **int**, with a default of `1`.
 
 #### [ @active_start_date = ] *active_start_date*
 

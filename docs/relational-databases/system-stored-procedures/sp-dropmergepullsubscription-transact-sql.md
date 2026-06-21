@@ -1,10 +1,10 @@
 ---
-title: "sp_dropmergepullsubscription (Transact-SQL)"
+title: "sys.sp_dropmergepullsubscription (Transact-SQL)"
 description: "Drops a merge pull subscription. This stored procedure is executed at the Subscriber on the subscription database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropmergepullsubscription (Transact-SQL)
+# sys.sp_dropmergepullsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Drops a merge pull subscription. This stored procedure is executed at the Subscr
 ## Syntax
 
 ```syntaxsql
-sp_dropmergepullsubscription
+sys.sp_dropmergepullsubscription
     [ [ @publication = ] N'publication' ]
     [ , [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]

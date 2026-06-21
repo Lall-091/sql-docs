@@ -4,7 +4,7 @@ description: "Modifies the configuration of a change data capture cleanup or cap
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -29,13 +29,14 @@ Modifies the configuration of a change data capture cleanup or capture job in th
 ## Syntax
 
 ```syntaxsql
-sys.sp_cdc_change_job [ [ @job_type = ] N'job_type' ]
-    [ , [ @maxtrans = ] max_trans ]
-    [ , [ @maxscans = ] max_scans ]
+sys.sp_cdc_change_job
+    [ [ @job_type = ] N'job_type' ]
+    [ , [ @maxtrans = ] maxtrans ]
+    [ , [ @maxscans = ] maxscans ]
     [ , [ @continuous = ] continuous ]
-    [ , [ @pollinginterval = ] polling_interval ]
-    [ , [ @retention ] = retention ]
-    [ @threshold = ] 'delete threshold'
+    [ , [ @pollinginterval = ] pollinginterval ]
+    [ , [ @retention = ] retention ]
+    [ , [ @threshold = ] threshold ]
 [ ; ]
 ```
 
@@ -45,19 +46,19 @@ sys.sp_cdc_change_job [ [ @job_type = ] N'job_type' ]
 
 Type of job to modify. *@job_type* is **nvarchar(20)** with a default of `capture`. Valid inputs are `capture` and `cleanup`.
 
-#### [ @maxtrans ] = *max_trans*
+#### [ @maxtrans = ] *maxtrans*
 
 Maximum number of transactions to process in each scan cycle. *@maxtrans* is **int**, with a default of `NULL`, which indicates no change for this parameter. If specified, the value must be a positive integer.
 
 *@max_trans* is valid only for capture jobs.
 
-#### [ @maxscans ] = *max_scans*
+#### [ @maxscans = ] *maxscans*
 
 Maximum number of scan cycles to execute in order to extract all rows from the log. *@maxscans* is **int**, with a default of `NULL`, which indicates no change for this parameter.
 
 *@max_scan* is valid only for capture jobs.
 
-#### [ @continuous ] = *continuous*
+#### [ @continuous = ] *continuous*
 
 Indicates whether the capture job is to run continuously (`1`), or run only once (`0`). *@continuous* is **bit**, with a default of `NULL`, which indicates no change for this parameter.
 
@@ -71,19 +72,19 @@ Indicates whether the capture job is to run continuously (`1`), or run only once
 
 *@continuous* is valid only for capture jobs.
 
-#### [ @pollinginterval ] = *polling_interval*
+#### [ @pollinginterval = ] *pollinginterval*
 
 Number of seconds between log scan cycles. *@pollinginterval* is **bigint**, with a default of `NULL`, which indicates no change for this parameter.
 
 *@pollinginterval* is valid only for capture jobs when *@continuous* is set to `1`.
 
-#### [ @retention ] = *retention*
+#### [ @retention = ] *retention*
 
 Number of minutes that change rows are to be retained in change tables. *@retention* is **bigint**, with a default of `NULL`, which indicates no change for this parameter. The maximum value is `52494800` (100 years). If specified, the value must be a positive integer.
 
 *@retention* is valid only for cleanup jobs.
 
-#### [ @threshold = ] '*delete threshold*'
+#### [ @threshold = ] *threshold*
 
 Maximum number of delete entries that can be deleted using a single statement on cleanup. *@threshold* is **bigint**, with a default of `NULL`, which indicates no change for this parameter. *@threshold* is valid only for cleanup jobs.
 

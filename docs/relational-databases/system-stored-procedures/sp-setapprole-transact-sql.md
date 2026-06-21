@@ -1,10 +1,10 @@
 ---
-title: "sp_setapprole (Transact-SQL)"
+title: "sys.sp_setapprole (Transact-SQL)"
 description: sp_setapprole activates the permissions associated with an application role in the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_setapprole (Transact-SQL)
+# sys.sp_setapprole (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
@@ -29,7 +29,7 @@ Activates the permissions associated with an application role in the current dat
 ## Syntax
 
 ```syntaxsql
-sp_setapprole
+sys.sp_setapprole
     [ @rolename = ] N'rolename'
     , [ @password = ] N'password'
     [ , [ @encrypt = ] 'encrypt' ]
@@ -70,7 +70,7 @@ Specifies whether a cookie is to be created. *@fCreateCookie* is **bit**, with a
 
 #### [ @cookie = ] *cookie* OUTPUT
 
-Specifies an output parameter to contain the cookie. *@cookie* is an OUTPUT parameter of type **varbinary(8000)**. The cookie is generated only if the value of *@fCreateCookie* is `true`.
+Specifies an output parameter to contain the cookie. *@cookie* is an `OUTPUT` parameter of type **varbinary(8000)**. The cookie is generated only if the value of *@fCreateCookie* is `true`.
 
 > [!NOTE]  
 > Although the current implementation returns **varbinary(50)**, applications should reserve the documented **varbinary(8000)**, so that the application continues to operate correctly if the cookie return size increases in a future release.

@@ -1,10 +1,10 @@
 ---
-title: "sp_helplogins (Transact-SQL)"
+title: "sys.sp_helplogins (Transact-SQL)"
 description: sp_helplogins provides information about logins and the users associated with them in each database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helplogins (Transact-SQL)
+# sys.sp_helplogins (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Provides information about logins and the users associated with them in each dat
 ## Syntax
 
 ```syntaxsql
-sp_helplogins [ [ @LoginNamePattern = ] N'LoginNamePattern' ]
+sys.sp_helplogins [ [ @LoginNamePattern = ] N'LoginNamePattern' ]
 [ ; ]
 ```
 

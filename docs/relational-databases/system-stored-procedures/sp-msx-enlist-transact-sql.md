@@ -4,7 +4,7 @@ description: sp_msx_enlist adds the current server to the list of available serv
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,7 +30,7 @@ Adds the current server to the list of available servers on the master server.
 ## Syntax
 
 ```syntaxsql
-sp_msx_enlist
+dbo.sp_msx_enlist
     [ @msx_server_name = ] N'msx_server_name'
     [ , [ @location = ] N'location' ]
 [ ; ]

@@ -4,7 +4,7 @@ description: "Removes the policy evaluation history according to the history ret
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,13 +27,17 @@ Removes the policy evaluation history according to the history retention interva
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_purge_history
+dbo.sp_syspolicy_purge_history [ [ @include_system = ] include_system ]
 [ ; ]
 ```
 
 ## Arguments
 
 This stored procedure has no parameters.
+
+#### [ @include_system = ] *include_system*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

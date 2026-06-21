@@ -1,10 +1,10 @@
 ---
-title: "sp_server_info (Transact-SQL)"
+title: "sys.sp_server_info (Transact-SQL)"
 description: Returns a list of attribute names and matching values for SQL Server, the database gateway, or the underlying data source.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_server_info (Transact-SQL)
+# sys.sp_server_info (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -29,7 +29,7 @@ Returns a list of attribute names and matching values for [!INCLUDE [ssNoVersion
 ## Syntax
 
 ```syntaxsql
-sp_server_info [ [ @attribute_id = ] attribute_id ]
+sys.sp_server_info [ [ @attribute_id = ] attribute_id ]
 [ ; ]
 ```
 

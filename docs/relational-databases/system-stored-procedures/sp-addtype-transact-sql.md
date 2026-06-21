@@ -1,10 +1,10 @@
 ---
-title: "sp_addtype (Transact-SQL)"
+title: "sys.sp_addtype (Transact-SQL)"
 description: sp_addtype creates an alias data type.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addtype (Transact-SQL)
+# sys.sp_addtype (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Creates an alias data type.
 ## Syntax
 
 ```syntaxsql
-sp_addtype
+sys.sp_addtype
     [ @typename = ] N'typename'
     , [ @phystype = ] N'phystype'
     [ , [ @nulltype = ] 'nulltype' ]

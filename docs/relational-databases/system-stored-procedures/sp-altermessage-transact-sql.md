@@ -1,10 +1,10 @@
 ---
-title: "sp_altermessage (Transact-SQL)"
+title: "sys.sp_altermessage (Transact-SQL)"
 description: Alters the state of user-defined or system messages in an instance of the SQL Server Database Engine.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_altermessage (Transact-SQL)
+# sys.sp_altermessage (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Alters the state of user-defined or system messages in an instance of the [!INCL
 ## Syntax
 
 ```syntaxsql
-sp_altermessage
+sys.sp_altermessage
     [ @message_id = ] message_id
     , [ @parameter = ] N'parameter'
     , [ @parameter_value = ] 'parameter_value'

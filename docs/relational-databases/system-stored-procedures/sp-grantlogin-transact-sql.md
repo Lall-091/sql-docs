@@ -1,10 +1,10 @@
 ---
-title: "sp_grantlogin (Transact-SQL)"
+title: "sys.sp_grantlogin (Transact-SQL)"
 description: sp_grantlogin creates a SQL Server login.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_grantlogin (Transact-SQL)
+# sys.sp_grantlogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login.
 ## Syntax
 
 ```syntaxsql
-sp_grantlogin [ @loginame = ] N'loginame'
+sys.sp_grantlogin [ @loginame = ] N'loginame'
 [ ; ]
 ```
 

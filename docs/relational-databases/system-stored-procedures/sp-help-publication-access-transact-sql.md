@@ -1,10 +1,10 @@
 ---
-title: "sp_help_publication_access (Transact-SQL)"
+title: "sys.sp_help_publication_access (Transact-SQL)"
 description: Returns a list of all granted logins for a publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_publication_access (Transact-SQL)
+# sys.sp_help_publication_access (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns a list of all granted logins for a publication. This stored procedure is
 ## Syntax
 
 ```syntaxsql
-sp_help_publication_access
+sys.sp_help_publication_access
     [ @publication = ] N'publication'
     [ , [ @return_granted = ] return_granted ]
     [ , [ @login = ] N'login' ]

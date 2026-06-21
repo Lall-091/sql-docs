@@ -1,10 +1,10 @@
 ---
-title: "sp_recompile (Transact-SQL)"
+title: "sys.sp_recompile (Transact-SQL)"
 description: "Causes stored procedures, triggers, and user-defined functions to be recompiled the next time that they're run."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_recompile (Transact-SQL)
+# sys.sp_recompile (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -30,13 +30,13 @@ Causes stored procedures, triggers, and user-defined functions to be recompiled 
 ## Syntax
 
 ```syntaxsql
-sp_recompile [ @objname = ] N'object'
+sys.sp_recompile [ @objname = ] N'objname'
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @objname = ] N'*object*'
+#### [ @objname = ] N'*objname*'
 
 The qualified or unqualified name of a stored procedure, trigger, table, view, or user-defined function in the current database. *@objname* is **nvarchar(776)**, with no default.
 

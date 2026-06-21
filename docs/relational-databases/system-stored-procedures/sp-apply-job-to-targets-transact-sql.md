@@ -4,7 +4,7 @@ description: Applies a job to one or more target servers or to the target server
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,9 @@ Applies a job to one or more target servers or to the target servers belonging t
 ## Syntax
 
 ```syntaxsql
-sp_apply_job_to_targets
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_apply_job_to_targets
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @target_server_groups = ] N'target_server_groups' ]
     [ , [ @target_servers = ] N'target_servers' ]
     [ , [ @operation = ] 'operation' ]

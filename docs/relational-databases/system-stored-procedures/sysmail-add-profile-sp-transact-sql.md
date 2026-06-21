@@ -4,7 +4,7 @@ description: "Created a new Database Mail profile in an instance of SQL Server o
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,15 +27,16 @@ Creates a new [Database Mail](../database-mail/database-mail.md) profile.
 ## Syntax
 
 ```syntaxsql
-sysmail_add_profile_sp [ @profile_name = ] 'profile_name'
+dbo.sysmail_add_profile_sp
+    [ @profile_name = ] N'profile_name'
     [ , [ @description = ] N'description' ]
-    [ , [ @profile_id = ] new_profile_id OUTPUT ]
+    [ , [ @profile_id = ] profile_id OUTPUT ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @profile_name = ] '*profile_name*'
+#### [ @profile_name = ] N'*profile_name*'
 
 The name for the new profile. *@profile_name* is **sysname**, with no default.
 
@@ -45,7 +46,7 @@ To send e-mail using SQL Server Agent jobs in [!INCLUDE [ssazuremi-md](../../inc
 
 The optional description for the new profile. *@description* is **nvarchar(256)**, with no default.
 
-#### [ @profile_id = ] *new_profile_id* OUTPUT
+#### [ @profile_id = ] *profile_id* OUTPUT
 
 Returns the ID for the new profile. *@profile_id* is **int**, with a default of `NULL`.
 

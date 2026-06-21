@@ -1,10 +1,10 @@
 ---
-title: "sp_dropremotelogin (Transact-SQL)"
+title: "sys.sp_dropremotelogin (Transact-SQL)"
 description: Removes a remote login mapped to a local login used to execute remote stored procedures against the local server running SQL Server.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropremotelogin (Transact-SQL)
+# sys.sp_dropremotelogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,8 +30,8 @@ Removes a remote login mapped to a local login used to execute remote stored pro
 ## Syntax
 
 ```syntaxsql
-sp_dropremotelogin
-    [ @remotename = ] N'@remotename'
+sys.sp_dropremotelogin
+    [ @remoteserver = ] N'remoteserver'
     [ , [ @loginame = ] N'loginame' ]
     [ , [ @remotename = ] N'remotename' ]
 [ ; ]
@@ -39,7 +39,7 @@ sp_dropremotelogin
 
 ## Arguments
 
-#### [ @remotename = ] N'*@remotename*'
+#### [ @remoteserver = ] N'*remoteserver*'
 
 The name of the remote server mapped to the remote login that is to be removed. *@remotename* is **sysname**, with no default. *@remotename* must already exist.
 

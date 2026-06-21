@@ -4,7 +4,7 @@ description: "Deletes execution history for policies in Policy-Based Management.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,9 @@ Deletes execution history for policies in Policy-Based Management. You can use t
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_delete_policy_execution_history
+dbo.sp_syspolicy_delete_policy_execution_history
     [ @policy_id = ] policy_id
-    , [ @oldest_date = ] 'oldest_date'
+    , [ @oldest_date = ] oldest_date
 [ ; ]
 ```
 
@@ -39,7 +39,7 @@ sp_syspolicy_delete_policy_execution_history
 
 The identifier of the policy for which you want to delete the execution history. *@policy_id* is **int**, and is required. Can be `NULL`.
 
-#### [ @oldest_date = ] '*oldest_date*'
+#### [ @oldest_date = ] *oldest_date*
 
 The oldest date for which you want to keep policy execution history. Any execution history earlier than this date is deleted. *@oldest_date* is **datetime**, and is required. Can be `NULL`.
 

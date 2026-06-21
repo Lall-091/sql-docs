@@ -4,7 +4,7 @@ description: "Adds a Database Mail account to a Database Mail profile."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,12 @@ Adds a Database Mail account to a Database Mail profile. Execute `sysmail_add_pr
 ## Syntax
 
 ```syntaxsql
-sysmail_add_profileaccount_sp { [ @profile_id = ] profile_id | [ @profile_name = ] 'profile_name' } ,
-    { [ @account_id = ] account_id | [ @account_name = ] 'account_name' }
-    [ , [ @sequence_number = ] sequence_number ]
+dbo.sysmail_add_profileaccount_sp
+    { [ @profile_id = ] profile_id
+        | [ @profile_name = ] N'profile_name' }
+    , { [ @account_id = ] account_id
+        | [ @account_name = ] N'account_name' }
+    , [ @sequence_number = ] sequence_number
 [ ; ]
 ```
 
@@ -37,19 +40,19 @@ sysmail_add_profileaccount_sp { [ @profile_id = ] profile_id | [ @profile_name =
 
 #### [ @profile_id = ] *profile_id*
 
-The profile ID to add the account to. *@profile_id* is **int**, with a default of `NULL`. Either the *@profile_id* or the *@profile_name* must be specified.
+The profile ID to add the account to. *@profile_id* is **int**, with a default of `NULL`. Either *@profile_id* or *@profile_name* must be specified.
 
-#### [ @profile_name = ] '*profile_name*'
+#### [ @profile_name = ] N'*profile_name*'
 
-The profile name to add the account to. *@profile_name* is **sysname**, with a default of `NULL`. Either the *@profile_id* or the *@profile_name* must be specified.
+The profile name to add the account to. *@profile_name* is **sysname**, with a default of `NULL`. Either *@profile_id* or *@profile_name* must be specified.
 
 #### [ @account_id = ] *account_id*
 
-The account ID to add to the profile. *@account_id* is **int**, with a default of `NULL`. Either the *@account_id* or the *@account_name* must be specified.
+The account ID to add to the profile. *@account_id* is **int**, with a default of `NULL`. Either *@account_id* or *@account_name* must be specified.
 
-#### [ @account_name = ] '*account_name*'
+#### [ @account_name = ] N'*account_name*'
 
-The name of the account to add to the profile. *@account_name* is **sysname**, with a default of `NULL`. Either the *@account_id* or the *@account_name* must be specified.
+The name of the account to add to the profile. *@account_name* is **sysname**, with a default of `NULL`. Either *@account_id* or *@account_name* must be specified.
 
 #### [ @sequence_number = ] *sequence_number*
 

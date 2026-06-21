@@ -1,10 +1,10 @@
 ---
-title: "sp_markpendingschemachange (Transact-SQL)"
+title: "sys.sp_markpendingschemachange (Transact-SQL)"
 description: sp_markpendingschemachange is used for supportability of merge publications.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_markpendingschemachange (Transact-SQL)
+# sys.sp_markpendingschemachange (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -28,7 +28,7 @@ Used for supportability of merge publications by enabling an administrator to sk
 ## Syntax
 
 ```syntaxsql
-sp_markpendingschemachange
+sys.sp_markpendingschemachange
     [ @publication = ] N'publication'
     [ , [ @schemaversion = ] schemaversion ]
     [ , [ @status = ] N'status' ]

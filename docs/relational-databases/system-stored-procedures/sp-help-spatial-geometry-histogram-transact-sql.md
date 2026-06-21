@@ -1,10 +1,10 @@
 ---
-title: "sp_help_spatial_geometry_histogram (Transact-SQL)"
+title: "sys.sp_help_spatial_geometry_histogram (Transact-SQL)"
 description: Facilitates the keying of bounding box and grid parameters for a spatial index.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_spatial_geometry_histogram (Transact-SQL)
+# sys.sp_help_spatial_geometry_histogram (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -25,7 +25,7 @@ Facilitates the keying of bounding box and grid parameters for a spatial index.
 ## Syntax
 
 ```syntaxsql
-sp_help_spatial_geometry_histogram
+sys.sp_help_spatial_geometry_histogram
     [ @tabname = ] N'tabname'
     , [ @colname = ] N'colname'
     , [ @resolution = ] resolution

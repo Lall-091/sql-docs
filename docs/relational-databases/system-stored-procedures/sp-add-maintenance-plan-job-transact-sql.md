@@ -4,7 +4,7 @@ description: "Associates a maintenance plan with an existing job."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -32,19 +32,19 @@ Associates a maintenance plan with an existing job.
 ## Syntax
 
 ```syntaxsql
-sp_add_maintenance_plan_job
-    [ @plan_id = ] N'plan_id'
-    , [ @job_id = ] N'job_id'
+dbo.sp_add_maintenance_plan_job
+    [ @plan_id = ] 'plan_id'
+    , [ @job_id = ] 'job_id'
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @plan_id = ] N'*plan_id*'
+#### [ @plan_id = ] '*plan_id*'
 
 Specifies the ID of the maintenance plan. *@plan_id* is **uniqueidentifier**, and must be a valid ID.
 
-#### [ @job_id = ] N'*job_id*'
+#### [ @job_id = ] '*job_id*'
 
 Specifies the ID of the job to be associated with the maintenance plan. *@job_id* is **uniqueidentifier**, and must be a valid ID. To create a job or jobs, execute `sp_add_job`, or use SQL Server Management Studio.
 

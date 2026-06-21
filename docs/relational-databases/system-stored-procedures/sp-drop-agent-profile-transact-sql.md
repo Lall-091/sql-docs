@@ -1,10 +1,10 @@
 ---
-title: "sp_drop_agent_profile (Transact-SQL)"
+title: "sys.sp_drop_agent_profile (Transact-SQL)"
 description: Drops a profile from the MSagent_profiles table. This stored procedure is executed at the Distributor on any database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_drop_agent_profile (Transact-SQL)
+# sys.sp_drop_agent_profile (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Drops a profile from the `MSagent_profiles` table. This stored procedure is exec
 ## Syntax
 
 ```syntaxsql
-sp_drop_agent_profile [ @profile_id = ] profile_id
+sys.sp_drop_agent_profile [ @profile_id = ] profile_id
 [ ; ]
 ```
 

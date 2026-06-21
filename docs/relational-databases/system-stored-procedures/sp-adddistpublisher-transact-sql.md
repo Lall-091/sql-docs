@@ -1,10 +1,10 @@
 ---
-title: "sp_adddistpublisher (Transact-SQL)"
+title: "sys.sp_adddistpublisher (Transact-SQL)"
 description: "Configures a Publisher to use a specified distribution database."
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 ms.custom: sfi-ropc-nochange
 ---
-# sp_adddistpublisher (Transact-SQL)
+# sys.sp_adddistpublisher (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -28,7 +28,7 @@ Configures a Publisher to use a specified distribution database. This stored pro
 ## Syntax
 
 ```syntaxsql
-sp_adddistpublisher
+sys.sp_adddistpublisher
     [ @publisher = ] N'publisher'
     , [ @distribution_db = ] N'distribution_db'
     [ , [ @security_mode = ] security_mode ]
@@ -69,7 +69,7 @@ The implemented security mode. This parameter is only used by replication agents
 
 #### [ @login = ] N'*login*'
 
-The login. This parameter is required if *security_mode* is `0`. *@login* is **sysname**, with a default of `NULL`. This parameter is used by replication agents to connect to the Publisher.
+The login. This parameter is required if *@security_mode* is `0`. *@login* is **sysname**, with a default of `NULL`. This parameter is used by replication agents to connect to the Publisher.
 
 #### [ @password = ] N'*password*'
 

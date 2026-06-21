@@ -1,10 +1,10 @@
 ---
-title: "sp_helppullsubscription (Transact-SQL)"
+title: "sys.sp_helppullsubscription (Transact-SQL)"
 description: sp_helppullsubscription displays information about one or more subscriptions at the Subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helppullsubscription (Transact-SQL)
+# sys.sp_helppullsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Displays information about one or more subscriptions at the Subscriber. This sto
 ## Syntax
 
 ```syntaxsql
-sp_helppullsubscription
+sys.sp_helppullsubscription
     [ [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]
     [ , [ @publication = ] N'publication' ]

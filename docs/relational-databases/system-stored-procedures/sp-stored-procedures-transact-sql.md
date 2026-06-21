@@ -1,10 +1,10 @@
 ---
-title: "sp_stored_procedures (Transact-SQL)"
+title: "sys.sp_stored_procedures (Transact-SQL)"
 description: sp_stored_procedures returns a list of stored procedures in the current environment.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_stored_procedures (Transact-SQL)
+# sys.sp_stored_procedures (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -29,7 +29,7 @@ Returns a list of stored procedures in the current environment.
 ## Syntax
 
 ```syntaxsql
-sp_stored_procedures
+sys.sp_stored_procedures
     [ [ @sp_name = ] N'sp_name' ]
     [ , [ @sp_owner = ] N'sp_owner' ]
     [ , [ @sp_qualifier = ] N'sp_qualifier' ]
