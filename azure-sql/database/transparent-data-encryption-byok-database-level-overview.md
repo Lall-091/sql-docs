@@ -209,8 +209,10 @@ In case of an inaccessible TDE protector as described in [Transparent data encry
 - Server level cross tenant CMK settings don't affect individual databases configured with database level CMK, and they continue to use their own single tenant or cross tenant configuration.
 - Only a single user-assigned managed identity can be set at the database level.
 
-> [!NOTE]
-> The managed identities on the database must be reassigned if the database is renamed.
+> [!IMPORTANT]
+> When a database is renamed, any managed identities associated with it must be reassigned.
+> Step 1: Unassign the managed identity from the database.
+> Step 2: Reassign the managed identity to the database.
 
 ## Migration of existing databases to database level CMK
 
