@@ -4,7 +4,7 @@ description: Learn about encryption algorithms and mechanisms that derive crypto
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 10/30/2019
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: concept-article
@@ -15,7 +15,7 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 # Always Encrypted cryptography
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-  This document describes encryption algorithms and mechanisms to derive cryptographic material used in the [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md) feature in [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] and [!INCLUDE [ssazure-sqldb](../../../includes/ssazure-sqldb.md)].  
+  This article describes encryption algorithms and mechanisms to derive cryptographic material used in the [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md) feature in [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] and [!INCLUDE [ssazure-sqldb](../../../includes/ssazure-sqldb.md)]. These algorithms apply to all editions and versions of Always Encrypted; both Always Encrypted with and without secure enclaves use the same encryption algorithm.  
   
 ## Keys, key stores, and key encryption algorithms
  Always Encrypted uses two types of keys: Column master keys and column encryption keys.  
@@ -28,8 +28,8 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 
 Always Encrypted internally uses FIPS 140-2 validated cryptographic modules. 
 
-## Data Encryption Algorithm  
- Always Encrypted uses the **AEAD_AES_256_CBC_HMAC_SHA_256** algorithm to encrypt data in the database.  
+## Data encryption algorithm  
+ Always Encrypted uses the **AEAD_AES_256_CBC_HMAC_SHA_256** algorithm to encrypt data in the database. **AEAD** stands for Authenticated Encryption with Associated Data; **HMAC** stands for hash-based message authentication code; **MAC** stands for message authentication code.  
   
  **AEAD_AES_256_CBC_HMAC_SHA_256** is derived from the [IETF specification draft](https://tools.ietf.org/html/draft-mcgrew-aead-aes-cbc-hmac-sha2-05). It uses an Authenticated Encryption scheme with Associated Data, following an Encrypt-then-MAC approach. That is, the plaintext is first encrypted, and the MAC is produced based on the resulting ciphertext.  
   
@@ -46,19 +46,19 @@ Always Encrypted internally uses FIPS 140-2 validated cryptographic modules.
   
  For randomized encryption, the IV is randomly generated. As a result, each time the same plaintext is encrypted, a different ciphertext is generated, which prevents any information disclosure.  
   
-```  
+```text  
 When using randomized encryption: IV = Generate cryptographically random 128bits  
 ```  
   
- If there's deterministic encryption, the IV isn't randomly generated, but instead it's derived from the plaintext value using the following algorithm:  
+ For deterministic encryption, the IV isn't randomly generated, but instead it's derived from the plaintext value using the following algorithm:  
   
-```  
+```text  
 When using deterministic encryption: IV = HMAC-SHA-256( iv_key, cell_data ) truncated to 128 bits.  
 ```  
   
  Where iv_key is derived from the CEK in the following way:  
   
-```  
+```text  
 iv_key = HMAC-SHA-256(CEK, "Microsoft SQL Server cell IV key" + algorithm + CEK_length)  
 ```  
   
@@ -67,60 +67,53 @@ As a result, deterministic encryption always produces the same ciphertext for a 
   
  Deterministic encryption is more effective in concealing patterns, compared to alternatives, such as using a pre-defined IV value.  
   
-### Step 2: Computing AES_256_CBC Ciphertext  
- After computing the IV, the **AES_256_CBC** ciphertext is generated:  
+### Step 2: Computing AES_256_CBC ciphertext  
+ For Always Encrypted's **AEAD_AES_256_CBC_HMAC_SHA_256** algorithm, after computing the IV in Step 1, the **AES_256_CBC** ciphertext is generated:  
   
-```  
+```text  
 aes_256_cbc_ciphertext = AES-CBC-256(enc_key, IV, cell_data) with PKCS7 padding.  
 ```  
   
- Where the encryption key (enc_key) is derived from the CEK as follows.  
+ Where the encryption key (`enc_key`) is derived from the column encryption key (CEK) as follows:  
   
-```  
+```text  
 enc_key = HMAC-SHA-256(CEK, "Microsoft SQL Server cell encryption key" + algorithm + CEK_length )  
 ```  
   
 ### Step 3: Computing MAC  
- Subsequently, the MAC is computed using the following algorithm:  
+ For Always Encrypted's **AEAD_AES_256_CBC_HMAC_SHA_256** algorithm, the MAC (message authentication code) is computed from the version byte, the IV (from Step 1), and the AES_256_CBC ciphertext (from Step 2), using a `mac_key` derived from the column encryption key (CEK):  
   
-```  
+```text  
 MAC = HMAC-SHA-256(mac_key, versionbyte + IV + Ciphertext + versionbyte_length)  
 ```  
   
  Where:  
   
-```  
+```text  
 versionbyte = 0x01 and versionbyte_length = 1
 mac_key = HMAC-SHA-256(CEK, "Microsoft SQL Server cell MAC key" + algorithm + CEK_length)  
 ```  
   
 ### Step 4: Concatenation  
- Finally, the encrypted value is produced by concatenating the algorithm version byte, the MAC, the IV, and the AES_256_CBC ciphertext:  
+ For Always Encrypted's **AEAD_AES_256_CBC_HMAC_SHA_256** algorithm, the final encrypted value is produced by concatenating the algorithm version byte, the MAC (from Step 3), the IV (from Step 1), and the AES_256_CBC ciphertext (from Step 2):  
   
-```  
+```text  
 aead_aes_256_cbc_hmac_sha_256 = versionbyte + MAC + IV + aes_256_cbc_ciphertext  
 ```  
   
-## Ciphertext Length  
+## Ciphertext length  
  The lengths (in bytes) of particular components of **AEAD_AES_256_CBC_HMAC_SHA_256** ciphertext are:  
   
--   versionbyte: 1  
-  
--   MAC: 32  
-  
--   IV: 16  
-  
--   aes_256_cbc_ciphertext: `(FLOOR (DATALENGTH(cell_data)/ block_size) + 1)* block_size`, where:  
-  
-    -   block_size is 16 bytes  
-  
-    -   cell_data is a plaintext value  
-  
-     Therefore, the minimal size of aes_256_cbc_ciphertext is 1 block, which is 16 bytes.  
+| Component | Size (bytes) |
+|---|---|
+| `versionbyte` | 1 |
+| `MAC` | 32 |
+| `IV` | 16 |
+| `aes_256_cbc_ciphertext` | `(FLOOR(DATALENGTH(cell_data) / block_size) + 1) * block_size`, where `block_size` is 16 bytes and `cell_data` is the plaintext value. The minimum size of `aes_256_cbc_ciphertext` is one block (16 bytes). |
   
  Thus, the length of ciphertext, resulting from encrypting a given plaintext values (cell_data), can be calculated using the following formula:  
   
-```  
+```text  
 1 + 32 + 16 + (FLOOR(DATALENGTH(cell_data)/16) + 1) * 16  
 ```  
   
@@ -128,11 +121,11 @@ aead_aes_256_cbc_hmac_sha_256 = versionbyte + MAC + IV + aes_256_cbc_ciphertext
   
 -   A 4-byte long **int** plaintext value becomes a 65-byte long binary value after encryption.  
   
--   A 2,000-byte long **nchar(1000)** plaintext values becomes a 2,065-byte long binary value after encryption.  
+-   A 2,000-byte long **nchar(1000)** plaintext value becomes a 2,065-byte long binary value after encryption.  
   
- The following table contains a complete list of data types and the length of ciphertext for each type.  
+ The ciphertext length depends on the source data type. For fixed-length types, the result is a constant; for variable-length types (`char`, `nchar`, `varchar`, `nvarchar`, `binary`, `varbinary`), use the formula above. Types marked **N/A** can't be encrypted with Always Encrypted. The following table contains a complete list of data types and the length of ciphertext for each type.  
   
-|Data Type|Ciphertext Length [bytes]|  
+|Data type|Ciphertext length [bytes]|  
 |---------------|---------------------------------|  
 |**bigint**|65|  
 |**binary**|Varies. Use the formula above.|  
@@ -169,10 +162,10 @@ aead_aes_256_cbc_hmac_sha_256 = versionbyte + MAC + IV + aes_256_cbc_ciphertext
 |**varchar**|Varies. Use the formula above.|  
 |**xml**|N/A (not supported)|  
   
-## .NET Reference  
- For details about the algorithms, discussed in this document, see the **SqlAeadAes256CbcHmac256Algorithm.cs**, **SqlColumnEncryptionCertificateStoreProvider.cs**, and **SqlColumnEncryptionCertificateStoreProvider.cs** files in the [.NET Reference](https://referencesource.microsoft.com/).  
+## .NET reference  
+ For details about the algorithms discussed in this article, see the **SqlAeadAes256CbcHmac256Algorithm.cs**, **SqlColumnEncryptionCertificateStoreProvider.cs**, and **SqlColumnEncryptionCngProvider.cs** files in the [.NET Reference](https://referencesource.microsoft.com/).  
   
-## See also  
- - [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md)   
- - [Develop applications using Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-client-development.md)  
-  
+## Related content
+
+- [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md)
+- [Develop applications using Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-client-development.md)
