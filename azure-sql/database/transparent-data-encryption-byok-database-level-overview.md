@@ -210,9 +210,12 @@ In case of an inaccessible TDE protector as described in [Transparent data encry
 - Only a single user-assigned managed identity can be set at the database level.
 
 > [!IMPORTANT]
-> When a database is renamed, any managed identities associated with it must be reassigned.
-> Step 1: Unassign the managed identity from the database.
-> Step 2: Reassign the managed identity to the database.
+> When a database is renamed, reassign any managed identities associated with the database:
+>
+> 1. Unassign the managed identity from the database.
+> 1. Reassign the managed identity to the database.
+>
+> For commands, see [Update an existing Azure SQL Database with database level customer-managed keys](transparent-data-encryption-byok-database-level-basic-actions.md#update-an-existing-azure-sql-database-with-database-level-customer-managed-keys).
 
 ## Migration of existing databases to database level CMK
 
