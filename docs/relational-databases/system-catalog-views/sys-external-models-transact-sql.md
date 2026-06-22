@@ -1,9 +1,9 @@
 ---
 title: "sys.external_models (Transact-SQL)"
 description: sys.external_models contains a row for each external model in the current database.
-author: JetterMcTedder
-ms.author: bspendolini
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: bspendolini
 ms.date: 04/21/2025
 ms.service: sql
 ms.subservice: system-objects

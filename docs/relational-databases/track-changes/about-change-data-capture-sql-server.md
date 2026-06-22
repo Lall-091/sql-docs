@@ -1,9 +1,9 @@
 ---
 title: "What is change data capture (CDC)?"
 description: "Learn about change data capture (CDC) in SQL Server and Azure SQL Managed Instance, which records insert, update, and delete activity that applies to a table."
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: "mathoma"
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: roblescarlos, bspendolini
 ms.date: "10/19/2023"
 ms.service: sql
 ms.subservice: replication

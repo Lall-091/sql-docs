@@ -1,9 +1,9 @@
 ---
 title: "CREATE EXTERNAL MODEL (Transact-SQL)"
 description: CREATE EXTERNAL MODEL (Transact-SQL) for creating an external model object that contains the location, authentication method, and purpose of an AI model inference endpoint.
-author: jettermctedder
-ms.author: bspendolini
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: bspendolini
 ms.date: 01/06/2026
 ms.service: sql
 ms.subservice: t-sql

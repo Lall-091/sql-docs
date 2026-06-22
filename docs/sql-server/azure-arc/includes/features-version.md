@@ -2,7 +2,7 @@
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 05/19/2025
+ms.date: 06/22/2026
 ms.topic: include
 ms.custom: ignite-2023
 ---
@@ -29,7 +29,7 @@ The following table identifies features available by SQL Server version:
 | [Client connection summary](../sql-connection-summary.md) | No | Yes <sup>2</sup> | Yes | Yes |
 | [Operate with least privilege](../configure-least-privilege.md) | Yes | Yes | Yes | Yes |
 
-<sup>1</sup> Requires subscription to [Extended Security Updates (ESU) enabled by Azure Arc](../../end-of-support/sql-server-extended-security-updates.md#subscribe-instances-for-esus) for [!INCLUDE [sssql11-md](../../../includes/sssql11-md.md)].
+<sup>1</sup> Requires subscription to [Extended Security Updates (ESU) enabled by Azure Arc](../../end-of-support/sql-server-extended-security-updates.md#subscribe-to-esus-for-sql-server-instances) for [!INCLUDE [sssql11-md](../../../includes/sssql11-md.md)].
 
 <sup>2</sup> Requires [!INCLUDE [sssql16-md](../../../includes/sssql16-md.md)] SP1 or later versions. For more information, see [prerequisites](../../azure-arc/sql-monitoring.md#prerequisites). 
 

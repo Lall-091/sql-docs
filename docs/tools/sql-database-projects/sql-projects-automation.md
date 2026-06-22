@@ -1,9 +1,9 @@
 ---
 title: "SQL Projects Automation"
 description: "This overview reviews setting up automation with SQL database projects for CI/CD pipelines using GitHub Actions, Azure DevOps, and other platforms."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
 ms.date: 01/29/2026
 ms.service: sql
 ms.subservice: sql-database-projects

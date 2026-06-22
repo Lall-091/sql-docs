@@ -1,9 +1,9 @@
 ---
 title: "Work with Change Data"
 description: "Work with Change Data"
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: mathoma
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: roblescarlos, bspendolini
 ms.date: 08/21/2025
 ms.service: sql
 ms.topic: concept-article

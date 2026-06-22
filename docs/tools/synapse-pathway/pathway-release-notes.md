@@ -1,8 +1,9 @@
 ---
 title: Release Notes - Azure Synapse Pathway
 description: Azure Synapse Pathway release notes
-author: prlangad
-ms.author: prlangad
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: prlangad
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: tools-other

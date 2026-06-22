@@ -4,7 +4,6 @@ titleSuffix: SQL Server Distributed Replay
 description: After you install Distributed Replay, you must modify the Distributed Replay controller and client services accounts.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 06/20/2022
 ms.service: sql
 ms.subservice: distributed-replay

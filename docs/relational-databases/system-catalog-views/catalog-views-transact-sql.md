@@ -70,8 +70,6 @@ The catalog views in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] 
 
         [Extended Properties Catalog Views - sys.extended_properties](extended-properties-catalog-views-sys-extended-properties.md)
 
-        [External Operations Catalog Views (Transact-SQL)](external-operations-catalog-views-transact-sql.md)
-
         [FILESTREAM and FileTable Catalog Views (Transact-SQL)](filestream-and-filetable-catalog-views-transact-sql.md)
 
         [Full-Text Search and Semantic Search Catalog Views (Transact-SQL)](full-text-search-and-semantic-search-catalog-views-transact-sql.md)

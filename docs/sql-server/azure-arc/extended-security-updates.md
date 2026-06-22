@@ -4,7 +4,7 @@ description: Learn how to manage licensing and billing of Extended Security Upda
 author: MikeRayMSFT
 ms.author: sashan
 ms.reviewer: randolphwest, maghan
-ms.date: 05/19/2026
+ms.date: 06/22/2026
 ai-usage: ai-assisted
 ms.topic: how-to
 ms.custom:
@@ -25,7 +25,11 @@ After [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] reaches the end
 
 [!INCLUDE [2016-esu](../../includes/2016-esu.md)]
 
-## Subscribe to Extended Security Updates in a production environment
+## Enable ESUs for SQL Server instances
+
+[!INCLUDE [esu-enable-sql-server-instances](../../includes/esu-enable-sql-server-instances.md)]
+
+## Licenses for ESUs
 
 You can use one of the following three options to subscribe to ESUs in a production environment. The links in the list take you to sections in this article that provide more details.
 
@@ -111,7 +115,13 @@ The option of subscribing to SQL Server ESUs by physical cores with unlimited vi
 - Your infrastructure and the selected payment method support the unlimited virtualization benefit for ESU.
 - Subscribing to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESUs by v-cores is more expensive than subscribing by the p-cores of the host.
 
-To use the unlimited virtualization benefit, you need to create a *SqlServerEsuLicenses* resource that represents one or more physical hosts. The covered SQL Server instances must be connected to Azure Arc and configured to use the p-core ESU license. For details about managing *SqlServerEsuLicenses* resources, see [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license).
+To use the unlimited virtualization benefit, you need to create a SQL Server ESU License (*SqlServerEsuLicenses*) resource that represents one or more physical hosts. The covered SQL Server instances must be connected to Azure Arc and configured to use the p-core ESU license. For details about managing *SqlServerEsuLicenses* resources, see [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license).
+
+<a id="esu-license-resource"></a>
+
+To create the SQL Server ESU License resource in the Azure portal, go to the [ESU - SQL Server](https://portal.azure.com/#servicemenu/Microsoft_Azure_ArcCenterUX/AzureArcCenterHub/sqlServerEsuLicenses) page and use **Create** to create your resource:
+
+:::image type="content" source="media/extended-security-updates/esu-license-resource.png" alt-text="Screenshot of the ESU license resource page in the Azure portal.":::
 
 > [!CAUTION]  
 > The unlimited virtualization benefit isn't available to VMs running on infrastructure from any of the [listed providers](https://aka.ms/listedproviders). These VMs can be licensed only by v-cores. If you create a *SqlServerEsuLicenses* resource with the intent of licensing these VMs by using unlimited virtualization, you'll be charged for the consumption of v-cores based on the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] configuration of the host. Any existing p-core licenses don't apply to offset such charges.
@@ -272,20 +282,48 @@ The usage of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESU 
 
 - If two or more instances of SQL Server or SQL Server associated services are installed with different versions that are eligible for ESU, each eligible version will report ESU usage separately based on the instance of that version with the highest edition. This reflects the differences in ESU prices and bill-back periods for different versions.
 
-The following table shows the ESU subscription meters (also called *SKUs*) that are used for metering and billing for a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESU subscription on a single OSE:
+The following tables show the ESU subscription meters (also called *SKUs*) that are used for metering and billing for a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESU subscription on a single OSE:
 
-| Projected edition <sup>1</sup> | SQL Server version | Failover replica | Use p-core license | Meter SKU |
-| --- | --- | --- | --- | --- |
-| Enterprise | 2014 | No | No | `Ent edition - ESU 2014`<br />`Ent edition - ESU 2014 back billing` |
-| Enterprise | 2014 | No | Yes | None |
-| Enterprise | 2014 | Yes | Yes or no | None |
-| Standard | 2014 | No | No | `Std edition - ESU 2014`<br />`Std edition - ESU 2014 back billing` |
-| Standard | 2014 | No | Yes | None |
-| Standard | 2014 | Yes | Yes or no | None |
-| Evaluation | Any | Yes or no | Yes or no | None |
-| Developer | Any | Yes or no | Yes or no | None |
-| Web <sup>2</sup> | Any | Not applicable | Yes or no | None |
-| Express | Any | Not applicable | Yes or no | None |
+### [SQL Server 2016](#tab/sql2016)
+
+| Projected edition <sup>1</sup> | Failover replica | Use p-core license | Meter SKU |
+| --- | --- | --- | --- |
+| Enterprise | No | No | `Ent edition - ESU 2016`<br />`Ent edition - ESU 2016 back billing` |
+| Enterprise | No | Yes | None |
+| Enterprise | Yes | Yes or no | None |
+| Standard | No | No | `Std edition - ESU 2016`<br />`Std edition - ESU 2016 back billing` |
+| Standard | No | Yes | None |
+| Standard | Yes | Yes or no | None |
+| Evaluation | Yes or no | Yes or no | None |
+| Developer | Yes or no | Yes or no | None |
+| Web <sup>2</sup> | Not applicable | Yes or no | None |
+| Express | Not applicable | Yes or no | None |
+
+### [SQL Server 2014](#tab/sql2014)
+
+| Projected edition <sup>1</sup> | Failover replica | Use p-core license | Meter SKU |
+| --- | --- | --- | --- |
+| Enterprise | No | No | `Ent edition - ESU 2014`<br />`Ent edition - ESU 2014 back billing` |
+| Enterprise | No | Yes | None |
+| Enterprise | Yes | Yes or no | None |
+| Standard | No | No | `Std edition - ESU 2014`<br />`Std edition - ESU 2014 back billing` |
+| Standard | No | Yes | None |
+| Standard | Yes | Yes or no | None |
+| Evaluation | Yes or no | Yes or no | None |
+| Developer | Yes or no | Yes or no | None |
+| Web <sup>2</sup> | Not applicable | Yes or no | None |
+| Express | Not applicable | Yes or no | None |
+
+### [All other versions](#tab/other)
+
+| Projected edition <sup>1</sup> | Failover replica | Use p-core license | Meter SKU |
+| --- | --- | --- | --- |
+| Evaluation | Yes or no | Yes or no | None |
+| Developer | Yes or no | Yes or no | None |
+| Web <sup>2</sup> | Not applicable | Yes or no | None |
+| Express | Not applicable | Yes or no | None |
+
+---
 
 <sup>1</sup> For edition projection rules, see [Metering software usage](manage-license-billing.md#usage-metering).
 
@@ -295,27 +333,34 @@ The next table shows the meter SKUs that are used for metering and billing for a
 
 | Azure resource | SQL Server version | Meter SKU |
 | --- | --- | --- |
+| P-core ESU license | 2016 | `Ent edition - ESU 2016`<br />`Ent edition - ESU 2016 back billing` |
 | P-core ESU license | 2014 | `Ent edition - ESU 2014`<br />`Ent edition - ESU 2014 back billing` |
-
-## Understand ESU subscription billing
-
-The ESU subscription extends support for critical updates for up to three years. If you start the subscription after the end-of-support date, you must purchase the Volume Licensing offer or ESU subscription to cover any previous years. With an ESU subscription, you have the additional benefit of canceling the subscription and all future charges without penalty at any time.
 
 <a id="2012-esu-billing"></a>
 
 <a id="2014-esu-billing"></a>
 
-### Billing for SQL Server 2014 ESUs
+## Understand ESU subscription billing
 
-The ESU subscription for [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] is available from Year 1 of the extended support period, which started on July 10, 2024. If you signed up before that date, you see only the hourly ESU charges starting at midnight on July 10, 2024. If you signed up after July 10, 2024, your next month's bill includes a bill-back charge from the beginning of the current ESU year, based on the timestamp when ESU was enabled, or when p-core ESU license got activated.
+The ESU subscription extends support for critical updates for up to three years. If you start the subscription after the end-of-support date, you must purchase the Volume Licensing offer or ESU subscription to cover any previous years. With an ESU subscription, you have the additional benefit of canceling the subscription and all future charges without penalty at any time.
+
+The ESU subscription is available from Year 1 of the extended support period. If you signed up before ESU updates are available, you see only the hourly ESU charges starting at midnight the day extended support starts. If you sign up after ESU support starts, your next month's bill includes a bill-back charge from the beginning of the current ESU year, based on the timestamp when ESU was enabled, or when p-core ESU license got activated.
 
 The following billing rules apply:
 
-- If you install a [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] instance or instances on a virtual machine, and you don't use the unlimited virtualization benefit, you're billed for the total number of virtual cores of the machine, with a minimum of four cores. If the virtual machine is eligible to receive failover rights, the virtual cores of that machine aren't billable.
+- If you install a SQL Server instance or instances on a virtual machine, and you don't use the unlimited virtualization benefit, you're billed for the total number of virtual cores of the machine, with a minimum of four cores. If the virtual machine is eligible for the free HA passive replica benefit, the virtual cores of that machine aren't billable.
 
-- If you install a [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] instance or instances on a physical server without using virtual machines, you're billed for all physical cores of the machine, with a minimum of four cores. If the physical server is eligible to receive failover rights, the physical cores of that server aren't billable. For more information, see the [service-specific terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/eaeas#ServiceSpecificTerms).
+- If you install a SQL Server instance or instances on a physical server without using virtual machines, you're billed for all physical cores of the machine, with a minimum of four cores. If the physical server is eligible for the free HA passive replica benefit, the physical cores of that server aren't billable. For more information, see the [service-specific terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/eaeas#ServiceSpecificTerms).
 
-- If you install two or more [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances on the same physical or virtual machine, you're billed for the total number of physical or virtual cores of the machine, for each version's ESU subscription. The minimum is four cores. The billing for each version is based on the ESU price for that version. If the virtual machine is eligible to receive failover rights, the virtual cores of that machine aren't billable.
+- If you install two or more SQL Server instances on the same physical or virtual machine, you're billed for the total number of physical or virtual cores of the machine, for each version's ESU subscription. The minimum is four cores. The billing for each version is based on the ESU price for that version. If the virtual machine is eligible for the free HA passive replica benefit, the virtual cores of that machine aren't billable.
+
+### Billing for SQL Server 2016 ESUs
+
+The ESU subscription for [!INCLUDE [ssSQL16](../../includes/sssql16-md.md)] is available from Year 1 of the extended support period, which starts on July 14, 2026. If you signed up before that date, you see only the hourly ESU charges starting at midnight on July 14, 2026. If you signed up after July 14, 2026, your next month's bill includes a bill-back charge from the beginning of the current ESU year, based on the timestamp when ESU was enabled, or when p-core ESU license got activated.
+
+### Billing for SQL Server 2014 ESUs
+
+The ESU subscription for [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] is available from Year 1 of the extended support period, which started on July 10, 2024. If you signed up before that date, you see only the hourly ESU charges starting at midnight on July 10, 2024. If you signed up after July 10, 2024, your next month's bill includes a bill-back charge from the beginning of the current ESU year, based on the timestamp when ESU was enabled, or when p-core ESU license got activated.
 
 For more information about [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] ESU pricing, see [Azure Arc pricing](https://azure.microsoft.com/pricing/details/azure-arc/core-control-plane/).
 

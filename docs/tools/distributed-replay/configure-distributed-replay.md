@@ -4,7 +4,6 @@ titleSuffix: SQL Server Distributed Replay
 description: This article describes product requirements to consider before you use the Distributed Replay feature of SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 06/20/2022
 ms.service: sql
 ms.subservice: distributed-replay

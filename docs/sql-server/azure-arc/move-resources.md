@@ -4,7 +4,7 @@ description: This article explains how to move resources to a new resource group
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: sashan
-ms.date: 07/08/2025
+ms.date: 06/22/2026
 ms.topic: how-to
 ms.custom:
   - build-2025
@@ -123,7 +123,7 @@ Moving the SQL Server instance physical core (p-core) license automatically to a
 
 ### SQL Server p-core ESU license
 
-Moving the SQL Server ESU p-core license to the new subscription resource group is currently not supported. If you create a license in the new location, it will be treated as a new ESU subscription with a new back-billing charge.
+Moving the [SQL Server ESU license resource](extended-security-updates.md#esu-license-resource) to the new subscription resource group is currently not supported. If you create a license in the new location, it will be treated as a new ESU subscription with a new back-billing charge.
 
 > [!IMPORTANT]  
 > While moving the VMs with ESU enabled to a new subscription or resource group is supported, if they used to be covered by a SQL Server ESU p-core license in the old location and not billed individually, the move will result in these VMs being billed for ESU individually as they will no longer be covered by a p-core license.

@@ -4,7 +4,7 @@ description: Learn the appropriate order to preserve your log shipping disaster 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: jaferebe, randolphwest
-ms.date: 02/23/2026
+ms.date: 06/22/2026
 ms.service: sql
 ms.subservice: log-shipping
 ms.topic: upgrade-and-migration-article
@@ -26,7 +26,7 @@ Before you begin, review the following important information.
 
 | Article | Description |
 | --- | --- |
-| [Supported version and edition upgrades](../../database-engine/install-windows/supported-version-and-edition-upgrades.md) | Verify that you can upgrade to your desired version of SQL Server from your existing Windows operating system and version of SQL Server. For example, you can't upgrade directly from a [!INCLUDE [ssversion2005-md](../../includes/ssversion2005-md.md)] instance to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. |
+| [Supported version and edition upgrades](../../database-engine/install-windows/supported-version-and-edition-upgrades-2017.md) | Verify that you can upgrade to your desired version of SQL Server from your existing Windows operating system and version of SQL Server. For example, you can't upgrade directly from a [!INCLUDE [ssversion2005-md](../../includes/ssversion2005-md.md)] instance to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. |
 | [Choose a Database Engine upgrade method](../../database-engine/install-windows/choose-a-database-engine-upgrade-method.md) | Select the appropriate upgrade method and steps based on your review of supported version and edition upgrades. Also consider other components installed in your environment to upgrade components in the correct order. |
 | [Plan and test Database Engine upgrade plan](../../database-engine/install-windows/plan-and-test-the-database-engine-upgrade-plan.md) | Review the release notes and known upgrade issues, the pre-upgrade checklist, and develop and test the upgrade plan. |
 | [Hardware and software requirements for installing SQL Server](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md) | Review the software requirements for installing [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)]. If other software is required, install it on each node before you begin the upgrade process to minimize any downtime. |

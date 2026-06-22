@@ -2,9 +2,9 @@
 title: "Quickstart: Localization and Formatting Helper with GitHub Copilot"
 titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how GitHub Copilot helps developers build globally aware applications by handling multilingual content and region-specific formatting in SQL database code.
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: roblescarlos
 ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions

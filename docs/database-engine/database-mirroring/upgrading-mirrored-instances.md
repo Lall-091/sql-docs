@@ -3,7 +3,7 @@ title: "Upgrading Mirrored Instances"
 description: Learn how to reduce downtime when upgrading a SQL Server mirrored instance by using a rolling upgrade. This article includes best practices.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: "02/01/2016"
+ms.date: 06/22/2026
 ms.service: sql
 ms.subservice: database-mirroring
 ms.topic: how-to
@@ -32,7 +32,7 @@ helpviewer_keywords:
 ## Prerequisites  
  Before you begin, review the following important information:  
   
--   [Supported Version and Edition Upgrades](../../database-engine/install-windows/supported-version-and-edition-upgrades.md): Verify that you can upgrade to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] from your version of the Windows operating system and version of SQL Server. For example, you cannot upgrade directly from a SQL Server 2005 instance to the latest version of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].  
+-   [Supported Version and Edition Upgrades](../../database-engine/install-windows/supported-version-and-edition-upgrades-2017.md): Verify that you can upgrade to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] from your version of the Windows operating system and version of SQL Server. For example, you cannot upgrade directly from a SQL Server 2005 instance to the latest version of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].  
   
 -   [Choose a Database Engine Upgrade Method](../../database-engine/install-windows/choose-a-database-engine-upgrade-method.md): Select the appropriate upgrade method and steps based on your review of supported version and edition upgrades and also based on other components installed in your environment to upgrade components in the correct order.  
   

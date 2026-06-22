@@ -1,9 +1,9 @@
 ---
 title: "Import a BACPAC File to Create a New Database"
 description: "Import a BACPAC File to create a new database."
-author: WilliamDAssafMSFT
-ms.author: wiassaf
-ms.reviewer: drskwier, randolphwest, maghan
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, wiassaf, maghan
 ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects

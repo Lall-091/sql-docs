@@ -1,10 +1,10 @@
 ---
-title: "AI_GENERATE_EMBEDDINGS (Transact-SQL)"
+title: AI_GENERATE_EMBEDDINGS (Transact-SQL)
 description: The AI_GENERATE_EMBEDDINGS function creates vector arrays for data.
-author: jettermctedder
-ms.author: bspendolini
-ms.reviewer: randolphwest
-ms.date: 01/06/2026
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: bspendolini
+ms.date: 06/22/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -24,10 +24,7 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-curre
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
-`AI_GENERATE_EMBEDDINGS` is a built-in function that creates embeddings (vector arrays) using a precreated AI model definition stored in the database.
-
-> [!NOTE]  
-> `AI_GENERATE_EMBEDDINGS` is available in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] with the **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
+The `AI_GENERATE_EMBEDDINGS` function creates embeddings (vector arrays) by using a precreated AI model definition stored in the database.
 
 ## Syntax
 
@@ -41,17 +38,17 @@ AI_GENERATE_EMBEDDINGS ( source USE MODEL model_identifier [ PARAMETERS optional
 
 #### *source*
 
-An [expression](../language-elements/expressions-transact-sql.md) of any character type (for example, **nvarchar**, **varchar**, **nchar**, or **char**).
+An [expression](../language-elements/expressions-transact-sql.md) of any character type, such as **nvarchar**, **varchar**, **nchar**, or **char**.
 
 #### *model_identifier*
 
-The name of an [external model](../statements/create-external-model-transact-sql.md) defined as an `EMBEDDINGS` type that is used to create the embeddings vector array.
+The name of an [external model](../statements/create-external-model-transact-sql.md) defined as an `EMBEDDINGS` type that's used to create the embeddings vector array.
 
 For more information, see [CREATE EXTERNAL MODEL](../statements/create-external-model-transact-sql.md).
 
 #### *optional_json_request_body_parameters*
 
-A valid JSON formatted list of additional parameters. These parameters are appended to the REST request message body before being sent to the external model's endpoint location. These parameters depend on what the external model's endpoint supports and accepts.
+A valid JSON-formatted list of additional parameters. The function appends these parameters to the REST request message body before sending it to the external model's endpoint location. These parameters depend on what the external model's endpoint supports and accepts.
 
 ## Return types
 
@@ -84,9 +81,11 @@ The format of the returned JSON is as follows:
 
 ## Remarks
 
-### Prerequisites
+`AI_GENERATE_EMBEDDINGS` is available in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] with the **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
-You must meet the following prerequisites to use `AI_GENERATE_EMBEDDINGS`:
+## Prerequisites
+
+To use `AI_GENERATE_EMBEDDINGS`, ensure you meet the following prerequisites:
 
 - Enable `sp_invoke_external_endpoint` on the database, with the following command:
 
@@ -95,13 +94,20 @@ You must meet the following prerequisites to use `AI_GENERATE_EMBEDDINGS`:
   RECONFIGURE WITH OVERRIDE;
   ```
 
-- Create an [external model](../statements/create-external-model-transact-sql.md) of the `EMBEDDINGS` type, accessible via the correct grants, roles, and/or permissions.
+  > [!NOTE]  
+  > On Azure SQL Database and SQL database in Fabric, the `external rest endpoint enabled` system configuration option is enabled by default.
 
-### Optional parameters
+<a id="create-embedding-endpoints"></a>
 
-The parameter `optional_json_request_body_parameters` in `AI_GENERATE_EMBEDDINGS` is used when an endpoint parameter needs to be added to the body of the embeddings request message. Adding an optional parameter overrides the value at runtime if that parameter is defined in the model definition.
+   For more information on creating embedding endpoints, review the process for [Azure OpenAI in Azure AI Foundry Models](/azure/foundry-classic/openai/how-to/create-resource), [OpenAI](https://developers.openai.com/api/docs/guides/embeddings), or [Ollama](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings).
 
-For example, if the [external model](../statements/create-external-model-transact-sql.md) contains the parameter for `dimensions` set to 1536, by passing that parameter in the `optional_json_request_body_parameters` at runtime with a new value.
+- Create an [external model](../statements/create-external-model-transact-sql.md) of the `EMBEDDINGS` type, accessible through the correct grants, roles, and permissions.
+
+## Optional parameters
+
+Use the `optional_json_request_body_parameters` parameter in `AI_GENERATE_EMBEDDINGS` when you need to add an endpoint parameter to the body of the embeddings request message. Adding an optional parameter overrides the value at runtime if the model definition includes that parameter.
+
+For example, if the [external model](../statements/create-external-model-transact-sql.md) contains the parameter for `dimensions` set to 1,536, you can pass that parameter in `optional_json_request_body_parameters` at runtime with a new value.
 
 In the following example, the `dimensions` parameter on the model is overridden:
 
@@ -109,15 +115,11 @@ In the following example, the `dimensions` parameter on the model is overridden:
 json_object("dimensions":755)
 ```
 
-The value passed into `optional_json_request_body_parameters` must be valid JSON.
+The value you pass into `optional_json_request_body_parameters` must be valid JSON.
 
-### Create embedding endpoints
+## Extended Events (XEvent)
 
-For more information on creating embedding endpoints, review the process for [Azure OpenAI in Azure AI Foundry Models](/azure/ai-services/openai/how-to/create-resource), [OpenAI](https://platform.openai.com/docs/guides/embeddings), or [Ollama](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings).
-
-### Extended Events (XEvent)
-
-`AI_GENERATE_EMBEDDINGS` has an extended event (`ai_generate_embeddings_summary`) that can be enabled for troubleshooting. It contains information about the REST request and response such as status code, any errors it encountered, and the model name used. The extended event `external_rest_endpoint_summary` contains additional information that can be for troubleshooting and debugging REST requests.
+`AI_GENERATE_EMBEDDINGS` has an extended event (`ai_generate_embeddings_summary`) that you can enable for troubleshooting. It contains information about the REST request and response, such as status code, any errors it encountered, and the model name used. The extended event `external_rest_endpoint_summary` contains additional information that can help with troubleshooting and debugging REST requests.
 
 ## Examples
 
@@ -189,13 +191,13 @@ FROM myTable;
 
 ### [Azure OpenAI API Key](#tab/request-headers)
 
-The following example demonstrates an end-to-end process for making your data AI-ready using Azure OpenAI API Key:
+The following example demonstrates an end-to-end process for making your data AI-ready by using Azure OpenAI API Key:
 
-1. Use [CREATE EXTERNAL MODEL](../statements/create-external-model-transact-sql.md) to register and make your embedding model accessible.
+1. Use [CREATE EXTERNAL MODEL](../statements/create-external-model-transact-sql.md) to register your embedding model and make it accessible.
 
 1. Split the dataset into smaller chunks with [AI_GENERATE_CHUNKS](ai-generate-chunks-transact-sql.md), so the data fits within the model's context window and improves retrieval accuracy.
 
-1. Generate embeddings using `AI_GENERATE_EMBEDDINGS`.
+1. Generate embeddings by using `AI_GENERATE_EMBEDDINGS`.
 
 1. Insert the results into a table with a [vector data type](../data-types/vector-data-type.md).
 
@@ -222,7 +224,7 @@ IF NOT EXISTS (SELECT *
 GO
 ```
 
-Create access credentials to Azure OpenAI using a key:
+Create access credentials to Azure OpenAI by using a key:
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [https://my-azure-openai-endpoint.cognitiveservices.azure.com/]
@@ -270,7 +272,7 @@ CREATE TABLE text_embeddings
 );
 ```
 
-Insert the chunked text and vector embeddings into the text_embeddings table using `AI_GENERATE_CHUNKS` and `AI_GENERATE_EMBEDDINGS`:
+Insert the chunked text and vector embeddings into the text_embeddings table by using `AI_GENERATE_CHUNKS` and `AI_GENERATE_EMBEDDINGS`:
 
 ```sql
 INSERT INTO text_embeddings (chunked_text, vector_embeddings)
@@ -293,15 +295,15 @@ FROM text_embeddings;
 
 ### [Managed Identity](#tab/managed-identity)
 
-The following example demonstrates an end-to-end process for making your data AI-ready using Managed Identity:
+The following example demonstrates an end-to-end process for making your data AI-ready by using Managed Identity:
 
-1. Enable [Managed Identity](../statements/create-external-model-transact-sql.md#managed-identity). This option applies to SQL Server Azure Arc / Azure Virtual Machine (VM) based deployments.
+1. Enable [Managed Identity](../statements/create-external-model-transact-sql.md#managed-identity). This option applies to SQL Server Azure Arc and Azure Virtual Machine (VM) deployments.
 
-1. Use [CREATE EXTERNAL MODEL with Azure OpenAI using Managed Identity](../statements/create-external-model-transact-sql.md#create-an-external-model-with-azure-openai-using-managed-identity) to register and make your embedding model accessible using Managed Identity.
+1. Use [CREATE EXTERNAL MODEL with Azure OpenAI using Managed Identity](../statements/create-external-model-transact-sql.md#create-an-external-model-with-azure-openai-using-managed-identity) to register your embedding model and make it accessible by using Managed Identity.
 
 1. Split the dataset into smaller chunks with [AI_GENERATE_CHUNKS](ai-generate-chunks-transact-sql.md), so the data fits within the model's context window and improves retrieval accuracy.
 
-1. Generate embeddings using `AI_GENERATE_EMBEDDINGS`.
+1. Generate embeddings by using `AI_GENERATE_EMBEDDINGS`.
 
 1. Insert the results into a table with a [vector data type](../data-types/vector-data-type.md).
 
@@ -335,7 +337,7 @@ IF NOT EXISTS (SELECT *
 GO
 ```
 
-Create access credentials to Azure OpenAI using a key:
+Create access credentials to Azure OpenAI by using a key:
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [https://my-azure-openai-endpoint.cognitiveservices.azure.com/]
@@ -383,7 +385,7 @@ CREATE TABLE text_embeddings
 );
 ```
 
-Insert the chunked text and vector embeddings into the text_embeddings table using `AI_GENERATE_CHUNKS` and `AI_GENERATE_EMBEDDINGS`:
+Insert the chunked text and vector embeddings into the text_embeddings table by using `AI_GENERATE_CHUNKS` and `AI_GENERATE_EMBEDDINGS`:
 
 ```sql
 INSERT INTO text_embeddings (chunked_text, vector_embeddings)

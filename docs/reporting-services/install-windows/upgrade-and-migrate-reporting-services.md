@@ -1,7 +1,7 @@
 ---
 title: "Upgrade and migrate Reporting Services"
 description: Learn about the upgrade and migration options for SQL Server Reporting Services.
-ms.date: 09/25/2024
+ms.date: 06/22/2026
 ms.service: reporting-services
 ms.subservice: report-server
 ms.topic: upgrade-and-migration-article
@@ -35,7 +35,7 @@ This article is an overview of the upgrade and migration options for SQL Server 
 
 ## <a name="bkmk_known_issues"></a> Known upgrade issues and best practices
 
- For a detailed list of the supported editions and versions you can upgrade, see [Supported version and edition upgrades](../../database-engine/install-windows/supported-version-and-edition-upgrades.md).
+ For a detailed list of the supported editions and versions you can upgrade, see [Supported version and edition upgrades](../../database-engine/install-windows/supported-version-and-edition-upgrades-2017.md).
 
 > [!TIP]
 > For the latest information regarding issues with SQL Server, see [SQL Server 2016 release notes](../../sql-server/sql-server-2016-release-notes.md).

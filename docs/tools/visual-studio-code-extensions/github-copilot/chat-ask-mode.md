@@ -2,9 +2,9 @@
 title: "Quickstart: Chat with @mssql (Ask Mode)"
 titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how to use the @mssql chat participant in GitHub Copilot ask mode to write schema-aware SQL queries, explain relationships, and generate migrations in Visual Studio Code.
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: roblescarlos
 ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions

@@ -3,7 +3,7 @@ title: "Export a BACPAC File"
 description: "Export a BACPAC file from a database."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: drskwier, randolphwest
+ms.reviewer: drskwier
 ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects

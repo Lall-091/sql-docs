@@ -67406,6 +67406,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/relational-databases/system-catalog-views/external-operations-catalog-views-transact-sql.md",
+      "redirect_url": "/sql/relational-databases/system-catalog-views/sys-external-tables-transact-sql",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/kb-support/end-support-sql-server-2008.md",
       "redirect_url": "/sql/sql-server/end-of-support/sql-server-end-of-support-overview",
       "redirect_document_id": false
@@ -67538,6 +67543,11 @@
     {
       "source_path": "docs/database-engine/install-windows/supported-version-and-edition-upgrades-version-15.md",
       "redirect_url": "/sql/database-engine/install-windows/supported-version-and-edition-upgrades-2019",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/database-engine/install-windows/supported-version-and-edition-upgrades.md",
+      "redirect_url": "/sql/database-engine/install-windows/supported-version-and-edition-upgrades-2017?view=sql-server-2016",
       "redirect_document_id": false
     },
     {

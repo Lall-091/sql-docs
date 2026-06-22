@@ -1,9 +1,9 @@
 ---
 title: SqlPackage in Development Pipelines
 description: Learn how to troubleshoot database development pipelines with SqlPackage.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, maghan
 ms.date: 06/27/2025
 ms.service: sql
 ms.subservice: tools-other

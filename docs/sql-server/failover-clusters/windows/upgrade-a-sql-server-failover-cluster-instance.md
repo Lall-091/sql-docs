@@ -4,7 +4,7 @@ description: "Steps to upgrade a SQL Server Always On failover cluster instance 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 02/23/2026
+ms.date: 06/22/2026
 ms.service: sql
 ms.subservice: failover-cluster-instance
 ms.topic: how-to
@@ -37,7 +37,7 @@ Support details are as follows:
 
   - You can't downgrade a failover cluster instance to a stand-alone instance on any node of the Windows Server failover cluster.
 
-  - Changing the edition of the failover cluster instance is limited to certain scenarios. For more information, see [Supported version & edition upgrades (SQL Server 2016)](../../../database-engine/install-windows/supported-version-and-edition-upgrades.md).
+  - Changing the edition of the failover cluster instance is limited to certain scenarios. For more information, see [Supported version & edition upgrades (SQL Server 2016)](../../../database-engine/install-windows/supported-version-and-edition-upgrades-2017.md).
 
 - During the failover cluster instance upgrade, downtime is limited to failover time and the time that is required for upgrade scripts to run. If you follow this failover cluster instance rolling upgrade process, and meet all prerequisites on all nodes before you begin the upgrade process, your downtime is minimal. Upgrading [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] when memory-optimized tables are in use takes some extra time. For more information, see [Plan and test the Database Engine upgrade plan](../../../database-engine/install-windows/plan-and-test-the-database-engine-upgrade-plan.md).
 
@@ -45,7 +45,7 @@ Support details are as follows:
 
 Before you begin, review the following important information:
 
-- [Supported version & edition upgrades (SQL Server 2016)](../../../database-engine/install-windows/supported-version-and-edition-upgrades.md): Verify that you can upgrade to your desired version of [!INCLUDE [ssnoversion](../../../includes/ssnoversion-md.md)] from your version of the Windows operating system and version of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. For example, you can't upgrade directly from a SQL Server 2005 failover clustering instance to [!INCLUDE [sssql14-md](../../../includes/sssql14-md.md)] or upgrade a failover cluster instance running on [!INCLUDE [winserver2003-md](../../../includes/winserver2003-md.md)].
+- [Supported version & edition upgrades (SQL Server 2016)](../../../database-engine/install-windows/supported-version-and-edition-upgrades-2017.md): Verify that you can upgrade to your desired version of [!INCLUDE [ssnoversion](../../../includes/ssnoversion-md.md)] from your version of the Windows operating system and version of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. For example, you can't upgrade directly from a SQL Server 2005 failover clustering instance to [!INCLUDE [sssql14-md](../../../includes/sssql14-md.md)] or upgrade a failover cluster instance running on [!INCLUDE [winserver2003-md](../../../includes/winserver2003-md.md)].
 
 - [Choose a Database Engine upgrade method](../../../database-engine/install-windows/choose-a-database-engine-upgrade-method.md): Select the appropriate upgrade method and steps based on your review of supported version and edition upgrades, and also based on other components installed in your environment, to upgrade components in the correct order.
 

@@ -1,6 +1,7 @@
 ---
-author: dzsquared
-ms.author: drskwier
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
 ms.date: 08/21/2024
 ms.service: sql
 ms.topic: include

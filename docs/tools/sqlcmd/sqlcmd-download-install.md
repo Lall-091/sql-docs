@@ -1,9 +1,9 @@
 ---
 title: Download and Install the sqlcmd Utility
 description: Learn how to download, install, or find the sqlcmd utility preinstalled on your system.
-author: dlevy-msft
-ms.author: dlevy
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: dlevy
 ms.date: 05/29/2026
 ms.service: sql
 ms.subservice: tools-other

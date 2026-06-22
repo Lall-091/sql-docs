@@ -1,9 +1,9 @@
 ---
 title: Check Installed Version of sqlcmd Utility
 description: Learn how to identify which variant of sqlcmd utility is installed on your system (the go-sqlcmd, or original ODBC variant).
-author: dlevy-msft
-ms.author: dlevy
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: dlevy
 ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other

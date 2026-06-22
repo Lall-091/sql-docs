@@ -4,7 +4,7 @@ description: Frequently Asked Questions about migrating from SQL Server to Azure
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dmarinkovic
-ms.date: 02/19/2026
+ms.date: 06/22/2026
 ms.service: azure-sql-database
 ms.topic: faq
 ms.collection:
@@ -88,7 +88,9 @@ Once your SQL Server has reached the end of support stage, you have several [mod
 
 Backward compatibility is provided via [compatibility levels](../managed-instance/transact-sql-tsql-differences-sql-server.md#compatibility-levels) and [database compatibility level](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) settings. Tools like the [SQL Server migration component in SQL Server Management Studio](/ssms/migrate-sql-server-component) help you identify possible incompatibilities.
 
-Whenever a Platform as a service (PaaS) solution doesn't fit your workload, Azure SQL Virtual Machines provide the possibility to do an as-is migration. By moving to Azure SQL VM, you also receive [free extended security patches](../virtual-machines/windows/sql-server-extend-end-of-support.md) that can provide significant savings (for example, [up to 69%](https://www.microsoft.com/sql-server/blog/2022/03/24/move-end-of-support-sql-server-2012-to-azure-virtual-machines-and-save) for SQL Server 2012).
+Whenever a Platform as a service (PaaS) solution doesn't fit your workload, Azure SQL Virtual Machines provide the possibility to do an as-is migration. To learn more, review [Extended Security Updates for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/extended-security-updates-sql-vm).
+
+If you move your SQL Server 2014 workloads to an Azure VM, you can get [free extended security updates](../virtual-machines/windows/extended-security-updates-sql-vm.md) for significant savings. The pay structure for Extended Security Updates (ESUs) has changed starting with the SQL Server 2016 version. To learn more, see [Changes to ESU pay structure](/sql/sql-server/end-of-support/sql-server-extended-security-updates#changes-for-sql-server-2016-esus). 
 
 #### Scenario 5: Meeting regulatory compliance: How does Azure SQL help meet regulatory compliance requirements?
 

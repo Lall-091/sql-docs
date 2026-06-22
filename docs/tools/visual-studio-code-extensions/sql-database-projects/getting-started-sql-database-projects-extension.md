@@ -1,9 +1,9 @@
 ---
 title: Getting Started with the SQL Database Projects Extension
 description: Getting started using the SQL Database Projects extension for Visual Studio Code
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: randolphwest, maghan
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, maghan
 ms.date: 01/28/2026
 ms.service: sql
 ms.subservice: sql-database-projects

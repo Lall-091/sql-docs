@@ -4,7 +4,7 @@ description: Learn how to reduce downtime for the primary replica during SQL Ser
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/21/2025
+ms.date: 06/22/2026
 ms.update-cycle: 1825-days
 ms.service: sql
 ms.subservice: availability-groups
@@ -27,7 +27,7 @@ Also be aware that after the initial failover to a secondary replica running a n
 
 Before you begin, review the following important information:
 
-- [Supported version and edition upgrades](../../../database-engine/install-windows/supported-version-and-edition-upgrades.md): Verify that you can upgrade to the latest version of [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] from your version of the Windows operating system and version of SQL Server. For example, if you upgrade directly from a SQL Server 2005 instance, your database compatibility level is upgraded.
+- [Supported version and edition upgrades](../../../database-engine/install-windows/supported-version-and-edition-upgrades-2017.md): Verify that you can upgrade to the latest version of [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] from your version of the Windows operating system and version of SQL Server. For example, if you upgrade directly from a SQL Server 2005 instance, your database compatibility level is upgraded.
 
 - [Choose a database engine upgrade method](../../install-windows/choose-a-database-engine-upgrade-method.md): To upgrade in the correct order, select the appropriate upgrade method and steps based on your review of supported version and edition upgrades, and also based on other components installed in your environment.
 
