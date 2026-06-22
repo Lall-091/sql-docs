@@ -1,9 +1,9 @@
 ---
 title: SQL Projects Properties
 description: "Learn about the properties that you can set for SQL database projects."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
 ms.date: 06/04/2026
 ms.service: sql
 ms.subservice: sql-database-projects

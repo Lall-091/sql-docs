@@ -1,9 +1,9 @@
 ---
 title: "Deploy a Data-Tier Application"
 description: "Deploy a data-tier application to create or update a database."
-author: WilliamDAssafMSFT
-ms.author: wiassaf
-ms.reviewer: drskwier, randolphwest, maghan
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, wiassaf, maghan
 ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects

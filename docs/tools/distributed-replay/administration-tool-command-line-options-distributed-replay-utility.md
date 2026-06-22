@@ -4,7 +4,6 @@ titleSuffix: SQL Server Distributed Replay
 description: The SQL Server Distributed Replay administration tool, DReplay.exe, is a command-line tool to communicate with the distributed replay controller.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 06/20/2022
 ms.service: sql
 ms.subservice: distributed-replay

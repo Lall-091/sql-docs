@@ -1,9 +1,9 @@
 ---
 title: SQL Database Projects Extension
 description: Install and use the SQL Database Projects extension for Visual Studio Code to work with data in SQL.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: randolphwest, maghan
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, maghan
 ms.date: 01/28/2026
 ms.service: sql
 ms.subservice: sql-database-projects

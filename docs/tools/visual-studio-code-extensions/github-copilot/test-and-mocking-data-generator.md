@@ -2,9 +2,9 @@
 title: "Quickstart: Data Generator for Testing and Mocking"
 titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how GitHub Copilot helps developers quickly create realistic and themed datasets to support SQL database application development, testing, and demos.
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: roblescarlos
 ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions

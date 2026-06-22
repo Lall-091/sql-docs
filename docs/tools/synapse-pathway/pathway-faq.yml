@@ -2,14 +2,14 @@
 metadata:
   title: Azure Synapse Pathway FAQ
   description: Frequently asked question for Azure Synapse Pathway
-  author: charlesfeddersen
+  author: WilliamDAssafMSFT
+  ms.author: wiassaf
+  ms.reviewer: charlesf, randolphwest
   ms.service: sql
   ms.topic: faq
   ms.date: 02/11/2022
-  ms.author: charlesf
   ms.subservice: tools-other
   monikerRange: "=azure-sqldw-latest"
-  ms.reviewer: wiassaf
     
 title: Azure Synapse Pathway FAQ
 summary: In this guide, you'll find the most frequently asked questions on Azure Synapse Pathway.

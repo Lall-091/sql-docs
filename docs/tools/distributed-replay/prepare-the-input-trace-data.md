@@ -4,7 +4,6 @@ titleSuffix: SQL Server Distributed Replay
 description: Before you can start a distributed replay with SQL Server Distributed Replay, prepare the input trace data by initiating the preprocess stage.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, randolphwest
 ms.date: 03/17/2023
 ms.service: sql
 ms.subservice: distributed-replay

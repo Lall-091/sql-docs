@@ -1,9 +1,9 @@
 ---
 title: "Quickstart: Create a Local Copy of a Database in a Container Using sqlcmd"
 description: A quickstart that walks through using creating a new container and restoring a database
-author: dlevy-msft
-ms.author: dlevy
-ms.reviewer: maghan, randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: dlevy, maghan
 ms.date: 01/28/2026
 ms.service: sql
 ms.subservice: tools-other

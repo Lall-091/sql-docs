@@ -1,9 +1,9 @@
 ---
 title: Troubleshoot SQL Project Build
 description: This article provides troubleshooting steps for SQL project build errors.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
 ms.date: 02/25/2025
 ms.service: sql
 ms.subservice: sql-database-projects

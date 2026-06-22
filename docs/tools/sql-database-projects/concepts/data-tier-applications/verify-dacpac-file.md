@@ -1,9 +1,9 @@
 ---
 title: Verify a DACPAC File
 description: "Use a command line tool to verify a DACPAC after project conversion."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: randolphwest, maghan
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, maghan
 ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects

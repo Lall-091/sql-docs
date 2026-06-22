@@ -1,9 +1,9 @@
 ---
 title: SqlPackage CLI Reference
 description: Learn how to use SqlPackage with its CLI syntax. View available parameters, properties, and SQLCMD variables.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, maghan
 ms.date: 01/27/2026
 ms.service: sql
 ms.subservice: tools-other

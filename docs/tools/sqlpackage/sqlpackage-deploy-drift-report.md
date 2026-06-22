@@ -1,9 +1,9 @@
 ---
 title: SqlPackage Deploy Report and Drift Report
 description: Learn how to automate database development tasks with SqlPackage Deploy Report and Drift Report. View examples and available parameters, properties, and SQLCMD variables.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, maghan
 ms.date: 07/30/2025
 ms.service: sql
 ms.subservice: tools-other

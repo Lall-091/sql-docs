@@ -2,9 +2,9 @@
 title: "Quickstart: Plan Mode for Database Design with GitHub Copilot"
 titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how to use Visual Studio Code's Plan mode with GitHub Copilot and the MSSQL extension to reason through a data model before writing SQL data definition language.
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: roblescarlos
 ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions

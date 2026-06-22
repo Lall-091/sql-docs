@@ -2,9 +2,9 @@
 title: Limitations and Known Issues with GitHub Copilot
 titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn about the limitations, nongoals, and known constraints of GitHub Copilot integration with the MSSQL extension for Visual Studio Code.
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: roblescarlos
 ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions

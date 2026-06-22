@@ -2,9 +2,9 @@
 title: "Quickstart: Inline GitHub Copilot Completions in SQL Files"
 titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn what GitHub Copilot inline completions (ghost text) provide in SQL files, their schema-awareness limitations, and when to use the @mssql chat participant instead.
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: roblescarlos
 ms.date: 06/01/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions

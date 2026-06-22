@@ -1,9 +1,9 @@
 ---
 title: Download and Install SqlPackage
 description: Download and Install SqlPackage for Windows, macOS, or Linux
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier
 ms.date: 06/03/2026
 ms.service: sql
 ms.subservice: tools-other

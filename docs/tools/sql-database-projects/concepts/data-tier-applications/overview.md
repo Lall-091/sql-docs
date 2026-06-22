@@ -1,9 +1,9 @@
 ---
 title: Data-Tier Applications (DAC) Overview
 description: Data-tier applications, or dacpacs, represent a database model.
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: wiassaf, randolphwest, maghan, tsiddique
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, wiassaf, maghan, tsiddique
 ms.date: 03/13/2026
 ms.service: sql
 ms.subservice: sql-database-projects

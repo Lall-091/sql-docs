@@ -1,9 +1,9 @@
 ---
 title: Code Analysis Rules Extensibility Overview
 description: "Create custom T-SQL code analysis rules for use with SQL projects."
-author: dzsquared
-ms.author: drskwier
-ms.reviewer: maghan, randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: drskwier, maghan
 ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
