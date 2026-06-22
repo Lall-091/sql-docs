@@ -110,6 +110,8 @@ Normally, dropping a column or table completely erases the underlying data from 
 > [!NOTE]  
 > The name of dropped ledger tables, history tables and ledger views might be truncated if the length of the renamed table or view exceeds 128 characters. 
 
+When you drop a ledger column, it isn't included in the schema exposed to [SQL projects](/ssms/build-database-projects-by-using-sql-server-management-studio), even though system-generated ledger views might still reference it for audit consistency. This mismatch can cause build and deployment failures during DACPAC extraction, and you can't work around it. Plan schema changes carefully and validate your deployment workflows when you use ledger features with SQL projects.
+
 ### Altering columns
 
 Any changes that don't impact the underlying data of a ledger table are supported without any special handling as they don't impact the hashes being captured in the ledger. These changes include:
