@@ -27,7 +27,7 @@ If you choose to install and use PowerShell locally, this tutorial requires Az P
 
 ## Sample script
 
-[!code-powershell-interactive[main](~/../powershell_scripts/sql-database/monitor-and-scale-pool/monitor-and-scale-pool.ps1?highlight=17-18 "Monitor and scale an elastic pool in SQL Database")]
+:::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/database/monitor-and-scale-pool/monitor-and-scale-pool-az-ps.ps1" id="FullScript":::
 
 ## Clean up deployment
 

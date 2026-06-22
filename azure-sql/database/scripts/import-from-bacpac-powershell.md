@@ -1,8 +1,8 @@
 ---
 title: "PowerShell: Import a BACPAC File to a New Database"
 description: Azure PowerShell example script to import a BACPAC file into a database in SQL Database
-author: SudhirRaparla
-ms.author: nvraparl
+author: dnethi
+ms.author: dinethi
 ms.reviewer: wiassaf, mathoma
 ms.date: 06/10/2025
 ms.service: azure-sql-database
@@ -28,7 +28,7 @@ If you choose to install and use PowerShell locally, this tutorial requires Az P
 
 ## Sample script
 
-[!code-powershell-interactive[main](~/../powershell_scripts/sql-database/import-from-bacpac/import-from-bacpac.ps1?highlight=20-21 "Create SQL Database")]
+:::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/database/import-from-bacpac/import-from-bacpac-az-ps.ps1" id="FullScript":::
 
 ## Clean up deployment
 

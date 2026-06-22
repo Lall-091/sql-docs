@@ -27,7 +27,7 @@ If you choose to install and use PowerShell locally, this tutorial requires Az P
 
 ## Copy a database to a new logical server
 
-[!code-powershell-interactive[main](~/../powershell_scripts/sql-database/copy-database-to-new-server/copy-database-to-new-server.ps1?highlight=20-23 "Copy database to new server")]
+:::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/database/copy-database-to-new-server/copy-database-to-new-server-az-ps.ps1" id="FullScript":::
 
 ## Clean up deployment
 

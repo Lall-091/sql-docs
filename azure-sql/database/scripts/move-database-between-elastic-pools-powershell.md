@@ -28,7 +28,7 @@ If you choose to install and use PowerShell locally, this tutorial requires Az P
 
 ## Sample script
 
-[!code-powershell-interactive[main](~/../powershell_scripts/sql-database/move-database-between-pools-and-standalone/move-database-between-pools-and-standalone.ps1?highlight=18-19 "Move a database between pools")]
+:::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/database/move-database-between-pools-and-standalone/move-database-between-pools-and-standalone-az-ps.ps1" id="FullScript":::
 
 ## Clean up deployment
 
