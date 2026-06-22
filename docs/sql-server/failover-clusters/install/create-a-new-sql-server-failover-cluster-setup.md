@@ -3,7 +3,7 @@ title: "Create new Failover Cluster Instance"
 description: This article describes how to use the Setup program to install or upgrade a SQL Server Always On failover cluster instance or add a node to an existing failover cluster instance.
 author: MashaMSFT
 ms.author: mathoma
-ms.date: 10/05/2021
+ms.date: 06/22/2026
 ms.service: sql
 ms.subservice: failover-cluster-instance
 ms.topic: how-to
@@ -59,7 +59,7 @@ helpviewer_keywords:
   
  For more information about how to add nodes to or remove nodes from an existing failover cluster instance, see [Add or Remove Nodes in an Always On Failover Cluster Instance &#40;Setup&#41;](../../../sql-server/failover-clusters/install/add-or-remove-nodes-in-a-sql-server-failover-cluster-setup.md).  
   
- For more information about remote installation, see [Supported Version and Edition Upgrades](../../../database-engine/install-windows/supported-version-and-edition-upgrades.md).  
+ For more information about remote installation, see [Supported Version and Edition Upgrades](../../../database-engine/install-windows/supported-version-and-edition-upgrades-2017.md).  
   
  For more information about installing [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] in a WSFC, see [How to Cluster SQL Server Analysis Services](/previous-versions/sql/sql-server-2012/dn736073(v=msdn.10)).  
   
@@ -103,7 +103,7 @@ helpviewer_keywords:
      >    - Adding the SQL Server Database Engine to an existing Analysis Services-only failover cluster.   
      >
   
-     The prerequisites for the selected features are displayed on the right-hand pane. [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Setup will install the prerequisite that are not already installed during the installation step described later in this procedure.  
+     The prerequisites for the selected features are displayed on the right-hand pane. [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Setup will install the prerequisites that are not already installed during the installation step described later in this procedure.  
   
      You can specify a custom directory for shared components by using the field at the bottom of this page. To change the installation path for shared components, either update the path in the field provided at the bottom of the dialog box, or select the ellipsis button to browse to an installation directory. The default installation path is C:\Program Files\\[!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] \\.  
   
@@ -257,7 +257,7 @@ helpviewer_keywords:
   
 10. On the Feature Selection page, select the components for your installation. A description for each component group appears in the right pane after you select the feature name. You can select any combination of check boxes, but only [!INCLUDE[ssDE](../../../includes/ssde-md.md)], [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] in tabular mode, and [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] in multidimensional mode support failover clustering. Other selected components will run as a stand-alone feature without failover capability on the current node that you are running Setup on. For more information on [!INCLUDE[ssASnoversion](../../../includes/ssasnoversion-md.md)] modes, see [Determine the Server Mode of an Analysis Services Instance](/analysis-services/instances/determine-the-server-mode-of-an-analysis-services-instance).  
   
-     The prerequisites for the selected features are displayed on the right-hand pane. [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Setup will install the prerequisite that are not already installed during the installation step described later in this procedure.  
+     The prerequisites for the selected features are displayed on the right-hand pane. [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Setup will install the prerequisites that are not already installed during the installation step described later in this procedure.  
   
      You can specify a custom directory for shared components by using the field at the bottom of this page. To change the installation path for shared components, either update the path in the field provided at the bottom of the dialog box, or select the ellipsis button to browse to an installation directory. The default installation path is C:\Program Files\\[!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)]\\.  
   

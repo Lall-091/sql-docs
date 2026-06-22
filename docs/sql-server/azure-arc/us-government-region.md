@@ -4,7 +4,7 @@ description: "Describes features and limitations currently available for SQL Ser
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mikeray
-ms.date: 05/19/2026
+ms.date: 06/22/2026
 ms.topic: feature-availability
 #customer intent:Understand the features, limitations, and onboarding process for using SQL Server enabled by Azure Arc in US Government regions, specifically to manage their SQL Server resources securely and compliantly within the Azure Government portal.
 
@@ -55,7 +55,7 @@ Only the following features are available in the US Government Virginia region:
   - [License physical cores (p-cores) without virtual machines](manage-license-billing.md#license-pcores-without-vms)
   - License virtual cores.
 - [Failover cluster instances support](support-for-fci.md) - onboard and manage SQL Server failover cluster instances. 
-- [Subscribe to Extended Security Updates in a production environment](extended-security-updates.md#subscribe-to-extended-security-updates-in-a-production-environment).
+- [Licenses for ESUs](extended-security-updates.md#licenses-for-esus).
 
 
 ## Related content

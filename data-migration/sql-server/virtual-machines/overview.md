@@ -5,7 +5,7 @@ description: Learn about the different migration strategies when you want to mig
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma
-ms.date: 02/19/2026
+ms.date: 06/22/2026
 ms.service: azure-vm-sql-server
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -31,7 +31,7 @@ For other migration guides, see [Database Migration](/data-migration).
 
 Migrate to [SQL Server on Azure Virtual Machines (VMs)](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview) when you want to use the familiar SQL Server environment with OS control, and want to take advantage of cloud-provided features such as built-in VM high availability, [automated backups](/azure/azure-sql/virtual-machines/windows/automated-backup), and [automated patching](/azure/azure-sql/virtual-machines/windows/automated-patching).
 
-Save on costs by bringing your own license with the [Azure Hybrid Benefit licensing model](/azure/azure-sql/virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change) or extend support for SQL Server 2014 by getting [free security updates](/azure/azure-sql/virtual-machines/windows/sql-server-extend-end-of-support).
+Save on costs by bringing your own license with the [Azure Hybrid Benefit licensing model](/azure/azure-sql/virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change).
 
 ## Choose appropriate target
 
@@ -185,4 +185,4 @@ The Data SQL Engineering team developed these resources. This team's core charte
 - [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
 - [Best practices for costing and sizing workloads migrate to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
 - [Change the license model for a SQL virtual machine in Azure](/azure/azure-sql/virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change)
-- [Extend support for SQL Server with Azure](/azure/azure-sql/virtual-machines/windows/sql-server-extend-end-of-support)
+- [Extend support for SQL Server with Azure](/azure/azure-sql/virtual-machines/windows/extended-security-updates-sql-vm)

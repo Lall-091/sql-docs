@@ -4,7 +4,7 @@ description: Learn how to manage configuration options for SQL Server enabled by
 author: pochiraju
 ms.author: rajpo
 ms.reviewer: mikeray, randolphwest
-ms.date: 04/01/2026
+ms.date: 06/22/2026
 ai-usage: ai-assisted
 ms.topic: how-to
 ms.custom: sfi-image-nochange
@@ -100,6 +100,8 @@ Select the **Use physical core license** checkbox if you're configuring a virtua
 > [!IMPORTANT]  
 > If the p-core license is configured with a pay-as-you-go billing plan, the selected **License type** value should be **Pay-as-you-go**. This selection doesn't trigger additional charges at the VM level, but it does ensure uninterrupted licensing and billing if the p-core license is deactivated or deleted.
 
+
+
 <a id="subscribe-esu"></a>
 
 #### Subscribe to Extended Security Updates
@@ -110,7 +112,7 @@ You can subscribe to Extended Security Updates (ESUs) for the individual host. T
 
 Select **Subscribe to Extended Security Updates**. It sets the host configuration property `EnableExtendedSecurityUpdates` to `True`. The subscription is activated after you select **Save**.
 
-For more information about ESU licensing options, see [Subscribe to Extended Security Updates in a production environment](extended-security-updates.md#subscribe-to-extended-security-updates-in-a-production-environment).
+For more information about ESU licensing options, see [Licenses for ESUs](extended-security-updates.md#licenses-for-esus).
 
 > [!NOTE]  
 > Unlike the p-core ESU license, when you're subscribing to ESUs for a host, you don't need to define the number of billable cores for each machine. Azure Extension for SQL Server detects the size of the host, the type of the host (virtual or physical), and the SQL Server edition. The extension bills according to these parameters.
@@ -124,6 +126,8 @@ For more information about ESU licensing options, see [Subscribe to Extended Sec
 Select the **Use physical core ESU license** checkbox if you're configuring a virtual machine and you're using the unlimited virtualization benefit when enabling the ESU subscription. It sets `UseEsuPhysicalCoreLicense` to `true`.
 
 If you select the checkbox, the p-core license takes precedence, and the SQL Server ESU charges at the VM level are nullified.
+
+To use the physical core ESU license, you need to create a SQL Server ESU license resource in the Azure portal. For more information, see [SQL Server ESU license resource](extended-security-updates.md#esu-license-resource).
 
 <a id="unsubscribe-esu"></a>
 

@@ -5,7 +5,7 @@ description: In this guide, you learn how to migrate your individual SQL Server 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma
-ms.date: 09/17/2025
+ms.date: 06/22/2026
 ms.service: azure-vm-sql-server
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -162,4 +162,4 @@ For more information about these issues and the steps to mitigate them, see:
 - [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
 - [Best practices for costing and sizing workloads for migration to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
 - [Change the license model for a SQL virtual machine in Azure](/azure/azure-sql/virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change)
-- [Extend support for SQL Server with Azure](/azure/azure-sql/virtual-machines/windows/sql-server-extend-end-of-support)
+- [Get ESUs for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/extended-security-updates-sql-vm)

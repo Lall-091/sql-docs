@@ -291,9 +291,11 @@ sections:
           Yes. You can use any setup media to upgrade the [version](change-sql-server-version.md) and [edition](change-sql-server-edition.md) of SQL Server, and then you can [register with the SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md#register-with-extension). Doing so gives you access to all the [benefits](sql-server-iaas-agent-extension-automate-management.md#feature-benefits) of the SQL IaaS Agent extension such as portal manageability, automated backups, and automated patching. 
           
       - question: |
-          How can I get free extended security updates for my end of support instances?
+          How can I get free extended security updates (ESUs) for my end of support instances?
         answer: |
-          You can get [free extended security updates](sql-server-extend-end-of-support.md) by moving your SQL Server as-is to an Azure virtual machine. Updates are available through the Windows Update channel. For more information, see [end of support options](/sql/sql-server/end-of-support/sql-server-end-of-support-overview). 
+          You can get [free extended security updates](extended-security-updates-sql-vm.md) by moving your SQL Server 2014 as-is to an Azure virtual machine. After you subscribe to ESUs, the VM is enabled for ESU patch installation. Patches can be delivered through any patching product or service that installs Microsoft patches, such as Microsoft Update, Windows Update, System Center Configuration Manager, or Azure Update Manager. 
+
+          This offer is not applicable to SQL Server 2016.
             
       - question: |
           Why did my configuration change or update fail with the error 'The User Data directory in the registry is not valid?'

@@ -4,7 +4,7 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: pochiraju
 ms.author: rajpo
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 06/03/2026
+ms.date: 06/22/2026
 ms.topic: release-notes
 ms.custom:
   - ignite-2025
@@ -155,7 +155,7 @@ Certain limitations in US Government Virginia are lifted. You can now onboard en
 
 SQL Server enabled by Azure Arc is generally available (GA) in US Government Virginia. For more information, review [SQL Server enabled by Azure Arc in US Government](us-government-region.md). In addition to features announced earlier, you can:
 
-- [Subscribe to Extended Security Updates in a production environment](extended-security-updates.md#subscribe-to-extended-security-updates-in-a-production-environment)
+- [Licenses for ESUs](extended-security-updates.md#licenses-for-esus)
 - [Manage licensing and billing](manage-license-billing.md)
 
 This release announces the feature is generally available. It doesn't update extension version or other components of any agent or extension.

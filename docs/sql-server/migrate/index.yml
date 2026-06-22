@@ -89,9 +89,11 @@ landingContent:
       links:
       - text: End of support options
         url: ../end-of-support/sql-server-end-of-support-overview.md
-      - text: Extended Support Updates (ESUs)
+      - text: Extended Support Updates (ESUs) 
         url: ../end-of-support/sql-server-extended-security-updates.md
       - text: ESU frequently asked questions
         url: ../end-of-support/extended-security-updates-frequently-asked-questions.md
-      - text: Free ESUs with Azure VM
-        url: /azure/azure-sql/virtual-machines/windows/sql-server-extend-end-of-support
+    - linkListType: download
+      links: 
+      - text: Extended security updates datasheet PDF
+        url: https://download.microsoft.com/download/A/3/F/A3F0908A-0FD8-494C-82BC-E75F313F3FAD/Extended_Security_Updates_for_Windows_Server_2008_and_SQL_Server_2008_End_of_Service.pdf

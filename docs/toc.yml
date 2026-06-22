@@ -4452,7 +4452,7 @@ items:
     - name: Supported version & edition upgrades SQL Server 2017
       href: database-engine/install-windows/supported-version-and-edition-upgrades-2017.md
     - name: Supported version & edition upgrades SQL Server 2016
-      href: database-engine/install-windows/supported-version-and-edition-upgrades.md?view=sql-server-2016&preserve-view=true
+      href: database-engine/install-windows/supported-version-and-edition-upgrades-2017.md?view=sql-server-2016&preserve-view=true
     - name: Analysis Services
       href: database-engine/install-windows/upgrade-analysis-services.md
     - name: Data Quality Services
@@ -4496,6 +4496,8 @@ items:
       href: sql-server/end-of-support/sql-server-end-of-support-overview.md
     - name: Extended security updates (ESUs)
       href: sql-server/end-of-support/sql-server-extended-security-updates.md
+    - name: Register disconnected instances
+      href: sql-server/end-of-support/extended-security-updates-disconnected-instances.md
     - name: ESU frequently asked questions
       href: sql-server/end-of-support/extended-security-updates-frequently-asked-questions.md
   - name: Configuration

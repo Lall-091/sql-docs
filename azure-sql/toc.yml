@@ -1595,8 +1595,8 @@
           href: virtual-machines/windows/pricing-guidance.md
         - name: Dedicated host
           href: virtual-machines/windows/dedicated-host.md
-        - name: Extend support for SQL Server
-          href: virtual-machines/windows/sql-server-extend-end-of-support.md
+        - name: Extended Security Updates (ESU)
+          href: virtual-machines/windows/extended-security-updates-sql-vm.md
     - name: How-to guides
       items:
       - name: Connect to SQL Server VM

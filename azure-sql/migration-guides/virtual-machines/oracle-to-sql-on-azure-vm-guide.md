@@ -5,7 +5,7 @@ description: This guide teaches you to migrate your Oracle schemas to SQL Server
 author: nilabjaball
 ms.author: niball
 ms.reviewer: mathoma, randolphwest
-ms.date: 09/17/2025
+ms.date: 06/22/2026
 ms.service: azure-vm-sql-server
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -348,4 +348,4 @@ The Data SQL Engineering team developed these resources. This team's core charte
 - [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
 - [Best practices to cost and size workloads migrated to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
 - [Change the license model for a SQL virtual machine in Azure](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md)
-- [Extend support for SQL Server with Azure](../../virtual-machines/windows/sql-server-extend-end-of-support.md)
+- [Extend support for SQL Server with Azure](../../virtual-machines/windows/extended-security-updates-sql-vm.md)
