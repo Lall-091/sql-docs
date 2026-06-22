@@ -1,10 +1,10 @@
 ---
-title: "sp_addlogin (Transact-SQL)"
+title: "sys.sp_addlogin (Transact-SQL)"
 description: Creates a new SQL Server login that allows a user to connect to a SQL Server instance with SQL Server authentication.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addlogin (Transact-SQL)
+# sys.sp_addlogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -33,7 +33,7 @@ Creates a new [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login t
 ## Syntax
 
 ```syntaxsql
-sp_addlogin
+sys.sp_addlogin
     [ @loginame = ] N'loginame'
     [ , [ @passwd = ] N'passwd' ]
     [ , [ @defdb = ] N'defdb' ]

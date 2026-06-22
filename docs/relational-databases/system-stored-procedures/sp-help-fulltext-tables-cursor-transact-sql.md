@@ -1,10 +1,10 @@
 ---
-title: "sp_help_fulltext_tables_cursor (Transact-SQL)"
+title: "sys.sp_help_fulltext_tables_cursor (Transact-SQL)"
 description: sp_help_fulltext_tables_cursor uses a cursor to return a list of tables that are registered for full-text indexing.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# sp_help_fulltext_tables_cursor (Transact-SQL)
+# sys.sp_help_fulltext_tables_cursor (Transact-SQL)
 
 [!INCLUDE [sql-asdbmi-pdw](../../includes/applies-to-version/sql-asdbmi-pdw.md)]
 
@@ -31,10 +31,10 @@ Uses a cursor to return a list of tables that are registered for full-text index
 ## Syntax
 
 ```syntaxsql
-sp_help_fulltext_tables_cursor
-     [ @cursor_return = ] cursor_return OUTPUT
-     [ , [ @fulltext_catalog_name = ] N'fulltext_catalog_name' ]
-     [ , [ @table_name = ] N'table_name' ]
+sys.sp_help_fulltext_tables_cursor
+    [ @cursor_return = ] cursor_return OUTPUT
+    [ , [ @fulltext_catalog_name = ] N'fulltext_catalog_name' ]
+    [ , [ @table_name = ] N'table_name' ]
 [ ; ]
 ```
 

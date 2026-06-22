@@ -1,10 +1,10 @@
 ---
-title: "sp_requestpeerresponse (Transact-SQL)"
+title: "sys.sp_requestpeerresponse (Transact-SQL)"
 description: sp_requestpeerresponse requests a response from every other node in a peer-to-peer topology.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_requestpeerresponse (Transact-SQL)
+# sys.sp_requestpeerresponse (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ When executed from a node in a peer-to-peer topology, this procedure requests a 
 ## Syntax
 
 ```syntaxsql
-sp_requestpeerresponse
+sys.sp_requestpeerresponse
     [ @publication = ] N'publication'
     [ , [ @description = ] N'description' ]
     [ , [ @request_id = ] request_id OUTPUT ]
@@ -46,7 +46,7 @@ User-defined information that can be used to identify individual status requests
 
 #### [ @request_id = ] *request_id* OUTPUT
 
-Returns the ID of the new request. *@request_id* is an OUTPUT parameter of type **int**. This value can be used when executing [sp_helppeerresponses](sp-helppeerresponses-transact-sql.md) to view all responses to a status request.
+Returns the ID of the new request. *@request_id* is an `OUTPUT` parameter of type **int**. This value can be used when executing [sp_helppeerresponses](sp-helppeerresponses-transact-sql.md) to view all responses to a status request.
 
 ## Return code values
 

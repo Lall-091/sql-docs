@@ -4,7 +4,7 @@ description: Reports information about the operators defined for the server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,9 @@ Reports information about the operators defined for the server.
 ## Syntax
 
 ```syntaxsql
-sp_help_operator
-    [ [ @operator_name = ] N'operator_name' ]
-    [ , [ @operator_id = ] operator_id ]
+dbo.sp_help_operator
+    { [ @operator_name = ] N'operator_name'
+        | [ @operator_id = ] operator_id }
 [ ; ]
 ```
 

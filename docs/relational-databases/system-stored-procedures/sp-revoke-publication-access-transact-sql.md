@@ -1,10 +1,10 @@
 ---
-title: "sp_revoke_publication_access (Transact-SQL)"
+title: "sys.sp_revoke_publication_access (Transact-SQL)"
 description: sp_revoke_publication_access removes the login from a publications access list.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_revoke_publication_access (Transact-SQL)
+# sys.sp_revoke_publication_access (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Removes the login from a publications access list. This stored procedure is exec
 ## Syntax
 
 ```syntaxsql
-sp_revoke_publication_access
+sys.sp_revoke_publication_access
     [ @publication = ] N'publication'
     , [ @login = ] N'login'
     [ , [ @publisher = ] N'publisher' ]

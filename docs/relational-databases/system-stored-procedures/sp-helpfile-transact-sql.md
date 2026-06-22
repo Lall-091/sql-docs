@@ -1,10 +1,10 @@
 ---
-title: "sp_helpfile (Transact-SQL)"
+title: "sys.sp_helpfile (Transact-SQL)"
 description: sp_helpfile returns the physical names and attributes of files associated with the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpfile (Transact-SQL)
+# sys.sp_helpfile (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the physical names and attributes of files associated with the current d
 ## Syntax
 
 ```syntaxsql
-sp_helpfile [ [ @filename = ] N'filename' ]
+sys.sp_helpfile [ [ @filename = ] N'filename' ]
 [ ; ]
 ```
 

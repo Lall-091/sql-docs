@@ -1,10 +1,10 @@
 ---
-title: "sp_help_fulltext_tables (Transact-SQL)"
+title: "sys.sp_help_fulltext_tables (Transact-SQL)"
 description: sp_help_fulltext_tables returns a list of tables that are registered for full-text indexing.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_fulltext_tables (Transact-SQL)
+# sys.sp_help_fulltext_tables (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Returns a list of tables that are registered for full-text indexing.
 ## Syntax
 
 ```syntaxsql
-sp_help_fulltext_tables
+sys.sp_help_fulltext_tables
     [ [ @fulltext_catalog_name = ] N'fulltext_catalog_name' ]
     [ , [ @table_name = ] N'table_name' ]
 [ ; ]

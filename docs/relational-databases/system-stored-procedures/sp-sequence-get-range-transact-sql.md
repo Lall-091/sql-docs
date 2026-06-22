@@ -1,10 +1,10 @@
 ---
-title: "sp_sequence_get_range (Transact-SQL)"
+title: "sys.sp_sequence_get_range (Transact-SQL)"
 description: sp_sequence_get_range returns a range of sequence values from a sequence object.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -20,7 +20,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_sequence_get_range (Transact-SQL)
+# sys.sp_sequence_get_range (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
@@ -33,7 +33,7 @@ For a more information about sequence numbers, see [Sequence Numbers](../sequenc
 ## Syntax
 
 ```syntaxsql
-sp_sequence_get_range
+sys.sp_sequence_get_range
     [ @sequence_name = ] N'sequence_name'
     , [ @range_size = ] range_size
     , [ @range_first_value = ] range_first_value OUTPUT
@@ -57,27 +57,27 @@ The number of values to fetch from the sequence. *@range_size* is **bigint**, wi
 
 #### [ @range_first_value = ] *range_first_value* OUTPUT
 
-Output parameter returns the first (minimum or maximum) value of the sequence object used to calculate the requested range. *@range_first_value* is an OUTPUT parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
+Output parameter returns the first (minimum or maximum) value of the sequence object used to calculate the requested range. *@range_first_value* is an `OUTPUT` parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
 
 #### [ @range_last_value = ] *range_last_value* OUTPUT
 
-Optional output parameter returns the last value of the requested range. *@range_last_value* is an OUTPUT parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
+Optional output parameter returns the last value of the requested range. *@range_last_value* is an `OUTPUT` parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
 
 #### [ @range_cycle_count = ] *range_cycle_count* OUTPUT
 
-Optional output parameter returns the number of times that the sequence object cycled in order to return the requested range. *@range_cycle_count* is an OUTPUT parameter of type **int**.
+Optional output parameter returns the number of times that the sequence object cycled in order to return the requested range. *@range_cycle_count* is an `OUTPUT` parameter of type **int**.
 
 #### [ @sequence_increment = ] *sequence_increment* OUTPUT
 
-Optional output parameter returns the increment of the sequence object used to calculate the requested range. *@sequence_increment* is an OUTPUT parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
+Optional output parameter returns the increment of the sequence object used to calculate the requested range. *@sequence_increment* is an `OUTPUT` parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
 
 #### [ @sequence_min_value = ] *sequence_min_value* OUTPUT
 
-Optional output parameter returns the minimum value of the sequence object. *@sequence_min_value* is an OUTPUT parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
+Optional output parameter returns the minimum value of the sequence object. *@sequence_min_value* is an `OUTPUT` parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
 
 #### [ @sequence_max_value = ] *sequence_max_value* OUTPUT
 
-Optional output parameter returns the maximum value of the sequence object. *@sequence_max_value* is an OUTPUT parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
+Optional output parameter returns the maximum value of the sequence object. *@sequence_max_value* is an `OUTPUT` parameter of type **sql_variant**, with the same base type as the sequence object used in the request.
 
 ## Return code values
 

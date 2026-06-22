@@ -1,10 +1,10 @@
 ---
-title: "sp_helpdevice (Transact-SQL)"
+title: "sys.sp_helpdevice (Transact-SQL)"
 description: sp_helpdevice reports information about SQL Server backup devices.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpdevice (Transact-SQL)
+# sys.sp_helpdevice (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Reports information about [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-
 ## Syntax
 
 ```syntaxsql
-sp_helpdevice [ [ @devname = ] N'devname' ]
+sys.sp_helpdevice [ [ @devname = ] N'devname' ]
 [ ; ]
 ```
 

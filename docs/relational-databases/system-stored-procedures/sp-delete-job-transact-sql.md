@@ -4,7 +4,7 @@ description: "sp_delete_job (Transact-SQL) deletes an existing job from the SQL 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Deletes a job from the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.
 ## Syntax
 
 ```syntaxsql
-sp_delete_job
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_delete_job
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @originating_server = ] N'originating_server' ]
     [ , [ @delete_history = ] delete_history ]
     [ , [ @delete_unused_schedule = ] delete_unused_schedule ]

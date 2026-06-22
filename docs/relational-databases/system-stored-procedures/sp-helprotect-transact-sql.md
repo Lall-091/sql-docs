@@ -1,10 +1,10 @@
 ---
-title: "sp_helprotect (Transact-SQL)"
+title: "sys.sp_helprotect (Transact-SQL)"
 description: sp_helprotect returns a report that's information about user permissions for an object, or statement permissions, in the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helprotect (Transact-SQL)
+# sys.sp_helprotect (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -32,7 +32,7 @@ Doesn't list permissions that are always assigned to the fixed server roles or f
 ## Syntax
 
 ```syntaxsql
-sp_helprotect
+sys.sp_helprotect
     [ [ @name = ] N'name' ]
     [ , [ @username = ] N'username' ]
     [ , [ @grantorname = ] N'grantorname' ]

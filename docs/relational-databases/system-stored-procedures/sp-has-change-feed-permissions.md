@@ -4,7 +4,7 @@ description: "The internal sys.sp_has_change_feed_permissions system stored proc
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 12/17/2025
+ms.date: 06/19/2026
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"

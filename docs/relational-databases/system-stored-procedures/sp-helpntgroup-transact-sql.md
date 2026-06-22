@@ -1,10 +1,10 @@
 ---
-title: "sp_helpntgroup (Transact-SQL)"
+title: "sys.sp_helpntgroup (Transact-SQL)"
 description: sp_helpntgroup reports information about Windows groups with accounts in the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpntgroup (Transact-SQL)
+# sys.sp_helpntgroup (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Reports information about Windows groups with accounts in the current database.
 ## Syntax
 
 ```syntaxsql
-sp_helpntgroup [ [ @ntname = ] N'ntname' ]
+sys.sp_helpntgroup [ [ @ntname = ] N'ntname' ]
 [ ; ]
 ```
 

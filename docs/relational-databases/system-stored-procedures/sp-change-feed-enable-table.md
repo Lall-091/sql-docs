@@ -4,7 +4,7 @@ description: "The sys.sp_change_feed_enable_table system stored procedure enable
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 12/17/2025
+ms.date: 06/19/2026
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -41,28 +41,28 @@ This system stored procedure is used for:
 
 ```syntaxsql
 sys.sp_change_feed_enable_table
-    @table_group_id
-    , @table_id
-    , @source_schema
-    , @source_name
+    [ @table_group_id = ] 'table_group_id'
+    , [ @table_id = ] 'table_id'
+    , [ @source_schema = ] N'source_schema'
+    , [ @source_name = ] N'source_name'
 [ ; ]
 ```
 
 ## Arguments
 
-#### @table_group_id
+#### [ @table_group_id = ] '*table_group_id*'
 
 The unique identifier of the table group.
 
-#### @table_id
+#### [ @table_id = ] '*table_id*'
 
 The unique identifier for the change feed table generated during setup workflow.
 
-#### @source_schema
+#### [ @source_schema = ] N'*source_schema*'
 
 The source table schema name.
 
-#### @source_name
+#### [ @source_name = ] N'*source_name*'
 
 The source table name.
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_defaultlanguage (Transact-SQL)"
+title: "sys.sp_defaultlanguage (Transact-SQL)"
 description: sp_defaultlanguage changes the default language of for a SQL Server login.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_defaultlanguage (Transact-SQL)
+# sys.sp_defaultlanguage (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Changes the default language of for a [!INCLUDE [ssNoVersion](../../includes/ssn
 ## Syntax
 
 ```syntaxsql
-sp_defaultlanguage
+sys.sp_defaultlanguage
     [ @loginame = ] N'loginame'
     [ , [ @language = ] N'language' ]
 [ ; ]

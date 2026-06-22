@@ -4,7 +4,7 @@ description: "Lists information (except passwords) about Database Mail accounts.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,9 @@ Lists information (except passwords) about Database Mail accounts.
 ## Syntax
 
 ```syntaxsql
-sysmail_help_account_sp [ [ @account_id = ] account_id | [ @account_name = ] 'account_name' ]
+dbo.sysmail_help_account_sp
+    [ [ @account_id = ] account_id ]
+    [ , [ @account_name = ] N'account_name' ]
 [ ; ]
 ```
 
@@ -37,7 +39,7 @@ sysmail_help_account_sp [ [ @account_id = ] account_id | [ @account_name = ] 'ac
 
 The account ID of the account to list information for. *@account_id* is **int**, with a default of `NULL`.
 
-#### [ @account_name = ] '*account_name*'
+#### [ @account_name = ] N'*account_name*'
 
 The name of the account to list information for. *@account_name* is **sysname**, with a default of `NULL`.
 

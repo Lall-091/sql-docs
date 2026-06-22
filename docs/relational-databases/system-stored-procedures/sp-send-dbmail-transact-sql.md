@@ -4,7 +4,7 @@ description: Sends an e-mail message to the specified recipients.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 10/15/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
@@ -28,12 +28,11 @@ Sends an e-mail message to the specified recipients. The message might include a
 ## Syntax
 
 ```syntaxsql
-sp_send_dbmail [ [ @profile_name = ] 'profile_name' ]
-    [ , [ @recipients = ] 'recipients [ ; ...n ]' ]
-    [ , [ @copy_recipients = ] 'copy_recipient [ ; ...n ]' ]
-    [ , [ @blind_copy_recipients = ] 'blind_copy_recipient [ ; ...n ]' ]
-    [ , [ @from_address = ] 'from_address' ]
-    [ , [ @reply_to = ] 'reply_to' ]
+dbo.sp_send_dbmail
+    [ [ @profile_name = ] N'profile_name' ]
+    [ , [ @recipients = ] 'recipients' ]
+    [ , [ @copy_recipients = ] 'copy_recipients' ]
+    [ , [ @blind_copy_recipients = ] 'blind_copy_recipients' ]
     [ , [ @subject = ] N'subject' ]
     [ , [ @body = ] N'body' ]
     [ , [ @body_format = ] 'body_format' ]
@@ -41,7 +40,7 @@ sp_send_dbmail [ [ @profile_name = ] 'profile_name' ]
     [ , [ @sensitivity = ] 'sensitivity' ]
     [ , [ @file_attachments = ] N'attachment [ ; ...n ]' ]
     [ , [ @query = ] N'query' ]
-    [ , [ @execute_query_database = ] 'execute_query_database' ]
+    [ , [ @execute_query_database = ] N'execute_query_database' ]
     [ , [ @attach_query_result_as_file = ] attach_query_result_as_file ]
     [ , [ @query_attachment_filename = ] N'query_attachment_filename' ]
     [ , [ @query_result_header = ] query_result_header ]
@@ -50,14 +49,16 @@ sp_send_dbmail [ [ @profile_name = ] 'profile_name' ]
     [ , [ @exclude_query_output = ] exclude_query_output ]
     [ , [ @append_query_error = ] append_query_error ]
     [ , [ @query_no_truncate = ] query_no_truncate ]
-    [ , [ @query_result_no_padding = ] @query_result_no_padding ]
-    [ , [ @mailitem_id = ] mailitem_id ] [ OUTPUT ]
+    [ , [ @query_result_no_padding = ] query_result_no_padding ]
+    [ , [ @mailitem_id = ] mailitem_id OUTPUT ]
+    [ , [ @from_address = ] 'from_address' ]
+    [ , [ @reply_to = ] 'reply_to' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @profile_name = ] '*profile_name*'
+#### [ @profile_name = ] N'*profile_name*'
 
 The name of the profile to send the message from. The *@profile_name* is of type **sysname**, with a default of `NULL`. The *@profile_name* must be the name of an existing Database Mail profile. When no *@profile_name* is specified, `sp_send_dbmail` uses the default private profile for the current user. If the user doesn't have a default private profile, `sp_send_dbmail` uses the default public profile for the `msdb` database. If the user doesn't have a default private profile and there's no default public profile for the database, *@profile_name* must be specified.
 
@@ -72,14 +73,6 @@ A semicolon-delimited list of e-mail addresses to carbon copy the message to. Th
 #### [ @blind_copy_recipients = ] '*blind_copy_recipients*'
 
 A semicolon-delimited list of e-mail addresses to blind carbon copy the message to. The blind copy recipients list is of type **varchar(max)**. Although this parameter is optional, at least one of *@recipients*, *@copy_recipients*, or *@blind_copy_recipients* must be specified, or `sp_send_dbmail` returns an error.
-
-#### [ @from_address = ] '*from_address*'
-
-The value of the 'from address' of the email message. This is an optional parameter used to override the settings in the mail profile. This parameter is of type **varchar(max)**. SMTP security settings determine if these overrides are accepted. If no parameter is specified, the default is `NULL`.
-
-#### [ @reply_to = ] '*reply_to*'
-
-The value of the 'reply to address' of the email message. It accepts only one email address as a valid value. This is an optional parameter used to override the settings in the mail profile. This parameter is of type **varchar(max)**. SMTP security settings determine if these overrides are accepted. If no parameter is specified, the default is `NULL`.
 
 #### [ @subject = ] N'*subject*'
 
@@ -113,7 +106,7 @@ The sensitivity of the message. The parameter is of type **varchar(12)**. The pa
 - `Private`
 - `Confidential`
 
-#### [ @file_attachments = ] N'*file_attachments*'
+#### [ @file_attachments = ] *N'attachment [ ; ...n ]'*
 
 A semicolon-delimited list of file names to attach to the e-mail message. Files in the list must be specified as absolute paths. The attachments list is of type **nvarchar(max)**. By default, Database Mail limits file attachments to 1 MB per file.
 
@@ -126,7 +119,7 @@ A query to execute. The results of the query can be attached as a file, or inclu
 
 When you use the *@query* parameter, the principal which executes `sp_send_dbmail` must be connected as an individual, not as part of a group, whether a Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) or Windows Active Directory group. SQL Server logins, Windows identities, and Microsoft Entra identities can execute the query, but group members can't, due to Azure SQL Managed Instance impersonation and [EXECUTE AS limitations](/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server#logins-and-users).
 
-#### [ @execute_query_database = ] '*execute_query_database*'
+#### [ @execute_query_database = ] N'*execute_query_database*'
 
 The database context within which the stored procedure runs the query. The parameter is of type **sysname**, with a default of the current database. This parameter is only applicable if *@query* is specified.
 
@@ -187,9 +180,17 @@ Msg 22050, Level 16, State 1, Line 0: Failed to execute the query because the @q
 
 If you set the *@query_result_no_padding* to `1` and you set the *@query_no_truncate* parameter, an error is raised.
 
-#### [ @mailitem_id = ] *mailitem_id* [ OUTPUT ]
+#### [ @mailitem_id = ] *mailitem_id* OUTPUT
 
 Optional output parameter returns the `mailitem_id` of the message. *@mailitem_id* is of type **int**.
+
+#### [ @from_address = ] '*from_address*'
+
+The value of the 'from address' of the email message. This is an optional parameter used to override the settings in the mail profile. This parameter is of type **varchar(max)**. SMTP security settings determine if these overrides are accepted. If no parameter is specified, the default is `NULL`.
+
+#### [ @reply_to = ] '*reply_to*'
+
+The value of the 'reply to address' of the email message. It accepts only one email address as a valid value. This is an optional parameter used to override the settings in the mail profile. This parameter is of type **varchar(max)**. SMTP security settings determine if these overrides are accepted. If no parameter is specified, the default is `NULL`.
 
 ## Return code values
 

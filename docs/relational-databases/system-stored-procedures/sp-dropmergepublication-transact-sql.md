@@ -1,10 +1,10 @@
 ---
-title: "sp_dropmergepublication (Transact-SQL)"
+title: "sys.sp_dropmergepublication (Transact-SQL)"
 description: "Drops a merge publication and its associated Snapshot Agent."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropmergepublication (Transact-SQL)
+# sys.sp_dropmergepublication (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Drops a merge publication and its associated Snapshot Agent. All subscriptions m
 ## Syntax
 
 ```syntaxsql
-sp_dropmergepublication
+sys.sp_dropmergepublication
     [ @publication = ] N'publication'
     [ , [ @ignore_distributor = ] ignore_distributor ]
     [ , [ @reserved = ] reserved ]

@@ -4,7 +4,7 @@ description: sp_help_schedule lists information about schedules.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Lists information about schedules.
 ## Syntax
 
 ```syntaxsql
-sp_help_schedule
+dbo.sp_help_schedule
     [ [ @schedule_id = ] schedule_id ]
     [ , [ @schedule_name = ] N'schedule_name' ]
     [ , [ @attached_schedules_only = ] attached_schedules_only ]

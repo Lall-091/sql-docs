@@ -1,10 +1,10 @@
 ---
-title: "sp_estimated_rowsize_reduction_for_vardecimal (Transact-SQL)"
+title: "sys.sp_estimated_rowsize_reduction_for_vardecimal (Transact-SQL)"
 description: sp_estimated_rowsize_reduction_for_vardecimal estimates the reduction in the average size of rows if you enable vardecimal storage format on a table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -20,7 +20,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_estimated_rowsize_reduction_for_vardecimal (Transact-SQL)
+# sys.sp_estimated_rowsize_reduction_for_vardecimal (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -34,7 +34,8 @@ Estimates the reduction in the average size of rows if you enable **vardecimal**
 ## Syntax
 
 ```syntaxsql
-sp_estimated_rowsize_reduction_for_vardecimal [ @table_name = ] N'table_name'
+sys.sp_estimated_rowsize_reduction_for_vardecimal
+    [ @table_name = ] N'table_name'
 [ ; ]
 ```
 

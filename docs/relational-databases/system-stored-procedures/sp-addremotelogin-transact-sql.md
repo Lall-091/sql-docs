@@ -1,10 +1,10 @@
 ---
-title: "sp_addremotelogin (Transact-SQL)"
+title: "sys.sp_addremotelogin (Transact-SQL)"
 description: sp_addremotelogin adds a new remote login ID on the local server.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addremotelogin (Transact-SQL)
+# sys.sp_addremotelogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Adds a new remote login ID on the local server. This enables remote servers to c
 ## Syntax
 
 ```syntaxsql
-sp_addremotelogin
+sys.sp_addremotelogin
     [ @remoteserver = ] N'remoteserver'
     [ , [ @loginame = ] N'loginame' ]
     [ , [ @remotename = ] N'remotename' ]

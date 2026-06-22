@@ -1,10 +1,10 @@
 ---
-title: "sp_updatestats (Transact-SQL)"
+title: "sys.sp_updatestats (Transact-SQL)"
 description: "Runs UPDATE STATISTICS against all user-defined and internal tables in the current database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, randolphwest
-ms.date: 07/07/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_updatestats (Transact-SQL)
+# sys.sp_updatestats (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
@@ -32,7 +32,8 @@ For more information about `UPDATE STATISTICS`, see [UPDATE STATISTICS](../../t-
 ## Syntax
 
 ```syntaxsql
-sp_updatestats [ [ @resample = ] 'resample' ]
+sys.sp_updatestats [ [ @resample = ] 'resample' ]
+[ ; ]
 ```
 
 ## Return code values

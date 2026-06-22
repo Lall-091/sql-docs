@@ -1,10 +1,10 @@
 ---
-title: "sp_dbmmonitoraddmonitoring (Transact-SQL)"
+title: "sys.sp_dbmmonitoraddmonitoring (Transact-SQL)"
 description: sp_dbmmonitoraddmonitoring creates a database mirroring monitor job that periodically updates the mirroring status for every mirrored database on the server instance.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbmmonitoraddmonitoring (Transact-SQL)
+# sys.sp_dbmmonitoraddmonitoring (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -28,7 +28,7 @@ Creates a database mirroring monitor job that periodically updates the mirroring
 ## Syntax
 
 ```syntaxsql
-sp_dbmmonitoraddmonitoring [ [ @update_period = ] update_period ]
+sys.sp_dbmmonitoraddmonitoring [ [ @update_period = ] update_period ]
 [ ; ]
 ```
 

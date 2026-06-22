@@ -4,7 +4,7 @@ description: Configures advanced settings for SQL Server Managed Backup to Azure
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,24 +30,24 @@ Configures advanced settings for [!INCLUDE [ss-managed-backup](../../includes/ss
 ## Syntax
 
 ```syntaxsql
-EXECUTE managed_backup.sp_backup_config_advanced
-    [ @database_name = ] 'database_name'
-    , [ @encryption_algorithm = ] 'name of the encryption algorithm'
-    , [ @encryptor_type = ] { 'CERTIFICATE' | 'ASYMMETRIC_KEY' }
-    , [ @encryptor_name = ] 'name of the certificate or asymmetric key'
-    , [ @local_cache_path = ] 'NOT AVAILABLE'
+managed_backup.sp_backup_config_advanced
+    [ [ @database_name = ] N'database_name' ]
+    [ , [ @encryption_algorithm = ] N'encryption_algorithm' ]
+    [ , [ @encryptor_type = ] { 'CERTIFICATE' | 'ASYMMETRIC_KEY' } ]
+    [ , [ @encryptor_name = ] N'encryptor_name' ]
+    [ , [ @local_cache_path = ] N'local_cache_path' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @database_name = ] '*database_name*'
+#### [ @database_name = ] N'*database_name*'
 
 The database name for enabling managed backup on a specific database.
 
 If *@database_name* is set to `NULL`, the settings are applied at instance level (applies to all new databases created on the instance).
 
-#### [ @encryption_algorithm ] = '*name of the encryption algorithm*'
+#### [ @encryption_algorithm = ] N'*encryption_algorithm*'
 
 The name of the encryption algorithm used during the backup to encrypt the backup file. *@encryption_algorithm* is **sysname**. It's a required parameter when configuring [!INCLUDE [ss-managed-backup](../../includes/ss-managed-backup-md.md)] for the first time for the database. Specify `NO_ENCRYPTION` if you don't wish to encrypt the backup file. When you change the [!INCLUDE [ss-managed-backup](../../includes/ss-managed-backup-md.md)] configuration settings, this parameter is optional. If the parameter isn't specified, the existing configuration values are retained. The allowed values for this parameter are:
 
@@ -63,15 +63,15 @@ For more information on encryption algorithms, see [Choose an encryption algorit
 
 The type of encryptor, which can be either `CERTIFICATE` or `ASYMMETRIC_KEY`. *@encryptor_type* is **nvarchar(32)**. This parameter is optional if you specify `NO_ENCRYPTION` for the *@encryption_algorithm* parameter.
 
-#### [ @encryptor_name = ] '*name of the certificate or asymmetric key*'
+#### [ @encryptor_name = ] N'*encryptor_name*'
 
 The name of an existing certificate or asymmetric key to use to encrypt the backup. *@encryptor_name* is **sysname**. If using an asymmetric key, it must be configured with Extensible Key Management (EKM). This parameter is optional if you specify `NO_ENCRYPTION` for the *@encryption_algorithm* parameter.
 
 For more information, see [Extensible Key Management (EKM)](../security/encryption/extensible-key-management-ekm.md).
 
-#### [ @local_cache_path = ] 'NOT AVAILABLE'
+#### [ @local_cache_path = ] N'*local_cache_path*'
 
-This parameter isn't yet supported.
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

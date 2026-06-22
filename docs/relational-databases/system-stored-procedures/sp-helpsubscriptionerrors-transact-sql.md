@@ -1,10 +1,10 @@
 ---
-title: "sp_helpsubscriptionerrors (Transact-SQL)"
+title: "sys.sp_helpsubscriptionerrors (Transact-SQL)"
 description: sp_helpsubscriptionerrors returns all transactional replication errors for a given subscription.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpsubscriptionerrors (Transact-SQL)
+# sys.sp_helpsubscriptionerrors (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns all transactional replication errors for a given subscription. This stor
 ## Syntax
 
 ```syntaxsql
-sp_helpsubscriptionerrors
+sys.sp_helpsubscriptionerrors
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

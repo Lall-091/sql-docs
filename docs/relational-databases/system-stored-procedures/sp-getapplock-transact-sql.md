@@ -1,10 +1,10 @@
 ---
-title: "sp_getapplock (Transact-SQL)"
+title: "sys.sp_getapplock (Transact-SQL)"
 description: sp_getapplock places a lock on an application resource.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/02/2026
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"

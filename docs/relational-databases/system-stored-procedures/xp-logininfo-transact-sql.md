@@ -1,10 +1,10 @@
 ---
-title: "xp_logininfo (Transact-SQL)"
+title: "sys.xp_logininfo (Transact-SQL)"
 description: xp_logininfo returns information about Windows users and Windows groups.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# xp_logininfo (Transact-SQL)
+# sys.xp_logininfo (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,22 +27,24 @@ Returns information about Windows users and Windows groups.
 ## Syntax
 
 ```syntaxsql
-xp_logininfo [ [ @acctname = ] 'account_name' ]
-     [ , [ @option = ] 'all' | 'members' ]
-     [ , [ @privilege = ] 'variable_name' OUTPUT ]
+sys.xp_logininfo
+    [ [ @acctname = ] N'acctname' ]
+    [ , [ @option = ] { 'all' | 'members' } ]
+    [ , [ @privilege = ] 'privilege' OUTPUT ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### [ @acctname = ] '*@acctname*'
+#### [ @acctname = ] N'*acctname*'
 
 The name of a Windows user or group granted access to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. *@acctname* is **sysname**, with a default of `NULL`. If *@acctname* isn't specified, all Windows groups and Windows users that are explicitly granted login permission are reported. *@acctname* must be fully qualified. For example, `CONTOSO\macraes`, or `BUILTIN\Administrators`.
 
-#### [ @option = ] 'all' | '*members*'
+#### [ @option = ] { 'all' | '*members*' }
 
 Specifies whether to report information about all permission paths for the account, or to report information about the members of the Windows group. *@option* is **varchar(10)**, with a default of `NULL`. Unless `all` is specified, only the first permission path is displayed.
 
-#### [ @privilege = ] '*variable_name*' OUTPUT
+#### [ @privilege = ] '*privilege*' OUTPUT
 
 An output parameter that returns the privilege level of the specified Windows account. *@privilege* is **varchar(10)**, with a default of `Not wanted`. The privilege level returned is `user`, `admin`, or `null`.
 

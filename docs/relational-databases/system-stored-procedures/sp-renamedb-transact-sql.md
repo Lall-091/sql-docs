@@ -1,10 +1,10 @@
 ---
-title: "sp_renamedb (Transact-SQL)"
+title: "sys.sp_renamedb (Transact-SQL)"
 description: sp_renamedb changes the name of a database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_renamedb (Transact-SQL)
+# sys.sp_renamedb (Transact-SQL)
 
 [!INCLUDE [SQL Server - ASDBMI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Changes the name of a database.
 ## Syntax
 
 ```syntaxsql
-sp_renamedb
+sys.sp_renamedb
     [ @dbname = ] N'dbname'
     , [ @newname = ] N'newname'
 [ ; ]

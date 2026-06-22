@@ -1,10 +1,10 @@
 ---
-title: "sp_changesubscriptiondtsinfo (Transact-SQL)"
+title: "sys.sp_changesubscriptiondtsinfo (Transact-SQL)"
 description: sp_changesubscriptiondtsinfo changes the Data Transformation Services (DTS) package properties of a subscription.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changesubscriptiondtsinfo (Transact-SQL)
+# sys.sp_changesubscriptiondtsinfo (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes the Data Transformation Services (DTS) package properties of a subscript
 ## Syntax
 
 ```syntaxsql
-sp_changesubscriptiondtsinfo
+sys.sp_changesubscriptiondtsinfo
     [ @job_id = ] job_id
     [ , [ @dts_package_name = ] N'dts_package_name' ]
     [ , [ @dts_package_password = ] N'dts_package_password' ]

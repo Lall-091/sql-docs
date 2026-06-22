@@ -4,7 +4,7 @@ description: Removes the specified category of jobs, alerts, or operators from t
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Removes the specified category of jobs, alerts, or operators from the current se
 ## Syntax
 
 ```syntaxsql
-sp_delete_category
+dbo.sp_delete_category
     [ @class = ] 'class'
     , [ @name = ] N'name'
 [ ; ]

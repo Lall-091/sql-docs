@@ -1,10 +1,10 @@
 ---
-title: "sp_change_agent_profile (Transact-SQL)"
+title: "sys.sp_change_agent_profile (Transact-SQL)"
 description: Changes a parameter of a replication agent profile stored in the MSagent_profiles table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_change_agent_profile (Transact-SQL)
+# sys.sp_change_agent_profile (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes a parameter of a replication agent profile stored in the [MSagent_profil
 ## Syntax
 
 ```syntaxsql
-sp_change_agent_profile
+sys.sp_change_agent_profile
     [ @profile_id = ] profile_id
     , [ @property = ] N'property'
     , [ @value = ] N'value'

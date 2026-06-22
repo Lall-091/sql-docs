@@ -1,10 +1,10 @@
 ---
-title: "sp_addsynctriggers (Transact-SQL)"
+title: "sys.sp_addsynctriggers (Transact-SQL)"
 description: Creates triggers at the Subscriber used with all types of updatable subscriptions.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addsynctriggers (Transact-SQL)
+# sys.sp_addsynctriggers (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Creates triggers at the Subscriber used with all types of updatable subscription
 ## Syntax
 
 ```syntaxsql
-sp_addsynctriggers
+sys.sp_addsynctriggers
     [ @sub_table = ] N'sub_table'
     , [ @sub_table_owner = ] N'sub_table_owner'
     , [ @publisher = ] N'publisher'

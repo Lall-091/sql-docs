@@ -1,5 +1,5 @@
 ---
-title: "sp_addlinkedserver (Transact-SQL)"
+title: "sys.sp_addlinkedserver (Transact-SQL)"
 description: sp_addlinkedserver creates a linked server, providing access to distributed, heterogeneous queries against OLE DB data sources.
 author: markingmyname
 ms.author: maghan
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addlinkedserver (Transact-SQL)
+# sys.sp_addlinkedserver (Transact-SQL)
 
 [!INCLUDE [SQL Server - ASDBMI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -29,7 +29,7 @@ Creates a linked server. A linked server provides access to distributed, heterog
 ## Syntax
 
 ```syntaxsql
-sp_addlinkedserver
+sys.sp_addlinkedserver
     [ @server = ] N'server'
     [ , [ @srvproduct = ] N'srvproduct' ]
     [ , [ @provider = ] N'provider' ]
@@ -76,7 +76,7 @@ The location of the database as interpreted by the OLE DB provider. *@location* 
 
 #### [ @provstr = ] N'*provstr*'
 
-The OLE DB provider-specific connection string that identifies a unique data source. *@provstr* is **nvarchar(4000)**, with a default of `NULL`. The argument *provstr* is either passed to IDataInitialize or set as the `DBPROP_INIT_PROVIDERSTRING` property to initialize the OLE DB provider.
+The OLE DB provider-specific connection string that identifies a unique data source. *@provstr* is **nvarchar(4000)**, with a default of `NULL`. The *@provstr* argument is either passed to IDataInitialize or set as the `DBPROP_INIT_PROVIDERSTRING` property to initialize the OLE DB provider.
 
 When the linked server is created against the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB provider, the instance can be specified by using the `SERVER` keyword as `SERVER=servername\instancename` to specify a specific instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. The *servername* is the name of the computer on which [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is running, and *instancename* is the name of the specific instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to which the user will be connected.
 

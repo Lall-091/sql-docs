@@ -4,7 +4,7 @@ description: "Disables change data capture for the specified source table and ca
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -32,27 +32,27 @@ Disables change data capture for the specified source table and capture instance
 
 ```syntaxsql
 sys.sp_cdc_disable_table
-    [ @source_schema = ] 'source_schema'
-      , [ @source_name = ] 'source_name'
-    [ , [ @capture_instance = ] { 'capture_instance' | 'all' } ]
+    [ @source_schema = ] N'source_schema'
+    , [ @source_name = ] N'source_name'
+    , [ @capture_instance = ] { 'capture_instance' | 'all' }
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @source_schema = ] '*source_schema*'
+#### [ @source_schema = ] N'*source_schema*'
 
 The name of the schema in which the source table is contained. *@source_schema* is **sysname**, with no default, and can't be `NULL`.
 
 *@source_schema* must exist in the current database.
 
-#### [ @source_name = ] '*source_name*'
+#### [ @source_name = ] N'*source_name*'
 
 The name of the source table from which change data capture is to be disabled. *@source_name* is **sysname**, with no default, and can't be `NULL`.
 
 *@source_name* must exist in the current database.
 
-#### [ @capture_instance = ] { '*capture_instance*' | 'all' }
+#### [ @capture_instance = ] { N'*capture_instance*' | 'all' }
 
 The name of the capture instance to disable for the specified source table. *@capture_instance* is **sysname** and can't be `NULL`.
 

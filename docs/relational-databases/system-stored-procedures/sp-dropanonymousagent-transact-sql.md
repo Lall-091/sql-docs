@@ -1,10 +1,10 @@
 ---
-title: "sp_dropanonymousagent (Transact-SQL)"
+title: "sys.sp_dropanonymousagent (Transact-SQL)"
 description: sp_dropanonymousagent drops an anonymous agent for replication monitoring at the distributor from the Publisher.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropanonymousagent (Transact-SQL)
+# sys.sp_dropanonymousagent (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Drops an anonymous agent for replication monitoring at the distributor from the 
 ## Syntax
 
 ```syntaxsql
-sp_dropanonymousagent
+sys.sp_dropanonymousagent
     [ @subid = ] 'subid'
     , [ @type = ] type
 [ ; ]

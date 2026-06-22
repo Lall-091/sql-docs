@@ -1,10 +1,10 @@
 ---
-title: "sp_unbindrule (Transact-SQL)"
+title: "sys.sp_unbindrule (Transact-SQL)"
 description: Unbinds a rule from a column or an alias data type in the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_unbindrule (Transact-SQL)
+# sys.sp_unbindrule (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Unbinds a rule from a column or an alias data type in the current database.
 ## Syntax
 
 ```syntaxsql
-sp_unbindrule
+sys.sp_unbindrule
     [ @objname = ] N'objname'
     [ , [ @futureonly = ] 'futureonly' ]
 [ ; ]

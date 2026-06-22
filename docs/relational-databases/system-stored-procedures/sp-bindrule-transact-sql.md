@@ -1,10 +1,10 @@
 ---
-title: "sp_bindrule (Transact-SQL)"
+title: "sys.sp_bindrule (Transact-SQL)"
 description: sp_bindrule binds a rule to a column or to an alias data type.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_bindrule (Transact-SQL)
+# sys.sp_bindrule (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
@@ -33,7 +33,7 @@ Binds a rule to a column or to an alias data type.
 ## Syntax
 
 ```syntaxsql
-sp_bindrule
+sys.sp_bindrule
     [ @rulename = ] N'rulename'
     , [ @objname = ] N'objname'
     [ , [ @futureonly = ] 'futureonly' ]

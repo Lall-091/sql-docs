@@ -4,7 +4,7 @@ description: "Renames an existing condition in Policy-Based Management."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,10 @@ Renames an existing condition in Policy-Based Management.
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_rename_condition
-    { [ @name = ] N'name' | [ @condition_id = ] condition_id }
-    , [ @new_name = ] N'new_name'
+dbo.sp_syspolicy_rename_condition
+    [ [ @name = ] N'name' ]
+    [ , [ @condition_id = ] condition_id ]
+    [ , [ @new_name = ] N'new_name' ]
 [ ; ]
 ```
 

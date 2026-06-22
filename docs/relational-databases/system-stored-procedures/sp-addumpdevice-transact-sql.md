@@ -1,10 +1,10 @@
 ---
-title: "sp_addumpdevice (Transact-SQL)"
+title: "sys.sp_addumpdevice (Transact-SQL)"
 description: Adds a backup device to an instance of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addumpdevice (Transact-SQL)
+# sys.sp_addumpdevice (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -28,7 +28,7 @@ Adds a backup device to an instance of [!INCLUDE [ssNoVersion](../../includes/ss
 ## Syntax
 
 ```syntaxsql
-sp_addumpdevice
+sys.sp_addumpdevice
     [ @devtype = ] 'devtype'
     , [ @logicalname = ] N'logicalname'
     , [ @physicalname = ] N'physicalname'

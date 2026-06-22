@@ -1,10 +1,10 @@
 ---
-title: "sp_changereplicationserverpasswords (Transact-SQL)"
+title: "sys.sp_changereplicationserverpasswords (Transact-SQL)"
 description: Changes stored passwords for the Windows account or SQL Server login used by replication agents.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changereplicationserverpasswords (Transact-SQL)
+# sys.sp_changereplicationserverpasswords (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes stored passwords for the Windows account or [!INCLUDE [ssNoVersion](../.
 ## Syntax
 
 ```syntaxsql
-sp_changereplicationserverpasswords
+sys.sp_changereplicationserverpasswords
     [ @login_type = ] login_type
     , [ @login = ] N'login'
     , [ @password = ] N'password'

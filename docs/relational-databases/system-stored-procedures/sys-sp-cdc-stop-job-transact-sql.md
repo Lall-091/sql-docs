@@ -4,7 +4,7 @@ description: "Stops a change data capture cleanup or capture job for the current
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -29,8 +29,7 @@ Stops a change data capture cleanup or capture job for the current database.
 ## Syntax
 
 ```syntaxsql
-sys.sp_cdc_stop_job
-    [ [ @job_type = ] N'job_type' ]
+sys.sp_cdc_stop_job [ [ @job_type = ] N'job_type' ]
 [ ; ]
 ```
 

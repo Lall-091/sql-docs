@@ -1,10 +1,10 @@
 ---
-title: "sp_dbmmonitorchangealert (Transact-SQL)"
+title: "sys.sp_dbmmonitorchangealert (Transact-SQL)"
 description: sp_dbmmonitorchangealert adds or changes warning threshold for a specified mirroring performance metric.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbmmonitorchangealert (Transact-SQL)
+# sys.sp_dbmmonitorchangealert (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -26,7 +26,7 @@ Adds or changes warning threshold for a specified mirroring performance metric.
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-sp_dbmmonitorchangealert
+sys.sp_dbmmonitorchangealert
     [ @database_name = ] N'database_name'
     , [ @alert_id = ] alert_id
     , [ @threshold = ] threshold

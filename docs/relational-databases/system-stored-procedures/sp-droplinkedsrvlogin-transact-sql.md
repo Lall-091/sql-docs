@@ -1,10 +1,10 @@
 ---
-title: "sp_droplinkedsrvlogin (Transact-SQL)"
+title: "sys.sp_droplinkedsrvlogin (Transact-SQL)"
 description: Removes an existing mapping between a login on the local server running SQL Server, and a login on the linked server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_droplinkedsrvlogin (Transact-SQL)
+# sys.sp_droplinkedsrvlogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Removes an existing mapping between a login on the local server running [!INCLUD
 ## Syntax
 
 ```syntaxsql
-sp_droplinkedsrvlogin
+sys.sp_droplinkedsrvlogin
     [ @rmtsrvname = ] N'rmtsrvname'
     , [ @locallogin = ] N'locallogin'
 [ ; ]

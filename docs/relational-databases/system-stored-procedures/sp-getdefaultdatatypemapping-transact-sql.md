@@ -1,10 +1,10 @@
 ---
-title: "sp_getdefaultdatatypemapping (Transact-SQL)"
+title: "sys.sp_getdefaultdatatypemapping (Transact-SQL)"
 description: "Returns information on the default mapping for data types between SQL Server and a non-SQL Server DBMS."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_getdefaultdatatypemapping (Transact-SQL)
+# sys.sp_getdefaultdatatypemapping (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,27 +27,28 @@ Returns information on the default mapping for the specified data type between [
 ## Syntax
 
 ```syntaxsql
-sp_getdefaultdatatypemapping [ @source_dbms = ] 'source_dbms'
+sys.sp_getdefaultdatatypemapping
+    [ @source_dbms = ] N'source_dbms'
     [ , [ @source_version = ] 'source_version' ]
-      , [ @source_type = ] 'source_type'
+    , [ @source_type = ] N'source_type'
     [ , [ @source_length = ] source_length ]
     [ , [ @source_precision = ] source_precision ]
     [ , [ @source_scale = ] source_scale ]
     [ , [ @source_nullable = ] source_nullable ]
-      , [ @destination_dbms = ] 'destination_dbms'
+    , [ @destination_dbms = ] N'destination_dbms'
     [ , [ @destination_version = ] 'destination_version' ]
-    [ , [ @destination_type = ] 'destination_type' OUTPUT ]
-    [ , [ @destination_length = ] destination_length OUTPUT ]
-    [ , [ @destination_precision = ] destination_precision OUTPUT ]
-    [ , [ @destination_scale = ] destination_scale OUTPUT ]
-    [ , [ @destination_nullable = ] source_nullable OUTPUT ]
-    [ , [ @dataloss = ] dataloss OUTPUT ]
+    , [ @destination_type = ] N'destination_type' OUTPUT
+    , [ @destination_length = ] destination_length OUTPUT
+    , [ @destination_precision = ] destination_precision OUTPUT
+    , [ @destination_scale = ] destination_scale OUTPUT
+    , [ @destination_nullable = ] destination_nullable OUTPUT
+    , [ @dataloss = ] dataloss OUTPUT
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @source_dbms = ] '*source_dbms*'
+#### [ @source_dbms = ] N'*source_dbms*'
 
 The name of the DBMS from which the data types are mapped. *@source_dbms* is **sysname**, and can be one of the following values:
 
@@ -62,7 +63,7 @@ You must specify this parameter.
 
 The version number of the source DBMS. *@source_version* is **varchar(10)**, with a default value of `NULL`.
 
-#### [ @source_type = ] '*source_type*'
+#### [ @source_type = ] N'*source_type*'
 
 The data type in the source DBMS. *@source_type* is **sysname**, with no default.
 
@@ -82,7 +83,7 @@ The scale of the data type in the source DBMS. *@source_scale* is **int**, with 
 
 Specifies if the data type in the source DBMS supports a value of `NULL`. *@source_nullable* is **bit**, with a default value of `1`, which means that `NULL` values are supported.
 
-#### [ @destination_dbms = ] '*destination_dbms*'
+#### [ @destination_dbms = ] N'*destination_dbms*'
 
 The name of the destination DBMS. *@destination_dbms* is **sysname**, and can be one of the following values:
 
@@ -99,7 +100,7 @@ You must specify this parameter.
 
 The product version of the destination DBMS. *@destination_version* is **varchar(10)**, with a default value of `NULL`.
 
-#### [ @destination_type = ] '*destination_type*' OUTPUT
+#### [ @destination_type = ] N'*destination_type*' OUTPUT
 
 The data type listed in the destination DBMS. *@destination_type* is **sysname**, with a default value of `NULL`.
 

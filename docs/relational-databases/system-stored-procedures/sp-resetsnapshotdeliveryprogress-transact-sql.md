@@ -1,10 +1,10 @@
 ---
-title: "sp_resetsnapshotdeliveryprogress (Transact-SQL)"
+title: "sys.sp_resetsnapshotdeliveryprogress (Transact-SQL)"
 description: sp_resetsnapshotdeliveryprogress resets the snapshot delivery process for a pull subscription so that snapshot delivery can be restarted.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_resetsnapshotdeliveryprogress (Transact-SQL)
+# sys.sp_resetsnapshotdeliveryprogress (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Resets the snapshot delivery process for a pull subscription so that snapshot de
 ## Syntax
 
 ```syntaxsql
-sp_resetsnapshotdeliveryprogress
+sys.sp_resetsnapshotdeliveryprogress
     [ [ @verbose_level = ] verbose_level ]
     [ , [ @drop_table = ] N'drop_table' ]
 [ ; ]

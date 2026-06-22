@@ -1,10 +1,10 @@
 ---
-title: "sp_posttracertoken (Transact-SQL)"
+title: "sys.sp_posttracertoken (Transact-SQL)"
 description: sp_posttracertoken posts a tracer token into the transaction log at the Publisher.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_posttracertoken (Transact-SQL)
+# sys.sp_posttracertoken (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -37,7 +37,7 @@ This stored procedure is executed at the Publisher on the publication database. 
 ## Syntax
 
 ```syntaxsql
-sp_posttracertoken
+sys.sp_posttracertoken
     [ @publication = ] N'publication'
     [ , [ @tracer_token_id = ] tracer_token_id OUTPUT ]
     [ , [ @publisher = ] N'publisher' ]
@@ -52,7 +52,7 @@ The name of the publication for which latency is being measured. *@publication* 
 
 #### [ @tracer_token_id = ] *tracer_token_id* OUTPUT
 
-The ID of the tracer token inserted. *@tracer_token_id* is an OUTPUT parameter of type **int**. This value can be used to execute [sp_helptracertokenhistory](sp-helptracertokenhistory-transact-sql.md) or [sp_deletetracertokenhistory](sp-deletetracertokenhistory-transact-sql.md) without first executing [sp_helptracertokens](sp-helptracertokens-transact-sql.md).
+The ID of the tracer token inserted. *@tracer_token_id* is an `OUTPUT` parameter of type **int**. This value can be used to execute [sp_helptracertokenhistory](sp-helptracertokenhistory-transact-sql.md) or [sp_deletetracertokenhistory](sp-deletetracertokenhistory-transact-sql.md) without first executing [sp_helptracertokens](sp-helptracertokens-transact-sql.md).
 
 #### [ @publisher = ] N'*publisher*'
 

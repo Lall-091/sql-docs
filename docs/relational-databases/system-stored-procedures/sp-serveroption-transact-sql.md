@@ -1,10 +1,10 @@
 ---
-title: "sp_serveroption (Transact-SQL)"
+title: "sys.sp_serveroption (Transact-SQL)"
 description: "sp_serveroption (Transact-SQL)"
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_serveroption (Transact-SQL)
+# sys.sp_serveroption (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -28,7 +28,7 @@ Sets server options for remote servers and linked servers.
 ## Syntax
 
 ```syntaxsql
-sp_serveroption
+sys.sp_serveroption
     [ @server = ] N'server'
     , [ @optname = ] 'optname'
     , [ @optvalue = ] N'optvalue'

@@ -1,10 +1,10 @@
 ---
-title: "sp_getqueuedrows (Transact-SQL)"
+title: "sys.sp_getqueuedrows (Transact-SQL)"
 description: sp_getqueuedrows retrieves rows at the Subscriber that have updates pending in the queue.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_getqueuedrows (Transact-SQL)
+# sys.sp_getqueuedrows (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Retrieves rows at the Subscriber that have updates pending in the queue. This st
 ## Syntax
 
 ```syntaxsql
-sp_getqueuedrows
+sys.sp_getqueuedrows
     [ @tablename = ] N'tablename'
     [ , [ @owner = ] N'owner' ]
     [ , [ @tranid = ] N'tranid' ]

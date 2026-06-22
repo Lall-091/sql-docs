@@ -1,10 +1,10 @@
 ---
-title: "sp_addserver (Transact-SQL)"
+title: "sys.sp_addserver (Transact-SQL)"
 description: sp_addserver defines the name of the local instance of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addserver (Transact-SQL)
+# sys.sp_addserver (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -32,7 +32,7 @@ The instance name of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] can't be c
 ## Syntax
 
 ```syntaxsql
-sp_addserver
+sys.sp_addserver
     [ @server = ] N'server'
     [ , [ @local = ] 'LOCAL' ]
     [ , [ @duplicate_ok = ] 'duplicate_OK' ]

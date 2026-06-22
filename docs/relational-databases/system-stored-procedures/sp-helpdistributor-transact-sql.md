@@ -1,10 +1,10 @@
 ---
-title: "sp_helpdistributor (Transact-SQL)"
+title: "sys.sp_helpdistributor (Transact-SQL)"
 description: "Lists information about the Distributor, distribution database, working directory, and SQL Server Agent user account."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpdistributor (Transact-SQL)
+# sys.sp_helpdistributor (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,37 +27,41 @@ Lists information about the Distributor, distribution database, working director
 ## Syntax
 
 ```syntaxsql
-sp_helpdistributor [ [ @distributor = ] 'distributor' OUTPUT ]
-    [ , [ @distribdb = ] 'distribdb' OUTPUT ]
-    [ , [ @directory = ] 'directory' OUTPUT ]
-    [ , [ @account = ] 'account' OUTPUT ]
+sys.sp_helpdistributor
+    [ [ @distributor = ] N'distributor' OUTPUT ]
+    [ , [ @distribdb = ] N'distribdb' OUTPUT ]
+    [ , [ @directory = ] N'directory' OUTPUT ]
+    [ , [ @account = ] N'account' OUTPUT ]
     [ , [ @min_distretention = ] min_distretention OUTPUT ]
     [ , [ @max_distretention = ] max_distretention OUTPUT ]
     [ , [ @history_retention = ] history_retention OUTPUT ]
-    [ , [ @history_cleanupagent = ] 'history_cleanupagent' OUTPUT ]
-    [ , [ @distrib_cleanupagent = ] 'distrib_cleanupagent' OUTPUT ]
-    [ , [ @publisher = ] 'publisher' ]
-    [ , [ @local = ] 'local' ]
-    [ , [ @rpcsrvname = ] 'rpcsrvname' OUTPUT ]
-    [ , [ @publisher_type = ] 'publisher_type' OUTPUT ]
+    [ , [ @history_cleanupagent = ] N'history_cleanupagent' OUTPUT ]
+    [ , [ @distrib_cleanupagent = ] N'distrib_cleanupagent' OUTPUT ]
+    [ , [ @publisher = ] N'publisher' ]
+    [ , [ @local = ] N'local' ]
+    [ , [ @rpcsrvname = ] N'rpcsrvname' OUTPUT ]
+    [ , [ @publisher_type = ] N'publisher_type' OUTPUT ]
+    [ , [ @deletebatchsize_xact = ] deletebatchsize_xact OUTPUT ]
+    [ , [ @deletebatchsize_cmd = ] deletebatchsize_cmd OUTPUT ]
+    [ , [ @dist_listener = ] N'dist_listener' OUTPUT ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @distributor = ] '*distributor*' OUTPUT
+#### [ @distributor = ] N'*distributor*' OUTPUT
 
 The name of the Distributor. *@distributor* is **sysname**, with a default of `%`, which is the only value that returns a result set.
 
-#### [ @distribdb = ] '*distribdb*' OUTPUT
+#### [ @distribdb = ] N'*distribdb*' OUTPUT
 
 The name of the distribution database. *@distribdb* is **sysname**, with a default of `%`, which is the only value that returns a result set.
 
-#### [ @directory = ] '*directory*' OUTPUT
+#### [ @directory = ] N'*directory*' OUTPUT
 
 The working directory. *@directory* is **nvarchar(255)**, with a default of `%`, which is the only value that returns a result set.
 
-#### [ @account = ] '*account*' OUTPUT
+#### [ @account = ] N'*account*' OUTPUT
 
 The Windows user account. *@account* is **nvarchar(255)**, with a default of `%`, which is the only value that returns a result set.
 
@@ -73,29 +77,41 @@ The maximum distribution retention period, in hours. *@max_distretention* is **i
 
 The history retention period, in hours. *@history_retention* is **int**, with a default of `-1`.
 
-#### [ @history_cleanupagent = ] '*history_cleanupagent*' OUTPUT
+#### [ @history_cleanupagent = ] N'*history_cleanupagent*' OUTPUT
 
 The name of the history cleanup agent. *@history_cleanupagent* is **nvarchar(100)**, with a default of `%`, which is the only value that returns a result set.
 
-#### [ @distrib_cleanupagent = ] '*distrib_cleanupagent*' OUTPUT
+#### [ @distrib_cleanupagent = ] N'*distrib_cleanupagent*' OUTPUT
 
 The name of the distribution cleanup agent. *@distrib_cleanupagent* is **nvarchar(100)**, with a default of `%`, which is the only value that returns a result set.
 
-#### [ @publisher = ] '*publisher*'
+#### [ @publisher = ] N'*publisher*'
 
 The name of the Publisher. *@publisher* is **sysname**, with a default of `NULL`.
 
-#### [ @local = ] '*local*'
+#### [ @local = ] N'*local*'
 
 Whether [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] should get local server values. *@local* is **nvarchar(5)**, with a default of `NULL`.
 
-#### [ @rpcsrvname = ] '*rpcsrvname*' OUTPUT
+#### [ @rpcsrvname = ] N'*rpcsrvname*' OUTPUT
 
 The name of the server that issues remote procedure calls. *@rpcsrvname* is **sysname**, with a default of `%`, which is the only value that returns a result set.
 
-#### [ @publisher_type = ] '*publisher_type*' OUTPUT
+#### [ @publisher_type = ] N'*publisher_type*' OUTPUT
 
 The publisher type of the Publisher. *@publisher_type* is **sysname**, with a default of `%`, which is the only value that returns a result set.
+
+#### [ @deletebatchsize_xact = ] *deletebatchsize_xact* OUTPUT
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @deletebatchsize_cmd = ] *deletebatchsize_cmd* OUTPUT
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @dist_listener = ] N'*dist_listener*' OUTPUT
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Result set
 

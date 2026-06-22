@@ -1,10 +1,10 @@
 ---
-title: "sp_resetstatus (Transact-SQL)"
+title: "sys.sp_resetstatus (Transact-SQL)"
 description: sp_resetstatus resets the status of a suspect database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_resetstatus (Transact-SQL)
+# sys.sp_resetstatus (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Resets the status of a suspect database.
 ## Syntax
 
 ```syntaxsql
-sp_resetstatus [ @DBName = ] N'DBName'
+sys.sp_resetstatus [ @DBName = ] N'DBName'
 [ ; ]
 ```
 

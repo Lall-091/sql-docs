@@ -1,10 +1,10 @@
 ---
-title: "sp_helprolemember (Transact-SQL)"
+title: "sys.sp_helprolemember (Transact-SQL)"
 description: sp_helprolemember returns information about the direct members of a role in the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helprolemember (Transact-SQL)
+# sys.sp_helprolemember (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information about the direct members of a role in the current database.
 ## Syntax
 
 ```syntaxsql
-sp_helprolemember [ [ @rolename = ] N'rolename' ]
+sys.sp_helprolemember [ [ @rolename = ] N'rolename' ]
 [ ; ]
 ```
 

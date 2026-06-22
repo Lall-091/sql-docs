@@ -4,7 +4,7 @@ description: "Binds the specified In-Memory OLTP database to the specified resou
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -35,18 +35,18 @@ If there's already a binding in place for a given database, the procedure return
 
 ```syntaxsql
 sys.sp_xtp_bind_db_resource_pool
-    [ @database_name = ] 'database_name'
-    , [ @resource_pool_name = ] 'resource_pool_name'
+    [ @database_name = ] N'database_name'
+    , [ @pool_name = ] N'pool_name'
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @database_name = ] '*database_name*'
+#### [ @database_name = ] N'*database_name*'
 
 The name of an existing [!INCLUDE [inmemory](../../includes/inmemory-md.md)] enabled database. *@database_name* is **sysname**.
 
-#### [ @resource_pool_name = ] '*resource_pool_name*'
+#### [ @pool_name = ] N'*pool_name*'
 
 The name of an existing resource pool. *@resource_pool_name* is **sysname**.
 

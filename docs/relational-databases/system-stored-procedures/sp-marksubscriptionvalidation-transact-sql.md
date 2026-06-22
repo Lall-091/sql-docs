@@ -1,10 +1,10 @@
 ---
-title: "sp_marksubscriptionvalidation (Transact-SQL)"
+title: "sys.sp_marksubscriptionvalidation (Transact-SQL)"
 description: sp_marksubscriptionvalidation marks the current open transaction to be a subscription-level validation transaction for the specified subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_marksubscriptionvalidation (Transact-SQL)
+# sys.sp_marksubscriptionvalidation (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Marks the current open transaction to be a subscription-level validation transac
 ## Syntax
 
 ```syntaxsql
-sp_marksubscriptionvalidation
+sys.sp_marksubscriptionvalidation
     [ @publication = ] N'publication'
     , [ @subscriber = ] N'subscriber'
     , [ @destination_db = ] N'destination_db'

@@ -1,10 +1,10 @@
 ---
-title: "sp_getmergedeletetype (Transact-SQL)"
+title: "sys.sp_getmergedeletetype (Transact-SQL)"
 description: "sp_getmergedeletetype returns the type of merge delete (user, partial, or system)."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_getmergedeletetype (Transact-SQL)
+# sys.sp_getmergedeletetype (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the type of merge delete. This stored procedure is executed at the Publi
 ## Syntax
 
 ```syntaxsql
-sp_getmergedeletetype
+sys.sp_getmergedeletetype
     [ @source_object = ] N'source_object'
     , [ @rowguid = ] 'rowguid'
     , [ @delete_type = ] delete_type OUTPUT
@@ -46,7 +46,7 @@ The row identifier for the delete type. *@rowguid* is **uniqueidentifier**, with
 
 #### [ @delete_type = ] *delete_type* OUTPUT
 
-The code indicating the type of delete. *@delete_type* is an OUTPUT parameter of type **int**, and can be one of these values.
+The code indicating the type of delete. *@delete_type* is an `OUTPUT` parameter of type **int**, and can be one of these values.
 
 | Value | Description |
 | --- | --- |

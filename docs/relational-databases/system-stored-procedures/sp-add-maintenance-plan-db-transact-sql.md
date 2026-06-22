@@ -4,7 +4,7 @@ description: "Associates a database with a maintenance plan."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -32,9 +32,9 @@ Associates a database with a maintenance plan.
 ## Syntax
 
 ```syntaxsql
-sp_add_maintenance_plan_db
+dbo.sp_add_maintenance_plan_db
     [ @plan_id = ] 'plan_id'
-    , [ @db_name = ] 'database_name'
+    , [ @db_name = ] N'db_name'
 [ ; ]
 ```
 
@@ -44,7 +44,7 @@ sp_add_maintenance_plan_db
 
 Specifies the plan ID of the maintenance plan. *@plan_id* is **uniqueidentifier**, and must be a valid ID.
 
-#### [ @db_name = ] '*database_name*'
+#### [ @db_name = ] N'*db_name*'
 
 Specifies the name of the database to be added to the maintenance plan. The database must be created or exist before its addition to the plan. *@database_name* is **sysname**.
 

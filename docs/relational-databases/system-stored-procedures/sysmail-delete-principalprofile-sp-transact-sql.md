@@ -4,7 +4,7 @@ description: "Removes permission for a database user or role to use a public or 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,11 @@ Removes permission for a database user or role to use a public or private Databa
 ## Syntax
 
 ```syntaxsql
-sysmail_delete_principalprofile_sp { [ @principal_id = ] principal_id | [ @principal_name = ] 'principal_name' } ,
-    { [ @profile_id = ] profile_id | [ @profile_name = ] 'profile_name' }
+dbo.sysmail_delete_principalprofile_sp
+    { [ @principal_id = ] principal_id
+        | [ @principal_name = ] N'principal_name' }
+    , { [ @profile_id = ] profile_id
+        | [ @profile_name = ] N'profile_name' }
 [ ; ]
 ```
 
@@ -38,7 +41,7 @@ sysmail_delete_principalprofile_sp { [ @principal_id = ] principal_id | [ @princ
 
 The ID of the database user or role in the `msdb` database for the association to delete. *@principal_id* is **int**, with a default of `NULL`. To make a public profile into a private profile, provide the principal ID `0` or the principal name `public`. Either *@principal_id* or *@principal_name* must be specified.
 
-#### [ @principal_name = ] '*principal_name*'
+#### [ @principal_name = ] N'*principal_name*'
 
 The name of the database user or role in the `msdb` database for the association to delete. *@principal_name* is **sysname**, with a default of `NULL`. To make a public profile into a private profile, provide the principal ID `0` or the principal name `public`. Either *@principal_id* or *@principal_name* must be specified.
 
@@ -46,7 +49,7 @@ The name of the database user or role in the `msdb` database for the association
 
 The ID of the profile for the association to delete. *@profile_id* is **int**, with a default of `NULL`. Either *@profile_id* or *@profile_name* must be specified.
 
-#### [ @profile_name = ] '*profile_name*'
+#### [ @profile_name = ] N'*profile_name*'
 
 The name of the profile for the association to delete. *@profile_name* is **sysname**, with a default of `NULL`. Either *@profile_id* or *@profile_name* must be specified.
 

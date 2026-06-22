@@ -1,10 +1,10 @@
 ---
-title: "sp_replmonitorhelppublication (Transact-SQL)"
+title: "sys.sp_replmonitorhelppublication (Transact-SQL)"
 description: Returns current status information for one or more publications at a Publisher.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replmonitorhelppublication (Transact-SQL)
+# sys.sp_replmonitorhelppublication (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns current status information for one or more publications at a Publisher. 
 ## Syntax
 
 ```syntaxsql
-sp_replmonitorhelppublication
+sys.sp_replmonitorhelppublication
     [ [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]
     [ , [ @publication = ] N'publication' ]

@@ -4,7 +4,7 @@ description: "Manually release memory related to deleted rows of in-memory data 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -33,24 +33,23 @@ The `sys.sp_xtp_force_gc` system stored procedure was introduced in [!INCLUDE [s
 ## Syntax
 
 ```syntaxsql
-sys.sp_xtp_force_gc
-    [ [ @dbname = ] 'database_name' ]
+sys.sp_xtp_force_gc [ [ @database_name = ] N'database_name' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @dbname = ] '*database_name*'
+#### [ @database_name = ] N'*database_name*'
 
-The database to release unused memory for memory-optimized tables. *@dbname* is **sysname**.
+The database to release unused memory for memory-optimized tables. *@database_name* is **sysname**.
 
-- When the *@dname* parameter isn't specified, only system-level memory structures in the instance are considered.
+- When the *@database_name* parameter isn't specified, only system-level memory structures in the instance are considered.
 
-- When the *@dname* parameter provided is `tempdb`, the memory structures related to [Memory-optimized TempDB metadata](../databases/tempdb-database.md#memory-optimized-tempdb-metadata) are affected.
+- When the *@database_name* parameter provided is `tempdb`, the memory structures related to [Memory-optimized TempDB metadata](../databases/tempdb-database.md#memory-optimized-tempdb-metadata) are affected.
 
-- When the *@dname* parameter provided is a user database, the memory structures related memory-optimized tables are affected.
+- When the *@database_name* parameter provided is a user database, the memory structures related memory-optimized tables are affected.
 
-Therefore, you might expect to see different results when executing `sys.sp_xtp_force_gc`: without a parameter, with `@dbname = N'tempdb'`, or with `@dbname =` a user database name.
+Therefore, you might expect to see different results when executing `sys.sp_xtp_force_gc`: without a parameter, with `@database_name = N'tempdb'`, or with `@database_name =` a user database name.
 
 ## Return code values
 

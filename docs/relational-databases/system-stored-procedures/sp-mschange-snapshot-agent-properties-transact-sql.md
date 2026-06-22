@@ -1,10 +1,10 @@
 ---
-title: "sp_MSchange_snapshot_agent_properties (T-SQL)"
+title: "sys.sp_MSchange_snapshot_agent_properties (Transact-SQL)"
 description: Describes the sp_MSchange_snapshot_agent_properties stored procedure used to change the properties for the Snapshot Agent used for SQL Server Replication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_MSchange_snapshot_agent_properties (Transact-SQL)
+# sys.sp_MSchange_snapshot_agent_properties (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Changes the properties of a Snapshot Agent job that runs at a [!INCLUDE [ssVersi
 ## Syntax
 
 ```syntaxsql
-sp_MSchange_snapshot_agent_properties
+sys.sp_MSchange_snapshot_agent_properties
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'
@@ -48,6 +48,7 @@ sp_MSchange_snapshot_agent_properties
     , [ @job_login = ] N'job_login'
     , [ @job_password = ] N'job_password'
     , [ @publisher_type = ] N'publisher_type'
+    [ , [ @job_security_mode = ] job_security_mode ]
 [ ; ]
 ```
 
@@ -148,7 +149,10 @@ The password used when connecting to the Publisher. *@publisher_password* is **n
 
 #### [ @job_login = ] N'*job_login*'
 
-The login for the Windows account under which the agent runs. *@job_login* is **nvarchar(257)**, with no default. This Windows account is always used for agent connections to the Distributor. You must supply this parameter when creating a new Snapshot Agent job. *This property can't be changed for a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher.*
+The login for the Windows account under which the agent runs. *@job_login* is **nvarchar(257)**, with no default. This Windows account is always used for agent connections to the Distributor. You must supply this parameter when creating a new Snapshot Agent job.
+
+> [!NOTE]  
+> This property can't be changed for a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publisher.
 
 #### [ @job_password = ] N'*job_password*'
 
@@ -168,6 +172,10 @@ Specifies the Publisher type when the Publisher isn't running in an instance of 
 | `ORACLE GATEWAY` | Specifies an Oracle Gateway Publisher. |
 
 For more information about the differences between an Oracle Publisher and an Oracle Gateway Publisher, see [Oracle Publishing Overview](../replication/non-sql/oracle-publishing-overview.md).
+
+#### [ @job_security_mode = ] *job_security_mode*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

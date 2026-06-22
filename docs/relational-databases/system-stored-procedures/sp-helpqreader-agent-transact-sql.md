@@ -1,10 +1,10 @@
 ---
-title: "sp_helpqreader_agent (Transact-SQL)"
+title: "sys.sp_helpqreader_agent (Transact-SQL)"
 description: sp_helpqreader_agent returns properties of the Queue Reader agent.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpqreader_agent (Transact-SQL)
+# sys.sp_helpqreader_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns properties of the Queue Reader agent. This stored procedure is executed 
 ## Syntax
 
 ```syntaxsql
-sp_helpqreader_agent [ [ @frompublisher = ] frompublisher ]
+sys.sp_helpqreader_agent [ [ @frompublisher = ] frompublisher ]
 [ ; ]
 ```
 

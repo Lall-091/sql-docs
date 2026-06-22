@@ -1,10 +1,10 @@
 ---
-title: "sp_vupgrade_replication (Transact-SQL)"
+title: "sys.sp_vupgrade_replication (Transact-SQL)"
 description: Activated by setup when upgrading a replication server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_vupgrade_replication (Transact-SQL)
+# sys.sp_vupgrade_replication (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Activated by setup when upgrading a replication server. Upgrades schema and syst
 ## Syntax
 
 ```syntaxsql
-sp_vupgrade_replication
+sys.sp_vupgrade_replication
     [ [ @login = ] N'login' ]
     [ , [ @password = ] N'password' ]
     [ , [ @ver_old = ] ver_old ]

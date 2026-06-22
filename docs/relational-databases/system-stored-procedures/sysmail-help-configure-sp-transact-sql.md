@@ -4,7 +4,7 @@ description: "Displays configuration settings for Database Mail."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,15 +27,15 @@ Displays configuration settings for Database Mail.
 ## Syntax
 
 ```syntaxsql
-sysmail_help_configure_sp [ [ @parameter_name = ] 'parameter_name' ]
+dbo.sysmail_help_configure_sp [ [ @parameter_name = ] N'parameter_name' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @parameter_name = ] '*parameter_name*'
+#### [ @parameter_name = ] N'*parameter_name*'
 
-The name of the configuration setting to retrieve. When specified, the value of the configuration setting is returned in the *@parameter_value* OUTPUT parameter. When no *@parameter_name* is specified, this stored procedure returns a result set containing all of the Database Mail configuration settings in the instance.
+The name of the configuration setting to retrieve. When specified, the value of the configuration setting is returned in the *@parameter_value* `OUTPUT` parameter. When no *@parameter_name* is specified, this stored procedure returns a result set containing all of the Database Mail configuration settings in the instance.
 
 ## Return code values
 

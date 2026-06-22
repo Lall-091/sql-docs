@@ -1,10 +1,10 @@
 ---
-title: "sp_changesubscriber_schedule (Transact-SQL)"
+title: "sys.sp_changesubscriber_schedule (Transact-SQL)"
 description: sp_changesubscriber_schedule changes the Distribution Agent or Merge Agent schedule for a subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changesubscriber_schedule (Transact-SQL)
+# sys.sp_changesubscriber_schedule (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes the Distribution Agent or Merge Agent schedule for a subscriber. This st
 ## Syntax
 
 ```syntaxsql
-sp_changesubscriber_schedule
+sys.sp_changesubscriber_schedule
     [ @subscriber = ] N'subscriber'
     , [ @agent_type = ] agent_type
     [ , [ @frequency_type = ] frequency_type ]
@@ -115,7 +115,7 @@ Specifies how often, in minutes, to reschedule during the defined period. *@freq
 
 #### [ @frequency_subday_interval = ] *frequency_subday_interval*
 
-The number of *frequency_subday* periods that occur between each execution of the job. *@frequency_subday_interval* is **int**, with a default of `5`.
+The number of *@frequency_subday* periods that occur between each execution of the job. *@frequency_subday_interval* is **int**, with a default of `5`.
 
 #### [ @active_start_time_of_day = ] *active_start_time_of_day*
 

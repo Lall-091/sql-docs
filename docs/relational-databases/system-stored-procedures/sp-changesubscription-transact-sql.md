@@ -1,10 +1,10 @@
 ---
-title: "sp_changesubscription (Transact-SQL)"
+title: "sys.sp_changesubscription (Transact-SQL)"
 description: Changes the properties of a snapshot or transactional push subscription or a pull subscription involved in queued updating transactional replication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changesubscription (Transact-SQL)
+# sys.sp_changesubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -32,7 +32,7 @@ Changes the properties of a snapshot or transactional push subscription or a pul
 ## Syntax
 
 ```syntaxsql
-sp_changesubscription
+sys.sp_changesubscription
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     , [ @subscriber = ] N'subscriber'
@@ -67,7 +67,7 @@ The property to change for the given subscription. *@property* is **nvarchar(30)
 
 #### [ @value = ] N'*value*'
 
-The new value for the specified *property*. *@value* is **nvarchar(4000)**, and can be one of the values in the table.
+The new value for the specified *@property*. *@value* is **nvarchar(4000)**, and can be one of the values in the table.
 
 | Property | Value | Description |
 | --- | --- | --- |

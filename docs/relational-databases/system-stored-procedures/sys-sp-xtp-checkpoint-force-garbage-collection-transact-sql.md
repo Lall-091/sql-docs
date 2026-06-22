@@ -4,7 +4,7 @@ description: "Marks source files used in the merge operation with the log sequen
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -29,14 +29,13 @@ Contrast with [sys.sp_xtp_force_gc](sys-sp-xtp-force-gc-transact-sql.md), which 
 ## Syntax
 
 ```syntaxsql
-sys.sp_xtp_checkpoint_force_garbage_collection
-    [ [ @dbname = ] 'database_name' ]
+sys.sp_xtp_checkpoint_force_garbage_collection [ [ @dbname = ] N'dbname' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @dbname = ] '*database_name*'
+#### [ @dbname = ] N'*dbname*'
 
 The database to run garbage collection on. The default is the current database. *@dbname* is **sysname**.
 

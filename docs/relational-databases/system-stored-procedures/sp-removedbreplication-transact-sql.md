@@ -1,10 +1,10 @@
 ---
-title: "sp_removedbreplication (T-SQL)"
+title: "sys.sp_removedbreplication (Transact-SQL)"
 description: sp_removedbreplication removes all replication objects on the publication database on the Publisher instance of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_removedbreplication (Transact-SQL)
+# sys.sp_removedbreplication (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -29,7 +29,7 @@ This procedure should be used only if other methods of removing replication obje
 ## Syntax
 
 ```syntaxsql
-sp_removedbreplication
+sys.sp_removedbreplication
     [ [ @dbname = ] N'dbname' ]
     [ , [ @type = ] N'type' ]
 [ ; ]

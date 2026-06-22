@@ -1,10 +1,10 @@
 ---
-title: "sp_help_spatial_geometry_index (Transact-SQL)"
+title: "sys.sp_help_spatial_geometry_index (Transact-SQL)"
 description: Returns the names and values for a specified set of properties about a geometry spatial index.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_spatial_geometry_index (Transact-SQL)
+# sys.sp_help_spatial_geometry_index (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the names and values for a specified set of properties about a **geometr
 ## Syntax
 
 ```syntaxsql
-sp_help_spatial_geometry_index
+sys.sp_help_spatial_geometry_index
     [ @tabname = ] N'tabname'
     , [ @indexname = ] N'indexname'
     , [ @verboseoutput = ] verboseoutput

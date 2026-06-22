@@ -27,7 +27,7 @@ Tests the connection to a linked server. If the test is unsuccessful, the proced
 ## Syntax
 
 ```syntaxsql
-sp_testlinkedserver [ @servername ] = servername
+sp_testlinkedserver [ @servername = ] servername
 [ ; ]
 ```
 

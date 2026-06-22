@@ -1,10 +1,10 @@
 ---
-title: "sp_settriggerorder (Transact-SQL)"
+title: "sys.sp_settriggerorder (Transact-SQL)"
 description: sp_settriggerorder specifies the AFTER triggers that are fired first or last.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_settriggerorder (Transact-SQL)
+# sys.sp_settriggerorder (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -30,11 +30,11 @@ Specifies the `AFTER` triggers that are fired first or last. The `AFTER` trigger
 ## Syntax
 
 ```syntaxsql
-sp_settriggerorder
+sys.sp_settriggerorder
     [ @triggername = ] N'triggername'
     , [ @order = ] 'order'
     , [ @stmttype = ] 'stmttype'
-    [ , [ @namespace = ] 'DATABASE' | 'SERVER' | NULL ]
+    [ , [ @namespace = ] { 'DATABASE' | 'SERVER' | NULL } ]
 [ ; ]
 ```
 
@@ -63,7 +63,7 @@ Specifies the [!INCLUDE [tsql](../../includes/tsql-md.md)] statement that fires 
 
 A trigger can be designated as the `First` or `Last` trigger for a statement type only after that trigger was defined as a trigger for that statement type. For example, trigger `TR1` can be designated `First` for `INSERT` on table `T1` if `TR1` is defined as an `INSERT` trigger. The [!INCLUDE [ssDE](../../includes/ssde-md.md)] returns an error if `TR1`, which was defined only as an `INSERT` trigger, is set as a `First` or `Last` trigger for an `UPDATE` statement. For more information, see the [Remarks](#remarks) section.
 
-#### @namespace = { 'DATABASE' | 'SERVER' | NULL }
+#### [ @namespace = ] { 'DATABASE' | 'SERVER' | NULL }
 
 When *@triggername* is a DDL trigger, *@namespace* specifies whether *@triggername* was created with database scope or server scope. If *@triggername* is a logon trigger, `SERVER` must be specified. For more information about DDL trigger scope, see [DDL Triggers](../triggers/ddl-triggers.md). If not specified, or if `NULL` is specified, *@triggername* is a DML trigger.
 

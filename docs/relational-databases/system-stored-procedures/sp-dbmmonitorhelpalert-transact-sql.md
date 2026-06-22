@@ -1,10 +1,10 @@
 ---
-title: "sp_dbmmonitorhelpalert (Transact-SQL)"
+title: "sys.sp_dbmmonitorhelpalert (Transact-SQL)"
 description: Returns information about warning thresholds on one or all of several key database mirroring monitor performance metrics.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbmmonitorhelpalert (Transact-SQL)
+# sys.sp_dbmmonitorhelpalert (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -28,7 +28,7 @@ Returns information about warning thresholds on one or all of several key databa
 ## Syntax
 
 ```syntaxsql
-sp_dbmmonitorhelpalert
+sys.sp_dbmmonitorhelpalert
     [ @database_name = ] N'database_name'
     [ , [ @alert_id = ] alert_id ]
 [ ; ]

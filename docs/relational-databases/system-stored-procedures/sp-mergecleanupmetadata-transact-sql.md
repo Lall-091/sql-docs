@@ -1,10 +1,10 @@
 ---
-title: "sp_mergecleanupmetadata (Transact-SQL)"
+title: "sys.sp_mergecleanupmetadata (Transact-SQL)"
 description: "Only for use in replication topologies with servers running versions of SQL Server 2000 before Service Pack 1."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_mergecleanupmetadata (Transact-SQL)
+# sys.sp_mergecleanupmetadata (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Should only be used in replication topologies that include servers running versi
 ## Syntax
 
 ```syntaxsql
-sp_mergecleanupmetadata
+sys.sp_mergecleanupmetadata
     [ [ @publication = ] N'publication' ]
     [ , [ @reinitialize_subscriber = ] N'reinitialize_subscriber' ]
 [ ; ]

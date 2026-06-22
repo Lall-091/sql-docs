@@ -4,7 +4,7 @@ description: "Deletes a Database Mail SMTP account."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,9 @@ Deletes a Database Mail SMTP account. You can also use the Database Mail Configu
 ## Syntax
 
 ```syntaxsql
-sysmail_delete_account_sp { [ @account_id = ] account_id | [ @account_name = ] 'account_name' }
+dbo.sysmail_delete_account_sp
+    { [ @account_id = ] account_id
+        | [ @account_name = ] N'account_name' }
 [ ; ]
 ```
 
@@ -37,7 +39,7 @@ sysmail_delete_account_sp { [ @account_id = ] account_id | [ @account_name = ] '
 
 The ID number of the account to delete. *@account_id* is **int**, with no default. Either *@account_id* or *@account_name* must be specified.
 
-#### [ @account_name = ] '*account_name*'
+#### [ @account_name = ] N'*account_name*'
 
 The name of the account to delete. *@account_name* is **sysname**, with no default. Either *@account_id* or *@account_name* must be specified.
 

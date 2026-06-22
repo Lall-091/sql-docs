@@ -1,10 +1,10 @@
 ---
-title: "sp_helparticledts (Transact-SQL)"
+title: "sys.sp_helparticledts (Transact-SQL)"
 description: sp_helparticledts is used to get information on the correct custom task names to use, when creating a transformation subscription using Visual Basic.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helparticledts (Transact-SQL)
+# sys.sp_helparticledts (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Used to get information on the correct custom task names to use when creating a 
 ## Syntax
 
 ```syntaxsql
-sp_helparticledts
+sys.sp_helparticledts
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
 [ ; ]

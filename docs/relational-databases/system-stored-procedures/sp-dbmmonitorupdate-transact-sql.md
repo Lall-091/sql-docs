@@ -1,10 +1,10 @@
 ---
-title: "sp_dbmmonitorupdate (Transact-SQL)"
+title: "sys.sp_dbmmonitorupdate (Transact-SQL)"
 description: Updates the database mirroring monitor status table by inserting a new table row for each mirrored database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbmmonitorupdate (Transact-SQL)
+# sys.sp_dbmmonitorupdate (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -31,7 +31,7 @@ Updates the database mirroring monitor status table by inserting a new table row
 ## Syntax
 
 ```syntaxsql
-sp_dbmmonitorupdate [ [ @database_name = ] N'database_name' ]
+sys.sp_dbmmonitorupdate [ [ @database_name = ] N'database_name' ]
 [ ; ]
 ```
 
@@ -39,7 +39,7 @@ sp_dbmmonitorupdate [ [ @database_name = ] N'database_name' ]
 
 #### [ @database_name = ] N'*database_name*'
 
-The name of the database for which to update mirroring status. *@database_name* is **sysname**, with a default of `NULL`. If *database_name* isn't specified, the procedure updates the status table for every mirrored database on the server instance.
+The name of the database for which to update mirroring status. *@database_name* is **sysname**, with a default of `NULL`. If *@database_name* isn't specified, the procedure updates the status table for every mirrored database on the server instance.
 
 ## Return code values
 

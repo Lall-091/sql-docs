@@ -1,10 +1,10 @@
 ---
-title: "sp_grant_publication_access (Transact-SQL)"
+title: "sys.sp_grant_publication_access (Transact-SQL)"
 description: sp_grant_publication_access adds a login to the access list of the publication.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_grant_publication_access (Transact-SQL)
+# sys.sp_grant_publication_access (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Adds a login to the access list of the publication. This stored procedure is exe
 ## Syntax
 
 ```syntaxsql
-sp_grant_publication_access
+sys.sp_grant_publication_access
     [ @publication = ] N'publication'
     , [ @login = ] N'login'
     [ , [ @reserved = ] N'reserved' ]

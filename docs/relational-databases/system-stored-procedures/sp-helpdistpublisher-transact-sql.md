@@ -1,10 +1,10 @@
 ---
-title: "sp_helpdistpublisher (Transact-SQL)"
+title: "sys.sp_helpdistpublisher (Transact-SQL)"
 description: sp_helpdistpublisher returns properties of the Publishers using a Distributor.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 ms.custom: sfi-ropc-nochange
 ---
-# sp_helpdistpublisher (Transact-SQL)
+# sys.sp_helpdistpublisher (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -28,7 +28,7 @@ Returns properties of the Publishers using a Distributor. This stored procedure 
 ## Syntax
 
 ```syntaxsql
-sp_helpdistpublisher
+sys.sp_helpdistpublisher
     [ [ @publisher = ] N'publisher' ]
     [ , [ @check_user = ] check_user ]
 [ ; ]

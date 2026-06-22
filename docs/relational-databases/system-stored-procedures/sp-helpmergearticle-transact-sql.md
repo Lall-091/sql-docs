@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergearticle (Transact-SQL)"
+title: "sys.sp_helpmergearticle (Transact-SQL)"
 description: "Returns information about an article. This stored procedure is executed at the Publisher on the publication database or at a republishing Subscriber on the subscription database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergearticle (Transact-SQL)
+# sys.sp_helpmergearticle (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information about an article. This stored procedure is executed at the P
 ## Syntax
 
 ```syntaxsql
-sp_helpmergearticle
+sys.sp_helpmergearticle
     [ [ @publication = ] N'publication' ]
     [ , [ @article = ] N'article' ]
 [ ; ]

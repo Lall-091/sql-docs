@@ -4,7 +4,7 @@ description: sp_help_targetservergroup lists all target servers in the specified
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Lists all target servers in the specified group. If no group is specified, [!INC
 ## Syntax
 
 ```syntaxsql
-sp_help_targetservergroup [ [ @name = ] N'name' ]
+dbo.sp_help_targetservergroup [ [ @name = ] N'name' ]
 [ ; ]
 ```
 

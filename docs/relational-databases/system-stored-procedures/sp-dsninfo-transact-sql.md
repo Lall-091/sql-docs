@@ -1,10 +1,10 @@
 ---
-title: "sp_dsninfo (Transact-SQL)"
+title: "sys.sp_dsninfo (Transact-SQL)"
 description: Returns ODBC or OLE DB data source information from the Distributor associated with the current server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dsninfo (Transact-SQL)
+# sys.sp_dsninfo (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns ODBC or OLE DB data source information from the Distributor associated w
 ## Syntax
 
 ```syntaxsql
-sp_dsninfo
+sys.sp_dsninfo
     [ @dsn = ] 'dsn'
     [ , [ @infotype = ] 'infotype' ]
     [ , [ @login = ] 'login' ]

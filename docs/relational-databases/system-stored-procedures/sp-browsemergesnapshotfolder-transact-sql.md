@@ -1,10 +1,10 @@
 ---
-title: "sp_browsemergesnapshotfolder (Transact-SQL)"
+title: "sys.sp_browsemergesnapshotfolder (Transact-SQL)"
 description: Returns the complete path for the latest snapshot generated for a merge publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_browsemergesnapshotfolder (Transact-SQL)
+# sys.sp_browsemergesnapshotfolder (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the complete path for the latest snapshot generated for a merge publicat
 ## Syntax
 
 ```syntaxsql
-sp_browsemergesnapshotfolder [ @publication = ] N'publication'
+sys.sp_browsemergesnapshotfolder [ @publication = ] N'publication'
 [ ; ]
 ```
 

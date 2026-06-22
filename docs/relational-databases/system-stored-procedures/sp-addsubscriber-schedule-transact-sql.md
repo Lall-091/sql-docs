@@ -1,10 +1,10 @@
 ---
-title: "sp_addsubscriber_schedule (Transact-SQL)"
+title: "sys.sp_addsubscriber_schedule (Transact-SQL)"
 description: sp_addsubscriber_schedule adds a schedule for the Distribution Agent and Merge Agent.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addsubscriber_schedule (Transact-SQL)
+# sys.sp_addsubscriber_schedule (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Adds a schedule for the Distribution Agent and Merge Agent. This stored procedur
 ## Syntax
 
 ```syntaxsql
-sp_addsubscriber_schedule
+sys.sp_addsubscriber_schedule
     [ @subscriber = ] N'subscriber'
     [ , [ @agent_type = ] agent_type ]
     [ , [ @frequency_type = ] frequency_type ]
@@ -76,11 +76,11 @@ Specifies the frequency with which to schedule the Distribution Agent. *@frequen
 
 #### [ @frequency_interval = ] *frequency_interval*
 
-The value to apply to the frequency set by *frequency_type*. *@frequency_interval* is **int**, with a default of `1`.
+The value to apply to the frequency set by *@frequency_type*. *@frequency_interval* is **int**, with a default of `1`.
 
 #### [ @frequency_relative_interval = ] *frequency_relative_interval*
 
-The date of the Distribution Agent. This parameter is used when *frequency_type* is set to `32` (monthly relative). *@frequency_relative_interval* is **int**, and can be one of these values.
+The date of the Distribution Agent. This parameter is used when *@frequency_type* is set to `32` (monthly relative). *@frequency_relative_interval* is **int**, and can be one of these values.
 
 | Value | Description |
 | --- | --- |
@@ -92,7 +92,7 @@ The date of the Distribution Agent. This parameter is used when *frequency_type*
 
 #### [ @frequency_recurrence_factor = ] *frequency_recurrence_factor*
 
-The recurrence factor used by *frequency_type*. *@frequency_recurrence_factor* is **int**, with a default of `0`.
+The recurrence factor used by *@frequency_type*. *@frequency_recurrence_factor* is **int**, with a default of `0`.
 
 #### [ @frequency_subday = ] *frequency_subday*
 
@@ -107,7 +107,7 @@ How often to reschedule during the defined period. *@frequency_subday* is **int*
 
 #### [ @frequency_subday_interval = ] *frequency_subday_interval*
 
-The interval for *frequency_subday*. *@frequency_subday_interval* is **int**, with a default of `5`.
+The interval for *@frequency_subday*. *@frequency_subday_interval* is **int**, with a default of `5`.
 
 #### [ @active_start_time_of_day = ] *active_start_time_of_day*
 

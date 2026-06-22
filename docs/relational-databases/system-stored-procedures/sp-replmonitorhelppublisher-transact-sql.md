@@ -1,10 +1,10 @@
 ---
-title: "sp_replmonitorhelppublisher (Transact-SQL)"
+title: "sys.sp_replmonitorhelppublisher (Transact-SQL)"
 description: sp_replmonitorhelppublisher returns current status information for one or more Publishers associated with a Distributor.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replmonitorhelppublisher (Transact-SQL)
+# sys.sp_replmonitorhelppublisher (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns current status information for one or more Publishers associated with a 
 ## Syntax
 
 ```syntaxsql
-sp_replmonitorhelppublisher
+sys.sp_replmonitorhelppublisher
     [ [ @publisher = ] N'publisher' ]
     [ , [ @refreshpolicy = ] refreshpolicy ]
 [ ; ]

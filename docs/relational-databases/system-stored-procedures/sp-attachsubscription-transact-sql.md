@@ -1,10 +1,10 @@
 ---
-title: "sp_attachsubscription (Transact-SQL)"
+title: "sys.sp_attachsubscription (Transact-SQL)"
 description: sp_attachsubscription attaches an existing subscription database to any Subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_attachsubscription (Transact-SQL)
+# sys.sp_attachsubscription (Transact-SQL)
 
 [!INCLUDE [sql-asdb-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
@@ -32,7 +32,7 @@ Attaches an existing subscription database to any Subscriber. This stored proced
 ## Syntax
 
 ```syntaxsql
-sp_attachsubscription
+sys.sp_attachsubscription
     [ @dbname = ] N'dbname'
     , [ @filename = ] N'filename'
     [ , [ @subscriber_security_mode = ] subscriber_security_mode ]
@@ -125,7 +125,7 @@ The login for the Windows account under which the agent runs. *@job_login* is **
 
 #### [ @job_password = ] N'*job_password*'
 
-The password for the Windows account under which the agent runs. *@job_password* is **sysname**, with a default of `NULL`. The value of *job_password* must be shorter than 120 Unicode characters.
+The password for the Windows account under which the agent runs. *@job_password* is **sysname**, with a default of `NULL`. The value of *@job_password* must be shorter than 120 Unicode characters.
 
 > [!IMPORTANT]  
 > [!INCLUDE [ssnotestrongpass-md](../../includes/ssnotestrongpass-md.md)] When possible, prompt users to enter security credentials at runtime. If you must store credentials in a script file, you must secure the file to prevent unauthorized access.

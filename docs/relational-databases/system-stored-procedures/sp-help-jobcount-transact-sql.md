@@ -4,7 +4,7 @@ description: sp_help_jobcount provides the number of jobs that a schedule is att
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Provides the number of jobs that a schedule is attached to.
 ## Syntax
 
 ```syntaxsql
-sp_help_jobcount
+dbo.sp_help_jobcount
     [ [ @schedule_name = ] N'schedule_name' ]
     [ , [ @schedule_id = ] schedule_id ]
 [ ; ]
@@ -36,15 +36,15 @@ sp_help_jobcount
 
 ## Arguments
 
-#### [ @schedule_id = ] *schedule_id*
-
-The identifier of the schedule to list. *@schedule_id* is **int**, with no default.
-
-Either *@schedule_id* or *@schedule_name* can be specified.
-
 #### [ @schedule_name = ] N'*schedule_name*'
 
 The name of the schedule to list. *@schedule_name* is **sysname**, with no default.
+
+Either *@schedule_id* or *@schedule_name* can be specified.
+
+#### [ @schedule_id = ] *schedule_id*
+
+The identifier of the schedule to list. *@schedule_id* is **int**, with no default.
 
 Either *@schedule_id* or *@schedule_name* can be specified.
 

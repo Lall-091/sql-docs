@@ -1,10 +1,10 @@
 ---
-title: "sp_articlecolumn (Transact-SQL)"
+title: "sys.sp_articlecolumn (Transact-SQL)"
 description: Specify columns included in an article to vertically filter data in a published table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_articlecolumn (Transact-SQL)
+# sys.sp_articlecolumn (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Used to specify columns included in an article to vertically filter data in a pu
 ## Syntax
 
 ```syntaxsql
-sp_articlecolumn
+sys.sp_articlecolumn
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     [ , [ @column = ] N'column' ]

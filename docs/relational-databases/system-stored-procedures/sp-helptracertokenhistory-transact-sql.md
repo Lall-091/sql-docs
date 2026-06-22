@@ -1,10 +1,10 @@
 ---
-title: "sp_helptracertokenhistory (Transact-SQL)"
+title: "sys.sp_helptracertokenhistory (Transact-SQL)"
 description: sp_helptracertokenhistory returns detailed latency information for specified tracer tokens, with one row being returned for each Subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helptracertokenhistory (Transact-SQL)
+# sys.sp_helptracertokenhistory (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns detailed latency information for specified tracer tokens, with one row b
 ## Syntax
 
 ```syntaxsql
-sp_helptracertokenhistory
+sys.sp_helptracertokenhistory
     [ @publication = ] N'publication'
     , [ @tracer_id = ] tracer_id
     [ , [ @publisher = ] N'publisher' ]

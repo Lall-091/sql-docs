@@ -1,10 +1,10 @@
 ---
-title: "sp_helpextendedproc (Transact-SQL)"
+title: "sys.sp_helpextendedproc (Transact-SQL)"
 description: Reports the currently defined extended stored procedures and the name of the dynamic-link library (DLL) to which the procedure (function) belongs.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpextendedproc (Transact-SQL)
+# sys.sp_helpextendedproc (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Reports the currently defined extended stored procedures and the name of the dyn
 ## Syntax
 
 ```syntaxsql
-sp_helpextendedproc [ [ @funcname = ] N'funcname' ]
+sys.sp_helpextendedproc [ [ @funcname = ] N'funcname' ]
 [ ; ]
 ```
 

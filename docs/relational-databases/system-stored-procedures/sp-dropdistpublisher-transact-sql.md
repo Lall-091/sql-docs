@@ -1,10 +1,10 @@
 ---
-title: "sp_dropdistpublisher (Transact-SQL)"
+title: "sys.sp_dropdistpublisher (Transact-SQL)"
 description: Drops a distribution Publisher. This stored procedure is executed at the Distributor on any database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropdistpublisher (Transact-SQL)
+# sys.sp_dropdistpublisher (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Drops a distribution Publisher. This stored procedure is executed at the Distrib
 ## Syntax
 
 ```syntaxsql
-sp_dropdistpublisher
+sys.sp_dropdistpublisher
     [ @publisher = ] N'publisher'
     [ , [ @no_checks = ] no_checks ]
     [ , [ @ignore_distributor = ] ignore_distributor ]

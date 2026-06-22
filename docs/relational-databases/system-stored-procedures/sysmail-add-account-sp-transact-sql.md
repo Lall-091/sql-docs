@@ -4,7 +4,7 @@ description: "Creates a new Database Mail account holding information about an S
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,16 +27,17 @@ Creates a new Database Mail account holding information about an SMTP account.
 ## Syntax
 
 ```syntaxsql
-sysmail_add_account_sp [ @account_name = ] 'account_name' ,
-    [ @email_address = ] 'email_address' ,
-    [ [ @display_name = ] 'display_name' , ]
-    [ [ @replyto_address = ] 'replyto_address' , ]
-    [ [ @description = ] 'description' , ]
-    [ @mailserver_name = ] 'server_name'
-    [ , [ @mailserver_type = ] 'server_type' ]
-    [ , [ @port = ] port_number ]
-    [ , [ @username = ] 'username' ]
-    [ , [ @password = ] 'password' ]
+dbo.sysmail_add_account_sp
+    [ @account_name = ] N'account_name'
+    , [ @email_address = ] N'email_address'
+    [ , [ @display_name = ] N'display_name' ]
+    [ , [ @replyto_address = ] N'replyto_address' ]
+    [ , [ @description = ] N'description' ]
+    [ , [ @mailserver_name = ] N'mailserver_name' ]
+    [ , [ @mailserver_type = ] N'mailserver_type' ]
+    [ , [ @port = ] port ]
+    [ , [ @username = ] N'username' ]
+    [ , [ @password = ] N'password' ]
     [ , [ @use_default_credentials = ] use_default_credentials ]
     [ , [ @enable_ssl = ] enable_ssl ]
     [ , [ @account_id = ] account_id OUTPUT ]
@@ -45,43 +46,43 @@ sysmail_add_account_sp [ @account_name = ] 'account_name' ,
 
 ## Arguments
 
-#### [ @account_name = ] '*account_name*'
+#### [ @account_name = ] N'*account_name*'
 
 The name of the account to add. *@account_name* is **sysname**, with no default.
 
-#### [ @email_address = ] '*email_address*'
+#### [ @email_address = ] N'*email_address*'
 
 The e-mail address to send the message from. This address must be an internet e-mail address. *@email_address* is **nvarchar(128)**, with no default. For example, an account for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent might send e-mail from the address `SqlAgent@adventure-works.com`.
 
-#### [ @display_name = ] '*display_name*'
+#### [ @display_name = ] N'*display_name*'
 
 The display name to use on e-mail messages from this account. *@display_name* is **nvarchar(128)**, with a default of `NULL`. For example, an account for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent might display the name `SQL Server Agent Automated Mailer` on e-mail messages.
 
-#### [ @replyto_address = ] '*replyto_address*'
+#### [ @replyto_address = ] N'*replyto_address*'
 
 The address that responses to messages from this account are sent to. *@replyto_address* is **nvarchar(128)**, with a default of `NULL`. For example, replies to an account for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent might go to the database administrator, `danw@adventure-works.com`.
 
-#### [ @description = ] '*description*'
+#### [ @description = ] N'*description*'
 
 A description for the account. *@description* is **nvarchar(256)**, with a default of `NULL`.
 
-#### [ @mailserver_name = ] '*server_name*'
+#### [ @mailserver_name = ] N'*mailserver_name*'
 
 The name or IP address of the SMTP mail server to use for this account. The computer that runs [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] must be able to resolve the *@mailserver_name* to an IP address. *@mailserver_name* is **sysname**, with no default.
 
-#### [ @mailserver_type = ] '*server_type*'
+#### [ @mailserver_type = ] N'*mailserver_type*'
 
 The type of e-mail server. *@mailserver_type* is **sysname**, with a default of `SMTP`.
 
-#### [ @port = ] *port_number*
+#### [ @port = ] *port*
 
 The port number for the e-mail server. *@port* is **int**, with a default of `25`.
 
-#### [ @username = ] '*username*'
+#### [ @username = ] N'*username*'
 
 The user name to use to log on to the e-mail server. *@username* is **nvarchar(128)**, with a default of `NULL`. When this parameter is `NULL`, Database Mail doesn't use authentication for this account. If the mail server doesn't require authentication, use `NULL` for the username.
 
-#### [ @password = ] '*password*'
+#### [ @password = ] N'*password*'
 
 The password to use to log on to the e-mail server. *@password* is **nvarchar(128)**, with a default of `NULL`. There's no need to provide a password unless a username is specified.
 

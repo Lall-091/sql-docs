@@ -1,10 +1,10 @@
 ---
-title: "sp_create_removable (Transact-SQL)"
+title: "sys.sp_create_removable (Transact-SQL)"
 description: sp_create_removable creates a removable media database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_create_removable (Transact-SQL)
+# sys.sp_create_removable (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Creates a removable media database. Creates three or more files (one for the sys
 ## Syntax
 
 ```syntaxsql
-sp_create_removable
+sys.sp_create_removable
     [ [ @dbname = ] N'dbname' ]
     [ , [ @syslogical = ] N'syslogical' ]
     [ , [ @sysphysical = ] N'sysphysical' ]

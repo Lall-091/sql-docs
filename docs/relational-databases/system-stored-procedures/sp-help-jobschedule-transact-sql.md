@@ -4,7 +4,7 @@ description: Returns information about the scheduling of jobs used by SQL Server
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Returns information about the scheduling of jobs used by [!INCLUDE [ssManStudioF
 ## Syntax
 
 ```syntaxsql
-sp_help_jobschedule
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_help_jobschedule
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @schedule_name = ] N'schedule_name' ]
     [ , [ @schedule_id = ] schedule_id ]
     [ , [ @include_description = ] include_description ]

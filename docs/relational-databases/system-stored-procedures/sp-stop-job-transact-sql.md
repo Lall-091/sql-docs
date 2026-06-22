@@ -4,7 +4,7 @@ description: sp_stop_job instructs SQL Server Agent to stop the execution of a j
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Instructs [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent to st
 ## Syntax
 
 ```syntaxsql
-sp_stop_job
+dbo.sp_stop_job
     [ [ @job_name = ] N'job_name' ]
     [ , [ @job_id = ] 'job_id' ]
     [ , [ @originating_server = ] N'originating_server' ]

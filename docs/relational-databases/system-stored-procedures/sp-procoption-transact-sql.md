@@ -1,5 +1,5 @@
 ---
-title: "sp_procoption (Transact-SQL)"
+title: "sys.sp_procoption (Transact-SQL)"
 description: "sp_procoption sets or clears a stored procedure for automatic execution."
 author: markingmyname
 ms.author: maghan
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_procoption (Transact-SQL)
+# sys.sp_procoption (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 

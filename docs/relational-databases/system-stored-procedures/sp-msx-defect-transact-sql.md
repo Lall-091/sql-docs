@@ -4,7 +4,7 @@ description: sp_msx_defect removes the current server from multiserver operation
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,7 +30,7 @@ Removes the current server from multiserver operations.
 ## Syntax
 
 ```syntaxsql
-sp_msx_defect [ [ @forced_defection = ] forced_defection ]
+dbo.sp_msx_defect [ [ @forced_defection = ] forced_defection ]
 [ ; ]
 ```
 

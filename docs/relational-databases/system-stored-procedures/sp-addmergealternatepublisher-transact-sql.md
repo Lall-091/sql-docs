@@ -1,10 +1,10 @@
 ---
-title: "sp_addmergealternatepublisher (Transact-SQL)"
+title: "sys.sp_addmergealternatepublisher (Transact-SQL)"
 description: Adds the ability for a Subscriber to use an alternate synchronization partner.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addmergealternatepublisher (Transact-SQL)
+# sys.sp_addmergealternatepublisher (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Adds the ability for a Subscriber to use an alternate synchronization partner. T
 ## Syntax
 
 ```syntaxsql
-sp_addmergealternatepublisher
+sys.sp_addmergealternatepublisher
     [ @publisher = ] N'publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @publication = ] N'publication'

@@ -1,10 +1,10 @@
 ---
-title: "sp_dbmmonitordropalert (Transact-SQL)"
+title: "sys.sp_dbmmonitordropalert (Transact-SQL)"
 description: sp_dbmmonitordropalert drops the warning for a specified performance metric, by setting the threshold to NULL.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbmmonitordropalert (Transact-SQL)
+# sys.sp_dbmmonitordropalert (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -28,7 +28,7 @@ Drops the warning for a specified performance metric, by setting the threshold t
 ## Syntax
 
 ```syntaxsql
-sp_dbmmonitordropalert
+sys.sp_dbmmonitordropalert
     [ @database_name = ] N'database_name'
     [ , [ @alert_id = ] alert_id ]
 [ ; ]

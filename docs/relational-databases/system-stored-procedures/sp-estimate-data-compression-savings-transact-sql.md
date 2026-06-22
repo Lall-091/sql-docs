@@ -1,10 +1,10 @@
 ---
-title: "sp_estimate_data_compression_savings (Transact-SQL)"
+title: "sys.sp_estimate_data_compression_savings (Transact-SQL)"
 description: The sp_estimate_data_compression_savings system stored procedure returns the current size of the requested object and estimates the object size for the requested compression state.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: dimitri-furman, wiassaf, randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_estimate_data_compression_savings (Transact-SQL)
+# sys.sp_estimate_data_compression_savings (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -44,7 +44,7 @@ To change the compression state of a table, index, or partition, use the [ALTER 
 ## Syntax
 
 ```syntaxsql
-sp_estimate_data_compression_savings
+sys.sp_estimate_data_compression_savings
     [ @schema_name = ] N'schema_name'
     , [ @object_name = ] N'object_name'
     , [ @index_id = ] index_id

@@ -4,7 +4,7 @@ description: Changes the name of a category.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Changes the name of a category.
 ## Syntax
 
 ```syntaxsql
-sp_update_category
+dbo.sp_update_category
     [ @class = ] 'class'
     , [ @name = ] N'name'
     , [ @new_name = ] N'new_name'

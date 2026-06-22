@@ -1,10 +1,10 @@
 ---
-title: "sp_srvrolepermission (Transact-SQL)"
+title: "sys.sp_srvrolepermission (Transact-SQL)"
 description: sp_srvrolepermission displays the permissions of a fixed server role.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_srvrolepermission (Transact-SQL)
+# sys.sp_srvrolepermission (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Displays the permissions of a fixed server role.
 ## Syntax
 
 ```syntaxsql
-sp_srvrolepermission [ [ @srvrolename = ] N'srvrolename' ]
+sys.sp_srvrolepermission [ [ @srvrolename = ] N'srvrolename' ]
 [ ; ]
 ```
 

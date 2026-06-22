@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergepartition (Transact-SQL)"
+title: "sys.sp_helpmergepartition (Transact-SQL)"
 description: "Returns partition information for the specified merge publication."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergepartition (Transact-SQL)
+# sys.sp_helpmergepartition (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns partition information for the specified merge publication. This stored p
 ## Syntax
 
 ```syntaxsql
-sp_helpmergepartition
+sys.sp_helpmergepartition
     [ @publication = ] N'publication'
     [ , [ @suser_sname = ] N'suser_sname' ]
     [ , [ @host_name = ] N'host_name' ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_addpullsubscription (Transact-SQL)"
+title: "sys.sp_addpullsubscription (Transact-SQL)"
 description: Adds a pull subscription to a snapshot or transactional publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addpullsubscription (Transact-SQL)
+# sys.sp_addpullsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Adds a pull subscription to a snapshot or transactional publication. This stored
 ## Syntax
 
 ```syntaxsql
-sp_addpullsubscription
+sys.sp_addpullsubscription
     [ @publisher = ] N'publisher'
     [ , [ @publisher_db = ] N'publisher_db' ]
     , [ @publication = ] N'publication'

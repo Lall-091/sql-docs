@@ -1,10 +1,10 @@
 ---
-title: "sp_deletemergeconflictrow (Transact-SQL)"
+title: "sys.sp_deletemergeconflictrow (Transact-SQL)"
 description: "Deletes rows from a conflict table or the MSmerge_conflicts_info table."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_deletemergeconflictrow (Transact-SQL)
+# sys.sp_deletemergeconflictrow (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Deletes rows from a conflict table or the [MSmerge_conflicts_info](../system-tab
 ## Syntax
 
 ```syntaxsql
-sp_deletemergeconflictrow
+sys.sp_deletemergeconflictrow
     [ [ @conflict_table = ] N'conflict_table' ]
     [ , [ @source_object = ] N'source_object' ]
     , [ @rowguid = ] 'rowguid'

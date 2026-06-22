@@ -4,7 +4,7 @@ description: sp_manage_jobs_by_login deletes or reassigns jobs that belong to th
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Deletes or reassigns jobs that belong to the specified login.
 ## Syntax
 
 ```syntaxsql
-sp_manage_jobs_by_login
+dbo.sp_manage_jobs_by_login
     [ @action = ] 'action'
     , [ @current_owner_login_name = ] N'current_owner_login_name'
     [ , [ @new_owner_login_name = ] N'new_owner_login_name' ]

@@ -4,7 +4,7 @@ description: "Deletes a mail profile used by Database Mail."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,10 @@ Deletes a mail profile used by Database Mail.
 ## Syntax
 
 ```syntaxsql
-sysmail_delete_profile_sp { [ @profile_id = ] profile_id | [ @profile_name = ] 'profile_name' }
+dbo.sysmail_delete_profile_sp
+    { [ @profile_id = ] profile_id
+        | [ @profile_name = ] N'profile_name' }
+    [ , [ @force_delete = ] force_delete ]
 [ ; ]
 ```
 
@@ -37,9 +40,13 @@ sysmail_delete_profile_sp { [ @profile_id = ] profile_id | [ @profile_name = ] '
 
 The profile ID of the profile to be deleted. *@profile_id* is **int**, with a default of `NULL`. Either *@profile_id* or *@profile_name* must be specified.
 
-#### [ @profile_name = ] '*profile_name*'
+#### [ @profile_name = ] N'*profile_name*'
 
 The name of the profile to be deleted. *@profile_name* is **sysname**, with a default of `NULL`. Either *@profile_id* or *@profile_name* must be specified.
+
+#### [ @force_delete = ] *force_delete*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

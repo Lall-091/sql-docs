@@ -1,10 +1,10 @@
 ---
-title: "sp_getagentparameterlist (Transact-SQL)"
+title: "sys.sp_getagentparameterlist (Transact-SQL)"
 description: sp_getagentparameterlist returns a list of all replication agent parameters that can be set in an agent profile for the specified agent type.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_getagentparameterlist (Transact-SQL)
+# sys.sp_getagentparameterlist (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns a list of all replication agent parameters that can be set in an agent p
 ## Syntax
 
 ```syntaxsql
-sp_getagentparameterlist [ @agent_type = ] agent_type
+sys.sp_getagentparameterlist [ @agent_type = ] agent_type
 [ ; ]
 ```
 

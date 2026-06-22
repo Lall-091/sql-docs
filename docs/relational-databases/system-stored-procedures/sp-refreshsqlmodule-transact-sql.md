@@ -1,10 +1,10 @@
 ---
-title: "sp_refreshsqlmodule (Transact-SQL)"
+title: "sys.sp_refreshsqlmodule (Transact-SQL)"
 description: sp_refreshsqlmodule updates the metadata for the specified non-schema-bound object.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric-sqldb"
 ---
-# sp_refreshsqlmodule (Transact-SQL)
+# sys.sp_refreshsqlmodule (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-dedicated-poolonly-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-dedicated-poolonly-fabricsqldb.md)]
 
@@ -36,7 +36,7 @@ Updates the metadata for the specified non-schema-bound stored procedure, user-d
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-sp_refreshsqlmodule
+sys.sp_refreshsqlmodule
     [ @name = ] N'name'
     [ , [ @namespace = ] { OBJECT | DATABASE_DDL_TRIGGER | SERVER_DDL_TRIGGER } ]
 [ ; ]

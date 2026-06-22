@@ -1,10 +1,10 @@
 ---
-title: "sp_bindefault (Transact-SQL)"
+title: "sys.sp_bindefault (Transact-SQL)"
 description: sp_bindefault binds a default to a column or to an alias data type.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_bindefault (Transact-SQL)
+# sys.sp_bindefault (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -33,7 +33,7 @@ Binds a default to a column or to an alias data type.
 ## Syntax
 
 ```syntaxsql
-sp_bindefault
+sys.sp_bindefault
     [ @defname = ] N'defname'
     , [ @objname = ] N'objname'
     [ , [ @futureonly = ] 'futureonly' ]

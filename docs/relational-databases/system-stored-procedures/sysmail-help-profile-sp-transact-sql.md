@@ -4,7 +4,7 @@ description: "Lists information about one or more mail profiles."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,9 @@ Lists information about one or more mail profiles.
 ## Syntax
 
 ```syntaxsql
-sysmail_help_profile_sp [ [ @profile_id = ] profile_id | [ @profile_name = ] 'profile_name' ]
+dbo.sysmail_help_profile_sp
+    [ [ @profile_id = ] profile_id ]
+    [ , [ @profile_name = ] N'profile_name' ]
 [ ; ]
 ```
 
@@ -37,7 +39,7 @@ sysmail_help_profile_sp [ [ @profile_id = ] profile_id | [ @profile_name = ] 'pr
 
 The profile ID to return information for. *@profile_id* is **int**, with a default of `NULL`.
 
-#### [ @profile_name = ] '*profile_name*'
+#### [ @profile_name = ] N'*profile_name*'
 
 The profile name to return information for. *@profile_name* is **sysname**, with a default of `NULL`.
 

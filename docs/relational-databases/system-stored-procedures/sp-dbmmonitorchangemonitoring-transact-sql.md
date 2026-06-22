@@ -1,10 +1,10 @@
 ---
-title: "sp_dbmmonitorchangemonitoring (Transact-SQL)"
+title: "sys.sp_dbmmonitorchangemonitoring (Transact-SQL)"
 description: sp_dbmmonitorchangemonitoring changes the value of a database mirroring monitoring parameter.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dbmmonitorchangemonitoring (Transact-SQL)
+# sys.sp_dbmmonitorchangemonitoring (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -28,7 +28,7 @@ Changes the value of a database mirroring monitoring parameter.
 ## Syntax
 
 ```syntaxsql
-sp_dbmmonitorchangemonitoring
+sys.sp_dbmmonitorchangemonitoring
     [ @parameter_id = ] parameter_id
     , [ @value = ] value
 [ ; ]

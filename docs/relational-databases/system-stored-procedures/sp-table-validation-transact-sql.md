@@ -1,10 +1,10 @@
 ---
-title: "sp_table_validation (Transact-SQL)"
+title: "sys.sp_table_validation (Transact-SQL)"
 description: "Returns and compares rowcount and checksum information on a table or indexed view."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_table_validation (Transact-SQL)
+# sys.sp_table_validation (Transact-SQL)
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,23 +30,24 @@ Either returns rowcount or checksum information on a table or indexed view, or c
 ## Syntax
 
 ```syntaxsql
-sp_table_validation [ @table = ] 'table'
-    [ , [ @expected_rowcount = ] type_of_check_requested OUTPUT ]
+sys.sp_table_validation
+    [ @table = ] N'table'
+    [ , [ @expected_rowcount = ] expected_rowcount OUTPUT ]
     [ , [ @expected_checksum = ] expected_checksum OUTPUT ]
     [ , [ @rowcount_only = ] rowcount_only ]
-    [ , [ @owner = ] 'owner' ]
+    [ , [ @owner = ] N'owner' ]
     [ , [ @full_or_fast = ] full_or_fast ]
     [ , [ @shutdown_agent = ] shutdown_agent ]
-    [ , [ @table_name = ] 'table_name' ]
-    [ , [ @column_list = ] 'column_list' ]
+    [ , [ @table_name = ] N'table_name' ]
+    [ , [ @column_list = ] N'column_list' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @table = ] '*table*'
+#### [ @table = ] N'*table*'
 
-The name of the table. *table* is **sysname**, with no default.
+The name of the table. *@table* is **sysname**, with no default.
 
 #### [ @expected_rowcount = ] *expected_rowcount* OUTPUT
 
@@ -56,7 +57,7 @@ Specifies whether to return the expected number of rows in the table. *@expected
 
 Specifies whether to return the expected checksum for the table. *@expected_checksum* is **numeric**, with a default of `NULL`. If `NULL`, the actual checksum is returned as an output parameter. If a value is provided, that value is checked against the actual checksum to identify any differences.
 
-#### [ @rowcount_only = ] *type_of_check_requested*
+#### [ @rowcount_only = ] *rowcount_only*
 
 Specifies what type of checksum or rowcount to perform. *@rowcount_only* is **smallint**, with a default of `1`.
 
@@ -66,7 +67,7 @@ If `1`, perform a rowcount check only.
 
 If `2`, perform a rowcount and binary checksum.
 
-#### [ @owner = ] '*owner*'
+#### [ @owner = ] N'*owner*'
 
 The name of the owner of the table. *@owner* is **sysname**, with a default of `NULL`.
 
@@ -78,19 +79,19 @@ The method used to calculate the rowcount. *@full_or_fast* is **tinyint**, with 
 | --- | --- |
 | `0` | Does full count using COUNT(*). |
 | `1` | Does fast count from `sysindexes.rows`. Counting rows in `sysindexes` is much faster than counting rows in the actual table. However, because `sysindexes` is lazily updated, the rowcount might not be accurate. |
-| `2` (default) | Does conditional fast counting by first trying the fast method. If fast method shows differences, reverts to full method. If *expected_rowcount* is `NULL` and the stored procedure is being used to get the value, a full `COUNT(*)` is always used. |
+| `2` (default) | Does conditional fast counting by first trying the fast method. If fast method shows differences, reverts to full method. If *@expected_rowcount* is `NULL` and the stored procedure is being used to get the value, a full `COUNT(*)` is always used. |
 
 #### [ @shutdown_agent = ] *shutdown_agent*
 
 If the Distribution Agent is executing `sp_table_validation`, specifies whether the Distribution Agent should shut down immediately upon completion of the validation. *@shutdown_agent* is **bit**, with a default of `0`. If `0`, the replication agent doesn't shut down. If `1`, error 20578 is raised and the replication agent is signaled to shut down. This parameter is ignored when `sp_table_validation` is executed directly by a user.
 
-#### [ @table_name = ] '*table_name*'
+#### [ @table_name = ] N'*table_name*'
 
-The table name of the view used for output messages. *table_name* is **sysname**, with a default of *@table*.
+The table name of the view used for output messages. *@table_name* is **sysname**, with a default of *@table*.
 
-#### [ @column_list = ] '*column_list*'
+#### [ @column_list = ] N'*column_list*'
 
-The list of columns that should be used in the checksum function. *column_list* is **nvarchar(4000)**, with a default of `NULL`. Enables validation of merge articles to specify a column list that excludes computed and timestamp columns.
+The list of columns that should be used in the checksum function. *@column_list* is **nvarchar(4000)**, with a default of `NULL`. Enables validation of merge articles to specify a column list that excludes computed and timestamp columns.
 
 ## Return code values
 

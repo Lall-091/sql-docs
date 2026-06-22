@@ -1,10 +1,10 @@
 ---
-title: "sp_helpsubscription_properties (Transact-SQL)"
+title: "sys.sp_helpsubscription_properties (Transact-SQL)"
 description: sp_helpsubscription_properties Retrieves security information from the MSsubscription_properties table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpsubscription_properties (Transact-SQL)
+# sys.sp_helpsubscription_properties (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Retrieves security information from the [MSsubscription_properties](../system-ta
 ## Syntax
 
 ```syntaxsql
-sp_helpsubscription_properties
+sys.sp_helpsubscription_properties
     [ [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]
     [ , [ @publication = ] N'publication' ]

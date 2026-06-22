@@ -1,10 +1,10 @@
 ---
-title: "sp_help_log_shipping_secondary_primary (Transact-SQL)"
+title: "sys.sp_help_log_shipping_secondary_primary (Transact-SQL)"
 description: sp_help_log_shipping_secondary_primary retrieves the settings for a given primary database on the secondary server.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/11/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_log_shipping_secondary_primary (Transact-SQL)
+# sys.sp_help_log_shipping_secondary_primary (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ This stored procedure retrieves the settings for a given primary database on the
 ## Syntax
 
 ```syntaxsql
-sp_help_log_shipping_secondary_primary
+sys.sp_help_log_shipping_secondary_primary
     [ @primary_server = ] N'primary_server'
     , [ @primary_database = ] N'primary_database'
 [ ; ]

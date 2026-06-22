@@ -1,10 +1,10 @@
 ---
-title: "sp_droparticle (Transact-SQL)"
+title: "sys.sp_droparticle (Transact-SQL)"
 description: sp_droparticle drops an article from a snapshot or transactional publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_droparticle (Transact-SQL)
+# sys.sp_droparticle (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Drops an article from a snapshot or transactional publication. An article can't 
 ## Syntax
 
 ```syntaxsql
-sp_droparticle
+sys.sp_droparticle
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     [ , [ @ignore_distributor = ] ignore_distributor ]

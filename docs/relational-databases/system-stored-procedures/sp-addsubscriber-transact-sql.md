@@ -1,10 +1,10 @@
 ---
-title: "sp_addsubscriber (Transact-SQL)"
+title: "sys.sp_addsubscriber (Transact-SQL)"
 description: sp_addsubscriber adds a new Subscriber to a Publisher, enabling it to receive publications.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addsubscriber (Transact-SQL)
+# sys.sp_addsubscriber (Transact-SQL)
 
 [!INCLUDE [sql-asdb](../../includes/applies-to-version/sql-asdb.md)]
 
@@ -30,7 +30,7 @@ Adds a new Subscriber to a Publisher, enabling it to receive publications. This 
 ## Syntax
 
 ```syntaxsql
-sp_addsubscriber
+sys.sp_addsubscriber
     [ @subscriber = ] N'subscriber'
     [ , [ @type = ] type ]
     [ , [ @login = ] N'login' ]
@@ -169,7 +169,7 @@ How often to reschedule during the defined period. *@frequency_subday* is **int*
 
 #### [ @frequency_subday_interval = ] *frequency_subday_interval*
 
-The interval for *frequency_subday*. *@frequency_subday_interval* is **int**, with a default of `5`.
+The interval for *@frequency_subday*. *@frequency_subday_interval* is **int**, with a default of `5`.
 
 > [!NOTE]  
 > This parameter is deprecated and is maintained for backward compatibility of scripts. The property is now specified on a per-subscription basis when executing [sp_addsubscription](sp-addsubscription-transact-sql.md). When a value is specified, it's used as a default when creating subscriptions at this Subscriber and a warning message is returned.

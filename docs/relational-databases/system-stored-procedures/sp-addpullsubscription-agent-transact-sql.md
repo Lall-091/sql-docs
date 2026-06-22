@@ -1,10 +1,10 @@
 ---
-title: "sp_addpullsubscription_agent (Transact-SQL)"
+title: "sys.sp_addpullsubscription_agent (Transact-SQL)"
 description: Adds a new scheduled agent job used to synchronize a pull subscription to a transactional publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addpullsubscription_agent (Transact-SQL)
+# sys.sp_addpullsubscription_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Adds a new scheduled agent job used to synchronize a pull subscription to a tran
 ## Syntax
 
 ```syntaxsql
-sp_addpullsubscription_agent
+sys.sp_addpullsubscription_agent
     [ @publisher = ] N'publisher'
     [ , [ @publisher_db = ] N'publisher_db' ]
     , [ @publication = ] N'publication'
@@ -72,6 +72,7 @@ sp_addpullsubscription_agent
     [ , [ @job_name = ] N'job_name' ]
     [ , [ @job_login = ] N'job_login' ]
     [ , [ @job_password = ] N'job_password' ]
+    [ , [ @job_security_mode = ] job_security_mode ]
 [ ; ]
 ```
 
@@ -130,7 +131,7 @@ The Subscriber login to use when connecting to a Subscriber when synchronizing. 
 
 #### [ @subscriber_password = ] N'*subscriber_password*'
 
-The Subscriber password. *subscriber_password* is required if *subscriber_security_mode* is set to `0`. *@subscriber_password* is **sysname**, with a default of `NULL`. If a subscriber password is used, it's automatically encrypted.
+The Subscriber password. *@subscriber_password* is required if *@subscriber_security_mode* is set to `0`. *@subscriber_password* is **sysname**, with a default of `NULL`. If a subscriber password is used, it's automatically encrypted.
 
 > [!NOTE]  
 > [!INCLUDE [deprecated-parameter-returns-warning](../includes/deprecated-parameter-returns-warning.md)]
@@ -164,7 +165,7 @@ The Distributor login to use when connecting to a Distributor when synchronizing
 
 #### [ @distributor_password = ] N'*distributor_password*'
 
-The Distributor password. *distributor_password* is required if *distributor_security_mode* is set to `0`. *@distributor_password* is **sysname**, with a default of `NULL`.
+The Distributor password. *@distributor_password* is required if *@distributor_security_mode* is set to `0`. *@distributor_password* is **sysname**, with a default of `NULL`.
 
 > [!IMPORTANT]  
 > [!INCLUDE [ssnotestrongpass-md](../../includes/ssnotestrongpass-md.md)] When possible, prompt users to enter security credentials at runtime. If you must store credentials in a script file, you must secure the file to prevent unauthorized access.
@@ -245,7 +246,7 @@ The date when the Distribution Agent stops being scheduled, formatted as `yyyyMM
 
 #### [ @distribution_jobid = ] *distribution_jobid* OUTPUT
 
-The ID of the Distribution Agent for this job. *@distribution_jobid* is an OUTPUT parameter of type **binary(16)**, with a default of `NULL`.
+The ID of the Distribution Agent for this job. *@distribution_jobid* is an `OUTPUT` parameter of type **binary(16)**, with a default of `NULL`.
 
 #### [ @encrypted_distributor_password = ] *encrypted_distributor_password*
 
@@ -338,6 +339,10 @@ The password for the Windows account under which the agent runs. *@job_password*
 
 > [!IMPORTANT]  
 > [!INCLUDE [ssnotestrongpass-md](../../includes/ssnotestrongpass-md.md)] When possible, prompt users to enter security credentials at runtime. If you must store credentials in a script file, you must secure the file to prevent unauthorized access.
+
+#### [ @job_security_mode = ] *job_security_mode*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

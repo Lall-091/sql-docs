@@ -1,10 +1,10 @@
 ---
-title: "sp_dropdynamicsnapshot_job (Transact-SQL)"
+title: "sys.sp_dropdynamicsnapshot_job (Transact-SQL)"
 description: sp_dropdynamicsnapshot_job removes a filtered data snapshot job for a publication with parameterized row filters.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropdynamicsnapshot_job (Transact-SQL)
+# sys.sp_dropdynamicsnapshot_job (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Removes a filtered data snapshot job for a publication with parameterized row fi
 ## Syntax
 
 ```syntaxsql
-sp_dropdynamicsnapshot_job
+sys.sp_dropdynamicsnapshot_job
     [ @publication = ] N'publication'
     [ , [ @dynamic_snapshot_jobname = ] N'dynamic_snapshot_jobname' ]
     [ , [ @dynamic_snapshot_jobid = ] 'dynamic_snapshot_jobid' ]

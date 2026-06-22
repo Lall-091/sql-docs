@@ -4,7 +4,7 @@ description: "The sys.sp_change_feed_create_table_group system stored procedure 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 12/17/2025
+ms.date: 06/19/2026
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -40,34 +40,34 @@ This system stored procedure is used for:
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-EXECUTE sys.sp_change_feed_create_table_group
-    @table_group_id
-    , @table_group_name
-    , @workspace_id
-    , @destination_location
-    , @destination_credential
+sys.sp_change_feed_create_table_group
+    [ @table_group_id = ] 'table_group_id'
+    , [ @table_group_name = ] N'table_group_name'
+    [ , [ @workspace_id = ] N'workspace_id' ]
+    [ , [ @destination_location = ] N'destination_location' ]
+    [ , [ @destination_credential = ] N'destination_credential' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### @table_group_id
+#### [ @table_group_id = ] '*table_group_id*'
 
 The unique identifier of the table group.
 
-#### @table_group_name
+#### [ @table_group_name = ] N'*table_group_name*'
 
 The name of the table group.
 
-#### @workspace_id
+#### [ @workspace_id = ] N'*workspace_id*'
 
 Azure resourceID for the workspace requesting creation of the new table group.
 
-#### @destination_location
+#### [ @destination_location = ] N'*destination_location*'
 
 URL string of the landing zone folder.
 
-#### @destination_credential
+#### [ @destination_credential = ] N'*destination_credential*'
 
 The credential name to access the landing zone.
 

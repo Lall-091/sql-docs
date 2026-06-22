@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergepublication (Transact-SQL)"
+title: "sys.sp_helpmergepublication (Transact-SQL)"
 description: "Returns information about a merge publication."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergepublication (Transact-SQL)
+# sys.sp_helpmergepublication (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information about a merge publication. This stored procedure is executed
 ## Syntax
 
 ```syntaxsql
-sp_helpmergepublication
+sys.sp_helpmergepublication
     [ [ @publication = ] N'publication' ]
     [ , [ @found = ] found OUTPUT ]
     [ , [ @publication_id = ] 'publication_id' OUTPUT ]
@@ -45,14 +45,14 @@ The name of the publication. *@publication* is **sysname**, with a default of `%
 
 #### [ @found = ] *found* OUTPUT
 
-A flag to indicate returning rows. *@found* is an OUTPUT parameter of type **int**.
+A flag to indicate returning rows. *@found* is an `OUTPUT` parameter of type **int**.
 
 - `1` indicates the publication is found.
 - `0` indicates the publication isn't found.
 
 #### [ @publication_id = ] '*publication_id*' OUTPUT
 
-The publication identification number. *@publication_id* is an OUTPUT parameter of type **uniqueidentifier**.
+The publication identification number. *@publication_id* is an `OUTPUT` parameter of type **uniqueidentifier**.
 
 #### [ @reserved = ] N'*reserved*'
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_drop_agent_parameter (Transact-SQL)"
+title: "sys.sp_drop_agent_parameter (Transact-SQL)"
 description: sp_drop_agent_parameter drops one or all parameters from a profile in the MSagent_parameters table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_drop_agent_parameter (Transact-SQL)
+# sys.sp_drop_agent_parameter (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Drops one or all parameters from a profile in the `MSagent_parameters` table. Th
 ## Syntax
 
 ```syntaxsql
-sp_drop_agent_parameter
+sys.sp_drop_agent_parameter
     [ @profile_id = ] profile_id
     [ , [ @parameter_name = ] N'parameter_name' ]
 [ ; ]

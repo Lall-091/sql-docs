@@ -4,7 +4,7 @@ description: Changes the settings for a SQL Server Agent schedule.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,9 @@ Changes the settings for a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md
 ## Syntax
 
 ```syntaxsql
-sp_update_schedule
-    [ [ @schedule_id = ] schedule_id ]
-    [ , [ @name = ] N'name' ]
+dbo.sp_update_schedule
+    { [ @schedule_id = ] schedule_id
+        | [ @name = ] N'name' }
     [ , [ @new_name = ] N'new_name' ]
     [ , [ @enabled = ] enabled ]
     [ , [ @freq_type = ] freq_type ]
@@ -148,7 +148,7 @@ The time on any day between *@active_start_date* and *@active_end_date* to begin
 
 #### [ @active_end_time = ] *active_end_time*
 
-The time on any day between *active_start_date* and *@active_end_date* to end job execution. *@active_end_time* is **int**, with a default of `235959`. The time is formatted as `HHmmss` on a 24-hour clock.
+The time on any day between *@active_start_date* and *@active_end_date* to end job execution. *@active_end_time* is **int**, with a default of `235959`. The time is formatted as `HHmmss` on a 24-hour clock.
 
 #### [ @owner_login_name = ] N'*owner_login_name*'
 

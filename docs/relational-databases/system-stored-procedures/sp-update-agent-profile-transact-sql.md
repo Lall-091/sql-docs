@@ -1,10 +1,10 @@
 ---
-title: "sp_update_agent_profile (Transact-SQL)"
+title: "sys.sp_update_agent_profile (Transact-SQL)"
 description: Updates the profile used by a replication agent.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_update_agent_profile (Transact-SQL)
+# sys.sp_update_agent_profile (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Updates the profile used by a replication agent. This stored procedure is execut
 ## Syntax
 
 ```syntaxsql
-sp_update_agent_profile
+sys.sp_update_agent_profile
     [ @agent_type = ] agent_type
     , [ @agent_id = ] agent_id
     , [ @profile_id = ] profile_id
@@ -40,7 +40,7 @@ sp_update_agent_profile
 
 *@agent_type* is **int**, with no default.
 
-The type of agent. *agent_type* is **int**, with no default, and can be one of these values.
+The type of agent. *@agent_type* is **int**, with no default, and can be one of these values.
 
 | Value | Description |
 | --- | --- |

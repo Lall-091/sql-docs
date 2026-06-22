@@ -1,10 +1,10 @@
 ---
-title: "sp_remoteoption (Transact-SQL)"
+title: "sys.sp_remoteoption (Transact-SQL)"
 description: sp_remoteoption displays or changes options for a remote login defined on the local server running SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_remoteoption (Transact-SQL)
+# sys.sp_remoteoption (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Displays or changes options for a remote login defined on the local server runni
 ## Syntax
 
 ```syntaxsql
-sp_remoteoption
+sys.sp_remoteoption
     [ @remoteserver = ] N'remoteserver'
     [ , [ @loginame = ] N'loginame' ]
     [ , [ @remotename = ] N'remotename' ]

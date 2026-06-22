@@ -1,10 +1,10 @@
 ---
-title: "sp_articleview (Transact-SQL)"
+title: "sys.sp_articleview (Transact-SQL)"
 description: Creates the view that defines the published article when a table is filtered vertically or horizontally.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_articleview (Transact-SQL)
+# sys.sp_articleview (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Creates the view that defines the published article when a table is filtered ver
 ## Syntax
 
 ```syntaxsql
-sp_articleview
+sys.sp_articleview
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     [ , [ @view_name = ] N'view_name' ]

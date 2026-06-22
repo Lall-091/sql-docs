@@ -1,10 +1,10 @@
 ---
-title: "sp_readerrorlog (Transact-SQL)"
+title: "sys.sp_readerrorlog (Transact-SQL)"
 description: sp_readerrorlog allows you to read the contents of the SQL Server or SQL Server Agent error log file and filter on keywords.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_readerrorlog (Transact-SQL)
+# sys.sp_readerrorlog (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Allows you to read the contents of the SQL Server or SQL Server Agent error log 
 ## Syntax
 
 ```syntaxsql
-sp_readerrorlog
+sys.sp_readerrorlog
     [ [ @p1 = ] p1 ]
     [ , [ @p2 = ] p2 ]
     [ , [ @p3 = ] N'p3' ]

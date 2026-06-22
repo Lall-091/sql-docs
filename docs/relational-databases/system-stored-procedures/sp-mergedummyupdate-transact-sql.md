@@ -1,10 +1,10 @@
 ---
-title: "sp_mergedummyupdate (Transact-SQL)"
+title: "sys.sp_mergedummyupdate (Transact-SQL)"
 description: "Does a dummy update on the given row so that it sends again during the next merge."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_mergedummyupdate (Transact-SQL)
+# sys.sp_mergedummyupdate (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Does a dummy update on the given row, so that it sends again during the next mer
 ## Syntax
 
 ```syntaxsql
-sp_mergedummyupdate
+sys.sp_mergedummyupdate
     [ @source_object = ] N'source_object'
     , [ @rowguid = ] 'rowguid'
 [ ; ]

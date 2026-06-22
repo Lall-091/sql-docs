@@ -4,7 +4,7 @@ description: "Deletes a policy category in Policy-Based Management."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,9 @@ Deletes a policy category in Policy-Based Management.
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_delete_policy_category
-    { [ @name = ] N'name' | [ @policy_category_id = ] policy_category_id }
+dbo.sp_syspolicy_delete_policy_category
+    [ [ @name = ] N'name' ]
+    [ , [ @policy_category_id = ] policy_category_id ]
 [ ; ]
 ```
 

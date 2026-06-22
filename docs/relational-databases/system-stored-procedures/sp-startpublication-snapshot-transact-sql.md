@@ -1,10 +1,10 @@
 ---
-title: "sp_startpublication_snapshot (Transact-SQL)"
+title: "sys.sp_startpublication_snapshot (Transact-SQL)"
 description: sp_startpublication_snapshot starts the Snapshot Agent job that generates the initial snapshot for a publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_startpublication_snapshot (Transact-SQL)
+# sys.sp_startpublication_snapshot (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Used to start the Snapshot Agent job that generates the initial snapshot for a p
 ## Syntax
 
 ```syntaxsql
-sp_startpublication_snapshot
+sys.sp_startpublication_snapshot
     [ @publication = ] N'publication'
     [ , [ @publisher = ] N'publisher' ]
 [ ; ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_dropdistributiondb (Transact-SQL)"
+title: "sys.sp_dropdistributiondb (Transact-SQL)"
 description: Drops a distribution database and files used by it if they aren't used by another database. This stored procedure runs at the Distributor on any database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropdistributiondb (Transact-SQL)
+# sys.sp_dropdistributiondb (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Drops a distribution database. Drops the physical files used by the database if 
 ## Syntax
 
 ```syntaxsql
-sp_dropdistributiondb
+sys.sp_dropdistributiondb
     [ @database = ] N'database'
     [ , [ @former_ag_secondary = ] former_ag_secondary ]
 [ ; ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_dropextendedproperty (Transact-SQL)"
+title: "sys.sp_dropextendedproperty (Transact-SQL)"
 description: sp_dropextendedproperty drops an existing extended property.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropextendedproperty (Transact-SQL)
+# sys.sp_dropextendedproperty (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Drops an existing extended property.
 ## Syntax
 
 ```syntaxsql
-sp_dropextendedproperty
+sys.sp_dropextendedproperty
     [ @name = ] N'name'
     [ , [ @level0type = ] 'level0type' ]
     [ , [ @level0name = ] N'level0name' ]

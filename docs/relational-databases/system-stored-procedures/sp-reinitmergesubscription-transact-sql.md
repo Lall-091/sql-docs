@@ -1,10 +1,10 @@
 ---
-title: "sp_reinitmergesubscription (Transact-SQL)"
+title: "sys.sp_reinitmergesubscription (Transact-SQL)"
 description: Marks a merge subscription for reinitialization the next time the Merge Agent runs.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_reinitmergesubscription (Transact-SQL)
+# sys.sp_reinitmergesubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Marks a merge subscription for reinitialization the next time the Merge Agent ru
 ## Syntax
 
 ```syntaxsql
-sp_reinitmergesubscription
+sys.sp_reinitmergesubscription
     [ [ @publication = ] N'publication' ]
     [ , [ @subscriber = ] N'subscriber' ]
     [ , [ @subscriber_db = ] N'subscriber_db' ]

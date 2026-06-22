@@ -1,10 +1,10 @@
 ---
-title: "sp_sproc_columns (Transact-SQL)"
+title: "sys.sp_sproc_columns (Transact-SQL)"
 description: Returns column information for a single stored procedure or user-defined function in the current environment.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
-# sp_sproc_columns (Transact-SQL)
+# sys.sp_sproc_columns (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
@@ -30,7 +30,7 @@ Returns column information for a single stored procedure or user-defined functio
 ## Syntax
 
 ```syntaxsql
-sp_sproc_columns
+sys.sp_sproc_columns
     [ [ @procedure_name = ] N'procedure_name' ]
     [ , [ @procedure_owner = ] N'procedure_owner' ]
     [ , [ @procedure_qualifier = ] N'procedure_qualifier' ]

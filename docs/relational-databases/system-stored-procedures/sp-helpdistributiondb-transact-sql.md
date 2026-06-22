@@ -1,10 +1,10 @@
 ---
-title: "sp_helpdistributiondb (Transact-SQL)"
+title: "sys.sp_helpdistributiondb (Transact-SQL)"
 description: sp_helpdistributiondb returns properties of the specified distribution database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpdistributiondb (Transact-SQL)
+# sys.sp_helpdistributiondb (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Returns properties of the specified distribution database. This stored procedure
 ## Syntax
 
 ```syntaxsql
-sp_helpdistributiondb [ [ @database = ] N'database' ]
+sys.sp_helpdistributiondb [ [ @database = ] N'database' ]
 [ ; ]
 ```
 

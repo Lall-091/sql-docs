@@ -4,7 +4,7 @@ description: Removes the specified server from the list of available target serv
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Removes the specified server from the list of available target servers.
 ## Syntax
 
 ```syntaxsql
-sp_delete_targetserver
+dbo.sp_delete_targetserver
     [ @server_name = ] N'server_name'
     [ , [ @clear_downloadlist = ] clear_downloadlist ]
     [ , [ @post_defection = ] post_defection ]

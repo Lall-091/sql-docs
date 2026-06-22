@@ -1,10 +1,10 @@
 ---
-title: "sp_fulltext_catalog (Transact-SQL)"
+title: "sys.sp_fulltext_catalog (Transact-SQL)"
 description: Creates and drops a full-text catalog, and starts and stops the indexing action for a catalog.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# sp_fulltext_catalog (Transact-SQL)
+# sys.sp_fulltext_catalog (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
@@ -31,7 +31,7 @@ Creates and drops a full-text catalog, and starts and stops the indexing action 
 ## Syntax
 
 ```syntaxsql
-sp_fulltext_catalog
+sys.sp_fulltext_catalog
     [ @ftcat = ] N'ftcat'
     , [ @action = ] 'action'
     [ , [ @path = ] N'path' ]

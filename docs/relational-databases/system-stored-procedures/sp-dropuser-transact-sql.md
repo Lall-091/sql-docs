@@ -1,10 +1,10 @@
 ---
-title: "sp_dropuser (Transact-SQL)"
+title: "sys.sp_dropuser (Transact-SQL)"
 description: sp_dropuser removes a database user from the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropuser (Transact-SQL)
+# sys.sp_dropuser (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Removes a database user from the current database. `sp_dropuser` provides compat
 ## Syntax
 
 ```syntaxsql
-sp_dropuser [ @name_in_db = ] N'name_in_db'
+sys.sp_dropuser [ @name_in_db = ] N'name_in_db'
 [ ; ]
 ```
 

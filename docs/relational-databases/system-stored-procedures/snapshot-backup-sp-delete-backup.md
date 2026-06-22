@@ -1,17 +1,17 @@
 ---
-title: "sp_delete_backup (Transact-SQL)"
+title: "sys.sp_delete_backup (Transact-SQL)"
 description: "Deletes all snapshots and the backup file that comprise a snapshot backup set from the specified database."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
 dev_langs:
   - "TSQL"
 ---
-# sp_delete_backup (Transact-SQL)
+# sys.sp_delete_backup (Transact-SQL)
 
 [!INCLUDE [sqlserver2016](../../includes/applies-to-version/sqlserver2016.md)]
 
@@ -23,17 +23,18 @@ Deletes all snapshots and the backup file that comprise a snapshot backup set fr
 
 ```syntaxsql
 sys.sp_delete_backup
-    [ @backup_url = ] N'backup_metadata_file_url'
-    , [ [ @db_name = ] N'database_name' | NULL ]
+    [ @backup_url = ] N'backup_url'
+    [ , [ @database_name = ] { N'database_name' | NULL } ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### [ @backup_url = ] N'*backup_meta_file_url*'
+#### [ @backup_url = ] N'*backup_url*'
 
 The URL of the backup to be deleted, which deletes all snapshots comprising the specified backup set including the backup file itself.
 
-#### [ @db_name = ] N'*database_name*'
+#### [ @database_name = ] N'*database_name*'
 
 The name of the database containing the snapshot to be deleted. When a database name is provided, the system verifies that the backup URL provided is a backup URL for the specified database and uses [sp_delete_backup_file_snapshot](snapshot-backup-sp-delete-backup-file-snapshot.md) to delete each snapshot. If no database name is provided, this database check isn't performed.
 

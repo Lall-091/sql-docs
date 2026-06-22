@@ -1,10 +1,10 @@
 ---
-title: "sp_scriptsubconflicttable (Transact-SQL)"
+title: "sys.sp_scriptsubconflicttable (Transact-SQL)"
 description: Generates script for creating a conflict table on the Subscriber for a given queued subscription article.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_scriptsubconflicttable (Transact-SQL)
+# sys.sp_scriptsubconflicttable (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Generates script for creating a conflict table on the Subscriber for a given que
 ## Syntax
 
 ```syntaxsql
-sp_scriptsubconflicttable
+sys.sp_scriptsubconflicttable
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     [ , [ @alter = ] alter ]

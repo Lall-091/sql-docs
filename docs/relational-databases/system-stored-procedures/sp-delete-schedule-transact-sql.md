@@ -4,7 +4,7 @@ description: sp_delete_schedule deletes a schedule.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,9 @@ Deletes a schedule.
 ## Syntax
 
 ```syntaxsql
-sp_delete_schedule
-    [ [ @schedule_id = ] schedule_id ]
-    [ , [ @schedule_name = ] N'schedule_name' ]
+dbo.sp_delete_schedule
+    { [ @schedule_id = ] schedule_id
+        | [ @schedule_name = ] N'schedule_name' }
     [ , [ @force_delete = ] force_delete ]
     [ , [ @automatic_post = ] automatic_post ]
 [ ; ]

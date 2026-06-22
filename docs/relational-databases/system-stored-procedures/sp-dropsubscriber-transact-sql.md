@@ -1,10 +1,10 @@
 ---
-title: "sp_dropsubscriber (Transact-SQL)"
+title: "sys.sp_dropsubscriber (Transact-SQL)"
 description: sp_dropsubscriber removes the Subscriber designation from a registered server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropsubscriber (Transact-SQL)
+# sys.sp_dropsubscriber (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Removes the Subscriber designation from a registered server. This stored procedu
 ## Syntax
 
 ```syntaxsql
-sp_dropsubscriber
+sys.sp_dropsubscriber
     [ @subscriber = ] N'subscriber'
     [ , [ @reserved = ] N'reserved' ]
     [ , [ @ignore_distributor = ] ignore_distributor ]

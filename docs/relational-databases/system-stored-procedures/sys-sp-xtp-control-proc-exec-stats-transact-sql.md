@@ -4,7 +4,7 @@ description: "Enables statistics collection for natively compiled stored procedu
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,8 +28,8 @@ To enable statistics collection at the query level for natively compiled stored 
 
 ```syntaxsql
 sys.sp_xtp_control_proc_exec_stats
-    [ [ @new_collection_value = ] collection_value ]
-    , [ @old_collection_value = ] old_collection_value OUTPUT
+    [ [ @new_collection_value = ] new_collection_value ]
+    [ , [ @old_collection_value = ] old_collection_value OUTPUT ]
 [ ; ]
 ```
 
@@ -41,7 +41,7 @@ Determines whether procedure-level statistics collection is on (`1`) or off (`0`
 
 @new_collection_value is set to zero when [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or the database starts.
 
-#### [ @old_collection_value = ] *old_collection_value*
+#### [ @old_collection_value = ] *old_collection_value* OUTPUT
 
 Returns the current status. *@old_collection_value* is **bit**.
 

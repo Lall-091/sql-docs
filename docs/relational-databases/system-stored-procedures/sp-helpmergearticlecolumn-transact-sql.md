@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergearticlecolumn (Transact-SQL)"
+title: "sys.sp_helpmergearticlecolumn (Transact-SQL)"
 description: "Returns the list of columns in the specified table or view article for a merge publication."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergearticlecolumn (Transact-SQL)
+# sys.sp_helpmergearticlecolumn (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the list of columns in the specified table or view article for a merge p
 ## Syntax
 
 ```syntaxsql
-sp_helpmergearticlecolumn
+sys.sp_helpmergearticlecolumn
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
 [ ; ]

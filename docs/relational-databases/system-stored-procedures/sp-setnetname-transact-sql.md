@@ -1,10 +1,10 @@
 ---
-title: "sp_setnetname (Transact-SQL)"
+title: "sys.sp_setnetname (Transact-SQL)"
 description: sp_setnetname sets the network names in sys.servers to their actual network computer names for remote instances of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_setnetname (Transact-SQL)
+# sys.sp_setnetname (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Sets the network names in `sys.servers` to their actual network computer names f
 ## Syntax
 
 ```syntaxsql
-sp_setnetname
+sys.sp_setnetname
     [ @server = ] N'server'
     , [ @netname = ] N'netname'
 [ ; ]

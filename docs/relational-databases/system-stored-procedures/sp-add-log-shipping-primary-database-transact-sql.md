@@ -1,10 +1,10 @@
 ---
-title: "sp_add_log_shipping_primary_database (Transact-SQL)"
+title: "sys.sp_add_log_shipping_primary_database (Transact-SQL)"
 description: Sets up the primary database for a log shipping configuration, including the backup job, local monitor record, and remote monitor record.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 02/23/2026
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - TSQL
 ---
-# sp_add_log_shipping_primary_database (Transact-SQL)
+# sys.sp_add_log_shipping_primary_database (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -115,11 +115,11 @@ The length of time in minutes in which the history is retained. *@history_retent
 
 #### [ @backup_job_id = ] '*backup_job_id*' OUTPUT
 
-The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent job ID associated with the backup job on the primary server. *@backup_job_id* is an OUTPUT parameter of type **uniqueidentifier** and can't be `NULL`.
+The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent job ID associated with the backup job on the primary server. *@backup_job_id* is an `OUTPUT` parameter of type **uniqueidentifier** and can't be `NULL`.
 
 #### [ @primary_id = ] '*primary_id*' OUTPUT
 
-The ID of the primary database for the log shipping configuration. *@primary_id* is an OUTPUT parameter of type **uniqueidentifier** and can't be `NULL`.
+The ID of the primary database for the log shipping configuration. *@primary_id* is an `OUTPUT` parameter of type **uniqueidentifier** and can't be `NULL`.
 
 #### [ @overwrite = ] *overwrite*
 

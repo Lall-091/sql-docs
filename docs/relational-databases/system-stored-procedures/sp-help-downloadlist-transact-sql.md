@@ -4,7 +4,7 @@ description: Lists all rows in the sysdownloadlist system table for the supplied
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,9 @@ Lists all rows in the `sysdownloadlist` system table for the supplied job, or al
 ## Syntax
 
 ```syntaxsql
-sp_help_downloadlist
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_help_downloadlist
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @operation = ] 'operation' ]
     [ , [ @object_type = ] 'object_type' ]
     [ , [ @object_name = ] N'object_name' ]

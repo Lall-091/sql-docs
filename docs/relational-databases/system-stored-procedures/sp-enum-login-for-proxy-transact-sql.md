@@ -4,7 +4,7 @@ description: sp_enum_login_for_proxy lists associations between security princip
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,10 +27,10 @@ Lists associations between security principals and proxies.
 ## Syntax
 
 ```syntaxsql
-sp_enum_login_for_proxy
+dbo.sp_enum_login_for_proxy
     [ [ @name = ] N'name' ]
-    [ , [ @proxy_id = ] proxy_id ]
-    [ , [ @proxy_name = ] N'proxy_name' ]
+    [ , { [ @proxy_id = ] proxy_id
+        | [ @proxy_name = ] N'proxy_name' } ]
 [ ; ]
 ```
 
@@ -44,13 +44,13 @@ The name of a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] princip
 
 The proxy identification number of the proxy to list information for. *@proxy_id* is **int**, with a default of `NULL`.
 
-Either the *@proxy_id* or the *@proxy_name* can be specified.
+Either *@proxy_id* or *@proxy_name* can be specified.
 
 #### [ @proxy_name = ] N'*proxy_name*'
 
 The name of the proxy to list information for. *@proxy_name* is **sysname**, with a default of `NULL`.
 
-Either the *@proxy_id* or the *@proxy_name* can be specified.
+Either *@proxy_id* or *@proxy_name* can be specified.
 
 ## Return code values
 

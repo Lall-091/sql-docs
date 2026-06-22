@@ -4,7 +4,7 @@ description: Changes the name of the specified target server group.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Changes the name of the specified target server group.
 ## Syntax
 
 ```syntaxsql
-sp_update_targetservergroup
+dbo.sp_update_targetservergroup
     [ @name = ] N'name'
     , [ @new_name = ] N'new_name'
 [ ; ]

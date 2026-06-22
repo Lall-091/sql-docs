@@ -1,10 +1,10 @@
 ---
-title: "sp_add_log_shipping_alert_job (Transact-SQL)"
+title: "sys.sp_add_log_shipping_alert_job (Transact-SQL)"
 description: "This stored procedure checks to see if an alert job has been created on this server."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_add_log_shipping_alert_job (Transact-SQL)
+# sys.sp_add_log_shipping_alert_job (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,14 +27,14 @@ This stored procedure checks to see if an alert job has been created on this ser
 ## Syntax
 
 ```syntaxsql
-sp_add_log_shipping_alert_job
-[ , [ @alert_job_id = ] alert_job_id OUTPUT ]
+sys.sp_add_log_shipping_alert_job
+    [ [ @alert_job_id = ] 'alert_job_id' OUTPUT ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @alert_job_id = ] *alert_job_id* OUTPUT
+#### [ @alert_job_id = ] '*alert_job_id*' OUTPUT
 
 The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent job ID of the log shipping alert job.
 

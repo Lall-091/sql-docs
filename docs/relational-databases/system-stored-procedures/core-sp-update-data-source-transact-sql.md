@@ -61,7 +61,7 @@ The number of days remaining in the snapshot data retention period. *@days_until
 
 #### [ @source_id = ] *source_id*
 
-The unique identifier for the source of the update. *@source_id* is **int** and is returned as OUTPUT.
+The unique identifier for the source of the update. *@source_id* is **int** and is returned as `OUTPUT`.
 
 ## Return code values
 

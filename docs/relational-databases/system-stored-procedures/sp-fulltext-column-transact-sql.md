@@ -1,10 +1,10 @@
 ---
-title: "sp_fulltext_column (Transact-SQL)"
+title: "sys.sp_fulltext_column (Transact-SQL)"
 description: Specifies whether or not a particular column of a table participates in full-text indexing.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# sp_fulltext_column (Transact-SQL)
+# sys.sp_fulltext_column (Transact-SQL)
 
 [!INCLUDE [sql-asa](../../includes/applies-to-version/sql-asa.md)]
 
@@ -31,7 +31,7 @@ Specifies whether or not a particular column of a table participates in full-tex
 ## Syntax
 
 ```syntaxsql
-sp_fulltext_column
+sys.sp_fulltext_column
     [ @tabname = ] N'tabname'
     , [ @colname = ] N'colname'
     , [ @action = ] 'action'

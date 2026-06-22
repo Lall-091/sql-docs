@@ -1,10 +1,10 @@
 ---
-title: "sp_helplanguage (Transact-SQL)"
+title: "sys.sp_helplanguage (Transact-SQL)"
 description: sp_helplanguage Reports information about a particular alternative language or about all languages in the SQL Server Database Engine.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -20,7 +20,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_helplanguage (Transact-SQL)
+# sys.sp_helplanguage (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -31,7 +31,7 @@ Reports information about a particular alternative language or about all languag
 ## Syntax
 
 ```syntaxsql
-sp_helplanguage [ [ @language = ] N'language' ]
+sys.sp_helplanguage [ [ @language = ] N'language' ]
 [ ; ]
 ```
 

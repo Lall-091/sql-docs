@@ -1,10 +1,10 @@
 ---
-title: "sp_restoremergeidentityrange (Transact-SQL)"
+title: "sys.sp_restoremergeidentityrange (Transact-SQL)"
 description: sp_restoremergeidentityrange ensures that automatic identity range management functions properly after a Publisher is restored from a backup.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_restoremergeidentityrange (Transact-SQL)
+# sys.sp_restoremergeidentityrange (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ This stored procedure is used to update identity range assignments. It ensures t
 ## Syntax
 
 ```syntaxsql
-sp_restoremergeidentityrange
+sys.sp_restoremergeidentityrange
     [ [ @publication = ] N'publication' ]
     [ , [ @article = ] N'article' ]
 [ ; ]

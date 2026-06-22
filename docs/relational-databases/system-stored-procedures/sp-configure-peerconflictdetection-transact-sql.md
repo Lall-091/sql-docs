@@ -1,10 +1,10 @@
 ---
-title: "sp_configure_peerconflictdetection (Transact-SQL)"
+title: "sys.sp_configure_peerconflictdetection (Transact-SQL)"
 description: sp_configure_peerconflictdetection configures conflict detection for a publication that is involved in a peer-to-peer transactional replication topology.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_configure_peerconflictdetection (Transact-SQL)
+# sys.sp_configure_peerconflictdetection (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Configures conflict detection for a publication that is involved in a peer-to-pe
 ## Syntax
 
 ```syntaxsql
-sp_configure_peerconflictdetection
+sys.sp_configure_peerconflictdetection
     [ @publication = ] N'publication'
     , [ @action = ] N'action'
     [ , [ @originator_id = ] originator_id ]

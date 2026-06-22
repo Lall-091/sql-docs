@@ -1,10 +1,10 @@
 ---
-title: "sp_unregister_custom_scripting (Transact-SQL)"
+title: "sys.sp_unregister_custom_scripting (Transact-SQL)"
 description: Removes a user-defined custom stored procedure or Transact-SQL script file registered with sp_register_custom_scripting.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_unregister_custom_scripting (Transact-SQL)
+# sys.sp_unregister_custom_scripting (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ This stored procedure removes a user-defined custom stored procedure or [!INCLUD
 ## Syntax
 
 ```syntaxsql
-sp_unregister_custom_scripting
+sys.sp_unregister_custom_scripting
     [ @type = ] 'type'
     [ , [ @publication = ] N'publication' ]
     [ , [ @article = ] N'article' ]

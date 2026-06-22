@@ -1,10 +1,10 @@
 ---
-title: "sp_help_log_shipping_secondary_database (Transact-SQL)"
+title: "sys.sp_help_log_shipping_secondary_database (Transact-SQL)"
 description: sp_help_log_shipping_secondary_database retrieves the settings for one or more secondary databases.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/11/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_log_shipping_secondary_database (Transact-SQL)
+# sys.sp_help_log_shipping_secondary_database (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ This stored procedure retrieves the settings for one or more secondary databases
 ## Syntax
 
 ```syntaxsql
-sp_help_log_shipping_secondary_database
+sys.sp_help_log_shipping_secondary_database
     [ [ @secondary_database = ] N'secondary_database' ]
     [ , [ @secondary_id = ] 'secondary_id' ]
 [ ; ]

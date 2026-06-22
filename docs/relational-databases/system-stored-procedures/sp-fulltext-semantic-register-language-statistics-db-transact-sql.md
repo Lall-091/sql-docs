@@ -1,10 +1,10 @@
 ---
-title: "sp_fulltext_semantic_register_language_statistics_db (Transact-SQL)"
+title: "sys.sp_fulltext_semantic_register_language_statistics_db (Transact-SQL)"
 description: Registers a pre-populated Semantic Language Statistics database in the current instance of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_fulltext_semantic_register_language_statistics_db (Transact-SQL)
+# sys.sp_fulltext_semantic_register_language_statistics_db (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -29,7 +29,7 @@ You can initiate semantic extraction only after you have attached this language 
 ## Syntax
 
 ```syntaxsql
-sp_fulltext_semantic_register_language_statistics_db [ @dbname = ] N'dbname'
+sys.sp_fulltext_semantic_register_language_statistics_db [ @dbname = ] N'dbname'
 [ ; ]
 ```
 

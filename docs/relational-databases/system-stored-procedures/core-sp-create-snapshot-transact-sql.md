@@ -63,7 +63,7 @@ The unique identifier that maps to the collection set event log on the server th
 
 #### [ @snapshot_id = ] *snapshot_id*
 
-The unique identifier for a row that is inserted into the `core.snapshots` view. *@snapshot_id* is **int** and is returned as OUTPUT.
+The unique identifier for a row that is inserted into the `core.snapshots` view. *@snapshot_id* is **int** and is returned as `OUTPUT`.
 
 ## Return code values
 

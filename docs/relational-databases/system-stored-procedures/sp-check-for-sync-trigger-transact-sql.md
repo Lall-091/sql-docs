@@ -1,10 +1,10 @@
 ---
-title: "sp_check_for_sync_trigger (Transact-SQL)"
+title: "sys.sp_check_for_sync_trigger (Transact-SQL)"
 description: sp_check_for_sync_trigger Determines the calling context of a user-defined trigger or stored procedure.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -15,7 +15,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_check_for_sync_trigger (Transact-SQL)
+# sys.sp_check_for_sync_trigger (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -26,7 +26,7 @@ Determines whether a user-defined trigger or stored procedure is being called in
 ## Syntax
 
 ```syntaxsql
-sp_check_for_sync_trigger
+sys.sp_check_for_sync_trigger
     [ @tabid = ] tabid
     [ , [ @trigger_op = ] 'trigger_op' OUTPUT ]
     [ , [ @fonpublisher = ] fonpublisher ]
@@ -41,7 +41,7 @@ The object ID of the table being checked for immediate updating triggers. *@tabi
 
 #### [ @trigger_op = ] '*trigger_op*' OUTPUT
 
-Specifies if the output parameter is to return the type of trigger it's being called from. *@trigger_op* is an OUTPUT parameter of type **char(10)**, and can be one of these values.
+Specifies if the output parameter is to return the type of trigger it's being called from. *@trigger_op* is an `OUTPUT` parameter of type **char(10)**, and can be one of these values.
 
 | Value | Description |
 | --- | --- |

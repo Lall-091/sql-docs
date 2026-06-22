@@ -1,10 +1,10 @@
 ---
-title: "sp_refresh_log_shipping_monitor (Transact-SQL)"
+title: "sys.sp_refresh_log_shipping_monitor (Transact-SQL)"
 description: sp_refresh_log_shipping_monitor refreshes the remote monitor tables with the latest information from a given primary or secondary server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_refresh_log_shipping_monitor (Transact-SQL)
+# sys.sp_refresh_log_shipping_monitor (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ This stored procedure refreshes the remote monitor tables with the latest inform
 ## Syntax
 
 ```syntaxsql
-sp_refresh_log_shipping_monitor
+sys.sp_refresh_log_shipping_monitor
     [ @agent_id = ] 'agent_id'
     , [ @agent_type = ] agent_type
     [ , [ @database = ] N'database' ]

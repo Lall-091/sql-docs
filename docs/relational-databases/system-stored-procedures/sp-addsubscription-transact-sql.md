@@ -1,10 +1,10 @@
 ---
-title: "sp_addsubscription (Transact-SQL)"
+title: "sys.sp_addsubscription (Transact-SQL)"
 description: Adds a subscription to a publication and sets the Subscriber status. This stored procedure runs at the Publisher on the publication database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addsubscription (Transact-SQL)
+# sys.sp_addsubscription (Transact-SQL)
 
 [!INCLUDE [sql-asdb](../../includes/applies-to-version/sql-asdb.md)]
 
@@ -27,7 +27,7 @@ Adds a subscription to a publication and sets the Subscriber status. This stored
 ## Syntax
 
 ```syntaxsql
-sp_addsubscription
+sys.sp_addsubscription
     [ @publication = ] N'publication'
     [ , [ @article = ] N'article' ]
     [ , [ @subscriber = ] N'subscriber' ]
@@ -67,6 +67,9 @@ sp_addsubscription
     [ , [ @subscriptionstreams = ] subscriptionstreams ]
     [ , [ @subscriber_type = ] subscriber_type ]
     [ , [ @memory_optimized = ] memory_optimized ]
+    [ , [ @subscriber_security_mode = ] subscriber_security_mode ]
+    [ , [ @subscriber_login = ] N'subscriber_login' ]
+    [ , [ @subscriber_password = ] N'subscriber_password' ]
 [ ; ]
 ```
 
@@ -330,6 +333,18 @@ The type of Subscriber. *@subscriber_type* is **tinyint**, and can be one of the
 #### [ @memory_optimized = ] *memory_optimized*
 
 Indicates that the subscription supports memory optimized tables. *@memory_optimized* is **bit**, with a default of `0` (false). `1` (true) means that the subscription supports memory optimized tables.
+
+#### [ @subscriber_security_mode = ] *subscriber_security_mode*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @subscriber_login = ] N'*subscriber_login*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @subscriber_password = ] N'*subscriber_password*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

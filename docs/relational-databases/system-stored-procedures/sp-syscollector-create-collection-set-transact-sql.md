@@ -4,7 +4,7 @@ description: Creates a new collection set.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -31,7 +31,7 @@ Creates a new collection set. You can use this stored procedure to create a cust
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_create_collection_set
+dbo.sp_syscollector_create_collection_set
     [ @name = ] N'name'
     [ , [ @target = ] N'target' ]
     [ , [ @collection_mode = ] collection_mode ]
@@ -117,11 +117,11 @@ The description of the collection set. *@description* is **nvarchar(4000)**, wit
 
 #### [ @collection_set_id = ] *collection_set_id* OUTPUT
 
-The unique local identifier for the collection set. *@collection_set_id* is an OUTPUT parameter of type **int**.
+The unique local identifier for the collection set. *@collection_set_id* is an `OUTPUT` parameter of type **int**.
 
 #### [ @collection_set_uid = ] '*collection_set_uid*' OUTPUT
 
-The GUID for the collection set. *@collection_set_uid* is an OUTPUT parameter of type **uniqueidentifier**.
+The GUID for the collection set. *@collection_set_uid* is an `OUTPUT` parameter of type **uniqueidentifier**.
 
 ## Return code values
 

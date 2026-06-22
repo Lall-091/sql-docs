@@ -4,7 +4,7 @@ description: "Changes configuration settings for Database Mail."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,23 +27,24 @@ Changes configuration settings for Database Mail. The configuration settings spe
 ## Syntax
 
 ```syntaxsql
-sysmail_configure_sp [ [ @parameter_name = ] 'parameter_name' ]
-    [ , [ @parameter_value = ] 'parameter_value' ]
-    [ , [ @description = ] 'description' ]
+dbo.sysmail_configure_sp
+    [ @parameter_name = ] N'parameter_name'
+    , [ @parameter_value = ] N'parameter_value'
+    [ , [ @description = ] N'description' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @parameter_name = ] '*parameter_name*'
+#### [ @parameter_name = ] N'*parameter_name*'
 
 The name of the parameter to change.
 
-#### [ @parameter_value = ] '*parameter_value*'
+#### [ @parameter_value = ] N'*parameter_value*'
 
 The new value of the parameter.
 
-#### [ @description = ] '*description*'
+#### [ @description = ] N'*description*'
 
 A description of the parameter.
 

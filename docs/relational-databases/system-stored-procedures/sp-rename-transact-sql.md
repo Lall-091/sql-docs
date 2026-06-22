@@ -1,10 +1,10 @@
 ---
-title: "sp_rename (Transact-SQL)"
+title: "sys.sp_rename (Transact-SQL)"
 description: "Changes the name of a user-created object in the current database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, maghan
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -20,7 +20,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric"
 ---
-# sp_rename (Transact-SQL)
+# sys.sp_rename (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw.md)]
 
@@ -40,8 +40,11 @@ Changes the name of a user-created object in the current database. This object c
 Syntax for `sp_rename` in SQL Server and Azure SQL Database:
 
 ```syntaxsql
-sp_rename [ @objname = ] 'object_name' , [ @newname = ] 'new_name'
-    [ , [ @objtype = ] 'object_type' ]
+sys.sp_rename
+    [ @objname = ] N'objname'
+    , [ @newname = ] N'newname'
+    [ , [ @objtype = ] 'objtype' ]
+[ ; ]
 ```
 
 Syntax for `sp_rename` (preview) in Azure Synapse Analytics:
@@ -60,15 +63,15 @@ sp_rename [ @objname = ] 'object_name' , [ @newname = ] 'new_name'
 
 ## Arguments
 
-#### [ @objname = ] '*object_name*'
+#### [ @objname = ] N'*objname*'
 
 The current qualified or nonqualified name of the user object or data type. If the object to be renamed is a column in a table, *object_name* must be in the form *table.column* or *schema.table.column*. If the object to be renamed is an index, *object_name* must be in the form *table.index* or *schema.table.index*. If the object to be renamed is a constraint, *object_name* must be in the form *schema.constraint*.
 
 Quotation marks are only necessary if a qualified object is specified. If a fully qualified name, including a database name, is provided, the database name must be the name of the current database. *object_name* is **nvarchar(776)**, with no default.
 
-#### [ @newname = ] '*new_name*'
+#### [ @newname = ] N'*newname*'
 
-The new name for the specified object. *new_name* must be a one-part name and must follow the rules for identifiers. *newname* is **sysname**, with no default.
+The new name for the specified object. *new_name* must be a one-part name and must follow the rules for identifiers. *@newname* is **sysname**, with no default.
 
 Trigger names can't start with # or ##.
 
@@ -77,7 +80,7 @@ Trigger names can't start with # or ##.
 - Schema names can't contain `/` or `\` or end with a `.`.
 - Table names can't contain `/` or `\` or end with a `.`.
 
-#### [ @objtype = ] '*object_type*'
+#### [ @objtype = ] '*objtype*'
 
 The type of object being renamed. *object_type* is **varchar(13)**, with a default of `NULL`, and can be one of these values.
 

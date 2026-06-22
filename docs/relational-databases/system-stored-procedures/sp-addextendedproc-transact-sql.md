@@ -1,10 +1,10 @@
 ---
-title: "sp_addextendedproc (Transact-SQL)"
+title: "sys.sp_addextendedproc (Transact-SQL)"
 description: Registers the name of a new extended stored procedure to SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addextendedproc (Transact-SQL)
+# sys.sp_addextendedproc (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Registers the name of a new extended stored procedure to [!INCLUDE [ssNoVersion]
 ## Syntax
 
 ```syntaxsql
-sp_addextendedproc
+sys.sp_addextendedproc
     [ @functname = ] N'functname'
     , [ @dllname = ] 'dllname'
 [ ; ]

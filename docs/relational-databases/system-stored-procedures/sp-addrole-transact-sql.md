@@ -1,10 +1,10 @@
 ---
-title: "sp_addrole (Transact-SQL)"
+title: "sys.sp_addrole (Transact-SQL)"
 description: sp_addrole creates a new database role in the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addrole (Transact-SQL)
+# sys.sp_addrole (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Creates a new database role in the current database.
 ## Syntax
 
 ```syntaxsql
-sp_addrole
+sys.sp_addrole
     [ @rolename = ] N'rolename'
     [ , [ @ownername = ] N'ownername' ]
 [ ; ]

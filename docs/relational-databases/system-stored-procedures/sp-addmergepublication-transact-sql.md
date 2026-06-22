@@ -1,10 +1,10 @@
 ---
-title: "sp_addmergepublication (Transact-SQL)"
+title: "sys.sp_addmergepublication (Transact-SQL)"
 description: Creates a new merge publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addmergepublication (Transact-SQL)
+# sys.sp_addmergepublication (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Creates a new merge publication. This stored procedure is executed at the Publis
 ## Syntax
 
 ```syntaxsql
-sp_addmergepublication
+sys.sp_addmergepublication
     [ @publication = ] N'publication'
     [ , [ @description = ] N'description' ]
     [ , [ @retention = ] retention ]

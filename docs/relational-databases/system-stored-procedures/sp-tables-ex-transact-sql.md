@@ -1,10 +1,10 @@
 ---
-title: "sp_tables_ex (Transact-SQL)"
+title: "sys.sp_tables_ex (Transact-SQL)"
 description: sp_tables_ex returns table information about the tables from the specified linked server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_tables_ex (Transact-SQL)
+# sys.sp_tables_ex (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns table information about the tables from the specified linked server.
 ## Syntax
 
 ```syntaxsql
-sp_tables_ex
+sys.sp_tables_ex
     [ @table_server = ] N'table_server'
     [ , [ @table_name = ] N'table_name' ]
     [ , [ @table_schema = ] N'table_schema' ]
@@ -53,7 +53,7 @@ The table schema. *@table_schema* is **sysname**, with a default of `NULL`.
 
 #### [ @table_catalog = ] N'*table_catalog*'
 
-The name of the database in which the specified *table_name* resides. *@table_catalog* is **sysname**, with a default of `NULL`.
+The name of the database in which the specified *@table_name* resides. *@table_catalog* is **sysname**, with a default of `NULL`.
 
 #### [ @table_type = ] N'*table_type*'
 

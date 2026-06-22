@@ -4,7 +4,7 @@ description: "Allows viewing the state of the mail or status queues."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,13 +27,13 @@ There are two queues in Database Mail: the mail queue and status queue. The mail
 ## Syntax
 
 ```syntaxsql
-sysmail_help_queue_sp [ @queue_type = ] 'queue_type'
+dbo.sysmail_help_queue_sp [ [ @queue_type = ] N'queue_type' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @queue_type = ] '*queue_type*'
+#### [ @queue_type = ] N'*queue_type*'
 
 Optional argument deletes e-mails of the type specified as the *@queue_type*. *@queue_type* is **nvarchar(6)** with no default. Valid entries are `mail` and *`status`.
 

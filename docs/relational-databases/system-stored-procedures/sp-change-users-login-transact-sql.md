@@ -1,10 +1,10 @@
 ---
-title: "sp_change_users_login (Transact-SQL)"
+title: "sys.sp_change_users_login (Transact-SQL)"
 description: sp_change_users_login Maps an existing database user to a SQL Server login.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_change_users_login (Transact-SQL)
+# sys.sp_change_users_login (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Maps an existing database user to a [!INCLUDE [ssNoVersion](../../includes/ssnov
 ## Syntax
 
 ```syntaxsql
-sp_change_users_login
+sys.sp_change_users_login
     [ @Action = ] 'Action'
     [ , [ @UserNamePattern = ] N'UserNamePattern' ]
     [ , [ @LoginName = ] N'LoginName' ]

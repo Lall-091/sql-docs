@@ -4,7 +4,7 @@ description: Flushes the in memory syscommittab to disk to help with Change Trac
 author: JetterMcTedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,7 +30,7 @@ Flushes the in memory `syscommittab` to disk to help with change tracking cleanu
 ## Syntax
 
 ```syntaxsql
-sp_flush_commit_table
+sys.sp_flush_commit_table
     [ @flush_ts = ] flush_ts
     [ , [ @cleanup_version = ] cleanup_version ]
 [ ; ]

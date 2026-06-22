@@ -1,10 +1,10 @@
 ---
-title: "sp_changedistpublisher (Transact-SQL)"
+title: "sys.sp_changedistpublisher (Transact-SQL)"
 description: "Changes the properties of the distribution Publisher."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 ms.custom: sfi-ropc-nochange
 ---
-# sp_changedistpublisher (Transact-SQL)
+# sys.sp_changedistpublisher (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -28,7 +28,7 @@ Changes the properties of the distribution Publisher. This stored procedure is e
 ## Syntax
 
 ```syntaxsql
-sp_changedistpublisher
+sys.sp_changedistpublisher
     [ @publisher = ] N'publisher'
     [ , [ @property = ] N'property' ]
     [ , [ @value = ] N'value' ]
@@ -63,7 +63,7 @@ This table describes the properties of Publishers and the values for those prope
 | `security_mode` <sup>1</sup> | `1` | Use Windows Authentication when connecting to the Publisher. |
 | | `0` | Use [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Authentication when connecting to the Publisher. |
 | `working_directory` | | Working directory used to store data and schema files for the publication. |
-| `NULL` (default) | | All available *property* options are printed. |
+| `NULL` (default) | | All available *@property* options are printed. |
 | `storage_connection_string` | Access key | The access key for the working directory when the database is Azure SQL Managed Instance. |
 
 <sup>1</sup> This can't be changed for a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] publisher.

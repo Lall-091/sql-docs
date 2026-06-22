@@ -4,7 +4,7 @@ description: sp_msx_set_account sets the SQL Server Agent master server account 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,9 +27,9 @@ Sets the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent master
 ## Syntax
 
 ```syntaxsql
-sp_msx_set_account
-    [ [ @credential_name = ] N'credential_name' ]
-    [ , [ @credential_id = ] credential_id ]
+dbo.sp_msx_set_account
+    { [ @credential_name = ] N'credential_name'
+        | [ @credential_id = ] credential_id }
 [ ; ]
 ```
 

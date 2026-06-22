@@ -1,10 +1,10 @@
 ---
-title: "sp_create_plan_guide_from_handle (Transact-SQL)"
+title: "sys.sp_create_plan_guide_from_handle (Transact-SQL)"
 description: sp_create_plan_guide_from_handle creates one or more plan guides from a query plan in the plan cache.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_create_plan_guide_from_handle (Transact-SQL)
+# sys.sp_create_plan_guide_from_handle (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Creates one or more plan guides from a query plan in the plan cache. You can use
 ## Syntax
 
 ```syntaxsql
-sp_create_plan_guide_from_handle
+sys.sp_create_plan_guide_from_handle
     [ @name = ] N'name'
     , [ @plan_handle = ] plan_handle
     [ , [ @statement_start_offset = ] statement_start_offset ]

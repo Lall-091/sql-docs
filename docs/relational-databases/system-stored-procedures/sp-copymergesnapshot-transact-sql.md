@@ -1,10 +1,10 @@
 ---
-title: "sp_copymergesnapshot (Transact-SQL)"
+title: "sys.sp_copymergesnapshot (Transact-SQL)"
 description: "Copies the snapshot folder of the specified publication to the folder listed in the @destination_folder."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_copymergesnapshot (Transact-SQL)
+# sys.sp_copymergesnapshot (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Copies the snapshot folder of the specified publication to the folder listed in 
 ## Syntax
 
 ```syntaxsql
-sp_copymergesnapshot
+sys.sp_copymergesnapshot
     [ @publication = ] N'publication'
     , [ @destination_folder = ] N'destination_folder'
 [ ; ]

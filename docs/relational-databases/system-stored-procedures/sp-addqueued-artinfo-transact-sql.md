@@ -1,10 +1,10 @@
 ---
-title: "sp_addqueued_artinfo (Transact-SQL)"
+title: "sys.sp_addqueued_artinfo (Transact-SQL)"
 description: Creates the MSsubscription_articles table at the Subscriber that is used to track article subscription information.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addqueued_artinfo (Transact-SQL)
+# sys.sp_addqueued_artinfo (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Creates the [MSsubscription_articles](../system-tables/mssubscription-articles-t
 ## Syntax
 
 ```syntaxsql
-sp_addqueued_artinfo
+sys.sp_addqueued_artinfo
     [ @artid = ] artid
     , [ @article = ] N'article'
     , [ @publisher = ] N'publisher'

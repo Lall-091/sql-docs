@@ -1,10 +1,10 @@
 ---
-title: "sp_deletetracertokenhistory (Transact-SQL)"
+title: "sys.sp_deletetracertokenhistory (Transact-SQL)"
 description: Removes tracer token records from the MStracer_tokens and MStracer_history system tables.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_deletetracertokenhistory (Transact-SQL)
+# sys.sp_deletetracertokenhistory (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Removes tracer token records from the [MStracer_tokens](../system-tables/mstrace
 ## Syntax
 
 ```syntaxsql
-sp_deletetracertokenhistory
+sys.sp_deletetracertokenhistory
     [ @publication = ] N'publication'
     [ , [ @tracer_id = ] tracer_id ]
     [ , [ @cutoff_date = ] cutoff_date ]

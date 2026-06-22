@@ -1,10 +1,10 @@
 ---
-title: "sp_addlinkedsrvlogin (Transact-SQL)"
+title: "sys.sp_addlinkedsrvlogin (Transact-SQL)"
 description: Creates or updates a mapping between a login on the local instance of SQL Server and a security account on a remote server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addlinkedsrvlogin (Transact-SQL)
+# sys.sp_addlinkedsrvlogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Creates or updates a mapping between a login on the local instance of [!INCLUDE 
 ## Syntax
 
 ```syntaxsql
-sp_addlinkedsrvlogin
+sys.sp_addlinkedsrvlogin
     [ @rmtsrvname = ] N'rmtsrvname'
     [ , [ @useself = ] 'useself' ]
     [ , [ @locallogin = ] N'locallogin' ]
@@ -44,7 +44,7 @@ The name of a linked server that the login mapping applies to. *@rmtsrvname* is 
 
 #### [ @useself = ] '*useself*'
 
-Determines whether to connect to *rmtsrvname* by impersonating local logins or explicitly submitting a login and password. *@useself* is **varchar(8)**, with a default of `true`.
+Determines whether to connect to *@rmtsrvname* by impersonating local logins or explicitly submitting a login and password. *@useself* is **varchar(8)**, with a default of `true`.
 
 - A value of `true` specifies that logins use their own credentials to connect to *@rmtsrvname*, with the *@rmtuser* and *@rmtpassword* arguments being ignored.
 - `false` specifies that the *@rmtuser* and *@rmtpassword* arguments are used to connect to *@rmtsrvname* for the specified *@locallogin*.

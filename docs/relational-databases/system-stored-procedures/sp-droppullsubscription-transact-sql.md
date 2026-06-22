@@ -1,10 +1,10 @@
 ---
-title: "sp_droppullsubscription (Transact-SQL)"
+title: "sys.sp_droppullsubscription (Transact-SQL)"
 description: sp_droppullsubscription drops a subscription at the current database of the Subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_droppullsubscription (Transact-SQL)
+# sys.sp_droppullsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Drops a subscription at the current database of the Subscriber. This stored proc
 ## Syntax
 
 ```syntaxsql
-sp_droppullsubscription
+sys.sp_droppullsubscription
     [ @publisher = ] N'publisher'
     [ , [ @publisher_db = ] N'publisher_db' ]
     , [ @publication = ] N'publication'

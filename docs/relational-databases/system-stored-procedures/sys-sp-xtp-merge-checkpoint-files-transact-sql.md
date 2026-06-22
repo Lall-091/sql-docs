@@ -4,7 +4,7 @@ description: "Merges all data and delta files in the transaction range specified
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -33,23 +33,23 @@ For more information, see [Creating and Managing Storage for Memory-Optimized Ob
 
 ```syntaxsql
 sys.sp_xtp_merge_checkpoint_files
-    [ @database_name = ] database_name
-    , [ @transaction_lower_bound = ] lower_bound_tid
-    , [ @transaction_upper_bound = ] upper_bound_tid
+    [ @database_name = ] N'database_name'
+    , [ @transaction_lower_bound = ] transaction_lower_bound
+    , [ @transaction_upper_bound = ] transaction_upper_bound
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @database_name = ] '*database_name*'
+#### [ @database_name = ] N'*database_name*'
 
 The name of the database on which to invoke the merge. *@database_name* is **sysname**. If the database doesn't have in-memory tables, this procedure returns with user error. If the database is offline, it returns an error.
 
-#### [ @transaction_lower_bound = ] *lower_bound_tid*
+#### [ @transaction_lower_bound = ] *transaction_lower_bound*
 
 The **bigint** lower bound of transactions for a data file as shown in [sys.dm_db_xtp_checkpoint_files](../system-dynamic-management-views/sys-dm-db-xtp-checkpoint-files-transact-sql.md) corresponding to the start checkpoint file of the merge. An error is generated for an invalid transaction ID.
 
-#### [ @transaction_upper_bound = ] *upper_bound_tid*
+#### [ @transaction_upper_bound = ] *transaction_upper_bound*
 
 The **bigint** upper bound of transactions for a data file as shown in [sys.dm_db_xtp_checkpoint_files](../system-dynamic-management-views/sys-dm-db-xtp-checkpoint-files-transact-sql.md). An error is generated for an invalid transaction ID.
 

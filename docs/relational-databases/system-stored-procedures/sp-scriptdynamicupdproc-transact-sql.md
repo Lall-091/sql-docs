@@ -1,10 +1,10 @@
 ---
-title: "sp_scriptdynamicupdproc (Transact-SQL)"
+title: "sys.sp_scriptdynamicupdproc (Transact-SQL)"
 description: sp_scriptdynamicupdproc generates the CREATE PROCEDURE statement that creates a dynamic update stored procedure.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_scriptdynamicupdproc (Transact-SQL)
+# sys.sp_scriptdynamicupdproc (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Generates the `CREATE PROCEDURE` statement that creates a dynamic update stored 
 ## Syntax
 
 ```syntaxsql
-sp_scriptdynamicupdproc [ @artid = ] artid
+sys.sp_scriptdynamicupdproc [ @artid = ] artid
 [ ; ]
 ```
 

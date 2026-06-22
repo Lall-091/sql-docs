@@ -4,7 +4,7 @@ description: Reduces the size of the backup and restore history tables by deleti
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,7 +30,7 @@ Reduces the size of the backup and restore history tables by deleting the entrie
 ## Syntax
 
 ```syntaxsql
-sp_delete_backuphistory [ @oldest_date = ] oldest_date
+dbo.sp_delete_backuphistory [ @oldest_date = ] oldest_date
 [ ; ]
 ```
 

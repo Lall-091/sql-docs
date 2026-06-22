@@ -1,10 +1,10 @@
 ---
-title: "sp_filestream_force_garbage_collection (Transact-SQL)"
+title: "sys.sp_filestream_force_garbage_collection (Transact-SQL)"
 description: Forces the FILESTREAM garbage collector to run, deleting any unneeded FILESTREAM files.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_filestream_force_garbage_collection (Transact-SQL)
+# sys.sp_filestream_force_garbage_collection (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,21 +30,21 @@ A FILESTREAM container can't be removed until all the deleted files within it ar
 ## Syntax
 
 ```syntaxsql
-sp_filestream_force_garbage_collection
-    [ @dbname = ] 'database_name'
-    [ , [ @filename = ] 'logical_file_name' ]
+sys.sp_filestream_force_garbage_collection
+    [ [ @dbname = ] N'dbname' ]
+    [ , [ @filename = ] N'filename' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @dbname = ] '*database_name*'
+#### [ @dbname = ] N'*dbname*'
 
 Signifies the name of the database to run the GC on.
 
 *@dbname* is **sysname**. If not specified, current database is assumed.
 
-#### [ @filename = ] '*logical_file_name*'
+#### [ @filename = ] N'*filename*'
 
 Specifies the logical name of the FILESTREAM container to run the GC on. *@filename* is optional. If no logical filename is specified, the GC cleans all FILESTREAM containers in the specified database.
 

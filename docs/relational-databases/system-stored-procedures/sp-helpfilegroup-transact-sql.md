@@ -1,10 +1,10 @@
 ---
-title: "sp_helpfilegroup (Transact-SQL)"
+title: "sys.sp_helpfilegroup (Transact-SQL)"
 description: sp_helpfilegroup returns the names and attributes of filegroups associated with the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpfilegroup (Transact-SQL)
+# sys.sp_helpfilegroup (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the names and attributes of filegroups associated with the current datab
 ## Syntax
 
 ```syntaxsql
-sp_helpfilegroup [ [ @filegroupname = ] N'filegroupname' ]
+sys.sp_helpfilegroup [ [ @filegroupname = ] N'filegroupname' ]
 [ ; ]
 ```
 

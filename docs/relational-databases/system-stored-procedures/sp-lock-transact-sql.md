@@ -1,10 +1,10 @@
 ---
-title: "sp_lock (Transact-SQL)"
+title: "sys.sp_lock (Transact-SQL)"
 description: sp_lock reports information about locks.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_lock (Transact-SQL)
+# sys.sp_lock (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Reports information about locks.
 ## Syntax
 
 ```syntaxsql
-sp_lock
+sys.sp_lock
     [ [ @spid1 = ] spid1 ]
     [ , [ @spid2 = ] spid2 ]
 [ ; ]

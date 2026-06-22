@@ -1,10 +1,10 @@
 ---
-title: "sp_datatype_info (Transact-SQL)"
+title: "sys.sp_datatype_info (Transact-SQL)"
 description: sp_datatype_info returns information about the data types supported by the current environment.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_datatype_info (Transact-SQL)
+# sys.sp_datatype_info (Transact-SQL)
 
 [!INCLUDE [sql-asa](../../includes/applies-to-version/sql-asa.md)]
 
@@ -27,7 +27,7 @@ Returns information about the data types supported by the current environment.
 ## Syntax
 
 ```syntaxsql
-sp_datatype_info
+sys.sp_datatype_info
     [ [ @data_type = ] data_type ]
     [ , [ @ODBCVer = ] ODBCVer ]
 [ ; ]

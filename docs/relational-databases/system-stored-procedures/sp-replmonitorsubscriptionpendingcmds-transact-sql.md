@@ -1,10 +1,10 @@
 ---
-title: "sp_replmonitorsubscriptionpendingcmds (T-SQL)"
+title: "sys.sp_replmonitorsubscriptionpendingcmds (Transact-SQL)"
 description: Describes the sp_replmonitorsubscriptionpendingcmds stored procedure that returns information on the number of pending commands for a subscription to a transactional publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replmonitorsubscriptionpendingcmds (Transact-SQL)
+# sys.sp_replmonitorsubscriptionpendingcmds (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,40 +27,42 @@ Returns information on the number of pending commands for a subscription to a tr
 ## Syntax
 
 ```syntaxsql
-sp_replmonitorsubscriptionpendingcmds [ @publisher = ] 'publisher'
-    , [ @publisher_db = ] 'publisher_db'
-    , [ @publication = ] 'publication'
-    , [ @subscriber = ] 'subscriber'
-    , [ @subscriber_db = ] 'subscriber_db'
+sys.sp_replmonitorsubscriptionpendingcmds
+    [ @publisher = ] N'publisher'
+    , [ @publisher_db = ] N'publisher_db'
+    , [ @publication = ] N'publication'
+    , [ @subscriber = ] N'subscriber'
+    , [ @subscriber_db = ] N'subscriber_db'
     , [ @subscription_type = ] subscription_type
-    , [ @subdb_version = ] subdb_version
+    [ , [ @subdb_version = ] subdb_version ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### [ @publisher = ] '*publisher*'
+#### [ @publisher = ] N'*publisher*'
 
-The name of the Publisher. *publisher* is **sysname**, with no default.
+The name of the Publisher. *@publisher* is **sysname**, with no default.
 
-#### [ @publisher_db = ] '*publisher_db*'
+#### [ @publisher_db = ] N'*publisher_db*'
 
-The name of the published database. *publisher_db* is **sysname**, with no default.
+The name of the published database. *@publisher_db* is **sysname**, with no default.
 
-#### [ @publication = ] '*publication*'
+#### [ @publication = ] N'*publication*'
 
-The name of the publication. *publication* is **sysname**, with no default.
+The name of the publication. *@publication* is **sysname**, with no default.
 
-#### [ @subscriber = ] '*subscriber*'
+#### [ @subscriber = ] N'*subscriber*'
 
-The name of the Subscriber. *subscriber* is **sysname**, with no default.
+The name of the Subscriber. *@subscriber* is **sysname**, with no default.
 
-#### [ @subscriber_db = ] '*subscriber_db*'
+#### [ @subscriber_db = ] N'*subscriber_db*'
 
-The name of the subscription database. *subscriber_db* is **sysname**, with no default.
+The name of the subscription database. *@subscriber_db* is **sysname**, with no default.
 
 #### [ @subscription_type = ] *subscription_type*
 
-The type of subscription. *subscription_type* is **int**, with no default and can be one of these values.
+The type of subscription. *@subscription_type* is **int**, with no default and can be one of these values.
 
 | Value | Description |
 | --- | --- |
@@ -69,7 +71,7 @@ The type of subscription. *subscription_type* is **int**, with no default and ca
 
 #### [ @subdb_version = ] *subdb_version*
 
-The `dbversion` of the subscription database. *subdb_version* is an optional parameter of type **int**, with a default value of 0.
+The `dbversion` of the subscription database. *@subdb_version* is an optional parameter of type **int**, with a default value of 0.
 
 ## Result set
 

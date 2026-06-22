@@ -1,10 +1,10 @@
 ---
-title: "sp_spaceused (Transact-SQL)"
+title: "sys.sp_spaceused (Transact-SQL)"
 description: "sp_spaceused displays the number of rows, disk space reserved, and disk space used by objects in the database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_spaceused (Transact-SQL)
+# sys.sp_spaceused (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
@@ -34,7 +34,7 @@ The `sp_spaceused` system stored procedure displays either:
 ## Syntax
 
 ```syntaxsql
-sp_spaceused
+sys.sp_spaceused
     [ [ @objname = ] N'objname' ]
     [ , [ @updateusage = ] 'updateusage' ]
     [ , [ @mode = ] 'mode' ]

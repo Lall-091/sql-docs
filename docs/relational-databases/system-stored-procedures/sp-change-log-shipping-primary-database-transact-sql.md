@@ -1,10 +1,10 @@
 ---
-title: "sp_change_log_shipping_primary_database (Transact-SQL)"
+title: "sys.sp_change_log_shipping_primary_database (Transact-SQL)"
 description: "Changes the primary database settings."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/11/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_change_log_shipping_primary_database (Transact-SQL)
+# sys.sp_change_log_shipping_primary_database (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,26 +27,27 @@ Changes the primary database settings.
 ## Syntax
 
 ```syntaxsql
-sp_change_log_shipping_primary_database
-    [ @database = ] 'database'
+sys.sp_change_log_shipping_primary_database
+    [ @database = ] N'database'
     [ , [ @backup_directory = ] N'backup_directory' ]
     [ , [ @backup_share = ] N'backup_share' ]
-    [ , [ @backup_retention_period = ] 'backup_retention_period' ]
-    [ , [ @monitor_server_security_mode = ] 'monitor_server_security_mode' ]
-    [ , [ @monitor_server_login = ] 'monitor_server_login' ]
-    [ , [ @monitor_server_password = ] 'monitor_server_password' ]
-    [ , [ @backup_threshold = ] 'backup_threshold' ]
-    [ , [ @threshold_alert = ] 'threshold_alert' ]
-    [ , [ @threshold_alert_enabled = ] 'threshold_alert_enabled' ]
-    [ , [ @history_retention_period = ] 'history_retention_period' ]
-    [ , [ @backup_compression = ] backup_compression_option ]
+    [ , [ @backup_retention_period = ] backup_retention_period ]
+    [ , [ @monitor_server_security_mode = ] monitor_server_security_mode ]
+    [ , [ @monitor_server_login = ] N'monitor_server_login' ]
+    [ , [ @monitor_server_password = ] N'monitor_server_password' ]
+    [ , [ @backup_threshold = ] backup_threshold ]
+    [ , [ @threshold_alert = ] threshold_alert ]
+    [ , [ @threshold_alert_enabled = ] threshold_alert_enabled ]
+    [ , [ @history_retention_period = ] history_retention_period ]
+    [ , [ @ignoreremotemonitor = ] ignoreremotemonitor ]
+    [ , [ @backup_compression = ] backup_compression ]
     [ , [ @monitor_connection_options = ] '<key_value_pairs>;[...]' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @database = ] '*database*'
+#### [ @database = ] N'*database*'
 
 The name of the database on the primary server. *@primary_database* is **sysname**, with no default.
 
@@ -58,11 +59,11 @@ The path to the backup folder on the primary server. *@backup_directory* is **nv
 
 The network path to the backup directory on the primary server. *@backup_share* is **nvarchar(500)**, with no default, and can't be `NULL`.
 
-#### [ @backup_retention_period = ] '*backup_retention_period*'
+#### [ @backup_retention_period = ] *backup_retention_period*
 
 The length of time, in minutes, to retain the log backup file in the backup directory on the primary server. *@backup_retention_period* is **int**, with no default, and can't be `NULL`.
 
-#### [ @monitor_server_security_mode = ] '*monitor_server_security_mode*'
+#### [ @monitor_server_security_mode = ] *monitor_server_security_mode*
 
 The security mode used to connect to the monitor server.
 
@@ -71,36 +72,40 @@ The security mode used to connect to the monitor server.
 
 *@monitor_server_security_mode* is **bit** and defaults to `NULL`.
 
-#### [ @monitor_server_login = ] '*monitor_server_login*'
+#### [ @monitor_server_login = ] N'*monitor_server_login*'
 
 The username of the account used to access the monitor server.
 
-#### [ @monitor_server_password = ] '*monitor_server_password*'
+#### [ @monitor_server_password = ] N'*monitor_server_password*'
 
 The password of the account used to access the monitor server.
 
-#### [ @backup_threshold = ] '*backup_threshold*'
+#### [ @backup_threshold = ] *backup_threshold*
 
 The length of time, in minutes, after the last backup before a *@threshold_alert* error is raised. *@backup_threshold* is **int**, with a default of 60 minutes.
 
-#### [ @threshold_alert = ] '*threshold_alert*'
+#### [ @threshold_alert = ] *threshold_alert*
 
 The alert to be raised when the backup threshold is exceeded. *@threshold_alert* is **int** and can't be `NULL`.
 
-#### [ @threshold_alert_enabled = ] '*threshold_alert_enabled*'
+#### [ @threshold_alert_enabled = ] *threshold_alert_enabled*
 
 Specifies whether an alert is raised when *@backup_threshold* is exceeded.
 
 - `1`: enabled
 - `0`: disabled
 
-*threshold_alert_enabled* is **bit** and can't be `NULL`.
+*@threshold_alert_enabled* is **bit** and can't be `NULL`.
 
-#### [ @history_retention_period = ] '*history_retention_period*'
+#### [ @history_retention_period = ] *history_retention_period*
 
 The length of time in minutes in which the history is retained. *@history_retention_period* is **int**. A value of 14420 is used if none is specified.
 
-#### [ @backup_compression = ] *backup_compression_option*
+#### [ @ignoreremotemonitor = ] *ignoreremotemonitor*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @backup_compression = ] *backup_compression*
 
 Specifies whether a log shipping configuration uses [backup compression](../backup-restore/backup-compression-sql-server.md). This parameter is supported in Enterprise edition for [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] (and later versions), and all editions on [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] with Service Pack 1 (and later versions).
 

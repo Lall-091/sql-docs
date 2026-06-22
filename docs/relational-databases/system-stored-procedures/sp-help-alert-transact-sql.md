@@ -4,7 +4,7 @@ description: Reports information about the alerts defined for the server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Reports information about the alerts defined for the server.
 ## Syntax
 
 ```syntaxsql
-sp_help_alert
+dbo.sp_help_alert
     [ [ @alert_name = ] N'alert_name' ]
     [ , [ @order_by = ] N'order_by' ]
     [ , [ @alert_id = ] alert_id ]

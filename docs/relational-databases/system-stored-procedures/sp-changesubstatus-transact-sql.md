@@ -1,10 +1,10 @@
 ---
-title: "sp_changesubstatus (Transact-SQL)"
+title: "sys.sp_changesubstatus (Transact-SQL)"
 description: sp_changesubstatus changes the status of an existing Subscriber.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changesubstatus (Transact-SQL)
+# sys.sp_changesubstatus (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes the status of an existing Subscriber. This stored procedure is executed 
 ## Syntax
 
 ```syntaxsql
-sp_changesubstatus
+sys.sp_changesubstatus
     [ [ @publication = ] N'publication' ]
     [ , [ @article = ] N'article' ]
     [ , [ @subscriber = ] N'subscriber' ]
@@ -155,7 +155,7 @@ An optional command prompt. *@optional_command_line* is **nvarchar(4000)**, with
 
 #### [ @distribution_jobid = ] *distribution_jobid* OUTPUT
 
-The job ID of the Distribution Agent at the Distributor for the subscription when changing the subscription status from inactive to active. In other cases, it isn't defined. If more than one Distribution Agent is involved in a single call to this stored procedure, the result isn't defined. *@distribution_jobid* is an OUTPUT parameter of type **binary(16)**.
+The job ID of the Distribution Agent at the Distributor for the subscription when changing the subscription status from inactive to active. In other cases, it isn't defined. If more than one Distribution Agent is involved in a single call to this stored procedure, the result isn't defined. *@distribution_jobid* is an `OUTPUT` parameter of type **binary(16)**.
 
 #### [ @from_auto_sync = ] *from_auto_sync*
 

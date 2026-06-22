@@ -1,10 +1,10 @@
 ---
-title: "sp_grantdbaccess (Transact-SQL)"
+title: "sys.sp_grantdbaccess (Transact-SQL)"
 description: sp_grantdbaccess adds a database user to the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_grantdbaccess (Transact-SQL)
+# sys.sp_grantdbaccess (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Adds a database user to the current database.
 ## Syntax
 
 ```syntaxsql
-sp_grantdbaccess
+sys.sp_grantdbaccess
     [ @loginame = ] N'loginame'
     [ , [ @name_in_db = ] N'name_in_db' OUTPUT ]
 [ ; ]
@@ -44,7 +44,7 @@ The name of the Windows group, Windows login, or [!INCLUDE [ssNoVersion](../../i
 
 #### [ @name_in_db = ] N'*name_in_db*' OUTPUT
 
-The name for the new database user. *@name_in_db* is an OUTPUT parameter of type **sysname**. If not specified, *@loginame* is used. If specified as an OUTPUT variable with a value of `NULL`, *@name_in_db* is set to *@loginame*. *@name_in_db* must not already exist in the current database.
+The name for the new database user. *@name_in_db* is an `OUTPUT` parameter of type **sysname**. If not specified, *@loginame* is used. If specified as an `OUTPUT` variable with a value of `NULL`, *@name_in_db* is set to *@loginame*. *@name_in_db* must not already exist in the current database.
 
 ## Return code values
 

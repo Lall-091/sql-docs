@@ -4,7 +4,7 @@ description: sp_update_jobstep changes the settings for a step in a job in the S
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, wiassaf
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Changes the setting for a step in a job that is used to perform automated activi
 ## Syntax
 
 ```syntaxsql
-sp_update_jobstep
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_update_jobstep
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     , [ @step_id = ] step_id
     [ , [ @step_name = ] N'step_name' ]
     [ , [ @subsystem = ] N'subsystem' ]
@@ -90,7 +90,7 @@ The commands to be executed through *@subsystem*. *@command* is **nvarchar(max)*
 
 #### [ @cmdexec_success_code = ] *cmdexec_success_code*
 
-The value returned by a **CmdExec** subsystem command to indicate that *command* executed successfully. *@cmdexec_success_code* is **int**, with a default of `NULL`.
+The value returned by a **CmdExec** subsystem command to indicate that *@command* executed successfully. *@cmdexec_success_code* is **int**, with a default of `NULL`.
 
 #### [ @on_success_action = ] *on_success_action*
 

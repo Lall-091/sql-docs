@@ -4,7 +4,7 @@ description: Removes a target server from a target server group.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Removes a target server from a target server group.
 ## Syntax
 
 ```syntaxsql
-sp_delete_targetsvrgrp_member
+dbo.sp_delete_targetsvrgrp_member
     [ @group_name = ] N'group_name'
     , [ @server_name = ] N'server_name'
 [ ; ]

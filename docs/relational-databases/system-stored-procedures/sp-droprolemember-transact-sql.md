@@ -1,10 +1,10 @@
 ---
-title: "sp_droprolemember (Transact-SQL)"
+title: "sys.sp_droprolemember (Transact-SQL)"
 description: sp_droprolemember removes a security account from a SQL Server role in the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_droprolemember (Transact-SQL)
+# sys.sp_droprolemember (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
@@ -35,7 +35,7 @@ Removes a security account from a [!INCLUDE [ssNoVersion](../../includes/ssnover
 Syntax for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] and [!INCLUDE [ssazurede-md](../../includes/ssazurede-md.md)].
 
 ```syntaxsql
-sp_droprolemember
+sys.sp_droprolemember
     [ @rolename = ] N'rolename'
     , [ @membername = ] N'membername'
 [ ; ]

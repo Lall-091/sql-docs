@@ -1,10 +1,10 @@
 ---
-title: "sp_defaultdb (Transact-SQL)"
+title: "sys.sp_defaultdb (Transact-SQL)"
 description: sp_defaultdb changes the default database for a SQL Server login.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_defaultdb (Transact-SQL)
+# sys.sp_defaultdb (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Changes the default database for a [!INCLUDE [ssNoVersion](../../includes/ssnove
 ## Syntax
 
 ```syntaxsql
-sp_defaultdb
+sys.sp_defaultdb
     [ @loginame = ] N'loginame'
     , [ @defdb = ] N'defdb'
 [ ; ]

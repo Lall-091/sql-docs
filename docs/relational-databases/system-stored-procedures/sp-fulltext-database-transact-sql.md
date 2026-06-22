@@ -1,10 +1,10 @@
 ---
-title: "sp_fulltext_database (Transact-SQL)"
+title: "sys.sp_fulltext_database (Transact-SQL)"
 description: sp_fulltext_database is included for backward compatibility only.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,7 +17,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# sp_fulltext_database (Transact-SQL)
+# sys.sp_fulltext_database (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
@@ -31,7 +31,7 @@ This is supported for backward compatibility only. `sp_fulltext_database` doesn'
 ## Syntax
 
 ```syntaxsql
-sp_fulltext_database [ @action = ] 'action'
+sys.sp_fulltext_database [ @action = ] 'action'
 [ ; ]
 ```
 

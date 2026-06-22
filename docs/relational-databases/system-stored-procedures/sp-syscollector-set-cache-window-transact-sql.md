@@ -4,7 +4,7 @@ description: Sets the number of times to attempt a data upload if a failure occu
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Sets the number of times to attempt a data upload if a failure occurs. Retrying 
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_set_cache_window [ [ @cache_window = ] cache_window ]
+dbo.sp_syscollector_set_cache_window [ [ @cache_window = ] cache_window ]
 [ ; ]
 ```
 

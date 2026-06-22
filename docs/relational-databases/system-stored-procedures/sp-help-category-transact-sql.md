@@ -4,7 +4,7 @@ description: Provides information about the specified classes of jobs, alerts, o
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Provides information about the specified classes of jobs, alerts, or operators.
 ## Syntax
 
 ```syntaxsql
-sp_help_category
+dbo.sp_help_category
     [ [ @class = ] 'class' ]
     [ , [ @type = ] 'type' ]
     [ , [ @name = ] N'name' ]

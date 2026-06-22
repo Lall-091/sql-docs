@@ -1,10 +1,10 @@
 ---
-title: "sp_validatemergepublication (Transact-SQL)"
+title: "sys.sp_validatemergepublication (Transact-SQL)"
 description: Performs a publication-wide validation for which all subscriptions (push, pull, and anonymous) are validated once.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_validatemergepublication (Transact-SQL)
+# sys.sp_validatemergepublication (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Performs a publication-wide validation for which all subscriptions (push, pull, 
 ## Syntax
 
 ```syntaxsql
-sp_validatemergepublication
+sys.sp_validatemergepublication
     [ @publication = ] N'publication'
     , [ @level = ] level
 [ ; ]

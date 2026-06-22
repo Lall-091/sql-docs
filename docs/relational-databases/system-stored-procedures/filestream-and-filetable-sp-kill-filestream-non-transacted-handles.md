@@ -1,10 +1,10 @@
 ---
-title: "sp_kill_filestream_non_transacted_handles (Transact-SQL)"
+title: "sys.sp_kill_filestream_non_transacted_handles (Transact-SQL)"
 description: "Closes nontransactional file handles to FileTable data."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_kill_filestream_non_transacted_handles (Transact-SQL)
+# sys.sp_kill_filestream_non_transacted_handles (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,27 +27,27 @@ Closes nontransactional file handles to FileTable data.
 ## Syntax
 
 ```syntaxsql
-sp_kill_filestream_non_transacted_handles [
-    [ @table_name = ] 'table_name'
-    , [ [ @handle_id = ] handle_id ]
-    ]
+sys.sp_kill_filestream_non_transacted_handles
+    [ [ @table_name = ] N'table_name' ]
+    [ , [ @handle_id = ] handle_id ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### [ @table_name = ] '*table_name*'
+#### [ @table_name = ] N'*table_name*'
 
 The name of the table in which to close nontransactional handles.
 
-You can pass *table_name* without *handle_id* to close all open nontransactional handles for the FileTable.
+You can pass *@table_name* without *@handle_id* to close all open nontransactional handles for the FileTable.
 
-You can pass `NULL` for the value of *table_name* to close all open nontransactional handles for all FileTables in the current database. `NULL` is the default value.
+You can pass `NULL` for the value of *@table_name* to close all open nontransactional handles for all FileTables in the current database. `NULL` is the default value.
 
 #### [ @handle_id = ] *handle_id*
 
-The optional ID of the individual handle to be closed. You can get the *handle_id* from the [sys.dm_filestream_non_transacted_handles](../system-dynamic-management-views/sys-dm-filestream-non-transacted-handles-transact-sql.md) dynamic management view. Each ID is unique in a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance. If you specify *handle_id*, then you also have to provide a value for *table_name*.
+The optional ID of the individual handle to be closed. You can get the *@handle_id* from the [sys.dm_filestream_non_transacted_handles](../system-dynamic-management-views/sys-dm-filestream-non-transacted-handles-transact-sql.md) dynamic management view. Each ID is unique in a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance. If you specify *@handle_id*, then you also have to provide a value for *@table_name*.
 
-You can pass `NULL` for the value of *handle_id* to close all open nontransactional handles for the FileTable specified by *table_name*. `NULL` is the default value.
+You can pass `NULL` for the value of *@handle_id* to close all open nontransactional handles for the FileTable specified by *@table_name*. `NULL` is the default value.
 
 ## Return code values
 

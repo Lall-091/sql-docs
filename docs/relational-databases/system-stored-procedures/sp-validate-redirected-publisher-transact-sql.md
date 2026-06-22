@@ -1,10 +1,10 @@
 ---
-title: "sp_validate_redirected_publisher (Transact-SQL)"
+title: "sys.sp_validate_redirected_publisher (Transact-SQL)"
 description: Verifies that the current host for the publishing database is capable of supporting replication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_validate_redirected_publisher (Transact-SQL)
+# sys.sp_validate_redirected_publisher (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,11 +27,14 @@ Verifies that the current host for the publishing database is capable of support
 ## Syntax
 
 ```syntaxsql
-sp_validate_redirected_publisher
+sys.sp_validate_redirected_publisher
     [ @original_publisher = ] N'original_publisher'
     , [ @publisher_db = ] N'publisher_db'
     , [ @redirected_publisher = ] N'redirected_publisher' OUTPUT
-    , [ @multi_subnet_failover = ] multi_subnet_failover
+    [ , [ @multi_subnet_failover = ] multi_subnet_failover ]
+    [ , [ @encrypt_distributor_connection = ] N'encrypt_distributor_connection' ]
+    [ , [ @trust_distributor_certificate = ] N'trust_distributor_certificate' ]
+    [ , [ @host_name_in_distributor_certificate = ] N'host_name_in_distributor_certificate' ]
 [ ; ]
 ```
 
@@ -47,13 +50,25 @@ The name of the database being published. *@publisher_db* is **sysname**, with n
 
 #### [ @redirected_publisher = ] N'*redirected_publisher*' OUTPUT
 
-The target of redirection specified when `sp_redirect_publisher` was called for the publisher/database pair. *@redirected_publisher* is an OUTPUT parameter of type **sysname**.
+The target of redirection specified when `sp_redirect_publisher` was called for the publisher/database pair. *@redirected_publisher* is an `OUTPUT` parameter of type **sysname**.
 
 #### [ @multi_subnet_failover = ] *multi_subnet_failover*
 
 **Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 10 and later versions.
 
 Used to pass information for the creation of the dynamic linked server. If `0`, the dynamic linked server isn't created with the `MultiSubnetFailover` parameter. If `1`, the dynamic linked server is created with the `MultiSubnetFailover` parameter as `1`. *@multi_subnet_failover* is **bit**, with a default of `0`.
+
+#### [ @encrypt_distributor_connection = ] N'*encrypt_distributor_connection*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @trust_distributor_certificate = ] N'*trust_distributor_certificate*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @host_name_in_distributor_certificate = ] N'*host_name_in_distributor_certificate*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

@@ -4,7 +4,7 @@ description: Removes all SQL Server Agent job step logs that are specified with 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Removes all [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent job
 ## Syntax
 
 ```syntaxsql
-sp_delete_jobsteplog
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_delete_jobsteplog
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @step_id = ] step_id ]
     [ , [ @step_name = ] N'step_name' ]
     [ , [ @older_than = ] older_than ]

@@ -4,7 +4,7 @@ description: "The sys.sp_change_feed_configure_parameters system stored procedur
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 12/17/2025
+ms.date: 06/19/2026
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -39,18 +39,18 @@ This system stored procedure is used to fine tune the operational performance fo
 
 ```syntaxsql
 sys.sp_change_feed_configure_parameters
-    [ [ @maxtrans = ] max_trans ]
-    [ , [ @pollinterval = ] polling_interval ]
+    [ [ @maxtrans = ] maxtrans ]
+    [ , [ @pollinterval = ] pollinterval ]
     [ , [ @autoreseed = ] autoreseed ]
-    [ , [ @autoreseedthreshold = autoreseed_threshold_percent ]
-    [ , [ @dynamicmaxtrans = ] transactions ]
-    [ , [ @dynamicmaxtranslowerbound = ] transactions_lower_bound ]
+    [ , [ @autoreseedthreshold = ] autoreseedthreshold ]
+    [ , [ @dynamicmaxtrans = ] dynamicmaxtrans ]
+    [ , [ @dynamicmaxtranslowerbound = ] dynamicmaxtranslowerbound ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @maxtrans = ] *max_trans*
+#### [ @maxtrans = ] *maxtrans*
 
 Data type is **int**. Indicates the maximum number of transactions to process in each scan cycle.
 
@@ -59,7 +59,7 @@ Used to reduce latency by decreasing change batch size with `@maxtrans`, or to r
 - For Azure Synapse Link, the default value if not specified is `10000`. If specified, the value must be a positive integer.
 - For Fabric mirroring, this value is dynamically determined and automatically set.
 
-#### [ @pollinterval = ] *polling_interval*
+#### [ @pollinterval = ] *pollinterval*
 
 Data type is **int**. Describes the frequency that the log is scanned for any new changes, in seconds.
 
@@ -78,13 +78,13 @@ During reseed, the mirrored database item in Microsoft Fabric is available but w
 
 For more information, see [Configure automatic reseed for Fabric mirrored databases](/fabric/database/mirrored-database/sql-server-configure-automatic-reseed).
 
-#### [ @autoreseedthreshold = ] *autoreseed_threshold_percent*
+#### [ @autoreseedthreshold = ] *autoreseedthreshold*
 
 **Applies to**: Fabric Mirroring only
 
 The `autoreseedthreshold` argument defines the log usage percentage threshold when an autoreseed event triggers. By default, `70`.
 
-#### [ @dynamicmaxtrans = ] *transactions*
+#### [ @dynamicmaxtrans = ] *dynamicmaxtrans*
 
 **Applies to**: Fabric Mirroring only
 
@@ -92,7 +92,7 @@ Whether or not the dynamic maximum transactions setting for Fabric Mirroring is 
 
 The dynamic maximum transactions feature is enabled by default in SQL Server 2025 (Preview). The dynamic maximum transactions feature is enabled and can't be managed or disabled in Azure SQL Database and Azure SQL Managed Instance.
 
-#### [ @dynamicmaxtranslowerbound = ] *transactions_lower_bound*
+#### [ @dynamicmaxtranslowerbound = ] *dynamicmaxtranslowerbound*
 
 **Applies to**: Fabric Mirroring only
 

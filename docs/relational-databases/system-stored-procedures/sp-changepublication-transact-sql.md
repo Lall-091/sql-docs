@@ -1,10 +1,10 @@
 ---
-title: "sp_changepublication (Transact-SQL)"
+title: "sys.sp_changepublication (Transact-SQL)"
 description: sp_changepublication changes the properties of a publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changepublication (Transact-SQL)
+# sys.sp_changepublication (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Changes the properties of a publication. This stored procedure is executed at th
 ## Syntax
 
 ```syntaxsql
-sp_changepublication
+sys.sp_changepublication
     [ [ @publication = ] N'publication' ]
     [ , [ @property = ] N'property' ]
     [ , [ @value = ] N'value' ]

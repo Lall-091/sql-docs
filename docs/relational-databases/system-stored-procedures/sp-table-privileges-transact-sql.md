@@ -1,10 +1,10 @@
 ---
-title: "sp_table_privileges (Transact-SQL)"
+title: "sys.sp_table_privileges (Transact-SQL)"
 description: "Returns a list of table permissions (such as INSERT, DELETE, UPDATE, SELECT, REFERENCES) for the specified table or tables."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -18,7 +18,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_table_privileges (Transact-SQL)
+# sys.sp_table_privileges (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -29,7 +29,7 @@ Returns a list of table permissions (such as `INSERT`, `DELETE`, `UPDATE`, `SELE
 ## Syntax
 
 ```syntaxsql
-sp_table_privileges
+sys.sp_table_privileges
     [ @table_name = ] N'table_name'
     [ , [ @table_owner = ] N'table_owner' ]
     [ , [ @table_qualifier = ] N'table_qualifier' ]

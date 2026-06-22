@@ -1,10 +1,10 @@
 ---
-title: "sp_expired_subscription_cleanup (Transact-SQL)"
+title: "sys.sp_expired_subscription_cleanup (Transact-SQL)"
 description: sp_expired_subscription_cleanup checks the status of all the subscriptions of every publication and drops expired subscriptions.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_expired_subscription_cleanup (Transact-SQL)
+# sys.sp_expired_subscription_cleanup (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Checks the status of all the subscriptions of every publication and drops subscr
 ## Syntax
 
 ```syntaxsql
-sp_expired_subscription_cleanup [ [ @publisher = ] N'publisher' ]
+sys.sp_expired_subscription_cleanup [ [ @publisher = ] N'publisher' ]
 [ ; ]
 ```
 

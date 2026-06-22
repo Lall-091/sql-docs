@@ -1,10 +1,10 @@
 ---
-title: "sp_add_log_file_recover_suspect_db (Transact-SQL)"
+title: "sys.sp_add_log_file_recover_suspect_db (Transact-SQL)"
 description: "Adds a log file to a database when recovery can't complete on a database due to insufficient log space (error 9002)."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_add_log_file_recover_suspect_db (Transact-SQL)
+# sys.sp_add_log_file_recover_suspect_db (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,26 +27,27 @@ Adds a log file to a database when recovery can't complete on a database due to 
 ## Syntax
 
 ```syntaxsql
-sp_add_log_file_recover_suspect_db [ @dbName = ] 'database'
-    , [ @name = ] N'logical_file_name'
-    , [ @filename = ] N'os_file_name'
-    , [ @size = ] N'size'
-    , [ @maxsize = ] N'max_size'
-    , [ @filegrowth = ] N'growth_increment'
+sys.sp_add_log_file_recover_suspect_db
+    [ @dbName = ] N'dbName'
+    , [ @name = ] N'name'
+    , [ @filename = ] N'filename'
+    [ , [ @size = ] N'size' ]
+    [ , [ @maxsize = ] N'maxsize' ]
+    [ , [ @filegrowth = ] N'filegrowth' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @dbName = ] '*database*'
+#### [ @dbName = ] N'*dbName*'
 
 The name of the database. *@dbName* is **sysname**, with no default.
 
-#### [ @name = ] N'*logical_file_name*'
+#### [ @name = ] N'*name*'
 
 The name used in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to reference the file. The name must be unique in the server. *@name* is **nvarchar(260)**, with no default.
 
-#### [ @filename = ] N'*os_file_name*'
+#### [ @filename = ] N'*filename*'
 
 The path and file name used by the operating system for the file. The file must reside on an instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)]. *@filename* is **nvarchar(260)**, with no default.
 
@@ -54,13 +55,13 @@ The path and file name used by the operating system for the file. The file must 
 
 The initial size of the file. *@size* is **nvarchar(20)**, with a default of `NULL`. Specify a whole number; don't include a decimal. The `MB` and `KB` suffixes can be used to specify megabytes or kilobytes. The default is `MB`. The minimum value is 512 KB. If *@size* isn't specified, the default is 1 MB.
 
-#### [ @maxsize = ] N'*max_size*'
+#### [ @maxsize = ] N'*maxsize*'
 
 The maximum size to which the file can grow. *@maxsize* is **nvarchar(20)**, with a default of `NULL`. Specify a whole number; don't include a decimal. The `MB` and `KB` suffixes can be used to specify megabytes or kilobytes. The default is `MB`.
 
 If *@maxsize* isn't specified, the file grows until the disk is full. The Windows application log warns an administrator when a disk is about to become full.
 
-#### [ @filegrowth = ] N'*growth_increment*'
+#### [ @filegrowth = ] N'*filegrowth*'
 
 The amount of space added to the file each time new space is required. *@filegrowth* is **nvarchar(20)**, with a default of `NULL`. A value of `0` indicates no growth. Specify a whole number; don't include a decimal. The value can be specified in `MB`, `KB`, or percent (`%`). When `%` is specified, the growth increment is the specified percentage of the size of the file at the time the increment occurs. If a number is specified without an `MB`, `KB`, or `%` suffix, the default is `MB`.
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_scriptpublicationcustomprocs (Transact-SQL)"
+title: "sys.sp_scriptpublicationcustomprocs (Transact-SQL)"
 description: Scripts the custom INSERT, UPDATE, and DELETE procedures for all table articles in a publication in which the autogenerate custom procedure schema option is enabled.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_scriptpublicationcustomprocs (Transact-SQL)
+# sys.sp_scriptpublicationcustomprocs (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Scripts the custom `INSERT`, `UPDATE`, and `DELETE` procedures for all table art
 ## Syntax
 
 ```syntaxsql
-sp_scriptpublicationcustomprocs
+sys.sp_scriptpublicationcustomprocs
     [ @publication = ] N'publication'
     [ , [ @publisher = ] N'publisher' ]
     [ , [ @usesqlclr = ] usesqlclr ]

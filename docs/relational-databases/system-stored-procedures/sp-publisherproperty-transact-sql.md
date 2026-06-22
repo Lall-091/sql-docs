@@ -1,10 +1,10 @@
 ---
-title: "sp_publisherproperty (Transact-SQL)"
+title: "sys.sp_publisherproperty (Transact-SQL)"
 description: sp_publisherproperty displays or changes publisher properties for non-SQL Server Publishers.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_publisherproperty (Transact-SQL)
+# sys.sp_publisherproperty (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Displays or changes publisher properties for non-[!INCLUDE [ssNoVersion](../../i
 ## Syntax
 
 ```syntaxsql
-sp_publisherproperty
+sys.sp_publisherproperty
     [ @publisher = ] N'publisher'
     [ , [ @propertyname = ] N'propertyname' ]
     [ , [ @propertyvalue = ] N'propertyvalue' ]

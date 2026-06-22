@@ -4,7 +4,7 @@ description: sp_enum_proxy_for_subsystem lists permissions for SQL Server Agent 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,11 +27,11 @@ Lists permissions for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]
 ## Syntax
 
 ```syntaxsql
-sp_enum_proxy_for_subsystem
-    [ [ @proxy_id = ] proxy_id ]
-    [ , [ @proxy_name = ] N'proxy_name' ]
-    [ , [ @subsystem_id = ] subsystem_id ]
-    [ , [ @subsystem_name = ] N'subsystem_name' ]
+dbo.sp_enum_proxy_for_subsystem
+    [ { [ @proxy_id = ] proxy_id
+        | [ @proxy_name = ] N'proxy_name' } ]
+    [ , { [ @subsystem_id = ] subsystem_id
+        | [ @subsystem_name = ] N'subsystem_name' } ]
 [ ; ]
 ```
 
@@ -41,25 +41,25 @@ sp_enum_proxy_for_subsystem
 
 The identification number of the proxy to list information for. *@proxy_id* is **int**, with a default of `NULL`.
 
-Either the *@proxy_id* or the *@proxy_name* can be specified.
+Either *@proxy_id* or *@proxy_name* can be specified.
 
 #### [ @proxy_name = ] N'*proxy_name*'
 
 The name of the proxy to list information for. *@proxy_name* is **sysname**, with a default of `NULL`.
 
-Either the *@proxy_id* or the *@proxy_name* can be specified.
+Either *@proxy_id* or *@proxy_name* can be specified.
 
 #### [ @subsystem_id = ] *subsystem_id*
 
 The identification number of the subsystem to list information for. *@subsystem_id* is **int**, with a default of `NULL`.
 
-Either the *@subsystem_id* or the *@subsystem_name* can be specified.
+Either *@subsystem_id* or *@subsystem_name* can be specified.
 
 #### [ @subsystem_name = ] N'*subsystem_name*'
 
 The name of the subsystem to list information for. *@subsystem_name* is **sysname**, with a default of `NULL`.
 
-Either the *@subsystem_id* or the *@subsystem_name* can be specified.
+Either *@subsystem_id* or *@subsystem_name* can be specified.
 
 ## Return code values
 

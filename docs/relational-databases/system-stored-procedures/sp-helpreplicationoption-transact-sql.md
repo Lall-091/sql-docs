@@ -1,10 +1,10 @@
 ---
-title: "sp_helpreplicationoption (Transact-SQL)"
+title: "sys.sp_helpreplicationoption (Transact-SQL)"
 description: sp_helpreplicationoption shows the types of replication options enabled for a server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpreplicationoption (Transact-SQL)
+# sys.sp_helpreplicationoption (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Shows the types of replication options enabled for a server. This stored procedu
 ## Syntax
 
 ```syntaxsql
-sp_helpreplicationoption [ [ @optname = ] N'optname' ]
+sys.sp_helpreplicationoption [ [ @optname = ] N'optname' ]
 [ ; ]
 ```
 

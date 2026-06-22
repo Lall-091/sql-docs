@@ -4,7 +4,7 @@ description: "Configures settings for Policy-Based Management, such as whether P
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Configures settings for Policy-Based Management, such as whether Policy-Based Ma
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_configure
+dbo.sp_syspolicy_configure
     [ @name = ] N'name'
     , [ @value = ] value
 [ ; ]

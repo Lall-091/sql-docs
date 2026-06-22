@@ -4,7 +4,7 @@ description: "Updates the sequence number of an account within a Database Mail p
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,10 +27,12 @@ Updates the sequence number of an account within a Database Mail profile.
 ## Syntax
 
 ```syntaxsql
-sysmail_update_profileaccount_sp { [ @profile_id = ] profile_id
-| [ @profile_name = ] 'profile_name' } ,
-    { [ @account_id = ] account_id | [ @account_name = ] 'account_name' } ,
-    [ @sequence_number = ] sequence_number
+dbo.sysmail_update_profileaccount_sp
+    { [ @profile_id = ] profile_id
+        | [ @profile_name = ] N'profile_name' }
+    , { [ @account_id = ] account_id
+        | [ @account_name = ] N'account_name' }
+    , [ @sequence_number = ] sequence_number
 [ ; ]
 ```
 
@@ -38,19 +40,19 @@ sysmail_update_profileaccount_sp { [ @profile_id = ] profile_id
 
 #### [ @profile_id = ] *profile_id*
 
-The profile ID of the profile to update. *@profile_id* is **int**, with a default of `NULL`. Either the *@profile_id* or the *@profile_name* must be specified.
+The profile ID of the profile to update. *@profile_id* is **int**, with a default of `NULL`. Either *@profile_id* or *@profile_name* must be specified.
 
-#### [ @profile_name = ] '*profile_name*'
+#### [ @profile_name = ] N'*profile_name*'
 
-The profile name of the profile to update. *@profile_name* is **sysname**, with a default of `NULL`. Either the *@profile_id* or the *@profile_name* must be specified.
+The profile name of the profile to update. *@profile_name* is **sysname**, with a default of `NULL`. Either *@profile_id* or *@profile_name* must be specified.
 
 #### [ @account_id = ] *account_id*
 
-The account ID to update. *@account_id* is **int**, with a default of `NULL`. Either the *@account_id* or the *@account_name* must be specified.
+The account ID to update. *@account_id* is **int**, with a default of `NULL`. Either *@account_id* or *@account_name* must be specified.
 
-#### [ @account_name = ] '*account_name*'
+#### [ @account_name = ] N'*account_name*'
 
-The name of the account to update. *@account_name* is **sysname**, with a default of `NULL`. Either the *@account_id* or the *@account_name* must be specified.
+The name of the account to update. *@account_name* is **sysname**, with a default of `NULL`. Either *@account_id* or *@account_name* must be specified.
 
 #### [ @sequence_number = ] *sequence_number*
 

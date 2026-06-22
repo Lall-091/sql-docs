@@ -4,7 +4,7 @@ description: "Returns change data capture metadata information for the captured 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -31,14 +31,13 @@ Returns change data capture metadata information for the captured source columns
 ## Syntax
 
 ```syntaxsql
-sys.sp_cdc_get_captured_columns
-    [ @capture_instance = ] 'capture_instance'
+sys.sp_cdc_get_captured_columns [ @capture_instance = ] N'capture_instance'
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @capture_instance = ] '*capture_instance*'
+#### [ @capture_instance = ] N'*capture_instance*'
 
 The name of the capture instance associated with a source table. *@capture_instance* is **sysname** and can't be `NULL`.
 

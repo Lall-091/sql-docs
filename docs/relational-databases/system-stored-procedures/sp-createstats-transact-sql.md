@@ -1,10 +1,10 @@
 ---
-title: "sp_createstats (Transact-SQL)"
+title: "sys.sp_createstats (Transact-SQL)"
 description: Calls the CREATE STATISTICS Transact-SQL statement to create single-column statistics on columns that aren't already the first column in a statistics object.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_createstats (Transact-SQL)
+# sys.sp_createstats (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -34,7 +34,7 @@ For more information about statistics, see [Statistics](../statistics/statistics
 ## Syntax
 
 ```syntaxsql
-sp_createstats
+sys.sp_createstats
     [ [ @indexonly = ] 'indexonly' ]
     [ , [ @fullscan = ] 'fullscan' ]
     [ , [ @norecompute = ] 'norecompute' ]

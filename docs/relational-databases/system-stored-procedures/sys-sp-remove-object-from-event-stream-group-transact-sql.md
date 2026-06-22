@@ -4,7 +4,7 @@ description: sys.sp_remove_object_from_event_stream_group removes a table from a
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray, randolphwest
-ms.date: 12/17/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"

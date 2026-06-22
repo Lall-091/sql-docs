@@ -4,7 +4,7 @@ description: "Enables change data capture for the current database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -34,7 +34,7 @@ Enables change data capture for the current database. This procedure must be exe
 ## Syntax
 
 ```syntaxsql
-sys.sp_cdc_enable_db
+sys.sp_cdc_enable_db [ [ @fCreateCDCUserImplicit = ] fCreateCDCUserImplicit ]
 [ ; ]
 ```
 

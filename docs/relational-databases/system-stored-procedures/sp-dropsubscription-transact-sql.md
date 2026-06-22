@@ -1,10 +1,10 @@
 ---
-title: "sp_dropsubscription (Transact-SQL)"
+title: "sys.sp_dropsubscription (Transact-SQL)"
 description: Drops subscriptions to an article, publication, or subscriptions on the Publisher. This stored procedure runs at the Publisher on the publication database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_dropsubscription (Transact-SQL)
+# sys.sp_dropsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Drops subscriptions to a particular article, publication, or set of subscription
 ## Syntax
 
 ```syntaxsql
-sp_dropsubscription
+sys.sp_dropsubscription
     [ [ @publication = ] N'publication' ]
     [ , [ @article = ] N'article' ]
     , [ @subscriber = ] N'subscriber'
@@ -42,7 +42,7 @@ sp_dropsubscription
 
 #### [ @publication = ] N'*publication*'
 
-The name of the associated publication. *@publication* is **sysname**, with a default of `NULL`. If `all`, all subscriptions for all publications for the specified Subscriber are canceled. *publication* is a required parameter.
+The name of the associated publication. *@publication* is **sysname**, with a default of `NULL`. If `all`, all subscriptions for all publications for the specified Subscriber are canceled. *@publication* is a required parameter.
 
 #### [ @article = ] N'*article*'
 

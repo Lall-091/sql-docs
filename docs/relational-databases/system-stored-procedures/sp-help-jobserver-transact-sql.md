@@ -4,7 +4,7 @@ description: sp_help_jobserver returns information about the server for a given 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Returns information about the server for a given job.
 ## Syntax
 
 ```syntaxsql
-sp_help_jobserver
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_help_jobserver
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     [ , [ @show_last_run_details = ] show_last_run_details ]
 [ ; ]
 ```

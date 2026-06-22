@@ -4,7 +4,7 @@ description: "Grants permission for an msdb database principal to use a Database
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -29,10 +29,12 @@ In Azure SQL Managed Instance and [!INCLUDE [sssql22-md](../../includes/sssql22-
 ## Syntax
 
 ```syntaxsql
-sysmail_add_principalprofile_sp
-    { [ @principal_id = ] principal_id | [ @principal_name = ] 'principal_name' }
-    , { [ @profile_id = ] profile_id | [ @profile_name = ] 'profile_name' }
-    [ , [ @is_default ] = 'is_default' ]
+dbo.sysmail_add_principalprofile_sp
+    { [ @principal_id = ] principal_id
+        | [ @principal_name = ] N'principal_name' }
+    , { [ @profile_id = ] profile_id
+        | [ @profile_name = ] N'profile_name' }
+    , [ @is_default = ] is_default
 [ ; ]
 ```
 
@@ -42,7 +44,7 @@ sysmail_add_principalprofile_sp
 
 The ID of the database user or role in the `msdb` database for the association. *@principal_id* is **int**, with a default of `NULL`. Either *@principal_id* or *@principal_name* must be specified. A *@principal_id* of `0` makes this profile a public profile, granting access to all principals in the database.
 
-#### [ @principal_name = ] '*principal_name*'
+#### [ @principal_name = ] N'*principal_name*'
 
 The name of the database user or role in the `msdb` database for the association. *@principal_name* is **sysname**, with a default of `NULL`. Either *@principal_id* or *@principal_name* must be specified. A *@principal_name* of `public` makes this profile a public profile, granting access to all principals in the database.
 
@@ -50,7 +52,7 @@ The name of the database user or role in the `msdb` database for the association
 
 The ID of the profile for the association. *@profile_id* is **int**, with a default of `NULL`. Either *@profile_id* or *@profile_name* must be specified.
 
-#### [ @profile_name = ] '*profile_name*'
+#### [ @profile_name = ] N'*profile_name*'
 
 The name of the profile for the association. *@profile_name* is **sysname**, with no default. Either *@profile_id* or *@profile_name* must be specified.
 

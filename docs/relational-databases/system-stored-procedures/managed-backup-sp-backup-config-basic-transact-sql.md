@@ -4,7 +4,7 @@ description: Configures the SQL Server Managed Backup to Azure basic settings fo
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -33,16 +33,22 @@ Configures the [!INCLUDE [ss-managed-backup](../../includes/ss-managed-backup-md
 ## Syntax
 
 ```syntaxsql
-EXECUTE managed_backup.sp_backup_config_basic
-    [ @enable_backup = ] { 0 | 1 }
-    , [ @database_name = ] 'database_name'
-    , [ @container_url = ] 'Azure_Storage_blob_container'
-    , [ @retention_days = ] retention_period_in_days
-    , [ @credential_name = ] 'sql_credential_name'
+managed_backup.sp_backup_config_basic
+    [ [ @database_name = ] N'database_name' ]
+    [ , [ @enable_backup = ] { 0 | 1 } ]
+    [ , [ @container_url = ] N'container_url' ]
+    [ , [ @retention_days = ] retention_days ]
+    [ , [ @credential_name = ] 'sql_credential_name' ]
 [ ; ]
 ```
 
 ## Arguments
+
+#### [ @database_name = ] N'*database_name*'
+
+The database name for enabling managed backup on a specific database.
+
+If *@database_name* is set to `NULL`, the settings are at instance level (applies to all new databases created on the instance).
 
 #### [ @enable_backup = ] { 0 | 1 }
 
@@ -52,13 +58,7 @@ Required parameter when configuring [!INCLUDE [ss-managed-backup](../../includes
 
 For more information, see [Enable SQL Server managed backup to Azure](../backup-restore/enable-sql-server-managed-backup-to-microsoft-azure.md).
 
-#### [ @database_name = ] '*database_name*'
-
-The database name for enabling managed backup on a specific database.
-
-If *@database_name* is set to `NULL`, the settings are at instance level (applies to all new databases created on the instance).
-
-#### [ @container_url = ] '*Azure_Storage_blob_container*'
+#### [ @container_url = ] N'*container_url*'
 
 A URL that indicates the location of the backup. When *@credential_name* is `NULL`, this URL is a shared access signature (SAS) URL to a blob container in Azure Storage, and the backups use the new backup to block blob functionality. For more information, review [Grant limited access to Azure Storage resources using shared access signatures (SAS)](/azure/storage/common/storage-sas-overview). When *@credential_name* is specified, then this is a storage account URL, and the backups use the deprecated backup to page blob functionality.
 
@@ -74,7 +74,7 @@ For example, `https://managedbackupstorage.blob.core.windows.net/backupcontainer
 > [!NOTE]  
 > Only a SAS URL is supported for this parameter at this time.
 
-#### [ @retention_days = ] *retention_period_in_days*
+#### [ @retention_days = ] *retention_days*
 
 The retention period for the backup files in days. *@retention_days* is **int**. This is a required parameter when configuring [!INCLUDE [ss-managed-backup](../../includes/ss-managed-backup-md.md)] for the first time on the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. When you change the [!INCLUDE [ss-managed-backup](../../includes/ss-managed-backup-md.md)] configuration, this parameter is optional. If not specified then the existing configuration values are retained.
 

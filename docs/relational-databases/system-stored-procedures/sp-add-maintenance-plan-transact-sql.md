@@ -4,7 +4,7 @@ description: "Adds a maintenance plan and returns the plan ID."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -32,7 +32,7 @@ Adds a maintenance plan and returns the plan ID.
 ## Syntax
 
 ```syntaxsql
-sp_add_maintenance_plan
+dbo.sp_add_maintenance_plan
     [ @plan_name = ] 'plan_name'
     , [ @plan_id = ] 'plan_id' OUTPUT
 [ ; ]
@@ -40,11 +40,11 @@ sp_add_maintenance_plan
 
 ## Arguments
 
-#### [ @plan_name = ] N'*plan_name*'
+#### [ @plan_name = ] '*plan_name*'
 
 Specifies the name of the maintenance plan to be added. *@plan_name* is **varchar(128)**.
 
-#### [ @plan_id = ] N'*plan_id*' OUTPUT
+#### [ @plan_id = ] '*plan_id*' OUTPUT
 
 Specifies the ID of the maintenance plan. *@plan_id* is **uniqueidentifier**.
 

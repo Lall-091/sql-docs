@@ -1,10 +1,10 @@
 ---
-title: "sp_delete_log_shipping_secondary_primary (Transact-SQL)"
+title: "sys.sp_delete_log_shipping_secondary_primary (Transact-SQL)"
 description: Removes the information about the specified primary server from the secondary server, and removes the copy job and restore job from the secondary.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_delete_log_shipping_secondary_primary (Transact-SQL)
+# sys.sp_delete_log_shipping_secondary_primary (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ dev_langs:
 ## Syntax
 
 ```syntaxsql
-sp_delete_log_shipping_secondary_primary
+sys.sp_delete_log_shipping_secondary_primary
     [ @primary_server = ] N'primary_server'
     , [ @primary_database = ] N'primary_database'
 [ ; ]

@@ -1,10 +1,10 @@
 ---
-title: "sp_helpsrvrolemember (Transact-SQL)"
+title: "sys.sp_helpsrvrolemember (Transact-SQL)"
 description: sp_helpsrvrolemember returns information about the members of a SQL Server fixed server role.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpsrvrolemember (Transact-SQL)
+# sys.sp_helpsrvrolemember (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns information about the members of a [!INCLUDE [ssNoVersion](../../include
 ## Syntax
 
 ```syntaxsql
-sp_helpsrvrolemember [ [ @srvrolename = ] N'srvrolename' ]
+sys.sp_helpsrvrolemember [ [ @srvrolename = ] N'srvrolename' ]
 [ ; ]
 ```
 

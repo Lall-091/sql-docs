@@ -1,10 +1,10 @@
 ---
-title: "sp_helpuser (Transact-SQL)"
+title: "sys.sp_helpuser (Transact-SQL)"
 description: sp_helpuser reports information about database-level principals in the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpuser (Transact-SQL)
+# sys.sp_helpuser (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Reports information about database-level principals in the current database.
 ## Syntax
 
 ```syntaxsql
-sp_helpuser [ [ @name_in_db = ] N'name_in_db' ]
+sys.sp_helpuser [ [ @name_in_db = ] N'name_in_db' ]
 [ ; ]
 ```
 

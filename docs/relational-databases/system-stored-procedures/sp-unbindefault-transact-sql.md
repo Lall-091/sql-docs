@@ -1,5 +1,5 @@
 ---
-title: sp_unbindefault (Transact-SQL)
+title: "sys.sp_unbindefault (Transact-SQL)"
 description: Unbinds, or removes, a default from a column or from an alias data type in the current database.
 author: markingmyname
 ms.author: maghan
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - TSQL
 ---
-# sp_unbindefault (Transact-SQL)
+# sys.sp_unbindefault (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Unbinds, or removes, a default from a column or from an alias data type in the c
 ## Syntax
 
 ```syntaxsql
-sp_unbindefault
+sys.sp_unbindefault
     [ @objname = ] N'objname'
     [ , [ @futureonly = ] 'futureonly' ]
 [ ; ]

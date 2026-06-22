@@ -4,7 +4,7 @@ description: Specifies the instance name for the connection string used to conne
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,8 @@ Specifies the instance name for the connection string used to connect to the man
 ## Syntax
 
 ```syntaxsql
-sp_syscollector_set_warehouse_instance_name [ [ @instance_name = ] N'instance_name' ]
+dbo.sp_syscollector_set_warehouse_instance_name
+    [ [ @instance_name = ] N'instance_name' ]
 [ ; ]
 ```
 

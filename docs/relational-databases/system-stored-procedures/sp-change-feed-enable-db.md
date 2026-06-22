@@ -4,7 +4,7 @@ description: "The sys.sp_change_feed_enable_db system stored procedure enables t
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, randolphwest, ajayj
-ms.date: 12/17/2025
+ms.date: 06/19/2026
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -38,30 +38,30 @@ Enables current database for:
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-EXECUTE sys.sp_change_feed_enable_db
-    [ [ @maxtrans ] ]
-    [ , [ @pollinterval ]  ]
-    [ , [ @destination_type ] ]
-GO
+sys.sp_change_feed_enable_db
+    [ [ @maxtrans = ] maxtrans ]
+    [ , [ @pollinterval = ] pollinterval ]
+    [ , [ @destination_type = ] destination_type ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### @maxtrans
+#### [ @maxtrans = ] *maxtrans*
 
 Data type is **int**. Indicates the maximum number of transactions to process in each scan cycle.
 
 - For Azure Synapse Link, the default value if not specified is `10000`. If specified, the value must be a positive integer.
 - For Fabric mirroring, this value is dynamically determined and automatically set.
 
-#### @pollinterval
+#### [ @pollinterval = ] *pollinterval*
 
 Data type is **int**. Describes the frequency, or polling interval, that the log is scanned for any new changes in seconds.
 
 - For Azure Synapse Link, the default interval if not specified is 5 seconds. The value must be `5` or larger.
 - For Fabric mirroring, this value is dynamically determined and automatically set.
 
-#### @destination_type
+#### [ @destination_type = ] *destination_type*
 
 **Applies to**: Fabric database mirroring only. For Synapse Link, don't specify.
 

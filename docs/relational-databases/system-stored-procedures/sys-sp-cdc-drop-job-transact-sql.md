@@ -4,7 +4,7 @@ description: "Removes a change data capture cleanup or capture job for the curre
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -29,7 +29,7 @@ Removes a change data capture cleanup or capture job for the current database fr
 ## Syntax
 
 ```syntaxsql
-sys.sp_cdc_drop_job [ [ @job_type = ] N'job_type' ]
+sys.sp_cdc_drop_job [ @job_type = ] N'job_type'
 [ ; ]
 ```
 
@@ -37,7 +37,7 @@ sys.sp_cdc_drop_job [ [ @job_type = ] N'job_type' ]
 
 #### [ @job_type = ] N'*job_type*'
 
-Type of job to remove. *job_type* is **nvarchar(20)** and can't be `NULL`. Valid inputs are `capture` and `cleanup`.
+Type of job to remove. *@job_type* is **nvarchar(20)** and can't be `NULL`. Valid inputs are `capture` and `cleanup`.
 
 ## Return code values
 

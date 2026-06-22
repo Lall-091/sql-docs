@@ -1,10 +1,10 @@
 ---
-title: "sp_dropmergepartition (Transact-SQL)"
+title: "sys.sp_dropmergepartition (Transact-SQL)"
 description: "Removes a partition for a parameterized row filter from a publication."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_dropmergepartition (Transact-SQL)
+# sys.sp_dropmergepartition (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
@@ -30,7 +30,7 @@ Removes a partition for a parameterized row filter from a publication. This stor
 ## Syntax
 
 ```syntaxsql
-sp_dropmergepartition
+sys.sp_dropmergepartition
     [ @publication = ] N'publication'
     , [ @suser_sname = ] N'suser_sname'
     , [ @host_name = ] N'host_name'

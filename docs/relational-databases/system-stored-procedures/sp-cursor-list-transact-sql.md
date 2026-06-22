@@ -1,10 +1,10 @@
 ---
-title: "sp_cursor_list (Transact-SQL)"
+title: "sys.sp_cursor_list (Transact-SQL)"
 description: sp_cursor_list reports the attributes of server cursors currently open for the connection.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_cursor_list (Transact-SQL)
+# sys.sp_cursor_list (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Reports the attributes of server cursors currently open for the connection.
 ## Syntax
 
 ```syntaxsql
-sp_cursor_list
+sys.sp_cursor_list
     [ @cursor_return = ] cursor_return OUTPUT
     , [ @cursor_scope = ] cursor_scope
 [ ; ]
@@ -37,7 +37,7 @@ sp_cursor_list
 
 #### [ @cursor_return = ] *cursor_return* OUTPUT
 
-The name of a declared cursor variable. *@cursor_return* is an OUTPUT parameter of type **CURSOR**. The cursor is a scrollable, dynamic, read-only cursor.
+The name of a declared cursor variable. *@cursor_return* is an `OUTPUT` parameter of type **CURSOR**. The cursor is a scrollable, dynamic, read-only cursor.
 
 #### [ @cursor_scope = ] *cursor_scope*
 

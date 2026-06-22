@@ -1,10 +1,10 @@
 ---
-title: "sp_addmessage (Transact-SQL)"
+title: "sys.sp_addmessage (Transact-SQL)"
 description: Stores a new user-defined error message in an instance of the SQL Server Database Engine.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addmessage (Transact-SQL)
+# sys.sp_addmessage (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Stores a new user-defined error message in an instance of the [!INCLUDE [ssDEnov
 ## Syntax
 
 ```syntaxsql
-sp_addmessage
+sys.sp_addmessage
     [ [ @msgnum = ] msgnum ]
     [ , [ @severity = ] severity ]
     [ , [ @msgtext = ] N'msgtext' ]

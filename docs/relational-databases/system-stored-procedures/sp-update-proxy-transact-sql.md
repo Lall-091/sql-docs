@@ -4,7 +4,7 @@ description: Changes the properties of an existing proxy.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Changes the properties of an existing proxy.
 ## Syntax
 
 ```syntaxsql
-sp_update_proxy
+dbo.sp_update_proxy
     [ [ @proxy_id = ] proxy_id ]
     [ , [ @proxy_name = ] N'proxy_name' ]
     [ , [ @credential_name = ] N'credential_name' ]

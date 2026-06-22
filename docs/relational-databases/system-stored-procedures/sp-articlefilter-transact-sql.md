@@ -1,10 +1,10 @@
 ---
-title: "sp_articlefilter (Transact-SQL)"
+title: "sys.sp_articlefilter (Transact-SQL)"
 description: sp_articlefilter filters data that are published based on a table article.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_articlefilter (Transact-SQL)
+# sys.sp_articlefilter (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Filters data that is published based on a table article. This stored procedure i
 ## Syntax
 
 ```syntaxsql
-sp_articlefilter
+sys.sp_articlefilter
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     [ , [ @filter_name = ] N'filter_name' ]

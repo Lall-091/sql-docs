@@ -1,10 +1,10 @@
 ---
-title: "sp_addpushsubscription_agent (Transact-SQL)"
+title: "sys.sp_addpushsubscription_agent (Transact-SQL)"
 description: Adds a new scheduled agent job used to synchronize a push subscription to a transactional publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addpushsubscription_agent (Transact-SQL)
+# sys.sp_addpushsubscription_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Adds a new scheduled agent job used to synchronize a push subscription to a tran
 ## Syntax
 
 ```syntaxsql
-sp_addpushsubscription_agent
+sys.sp_addpushsubscription_agent
     [ @publication = ] N'publication'
     [ , [ @subscriber = ] N'subscriber' ]
     [ , [ @subscriber_db = ] N'subscriber_db' ]
@@ -61,6 +61,7 @@ sp_addpushsubscription_agent
     [ , [ @subscriber_location = ] N'subscriber_location' ]
     [ , [ @subscriber_provider_string = ] N'subscriber_provider_string' ]
     [ , [ @subscriber_catalog = ] N'subscriber_catalog' ]
+    [ , [ @job_security_mode = ] job_security_mode ]
 [ ; ]
 ```
 
@@ -83,7 +84,7 @@ The name of the Subscriber instance, or the name of the AG listener if the subsc
 
 The name of the subscription database. *@subscriber_db* is **sysname**, with a default of `NULL`.
 
-For a non-SQL Server Subscriber, specify a value of **(default destination)** for *subscriber_db*.
+For a non-SQL Server Subscriber, specify a value of **(default destination)** for *@subscriber_db*.
 
 #### [ @subscriber_security_mode = ] *subscriber_security_mode*
 
@@ -104,7 +105,7 @@ The Subscriber login to use when connecting to a Subscriber when synchronizing. 
 
 #### [ @subscriber_password = ] N'*subscriber_password*'
 
-The Subscriber password. *subscriber_password* is required if *subscriber_security_mode* is set to `0`. *@subscriber_password* is **sysname**, with a default of `NULL`. If a subscriber password is used, it's automatically encrypted.
+The Subscriber password. *@subscriber_password* is required if *@subscriber_security_mode* is set to `0`. *@subscriber_password* is **sysname**, with a default of `NULL`. If a subscriber password is used, it's automatically encrypted.
 
 > [!IMPORTANT]  
 > [!INCLUDE [ssnotestrongpass-md](../../includes/ssnotestrongpass-md.md)] When possible, prompt users to enter security credentials at runtime. If you must store credentials in a script file, you must secure the file to prevent unauthorized access.
@@ -148,7 +149,7 @@ The value to apply to the frequency set by *@frequency_type*. *@frequency_interv
 
 #### [ @frequency_relative_interval = ] *frequency_relative_interval*
 
-The date of the Distribution Agent. This parameter is used when *frequency_type* is set to `32` (monthly relative).
+The date of the Distribution Agent. This parameter is used when *@frequency_type* is set to `32` (monthly relative).
 *@frequency_relative_interval* is **int**, and can be one of the following values.
 
 | Value | Description |
@@ -230,7 +231,7 @@ The unique programmatic identifier (PROGID) with which the OLE DB provider for t
 
 #### [ @subscriber_datasrc = ] N'*subscriber_datasrc*'
 
-The name of the data source as understood by the OLE DB provider.*@subscriber_datasrc* is **nvarchar(4000)**, with a default of `NULL`. *@subscriber_datasrc* is passed as the `DBPROP_INIT_DATASOURCE` property to initialize the OLE DB provider. *@subscriber_datasrc* is only supported for non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Subscribers.
+The name of the data source as understood by the OLE DB provider. *@subscriber_datasrc* is **nvarchar(4000)**, with a default of `NULL`. *@subscriber_datasrc* is passed as the `DBPROP_INIT_DATASOURCE` property to initialize the OLE DB provider. *@subscriber_datasrc* is only supported for non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Subscribers.
 
 #### [ @subscriber_location = ] N'*subscriber_location*'
 
@@ -243,6 +244,10 @@ The OLE DB provider-specific connection string that identifies the data source. 
 #### [ @subscriber_catalog = ] N'*subscriber_catalog*'
 
 The catalog to be used when making a connection to the OLE DB provider. *@subscriber_catalog* is **sysname**, with a default of `NULL`. *@subscriber_catalog* is passed as the `DBPROP_INIT_CATALOG` property to initialize the OLE DB provider. *@subscriber_catalog* is only supported for non- [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Subscribers.
+
+#### [ @job_security_mode = ] *job_security_mode*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Return code values
 

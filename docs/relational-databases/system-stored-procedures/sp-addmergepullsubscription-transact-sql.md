@@ -1,10 +1,10 @@
 ---
-title: "sp_addmergepullsubscription (Transact-SQL)"
+title: "sys.sp_addmergepullsubscription (Transact-SQL)"
 description: Adds a pull subscription to a merge publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addmergepullsubscription (Transact-SQL)
+# sys.sp_addmergepullsubscription (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Adds a pull subscription to a merge publication. This stored procedure is execut
 ## Syntax
 
 ```syntaxsql
-sp_addmergepullsubscription
+sys.sp_addmergepullsubscription
     [ @publication = ] N'publication'
     [ , [ @publisher = ] N'publisher' ]
     [ , [ @publisher_db = ] N'publisher_db' ]

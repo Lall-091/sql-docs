@@ -1,10 +1,10 @@
 ---
-title: "sp_repladdcolumn (Transact-SQL)"
+title: "sys.sp_repladdcolumn (Transact-SQL)"
 description: sp_repladdcolumn adds a column to an existing published table article in SQL Server 2000.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_repladdcolumn (Transact-SQL)
+# sys.sp_repladdcolumn (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Adds a column to an existing published table article. Allows the new column to b
 ## Syntax
 
 ```syntaxsql
-sp_repladdcolumn
+sys.sp_repladdcolumn
     [ @source_object = ] N'source_object'
     , [ @column = ] N'column'
     , [ @typetext = ] N'typetext'
@@ -54,7 +54,7 @@ The name of the column in the table to be added for replication. *@column* is **
 
 #### [ @typetext = ] N'*typetext*'
 
-The definition of the column being added. *@typetext* is **nvarchar(3000)**, with no default. For example, if the column order_filled is being added, and it's a single character field, not null, and has a default value of **N**, order_filled would be the *column* parameter, while the definition of the column, **char(1) NOT NULL CONSTRAINT constraint_name DEFAULT 'N'** would be the *@typetext* parameter value.
+The definition of the column being added. *@typetext* is **nvarchar(3000)**, with no default. For example, if the column order_filled is being added, and it's a single character field, not null, and has a default value of **N**, order_filled would be the *@column* parameter, while the definition of the column, `CHAR(1) NOT NULL CONSTRAINT constraint_name DEFAULT 'N'` would be the *@typetext* parameter value.
 
 #### [ @publication_to_add = ] N'*publication_to_add*'
 

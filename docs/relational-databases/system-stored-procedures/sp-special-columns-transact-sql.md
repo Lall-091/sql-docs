@@ -1,10 +1,10 @@
 ---
-title: "sp_special_columns (Transact-SQL)"
+title: "sys.sp_special_columns (Transact-SQL)"
 description: sp_special_columns returns the optimal set of columns that uniquely identify a row in the table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_special_columns (Transact-SQL)
+# sys.sp_special_columns (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -30,7 +30,7 @@ Returns the optimal set of columns that uniquely identify a row in the table. Al
 ## Syntax
 
 ```syntaxsql
-sp_special_columns
+sys.sp_special_columns
     [ @table_name = ] N'table_name'
     [ , [ @table_owner = ] N'table_owner' ]
     [ , [ @table_qualifier = ] N'table_qualifier' ]

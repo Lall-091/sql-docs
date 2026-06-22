@@ -4,7 +4,7 @@ description: "Returns the change data capture configuration for each table enabl
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -32,14 +32,14 @@ Returns the change data capture configuration for each table enabled for change 
 
 ```syntaxsql
 sys.sp_cdc_help_change_data_capture
-    [ [ @source_schema = ] 'source_schema' ]
-    [ , [ @source_name = ] 'source_name' ]
+    [ [ @source_schema = ] N'source_schema' ]
+    [ , [ @source_name = ] N'source_name' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @source_schema = ] '*source_schema*'
+#### [ @source_schema = ] N'*source_schema*'
 
 The name of the schema in which the source table belongs. *@source_schema* is **sysname**, with a default of `NULL`. When *@source_schema* is specified, *@source_name* must also be specified.
 
@@ -47,7 +47,7 @@ If non-null, *@source_schema* must exist in the current database.
 
 If *@source_schema* is non-null, *@source_name* must also be non-null.
 
-#### [ @source_name = ] '*source_name*'
+#### [ @source_name = ] N'*source_name*'
 
 The name of the source table. *@source_name* is **sysname**, with a default of `NULL`. When *@source_name* is specified, *@source_schema* must also be specified.
 

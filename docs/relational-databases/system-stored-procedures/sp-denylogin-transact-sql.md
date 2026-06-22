@@ -1,10 +1,10 @@
 ---
-title: "sp_denylogin (Transact-SQL)"
+title: "sys.sp_denylogin (Transact-SQL)"
 description: sp_denylogin Prevents a Windows user or Windows group from connecting to an instance of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_denylogin (Transact-SQL)
+# sys.sp_denylogin (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Prevents a Windows user or Windows group from connecting to an instance of [!INC
 ## Syntax
 
 ```syntaxsql
-sp_denylogin [ @loginame = ] N'loginame'
+sys.sp_denylogin [ @loginame = ] N'loginame'
 [ ; ]
 ```
 

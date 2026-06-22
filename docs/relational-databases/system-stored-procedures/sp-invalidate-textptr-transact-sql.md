@@ -1,10 +1,10 @@
 ---
-title: "sp_invalidate_textptr (Transact-SQL)"
+title: "sys.sp_invalidate_textptr (Transact-SQL)"
 description: sp_invalidate_textptr invalidates the specified in-row text pointer, or all in-row text pointers, in the transaction.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_invalidate_textptr (Transact-SQL)
+# sys.sp_invalidate_textptr (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Invalidates the specified in-row text pointer, or all in-row text pointers, in t
 ## Syntax
 
 ```syntaxsql
-sp_invalidate_textptr [ [ @TextPtrValue = ] TextPtrValue ]
+sys.sp_invalidate_textptr [ [ @TextPtrValue = ] TextPtrValue ]
 [ ; ]
 ```
 

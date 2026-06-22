@@ -1,10 +1,10 @@
 ---
-title: "sp_repldropcolumn (Transact-SQL)"
+title: "sys.sp_repldropcolumn (Transact-SQL)"
 description: sp_repldropcolumn drops a column from an existing table article that was published.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_repldropcolumn (Transact-SQL)
+# sys.sp_repldropcolumn (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Drops a column from an existing table article that was published. This stored pr
 ## Syntax
 
 ```syntaxsql
-sp_repldropcolumn
+sys.sp_repldropcolumn
     [ @source_object = ] N'source_object'
     , [ @column = ] N'column'
     [ , [ @from_agent = ] from_agent ]

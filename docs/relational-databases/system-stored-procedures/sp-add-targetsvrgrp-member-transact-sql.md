@@ -4,7 +4,7 @@ description: "Adds the specified target server to the specified target server gr
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,15 +27,15 @@ Adds the specified target server to the specified target server group.
 ## Syntax
 
 ```syntaxsql
-sp_add_targetsvrgrp_member
-    [ @group_name = ] 'group_name'
+dbo.sp_add_targetsvrgrp_member
+    [ @group_name = ] N'group_name'
     , [ @server_name = ] N'server_name'
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @group_name = ] '*group_name*'
+#### [ @group_name = ] N'*group_name*'
 
 The name of the group. *@group_name* is **sysname**, with no default.
 

@@ -4,7 +4,7 @@ description: sys.sp_add_object_to_event_stream_group adds an object to a stream 
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray, randolphwest
-ms.date: 01/07/2026
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -69,7 +69,7 @@ Defines what columns to include within the payload of the message that streams t
 
 #### [ @include_old_values = ] *include_old_values*
 
-If specified, *include_old_values* determines whether old values are included within the payload of the message that streams the changes made to the specified table.
+If specified, *@include_old_values* determines whether old values are included within the payload of the message that streams the changes made to the specified table.
 
 *@include_old_values* is **bit**, and must be one of the following values:
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_helplogreader_agent (Transact-SQL)"
+title: "sys.sp_helplogreader_agent (Transact-SQL)"
 description: Returns properties of the Log Reader Agent job for the publication database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helplogreader_agent (Transact-SQL)
+# sys.sp_helplogreader_agent (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns properties of the Log Reader Agent job for the publication database. Thi
 ## Syntax
 
 ```syntaxsql
-sp_helplogreader_agent [ [ @publisher = ] N'publisher' ]
+sys.sp_helplogreader_agent [ [ @publisher = ] N'publisher' ]
 [ ; ]
 ```
 

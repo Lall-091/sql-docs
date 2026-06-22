@@ -1,10 +1,10 @@
 ---
-title: "sp_certify_removable (Transact-SQL)"
+title: "sys.sp_certify_removable (Transact-SQL)"
 description: Verifies that a database is correctly configured for distribution on removable media and reports any problems to the user.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_certify_removable (Transact-SQL)
+# sys.sp_certify_removable (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Verifies that a database is correctly configured for distribution on removable m
 ## Syntax
 
 ```syntaxsql
-sp_certify_removable
+sys.sp_certify_removable
     [ @dbname = ] N'dbname'
     [ , [ @autofix = ] N'autofix' ]
 [ ; ]

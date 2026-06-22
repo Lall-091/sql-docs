@@ -4,7 +4,7 @@ description: Returns information about jobs that are used by SQL Server Agent to
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ Returns information about jobs that are used by [!INCLUDE [ssNoVersion](../../in
 ## Syntax
 
 ```syntaxsql
-sp_help_job
+dbo.sp_help_job
     [ [ @job_id = ] 'job_id' ]
     [ , [ @job_name = ] N'job_name' ]
     [ , [ @job_aspect = ] 'job_aspect' ]
@@ -73,7 +73,7 @@ The job attribute to display. *@job_aspect* is **varchar(9)**, and can be one of
 
 #### [ @job_type = ] '*job_type*'
 
-The type of jobs to include in the report.*@job_type* is **varchar(12)**, with a default of `NULL`. *@job_type* can be `LOCAL` or `MULTI-SERVER`.
+The type of jobs to include in the report. *@job_type* is **varchar(12)**, with a default of `NULL`. *@job_type* can be `LOCAL` or `MULTI-SERVER`.
 
 #### [ @owner_login_name = ] N'*owner_login_name*'
 

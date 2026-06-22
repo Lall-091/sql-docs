@@ -1,10 +1,10 @@
 ---
-title: "managed_backup.sp_backup_on_demand (Transact-SQL)"
+title: "smart_admin.sp_backup_on_demand (Transact-SQL)"
 description: "Requests SQL Server Managed Backup to Microsoft Azure to perform a backup of the specified database."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# managed_backup.sp_backup_on_demand (Transact-SQL)
+# smart_admin.sp_backup_on_demand (Transact-SQL)
 
 [!INCLUDE [sqlserver2016](../../includes/applies-to-version/sqlserver2016.md)]
 
@@ -36,15 +36,15 @@ An error is returned if [!INCLUDE [ss-managed-backup](../../includes/ss-managed-
 ## Syntax
 
 ```syntaxsql
-EXECUTE managed_backup.sp_backup_on_demand
-    [ @database_name = ] 'database name'
+smart_admin.sp_backup_on_demand
+    [ @database_name = ] N'database_name'
     , [ @type = ] { 'Database' | 'Log' }
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @database_name = ] '*database name*'
+#### [ @database_name = ] N'*database_name*'
 
 The name of the database on which the backup is to be performed. The @database_name is **sysname**.
 

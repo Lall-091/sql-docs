@@ -1,10 +1,10 @@
 ---
-title: "sp_clean_db_file_free_space (Transact-SQL)"
+title: "sys.sp_clean_db_file_free_space (Transact-SQL)"
 description: Removes residual information left on database pages in a database file, because of data modification routines in SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, dfurman
-ms.date: 12/08/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -18,7 +18,7 @@ dev_langs:
   - "TSQL"
 ---
 
-# sp_clean_db_file_free_space (Transact-SQL)
+# sys.sp_clean_db_file_free_space (Transact-SQL)
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -29,7 +29,7 @@ Removes residual information on data pages. `sp_clean_db_file_free_space` cleans
 ## Syntax
 
 ```syntaxsql
-sp_clean_db_file_free_space
+sys.sp_clean_db_file_free_space
     [ @dbname = ] N'dbname'
     , [ @fileid = ] fileid
     [ , [ @cleaning_delay = ] cleaning_delay ]

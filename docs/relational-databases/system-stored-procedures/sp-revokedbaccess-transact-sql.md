@@ -1,10 +1,10 @@
 ---
-title: "sp_revokedbaccess (Transact-SQL)"
+title: "sys.sp_revokedbaccess (Transact-SQL)"
 description: sp_revokedbaccess removes a database user from the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_revokedbaccess (Transact-SQL)
+# sys.sp_revokedbaccess (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Removes a database user from the current database.
 ## Syntax
 
 ```syntaxsql
-sp_revokedbaccess [ @name_in_db = ] N'name_in_db'
+sys.sp_revokedbaccess [ @name_in_db = ] N'name_in_db'
 [ ; ]
 ```
 

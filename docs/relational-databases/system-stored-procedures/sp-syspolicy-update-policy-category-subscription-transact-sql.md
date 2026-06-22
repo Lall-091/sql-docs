@@ -4,7 +4,7 @@ description: "Updates a policy category subscription for a specified database."
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,11 +27,11 @@ Updates a policy category subscription for a specified database.
 ## Syntax
 
 ```syntaxsql
-sp_syspolicy_update_policy_category_subscription
+dbo.sp_syspolicy_update_policy_category_subscription
     [ @policy_category_subscription_id = ] policy_category_subscription_id
     [ , [ @target_type = ] N'target_type' ]
     [ , [ @target_object = ] N'target_object' ]
-      , [ @policy_category = ] N'policy_category'
+    [ , [ @policy_category = ] N'policy_category' ]
 [ ; ]
 ```
 

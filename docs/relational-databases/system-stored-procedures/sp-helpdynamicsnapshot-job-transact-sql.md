@@ -1,10 +1,10 @@
 ---
-title: "sp_helpdynamicsnapshot_job (Transact-SQL)"
+title: "sys.sp_helpdynamicsnapshot_job (Transact-SQL)"
 description: sp_helpdynamicsnapshot_job returns information on agent jobs that generate filtered data snapshots.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -22,7 +22,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpdynamicsnapshot_job (Transact-SQL)
+# sys.sp_helpdynamicsnapshot_job (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -33,7 +33,7 @@ Returns information on agent jobs that generate filtered data snapshots. This st
 ## Syntax
 
 ```syntaxsql
-sp_helpdynamicsnapshot_job
+sys.sp_helpdynamicsnapshot_job
     [ [ @publication = ] N'publication' ]
     [ , [ @dynamic_snapshot_jobname = ] N'dynamic_snapshot_jobname' ]
     [ , [ @dynamic_snapshot_jobid = ] 'dynamic_snapshot_jobid' ]

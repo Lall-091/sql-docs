@@ -1,10 +1,10 @@
 ---
-title: "sp_changearticlecolumndatatype (Transact-SQL)"
+title: "sys.sp_changearticlecolumndatatype (Transact-SQL)"
 description: sp_changearticlecolumndatatype changes the article column data type mapping for an Oracle publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_changearticlecolumndatatype (Transact-SQL)
+# sys.sp_changearticlecolumndatatype (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Changes the article column data type mapping for an Oracle publication. This sto
 ## Syntax
 
 ```syntaxsql
-sp_changearticlecolumndatatype
+sys.sp_changearticlecolumndatatype
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     , [ @column = ] N'column'

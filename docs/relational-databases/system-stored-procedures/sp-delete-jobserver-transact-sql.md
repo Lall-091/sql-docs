@@ -4,7 +4,7 @@ description: sp_delete_jobserver removes the specified target server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Removes the specified target server.
 ## Syntax
 
 ```syntaxsql
-sp_delete_jobserver
-    [ [ @job_id = ] 'job_id' ]
-    [ , [ @job_name = ] N'job_name' ]
+dbo.sp_delete_jobserver
+    { [ @job_id = ] 'job_id'
+        | [ @job_name = ] N'job_name' }
     , [ @server_name = ] N'server_name'
 [ ; ]
 ```

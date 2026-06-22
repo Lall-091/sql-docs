@@ -1,10 +1,10 @@
 ---
-title: "sp_replicationdboption (Transact-SQL)"
+title: "sys.sp_replicationdboption (Transact-SQL)"
 description: sp_replicationdboption sets a replication database option for the specified database.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_replicationdboption (Transact-SQL)
+# sys.sp_replicationdboption (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,10 +27,10 @@ Sets a replication database option for the specified database. This stored proce
 ## Syntax
 
 ```syntaxsql
-sp_replicationdboption
+sys.sp_replicationdboption
     [ @dbname = ] N'dbname'
     , [ @optname = ] N'optname'
-    , [ @value = ] { N'true' | N 'false' }
+    , [ @value = ] { N'true' | N'false' }
     [ , [ @ignore_distributor = ] ignore_distributor ]
     [ , [ @from_scripting = ] from_scripting ]
 [ ; ]
@@ -53,7 +53,7 @@ The replication database option to enable or disable. *@optname* is **sysname**,
 | `subscribe` | Database is a subscription database. |
 | `sync with backup` | Database is enabled for coordinated backup. For more information, see [Enable Coordinated Backups for Transactional Replication](../replication/administration/enable-coordinated-backups-for-transactional-replication.md). |
 
-#### [ @value = ] { N'true' | N 'false' }
+#### [ @value = ] { N'true' | N'false' }
 
 Whether to enable or disable the given replication database option. *@value* is **sysname**, with no default. When this value is `false` and *@optname* is `merge publish`, subscriptions to the merge published database are also dropped.
 

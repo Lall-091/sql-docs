@@ -1,10 +1,10 @@
 ---
-title: "sp_addpublication_snapshot (Transact-SQL)"
+title: "sys.sp_addpublication_snapshot (Transact-SQL)"
 description: sp_addpublication_snapshot creates the Snapshot Agent for the specified publication.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addpublication_snapshot (Transact-SQL)
+# sys.sp_addpublication_snapshot (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,7 +30,7 @@ Creates the Snapshot Agent for the specified publication. This stored procedure 
 ## Syntax
 
 ```syntaxsql
-sp_addpublication_snapshot
+sys.sp_addpublication_snapshot
     [ @publication = ] N'publication'
     [ , [ @frequency_type = ] frequency_type ]
     [ , [ @frequency_interval = ] frequency_interval ]
@@ -52,6 +52,7 @@ sp_addpublication_snapshot
     [ , [ @distributor_security_mode = ] distributor_security_mode ]
     [ , [ @distributor_login = ] N'distributor_login' ]
     [ , [ @distributor_password = ] N'distributor_password' ]
+    [ , [ @job_security_mode = ] job_security_mode ]
 [ ; ]
 ```
 
@@ -102,7 +103,7 @@ The unit for *freq_subday_interval*. *@frequency_subday* is **int**, and can be 
 
 #### [ @frequency_subday_interval = ] *frequency_subday_interval*
 
-The interval for *frequency_subday*, in minutes. *@frequency_subday_interval* is **int**, with a default of `5`.
+The interval for *@frequency_subday*, in minutes. *@frequency_subday_interval* is **int**, with a default of `5`.
 
 #### [ @frequency_relative_interval = ] *frequency_relative_interval*
 
@@ -110,7 +111,7 @@ The date the Snapshot Agent runs. *@frequency_relative_interval* is **int**, wit
 
 #### [ @frequency_recurrence_factor = ] *frequency_recurrence_factor*
 
-The recurrence factor used by *frequency_type*. *@frequency_recurrence_factor* is **int**, with a default of `0`.
+The recurrence factor used by *@frequency_type*. *@frequency_recurrence_factor* is **int**, with a default of `0`.
 
 #### [ @active_start_date = ] *active_start_date*
 
@@ -183,6 +184,10 @@ Specifies a non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Publi
 [!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 #### [ @distributor_password = ] N'*distributor_password*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @job_security_mode = ] *job_security_mode*
 
 [!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 

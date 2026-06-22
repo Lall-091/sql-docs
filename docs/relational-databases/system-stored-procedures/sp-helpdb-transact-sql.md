@@ -1,10 +1,10 @@
 ---
-title: "sp_helpdb (Transact-SQL)"
+title: "sys.sp_helpdb (Transact-SQL)"
 description: sp_helpdb reports information about a specified database or all databases.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpdb (Transact-SQL)
+# sys.sp_helpdb (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Reports information about a specified database or all databases.
 ## Syntax
 
 ```syntaxsql
-sp_helpdb [ [ @dbname = ] N'dbname' ]
+sys.sp_helpdb [ [ @dbname = ] N'dbname' ]
 [ ; ]
 ```
 

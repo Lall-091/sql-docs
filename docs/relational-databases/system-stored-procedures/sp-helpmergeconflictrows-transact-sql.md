@@ -1,10 +1,10 @@
 ---
-title: "sp_helpmergeconflictrows (Transact-SQL)"
+title: "sys.sp_helpmergeconflictrows (Transact-SQL)"
 description: "Returns the rows in the specified conflict table."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpmergeconflictrows (Transact-SQL)
+# sys.sp_helpmergeconflictrows (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Returns the rows in the specified conflict table. This stored procedure is run o
 ## Syntax
 
 ```syntaxsql
-sp_helpmergeconflictrows
+sys.sp_helpmergeconflictrows
     [ [ @publication = ] N'publication' ]
     , [ @conflict_table = ] N'conflict_table'
     [ , [ @publisher = ] N'publisher' ]

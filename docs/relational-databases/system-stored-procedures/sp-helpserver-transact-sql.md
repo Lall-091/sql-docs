@@ -1,10 +1,10 @@
 ---
-title: "sp_helpserver (Transact-SQL)"
+title: "sys.sp_helpserver (Transact-SQL)"
 description: sp_helpserver reports information about a particular remote or replication server, or about all servers of both types.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_helpserver (Transact-SQL)
+# sys.sp_helpserver (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Reports information about a particular remote or replication server, or about al
 ## Syntax
 
 ```syntaxsql
-sp_helpserver
+sys.sp_helpserver
     [ [ @server = ] N'server' ]
     [ , [ @optname = ] 'optname' ]
     [ , [ @show_topology = ] 'show_topology' ]
@@ -38,7 +38,7 @@ sp_helpserver
 
 #### [ @server = ] N'*server*'
 
-Specifies the server about which information is reported. *@server* is **sysname**, with a default of `NULL`. When *server* isn't specified, returns information about all servers in `master.sys.servers`.
+Specifies the server about which information is reported. *@server* is **sysname**, with a default of `NULL`. When *@server* isn't specified, returns information about all servers in `master.sys.servers`.
 
 #### [ @optname = ] '*optname*'
 

@@ -1,10 +1,10 @@
 ---
-title: "sp_describe_cursor_tables (Transact-SQL)"
+title: "sys.sp_describe_cursor_tables (Transact-SQL)"
 description: sp_describe_cursor_tables reports the objects or base tables referenced by a server cursor.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_describe_cursor_tables (Transact-SQL)
+# sys.sp_describe_cursor_tables (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Reports the objects or base tables referenced by a server cursor.
 ## Syntax
 
 ```syntaxsql
-sp_describe_cursor_tables
+sys.sp_describe_cursor_tables
     [ @cursor_return = ] cursor_return OUTPUT
     , [ @cursor_source = ] { N'local' | N'global' | N'*cursor_source*' }
     , [ @cursor_identity = ] N'cursor_identity'
@@ -38,7 +38,7 @@ sp_describe_cursor_tables
 
 #### [ @cursor_return = ] *cursor_return* OUTPUT
 
-The name of a declared cursor variable to receive the cursor output. *@cursor_return* is an OUTPUT **cursor**, with no default, and must not be associated with any cursors at the time `sp_describe_cursor_tables` is called. The cursor returned is a scrollable, dynamic, read-only cursor.
+The name of a declared cursor variable to receive the cursor output. *@cursor_return* is an `OUTPUT` **cursor**, with no default, and must not be associated with any cursors at the time `sp_describe_cursor_tables` is called. The cursor returned is a scrollable, dynamic, read-only cursor.
 
 #### [ @cursor_source = ] { N'local' | N'global' | N'*cursor_source*' }
 

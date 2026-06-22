@@ -1,10 +1,10 @@
 ---
-title: "sp_help_fulltext_columns_cursor (Transact-SQL)"
+title: "sys.sp_help_fulltext_columns_cursor (Transact-SQL)"
 description: Uses a cursor to return the columns designated for full-text indexing.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_help_fulltext_columns_cursor (Transact-SQL)
+# sys.sp_help_fulltext_columns_cursor (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -30,7 +30,7 @@ Uses a cursor to return the columns designated for full-text indexing.
 ## Syntax
 
 ```syntaxsql
-sp_help_fulltext_columns_cursor
+sys.sp_help_fulltext_columns_cursor
     [ @cursor_return = ] cursor_return OUTPUT
     [ , [ @table_name = ] N'table_name' ]
     [ , [ @column_name = ] N'column_name' ]
@@ -41,7 +41,7 @@ sp_help_fulltext_columns_cursor
 
 #### [ @cursor_return = ] *cursor_return* OUTPUT
 
-*@cursor_return* is an OUTPUT parameter of type **int**. The resulting cursor is a read-only, scrollable, dynamic cursor.
+*@cursor_return* is an `OUTPUT` parameter of type **int**. The resulting cursor is a read-only, scrollable, dynamic cursor.
 
 #### [ @table_name = ] N'*table_name*'
 

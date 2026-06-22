@@ -4,7 +4,7 @@ description: sp_start_job instructs the SQL Server Agent to execute a job immedi
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,9 +28,9 @@ Instructs [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent to ex
 ## Syntax
 
 ```syntaxsql
-sp_start_job
-    [ [ @job_name = ] N'job_name' ]
-    [ , [ @job_id = ] 'job_id' ]
+dbo.sp_start_job
+    { [ @job_name = ] N'job_name'
+        | [ @job_id = ] 'job_id' }
     [ , [ @error_flag = ] error_flag ]
     [ , [ @server_name = ] N'server_name' ]
     [ , [ @step_name = ] N'step_name' ]

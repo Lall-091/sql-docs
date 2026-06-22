@@ -1,10 +1,10 @@
 ---
-title: "sp_add_agent_parameter (Transact-SQL)"
+title: "sys.sp_add_agent_parameter (Transact-SQL)"
 description: "sp_add_agent_parameter (Transact-SQL)"
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_add_agent_parameter (Transact-SQL)
+# sys.sp_add_agent_parameter (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,9 +27,10 @@ Adds a new parameter and its value to an agent profile. This stored procedure is
 ## Syntax
 
 ```syntaxsql
-sp_add_agent_parameter [ @profile_id = ] profile_id
-        , [ @parameter_name = ] 'parameter_name'
-        , [ @parameter_value = ] 'parameter_value'
+sys.sp_add_agent_parameter
+    [ @profile_id = ] profile_id
+    , [ @parameter_name = ] N'parameter_name'
+    , [ @parameter_value = ] N'parameter_value'
 [ ; ]
 ```
 
@@ -49,7 +50,7 @@ To find out what agent type this *@profile_id* represents, find the *@profile_id
 | `4` | Merge Agent |
 | `9` | Queue Reader Agent |
 
-#### [ @parameter_name = ] '*parameter_name*'
+#### [ @parameter_name = ] N'*parameter_name*'
 
 The name of the parameter. *@parameter_name* is **sysname**, with no default. For a list of parameters already defined in system profiles, see [Replication Agent Profiles](../replication/agents/replication-agent-profiles.md). For a complete list of valid parameters for each agent, see the following topics:
 
@@ -59,7 +60,7 @@ The name of the parameter. *@parameter_name* is **sysname**, with no default. Fo
 - [Replication Merge Agent](../replication/agents/replication-merge-agent.md)
 - [Replication Queue Reader Agent](../replication/agents/replication-queue-reader-agent.md)
 
-#### [ @parameter_value = ] '*parameter_value*'
+#### [ @parameter_value = ] N'*parameter_value*'
 
 The value to be assigned to the parameter. *@parameter_value* is **nvarchar(255)**, with no default.
 

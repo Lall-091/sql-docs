@@ -1,10 +1,10 @@
 ---
-title: "sp_who (Transact-SQL)"
+title: "sys.sp_who (Transact-SQL)"
 description: Provides information about current users, sessions, and processes in an instance of the SQL Server.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_who (Transact-SQL)
+# sys.sp_who (Transact-SQL)
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ Provides information about current users, sessions, and processes in an instance
 ## Syntax
 
 ```syntaxsql
-sp_who [ [ @loginame = ] { 'login' | *session_id* | 'ACTIVE' } ]
+sys.sp_who [ [ @loginame = ] { 'login' | *session_id* | 'ACTIVE' } ]
 [ ; ]
 ```
 

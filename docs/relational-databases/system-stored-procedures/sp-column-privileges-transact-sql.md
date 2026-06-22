@@ -1,10 +1,10 @@
 ---
-title: "sp_column_privileges (Transact-SQL)"
+title: "sys.sp_column_privileges (Transact-SQL)"
 description: sp_column_privileges returns column privilege information for a single table in the current environment.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,7 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# sp_column_privileges (Transact-SQL)
+# sys.sp_column_privileges (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
@@ -30,7 +30,7 @@ Returns column privilege information for a single table in the current environme
 ## Syntax
 
 ```syntaxsql
-sp_column_privileges
+sys.sp_column_privileges
     [ @table_name = ] N'table_name'
     [ , [ @table_owner = ] N'table_owner' ]
     [ , [ @table_qualifier = ] N'table_qualifier' ]

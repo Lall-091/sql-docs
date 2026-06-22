@@ -1,10 +1,10 @@
 ---
-title: "sp_addmergefilter (Transact-SQL)"
+title: "sys.sp_addmergefilter (Transact-SQL)"
 description: Adds a new merge filter to create a partition based on a join with another table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -16,7 +16,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
-# sp_addmergefilter (Transact-SQL)
+# sys.sp_addmergefilter (Transact-SQL)
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -27,7 +27,7 @@ Adds a new merge filter to create a partition based on a join with another table
 ## Syntax
 
 ```syntaxsql
-sp_addmergefilter
+sys.sp_addmergefilter
     [ @publication = ] N'publication'
     , [ @article = ] N'article'
     , [ @filtername = ] N'filtername'

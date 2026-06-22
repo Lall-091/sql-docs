@@ -4,7 +4,7 @@ description: Updates the settings of an existing alert.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,7 +27,7 @@ Updates the settings of an existing alert.
 ## Syntax
 
 ```syntaxsql
-sp_update_alert
+dbo.sp_update_alert
     [ @name = ] N'name'
     [ , [ @new_name = ] N'new_name' ]
     [ , [ @enabled = ] enabled ]
@@ -71,7 +71,7 @@ Specifies whether the alert is enabled (`1`) or not enabled (`0`). *@enabled* is
 
 #### [ @message_id = ] *message_id*
 
-A new message or error number for the alert definition. Typically, *message_id* corresponds to an error number in the **sysmessages** table. *@message_id* is **int**, with a default of `NULL`. A message ID can be used only if the severity level setting for the alert is `0`.
+A new message or error number for the alert definition. Typically, *@message_id* corresponds to an error number in the **sysmessages** table. *@message_id* is **int**, with a default of `NULL`. A message ID can be used only if the severity level setting for the alert is `0`.
 
 #### [ @severity = ] *severity*
 
@@ -114,7 +114,7 @@ A sequence of characters that must be found in the description of the [!INCLUDE 
 
 #### [ @job_name = ] N'*job_name*'
 
-The job identification number. *@job_name* is **sysname**, with a default of `NULL`. If *job_id* is specified, *job_name* must be omitted.
+The job identification number. *@job_name* is **sysname**, with a default of `NULL`. If *@job_id* is specified, *@job_name* must be omitted.
 
 #### [ @occurrence_count = ] *occurrence_count*
 
