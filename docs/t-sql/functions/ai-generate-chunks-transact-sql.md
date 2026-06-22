@@ -1,9 +1,9 @@
 ---
 title: "AI_GENERATE_CHUNKS (Transact-SQL)"
 description: The AI_GENERATE_CHUNKS table-valued function creates text chunks.
-author: jettermctedder
-ms.author: bspendolini
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: bspendolini
 ms.date: 01/06/2026
 ms.service: sql
 ms.subservice: t-sql

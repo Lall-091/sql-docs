@@ -1,9 +1,9 @@
 ---
 title: "Administer and monitor change data capture"
 description: "Learn how to administer and monitor change data capture on SQL Server, Azure SQL Managed Instance, and Azure SQL Database."
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: "mathoma"
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: roblescarlos, bspendolini
 ms.date: "10/19/2023"
 ms.service: sql
 ms.topic: how-to

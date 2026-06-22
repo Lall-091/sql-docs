@@ -11480,7 +11480,6 @@ items:
       - name: sys.server_event_session_targets
         href: relational-databases/system-catalog-views/sys-server-event-session-targets-transact-sql.md
     - name: External Operations
-      href: relational-databases/system-catalog-views/external-operations-catalog-views-transact-sql.md
       items:
       - name: sys.external_tables
         href: relational-databases/system-catalog-views/sys-external-tables-transact-sql.md

@@ -1,9 +1,9 @@
 ---
 title: "About Change Tracking"
 description: "Learn about the change tracking feature of SQL Server, which provides a lightweight solution for tracking changes to user tables."
-author: JetterMcTedder
-ms.author: bspendolini
-ms.reviewer: mathoma
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: roblescarlos, bspendolini
 ms.date: 05/19/2025
 ms.service: sql
 ms.topic: concept-article

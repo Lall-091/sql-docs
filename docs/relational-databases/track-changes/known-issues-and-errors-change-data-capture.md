@@ -3,7 +3,7 @@ title: "Known Issues, Limitations, and Errors with CDC"
 description: "Known issues and errors with change data capture (CDC) in SQL Server and Azure SQL Managed Instance"
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: mathoma, randolphwest, roblescarlos
+ms.reviewer: roblescarlos, bspendolini, randolphwest
 ms.date: 10/07/2025
 ms.service: sql
 ms.topic: troubleshooting

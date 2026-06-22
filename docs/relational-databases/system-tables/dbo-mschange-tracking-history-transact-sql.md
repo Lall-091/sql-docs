@@ -1,8 +1,9 @@
 ---
 title: "dbo.MSchange_tracking_history (Transact-SQL)"
 description: dbo.MSchange_tracking_history (Transact-SQL)
-author: JetterMcTedder
-ms.author: bspendolini
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: roblescarlos, bspendolini, randolphwest
 ms.date: "10/20/2022"
 ms.service: sql
 ms.subservice: system-objects

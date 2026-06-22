@@ -1,9 +1,9 @@
 ---
 title: "sys.sp_invoke_external_rest_endpoint (Transact-SQL)"
 description: The sp_invoke_external_rest_endpoint stored procedure invokes an HTTPS REST endpoint.
-author: jettermctedder
-ms.author: bspendolini
-ms.reviewer: randolphwest
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: roblescarlos, bspendolini, randolphwest
 ms.date: 06/19/2026
 ms.service: sql
 ms.topic: "reference"

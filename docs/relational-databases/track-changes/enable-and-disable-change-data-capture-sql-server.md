@@ -1,9 +1,9 @@
 ---
 title: "Enable and Disable change data capture"
 description: "Enable and Disable change data capture"
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: mathoma
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: roblescarlos, bspendolini
 ms.date: 10/19/2023
 ms.service: sql
 ms.topic: how-to

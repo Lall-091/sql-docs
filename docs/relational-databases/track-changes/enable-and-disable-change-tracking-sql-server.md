@@ -1,8 +1,9 @@
 ---
 title: "Enable and Disable Change Tracking"
 description: "Enable and Disable Change Tracking (SQL Server)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: roblescarlos, bspendolini
 ms.date: 09/02/2025
 ms.service: sql
 ms.topic: how-to

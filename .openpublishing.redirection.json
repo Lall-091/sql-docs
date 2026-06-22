@@ -67406,6 +67406,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/relational-databases/system-catalog-views/external-operations-catalog-views-transact-sql.md",
+      "redirect_url": "/sql/relational-databases/system-catalog-views/sys-external-tables-transact-sql",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/kb-support/end-support-sql-server-2008.md",
       "redirect_url": "/sql/sql-server/end-of-support/sql-server-end-of-support-overview",
       "redirect_document_id": false

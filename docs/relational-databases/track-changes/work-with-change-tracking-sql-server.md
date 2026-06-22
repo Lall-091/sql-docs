@@ -1,9 +1,9 @@
 ---
 title: "Work with Change Tracking"
 description: "Work with change tracking (SQL Server)"
-author: MikeRayMSFT
-ms.author: mikeray
-ms.reviewer: randolphwest
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: roblescarlos, bspendolini, randolphwest
 ms.date: 08/21/2025
 ms.service: sql
 ms.topic: how-to
