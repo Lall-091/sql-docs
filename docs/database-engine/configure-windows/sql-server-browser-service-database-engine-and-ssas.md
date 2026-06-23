@@ -144,7 +144,7 @@ Setup configures SQL Server Browser to use the account selected for services dur
 
 ### Hide SQL Server
 
-Hidden instances are instances of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] that support only shared memory connections. For [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], set the `HideInstance` flag to indicate that SQL Server Browser shouldn't respond with information about this server instance.
+Hidden instances are instances of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] that the SQL Server Browser service doesn't advertise. Set the `HideInstance` flag to prevent SQL Server Browser from responding with information about this server instance. Clients can still connect to a hidden instance over the network if they specify the protocol endpoint explicitly, such as `tcp:server,5000`. To restrict network access, disable the relevant protocols in SQL Server Configuration Manager.
 
 ### Use a firewall
 
