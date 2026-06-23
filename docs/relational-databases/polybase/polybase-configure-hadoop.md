@@ -1,8 +1,8 @@
 ---
 title: "Access external data: Hadoop - PolyBase"
 description: The article uses PolyBase on a SQL Server instance with Hadoop. PolyBase is suited for ad hoc queries of external tables and data import/export.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: hudequei
 ms.date: 02/09/2023
 ms.service: sql

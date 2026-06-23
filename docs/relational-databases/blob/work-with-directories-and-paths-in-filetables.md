@@ -1,8 +1,8 @@
 ---
 title: "Work with directories and paths in FileTables"
 description: The FileTables feature uses a directory structure to store files. Learn how to work with its directories, paths, restrictions, and semantics.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: randolphwest
 ms.date: 10/02/2023
 ms.service: sql

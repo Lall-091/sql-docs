@@ -1,8 +1,8 @@
 ---
 title: "ALTER AVAILABILITY GROUP (Transact-SQL)"
 description: ALTER AVAILABILITY GROUP (Transact-SQL)
-author: "MikeRayMSFT"
-ms.author: "mikeray"
+author: "MashaMSFT"
+ms.author: "mathoma"
 ms.reviewer: randolphwest
 ms.date: 01/02/2026
 ms.service: sql

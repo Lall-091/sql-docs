@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot PolyBase Kerberos Connectivity
 description: To troubleshoot authentication problems for PolyBase with a Kerberos-secured Hadoop cluster, you can use interactive diagnostics built into PolyBase.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: hudequei, randolphwest
 ms.date: 01/28/2026
 ms.service: sql

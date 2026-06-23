@@ -2019,27 +2019,54 @@
     href: https://www.microsoft.com/sql-server/blog/
   - name: Microsoft Azure Blog
     href: https://azure.microsoft.com/blog/
-
 - name: Resources
   items:
-  - name: Build your skills with Microsoft Learn training
-    href: /training/browse/?products=azure-sql-database
+  - name: Submit feedback >>
+    href: https://feedback.azure.com/forums/908035-sql-server
+  - name: Microsoft Learn
+    items:
+    - name: Azure SQL bootcamp
+      href: /collections/8oq1i8p0z2qygw
+    - name: Introduction to Azure database administration Learning Path
+      href: /training/paths/introduction-to-azure-database-administration/
+    - name: Migrate SQL Server workloads to Azure SQL Learning Path
+      href: /training/paths/migrate-sql-workloads-azure/
+    - name: DP-800 - SQL AI Developer Associate
+      href: /credentials/certifications/developing-ai-enabled-database-solutions/
+    - name: DP-300 - Azure Database Administrator Associate
+      href: /credentials/certifications/azure-database-administrator-associate/
+    - name: Educational SQL resources
+      href: /sql/sql-server/educational-sql-resources
+    - name: Microsoft Q & A
+      items:
+      - name: Azure SQL Database
+        href: /answers/tags/51/azure-sql-database
+      - name: Microsoft SQL Server
+        href: /answers/tags/780/sql-server
+      - name: SQL Server on Azure VMs
+        href: /answers/tags/19/azure-sql-virtual-machines
+    - name: Video learning
+      items:
+      - name: Azure SQL Shows
+        href: /shows/browse?products=azure-sql-database%2Cazure-sql-managed-instance%2Csql-server
+      - name: "@AzureSQL on YouTube"
+        href: https://aka.ms/azuresqlyt
+      - name: Azure SQL for beginners 
+        href: /shows/Azure-SQL-for-Beginners/
+      - name: Azure SQL Database essentials
+        href: /shows/azure-sql-database-essentials/
+    - name: Stack Overflow >>
+      href: https://stackoverflow.com/questions/tagged/azure-sql-database
+    - name: DBA Stack Exchange >>
+      href: https://dba.stackexchange.com/questions/tagged/sql-server
+    - name: Public data sets
+      href: public-data-sets.md
+    - name: Reddit >>
+      href: https://www.reddit.com/r/SQLServer
   - name: Azure Roadmap
     href: https://techcommunity.microsoft.com/discussions/microsoft-entra/introducing-the-azure-roadmap/113500
-  - name: Public data sets
-    href: public-data-sets.md
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-sql-database/single/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-sql-database
-  - name: Microsoft Q & A
-    items:
-    - name: Microsoft Q & A
-      href: /answers/
-    - name: Azure SQL Database
-      href: /answers/tags/51/azure-sql-database
-    - name: SQL Server on Azure VMs
-      href: /answers/tags/19/azure-sql-virtual-machines
   - name: What's New Archives
     items:
     - name: Azure SQL Database
@@ -2078,8 +2105,6 @@
       href: database/gateway-migration.md
     - name: Periodic maintenance events
       href: database/planned-maintenance.md
-  - name: Videos
-    href: /shows/browse?terms=sql-database
   - name: Service updates
     href: https://azure.microsoft.com/updates/?product=sql-database
   - name: Architecture center

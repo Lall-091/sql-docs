@@ -1,8 +1,8 @@
 ---
 title: "SQL Graph Architecture"
 description: "Learn about the architecture of SQL Graph."
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.date: 06/28/2023
 ms.service: sql
 ms.topic: reference

@@ -1,8 +1,8 @@
 ---
 title: "Access FileTables with File Input-Output APIs"
 description: Find out how to use file I/O APIs with FileTables, and learn which file system operations are compatible with FileTables.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.date: "08/25/2016"
 ms.service: sql
 ms.subservice: filestream

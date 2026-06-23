@@ -1,8 +1,8 @@
 ---
 title: "Binary Large Object (Blob) Data (SQL Server)"
 description: With FILESTREAM, FileTables, and Remote Blob Store (RBS), SQL Server can store blobs in the database or in remote storage. Compare options for storing blobs.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: filestream

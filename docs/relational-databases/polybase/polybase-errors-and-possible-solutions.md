@@ -1,8 +1,8 @@
 ---
 title: "PolyBase errors and possible solutions"
 description: PolyBase reference for errors and suggested solutions.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: hudequei
 ms.date: 04/23/2024
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: "Remote Blob Store (RBS) (SQL Server)"
 description: SQL Server Remote BLOB Store (RBS) stores binary large objects in commodity storage instead of on the main database server. Learn about this add-on component.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.date: "11/03/2016"
 ms.service: sql
 ms.subservice: filestream

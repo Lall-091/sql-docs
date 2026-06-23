@@ -1,8 +1,8 @@
 ---
 title: Configure PolyBase Support for Managed Identity
 description: Learn to configure PolyBase to query Azure resources by using managed identity.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: randolphwest
 ms.date: 02/03/2026
 ms.service: sql

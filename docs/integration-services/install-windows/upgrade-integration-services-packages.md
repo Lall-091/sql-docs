@@ -1,8 +1,8 @@
 ---
 title: "Upgrade Integration Services Packages"
 description: "Upgrade Integration Services Packages"
-author: "MikeRayMSFT"
-ms.author: "mikeray"
+author: "markingmyname"
+ms.author: "maghan"
 ms.reviewer: randolphwest
 ms.date: 05/07/2025
 ms.service: sql
