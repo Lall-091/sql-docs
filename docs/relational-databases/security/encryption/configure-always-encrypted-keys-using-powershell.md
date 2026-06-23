@@ -4,7 +4,7 @@ description: Learn how to provision keys for Always Encrypted using the SqlServe
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 04/30/2025
+ms.date: 6/17/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -19,12 +19,15 @@ ms.custom:
 
 This article provides the steps to provision keys for Always Encrypted using the [SqlServer PowerShell module](/powershell/sql-server/sql-server-powershell-provider). You can use PowerShell to provision Always Encrypted keys both [with and without role separation](../../../relational-databases/security/encryption/overview-of-key-management-for-always-encrypted.md#KeyManagementRoles), providing control over who has access to the actual encryption keys in the key store, and who has access to the database.
 
+> [!NOTE]
+> Microsoft recommends using PowerShell 7 or later when running Always Encrypted PowerShell scripts. PowerShell 7 provides improved cross-platform support, better performance, and the latest compatibility with the SqlServer module (v22+), which is required for many Always Encrypted scenarios.
+
 For an overview of Always Encrypted key management, including some high-level best practice recommendations, see [Overview of key management for Always Encrypted](overview-of-key-management-for-always-encrypted.md).
 For information about how to start using the SqlServer PowerShell module for Always Encrypted, see [Configure Always Encrypted using PowerShell](configure-always-encrypted-using-powershell.md).
 
 ## Key Provisioning without role separation
 
-The key provisioning method described in this section doesn't support role separation between Security Administrators and DBAs. Some of the steps in this section combine operations on physical keys with operations on key metadata. Therefore, this method of provisioning the keys is recommended for organizations using the DevOps model, or if the database is hosted in the cloud and the primary goal is to restrict cloud administrators (but not on-premises DBAs) from accessing sensitive data. It isn't recommended if potential adversaries include DBAs, or if DBAs shouldn't have access to sensitive data.
+The key provisioning method described in this section doesn't support role separation between security administrators and DBAs. Some of the steps in this section combine operations on physical keys with operations on key metadata. Therefore, use this method of provisioning the keys if your organization uses the DevOps model, or if the database is hosted in the cloud and the primary goal is to restrict cloud administrators (but not on-premises DBAs) from accessing sensitive data. Don't use this method if potential adversaries include DBAs, or if DBAs shouldn't have access to sensitive data.
 
 Before running any steps that involves access to plaintext keys or the key store (identified in the **Accesses plaintext keys/key store** column in the following table), make sure that the PowerShell environment runs on a secure machine that is different from a computer hosting your database. For more information, see [Security Considerations for Key Management](overview-of-key-management-for-always-encrypted.md#security-considerations-for-key-management).
 
@@ -44,29 +47,73 @@ Step 8. Generate a new column encryption key, encrypt it with the column master 
 This script is an end-to-end example for generating a column master key that is a certificate in Windows Certificate Store, generating and encrypting a column encryption key, and creating key metadata in a SQL Server database.
 
 ```powershell
-# Create a column master key in Windows Certificate Store.
-$cert = New-SelfSignedCertificate -Subject "AlwaysEncryptedCert" -CertStoreLocation Cert:CurrentUser\My -KeyExportPolicy Exportable -Type DocumentEncryptionCert -KeyUsage DataEncipherment -KeySpec KeyExchange
+[CmdletBinding()]
+param(
+	[Parameter(Mandatory = $false)]
+	[string]$DatabaseName = '<database name>',
 
-# Import the SqlServer module.
-Import-Module "SqlServer"
+	[Parameter(Mandatory = $false)]
+	[string]$ServerName = "<server name>",
 
-# Connect to your database.
-$serverName = "<server name>"
-$databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
-$database = Get-SqlDatabase -ConnectionString $connStr
+	[Parameter(Mandatory = $false)]
+	[string]$CertificateSubject = "AlwaysEncryptedCert",
 
-# Create a SqlColumnMasterKeySettings object for your column master key.
+	[Parameter(Mandatory = $false)]
+	[string]$CmkName = "CMK",
+
+	[Parameter(Mandatory = $false)]
+	[string]$CekName = "CEK"
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+Import-Module SqlServer -MinimumVersion 22.0.50 -ErrorAction Stop
+
+Write-Host "[AE] Locating certificate '$CertificateSubject' in CurrentUser\\My"
+$cert = Get-ChildItem -Path Cert:CurrentUser\My |
+	Where-Object { $_.Subject -eq "CN=$CertificateSubject" } |
+	Sort-Object NotAfter -Descending |
+	Select-Object -First 1
+
+if (-not $cert) {
+	Write-Host "[AE] Certificate not found. Creating self-signed certificate."
+	$cert = New-SelfSignedCertificate `
+		-Subject $CertificateSubject `
+		-CertStoreLocation Cert:CurrentUser\My `
+		-KeyExportPolicy Exportable `
+		-Type DocumentEncryptionCert `
+		-KeyUsage DataEncipherment `
+		-KeySpec KeyExchange
+}
+
+Write-Host "[AE] Connecting to SQL Server '$ServerName' / Database '$DatabaseName'"
+$connStr = "Server=$ServerName;Database=$DatabaseName;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30"
+
+try {
+	$database = Get-SqlDatabase -ConnectionString $connStr -ErrorAction Stop
+}
+catch {
+	Write-Error "Failed to connect to '$ServerName' database '$DatabaseName'. Verify instance name SQL2025, database existence, and local permissions."
+	throw
+}
+
+Write-Host "[AE] Creating CMK settings from certificate thumbprint"
 $cmkSettings = New-SqlCertificateStoreColumnMasterKeySettings -CertificateStoreLocation "CurrentUser" -Thumbprint $cert.Thumbprint
 
-# Create column master key metadata in the database.
-$cmkName = "CMK1"
-New-SqlColumnMasterKey -Name $cmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings
+Write-Host "[AE] Ensuring CMK '$CmkName' exists"
+$existingCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+if (-not $existingCmk) {
+	New-SqlColumnMasterKey -Name $CmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings | Out-Null
+}
 
-# Generate a column encryption key, encrypt it with the column master key and create column encryption key metadata in the database.
-$cekName = "CEK1"
-New-SqlColumnEncryptionKey -Name $cekName  -InputObject $database -ColumnMasterKey $cmkName
+Write-Host "[AE] Ensuring CEK '$CekName' exists"
+$existingCek = Get-SqlColumnEncryptionKey -InputObject $database | Where-Object { $_.Name -eq $CekName }
+if (-not $existingCek) {
+	New-SqlColumnEncryptionKey -Name $CekName -InputObject $database -ColumnMasterKey $CmkName | Out-Null
+}
+
+Write-Host "Completed successfully"
 ```
 
 ## Azure Key Vault without role separation (example)
@@ -74,42 +121,101 @@ New-SqlColumnEncryptionKey -Name $cekName  -InputObject $database -ColumnMasterK
 This script is an end-to-end example for provisioning and configuring a key vault in Azure Key Vault, generating a column master key in the vault, generating and encrypting a column encryption key, and creating key metadata in an Azure SQL database.
 
 ```powershell
-# Create a column master key in Azure Key Vault.
-Import-Module Az
-Connect-AzAccount
-$SubscriptionId = "<Azure SubscriptionId>"
-$resourceGroup = "<resource group name>"
-$azureLocation = "<datacenter location>"
-$akvName = "<key vault name>"
-$akvKeyName = "<key name>"
-$azureCtx = Set-AzConteXt -SubscriptionId $SubscriptionId # Sets the context for the below cmdlets to the specified subscription.
-New-AzResourceGroup -Name $resourceGroup -Location $azureLocation # Creates a new resource group - skip, if your desired group already exists.
-New-AzKeyVault -VaultName $akvName -ResourceGroupName $resourceGroup -Location $azureLocation # Creates a new key vault - skip if your vault already exists.
-Set-AzKeyVaultAccessPolicy -VaultName $akvName -ResourceGroupName $resourceGroup -PermissionsToKeys get, create, delete, list, wrapKey,unwrapKey, sign, verify -UserPrincipalName $azureCtx.Account
-$akvKey = Add-AzKeyVaultKey -VaultName $akvName -Name $akvKeyName -Destination "Software"
+param(
+	[Parameter(Mandatory = $true)] [string]$SubscriptionId,
+	[Parameter(Mandatory = $true)] [string]$ResourceGroupName,
+	[Parameter(Mandatory = $true)] [string]$AzureLocation,
+	[Parameter(Mandatory = $true)] [string]$KeyVaultName,
+	[Parameter(Mandatory = $true)] [string]$KeyName,
+	[Parameter(Mandatory = $true)] [string]$ServerName,
+	[Parameter(Mandatory = $true)] [string]$DatabaseName,
+	[string]$CmkName = "CMK",
+	[string]$CekName = "CEK",
+	[bool]$AssignRbacToCurrentPrincipal = $true
+)
 
-# Connect to your database (Azure SQL database).
-Import-Module "SqlServer"
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
 
-$serverName = "<Azure SQL server name>.database.windows.net"
-$databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Authentication = Active Directory Integrated; TrustServerCertificate = True"
-$database = Get-SqlDatabase -ConnectionString $connStr
+Import-Module Az.Accounts -ErrorAction Stop
+Import-Module Az.Resources -ErrorAction Stop
+Import-Module Az.KeyVault -ErrorAction Stop
+Import-Module SqlServer -ErrorAction Stop
 
-# Create a SqlColumnMasterKeySettings object for your column master key.
-$cmkSettings = New-SqlAzureKeyVaultColumnMasterKeySettings -KeyURL $akvKey.Key.Kid
+function Get-CurrentPrincipalObjectId {
+	param([string]$AccountId)
 
-# Create column master key metadata in the database.
-$cmkName = "CMK1"
-New-SqlColumnMasterKey -Name $cmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings -KeyVaultAccessToken $keyVaultAccessToken
+	$userSignedIn = Get-AzADUser -SignedIn -ErrorAction SilentlyContinue
+	if ($userSignedIn) { return $userSignedIn.Id }
 
-# Obtain an access token for key vaults.
-$keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl https://vault.azure.net).Token
+	$user = Get-AzADUser -UserPrincipalName $AccountId -ErrorAction SilentlyContinue
+	if ($user) { return $user.Id }
 
-# Generate a column encryption key, encrypt it with the column master key and create column encryption key metadata in the database.
-$cekName = "CEK1"
-New-SqlColumnEncryptionKey -Name $cekName -InputObject $database -ColumnMasterKey $cmkName -KeyVaultAccessToken $keyVaultAccessToken
+	$sp = Get-AzADServicePrincipal -DisplayName $AccountId -ErrorAction SilentlyContinue | Select-Object -First 1
+	if ($sp) { return $sp.Id }
+
+	throw "Could not resolve Microsoft Entra object id for account '$AccountId'."
+}
+
+try {
+	Write-Host "[AE] Signing in and selecting subscription"
+	Connect-AzAccount | Out-Null
+	$ctx = Set-AzContext -SubscriptionId $SubscriptionId
+
+	Write-Host "[AE] Ensuring resource group exists"
+	$resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
+	if (-not $resourceGroup) {
+		$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $AzureLocation
+	}
+
+	Write-Host "[AE] Ensuring key vault exists (RBAC mode)"
+	$vault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue
+	if (-not $vault) {
+		$vault = New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $AzureLocation -EnableRbacAuthorization
+	}
+
+	if (-not $vault.EnableRbacAuthorization) {
+		throw "Key Vault '$KeyVaultName' is not using RBAC authorization. Enable RBAC authorization on the vault before running this script."
+	}
+
+	if ($AssignRbacToCurrentPrincipal) {
+		Write-Host "[AE] Ensuring RBAC role assignment"
+		$principalSignInName = $ctx.Account.Id
+		$roleName = "Key Vault Crypto Officer"
+		$existingRole = Get-AzRoleAssignment -SignInName $principalSignInName -Scope $vault.ResourceId -RoleDefinitionName $roleName -ErrorAction SilentlyContinue
+		if (-not $existingRole) {
+			New-AzRoleAssignment -SignInName $principalSignInName -Scope $vault.ResourceId -RoleDefinitionName $roleName | Out-Null
+		}
+	}
+
+	Write-Host "[AE] Ensuring column master key material exists in Key Vault"
+	$akvKey = Get-AzKeyVaultKey -VaultName $KeyVaultName -Name $KeyName -ErrorAction SilentlyContinue
+	if (-not $akvKey) {
+		$akvKey = Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $KeyName -Destination "Software"
+	}
+
+	Write-Host "[AE] Connecting to Azure SQL and creating metadata"
+	$keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl "https://vault.azure.net").Token
+	$connStr = "Server=tcp:$ServerName.database.windows.net,1433;Database=$DatabaseName;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Interactive"
+	$database = Get-SqlDatabase -ConnectionString $connStr -Encrypt Mandatory
+	$cmkSettings = New-SqlAzureKeyVaultColumnMasterKeySettings -KeyUrl $akvKey.Key.Kid
+
+	$existingCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+	if (-not $existingCmk) {
+		New-SqlColumnMasterKey -Name $CmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings | Out-Null
+	}
+
+	$existingCek = Get-SqlColumnEncryptionKey -InputObject $database | Where-Object { $_.Name -eq $CekName }
+	if (-not $existingCek) {
+		New-SqlColumnEncryptionKey -Name $CekName -InputObject $database -ColumnMasterKey $CmkName -KeyVaultAccessToken $keyVaultAccessToken | Out-Null
+	}
+
+	Write-Host "Completed successfully"
+}
+catch {
+	Write-Error "Script failed: $($_.Exception.Message)"
+	throw
+}
 ```
 
 ## CNG/KSP without role separation (example)
@@ -119,40 +225,68 @@ The below script is an end-to-end example for generating a column master key in 
 The example uses the key store that uses Microsoft Software Key Storage Provider. You can choose to modify the example to use another store, such as your hardware security module. For that, you'll need to make sure the key store provider (KSP) that implements CNG for your device is installed and properly on your machine. You'll need to replace `Microsoft Software Key Storage Provider` with your device's KSP name.
 
 ```powershell
-# Create a column master key in a key store that has a CNG provider, a.k.a key store provider (KSP).
-$cngProviderName = "Microsoft Software Key Storage Provider" # If you have an HSM, you can use a KSP for your HSM instead of a Microsoft KSP
+[CmdletBinding()]
+param(
+	[Parameter(Mandatory = $false)]
+	[string]$ServerName = "<server name>",
+
+	[Parameter(Mandatory = $true)]
+	[string]$DatabaseName = "<database name>",
+
+	[Parameter(Mandatory = $false)]
+	[string]$CngKeyName = "AlwaysEncryptedKey",
+
+	[Parameter(Mandatory = $false)]
+	[string]$CmkName = "CMK",
+
+	[Parameter(Mandatory = $false)]
+	[string]$CekName = "CEK"
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+# Local key store provider and key settings.
+$cngProviderName = "Microsoft Software Key Storage Provider"
 $cngAlgorithmName = "RSA"
-$cngKeySize = 2048 # Recommended key size for Always Encrypted column master keys
-$cngKeyName = "AlwaysEncryptedKey" # Name identifying your new key in the KSP
+$cngKeySize = 2048
+
+Import-Module SqlServer -ErrorAction Stop
+
+Write-Host "[AE] Creating local CNG key '$CngKeyName'"
 $cngProvider = New-Object System.Security.Cryptography.CngProvider($cngProviderName)
 $cngKeyParams = New-Object System.Security.Cryptography.CngKeyCreationParameters
-$cngKeyParams.provider = $cngProvider
+$cngKeyParams.Provider = $cngProvider
 $cngKeyParams.KeyCreationOptions = [System.Security.Cryptography.CngKeyCreationOptions]::OverwriteExistingKey
-$keySizeProperty = New-Object System.Security.Cryptography.CngProperty("Length", [System.BitConverter]::GetBytes($cngKeySize), [System.Security.Cryptography.CngPropertyOptions]::None);
+$keySizeProperty = New-Object System.Security.Cryptography.CngProperty(
+	"Length",
+	[System.BitConverter]::GetBytes($cngKeySize),
+	[System.Security.Cryptography.CngPropertyOptions]::None
+)
 $cngKeyParams.Parameters.Add($keySizeProperty)
 $cngAlgorithm = New-Object System.Security.Cryptography.CngAlgorithm($cngAlgorithmName)
-$cngKey = [System.Security.Cryptography.CngKey]::Create($cngAlgorithm, $cngKeyName, $cngKeyParams)
+[System.Security.Cryptography.CngKey]::Create($cngAlgorithm, $CngKeyName, $cngKeyParams) | Out-Null
 
-# Import the SqlServer module.
-Import-Module "SqlServer"
-
-# Connect to your database.
-$serverName = "<server name>"
-$databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
+Write-Host "[AE] Connecting to $ServerName / $DatabaseName"
+$connStr = "Server=$ServerName;Database=$DatabaseName;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"
 $database = Get-SqlDatabase -ConnectionString $connStr
 
-# Create a SqlColumnMasterKeySettings object for your column master key.
-$cmkSettings = New-SqlCngColumnMasterKeySettings -CngProviderName $cngProviderName -KeyName $cngKeyName
+Write-Host "[AE] Preparing column master key settings"
+$cmkSettings = New-SqlCngColumnMasterKeySettings -CngProviderName $cngProviderName -KeyName $CngKeyName
 
-# Create column master key metadata in the database.
-$cmkName = "CMK1"
-New-SqlColumnMasterKey -Name $cmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings
+Write-Host "[AE] Ensuring CMK exists"
+$existingCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+if (-not $existingCmk) {
+	New-SqlColumnMasterKey -Name $CmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings | Out-Null
+}
 
-# Generate a column encryption key, encrypt it with the column master key and create column encryption key metadata in the database.
-$cekName = "CEK1"
-New-SqlColumnEncryptionKey -Name $cekName -InputObject $database -ColumnMasterKey $cmkName
+Write-Host "[AE] Ensuring CEK exists"
+$existingCek = Get-SqlColumnEncryptionKey -InputObject $database | Where-Object { $_.Name -eq $CekName }
+if (-not $existingCek) {
+	New-SqlColumnEncryptionKey -Name $CekName -InputObject $database -ColumnMasterKey $CmkName | Out-Null
+}
+
+Write-Host "Completed successfully"
 ```
 
 ## Key provisioning with role separation
@@ -195,58 +329,158 @@ Step 6. Create the column encryption key metadata in the database. | New-SqlColu
 ### Security administrator
 
 ```powershell
-# Create a column master key in Windows Certificate Store.
-$storeLocation = "CurrentUser"
-$certPath = "Cert:" + $storeLocation + "\My"
-$cert = New-SelfSignedCertificate -Subject "AlwaysEncryptedCert" -CertStoreLocation $certPath -KeyExportPolicy Exportable -Type DocumentEncryptionCert -KeyUsage DataEncipherment -KeySpec KeyExchange
+[CmdletBinding()]
+param(
+	[Parameter(Mandatory = $false)]
+	[string]$ServerName = '<server name>',
 
-# Import the SqlServer module
-Import-Module "SqlServer"
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$DatabaseName = '<database name>',
 
-# Create a SqlColumnMasterKeySettings object for your column master key.
-$cmkSettings = New-SqlCertificateStoreColumnMasterKeySettings -CertificateStoreLocation "CurrentUser" -Thumbprint $cert.Thumbprint
+	[Parameter(Mandatory = $false)]
+	[string]$CertificateSubject = 'AlwaysEncryptedCert',
 
-# Generate a column encryption key, encrypt it with the column master key to produce an encrypted value of the column encryption key.
-$encryptedValue = New-SqlColumnEncryptionKeyEncryptedValue -TargetColumnMasterKeySettings $cmkSettings
+	[Parameter(Mandatory = $false)]
+	[string]$CmkName = 'CMK1',
 
-# Share the location of the column master key and an encrypted value of the column encryption key with a DBA, via a CSV file on a share drive
-$keyDataFile = "Z:\keydata.txt"
-"KeyStoreProviderName, KeyPath, EncryptedValue" > $keyDataFile
-$cmkSettings.KeyStoreProviderName + ", " + $cmkSettings.KeyPath + ", " + $encryptedValue >> $keyDataFile
+	[Parameter(Mandatory = $false)]
+	[string]$CekName = 'CEK1',
 
-# Read the key data back to verify
-$keyData = Import-Csv $keyDataFile
-$keyData.KeyStoreProviderName
-$keyData.KeyPath
-$keyData.EncryptedValue
+	[Parameter(Mandatory = $false)]
+	[string]$ExportKeyDataPath = 'C:\temp\keydata.txt'
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+Import-Module SqlServer -MinimumVersion 22.0.50 -ErrorAction Stop
+
+Write-Host "[AE] Finding certificate '$CertificateSubject' in CurrentUser\\My"
+$cert = Get-ChildItem -Path 'Cert:CurrentUser\My' |
+	Where-Object { $_.Subject -eq "CN=$CertificateSubject" } |
+	Sort-Object NotAfter -Descending |
+	Select-Object -First 1
+
+if (-not $cert) {
+	Write-Host '[AE] Certificate not found. Creating a new self-signed certificate.'
+	$cert = New-SelfSignedCertificate `
+		-Subject $CertificateSubject `
+		-CertStoreLocation 'Cert:CurrentUser\My' `
+		-KeyExportPolicy Exportable `
+		-Type DocumentEncryptionCert `
+		-KeyUsage DataEncipherment `
+		-KeySpec KeyExchange
+}
+
+Write-Host "[AE] Connecting to SQL Server '$ServerName' / Database '$DatabaseName'"
+$connStr = "Server=$ServerName;Database=$DatabaseName;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30"
+
+try {
+	$database = Get-SqlDatabase -ConnectionString $connStr -ErrorAction Stop
+}
+catch {
+	Write-Error "Failed to connect to '$ServerName' / '$DatabaseName'. Verify instance name, database, and local permissions."
+	throw
+}
+
+Write-Host '[AE] Building CMK settings from certificate'
+$cmkSettings = New-SqlCertificateStoreColumnMasterKeySettings -CertificateStoreLocation 'CurrentUser' -Thumbprint $cert.Thumbprint
+
+Write-Host "[AE] Ensuring CMK '$CmkName' exists"
+$existingCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+if (-not $existingCmk) {
+	New-SqlColumnMasterKey -Name $CmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings | Out-Null
+}
+
+Write-Host "[AE] Ensuring CEK '$CekName' exists"
+$existingCek = Get-SqlColumnEncryptionKey -InputObject $database | Where-Object { $_.Name -eq $CekName }
+if (-not $existingCek) {
+	New-SqlColumnEncryptionKey -Name $CekName -InputObject $database -ColumnMasterKey $CmkName | Out-Null
+}
+
+if ($ExportKeyDataPath) {
+	Write-Host "[AE] Exporting key metadata to '$ExportKeyDataPath'"
+	$encryptedValue = New-SqlColumnEncryptionKeyEncryptedValue -TargetColumnMasterKeySettings $cmkSettings
+	"KeyStoreProviderName,KeyPath,EncryptedValue" | Set-Content -Path $ExportKeyDataPath -Encoding UTF8
+	"$($cmkSettings.KeyStoreProviderName),$($cmkSettings.KeyPath),$encryptedValue" | Add-Content -Path $ExportKeyDataPath -Encoding UTF8
+}
+
+Write-Host 'Completed successfully'
 ```
 
 ### DBA
 
 ```powershell
-# Obtain the location of the column master key and the encrypted value of the column encryption key from your Security Administrator, via a CSV file on a share drive.
-$keyDataFile = "Z:\keydata.txt"
-$keyData = Import-Csv $keyDataFile
+[CmdletBinding()]
+param(
+	[Parameter(Mandatory = $false)]
+	[string]$ServerName = 'localhost\SQL2025',
 
-# Import the SqlServer module
-Import-Module "SqlServer"
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$DatabaseName = 'AdventureWorks2025',
 
-# Connect to your database.
-$serverName = "<server name>"
-$databaseName = "<database name>"
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
-$database = Get-SqlDatabase -ConnectionString $connStr
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$KeyDataFile = 'C:\temp\keydata.txt',
 
-# Create a SqlColumnMasterKeySettings object for your column master key.
-$cmkSettings = New-SqlColumnMasterKeySettings -KeyStoreProviderName $keyData.KeyStoreProviderName -KeyPath $keyData.KeyPath
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$CmkName = 'CMK1',
 
-# Create column master key metadata in the database.
-$cmkName = "CMK1"
-New-SqlColumnMasterKey -Name $cmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$CekName = 'CEK1'
+)
 
-# Generate a  column encryption key, encrypt it with the column master key and create column encryption key metadata in the database.
-$cekName = "CEK1"
-New-SqlColumnEncryptionKey -Name $cekName -InputObject $database -ColumnMasterKey $cmkName -EncryptedValue $keyData.EncryptedValue
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+Import-Module SqlServer -MinimumVersion 22.0.50 -ErrorAction Stop
+
+if (-not (Test-Path -Path $KeyDataFile -PathType Leaf)) {
+	throw "Key data file not found: $KeyDataFile"
+}
+
+Write-Host "[AE] Loading key metadata from '$KeyDataFile'"
+$keyData = Import-Csv -Path $KeyDataFile
+if (-not $keyData) {
+	throw "Key data file '$KeyDataFile' is empty."
+}
+
+$keyDataRow = $keyData | Select-Object -First 1
+if (-not $keyDataRow.KeyStoreProviderName -or -not $keyDataRow.KeyPath -or -not $keyDataRow.EncryptedValue) {
+	throw "Key data file must include non-empty columns: KeyStoreProviderName, KeyPath, EncryptedValue."
+}
+
+Write-Host "[AE] Connecting to SQL Server '$ServerName' / Database '$DatabaseName'"
+$connStr = "Server=$ServerName;Database=$DatabaseName;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30"
+
+try {
+	$database = Get-SqlDatabase -ConnectionString $connStr -ErrorAction Stop
+}
+catch {
+	Write-Error "Failed to connect to '$ServerName' / '$DatabaseName'. Verify instance name, database, and local permissions."
+	throw
+}
+
+Write-Host "[AE] Building CMK settings for provider '$($keyDataRow.KeyStoreProviderName)'"
+$cmkSettings = New-SqlColumnMasterKeySettings -KeyStoreProviderName $keyDataRow.KeyStoreProviderName -KeyPath $keyDataRow.KeyPath
+
+Write-Host "[AE] Ensuring CMK '$CmkName' exists"
+$existingCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+if (-not $existingCmk) {
+	New-SqlColumnMasterKey -Name $CmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings | Out-Null
+}
+
+Write-Host "[AE] Ensuring CEK '$CekName' exists"
+$existingCek = Get-SqlColumnEncryptionKey -InputObject $database | Where-Object { $_.Name -eq $CekName }
+if (-not $existingCek) {
+	New-SqlColumnEncryptionKey -Name $CekName -InputObject $database -ColumnMasterKey $CmkName -EncryptedValue $keyDataRow.EncryptedValue | Out-Null
+}
+
+Write-Host 'Completed successfully'
 ```
 
 ## Related content

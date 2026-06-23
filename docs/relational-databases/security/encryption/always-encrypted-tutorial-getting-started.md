@@ -4,7 +4,7 @@ description: This tutorial teaches you how to encrypt columns using Always Encry
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 02/15/2023
+ms.date: 6/17/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: tutorial
@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-This tutorial teaches you how to get started with [Always Encrypted](always-encrypted-database-engine.md). It will show you:
+This tutorial shows you how to get started with [Always Encrypted](always-encrypted-database-engine.md). The tutorial covers:
 
 > [!div class="checklist"]
 >
@@ -36,8 +36,11 @@ For this tutorial, you need:
 - An **empty** database in Azure SQL Database, Azure SQL Managed Instance, or SQL Server. The below instructions assume the database name is **ContosoHR**. You need to be an owner of the database (a member of the **db_owner** role). For information on how to create a database, see [Quickstart: Create a single database - Azure SQL Database](/azure/azure-sql/database/single-database-create-quickstart) or [Create a database in SQL Server](../../databases/create-a-database.md).
 - Optional, but recommended, especially if your database is in Azure: a key vault in Azure Key Vault. For information on how to create a key vault, see [Quickstart: Create a key vault using the Azure portal](/azure/key-vault/general/quick-create-portal).
   - If your key vault uses the access policy permissions model, make sure you have the following key permissions in the key vault: `get`, `list`, `create`, `unwrap key`, `wrap key`, `verify`, `sign`. See [Assign a Key Vault access policy](/azure/key-vault/general/assign-access-policy).
-  - If you're using the Azure role-based access control (RBAC) permission model, make you sure you're a member of the [Key Vault Crypto Officer](/azure/role-based-access-control/built-in-roles#key-vault-crypto-officer) role for your key vault. See [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-migration).
+  - If you're using the Azure role-based access control (RBAC) permission model, make sure you're a member of the [Key Vault Crypto Officer](/azure/role-based-access-control/built-in-roles#key-vault-crypto-officer) role for your key vault. See [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-migration).
 - The latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install) or the latest version of the [SqlServer](/powershell/sql-server/download-sql-server-ps-module) and [Az](/powershell/azure/new-azureps-module-az) PowerShell modules. The Az PowerShell module is required only if you're using Azure Key Vault.
+
+> [!NOTE]
+> Microsoft recommends using PowerShell 7 or later when running Always Encrypted PowerShell scripts. PowerShell 7 provides improved cross-platform support, better performance, and the latest compatibility with the SqlServer module (v22+), which is required for many Always Encrypted scenarios.
 
 ## Step 1: Create and populate the database schema
 
@@ -102,26 +105,46 @@ In this step, you'll create the **HR** schema and the **Employees** table. Then,
 In a PowerShell session, execute the following commands. Make sure you update the connection string with the address of your server and authentication settings that are valid for your database.
 
 ```powershell
-Import-Module "SqlServer"
+Import-Module "SqlServer" -MinimumVersion 22.0.50
 
-# Set your database connection string
-$connectionString = "Server = myServerAddress; Database = ContosoHR; ..."
+# Connect to your database
+# Set the valid server name, database name and authentication keywords in the connection string
+$serverName = "<server name>.database.windows.net"
+$databaseName = "ContosoHR"
+$connStr = "Server=tcp:$serverName,1433;Database=$databaseName;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Interactive"
 
-# Create a new table, named Employees.
+try {
+	$database = Get-SqlDatabase -ConnectionString $connStr -Encrypt Mandatory -ErrorAction Stop
+}
+catch {
+	Write-Error "Failed to connect. Verify server name, database name, Azure SQL firewall access, and Microsoft Entra permissions."
+	throw
+}
+
+
 $query = @'
-    CREATE SCHEMA [HR];
-    GO
-    
+ IF SCHEMA_ID(N'HR') IS NULL
+BEGIN
+    EXEC(N'CREATE SCHEMA [HR]');
+END;
+
+IF OBJECT_ID(N'HR.Employees', N'U') IS NULL
+BEGIN
     CREATE TABLE [HR].[Employees]
     (
-        [EmployeeID] [int] IDENTITY(1,1) NOT NULL
-        , [SSN] [char](11) NOT NULL
-        , [FirstName] [nvarchar](50) NOT NULL
-        , [LastName] [nvarchar](50) NOT NULL
-        , [Salary] [money] NOT NULL
-    ) ON [PRIMARY];
+        [EmployeeID] INT IDENTITY(1,1) NOT NULL,
+        [SSN] CHAR(11) NOT NULL,
+        [FirstName] NVARCHAR(50) NOT NULL,
+        [LastName] NVARCHAR(50) NOT NULL,
+        [Salary] MONEY NOT NULL,
+        CONSTRAINT [PK_HR_Employees] PRIMARY KEY CLUSTERED ([EmployeeID])
+    );
+END;
 '@
-Invoke-SqlCmd -ConnectionString $connectionString -Query $query
+
+#write-host @query
+
+Invoke-SqlCmd -ConnectionString $connStr -Query $query
 
 # Add a few rows to the Employees table.
 $query = @'
@@ -155,7 +178,9 @@ $query = @'
         , $55415
     );
 '@
-Invoke-SqlCmd -ConnectionString $connectionString -Query $query
+Invoke-SqlCmd -ConnectionString $connStr -Query $query
+
+Write-Host 'Completed successfully.'
 ```
 
 ---
@@ -243,22 +268,68 @@ SSMS provides a wizard that helps you easily configure Always Encrypted by setti
     - If you're using Azure Key Vault, execute the below commands to create an asymmetric key in your key vault. Make sure you provide the correct ID of your subscription, the name of the resource group containing your key vault, and your key vault name.
 
       ```powershell
-      Import-Module "Az"
-      Connect-AzAccount
-      $subscriptionId = "<your Azure subscription ID"
-      $resourceGroup = "your resource group name containing your key vault"
-      $keyVaultName = "your vault name"
-      $keyVaultKeyName = "your key name"
+      [CmdletBinding()]
+        param(
+            [Parameter(Mandatory = $true)]
+            [ValidateNotNullOrEmpty()]
+            [string]$SubscriptionId,
 
-      # Switch to your subscription.
-      Set-AzConteXt -SubscriptionId $subscriptionId
+            [Parameter(Mandatory = $true)]
+            [ValidateNotNullOrEmpty()]
+            [string]$ResourceGroupName,
 
-      # To validate the above key vault settings, get the key vault properties.
-      Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroup 
+            [Parameter(Mandatory = $true)]
+            [ValidateNotNullOrEmpty()]
+            [string]$KeyVaultName,
 
-      # Create a key in the key vault.
-      $keyVaultKey = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyVaultKeyName -Destination "Software"
-      $keyVaultKey
+            [Parameter(Mandatory = $true)]
+            [ValidateNotNullOrEmpty()]
+            [string]$KeyVaultKeyName,
+
+            [Parameter(Mandatory = $false)]
+            [ValidateSet('RSA', 'RSA-HSM', 'EC', 'EC-HSM', 'oct')]
+            [string]$KeyType = 'RSA',
+
+            [Parameter(Mandatory = $false)]
+            [ValidateSet('Software', 'HSM')]
+            [string]$Destination = 'Software'
+        )
+
+        Set-StrictMode -Version Latest
+        $ErrorActionPreference = 'Stop'
+
+        Import-Module Az.Accounts -ErrorAction Stop
+        Import-Module Az.KeyVault -ErrorAction Stop
+        Import-Module Az.Resources -ErrorAction Stop
+
+        Write-Host "[AKV] Signing in to Azure"
+        Connect-AzAccount -ErrorAction Stop | Out-Null
+
+        Write-Host "[AKV] Setting subscription context to '$SubscriptionId'"
+        Set-AzContext -SubscriptionId $SubscriptionId -ErrorAction Stop | Out-Null
+
+        Write-Host "[AKV] Validating Key Vault '$KeyVaultName' in resource group '$ResourceGroupName'"
+        $vault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ErrorAction Stop
+
+        Write-Host "[AKV] Checking if key '$KeyVaultKeyName' already exists"
+        $existingKey = Get-AzKeyVaultKey -VaultName $KeyVaultName -Name $KeyVaultKeyName -ErrorAction SilentlyContinue
+
+        if ($existingKey) {
+            Write-Host "[AKV] Key already exists. Returning existing key metadata."
+            $existingKey
+            return
+        }
+
+        Write-Host "[AKV] Creating key '$KeyVaultKeyName' (Type=$KeyType, Destination=$Destination)"
+        $keyVaultKey = Add-AzKeyVaultKey `
+            -VaultName $KeyVaultName `
+            -Name $KeyVaultKeyName `
+            -Destination $Destination `
+            -KeyType $KeyType `
+            -ErrorAction Stop
+
+        Write-Host '[AKV] Key created successfully.'
+        $keyVaultKey
       ```
 
     - If you're using Windows certificate store, execute the below commands to create a certificate in your Current User store.
@@ -267,45 +338,65 @@ SSMS provides a wizard that helps you easily configure Always Encrypted by setti
       $cert = New-SelfSignedCertificate -Subject "HRCMK" -CertStoreLocation Cert:CurrentUser\My -KeyExportPolicy Exportable -Type DocumentEncryptionCert -KeyUsage DataEncipherment -KeySpec KeyExchange
       ```
 
-1. Connect to your database, using the SqlServer PowerShell module. Make sure you provide a valid connection string for your database.
-
-   ```powershell
-   $database = Get-SqlDatabase -ConnectionString $connectionString
-   $database
-   ```
-
-1. Provision a column master key metadata object (that references the physical column master key that you've created in your key store) in your database.
+1. Connect to your database by using the SqlServer PowerShell module. Make sure you provide a valid connection string for your database. Create a column master key metadata object that references the physical column master key you created in your key store.
 
    - If you're using Azure Key Vault, execute the below commands.
 
      ```powershell
-     # Sign in to Azure for the SqlServer PowerShell module
-     Add-SqlAzureAuthenticationContext -Interactive
+     Write-Host "[AE] Connecting to Azure SQL and creating metadata"
+     $keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl "https://vault.azure.net").Token
 
-     # Create a SqlColumnMasterKeySettings in-memory object referencing the key you've created in your key vault. 
+     $serverName = "<server name>.database.windows.net"
+     $databaseName = "ContosoHR"
+     $connStr = "Server=tcp:$serverName,1433;Database=$databaseName;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Interactive"
+
+     try {
+         $database = Get-SqlDatabase -ConnectionString $connStr -Encrypt Mandatory -ErrorAction Stop
+     }
+     catch {
+         Write-Error "Failed to connect. Verify server name, database name, Azure SQL firewall access, and Microsoft Entra permissions."
+         throw
+     }
+
      $cmkSettings = New-SqlAzureKeyVaultColumnMasterKeySettings -KeyURL $keyVaultKey.Key.Kid
 
-     # Create column master key metadata object (referencing your certificate), named CMK1, in the database.
-     $cmkName = "CMK1"
-     New-SqlColumnMasterKey -Name $cmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings
+     $existingCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+     if (-not $existingCmk) {
+         New-SqlColumnMasterKey -Name $CmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings | Out-Null
+     }
      ```
 
-   - If you're using Windows certificate store, execute the below commands.
+     - If you're using Windows certificate store, run the following commands.
 
      ```powershell
-     # Create a SqlColumnMasterKeySettings in-memory object referencing your certificate.
+     Write-Host "[AE] Connecting to Azure SQL and creating metadata"
+     $serverName = "<server name>.database.windows.net"
+     $databaseName = "ContosoHR"
+     $connStr = "Server=tcp:$serverName,1433;Database=$databaseName;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Interactive"
+
+     try {
+         $database = Get-SqlDatabase -ConnectionString $connStr -Encrypt Mandatory -ErrorAction Stop
+     }
+     catch {
+         Write-Error "Failed to connect. Verify server name, database name, Azure SQL firewall access, and Microsoft Entra permissions."
+         throw
+     }
+
      $cmkSettings = New-SqlCertificateStoreColumnMasterKeySettings -CertificateStoreLocation "CurrentUser" -Thumbprint $cert.Thumbprint
 
-     # Create column master key metadata object, named CMK1, in the database.
-     $cmkName = "CMK1"
-     New-SqlColumnMasterKey -Name $cmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings
+     $existingCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+     if (-not $existingCmk) {
+         New-SqlColumnMasterKey -Name $CmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings | Out-Null
+     }
      ```
 
 1. Generate a column encryption key, encrypt it with the column master key you've created, and create a column encryption key metadata object in the database.
 
     ```powershell
-    $cekName = "CEK1"
-    New-SqlColumnEncryptionKey -Name $cekName -InputObject $database -ColumnMasterKey $cmkName
+    $existingCek = Get-SqlColumnEncryptionKey -InputObject $database | Where-Object { $_.Name -eq $CekName }
+	if (-not $existingCek) {
+		New-SqlColumnEncryptionKey -Name $CekName -InputObject $database -ColumnMasterKey $CmkName -KeyVaultAccessToken $keyVaultAccessToken | Out-Null
+	}
     ```
 
 1. Encrypt **SSN** and **Salary** columns in the **Employees** Table. Choose deterministic encryption for the **SSN** column and randomized encryption for the **Salary** column. Deterministic encryption supports queries, such as point lookup searches that involve equality comparisons on encrypted columns. Randomized encryption doesn't support any computations on encrypted columns.

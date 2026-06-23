@@ -4,7 +4,7 @@ description: "Rotate Always Encrypted keys using PowerShell"
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: vanto
-ms.date: 04/05/2023
+ms.date: 6/17/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -17,7 +17,10 @@ ms.custom: sfi-ropc-nochange
 
 This article provides the steps to rotate keys for Always Encrypted using the SqlServer PowerShell module. For information about how to start using the SqlServer PowerShell module for Always Encrypted, see [Configure Always Encrypted using PowerShell](../../../relational-databases/security/encryption/configure-always-encrypted-using-powershell.md).
 
-Rotating Always Encrypted Keys is the process of replacing an existing key with a new one. You may need to rotate a key if it has been compromised, or in order to comply with your organization's policies or compliance regulations that mandate cryptographic keys must be rotated regularly.
+> [!NOTE]
+> Microsoft recommends using PowerShell 7 or later when running Always Encrypted PowerShell scripts. PowerShell 7 provides improved cross-platform support, better performance, and the latest compatibility with the SqlServer module (v22+), which is required for many Always Encrypted scenarios.
+
+Rotating Always Encrypted keys is the process of replacing an existing key with a new one. You might need to rotate a key if it's compromised, or to comply with your organization's policies or compliance regulations that mandate regular cryptographic key rotation.
 
 Always Encrypted uses two types of keys, so there are two high-level key rotation workflows; rotating column master keys, and rotating column encryption keys.
 
@@ -26,7 +29,7 @@ Always Encrypted uses two types of keys, so there are two high-level key rotatio
 
 ## Column Master Key Rotation without Role Separation
 
-The method of rotating a column master key described in this section doesn't support role separation between a Security Administrator and a DBA. Some of the below steps combine operations on the physical keys with operations on key metadata so this workflow is recommended for organizations using the DevOps model, or when your database is hosted in the cloud and the primary goal is to restrict cloud administrators (but not on-premises DBAs) from accessing sensitive data. It isn't recommended if potential adversaries include DBAs, or if DBAs shouldn't have access to sensitive data.  
+The method described in this section for rotating a column master key doesn't support role separation between a security administrator and a DBA. Some of the following steps combine operations on the physical keys with operations on key metadata. Use this workflow if your organization uses the DevOps model, or when your database is hosted in the cloud and the primary goal is to restrict cloud administrators (but not on-premises DBAs) from accessing sensitive data. Don't use this method if potential adversaries include DBAs, or if DBAs shouldn't have access to sensitive data.  
 
 | Task | Article | Accesses plaintext keys/keystore| Accesses database
 |:---|:---|:---|:---
@@ -40,7 +43,7 @@ The method of rotating a column master key described in this section doesn't sup
 |Step 8. Start the rotation, by encrypting each of the column encryption keys, which is currently protected with the old column master key, using the new column master key. After this step each impacted column encryption key (associated with the old column master key, being rotated), is encrypted with both the old and the new column master key, and has two encrypted values in the database metadata.| [Invoke-SqlColumnMasterKeyRotation](/powershell/sqlserver/sqlserver/vlatest/invoke-sqlcolumnmasterkeyrotation) | Yes | Yes
 |Step 9. Coordinate with the administrators of all applications that query encrypted columns in the database (and are protected with the old column master key), so that they can ensure the applications can access the new column master key.| [Create and Store Column Master Keys (Always Encrypted)](../../../relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted.md) | Yes | No
 |Step 10. Complete the rotation<br><br>**Note:** before executing this step, make sure all applications that query encrypted columns that are protected with the old column master key, have been configured to use the new column master key. If you perform this step prematurely, some of those applications may not be able to decrypt the data. Complete the rotation by removing the encrypted values from the database that were created with the old column master key. This removes the association between the old column master key and the column encryption keys it protects. |[Complete-SqlColumnMasterKeyRotation](/powershell/sqlserver/sqlserver/vlatest/complete-sqlcolumnmasterkeyrotation)| No | Yes
-|Step 10. Remove the metadata from the old column master key. |[Remove-SqlColumnMasterKey](/powershell/sqlserver/sqlserver/vlatest/remove-sqlcolumnmasterkey)| No | Yes
+|Step 11. Remove the metadata from the old column master key. |[Remove-SqlColumnMasterKey](/powershell/sqlserver/sqlserver/vlatest/remove-sqlcolumnmasterkey)| No | Yes
 
 > [!NOTE]
 > It is highly recommended you do not permanently delete the old column master key after the rotation. Instead, you should keep the old column master key in its current key store or archive it in another secure place. If you restore your database from a backup file to a point in time *before* the new column master key was configured, you will need the old key to access the data.
@@ -50,35 +53,106 @@ The method of rotating a column master key described in this section doesn't sup
 The below script is an end-to-end example that replaces an existing column master key (CMK1) with a new column master key (CMK2).
 
 ```powershell
-# Create a new column master key in Windows Certificate Store.
-$cert = New-SelfSignedCertificate -Subject "AlwaysEncryptedCert" -CertStoreLocation Cert:CurrentUser\My -KeyExportPolicy Exportable -Type DocumentEncryptionCert -KeyUsage KeyEncipherment -KeySpec KeyExchange -KeyLength 2048
+[CmdletBinding()]
+param(
+	[Parameter(Mandatory = $false)]
+	[string]$ServerName = '<server name>',
 
-# Import the SqlServer module
-Import-Module "SqlServer"
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$DatabaseName = '<database name>',
 
-# Connect to your database.
-$serverName = "<server name>"
-$databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
-$database = Get-SqlDatabase -ConnectionString $connStr
+	[Parameter(Mandatory = $false)]
+	[string]$CertificateSubject = 'AlwaysEncryptedCertNew',
 
-# Create a SqlColumnMasterKeySettings object for your new column master key. 
-$newCmkSettings = New-SqlCertificateStoreColumnMasterKeySettings -CertificateStoreLocation "CurrentUser" -Thumbprint $cert.Thumbprint
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$OldCmkName = 'CMK1',
 
-# Create metadata for your new column master key in the database.
-$newCmkName = "CMK2"
-New-SqlColumnMasterKey -Name $newCmkName -InputObject $database -ColumnMasterKeySettings $newCmkSettings
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$NewCmkName = 'CMK2'
+)
 
-# Initiate the rotation from the current column master key to the new column master key.
-$oldCmkName = "CMK1"
-Invoke-SqlColumnMasterKeyRotation -SourceColumnMasterKeyName $oldCmkName -TargetColumnMasterKeyName $newCmkName -InputObject $database
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
 
-# Complete the rotation of the old column master key.
-Complete-SqlColumnMasterKeyRotation -SourceColumnMasterKeyName $oldCmkName  -InputObject $database
+Import-Module SqlServer -MinimumVersion 22.0.50 -ErrorAction Stop
 
-# Remove the old column master key metadata.
-Remove-SqlColumnMasterKey -Name $oldCmkName -InputObject $database
+Write-Host '[AE] Step 1: Creating a new self-signed certificate for the new CMK'
+$cert = New-SelfSignedCertificate `
+	-Subject $CertificateSubject `
+	-CertStoreLocation 'Cert:CurrentUser\My' `
+	-KeyExportPolicy Exportable `
+	-Type DocumentEncryptionCert `
+	-KeyUsage KeyEncipherment `
+	-KeySpec KeyExchange `
+	-KeyLength 2048
+Write-Host "[AE] Certificate created with thumbprint: $($cert.Thumbprint)"
+
+Write-Host "[AE] Step 2: Connecting to SQL Server '$ServerName' / Database '$DatabaseName'"
+$connStr = "Server=$ServerName;Database=$DatabaseName;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30"
+
+try {
+	$database = Get-SqlDatabase -ConnectionString $connStr -ErrorAction Stop
+}
+catch {
+	Write-Error "Failed to connect to '$ServerName' / '$DatabaseName'. Verify instance, database, and local permissions."
+	throw
+}
+
+Write-Host "[AE] Step 3: Validating that old CMK '$OldCmkName' exists"
+$oldCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $OldCmkName }
+if (-not $oldCmk) {
+	throw "Old CMK '$OldCmkName' does not exist. Cannot rotate."
+}
+Write-Host "[AE] Old CMK '$OldCmkName' found."
+
+Write-Host "[AE] Step 4: Creating CMK settings for new certificate"
+$newCmkSettings = New-SqlCertificateStoreColumnMasterKeySettings -CertificateStoreLocation 'CurrentUser' -Thumbprint $cert.Thumbprint
+
+Write-Host "[AE] Step 5: Registering new CMK '$NewCmkName' in the database"
+$newCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $NewCmkName }
+if ($newCmk) {
+	Write-Host "[AE] New CMK '$NewCmkName' already exists. Skipping creation."
+}
+else {
+	New-SqlColumnMasterKey -Name $NewCmkName -InputObject $database -ColumnMasterKeySettings $newCmkSettings | Out-Null
+	Write-Host "[AE] New CMK '$NewCmkName' registered."
+}
+
+Write-Host "[AE] Step 6: Initiating CMK rotation from '$OldCmkName' to '$NewCmkName'"
+Write-Host "[AE] (This re-encrypts all associated CEKs under the new CMK...)"
+Invoke-SqlColumnMasterKeyRotation `
+	-SourceColumnMasterKeyName $OldCmkName `
+	-TargetColumnMasterKeyName $NewCmkName `
+	-InputObject $database
+Write-Host "[AE] Rotation initiated."
+
+Write-Host "[AE] Step 7: Completing the CMK rotation"
+Complete-SqlColumnMasterKeyRotation `
+	-SourceColumnMasterKeyName $OldCmkName `
+	-InputObject $database
+Write-Host "[AE] Rotation completed."
+
+Write-Host "[AE] Step 8: Verifying CEKs are now under '$NewCmkName'"
+$query = "SELECT name FROM sys.column_encryption_keys WHERE name = N'$($NewCmkName)'"
+$rotatedCeks = Invoke-SqlCmd -ServerInstance $ServerName -Database $DatabaseName -Query $query -TrustServerCertificate  -ErrorAction SilentlyContinue
+if ($rotatedCeks) {
+	$cekCount = @($rotatedCeks).Count
+	if ($cekCount -eq 0) { $cekCount = 1 }
+	Write-Host "[AE] Verified: $cekCount CEK(s) now under '$NewCmkName'"
+	@($rotatedCeks) | ForEach-Object { Write-Host "  - $($_.name)" }
+}
+
+Write-Host "[AE] Step 9: Removing old CMK metadata '$OldCmkName'"
+Remove-SqlColumnMasterKey -Name $OldCmkName -InputObject $database
+Write-Host "[AE] Old CMK '$OldCmkName' removed."
+
+Write-Host '[AE] ========== Rotation Complete =========='
+Write-Host "[AE] Old CMK: $OldCmkName (deleted)"
+Write-Host "[AE] New CMK: $NewCmkName (active)"
+Write-Host '[AE] All CEKs have been re-encrypted under the new CMK.'
 ```
 
 ## Column Master Key Rotation with Role Separation
@@ -144,139 +218,349 @@ The below script is an end-to-end example for generating a new column master key
 Part 1: DBA
 
 ```powershell
-# Import the SqlServer module.
-Import-Module "SqlServer"
+[CmdletBinding()]
+param(
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$ServerName = '<server name>',
 
-# Connect to your database.
-$serverName = "<server name>"
-$databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
-$database = Get-SqlDatabase -ConnectionString $connStr
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$DatabaseName = '<database name>',
 
-# Retrieve the data about the old column master key, which needs to be rotated.
-$oldCmkName = "CMK1"
-$oldCmk = Get-SqlColumnMasterKey -Name $oldCmkName -InputObject $database
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$OldCmkName = 'CMK2',
 
+	[Parameter(Mandatory = $false)]
+	[ValidateNotNullOrEmpty()]
+	[string]$OutputFolder = 'C:\temp'
+)
 
-# Share the location of the old column master key with a Security Administrator, via a CSV file on a share drive.
-$oldCmkDataFile = "Z:\oldcmkdata.txt"
-"KeyStoreProviderName, KeyPath" > $oldCmkDataFile
-$oldCmk.KeyStoreProviderName +", " + $oldCmk.KeyPath >> $oldCmkDataFile
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
 
+Import-Module SqlServer -MinimumVersion 22.0.50 -ErrorAction Stop
 
-# Find column encryption keys associated with the old column master key and provide the encrypted values of column encryption keys to the Security Administrator, via a CSV file on a share drive.
+Write-Host "[CEK Export] Starting CMK and CEK data export"
+
+# Validate output folder
+if (-not (Test-Path -Path $OutputFolder -PathType Container)) {
+	Write-Host "[CEK Export] Creating output folder: $OutputFolder"
+	New-Item -Path $OutputFolder -ItemType Directory | Out-Null
+}
+
+# Connect to database
+Write-Host "[CEK Export] Connecting to '$ServerName' / '$DatabaseName'"
+$connStr = "Server=$ServerName;Database=$DatabaseName;Integrated Security=True;TrustServerCertificate=True;Connection Timeout=30"
+
+try {
+	$database = Get-SqlDatabase -ConnectionString $connStr -ErrorAction Stop
+}
+catch {
+	Write-Error "Failed to connect to '$ServerName' / '$DatabaseName'."
+	throw
+}
+
+# Retrieve old CMK
+Write-Host "[CEK Export] Retrieving CMK '$OldCmkName'"
+$oldCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $OldCmkName }
+if (-not $oldCmk) {
+	throw "CMK '$OldCmkName' not found in database '$DatabaseName'."
+}
+
+# Export CMK metadata using fixed text file name
+$cmkFile = Join-Path $OutputFolder "oldcmkdata.txt"
+Write-Host "[CEK Export] Exporting CMK metadata to: $cmkFile"
+"CMKName|KeyStoreProviderName|KeyPath" | Set-Content -Path $cmkFile -Encoding UTF8
+"$OldCmkName|$($oldCmk.KeyStoreProviderName)|$($oldCmk.KeyPath)" | Add-Content -Path $cmkFile -Encoding UTF8
+Write-Host "[CEK Export]   ✓ CMK metadata exported"
+
+# Discover and export CEKs using fixed text file name
+Write-Host "[CEK Export] Discovering CEKs associated with '$OldCmkName'"
 $ceks = Get-SqlColumnEncryptionKey -InputObject $database
-$oldCekValuesFile = "Z:\oldcekvalues.txt"
-"CEKName, CEKEncryptedValue" > $oldCekValuesFile 
-for($i=0; $i -lt $ceks.Length; $i++){
-    if($ceks[$i].ColumnEncryptionKeyValues.Length -eq 2) {
-        # This column encryption has 2 encrypted values - let's check, if it is associated with the old column master key.
-        if($ceks[$i].ColumnEncryptionKeyValues[0].ColumnMasterKeyName -eq $oldCmkName -or $ceks[$i].ColumnEncryptionKeyValues[1].ColumnMasterKeyName -eq $oldCmkName) {
-            Write-Host $ceks[$i].Name "already has 2 encrypted values and therefore" $oldCmkName + "cannot be rotated"
-            exit 1
-        }
-    }
-    if($ceks[$i].ColumnEncryptionKeyValues[0].ColumnMasterKeyName -eq $oldCmkName) {# This column encryption key has 1 encrypted value that was produced using the old column master key
-        # Save the name and the encrypted value of the column encryption key in the file.
-        $encryptedValue =  "0x" + -join ($ceks[$i].ColumnEncryptionKeyValues[0].EncryptedValue |  foreach {$_.ToString("X2") } )
-        $ceks[$i].Name + "," + $encryptedValue >> $oldCekValuesFile
-    }
-} 
+$cekFile = Join-Path $OutputFolder "oldcekvalues.txt"
+"CEKName|CEKEncryptedValue|HasMultipleEncryptedValues" | Set-Content -Path $cekFile -Encoding UTF8
+
+$exportedCount = 0
+$multiValueCount = 0
+
+foreach ($cek in $ceks) {
+	if (-not $cek.ColumnEncryptionKeyValues) {
+		continue
+	}
+
+	# Check if this CEK has multiple encrypted values
+	if ($cek.ColumnEncryptionKeyValues.Count -gt 1) {
+		# CEK has multiple encrypted values - check if any reference the old CMK
+		$refersToOldCmk = $cek.ColumnEncryptionKeyValues | Where-Object { $_.ColumnMasterKeyName -eq $OldCmkName }
+		if ($refersToOldCmk) {
+			Write-Warning "CEK '$($cek.Name)' has $($cek.ColumnEncryptionKeyValues.Count) encrypted values. One references '$OldCmkName'. This CEK cannot be rotated automatically."
+			"$($cek.Name)|MULTIPLE_ENCRYPTED_VALUES|True" | Add-Content -Path $cekFile -Encoding UTF8
+			$multiValueCount++
+		}
+	}
+	else {
+		# CEK has single encrypted value - check if it references the old CMK
+		if ($cek.ColumnEncryptionKeyValues[0].ColumnMasterKeyName -eq $OldCmkName) {
+			$encryptedValueHex = "0x" + -join ($cek.ColumnEncryptionKeyValues[0].EncryptedValue | ForEach-Object { $_.ToString("X2") })
+			"$($cek.Name)|$encryptedValueHex|False" | Add-Content -Path $cekFile -Encoding UTF8
+			$exportedCount++
+		}
+	}
+}
+
+Write-Host "[CEK Export]   ✓ CEK encrypted values exported"
+Write-Host "[CEK Export]     - Exported: $exportedCount CEK(s)"
+if ($multiValueCount -gt 0) {
+	Write-Warning "      - Multi-valued CEKs (manual review needed): $multiValueCount"
+}
+
+Write-Host "[CEK Export] ===== Export Complete ====="
+Write-Host "[CEK Export] CMK Metadata:   $cmkFile"
+Write-Host "[CEK Export] CEK Values:     $cekFile"
 ```
 
 
 Part 2: Security Administrator
 
 ```powershell
-# Obtain the location of the old column master key and the encrypted values of the corresponding column encryption keys, from your DBA, via a CSV file on a share drive.
-$oldCmkDataFile = "Z:\oldcmkdata.txt"
-$oldCmkData = Import-Csv $oldCmkDataFile
-$oldCekValuesFile = "Z:\oldcekvalues.txt"
-$oldCekValues = @(Import-Csv $oldCekValuesFile)
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$ShareFolder = 'C:\Temp\',
 
-# Create a new column master key in Windows Certificate Store.
-$storeLocation = "CurrentUser"
-$certPath = "Cert:\" + $storeLocation + "\My"
-$cert = New-SelfSignedCertificate -Subject "AlwaysEncryptedCert" -CertStoreLocation $certPath -KeyExportPolicy Exportable -Type DocumentEncryptionCert -KeyUsage DataEncipherment -KeySpec KeyExchange
+    [Parameter(Mandatory = $false)]
+    [ValidateSet('CurrentUser', 'LocalMachine')]
+    [string]$StoreLocation = 'CurrentUser',
 
-# Import the SqlServer module.
-Import-Module "SqlServer"
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$CertificateSubject = 'AlwaysEncryptedCert'
+)
 
-# Create a SqlColumnMasterKeySettings object for your old column master key. 
-$oldCmkSettings = New-SqlColumnMasterKeySettings -KeyStoreProviderName $oldCmkData.KeyStoreProviderName -KeyPath $oldCmkData.KeyPath
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
 
-# Create a SqlColumnMasterKeySettings object for your new column master key. 
-$newCmkSettings = New-SqlCertificateStoreColumnMasterKeySettings -CertificateStoreLocation $storeLocation -Thumbprint $cert.Thumbprint
+Import-Module SqlServer -MinimumVersion 22.0.50 -ErrorAction Stop
 
+function Import-DelimitedTextFile {
+    param(
+        [Parameter(Mandatory = $true)] [string]$Path,
+        [Parameter(Mandatory = $true)] [string[]]$RequiredColumns
+    )
 
-# Prepare a CSV file, you will use to share the encrypted values of column encryption keys, produced using the new column master key.
-$newCekValuesFile = "Z:\newcekvalues.txt"
-"CEKName, CEKEncryptedValue" > $newCekValuesFile
+    if (-not (Test-Path -Path $Path -PathType Leaf)) {
+        throw "Required file not found: $Path"
+    }
 
-# Re-encrypt each value with the new column master key and save the new encrypted value in the file.
-for($i=0; $i -lt $oldCekValues.Count; $i++){
-    # Re-encrypt each value with the new CMK
-    $newValue = New-SqlColumnEncryptionKeyEncryptedValue -TargetColumnMasterKeySettings $newCmkSettings -ColumnMasterKeySettings $oldCmkSettings -EncryptedValue $oldCekValues[$i].CEKEncryptedValue
-    $oldCekValues[$i].CEKName + ", " + $newValue >> $newCekValuesFile
+    $raw = Get-Content -Path $Path -Raw
+    if ([string]::IsNullOrWhiteSpace($raw)) {
+        throw "File is empty: $Path"
+    }
+
+    $delimiter = if ($raw -match '\|') { '|' } else { ',' }
+    $rows = @(Import-Csv -Path $Path -Delimiter $delimiter)
+    if ($rows.Count -eq 0) {
+        throw "No data rows found in file: $Path"
+    }
+
+    $first = $rows[0]
+    $RequiredColumns | ForEach-Object {
+        if (-not $first.PSObject.Properties[$_]) {
+            throw "Missing required column '$_' in file: $Path"
+        }
+    }
+
+    return $rows
 }
 
-# Share the new column master key data with your DBA, via a CSV file.
-$newCmkDataFile = $home + "\newcmkdata.txt"
-"KeyStoreProviderName, KeyPath" > $newCmkDataFile
-$newCmkSettings.KeyStoreProviderName +", " + $newCmkSettings.KeyPath >> $newCmkDataFile
+if (-not (Test-Path -Path $ShareFolder -PathType Container)) {
+    throw "Share folder does not exist: $ShareFolder"
+}
+
+$oldCmkDataFile = Join-Path $ShareFolder 'oldcmkdata.txt'
+$oldCekValuesFile = Join-Path $ShareFolder 'oldcekvalues.txt'
+$newCmkDataFile = Join-Path $ShareFolder 'newcmkdata.txt'
+$newCekValuesFile = Join-Path $ShareFolder 'newcekvalues.txt'
+
+Write-Host "[AE] Reading old CMK data from '$oldCmkDataFile'"
+$oldCmkDataRows = Import-DelimitedTextFile -Path $oldCmkDataFile -RequiredColumns @('KeyStoreProviderName', 'KeyPath')
+$oldCmkData = $oldCmkDataRows[0]
+
+Write-Host "[AE] Reading old CEK values from '$oldCekValuesFile'"
+$oldCekValues = Import-DelimitedTextFile -Path $oldCekValuesFile -RequiredColumns @('CEKName', 'CEKEncryptedValue')
+
+Write-Host "[AE] Finding or creating certificate '$CertificateSubject' in $StoreLocation\\My"
+$certPath = "Cert:$StoreLocation\My"
+$cert = Get-ChildItem -Path $certPath |
+    Where-Object { $_.Subject -eq "CN=$CertificateSubject" } |
+    Sort-Object NotAfter -Descending |
+    Select-Object -First 1
+
+if (-not $cert) {
+    $cert = New-SelfSignedCertificate `
+        -Subject $CertificateSubject `
+        -CertStoreLocation $certPath `
+        -KeyExportPolicy Exportable `
+        -Type DocumentEncryptionCert `
+        -KeyUsage DataEncipherment `
+        -KeySpec KeyExchange
+}
+
+Write-Host '[AE] Building CMK settings'
+$oldCmkSettings = New-SqlColumnMasterKeySettings `
+    -KeyStoreProviderName $oldCmkData.KeyStoreProviderName `
+    -KeyPath $oldCmkData.KeyPath
+
+$newCmkSettings = New-SqlCertificateStoreColumnMasterKeySettings `
+    -CertificateStoreLocation $StoreLocation `
+    -Thumbprint $cert.Thumbprint
+
+Write-Host "[AE] Re-encrypting CEK values and writing '$newCekValuesFile'"
+"CEKName|CEKEncryptedValue" | Set-Content -Path $newCekValuesFile -Encoding UTF8
+
+$oldCekValues | ForEach-Object {
+    $newValue = New-SqlColumnEncryptionKeyEncryptedValue `
+        -TargetColumnMasterKeySettings $newCmkSettings `
+        -ColumnMasterKeySettings $oldCmkSettings `
+        -EncryptedValue $_.CEKEncryptedValue
+
+    "$($_.CEKName)|$newValue" | Add-Content -Path $newCekValuesFile -Encoding UTF8
+}
+
+Write-Host "[AE] Writing new CMK data to '$newCmkDataFile'"
+"KeyStoreProviderName|KeyPath" | Set-Content -Path $newCmkDataFile -Encoding UTF8
+"$($newCmkSettings.KeyStoreProviderName)|$($newCmkSettings.KeyPath)" | Add-Content -Path $newCmkDataFile -Encoding UTF8
+
+Write-Host '[AE] Completed successfully'
+Write-Host "[AE] Output files: $newCmkDataFile , $newCekValuesFile"
 ```
 
 
 Part 3: DBA
 
 ```powershell
-# Obtain the location of the new column master key and the new encrypted values of the corresponding column encryption keys, from your Security Administrator, via a CSV file on a share drive.
-$newCmkDataFile = "Z:\newcmkdata.txt"
-$newCmkData = Import-Csv $newCmkDataFile
-$newCekValuesFile = "Z:\newcekvalues.txt"
-$newCekValues = @(Import-Csv $newCekValuesFile)
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$ServerName = '<server name>',
 
-# Import the SqlServer module.
-Import-Module "SqlServer"
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$DatabaseName = '<database name>',
 
-# Connect to your database.
-$serverName = "<server name>"
-$databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
-$database = Get-SqlDatabase -ConnectionString $connStr
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$OldCmkName = 'CMK1',
 
-# Create a SqlColumnMasterKeySettings object for your new column master key. 
-$newCmkSettings = New-SqlColumnMasterKeySettings -KeyStoreProviderName $newCmkData.KeyStoreProviderName -KeyPath $newCmkData.KeyPath
-# Create metadata for the new column master key in the database.
-$newCmkName = "CMK2"
-New-SqlColumnMasterKey -Name $newCmkName -InputObject $database -ColumnMasterKeySettings $newCmkSettings
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$NewCmkName = 'CMK2',
 
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$InputFolder = 'C:\temp'
+)
 
-# Get all CEK objects
-$oldCmkName = "CMK1"
-$ceks = Get-SqlColumnEncryptionKey -InputObject $database
-for($i=0; $i -lt $ceks.Length; $i++){
-    if($ceks[$i].ColumnEncryptionKeyValues.Length -eq 2) {# This column encryption key has 2 encrypted values. Let's check, if it is associated with the old CMK.
-        if($ceks[$i].ColumnEncryptionKeyValues[0].ColumnMasterKeyName -eq $oldCmkName -or $ceks[$i].ColumnEncryptionKeyValues[1].ColumnMasterKeyName -eq $oldCmkName) {
-            Write-Host $ceks[$i].Name "already has 2 encrypted values and therefore" $oldCmkName + "cannot be rotated"
-            exit 1
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+Import-Module SqlServer -MinimumVersion 22.0.50 -ErrorAction Stop
+
+function Import-DelimitedTextFile {
+    param(
+        [Parameter(Mandatory = $true)] [string]$Path,
+        [Parameter(Mandatory = $true)] [string[]]$RequiredColumns
+    )
+
+    if (-not (Test-Path -Path $Path -PathType Leaf)) {
+        throw "Required file not found: $Path"
+    }
+
+    $raw = Get-Content -Path $Path -Raw
+    if ([string]::IsNullOrWhiteSpace($raw)) {
+        throw "File is empty: $Path"
+    }
+
+    $delimiter = if ($raw -match '\|') { '|' } else { ',' }
+    $rows = @(Import-Csv -Path $Path -Delimiter $delimiter)
+    if ($rows.Count -eq 0) {
+        throw "No data rows found in file: $Path"
+    }
+
+    $first = $rows[0]
+    $RequiredColumns | ForEach-Object {
+        if (-not $first.PSObject.Properties[$_]) {
+            throw "Missing required column '$_' in file: $Path"
         }
     }
-    if($ceks[$i].ColumnEncryptionKeyValues[0].ColumnMasterKeyName -eq $oldCmkName) {
-        # Find the corresponding new encrypted value, received from the Security Administrator.
-        $newValueRow = ($newCekValues| Where-Object {$_.CEKName -eq $ceks[$i].Name }[0])
-        # Update the column encryption key metadata object by adding the new encrypted value
-        Add-SqlColumnEncryptionKeyValue -ColumnMasterKeyName $newCmkName -Name $ceks[$i].Name -EncryptedValue $newValueRow.CEKEncryptedValue -InputObject $database 
-    }
+
+    return $rows
 }
 
-# Complete the rotation of the current column master key.
-Complete-SqlColumnMasterKeyRotation -SourceColumnMasterKeyName $oldCmkName  -InputObject $database
+if (-not (Test-Path -Path $InputFolder -PathType Container)) {
+    throw "Input folder not found: $InputFolder"
+}
 
-# Remove the old column master key.
-Remove-SqlColumnMasterKey -Name $oldCmkName -InputObject $database
+$newCmkDataFile = Join-Path $InputFolder 'newcmkdata.txt'
+$newCekValuesFile = Join-Path $InputFolder 'newcekvalues.txt'
+
+Write-Host "[AE] Reading new CMK data from '$newCmkDataFile'"
+$newCmkRows = Import-DelimitedTextFile -Path $newCmkDataFile -RequiredColumns @('KeyStoreProviderName', 'KeyPath')
+$newCmkData = $newCmkRows[0]
+
+Write-Host "[AE] Reading new CEK values from '$newCekValuesFile'"
+$newCekValues = Import-DelimitedTextFile -Path $newCekValuesFile -RequiredColumns @('CEKName', 'CEKEncryptedValue')
+
+Write-Host "[AE] Connecting to '$ServerName' / '$DatabaseName'"
+$connStr = "Server=$ServerName;Database=$DatabaseName;Integrated Security=True;TrustServerCertificate=True;Connection Timeout=30"
+$database = Get-SqlDatabase -ConnectionString $connStr -ErrorAction Stop
+
+Write-Host "[AE] Ensuring target CMK '$NewCmkName' exists"
+$newCmkSettings = New-SqlColumnMasterKeySettings -KeyStoreProviderName $newCmkData.KeyStoreProviderName -KeyPath $newCmkData.KeyPath
+$existingNewCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $NewCmkName }
+if (-not $existingNewCmk) {
+    New-SqlColumnMasterKey -Name $NewCmkName -InputObject $database -ColumnMasterKeySettings $newCmkSettings | Out-Null
+}
+
+Write-Host "[AE] Adding new encrypted CEK values under '$NewCmkName'"
+$ceks = Get-SqlColumnEncryptionKey -InputObject $database
+
+$ceksToRotate = @(
+    $ceks | Where-Object {
+        $_.ColumnEncryptionKeyValues -and
+        @($_.ColumnEncryptionKeyValues | Where-Object { $_.ColumnMasterKeyName -eq $OldCmkName }).Count -gt 0
+    }
+)
+
+$ceksToRotate | ForEach-Object {
+    $cek = $_
+    if (@($cek.ColumnEncryptionKeyValues).Count -gt 1) {
+        throw "CEK '$($cek.Name)' already has multiple encrypted values and still references '$OldCmkName'."
+    }
+
+    $newValueRow = @($newCekValues | Where-Object { $_.CEKName -eq $cek.Name }) | Select-Object -First 1
+    if (-not $newValueRow) {
+        throw "No new encrypted value found for CEK '$($cek.Name)' in file '$newCekValuesFile'."
+    }
+
+    Add-SqlColumnEncryptionKeyValue `
+        -ColumnMasterKeyName $NewCmkName `
+        -Name $cek.Name `
+        -EncryptedValue $newValueRow.CEKEncryptedValue `
+        -InputObject $database | Out-Null
+}
+
+Write-Host "[AE] Completing rotation for source CMK '$OldCmkName'"
+Complete-SqlColumnMasterKeyRotation -SourceColumnMasterKeyName $OldCmkName -InputObject $database
+
+Write-Host "[AE] Removing source CMK '$OldCmkName' metadata"
+Remove-SqlColumnMasterKey -Name $OldCmkName -InputObject $database
+
+Write-Host '[AE] Completed successfully'
 ```
 
 ## Rotating a Column Encryption Key
@@ -304,41 +588,111 @@ The below script demonstrates rotating a column encryption key.  The script assu
 
 
 ```powershell
-# Import the SqlServer module.
-Import-Module "SqlServer"
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$ServerName = '<server name>',
 
-# Connect to your database.
-$serverName = "<server name>"
-$databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
-$database = Get-SqlDatabase -ConnectionString $connStr
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$DatabaseName = '<database name>',
 
-# Generate a new column encryption key, encrypt it with the column master key and create column encryption key metadata in the database. 
-$cmkName = "CMK1"
-$newCekName = "CEK2"
-New-SqlColumnEncryptionKey -Name $newCekName -InputObject $database -ColumnMasterKey $cmkName 
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$OldCekName = 'CEK1',
 
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$NewCekName = 'CEK2',
 
-# Find all columns encrypted with the old column encryption key, and create a SqlColumnEncryptionSetting object for each column.
-$ces = @()
-$oldCekName = "CEK1"
-$tables = $database.Tables
-for($i=0; $i -lt $tables.Count; $i++){
-    $columns = $tables[$i].Columns
-    for($j=0; $j -lt $columns.Count; $j++) {
-        if($columns[$j].isEncrypted -and $columns[$j].ColumnEncryptionKeyName -eq $oldCekName) {
-            $threeColPartName = $tables[$i].Schema + "." + $tables[$i].Name + "." + $columns[$j].Name 
-            $ces += New-SqlColumnEncryptionSettings -ColumnName $threeColPartName -EncryptionType $columns[$j].EncryptionType -EncryptionKey $newCekName
-        }
-     }
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$CmkName = 'CMK2',
+
+    [Parameter(Mandatory = $false)]
+    [ValidateRange(0, 3600)]
+    [int]$MaxDowntimeInSeconds = 120,
+
+    [Parameter(Mandatory = $false)]
+    [ValidateNotNullOrEmpty()]
+    [string]$LogFileDirectory = '.'
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+Import-Module SqlServer -MinimumVersion 22.0.50 -ErrorAction Stop
+
+if ($OldCekName -eq $NewCekName) {
+    throw 'OldCekName and NewCekName must be different.'
 }
 
-# Re-encrypt all columns, currently encrypted with the old column encryption key, using the new column encryption key.
-Set-SqlColumnEncryption -ColumnEncryptionSettings $ces -InputObject $database -UseOnlineApproach -MaxDowntimeInSeconds 120 -LogFileDirectory .
+if (-not (Test-Path -Path $LogFileDirectory -PathType Container)) {
+    New-Item -Path $LogFileDirectory -ItemType Directory | Out-Null
+}
 
-# Remove the old column encryption key metadata.
-Remove-SqlColumnEncryptionKey -Name $oldCekName -InputObject $database
+Write-Host "[AE] Connecting to '$ServerName' / '$DatabaseName'"
+$connStr = "Server=$ServerName;Database=$DatabaseName;Integrated Security=True;TrustServerCertificate=True;Connection Timeout=30"
+$database = Get-SqlDatabase -ConnectionString $connStr -ErrorAction Stop
+
+Write-Host "[AE] Ensuring CMK '$CmkName' exists"
+$cmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+if (-not $cmk) {
+    throw "Column master key '$CmkName' was not found."
+}
+
+Write-Host "[AE] Ensuring target CEK '$NewCekName' exists"
+$existingNewCek = Get-SqlColumnEncryptionKey -InputObject $database | Where-Object { $_.Name -eq $NewCekName }
+if (-not $existingNewCek) {
+    New-SqlColumnEncryptionKey -Name $NewCekName -InputObject $database -ColumnMasterKey $CmkName | Out-Null
+}
+
+Write-Host "[AE] Discovering encrypted columns using '$OldCekName'"
+$settings = @()
+$tables = @($database.Tables)
+$tables | ForEach-Object {
+    $table = $_
+    @($table.Columns) | ForEach-Object {
+        $column = $_
+        if ($column.IsEncrypted -and $column.ColumnEncryptionKeyName -eq $OldCekName) {
+            $columnName = "{0}.{1}.{2}" -f $table.Schema, $table.Name, $column.Name
+            $settings += New-SqlColumnEncryptionSettings -ColumnName $columnName -EncryptionType $column.EncryptionType -EncryptionKey $NewCekName
+        }
+    }
+}
+
+if ($settings.Count -eq 0) {
+    Write-Warning "No encrypted columns found that reference '$OldCekName'. Nothing to rotate."
+    return
+}
+
+Write-Host "[AE] Re-encrypting $($settings.Count) column(s) to '$NewCekName'"
+Set-SqlColumnEncryption `
+    -ColumnEncryptionSettings $settings `
+    -InputObject $database `
+    -UseOnlineApproach `
+    -MaxDowntimeInSeconds $MaxDowntimeInSeconds `
+    -LogFileDirectory $LogFileDirectory
+
+Write-Host "[AE] Validating no columns still reference '$OldCekName'"
+$stillUsingOld = $false
+@($database.Tables) | ForEach-Object {
+    @($_.Columns) | ForEach-Object {
+        if ($_.IsEncrypted -and $_.ColumnEncryptionKeyName -eq $OldCekName) {
+            $stillUsingOld = $true
+        }
+    }
+}
+
+if ($stillUsingOld) {
+    throw "At least one encrypted column still references '$OldCekName'. Aborting CEK removal."
+}
+
+Write-Host "[AE] Removing old CEK '$OldCekName'"
+Remove-SqlColumnEncryptionKey -Name $OldCekName -InputObject $database
+
+Write-Host '[AE] Completed successfully'
 ```
 
 ## Next Steps

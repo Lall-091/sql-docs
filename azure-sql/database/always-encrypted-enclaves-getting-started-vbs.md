@@ -4,7 +4,7 @@ description: Tutorial on how to create a basic environment for Always Encrypted 
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 06/10/2025
+ms.date: 06/17/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: tutorial
@@ -15,7 +15,7 @@ ms.custom:
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-This tutorial teaches you how to get started with [Always Encrypted with secure enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) in Azure SQL Database using [virtualization-based security (VBS) enclaves](https://www.microsoft.com/security/blog/2018/06/05/virtualization-based-security-vbs-memory-enclaves-data-protection-through-isolation). It will show you:
+This tutorial shows you how to get started with [Always Encrypted with secure enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) in Azure SQL Database using [virtualization-based security (VBS) enclaves](https://www.microsoft.com/security/blog/2018/06/05/virtualization-based-security-vbs-memory-enclaves-data-protection-through-isolation). The tutorial covers:
 
 > [!div class="checklist"]
 >
@@ -27,7 +27,7 @@ This tutorial teaches you how to get started with [Always Encrypted with secure 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). You need to be a member of the Contributor role or the Owner role for the subscription to be able to create resources.
 - Optional, but recommended for storing your column master key for Always Encrypted: a key vault in Azure Key Vault. For information on how to create a key vault, see [Quickstart: Create a key vault using the Azure portal](/azure/key-vault/general/quick-create-portal).
   - If your key vault uses the access policy permissions model, make sure you have the following key permissions in the key vault: `get`, `list`, `create`, `unwrap key`, `wrap key`, `verify`, `sign`. See [Assign a Key Vault access policy](/azure/key-vault/general/assign-access-policy).
-  - If you're using the Azure role-based access control (RBAC) permission model, make you sure you're a member of the [Key Vault Crypto Officer](/azure/role-based-access-control/built-in-roles#key-vault-crypto-officer) role for your key vault. See [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-migration).
+  - If you're using the Azure role-based access control (RBAC) permission model, make sure you're a member of the [Key Vault Crypto Officer](/azure/role-based-access-control/built-in-roles#key-vault-crypto-officer) role for your key vault. See [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-migration).
 
 ### Tool requirements
 
@@ -44,6 +44,7 @@ Az PowerShell module version 9.3.0 or later is required. For details on how to i
 ```powershell
 Get-InstalledModule -Name Az
 ```
+Microsoft recommends using PowerShell 7 or later when running Always Encrypted PowerShell scripts. PowerShell 7 provides improved cross-platform support, better performance, and the latest compatibility with the SqlServer module (v22+), which is required for many Always Encrypted scenarios.
 
 # [Azure CLI](#tab/azure-clirequirements)
 
@@ -73,7 +74,7 @@ In this step, you'll enable a VBS enclave in the database, which is required for
 1. Open the [Azure portal](https://portal.azure.com/) and locate the database for which you want to enable secure enclaves.
 1. In the **Security** settings, select **Data Encryption**.
 1. In the **Data Encryption** menu, select the **Always Encrypted** tab.
-1. Set **Enable secure enclaves** to **ON**. If it is already set to **ON** proceed with the next step.
+1. Set **Enable secure enclaves** to **ON**. If it's already set to **ON**, proceed with the next step.
 
     :::image type="content" source="./media/always-encrypted-enclaves-getting-started-vbs/portal-enable-secure-enclaves-existing-database.png" alt-text="Screenshot of enabling secure enclaves on an existing database in the Azure portal.":::
 
@@ -81,9 +82,9 @@ In this step, you'll enable a VBS enclave in the database, which is required for
 
 # [SSMS](#tab/SSMS)
 
-1. Open SSMS and connect logical server where you want to modify your database.
+1. Open SSMS and connect to the logical server where you want to modify your database.
 1. Right-click on your database and select **Properties**. 
-1. In the **Configure SLO** page, set the option **Enable Secure Enclaves** to **ON**. If it is already set to **ON**, proceed with the next step.
+1. On the **Configure SLO** page, set the option **Enable Secure Enclaves** to **ON**. If it's already set to **ON**, proceed with the next step.
 1. Select **OK** to save your database properties.
 
 # [PowerShell](#tab/azure-powershell)
