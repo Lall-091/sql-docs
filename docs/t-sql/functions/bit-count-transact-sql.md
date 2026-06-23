@@ -1,10 +1,10 @@
 ---
-title: "BIT_COUNT (Transact-SQL)"
-description: "Transact-SQL reference for the BIT_COUNT function."
-author: thesqlsith
-ms.author: derekw
-ms.reviewer: randolphwest
-ms.date: 12/29/2025
+title: BIT_COUNT (Transact-SQL)
+description: Transact-SQL reference for the BIT_COUNT function.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: derekw
+ms.date: 06/23/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "BIT_COUNT function"
   - "bit shifting [SQL Server], bit count"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =azuresqldb-current || =fabric || =fabric-sqldb"
 ---
 # BIT_COUNT (Transact-SQL)
@@ -45,39 +45,50 @@ Any integer or binary expression that isn't a large object ([LOB](#remarks)).
 
 **bigint**
 
-`BIT_COUNT` doesn't cast, before counting the number of bits. This is because the same number can have a different number of ones in its binary representation depending on the data type.
+`BIT_COUNT` doesn't cast its input before counting bits. Because the binary representation of the same number depends on its data type, the result depends on the input type.
 
-For example, `SELECT BIT_COUNT (CAST (-1 AS SMALLINT))` and `SELECT BIT_COUNT (CAST (-1 AS INT))` return `16` and `32` respectively. This is intended, as the binary representation of `-1` can have a different number of bits set to `1` depending on the data type.
+For example, the following queries return `16` and `32`, respectively:
+
+```sql
+SELECT BIT_COUNT(CAST (-1 AS SMALLINT)); -- Returns 16
+SELECT BIT_COUNT(CAST (-1 AS INT)); -- Returns 32
+```
+
+`BIT_COUNT` returns `NULL` when *expression_value* is a typed `NULL` of a supported data type. You must cast an untyped `NULL` literal to a supported type before passing it in:
+
+```sql
+SELECT BIT_COUNT(CAST (NULL AS INT)); -- Returns NULL
+```
 
 ## Remarks
 
-Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (`OPENQUERY`) aren't supported.
+Distributed query functionality for the bit manipulation functions within linked server or ad hoc queries (`OPENQUERY`) aren't supported.
 
 Large object (LOB) data types in the Database Engine can store data that exceeds 8,000 bytes. These data types store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#large-row-support) data page. A LOB also encompasses data types that store data on dedicated LOB page structures, which use a text or an image pointer of in-row references to LOB data pages. For more information about data storage, see the [Page and extent architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md).
 
-The bit manipulation functions operate on the **tinyint**, **smallint**, **int**, **bigint**, **binary(*n*)**, and **varbinary(*n*)** data types. Large object (LOB) data types, such as **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **image**, **ntext**, **text**, **xml**, and common language runtime (CLR) BLOB types, aren't supported.
+The bit manipulation functions operate on the **tinyint**, **smallint**, **int**, **bigint**, **binary(*n*)**, and **varbinary(*n*)** data types. These functions don't support large object (LOB) data types, such as **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **image**, **ntext**, **text**, **xml**, and common language runtime (CLR) BLOB types.
 
 ## Examples
 
-#### A. Calculate the BIT_COUNT in a binary value
+### A. Calculate the BIT_COUNT in a binary value
 
-In the following example, the number of bits set to `1` in a binary value are calculated.
+The following example calculates the number of bits set to `1` in a binary value.
 
 ```sql
-SELECT BIT_COUNT(0xabcdef) AS Count;
+SELECT BIT_COUNT(0xABCDEF) AS Count;
 ```
 
-The result is `17`. This is because `0xabcdef` in binary is `1010 1011 1100 1101 1110 1111`, and there are 17 bits with a value set to `1`.
+The result is `17`. This result occurs because `0xABCDEF` in binary is `1010 1011 1100 1101 1110 1111`, which has 17 bits set to `1`.
 
-#### B. Calculate the BIT_COUNT in an integer
+### B. Calculate the BIT_COUNT in an integer
 
-In the following example, the number of bits set to `1` in an integer are calculated.
+The following example calculates the number of bits set to `1` in an integer.
 
 ```sql
 SELECT BIT_COUNT(17) AS Count;
 ```
 
-The result is `2`. This is because `17` in binary is `0001 0001`, and there are only 2 bits with a value set to `1`.
+The result is `2`. This result occurs because `17` in binary is `0001 0001`, which has only two bits set to `1`.
 
 ## Related content
 
