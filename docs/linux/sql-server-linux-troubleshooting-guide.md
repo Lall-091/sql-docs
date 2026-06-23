@@ -137,10 +137,10 @@ For example, use the following script to start [!INCLUDE [ssNoVersion](../includ
    sudo -u mssql /opt/mssql/bin/sqlservr -m
    ```
 
-This script starts [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single user mode with **`sqlcmd`**:
+This script starts [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single-user mode, limiting connections to the **`sqlcmd`** client (the application name `SQLCMD` must be capitalized):
 
    ```bash
-   sudo -u mssql /opt/mssql/bin/sqlservr -m sqlcmd
+   sudo -u mssql /opt/mssql/bin/sqlservr -m"SQLCMD"
    ```
 
 You should always start [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux with the `mssql` user to prevent future startup issues. For example: `sudo -u mssql /opt/mssql/bin/sqlservr [STARTUP OPTIONS]`

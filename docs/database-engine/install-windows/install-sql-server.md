@@ -76,7 +76,8 @@ Other [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] components can 
 
 - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup installs the following software components required by the product:
 
-  - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client
+  - Microsoft ODBC Driver for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]
+  - Microsoft OLE DB Driver for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]
   - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup support files
 
 ## SQL Server installation
