@@ -1,8 +1,8 @@
 ---
 title: "sys.edge_constraints (Transact-SQL)"
 description: sys.edge_constraints (Transact-SQL)
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "09/17/2018"
 ms.service: sql
 ms.subservice: system-objects

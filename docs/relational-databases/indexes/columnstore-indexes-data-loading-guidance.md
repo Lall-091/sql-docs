@@ -1,8 +1,8 @@
 ---
 title: "Columnstore indexes - Data loading guidance"
 description: Data loading options and recommendations for loading data into a columnstore index by using the standard SQL bulk loading and trickle insert methods.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 04/04/2025
 ms.service: sql

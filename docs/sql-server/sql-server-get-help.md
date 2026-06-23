@@ -1,8 +1,8 @@
 ---
 title: SQL Server Help and Feedback
 description: A resource for finding ways to get help with your issue or submit feedback for either the SQL Server product, or the SQL Server technical documentation.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 02/26/2026
 ms.service: sql

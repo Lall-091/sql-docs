@@ -1,8 +1,8 @@
 ---
 title: "Maintenance Plans Node (Object Explorer)"
 description: Maintenance Plans Node (Object Explorer)
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/27/2023
 ms.service: sql

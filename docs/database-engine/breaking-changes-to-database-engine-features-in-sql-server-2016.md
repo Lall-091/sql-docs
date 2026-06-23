@@ -2,8 +2,8 @@
 title: "Database Engine: Breaking Changes"
 titleSuffix: "SQL Server 2016"
 description: Learn about Database Engine changes in SQL Server 2016 (13.x) and earlier that might break previous-version functionality when you upgrade.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/08/2025
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: Intelligent Query Processing Details
 description: Intelligent query processing features described in detail.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: derekw, wiassaf, randolphwest
 ms.date: 06/12/2026
 ms.service: sql

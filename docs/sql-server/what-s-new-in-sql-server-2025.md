@@ -1,8 +1,8 @@
 ---
 title: "What's New in SQL Server 2025"
 description: Learn about new features for SQL Server 2025 (17.x), which gives you choices of development languages, data types, environments, and operating systems.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: wiassaf, randolphwest
 ms.date: 04/02/2026
 ms.service: sql

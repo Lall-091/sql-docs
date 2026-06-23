@@ -1,8 +1,8 @@
 ---
 title: "What's New in SQL Server 2017"
 description: Find out what's new for SQL Server 2017, which brings the power of SQL Server to Linux and Linux-based containers, and Windows.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/08/2025
 ms.service: sql

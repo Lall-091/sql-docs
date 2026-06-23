@@ -1,8 +1,8 @@
 ---
 title: "Manage trigger security"
 description: "Manage trigger security."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: vanto
 ms.date: 05/24/2024
 ms.service: sql

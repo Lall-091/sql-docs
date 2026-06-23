@@ -1,8 +1,8 @@
 ---
 title: Disable indexes and constraints
 description: This article describes how to disable an index or constraints in the SQL Server Database Engine.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/02/2024
 ms.service: sql

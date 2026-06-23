@@ -1,8 +1,8 @@
 ---
 title: "Create Indexes with Included Columns"
 description: Create indexes with included columns
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: vanto
 ms.date: 09/03/2025
 ms.service: sql

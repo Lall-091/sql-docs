@@ -1,8 +1,8 @@
 ---
 title: "Run Performance Monitor"
 description: Performance Monitor in Windows uses remote procedure calls to collect information from SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: performance

@@ -1,8 +1,8 @@
 ---
 title: Configure integrated acceleration and offloading
 description: Describes how to use integrated acceleration and offloading solution for an instance of SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: david.pless, wiassaf
 ms.date: 08/16/2022
 ms.service: sql

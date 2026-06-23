@@ -1,8 +1,8 @@
 ---
 title: "What's New in SQL Server 2016"
 description: Learn about new SQL Server 2016 security features, querying capabilities, Hadoop and cloud integration, R analytics, and more.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/08/2025
 ms.service: sql

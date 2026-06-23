@@ -1,8 +1,8 @@
 ---
 title: Intelligent Query Processing
 description: Intelligent query processing features to improve query performance in SQL Server, Azure SQL Managed Instance, and Azure SQL Database.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: derekw, randolphwest
 ms.date: 04/10/2026
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: "Maintenance Cleanup Task (Maintenance Plan)"
 description: Learn how to remove old files for maintenance plans, including text reports for maintenance plans and database backup files using the Maintenance Cleanup Task.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/27/2023
 ms.service: sql

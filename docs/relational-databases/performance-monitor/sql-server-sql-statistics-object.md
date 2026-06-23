@@ -1,8 +1,8 @@
 ---
 title: SQL Server, SQL Statistics Object
 description: "Learn about the SQLServer:SQL Statistics object, which provides counters to monitor compilation and the type of requests sent to an instance of SQL Server."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/21/2026
 ms.service: sql

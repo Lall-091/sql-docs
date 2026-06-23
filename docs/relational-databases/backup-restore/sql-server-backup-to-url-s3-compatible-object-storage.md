@@ -1,8 +1,8 @@
 ---
 title: "SQL Server back up to URL for S3-compatible object storage"
 description: Learn about the concepts, requirements, and components necessary for SQL Server to use the S3-compatible object storage as a backup destination.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: hudequei
 ms.date: 05/01/2026
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: "MSSQLSERVER_556"
 description: "MSSQLSERVER_556"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "09/15/2021"
 ms.service: sql
 ms.subservice: supportability

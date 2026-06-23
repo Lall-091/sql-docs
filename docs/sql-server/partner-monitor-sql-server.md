@@ -1,8 +1,8 @@
 ---
 title: Monitor SQL Server Partners
 description: Lists of third-party partners with solutions to monitor your SQL Server services.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest, maghan
 ms.date: 09/08/2025
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: Versioning System SQL Docs
 description: "Versioning system for SQL documentation"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/08/2025
 ms.service: sql

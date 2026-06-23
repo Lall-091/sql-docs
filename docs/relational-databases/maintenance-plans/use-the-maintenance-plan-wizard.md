@@ -1,8 +1,8 @@
 ---
 title: Use the Maintenance Plan Wizard
 description: Learn how to create a single or multiserver maintenance plan using the Maintenance Plan Wizard in SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 11/03/2025
 ms.service: sql

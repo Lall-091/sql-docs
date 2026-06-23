@@ -1,8 +1,8 @@
 ---
 title: "Maintenance Plan (Reporting and Logging Page)"
 description: Maintenance Plan (Reporting and Logging Page)
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/27/2023
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: "Monitor Memory Usage"
 description: "Monitor a SQL Server instance to confirm that memory usage is within typical ranges. Use the Memory: Available Bytes and Memory: Pages/sec counters."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 09/02/2025
 ms.service: sql
 ms.subservice: performance

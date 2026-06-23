@@ -1,8 +1,8 @@
 ---
 title: "SQL Server, Availability Replica Object"
 description: "Learn about SQLServer:Availability Replica performance object, which contains performance counters about availability replicas in Always On availability groups."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 02/04/2026
 ms.service: sql

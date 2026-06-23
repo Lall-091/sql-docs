@@ -1,8 +1,8 @@
 ---
 title: "Heaps (Tables without clustered indexes)"
 description: Heaps (tables without clustered indexes)
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "05/31/2024"
 ms.service: sql
 ms.subservice: table-view-index

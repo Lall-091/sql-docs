@@ -1,8 +1,8 @@
 ---
 title: Perform index operations online
 description: Create, rebuild, or drop indexes online in the SQL Server Database Engine.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 02/17/2025
 ms.service: sql

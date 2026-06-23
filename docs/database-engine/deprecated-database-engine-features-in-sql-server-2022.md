@@ -2,8 +2,8 @@
 title: Deprecated Database Engine Features
 titleSuffix: SQL Server 2022
 description: Find out about deprecated Database Engine features that are still available in SQL Server 2022 (16.x), but shouldn't be used in new applications.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 11/18/2025
 ms.service: sql

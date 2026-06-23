@@ -1,8 +1,8 @@
 ---
 title: "sys.query_store_plan_forcing_locations (Transact-SQL)"
 description: "The sys.query_store_plan_forcing_locations system view contains information about where Query Store plans have been forced on secondary replicas."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 11/17/2025
 ms.service: sql
 ms.subservice: system-objects

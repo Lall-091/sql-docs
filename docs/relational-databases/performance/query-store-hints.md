@@ -1,8 +1,8 @@
 ---
 title: "Query Store Hints"
 description: "Learn about the Query Store hints feature, which can be used to shape query plans without changing application code."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 07/25/2025
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: Maintain Indexes Optimally to Improve Performance and Reduce Resource Utilization
 description: This article describes index maintenance concepts, and a recommended strategy to maintain indexes.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: dfurman, randolphwest
 ms.date: 03/11/2026
 ms.service: sql

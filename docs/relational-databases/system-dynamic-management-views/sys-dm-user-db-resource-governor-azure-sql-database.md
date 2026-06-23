@@ -1,8 +1,8 @@
 ---
 title: "sys.dm_user_db_resource_governance (Transact-SQL)"
 description: sys.dm_user_db_resource_governance (Transact-SQL)
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 02/26/2024
 ms.service: sql
 ms.subservice: system-objects

@@ -1,8 +1,8 @@
 ---
 title: "DDL Event Groups"
 description: "DDL Event Groups"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/28/2018"
 ms.service: sql
 ms.topic: concept-article

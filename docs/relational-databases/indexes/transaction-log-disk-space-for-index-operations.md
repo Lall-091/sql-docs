@@ -1,8 +1,8 @@
 ---
 title: "Transaction Log Disk Space for Index Operations"
 description: Transaction Log Disk Space for Index Operations
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/22/2025
 ms.service: sql

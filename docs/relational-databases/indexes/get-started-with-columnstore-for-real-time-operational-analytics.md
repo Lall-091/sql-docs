@@ -1,8 +1,8 @@
 ---
 title: "Get started with columnstore for real-time operational analytics"
 description: Get started using columnstore indexes for real-time operational analytics, to run analytics and OLTP workloads on the same database tables at the same time.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 04/04/2025
 ms.service: sql
 ms.subservice: table-view-index

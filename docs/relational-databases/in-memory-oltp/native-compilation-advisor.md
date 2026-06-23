@@ -1,8 +1,8 @@
 ---
 title: "Native Compilation Advisor"
 description: Learn how to use the Native Compilation Advisor to migrate an interpreted stored procedure to native compilation as part of migrating to In-Memory OLTP.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp

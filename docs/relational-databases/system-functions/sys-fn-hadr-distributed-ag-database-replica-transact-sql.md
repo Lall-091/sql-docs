@@ -1,8 +1,8 @@
 ---
 title: "sys.fn_hadr_distributed_ag_database_replica (Transact-SQL)"
 description: "sys.fn_hadr_distributed_ag_database_replica (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "06/14/2016"
 ms.service: sql
 ms.subservice: system-objects

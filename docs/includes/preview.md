@@ -1,9 +1,9 @@
 ---
-author: MikeRayMSFT
+author: rwestMSFT
 ms.service: sql
 ms.topic: include
 ms.date: 12/19/2024
-ms.author: mikeray
+ms.author: randolphwest
 ---
 
 > [!NOTE]

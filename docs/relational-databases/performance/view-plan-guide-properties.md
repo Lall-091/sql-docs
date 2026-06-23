@@ -1,8 +1,8 @@
 ---
 title: "View Plan Guide Properties"
 description: Learn how to view the properties of plan guides in SQL Server by using SQL Server Management Studio or Transact-SQL.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: performance

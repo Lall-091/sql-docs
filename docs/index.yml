@@ -5,8 +5,8 @@ brand: sql
 metadata:
   title: Microsoft SQL Documentation
   description: "Links and more for Microsoft SQL, the SQL Database Engine, and all Microsoft SQL platforms."
-  author: MikeRayMSFT
-  ms.author: mikeray
+  author: rwestMSFT
+  ms.author: randolphwest
   ms.reviewer: randolphwest, wiassaf
   ms.date: 03/03/2026
   ms.service: sql

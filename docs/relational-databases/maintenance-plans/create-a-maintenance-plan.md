@@ -1,8 +1,8 @@
 ---
 title: Create a maintenance plan
 description: Learn how to create a single server or multiserver maintenance plan in SQL Server by using SQL Server Management Studio or Transact-SQL.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/27/2023
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: "Server Configuration: hardware offload enabled"
 description: "Learn about the hardware offload enabled option."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: dpless, wiassaf, randolphwest
 ms.date: 08/26/2025
 ms.service: sql

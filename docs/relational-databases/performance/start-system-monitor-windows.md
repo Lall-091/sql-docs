@@ -1,8 +1,8 @@
 ---
 title: "Start Performance Monitor (Windows)"
 description: Use Performance Monitor to collect performance data counters, such as processor and memory use, and for SQL Server resources, such as locks and transactions.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: performance

@@ -1,8 +1,8 @@
 ---
 title: "Lock:Deadlock Event Class"
 description: "Lock:Deadlock Event Class"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability

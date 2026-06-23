@@ -1,8 +1,8 @@
 ---
 title: "sys.dm_resource_governor_resource_pools_history_ex"
 description: Each row in sys.dm_resource_governor_resource_pools_history_ex represents a periodic snapshot of resource pool statistics.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: wiassaf, randolphwest, dfurman
 ms.date: 11/01/2024
 ms.service: sql

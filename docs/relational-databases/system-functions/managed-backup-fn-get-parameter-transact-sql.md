@@ -1,8 +1,8 @@
 ---
 title: "managed_backup.fn_get_parameter (Transact-SQL)"
 description: "managed_backup.fn_get_parameter (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "10/03/2016"
 ms.service: sql
 ms.subservice: system-objects

@@ -1,8 +1,8 @@
 ---
 title: Specify Fill Factor for an Index
 description: Specify fill factor for an index
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 03/19/2026
 ms.service: sql
 ms.subservice: table-view-index

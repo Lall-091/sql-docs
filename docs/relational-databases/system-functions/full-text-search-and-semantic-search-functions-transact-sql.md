@@ -1,8 +1,8 @@
 ---
 title: "Full-Text Search and Semantic Search Functions (Transact-SQL)"
 description: Full-text search and semantic search functions (Transact-SQL)
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 10/20/2025
 ms.service: sql

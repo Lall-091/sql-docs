@@ -1,8 +1,8 @@
 ---
 title: "Using the sql:identity and sql:guid Annotations"
 description: "Learn how to use the sql:identity and sql:guid annotations in an XSD schema to define the behavior of an XML updategram."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: xml

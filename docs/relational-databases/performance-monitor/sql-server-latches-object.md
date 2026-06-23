@@ -1,8 +1,8 @@
 ---
 title: "SQL Server, Latches object"
 description: "Learn about the SQLServer:Latches object, which provides counters to monitor internal SQL Server resource locks called latches."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: performance
