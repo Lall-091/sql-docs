@@ -24,7 +24,7 @@ LocalDB supports two kinds of instances: automatic instances (AI) and named inst
 
 ## Automatic LocalDB instances
 
-Automatic LocalDB instances are *public*; they are created and managed automatically for the user and can be used by any application. One automatic LocalDB instance exists for every version of LocalDB that is installed on the user's computer.
+Automatic LocalDB instances are *public*; they are created and managed automatically for the user and can be used by any application. One automatic LocalDB instance exists for every version of LocalDB that is installed on the user's computer. The name of the automatic LocalDB instance is `MSSQLLocalDB`.
 
 Automatic LocalDB instances provide seamless instance management. The user doesn't need to create the instance. This enables users to easily install applications and to migrate to different computers. If the target computer has the specified version of LocalDB installed, the automatic LocalDB instance for that version is also available on that computer.
 
@@ -33,19 +33,6 @@ Automatic LocalDB instances provide seamless instance management. The user doesn
 A user doesn't need to create an automatic LocalDB instance. The instance is lazily created the first time the instance is used, as long as the specified version of LocalDB is available on the user's computer. From the user's point of view, the automatic instance is always present if the LocalDB binaries are present.
 
 Other instance management operations, such as Delete, Share, and Unshare, also work for automatic instances. In particular, deleting an automatic instance effectively resets the instance, which is recreated on the next Start operation. Deleting an automatic instance might be required if the system databases become corrupted.
-
-### Automatic instance naming rules
-
-Automatic LocalDB instances have a special pattern for the instance name that belongs to a reserved namespace. This is necessary to prevent name conflicts with named LocalDB instances.
-
-The automatic instance name is the LocalDB baseline release version number preceded by a single `v` character. This looks like `v` plus two numbers with a period between them; for example, `v11.0` or `V12.00`.
-
-Examples of illegal automatic instance names are:
-
-- `11.0` (missing the `v` character at the beginning)
-- `v11` (missing a period and the second number of the version)
-- `v11.` (missing the second number of the version)
-- `v11.0.1.2` (version number has more than two parts)
 
 ## Named LocalDB instances
 
@@ -59,7 +46,7 @@ Each named instance has an associated LocalDB version; that is, it points to a s
 
 ### Named instance naming rules
 
-A LocalDB instance name can have up to a total of 128 characters (the limit is imposed by the **sysname** data type). This is a significant difference compared to traditional SQL Server instance names, which are limited to NetBIOS names of 16 ASCII characters. The reason for this difference is that LocalDB treats databases as files, and therefore implies file-based semantics, so it's intuitive for users to have more freedom in choosing instance names.
+A LocalDB instance name can have up to 128 characters (the **sysname** data type imposes this limit). This limit is a significant difference compared to traditional SQL Server instance names, which are limited to NetBIOS names of 15 ASCII characters. The reason for this difference is that LocalDB treats databases as files, and therefore implies file-based semantics, so users have more freedom in choosing instance names.
 
 A LocalDB instance name can contain any Unicode characters that are legal within the filename component. Illegal characters in a filename component generally include the following characters: ASCII/Unicode characters 1 through 31, and quote (`"`), less than (`<`), greater than (`>`), pipe (`|`), backspace (`\b`), tab (`\t`), colon (`:`), asterisk (`*`), question mark (`?`), backslash (`\`), and forward slash (`/`). The null character (`\0`) is allowed because it's used for string termination; everything after the first null character is ignored.
 
@@ -68,7 +55,7 @@ A LocalDB instance name can contain any Unicode characters that are legal within
 
 Leading and trailing white spaces in instance names are ignored and trimmed.
 
-To avoid naming conflicts, named LocalDB instances can't have a name that follows the naming pattern for automatic instances, as described earlier in the [Automatic instance naming rules](#automatic-instance-naming-rules) section. An attempt to create a named instance with a name that follows the automatic instance naming pattern effectively creates a default instance.
+To avoid naming conflicts, a named LocalDB instance can't use the reserved automatic instance name `MSSQLLocalDB`. An attempt to create a named instance with that name effectively creates a default instance.
 
 ## Related tasks
 
