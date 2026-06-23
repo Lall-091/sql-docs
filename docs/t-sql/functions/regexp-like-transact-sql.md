@@ -1,8 +1,8 @@
 ---
 title: "REGEXP_LIKE (Transact-SQL)"
 description: REGEXP_LIKE Returns a Boolean value that indicates whether the text input matches the regex pattern.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: abhtiwar, wiassaf, randolphwest
 ms.date: 11/21/2025
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: "int, bigint, smallint, and tinyint (Transact-SQL)"
 description: "Transact-SQL reference for int, bigint, smallint, and tinyint data types. These data types are used to represent integer data."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 08/21/2025
 ms.service: sql

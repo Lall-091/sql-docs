@@ -1,8 +1,8 @@
 ---
 title: "FOR XML (SQL Server)"
 description: Learn how to retrieve formal results of a SQL query as XML by specifying the FOR XML clause in the query.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/03/2025
 ms.service: sql

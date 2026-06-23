@@ -3,7 +3,7 @@ title: Internal Activation Context
 description: Learn about the execution context for a stored procedure that is started by internal activation.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: configuration

@@ -1,8 +1,8 @@
 ---
 title: WITH XMLNAMESPACES (Transact-SQL)
 description: "WITH XMLNAMESPACES"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: t-sql

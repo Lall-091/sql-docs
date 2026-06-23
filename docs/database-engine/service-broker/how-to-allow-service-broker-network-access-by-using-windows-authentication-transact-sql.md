@@ -3,7 +3,7 @@ title: "How To: Allow Service Broker Network Access by Using Windows Authenticat
 description: Learn how to allow instances to send Service Broker messages using Windows authentication.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

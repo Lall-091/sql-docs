@@ -3,7 +3,6 @@ title: "Troubleshoot Connectivity to Data Processing Service and Telemetry Endpo
 description: "Describes how to troubleshoot connectivity to the data processing service (DPS) and telemetry endpoints."
 author: twright-msft
 ms.author: twright
-ms.reviewer: mikeray
 ms.date: 06/30/2025
 ms.topic: troubleshooting
 ---

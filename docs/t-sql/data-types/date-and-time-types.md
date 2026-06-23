@@ -1,8 +1,8 @@
 ---
 title: "Date and time types"
 description: "Date and time types"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 10/07/2024
 ms.service: sql

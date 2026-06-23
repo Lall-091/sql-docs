@@ -1,8 +1,8 @@
 ---
 title: "Executing an Updategram by Using OLE DB (SQLXML)"
 description: Learn how to use OLE DB in SQLXML 4.0 to execute an updategram.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: xml

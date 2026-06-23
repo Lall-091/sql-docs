@@ -1,8 +1,8 @@
 ---
 title: "PATINDEX (Transact-SQL)"
 description: PATINDEX returns the starting position of the first occurrence of a pattern in a specified expression, or zero.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 07/18/2025
 ms.service: sql

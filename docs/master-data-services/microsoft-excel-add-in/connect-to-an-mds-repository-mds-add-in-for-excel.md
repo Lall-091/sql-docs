@@ -3,7 +3,6 @@ title: Connect to an MDS Repository
 description: In the Master Data Services Add-in for Excel, you must connect to a Master Data Services repository before you can load or publish data.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

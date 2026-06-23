@@ -1,8 +1,8 @@
 ---
 title: "VERSION (Transact-SQL)"
 description: "Version - Transact-SQL Metadata functions"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: t-sql

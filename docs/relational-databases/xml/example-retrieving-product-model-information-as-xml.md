@@ -1,8 +1,8 @@
 ---
 title: "Example: Retrieving Product Model Information as XML"
 description: View an example of how to retrieve product model information as XML by using RAW mode with the FOR XML clause.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

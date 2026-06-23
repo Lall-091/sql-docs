@@ -1,8 +1,8 @@
 ---
 title: xml_schema_namespace (Transact-SQL)
 description: "xml_schema_namespace"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "07/27/2017"
 ms.service: sql
 ms.subservice: t-sql

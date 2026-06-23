@@ -1,8 +1,8 @@
 ---
 title: "RESTORE (Transact-SQL)"
 description: RESTORE Statements restore SQL database backups taken using the BACKUP command.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 05/18/2023
 ms.service: sql
 ms.subservice: t-sql

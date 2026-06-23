@@ -1,8 +1,8 @@
 ---
 title: GROUP BY (Transact-SQL)
 description: A SELECT statement clause that divides the query result into groups of rows, usually by performing one or more aggregations on each group.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/13/2026
 ms.service: sql

@@ -1,9 +1,9 @@
 ---
-author: MikeRayMSFT
+author: MashaMSFT
 ms.service: azure-arc
 ms.topic: include
 ms.date: 08/22/2024
-ms.author: mikeray
+ms.author: mathoma
 ---
 
 Currently, least privileged configuration is not applied by default.

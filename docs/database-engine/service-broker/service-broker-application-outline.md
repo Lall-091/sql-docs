@@ -3,7 +3,7 @@ title: Service Broker Application Outline
 description: "Most Service Broker applications follow the same basic steps to receive and process messages"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

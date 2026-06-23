@@ -3,7 +3,6 @@ title: "Lock:Acquired Event Class"
 description: "Lock:Acquired Event Class"
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: mikeray
 ms.date: 06/27/2025
 ms.service: sql
 ms.subservice: supportability

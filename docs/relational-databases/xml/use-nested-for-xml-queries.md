@@ -1,8 +1,8 @@
 ---
 title: "Use Nested FOR XML Queries"
 description: Learn how to use nested FOR XML queries.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

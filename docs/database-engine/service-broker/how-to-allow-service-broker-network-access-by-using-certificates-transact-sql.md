@@ -3,7 +3,7 @@ title: "How To: Allow Service Broker Network Access by Using Certificates (Trans
 description: Learn how to create a user for the other Service Broker instance and install the certificate for the other instance.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

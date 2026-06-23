@@ -3,7 +3,7 @@ title: Troubleshoot Routing and Message Delivery
 description: "This section provides suggestions to correct common problems related to routing and message delivery."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: configuration

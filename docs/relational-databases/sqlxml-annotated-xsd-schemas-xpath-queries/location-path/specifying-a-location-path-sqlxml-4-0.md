@@ -1,8 +1,8 @@
 ---
 title: "Specifying a Location Path (SQLXML)"
 description: Learn how to specify a location path in an SQLXML 4.0 XPath query to select a set of nodes relative to the context node and generate a node-set.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: xml

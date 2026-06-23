@@ -1,8 +1,8 @@
 ---
 title: "Specify XSINIL with the ELEMENTS Directive"
 description: View an example that specifies XSINIL with the ELEMENTS directive to generate element-centric XML from the query result.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

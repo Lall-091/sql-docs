@@ -1,8 +1,8 @@
 ---
 title: "TODATETIMEOFFSET (Transact-SQL)"
 description: "TODATETIMEOFFSET (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "04/22/2019"
 ms.service: sql
 ms.subservice: t-sql

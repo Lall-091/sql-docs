@@ -1,8 +1,8 @@
 ---
 title: "NEXT VALUE FOR (Transact-SQL)"
 description: "NEXT VALUE FOR (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "07/19/2016"
 ms.service: sql
 ms.subservice: t-sql

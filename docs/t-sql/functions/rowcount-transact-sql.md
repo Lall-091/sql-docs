@@ -1,8 +1,8 @@
 ---
 title: "@@ROWCOUNT (Transact-SQL)"
 description: "@@ROWCOUNT returns the number of rows affected by the last statement."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 06/06/2024
 ms.service: sql

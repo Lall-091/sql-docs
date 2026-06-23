@@ -3,7 +3,6 @@ title: "Full-Text Search and Semantic Search Catalog Views (Transact-SQL)"
 description: Full-Text Search and Semantic Search Catalog Views (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: system-objects

@@ -3,7 +3,7 @@ title: "sys.external_tables (Transact-SQL)"
 description: sys.external_tables (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: hudequei, wiassaf, mikeray
+ms.reviewer: hudequei, wiassaf
 ms.date: 05/13/2025
 ms.service: sql
 ms.subservice: system-objects

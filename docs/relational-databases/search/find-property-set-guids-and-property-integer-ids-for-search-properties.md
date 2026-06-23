@@ -3,7 +3,6 @@ title: "Find property set GUIDs & property integer IDs for Search properties"
 description: "Find property set GUIDs and property integer IDs for Search properties"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: search

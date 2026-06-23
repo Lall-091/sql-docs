@@ -1,8 +1,8 @@
 ---
 title: Create instances of XML data
 description: Learn how to create instances of XML data using bulk load, constant assignments, the SELECT statement and FOR XML clause, or by type casting string instances.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 08/08/2024
 ms.service: sql

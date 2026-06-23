@@ -3,7 +3,6 @@ title: "sys.dm_fts_semantic_similarity_population (Transact-SQL)"
 description: sys.dm_fts_semantic_similarity_population (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects

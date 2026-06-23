@@ -3,7 +3,6 @@ title: Add a User
 description: Learn how to add a user to the Users list in Master Data Manager. You must add a user to begin the process of assigning permission to the web application.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

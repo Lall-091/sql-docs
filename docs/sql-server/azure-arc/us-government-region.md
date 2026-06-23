@@ -3,7 +3,6 @@ title: Azure Government
 description: "Describes features and limitations currently available for SQL Server enabled by Azure Arc on US Government region."
 author: AbdullahMSFT
 ms.author: amamun
-ms.reviewer: mikeray
 ms.date: 06/22/2026
 ms.topic: feature-availability
 #customer intent:Understand the features, limitations, and onboarding process for using SQL Server enabled by Azure Arc in US Government regions, specifically to manage their SQL Server resources securely and compliantly within the Azure Government portal.

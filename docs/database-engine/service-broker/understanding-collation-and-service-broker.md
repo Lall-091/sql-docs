@@ -3,7 +3,7 @@ title: Understand Collation and Service Broker
 description: "Service Broker is designed to let services and applications in instances with different collation configurations communicate easily and efficiently."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

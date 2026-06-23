@@ -3,7 +3,7 @@ title: "Lesson 2: Create the Target Conversation Objects"
 description: "In this lesson, you learn to build all the objects that enable a database to be the target of a conversation from another database."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: configuration

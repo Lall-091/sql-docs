@@ -1,8 +1,8 @@
 ---
 title: "Configure database mirroring"
 description: "Steps to configure a database mirroring relationship between a principal and mirror using Windows authentication."
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "05/17/2016"
 ms.service: sql
 ms.subservice: database-mirroring

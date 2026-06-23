@@ -3,7 +3,7 @@ title: "Lesson 3: Create the Initiator Conversation Objects"
 description: "In this lesson, you learn to build all the objects that enable a database to initiate a conversation with another database."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

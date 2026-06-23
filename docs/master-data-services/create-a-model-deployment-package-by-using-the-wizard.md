@@ -3,7 +3,6 @@ title: Create a Model Deployment Package with Wizard
 description: Create a Model Deployment Package by Using the Wizard
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

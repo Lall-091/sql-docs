@@ -3,7 +3,7 @@ title: Configure Automatic Updates
 description: This article explains how to configure automatic updates for SQL Server enabled by Azure Arc.
 author: AbdullahMSFT
 ms.author: amamun
-ms.reviewer: mikeray, randolphwest
+ms.reviewer: randolphwest
 ms.date: 07/03/2025
 ms.topic: how-to
 ---

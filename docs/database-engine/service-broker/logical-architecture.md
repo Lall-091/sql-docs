@@ -3,7 +3,7 @@ title: "Logical Architecture (Service Broker)"
 description: "Service Broker applications consist of Service Broker database objects and one or more applications that use those objects."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

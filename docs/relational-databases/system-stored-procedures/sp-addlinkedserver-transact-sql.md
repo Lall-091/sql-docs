@@ -3,7 +3,7 @@ title: "sys.sp_addlinkedserver (Transact-SQL)"
 description: sp_addlinkedserver creates a linked server, providing access to distributed, heterogeneous queries against OLE DB data sources.
 author: markingmyname
 ms.author: maghan
-ms.reviewer: wiassaf, randolphwest, mikeray
+ms.reviewer: wiassaf, randolphwest
 ms.date: 05/01/2026
 ms.service: sql
 ms.subservice: system-objects

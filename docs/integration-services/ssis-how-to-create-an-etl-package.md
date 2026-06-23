@@ -3,7 +3,6 @@ title: "SSIS How to Create an ETL Package"
 description: "SSIS How to Create an ETL Package"
 author: chugugrace
 ms.author: chugu
-ms.reviewer: mikeray
 ms.date: 09/17/2024
 ms.service: sql
 ms.subservice: integration-services

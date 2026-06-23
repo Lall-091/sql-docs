@@ -3,7 +3,7 @@ title: Certificates for Dialog Security
 description: "When a conversation begins, Service Broker uses remote service bindings to locate the certificate to use for the conversation."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

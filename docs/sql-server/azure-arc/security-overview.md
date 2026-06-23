@@ -1,8 +1,8 @@
 ---
 title: "Security overview"
 description: "Introduces security architecture and implementation for SQL Server enabled by Azure Arc. Explains that Azure Connected Machine agent installs Azure Extension for SQL Server to support management from Azure portal and tools."
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.topic: concept-article 
 ai-usage: ai-assisted
 ms.date: 04/01/2026

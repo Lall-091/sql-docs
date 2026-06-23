@@ -1,8 +1,8 @@
 ---
 title: "Trigger Functions (Transact-SQL)"
 description: "Trigger Functions (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/08/2017"
 ms.service: sql
 ms.subservice: t-sql

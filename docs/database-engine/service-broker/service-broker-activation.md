@@ -3,7 +3,7 @@ title: Service Broker Activation
 description: "Service Broker activation helps applications to scale dynamically to match the message traffic."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

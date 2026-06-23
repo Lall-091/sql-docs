@@ -1,8 +1,8 @@
 ---
 title: "sql:relationship and the Key Ordering Rule (SQLXML)"
 description: "Learn about using the sql:relationship element and key ordering rules in SQLXML."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: xml

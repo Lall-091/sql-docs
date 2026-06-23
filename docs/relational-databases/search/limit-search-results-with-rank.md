@@ -3,7 +3,6 @@ title: Limit Search Results with RANK
 description: Limit search results with the RANK column.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: search

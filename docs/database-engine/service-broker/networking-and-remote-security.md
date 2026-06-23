@@ -3,7 +3,7 @@ title: Networking and Remote Security
 description: "To help enable secure, reliable communication between different instances of SQL Server, Service Broker includes features to let you manage routing and establish security for the conversation."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

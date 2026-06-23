@@ -1,8 +1,8 @@
 ---
 title: "Revoke Permissions on an XML Schema Collection"
 description: Learn how to revoke permissions on an XML schema collection.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

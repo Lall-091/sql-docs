@@ -3,7 +3,6 @@ title: Migration Dashboard
 description: Track the SQL Server estate migration journey in the Azure Arc center.
 author: ajithkr-ms
 ms.author: ajithkr
-ms.reviewer: mikeray
 ms.date: 04/16/2026
 ms.topic: how-to
 ---

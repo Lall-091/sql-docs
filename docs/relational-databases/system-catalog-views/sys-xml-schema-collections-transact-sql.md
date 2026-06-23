@@ -3,7 +3,6 @@ title: "sys.xml_schema_collections (Transact-SQL)"
 description: sys.xml_schema_collections (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: system-objects

@@ -3,7 +3,6 @@ title: Create an Attribute Group
 description: Create an Attribute Group (Master Data Services)
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

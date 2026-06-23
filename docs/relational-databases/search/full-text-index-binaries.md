@@ -4,7 +4,6 @@ titleSuffix: SQL Server Full-Text Search
 description: View list of SQL Server Full-Text Search filters and word breakers.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 03/06/2026
 ms.service: sql
 ms.subservice: search

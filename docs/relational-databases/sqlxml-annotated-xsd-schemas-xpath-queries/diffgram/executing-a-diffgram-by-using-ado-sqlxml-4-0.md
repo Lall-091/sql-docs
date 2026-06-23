@@ -1,8 +1,8 @@
 ---
 title: "Executing a DiffGram by Using ADO (SQLXML)"
 description: Learn how to execute a DiffGram file in a Microsoft Visual Basic application using ADO (SQLXML 4.0) to establish a connection to an instance of Microsoft SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: xml

@@ -1,8 +1,8 @@
 ---
 title: "Use XML in Computed Columns"
 description: View examples of how to use XML instances and XML columns with computed columns in SQL.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 06/29/2022
 ms.service: sql

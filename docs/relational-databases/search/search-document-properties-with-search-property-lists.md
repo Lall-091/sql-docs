@@ -3,7 +3,6 @@ title: "Search document properties with search property lists"
 description: "Search Document Properties with Search Property Lists"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: search

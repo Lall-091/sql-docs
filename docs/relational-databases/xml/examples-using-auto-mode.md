@@ -1,8 +1,8 @@
 ---
 title: "Examples: Using AUTO Mode"
 description: View examples of queries that use FOR XML AUTO mode.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

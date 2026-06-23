@@ -3,7 +3,6 @@ title: "How to Work with CDC Services"
 description: "How to Work with CDC Services"
 author: chugugrace
 ms.author: chugu
-ms.reviewer: mikeray
 ms.date: 02/24/2026
 ms.service: sql
 ms.subservice: integration-services

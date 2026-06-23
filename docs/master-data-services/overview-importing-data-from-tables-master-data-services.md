@@ -3,7 +3,6 @@ title: Importing Data from Tables
 description: Import data from tables and make changes to data after you create a model for your data in Master Data Services.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

@@ -1,8 +1,8 @@
 ---
 title: "Use FOR XML Results in Application Code"
 description: Learn how to use the results of a SQL query with FOR XML clauses in an application.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/17/2026
 ai-usage: ai-assisted

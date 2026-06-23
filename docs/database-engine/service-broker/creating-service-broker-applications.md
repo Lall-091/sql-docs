@@ -3,7 +3,7 @@ title: Creating Service Broker Applications
 description: "This section provides a general overview of the structure of a Service Broker application, discusses some of the most common strategies for starting an application that uses Service Broker, and describes the basic steps to receive and process messages."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

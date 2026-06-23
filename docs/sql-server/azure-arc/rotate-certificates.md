@@ -3,7 +3,6 @@ title: Microsoft Entra ID Certificate Rotation
 description: Explains how Azure Arc automatically rotates certificates for Microsoft Entra ID on SQL Server enabled by Azure Arc.
 author: nitinvbhartiM
 ms.author: nitinbharti
-ms.reviewer: mikeray
 ms.date: 08/28/2025
 ms.topic: how-to
 ---

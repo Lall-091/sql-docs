@@ -3,7 +3,7 @@ title: Manage Routing
 description: "Service Broker uses routes to determine where to deliver messages."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

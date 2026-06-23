@@ -1,8 +1,8 @@
 ---
 title: "XPath Data Types (SQLXML)"
 description: Learn about XPath data types in SQLXML 4.0 and how they compare to Microsoft SQL Server and XML Schema (XSD) data types.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: xml

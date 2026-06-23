@@ -3,7 +3,7 @@ title: "Lesson 4: Begin a Conversation and Transmit Messages"
 description: "In this lesson, you learn to start a conversation that spans two databases in the same instance of the Database Engine."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

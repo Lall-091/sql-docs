@@ -3,7 +3,7 @@ title: Conversation Groups
 description: "A conversation group identifies a group of related conversations."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

@@ -4,7 +4,6 @@ titleSuffix: SQL Server Full-Text Search
 description: View the currently registered word breaker or filters, and register newly installed word breakers and filters.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 12/08/2025
 ms.service: sql
 ms.subservice: search

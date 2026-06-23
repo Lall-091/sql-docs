@@ -3,7 +3,7 @@ title: "Database Engine events and errors (5000 to 5999)"
 description: "Consult this SQL Server error code list (between 5000 and 5999) to find explanations for error messages for SQL Server database engine events."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: maghan, mikeray
+ms.reviewer: maghan
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: supportability

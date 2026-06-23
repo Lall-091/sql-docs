@@ -3,7 +3,6 @@ title: Staging Stored Procedure
 description: Use one of three stored procedures to initiate the staging process from SQL Server Management Studio in Master Data Services.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

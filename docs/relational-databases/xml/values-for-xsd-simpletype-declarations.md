@@ -1,8 +1,8 @@
 ---
 title: "Values for &lt;xsd:simpleType&gt; Declarations"
 description: "View a table of the restrictions that are applied for all recognized values of the <xsd:simpleType> declaration."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

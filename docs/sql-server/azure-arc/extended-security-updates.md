@@ -1,7 +1,7 @@
 ---
 title: Extended Security Updates
 description: Learn how to manage licensing and billing of Extended Security Updates for SQL Server.
-author: MikeRayMSFT
+author: MashaMSFT
 ms.author: sashan
 ms.reviewer: randolphwest, maghan
 ms.date: 06/22/2026

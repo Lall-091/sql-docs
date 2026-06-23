@@ -1,8 +1,8 @@
 ---
 title: "DROP EXTERNAL DATA SOURCE (Transact-SQL)"
 description: DROP EXTERNAL DATA SOURCE removes an external data source used for PolyBase and data virtualization.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: hudequei, wiassaf
 ms.date: 05/13/2025
 ms.service: sql

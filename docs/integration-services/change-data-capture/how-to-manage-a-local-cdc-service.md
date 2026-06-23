@@ -3,7 +3,6 @@ title: "How to Manage a Local CDC Service"
 description: "How to Manage a Local CDC Service"
 author: chugugrace
 ms.author: chugu
-ms.reviewer: mikeray
 ms.date: 02/24/2026
 ms.service: sql
 ms.subservice: integration-services

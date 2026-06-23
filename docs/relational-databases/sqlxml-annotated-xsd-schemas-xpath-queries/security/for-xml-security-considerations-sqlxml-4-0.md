@@ -1,8 +1,8 @@
 ---
 title: "FOR XML Security Considerations (SQLXML)"
 description: Learn about important security considerations when specifying FOR XML AUTO mode in SQLXML 4.0.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: xml

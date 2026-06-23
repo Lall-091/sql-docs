@@ -3,7 +3,7 @@ title: Service Broker Scalability
 description: "Service Broker is designed to help your database applications scale well, whether you scale up or scale out."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

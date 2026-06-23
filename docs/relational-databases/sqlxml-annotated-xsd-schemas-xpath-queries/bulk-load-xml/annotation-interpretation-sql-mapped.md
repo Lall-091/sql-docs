@@ -1,8 +1,8 @@
 ---
 title: "sql:mapped (SQLXML)"
 description: "Learn how the SQLXML annotation sql:mapped is interpreted during the XML Bulk Load process."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: xml

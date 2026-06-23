@@ -3,7 +3,7 @@ title: "Handle Transact-SQL Errors (Service Broker)"
 description: "Two general principles apply when handling Transact-SQL errors in a Service Broker application."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

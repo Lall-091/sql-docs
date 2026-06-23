@@ -1,8 +1,8 @@
 ---
 title: "RAND (Transact-SQL)"
 description: Returns a pseudo-random float value from 0 through 1, exclusive.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 02/16/2025
 ms.service: sql

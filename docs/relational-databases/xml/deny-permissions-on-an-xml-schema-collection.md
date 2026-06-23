@@ -1,8 +1,8 @@
 ---
 title: "Deny Permissions on an XML Schema Collection"
 description: Learn how to deny permissions to either create a new XML schema collection or use an existing one.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

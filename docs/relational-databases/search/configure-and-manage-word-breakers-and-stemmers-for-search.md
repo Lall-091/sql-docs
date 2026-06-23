@@ -3,7 +3,6 @@ title: "Configure and Manage Word Breakers and Stemmers for Search"
 description: "Configure and manage word breakers and stemmers for search (SQL Server)"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 05/27/2025
 ms.service: sql
 ms.subservice: search

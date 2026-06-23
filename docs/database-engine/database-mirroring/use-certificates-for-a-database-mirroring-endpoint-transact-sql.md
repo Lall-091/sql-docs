@@ -1,8 +1,8 @@
 ---
 title: "Use certificates for a database mirroring endpoint"
 description: "Use Certificates for a Database Mirroring Endpoint (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "05/17/2016"
 ms.service: sql
 ms.subservice: database-mirroring

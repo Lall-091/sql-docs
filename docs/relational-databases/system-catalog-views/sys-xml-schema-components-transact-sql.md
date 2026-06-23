@@ -3,7 +3,6 @@ title: "sys.xml_schema_components (Transact-SQL)"
 description: sys.xml_schema_components (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: system-objects

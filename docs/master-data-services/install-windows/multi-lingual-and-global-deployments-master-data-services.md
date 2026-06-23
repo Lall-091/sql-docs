@@ -3,7 +3,6 @@ title: Multi-Lingual and Global Deployments
 description: Master Data Services supports deployment of components and tools in all languages supported by SQL Server.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

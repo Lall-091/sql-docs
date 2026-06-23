@@ -1,8 +1,8 @@
 ---
 title: "SQLXML 4.0 Programming Concepts"
 description: View information about the programming concepts used in SQLXML 4.0.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: xml

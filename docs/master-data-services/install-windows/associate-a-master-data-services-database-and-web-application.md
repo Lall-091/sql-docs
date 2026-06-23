@@ -3,7 +3,6 @@ title: Associate Database and Web Application
 description: In SQL Server, you can associate a Master Data Manager web application with a Master Data Services database to specify the database to use for web operations.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

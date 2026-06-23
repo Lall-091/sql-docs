@@ -1,8 +1,8 @@
 ---
 title: "Constants (Transact-SQL)"
 description: "Constants (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 11/19/2024
 ms.service: sql

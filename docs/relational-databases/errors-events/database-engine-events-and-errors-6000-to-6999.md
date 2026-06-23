@@ -3,7 +3,7 @@ title: "Database Engine events and errors (6000 to 6999)"
 description: "Consult this SQL Server error code list (between 6000 and 6999) to find explanations for error messages for SQL Server database engine events."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: maghan, mikeray
+ms.reviewer: maghan
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: supportability

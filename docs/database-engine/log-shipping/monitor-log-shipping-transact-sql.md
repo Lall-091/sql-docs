@@ -1,8 +1,8 @@
 ---
 title: "Monitor Log Shipping (Transact-SQL)"
 description: Learn which tables store history containing monitoring information and stored procedures for monitoring log shipping in SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: log-shipping

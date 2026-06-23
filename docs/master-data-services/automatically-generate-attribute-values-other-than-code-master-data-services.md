@@ -4,7 +4,6 @@ titleSuffix: Master Data Services
 description: Automatically Generate Attribute Values Other Than Code (Master Data Services)
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

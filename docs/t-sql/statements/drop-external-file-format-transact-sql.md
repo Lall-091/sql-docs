@@ -1,8 +1,8 @@
 ---
 title: "DROP EXTERNAL FILE FORMAT (Transact-SQL)"
 description: "DROP EXTERNAL FILE FORMAT drops an external file format object defining external data."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: hudequei
 ms.date: 05/13/2025
 ms.service: sql

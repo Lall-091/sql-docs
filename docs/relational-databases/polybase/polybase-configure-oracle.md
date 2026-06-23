@@ -3,7 +3,6 @@ title: "Access external data: Oracle - PolyBase"
 description: This article demonstrates how to use PolyBase to create an external data source to access Oracle data.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: mikeray
 ms.date: 12/13/2019
 ms.service: sql
 ms.subservice: polybase

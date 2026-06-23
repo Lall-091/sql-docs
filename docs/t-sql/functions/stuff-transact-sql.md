@@ -1,8 +1,8 @@
 ---
 title: "STUFF (Transact-SQL)"
 description: "The STUFF function inserts a string into another string."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 12/28/2022
 ms.service: sql

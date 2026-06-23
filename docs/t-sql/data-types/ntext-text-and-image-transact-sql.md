@@ -1,8 +1,8 @@
 ---
 title: "ntext, text, and image (Transact-SQL)"
 description: "The ntext, text, and image data types are deprecated data types for storing large non-Unicode and Unicode character and binary data."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/27/2025
 ms.service: sql

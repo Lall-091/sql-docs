@@ -3,7 +3,7 @@ title: Use ODBC Data Source with SQL Server on Linux
 description: Learn how to connect to ODBC data sources with PolyBase on SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: hudequei, amitkh, atsingh, mikeray
+ms.reviewer: hudequei, amitkh, atsingh
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux

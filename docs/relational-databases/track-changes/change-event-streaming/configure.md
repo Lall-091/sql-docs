@@ -3,7 +3,7 @@ title: Configure Change Event Streaming
 description: Describes how to configure change event streaming.
 author: nzagorac-ms
 ms.author: nzagorac
-ms.reviewer: mathoma, mikeray, randolphwest
+ms.reviewer: mathoma,randolphwest
 ms.date: 05/11/2026
 ms.service: sql
 ms.topic: how-to

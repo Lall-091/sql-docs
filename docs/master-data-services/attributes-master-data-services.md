@@ -3,7 +3,6 @@ title: Attributes
 description: Learn about attributes, which are objects in Master Data Services entities. Attribute values describe the members of the entity.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

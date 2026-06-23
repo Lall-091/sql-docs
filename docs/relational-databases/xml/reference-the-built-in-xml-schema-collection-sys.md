@@ -1,8 +1,8 @@
 ---
 title: "Reference the Built-in XML Schema Collection (sys)"
 description: Learn how to reference the built-in XML schema collection sys that is predefined for every database you create.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

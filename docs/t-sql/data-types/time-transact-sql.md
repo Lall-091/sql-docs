@@ -1,8 +1,8 @@
 ---
 title: "time (Transact-SQL)"
 description: "time (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 09/24/2024
 ms.service: sql
 ms.subservice: t-sql

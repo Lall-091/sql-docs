@@ -3,7 +3,6 @@ title: Hide or Delete Levels in a Derived Hierarchy
 description: Hide or Delete Levels in a Derived Hierarchy (Master Data Services)
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

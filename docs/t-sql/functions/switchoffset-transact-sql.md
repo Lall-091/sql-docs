@@ -1,8 +1,8 @@
 ---
 title: "SWITCHOFFSET (Transact-SQL)"
 description: SWITCHOFFSET returns a datetimeoffset value that is changed from the stored time zone offset to a specified new time zone offset.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 10/20/2025
 ms.service: sql

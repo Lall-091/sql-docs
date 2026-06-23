@@ -1,8 +1,8 @@
 ---
 title: "Apply an XSL Transformation (SQLXMLOLEDB)"
 description: Learn how to apply an XSL transformation in an ADO application by using the ClientSideXML and xsl properties of the SQLXMLOLEDB Provider.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: xml

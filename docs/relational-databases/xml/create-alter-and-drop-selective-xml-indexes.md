@@ -1,8 +1,8 @@
 ---
 title: "Create, alter, and drop selective XML indexes"
 description: Learn how to create a new selective XML index, or alter or drop an existing selective XML index.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

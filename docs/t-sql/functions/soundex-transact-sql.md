@@ -1,8 +1,8 @@
 ---
 title: "SOUNDEX (Transact-SQL)"
 description: SOUNDEX returns a four-character code to evaluate the similarity of two strings.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 01/21/2025
 ms.service: sql

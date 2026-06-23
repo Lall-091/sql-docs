@@ -3,7 +3,7 @@ title: Manage Inventory
 description: Learn how to inventory SQL Server services, instances, databases, and view properties centrally, as Azure Arc-enabled resources.
 author: pochiraju
 ms.author: rajpo
-ms.reviewer: mikeray, randolphwest
+ms.reviewer: randolphwest
 ms.date: 10/29/2025
 ms.topic: how-to
 ms.custom:

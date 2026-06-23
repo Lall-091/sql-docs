@@ -1,8 +1,8 @@
 ---
 title: "PARSE (Transact-SQL)"
 description: "PARSE (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "07/05/2017"
 ms.service: sql
 ms.subservice: t-sql

@@ -1,8 +1,8 @@
 ---
 title: Work with Regular Expressions
 description: Use regular expressions to filter and manipulate text strings in SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: abhtiwar, randolphwest, wiassaf
 ms.date: 05/13/2026
 ms.service: sql

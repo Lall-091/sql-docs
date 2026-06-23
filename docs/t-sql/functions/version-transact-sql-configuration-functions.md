@@ -1,8 +1,8 @@
 ---
 title: "@@VERSION (Transact-SQL)"
 description: Returns SQL Server installation system and build information.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: maghan, randolphwest
 ms.date: 11/25/2025
 ms.service: sql

@@ -3,7 +3,6 @@ title: Enable semantic search on tables and columns
 description: Describes how to enable or disable statistical semantic indexing on selected columns that contain documents or text.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 08/10/2023
 ms.service: sql
 ms.subservice: search

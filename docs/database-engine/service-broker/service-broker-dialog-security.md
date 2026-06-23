@@ -3,7 +3,7 @@ title: Service Broker Dialog Security
 description: "Dialog security provides encryption, remote authentication, and remote authorization for a specific conversation."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: configuration

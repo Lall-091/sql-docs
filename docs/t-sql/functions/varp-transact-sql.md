@@ -1,8 +1,8 @@
 ---
 title: "VARP (Transact-SQL)"
 description: "VARP (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/13/2017"
 ms.service: sql
 ms.subservice: t-sql

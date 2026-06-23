@@ -1,8 +1,8 @@
 ---
 title: "Data type method reference for hierarchyid (Transact-SQL)"
 description: hierarchyid data type method reference
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 11/03/2025
 ms.service: sql

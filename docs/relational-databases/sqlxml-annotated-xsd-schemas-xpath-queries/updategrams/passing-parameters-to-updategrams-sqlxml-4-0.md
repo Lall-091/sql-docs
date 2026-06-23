@@ -1,8 +1,8 @@
 ---
 title: "Passing Parameters to Updategrams (SQLXML)"
 description: Learn how to pass parameters to updategrams in SQLXML 4.0.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: xml

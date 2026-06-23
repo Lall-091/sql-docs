@@ -3,7 +3,6 @@ title: Leaf Member Staging Table
 description: Use the leaf members staging table in the Master Data Services database to create, update, deactivate, and delete leaf members.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

@@ -3,7 +3,6 @@ title: "sys.selective_xml_index_paths (Transact-SQL)"
 description: sys.selective_xml_index_paths (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: system-objects

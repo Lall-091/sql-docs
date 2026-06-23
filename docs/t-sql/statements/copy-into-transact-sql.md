@@ -4,7 +4,7 @@ titleSuffix: Azure Synapse Analytics and Microsoft Fabric
 description: Use the COPY statement in Azure Synapse Analytics and Warehouse in Microsoft Fabric for loading from external storage accounts.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: procha, mikeray, fresantos, jovanpop
+ms.reviewer: procha,fresantos, jovanpop
 ms.date: 05/01/2026
 ms.service: sql
 ms.subservice: t-sql

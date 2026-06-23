@@ -3,7 +3,6 @@ title: "Choose a Language When Creating a Full-Text Index"
 description: Learn how to choose a language when creating a Full-Text Index.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: search

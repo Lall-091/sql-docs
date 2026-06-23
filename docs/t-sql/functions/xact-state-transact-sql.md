@@ -1,8 +1,8 @@
 ---
 title: "XACT_STATE (Transact-SQL)"
 description: "XACT_STATE (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: dfurman, randolphwest
 ms.date: 12/17/2025
 ms.service: sql

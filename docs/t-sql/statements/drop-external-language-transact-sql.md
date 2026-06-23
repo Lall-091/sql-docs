@@ -1,8 +1,8 @@
 ---
 title: DROP EXTERNAL LANGUAGE (Transact-SQL) - SQL Server
 description: DROP EXTERNAL LANGUAGE (Transact-SQL) - SQL Server
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: rothja
 ms.date: 08/08/2019
 ms.service: sql
