@@ -1,8 +1,8 @@
 ---
 title: "PolyBase: How to Change SQL Server Driver Version"
 description: Learn how to change the SQL Server driver version for PolyBase.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: randolphwest, hudequei
 ms.date: 06/11/2025
 ms.service: sql

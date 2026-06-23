@@ -2,8 +2,8 @@
 title: "Editions and Supported Features"
 titleSuffix: SQL Server 2016
 description: This article describes features supported by the various editions of SQL Server 2016, which accommodate different performance, runtime, and price requirements.
-author: "MikeRayMSFT"
-ms.author: "mikeray"
+author: "rwestMSFT"
+ms.author: "randolphwest"
 ms.reviewer: randolphwest
 ms.date: 11/27/2025
 ms.service: sql

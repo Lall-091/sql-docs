@@ -6,8 +6,8 @@ metadata:
   ms.service: sql
   ms.subservice: polybase
   ms.topic: concept-article
-  author: MikeRayMSFT
-  ms.author: mikeray
+  author: markingmyname
+  ms.author: maghan
   ms.reviewer: hudequei
   monikerRange: ">= sql-server-linux-ver15 || >= sql-server-2016"
 

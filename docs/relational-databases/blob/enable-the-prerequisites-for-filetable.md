@@ -1,8 +1,8 @@
 ---
 title: "Enable the prerequisites for FileTable"
 description: To use FileTables, first turn on FILESTREAM, specify a directory, and set certain options and access levels. Learn how to meet all prerequisites.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: randolphwest
 ms.date: 10/02/2023
 ms.service: sql

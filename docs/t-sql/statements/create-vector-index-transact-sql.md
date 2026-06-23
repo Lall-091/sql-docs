@@ -1,7 +1,7 @@
 ---
 title: "CREATE VECTOR INDEX (Transact-SQL)"
 description: CREATE VECTOR INDEX creates an index on vector data to allow approximate nearest neighbor search.
-author: mikerayMSFT
+author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: pookam, randolphwest, wiassaf
 ms.date: 03/18/2026

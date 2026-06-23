@@ -1,8 +1,8 @@
 ---
 title: "Create, Alter, or Drop a FileTable"
 description: In SQL Server, the FileTables feature uses a directory structure to store files. Learn how to create a new FileTable or alter or drop an existing FileTable.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: randolphwest
 ms.date: 09/26/2025
 ms.service: sql

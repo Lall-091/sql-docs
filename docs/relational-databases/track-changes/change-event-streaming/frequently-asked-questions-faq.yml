@@ -7,7 +7,7 @@ metadata:
   ms.topic: concept-article
   author: nzagorac-ms
   ms.author: nzagorac
-  ms.reviewer: mathoma, mikeray
+  ms.reviewer: mathoma
   monikerRange: " = sql-server-ver17 || = sql-server-linux-ver17 "    
   ms.custom: build-2025
 title: Frequently Asked Questions (FAQ) for Change Event Streaming (CES)

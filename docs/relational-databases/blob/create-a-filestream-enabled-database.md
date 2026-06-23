@@ -1,8 +1,8 @@
 ---
 title: "Create a FILESTREAM-Enabled Database"
 description: Configure a database to support FILESTREAM by using the CONTAINS FILESTREAM clause when you create or alter the database.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: filestream

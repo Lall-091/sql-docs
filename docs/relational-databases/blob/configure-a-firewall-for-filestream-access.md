@@ -1,8 +1,8 @@
 ---
 title: "Configure a Firewall for FILESTREAM Access"
 description: Use FILESTREAM in a firewall-protected environment by opening the Windows file-sharing ports 139 and 445 to configure the firewall for FILESTREAM access.
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: filestream

@@ -1,8 +1,8 @@
 ---
 title: "DROP AVAILABILITY GROUP (Transact-SQL)"
 description: DROP AVAILABILITY GROUP (Transact-SQL)
-author: "MikeRayMSFT"
-ms.author: "mikeray"
+author: "MashaMSFT"
+ms.author: "mathoma"
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: t-sql
