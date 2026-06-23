@@ -3,7 +3,7 @@ title: Create Service Broker Contracts
 description: "Contracts define the name of a specific business task and list the message types used in that task. Service Broker contracts define two different service roles: the initiator and the target."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

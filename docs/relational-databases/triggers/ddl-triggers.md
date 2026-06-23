@@ -1,8 +1,8 @@
 ---
 title: "DDL Triggers"
 description: DDL triggers fire in response to various Data Definition Language (DDL) events.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 07/16/2025
 ms.service: sql

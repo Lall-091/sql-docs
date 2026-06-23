@@ -1,8 +1,8 @@
 ---
 title: "RESTORE HEADERONLY (Transact-SQL)"
 description: "Returns a result set containing all the backup header information for all backup sets on a particular backup device in SQL Server."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/10/2023
 ms.service: sql

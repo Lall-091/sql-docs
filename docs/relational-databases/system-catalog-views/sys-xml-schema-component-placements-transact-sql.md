@@ -3,7 +3,6 @@ title: "sys.xml_schema_component_placements (Transact-SQL)"
 description: sys.xml_schema_component_placements (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: system-objects

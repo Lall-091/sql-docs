@@ -103,26 +103,10 @@ For backup storage in Hyperscale, see [Automated backups for Hyperscale database
 
 Service tier options in the vCore purchasing model include General Purpose, Business Critical, and Hyperscale. The service tier generally determines storage type and performance, high availability and disaster recovery options, and the availability of certain features such as In-Memory OLTP.
 
-|**Use case**|**General Purpose**|**Business Critical**|**Hyperscale**|
-|---|---|---|---|
-|**Best for**|Most business workloads. Offers budget-oriented, balanced, and scalable compute and storage options. |Offers business applications the highest resilience to failures by using several high availability secondary replicas, and provides the highest I/O performance. | The widest variety of workloads, including those workloads with highly scalable storage and read-scale requirements. Offers higher resilience to failures by allowing configuration of more than one high availability secondary replica. |
-| **Compute size** | 2 to 128 vCores | 2 to 128 vCores  |2 to 192 vCores  |
-| **Storage type** | Premium remote storage (per instance) |Super-fast local SSD storage (per instance)  | Decoupled storage with local SSD cache (per compute replica) |
-| **Storage size**| 1 GB – 4 TB | 1 GB – 4 TB  | 10 GB – 128 TB |
-| **Max IOPS** | 320 IOPS per vCore with 16,000 maximum IOPS | 4,000 IOPS per vCore with 327,680 maximum IOPS | 5,500 IOPS per vCore with 544,000 maximum local SSD IOPS.<br />Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPS depend on the workload. |
-| **Memory/vCore** | 5.1 GB | 5.1 GB | 5.1 GB or 10.2 GB | 
-| **Backups** | A choice of geo-redundant, zone-redundant, or locally redundant backup storage, 1-35 day retention (default 7 days) <br /> Long term retention available up to 10 years | A choice of geo-redundant, zone-redundant, or locally redundant backup storage, 1-35 day retention (default 7 days) <br /> Long term retention available up to 10 years  | A choice of locally redundant (LRS), zone-redundant (ZRS), or geo-redundant (GRS) storage <br /> 1-35 days (7 days by default) retention, with up to 10 years of long-term retention available |
-|**Availability**|One replica, no read-scale replicas, <br />zone-redundant high availability (HA) |Three replicas, one [read-scale replica](read-scale-out.md),<br />zone-redundant high availability (HA)|zone-redundant high availability (HA)|
-|**Pricing/billing**  | [vCore, reserved storage, and backup storage](https://azure.microsoft.com/pricing/details/sql-database/single/) are charged. <br />IOPS aren't charged. |[vCore, reserved storage, and backup storage](https://azure.microsoft.com/pricing/details/sql-database/single/) are charged. <br />IOPS aren't charged. |  [vCore for each replica and used storage](https://azure.microsoft.com/pricing/details/sql-database/single/) are charged. <br />IOPS aren't charged. |
-|**Discount models**| [Azure Reservations](reservations-discount-overview.md)<br />[Azure Hybrid Benefit](../azure-hybrid-benefit.md) (not available on dev/test subscriptions)<br />[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) and [Pay-As-You-Go Dev/Test offer](https://azure.microsoft.com/offers/ms-azr-0023p/) subscriptions|[Azure Reservations](reservations-discount-overview.md)<br />[Azure Hybrid Benefit](../azure-hybrid-benefit.md) (not available on dev/test subscriptions)<br />[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) and [Pay-As-You-Go Dev/Test offer](https://azure.microsoft.com/offers/ms-azr-0023p/) subscriptions  | [Azure Hybrid Benefit](../azure-hybrid-benefit.md) (not available on dev/test subscriptions) <sup>1</sup><br />[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) and [Pay-As-You-Go Dev/Test offer](https://azure.microsoft.com/offers/ms-azr-0023p/) subscriptions|
-|**In-memory OLTP tables**| No | Yes | [No](service-tier-hyperscale.md#known-limitations) |
+[!INCLUDE [service-tier-comparison-table](includes/service-tier-comparison-table.md)]
 
-<sup>1</sup> Simplified pricing for SQL Database Hyperscale coming soon. Review the [Hyperscale pricing blog](https://aka.ms/hsignite2023) for details.
-
-For greater details, review resource limits for [logical server](resource-limits-logical-server.md), [single databases](resource-limits-vcore-single-databases.md), and [pooled databases](resource-limits-vcore-elastic-pools.md). 
-
-> [!NOTE]
-> For more information on the Service Level Agreement (SLA), see [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/) 
+- For greater details, review resource limits for [logical server](resource-limits-logical-server.md), [single databases](resource-limits-vcore-single-databases.md), and [pooled databases](resource-limits-vcore-elastic-pools.md). 
+- For more information on the Service Level Agreement (SLA), see [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database/).
 
 ### General Purpose
 

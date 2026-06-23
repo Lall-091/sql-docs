@@ -4,7 +4,7 @@ description: Learn how to import and use the SqlServer PowerShell module, which 
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto
-ms.date: 03/28/2025
+ms.date: 6/17/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -16,7 +16,7 @@ ms.custom: sfi-ropc-nochange
 
 The SqlServer PowerShell module provides cmdlets for configuring [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md) in both [!INCLUDE [ssazure-sqldb](../../../includes/ssazure-sqldb.md)] or [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)].
 
-## Security Considerations when using PowerShell to Configure Always Encrypted
+## Security considerations when using PowerShell to configure Always Encrypted
 
 Because the primary goal of Always Encrypted is to ensure encrypted sensitive data is safe, even if the database system gets compromised, executing a PowerShell script that processes keys or sensitive data on the SQL Server computer can reduce or defeat the benefits of the feature. For more security-related recommendations, see [Security Considerations for Key Management](overview-of-key-management-for-always-encrypted.md#security-considerations-for-key-management).
 
@@ -28,8 +28,11 @@ You can use PowerShell to manage Always Encrypted keys both with and without rol
 
 Install the [SqlServer PowerShell module version 22.0.50 or later](/powershell/sqlserver/sqlserver/vlatest/sqlserver) on a secure computer that is NOT a computer hosting your SQL Server instance. The module can be installed directly from the PowerShell gallery.  See the [download](/powershell/sql-server/download-sql-server-ps-module) instructions for more details.
 
+> [!NOTE]
+> Microsoft recommends using PowerShell 7 or later when running Always Encrypted PowerShell scripts. PowerShell 7 provides improved cross-platform support, better performance, and the latest compatibility with the SqlServer module (v22+), which is required for many Always Encrypted scenarios.
 
-## <a name="importsqlservermodule"></a> Importing the SqlServer module 
+
+## <a name="importsqlservermodule"></a> Import the SqlServer module
 
 To load the SqlServer module:
 
@@ -62,8 +65,15 @@ Import-Module "SqlServer" -MinimumVersion 22.0.50
 # Set the valid server name, database name and authentication keywords in the connection string
 $serverName = "<Azure SQL server name>.database.windows.net"
 $databaseName = "<database name>"
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Authentication = Active Directory Integrated"
-$database = Get-SqlDatabase -ConnectionString $connStr
+$connStr = "Server=tcp:$serverName,1433;Database=$databaseName;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Interactive"
+
+try {
+	$database = Get-SqlDatabase -ConnectionString $connStr -Encrypt Mandatory -ErrorAction Stop
+}
+catch {
+	Write-Error "Failed to connect. Verify server name, database name, Azure SQL firewall access, and Microsoft Entra permissions."
+	throw
+}
 
 # List column master keys for the specified database.
 Get-SqlColumnMasterKey -InputObject $database
@@ -103,7 +113,7 @@ Import-Module "SqlServer" -MinimumVersion 22.0.50
 Get-SqlColumnMasterKey -Path SQLSERVER:\SQL\servercomputer\DEFAULT\Databases\yourdatabase
 ```
  
-## Always Encrypted Tasks using PowerShell
+## Always Encrypted tasks using PowerShell
 
 - [Provision Always Encrypted Keys using PowerShell](configure-always-encrypted-keys-using-powershell.md)
 - [Rotate Always Encrypted Keys using PowerShell](../../../relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell.md)

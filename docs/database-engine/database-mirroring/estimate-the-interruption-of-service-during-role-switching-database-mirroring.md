@@ -1,8 +1,8 @@
 ---
 title: "Estimate service interruption during mirror failover"
 description: Estimate the interruption of service when failover a database mirror from the primary to the secondary role.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: database-mirroring

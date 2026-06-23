@@ -1,8 +1,8 @@
 ---
 title: "SCHEMA_ID (Transact-SQL)"
 description: SCHEMA_ID returns the schema ID associated with a schema name.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 07/18/2024
 ms.service: sql

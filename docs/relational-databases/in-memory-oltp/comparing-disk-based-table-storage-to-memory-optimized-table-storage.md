@@ -1,8 +1,8 @@
 ---
 title: "Compare disk-based to memory-optimized table storage"
 description: Learn to compare disk-based and memory-optimized table storage in the categories of DDL, structure, indexes, DML operation, and data fragmentation.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp

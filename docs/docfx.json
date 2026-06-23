@@ -591,14 +591,14 @@
       },
       "author": {
         "azdata/**/*.md": "swells",
-        "**/*/index.yml": "MikeRayMSFT",
+        "**/*/index.yml": "rwestMSFT",
         "reporting-services/**/*.md": "JulCsc",
         "dmx/**/*.md": "KayUnkroth",
         "mdx/**/*.md": "KayUnkroth"
       },
       "ms.author": {
         "azdata/**/*.md": "seanw",
-        "**/*/index.yml": "mikeray",
+        "**/*/index.yml": "randolphwest",
         "reporting-services/**/*.md": "juliacawthra",
         "dmx/**/*.md": "kayu",
         "mdx/**/*.md": "kayu"

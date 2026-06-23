@@ -3,7 +3,6 @@ title: Users and Groups
 description: Find out how to grant access to the Master Data Manager web application. A user must have a suitable account.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

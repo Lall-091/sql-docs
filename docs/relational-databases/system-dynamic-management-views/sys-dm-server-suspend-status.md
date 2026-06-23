@@ -1,8 +1,8 @@
 ---
 title: "sys.dm_server_suspend_status (Transact-SQL)"
 description: Reference documentation to explain sys.dm_server_suspend_status (Transact-SQL) dynamic management view.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "09/29/2022"
 ms.service: sql
 ms.subservice: system-objects

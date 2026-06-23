@@ -3,7 +3,8 @@ title: CREATE EXTERNAL LANGUAGE (Transact-SQL) - SQL Server
 description: CREATE EXTERNAL LANGUAGE (Transact-SQL) - SQL Server
 author: VanMSFT
 ms.author: vanto
-ms.date: 04/03/2020
+ms.date: 06/22/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: language-extensions
 ms.topic: reference
@@ -13,12 +14,12 @@ monikerRange: ">=sql-server-ver15||>=sql-server-linux-ver15"
 ---
 
 # CREATE EXTERNAL LANGUAGE (Transact-SQL)
-[!INCLUDE [SQL Server 2019 and later](../../includes/applies-to-version/sqlserver2019.md)]
+[!INCLUDE [SQL Server 2019 and later](../../includes/applies-to-version/sqlserver2019-and-later.md)]
 
-Registers external language extensions in the database from the specified file path or byte stream. This statement serves as a generic mechanism for the database administrator to register new external language extensions on any OS platform supported by SQL Server. For more information, see [Language Extensions](../../language-extensions/language-extensions-overview.md).
+Registers external language extensions in the database from the specified file path or byte stream. This statement is a generic mechanism for the database administrator to register new external language extensions on any OS platform that SQL Server supports. For more information, see [Language Extensions](../../language-extensions/language-extensions-overview.md).
 
 > [!NOTE]
-> **R** and **Python** are reserved names and no external language can be created with those specific names. For more information on how to use **R** and **Python**, see [SQL Server Machine Learning Services](../../machine-learning/index.yml).
+> **R** and **Python** are reserved names. You can't create an external language with those specific names. For more information on how to use **R** and **Python**, see [SQL Server Machine Learning Services](../../machine-learning/index.yml).
 
 ## Syntax
 
@@ -66,66 +67,66 @@ FROM <file_spec> [ ,...2 ]
 
 **language_name**
 
-Languages are database scoped objects. Language names must be unique within the database.
+Languages are database-scoped objects. Language names must be unique within the database.
 
 **owner_name**
 
-Specifies the name of the user or role that owns the external language. If not specified, ownership is given to the current user. Depending on permissions, other users may need to be granted explicit permission to execute scripts using a specific language.
+Specifies the name of the user or role that owns the external language. If you don't specify a value, the current user becomes the owner. Depending on permissions, other users might need explicit permission to execute scripts using a specific language.
 
 **file_spec**
 
-Specifies the content of the language extension. Only one filespec is allowed for a specific language, per platform.
+Specifies the content of the language extension. Only one `<file_spec>` is allowed for a specific language, per platform.
 
 **external_lang_specifier**
 
-The full file path to the .zip or tar.gz file containing the extensions code. This content can either be a path to a .zip file (on Windows) or tar.gz (on Linux).
+The full file path to the .zip or tar.gz file that contains the extension's code. This content can be either a path to a .zip file (on Windows) or a tar.gz file (on Linux).
 
 **content_bits**
 
 Specifies the content of the language as a hex literal, similar to assemblies.
 
-This option is useful if you need to create a language or alter an existing language (and have the required permissions to do so), but the file system on the server is restricted and you cannot copy the library files to a location that the server can access.
+Use this option when the server file system is restricted and you can't copy the library files to a location that the server can access. You must have the required permissions to create or alter the language.
 
 **external_lang_file_name**
 
-Name of the extension .dll or .so file. This is required to identify the correct file, in cases where there are several .dll or .so files in the <external_lang_specifier> .zip or tar.gz.
+Name of the extension .dll or .so file. The name identifies the correct file when several .dll or .so files exist in the `<external_lang_specifier>` .zip or tar.gz.
 
 **external_lang_parameters**
 
-This provides a possibility to give a set of parameters to the external language runtime. Parameter values are provided to the external runtime after the external process has started. Environment variables however, are accessible to the language extension prior to the external process startup.
+Specifies a set of parameters to pass to the external language runtime. The external runtime receives parameter values after the external process starts. Environment variables, in contrast, become accessible to the language extension before the external process starts.
 
 **external_lang_env_variables**
 
-This provides a possibility to give a set of environment variables to the external language runtime prior to the external process startup. An example of an environment variable is for example the home directory of the runtime itself. For example: JRE_HOME.
+Specifies a set of environment variables to make available to the external language runtime before the external process starts. For example, set the home directory of the runtime itself, such as `JRE_HOME`.
 
 **platform**
 
-This parameter is needed for hybrid OS scenarios. In a hybrid architecture, the language needs to be registered once per platform. If no platform is specified, the current OS is assumed.
+This parameter is needed for hybrid OS scenarios. In a hybrid architecture, you must register the language once per platform. If you don't specify a platform, SQL Server assumes the current OS.
 
 ## Permissions
 
-Requires the `CREATE EXTERNAL LANGUAGE` permission. By default, any user who has **dbo** who is a member of the **db_owner** role has permissions to create an external language. For all other users, you must explicitly give them permission using a [GRANT](./grant-database-permissions-transact-sql.md) statement, specifying CREATE EXTERNAL LANGUAGE as the privilege.
+Requires the `CREATE EXTERNAL LANGUAGE` permission. By default, any member of the **db_owner** fixed database role has permissions to create an external language. For all other users, you must explicitly grant permission by using a [GRANT](./grant-database-permissions-transact-sql.md) statement, specifying `CREATE EXTERNAL LANGUAGE` as the privilege.
 
-To modify a library requires the separate permission, `ALTER ANY EXTERNAL LANGUAGE`.
+To modify a library, you need the separate permission, `ALTER ANY EXTERNAL LANGUAGE`.
 
 ### EXECUTE EXTERNAL SCRIPT permission
 
-You can use EXECUTE EXTERNAL SCRIPT permissions, so that external script execution can be granted on specific languages. This is different from EXECUTE ANY EXTERNAL SCRIPT database permission, which do not allow granting execution permission on a specific language.
+Use `EXECUTE EXTERNAL SCRIPT` permissions to grant external script execution on specific languages. `EXECUTE EXTERNAL SCRIPT` differs from the `EXECUTE ANY EXTERNAL SCRIPT` database permission, which doesn't allow granting execution permission on a specific language.
 
-This means that non-**dbo** users need to be granted permission to execute a specific language:
+Grant non-**dbo** users permission to execute a specific language:
 
 ```sql
-GRANT EXECUTE EXTERNAL SCRIPT ON EXTERNAL LANGUAGE ::language_name 
+GRANT EXECUTE EXTERNAL SCRIPT ON EXTERNAL LANGUAGE ::language_name
 TO database_principal_name;
 ```
 
 ### Reference permissions to external libraries
 
-Similar to assemblies, reference permissions are needed for external languages so that there is a link between external libraries and external languages. For example, if an external language is going to be dropped, first the user needs to make sure all the external libraries referencing that language are dropped. You can view the external language as a higher level object than external libraries, in a hierarchy.
+Similar to assemblies, external languages require reference permissions so that there's a link between external libraries and external languages. For example, before you drop an external language, you must drop all external libraries that reference it. View the external language as a higher-level object than external libraries in the hierarchy.
 
 ## Examples
 
-### A. Create an external language in a database  
+### A. Create an external language in a database
 
 The following example adds an external language called Java to a database on SQL Server on Windows.
 
@@ -156,9 +157,9 @@ TO mylogin;
 ```
 
 
-## See also
+## Related content
 
-[ALTER EXTERNAL LANGUAGE (Transact-SQL)](alter-external-language-transact-sql.md)  
-[DROP EXTERNAL LANGUAGE (Transact-SQL)](drop-external-language-transact-sql.md)  
-[sys.external_languages](../../relational-databases/system-catalog-views/sys-external-languages-transact-sql.md)  
-[sys.external_language_files](../../relational-databases/system-catalog-views/sys-external-language-files-transact-sql.md)
+- [ALTER EXTERNAL LANGUAGE (Transact-SQL)](alter-external-language-transact-sql.md)
+- [DROP EXTERNAL LANGUAGE (Transact-SQL)](drop-external-language-transact-sql.md)
+- [sys.external_languages](../../relational-databases/system-catalog-views/sys-external-languages-transact-sql.md)
+- [sys.external_language_files](../../relational-databases/system-catalog-views/sys-external-language-files-transact-sql.md)

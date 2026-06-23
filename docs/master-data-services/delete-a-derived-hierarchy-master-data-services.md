@@ -3,7 +3,6 @@ title: Delete a Derived Hierarchy
 description: Delete a Derived Hierarchy (Master Data Services)
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

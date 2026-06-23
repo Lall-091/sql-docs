@@ -1,8 +1,8 @@
 ---
 title: Automatic Index Compaction
 description: Describes the automatic index compaction feature in the SQL Server database engine.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: dfurman, randolphwest
 ms.date: 04/16/2026
 ms.service: sql

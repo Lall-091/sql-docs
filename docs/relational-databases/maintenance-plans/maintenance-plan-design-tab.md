@@ -1,8 +1,8 @@
 ---
 title: "Maintenance Plan (Design Tab)"
 description: Maintenance Plan (Design Tab)
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 11/03/2025
 ms.service: sql

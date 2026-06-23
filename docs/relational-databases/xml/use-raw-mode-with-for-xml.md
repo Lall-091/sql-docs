@@ -1,8 +1,8 @@
 ---
 title: "Use RAW Mode with FOR XML"
 description: Learn how using RAW mode with the FOR XML clause in a SQL query transforms the resulting XML data.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

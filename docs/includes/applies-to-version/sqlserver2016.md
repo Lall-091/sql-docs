@@ -1,6 +1,6 @@
 ---
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 12/13/2022
 ms.service: sql
 ms.topic: include

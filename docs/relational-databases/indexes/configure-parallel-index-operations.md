@@ -1,8 +1,8 @@
 ---
 title: "Configure Parallel Index Operations"
 description: Learn about the max degree of parallelism and learn how to modify this setting in SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/22/2025
 ms.service: sql

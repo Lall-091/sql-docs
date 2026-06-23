@@ -1,8 +1,8 @@
 ---
 title: "GetSQLInstanceRegStringByID()"
 description: "GetSQLInstanceRegStringByID() "
-author: MikeRayMSFT
-ms.author: mikeray
+author: VanMSFT
+ms.author: vanto
 ms.date: "06/18/2021"
 ms.service: sql
 ms.topic: reference

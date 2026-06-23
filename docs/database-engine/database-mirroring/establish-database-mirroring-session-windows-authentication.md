@@ -1,8 +1,8 @@
 ---
 title: "Set up database mirroring (Windows Authentication)"
 description: Learn how to set up a database mirroring session with Windows Authentication using SQL Server Management Studio.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: database-mirroring

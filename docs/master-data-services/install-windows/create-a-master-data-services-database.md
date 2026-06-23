@@ -3,7 +3,6 @@ title: Create a Master Data Services Database
 description: Create a Master Data Services database when you need a new database to support the Master Data Manager web application and Master Data Services web service.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

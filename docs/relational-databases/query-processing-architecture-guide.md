@@ -1,8 +1,8 @@
 ---
 title: "Query Processing Architecture Guide"
 description: "Learn how SQL Server processes queries, including simple and forced parameterization, execution plan caching, and query plan reuse."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: maghan, randolphwest, derekw
 ms.date: 06/06/2025
 ms.service: sql

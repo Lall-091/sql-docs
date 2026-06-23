@@ -1,6 +1,6 @@
 ---
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: mathoma
 ms.date: 09/22/2025
 ms.service: azure-vm-sql-server

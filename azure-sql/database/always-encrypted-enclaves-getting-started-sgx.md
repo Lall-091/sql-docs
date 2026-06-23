@@ -4,7 +4,7 @@ description: Tutorial on how to create a basic environment for Always Encrypted 
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 08/25/2025
+ms.date: 06/17/2026
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: tutorial
@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-This tutorial teaches you how to get started with [Always Encrypted with secure enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) in Azure SQL Database. You'll use [Intel Software Guard Extensions (Intel SGX) enclaves](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/software-guard-extensions.html). It will show you:
+This tutorial shows you how to get started with [Always Encrypted with secure enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) in Azure SQL Database. You use [Intel Software Guard Extensions (Intel SGX) enclaves](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/software-guard-extensions.html). The tutorial covers:
 
 > [!div class="checklist"]
 >
@@ -28,19 +28,20 @@ This tutorial teaches you how to get started with [Always Encrypted with secure 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). You need to be a member of the Contributor role or the Owner role for the subscription to be able to create resources and configure an attestation policy.
 - Optional, but recommended for storing your column master key for Always Encrypted: a key vault in Azure Key Vault. For information on how to create a key vault, see [Quickstart: Create a key vault using the Azure portal](/azure/key-vault/general/quick-create-portal). 
   - If your key vault uses the access policy permissions model, make sure you have the following key permissions in the key vault: `get`, `list`, `create`, `unwrap key`, `wrap key`, `verify`, `sign`. For more information, see [Assign a Key Vault access policy](/azure/key-vault/general/assign-access-policy).
-  - If you're using the Azure role-based access control (RBAC) permission model, make you sure you're a member of the [Key Vault Crypto Officer](/azure/role-based-access-control/built-in-roles#key-vault-crypto-officer) role for your key vault. See [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-migration).
+  - If you're using the Azure role-based access control (RBAC) permission model, make sure you're a member of the [Key Vault Crypto Officer](/azure/role-based-access-control/built-in-roles#key-vault-crypto-officer) role for your key vault. See [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-migration).
 - The latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ### PowerShell requirements
 
 > [!NOTE]
-> The prerequisites listed in this section apply only if you choose to use PowerShell for some of the steps in this tutorial. If you plan to use the Azure portal instead, you can skip this section.
+> The prerequisites listed in this section apply only if you choose to use PowerShell for some of the steps in this tutorial. If you plan to use the Azure portal instead, you can skip this section. Microsoft recommends using PowerShell 7 or later when running Always Encrypted PowerShell scripts. PowerShell 7 provides improved cross-platform support, better performance, and the latest compatibility with the SqlServer module (v22+), which is required for many Always Encrypted scenarios.
 
 Az PowerShell module version 9.3.0 or later is required. For details on how to install the Az PowerShell module, see [Install the Azure Az PowerShell module](/powershell/azure/install-az-ps). To determine the version of the Az PowerShell module that is installed on your machine, run the following command from PowerShell.
 
 ```powershell
 Get-InstalledModule -Name Az
 ```
+
 
 ## Step 1: Create and configure a server and a DC-series database
 
@@ -58,7 +59,7 @@ In this step, you'll create a new Azure SQL Database logical server and a new da
 1. For **Resource group**, select **Create new**, enter a name for your resource group, and select **OK**.
 1. For **Database name** enter *ContosoHR*.
 1. For **Server**, select **Create new**, and fill out the **New server** form with the following values:
-   - **Server name**: Enter *mysqlserver*, and add some characters for uniqueness. We can't provide an exact server name to use because server names must be globally unique for all servers in Azure, not just unique within a subscription. So enter something like mysqlserver135, and the portal lets you know if it's available or not.
+   - **Server name**: Enter *mysqlserver*, and add some characters for uniqueness. Server names must be globally unique across Azure (not just within a subscription), so use something like `mysqlserver135` - the portal tells you whether it's available.
    - **Location**: Select a location from the dropdown list.
       > [!IMPORTANT]
       > You need to select a location (an Azure region) that supports both the DC-series hardware and Microsoft Azure Attestation. For the list of regions supporting DC-series, see [DC-series availability](service-tiers-sql-database-vcore.md#dc-series). See the [regional availability of Microsoft Azure Attestation](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-attestation).
@@ -81,7 +82,7 @@ In this step, you'll create a new Azure SQL Database logical server and a new da
 
 1. On the **Networking** tab, for **Connectivity method**, select **Public endpoint**.
 1. For **Firewall rules**, set **Add current client IP address** to **Yes**. Leave **Allow Azure services and resources to access this server** set to **No**.
-1. For **Connection policy**, leave **Connection policy** to **Default - Uses Redirect policy for all client connections originating inside of Azure and Proxy for all client connections originating outside Azure**
+1. For **Connection policy**, leave it set to **Default - Uses Redirect policy for all client connections originating inside of Azure and Proxy for all client connections originating outside Azure**.
 1. For **Encrypted connections**, leave **Minimum TLS version** to **TLS 1.2**.
 1. Select **Review + create** at the bottom of the page.
 

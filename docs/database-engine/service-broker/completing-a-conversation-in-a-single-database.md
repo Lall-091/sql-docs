@@ -3,7 +3,7 @@ title: Complete a Conversation in a Single Database
 description: "This tutorial is intended for users who are new to Service Broker but are familiar with database concepts and Transact-SQL statements."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

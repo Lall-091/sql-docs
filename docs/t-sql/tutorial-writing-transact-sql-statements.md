@@ -1,8 +1,8 @@
 ---
 title: "T-SQL Tutorial: Write Transact-SQL Statements"
 description: This tutorial is intended for users who are new to writing SQL statements. It helps new users get started by reviewing some basic statements for creating tables and inserting data.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/02/2025
 ms.service: sql

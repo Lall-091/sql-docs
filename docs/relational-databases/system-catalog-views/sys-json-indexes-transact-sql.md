@@ -3,7 +3,7 @@ title: "sys.json_indexes (Transact-SQL)"
 description: sys.json_indexes contains a row per json index.
 author: uc-msft
 ms.author: umajay
-ms.reviewer: mikeray, randolphwest
+ms.reviewer: randolphwest
 ms.date: 10/27/2025
 ms.service: sql
 ms.subservice: system-objects

@@ -3,7 +3,6 @@ title: "Full-Text Search DDL, Functions, Stored Procedures, and Views"
 description: "Full-Text Search DDL, Functions, Stored Procedures, and Views"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: search

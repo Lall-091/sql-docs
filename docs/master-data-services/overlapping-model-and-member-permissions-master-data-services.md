@@ -3,7 +3,6 @@ title: Overlapping Model and Member Permissions
 description: Overlapping Model and Member Permissions (Master Data Services)
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

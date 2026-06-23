@@ -1,8 +1,8 @@
 ---
 title: "SUBSTRING (Transact-SQL)"
 description: The SUBSTRING function returns a portion of a specified character, binary, text, or image expression.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 01/08/2026
 ms.service: sql

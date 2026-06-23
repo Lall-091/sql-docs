@@ -1,8 +1,8 @@
 ---
 title: "DiffGram Examples (SQLXML)"
 description: View examples of diffgrams in SQLXML 4.0 that perform insert, update, and delete operations to a database.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/04/2017"
 ms.service: sql
 ms.subservice: xml

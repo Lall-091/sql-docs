@@ -2,8 +2,8 @@
 title: Graph Processing
 titleSuffix: SQL Server and Azure SQL Database
 description: Graph processing with SQL Server and Azure SQL Database
-author: MikeRayMSFT
-ms.author: mikeray
+author: markingmyname
+ms.author: maghan
 ms.reviewer: randolphwest
 ms.date: 10/14/2025
 ms.service: sql

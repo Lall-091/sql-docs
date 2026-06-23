@@ -3,7 +3,6 @@ title: Filter Data Before Exporting
 description: Filter Data before Exporting (MDS Add-in for Excel)
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

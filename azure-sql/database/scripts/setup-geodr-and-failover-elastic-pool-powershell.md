@@ -27,7 +27,7 @@ If you choose to install and use PowerShell locally, this tutorial requires Az P
 
 ## Sample scripts
 
-[!code-powershell-interactive[main](~/../powershell_scripts/sql-database/setup-geodr-and-failover/setup-geodr-and-failover-elastic-pool.ps1?highlight=17-20 "Set up active geo-replication for elastic pool")]
+:::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/database/setup-geodr-and-failover/setup-geodr-and-failover-elastic-pool-az-ps.ps1" id="FullScript":::
 
 ## Clean up deployment
 

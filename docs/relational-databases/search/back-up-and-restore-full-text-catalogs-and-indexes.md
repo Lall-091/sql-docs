@@ -3,7 +3,6 @@ title: "Back up & Restore Full-Text Catalogs and Indexes"
 description: Learn how to back up and restore full-text indexes created in SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 08/28/2025
 ms.service: sql
 ms.subservice: search

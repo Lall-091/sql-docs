@@ -1,8 +1,8 @@
 ---
 title: Guidelines for Online Index Operations
 description: Guidelines for online index operations.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/22/2025
 ms.service: sql

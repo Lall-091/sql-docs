@@ -1,8 +1,8 @@
 ---
 title: "TRY_CONVERT (Transact-SQL)"
 description: TRY_CONVERT returns a value cast to the specified data type if the cast succeeds; otherwise, returns NULL.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 12/08/2025
 ms.service: sql

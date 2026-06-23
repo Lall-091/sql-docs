@@ -27,7 +27,7 @@ If you choose to install and use PowerShell locally, this tutorial requires Az P
 
 ## Sample script
 
-[!code-powershell-interactive[main](~/../powershell_scripts/sql-database/create-and-configure-database/create-and-configure-database.ps1?highlight=15-16 "Create SQL Database")]
+:::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/database/create-and-configure-database/create-and-configure-database-az-ps.ps1" id="FullScript":::
 
 ## Clean up deployment
 

@@ -1,8 +1,8 @@
 ---
 title: "Removing Database Mirroring (SQL Server)"
 description: Learn about the impact of stopping a database mirroring session, which a database owner can do at any time on either partner in SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "03/09/2017"
 ms.service: sql
 ms.subservice: database-mirroring

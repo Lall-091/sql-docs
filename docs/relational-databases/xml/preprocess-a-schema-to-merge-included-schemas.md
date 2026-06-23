@@ -1,8 +1,8 @@
 ---
 title: "Preprocess a Schema to Merge Included Schemas"
 description: "Learn how XML schemas containing the xsd:include directive can be preprocessed to copy and merge the contents of any included schemas into a single schema."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

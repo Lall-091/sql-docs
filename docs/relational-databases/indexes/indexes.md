@@ -1,8 +1,8 @@
 ---
 title: "Indexes"
 description: Indexes
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 08/21/2025
 ms.service: sql

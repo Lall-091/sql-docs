@@ -3,7 +3,7 @@ title: "Integration Services (SSIS) Projects and Solutions"
 description: "Integration Services (SSIS) Projects and Solutions"
 author: chugugrace
 ms.author: chugu
-ms.reviewer: vanto, mikeray
+ms.reviewer: vanto
 ms.date: 09/17/2024
 ms.service: sql
 ms.subservice: integration-services

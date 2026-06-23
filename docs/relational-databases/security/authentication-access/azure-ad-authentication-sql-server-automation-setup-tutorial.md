@@ -4,7 +4,7 @@ description: Tutorial on how to set up Microsoft Entra authentication that autom
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: vanto, randolphwest
-ms.date: 10/20/2022
+ms.date: 06/19/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: tutorial
@@ -22,13 +22,13 @@ ms.custom:
 > [!NOTE]
 > This feature is available in [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] or later versions, and is only supported for SQL Server on-premises, for Windows and Linux hosts and [SQL Server 2022 on Windows Azure VMs](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm).
 
-In this article, we'll go over how to set up the Microsoft Entra admin to allow authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) for SQL Server using the Azure portal, and APIs such as:
+This article shows how to set up the Microsoft Entra admin to allow authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) for SQL Server using the Azure portal, and APIs such as:
 
 - PowerShell
 - The Azure CLI
 - ARM Template
 
-We'll also go over the updated functionality to set up a Microsoft Entra admin for SQL Server in the Azure portal that would allow for automated certificate creation and application registration. Previously, setting up [Microsoft Entra authentication for SQL Server required manual setup of Microsoft Entra admin with an Azure certificate and application registration](azure-ad-authentication-sql-server-setup-tutorial.md).
+This article also covers the updated functionality to set up a Microsoft Entra admin for SQL Server in the Azure portal that would allow for automated certificate creation and application registration. Previously, setting up [Microsoft Entra authentication for SQL Server required manual setup of Microsoft Entra admin with an Azure certificate and application registration](azure-ad-authentication-sql-server-setup-tutorial.md).
 
 [!INCLUDE [entra-id](../../../includes/entra-id-hard-coded.md)]
 
@@ -149,14 +149,14 @@ Use the Azure portal to set up a Microsoft Entra admin, create an Azure Key Vaul
    :::image type="content" source="media/configure-azure-ad-certificate-application-for-sql-server-instance.png" alt-text="Screenshot of setting Microsoft Entra authentication with automatic certificate and application generation in the Azure portal." lightbox="media/configure-azure-ad-certificate-application-for-sql-server-instance.png":::
 
 > [!NOTE]
-> The certificates created for Microsoft Entra are not rotated automatically. Customers can choose to provide their own certificate and application for the Microsoft Entra admin setup. For more information, see [Tutorial: Set up Microsoft Entra authentication for SQL Server](azure-ad-authentication-sql-server-setup-tutorial.md).
+> The certificates created for Microsoft Entra aren't rotated automatically. Customers can choose to provide their own certificate and application for the Microsoft Entra admin setup. For more information, see [Tutorial: Set up Microsoft Entra authentication for SQL Server](azure-ad-authentication-sql-server-setup-tutorial.md).
 
 # [The Azure CLI](#tab/azure-cli)
 
 The Azure CLI script below sets up a Microsoft Entra admin, creates an Azure Key Vault certificate, and creates a Microsoft Entra application. There is an additional section that provides a [sample script for setting up a Microsoft Entra admin when a certificate and application already exist](#setting-up-an-azure-ad-admin-with-existing-certificate-and-application-using-the-azure-cli).
 
 > [!NOTE]
-> The certificates created for the Microsoft Entra setup are not rotated automatically.
+> The certificates created for the Microsoft Entra setup aren't rotated automatically.
 
 - [The Azure CLI](/cli/azure/install-azure-cli) version 2.37.0 or higher is required
 - Az.ConnectedMachine 0.5.1 or higher is required
@@ -736,7 +736,7 @@ Write-Output "Success"
 The PowerShell script below sets up a Microsoft Entra admin, creates an Azure Key Vault certificate, and creates a Microsoft Entra application. There is an additional section that provides a [sample script for setting up a Microsoft Entra admin when a certificate and application already exist](#setting-up-an-azure-ad-admin-with-existing-certificate-and-application-using-powershell).
 
 > [!NOTE]
-> The certificates created for Microsoft Entra setup are not rotated automatically.
+> The certificates created for Microsoft Entra setup aren't rotated automatically.
 
 The following modules are required for this tutorial. Install the latest versions of the modules or higher than the noted version below:
 
@@ -1336,7 +1336,7 @@ Use a [Custom deployment in the Azure portal](https://portal.azure.com/#create/M
 Once the Microsoft Entra admin has been set up, using the Microsoft Entra admin credentials allows you to connect to SQL Server. However, any further database activities involving creating new Microsoft Entra logins and users will fail until admin consent is granted to the Microsoft Entra application.
 
 > [!NOTE]
-> To grant **Admin consent** for the application, the account granting consent requires a role of Microsoft Entra ID Privileged Role Administrator. These roles are necessary to grant admin consent for the application, but is not necessary to set up Microsoft Entra admin.
+> To grant **Admin consent** for the application, the account granting consent requires a role of Microsoft Entra ID Privileged Role Administrator. This role is necessary to grant admin consent for the application, but isn't necessary to set up the Microsoft Entra admin.
 
 1. In the [Azure portal](https://portal.azure.com), select **Microsoft Entra ID** > **App registrations**, select the newly created application. The application should have a name like `<hostname>-<instanceName><uniqueNumber>`.
 1. Select the **API permissions** menu.
@@ -1358,7 +1358,7 @@ Server identity does not have permissions to access MS Graph.
 
 Microsoft Entra authentication is now set up for your SQL Server that is connected to Azure Arc. Follow the sections after setting up Microsoft Entra admin in the article, [Tutorial: Set up Microsoft Entra authentication for SQL Server](azure-ad-authentication-sql-server-setup-tutorial.md#create-logins-and-users) to connect to SQL Server using Microsoft Entra authentication.
 
-## See also
+## Related content
 
 - [Connect your SQL Server to Azure Arc](../../../sql-server/azure-arc/connect.md)
 - [Microsoft Entra authentication for SQL Server](azure-ad-authentication-sql-server-overview.md)

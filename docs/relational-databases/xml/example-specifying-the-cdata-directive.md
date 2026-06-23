@@ -1,8 +1,8 @@
 ---
 title: "Example: Specifying the CDATA Directive"
 description: View an example of how to specify the CDATA directive to wrap the specified data in a CDATA section.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

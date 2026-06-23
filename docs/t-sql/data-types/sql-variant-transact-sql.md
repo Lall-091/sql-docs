@@ -1,8 +1,8 @@
 ---
 title: sql_variant (Transact-SQL)
 description: "sql_variant (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "09/12/2017"
 ms.service: sql
 ms.subservice: t-sql

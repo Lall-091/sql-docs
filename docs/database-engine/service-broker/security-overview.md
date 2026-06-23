@@ -3,7 +3,7 @@ title: "Security Overview (Service Broker)"
 description: "Service Broker helps you write highly scalable database applications that are also secure and reliable."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

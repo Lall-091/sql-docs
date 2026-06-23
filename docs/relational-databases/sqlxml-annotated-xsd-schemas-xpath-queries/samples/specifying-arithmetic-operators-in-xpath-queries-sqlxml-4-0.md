@@ -1,8 +1,8 @@
 ---
 title: "Use arithmetic operators in XPath queries (SQLXML)"
 description: Learn how to specify arithmetic-operators in SQLXML 4.0 XPath queries.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: xml

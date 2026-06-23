@@ -3,7 +3,6 @@ title: "Get Started with Full-Text Search"
 description: "Get Started with Full-Text Search"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "03/31/2020"
 ms.service: sql
 ms.subservice: search

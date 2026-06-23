@@ -1,8 +1,8 @@
 ---
 title: "Deadlock Graph Event Class"
 description: "Deadlock Graph Event Class"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability

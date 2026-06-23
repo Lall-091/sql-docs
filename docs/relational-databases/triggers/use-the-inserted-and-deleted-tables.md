@@ -1,8 +1,8 @@
 ---
 title: Learn how to use the inserted and deleted tables with DML triggers to inspect changes.
 description: Use inserted and deleted tables with DML triggers
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 12/10/2021
 ms.service: sql
 ms.topic: language-reference

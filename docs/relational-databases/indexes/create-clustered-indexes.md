@@ -1,8 +1,8 @@
 ---
 title: "Create a Clustered Index"
 description: Create a clustered index in SQL Server and Azure SQL.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 09/02/2025
 ms.service: sql
 ms.subservice: table-view-index

@@ -1,8 +1,8 @@
 ---
 title: "Columnstore indexes - Design guidance"
 description: "High-level recommendations for designing columnstore indexes."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 04/04/2025
 ms.service: sql
 ms.subservice: table-view-index

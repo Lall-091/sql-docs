@@ -1,8 +1,8 @@
 ---
 title: XML data (SQL Server)
 description: Use XML data for developing rich applications for semi-structured data management.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 08/04/2023
 ms.service: sql

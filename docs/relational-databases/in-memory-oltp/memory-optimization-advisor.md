@@ -1,8 +1,8 @@
 ---
 title: "Memory Optimization Advisor"
 description: Use the memory optimization advisor in SQL Server Management Studio to help you migrate disk-based tables to memory-optimized tables.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp

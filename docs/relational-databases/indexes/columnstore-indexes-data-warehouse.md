@@ -1,8 +1,8 @@
 ---
 title: "Columnstore indexes in data warehousing"
 description: Learn more about how to benefit from columnstore indexes in data warehousing with the SQL Database Engine.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 04/04/2025
 ms.service: sql
 ms.subservice: table-view-index

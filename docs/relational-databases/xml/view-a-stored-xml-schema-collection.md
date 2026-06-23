@@ -1,8 +1,8 @@
 ---
 title: "View a Stored XML Schema Collection"
 description: Learn how to view a stored XML schema collection by using the XQuery function xml_schema_namespace().
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

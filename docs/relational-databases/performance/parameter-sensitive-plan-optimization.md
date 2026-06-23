@@ -1,8 +1,8 @@
 ---
 title: Parameter Sensitive Plan Optimization
 description: Learn about Parameter Sensitive Plan Optimization in the Query Store.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: derekw, maghan, randolphwest, wiassaf
 ms.date: 02/11/2026
 ms.service: sql

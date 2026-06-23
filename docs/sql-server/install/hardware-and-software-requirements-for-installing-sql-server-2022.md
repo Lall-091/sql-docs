@@ -1,8 +1,8 @@
 ---
 title: "SQL Server 2022: Hardware and Software Requirements"
 description: A list of hardware, software, and operating system requirements for installing and running SQL Server 2022.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest, jopilov, rdorr
 ms.date: 02/26/2026
 ms.service: sql

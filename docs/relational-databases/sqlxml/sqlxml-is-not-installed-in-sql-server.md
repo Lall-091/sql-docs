@@ -1,8 +1,8 @@
 ---
 title: "SQLXML Is Not Installed in SQL Server"
 description: SQLXML Is Not Installed in SQL Server
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.topic: "reference"

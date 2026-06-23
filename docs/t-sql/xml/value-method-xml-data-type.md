@@ -1,8 +1,8 @@
 ---
 title: value() method (xml data type)
 description: The value method performs an XQuery against XML and returns a scalar SQL type value.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 04/25/2024
 ms.service: sql

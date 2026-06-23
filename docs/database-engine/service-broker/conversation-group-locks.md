@@ -3,7 +3,7 @@ title: Conversation Group Locks
 description: "Service Broker uses conversation group locks to guarantee that only one queue reader can work with a related set of messages at any given time."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

@@ -1,8 +1,8 @@
 ---
 title: "PERCENTILE_CONT (Transact-SQL)"
 description: PERCENTILE_CONT calculates a percentile based on a continuous distribution of the column value.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/23/2024
 ms.service: sql

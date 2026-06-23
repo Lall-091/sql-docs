@@ -1,8 +1,8 @@
 ---
 title: "Introduction to Using XPath Queries (SQLXML)"
 description: Learn the basics of using XPath queries in SQLXML 4.0.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: xml

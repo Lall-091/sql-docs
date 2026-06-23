@@ -1,8 +1,8 @@
 ---
 title: "STR (Transact-SQL)"
 description: "The STR Transact-SQL function returns character data converted from numeric data."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 02/09/2026
 ms.service: sql
 ms.subservice: t-sql

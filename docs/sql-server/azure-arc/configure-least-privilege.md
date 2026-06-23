@@ -1,8 +1,8 @@
 ---
 title: Enable Least Privilege
 description: Describes how to configure a service account for SQL Server enabled by Azure Arc to run with least privilege.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: nikitatakru, randolphwest
 ms.date: 04/28/2026
 ms.topic: how-to

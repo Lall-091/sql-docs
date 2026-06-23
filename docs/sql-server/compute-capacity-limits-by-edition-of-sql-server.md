@@ -1,8 +1,8 @@
 ---
 title: Compute Capacity Limits by Edition of SQL Server
 description: This article discusses compute capacity limits for SQL Server 2019 and how they differ in physical and virtualized environments with simultaneous multithreading (SMT) processors.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest, derekw
 ms.date: 11/18/2025
 ms.service: sql

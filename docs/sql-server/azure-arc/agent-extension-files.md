@@ -1,8 +1,8 @@
 ---
 title: Azure Extension for SQL Server System Objects
 description: Lists system objects - files, registry keys, and tables deployed and managed by the Azure extension for SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: nikitatakru
 ms.date: 12/08/2025
 ms.topic: reference

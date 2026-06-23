@@ -3,7 +3,6 @@ title: "Deprecated Full-Text Search features in SQL Server 2016"
 description: "Deprecated Full-Text Search features in SQL Server 2016"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "08/19/2016"
 ms.service: sql
 ms.subservice: search

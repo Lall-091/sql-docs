@@ -1,8 +1,8 @@
 ---
 title: "REGEXP_REPLACE (Transact-SQL)"
 description: REGEXP_REPLACE Returns a modified source string replaced by a replacement string.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: abhtiwar, wiassaf, randolphwest
 ms.date: 05/13/2026
 ms.service: sql

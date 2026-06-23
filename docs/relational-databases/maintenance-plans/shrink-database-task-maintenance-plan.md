@@ -1,8 +1,8 @@
 ---
 title: "Shrink Database Task (Maintenance Plan)"
 description: Learn how to create a task that attempts to reduce the size of selected SQL Server databases by using the Shrink Database Task.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/27/2023
 ms.service: sql

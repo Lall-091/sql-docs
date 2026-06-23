@@ -1,8 +1,8 @@
 ---
 title: "decimal and numeric (Transact-SQL)"
 description: "Transact-SQL reference for the decimal and numeric data types. Decimal and numeric are synonyms for numeric data types that have a fixed precision and scale."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/27/2025
 ms.service: sql

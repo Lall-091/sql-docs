@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database
 description: Learn about data virtualization capabilities of Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: hudequei, mikeray
+ms.reviewer: hudequei
 ms.date: 06/17/2025
 ms.service: azure-sql-database
 ms.topic: concept-article

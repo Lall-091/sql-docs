@@ -3,7 +3,6 @@ title: "Manage and Monitor Semantic Search"
 description: "Manage and Monitor Semantic Search"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "03/20/2017"
 ms.service: sql
 ms.subservice: search

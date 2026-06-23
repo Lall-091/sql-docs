@@ -1,8 +1,8 @@
 ---
 title: "SQL_VARIANT_PROPERTY (Transact-SQL)"
 description: "SQL_VARIANT_PROPERTY (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "02/25/2020"
 ms.service: sql
 ms.subservice: t-sql

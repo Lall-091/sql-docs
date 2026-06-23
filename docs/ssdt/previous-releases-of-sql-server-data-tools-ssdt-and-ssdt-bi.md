@@ -3,7 +3,7 @@ title: "Previous Releases of SQL Server Data Tools (SSDT)"
 description: "See how to install 2017 and earlier versions of SSDT and SSDT-BI. View the release notes for all versions of SQL Server Data Tools (SSDT) that work with Visual Studio 2017 and earlier Visual Studio versions."
 author: dzsquared
 ms.author: drskwier
-ms.reviewer: mikeray, randolphwest
+ms.reviewer: randolphwest
 ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: ssdt

@@ -1,8 +1,8 @@
 ---
 title: "managed_backup.fn_backup_instance_config (Transact-SQL)"
 description: "managed_backup.fn_backup_instance_config (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: system-objects

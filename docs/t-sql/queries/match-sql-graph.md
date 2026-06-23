@@ -1,8 +1,8 @@
 ---
 title: "MATCH (SQL Graph)"
 description: "MATCH (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 07/01/2025
 ms.service: sql

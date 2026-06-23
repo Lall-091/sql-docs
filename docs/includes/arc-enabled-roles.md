@@ -1,6 +1,6 @@
 ---
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: randolphwest
 ms.date: 04/28/2026
 ms.service: sql

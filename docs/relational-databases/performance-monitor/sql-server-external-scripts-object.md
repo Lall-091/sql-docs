@@ -1,8 +1,8 @@
 ---
 title: "SQL Server, External Scripts object"
 description: "Learn about the SQLServer:External Scripts object, which provides counters to monitor the actions associated with executing external scripts."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: performance

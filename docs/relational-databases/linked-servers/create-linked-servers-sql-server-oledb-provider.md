@@ -3,7 +3,6 @@ title: "Create Linked Server Provider"
 description: "Microsoft SQL Server Distributed Queries: OLE DB Connectivity"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: MikeRayMSFT
 ms.date: 09/07/2025
 ms.service: sql
 ms.topic: how-to

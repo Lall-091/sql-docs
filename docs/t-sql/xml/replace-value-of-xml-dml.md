@@ -1,8 +1,8 @@
 ---
 title: replace value of (XML DML)
 description: "The 'replace value of' XML DML statement updates the value of a node in an XML document."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 07/18/2024
 ms.service: sql

@@ -3,7 +3,6 @@ title: "Set Service Account for Full-Text Filter Daemon Launcher"
 description: Learn how to set or change the service account for the SQL Full-text Filter Daemon Launcher service (MSSQLFDLauncher).
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 08/28/2025
 ms.service: sql
 ms.subservice: search

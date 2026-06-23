@@ -1,8 +1,8 @@
 ---
 title: "Data types (Transact-SQL)"
 description: This article provides a summary of the different data types available in the SQL Server Database Engine.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/21/2024
 ms.service: sql

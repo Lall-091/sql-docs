@@ -1,8 +1,8 @@
 ---
 title: "SQL Server 2017 Release Notes"
 description: This article describes limitations and issues with SQL Server 2017 and provides links to related information.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/06/2025
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: SQL Server Privacy Supplement
 description: SQL Server privacy supplement
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: wopeter, randolphwest
 ms.date: 06/16/2025
 ms.service: sql

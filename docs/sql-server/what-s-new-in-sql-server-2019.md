@@ -1,8 +1,8 @@
 ---
 title: "What's New in SQL Server 2019"
 description: Learn about new features for SQL Server 2019 (15.x), which gives you choices of development languages, data types, environments, and operating systems.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/03/2025
 ms.service: sql

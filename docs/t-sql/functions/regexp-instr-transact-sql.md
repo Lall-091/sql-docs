@@ -1,8 +1,8 @@
 ---
 title: "REGEXP_INSTR (Transact-SQL)"
 description: REGEXP_INSTR Returns the starting or ending position of the matched substring.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: abhtiwar, wiassaf, randolphwest
 ms.date: 11/18/2025
 ms.service: sql

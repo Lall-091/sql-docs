@@ -3,7 +3,6 @@ title: "sys.registered_search_properties (Transact-SQL)"
 description: sys.registered_search_properties (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: system-objects

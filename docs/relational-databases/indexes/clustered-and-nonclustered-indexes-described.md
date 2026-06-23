@@ -1,8 +1,8 @@
 ---
 title: "Clustered and Nonclustered Indexes"
 description: Describes clustered and nonclustered indexes.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 08/21/2025
 ms.service: sql
 ms.subservice: table-view-index

@@ -1,8 +1,8 @@
 ---
 title: "Create a Maintenance Plan with the design surface"
 description: Learn how to create a single server or multiserver maintenance plan by using the Maintenance Plan design surface in SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 03/27/2023
 ms.service: sql

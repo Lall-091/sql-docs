@@ -3,7 +3,7 @@ title: Message Types
 description: "Applications that use Service Broker communicate by sending messages to each other as part of a conversation."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

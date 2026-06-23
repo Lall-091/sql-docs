@@ -28,7 +28,7 @@ If you choose to install and use PowerShell locally, this tutorial requires Az P
 
 ## Sample script
 
-[!code-powershell-interactive[main](~/../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=15-16 "Monitor and scale single database")]
+:::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/database/monitor-and-scale-database/monitor-and-scale-database-az-ps.ps1" id="FullScript":::
 
 > [!NOTE]
 > For a full list of metrics, see [metrics supported](/azure/azure-monitor/essentials/metrics-supported#microsoftsqlserversdatabases).

@@ -1,8 +1,8 @@
 ---
 title: "STRING_AGG (Transact-SQL)"
 description: STRING_AGG concatenates the values of string expressions and places separator values between them.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 07/16/2025
 ms.service: sql

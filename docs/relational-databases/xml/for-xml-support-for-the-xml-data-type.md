@@ -1,8 +1,8 @@
 ---
 title: "FOR XML Support for the Xml Data Type"
 description: Learn about the use of FOR XML queries on SQL database columns of the xml data type.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/26/2025
 ms.service: sql

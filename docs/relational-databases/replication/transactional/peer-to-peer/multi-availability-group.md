@@ -1,8 +1,8 @@
 ---
 title: Configure peer-to-peer replication with two replicas in an availability group
 description: Describes how to configure peer-to-peer replication with databases in SQL Server Always On availability groups.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 09/25/2024
 ms.service: sql
 ms.topic: how-to

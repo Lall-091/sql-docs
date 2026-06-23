@@ -1,8 +1,8 @@
 ---
 title: "Display an Actual Execution Plan"
 description: Learn how to generate actual graphical execution plans by using SQL Server Management Studio. An actual graphical execution plan contains runtime information.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/02/2025
 ms.service: sql

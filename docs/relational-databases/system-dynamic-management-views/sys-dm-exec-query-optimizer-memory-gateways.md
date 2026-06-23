@@ -1,8 +1,8 @@
 ---
 title: "sys.dm_exec_query_optimizer_memory_gateways (Transact-SQL)"
 description: Returns the current status of resource semaphores used to reduce concurrent query optimization.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: wiassaf
 ms.date: 12/03/2024
 ms.service: sql

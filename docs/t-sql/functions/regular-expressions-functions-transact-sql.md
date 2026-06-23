@@ -1,8 +1,8 @@
 ---
 title: "Regular Expressions Functions (Transact-SQL)"
 description: Use the functions described in this article to match complex patterns and manipulate data in SQL Server with regular expressions.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: abhtiwar, randolphwest, wiassaf
 ms.date: 11/18/2025
 ms.service: sql

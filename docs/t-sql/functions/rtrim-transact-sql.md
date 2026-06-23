@@ -1,8 +1,8 @@
 ---
 title: "RTRIM (Transact-SQL)"
 description: "The RTRIM Transact-SQL function returns a character string after truncating all trailing spaces."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 02/09/2026
 ms.service: sql

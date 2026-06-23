@@ -3,7 +3,6 @@ title: Validation
 description: Data is validated to ensure its accuracy, either automatically or based on business rules that you create in Master Data Services.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

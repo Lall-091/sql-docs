@@ -1,8 +1,8 @@
 ---
 title: "NULL and UNKNOWN (Transact-SQL)"
 description: Learn about NULL and UNKNOWN, and how they work in Transact-SQL.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/12/2024
 ms.service: sql

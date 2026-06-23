@@ -3,7 +3,6 @@ title: Make an Attribute Group Visible to Users
 description: Make an Attribute Group Visible to Users (Master Data Services)
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

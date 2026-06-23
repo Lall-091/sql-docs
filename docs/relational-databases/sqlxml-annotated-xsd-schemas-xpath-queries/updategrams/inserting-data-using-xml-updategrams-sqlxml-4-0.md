@@ -1,8 +1,8 @@
 ---
 title: "Inserting Data Using XML Updategrams (SQLXML)"
 description: Learn how to insert data using XML updategrams in SQLXML 4.0.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/26/2025
 ms.service: sql

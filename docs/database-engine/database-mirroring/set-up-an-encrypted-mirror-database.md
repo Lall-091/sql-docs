@@ -1,8 +1,8 @@
 ---
 title: "Set Up an Encrypted Mirror Database"
 description: Learn how to enable automatic decryption of the database master key of a mirror database by using sp_control_dbmasterkey_password to create a credential.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: database-mirroring

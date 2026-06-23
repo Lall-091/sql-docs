@@ -1,8 +1,8 @@
 ---
 title: QUOTENAME (Transact-SQL)
 description: QUOTENAME returns a Unicode string with the delimiters added to make the input string a valid SQL Engine delimited identifier.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 04/08/2026
 ms.service: sql

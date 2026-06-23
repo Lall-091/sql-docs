@@ -3,7 +3,6 @@ title: Building a Model
 description: Building a Model (MDS Add-in for Excel)
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

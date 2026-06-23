@@ -3,7 +3,6 @@ title: Master Data Services Database
 description: The Master Data Services database contains all of the information for the Master Data Services system and is central to a Master Data Services deployment.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

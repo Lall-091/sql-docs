@@ -1,8 +1,8 @@
 ---
 title: SQL Server High Availability & Disaster Recovery Partners
 description: Lists of third-party partners with solutions to  provide high availability and disaster recovery for your SQL Server services.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/08/2025
 ms.service: sql

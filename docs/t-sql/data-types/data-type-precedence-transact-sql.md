@@ -1,8 +1,8 @@
 ---
 title: "Data type precedence (Transact-SQL)"
 description: Learn about data type precedence for Transact-SQL.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 10/25/2024
 ms.service: sql

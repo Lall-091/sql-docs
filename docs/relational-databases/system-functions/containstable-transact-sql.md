@@ -1,8 +1,8 @@
 ---
 title: "CONTAINSTABLE (Transact-SQL)"
 description: CONTAINSTABLE (Transact-SQL)
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 10/20/2025
 ms.service: sql

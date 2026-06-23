@@ -3,7 +3,6 @@ title: Editions and Supported Features of SQL Server 2022
 description: Learn details of the features supported by the various editions of SQL Server 2022.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 11/27/2025
 ms.service: sql
 ms.subservice: release-landing

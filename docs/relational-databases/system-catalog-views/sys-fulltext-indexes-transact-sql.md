@@ -3,7 +3,6 @@ title: "sys.fulltext_indexes (Transact-SQL)"
 description: sys.fulltext_indexes contains a row per full-text index of a tabular object.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 12/01/2025
 ms.service: sql
 ms.subservice: system-objects

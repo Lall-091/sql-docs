@@ -3,7 +3,7 @@ title: Troubleshoot Conversation Priorities
 description: "This article provides suggestions for correcting common symptoms related to Service Broker conversation priorities."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: configuration

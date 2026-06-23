@@ -1,8 +1,8 @@
 ---
 title: "Common issues when configuring database mirroring"
 description: "Provides information to help troubleshoot problems setting up a database mirroring session."
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "05/17/2016"
 ms.service: sql
 ms.subservice: database-mirroring

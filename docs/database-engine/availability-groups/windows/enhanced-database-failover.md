@@ -3,7 +3,6 @@ title: "Enhanced failover for an availability group"
 description: "Steps to enable enhanced database failover, which triggers a failover if a database in an Always On availability group is no longer able to write transactions."
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: "mikeray"
 ms.date: 06/03/2020
 ms.service: sql
 ms.subservice: availability-groups

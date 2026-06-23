@@ -1,8 +1,8 @@
 ---
 title: "sys.external_language_files (Transact-SQL) - SQL Server"
 description: sys.external_language_files (Transact-SQL) - SQL Server
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: rothja
 ms.date: 05/22/2019
 ms.service: sql

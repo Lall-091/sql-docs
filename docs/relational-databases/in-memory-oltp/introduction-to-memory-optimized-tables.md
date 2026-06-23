@@ -1,8 +1,8 @@
 ---
 title: "Introduction to Memory-Optimized Tables"
 description: Learn about memory-optimized tables, which are durable and support transactions that are atomic, consistent, isolated, and durable.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 04/23/2025
 ms.service: sql
 ms.subservice: in-memory-oltp

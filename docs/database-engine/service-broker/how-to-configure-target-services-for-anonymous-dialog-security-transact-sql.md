@@ -3,7 +3,7 @@ title: "How To: Configure Target Services for Anonymous Dialog Security (Transac
 description: "SQL Server uses dialog security for any conversation to a service for which a remote service binding exists in the database that hosts the initiating service. If the remote service binding specifies ANONYMOUS = ON, the dialog uses anonymous security."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/02/2025
 ms.service: sql
 ms.subservice: configuration

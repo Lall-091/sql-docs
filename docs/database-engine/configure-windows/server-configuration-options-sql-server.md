@@ -4,7 +4,7 @@ titleSuffix: SQL Server, Azure SQL Managed Instance
 description: Find out how to manage and optimize SQL Server and Azure SQL Managed Instance resources. View available configuration options, possible settings, default values, and restart requirements.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, dfurman
+ms.reviewer: dfurman
 ms.date: 05/20/2026
 ms.service: sql
 ms.subservice: configuration

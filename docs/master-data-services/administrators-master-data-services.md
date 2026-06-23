@@ -3,7 +3,6 @@ title: Administrators
 description: "Learn about the types of administrators in Master Data Services: model administrators, entity administrators, and super user."
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

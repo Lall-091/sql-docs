@@ -3,7 +3,6 @@ title: "Semantic Search (SQL Server)"
 description: "Semantic Search (SQL Server)"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: search

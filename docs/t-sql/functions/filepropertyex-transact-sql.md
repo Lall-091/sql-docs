@@ -1,8 +1,8 @@
 ---
 title: "FILEPROPERTYEX (Transact-SQL)"
 description: "FILEPROPERTYEX (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "07/23/2019"
 ms.service: sql
 ms.subservice: t-sql

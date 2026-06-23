@@ -1,8 +1,8 @@
 ---
 title: Optimized Locking
 description: Learn about the optimized locking enhancement to the database engine.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest, peskount, praspu, dfurman
 ms.date: 01/29/2025
 ms.service: sql

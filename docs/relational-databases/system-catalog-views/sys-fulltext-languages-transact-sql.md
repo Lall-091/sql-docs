@@ -3,7 +3,6 @@ title: "sys.fulltext_languages (Transact-SQL)"
 description: sys.fulltext_languages (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 12/08/2025
 ms.service: sql
 ms.subservice: system-objects

@@ -3,7 +3,7 @@ title: "sys.dm_fts_parser (Transact-SQL)"
 description: Returns the final tokenization result after applying a given word breaker.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, randolphwest
+ms.reviewer: randolphwest
 ms.date: 03/09/2023
 ms.service: sql
 ms.subservice: system-objects

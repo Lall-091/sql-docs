@@ -3,7 +3,7 @@ title: "How To: Activate Service Broker Networking (Transact-SQL)"
 description: Learn how to activate Service Broker networking in an instance by creating an endpoint for Service Broker.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

@@ -1,8 +1,8 @@
 ---
 title: "Get Information About DDL Triggers"
 description: "Get Information About DDL Triggers"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/06/2017"
 ms.service: sql
 ms.topic: concept-article

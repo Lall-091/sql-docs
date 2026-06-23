@@ -1,8 +1,8 @@
 ---
 title: "smalldatetime (Transact-SQL)"
 description: Defines a date that is combined with a time of day, based on a 24-hour day with seconds always zero, and no fractional seconds.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 01/16/2025
 ms.service: sql

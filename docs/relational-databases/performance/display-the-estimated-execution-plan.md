@@ -1,8 +1,8 @@
 ---
 title: "Display the Estimated Execution Plan"
 description: Learn how to generate graphical estimated execution plans by using SQL Server Management Studio. An estimated execution plan contains no runtime information.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 03/01/2023
 ms.service: sql
 ms.subservice: performance

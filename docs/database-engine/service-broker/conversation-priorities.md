@@ -3,7 +3,7 @@ title: Conversation Priorities
 description: "Conversation priorities are a set of user-defined rules, each of which specifies a priority level and the criteria for determining which Service Broker conversations to assign the priority level."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

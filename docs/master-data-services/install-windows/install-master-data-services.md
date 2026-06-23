@@ -3,7 +3,6 @@ title: Installation Tasks
 description: This article provides an overview of installation of Master Data Services, including installation and pre-installation and post-installation tasks.
 author: meetdeepak
 ms.author: dkhare
-ms.reviewer: mikeray
 ms.date: 03/05/2026
 ms.service: sql
 ms.subservice: master-data-services

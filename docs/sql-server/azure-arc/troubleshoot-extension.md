@@ -1,8 +1,8 @@
 ---
 title: "Troubleshoot Extension"
 description: "Describes how to troubleshoot SQL Server enabled by Azure Arc extension."
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 07/03/2025
 ms.topic: troubleshooting-general
 ---

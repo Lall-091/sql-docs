@@ -4,7 +4,6 @@ titleSuffix: SQL Server Full-Text Search
 description: Change the word breaker used for US English and UK English in SQL Server 2025.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: 03/06/2026
 ms.service: sql
 ms.subservice: search

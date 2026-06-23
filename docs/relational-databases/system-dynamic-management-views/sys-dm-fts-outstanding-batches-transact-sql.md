@@ -3,7 +3,6 @@ title: "sys.dm_fts_outstanding_batches (Transact-SQL)"
 description: sys.dm_fts_outstanding_batches (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects

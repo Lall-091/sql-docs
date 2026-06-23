@@ -3,7 +3,7 @@ title: Use Custom Password Policy for SQL Logins on Linux
 description: Learn how to use a custom password policy for SQL logins with SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: matripathy, amitkh, atsingh, mikeray
+ms.reviewer: matripathy, amitkh, atsingh
 ms.date: 05/07/2026
 ms.service: sql
 ms.subservice: linux

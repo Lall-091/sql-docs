@@ -1,8 +1,8 @@
 ---
 title: "The xs:QName Type"
 description: "Learn how to use the xs:QName type as an XML Schema restriction element or as the member type of a union."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

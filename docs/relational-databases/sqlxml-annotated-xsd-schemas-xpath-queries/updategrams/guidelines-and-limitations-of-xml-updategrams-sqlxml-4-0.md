@@ -1,8 +1,8 @@
 ---
 title: "Guidelines and limitations of Updategrams (SQLXML)"
 description: Learn about the guidelines and limitations of using XML updategrams in SQLXML 4.0.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: xml

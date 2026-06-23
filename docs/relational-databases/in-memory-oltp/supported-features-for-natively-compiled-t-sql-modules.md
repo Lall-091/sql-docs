@@ -1,8 +1,8 @@
 ---
 title: "Features for natively compiled T-SQL modules"
 description: Learn about T-SQL surface area and supported features in the body of natively compiled T-SQL modules, like stored procedures and scalar user-defined functions.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 07/01/2020
 ms.service: sql
 ms.subservice: in-memory-oltp

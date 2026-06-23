@@ -1,8 +1,8 @@
 ---
 title: Guidelines for Using Xml Data Type Methods
 description: "Guidelines for Using xml Data Type Methods"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: mathoma
 ms.date: 10/14/2025
 ms.service: sql

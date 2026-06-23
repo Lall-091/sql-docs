@@ -3,7 +3,7 @@ title: "Lesson 1: Create the Target Database"
 description: "In this lesson, you learn to create the target database and all the Service Broker target objects that do not have dependencies on the initiator database."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: configuration

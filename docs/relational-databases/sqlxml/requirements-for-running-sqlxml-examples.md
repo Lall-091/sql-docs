@@ -1,8 +1,8 @@
 ---
 title: "Requirements for Running SQLXML Examples"
 description: Learn the requirements for creating working samples using the examples in the SQLXML 4.0 Programming Concepts section.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: xml

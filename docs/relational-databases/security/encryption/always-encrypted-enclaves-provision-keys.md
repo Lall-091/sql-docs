@@ -4,7 +4,7 @@ description: "Provision enclave-enabled keys"
 author: PieterVanhove
 ms.author: pivanho
 ms.reviewer: vanto
-ms.date: 03/28/2025
+ms.date: 6/17/2026
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -18,13 +18,13 @@ ms.custom:
 
 This article describes how to provision enclave-enabled keys that support computations inside server-side secure enclaves used for [Always Encrypted with secure enclaves](always-encrypted-enclaves.md). 
 
-The general guidelines and processes for [managing Always Encrypted keys](overview-of-key-management-for-always-encrypted.md) apply when you provision enclave-enabled keys. This article address details specific to Always Encrypted with secure enclaves.
+The general guidelines and processes for [managing Always Encrypted keys](overview-of-key-management-for-always-encrypted.md) apply when you provision enclave-enabled keys. This article addresses details specific to Always Encrypted with secure enclaves.
 
 To provision an enclave-enabled column master key using SQL Server Management Studio or PowerShell, make sure the new key supports enclave computations. This will cause the tool (SSMS or PowerShell) to generate the `CREATE COLUMN MASTER KEY` statement that sets the `ENCLAVE_COMPUTATIONS` in the columns master key metadata in the database. For more information, see [CREATE COLUMN MASTER KEY (Transact-SQL)](../../../t-sql/statements/create-column-master-key-transact-sql.md).
 
 The tool will also digitally sign the column master properties with the column master key, and it will store the signature in the database metadata. The signature prevents malicious tampering with the `ENCLAVE_COMPUTATIONS` setting. The SQL client drivers verify the signatures before allowing the enclave use. This provides security administrators with control over which column data can be computed inside the enclave.
 
-The `ENCLAVE_COMPUTATIONS` is immutable, meaning, you can't change it once you define the column master key in the metadata. To enable enclave computations using a column encryption key, that a given column master key encrypts, you need to rotate the column master key and replace it with an enclave-enabled column master key. See [Rotate enclave-enabled keys](always-encrypted-enclaves-rotate-keys.md).
+After you define the column master key in the metadata, the `ENCLAVE_COMPUTATIONS` property is immutable and you can't change it. To enable enclave computations by using a column encryption key that an existing column master key encrypts, rotate the column master key and replace it with an enclave-enabled column master key. See [Rotate enclave-enabled keys](always-encrypted-enclaves-rotate-keys.md).
 
 > [!NOTE]
 > Currently, both SSMS and PowerShell support enclave-enabled column master keys stored in Azure Key Vault or Windows Certificate Store. Hardware security modules (using CNG or CAPI) aren't supported.
@@ -67,6 +67,9 @@ To provision an enclave-enabled column encryption key, follow the steps in [Prov
 
 To provision enclave-enabled keys using PowerShell, you need the SqlServer PowerShell module version 22 or higher.
 
+> [!NOTE]
+> Microsoft recommends using PowerShell 7 or later when running Always Encrypted PowerShell scripts. PowerShell 7 provides improved cross-platform support, better performance, and the latest compatibility with the SqlServer module (v22+), which is required for many Always Encrypted scenarios.
+
 In general, PowerShell key provisioning workflows (with and without role separation) for Always Encrypted, described in [Provision Always Encrypted Keys using PowerShell](configure-always-encrypted-keys-using-powershell.md) also apply to enclave-enabled keys. This section describes details specific to enclave-enabled keys.
 
 The SqlServer PowerShell module extends the  [**New-SqlCertificateStoreColumnMasterKeySettings**](/powershell/module/sqlserver/new-sqlcertificatestorecolumnmasterkeysettings) and [**New-SqlAzureKeyVaultColumnMasterKeySettings**](/powershell/module/sqlserver/new-sqlazurekeyvaultcolumnmasterkeysettings) cmdlets with the `-AllowEnclaveComputations` parameter to allow you to specify a column master key that is enclave-enabled during the provisioning process. Either cmdlet creates a local object containing properties of a column master key (stored in Azure Key Vault or in the Windows Certificate Store). If specified, the `-AllowEnclaveComputations` property marks the key as enclave-enabled in the local object. It also causes the cmdlet to access the referenced column master key (in Azure Key Vault or in Windows Certificate Store) to digitally sign the properties of the key. Once you create a settings object for a new enclave-enabled column master key, you can use it in a subsequent invocation of the [**New-SqlColumnMasterKey**](/powershell/module/sqlserver/new-sqlcolumnmasterkey) cmdlet to create a metadata object describing the new key in the database.
@@ -81,30 +84,73 @@ Provisioning enclave-enabled column encryption keys is no different from provisi
 The below end-to-end example shows how to provision enclave-enabled keys, storing the column master key stored in Windows Certificate Store. The script is based on the example in [Windows Certificate Store without Role Separation (Example)](configure-always-encrypted-keys-using-powershell.md#windows-certificate-store-without-role-separation-example). Important to note is the use of the `-AllowEnclaveComputations` parameter in the [**New-SqlCertificateStoreColumnMasterKeySettings**](/powershell/module/sqlserver/new-sqlcertificatestorecolumnmasterkeysettings) cmdlet, which is the only difference between the workflows in the two examples.
 
 ```powershell
-# Create a column master key in Windows Certificate Store.
-$cert = New-SelfSignedCertificate -Subject "AlwaysEncryptedCert" -CertStoreLocation Cert:CurrentUser\My -KeyExportPolicy Exportable -Type DocumentEncryptionCert -KeyUsage DataEncipherment -KeySpec KeyExchange
+[CmdletBinding()]
+param(
+	[Parameter(Mandatory = $false)]
+	[string]$DatabaseName = '<database name>',
 
-# Import the SqlServer module.
-Import-Module "SqlServer" -MinimumVersion 22.0.50
+	[Parameter(Mandatory = $false)]
+	[string]$ServerName = "<server name>",
 
-# Connect to your database.
-$serverName = "<server name>"
-$databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
-$database = Get-SqlDatabase -ConnectionString $connStr
+	[Parameter(Mandatory = $false)]
+	[string]$CertificateSubject = "AlwaysEncryptedCert",
 
-# Create a SqlColumnMasterKeySettings object for your column master key
-# using the -AllowEnclaveComputations parameter.
+	[Parameter(Mandatory = $false)]
+	[string]$CmkName = "CMK",
+
+	[Parameter(Mandatory = $false)]
+	[string]$CekName = "CEK"
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
+Import-Module SqlServer -MinimumVersion 22.0.50 -ErrorAction Stop
+
+Write-Host "[AE] Locating certificate '$CertificateSubject' in CurrentUser\\My"
+$cert = Get-ChildItem -Path Cert:CurrentUser\My |
+	Where-Object { $_.Subject -eq "CN=$CertificateSubject" } |
+	Sort-Object NotAfter -Descending |
+	Select-Object -First 1
+
+if (-not $cert) {
+	Write-Host "[AE] Certificate not found. Creating self-signed certificate."
+	$cert = New-SelfSignedCertificate `
+		-Subject $CertificateSubject `
+		-CertStoreLocation Cert:CurrentUser\My `
+		-KeyExportPolicy Exportable `
+		-Type DocumentEncryptionCert `
+		-KeyUsage DataEncipherment `
+		-KeySpec KeyExchange
+}
+
+Write-Host "[AE] Connecting to SQL Server '$ServerName' / Database '$DatabaseName'"
+$connStr = "Server=$ServerName;Database=$DatabaseName;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30"
+
+try {
+	$database = Get-SqlDatabase -ConnectionString $connStr -ErrorAction Stop
+}
+catch {
+	Write-Error "Failed to connect to '$ServerName' database '$DatabaseName'. Verify instance name SQL2025, database existence, and local permissions."
+	throw
+}
+
+Write-Host "[AE] Creating CMK settings from certificate thumbprint"
 $cmkSettings = New-SqlCertificateStoreColumnMasterKeySettings -CertificateStoreLocation "CurrentUser" -Thumbprint $cert.Thumbprint -AllowEnclaveComputations
 
-# Create column master key metadata in the database.
-$cmkName = "CMK1"
-New-SqlColumnMasterKey -Name $cmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings
+Write-Host "[AE] Ensuring CMK '$CmkName' exists"
+$existingCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+if (-not $existingCmk) {
+	New-SqlColumnMasterKey -Name $CmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings | Out-Null
+}
 
-# Generate a column encryption key, encrypt it with the column master key and create column encryption key metadata in the database. 
-$cekName = "CEK1"
-New-SqlColumnEncryptionKey -Name $cekName  -InputObject $database -ColumnMasterKey $cmkName
+Write-Host "[AE] Ensuring CEK '$CekName' exists"
+$existingCek = Get-SqlColumnEncryptionKey -InputObject $database | Where-Object { $_.Name -eq $CekName }
+if (-not $existingCek) {
+	New-SqlColumnEncryptionKey -Name $CekName -InputObject $database -ColumnMasterKey $CmkName | Out-Null
+}
+
+Write-Host "Completed successfully"
 ```
 
 ### Example - provision enclave-enabled keys using Azure Key Vault
@@ -115,41 +161,101 @@ The below end-to-end example shows how to provision enclave-enabled keys, storin
 - The below script uses the [**Get-AzAccessToken**](/powershell/module/az.accounts/get-azaccesstoken) cmdlet to obtain an access token for key vaults. This is necessary, because the  **New-SqlAzureKeyVaultColumnMasterKeySettings** needs to have access to the Azure Key Vault to sign the properties of the column master key.
 
 ```powershell
-# Create a column master key in Azure Key Vault.
-Import-Module "SqlServer" -MinimumVersion 22.0.50
-Import-Module Az.Accounts -MinimumVersion 2.2.0
-Connect-AzAccount
-$SubscriptionId = "<Azure SubscriptionId>"
-$resourceGroup = "<resource group name>"
-$azureLocation = "<datacenter location>"
-$akvName = "<key vault name>"
-$akvKeyName = "<key name>"
-$azureCtx = Set-AzConteXt -SubscriptionId $SubscriptionId # Sets the context for the below cmdlets to the specified subscription.
-New-AzResourceGroup -Name $resourceGroup -Location $azureLocation # Creates a new resource group - skip, if your desired group already exists.
-New-AzKeyVault -VaultName $akvName -ResourceGroupName $resourceGroup -Location $azureLocation # Creates a new key vault - skip if your vault already exists.
-Set-AzKeyVaultAccessPolicy -VaultName $akvName -ResourceGroupName $resourceGroup -PermissionsToKeys get, create, delete, list, wrapKey,unwrapKey, sign, verify -UserPrincipalName $azureCtx.Account
-$akvKey = Add-AzKeyVaultKey -VaultName $akvName -Name $akvKeyName -Destination "Software"
+param(
+	[Parameter(Mandatory = $true)] [string]$SubscriptionId,
+	[Parameter(Mandatory = $true)] [string]$ResourceGroupName,
+	[Parameter(Mandatory = $true)] [string]$AzureLocation,
+	[Parameter(Mandatory = $true)] [string]$KeyVaultName,
+	[Parameter(Mandatory = $true)] [string]$KeyName,
+	[Parameter(Mandatory = $true)] [string]$ServerName,
+	[Parameter(Mandatory = $true)] [string]$DatabaseName,
+	[string]$CmkName = "CMK",
+	[string]$CekName = "CEK",
+	[bool]$AssignRbacToCurrentPrincipal = $true
+)
 
-# Connect to your database.
-$serverName = "<server name>"
-$databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
-$database = Get-SqlDatabase -ConnectionString $connStr
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
 
-# Obtain an access token for key vaults.
-$keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl https://vault.azure.net).Token 
+Import-Module Az.Accounts -ErrorAction Stop
+Import-Module Az.Resources -ErrorAction Stop
+Import-Module Az.KeyVault -ErrorAction Stop
+Import-Module SqlServer -ErrorAction Stop
 
-# Create a SqlColumnMasterKeySettings object for your column master key. 
-$cmkSettings = New-SqlAzureKeyVaultColumnMasterKeySettings -KeyURL $akvKey.ID -AllowEnclaveComputations -KeyVaultAccessToken $keyVaultAccessToken
+function Get-CurrentPrincipalObjectId {
+	param([string]$AccountId)
 
-# Create column master key metadata in the database.
-$cmkName = "CMK1"
-New-SqlColumnMasterKey -Name $cmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings
+	$userSignedIn = Get-AzADUser -SignedIn -ErrorAction SilentlyContinue
+	if ($userSignedIn) { return $userSignedIn.Id }
 
-# Generate a column encryption key, encrypt it with the column master key and create column encryption key metadata in the database. 
-$cekName = "CEK1"
-New-SqlColumnEncryptionKey -Name $cekName -InputObject $database -ColumnMasterKey $cmkName -KeyVaultAccessToken $keyVaultAccessToken
+	$user = Get-AzADUser -UserPrincipalName $AccountId -ErrorAction SilentlyContinue
+	if ($user) { return $user.Id }
+
+	$sp = Get-AzADServicePrincipal -DisplayName $AccountId -ErrorAction SilentlyContinue | Select-Object -First 1
+	if ($sp) { return $sp.Id }
+
+	throw "Could not resolve Microsoft Entra object id for account '$AccountId'."
+}
+
+try {
+	Write-Host "[AE] Signing in and selecting subscription"
+	Connect-AzAccount | Out-Null
+	$ctx = Set-AzContext -SubscriptionId $SubscriptionId
+
+	Write-Host "[AE] Ensuring resource group exists"
+	$resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
+	if (-not $resourceGroup) {
+		$resourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $AzureLocation
+	}
+
+	Write-Host "[AE] Ensuring key vault exists (RBAC mode)"
+	$vault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue
+	if (-not $vault) {
+		$vault = New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $AzureLocation -EnableRbacAuthorization
+	}
+
+	if (-not $vault.EnableRbacAuthorization) {
+		throw "Key Vault '$KeyVaultName' is not using RBAC authorization. Enable RBAC authorization on the vault before running this script."
+	}
+
+	if ($AssignRbacToCurrentPrincipal) {
+		Write-Host "[AE] Ensuring RBAC role assignment"
+		$principalSignInName = $ctx.Account.Id
+		$roleName = "Key Vault Crypto Officer"
+		$existingRole = Get-AzRoleAssignment -SignInName $principalSignInName -Scope $vault.ResourceId -RoleDefinitionName $roleName -ErrorAction SilentlyContinue
+		if (-not $existingRole) {
+			New-AzRoleAssignment -SignInName $principalSignInName -Scope $vault.ResourceId -RoleDefinitionName $roleName | Out-Null
+		}
+	}
+
+	Write-Host "[AE] Ensuring column master key material exists in Key Vault"
+	$akvKey = Get-AzKeyVaultKey -VaultName $KeyVaultName -Name $KeyName -ErrorAction SilentlyContinue
+	if (-not $akvKey) {
+		$akvKey = Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $KeyName -Destination "Software"
+	}
+
+	Write-Host "[AE] Connecting to Azure SQL and creating metadata"
+	$keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl "https://vault.azure.net").Token
+	$connStr = "Server=tcp:$ServerName.database.windows.net,1433;Database=$DatabaseName;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=Active Directory Interactive"
+	$database = Get-SqlDatabase -ConnectionString $connStr -Encrypt Mandatory
+	$cmkSettings = New-SqlAzureKeyVaultColumnMasterKeySettings -KeyUrl $akvKey.Key.Kid -AllowEnclaveComputations
+
+	$existingCmk = Get-SqlColumnMasterKey -InputObject $database | Where-Object { $_.Name -eq $CmkName }
+	if (-not $existingCmk) {
+		New-SqlColumnMasterKey -Name $CmkName -InputObject $database -ColumnMasterKeySettings $cmkSettings | Out-Null
+	}
+
+	$existingCek = Get-SqlColumnEncryptionKey -InputObject $database | Where-Object { $_.Name -eq $CekName }
+	if (-not $existingCek) {
+		New-SqlColumnEncryptionKey -Name $CekName -InputObject $database -ColumnMasterKey $CmkName -KeyVaultAccessToken $keyVaultAccessToken | Out-Null
+	}
+
+	Write-Host "Completed successfully"
+}
+catch {
+	Write-Error "Script failed: $($_.Exception.Message)"
+	throw
+}
 ```
 
 ## Related content

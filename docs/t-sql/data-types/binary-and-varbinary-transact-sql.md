@@ -1,8 +1,8 @@
 ---
 title: "Binary and Varbinary (Transact-SQL)"
 description: "Binary data types of either fixed length or variable length."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest, jovanpop
 ms.date: 11/20/2025
 ms.service: sql

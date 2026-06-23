@@ -1,8 +1,8 @@
 ---
 title: "TYPE_ID (Transact-SQL)"
 description: "TYPE_ID (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql

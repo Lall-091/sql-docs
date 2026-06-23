@@ -1,8 +1,8 @@
 ---
 title: "Use SQL Server Objects"
 description: Learn about the SQL Server objects and counters that System Monitor uses to monitor activity in computers running an instance of SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: performance

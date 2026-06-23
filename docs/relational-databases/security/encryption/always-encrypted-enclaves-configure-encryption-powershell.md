@@ -4,7 +4,7 @@ description: "Configure column encryption using Always Encrypted with secure enc
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto
-ms.date: "04/05/2023"
+ms.date: "06/17/2026"
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -26,6 +26,9 @@ To set the target encryption configuration, you need to make sure:
 - you can access the column master key for each column you want to encrypt, re-encrypt, or decrypt, from the computer running the PowerShell cmdlets.
 - you use SqlServer PowerShell module version 22.0.50 or later. For in-place online encryption use SqlServer PowerShell module version 22.3.0 or later.
 
+> [!NOTE]
+> Microsoft recommends using PowerShell 7 or later when running Always Encrypted PowerShell scripts. PowerShell 7 provides improved cross-platform support, better performance, and the latest compatibility with the SqlServer module (v22+), which is required for many Always Encrypted scenarios.
+
 ## Security Considerations
 
 The **Set-SqlColumnEncryption** cmdlet, used to configure encryption for database columns, handles both Always Encrypted keys and the data stored in database columns. Therefore, it's important you run the cmdlet on a secure computer. If your database is in SQL Server, execute the cmdlet from a different computer than the computer hosting your SQL Server instance. Because the primary goal of Always Encrypted is to ensure encrypted sensitive data is safe even if the database system gets compromised, executing a PowerShell script that processes keys and/or sensitive data on the SQL Server computer can reduce or defeat the benefits of the feature.
@@ -37,46 +40,62 @@ Step 2. Connect to your server and database | [Connecting to a database](../../.
 Step 3. Authenticate to Azure, if your column master key (protecting the column encryption key, to be rotated), is stored in Azure Key Vault | [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) | Yes | No
 Step 4. Obtain an access token for Azure Key Vaults. | [Get-AzAccessToken](/powershell/module/az.accounts/get-azaccesstoken) | No | No
 Step 5. Construct an array of SqlColumnEncryptionSettings objects - one for each database column, you want to encrypt, re-encrypt, or decrypt. SqlColumnMasterKeySettings is an object that exists in memory (in PowerShell). It specifies the target encryption scheme for a column. | [New-SqlColumnEncryptionSettings](/powershell/sqlserver/sqlserver/vlatest/new-sqlcolumnencryptionsettings) | No | No
-Step 5. Set the desired encryption configuration, specified in the array of SqlColumnMasterKeySettings objects, you created in the previous step. A column will be encrypted, re-encrypted, or decrypted, depending on the specified target settings and the current encryption configuration of the column.| [Set-SqlColumnEncryption](/powershell/sqlserver/sqlserver/vlatest/set-sqlcolumnencryption)<br><br>**Note:** This step may take a long time. Your applications won't be able to access the tables through the entire operation or a portion of it, depending on the approach (online vs. offline), you select. | Yes | Yes
+| Step 6. Set the desired encryption configuration, specified in the array of SqlColumnMasterKeySettings objects, you created in the previous step. A column is encrypted, re-encrypted, or decrypted, depending on the specified target settings and the current encryption configuration of the column.| [Set-SqlColumnEncryption](/powershell/sqlserver/sqlserver/vlatest/set-sqlcolumnencryption)<br><br>**Note:** This step might take a long time. Your applications can't access the tables through the entire operation or a portion of it, depending on the approach (online vs. offline), you select. | Yes | Yes |
 
-## Encrypt Columns using VBS enclaves
+## Encrypt columns by using VBS enclaves
 
 The below example demonstrates setting the target encryption configuration for a couple of columns. If either column isn't already encrypted, it will be encrypted. If any column is already encrypted using a different key and/or a different encryption type, it will be decrypted and then re-encrypted with the specified target key/type. VBS enclaves currently don't support attestation. The EnclaveAttestationProtocol parameter should be set to *None* and the EnclaveAttestationUrl isn't required.
 
 
 ```PowerShell
 # Import modules
-Import-Module "SqlServer" -MinimumVersion 22.0.50
-Import-Module Az.Accounts -MinimumVersion 2.2.0
+Import-Module SqlServer
+Import-Module Az.Accounts
 
-#Connect to Azure
+# Edit these values.
+$serverName = '<your-server>.database.windows.net'
+$databaseName = 'ContosoHR'
+$cekName = 'CEK'
+$subscriptionId = '<your-subscription-id>'
+
+# Columns to encrypt with the CEK.
+$columnsToEncrypt = @(
+    'dbo.Employees.SSN',
+    'dbo.Employees.Salary'
+)
+
+# Sign in with Microsoft Entra and select subscription.
 Connect-AzAccount
+Set-AzContext -SubscriptionId $subscriptionId
 
-# Obtain an access token for key vaults.
-$keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl https://vault.azure.net).Token  
+# Token needed when CEK uses Azure Key Vault CMK.
+$keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl 'https://vault.azure.net').Token
 
-# Connect to your database.
-$serverName = "<servername>.database.windows.net"
-$databaseName = "<DatabaseName>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + ";  Integrated Security = True"
+# Connect to Azure SQL Database using Entra auth.
+$connStr = "Server=tcp:$serverName,1433;Database=$databaseName;Encrypt=True;TrustServerCertificate=False;Authentication=Active Directory Interactive"
 $database = Get-SqlDatabase -ConnectionString $connStr
 
-# Encrypt the selected columns (or re-encrypt, if they are already encrypted using keys/encrypt types, different than the specified keys/types.
-$ces = @() 
-$ces += New-SqlColumnEncryptionSettings -ColumnName "dbo.Employees.SSN" -EncryptionType "Randomized" -EncryptionKey "CEK" 
-$ces += New-SqlColumnEncryptionSettings -ColumnName "dbo.Employees.Salary" -EncryptionType "Randomized" -EncryptionKey "CEK" 
-Set-SqlColumnEncryption -InputObject $database -ColumnEncryptionSettings $ces -LogFileDirectory . -EnclaveAttestationProtocol "None" -KeyVaultAccessToken $keyVaultAccessToken
+# Build encryption settings for target columns.
+$columnEncryptionSettings = @(
+    $columnsToEncrypt | ForEach-Object {
+        New-SqlColumnEncryptionSettings -ColumnName $_ -EncryptionType Randomized -EncryptionKey $cekName
+    }
+)
+
+# Encrypt or re-encrypt the columns.
+Set-SqlColumnEncryption -InputObject $database -ColumnEncryptionSettings $columnEncryptionSettings -EnclaveAttestationProtocol None -LogFileDirectory . -KeyVaultAccessToken $keyVaultAccessToken
+
+Write-Host 'Done.'
 ```
 
-### Decrypt Columns - Example
+### Decrypt columns - Example
 
 The following example shows how to decrypt all columns that are currently encrypted in a database.
 
 
 ```PowerShell
 # Import modules
-Import-Module "SqlServer" -MinimumVersion 22.0.50
+Import-Module SqlServer -MinimumVersion 22.0.50
 Import-Module Az.Accounts -MinimumVersion 2.2.0
 
 #Connect to Azure
@@ -88,8 +107,8 @@ $keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl https://vault.azure.net).
 # Connect to your database.
 $serverName = "<server name>"
 $databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True"
+# Connect to Azure SQL Database using Entra auth.
+$connStr = "Server=tcp:$serverName,1433;Database=$databaseName;Encrypt=True;TrustServerCertificate=False;Authentication=Active Directory Interactive"
 $database = Get-SqlDatabase -ConnectionString $connStr
 
 # Find all encrypted columns, and create a SqlColumnEncryptionSetting object for each column.
@@ -109,36 +128,51 @@ for($i=0; $i -lt $tables.Count; $i++){
 Set-SqlColumnEncryption -ColumnEncryptionSettings $ces -InputObject $database -LogFileDirectory . -EnclaveAttestationProtocol "None" -KeyVaultAccessToken $keyVaultAccessToken
 ```
 
-## Encrypt Columns using SGX enclaves
+## Encrypt columns by using SGX enclaves
 
 The below example demonstrates setting the target encryption configuration for a couple of columns. If either column isn't already encrypted, it will be encrypted. If any column is already encrypted using a different key and/or a different encryption type, it will be decrypted and then re-encrypted with the specified target key/type. To trigger in-place cryptographic operations using an enclave, the EnclaveAttestationProtocol and the EnclaveAttestationUrl parameters are required.
 
 ```PowerShell
 # Import modules
-Import-Module "SqlServer" -MinimumVersion 22.0.50
-Import-Module Az.Accounts -MinimumVersion 2.2.0
+Import-Module SqlServer
+Import-Module Az.Accounts
 
-#Connect to Azure
+# Edit these values.
+$serverName = '<your-server>.database.windows.net'
+$databaseName = 'ContosoHR'
+$cekName = 'CEK'
+$subscriptionId = '<your-subscription-id>'
+
+# Columns to encrypt with the CEK.
+$columnsToEncrypt = @(
+    'dbo.Employees.SSN',
+    'dbo.Employees.Salary'
+)
+
+# Sign in with Microsoft Entra and select subscription.
 Connect-AzAccount
+Set-AzContext -SubscriptionId $subscriptionId
 
-# Obtain an access token for key vaults.
-$keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl https://vault.azure.net).Token  
+# Token needed when CEK uses Azure Key Vault CMK.
+$keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl 'https://vault.azure.net').Token
 
-# Connect to your database.
-$serverName = "<servername>.database.windows.net"
-$databaseName = "<DatabaseName>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + ";  Integrated Security = True"
+# Connect to Azure SQL Database using Entra auth.
+$connStr = "Server=tcp:$serverName,1433;Database=$databaseName;Encrypt=True;TrustServerCertificate=False;Authentication=Active Directory Interactive"
 $database = Get-SqlDatabase -ConnectionString $connStr
 
-# Encrypt the selected columns (or re-encrypt, if they are already encrypted using keys/encrypt types, different than the specified keys/types.
-$ces = @() 
-$ces += New-SqlColumnEncryptionSettings -ColumnName "dbo.Employees.SSN" -EncryptionType "Randomized" -EncryptionKey "CEK" 
-$ces += New-SqlColumnEncryptionSettings -ColumnName "dbo.Employees.Salary" -EncryptionType "Randomized" -EncryptionKey "CEK" 
-Set-SqlColumnEncryption -InputObject $database -ColumnEncryptionSettings $ces -LogFileDirectory . -EnclaveAttestationProtocol "AAS" -EnclaveAttestationURL "https://<attestationURL>"   -KeyVaultAccessToken $keyVaultAccessToken
+# Build encryption settings for target columns.
+$columnEncryptionSettings = @(
+    $columnsToEncrypt | ForEach-Object {
+        New-SqlColumnEncryptionSettings -ColumnName $_ -EncryptionType Randomized -EncryptionKey $cekName
+    }
+)
+# Encrypt or re-encrypt the columns.
+Set-SqlColumnEncryption -InputObject $database -ColumnEncryptionSettings $columnEncryptionSettings -EnclaveAttestationProtocol "AAS" -EnclaveAttestationURL "https://<attestationURL>"   -KeyVaultAccessToken $keyVaultAccessToken -LogFileDirectory .
+
+Write-Host 'Done.' 
 ```
 
-### Decrypt Columns - Example
+### Decrypt columns - Example
 
 The following example shows how to decrypt all columns that are currently encrypted in a database.
 
@@ -157,8 +191,8 @@ $keyVaultAccessToken = (Get-AzAccessToken -ResourceUrl https://vault.azure.net).
 # Connect to your database.
 $serverName = "<server name>"
 $databaseName = "<database name>"
-# Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True"
+# Connect to Azure SQL Database using Entra auth.
+$connStr = "Server=tcp:$serverName,1433;Database=$databaseName;Encrypt=True;TrustServerCertificate=False;Authentication=Active Directory Interactive"
 $database = Get-SqlDatabase -ConnectionString $connStr
 
 # Find all encrypted columns, and create a SqlColumnEncryptionSetting object for each column.

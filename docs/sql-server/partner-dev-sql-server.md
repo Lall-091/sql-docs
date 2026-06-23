@@ -1,8 +1,8 @@
 ---
 title: Development SQL Server Partners
 description: Lists of third-party partners with development solutions for Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/08/2025
 ms.service: sql

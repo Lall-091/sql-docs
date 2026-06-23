@@ -1,8 +1,8 @@
 ---
 title: "Create Filtered Indexes"
 description: A filtered index is an optimized disk-based rowstore nonclustered index especially suited to cover queries that select from a well-defined subset of data.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 06/27/2025
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: "Index Disk Space Example"
 description: Index Disk Space Example
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/22/2025
 ms.service: sql

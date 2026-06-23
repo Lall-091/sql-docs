@@ -3,7 +3,6 @@ title: "Configure & manage stopwords & stoplists for Full-Text Search"
 description: "Configure and Manage Stopwords and Stoplists for Full-Text Search"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "02/02/2017"
 ms.service: sql
 ms.subservice: search

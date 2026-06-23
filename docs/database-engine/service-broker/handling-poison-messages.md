@@ -3,7 +3,7 @@ title: Handle Poison Messages
 description: "This topic describes one way that an application that uses Service Broker can detect a poison message and remove the message from the queue without relying on automatic poison message detection."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

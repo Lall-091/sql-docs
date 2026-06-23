@@ -1,8 +1,8 @@
 ---
 title: "Register Mirrored Database"
 description: Learn how to register mirrored databases on a server instance by adding them to the Database Mirroring Monitor, which caches information about the databases.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "03/07/2017"
 ms.service: sql
 ms.subservice: database-mirroring

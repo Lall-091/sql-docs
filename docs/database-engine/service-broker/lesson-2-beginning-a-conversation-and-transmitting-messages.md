@@ -3,7 +3,7 @@ title: "Lesson 2: Begin a Conversation and Transmit Messages"
 description: "In this lesson, you learn to start a conversation, complete a simple request-reply message cycle, and then end the conversation."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: configuration

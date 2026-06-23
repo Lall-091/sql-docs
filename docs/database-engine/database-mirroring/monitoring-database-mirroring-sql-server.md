@@ -1,8 +1,8 @@
 ---
 title: "Monitoring Database Mirroring (SQL Server)"
 description: Learn about the Database Mirroring Monitor, system stored procedures, and how database mirroring monitoring works, including the Database Mirroring Monitor Job.
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: database-mirroring

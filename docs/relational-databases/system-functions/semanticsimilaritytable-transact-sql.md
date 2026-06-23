@@ -1,8 +1,8 @@
 ---
 title: "semanticsimilaritytable (Transact-SQL)"
 description: Returns a table of zero, one, or more rows for documents whose content is semantically similar to a specified document.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 07/24/2025
 ms.service: sql

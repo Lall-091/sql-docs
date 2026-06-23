@@ -1,8 +1,8 @@
 ---
 title: "Create, alter, and drop secondary selective XML index"
 description: Learn how to create a new secondary selective XML index, or alter or drop an existing secondary selective XML index.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

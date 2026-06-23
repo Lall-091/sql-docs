@@ -3,7 +3,7 @@ title: Create a Remote Service Binding
 description: "To exchange messages with Service Broker, you must create the appropriate user security context."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: sql
 ms.subservice: configuration

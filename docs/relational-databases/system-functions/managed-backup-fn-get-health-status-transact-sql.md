@@ -1,8 +1,8 @@
 ---
 title: "managed_backup.fn_get_health_status (Transact-SQL)"
 description: "managed_backup.fn_get_health_status (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: system-objects

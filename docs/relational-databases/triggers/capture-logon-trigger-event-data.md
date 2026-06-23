@@ -1,8 +1,8 @@
 ---
 title: "Capture Logon Trigger Event Data"
 description: Learn how to capture XML data about LOGON events for use inside logon triggers.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 08/27/2024
 ms.service: sql

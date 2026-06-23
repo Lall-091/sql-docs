@@ -1,8 +1,8 @@
 ---
 title: "Disk Space Requirements for Index DDL Operations"
 description: Disk Space Requirements for Index DDL Operations
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/22/2025
 ms.service: sql

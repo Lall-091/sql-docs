@@ -1,8 +1,8 @@
 ---
 title: "Specify Metaproperties in OPENXML"
 description: Learn how to specify metaproperty attributes in an OPENXML statement to extract information from XML nodes.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

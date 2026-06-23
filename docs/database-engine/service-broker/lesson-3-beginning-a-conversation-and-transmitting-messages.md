@@ -3,7 +3,7 @@ title: "Lesson 3: Begin a Conversation and Transmitting Messages"
 description: "In this lesson, you learn to complete a basic request-reply message cycle in a system configured with an internal activation stored procedure."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

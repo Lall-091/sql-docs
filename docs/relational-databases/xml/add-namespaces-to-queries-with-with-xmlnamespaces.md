@@ -1,8 +1,8 @@
 ---
 title: "Add Namespaces to Queries with WITH XMLNAMESPACES"
 description: Learn how to add namespaces to queries using the WITH XMLNAMESPACES clause.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

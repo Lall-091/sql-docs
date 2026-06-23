@@ -1,8 +1,8 @@
 ---
 title: "Modify an Index"
 description: Modify an Index
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "02/17/2017"
 ms.service: sql
 ms.subservice: table-view-index

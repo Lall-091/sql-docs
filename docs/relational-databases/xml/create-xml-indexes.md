@@ -1,8 +1,8 @@
 ---
 title: "Create XML Indexes"
 description: Learn how to create primary and secondary XML indexes in SQL Server.
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql

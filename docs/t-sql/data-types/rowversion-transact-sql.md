@@ -1,8 +1,8 @@
 ---
 title: "rowversion (Transact-SQL)"
 description: "rowversion (Transact-SQL)"
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: "07/22/2017"
 ms.service: sql
 ms.subservice: t-sql

@@ -1,6 +1,6 @@
 ---
-author: MikeRayMSFT
-ms.author: mikeray
+author: MashaMSFT
+ms.author: mathoma
 ms.date: 11/24/2023
 ms.service: sql
 ms.subservice: sql-server-azure-arc

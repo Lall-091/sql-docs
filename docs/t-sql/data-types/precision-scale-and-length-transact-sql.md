@@ -1,8 +1,8 @@
 ---
 title: "Precision, scale, and length (Transact-SQL)"
 description: "Precision is the number of digits in a number. Scale is the number of digits to the right of the decimal point in a number."
-author: MikeRayMSFT
-ms.author: mikeray
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

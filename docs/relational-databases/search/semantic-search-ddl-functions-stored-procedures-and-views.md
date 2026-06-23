@@ -3,7 +3,6 @@ title: "Semantic Search DDL, functions, stored procedures, & views"
 description: "Semantic Search DDL, Functions, Stored Procedures, and Views"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "03/20/2017"
 ms.service: sql
 ms.subservice: search

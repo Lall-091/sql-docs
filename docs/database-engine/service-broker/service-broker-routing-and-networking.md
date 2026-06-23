@@ -3,7 +3,7 @@ title: Service Broker Routing and Networking
 description: "Service Broker communications are designed around reliable, asynchronous message delivery."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray, maghan
+ms.reviewer: maghan
 ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration

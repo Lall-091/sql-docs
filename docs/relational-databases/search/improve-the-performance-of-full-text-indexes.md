@@ -3,7 +3,6 @@ title: "Improve the Performance of Full-Text Indexes"
 description: "Improve the Performance of Full-Text Indexes"
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: search
