@@ -107,21 +107,28 @@ landingContent:
             url: linux/high-availability-listener-tutorial.md
 
   # Card
-  - title: Learn Azure SQL
+  - title: Learn Azure SQL Server on Virtual Machines
     linkLists:
       - linkListType: learn
         links:
-        - text: Azure SQL for beginners
-          url: /shows/azure-sql-for-beginners/
-        - text: Azure SQL fundamentals
-          url: /training/paths/azure-sql-fundamentals/
-        - text: Azure SQL hands-on labs
-          url: https://aka.ms/asqlworkshop
-        - text: Azure SQL bootcamp
-          url: /users/marisabrasile/collections/8oq1i8p0z2qygw
+        - text: Azure SQL bootcamp 
+          url: /collections/8oq1i8p0z2qygw
+        - text: Azure SQL Server on Virtual Machines Learning Paths
+          url: /training/browse/?products=azure-sqlserver-vm&resource_type=learning%20path
+        - text: DP-800 - SQL AI Developer Associate
+          url: /credentials/certifications/developing-ai-enabled-database-solutions/
+        - text: DP-300 - Azure Database Administrator Associate
+          url: /credentials/certifications/azure-database-administrator-associate/
         - text: Educational SQL resources
           url: /sql/sql-server/educational-sql-resources
-
+      - linkListType: video
+        links:
+          - text: "@AzureSQL on YouTube"
+            url: https://aka.ms/azuresqlyt
+          - text: Azure SQL for beginners 
+            url: /shows/Azure-SQL-for-Beginners/
+          - text: Azure SQL Database essentials
+            url: /shows/azure-sql-database-essentials/
   # Card
   - title: Reference
     linkLists:
