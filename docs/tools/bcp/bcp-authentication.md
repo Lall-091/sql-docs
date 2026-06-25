@@ -4,7 +4,7 @@ description: Use Microsoft Entra ID to authenticate the bulk copy program (bcp) 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: davidengel
-ms.date: 04/19/2026
+ms.date: 06/25/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: how-to
@@ -18,11 +18,11 @@ helpviewer_keywords:
   - "bcp utility [SQL Server], Microsoft Entra ID"
   - "Microsoft Entra ID, bcp"
   - "managed identity, bcp"
-monikerRange: ">=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
+monikerRange: ">=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb || =fabric"
 ---
 # Authenticate with Microsoft Entra ID in bcp
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 The [bulk copy program utility (bcp)](bcp-utility.md) supports several Microsoft Entra ID authentication models when you connect to Azure SQL Database, Azure SQL Managed Instance, [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], Azure Synapse Analytics, or [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions.
 
@@ -37,6 +37,9 @@ Not all authentication modes are available on every platform:
 - Microsoft Entra integrated authentication on Linux and macOS requires [Microsoft ODBC Driver 18 for SQL Server](../../connect/odbc/download-odbc-driver-for-sql-server.md) (driver 17.6.1 or later if you can't move to driver 18) and a [properly configured Kerberos environment](../../connect/odbc/linux-mac/using-integrated-authentication.md#configure-kerberos).
 
 - Authentication with an access token file (`-P <token_file>`) is supported on Linux and macOS only.
+
+- **bcp** is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
+- **bcp** cannot import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 ## Microsoft Entra username and password
 
