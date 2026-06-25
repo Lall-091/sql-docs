@@ -18,11 +18,11 @@ helpviewer_keywords:
   - "TDE, about"
   - "Transparent data encryption, about"
   - "encryption [SQL Server], Transparent data encryption"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Transparent data encryption (TDE)
 
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
 
 Transparent data encryption (TDE) encrypts [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuresynapse-md](../../../includes/ssazuresynapse-md.md)] data files. This encryption is known as encrypting data at rest.
 
