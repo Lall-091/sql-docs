@@ -28,7 +28,7 @@ The [bulk copy program utility (bcp)](bcp-utility.md) bulk copies data between a
 
 - For detailed information about using **bcp** with Azure Synapse Analytics, see [Load data with bcp](/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp).
 - **bcp** is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
-- **bcp** cannot import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
+- **bcp** can't import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 
 ## Identify installed version

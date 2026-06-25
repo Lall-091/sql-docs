@@ -37,7 +37,7 @@ The bulk copy program utility (**bcp**) bulk copies data between an instance of 
 - The characters `<`, `>`, `|`, `&`, and `^` are special command shell characters, and they must be preceded by the escape character (`^`), or enclosed in quotation marks when used in a string (for example, `"StringContaining&Symbol"`). If you use quotation marks to enclose a string that contains one of the special characters, the quotation marks are set as part of the environment variable value. For more information, see [Using additional special characters](/windows-server/administration/windows-commands/set_1#remarks).
 
 - **bcp** is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
-- **bcp** cannot import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
+- **bcp** can't import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 ## Native data file support
 

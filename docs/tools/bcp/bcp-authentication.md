@@ -39,7 +39,7 @@ Not all authentication modes are available on every platform:
 - Authentication with an access token file (`-P <token_file>`) is supported on Linux and macOS only.
 
 - **bcp** is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
-- **bcp** cannot import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
+- **bcp** can't import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 ## Microsoft Entra username and password
 

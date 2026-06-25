@@ -559,7 +559,7 @@ Reports the **bcp** utility version number and copyright.
 - The **bcp** utility displays only the first 512 bytes of an error message.
 - The **bcp** utility supports native data files that are compatible with all supported versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 - **bcp** is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
-- **bcp** cannot import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
+- **bcp** can't import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 ## Permissions
 
