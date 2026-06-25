@@ -4,7 +4,7 @@ description: Learn how to use the bulk copy program (bcp) to bulk copy data betw
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: davidengel
-ms.date: 04/19/2026
+ms.date: 06/25/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: how-to
@@ -18,11 +18,11 @@ helpviewer_keywords:
   - "exporting data, bcp utility"
   - "importing data, bcp utility"
   - "copying data [SQL Server], bcp utility"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb ||=fabric"
 ---
 # How to use the bcp utility
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 The bulk copy program utility (**bcp**) bulk copies data between an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and a data file in a user-specified format.
 
@@ -35,6 +35,9 @@ The bulk copy program utility (**bcp**) bulk copies data between an instance of 
 - For information about when row-insert operations that are performed by bulk import are logged in the transaction log, see [Prerequisites for minimal logging in bulk import](../../relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import.md).
 
 - The characters `<`, `>`, `|`, `&`, and `^` are special command shell characters, and they must be preceded by the escape character (`^`), or enclosed in quotation marks when used in a string (for example, `"StringContaining&Symbol"`). If you use quotation marks to enclose a string that contains one of the special characters, the quotation marks are set as part of the environment variable value. For more information, see [Using additional special characters](/windows-server/administration/windows-commands/set_1#remarks).
+
+- **bcp** is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
+- **bcp** can't import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 ## Native data file support
 

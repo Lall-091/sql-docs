@@ -4,7 +4,7 @@ description: The bulk copy program (bcp) utility bulk copies data between an ins
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: davidengel
-ms.date: 04/19/2026
+ms.date: 06/25/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: article
@@ -29,11 +29,11 @@ helpviewer_keywords:
   - "importing data, bcp utility"
   - "file importing [SQL Server]"
   - "column exporting [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb || =fabric"
 ---
 # bcp utility
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 The bulk copy program utility (**bcp**) bulk copies data between an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and a data file in a user-specified format.
 
@@ -556,9 +556,10 @@ Reports the **bcp** utility version number and copyright.
 
 ## Remarks
 
-- The **bcp** utility supports native data files that are compatible with all supported versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
-
 - The **bcp** utility displays only the first 512 bytes of an error message.
+- The **bcp** utility supports native data files that are compatible with all supported versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+- **bcp** is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
+- **bcp** can't import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 ## Permissions
 
