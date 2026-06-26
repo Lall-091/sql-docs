@@ -1,9 +1,9 @@
 ---
-title: "Upgrade Analysis Services"
-description: "Upgrade Analysis Services"
-author: kfollis
-ms.author: "kfollis"
-ms.reviewer: randolphwest
+title: Upgrade Analysis Services
+description: Upgrade Analysis Services
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: maghan
 ms.date: 06/03/2025
 ms.service: sql
 ms.topic: upgrade-and-migration-article

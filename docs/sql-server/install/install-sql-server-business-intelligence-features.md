@@ -1,13 +1,15 @@
 ---
-title: "Install Business Intelligence Features"
+title: Install Business Intelligence Features
 description: This article provides links to information to install SQL Server features that are part of the Microsoft Business Intelligence platform.
-author: kfollis
-ms.author: kfollis
-ms.date: "12/13/2019"
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: maghan
+ms.date: 12/13/2019
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
-ms.custom: intro-installation
+ms.custom:
+  - intro-installation
 ---
 
 # Install SQL Server Business Intelligence Features
@@ -47,5 +49,4 @@ ms.custom: intro-installation
  [What's New in Integration Services](../../integration-services/what-s-new-in-integration-services-in-sql-server-2016.md)   
  [What's New in Master Data Services &#40;MDS&#41;](../../master-data-services/what-s-new-in-master-data-services-mds.md)   
  [Install SQL Server](../../database-engine/install-windows/install-sql-server.md)   
- [Upgrade to SQL Server](../../database-engine/install-windows/upgrade-sql-server.md)  
-  
+ [Upgrade to SQL Server](../../database-engine/install-windows/upgrade-sql-server.md)

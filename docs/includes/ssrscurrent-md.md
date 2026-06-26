@@ -1,6 +1,6 @@
 ---
-author: kfollis
-ms.author: kfollis
+author: WilliamDAssafMSFT
+ms.author: wiassaf
 ms.date: 01/29/2024
 ms.service: reporting-services
 ms.topic: include
