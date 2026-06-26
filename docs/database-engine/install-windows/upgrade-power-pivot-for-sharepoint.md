@@ -1,9 +1,9 @@
 ---
-title: "Upgrade Power Pivot for SharePoint"
-description: "Upgrade Power Pivot for SharePoint"
-author: kfollis
-ms.author: "kfollis"
-ms.reviewer: maghan, randolphwest
+title: Upgrade Power Pivot for SharePoint
+description: Upgrade Power Pivot for SharePoint
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: maghan
 ms.date: 06/03/2025
 ms.service: sql
 ms.topic: upgrade-and-migration-article

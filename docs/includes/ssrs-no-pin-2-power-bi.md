@@ -1,7 +1,7 @@
 ---
 description: Include file
-author: kfollis
-ms.author: kfollis
+author: WilliamDAssafMSFT
+ms.author: wiassaf
 ms.reviewer: randolphwest
 ms.date: 01/07/2026
 ms.service: reporting-services
