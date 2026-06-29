@@ -4,7 +4,7 @@ description: Learn how to set database options such as Automatic tuning, encrypt
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, wiassaf
-ms.date: 03/13/2026
+ms.date: 06/29/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -38,6 +38,8 @@ Sets database options in the SQL [!INCLUDE [ssde-md](../../includes/ssde-md.md)]
 
 > [!NOTE]  
 > Setting some options with `ALTER DATABASE` might require exclusive database access. If the `ALTER DATABASE` statement doesn't complete in a timely manner, check to see if other sessions within the database are blocking the ALTER DATABASE session.
+
+[!INCLUDE [alter-db](../../includes/alter-db.md)]
 
 For more information about the syntax conventions, see [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md).
 
