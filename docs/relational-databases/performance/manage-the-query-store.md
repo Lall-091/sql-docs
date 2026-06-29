@@ -3,7 +3,7 @@ title: "Best practices for managing the Query Store"
 description: Learn best practices for managing the SQL Server Query Store, including version specific details, managing custom capture policies, and other performance features.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/08/2024
+ms.date: 06/29/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: best-practice
@@ -43,6 +43,8 @@ This section describes optimal configuration defaults in Azure SQL Database that
 > Query Store cannot be disabled in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] single database and Elastic Pool. Executing `ALTER DATABASE [database] SET QUERY_STORE = OFF` will return the warning `'QUERY_STORE=OFF' is not supported in this version of SQL Server.`
 
 If you want to stay with your custom settings, use [ALTER DATABASE with Query Store options](../../t-sql/statements/alter-database-transact-sql-set-options.md#query-store) to revert configuration to the previous state. Check out [Best Practices with the Query Store](../../relational-databases/performance/best-practice-with-the-query-store.md) in order to learn how to choose optimal configuration parameters.
+
+[!INCLUDE [alter-db](../../includes/alter-db.md)]
 
 ## Set the optimal Query Store Capture Mode
 

@@ -5,7 +5,7 @@ description: Enable several database configuration settings at the individual da
 author: markingmyname
 ms.author: maghan
 ms.reviewer: derekw, bobward, jovanpop, wiassaf, mariyaali, randolphwest
-ms.date: 05/05/2026
+ms.date: 06/29/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -33,6 +33,8 @@ ai-usage: ai-assisted
 [!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricsqldb.md)]
 
 Use this command to enable several database configuration settings at the **individual database** level.
+
+[!INCLUDE [alter-db](../../includes/alter-db.md)]
 
 > [!IMPORTANT]
 > Different `DATABASE SCOPED CONFIGURATION` options are supported in different versions and platforms of the SQL Database Engine. This article describes **all** `DATABASE SCOPED CONFIGURATION` options. Versions where applicable are noted. Make sure that you use the syntax that's available in the version of service that you're using.
