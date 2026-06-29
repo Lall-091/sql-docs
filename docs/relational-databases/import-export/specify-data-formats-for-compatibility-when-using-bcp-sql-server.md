@@ -14,11 +14,11 @@ helpviewer_keywords:
   - "compatibility [SQL Server], data formats"
   - "data formats [SQL Server], compatibility"
   - "bcp utility [SQL Server], compatibility"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric-sqldb"
 ---
 # Specify compatibility data formats when using bcp (SQL Server)
 
-[!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 This article describes the data-format attributes, field-specific prompts, and storing field-by-field data in a non-xml format file of the
 
