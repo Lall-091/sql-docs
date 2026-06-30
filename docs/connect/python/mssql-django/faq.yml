@@ -1,0 +1,155 @@
+### YamlMime:FAQ
+metadata:
+  title: mssql-django FAQ
+  description: Frequently asked questions about the mssql-django Django backend for SQL Server.
+  author: dlevy-msft-sql
+  ms.author: dlevy
+  ms.reviewer: randolphwest
+  ms.date: 06/19/2026
+  ms.service: sql
+  ms.subservice: connectivity
+  ms.topic: faq
+  ai-usage: ai-assisted
+title: "mssql-django Frequently Asked Questions"
+summary: |
+  This article answers frequently asked questions about the `mssql-django` Django backend for SQL Server, Azure SQL Database, Azure SQL Managed Instance, and SQL database in Microsoft Fabric.
+sections:
+  - name: General
+    questions:
+      - question: What is mssql-django?
+        answer: |
+          The `mssql-django` package is a Microsoft-maintained Django database backend for SQL Server. It allows Django applications to connect to SQL Server, Azure SQL Database, Azure SQL Managed Instance, and SQL database in Microsoft Fabric using the pyodbc driver.
+
+          Install it with pip:
+
+          ```bash
+          pip install mssql-django
+          ```
+
+      - question: What versions of Django does mssql-django support?
+        answer: |
+          The `mssql-django` package v1.7 supports Django 3.2, 4.0, 4.1, 4.2, 5.0, 5.1, 5.2, and 6.0. Check the [support lifecycle](support-lifecycle.md) for the full compatibility matrix.
+
+      - question: What versions of Python are supported?
+        answer: |
+          The `mssql-django` package supports Python 3.8 and later. The specific Python version must also be compatible with your Django version. For example, Django 5.0 requires Python 3.10 and later versions, and Django 6.0 requires Python 3.12 and later versions. See [Support lifecycle](support-lifecycle.md) for the full compatibility matrix.
+
+      - question: Is mssql-django maintained by Microsoft?
+        answer: |
+          Yes. The `mssql-django` package is maintained by Microsoft and is available on [PyPI](https://pypi.org/project/mssql-django/) and [GitHub](https://github.com/microsoft/mssql-django).
+
+  - name: Configuration
+    questions:
+      - question: What ENGINE value do I use in settings.py?
+        answer: |
+          Set `ENGINE` to `"mssql"` in your `DATABASES` configuration:
+
+          ```python
+          DATABASES = {
+              "default": {
+                  "ENGINE": "mssql",
+                  "NAME": "<your-database>",
+                  "HOST": "<your-server>",
+              },
+          }
+          ```
+
+      - question: Which ODBC driver should I use?
+        answer: |
+          Use Microsoft ODBC Driver 18 for SQL Server. It's the default in `mssql-django` 1.7 and later, and the backend automatically falls back to ODBC Driver 17 if version 18 isn't installed. Specify the driver explicitly in the `OPTIONS` dictionary only if you need to pin a specific version:
+
+          ```python
+          "OPTIONS": {
+              "driver": "ODBC Driver 18 for SQL Server",
+          },
+          ```
+
+      - question: How do I connect to Azure SQL Database?
+        answer: |
+          Use the fully qualified server name with port 1433:
+
+          ```python
+          DATABASES = {
+              "default": {
+                  "ENGINE": "mssql",
+                  "NAME": "<your-database>",
+                  "USER": "<your-username>",
+                  "PASSWORD": "<your-password>",
+                  "HOST": "<your-server>.database.windows.net",
+                  "PORT": "1433",
+                  "OPTIONS": {
+                      "driver": "ODBC Driver 18 for SQL Server",
+                  },
+              },
+          }
+          ```
+
+      - question: How do I use Microsoft Entra authentication?
+        answer: |
+          Use `extra_params` in `OPTIONS` or the `TOKEN` setting. The `TOKEN` setting works with any `azure.identity` credential, including `DefaultAzureCredential` and `ManagedIdentityCredential`.
+
+          ```python
+          from azure.identity import DefaultAzureCredential
+
+          credential = DefaultAzureCredential()
+          token = credential.get_token("https://database.windows.net/.default").token
+
+          "TOKEN": token,
+          ```
+
+          See [Microsoft Entra authentication](microsoft-entra-authentication.md) for all supported methods.
+
+  - name: Features
+    questions:
+      - question: Does mssql-django support JSONField?
+        answer: |
+          Yes, `JSONField` is supported on SQL Server 2016 and later. JSON data is stored as **nvarchar(max)** and queried using SQL Server's JSON functions. See [JSONField support](json-field.md) for supported lookups and limitations.
+
+      - question: Does mssql-django support time zone-aware datetimes?
+        answer: |
+          Yes. When `USE_TZ=True`, Django uses the **datetimeoffset** data type in SQL Server. If you're migrating an existing database, you need to alter existing **datetime2** columns. See [Time zone support](timezone-support.md).
+
+      - question: Can I call stored procedures?
+        answer: |
+          Yes. Use `connection.cursor()` with `cursor.execute()` to call stored procedures. See [Stored procedures](stored-procedures.md) for examples including multiple parameters and result sets.
+
+      - question: Does bulk_create return IDs?
+        answer: |
+          By default, no. The `return_rows_bulk_insert` option defaults to `False`. Set it to `True` in your database `OPTIONS` to enable returning IDs after bulk insert. This option must remain `False` for tables with triggers. See [Bulk operations](bulk-operations.md).
+
+  - name: Troubleshooting
+    questions:
+      - question: I get "ODBC Driver not found." How do I fix it?
+        answer: |
+          Install the Microsoft ODBC Driver for SQL Server. On Linux, add the Microsoft APT repository first and then install the driver:
+
+          ```bash
+          curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
+          curl -fsSL https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+          sudo apt-get update
+          ACCEPT_EULA=Y sudo apt-get install -y msodbcsql18
+          ```
+
+          On Windows, download the installer from the Microsoft website. On macOS, use Homebrew:
+
+          ```bash
+          brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
+          brew update
+          HOMEBREW_ACCEPT_EULA=Y brew install msodbcsql18
+          ```
+
+          See [Installation](installation.md) for complete platform-specific instructions.
+
+      - question: Why does my migration fail with "Cannot alter IDENTITY column"?
+        answer: |
+          SQL Server doesn't support altering a column to or from an `IDENTITY` (AutoField) column. Create a new model with the desired field type and migrate data manually. See [Limitations and unsupported features in mssql-django](limitations.md).
+
+      - question: Why does bulk_update fail with nullable fields?
+        answer: |
+          In `mssql-django` 1.7, the backend handles all-NULL updates automatically. In earlier versions, use the `default` parameter in `bulk_update` to avoid `NULL` in `CASE WHEN ... THEN NULL` expressions, which cause SQL Server type inference errors:
+
+          ```python
+          Product.objects.bulk_update(products, ["description"], default="")
+          ```
+
+          See [Bulk operations](bulk-operations.md) for details.
