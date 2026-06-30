@@ -5,7 +5,7 @@ description: Learn about the currently known issues with Azure SQL Managed Insta
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 05/01/2026
+ms.date: 06/25/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: troubleshooting-known-issue
@@ -26,6 +26,7 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | [Restore operation failures after migrating to SQL Managed Instance](#restore-operation-failures-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
 | [Unable to use Service Broker after migrating to SQL Managed Instance](#unable-to-use-service-broker-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
 | [Unable to use accelerated database recovery after migrating to SQL Managed Instance](#unable-to-use-accelerated-database-recovery-after-migrating-to-sql-managed-instance) | March 2026 | Has workaround | |
+| [Database becomes unavailable after server restart following MI link failover](#database-becomes-unavailable-after-server-restart-following-mi-link-failover) | May 2026 | Has workaround | |
 | [Misleading error message when connecting to a read replica using invalid credentials](#misleading-error-message-when-connecting-to-a-read-replica-using-invalid-credentials) | February 2026 |No resolution| |
 | [Modifying backup retention period for the free offer](#modifying-backup-retention-period-for-the-free-offer) | June 2025 | Has workaround | |
 | [Error 1412 when creating a Managed Instance link](#error-1412-when-creating-a-managed-instance-link) | May 2025 | Has workaround | |
@@ -64,6 +65,14 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | Contained databases not supported in SQL Managed Instance | | Resolved | Aug 2019 |
 
 ## Has workaround
+
+### Database becomes unavailable after server restart following MI link failover
+
+In rare circumstances, your database might become temporarily unavailable on SQL Managed Instance after a server restart following the failover of the [link](managed-instance-link-failover-how-to.md). This known issue occurs when a link is dropped before Azure completes a full backup of the database after initial failover to SQL Managed Instance.
+
+The database automatically recovers after Microsoft's intervention, but this recovery can take some time.
+
+To avoid this issue, don't drop the link until the first full backup completes after failover from SQL Server to SQL Managed Instance. For more information, see [Database unavailable after server restart](managed-instance-link-troubleshoot-how-to.md#database-unavailable-after-server-restart).
 
 ### Linked server queries that use MSDASQL fail with error 7416
 

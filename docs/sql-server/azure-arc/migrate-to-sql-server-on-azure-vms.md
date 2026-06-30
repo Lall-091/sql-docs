@@ -5,7 +5,7 @@ description: SQL Server migration in Azure Arc to SQL Server on Azure VMs in the
 author: danimir
 ms.author: danil
 ms.reviewer: randolphwest, mathoma
-ms.date: 04/16/2026
+ms.date: 06/25/2026
 ms.topic: how-to
 ms.collection: ce-skilling-ai-copilot
 
@@ -63,8 +63,14 @@ Select the **Copilot** icon on the **Database migration** pane to open the Copil
 To use SQL Server migration in Azure Arc, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, you can [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the [latest version](release-notes.md) of the Azure extension for SQL Server. To upgrade your extension, see [Upgrade the extension](connect.md#upgrade-the-extension).
+- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the [latest version](release-notes.md) of the Azure extension for SQL Server. 
 - Your source environment has been [prepared](migration-sql-vm-prepare.md) for migration.
+
+## Update the extension
+
+Before starting the migration, make sure you have the current version of the Azure extension for SQL Server installed on your SQL Server instance. The extension is updated independently of SQL Server, so having the latest version ensures you have all the latest features and fixes for migration.
+
+To update your extension, see [Update the extension](connect.md#upgrade-the-extension).
 
 ## Migrate to SQL Server on Azure VMs
 

@@ -2,7 +2,7 @@
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 12/10/2025
+ms.date: 06/02/2026
 ms.topic: include
 ms.custom:
   - ignite-2023
@@ -20,7 +20,7 @@ To simplify extension upgrades, be sure to enable [automatic updates](../update.
 #### [Azure portal](#tab/azure-portal)
 
 To upgrade the extension in the Azure portal, follow these steps:
-1. In the Azure portal, go to [Machines - Azure Arc](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/servers).
+1. In the Azure portal, go to [Machines - Azure Arc](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/sqlServerInstances).
 1. Select the name of the machine where SQL Server is installed to open the **Overview** pane for your server.
 1. Under **Settings**, select **Extensions**.
 1. Check the box for the `WindowsAgent.SqlServer` extension and then select **Update** from the navigation menu. 

@@ -4,7 +4,7 @@ description: Learn how to download and install the bulk copy program (bcp) utili
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: davidengel
-ms.date: 06/25/2026
+ms.date: 06/30/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: how-to
@@ -26,20 +26,19 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 The [bulk copy program utility (bcp)](bcp-utility.md) bulk copies data between an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and a data file in a user-specified format.
 
-- For detailed information about using **bcp** with Azure Synapse Analytics, see [Load data with bcp](/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp).
-- **bcp** is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
-- **bcp** can't import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
-
+- For detailed information about using **`bcp`** with Azure Synapse Analytics, see [Load data with bcp](/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp).
+- **`bcp`** is currently in preview in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
+- **`bcp`** can't import data in [!INCLUDE [fabric-se](../../includes/fabric-se.md)].
 
 ## Identify installed version
 
-To determine the installed version of **bcp**, run the following command:
+To determine the installed version of **`bcp`**, run the following command:
 
 ```console
 bcp -v
 ```
 
-If multiple versions of **bcp** are installed on Windows, the `PATH` environment variable determines which one runs. To list every copy of `bcp.exe` on the search path, use the following command:
+If multiple versions of **`bcp`** are installed on Windows, the `PATH` environment variable determines which one runs. To list every copy of `bcp.exe` on the search path, use the following command:
 
 ```console
 where bcp.exe
@@ -49,29 +48,29 @@ For information about how to set the command path in the `PATH` environment vari
 
 ## bcp versioning
 
-The **bcp** utility is versioned independently of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] release it ships with:
+The **`bcp`** utility is versioned independently of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] release it ships with:
 
-| **bcp** major version | Distribution |
+| `bcp` major version | Distribution |
 | --- | --- |
-| 18 | Ships with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. Adds `-Y` (TLS encryption mode) and `-u` (trust server certificate) switches. |
-| 15 | Distributed as Microsoft Command Line Utilities 15 for SQL Server, and bundled with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] tools. |
+| `18` | Ships with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. Adds `-Y` (TLS encryption mode) and `-u` (trust server certificate) switches. |
+| `15` | Distributed as Microsoft Command Line Utilities 15 for SQL Server, and bundled with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] tools. |
 
 ## Download the latest version
 
-The following instructions are for **bcp** running on Windows. For instructions on installing **bcp** on Linux and macOS, as well as system requirements, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](../../linux/sql-server-linux-setup-tools.md).
+The following instructions are for **`bcp`** running on Windows. For instructions on installing **`bcp`** on Linux and macOS, as well as system requirements, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](../../linux/install-upgrade/setup-tools.md).
 
 | Package | Platform |
 | --- | --- |
-| Microsoft Command Line Utilities for SQL Server | [x64](https://go.microsoft.com/fwlink/?linkid=2366027)&emsp;[x86](https://go.microsoft.com/fwlink/?linkid=2365930) |
+| Microsoft Command Line Utilities for SQL Server | [x64](https://go.microsoft.com/fwlink/?linkid=2370127)&emsp;[x86](https://go.microsoft.com/fwlink/?linkid=2370024) |
 
-The Microsoft Command Line Utilities package contains both **bcp** and **sqlcmd** (ODBC). It also installs (or requires) the [Microsoft ODBC Driver for SQL Server](../../connect/odbc/download-odbc-driver-for-sql-server.md).
+The Microsoft Command Line Utilities package contains both **`bcp`** and **`sqlcmd`** (ODBC). It also installs (or requires) the [Microsoft ODBC Driver for SQL Server](../../connect/odbc/download-odbc-driver-for-sql-server.md).
 
 > [!NOTE]  
-> The standalone **bcp** download might not have the same release and build number as the **bcp** that ships with the latest [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] cumulative update (CU). This behavior is expected. The standalone download still contains all fixes included in the latest CU.
+> The standalone **`bcp`** download might not have the same release and build number as the **`bcp`** that ships with the latest [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] cumulative update (CU). This behavior is expected. The standalone download still contains all fixes included in the latest CU.
 
 ## System requirements
 
-The following system requirements are for **bcp** running on Windows.
+The following system requirements are for **`bcp`** running on Windows.
 
 - Windows 10 and later versions
 - Windows Server 2016 and later versions

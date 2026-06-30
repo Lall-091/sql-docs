@@ -5,7 +5,7 @@ description: Prepare your SQL Server instance enabled by Azure Arc for migration
 author: danimir
 ms.author: danil
 ms.reviewer: randolphwest, mathoma
-ms.date: 04/16/2026
+ms.date: 06/25/2026
 ms.topic: how-to
 ---
 
@@ -243,6 +243,8 @@ After your backups are ready, and you want to start migrating databases to a SQL
 ## Limitations
 
 The limitations of [LRS](/azure/azure-sql/managed-instance/log-replay-service-migrate#limitations) apply to migrations through the Azure portal.
+
+Migrating from a SQL Server failover cluster instance (FCI) isn't currently supported.
 
 ### Limitations when migrating to the Business Critical service tier
 

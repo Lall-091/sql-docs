@@ -5,7 +5,7 @@ description: Learn how to troubleshoot common issues with a link between SQL Ser
 author: djordje-jeremic
 ms.author: djjeremi
 ms.reviewer: mathoma, danil
-ms.date: 04/27/2025
+ms.date: 06/25/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.custom: 
@@ -362,6 +362,49 @@ GO
 ## Expired certificate
 
 It's possible for the certificate used for the link to expire. If the certificate expires, the link fails. To resolve this issue, [rotate the certificate](managed-instance-link-best-practices.md#rotate-certificate). 
+
+## Database unavailable after server restart
+
+In rare circumstances, your database might become temporarily unavailable on SQL Managed Instance after a server restart following the failover of the link. This known issue occurs when a link is dropped before Azure completes a full backup of the database after initial failover to SQL Managed Instance.
+
+The database automatically recovers after Microsoft's intervention, but this recovery can take some time.
+
+The following rare sequence of events leads to this issue:
+1. You establish a link between SQL Server and SQL Managed Instance. 
+1. You fail over the link to SQL Managed Instance, so it becomes the primary replica. 
+1. You drop the link - without knowing that Azure didn't complete the first full backup of the database after failover, which is necessary to ensure the database is healthy and fully functional on SQL Managed Instance.
+1. The database is initially accessible and available.
+1. The server is restarted, such as for maintenance, a planned failover, or due to an unexpected outage.
+1. The database becomes unavailable on SQL Managed Instance after the restart until Microsoft mitigates the issue.
+
+To avoid this issue, wait for Azure to complete the first full backup of the database after failover before dropping the link. You can check the status of the backup by querying the `backupset` table in the `msdb` database on SQL Managed Instance by using the following T-SQL query: 
+
+```sql
+SELECT TOP (100)
+    DB_NAME(DB_ID(bs.database_name)) AS [Database Name],
+    CONVERT (BIGINT, bs.backup_size / 1048576) AS [Uncompressed Backup Size (MB)],
+    CONVERT (BIGINT, bs.compressed_backup_size / 1048576) AS [Compressed Backup Size (MB)],
+    CONVERT (NUMERIC (20, 2),
+    CASE
+        WHEN bs.compressed_backup_size > 0
+        THEN CONVERT (FLOAT, bs.backup_size) / CONVERT (FLOAT, bs.compressed_backup_size)
+        ELSE NULL
+    END
+    ) AS [Compression Ratio],
+    bs.is_copy_only,
+    -- bs.user_name, -- Applicable only for user-initiated COPY ONLY backups.
+    bs.has_backup_checksums,
+    DATEDIFF(SECOND, bs.backup_start_date, bs.backup_finish_date) AS [Backup Elapsed Time (sec)],
+    bs.backup_finish_date AS [Backup Finish Date],
+    bmf.physical_block_size
+FROM msdb.dbo.backupset AS bs WITH (NOLOCK)
+     INNER JOIN msdb.dbo.backupmediafamily AS bmf WITH (NOLOCK)
+         ON bs.media_set_id = bmf.media_set_id
+WHERE bs.[type] = 'D'
+    -- AND bs.[is_copy_only] = 1  -- If you want to filter out for user initiated COPY ONLY backups.
+ORDER BY bs.backup_finish_date DESC
+OPTION (RECOMPILE); -- Optimize for ad hoc execution
+```
 
 ## Known issues after migrating to SQL Managed Instance
 

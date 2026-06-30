@@ -4,7 +4,7 @@ description: User-defined functions accept parameters, perform an action, such a
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, srdjanmatin
-ms.date: 12/01/2025
+ms.date: 06/29/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -20,17 +20,17 @@ monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || =fabric"
 
 [!INCLUDE [applies-to-version/fabricse-fabricdw](../../includes/applies-to-version/fabric-se-dw.md)]
 
- `CREATE FUNCTION` can create inline table-value functions and scalar functions. 
+ `CREATE FUNCTION` creates inline table-valued functions and scalar functions. 
  
 > [!NOTE]
 > Scalar UDFs are a preview feature in Fabric Data Warehouse.
 
 > [!IMPORTANT]
-> In Fabric Data Warehouse, [scalar UDFs must be inlineable](#scalar-udf-inlining) for use with `SELECT ... FROM` queries on user tables, but you can still create functions that aren't inlineable. Scalar UDFs that are not inlineable work in limited number of scenarios. You can check [whether a UDF can be inlined](#check-whether-a-scalar-udf-can-be-inlined).
+> In Fabric Data Warehouse, [scalar UDFs must be inlineable](#scalar-udf-inlining) for use with `SELECT ... FROM` queries on user tables, but you can still create functions that aren't inlineable. Scalar UDFs that aren't inlineable work in a limited number of scenarios. You can check [whether a UDF can be inlined](#check-whether-a-scalar-udf-can-be-inlined).
 
-A user-defined function is a [!INCLUDE [tsql](../../includes/tsql-md.md)] routine that accepts parameters, performs an action, such as a complex calculation, and returns the result of that action as a value. Scalar functions return a scalar value, such as a number or string. User-defined table-valued functions (TVFs) return a table.
+A user-defined function is a [!INCLUDE [tsql](../../includes/tsql-md.md)] routine that accepts parameters, performs an action such as a complex calculation, and returns the result of that action as a value. Scalar functions return a scalar value, such as a number or string. User-defined table-valued functions (TVFs) return a table.
 
-Use `CREATE FUNCTION` to create a reusable T-SQL routine that can be used in these ways:
+Use `CREATE FUNCTION` to create a reusable T-SQL routine that you can use in these ways:
 
  - In [!INCLUDE [tsql](../../includes/tsql-md.md)] statements such as `SELECT` 
  - In [!INCLUDE [tsql](../../includes/tsql-md.md)] data manipulation statements (DML) such as `UPDATE`, `INSERT`, and `DELETE`
@@ -38,8 +38,7 @@ Use `CREATE FUNCTION` to create a reusable T-SQL routine that can be used in the
  - In the definition of another user-defined function
  - To replace a stored procedure
 
-> [!TIP]
-> You can specify `CREATE OR ALTER FUNCTION` to create a new function if one does not exist by that name, or alter an existing function, in a single statement.
+You can specify `CREATE OR ALTER FUNCTION` to create a new function if one doesn't exist by that name, or alter an existing function, in a single statement.
 
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
 
@@ -94,21 +93,21 @@ The name of the schema to which the user-defined function belongs.
 
 #### *function_name*
 
-The name of the user-defined function. Function names must comply with the rules for identifiers and must be unique within the database and to its schema.
+The name of the user-defined function. Function names must follow the rules for identifiers and be unique within the database and its schema.
 
 > [!NOTE]  
-> Parentheses are required after the function name even if a parameter is not specified.  
+> You must include parentheses after the function name even if you don't specify a parameter.  
 
 #### @*parameter_name*
 
-A parameter in the user-defined function. One or more parameters can be declared.
+A parameter in the user-defined function. You can declare one or more parameters.
 
-A function can have a maximum of 2,100 parameters. The value of each declared parameter must be supplied by the user when the function is executed, unless a default for the parameter is defined.
+A function can have up to 2,100 parameters. When a user or application calls a function, the value of each declared parameter must be supplied unless a default for the parameter is defined.
 
-Specify a parameter name by using an at sign (`@`) as the first character. The parameter name must comply with the rules for identifiers. Parameters are local to the function; the same parameter names can be used in other functions. Parameters can take the place only of constants; they cannot be used instead of table names, column names, or the names of other database objects.
+Specify a parameter name by using an at sign (`@`) as the first character. The parameter name must follow the rules for identifiers. Parameters are local to the function; you can use the same parameter names in other functions. Parameters can only replace constants; they can't be used instead of table names, column names, or the names of other database objects.
 
 > [!NOTE]  
-> `ANSI_WARNINGS` is not honored when you pass parameters in a stored procedure, user-defined function, or when you declare and set variables in a batch statement. For example, if a variable is defined as **char(3)**, and then set to a value larger than three characters, the data is truncated to the defined size and the INSERT or UPDATE statement succeeds.  
+> `ANSI_WARNINGS` isn't honored when you pass parameters in a stored procedure, user-defined function, or when you declare and set variables in a batch statement. For example, if you define a variable as **char(3)**, and then set it to a value larger than three characters, the data is truncated to the defined size and SQL statement succeeds.    
 
 #### *parameter_data_type*
 
@@ -116,15 +115,15 @@ The parameter data type. For [!INCLUDE [tsql](../../includes/tsql-md.md)] functi
 
 #### [ = *default* ]
 
-A default value for the parameter. If a *default* value is defined, the function can be executed without specifying a value for that parameter.
+A default value for the parameter. If you define a *default* value, you can execute the function without specifying a value for that parameter.
 
-When a parameter of the function has a default value, the keyword `DEFAULT` must be specified when the function is called to retrieve the default value. This behavior is different from using parameters with default values in stored procedures in which omitting the parameter also implies the default value.
+When a parameter of the function has a default value, you must specify the keyword `DEFAULT` when calling the function to retrieve the default value. This behavior is different from using parameters with default values in stored procedures in which omitting the parameter also implies the default value.
 
 #### *return_data_type*
 
 The return value of a scalar user-defined function. 
 
-For functions in Fabric Data Warehouse, all data types are allowed except for **rowversion**/**timestamp**. Nonscalar types like **table** are not allowed.
+For functions in Fabric Data Warehouse, all data types are allowed except for **rowversion**/**timestamp**. Nonscalar types like **table** aren't allowed.
 
 #### *function_body*
 
@@ -138,6 +137,7 @@ In scalar functions, *function_body* is a series of [!INCLUDE [tsql](../../inclu
 - Calls to built-in SQL functions available
 - Calls to other UDFs
 - `SELECT` statements, and references to tables, views, and inline table-valued functions
+- Control flow statements (`WHILE` loops, `RETURNS`)
 
 #### *scalar_expression*
 
@@ -145,57 +145,57 @@ Specifies the scalar value that the scalar function returns.
 
 #### *select_stmt*
 
-The single `SELECT` statement that defines the return value of an inline table-valued function. For an inline table-valued function, there is no function body; the table is the result set of a single `SELECT` statement.
+The single `SELECT` statement that defines the return value of an inline table-valued function. For an inline table-valued function, there's no function body; the table is the result set of a single `SELECT` statement.
 
 #### TABLE
 
-Specifies that the return value of the table-valued function (TVF) is a table. Only constants and @*local_variables* can be passed to TVFs.
+Specifies that the return value of the table-valued function (TVF) is a table. You can only pass constants and @*local_variables* to TVFs.
 
-In inline TVFs (preview), the TABLE return value is defined through a single `SELECT` statement. Inline functions do not have associated return variables.
+In inline TVFs (preview), you define the `TABLE` return value through a single `SELECT` statement. Inline functions don't have associated return variables.
 
 #### <function_option>
 
-In Fabric Data Warehouse, the `INLINE`, `ENCRYPTION`, and `EXECUTE AS` keywords are not supported. 
+In Fabric Data Warehouse, the `INLINE`, `ENCRYPTION`, and `EXECUTE AS` keywords aren't supported. 
 
-The function options supported include:
+The supported function options include:
 
 SCHEMABINDING
 
- Specifies that the function is bound to the database objects that it references. When SCHEMABINDING is specified, the base objects cannot be modified in a way that would affect the function definition. The function definition itself must first be modified or dropped to remove dependencies on the object that is to be modified.  
+   Specifies that the function is bound to the database objects that it references. When you specify `SCHEMABINDING`, you can't modify the underlying objects (such as a view or a table, for example) in a way that affects the function definition. You must first modify or drop the function definition to remove dependencies on the object that you want to modify.      
 
 The binding of the function to the objects it references is removed only when one of the following actions occurs:
 
--   The function is dropped.
+-   You drop the function.
 
--   The function is modified by using the ALTER statement with the SCHEMABINDING option not specified.
+-   You `ALTER` the function statement and remove the `SCHEMABINDING` option.
 
-A function can be schema bound only if the following conditions are true:
+You can only schema bind a function if the following conditions are true:
 
--   Any user-defined functions referenced by the function are also schema-bound.
+-   Any user-defined functions that the function references are also schema-bound.
 
--   The objects referenced by the function are referenced using a two-part name.
+-   The function references objects by using a two-part name.
 
--   Only built-in functions and other UDFs in the same database can be referenced within the body of UDFs.
+-   Within the body of UDFs, you can only reference built-in functions and other UDFs in the same database.
 
--   The user who executed the `CREATE FUNCTION` statement has REFERENCES permission on the database objects that the function references.
+-   The user who executes the `CREATE FUNCTION` statement has REFERENCES permission on the database objects that the function references.
 
 To remove SCHEMABINDING, use `ALTER`.
 
 RETURNS NULL ON NULL INPUT | **CALLED ON NULL INPUT**
 
- Specifies the `OnNULLCall` attribute of a scalar-valued function. If not specified, `CALLED ON NULL INPUT` is implied by default, and the function body executes even if `NULL` is passed as an argument.  
+ Specifies the `OnNULLCall` attribute of a scalar-valued function. If you don't specify this attribute, `CALLED ON NULL INPUT` is implied by default, and the function body executes even if `NULL` is passed as an argument.  
 
 ## Best practices
 
- - If a user-defined function is not created with schemabinding, changes that are made to underlying objects can affect the definition of the function and produce unexpected results when it is invoked. It is recommended to specify the `WITH SCHEMABINDING` clause when you are creating the function. This ensures that the objects referenced in the function definition cannot be modified unless the function is also modified.
+- If you don't create a user-defined function with schemabinding, changes to underlying objects can affect the function's definition and cause unexpected results when you invoke the function. When you specify `WITH SCHEMABINDING` when you create the function, you ensure that later changes to underlying objects cannot change or break the function's behavior.
 
- - Writing your user-defined functions to be inlineable. For more information, see [Scalar UDF inlining](#scalar-udf-inlining).
+- Write your user-defined functions to be inlineable. For more information, see [Scalar UDF inlining](#scalar-udf-inlining).
 
 ## Interoperability
 
 ### Inline table-valued user-defined functions
 
-In an inline table-valued function, only a single select statement is allowed.
+An inline table-valued function accepts only a single `SELECT` statement.
 
 ### Scalar user-defined functions
 
@@ -217,20 +217,23 @@ In an inline table-valued function, only a single select statement is allowed.
   - [HAS_DBACCESS](../functions/has-dbaccess-transact-sql.md)
 
 - Scalar UDFs can't be used in a `SELECT ... FROM` query on a user table when:
-    - The UDF body contains a call to nondeterministic built-in function, see [Deterministic and nondeterministic functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).
-    - The UDF body contains a [common table expression (CTE)](../queries/with-common-table-expression-transact-sql.md).
-    - The UDF body contains multi-statement UDF body beyond six `IF`-`THEN`-`ELSE` blocks.
-    - The UDF body contains a WHILE LOOP
-    - The UDF body cannot be inlined due to other reasons. For more information, see [Scalar UDF inlining requirements](/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=fabric&preserve-view=true#inlineable-scalar-udf-requirements).
+    - The UDF body contains a call to nondeterministic built-in function (such as `GETDATE()`), see [Deterministic and nondeterministic functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).
+    - The UDF body contains `BREAK` or `CONTINUE` statement.
+    - There is a recursive scalar UDF call.
 
-- Scalar UDFs can't be used in a query when the:
-    - UDF is directly called in a `GROUP BY` clause.
-    - UDF is directly called in an `ORDER BY `clause.
-    - calling query has a [common table expression (CTE)](../queries/with-common-table-expression-transact-sql.md).
+ - A scalar UDF can't be used in all query shapes, such as CTEs and `GROUP BY`, if:
+    - The scalar UDF contains any of these data types as an input parameter, local variable, or return data type: **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **binary(max)**.
+    - The scalar UDF body contains calls to other scalar UDFs.
+    - The scalar UDF body contains reference to tables/views/iTVF.
+    
+For more information, see [Scalar UDF inlining requirements](/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=fabric&preserve-view=true#inlineable-scalar-udf-requirements).
 
-- Recursive scalar UDFs are not supported.
-- A User query can fail if more than 10 UDF calls are made in a single query.
-- In some edge cases, the complexity of the user query and UDF body prevents inlining, in which case the scalar UDF is not inlined, and the user query fails.
+- If a scalar UDF contains any of the following, a user query can fail if more than 10 UDF calls are made in a single query. In some edge cases, the complexity of the user query and UDF body prevents inlining, in which case the scalar UDF is not inlined, and the user query fails. 
+    - The scalar UDF contains any of these data types as an input parameter, local variable, or return data type: **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **binary(max)**.
+    - The scalar UDF body contains calls to other scalar UDFs.
+    - The scalar UDF body contains reference to tables/views/iTVF.
+  
+
 - When a scalar UDF is used in any unsupported scenario, you see an error message "`Scalar UDF execution is currently unavailable in this context.`"
 
 ## Limitations
@@ -238,22 +241,26 @@ In an inline table-valued function, only a single select statement is allowed.
 > [!NOTE]
 > During the current preview, limitations are subject to change.
 
- User-defined functions cannot be used to perform actions that modify the database state.  
+ You can't use user-defined functions to perform actions that modify the database state.  
 
- User-defined functions can be nested; that is, one user-defined function can call another. The nesting level is incremented when the called function starts execution, and decremented when the called function finishes execution. User-defined functions in Fabric Data Warehouse can be nested up to four levels when a UDF body references a table/view/in-line table-valued function, or up to 32 levels otherwise. Exceeding the maximum levels of nesting causes the calling function chain to fail.
+ You can nest user-defined functions. That is, one user-defined function can call another. The nesting level increments when the called function starts execution, and decrements when the called function finishes execution. In Fabric Data Warehouse, you can nest user-defined functions up to four levels when a UDF body references a table, view, or inline table-valued function, or up to 32 levels otherwise. If you exceed the maximum levels of nesting, the calling function chain fails.
 
 ## Metadata
 
  This section lists the system catalog views that you can use to return metadata about user-defined functions.  
 
- - [sys.sql_modules](../../relational-databases/system-catalog-views/sys-sql-modules-transact-sql.md): Displays the definition of [!INCLUDE [tsql](../../includes/tsql-md.md)] user-defined functions. For example:  
+ - [sys.sql_modules](../../relational-databases/system-catalog-views/sys-sql-modules-transact-sql.md): Displays the definition of [!INCLUDE [tsql](../../includes/tsql-md.md)] user-defined functions, as well as inlineability information. For example:  
 
    ```sql
-   SELECT definition, type   
-   FROM sys.sql_modules AS m  
-   JOIN sys.objects AS o   
-       ON m.object_id = o.object_id   
-       AND type = ('FN');
+    SELECT 
+        SCHEMA_NAME(o.schema_id) AS SchemaName,
+        o.name AS FunctionName,
+        m.definition AS FunctionDefinition,
+        m.is_inlineable AS Inlineable,
+        m.inline_eligibility_mask AS InlineEligibilityMask
+    FROM sys.objects o
+    JOIN sys.sql_modules m ON o.object_id = m.object_id
+    WHERE o.type = 'FN';
    ```  
 
  - [sys.parameters](../../relational-databases/system-catalog-views/sys-parameters-transact-sql.md): Displays information about the parameters defined in user-defined functions.  
@@ -266,19 +273,26 @@ Members of the Fabric workspace Administrator, Member, and Contributor roles can
 
 ## Scalar UDF inlining
 
-Microsoft Fabric Data Warehouse uses [scalar UDF inlining](../../relational-databases/user-defined-functions/scalar-udf-inlining.md) to compile and execute user defined code in a distributed manner. Scalar UDF inlining is enabled by default.
+Microsoft Fabric Data Warehouse uses different inlining techniques to compile and execute user defined code in a distributed manner. 
 
-While scalar UDF inlining is a performance optimization technique first introduced in Microsoft SQL Server 2019 (15.0), in Fabric Data Warehouse it determines the supported set of scenarios. In Fabric Data Warehouse, scalar UDFs are automatically transformed into scalar expressions or scalar subqueries that are substituted in the calling query in place of the UDF operator.
+Inlining of scalar UDF is enabled by default.
 
-Some T-SQL syntax makes a scalar UDF noninlineable. Functions that contain a `WHILE` loop, multiple `RETURN` statements, or a call to a nondeterministic SQL built-in function (such as `GETUTCDATE()` or `GETDATE()`) can't be inlined. For more information, see [Scalar UDF inlining requirements](../../relational-databases/user-defined-functions/scalar-udf-inlining.md#inlineable-scalar-udf-requirements).
+Some T-SQL syntax makes a scalar UDF noninlineable. For example, functions that contain a combination of a `WHILE` loop and reference a table inside UDF body can't be inlined. For more information, see [Scalar UDF inlining requirements](../../relational-databases/user-defined-functions/scalar-udf-inlining.md?view=fabric&preserve-view=true#inlineable-scalar-udf-requirements).
 
 ### Check whether a scalar UDF can be inlined
 
-The `sys.sql_modules` catalog view includes the column `is_inlineable`, which indicates whether a UDF is inlineable. 
+The `sys.sql_modules` catalog view includes the column `is_inlineable`, which indicates whether a UDF is inlineable. The `is_inlineable` property comes from checking the syntax inside the UDF definition. The scalar UDF isn't inlined before compile time. 
 
-The `is_inlineable` property is derived from checking for syntax inside the UDF definition. The scalar UDF is not inlined before compile time. A value of `1` indicates that the UDF is inlineable, while a value of `0` indicates that it is not inlineable. If a scalar UDF is inlineable, it doesn't guarantee it will always be inlined when the query is compiled. 
+The `inline_eligibility_mask` property explains which type of inlining is applicable to a UDF.
 
-Fabric Data Warehouse decides (per query) whether to inline a UDF, depending on overall query complexity.
+- A value of `0` means that the UDF isn't inlineable. 
+- A value of `1` indicates that the UDF is eligible for [Scalar UDF inlining](../../relational-databases/user-defined-functions/scalar-udf-inlining.md). 
+- A value of `2` means that the UDF is eligible for inlining via expression block. 
+- A value of `3` means that UDF is eligible for either inlining technique.
+
+If a scalar UDF is inlineable, it doesn't guarantee it is always inlined when the query is compiled.
+
+Fabric Data Warehouse decides (per query) which inlining technique to apply.
 
 Use the following sample query to check whether a scalar UDF is inlineable:
 
@@ -294,7 +308,7 @@ FROM sys.sql_modules AS a
 WHERE b.type IN ('FN');
 ```
 
-If a scalar function is not inlineable in `sys.sql_modules.is_inlineable`, you can still execute the query as a standalone call, for example, to set a variable. But the scalar function cannot be part of a `SELECT ... FROM` query on a user table. For example:
+If a scalar function isn't inlineable in `sys.sql_modules.is_inlineable`, you can still execute the query as a standalone call, for example, to set a variable. But the scalar function can't be part of a `SELECT ... FROM` query on a user table. For example:
 
 ```sql
 CREATE FUNCTION [dbo].[custom_SYSUTCDATETIME]()
@@ -305,7 +319,7 @@ CREATE FUNCTION [dbo].[custom_SYSUTCDATETIME]()
   END
 ```
 
-The sample `dbo.custom_SYSUTCDATETIME` scalar user-defined function is not inlineable due to the use of a nondeterminant system function, `SYSUTCDATETIME()`. It will fail when used in a `SELECT ... FROM` query on a user table, but will succeed as a standalone call, for example:
+The sample `dbo.custom_SYSUTCDATETIME` scalar user-defined function isn't inlineable due to the use of a nondeterminant system function, `SYSUTCDATETIME()`. It fails when used in a `SELECT ... FROM` query on a user table, but succeeds as a standalone call. For example:
 
 ```sql
 DECLARE @utcdate datetime2(7);
@@ -317,7 +331,7 @@ SELECT @utcdate as 'utc_date';
 
 ### A. Create an inline table-valued function
 
- The following example creates an inline table-valued function to return some key information on modules, filtering by the `objectType` parameter. It includes a default value to return all modules when the function is called with the `DEFAULT` parameter. This example makes use of some of the system catalog views mentioned in [Metadata](#metadata).
+ The following example creates an inline table-valued function that returns key information on modules, filtering by the `objectType` parameter. It includes a default value to return all modules when you call the function with the `DEFAULT` parameter. This example uses some of the system catalog views mentioned in [Metadata](#metadata).
 
 ```sql
 CREATE FUNCTION dbo.ModulesByType (@objectType CHAR(2) = '%%')
@@ -338,7 +352,7 @@ RETURN (
 GO
 ```
 
-The function can then be called to return all inline table-valued functions (`IF`) with:
+Call the function to return all inline table-valued functions (`IF`):
 
 ```sql
 SELECT * FROM dbo.ModulesByType('IF'); -- SQL_INLINE_TABLE_VALUED_FUNCTION
@@ -354,7 +368,7 @@ SELECT * FROM dbo.ModulesByType('FN'); -- SQL_SCALAR_FUNCTION
 
 ### B. Combine results of an inline table-valued function
 
- This simple example uses the previously created inline TVF to demonstrate how its results can be combined with other tables using cross apply. Here, we select all columns from both `sys.objects` and the results of `ModulesByType` for all rows matching on the `type` column. For more information on using apply, see [FROM clause plus JOIN, APPLY, PIVOT (Transact-SQL)](../queries/from-transact-sql.md?view=fabric&preserve-view=true).
+ This simple example uses the previously created inline TVF to demonstrate how you can combine its results with other tables by using `CROSS APPLY`. Here, you select all columns from both `sys.objects` and the results of `ModulesByType` for all rows that match on the `type` column. For more information about using `APPLY`, see [FROM clause plus JOIN, APPLY, PIVOT (Transact-SQL)](../queries/from-transact-sql.md?view=fabric&preserve-view=true).
 
 ```sql
 SELECT * 
@@ -482,10 +496,10 @@ WHERE dbo.cleanInput (t.name) ='myvalue';
 - In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], `CREATE FUNCTION` can return a table by using the syntax for inline table-valued functions (preview) or it can return a single value by using the syntax for scalar functions.
 - In serverless SQL pools in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], `CREATE FUNCTION` can create inline table-value functions but not scalar functions. 
 
-  Use this statement to create a reusable routine that can be used in these ways:  
+  Use this statement to create a reusable routine that you can use in these ways:  
 
 -   In [!INCLUDE [tsql](../../includes/tsql-md.md)] statements such as `SELECT`  
--   In applications calling the function
+-   In applications that call the function
 -   In the definition of another user-defined function
 -   To define a CHECK constraint on a column
 -   To replace a stored procedure
@@ -551,39 +565,39 @@ The name of the schema to which the user-defined function belongs.
 
 #### *function_name*
 
-The name of the user-defined function. Function names must comply with the rules for identifiers and must be unique within the database and to its schema.
+The name of the user-defined function. Function names must follow the rules for identifiers and be unique within the database and its schema.
 
 > [!NOTE]  
-> Parentheses are required after the function name even if a parameter is not specified.  
+> You must include parentheses after the function name even if you don't specify a parameter.  
 
 #### @*parameter_name*
 
-A parameter in the user-defined function. One or more parameters can be declared.
+A parameter in the user-defined function. You can declare one or more parameters.
 
-A function can have a maximum of 2,100 parameters. The value of each declared parameter must be supplied by the user when the function is executed, unless a default for the parameter is defined.
+A function can have up to 2,100 parameters. When a user or application calls a function, the value of each declared parameter must be supplied unless a default for the parameter is defined.
 
-Specify a parameter name by using an at sign (`@`) as the first character. The parameter name must comply with the rules for identifiers. Parameters are local to the function; the same parameter names can be used in other functions. Parameters can take the place only of constants; they cannot be used instead of table names, column names, or the names of other database objects.
+Specify a parameter name by using an at sign (`@`) as the first character. The parameter name must follow the rules for identifiers. Parameters are local to the function; you can use the same parameter names in other functions. Parameters can only replace constants; they can't be used instead of table names, column names, or the names of other database objects.
 
 > [!NOTE]  
-> `ANSI_WARNINGS` is not honored when you pass parameters in a stored procedure, user-defined function, or when you declare and set variables in a batch statement. For example, if a variable is defined as **char(3)**, and then set to a value larger than three characters, the data is truncated to the defined size and the INSERT or UPDATE statement succeeds.  
+> `ANSI_WARNINGS` isn't honored when you pass parameters in a stored procedure, user-defined function, or when you declare and set variables in a batch statement. For example, if you define a variable as **char(3)**, and then set it to a value larger than three characters, the data is truncated to the defined size and the `INSERT` or `UPDATE` statement succeeds.    
 
 #### *parameter_data_type*
 
-The parameter data type. For [!INCLUDE [tsql](../../includes/tsql-md.md)] functions, all scalar data types supported in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] are allowed. The timestamp (rowversion) data type is not a supported type.
+The parameter data type. For [!INCLUDE [tsql](../../includes/tsql-md.md)] functions, all scalar data types supported in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] are allowed. The timestamp (rowversion) data type isn't a supported type.
 
 #### [ = *default* ]
 
-A default value for the parameter. If a *default* value is defined, the function can be executed without specifying a value for that parameter.
+A default value for the parameter. If you define a *default* value, you can execute the function without specifying a value for that parameter.
 
-When a parameter of the function has a default value, the keyword DEFAULT must be specified when the function is called to retrieve the default value. This behavior is different from using parameters with default values in stored procedures in which omitting the parameter also implies the default value.
+When a parameter of the function has a default value, you must specify the keyword `DEFAULT` when calling the function to retrieve the default value. This behavior is different from using parameters with default values in stored procedures in which omitting the parameter also implies the default value.
 
 #### *return_data_type*
 
-The return value of a scalar user-defined function. For [!INCLUDE [tsql](../../includes/tsql-md.md)] functions, all scalar data types supported in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] are allowed. The **rowversion**/**timestamp** data type is not a supported type. The cursor and table nonscalar types are not allowed.
+The return value of a scalar user-defined function. For [!INCLUDE [tsql](../../includes/tsql-md.md)] functions, all scalar data types supported in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] are allowed. The **rowversion**/**timestamp** data type isn't a supported type. The cursor and table nonscalar types aren't allowed.
 
 #### *function_body*
 
-Series of [!INCLUDE [tsql](../../includes/tsql-md.md)] statements. The *function_body* cannot contain a `SELECT` statement and cannot reference database data. The *function_body* cannot reference tables or views. The function body can call other deterministic functions but cannot call nondeterministic functions.
+Series of [!INCLUDE [tsql](../../includes/tsql-md.md)] statements. The *function_body* can't contain a `SELECT` statement and can't reference database data. The *function_body* can't reference tables or views. The function body can call other deterministic functions but can't call nondeterministic functions.
 
 In scalar functions, *function_body* is a series of [!INCLUDE [tsql](../../includes/tsql-md.md)] statements that together evaluate to a scalar value.
 
@@ -593,13 +607,13 @@ Specifies the scalar value that the scalar function returns.
 
 #### *select_stmt*
 
-The single `SELECT` statement that defines the return value of an inline table-valued function. For an inline table-valued function, there is no function body; the table is the result set of a single `SELECT` statement.
+The single `SELECT` statement that defines the return value of an inline table-valued function. For an inline table-valued function, there's no function body; the table is the result set of a single `SELECT` statement.
 
 #### TABLE
 
-Specifies that the return value of the table-valued function (TVF) is a table. Only constants and @*local_variables* can be passed to TVFs.
+Specifies that the return value of the table-valued function (TVF) is a table. You can only pass constants and @*local_variables* to TVFs.
 
-In inline TVFs (preview), the TABLE return value is defined through a single `SELECT` statement. Inline functions do not have associated return variables.
+In inline TVFs (preview), you define the `TABLE` return value through a single `SELECT` statement. Inline functions don't have associated return variables.
 
 #### <function_option>
 
@@ -607,33 +621,33 @@ Specifies that the function has one or more of the following options.
 
 SCHEMABINDING
 
- Specifies that the function is bound to the database objects that it references. When SCHEMABINDING is specified, the base objects cannot be modified in a way that would affect the function definition. The function definition itself must first be modified or dropped to remove dependencies on the object that is to be modified.  
+   Specifies that the function is bound to the database objects that it references. When you specify `SCHEMABINDING`, you can't modify the underlying objects (such as a view or a table, for example) in a way that affects the function definition. You must first modify or drop the function definition to remove dependencies on the object that you want to modify.      
 
 The binding of the function to the objects it references is removed only when one of the following actions occurs:
 
--   The function is dropped.
+-   You drop the function.
 
--   The function is modified by using the ALTER statement with the SCHEMABINDING option not specified.
+-   You `ALTER` the function statement and remove the `SCHEMABINDING` option.
 
-A function can be schema bound only if the following conditions are true:
+You can only schema bind a function if the following conditions are true:
 
--   Any user-defined functions referenced by the function are also schema-bound.
+-   Any user-defined functions that the function references are also schema-bound.
 
--   The functions and other UDFs referenced by the function are referenced using a one-part or two-part name.
+-   The function references use one-part or two-part names.
 
--   Only built-in functions and other UDFs in the same database can be referenced within the body of UDFs.
+-   Within the body of UDFs, you can only reference built-in functions and other UDFs in the same database.
 
--   The user who executed the `CREATE FUNCTION` statement has REFERENCES permission on the database objects that the function references.
+-   The user who executes the `CREATE FUNCTION` statement has REFERENCES permission on the database objects that the function references.
 
 To remove SCHEMABINDING, use `ALTER`.
 
 RETURNS NULL ON NULL INPUT | **CALLED ON NULL INPUT**
 
- Specifies the `OnNULLCall` attribute of a scalar-valued function. If not specified, `CALLED ON NULL INPUT` is implied by default, and the function body executes even if `NULL` is passed as an argument.  
+ Specifies the `OnNULLCall` attribute of a scalar-valued function. If you don't specify this attribute, `CALLED ON NULL INPUT` is implied by default, and the function body executes even if `NULL` is passed as an argument.  
 
 ## Best practices
 
- If a user-defined function is not created with the SCHEMABINDING clause, changes that are made to underlying objects can affect the definition of the function and produce unexpected results when it is invoked. It is recommended to specify the `WITH SCHEMABINDING` clause when you are creating the function. This ensures that the objects referenced in the function definition cannot be modified unless the function is also modified.
+ If you don't create a user-defined function with the SCHEMABINDING clause, changes to underlying objects can affect the function's definition and cause unexpected results when you invoke it. Specify the `WITH SCHEMABINDING` clause when you create the function. This clause ensures that you can't modify the objects referenced in the function definition unless you also modify the function.
 
 ## Interoperability
 
@@ -641,19 +655,19 @@ RETURNS NULL ON NULL INPUT | **CALLED ON NULL INPUT**
 
 -   Assignment statements.  
 
--   Control-of-Flow statements except TRY...CATCH statements.  
+-   Control-of-Flow statements, except TRY...CATCH statements.  
 
--   DECLARE statements defining local data variables.  
+-   DECLARE statements that define local data variables.  
 
-In an inline table-valued function (preview), only a single select statement is allowed.
+In an inline table-valued function (preview), you can only use a single select statement.
 
 ## Limitations
 
- User-defined functions cannot be used to perform actions that modify the database state.  
+ You can't use user-defined functions to perform actions that modify the database state.  
 
- User-defined functions can be nested; that is, one user-defined function can call another. The nesting level is incremented when the called function starts execution, and decremented when the called function finishes execution. Exceeding the maximum levels of nesting causes the whole calling function chain to fail.
+ You can nest user-defined functions. One user-defined function can call another. The nesting level increments when the called function starts execution, and decrements when the called function finishes execution. If you exceed the maximum levels of nesting, the whole calling function chain fails.
 
- Objects, including functions, cannot be created in the `master` database of your serverless SQL pool in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
+ You can't create objects, including functions, in the `master` database of your serverless SQL pool in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
 
 ## Metadata
 
@@ -686,7 +700,7 @@ In an inline table-valued function (preview), only a single select statement is 
 
 ### A. Use a scalar-valued user-defined function to change a data type
 
- This simple function takes a **int** data type as an input, and returns a **decimal(10,2)** data type as an output.  
+ This simple function takes an **int** data type as an input, and returns a **decimal(10,2)** data type as an output.  
 
 ```sql
 CREATE FUNCTION dbo.ConvertInput (@MyValueIn int)  
@@ -703,13 +717,13 @@ SELECT dbo.ConvertInput(15) AS 'ConvertedValue';
 ```  
 
 > [!NOTE]  
-> Scalar functions are not available in the serverless SQL pools.
+> Scalar functions aren't available in serverless SQL pools.
 
 <a id="a-creating-an-inline-table-valued-function"></a>
 
 ### B. Create an inline table-valued function
 
- The following example creates an inline table-valued function to return some key information on modules, filtering by the `objectType` parameter. It includes a default value to return all modules when the function is called with the `DEFAULT` parameter. This example makes use of some of the system catalog views mentioned in [Metadata](#metadata).
+ The following example creates an inline table-valued function that returns key information on modules, filtering by the `objectType` parameter. It includes a default value to return all modules when you call the function with the `DEFAULT` parameter. This example uses some of the system catalog views mentioned in [Metadata](#metadata).
 
 ```sql
 CREATE FUNCTION dbo.ModulesByType(@objectType CHAR(2) = '%%')
@@ -731,20 +745,20 @@ RETURN
 GO
 ```
 
-The function can then be called to return all view (`V`) objects with:
+You can call the function to return all view (`V`) objects with:
 
 ```sql
 select * from dbo.ModulesByType('V');
 ```
 
 > [!NOTE]  
-> Inline table-value functions are available in the serverless SQL pools, but in preview in the dedicated SQL pools.
+> Inline table-value functions are available in serverless SQL pools, but in preview in the dedicated SQL pools.
 
 <a id="b-combining-results-of-an-inline-table-valued-function"></a>
 
 ### C. Combine results of an inline table-valued function
 
- This simple example uses the previously created inline TVF to demonstrate how its results can be combined with other tables using cross apply. Here, we select all columns from both `sys.objects` and the results of `ModulesByType` for all rows matching on the `type` column. For more information on using apply, see [FROM clause plus JOIN, APPLY, PIVOT (Transact-SQL)](../queries/from-transact-sql.md).
+ This simple example uses the previously created inline TVF to demonstrate how you can combine its results with other tables by using `CROSS APPLY`. In this example, you select all columns from both `sys.objects` and the results of `ModulesByType` for all rows that match on the `type` column. For more information about using `APPLY`, see [FROM clause plus JOIN, APPLY, PIVOT (Transact-SQL)](../queries/from-transact-sql.md).
 
 ```sql
 SELECT * 
@@ -754,7 +768,7 @@ GO
 ```
 
 > [!NOTE]  
-> Inline table-value functions are available in the serverless SQL pools, but in preview in the dedicated SQL pools.
+> Inline table-value functions are available in serverless SQL pools, but in preview in the dedicated SQL pools.
 
 ## Next step
 

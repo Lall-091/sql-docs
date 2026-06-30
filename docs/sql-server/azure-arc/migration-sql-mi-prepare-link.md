@@ -5,7 +5,7 @@ description: Prepare your SQL Server instance enabled by Azure Arc for migration
 author: danimir
 ms.author: danil
 ms.reviewer: randolphwest, mathoma
-ms.date: 04/16/2026
+ms.date: 06/25/2026
 ms.topic: how-to
 ---
 
@@ -54,7 +54,7 @@ This section describes the permissions that you need to migrate your SQL Server 
 On the source SQL Server instance, you need the following permissions:
 
 - If you enable [least privilege](configure-least-privilege.md), necessary permissions such as **sysadmin** are [granted](configure-windows-accounts-agent.md#database-migration) as needed during the database migration process.
-- If you can't use least privilege, the person performing the migration needs **sysadmin** permissions on the source SQL Server instance. Additionally, if you need to cancel a migration, also manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account.
+- If you can't use least privilege, manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account for migration cutover or cancel operations to work.
 
 To migrate with the Managed Instance link, you need one of the following permissions on the SQL Managed Instance target:
 
@@ -395,6 +395,7 @@ Consider the following limitations:
 - Canceling a migration requires **sysadmin** permissions on the source SQL Server instance. If your SQL Server instance isn't using least privilege, manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account.
 - Configuring a link through the Azure portal for the purpose of migration isn't compatible with links created manually, either through SQL Server Management Studio (SSMS), or Transact-SQL (T-SQL). Review the [known issue](migrate-to-azure-sql-managed-instance-troubleshoot.md#known-interoperability-issue-with-existing-links) to learn more.
 - Monitoring the migration through the Azure portal is available only to SQL Server instances that meet monitoring [licensing requirements](sql-monitoring.md#prerequisites).
+- Migrating from a SQL Server failover cluster instance (FCI) is not currently supported.
 
 ## Troubleshoot common issues
 

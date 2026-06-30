@@ -3,7 +3,8 @@ title: "sys.sql_modules (Transact-SQL)"
 description: sys.sql_modules returns a row for each object that is a SQL language-defined module in SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/14/2025
+ms.reviewer: wiassaf, srdjanmatin
+ms.date: 06/29/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -41,7 +42,8 @@ For more information, see [Scalar User-Defined Functions for In-Memory OLTP](../
 | `execute_as_principal_id` | **Int** | ID of the `EXECUTE AS` database principal.<br /><br />`NULL` by default or if `EXECUTE AS CALLER`.<br />ID of the specified principal if `EXECUTE AS SELF` or `EXECUTE AS <principal>`.<br />`-2` = `EXECUTE AS OWNER`. |
 | `uses_native_compilation` | **bit** | `0` = not natively compiled<br />`1` = is natively compiled<br /><br />The default value is `0`.<br /><br /> **Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions. |
 | `is_inlineable` | **bit** | Indicates whether the module can be inlined or not. Inlineability is based on the conditions specified in the [requirements](../user-defined-functions/scalar-udf-inlining.md#requirements).<br /><br />`0` = can't be inlined<br />`1` = can be inlined.<br /><br />For scalar user-defined functions (UDFs), the value is `1` if the UDF can be inlined, and `0` otherwise. It always contains a value of `1` for inline table-valued functions (TVFs), and `0` for all other module types.<br /><br />**Applies to**: [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions. |
-| `inline_type` | **bit** | Indicates whether inlining is turned on for the module currently.<br />0 = inlining is turned off<br />1 = inlining is turned on.<br />For scalar user-defined functions (UDFs), the value is `1` if inlining is turned on (explicitly or implicitly). The value is always `1` for inline table-valued functions (TVFs), and `0` for other module types.<br /><br />**Applies to**: [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions. |
+| `inline_type` | **bit** | Indicates whether inlining is turned on for the module currently. <br />0 = inlining is turned off<br />1 = inlining is turned on.<br />For scalar user-defined functions (UDFs), the value is `1` if inlining is turned on (explicitly or implicitly). The value is always `1` for inline table-valued functions (TVFs), and `0` for other module types.<br /><br />**Applies to**: [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions. |
+| `inline_eligibility_mask` | **tinyint** | Indicates which inlining technique is applicable for the module currently. <br />0 = no eligible inlining technique <br />1 = scalar UDF inlining <br />2 = inlining via expression block <br />3 = inlining via expression block or scalar UDF inlining. <br /> <br />For scalar user-defined functions (UDFs), a value of `1` or greater is only possible if inlining is turned on (explicitly or implicitly). The value is always `1` for inline table-valued functions (TVFs), and `0` for other module types.<br /><br />**Applies to**: [!INCLUDE [applies-to-version/fabricse-fabricdw](../../includes/fabric-se-dw.md)] only. |
 
 ## Remarks
 
@@ -57,7 +59,7 @@ Renaming a stored procedure, function, view, or trigger doesn't change the name 
 
 ## Examples
 
-The following example returns the object_id, schema name, object name, object type, and definition of each module in the current database.
+The following example returns the `object_id`, schema name, object name, object type, and definition of each module in the current database.
 
 ```sql
 SELECT sm.object_id,

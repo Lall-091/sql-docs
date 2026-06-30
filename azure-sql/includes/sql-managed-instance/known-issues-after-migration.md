@@ -2,7 +2,7 @@
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 03/06/2026
+ms.date: 06/02/2026
 ms.service: azure-sql-managed-instance
 ms.topic: include
 ---
@@ -25,5 +25,4 @@ SQL Server 2017 and earlier versions don't support accelerated database recovery
 
 If you migrate a database to Azure SQL Managed Instance, and [Service Broker is disabled on the source database](/sql/database-engine/service-broker/how-to-activate-service-broker-message-delivery-in-databases-transact-sql), you can't use Service Broker on the target SQL managed instance.
 
-To work around this issue, make sure you enable Service Broker on the source SQL Server database before you migrate it to SQL Managed Instance. If you already migrated the database without enabling Service Broker, you can enable it on the source SQL Server database, and then re-migrate the database to SQL Managed Instance.
-
+To work around this problem, make sure you enable Service Broker on the source SQL Server database before you migrate it to SQL Managed Instance. If you already migrated the database without enabling Service Broker, you can enable it on the source SQL Server database, and then re-migrate the database to SQL Managed Instance.
