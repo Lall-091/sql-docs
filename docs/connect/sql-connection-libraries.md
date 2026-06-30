@@ -4,7 +4,7 @@ description: Provides download links for modules, which enable connection to Mic
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: vanto, randolphwest
-ms.date: 12/15/2025
+ms.date: 06/22/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: overview
@@ -57,7 +57,7 @@ The following table lists examples of Object Relational Mapping (ORM) frameworks
 | Java | [Hibernate ORM](https://hibernate.org/orm) |
 | PHP | [Eloquent ORM, included in Laravel install](https://laravel.com/docs/11.x) |
 | Node.js | [Sequelize ORM](https://sequelize.org/)<br />[Prisma](https://www.prisma.io/) |
-| Python | [Django](https://www.djangoproject.com/)<br />[SQL Server backend for Django](https://github.com/Microsoft/mssql-django) |
+| Python | [Django](https://www.djangoproject.com/)<br />[mssql-django - SQL Server backend for Django](python/mssql-django/python-sql-driver-mssql-django.md) |
 | Ruby | [Ruby on Rails](https://rubyonrails.org/) |
 
 ## Related content
