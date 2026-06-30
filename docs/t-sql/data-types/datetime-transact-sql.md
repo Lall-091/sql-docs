@@ -3,11 +3,10 @@ title: "datetime (Transact-SQL)"
 description: datetime defines a date that is combined with a time of day with fractional seconds that is based on a 24-hour clock.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: randolphwest
-ms.date: 06/06/2024
+ms.date: 06/29/2026
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "reference"
+ms.topic: reference
 ms.custom:
   - ignite-2025
 f1_keywords:
@@ -193,7 +192,9 @@ UNION SELECT '01/01/2024 23:59:59.990', CAST('01/01/2024 23:59:59.990' AS DATETI
 
 **datetime** isn't ANSI or ISO 8601 compliant.
 
-## <a id="_datetime"></a> Convert date and time data
+<a id="_datetime"></a>
+
+## Convert date and time data
 
 When you convert to date and time data types, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] rejects all values it can't recognize as dates or times. For information about using the `CAST` and `CONVERT` functions with date and time data, see [CAST and CONVERT](../functions/cast-and-convert-transact-sql.md).
 
@@ -204,10 +205,11 @@ This section describes what occurs when other date and time data types are conve
 When the conversion is from **date**, the year, month, and day are copied. The time component is set to `00:00:00.000`. The following code shows the results of converting a `DATE` value to a `DATETIME` value.
 
 ```sql
-DECLARE @date DATE = '12-21-16';
-DECLARE @datetime DATETIME = @date;
+DECLARE @date AS DATE = '12-21-16';
+DECLARE @datetime AS DATETIME = @date;
 
-SELECT @datetime AS '@datetime', @date AS '@date';
+SELECT @datetime AS '@datetime',
+       @date AS '@date';
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -221,7 +223,7 @@ SELECT @datetime AS '@datetime', @date AS '@date';
 The previous example uses a region specific date format (`MM-DD-YY`).
 
 ```sql
-DECLARE @date DATE = '12-21-16';
+DECLARE @date AS DATE = '12-21-16';
 ```
 
 You should update the example to match the format for your region.
@@ -229,19 +231,21 @@ You should update the example to match the format for your region.
 You can also complete the example with the ISO 8601 compliant date format (`yyyy-MM-dd`). For example:
 
 ```sql
-DECLARE @date DATE = '2016-12-21';
-DECLARE @datetime DATETIME = @date;
+DECLARE @date AS DATE = '2016-12-21';
+DECLARE @datetime AS DATETIME = @date;
 
-SELECT @datetime AS '@datetime', @date AS '@date';
+SELECT @datetime AS '@datetime',
+       @date AS '@date';
 ```
 
-When the conversion is from **time(*n*)**, the time component is copied, and the date component is set to `1900-01-01`. When the fractional precision of the **time(*n*)** value is greater than three digits, the value is **rounded** to the nearest **datetime** increment (`.000`, `.003`, or `.007` seconds). The following example shows the results of converting a `TIME(4)` value to a `DATETIME` value.
+When the conversion is from **time(*n*)**, the time component is copied, and the date component is set to `1900-01-01`. When the fractional precision of the **time(*n*)** value is greater than three digits, the value is [rounded](#rounding-of-datetime-fractional-second-precision) to the nearest **datetime** increment (`.000`, `.003`, or `.007` seconds). The following example shows the results of converting a `TIME(4)` value to a `DATETIME` value.
 
 ```sql
-DECLARE @time TIME(4) = '12:10:05.0017';
-DECLARE @datetime DATETIME = @time;
+DECLARE @time AS TIME (4) = '12:10:05.0017';
+DECLARE @datetime AS DATETIME = @time;
 
-SELECT @datetime AS '@datetime', @time AS '@time';
+SELECT @datetime AS '@datetime',
+       @time AS '@time';
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -255,10 +259,11 @@ SELECT @datetime AS '@datetime', @time AS '@time';
 When the conversion is from **smalldatetime**, the hours and minutes are copied. The seconds and fractional seconds are set to `0`. The following code shows the results of converting a `SMALLDATETIME` value to a `DATETIME` value.
 
 ```sql
-DECLARE @smalldatetime SMALLDATETIME = '12-01-16 12:32';
-DECLARE @datetime DATETIME = @smalldatetime;
+DECLARE @smalldatetime AS SMALLDATETIME = '12-01-16 12:32';
+DECLARE @datetime AS DATETIME = @smalldatetime;
 
-SELECT @datetime AS '@datetime', @smalldatetime AS '@smalldatetime';
+SELECT @datetime AS '@datetime',
+       @smalldatetime AS '@smalldatetime';
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -269,13 +274,14 @@ SELECT @datetime AS '@datetime', @smalldatetime AS '@smalldatetime';
 2016-12-01 12:32:00.000  2016-12-01 12:32:00
 ```
 
-When the conversion is from **datetimeoffset(*n*)**, the date and time components are copied. The time zone is truncated. When the fractional precision of the **datetimeoffset(*n*)** value is greater than three digits, the value is **rounded** to the nearest **datetime** increment (`.000`, `.003`, or `.007` seconds). The following example shows the results of converting a `DATETIMEOFFSET(4)` value to a `DATETIME` value.
+When the conversion is from **datetimeoffset(*n*)**, the date and time components are copied. The time zone is truncated. When the fractional precision of the **datetimeoffset(*n*)** value is greater than three digits, the value is [rounded](#rounding-of-datetime-fractional-second-precision) to the nearest **datetime** increment (`.000`, `.003`, or `.007` seconds). The following example shows the results of converting a `DATETIMEOFFSET(4)` value to a `DATETIME` value.
 
 ```sql
-DECLARE @datetimeoffset DATETIMEOFFSET(4) = '1968-10-23 12:45:37.0017 +10:0';
-DECLARE @datetime DATETIME = @datetimeoffset;
+DECLARE @datetimeoffset AS DATETIMEOFFSET (4) = '1968-10-23 12:45:37.0017 +10:0';
+DECLARE @datetime AS DATETIME = @datetimeoffset;
 
-SELECT @datetime AS '@datetime', @datetimeoffset AS '@datetimeoffset';
+SELECT @datetime AS '@datetime',
+       @datetimeoffset AS '@datetimeoffset';
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -286,13 +292,14 @@ SELECT @datetime AS '@datetime', @datetimeoffset AS '@datetimeoffset';
 1968-10-23 12:45:37.003  1968-10-23 12:45:37.0017 +10:0
 ```
 
-When the conversion is from **datetime2(*n*)**, the date and time are copied. When the fractional precision of the **datetime2(*n*)** value is greater than three digits, the value is **rounded** to the nearest **datetime** increment (`.000`, `.003`, or `.007` seconds). Because it rounds, the value can round up and carry into the next second, minute, hour, or day. The following example shows the results of converting a `DATETIME2(4)` value to a `DATETIME` value.
+When the conversion is from **datetime2(*n*)**, the date and time are copied. When the fractional precision of the **datetime2(*n*)** value is greater than three digits, the value is [rounded](#rounding-of-datetime-fractional-second-precision) to the nearest **datetime** increment (`.000`, `.003`, or `.007` seconds). The following example shows the results of converting a `DATETIME2(4)` value to a `DATETIME` value.
 
 ```sql
-DECLARE @datetime2 DATETIME2(4) = '1968-10-23 12:45:37.0017';
-DECLARE @datetime DATETIME = @datetime2;
+DECLARE @datetime2 AS DATETIME2 (4) = '1968-10-23 12:45:37.0017';
+DECLARE @datetime AS DATETIME = @datetime2;
 
-SELECT @datetime AS '@datetime', @datetime2 AS '@datetime2';
+SELECT @datetime AS '@datetime',
+       @datetime2 AS '@datetime2';
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -308,12 +315,12 @@ SELECT @datetime AS '@datetime', @datetime2 AS '@datetime2';
 The following example compares the results of casting a string to each **date** and **time** data type.
 
 ```sql
-SELECT CAST('2024-05-08 12:35:29.1234567 +12:15' AS TIME(7)) AS 'time',
-    CAST('2024-05-08 12:35:29.1234567 +12:15' AS DATE) AS 'date',
-    CAST('2024-05-08 12:35:29.123' AS SMALLDATETIME) AS 'smalldatetime',
-    CAST('2024-05-08 12:35:29.123' AS DATETIME) AS 'datetime',
-    CAST('2024-05-08 12:35:29.1234567 +12:15' AS DATETIME2(7)) AS 'datetime2',
-    CAST('2024-05-08 12:35:29.1234567 +12:15' AS DATETIMEOFFSET(7)) AS 'datetimeoffset';
+SELECT CAST ('2024-05-08 12:35:29.1234567 +12:15' AS TIME (7)) AS 'time',
+       CAST ('2024-05-08 12:35:29.1234567 +12:15' AS DATE) AS 'date',
+       CAST ('2024-05-08 12:35:29.123' AS SMALLDATETIME) AS 'smalldatetime',
+       CAST ('2024-05-08 12:35:29.123' AS DATETIME) AS 'datetime',
+       CAST ('2024-05-08 12:35:29.1234567 +12:15' AS DATETIME2 (7)) AS 'datetime2',
+       CAST ('2024-05-08 12:35:29.1234567 +12:15' AS DATETIMEOFFSET (7)) AS 'datetimeoffset';
 ```
 
 [!INCLUDE [ssResult](../../includes/ssresult-md.md)]
