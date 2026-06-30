@@ -73,7 +73,7 @@ High-level overview of the supported features for `BACKUP` and `RESTORE`:
 
 1. A single backup file can be up to 200,000 MiB per URL (with `MAXTRANSFERSIZE` set to 20 MB).
 1. Backups can be striped across a maximum of 64 URLs.
-1. Mirroring is supported, but only across URLs. Mirroring using both URL and DISK isn't supported.
+1. Mirroring is supported, but only across S3 URLs. Mirroring using both URL and DISK or S3 and Azure Storage isn't supported.
 1. Compression is supported and recommended.
 1. Encryption is supported.
 1. Restore from URL with S3-compatible object storage has no size limitation.
