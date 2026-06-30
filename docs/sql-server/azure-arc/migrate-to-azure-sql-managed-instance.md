@@ -5,7 +5,7 @@ description: SQL Server migration in Azure Arc to Azure SQL Managed Instance in 
 author: danimir
 ms.author: danil
 ms.reviewer: randolphwest, mathoma
-ms.date: 04/16/2026
+ms.date: 06/25/2026
 ms.topic: how-to
 ms.collection: ce-skilling-ai-copilot
 
@@ -83,11 +83,17 @@ Select the **Copilot** icon on the **Database migration** pane to open the Copil
 To use SQL Server migration in Azure Arc, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, you can [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the [latest version](release-notes.md) of the Azure extension for SQL Server. To upgrade your extension, see [Upgrade the extension](connect.md#upgrade-the-extension).
+- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the [latest version](release-notes.md) of the Azure extension for SQL Server.
 
 Before you start the migration process, make sure that you've prepared your environment for your [chosen migration method](#integrated-migration-methods):
 - Prepare for [Managed Instance link migration](migration-sql-mi-prepare-link.md).
 - Prepare for [LRS migration](migration-sql-mi-prepare-log-replay-service.md).
+
+## Update the extension
+
+Before starting the migration, make sure you have the current version of the Azure extension for SQL Server installed on your SQL Server instance. The extension is updated independently of SQL Server, so having the latest version ensures you have all the latest features and fixes for migration.
+
+To update your extension, see [Update the extension](connect.md#upgrade-the-extension).
 
 ## Migrate to Azure SQL Managed Instance
 
@@ -244,6 +250,8 @@ Reverse migration isn't available through the SQL Server migration in Azure Arc 
 The limitations of the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview#limitations) and [LRS](/azure/azure-sql/managed-instance/log-replay-service-migrate#limitations) apply to migrations through the Azure portal.
 
 Monitoring the migration through the Azure portal is available only to SQL Server instances that meet monitoring [licensing requirements](sql-monitoring.md#prerequisites).
+
+Migrating from a SQL Server failover cluster instance (FCI) isn't currently supported by either migration method.
 
 ## Troubleshoot common issues
 

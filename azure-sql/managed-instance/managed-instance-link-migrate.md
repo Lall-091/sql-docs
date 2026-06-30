@@ -5,7 +5,7 @@ description: Learn how to use the Managed Instance link to migrate your SQL Serv
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, randolphwest
-ms.date: 02/19/2026
+ms.date: 06/25/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.topic: how-to
@@ -41,6 +41,24 @@ Migrating with the link gives you:
 
 > [!NOTE]  
 > While you can only migrate one database per link, you can establish multiple links from the same SQL Server instance to the same SQL Managed Instance.
+
+## Cutover behavior
+
+Cutover behavior depends on the version of SQL Server you're migrating from and the update policy of your target SQL Managed Instance:
+- For **SQL Server 2016** to **SQL Server 2019**, cutover to SQL Managed Instance drops the link. 
+- For **SQL Server 2022** or later versions cutover to SQL Managed Instance can either drop the link or keep the link based on your choice during failover. If you choose to keep the link, and your SQL managed instance is configured with a matching [update policy](update-policy.md), you can reverse migrate back to SQL Server if needed. 
+
+For migration, removing the link is the recommended option. If you choose to keep the link but later decide to remove it, wait for Azure to complete the first full backup of the database after failover before removing the link. This step ensures the database is healthy and fully functional on SQL Managed Instance. It also helps avoid a rare known issue where the database can become temporarily unavailable after a server restart if the link is removed too early. For more information, see [Database becomes unavailable after server restart following MI link failover](managed-instance-link-troubleshoot-how-to.md#database-unavailable-after-server-restart).
+
+## Reverse a migration
+
+Reverse migration back to SQL Server from Azure SQL Managed Instance might be supported depending on the [update policy](update-policy.md) of your SQL managed instance. For example:
+
+- [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy): Databases from instances configured with the **SQL Server 2022** update policy can be restored back to SQL Server 2022 instances.
+- [SQL Server 2025 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2025-update-policy): Databases from instances configured with the **SQL Server 2025** update policy can be restored back to SQL Server 2025 instances.
+- [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy): Databases from instances configured with the **Always-up-to-date** update policy can't be restored back to SQL Server.
+
+If your source SQL Server version is earlier than SQL Server 2022, reverse migration isn't possible. When you migrate your database to SQL Managed Instance, it undergoes an internal upgrade to a newer database version that isn't compatible with earlier SQL Server versions. Reverse migration database compatibility is only available when SQL Managed Instance is configured with the corresponding update policy.
 
 ## Prerequisites
 
@@ -126,15 +144,20 @@ After you've cut over to the SQL managed instance target, monitor your applicati
 
 For details, review [post-migration](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md#post-migration).
 
-## Reverse a migration
+## Known issues with migration
 
-Reverse migration back to SQL Server from Azure SQL Managed Instance might be supported depending on the [update policy](update-policy.md) of your SQL managed instance. For example:
+Review the following known issues related to migration with the link. 
 
-- [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy): Databases from instances configured with the **SQL Server 2022** update policy can be restored back to SQL Server 2022 instances.
-- [SQL Server 2025 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2025-update-policy): Databases from instances configured with the **SQL Server 2025** update policy can be restored back to SQL Server 2025 instances.
-- [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy): Databases from instances configured with the **Always-up-to-date** update policy can't be restored back to SQL Server.
+### Database becomes unavailable after server restart following MI link failover
 
-If your source SQL Server version is earlier than SQL Server 2022, reverse migration isn't possible. When your database is migrated to SQL Managed Instance, it undergoes an internal upgrade to a newer database version that isn't compatible with earlier SQL Server versions. Reverse migration database compatibility is only available when SQL Managed instance is configured with the corresponding update policy.
+In rare circumstances, your database might become temporarily unavailable on SQL Managed Instance after a server restart following the failover of the link. This known issue occurs when you drop a link before Azure completes a full backup of the database after initial failover to SQL Managed Instance.
+
+The database automatically recovers after Microsoft's intervention, but this recovery can take some time.
+
+To avoid this problem, don't drop the link until the first full backup finishes after failover from SQL Server to SQL Managed Instance. For more information, see [Database unavailable after server restart](managed-instance-link-troubleshoot-how-to.md#database-unavailable-after-server-restart).
+
+[!INCLUDE [known-issues-after-migration](../includes/sql-managed-instance/known-issues-after-migration.md)]
+
 
 ## Related content
 

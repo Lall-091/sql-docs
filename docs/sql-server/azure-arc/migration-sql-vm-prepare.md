@@ -1,11 +1,11 @@
 ---
-title: Prepare environment for a SQL VM migration
+title: Prepare Environment for a SQL VM Migration
 titleSuffix: SQL Server migration in Azure Arc
 description: Prepare your SQL Server instance enabled by Azure Arc for migration to SQL Server on Azure VMs.
 author: danimir
 ms.author: danil
 ms.reviewer: randolphwest, mathoma
-ms.date: 04/16/2026
+ms.date: 06/25/2026
 ms.topic: how-to
 ---
 
@@ -268,6 +268,7 @@ Consider the following limitations when you migrate your SQL Server databases to
 - You can migrate a maximum of 100 databases to the same Azure VM as the target using one or more migrations simultaneously. Moreover, once a migration with 100 databases finishes, wait for at least 30 minutes before starting a new migration to the same SQL Server on an Azure VM as the target. Also, every migration operation (start migration, cutover) for each database takes a few minutes sequentially. For example, to migrate 100 databases, it might take approximately 200 (2 x 100) minutes to create the migration queues and approximately 100 (1 x 100) minutes to cutover all 100 databases (excluding backup and restore timing). Therefore, the migration becomes slower as the number of databases increases. You should either schedule a longer migration window in advance based on rigorous migration testing, or partition large numbers of databases into batches when migrating them to SQL Server on an Azure VM.
 - Apart from configuring the Networking/Firewall of your Azure Storage account to allow your VM to access backup files, you also need to configure the Networking/Firewall of your SQL Server on an Azure VM to allow outbound connection to your storage account.
 - You need to keep the target Azure VM powered on while the SQL Server migration is in progress. Also, when creating a new migration, failover or cancel any migrations that are in progress migration.
+- Migrating from a SQL Server failover cluster instance (FCI) is not currently supported.
 
 ## Next step
 
